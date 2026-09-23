@@ -27,6 +27,23 @@ final class PPCart_DB_Table_Fixer
      */
     public function fix(PPCart_DB_Table_Schema $schema, array $issues)
     {
+        // Printed wpdb errors would corrupt the AJAX JSON response; errors are returned instead.
+        $show_errors = $this->wpdb->hide_errors();
+
+        try {
+            return $this->apply_fixes($schema, $issues);
+        } finally {
+            $this->wpdb->show_errors($show_errors);
+        }
+    }
+
+    /**
+     * @param PPCart_DB_Table_Schema $schema Expected schema.
+     * @param PPCart_DB_Schema_Issue[] $issues Issues to fix.
+     * @return string[] SQL error strings.
+     */
+    private function apply_fixes(PPCart_DB_Table_Schema $schema, array $issues)
+    {
         $errors = [];
 
         foreach ($issues as $issue) {

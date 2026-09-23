@@ -163,6 +163,30 @@ class DbSchemaTest extends NoTransactionWPTestCase
         $this->assertSame('1', $this->getIndexNonUnique($table, 'order_key'));
     }
 
+    public function test_IT_377_failed_repair_does_not_print_database_errors(): void
+    {
+        global $wpdb;
+
+        $table = ppcart_live_table('downloads');
+        $this->dropTableIndex($table, 'order_key');
+        $this->seedDownloadRow('print-a', 'duplicate-print-key');
+        $this->seedDownloadRow('print-b', 'duplicate-print-key');
+        $this->createTableIndex($table, 'order_key', [ 'order_key' ]);
+
+        $show_errors = $wpdb->show_errors(true);
+        ob_start();
+        try {
+            $report = PPCart_DB_Schema::service()->repair_all();
+        } finally {
+            $output = (string) ob_get_clean();
+            $wpdb->show_errors($show_errors);
+        }
+
+        $this->assertSame('', $output);
+        $this->assertNotEmpty($report->to_array()['tables'][ $table ]['fix_errors']);
+        $this->assertTrue($wpdb->show_errors);
+    }
+
     public function test_IT_377_running_repair_twice_does_not_create_order_key_2(): void
     {
         global $wpdb;
