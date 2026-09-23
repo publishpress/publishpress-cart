@@ -20,9 +20,9 @@ class DbSchemaTest extends NoTransactionWPTestCase
     {
         parent::set_up();
 
-        PPCart_DB_Schema::service()->repair_all();
-
         global $wpdb;
+
+        $suppress = $wpdb->suppress_errors(true);
 
         foreach ([ 'tax_rate', 'order_items', 'order_itemmeta', 'downloads' ] as $family) {
             $table = ppcart_live_table($family);
@@ -34,6 +34,10 @@ class DbSchemaTest extends NoTransactionWPTestCase
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Reset plugin-owned tables between DDL tests.
             $wpdb->query("TRUNCATE TABLE `{$table}`");
         }
+
+        $wpdb->suppress_errors($suppress);
+
+        PPCart_DB_Schema::service()->repair_all();
     }
 
     public function test_IT_377_fresh_install_reports_healthy_schema(): void
