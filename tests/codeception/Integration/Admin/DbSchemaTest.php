@@ -236,6 +236,16 @@ class DbSchemaTest extends NoTransactionWPTestCase
         $this->assertFalse($response['success']);
     }
 
+    public function test_IT_377_maintenance_markup_keeps_fix_button_hooks_after_admin_kses(): void
+    {
+        $html = wp_kses(PPCart_DB_Schema::admin()->render_maintenance_html(), ppcart_admin_allowed_html());
+
+        $this->assertMatchesRegularExpression('/<button[^>]*\sdata-ppcart-fix-db-schema[\s=>]/', $html);
+        $this->assertMatchesRegularExpression('/<button[^>]*\sdata-nonce="[^"]+"/', $html);
+        $this->assertStringContainsString('data-ppcart-fix-db-schema-result', $html);
+        $this->assertStringContainsString('data-ppcart-db-schema-status', $html);
+    }
+
     /**
      * @return callable
      */
