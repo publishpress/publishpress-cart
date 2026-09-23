@@ -42,6 +42,13 @@ final class PPCart_DB_Schema_Admin
             );
         }
 
+        if ($this->service->check_all()->is_healthy()) {
+            wp_send_json_error(
+                [ 'message' => __('The database schema already passed. There is nothing to repair.', 'publishpress-cart') ],
+                409
+            );
+        }
+
         $report = $this->service->repair_all();
 
         wp_send_json_success(

@@ -55,6 +55,7 @@ ob_start();
                 <?php endif; ?>
             </td>
         </tr>
+        <?php if (empty($data['healthy'])) : ?>
         <tr>
             <th scope="row"><?php esc_html_e('Repair', 'publishpress-cart'); ?></th>
             <td>
@@ -75,6 +76,7 @@ ob_start();
                 <p class="description" data-ppcart-fix-db-schema-result hidden></p>
             </td>
         </tr>
+        <?php endif; ?>
     </table>
 </div>
 <?php

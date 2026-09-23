@@ -338,16 +338,74 @@ class DbSchemaTest extends NoTransactionWPTestCase
 
     public function test_IT_377_ajax_repair_returns_403_without_manage_options(): void
     {
-        $user_id = $this->factory()->user->create([ 'role' => 'subscriber' ]);
-        wp_set_current_user($user_id);
+        wp_set_current_user($this->factory()->user->create([ 'role' => 'subscriber' ]));
+        $this->dropPluginTable(ppcart_live_table('tax_rate'));
 
-        $_POST = [
-            'nonce' => wp_create_nonce('ppcart_fix_db_schema'),
-        ];
+        list($response, $status_code) = $this->callAjaxFixDbSchema();
+        $still_missing = ! PPCart_DB_Schema::service()->check_all()->is_healthy();
+        PPCart_DB_Schema::service()->repair_all();
+
+        $this->assertIsArray($response);
+        $this->assertFalse($response['success']);
+        $this->assertSame('You do not have permission to repair the database schema.', $response['data']['message']);
+        $this->assertSame(403, $status_code);
+        $this->assertTrue($still_missing, 'Rejected request must not repair the schema.');
+    }
+
+    public function test_IT_377_ajax_repair_is_rejected_when_schema_passed(): void
+    {
+        wp_set_current_user($this->factory()->user->create([ 'role' => 'administrator' ]));
+        $repaired_before = did_action('ppcart_db_schema_repaired');
+
+        list($response, $status_code) = $this->callAjaxFixDbSchema();
+
+        $this->assertIsArray($response);
+        $this->assertFalse($response['success']);
+        $this->assertSame('The database schema already passed. There is nothing to repair.', $response['data']['message']);
+        $this->assertSame(409, $status_code);
+        $this->assertSame($repaired_before, did_action('ppcart_db_schema_repaired'), 'Passed schema must not run a repair.');
+    }
+
+    public function test_IT_377_ajax_repair_runs_when_schema_failed(): void
+    {
+        wp_set_current_user($this->factory()->user->create([ 'role' => 'administrator' ]));
+        $this->dropPluginTable(ppcart_live_table('tax_rate'));
+
+        list($response) = $this->callAjaxFixDbSchema();
+
+        $this->assertIsArray($response);
+        $this->assertTrue($response['success']);
+        $this->assertTrue(PPCart_DB_Schema::service()->check_all()->is_healthy());
+    }
+
+    public function test_IT_377_maintenance_markup_hides_repair_when_schema_passed(): void
+    {
+        $html = wp_kses(PPCart_DB_Schema::admin()->render_maintenance_html(), ppcart_admin_allowed_html());
+
+        $this->assertStringContainsString('data-ppcart-db-schema-status', $html);
+        $this->assertStringNotContainsString('data-ppcart-fix-db-schema', $html);
+    }
+
+    public function test_IT_377_maintenance_markup_keeps_fix_button_hooks_after_admin_kses(): void
+    {
+        $this->dropPluginTable(ppcart_live_table('tax_rate'));
+
+        $html = wp_kses(PPCart_DB_Schema::admin()->render_maintenance_html(), ppcart_admin_allowed_html());
+        PPCart_DB_Schema::service()->repair_all();
+
+        $this->assertMatchesRegularExpression('/<button[^>]*\sdata-ppcart-fix-db-schema[\s=>]/', $html);
+        $this->assertMatchesRegularExpression('/<button[^>]*\sdata-nonce="[^"]+"/', $html);
+        $this->assertStringContainsString('data-ppcart-fix-db-schema-result', $html);
+        $this->assertStringContainsString('data-ppcart-db-schema-status', $html);
+    }
+
+    /**
+     * @return array{0: mixed, 1: int|null} Decoded JSON response and HTTP status code.
+     */
+    private function callAjaxFixDbSchema()
+    {
+        $_POST             = [ 'nonce' => wp_create_nonce('ppcart_fix_db_schema') ];
         $_REQUEST['nonce'] = $_POST['nonce'];
-
-        $tax_rate_table = ppcart_live_table('tax_rate');
-        $this->dropPluginTable($tax_rate_table);
 
         $status_code    = null;
         $capture_status = static function ($status_header, $code) use (&$status_code) {
@@ -372,25 +430,7 @@ class DbSchemaTest extends NoTransactionWPTestCase
             unset($_POST['nonce'], $_REQUEST['nonce']);
         }
 
-        $response = json_decode(trim((string) ob_get_clean()), true);
-        $still_missing = ! PPCart_DB_Schema::service()->check_all()->is_healthy();
-        PPCart_DB_Schema::service()->repair_all();
-
-        $this->assertIsArray($response);
-        $this->assertFalse($response['success']);
-        $this->assertSame('You do not have permission to repair the database schema.', $response['data']['message']);
-        $this->assertSame(403, $status_code);
-        $this->assertTrue($still_missing, 'Rejected request must not repair the schema.');
-    }
-
-    public function test_IT_377_maintenance_markup_keeps_fix_button_hooks_after_admin_kses(): void
-    {
-        $html = wp_kses(PPCart_DB_Schema::admin()->render_maintenance_html(), ppcart_admin_allowed_html());
-
-        $this->assertMatchesRegularExpression('/<button[^>]*\sdata-ppcart-fix-db-schema[\s=>]/', $html);
-        $this->assertMatchesRegularExpression('/<button[^>]*\sdata-nonce="[^"]+"/', $html);
-        $this->assertStringContainsString('data-ppcart-fix-db-schema-result', $html);
-        $this->assertStringContainsString('data-ppcart-db-schema-status', $html);
+        return [ json_decode(trim((string) ob_get_clean()), true), $status_code ];
     }
 
     /**
