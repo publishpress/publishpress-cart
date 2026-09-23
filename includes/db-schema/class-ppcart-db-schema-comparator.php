@@ -95,7 +95,19 @@ final class PPCart_DB_Schema_Comparator
             return '';
         }
 
-        $stop_tokens = [ ' not null', ' null', ' default ', ' auto_increment', ' unique', ' primary key' ];
+        $stop_tokens = [
+            ' not null',
+            ' null',
+            ' default ',
+            ' auto_increment',
+            ' unique',
+            ' primary key',
+            ' collate ',
+            ' character set ',
+            ' charset ',
+            ' comment ',
+            ' on update ',
+        ];
         $lower       = strtolower($fragment);
         $cut         = strlen($fragment);
 

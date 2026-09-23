@@ -183,6 +183,33 @@ class ComparatorTest extends Unit
         $this->assertSame([], $issues);
     }
 
+    public function test_UT_359_column_attributes_after_type_are_ignored(): void
+    {
+        $schema = $this->sampleSchema(
+            [
+                'email'      => 'varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL',
+                'label'      => 'varchar(64) CHARACTER SET utf8mb4 NULL',
+                'updated_at' => 'timestamp ON UPDATE CURRENT_TIMESTAMP',
+                'notes'      => "longtext COMMENT 'free text'",
+            ],
+            []
+        );
+
+        $issues = $this->comparator->compare(
+            $schema,
+            true,
+            [
+                'email'      => 'varchar(191)',
+                'label'      => 'varchar(64)',
+                'updated_at' => 'timestamp',
+                'notes'      => 'longtext',
+            ],
+            []
+        );
+
+        $this->assertSame([], $issues);
+    }
+
     /**
      * @param array<string, string> $columns
      * @param array<string, array{columns: string[], unique: bool}> $indexes
