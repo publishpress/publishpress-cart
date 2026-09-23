@@ -1443,25 +1443,22 @@
                     return;
                 }
 
-                var message = response && response.data && response.data.message
-                    ? response.data.message
-                    : (window.ppcartSettingsI18n && window.ppcartSettingsI18n.fixDbSchemaFailed
-                        ? window.ppcartSettingsI18n.fixDbSchemaFailed
-                        : 'Database schema repair failed.');
-                if ($result.length) {
-                    $result.removeAttr('hidden').text(message);
-                }
-                $button.prop('disabled', false);
-            }).fail(function () {
-                if ($result.length) {
-                    $result.removeAttr('hidden').text(
-                        window.ppcartSettingsI18n && window.ppcartSettingsI18n.fixDbSchemaFailed
-                            ? window.ppcartSettingsI18n.fixDbSchemaFailed
-                            : 'Database schema repair failed.'
-                    );
-                }
-                $button.prop('disabled', false);
+                showDbSchemaFailure($button, $result, response);
+            }).fail(function (xhr) {
+                showDbSchemaFailure($button, $result, xhr && xhr.responseJSON);
             });
+        }
+
+        function showDbSchemaFailure($button, $result, response) {
+            var message = response && response.data && response.data.message
+                ? response.data.message
+                : (window.ppcartSettingsI18n && window.ppcartSettingsI18n.fixDbSchemaFailed
+                    ? window.ppcartSettingsI18n.fixDbSchemaFailed
+                    : 'Database schema repair failed.');
+            if ($result.length) {
+                $result.removeAttr('hidden').text(message);
+            }
+            $button.prop('disabled', false);
         }
     }
 
