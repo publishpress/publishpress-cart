@@ -166,8 +166,10 @@ only through the public filter `ppcart_db_table_schemas`.
 - Build `PPCart_DB_Table_Schema` with the **resolved** table name (`ppcart_pro_live_table()` for affiliate tables). Never pass unprefixed suffixes.
 - Constructor: `new PPCart_DB_Table_Schema( $table_name, $columns, $indexes, $label )`.
 - `$columns`: map of column name => SQL fragment (for example `bigint(20) unsigned NOT NULL AUTO_INCREMENT`).
-- `$indexes`: map of index name => `[ 'columns' => [ 'col' or 'meta_key(191)' ], 'unique' => bool ]`; use `PRIMARY` for the primary key.
+- `$indexes`: map of index name => `[ 'columns' => [ 'col' or 'meta_key(191)' ], 'unique' => bool ]`; use `PRIMARY` for the primary key (always treated as unique).
+- Declare `UNIQUE` and `PRIMARY KEY` only in `$indexes`, never inline in a column fragment. Table, column, and index names must match `[A-Za-z0-9_$]`. The registry skips a schema that breaks these rules and raises `_doing_it_wrong`.
 - Mismatched indexes are rebuilt with one atomic `ALTER TABLE … DROP INDEX …, ADD [UNIQUE] INDEX …` (primary key: `DROP PRIMARY KEY, ADD PRIMARY KEY (…)`). The fixer never drops tables or columns.
+- Column type drift is fixed with `MODIFY COLUMN` using your fragment. If a site widened a column, this can shrink it back and truncate data; keep fragments at the widest type you ship.
 - Listen for `ppcart_db_schema_repaired` when Pro needs to react to a maintenance repair run (optional).
 
 ## Current Free/Pro contract
