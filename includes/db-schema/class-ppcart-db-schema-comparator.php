@@ -63,6 +63,10 @@ final class PPCart_DB_Schema_Comparator
                 continue;
             }
 
+            if ('PRIMARY' === $index_name) {
+                $expected_index['unique'] = true;
+            }
+
             $live_index = $live_indexes[ $index_name ];
 
             if (! $this->indexes_match($expected_index, $live_index)) {

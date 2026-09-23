@@ -161,6 +161,28 @@ class ComparatorTest extends Unit
         $this->assertSame(PPCart_DB_Schema_Issue::INDEX_MISMATCH, $issues[0]->get_type());
     }
 
+    public function test_UT_359_primary_key_without_unique_flag_matches_live_primary(): void
+    {
+        $schema = $this->sampleSchema(
+            [ 'id' => 'bigint(20) unsigned NOT NULL AUTO_INCREMENT' ],
+            [ 'PRIMARY' => [ 'columns' => [ 'id' ] ] ]
+        );
+
+        $issues = $this->comparator->compare(
+            $schema,
+            true,
+            [ 'id' => 'bigint unsigned' ],
+            [
+                'PRIMARY' => [
+                    'columns' => [ 'id' ],
+                    'unique'  => true,
+                ],
+            ]
+        );
+
+        $this->assertSame([], $issues);
+    }
+
     /**
      * @param array<string, string> $columns
      * @param array<string, array{columns: string[], unique: bool}> $indexes
