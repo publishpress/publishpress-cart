@@ -255,6 +255,52 @@ class DbSchemaTest extends NoTransactionWPTestCase
         $this->clearSchemaRegistryCache();
     }
 
+    public function test_IT_377_column_fragment_with_percent_sign_is_repaired(): void
+    {
+        global $wpdb;
+
+        $table  = $wpdb->prefix . 'ppcart_db_schema_percent_test';
+        $schema = new PPCart_DB_Table_Schema(
+            $table,
+            [
+                'row_id' => 'bigint(20) NOT NULL AUTO_INCREMENT',
+                'note'   => "varchar(20) NOT NULL DEFAULT '%s off'",
+            ],
+            [ 'PRIMARY' => [ 'columns' => [ 'row_id' ], 'unique' => true ] ]
+        );
+        $add_schema = static function ($schemas) use ($schema) {
+            $schemas[] = $schema;
+
+            return $schemas;
+        };
+
+        $this->dropPluginTable($table);
+        add_filter('ppcart_db_table_schemas', $add_schema);
+        try {
+            $service = new \PPCart_DB_Schema_Service(
+                new \PPCart_DB_Schema_Registry(new \PPCart_DB_Schema_Free_Definitions()),
+                new \PPCart_DB_Table_Inspector($wpdb),
+                new \PPCart_DB_Schema_Comparator(),
+                new \PPCart_DB_Table_Fixer($wpdb)
+            );
+            $service->repair_all();
+
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Simulate missing column for repair test.
+            $wpdb->query("ALTER TABLE `{$table}` DROP COLUMN note");
+
+            $repaired = $service->repair_all();
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Inspect repaired column default.
+            $column = $wpdb->get_row($wpdb->prepare('SHOW COLUMNS FROM %i LIKE %s', $table, 'note'), ARRAY_A);
+        } finally {
+            remove_filter('ppcart_db_table_schemas', $add_schema);
+            $this->dropPluginTable($table);
+        }
+
+        $this->assertSame([], $repaired->to_array()['tables'][ $table ]['fix_errors']);
+        $this->assertTrue($repaired->is_healthy());
+        $this->assertSame('%s off', $column['Default']);
+    }
+
     public function test_IT_377_filter_schemas_with_unsafe_definitions_are_skipped(): void
     {
         global $wpdb;

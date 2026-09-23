@@ -172,25 +172,12 @@ final class PPCart_DB_Table_Fixer
 
         $primary_clause = empty($primary_key) ? '' : ', ADD PRIMARY KEY (' . $this->format_index_columns($primary_key) . ')';
 
-        if (PPCart_DB_Schema_Issue::MISSING_COLUMN === $issue->get_type()) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Repair missing column on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i ADD COLUMN %i ' . $def . $primary_clause,
-                    $table,
-                    $column
-                )
-            );
-        } else {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Repair column type on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i MODIFY COLUMN %i ' . $def . $primary_clause,
-                    $table,
-                    $column
-                )
-            );
-        }
+        $operation = PPCart_DB_Schema_Issue::MISSING_COLUMN === $issue->get_type() ? 'ADD COLUMN' : 'MODIFY COLUMN';
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.NotPrepared -- Repair a column on a plugin-owned table; the DDL fragment stays outside prepare() so "%" is not read as a placeholder.
+        $this->wpdb->query(
+            $this->wpdb->prepare('ALTER TABLE %i ' . $operation . ' %i', $table, $column) . ' ' . $def . $primary_clause
+        );
 
         return $this->collect_last_error();
     }
