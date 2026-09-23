@@ -32,10 +32,10 @@ final class PPCart_DB_Table_Inspector
             return false;
         }
 
+        $wpdb = $this->wpdb;
+
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Schema inspection on a plugin-owned table.
-        $found = $this->wpdb->get_var(
-            $this->wpdb->prepare('SHOW TABLES LIKE %s', $this->wpdb->esc_like($table))
-        );
+        $found = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->esc_like($table)));
 
         return $found === $table;
     }
@@ -52,11 +52,10 @@ final class PPCart_DB_Table_Inspector
             return [];
         }
 
+        $wpdb = $this->wpdb;
+
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Schema inspection on a plugin-owned table.
-        $rows = $this->wpdb->get_results(
-            $this->wpdb->prepare('SHOW COLUMNS FROM %i', $table),
-            ARRAY_A
-        );
+        $rows = $wpdb->get_results($wpdb->prepare('SHOW COLUMNS FROM %i', $table), ARRAY_A);
 
         if (! is_array($rows)) {
             return [];
@@ -87,11 +86,10 @@ final class PPCart_DB_Table_Inspector
             return [];
         }
 
+        $wpdb = $this->wpdb;
+
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Schema inspection on a plugin-owned table.
-        $rows = $this->wpdb->get_results(
-            $this->wpdb->prepare('SHOW INDEX FROM %i', $table),
-            ARRAY_A
-        );
+        $rows = $wpdb->get_results($wpdb->prepare('SHOW INDEX FROM %i', $table), ARRAY_A);
 
         if (! is_array($rows)) {
             return [];

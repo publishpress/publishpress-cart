@@ -170,16 +170,17 @@ final class PPCart_DB_Table_Fixer
             return [];
         }
 
+        $wpdb           = $this->wpdb;
         $primary_clause = empty($primary_key) ? '' : ', ADD PRIMARY KEY (' . $this->format_index_columns($primary_key) . ')';
 
-        $operation = PPCart_DB_Schema_Issue::MISSING_COLUMN === $issue->get_type() ? 'ADD COLUMN' : 'MODIFY COLUMN';
+        if (PPCart_DB_Schema_Issue::MISSING_COLUMN === $issue->get_type()) {
+            $sql = $wpdb->prepare('ALTER TABLE %i ADD COLUMN %i', $table, $column);
+        } else {
+            $sql = $wpdb->prepare('ALTER TABLE %i MODIFY COLUMN %i', $table, $column);
+        }
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.NotPrepared -- Repair a column on a plugin-owned table; the DDL fragment stays outside prepare() so "%" is not read as a placeholder.
-        $this->wpdb->query(
-            $this->wpdb->prepare('ALTER TABLE %i ' . $operation . ' %i', $table, $column) . ' ' . $def . $primary_clause
-        );
-
-        return $this->collect_last_error();
+        // The DDL fragment stays outside prepare() so "%" in a DEFAULT is not read as a placeholder.
+        return $this->run_schema_change($sql . ' ' . $def . $primary_clause);
     }
 
     /**
@@ -196,45 +197,25 @@ final class PPCart_DB_Table_Fixer
             return [];
         }
 
+        $wpdb        = $this->wpdb;
         $table       = $schema->get_table_name();
         $column_list = $this->format_index_columns($index['columns']);
 
         if ('PRIMARY' === $index_name) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Add missing primary key on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i ADD PRIMARY KEY (' . $column_list . ')',
-                    $table
-                )
-            );
-
-            return $this->collect_last_error();
-        }
-
-        if (! empty($index['unique'])) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Add missing unique index on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i ADD UNIQUE INDEX %i (' . $column_list . ')',
-                    $table,
-                    $index_name
-                )
-            );
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Column list is built from registry-validated identifiers.
+            $sql = $wpdb->prepare('ALTER TABLE %i ADD PRIMARY KEY (' . $column_list . ')', $table);
         } else {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Add missing index on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i ADD INDEX %i (' . $column_list . ')',
-                    $table,
-                    $index_name
-                )
-            );
+            $kind = ! empty($index['unique']) ? 'UNIQUE INDEX' : 'INDEX';
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Column list is built from registry-validated identifiers.
+            $sql = $wpdb->prepare('ALTER TABLE %i ADD ' . $kind . ' %i (' . $column_list . ')', $table, $index_name);
         }
 
-        return $this->collect_last_error();
+        return $this->run_schema_change($sql);
     }
 
     /**
+     * Drop and re-add in one ALTER so a failed re-add (duplicate rows) keeps the old index.
+     *
      * @param PPCart_DB_Table_Schema $schema Table schema.
      * @param PPCart_DB_Schema_Issue $issue Index mismatch issue.
      * @return string[]
@@ -248,42 +229,32 @@ final class PPCart_DB_Table_Fixer
             return [];
         }
 
+        $wpdb        = $this->wpdb;
         $table       = $schema->get_table_name();
         $column_list = $this->format_index_columns($index['columns']);
 
         if ('PRIMARY' === $index_name) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Rebuild primary key on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i DROP PRIMARY KEY, ADD PRIMARY KEY (' . $column_list . ')',
-                    $table
-                )
-            );
-
-            return $this->collect_last_error();
-        }
-
-        if (! empty($index['unique'])) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Rebuild unique index on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i DROP INDEX %i, ADD UNIQUE INDEX %i (' . $column_list . ')',
-                    $table,
-                    $index_name,
-                    $index_name
-                )
-            );
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Column list is built from registry-validated identifiers.
+            $sql = $wpdb->prepare('ALTER TABLE %i DROP PRIMARY KEY, ADD PRIMARY KEY (' . $column_list . ')', $table);
         } else {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Rebuild index on a plugin-owned table.
-            $this->wpdb->query(
-                $this->wpdb->prepare(
-                    'ALTER TABLE %i DROP INDEX %i, ADD INDEX %i (' . $column_list . ')',
-                    $table,
-                    $index_name,
-                    $index_name
-                )
-            );
+            $kind = ! empty($index['unique']) ? 'UNIQUE INDEX' : 'INDEX';
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Column list is built from registry-validated identifiers.
+            $sql = $wpdb->prepare('ALTER TABLE %i DROP INDEX %i, ADD ' . $kind . ' %i (' . $column_list . ')', $table, $index_name, $index_name);
         }
+
+        return $this->run_schema_change($sql);
+    }
+
+    /**
+     * @param string $sql Prepared schema change statement.
+     * @return string[]
+     */
+    private function run_schema_change($sql)
+    {
+        $wpdb = $this->wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.NotPrepared -- Schema repair on a plugin-owned table; identifiers are prepared by the caller.
+        $wpdb->query($sql);
 
         return $this->collect_last_error();
     }

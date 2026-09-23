@@ -37,8 +37,8 @@ ob_start();
                     <?php endif; ?>
                     <?php if (! empty($fix_errors)) : ?>
                         <ul class="ppcart-settings__db-schema-fix-errors">
-                            <?php foreach ($fix_errors as $error) : ?>
-                                <li><?php echo esc_html((string) $error); ?></li>
+                            <?php foreach ($fix_errors as $fix_error) : ?>
+                                <li><?php echo esc_html((string) $fix_error); ?></li>
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
