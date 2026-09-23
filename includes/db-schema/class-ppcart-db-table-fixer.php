@@ -81,7 +81,8 @@ final class PPCart_DB_Table_Fixer
         }
 
         foreach ($column_issues as $issue) {
-            $errors = array_merge($errors, $this->fix_column_issue($schema, $issue));
+            $primary_key = $this->take_missing_primary_key_for($schema, $issue->get_name(), $missing_index);
+            $errors      = array_merge($errors, $this->fix_column_issue($schema, $issue, $primary_key));
         }
 
         foreach ($missing_index as $issue) {
@@ -112,11 +113,54 @@ final class PPCart_DB_Table_Fixer
     }
 
     /**
+     * MySQL rejects an AUTO_INCREMENT column that is not a key, so a missing
+     * primary key on that column must be added in the same statement.
+     *
+     * @param PPCart_DB_Table_Schema $schema Table schema.
+     * @param string $column Column being repaired.
+     * @param PPCart_DB_Schema_Issue[] $missing_index Missing index issues; the PRIMARY issue is removed when taken.
+     * @return string[] Primary key columns, or an empty array.
+     */
+    private function take_missing_primary_key_for(PPCart_DB_Table_Schema $schema, $column, array &$missing_index)
+    {
+        $def     = (string) ($schema->get_columns()[ $column ] ?? '');
+        $primary = $schema->get_indexes()['PRIMARY'] ?? null;
+
+        if (false === stripos($def, 'auto_increment') || ! is_array($primary) || empty($primary['columns'])) {
+            return [];
+        }
+
+        if (! in_array($column, array_map([ $this, 'strip_sub_part' ], $primary['columns']), true)) {
+            return [];
+        }
+
+        foreach ($missing_index as $key => $issue) {
+            if ('PRIMARY' === $issue->get_name()) {
+                unset($missing_index[ $key ]);
+
+                return $primary['columns'];
+            }
+        }
+
+        return [];
+    }
+
+    /**
+     * @param string $column Index column, optionally with a (Sub_part).
+     * @return string
+     */
+    private function strip_sub_part($column)
+    {
+        return (string) preg_replace('/\(\d+\)$/', '', (string) $column);
+    }
+
+    /**
      * @param PPCart_DB_Table_Schema $schema Table schema.
      * @param PPCart_DB_Schema_Issue $issue Column issue.
+     * @param string[] $primary_key Primary key columns to add in the same statement.
      * @return string[]
      */
-    private function fix_column_issue(PPCart_DB_Table_Schema $schema, PPCart_DB_Schema_Issue $issue)
+    private function fix_column_issue(PPCart_DB_Table_Schema $schema, PPCart_DB_Schema_Issue $issue, array $primary_key = [])
     {
         $table  = $schema->get_table_name();
         $column = $issue->get_name();
@@ -126,11 +170,13 @@ final class PPCart_DB_Table_Fixer
             return [];
         }
 
+        $primary_clause = empty($primary_key) ? '' : ', ADD PRIMARY KEY (' . $this->format_index_columns($primary_key) . ')';
+
         if (PPCart_DB_Schema_Issue::MISSING_COLUMN === $issue->get_type()) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Repair missing column on a plugin-owned table.
             $this->wpdb->query(
                 $this->wpdb->prepare(
-                    'ALTER TABLE %i ADD COLUMN %i ' . $def,
+                    'ALTER TABLE %i ADD COLUMN %i ' . $def . $primary_clause,
                     $table,
                     $column
                 )
@@ -139,7 +185,7 @@ final class PPCart_DB_Table_Fixer
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Repair column type on a plugin-owned table.
             $this->wpdb->query(
                 $this->wpdb->prepare(
-                    'ALTER TABLE %i MODIFY COLUMN %i ' . $def,
+                    'ALTER TABLE %i MODIFY COLUMN %i ' . $def . $primary_clause,
                     $table,
                     $column
                 )

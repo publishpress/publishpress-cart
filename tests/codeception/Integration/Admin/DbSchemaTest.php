@@ -110,6 +110,27 @@ class DbSchemaTest extends NoTransactionWPTestCase
         $this->assertSame('8', $rate);
     }
 
+    public function test_IT_377_dropped_auto_increment_primary_column_is_repaired_preserving_rows(): void
+    {
+        global $wpdb;
+
+        $table = ppcart_live_table('downloads');
+        $this->seedDownloadRow('auto-increment-a', 'order-key-auto-increment-a');
+        $this->seedDownloadRow('auto-increment-b', 'order-key-auto-increment-b');
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Simulate missing primary key column for repair test.
+        $wpdb->query("ALTER TABLE `{$table}` DROP COLUMN download_id");
+
+        $this->assertFalse(PPCart_DB_Schema::service()->check_all()->is_healthy());
+
+        $repaired = PPCart_DB_Schema::service()->repair_all();
+
+        $this->assertSame([], $repaired->to_array()['tables'][ $table ]['fix_errors']);
+        $this->assertTrue($repaired->is_healthy());
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Verify rows survived primary key repair.
+        $this->assertSame('2', $wpdb->get_var($wpdb->prepare('SELECT COUNT(DISTINCT download_id) FROM %i', $table)));
+    }
+
     public function test_IT_377_dropped_order_key_index_is_reported_and_repaired(): void
     {
         global $wpdb;
