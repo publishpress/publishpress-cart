@@ -1405,6 +1405,67 @@
     }
 
     /* -------------------------------------------------------------------------
+     * Maintenance — database schema repair
+     * ---------------------------------------------------------------------*/
+    function bindMaintenanceDbSchema() {
+        var $page = $('.ppcart-settings-page');
+        if (!$page.length) {
+            return;
+        }
+
+        $page.on('click', '[data-ppcart-fix-db-schema]', function (event) {
+            event.preventDefault();
+
+            var $button = $(this);
+            if ($button.prop('disabled')) {
+                return;
+            }
+
+            var $result = $page.find('[data-ppcart-fix-db-schema-result]');
+            runDbSchemaFix($button, $result);
+        });
+
+        function runDbSchemaFix($button, $result) {
+            $button.prop('disabled', true);
+
+            $.post(
+                window.ajaxurl || '/wp-admin/admin-ajax.php',
+                {
+                    action: 'ppcart_fix_db_schema',
+                    nonce: $button.attr('data-nonce')
+                }
+            ).done(function (response) {
+                if (response && response.success) {
+                    if ($result.length) {
+                        $result.removeAttr('hidden').text(response.data.message || '');
+                    }
+                    window.location.reload();
+                    return;
+                }
+
+                var message = response && response.data && response.data.message
+                    ? response.data.message
+                    : (window.ppcartSettingsI18n && window.ppcartSettingsI18n.fixDbSchemaFailed
+                        ? window.ppcartSettingsI18n.fixDbSchemaFailed
+                        : 'Database schema repair failed.');
+                if ($result.length) {
+                    $result.removeAttr('hidden').text(message);
+                }
+                $button.prop('disabled', false);
+            }).fail(function () {
+                if ($result.length) {
+                    $result.removeAttr('hidden').text(
+                        window.ppcartSettingsI18n && window.ppcartSettingsI18n.fixDbSchemaFailed
+                            ? window.ppcartSettingsI18n.fixDbSchemaFailed
+                            : 'Database schema repair failed.'
+                    );
+                }
+                $button.prop('disabled', false);
+            });
+        }
+    }
+
+    /* -------------------------------------------------------------------------
      * Init
      * ---------------------------------------------------------------------*/
     function init() {
@@ -1438,6 +1499,7 @@
         bindEmailTemplateModals();
         bindPaymentMethods();
         bindMaintenanceSecrets();
+        bindMaintenanceDbSchema();
 
         var initialTab = pendingTabRequest || getInitialTabId();
         pendingTabRequest = null;

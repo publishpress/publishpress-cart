@@ -107,6 +107,21 @@ trait PPCart_Admin_Settings_Sections_Trait
     }
 
     /**
+     * Registers the Maintenance database schema section.
+     *
+     * @return void
+     */
+    public function register_maintenance_db_schema_section()
+    {
+        add_settings_section(
+            $this->plugin_name . '-maintenance-db-schema',
+            apply_filters($this->plugin_name . 'section-title-maintenance-db-schema', esc_html__('Database schema', 'publishpress-cart')),
+            [ $this, 'section_settings' ],
+            $this->plugin_name . '-maintenance'
+        );
+    }
+
+    /**
     * Register Custom Tab settings section with Wordpress
     */
 

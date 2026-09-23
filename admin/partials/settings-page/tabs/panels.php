@@ -103,6 +103,22 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
                                         continue;
             }
 
+            if ('maintenance' === $tab_slug && $plugin_name . '-maintenance-db-schema' === $section['id']) {
+                ?>
+                                        <div class="ppcart-settings__card ppcart-settings__card--plain ppcart-settings__maintenance-db-schema" data-section-id="<?php echo esc_attr($section['id']); ?>">
+                                            <?php if (! empty($section['title'])) : ?>
+                                                <h2 class="ppcart-settings__card-title"><?php echo esc_html($section['title']); ?></h2>
+                                            <?php endif; ?>
+                                            <?php
+                        if (class_exists('PPCart_DB_Schema')) {
+                            echo wp_kses(PPCart_DB_Schema::admin()->render_maintenance_html(), ppcart_admin_allowed_html());
+                        }
+                ?>
+                                        </div>
+                                    <?php
+                                        continue;
+            }
+
             if ('debug' === $tab_slug && $plugin_name . '-debug' === $section['id']) {
                 $debug_enabled          = (bool) get_option('_ppcart_enable_debug');
                 $debug_log              = $get_debug_log_data();
