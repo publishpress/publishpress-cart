@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-09-20",
+    "generated_at": "2026-09-23",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -1183,6 +1183,16 @@
             "status": "unclassified",
             "file": "admin/class-ppcart-admin-filters.php",
             "recommended_hook": "posts_search",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "posts_where",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/class-ppcart-post-status-sync.php",
+            "recommended_hook": "posts_where",
             "notes": "Review before documenting as public API."
         },
         {
@@ -2509,21 +2519,21 @@
             "name": "ppcart_csv_import_check_file_path",
             "type": "filter",
             "operation": "apply_filters",
-            "classification": "internal",
-            "status": "unclassified",
+            "classification": "public",
+            "status": "canonical",
             "file": "includes/functions/payment-actions-and-refunds.php",
             "recommended_hook": "ppcart_csv_import_check_file_path",
-            "notes": "Review before documenting as public API."
+            "notes": "Canonical hook prefix."
         },
         {
             "name": "ppcart_csv_import_valid_filetypes",
             "type": "filter",
             "operation": "apply_filters",
-            "classification": "internal",
-            "status": "unclassified",
+            "classification": "public",
+            "status": "canonical",
             "file": "includes/functions/payment-actions-and-refunds.php",
             "recommended_hook": "ppcart_csv_import_valid_filetypes",
-            "notes": "Review before documenting as public API."
+            "notes": "Canonical hook prefix."
         },
         {
             "name": "ppcart_currencies",
@@ -2613,6 +2623,26 @@
             "status": "canonical",
             "file": "includes/helpers/ppcart-scheduling.php",
             "recommended_hook": "ppcart_daily_events",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_db_schema_repaired",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/db-schema/class-ppcart-db-schema-service.php",
+            "recommended_hook": "ppcart_db_schema_repaired",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_db_table_schemas",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/db-schema/class-ppcart-db-schema-registry.php",
+            "recommended_hook": "ppcart_db_table_schemas",
             "notes": "Canonical hook prefix."
         },
         {
@@ -3001,7 +3031,7 @@
             "operation": "apply_filters",
             "classification": "public",
             "status": "canonical",
-            "file": "public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php",
+            "file": "public/controllers/order/traits/trait-ppcart-public-order-cart.php",
             "recommended_hook": "ppcart_format_subscription_order_detail",
             "notes": "Canonical hook prefix."
         },
@@ -6136,6 +6166,16 @@
             "notes": "WordPress core hook."
         },
         {
+            "name": "pre_get_posts",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "includes/class-ppcart-post-status-sync.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
             "name": "pre_update_option",
             "type": "filter",
             "operation": "add_filter",
@@ -6696,6 +6736,16 @@
             "notes": "WordPress core hook."
         },
         {
+            "name": "wp_ajax_ppcart_fix_db_schema",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "includes/db-schema/class-ppcart-db-schema-admin.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
             "name": "wp_ajax_ppcart_fresh_product",
             "type": "action",
             "operation": "add_action",
@@ -7042,6 +7092,16 @@
             "classification": "internal",
             "status": "unclassified",
             "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
+            "recommended_hook": "wp_insert_post_data",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "wp_insert_post_data",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/class-ppcart-post-status-sync.php",
             "recommended_hook": "wp_insert_post_data",
             "notes": "Review before documenting as public API."
         },
@@ -7493,6 +7553,16 @@
             "status": "dynamic",
             "file": "admin/settings/traits/templates/settings-sections-register.php",
             "recommended_hook": "{$this}{->}{plugin_name}section-title-downloads",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "{$this}{->}{plugin_name}section-title-maintenance-db-schema",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "{$this}{->}{plugin_name}section-title-maintenance-db-schema",
             "notes": "Review before documenting as public API."
         },
         {
@@ -8110,6 +8180,14 @@
             "classification": "internal",
             "status": "dynamic",
             "recommended_pattern": "{$this}{->}{plugin_name}section-title-downloads"
+        },
+        {
+            "pattern": "{$this}{->}{plugin_name}section-title-maintenance-db-schema",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "{$this}{->}{plugin_name}section-title-maintenance-db-schema"
         },
         {
             "pattern": "{$this}{->}{plugin_name}section-title-maintenance-secrets",

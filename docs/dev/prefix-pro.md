@@ -157,6 +157,19 @@ off**. Mode on is only a third-party check, not Pro’s own contract.
 | Do not dual-fire legacy hooks from Pro | Free Compatibility Mode already bridges `sc_*` ↔ `ppcart_*`. Pro call sites fire/listen on canonical names only. |
 | Coordinate Free JS for Pro AJAX | Free checkout JS posts canonical `ppcart_check_username` / `ppcart_capture_lead` (slice 30). Leftover names bridge in Free Compat. Coupon / upsell leftovers stay Pro until a later Pro slice. |
 
+## Database schema extension (Maintenance)
+
+Free ships the schema engine and Settings → Maintenance UI
+(`PPCart_DB_Schema`, `includes/db-schema/`). Pro registers additional tables
+only through the public filter `ppcart_db_table_schemas`.
+
+- Build `PPCart_DB_Table_Schema` with the **resolved** table name (`ppcart_pro_live_table()` for affiliate tables). Never pass unprefixed suffixes.
+- Constructor: `new PPCart_DB_Table_Schema( $table_name, $columns, $indexes, $label )`.
+- `$columns`: map of column name => SQL fragment (for example `bigint(20) unsigned NOT NULL AUTO_INCREMENT`).
+- `$indexes`: map of index name => `[ 'columns' => [ 'col' or 'meta_key(191)' ], 'unique' => bool ]`; use `PRIMARY` for the primary key.
+- Mismatched indexes are rebuilt with one atomic `ALTER TABLE … DROP INDEX …, ADD [UNIQUE] INDEX …` (primary key: `DROP PRIMARY KEY, ADD PRIMARY KEY (…)`). The fixer never drops tables or columns.
+- Listen for `ppcart_db_schema_repaired` when Pro needs to react to a maintenance repair run (optional).
+
 ## Current Free/Pro contract
 
 These are the names Free already uses. Pro must match them. Live leftover maps in sibling `publishpress-cart-compat` (paths companion-relative; Free has no `includes/compat/`):
