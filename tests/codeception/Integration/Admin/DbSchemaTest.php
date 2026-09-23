@@ -255,6 +255,42 @@ class DbSchemaTest extends NoTransactionWPTestCase
         $this->clearSchemaRegistryCache();
     }
 
+    public function test_IT_377_filter_schemas_with_unsafe_definitions_are_skipped(): void
+    {
+        global $wpdb;
+
+        $this->setExpectedIncorrectUsage('PPCart_DB_Schema_Registry::get_schemas');
+
+        $valid_columns = [ 'row_id' => 'bigint(20) NOT NULL AUTO_INCREMENT' ];
+        $valid_indexes = [ 'PRIMARY' => [ 'columns' => [ 'row_id' ], 'unique' => true ] ];
+        $unsafe        = [
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_bad` (x int); --', $valid_columns, $valid_indexes),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_bad_column', [ 'id`, DROP TABLE x' => 'int' ], []),
+            new PPCart_DB_Table_Schema(
+                $wpdb->prefix . 'ppcart_bad_index',
+                $valid_columns,
+                [ 'row_id' => [ 'columns' => [ 'row_id`) , DROP INDEX PRIMARY' ], 'unique' => true ] ]
+            ),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_inline_unique', [ 'code' => 'varchar(64) UNIQUE NOT NULL' ], []),
+        ];
+        $add_unsafe = static function ($schemas) use ($unsafe) {
+            return array_merge($schemas, $unsafe);
+        };
+
+        add_filter('ppcart_db_table_schemas', $add_unsafe);
+        try {
+            $registry = new \PPCart_DB_Schema_Registry(new \PPCart_DB_Schema_Free_Definitions());
+            $tables   = array_keys($registry->get_schemas());
+        } finally {
+            remove_filter('ppcart_db_table_schemas', $add_unsafe);
+        }
+
+        $this->assertContains(ppcart_live_table('downloads'), $tables);
+        foreach ($unsafe as $schema) {
+            $this->assertNotContains($schema->get_table_name(), $tables);
+        }
+    }
+
     public function test_IT_377_ajax_repair_returns_403_without_manage_options(): void
     {
         $user_id = $this->factory()->user->create([ 'role' => 'subscriber' ]);
