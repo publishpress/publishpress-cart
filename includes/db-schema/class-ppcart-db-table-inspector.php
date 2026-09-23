@@ -34,7 +34,7 @@ final class PPCart_DB_Table_Inspector
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Schema inspection on a plugin-owned table.
         $found = $this->wpdb->get_var(
-            $this->wpdb->prepare('SHOW TABLES LIKE %s', $table)
+            $this->wpdb->prepare('SHOW TABLES LIKE %s', $this->wpdb->esc_like($table))
         );
 
         return $found === $table;
