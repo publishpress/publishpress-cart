@@ -346,8 +346,19 @@ class DbSchemaTest extends NoTransactionWPTestCase
         ];
         $_REQUEST['nonce'] = $_POST['nonce'];
 
+        $tax_rate_table = ppcart_live_table('tax_rate');
+        $this->dropPluginTable($tax_rate_table);
+
+        $status_code    = null;
+        $capture_status = static function ($status_header, $code) use (&$status_code) {
+            $status_code = (int) $code;
+
+            return $status_header;
+        };
+
         add_filter('wp_doing_ajax', '__return_true');
         add_filter('wp_die_ajax_handler', [ $this, 'getAjaxDieHandler' ]);
+        add_filter('status_header', $capture_status, 10, 2);
 
         ob_start();
         try {
@@ -357,13 +368,19 @@ class DbSchemaTest extends NoTransactionWPTestCase
         } finally {
             remove_filter('wp_doing_ajax', '__return_true');
             remove_filter('wp_die_ajax_handler', [ $this, 'getAjaxDieHandler' ]);
+            remove_filter('status_header', $capture_status, 10);
             unset($_POST['nonce'], $_REQUEST['nonce']);
         }
 
         $response = json_decode(trim((string) ob_get_clean()), true);
+        $still_missing = ! PPCart_DB_Schema::service()->check_all()->is_healthy();
+        PPCart_DB_Schema::service()->repair_all();
 
         $this->assertIsArray($response);
         $this->assertFalse($response['success']);
+        $this->assertSame('You do not have permission to repair the database schema.', $response['data']['message']);
+        $this->assertSame(403, $status_code);
+        $this->assertTrue($still_missing, 'Rejected request must not repair the schema.');
     }
 
     public function test_IT_377_maintenance_markup_keeps_fix_button_hooks_after_admin_kses(): void
