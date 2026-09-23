@@ -236,7 +236,7 @@ class DbSchemaTest extends NoTransactionWPTestCase
 
         $this->filter_table = $wpdb->prefix . 'ppcart_db_schema_filter_test';
         $this->dropPluginTable($this->filter_table);
-        $this->clearSchemaRegistryCache();
+        $this->assertTrue(PPCart_DB_Schema::service()->check_all()->is_healthy());
 
         add_filter(
             'ppcart_db_table_schemas',
@@ -252,7 +252,6 @@ class DbSchemaTest extends NoTransactionWPTestCase
         remove_filter('ppcart_db_table_schemas', [ $this, 'registerFilterTestSchema' ]);
         $this->dropPluginTable($this->filter_table);
         $this->filter_table = null;
-        $this->clearSchemaRegistryCache();
     }
 
     public function test_IT_377_column_fragment_with_percent_sign_is_repaired(): void
@@ -472,21 +471,5 @@ class DbSchemaTest extends NoTransactionWPTestCase
         }
 
         return '';
-    }
-
-    /**
-     * @return void
-     */
-    private function clearSchemaRegistryCache()
-    {
-        $service_ref = new \ReflectionClass(PPCart_DB_Schema::service());
-        $registry    = $service_ref->getProperty('registry');
-        $registry->setAccessible(true);
-        $registry_instance = $registry->getValue(PPCart_DB_Schema::service());
-
-        $cache = new \ReflectionClass($registry_instance);
-        $prop  = $cache->getProperty('schemas_cache');
-        $prop->setAccessible(true);
-        $prop->setValue($registry_instance, null);
     }
 }

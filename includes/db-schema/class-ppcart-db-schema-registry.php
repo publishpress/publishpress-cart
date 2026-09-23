@@ -12,9 +12,6 @@ final class PPCart_DB_Schema_Registry
     /** @var PPCart_DB_Schema_Free_Definitions */
     private $free;
 
-    /** @var array<string, PPCart_DB_Table_Schema>|null */
-    private $schemas_cache;
-
     /**
      * @param PPCart_DB_Schema_Free_Definitions $free Free table definitions.
      */
@@ -28,10 +25,6 @@ final class PPCart_DB_Schema_Registry
      */
     public function get_schemas()
     {
-        if (null !== $this->schemas_cache) {
-            return $this->schemas_cache;
-        }
-
         $schemas = $this->add_valid_schemas([], $this->free->get_schemas());
 
         /**
@@ -45,9 +38,7 @@ final class PPCart_DB_Schema_Registry
             $schemas = $this->add_valid_schemas($schemas, $filtered);
         }
 
-        $this->schemas_cache = $schemas;
-
-        return $this->schemas_cache;
+        return $schemas;
     }
 
     /**
