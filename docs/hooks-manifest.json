@@ -2626,6 +2626,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_db_schema_owned_table_prefixes",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/db-schema/class-ppcart-db-schema-registry.php",
+            "recommended_hook": "ppcart_db_schema_owned_table_prefixes",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_db_schema_repaired",
             "type": "action",
             "operation": "do_action",

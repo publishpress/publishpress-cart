@@ -25,7 +25,8 @@ final class PPCart_DB_Schema_Registry
      */
     public function get_schemas()
     {
-        $schemas = $this->add_valid_schemas([], $this->free->get_schemas());
+        // Free's own definitions use the live table helpers, which may resolve to a Compat-owned name.
+        $schemas = $this->add_valid_schemas([], $this->free->get_schemas(), false);
 
         /**
          * Register additional plugin-owned table schemas (Pro affiliate tables, etc.).
@@ -35,7 +36,7 @@ final class PPCart_DB_Schema_Registry
         $filtered = apply_filters('ppcart_db_table_schemas', array_values($schemas));
 
         if (is_array($filtered)) {
-            $schemas = $this->add_valid_schemas($schemas, $filtered);
+            $schemas = $this->add_valid_schemas($schemas, $filtered, true);
         }
 
         return $schemas;
@@ -44,10 +45,13 @@ final class PPCart_DB_Schema_Registry
     /**
      * @param array<string, PPCart_DB_Table_Schema> $schemas Accepted schemas keyed by table name.
      * @param array $candidates Candidate schemas.
+     * @param bool $require_owned_prefix Whether table names must use an owned Cart prefix.
      * @return array<string, PPCart_DB_Table_Schema>
      */
-    private function add_valid_schemas(array $schemas, array $candidates)
+    private function add_valid_schemas(array $schemas, array $candidates, $require_owned_prefix)
     {
+        $owned_prefixes = $require_owned_prefix ? $this->get_owned_table_prefixes() : [];
+
         foreach ($candidates as $schema) {
             if (! $schema instanceof PPCart_DB_Table_Schema) {
                 continue;
@@ -60,6 +64,10 @@ final class PPCart_DB_Schema_Registry
             }
 
             $problem = $this->find_definition_problem($schema);
+
+            if ('' === $problem && $require_owned_prefix && ! $this->has_owned_prefix($table, $owned_prefixes)) {
+                $problem = 'table name must start with an owned Cart table prefix (see ppcart_db_schema_owned_table_prefixes)';
+            }
 
             if ('' !== $problem) {
                 _doing_it_wrong(
@@ -122,6 +130,45 @@ final class PPCart_DB_Schema_Registry
         }
 
         return '';
+    }
+
+    /**
+     * @return string[] Unprefixed table name prefixes that registered schemas may use.
+     */
+    private function get_owned_table_prefixes()
+    {
+        /**
+         * Unprefixed table name prefixes that `ppcart_db_table_schemas` entries may use.
+         *
+         * @param string[] $prefixes Defaults to `[ 'ppcart_' ]`; each value is appended to `$wpdb->prefix`.
+         */
+        $prefixes = apply_filters('ppcart_db_schema_owned_table_prefixes', [ 'ppcart_' ]);
+
+        if (! is_array($prefixes)) {
+            return [ 'ppcart_' ];
+        }
+
+        return array_values(array_filter($prefixes, function ($prefix) {
+            return is_string($prefix) && 1 === preg_match('/^[A-Za-z0-9_$]+_$/', $prefix);
+        }));
+    }
+
+    /**
+     * @param string $table Table name.
+     * @param string[] $owned_prefixes Unprefixed owned prefixes.
+     * @return bool
+     */
+    private function has_owned_prefix($table, array $owned_prefixes)
+    {
+        global $wpdb;
+
+        foreach ($owned_prefixes as $prefix) {
+            if (0 === strpos($table, $wpdb->prefix . $prefix)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

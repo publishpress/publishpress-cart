@@ -324,6 +324,7 @@ class DbSchemaTest extends NoTransactionWPTestCase
             new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_def_paren', [ 'code' => 'decimal(10,2))' ], []),
             new PPCart_DB_Table_Schema('other_ppcart_unprefixed', $valid_columns, $valid_indexes),
             new PPCart_DB_Table_Schema($wpdb->users, $valid_columns, $valid_indexes),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'wc_orders', $valid_columns, $valid_indexes),
         ];
         $add_unsafe = static function ($schemas) use ($unsafe) {
             return array_merge($schemas, $unsafe);
@@ -341,6 +342,45 @@ class DbSchemaTest extends NoTransactionWPTestCase
         foreach ($unsafe as $schema) {
             $this->assertNotContains($schema->get_table_name(), $tables);
         }
+    }
+
+    public function test_IT_377_owned_table_prefix_filter_admits_extension_tables(): void
+    {
+        global $wpdb;
+
+        $this->setExpectedIncorrectUsage('PPCart_DB_Schema_Registry::get_schemas');
+
+        $table  = $wpdb->prefix . 'acme_cart_extras';
+        $schema = new PPCart_DB_Table_Schema(
+            $table,
+            [ 'row_id' => 'bigint(20) NOT NULL AUTO_INCREMENT' ],
+            [ 'PRIMARY' => [ 'columns' => [ 'row_id' ], 'unique' => true ] ]
+        );
+        $add_schema = static function ($schemas) use ($schema) {
+            $schemas[] = $schema;
+
+            return $schemas;
+        };
+        $own_prefix = static function ($prefixes) {
+            $prefixes[] = 'acme_cart_';
+
+            return $prefixes;
+        };
+        $registry = new \PPCart_DB_Schema_Registry(new \PPCart_DB_Schema_Free_Definitions());
+
+        add_filter('ppcart_db_table_schemas', $add_schema);
+        try {
+            $without_prefix = array_keys($registry->get_schemas());
+
+            add_filter('ppcart_db_schema_owned_table_prefixes', $own_prefix);
+            $with_prefix = array_keys($registry->get_schemas());
+        } finally {
+            remove_filter('ppcart_db_table_schemas', $add_schema);
+            remove_filter('ppcart_db_schema_owned_table_prefixes', $own_prefix);
+        }
+
+        $this->assertNotContains($table, $without_prefix);
+        $this->assertContains($table, $with_prefix);
     }
 
     public function test_IT_377_filter_schemas_with_quoted_defaults_and_decimals_are_accepted(): void

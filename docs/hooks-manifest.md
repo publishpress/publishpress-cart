@@ -270,6 +270,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_customer_report_admin_notices` | Action | `add_action` | Public | canonical | `admin/controllers/class-ppcart-admin-page-notices.php` | ppcart_customer_report_admin_notices |
 | `ppcart_customer_report_admin_notices` | Action | `do_action` | Public | canonical | `admin/reports/templates/customer-report/page.php` | ppcart_customer_report_admin_notices |
 | `ppcart_daily_events` | Action | `add_action` | Public | canonical | `includes/helpers/ppcart-scheduling.php` | ppcart_daily_events |
+| `ppcart_db_schema_owned_table_prefixes` | Filter | `apply_filters` | Public | canonical | `includes/db-schema/class-ppcart-db-schema-registry.php` | ppcart_db_schema_owned_table_prefixes |
 | `ppcart_db_schema_repaired` | Action | `do_action` | Public | canonical | `includes/db-schema/class-ppcart-db-schema-service.php` | ppcart_db_schema_repaired |
 | `ppcart_db_table_schemas` | Filter | `apply_filters` | Public | canonical | `includes/db-schema/class-ppcart-db-schema-registry.php` | ppcart_db_table_schemas |
 | `ppcart_default_field_settings_attributes` | Filter | `apply_filters` | Public | canonical | `admin/partials/ppcart-admin-field-default-fields.php` | ppcart_default_field_settings_attributes |
