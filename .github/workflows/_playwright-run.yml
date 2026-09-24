@@ -1,0 +1,211 @@
+name: Playwright test run (reusable)
+
+permissions:
+  contents: read
+
+on:
+  workflow_call:
+    inputs:
+      job-name:
+        description: Display name for the job (shows in the Actions UI and PR checks)
+        required: true
+        type: string
+      test-command:
+        description: npm script that executes the suite, e.g. "npm run test:e2e:admin"
+        required: true
+        type: string
+      test-command-no-credentials:
+        description: npm script to run when gateway credentials are not available (optional)
+        required: false
+        type: string
+        default: ""
+      artifact-name:
+        description: Base name for the uploaded report artifact (the run id is appended)
+        required: true
+        type: string
+      fixture-scope:
+        description: Fixture bundle to provision (admin or regression)
+        required: true
+        type: string
+      needs-gateway-credentials:
+        description: Whether to write env-content/env-content-fallback to .env before provisioning (regression's Stripe/PayPal test keys)
+        required: false
+        type: boolean
+        default: false
+      mocked-gateways:
+        description: Provision regression fixtures with Stripe/PayPal mocks (REGRESSION_MOCKED_GATEWAYS=1)
+        required: false
+        type: boolean
+        default: false
+      enable-admin-workflows:
+        description: Enable admin tests that create or update WordPress data
+        required: false
+        type: boolean
+        default: false
+      enable-admin-external:
+        description: Enable admin tests for bundled external extensions
+        required: false
+        type: boolean
+        default: false
+      workers:
+        description: Number of Playwright workers (sets PW_WORKERS)
+        required: false
+        type: string
+        default: ""
+    secrets:
+      env-content:
+        required: false
+      env-content-fallback:
+        required: false
+
+jobs:
+  execute:
+    name: ${{ inputs.job-name }}
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mariadb:11
+        env:
+          MARIADB_DATABASE: wordpress
+          MARIADB_USER: wordpress
+          MARIADB_PASSWORD: wordpress
+          MARIADB_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mariadb-admin ping -uroot -proot"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Set up PHP and WP-CLI
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: mysqli, mbstring, xml, curl, zip, gd, intl, pcntl
+          tools: wp-cli
+          coverage: none
+
+      - name: Install locked dependencies and Chromium
+        run: |
+          npm ci --ignore-scripts
+          npx playwright install --with-deps chromium
+
+      - name: Configure gateway credentials
+        if: inputs.needs-gateway-credentials
+        id: gateway-credentials
+        env:
+          ENV_CONTENT: ${{ secrets.env-content }}
+          ENV_CONTENT_FALLBACK: ${{ secrets.env-content-fallback }}
+        run: |
+          # Payment gateway sandbox credentials (Stripe/PayPal test keys) come
+          # from the secret; the WordPress target itself is a fresh local site
+          # provisioned below, not the value this .env would otherwise carry.
+          PLAYWRIGHT_ENV_CONTENT="${ENV_CONTENT:-$ENV_CONTENT_FALLBACK}"
+
+          if [ -z "$PLAYWRIGHT_ENV_CONTENT" ]; then
+            echo "No gateway credentials secret configured; continuing with .env.example defaults (no live gateway credentials)." >&2
+            echo "has_credentials=false" >> "$GITHUB_OUTPUT"
+          else
+            printf '%s\n' "$PLAYWRIGHT_ENV_CONTENT" > .env
+            chmod 600 .env
+            echo "has_credentials=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Provision and configure the test site
+        env:
+          FIXTURE_SCOPE: ${{ inputs.fixture-scope }}
+          REGRESSION_MOCKED_GATEWAYS: ${{ inputs.mocked-gateways && '1' || '0' }}
+        run: bash tests/bin/setup-site.sh "$FIXTURE_SCOPE"
+
+      - name: Prepare admin workflow state
+        if: inputs.fixture-scope == 'admin' && inputs.enable-admin-workflows
+        env:
+          ADMIN_WORKFLOW_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          # Admin workflow specs share created records across files, so run
+          # serially and seed a stable workflow run ID/product name.
+          ADMIN_WORKFLOW_PRODUCT_TITLE="ppcart-ci-product-${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_PLAN_SLUG="ppcart-ci-plan-${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_PLAN_LABEL="CI One Time Plan ${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_PRODUCT_PRICE="19"
+          ADMIN_WORKFLOW_PRODUCT_PRICE_DISPLAY='$19.00'
+          ADMIN_WORKFLOW_BUTTON_TEXT="Buy CI Product"
+          ADMIN_WORKFLOW_CATEGORY_NAME="ppcart-ci-category-${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_CATEGORY_SLUG="ppcart-ci-category-${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_TAG_NAME="ppcart-ci-tag-${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_TAG_SLUG="ppcart-ci-tag-${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_COMPANY_NAME="CI Company ${ADMIN_WORKFLOW_RUN_ID}"
+          ADMIN_WORKFLOW_COMPANY_ADDRESS="123 Test Street"
+
+          {
+            echo "ADMIN_WORKFLOW_RUN_ID=${ADMIN_WORKFLOW_RUN_ID}"
+            echo "ADMIN_WORKFLOW_PRODUCT_TITLE=${ADMIN_WORKFLOW_PRODUCT_TITLE}"
+            echo "ADMIN_WORKFLOW_PLAN_SLUG=${ADMIN_WORKFLOW_PLAN_SLUG}"
+            echo "ADMIN_WORKFLOW_PLAN_LABEL=${ADMIN_WORKFLOW_PLAN_LABEL}"
+            echo "ADMIN_WORKFLOW_PRODUCT_PRICE=${ADMIN_WORKFLOW_PRODUCT_PRICE}"
+            echo "ADMIN_WORKFLOW_PRODUCT_PRICE_DISPLAY=${ADMIN_WORKFLOW_PRODUCT_PRICE_DISPLAY}"
+            echo "ADMIN_WORKFLOW_BUTTON_TEXT=${ADMIN_WORKFLOW_BUTTON_TEXT}"
+            echo "ADMIN_WORKFLOW_CATEGORY_NAME=${ADMIN_WORKFLOW_CATEGORY_NAME}"
+            echo "ADMIN_WORKFLOW_CATEGORY_SLUG=${ADMIN_WORKFLOW_CATEGORY_SLUG}"
+            echo "ADMIN_WORKFLOW_TAG_NAME=${ADMIN_WORKFLOW_TAG_NAME}"
+            echo "ADMIN_WORKFLOW_TAG_SLUG=${ADMIN_WORKFLOW_TAG_SLUG}"
+            echo "ADMIN_WORKFLOW_COMPANY_NAME=${ADMIN_WORKFLOW_COMPANY_NAME}"
+            echo "ADMIN_WORKFLOW_COMPANY_ADDRESS=${ADMIN_WORKFLOW_COMPANY_ADDRESS}"
+          } >> "$GITHUB_ENV"
+
+          export ADMIN_WORKFLOW_RUN_ID ADMIN_WORKFLOW_PRODUCT_TITLE ADMIN_WORKFLOW_PLAN_SLUG \
+            ADMIN_WORKFLOW_PLAN_LABEL ADMIN_WORKFLOW_PRODUCT_PRICE ADMIN_WORKFLOW_PRODUCT_PRICE_DISPLAY \
+            ADMIN_WORKFLOW_BUTTON_TEXT ADMIN_WORKFLOW_CATEGORY_NAME ADMIN_WORKFLOW_CATEGORY_SLUG \
+            ADMIN_WORKFLOW_TAG_NAME ADMIN_WORKFLOW_TAG_SLUG ADMIN_WORKFLOW_COMPANY_NAME \
+            ADMIN_WORKFLOW_COMPANY_ADDRESS
+
+          wp --allow-root --path="$(pwd)/.ci-wordpress" eval-file tests/bin/lib/prepare-admin-workflow.php
+
+      - name: Validate Playwright sources
+        run: npm run test:e2e:validate
+
+      - name: Execute suite
+        env:
+          PUBLISHPRESS_CART_ADMIN_WORKFLOWS: ${{ inputs.enable-admin-workflows && '1' || '0' }}
+          PUBLISHPRESS_CART_ADMIN_EXTERNAL: ${{ inputs.enable-admin-external && '1' || '0' }}
+          PW_WORKERS: ${{ inputs.workers }}
+        run: |
+          if [ "${{ inputs.needs-gateway-credentials }}" = "true" ] \
+            && [ "${{ steps.gateway-credentials.outputs.has_credentials }}" != "true" ] \
+            && [ -n "${{ inputs.test-command-no-credentials }}" ]; then
+            echo "Gateway credentials not configured; running: ${{ inputs.test-command-no-credentials }}"
+            ${{ inputs.test-command-no-credentials }}
+          else
+            ${{ inputs.test-command }}
+          fi
+
+      - name: Clean up admin workflow state
+        if: inputs.fixture-scope == 'admin' && inputs.enable-admin-workflows && always()
+        env:
+          ADMIN_WORKFLOW_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}
+          ADMIN_WORKFLOW_PRODUCT_TITLE: ppcart-ci-product-${{ github.run_id }}-${{ github.run_attempt }}
+          ADMIN_WORKFLOW_CATEGORY_SLUG: ppcart-ci-category-${{ github.run_id }}-${{ github.run_attempt }}
+          ADMIN_WORKFLOW_TAG_SLUG: ppcart-ci-tag-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          wp --allow-root --path="$(pwd)/.ci-wordpress" eval-file tests/bin/lib/cleanup-admin-workflow.php || true
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}-${{ github.run_id }}
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
+          retention-days: 14

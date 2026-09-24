@@ -1,0 +1,27 @@
+parameters:
+    level: 8
+    paths:
+        - ./admin
+        - ./includes
+        - ./models
+        - ./public
+    excludePaths:
+        - ./dist
+        - ./languages
+        - ./src/include.php
+        - ./src/Versions.php
+        - .cache
+        - .github
+        - .idea
+        - .vscode
+        - .wordpress-org
+        - /lib
+        - /vendor
+        - bin
+        - cache
+        - dev-workspace
+        - node_modules
+        - tests
+        - tests-old
+rules:
+    - Spatie\Ray\PHPStan\RemainingRayCallRule

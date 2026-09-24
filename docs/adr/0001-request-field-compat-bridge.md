@@ -1,0 +1,3 @@
+# [ADR-0001] Hybrid leftover request-field bridge
+
+Checkout and payment read request keys with `filter_input()`, which reads the original SAPI body and does not see mutations to `$_POST` / `$_GET`. Admin metaboxes read those superglobals directly. Compatibility Mode therefore copies leftover keys onto canonical keys in `$_POST` / `$_GET` / `$_REQUEST` (canonical wins if both are set) and first-party `filter_input` / `filter_input_array` call sites go through `ppcart_filter_input()` / `ppcart_filter_input_array()`, which try the canonical key then, only while the mode is on, the leftover key. WordPress `action` is not in the field map.

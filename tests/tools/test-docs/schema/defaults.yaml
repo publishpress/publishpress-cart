@@ -1,0 +1,10 @@
+priority: [critical, high, medium, low]
+
+new_case:
+  priority: medium
+
+execution_order:
+  - Critical path and core flows
+  - High-risk pricing, security, and integration tests
+  - Medium coverage and compatibility tests
+  - Low-risk polish and localization

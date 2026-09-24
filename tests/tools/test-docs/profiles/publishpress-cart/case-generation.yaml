@@ -1,0 +1,120 @@
+# Curation applied when generating catalog cases from test files.
+#
+# The generator derives title, steps, expected result, tags, and the automation
+# link straight from the test code. The values below cover the things code
+# cannot express: which module a case belongs to, which sellable features it
+# exercises, and how important it is.
+#
+# `ranges` are inclusive and matched against the numeric part of the case id.
+
+suites:
+  regression:
+    default_priority: critical
+    modules:
+      - id: checkout-stripe
+        ranges: ['1-9']
+      - id: checkout-paypal
+        ranges: ['10-18', '20-20']
+      - id: checkout-free
+        ranges: ['19-19']
+    features:
+      - ranges: ['1-4', '10-13', '20-20']
+        values: [core-checkout]
+      - ranges: ['5-8', '14-17']
+        values: [subscriptions]
+      - ranges: ['9-9', '18-18']
+        values: [core-checkout]
+      - ranges: ['19-19']
+        values: [core-checkout]
+    # Added only when the test itself proves it exercises the feature, so the
+    # link cannot drift from what the spec actually does.
+    derived_features:
+      - when: 'payment.?plan'
+        add: [payment-plans]
+    # Domain filters declared under `fields` in .scribe.config.yaml.
+    # Every matching rule is merged, so one rule per field keeps this readable.
+    extensions:
+      - ranges: ['1-9']
+        values: {gateway: stripe}
+      - ranges: ['10-18', '20-20']
+        values: {gateway: paypal}
+      - ranges: ['19-19']
+        values: {gateway: none}
+      - ranges: ['1-4', '10-13', '20-20']
+        values: {purchase_type: one-time}
+      - ranges: ['5-8', '14-17']
+        values: {purchase_type: subscription}
+      - ranges: ['9-9', '18-18']
+        values: {purchase_type: custom-price}
+      - ranges: ['19-19']
+        values: {purchase_type: free}
+      - ranges: ['1-20']
+        values: {tax_context: none}
+
+  smoke:
+    default_priority: high
+    modules:
+      - id: smoke-checkout
+        ranges: ['1-39']
+      - id: smoke-bumps-upsells
+        ranges: ['50-59']
+      - id: smoke-subscriptions
+        ranges: ['61-72']
+      - id: smoke-order-management
+        ranges: ['80-99']
+    derived_features:
+      - when: 'payment.?plan'
+        add: [payment-plans]
+    features:
+      - ranges: ['1-14']
+        values: [core-checkout]
+      - ranges: ['36-36']
+        values: [coupons, core-checkout]
+      - ranges: ['39-39']
+        values: [taxes-vat]
+      - ranges: ['50-59']
+        values: [order-bumps-upsells]
+      - ranges: ['61-72']
+        values: [subscriptions]
+      - ranges: ['80-99']
+        values: [order-management]
+
+  admin:
+    default_priority: medium
+    modules:
+      - id: admin-navigation
+        ranges: ['1-19']
+      - id: admin-settings
+        ranges: ['20-39']
+      - id: admin-log-viewers
+        ranges: ['40-99']
+      - id: admin-editors
+        ranges: ['101-199']
+      - id: admin-workflows
+        ranges: ['201-299']
+    # Admin screens that exist to administer a sellable capability are linked to
+    # it. Screens with no sellable counterpart (dashboard, reports, contacts,
+    # extensions, log viewers, product taxonomies) are deliberately left empty
+    # rather than forced into an ill-fitting feature.
+    features:
+      - ranges: ['6-6']
+        values: [order-management]
+      - ranges: ['7-7']
+        values: [subscriptions]
+      - ranges: ['20-24', '28-31']
+        values: [store-settings]
+      - ranges: ['25-25']
+        values: [store-settings, secure-downloads]
+      - ranges: ['26-26']
+        values: [store-settings, transactional-emails]
+      - ranges: ['27-27']
+        values: [integrations, store-settings]
+      - ranges: ['102-102']
+        values: [order-management]
+      - ranges: ['103-103']
+        values: [subscriptions]
+      - ranges: ['208-209']
+        values: [store-settings]
+    derived_features:
+      - when: 'payment.?plan'
+        add: [payment-plans]

@@ -1,0 +1,133 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishpress-cart/account-login",
+	"version": "1.0.0",
+	"title": "Account Login",
+	"category": "widgets",
+	"icon": "lock",
+	"description": "Display the customer account login and password reset form.",
+	"textdomain": "publishpress-cart",
+	"render": "file:./render.php",
+	"editorScript": "ppcart-account-page-editor",
+	"style": "ppcart-account-block-style",
+	"editorStyle": "ppcart-account-block-editor-style",
+	"attributes": {
+		"hideWhenLoggedIn": {
+			"type": "boolean",
+			"default": true
+		},
+		"blockStyle": {
+			"type": "string",
+			"default": ""
+		},
+		"inputShape": {
+			"type": "string",
+			"default": ""
+		},
+		"hoverEffect": {
+			"type": "string",
+			"default": ""
+		},
+		"headingText": {
+			"type": "string",
+			"default": "Login"
+		},
+		"descriptionText": {
+			"type": "string",
+			"default": "Sign in to manage your account."
+		},
+		"headingAlignment": {
+			"type": "string",
+			"default": ""
+		},
+		"descriptionAlignment": {
+			"type": "string",
+			"default": ""
+		},
+		"formAlignment": {
+			"type": "string",
+			"default": ""
+		},
+		"formMaxWidth": {
+			"type": "number"
+		},
+		"formPadding": {
+			"type": "number"
+		},
+		"formRadius": {
+			"type": "number"
+		},
+		"formBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"formBorderColor": {
+			"type": "string",
+			"default": ""
+		},
+		"headingColor": {
+			"type": "string",
+			"default": ""
+		},
+		"headingFontSize": {
+			"type": "number"
+		},
+		"headingFontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"descriptionColor": {
+			"type": "string",
+			"default": ""
+		},
+		"descriptionFontSize": {
+			"type": "number"
+		},
+		"descriptionFontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"labelColor": {
+			"type": "string",
+			"default": ""
+		},
+		"inputRadius": {
+			"type": "number"
+		},
+		"buttonBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonHoverBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonHoverTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonRadius": {
+			"type": "number"
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"margin": true
+		}
+	}
+}

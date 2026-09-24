@@ -1,0 +1,60 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace PublishPress\Stripe\Service;
+
+/**
+ * @phpstan-import-type RequestOptionsArray from \PublishPress\Stripe\Util\RequestOptions
+ *
+ * @psalm-import-type RequestOptionsArray from \PublishPress\Stripe\Util\RequestOptions
+ */
+class ExchangeRateService extends AbstractService
+{
+    /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
+     * Returns a list of objects that contain the rates at which foreign currencies are
+     * converted to one another. Only shows the currencies for which Stripe supports.
+     *
+     * @deprecated  this method is deprecated, please refer to the description for details
+     *
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|RequestOptionsArray|\PublishPress\Stripe\Util\RequestOptions $opts
+     *
+     * @return \PublishPress\Stripe\Collection<\PublishPress\Stripe\ExchangeRate>
+     *
+     * @throws \PublishPress\Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v1/exchange_rates', $params, $opts);
+    }
+
+    /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
+     * Retrieves the exchange rates from the given currency to every supported
+     * currency.
+     *
+     * @deprecated  this method is deprecated, please refer to the description for details
+     *
+     * @param string $id
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\PublishPress\Stripe\Util\RequestOptions $opts
+     *
+     * @return \PublishPress\Stripe\ExchangeRate
+     *
+     * @throws \PublishPress\Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/exchange_rates/%s', $id), $params, $opts);
+    }
+}

@@ -1,0 +1,544 @@
+schema_version: 2
+
+version: 1
+
+plugin:
+  id: publishpress-cart
+  name: PublishPress Cart
+  display_name: PublishPress Cart
+  edition: free
+
+catalog:
+  cases: docs/testing/cases
+  # Test files that intentionally have no catalog case, because they cover the
+  # test harness rather than the product.
+  ignore_tests:
+    - tests/playwright/unit/admin-executor.spec.ts
+
+modules:
+  - id: checkout-stripe
+    name: Stripe checkout flows
+    suites: [regression]
+    test_range: RT-001–RT-009
+    features: [core-checkout, payment-plans, subscriptions]
+    notes: One-time, subscription, sale-price, and custom-price purchases paid by card.
+
+  - id: checkout-paypal
+    name: PayPal checkout flows
+    suites: [regression]
+    test_range: RT-010–RT-018, RT-020
+    features: [core-checkout, payment-plans, subscriptions]
+    notes: The Stripe matrix repeated against the PayPal sandbox.
+
+  - id: checkout-free
+    name: Free checkout
+    suites: [regression]
+    test_range: RT-019
+    features: [core-checkout]
+    notes: Zero-total checkout that takes no payment.
+
+  - id: smoke-checkout
+    name: Checkout smoke
+    suites: [smoke]
+    test_range: ST-001–ST-039
+    features: [core-checkout, coupons, taxes-vat, payment-plans]
+    notes: Short happy-path and validation checks over the checkout form.
+
+  - id: smoke-bumps-upsells
+    name: Order bumps and upsells smoke
+    suites: [smoke]
+    test_range: ST-050–ST-059
+    features: [order-bumps-upsells]
+
+  - id: smoke-subscriptions
+    name: Subscriptions smoke
+    suites: [smoke]
+    test_range: ST-061–ST-072
+    features: [subscriptions]
+
+  - id: smoke-order-management
+    name: Order management smoke
+    suites: [smoke]
+    test_range: ST-080–ST-099
+    features: [order-management]
+    notes: Backend order state after successful, abandoned, and failed checkouts.
+
+  - id: admin-navigation
+    name: Admin screens and navigation
+    suites: [admin]
+    test_range: AD-001–AD-011
+    features: []
+    notes: Every top-level Cart admin screen renders with its expected landmarks.
+
+  - id: admin-settings
+    name: Admin settings tabs
+    suites: [admin]
+    test_range: AD-020–AD-031
+    features: [store-settings]
+    notes: One case per settings tab.
+
+  - id: email-settings-gate
+    name: Email settings gate
+    suites: [email]
+    test_range: EM-001–EM-071
+    features: [transactional-emails, store-settings]
+    notes: Every free email type asserted both ways — enabled sends, disabled does not.
+
+  - id: admin-log-viewers
+    name: Admin log viewers
+    suites: [admin]
+    test_range: AD-040–AD-041
+    features: []
+    notes: Debug log and Stripe webhook log screens.
+
+  - id: admin-editors
+    name: Admin edit screens
+    suites: [admin]
+    test_range: AD-101–AD-103
+    features: [payment-plans, order-management, subscriptions]
+    notes: Editing an existing product, order, and subscription.
+
+  - id: admin-workflows
+    name: Admin create-and-verify workflows
+    suites: [admin]
+    test_range: AD-201–AD-211
+    features: [payment-plans, store-settings]
+    notes: Multi-step flows that create a record and then verify it persisted.
+
+  - id: stripe-sync
+    name: Stripe sync handlers
+    suites: [integration]
+    test_range: IT-001–IT-068, IT-363
+    features: [core-checkout, subscriptions]
+
+  - id: checkout-blocks
+    name: Checkout and account Gutenberg blocks
+    suites: [integration]
+    test_range: IT-069–IT-160
+    features: [gutenberg-blocks, checkout-display]
+    notes: Block registration, rendering, REST routes, and account page blocks.
+
+  - id: admin-screens
+    name: Admin screen detection
+    suites: [unit]
+    test_range: UT-001–UT-021, UT-197, UT-202
+    features: []
+
+  - id: legacy-compat
+    name: Legacy compatibility aliases
+    suites: [unit, integration]
+    test_range: UT-022–UT-031, IT-161
+    features: []
+
+  - id: debug-log-viewer
+    name: Debug log viewer and admin access
+    suites: [unit]
+    test_range: UT-032–UT-068, UT-221, UT-350, UT-351
+    features: []
+
+  - id: downloads
+    name: Download path validation
+    suites: [unit]
+    test_range: UT-069–UT-077
+    features: [secure-downloads]
+
+  - id: email-templates
+    name: Email template option filters
+    suites: [unit, integration]
+    test_range: UT-078–UT-089, UT-222, UT-355, IT-360, IT-370
+    features: [transactional-emails]
+
+  - id: order-refunds
+    name: Order refund calculations
+    suites: [unit]
+    test_range: UT-090–UT-097
+    features: [order-management]
+
+  - id: product-duplicate
+    name: Product duplication
+    suites: [unit]
+    test_range: UT-098–UT-143
+    features: []
+
+  - id: secrets
+    name: Secrets encryption
+    suites: [unit]
+    test_range: UT-146–UT-162
+    features: []
+
+  - id: mailchimp-api
+    name: Mailchimp REST helpers
+    suites: [unit, integration]
+    test_range: UT-357, IT-373
+    features: []
+    notes: Credential-present check and REST client after the Mailchimp SDK removal.
+
+  - id: status-labels
+    name: Status labels
+    suites: [unit, integration]
+    test_range: UT-163–UT-166, UT-328, UT-354, IT-372
+    features: [order-management, subscriptions]
+
+  - id: subscription-cancellation
+    name: Subscription cancellation and credit notes
+    suites: [unit]
+    test_range: UT-167–UT-178
+    features: [subscriptions]
+
+  - id: stripe-connect-credentials
+    name: Stripe Connect credential source
+    suites: [unit]
+    test_range: UT-179–UT-181, UT-341–UT-344
+    features: [core-checkout]
+    notes: Whether charges route through Connect OAuth or directly entered keys.
+
+  - id: stripe-subscription-sca
+    name: Stripe subscription on-session 3DS
+    suites: [unit]
+    test_range: UT-345
+    features: [core-checkout, subscriptions]
+    notes: First invoice stays incomplete until confirmCardPayment; create args expand confirmation_secret.
+
+  - id: stripe-prefixed-sdk
+    name: Prefixed Stripe SDK list responses
+    suites: [unit]
+    test_range: UT-346
+    features: [core-checkout]
+    notes: PPCart_Stripe_Client promotes StripeObject list/search payloads so ->all() and ->search() keep working.
+
+  - id: bootstrap-guards
+    name: Bootstrap guards and companion loader
+    suites: [unit]
+    test_range: UT-239, UT-249–UT-250, UT-329, UT-353
+    features: []
+    notes: StudioCart conflict detection, Compatibility plugin directory at load time, Pro-gate version-notice filter, and WP.org review-notice screen gate.
+
+  - id: i18n-timing
+    name: Textdomain and translation timing
+    suites: [unit]
+    test_range: UT-238, UT-352
+    features: [transactional-emails, store-settings]
+    notes: Translated strings and cron registration wait for init; report cron recurrences use ppcart_* keys.
+
+  - id: order-access
+    name: Public order access control
+    suites: [unit, integration]
+    test_range: UT-233, UT-348, IT-321–IT-326, IT-365
+    features: [order-management, secure-downloads]
+    notes: Owner, access-token, and capability proofs for public order and download pages.
+
+  - id: checkout-display
+    name: Checkout rendering and display
+    suites: [regression, unit, integration]
+    test_range: RT-073–RT-079, IT-279, IT-310, IT-320, UT-318, UT-321, UT-325–UT-326, UT-347, UT-358, IT-359, IT-364, IT-367–IT-369, IT-371, IT-375–IT-376
+    features: [checkout-display, core-checkout]
+    notes: Checkout markup, shortcode rendering, product setup defaults, and kses allowlists.
+
+  - id: developer-hooks
+    name: Developer hooks
+    suites: [regression]
+    test_range: RT-109–RT-111
+    features: [developer-hooks]
+    notes: Public action and filter hooks third-party code listens on.
+
+  - id: prefix-standardization
+    name: Prefix standardization
+    suites: [integration]
+    test_range: IT-266–IT-358
+    features: []
+    notes: >-
+      Canonical PPCart_/ppcart_/PPCART_/ppcart- identifiers across PHP, JS, CSS,
+      hooks, options, meta keys, and request fields (issue #629). Mirrors
+      tests/codeception/Integration/Prefix. The source-shaped Unit/Prefix suite
+      was removed in issue #679. Leftover-name and Compatibility Mode coverage
+      lives in publishpress-cart-compat.
+
+features:
+  checkout-display:
+    name: Checkout display & embedding
+    status: active
+    description: Embedding and rendering the checkout form via shortcode, page builders, and localized labels.
+    edition: both
+    source_areas:
+      - public/templates/
+      - includes/integrations/gutenberg/
+      - public/class-ppcart-public.php
+  core-checkout:
+    name: Core checkout & payments
+    status: active
+    description: Product checkout, one-time and free purchases, custom pricing, and payment gateway processing.
+    edition: both
+    source_areas:
+      - public/controllers/checkout/
+      - includes/functions.php
+      - public/class-ppcart-public.php
+      - public/class-ppcart-paypal.php
+  coupons:
+    name: Coupons & discounts
+    status: active
+    description: Discount codes customers can apply at checkout, including URL-based auto-applied coupons.
+    edition: pro
+    source_areas:
+      - includes/functions.php
+      - public/class-ppcart-public.php
+      - includes/class-ppcart-price-format.php
+  custom-fields:
+    name: Custom checkout fields
+    status: active
+    description: Product-level custom fields and customer registration at checkout.
+    edition: pro
+    source_areas:
+      - public/controllers/order/traits/
+      - admin/
+  developer-hooks:
+    name: Developer hooks and filters
+    status: active
+    description: WordPress action/filter hooks exposed for developers extending checkout and order behavior.
+    edition: both
+    source_areas:
+      - includes/functions.php
+      - public/class-ppcart-public.php
+  developer-rest-api:
+    name: Developer REST API
+    status: active
+    description: Read/write REST access to customers, orders, and products for external integrations.
+    edition: pro
+  gutenberg-blocks:
+    name: Gutenberg checkout & customer account
+    status: active
+    description: Block-editor checkout forms and customer account area blocks.
+    edition: both
+    source_areas:
+      - includes/integrations/gutenberg/blocks/
+  integrations:
+    name: Integrations and automation triggers
+    status: active
+    description: Order/subscription lifecycle events dispatched to WooCommerce compatibility, Zapier/Pabbly, and email-marketing services.
+    edition: pro
+    source_areas:
+      - includes/integrations/
+      - includes/functions.php
+  order-bumps-upsells:
+    name: Order bumps & upsells
+    status: active
+    description: Add-on offers at checkout and post-purchase upsell paths to increase revenue per order.
+    edition: pro
+    source_areas:
+      - includes/functions.php
+      - public/class-ppcart-public.php
+      - includes/integrations/
+  order-management:
+    name: Order management
+    status: active
+    description: Admin order review, refunds, cash-on-delivery, and reporting.
+    edition: both
+    source_areas:
+      - admin/class-ppcart-order-metaboxes.php
+      - admin/class-ppcart-admin-reports.php
+      - models/
+  payment-plans:
+    name: Payment plans
+    status: active
+    description: Split a one-time purchase into multiple scheduled installment payments.
+    edition: both
+    source_areas:
+      - admin/
+      - includes/functions.php
+      - public/class-ppcart-public.php
+  product-collections:
+    name: Product collections & bundles
+    status: active
+    description: Grouping multiple products into a single sellable collection.
+    edition: pro
+  quantity-pricing:
+    name: Quantity and bulk pricing
+    status: active
+    description: Letting customers choose a purchase quantity and pricing it accordingly.
+    edition: pro
+  secure-downloads:
+    name: Secure download delivery
+    status: active
+    description: Deliver purchased digital files through time-limited, access-controlled download links.
+    edition: both
+    source_areas:
+      - includes/files/class-ppcart-files.php
+      - includes/files/download.php
+  shipping:
+    name: Shipping
+    status: active
+    description: Per-product shipping rates, domestic/international pricing, and order-bump shipping rules.
+    edition: pro
+  store-settings:
+    name: Store settings
+    status: active
+    description: Store-wide configuration for payment gateways, currency, notifications, and post-checkout routing.
+    edition: both
+    source_areas:
+      - admin/class-ppcart-admin-settings.php
+  subscriptions:
+    name: Subscriptions
+    status: active
+    description: Recurring billing with trials, renewals, cancellation, and failed-payment handling.
+    edition: both
+    source_areas:
+      - includes/stripe-sync/
+      - models/
+  taxes-vat:
+    name: Taxes & VAT
+    status: active
+    description: Standard tax rates and VAT calculation at checkout.
+    edition: pro
+    source_areas:
+      - admin/class-ppcart-admin-settings.php
+      - includes/functions.php
+  transactional-emails:
+    name: Transactional emails
+    status: active
+    description: Order confirmation and notification emails sent after checkout events.
+    edition: both
+    source_areas:
+      - includes/email/
+  webhooks:
+    name: Webhooks
+    status: active
+    description: Registering and delivering HTTP callbacks (POST or GET) when order/subscription events occur.
+    edition: pro
+    source_areas:
+      - public/webhooks/
+      - includes/functions.php
+
+references:
+  - area: Docs index
+    url: https://www.studiocart.co/docs/
+    notes: Used to identify documentation sections and coverage areas.
+
+  - area: Products / coupons
+    url: https://www.studiocart.co/docs/products/coupon-management-pro-only/
+    notes: Coupon fields, URL coupons, discount types, duration.
+
+fields:
+  purchase_type:
+    label: Purchase type
+    type: enum
+    values: [one-time, subscription, free, custom-price]
+    filter: true
+    suites: [regression]
+
+  tax_context:
+    label: Tax context
+    type: enum
+    values: [none, tax-inclusive, tax-exclusive, vat]
+    filter: true
+    suites: [regression]
+
+  gateway:
+    label: Payment gateway
+    type: enum
+    values: [stripe, paypal, cod, none]
+    filter: true
+    suites: [regression]
+
+suites:
+  regression:
+    label: Browser regression
+    description: End-to-end checkout flows against a real WordPress site
+    prefix: RT
+    id_format: '{prefix}-{number:03d}'
+    runner: playwright
+    roots:
+      - tests/playwright/regression
+    spec_glob: '**/*.spec.ts'
+    id_pattern: 'RT-\d{3}'
+    discovery:
+      title: true
+      filename: true
+    run:
+      composer: test:regression
+      npm: test:e2e
+
+  admin:
+    label: Browser admin
+    description: Admin screen coverage driven by tests/playwright/support/admin-cases.ts
+    prefix: AD
+    id_format: '{prefix}-{number:03d}'
+    runner: playwright
+    roots:
+      - tests/playwright/admin
+    # Scoped to ad*.spec.ts: the email settings-gate specs share this directory
+    # (so admin-chromium collects them) but belong to the `email` suite below.
+    spec_glob: 'ad*.spec.ts'
+    id_pattern: 'AD-\d{3}'
+    discovery:
+      title: true
+      filename: true
+    run:
+      composer: test:admin
+      npm: test:e2e:admin
+
+  email:
+    label: Email settings gate
+    description: Proves the Emails settings tab controls whether each transactional email sends
+    prefix: EM
+    id_format: '{prefix}-{number:03d}'
+    runner: playwright
+    roots:
+      - tests/playwright/admin
+    spec_glob: 'email-*.spec.ts'
+    id_pattern: 'EM-\d{3}'
+    discovery:
+      title: true
+      filename: true
+    run:
+      composer: test:email
+      npm: test:e2e:email
+
+  unit:
+    label: Unit tests
+    description: PHP unit tests without WordPress bootstrap
+    prefix: UT
+    id_format: '{prefix}-{number:03d}'
+    runner: codeception
+    suite: Unit
+    roots:
+      - tests/codeception/Unit
+    file_glob: '**/*Test.php'
+    id_pattern: 'UT-\d{3}'
+    discovery:
+      docblock: true
+      group: true
+    run:
+      composer: test:unit
+
+  integration:
+    label: Integration tests
+    description: PHP tests with WordPress + WPLoader
+    prefix: IT
+    id_format: '{prefix}-{number:03d}'
+    runner: codeception
+    suite: Integration
+    roots:
+      - tests/codeception/Integration
+    file_glob: '**/*Test.php'
+    id_pattern: 'IT-\d{3}'
+    discovery:
+      docblock: true
+      group: true
+    run:
+      composer: test:integration
+
+  smoke:
+    label: Browser smoke
+    description: Short Ghost Inspector smoke flows against a real WordPress site
+    prefix: ST
+    id_format: '{prefix}-{number:03d}'
+    runner: playwright
+    roots:
+      - tests/playwright/smoke
+    spec_glob: '**/*.spec.ts'
+    id_pattern: 'ST-\d{3}'
+    discovery:
+      title: true
+      filename: true
+    run:
+      composer: test:smoke
+      npm: test:e2e:smoke

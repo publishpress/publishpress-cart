@@ -1,0 +1,58 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishpress-cart/account-page-builder",
+	"version": "1.0.0",
+	"title": "Account Page Builder",
+	"category": "widgets",
+	"icon": "screenoptions",
+	"description": "Build a customer account page from sortable account component blocks.",
+	"textdomain": "publishpress-cart",
+	"render": "file:./render.php",
+	"editorScript": "ppcart-account-page-editor",
+	"style": "ppcart-account-block-style",
+	"editorStyle": "ppcart-account-block-editor-style",
+	"attributes": {
+		"contentWidth": {
+			"type": "number"
+		},
+		"contentWidthUnit": {
+			"type": "string",
+			"default": "px"
+		},
+		"innerLayout": {
+			"type": "string",
+			"default": ""
+		},
+		"containerPadding": {
+			"type": "number"
+		},
+		"containerRadius": {
+			"type": "number"
+		},
+		"containerBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"containerBorderColor": {
+			"type": "string",
+			"default": ""
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	}
+}

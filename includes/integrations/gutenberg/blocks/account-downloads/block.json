@@ -1,0 +1,80 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishpress-cart/account-downloads",
+	"version": "1.0.0",
+	"title": "Account Downloads",
+	"category": "widgets",
+	"icon": "download",
+	"description": "Display the customer downloads account section when downloads are available.",
+	"textdomain": "publishpress-cart",
+	"render": "file:./render.php",
+	"editorScript": "ppcart-account-page-editor",
+	"style": "ppcart-account-block-style",
+	"editorStyle": "ppcart-account-block-editor-style",
+	"attributes": {
+		"active": {
+			"type": "boolean",
+			"default": true
+		},
+		"blockStyle": {
+			"type": "string",
+			"default": ""
+		},
+		"itemLayout": {
+			"type": "string",
+			"default": ""
+		},
+		"itemHoverEffect": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonShape": {
+			"type": "string",
+			"default": ""
+		},
+		"showFileIcon": {
+			"type": "boolean",
+			"default": true
+		},
+		"emptyText": {
+			"type": "string",
+			"default": ""
+		},
+		"emptyTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"linkColor": {
+			"type": "string",
+			"default": ""
+		},
+		"linkHoverColor": {
+			"type": "string",
+			"default": ""
+		},
+		"itemBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"itemBorderColor": {
+			"type": "string",
+			"default": ""
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"margin": true
+		}
+	}
+}

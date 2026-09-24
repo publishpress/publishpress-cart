@@ -1,0 +1,39 @@
+{
+    "license": "GPL-3.0-or-later",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/publishpress/library-stripe-php.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/publishpress/library-dompdf-dompdf.git"
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "7.4.0"
+        },
+        "vendor-dir": "vendor",
+        "preferred-install": {
+            "*": "dist"
+        },
+        "platform-check": false,
+        "autoloader-suffix": "PublishPressCart"
+    },
+    "require": {
+        "php": ">=7.4",
+        "publishpress/stripe-php": "20.3.1.2",
+        "publishpress/dompdf-dompdf": "3.1.6.2",
+        "publishpress/psr-container": "^2.0",
+        "publishpress/pimple-pimple": "^3.5",
+        "publishpress/wordpress-version-notices": "^2.1",
+        "publishpress/wordpress-reviews": "^1.1",
+        "publishpress/instance-protection": "^2.1",
+        "publishpress/bundled-translations": "^1.0"
+    },
+    "scripts": {
+    }
+}

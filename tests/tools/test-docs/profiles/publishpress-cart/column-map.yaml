@@ -1,0 +1,94 @@
+# Maps Master Test Suite HTML columns to catalog case fields.
+# Source: Google Sheets export (Master Test Suite.html).
+# Import as RT-* via: composer test:docs:import-rt
+
+sheet: Master Test Suite.html
+suite: regression
+catalog_id_prefix: RT
+id_column: Test ID
+columns:
+  Test ID: id
+  Priority: priority
+  Package: package_raw
+  Purchase Type: purchase_type_raw
+  Scenario: scenario
+  Tax Context: tax_context_raw
+  Test Steps: steps
+  Expected Result: expected
+  Edge Cases: edge_cases
+  Status: import_status
+
+edition_map:
+  FREE: both
+  PRO: pro
+
+module_ranges:
+  - from: 1
+    to: 18
+    module: core-checkout
+  - from: 19
+    to: 38
+    module: coupons
+  - from: 39
+    to: 49
+    module: taxes-vat
+  - from: 50
+    to: 53
+    module: order-bumps
+  - from: 54
+    to: 60
+    module: upsell-funnel
+  - from: 61
+    to: 72
+    module: subscriptions
+  - from: 73
+    to: 79
+    module: checkout-display
+  - from: 80
+    to: 87
+    module: order-management
+  - from: 88
+    to: 99
+    module: integrations
+  - from: 100
+    to: 108
+    module: webhooks-api
+  - from: 109
+    to: 111
+    module: developer-hooks
+  - from: 112
+    to: 115
+    module: general-settings
+  - from: 116
+    to: 120
+    module: products-fields
+  - from: 121
+    to: 123
+    module: security
+  - from: 124
+    to: 126
+    module: compatibility
+
+purchase_type_map:
+  One-time payment: one-time
+  One-time payment + bump: one-time
+  Subscription: subscription
+  Free product: free
+  Multiple plans: one-time
+  Payment plan: one-time
+
+tax_context_map:
+  None: none
+  No tax: none
+  Varies: none
+  Tax may vary: none
+  VAT enabled: vat
+  Tax/VAT enabled: vat
+  Tax enabled: tax-exclusive
+  Tax rate enabled: tax-exclusive
+
+priority_map:
+  Critical: critical
+  High: high
+  Medium: medium
+  Low: low

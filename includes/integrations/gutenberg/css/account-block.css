@@ -1,0 +1,2049 @@
+/*
+ * Gutenberg account block content styles.
+ * Legacy shortcode/account-page compatibility rules remain in public/css/ppcart-public.css.
+ */
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.ppcart-my-account {
+  font-size: 18px;
+}
+
+.ppcart-my-account,
+.account-page .page-title-wrap .wp-block-column {
+  max-width: var(--wp--style--global--wide-size);
+}
+.publishpress-cart-account-orders > .ppcart-my-account {
+  box-sizing: border-box;
+  max-width: none;
+  width: 100%;
+}
+.publishpress-cart-account-orders .overflow-x-auto {
+  max-width: 100%;
+  width: 100%;
+}
+.publishpress-cart-account-orders .ppcart-account-table {
+  width: 100%;
+}
+.ppcart-my-account .tab ul {
+  padding-left: 0;
+}
+.ppcart-my-account .dashicons {
+  margin: 5px 15px 5px 0;
+  font-size: 1em;
+}
+.ppcart-my-account .tabcontent {
+  display: none;
+  margin-top: 30px;
+  padding: 20px 0;
+  height: auto;
+}
+.ppcart-my-account .tabcontent.active {
+  display: inherit;
+}
+.ppcart-my-account .tabcontent .tab-content-inner {
+  margin-bottom: 30px;
+}
+.ppcart-my-account ul.tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+.ppcart-my-account ul.tabs li {
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.ppcart-my-account ul.tabs li.current {
+  background: #ededed;
+  color: #222;
+}
+.ppcart-my-account .ppcart-account-list h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.ppcart-my-account .profile-wrapper form {
+  padding-top: 16px;
+}
+.ppcart-my-account .profile-wrapper form,
+.ppcart-my-account .profile-wrapper form .ep-edit-address {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 40px;
+  width: 100%;
+}
+.ppcart-my-account .profile-wrapper form .ppcart-form-group {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: 10px;
+  margin-bottom: 0;
+}
+.ppcart-my-account .profile-wrapper form #ppcart-all-subscription-address-wrap {
+  gap: 10px;
+  flex: 0 0 100%;
+}
+.ppcart-my-account .profile-wrapper form #ppcart-all-subscription-address-wrap label {
+  color: #A0A0A0;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: none;
+}
+.ppcart-my-account .profile-wrapper label {
+  color: #707070;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: normal;
+  text-transform: uppercase;
+  min-width: 190px;
+}
+.ppcart-my-account .profile-wrapper #ppcart-confirm-new-password label {
+  min-width: 238px;
+}
+.ppcart-my-account .profile-wrapper {
+  padding: 0;
+}
+.ppcart-my-account .profile-wrapper input[type=text],
+.ppcart-my-account .profile-wrapper input[type=email],
+.ppcart-my-account .profile-wrapper input[type=tel],
+.ppcart-my-account .profile-wrapper input[type=password] {
+  border: 1px solid #A0A0A0;
+  border-radius: 8px;
+  color: #A0A0A0;
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  padding: 8px 18px;
+  transition: none;
+  width: calc(100% - 249px);
+}
+.ppcart-my-account .profile-wrapper input:-internal-autofill-selected {
+  background-color: transparent !important;
+}
+.ppcart-my-account .profile-wrapper input[type=text][disabled],
+.ppcart-my-account .profile-wrapper input[type=email][disabled],
+.ppcart-my-account .profile-wrapper input[type=tel][disabled],
+.ppcart-my-account .profile-wrapper input[type=password][disabled] {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.ppcart-my-account .ppcart-card-icon {
+  margin-right: 3px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 28px;
+}
+.ppcart-my-account .ppcart-nav-tabs {
+  border-bottom: 1px solid #B1B1B1;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 48px;
+  row-gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ppcart-my-account .ppcart-nav-tabs li {
+  margin: 0;
+}
+.ppcart-my-account .ppcart-nav-tabs li a {
+  border-bottom: 4px solid transparent;
+  display: inline-block;
+  color: #707070;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 25px 0;
+  line-height: 1;
+  margin-bottom: -1px;
+  outline: none;
+}
+.ppcart-my-account .ppcart-nav-tabs li a.active {
+  border-color: inherit;
+  color: #000;
+}
+.publishpress-cart-account-navigation .ppcart-nav-tabs {
+  column-gap: var(--ppcart-account-nav-gap, 48px);
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-align-center .ppcart-nav-tabs {
+  justify-content: center;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-align-right .ppcart-nav-tabs {
+  justify-content: flex-end;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-align-stretch .ppcart-nav-tabs li {
+  flex: 1 1 0;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-align-stretch .ppcart-nav-tabs li a {
+  text-align: center;
+  width: 100%;
+}
+.publishpress-cart-account-navigation .ppcart-nav-tabs li a {
+  background: var(--ppcart-account-nav-background, transparent);
+  color: var(--ppcart-account-nav-color, #707070);
+}
+.publishpress-cart-account-navigation .ppcart-nav-tabs li a.active {
+  background: var(--ppcart-account-nav-active-background, transparent);
+  border-color: var(--ppcart-account-nav-accent, currentColor);
+  color: var(--ppcart-account-nav-active-color, #000);
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-style-pills .ppcart-nav-tabs,
+.publishpress-cart-account-navigation.ppcart-account-nav-style-boxed .ppcart-nav-tabs {
+  border-bottom: 0;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-style-pills .ppcart-nav-tabs li a {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  margin-bottom: 0;
+  padding: 12px 18px;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-style-pills .ppcart-nav-tabs li a.active {
+  border-color: var(--ppcart-account-nav-accent, currentColor);
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-style-boxed .ppcart-nav-tabs {
+  gap: var(--ppcart-account-nav-gap, 0);
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-style-boxed .ppcart-nav-tabs li a {
+  border: 1px solid var(--ppcart-account-nav-accent, #B1B1B1);
+  margin-bottom: 0;
+  padding: 14px 18px;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-style-boxed .ppcart-nav-tabs li a.active {
+  border-color: var(--ppcart-account-nav-accent, #000);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent {
+  background: var(--ppcart-account-panel-background, transparent);
+  border-color: var(--ppcart-account-panel-border-color, transparent);
+  border-radius: var(--ppcart-account-panel-radius, 0);
+  color: var(--ppcart-account-panel-color, inherit);
+  padding: var(--ppcart-account-panel-padding, 20px);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-panel-style-card > .tabcontent {
+  background: var(--ppcart-account-panel-background, #fff);
+  border: 1px solid var(--ppcart-account-panel-border-color, #e0e0e0);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-panel-style-bordered > .tabcontent {
+  border: 1px solid var(--ppcart-account-panel-border-color, #B1B1B1);
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-has-container {
+  background: var(--ppcart-account-page-builder-background, transparent);
+  border: 1px solid var(--ppcart-account-page-builder-border-color, transparent);
+  border-radius: var(--ppcart-account-page-builder-radius, 0);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--ppcart-account-page-builder-max-width, none);
+  padding: var(--ppcart-account-page-builder-padding, 0);
+}
+.publishpress-cart-account-page-builder > .ppcart-my-account {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-left > .ppcart-my-account,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-center > .ppcart-my-account,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-right > .ppcart-my-account,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-left > .ppcart-my-account {
+  align-items: flex-start;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-center > .ppcart-my-account {
+  align-items: center;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-right > .ppcart-my-account {
+  align-items: flex-end;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account {
+  align-items: stretch;
+  width: 100%;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-login,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-navigation,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-orders,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-subscriptions,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-payment-plans,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-profile,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-downloads,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-order-detail,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-subscription-detail {
+  box-sizing: border-box;
+  width: 100%;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-orders .overflow-x-auto,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-subscriptions .overflow-x-auto,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-payment-plans .overflow-x-auto {
+  max-width: 100%;
+  width: 100%;
+}
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-orders .ppcart-account-table,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-subscriptions .ppcart-account-table,
+.publishpress-cart-account-page-builder.ppcart-account-page-builder-inner-stretch > .ppcart-my-account > .publishpress-cart-account-payment-plans .ppcart-account-table {
+  width: 100%;
+}
+.publishpress-cart-account-navigation .ppcart-nav-tabs li a {
+  font-size: var(--ppcart-account-nav-font-size, inherit);
+  font-weight: var(--ppcart-account-nav-font-weight, 500);
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-transform-none .ppcart-nav-tabs li a {
+  text-transform: none;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-transform-uppercase .ppcart-nav-tabs li a {
+  text-transform: uppercase;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-transform-lowercase .ppcart-nav-tabs li a {
+  text-transform: lowercase;
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-transform-capitalize .ppcart-nav-tabs li a {
+  text-transform: capitalize;
+}
+.publishpress-cart-account-navigation .ppcart-nav-tabs li a:hover,
+.publishpress-cart-account-navigation .ppcart-nav-tabs li a:focus {
+  background: var(--ppcart-account-nav-hover-background, var(--ppcart-account-nav-background, transparent));
+  color: var(--ppcart-account-nav-hover-color, var(--ppcart-account-nav-active-color, inherit));
+}
+.publishpress-cart-account-navigation .ppcart-nav-tabs li a {
+  border-bottom-width: var(--ppcart-account-nav-indicator, 4px);
+}
+.publishpress-cart-account-navigation.ppcart-account-nav-style-pills .ppcart-nav-tabs li a,
+.publishpress-cart-account-navigation.ppcart-account-nav-style-boxed .ppcart-nav-tabs li a {
+  padding: var(--ppcart-account-nav-padding-y, 12px) var(--ppcart-account-nav-padding-x, 18px);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent h1,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent h2,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent h3,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent h4,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent h5,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent h6 {
+  color: var(--ppcart-account-heading-color, inherit);
+  font-size: var(--ppcart-account-heading-font-size, inherit);
+  font-weight: var(--ppcart-account-heading-font-weight, inherit);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent a {
+  color: var(--ppcart-account-panel-link-color, inherit);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent a:hover,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent a:focus {
+  color: var(--ppcart-account-panel-link-hover-color, var(--ppcart-account-panel-link-color, inherit));
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-table thead tr th {
+  background: var(--ppcart-account-table-header-background, #f2f4f6);
+  color: var(--ppcart-account-table-header-color, inherit);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-table tbody tr td {
+  background: var(--ppcart-account-table-row-background, #fafbfd);
+  color: var(--ppcart-account-table-row-color, inherit);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-table tbody tr:nth-child(even) td {
+  background: var(--ppcart-account-table-row-alt-background, var(--ppcart-account-table-row-background, #fafbfd));
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-table tbody tr td,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-table thead tr th {
+  border-color: var(--ppcart-account-table-border-color, transparent);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-table-comfortable > .tabcontent .ppcart-account-table thead tr th,
+.publishpress-cart-account-tab.ppcart-account-tab-table-comfortable > .tabcontent .ppcart-account-table tbody tr td {
+  padding: 18px 16px;
+}
+.publishpress-cart-account-tab.ppcart-account-tab-table-compact > .tabcontent .ppcart-account-table thead tr th,
+.publishpress-cart-account-tab.ppcart-account-tab-table-compact > .tabcontent .ppcart-account-table tbody tr td {
+  padding: 6px 8px;
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-table-btn,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-action-button,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn input[type=button],
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn input[type=submit],
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn button {
+  background-color: var(--ppcart-account-button-background, inherit);
+  border-color: var(--ppcart-account-button-background, currentColor);
+  border-radius: var(--ppcart-account-button-radius, 3px);
+  color: var(--ppcart-account-button-color, inherit);
+}
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-table-btn:hover,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-table-btn:focus,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-action-button:hover,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .ppcart-account-action-button:focus,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn input[type=button]:hover,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn input[type=button]:focus,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn input[type=submit]:hover,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn input[type=submit]:focus,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn button:hover,
+.publishpress-cart-account-tab.ppcart-account-tab-has-custom-panel > .tabcontent .form-btn button:focus {
+  background-color: var(--ppcart-account-button-hover-background, var(--ppcart-account-button-background, inherit));
+  border-color: var(--ppcart-account-button-hover-background, var(--ppcart-account-button-background, currentColor));
+  color: var(--ppcart-account-button-hover-color, var(--ppcart-account-button-color, inherit));
+}
+.ppcart-my-account .ppcart-account-tab-pane {
+  max-width: 100%;
+  overflow: auto;
+}
+.publishpress-cart-account-login.ppcart-account-login-has-customization .ppcart-account-form {
+  background: var(--ppcart-account-login-background, #fff);
+  border: 1px solid var(--ppcart-account-login-border-color, #dfe7e3);
+  border-radius: var(--ppcart-account-login-radius, 18px);
+  max-width: var(--ppcart-account-login-max-width, 560px);
+  padding: var(--ppcart-account-login-padding, clamp(30px, 5vw, 44px));
+}
+.publishpress-cart-account-login.ppcart-account-login-align-left .ppcart-account-form {
+  margin-left: 0;
+  margin-right: auto;
+}
+.publishpress-cart-account-login.ppcart-account-login-align-center .ppcart-account-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+.publishpress-cart-account-login.ppcart-account-login-align-right .ppcart-account-form {
+  margin-left: auto;
+  margin-right: 0;
+}
+.publishpress-cart-account-login .ppcart-account-form h3 {
+  color: var(--ppcart-account-login-heading-color, #1f2a24);
+  font-size: var(--ppcart-account-login-heading-font-size, 24px);
+  font-weight: var(--ppcart-account-login-heading-font-weight, 600);
+  line-height: 1.18;
+  margin: 0 0 22px;
+}
+.publishpress-cart-account-login .ppcart-account-login-intro {
+  margin: 0 0 26px;
+}
+.publishpress-cart-account-login .ppcart-account-login-intro__heading {
+  color: var(--ppcart-account-login-heading-color, #1f2a24);
+  font-size: var(--ppcart-account-login-heading-font-size, 24px);
+  font-weight: var(--ppcart-account-login-heading-font-weight, 600);
+  line-height: 1.18;
+  margin: 0 0 8px;
+  text-align: var(--ppcart-account-login-heading-align, inherit);
+}
+.publishpress-cart-account-login .ppcart-account-login-intro__description {
+  color: var(--ppcart-account-login-description-color, #53645b);
+  font-size: var(--ppcart-account-login-description-font-size, 14px);
+  font-weight: var(--ppcart-account-login-description-font-weight, 400);
+  line-height: 1.5;
+  margin: 0;
+  text-align: var(--ppcart-account-login-description-align, inherit);
+}
+.publishpress-cart-account-login .ppcart-account-form label {
+  color: var(--ppcart-account-login-label-color, #24362e);
+}
+.publishpress-cart-account-login .ppcart-account-form input[type=text],
+.publishpress-cart-account-login .ppcart-account-form input[type=email],
+.publishpress-cart-account-login .ppcart-account-form input[type=password] {
+  background: #fff;
+  border: 1px solid #cbd8d2;
+  border-radius: var(--ppcart-account-login-input-radius, 12px);
+  box-sizing: border-box;
+  color: #1f2a24;
+  display: block;
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 52px;
+  padding: 13px 15px;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+  width: 100%;
+}
+.publishpress-cart-account-login .ppcart-account-form input[type=text]:focus,
+.publishpress-cart-account-login .ppcart-account-form input[type=email]:focus,
+.publishpress-cart-account-login .ppcart-account-form input[type=password]:focus {
+  border-color: #2f6f68;
+  box-shadow: 0 0 0 3px rgba(47, 111, 104, 0.14);
+  outline: 0;
+}
+.publishpress-cart-account-login .ppcart-account-form input[type=submit],
+.publishpress-cart-account-login .ppcart-account-form .button {
+  background-color: var(--ppcart-account-login-button-background, #26352e);
+  border-color: var(--ppcart-account-login-button-background, #26352e);
+  border-radius: var(--ppcart-account-login-button-radius, 12px);
+  color: var(--ppcart-account-login-button-color, #fff);
+}
+.publishpress-cart-account-login .ppcart-account-form input[type=submit]:hover,
+.publishpress-cart-account-login .ppcart-account-form input[type=submit]:focus,
+.publishpress-cart-account-login .ppcart-account-form .button:hover,
+.publishpress-cart-account-login .ppcart-account-form .button:focus {
+  background-color: var(--ppcart-account-login-button-hover-background, #1b2821);
+  border-color: var(--ppcart-account-login-button-hover-background, #1b2821);
+  color: var(--ppcart-account-login-button-hover-color, var(--ppcart-account-login-button-color, #fff));
+}
+.publishpress-cart-account-login .ppcart-account-form a {
+  color: #2f6f68;
+}
+.publishpress-cart-account-login .ppcart-account-form a:hover,
+.publishpress-cart-account-login .ppcart-account-form a:focus {
+  color: inherit;
+}
+.publishpress-cart-account-login .ppcart-account-form {
+  box-sizing: border-box;
+  color: #1f2a24;
+  max-width: var(--ppcart-account-login-max-width, 560px);
+  width: 100%;
+  margin: clamp(24px, 4vw, 44px) auto clamp(32px, 5vw, 64px);
+  background: var(--ppcart-account-login-background, #fff);
+  border: 1px solid var(--ppcart-account-login-border-color, #dfe7e3);
+  padding: var(--ppcart-account-login-padding, clamp(30px, 5vw, 44px));
+  border-radius: var(--ppcart-account-login-radius, 18px);
+  box-shadow: 0 18px 45px rgba(22, 33, 29, 0.09), 0 1px 2px rgba(22, 33, 29, 0.04);
+  text-align: left;
+}
+.publishpress-cart-account-login .ppcart-account-form form {
+  margin: 0;
+}
+.publishpress-cart-account-login .ppcart-account-form p {
+  margin: 0 0 18px;
+}
+.publishpress-cart-account-login .ppcart-account-form p label {
+  color: var(--ppcart-account-login-label-color, #24362e);
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.publishpress-cart-account-login .ppcart-account-form input[type=text],
+.publishpress-cart-account-login .ppcart-account-form input[type=email],
+.publishpress-cart-account-login .ppcart-account-form input[type=password] {
+  border-color: #cbd8d2;
+  border-radius: var(--ppcart-account-login-input-radius, 12px);
+}
+.publishpress-cart-account-login .ppcart-account-form input[type=text]:focus,
+.publishpress-cart-account-login .ppcart-account-form input[type=email]:focus,
+.publishpress-cart-account-login .ppcart-account-form input[type=password]:focus {
+  border-color: #2f6f68;
+  outline-color: #2f6f68;
+}
+.publishpress-cart-account-login .ppcart-account-form form a {
+  color: #2f6f68;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.publishpress-cart-account-login .ppcart-account-form form a:hover,
+.publishpress-cart-account-login .ppcart-account-form form a:focus {
+  color: #707070;
+}
+.publishpress-cart-account-login .ppcart-account-form .button,
+.publishpress-cart-account-login .ppcart-account-form input[type="button"],
+.publishpress-cart-account-login .ppcart-account-form input[type="submit"],
+.publishpress-cart-account-login .ppcart-account-form input[type="reset"] {
+  box-sizing: border-box;
+  display: inline-block;
+  background-color: var(--ppcart-account-login-button-background, #26352e);
+  border: 0;
+  border-radius: var(--ppcart-account-login-button-radius, 12px);
+  color: var(--ppcart-account-login-button-color, #fff);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  min-height: 50px;
+  padding: 13px 24px;
+  line-height: 1.2;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+  width: 100%;
+  cursor: pointer;
+}
+.publishpress-cart-account-login .ppcart-account-form .button:hover,
+.publishpress-cart-account-login .ppcart-account-form .button:focus,
+.publishpress-cart-account-login .ppcart-account-form input[type="button"]:hover,
+.publishpress-cart-account-login .ppcart-account-form input[type="button"]:focus,
+.publishpress-cart-account-login .ppcart-account-form input[type="submit"]:hover,
+.publishpress-cart-account-login .ppcart-account-form input[type="submit"]:focus,
+.publishpress-cart-account-login .ppcart-account-form input[type="reset"]:hover,
+.publishpress-cart-account-login .ppcart-account-form input[type="reset"]:focus {
+  background-color: var(--ppcart-account-login-button-hover-background, #1b2821);
+  color: var(--ppcart-account-login-button-hover-color, var(--ppcart-account-login-button-color, #fff));
+  transform: translateY(-1px);
+}
+.publishpress-cart-account-login .ppcart-account-form .description {
+  color: #53645b;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+.publishpress-cart-account-login .ppcart-account-form .login-remember label {
+  align-items: center;
+  color: var(--ppcart-account-login-label-color, #41544a);
+  display: inline-flex;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.publishpress-cart-account-login .ppcart-account-form .login-remember input[type="checkbox"] {
+  margin: 0;
+}
+.publishpress-cart-account-login .ppcart-account-form .login-submit {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 600px) {
+  .publishpress-cart-account-login .ppcart-account-form {
+    padding-right: var(--ppcart-account-login-padding, 24px);
+    padding-left: var(--ppcart-account-login-padding, 24px);
+  }
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-hide-back .back-btn {
+  display: none;
+}
+.publishpress-cart-account-subscription-detail .back-btn a {
+  color: var(--ppcart-account-detail-back-color, inherit);
+}
+.publishpress-cart-account-subscription-detail .back-btn a:hover,
+.publishpress-cart-account-subscription-detail .back-btn a:focus {
+  color: var(--ppcart-account-detail-back-hover-color, var(--ppcart-account-detail-back-color, inherit));
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization .ppcart-subscription-wrap {
+  background: var(--ppcart-account-detail-section-background, transparent);
+  border-color: var(--ppcart-account-detail-section-border-color, transparent);
+  border-radius: var(--ppcart-account-detail-section-radius, 0);
+  padding: var(--ppcart-account-detail-section-padding, 0);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-card .ppcart-subscription-wrap {
+  background: var(--ppcart-account-detail-section-background, #fff);
+  border: 1px solid var(--ppcart-account-detail-section-border-color, #e0e0e0);
+  padding: var(--ppcart-account-detail-section-padding, 20px);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-bordered .ppcart-subscription-wrap {
+  border: 1px solid var(--ppcart-account-detail-section-border-color, #B1B1B1);
+  padding: var(--ppcart-account-detail-section-padding, 20px);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization .ppcart-order-header .ppcart-heading,
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization .ppcart-account-title {
+  color: var(--ppcart-account-detail-heading-color, inherit);
+  font-size: var(--ppcart-account-detail-heading-font-size, inherit);
+  font-weight: var(--ppcart-account-detail-heading-font-weight, inherit);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization .ppcart-subscription-table th {
+  background: var(--ppcart-account-detail-table-header-background, transparent);
+  color: var(--ppcart-account-detail-table-header-color, inherit);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization .ppcart-subscription-table td {
+  background: var(--ppcart-account-detail-table-row-background, transparent);
+  color: var(--ppcart-account-detail-table-row-color, inherit);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization .ppcart-subscription-table td,
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization .ppcart-subscription-table th {
+  border-color: var(--ppcart-account-detail-table-border-color, transparent);
+}
+.publishpress-cart-account-subscription-detail .ppcart-premium-addon a {
+  color: var(--ppcart-account-detail-action-color, inherit);
+}
+.publishpress-cart-account-subscription-detail .ppcart-premium-addon a:hover,
+.publishpress-cart-account-subscription-detail .ppcart-premium-addon a:focus {
+  color: var(--ppcart-account-detail-action-hover-color, var(--ppcart-account-detail-action-color, inherit));
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization a {
+  color: var(--ppcart-account-detail-link-color, inherit);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization a:hover,
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-has-customization a:focus {
+  color: var(--ppcart-account-detail-link-hover-color, var(--ppcart-account-detail-link-color, inherit));
+}
+
+.ppcart-account-detail-presenter {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 40px);
+  position: fixed;
+  z-index: 99999;
+}
+.ppcart-account-detail-presenter--animated {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+.ppcart-account-detail-presenter--animated.ppcart-account-detail-presenter--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.ppcart-account-detail-presenter--animated.ppcart-account-detail-presenter--closing {
+  pointer-events: none;
+}
+.publishpress-cart-account-orders.ppcart-account-detail-loading,
+.publishpress-cart-account-subscriptions.ppcart-account-detail-loading {
+  cursor: progress;
+}
+.ppcart-account-detail-presenter__backdrop {
+  background: rgba(15, 23, 42, 0.58);
+  inset: 0;
+  position: absolute;
+}
+.ppcart-account-detail-presenter--animated .ppcart-account-detail-presenter__backdrop {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.ppcart-account-detail-presenter--animated.ppcart-account-detail-presenter--open .ppcart-account-detail-presenter__backdrop {
+  opacity: 1;
+}
+.ppcart-account-detail-presenter__panel {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+  box-sizing: border-box;
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  position: relative;
+  width: min(980px, 100%);
+  z-index: 1;
+}
+.ppcart-account-detail-presenter--animated .ppcart-account-detail-presenter__panel {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition:
+    opacity 200ms ease,
+    transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.ppcart-account-detail-presenter--animated.ppcart-account-detail-presenter--slide-right .ppcart-account-detail-presenter__panel {
+  transform: translateX(48px);
+}
+.ppcart-account-detail-presenter--animated.ppcart-account-detail-presenter--slide-left .ppcart-account-detail-presenter__panel {
+  transform: translateX(-48px);
+}
+.ppcart-account-detail-presenter--animated.ppcart-account-detail-presenter--slide-down .ppcart-account-detail-presenter__panel {
+  transform: translateY(-48px);
+}
+.ppcart-account-detail-presenter--animated.ppcart-account-detail-presenter--open .ppcart-account-detail-presenter__panel {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+.ppcart-account-detail-presenter__panel > .publishpress-cart-account-order-detail,
+.ppcart-account-detail-presenter__panel > .publishpress-cart-account-subscription-detail {
+  padding: clamp(20px, 4vw, 34px);
+}
+.ppcart-account-detail-presenter__close {
+  align-items: center;
+  background: #17201b;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 24px;
+  font-weight: 500;
+  height: 36px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: 16px;
+  text-decoration: none;
+  top: 16px;
+  width: 36px;
+  z-index: 2;
+}
+.ppcart-account-detail-presenter__close:hover,
+.ppcart-account-detail-presenter__close:focus {
+  background: #0f766e;
+  color: #fff;
+}
+.ppcart-account-detail-presenter--slide-right,
+.ppcart-account-detail-presenter--slide-left {
+  align-items: stretch;
+  padding: 0;
+}
+.ppcart-account-detail-presenter--slide-right {
+  justify-content: flex-end;
+}
+.ppcart-account-detail-presenter--slide-left {
+  justify-content: flex-start;
+}
+.ppcart-account-detail-presenter--slide-right .ppcart-account-detail-presenter__panel,
+.ppcart-account-detail-presenter--slide-left .ppcart-account-detail-presenter__panel {
+  border-radius: 0;
+  height: 100%;
+  max-height: 100%;
+  width: min(760px, 92vw);
+}
+.ppcart-account-detail-presenter--slide-down {
+  align-items: flex-start;
+  padding: 0;
+}
+.ppcart-account-detail-presenter--slide-down .ppcart-account-detail-presenter__panel {
+  border-radius: 0 0 18px 18px;
+  max-height: min(760px, calc(100vh - 24px));
+  width: min(1040px, 100vw);
+}
+@media screen and (max-width: 560px) {
+  .ppcart-account-detail-presenter {
+    padding: 0;
+  }
+  .ppcart-account-detail-presenter__panel {
+    border-radius: 0;
+    max-height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
+  }
+  .ppcart-account-detail-presenter__panel > .publishpress-cart-account-order-detail,
+  .ppcart-account-detail-presenter__panel > .publishpress-cart-account-subscription-detail {
+    padding: 56px 16px 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ppcart-account-detail-presenter--animated,
+  .ppcart-account-detail-presenter--animated .ppcart-account-detail-presenter__backdrop,
+  .ppcart-account-detail-presenter--animated .ppcart-account-detail-presenter__panel {
+    transition: none;
+  }
+}
+
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:first-child a {
+  color: var(--ppcart-account-orders-product-link, inherit);
+}
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:first-child a:hover,
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:first-child a:focus {
+  color: var(--ppcart-account-orders-product-link-hover, var(--ppcart-account-orders-product-link, inherit));
+}
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a {
+  color: var(--ppcart-account-orders-action-link, inherit);
+}
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a:hover,
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a:focus {
+  color: var(--ppcart-account-orders-action-link-hover, var(--ppcart-account-orders-action-link, inherit));
+}
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:nth-child(3) {
+  color: var(--ppcart-account-orders-status-color, inherit);
+}
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td[colspan] {
+  color: var(--ppcart-account-orders-empty-color, inherit);
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-account-tab-pane h4,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-has-customization .ppcart-account-tab-pane h4 {
+  color: var(--ppcart-account-leaf-heading-color, inherit);
+  font-size: var(--ppcart-account-leaf-heading-font-size, inherit);
+  font-weight: var(--ppcart-account-leaf-heading-font-weight, inherit);
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-heading-transform-none .ppcart-account-tab-pane h4,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-heading-transform-none .ppcart-account-tab-pane h4 {
+  text-transform: none;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-heading-transform-uppercase .ppcart-account-tab-pane h4,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-heading-transform-uppercase .ppcart-account-tab-pane h4 {
+  text-transform: uppercase;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-heading-transform-lowercase .ppcart-account-tab-pane h4,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-heading-transform-lowercase .ppcart-account-tab-pane h4 {
+  text-transform: lowercase;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-heading-transform-capitalize .ppcart-account-tab-pane h4,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-heading-transform-capitalize .ppcart-account-tab-pane h4 {
+  text-transform: capitalize;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a {
+  color: var(--ppcart-account-leaf-action-link, inherit);
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a:hover,
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a:focus,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a:hover,
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:last-child a:focus {
+  color: var(--ppcart-account-leaf-action-link-hover, var(--ppcart-account-leaf-action-link, inherit));
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:nth-child(2) {
+  color: var(--ppcart-account-leaf-status-color, inherit);
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td:nth-child(2) small {
+  color: var(--ppcart-account-subs-cancel-notice, var(--ppcart-account-leaf-status-color, inherit));
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td[colspan],
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-has-customization .ppcart-account-table tbody tr td[colspan] {
+  color: var(--ppcart-account-leaf-empty-color, inherit);
+}
+.publishpress-cart-account-orders .ppcart-account-action-button,
+.publishpress-cart-account-subscriptions .ppcart-account-action-button,
+.publishpress-cart-account-payment-plans .ppcart-account-action-button,
+.publishpress-cart-account-profile .ppcart-account-action-button {
+  align-items: center;
+  appearance: none;
+  background-color: #f1f5f9;
+  border: 0;
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: #0f172a;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 500;
+  height: 44px;
+  justify-content: center;
+  line-height: 1.2;
+  margin-right: 8px;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 18px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+  width: 120px;
+}
+.publishpress-cart-account-orders .ppcart-account-action-button:last-child,
+.publishpress-cart-account-subscriptions .ppcart-account-action-button:last-child,
+.publishpress-cart-account-payment-plans .ppcart-account-action-button:last-child,
+.publishpress-cart-account-profile .ppcart-account-action-button:last-child {
+  margin-right: 0;
+}
+.publishpress-cart-account-orders .ppcart-account-action-button:hover,
+.publishpress-cart-account-orders .ppcart-account-action-button:focus,
+.publishpress-cart-account-subscriptions .ppcart-account-action-button:hover,
+.publishpress-cart-account-subscriptions .ppcart-account-action-button:focus,
+.publishpress-cart-account-payment-plans .ppcart-account-action-button:hover,
+.publishpress-cart-account-payment-plans .ppcart-account-action-button:focus,
+.publishpress-cart-account-profile .ppcart-account-action-button:hover,
+.publishpress-cart-account-profile .ppcart-account-action-button:focus {
+  background: #e2e8f0;
+}
+.publishpress-cart-account-profile .profile-wrapper.ppcart .form-btn input[type=button],
+.publishpress-cart-account-profile .profile-wrapper input[type=button] {
+  align-items: center;
+  background-color: #f1f5f9;
+  border: 0;
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: #0f172a;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 500;
+  height: 44px;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 18px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+  width: 120px;
+}
+.publishpress-cart-account-profile .profile-wrapper.ppcart .form-btn input[type=button]:hover,
+.publishpress-cart-account-profile .profile-wrapper.ppcart .form-btn input[type=button]:focus,
+.publishpress-cart-account-profile .profile-wrapper input[type=button]:hover,
+.publishpress-cart-account-profile .profile-wrapper input[type=button]:focus {
+  background: #e2e8f0;
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper {
+  max-width: var(--ppcart-account-profile-max-width, none);
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper form,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper form .ep-edit-address {
+  gap: var(--ppcart-account-profile-field-gap, 40px);
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper h4 {
+  color: var(--ppcart-account-profile-heading-color, inherit);
+  font-size: var(--ppcart-account-profile-heading-font-size, inherit);
+  font-weight: var(--ppcart-account-profile-heading-font-weight, inherit);
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper label {
+  color: var(--ppcart-account-profile-label-color, inherit);
+  font-size: var(--ppcart-account-profile-label-font-size, inherit);
+  font-weight: var(--ppcart-account-profile-label-font-weight, 700);
+  min-width: var(--ppcart-account-profile-label-min-width, 190px);
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=text],
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=email],
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=tel],
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=password] {
+  border-color: var(--ppcart-account-profile-input-border, inherit);
+  border-radius: var(--ppcart-account-profile-input-radius, 8px);
+  font-size: var(--ppcart-account-profile-input-font-size, inherit);
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=text]:focus,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=email]:focus,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=tel]:focus,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=password]:focus {
+  border-color: var(--ppcart-account-profile-input-focus-border, var(--ppcart-account-profile-input-border, inherit));
+  outline-color: var(--ppcart-account-profile-input-focus-border, var(--ppcart-account-profile-input-border, inherit));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile {
+  background-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-edit-button-background, #f1f5f9));
+  border-radius: var(--ppcart-account-profile-button-radius, 999px);
+  color: var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-edit-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-update-profile,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .btn-save {
+  background-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-save-button-background, #f1f5f9));
+  border-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-save-button-background, currentColor));
+  border-radius: var(--ppcart-account-profile-button-radius, 999px);
+  color: var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-save-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile-cancel,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .btn-cancel {
+  background-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-cancel-button-background, #f1f5f9));
+  border-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-cancel-button-background, currentColor));
+  border-radius: var(--ppcart-account-profile-button-radius, 999px);
+  color: var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-cancel-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=button]:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper input[type=button]:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-button-background, #e2e8f0));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-edit-button-hover-background, var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-edit-button-background, #e2e8f0))));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-edit-button-hover-color, var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-edit-button-color, #0f172a))));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-update-profile:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-update-profile:focus,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .btn-save:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .btn-save:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-save-button-hover-background, var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-save-button-background, #e2e8f0))));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-save-button-hover-color, var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-save-button-color, #0f172a))));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile-cancel:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile-cancel:focus,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .btn-cancel:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .btn-cancel:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-cancel-button-hover-background, var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-cancel-button-background, #e2e8f0))));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-cancel-button-hover-color, var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-cancel-button-color, #0f172a))));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .ppcart-account-action-button,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile.ppcart-account-action-button,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-update-profile.ppcart-account-action-button,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile-cancel.ppcart-account-action-button {
+  background-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-edit-button-background, var(--ppcart-account-profile-save-button-background, var(--ppcart-account-profile-cancel-button-background, #f1f5f9))));
+  border: 0;
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-edit-button-color, var(--ppcart-account-profile-save-button-color, var(--ppcart-account-profile-cancel-button-color, #0f172a))));
+  height: 44px;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 18px;
+  width: 120px;
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .ppcart-account-action-button:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper .ppcart-account-action-button:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-button-background, #e2e8f0));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile.ppcart-account-action-button {
+  background-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-edit-button-background, #f1f5f9));
+  color: var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-edit-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-update-profile.ppcart-account-action-button {
+  background-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-save-button-background, #f1f5f9));
+  color: var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-save-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile-cancel.ppcart-account-action-button {
+  background-color: var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-cancel-button-background, #f1f5f9));
+  color: var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-cancel-button-color, #0f172a));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile.ppcart-account-action-button:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile.ppcart-account-action-button:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-edit-button-hover-background, var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-edit-button-background, #e2e8f0))));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-edit-button-hover-color, var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-edit-button-color, #0f172a))));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-update-profile.ppcart-account-action-button:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-update-profile.ppcart-account-action-button:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-save-button-hover-background, var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-save-button-background, #e2e8f0))));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-save-button-hover-color, var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-save-button-color, #0f172a))));
+}
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile-cancel.ppcart-account-action-button:hover,
+.publishpress-cart-account-profile.ppcart-account-leaf-has-customization .profile-wrapper #ppcart-edit-profile-cancel.ppcart-account-action-button:focus {
+  background-color: var(--ppcart-account-profile-button-hover-background, var(--ppcart-account-profile-cancel-button-hover-background, var(--ppcart-account-profile-button-background, var(--ppcart-account-profile-cancel-button-background, #e2e8f0))));
+  color: var(--ppcart-account-profile-button-hover-color, var(--ppcart-account-profile-cancel-button-hover-color, var(--ppcart-account-profile-button-color, var(--ppcart-account-profile-cancel-button-color, #0f172a))));
+}
+
+/* === Block style presets (lists) === */
+.publishpress-cart-account-orders.ppcart-account-block-style-card .ppcart-account-table,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-card .ppcart-account-table,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-card .ppcart-account-table {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  border-spacing: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-card .ppcart-account-table thead th,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-card .ppcart-account-table thead th,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-card .ppcart-account-table thead th {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-card .ppcart-account-table tbody td,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-card .ppcart-account-table tbody td,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-card .ppcart-account-table tbody td {
+  background: #fff;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.publishpress-cart-account-orders.ppcart-account-block-style-minimal .ppcart-account-table,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-minimal .ppcart-account-table,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-minimal .ppcart-account-table {
+  background: transparent;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-minimal .ppcart-account-table thead th,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-minimal .ppcart-account-table thead th,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-minimal .ppcart-account-table thead th {
+  background: transparent;
+  border-bottom: 2px solid #111;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-minimal .ppcart-account-table tbody td,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-minimal .ppcart-account-table tbody td,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-minimal .ppcart-account-table tbody td {
+  background: transparent;
+  border-bottom: 1px solid #eee;
+}
+
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  background: transparent;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table thead,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table thead,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table thead {
+  display: none;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody tr,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody tr,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody tr {
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody td,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody td,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody td {
+  background: transparent;
+  border: 0;
+  padding: 14px 18px;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody td:first-child,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody td:first-child,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody td:first-child {
+  border-radius: 999px 0 0 999px;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody td:last-child,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody td:last-child,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody td:last-child {
+  border-radius: 0 999px 999px 0;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table {
+  border-spacing: 0 12px;
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody tr,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody tr,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody tr {
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12), 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody td,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody td,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody td {
+  background: #f8fafc;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody td:first-child,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody td:first-child,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody td:first-child {
+  border-left: 1px solid rgba(15, 23, 42, 0.08);
+}
+.publishpress-cart-account-orders.ppcart-account-block-style-pill .ppcart-account-table tbody td:last-child,
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-pill .ppcart-account-table tbody td:last-child,
+.publishpress-cart-account-payment-plans.ppcart-account-block-style-pill .ppcart-account-table tbody td:last-child {
+  border-right: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-dashboard .ppcart-account-table {
+  background: #0f172a;
+  border-radius: 12px;
+  color: #e2e8f0;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-dashboard .ppcart-account-table thead th {
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-dashboard .ppcart-account-table tbody td {
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-block-style-dashboard .ppcart-account-table tbody td a {
+  color: #38bdf8;
+}
+
+/* === Item layout: Card grid === */
+.publishpress-cart-account-orders.ppcart-account-item-layout-cards .overflow-x-auto,
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-cards .overflow-x-auto,
+.publishpress-cart-account-payment-plans.ppcart-account-item-layout-cards .overflow-x-auto {
+  overflow-x: visible;
+}
+.publishpress-cart-account-orders.ppcart-account-item-layout-cards .ppcart-account-table,
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-cards .ppcart-account-table,
+.publishpress-cart-account-payment-plans.ppcart-account-item-layout-cards .ppcart-account-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  min-width: 0;
+}
+.publishpress-cart-account-orders.ppcart-account-item-layout-cards .ppcart-account-table thead,
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-cards .ppcart-account-table thead,
+.publishpress-cart-account-payment-plans.ppcart-account-item-layout-cards .ppcart-account-table thead {
+  display: none;
+}
+.publishpress-cart-account-orders.ppcart-account-item-layout-cards .ppcart-account-table tbody,
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-cards .ppcart-account-table tbody,
+.publishpress-cart-account-payment-plans.ppcart-account-item-layout-cards .ppcart-account-table tbody {
+  display: contents;
+}
+.publishpress-cart-account-orders.ppcart-account-item-layout-cards .ppcart-account-table tbody tr,
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-cards .ppcart-account-table tbody tr,
+.publishpress-cart-account-payment-plans.ppcart-account-item-layout-cards .ppcart-account-table tbody tr {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.publishpress-cart-account-orders.ppcart-account-item-layout-cards .ppcart-account-table tbody td,
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-cards .ppcart-account-table tbody td,
+.publishpress-cart-account-payment-plans.ppcart-account-item-layout-cards .ppcart-account-table tbody td {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.publishpress-cart-account-orders.ppcart-account-item-layout-cards .ppcart-account-table tbody td:first-child,
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-cards .ppcart-account-table tbody td:first-child,
+.publishpress-cart-account-payment-plans.ppcart-account-item-layout-cards .ppcart-account-table tbody td:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* === Item layout: Stacked rows === */
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-stack .ppcart-account-table tbody tr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-stack .ppcart-account-table tbody td {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-stack .ppcart-account-table tbody td:first-child {
+  flex: 1 1 100%;
+  font-weight: 600;
+}
+.publishpress-cart-account-subscriptions.ppcart-account-item-layout-stack .ppcart-account-table thead {
+  display: none;
+}
+
+/* === Status pill === */
+.ppcart-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+.ppcart-account-status-pill-pill .ppcart-status-pill,
+.ppcart-account-status-pill-square .ppcart-status-pill {
+  background: #f1f5f9;
+  color: #1f2937;
+  padding: 4px 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ppcart-account-status-pill-pill .ppcart-status-pill {
+  border-radius: 999px;
+}
+.ppcart-account-status-pill-square .ppcart-status-pill {
+  border-radius: 4px;
+}
+.ppcart-account-status-pill-dot .ppcart-status-pill::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #94a3b8;
+}
+.ppcart-status-pill[data-status*="active"],
+.ppcart-status-pill[data-status*="paid"],
+.ppcart-status-pill[data-status*="completed"],
+.ppcart-status-pill[data-status*="trialing"] {
+  background: #dcfce7;
+  color: #166534;
+}
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="active"]::before,
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="paid"]::before,
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="completed"]::before,
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="trialing"]::before {
+  background: #16a34a;
+}
+.ppcart-status-pill[data-status*="past"],
+.ppcart-status-pill[data-status*="pending"],
+.ppcart-status-pill[data-status*="paused"] {
+  background: #fef3c7;
+  color: #92400e;
+}
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="past"]::before,
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="pending"]::before,
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="paused"]::before {
+  background: #d97706;
+}
+.ppcart-status-pill[data-status*="cancel"],
+.ppcart-status-pill[data-status*="refund"],
+.ppcart-status-pill[data-status*="failed"] {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="cancel"]::before,
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="refund"]::before,
+.ppcart-account-status-pill-dot .ppcart-status-pill[data-status*="failed"]::before {
+  background: #dc2626;
+}
+.ppcart-account-status-pill-dot .ppcart-status-pill {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: inherit;
+}
+.publishpress-cart-account-orders.ppcart-account-leaf-has-customization .ppcart-status-pill {
+  background: var(--ppcart-account-orders-status-color, #f1f5f9);
+}
+.publishpress-cart-account-subscriptions.ppcart-account-leaf-has-customization .ppcart-status-pill {
+  background: var(--ppcart-account-leaf-status-color, #f1f5f9);
+}
+.publishpress-cart-account-payment-plans.ppcart-account-leaf-has-customization .ppcart-status-pill {
+  background: var(--ppcart-account-leaf-status-color, #f1f5f9);
+}
+
+/* === Action button shapes === */
+.ppcart-account-action-shape-filled .ppcart-account-table tbody tr td:last-child a,
+.ppcart-account-action-shape-ghost .ppcart-account-table tbody tr td:last-child a,
+.ppcart-account-action-shape-chip .ppcart-account-table tbody tr td:last-child a {
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 500;
+  height: 44px;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 18px;
+  text-decoration: none;
+  margin-right: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+  width: 120px;
+}
+.ppcart-account-action-shape-filled .ppcart-account-table tbody tr td:last-child a {
+  background: #111;
+  color: #fff;
+  border-radius: 6px;
+}
+.ppcart-account-action-shape-filled .ppcart-account-table tbody tr td:last-child a:hover {
+  background: #333;
+}
+.ppcart-account-action-shape-ghost .ppcart-account-table tbody tr td:last-child a {
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  background: transparent;
+}
+.ppcart-account-action-shape-ghost .ppcart-account-table tbody tr td:last-child a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.ppcart-account-action-shape-chip .ppcart-account-table tbody tr td:last-child a {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-radius: 999px;
+}
+.ppcart-account-action-shape-chip .ppcart-account-table tbody tr td:last-child a:hover {
+  background: #e2e8f0;
+}
+
+/* === Hover effects === */
+.ppcart-account-row-hover-lift .ppcart-account-table tbody tr {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.ppcart-account-row-hover-lift .ppcart-account-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+.ppcart-account-row-hover-tint .ppcart-account-table tbody tr {
+  transition: background-color 0.18s ease;
+}
+.ppcart-account-row-hover-tint .ppcart-account-table tbody tr:hover td {
+  background: #f1f5f9;
+}
+.ppcart-account-row-hover-border-slide .ppcart-account-table tbody tr {
+  position: relative;
+  transition: padding-left 0.18s ease;
+}
+.ppcart-account-row-hover-border-slide .ppcart-account-table tbody tr td:first-child {
+  position: relative;
+}
+.ppcart-account-row-hover-border-slide .ppcart-account-table tbody tr td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: currentColor;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.18s ease;
+}
+.ppcart-account-row-hover-border-slide .ppcart-account-table tbody tr:hover td:first-child::before {
+  transform: scaleY(1);
+}
+.ppcart-account-row-hover-outline .ppcart-account-table tbody tr {
+  outline: 0 solid transparent;
+  transition: outline-width 0.15s ease, outline-color 0.15s ease;
+}
+.ppcart-account-row-hover-outline .ppcart-account-table tbody tr:hover {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+/* === Profile presets === */
+.publishpress-cart-account-profile.ppcart-account-block-style-card .profile-wrapper {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.publishpress-cart-account-profile.ppcart-account-block-style-minimal .profile-wrapper {
+  border: 0;
+  padding: 0;
+}
+.publishpress-cart-account-profile.ppcart-account-block-style-minimal .profile-wrapper input[type=text],
+.publishpress-cart-account-profile.ppcart-account-block-style-minimal .profile-wrapper input[type=email] {
+  border-width: 0 0 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+.publishpress-cart-account-profile.ppcart-account-block-style-identity .profile-wrapper {
+  background: linear-gradient(180deg, #f8fafc 0%, #fff 60%);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+/* Profile layout modes */
+.publishpress-cart-account-profile.ppcart-account-profile-layout-compact .profile-wrapper .ppcart-form-group {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-compact .profile-wrapper label {
+  min-width: 0;
+  font-size: 13px;
+  text-transform: none;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-compact .profile-wrapper input[type=text],
+.publishpress-cart-account-profile.ppcart-account-profile-layout-compact .profile-wrapper input[type=email],
+.publishpress-cart-account-profile.ppcart-account-profile-layout-compact .profile-wrapper input[type=tel],
+.publishpress-cart-account-profile.ppcart-account-profile-layout-compact .profile-wrapper input[type=password] {
+  width: 100%;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper .ppcart-form-group {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper label {
+  min-width: 0;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper input[type=text],
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper input[type=email],
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper input[type=tel],
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper input[type=password] {
+  width: 100%;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper .ep-edit-address {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-layout-two-column .profile-wrapper .form-btn {
+  grid-column: 1 / -1;
+}
+
+/* Profile button shapes */
+.publishpress-cart-account-profile.ppcart-account-profile-button-pill .profile-wrapper input[type=button] {
+  border-radius: 999px;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-button-square .profile-wrapper input[type=button] {
+  border-radius: 0;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-button-ghost .profile-wrapper input[type=button] {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-button-ghost .profile-wrapper input[type=button]:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Profile input hover */
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-glow .profile-wrapper input[type=text]:focus,
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-glow .profile-wrapper input[type=email]:focus,
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-glow .profile-wrapper input[type=tel]:focus,
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-glow .profile-wrapper input[type=password]:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+  border-color: #3b82f6;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-tint .profile-wrapper input[type=text]:hover,
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-tint .profile-wrapper input[type=email]:hover,
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-tint .profile-wrapper input[type=tel]:hover,
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-tint .profile-wrapper input[type=password]:hover {
+  background: #f8fafc;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-underline .profile-wrapper input[type=text],
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-underline .profile-wrapper input[type=email],
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-underline .profile-wrapper input[type=tel],
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-underline .profile-wrapper input[type=password] {
+  border-width: 0 0 1px;
+  border-radius: 0;
+  background: transparent;
+  transition: border-color 0.18s ease;
+}
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-underline .profile-wrapper input[type=text]:hover,
+.publishpress-cart-account-profile.ppcart-account-profile-input-hover-underline .profile-wrapper input[type=text]:focus {
+  border-color: #111;
+}
+
+/* Profile avatar identity card */
+.ppcart-account-profile-identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.ppcart-account-profile-identity img {
+  border-radius: 999px;
+  height: 64px;
+  width: 64px;
+  object-fit: cover;
+}
+.ppcart-account-profile-identity__meta {
+  display: flex;
+  flex-direction: column;
+}
+.ppcart-account-profile-identity__meta strong {
+  font-size: 18px;
+  font-weight: 600;
+}
+.ppcart-account-profile-identity__meta span {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* === Login presets === */
+.publishpress-cart-account-login.ppcart-account-login-style-minimal .ppcart-account-form {
+  background: var(--ppcart-account-login-background, transparent);
+  border: 1px solid var(--ppcart-account-login-border-color, transparent);
+  box-shadow: none;
+  padding: 0;
+}
+.publishpress-cart-account-login.ppcart-account-login-style-minimal .ppcart-account-form input[type=text],
+.publishpress-cart-account-login.ppcart-account-login-style-minimal .ppcart-account-form input[type=email],
+.publishpress-cart-account-login.ppcart-account-login-style-minimal .ppcart-account-form input[type=password] {
+  background: transparent;
+  border-width: 0 0 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+/* Login input shapes */
+.publishpress-cart-account-login.ppcart-account-login-input-rounded .ppcart-account-form input[type=text],
+.publishpress-cart-account-login.ppcart-account-login-input-rounded .ppcart-account-form input[type=email],
+.publishpress-cart-account-login.ppcart-account-login-input-rounded .ppcart-account-form input[type=password] {
+  border-radius: 8px;
+}
+.publishpress-cart-account-login.ppcart-account-login-input-pill .ppcart-account-form input[type=text],
+.publishpress-cart-account-login.ppcart-account-login-input-pill .ppcart-account-form input[type=email],
+.publishpress-cart-account-login.ppcart-account-login-input-pill .ppcart-account-form input[type=password] {
+  border-radius: 999px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.publishpress-cart-account-login.ppcart-account-login-input-underline .ppcart-account-form input[type=text],
+.publishpress-cart-account-login.ppcart-account-login-input-underline .ppcart-account-form input[type=email],
+.publishpress-cart-account-login.ppcart-account-login-input-underline .ppcart-account-form input[type=password] {
+  background: transparent;
+  border-width: 0 0 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+/* Login hover effects */
+.publishpress-cart-account-login.ppcart-account-login-hover-lift .ppcart-account-form {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.publishpress-cart-account-login.ppcart-account-login-hover-lift .ppcart-account-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+.publishpress-cart-account-login.ppcart-account-login-hover-border .ppcart-account-form {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.publishpress-cart-account-login.ppcart-account-login-hover-border .ppcart-account-form:hover {
+  border-color: currentColor;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+/* === Detail block styles === */
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-style-card .ppcart-subscription-wrap {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-style-timeline .ppcart-subscription-wrap {
+  border-left: 3px solid #111;
+  padding-left: 24px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-style-timeline .ppcart-subscription-wrap::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: #111;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-style-dashboard .ppcart-account-subscription {
+  background: #0f172a;
+  border-radius: 16px;
+  color: #e2e8f0;
+  padding: 24px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-style-dashboard .ppcart-subscription-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-style-dashboard a {
+  color: #38bdf8;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-style-receipt .ppcart-account-subscription {
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 4px;
+  padding: 24px 32px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+/* Detail section shape */
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-shape-card .ppcart-subscription-wrap {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-shape-bordered .ppcart-subscription-wrap {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 18px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-shape-elevated .ppcart-subscription-wrap {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-shape-minimal .ppcart-subscription-wrap {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  padding: 16px 0;
+  border-radius: 0;
+}
+
+/* Detail back link styles */
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-back-arrow .back-btn a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-back-arrow .back-btn a img {
+  display: none;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-back-arrow .back-btn a::before {
+  content: "\2190";
+  font-size: 18px;
+  line-height: 1;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-back-chip .back-btn a {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-back-chip .back-btn a img {
+  display: none;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-back-button .back-btn a {
+  background: #111;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-back-button .back-btn a img {
+  display: none;
+}
+
+/* Detail section hover */
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-hover-lift .ppcart-subscription-wrap {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-hover-lift .ppcart-subscription-wrap:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-hover-tint .ppcart-subscription-wrap {
+  transition: background-color 0.18s ease;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-hover-tint .ppcart-subscription-wrap:hover {
+  background: #f8fafc;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-hover-border .ppcart-subscription-wrap {
+  transition: border-color 0.18s ease;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-section-hover-border .ppcart-subscription-wrap:hover {
+  border-color: currentColor;
+}
+
+/* Subscription detail action shapes */
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-action-filled .ppcart-premium-addon a {
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 6px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-action-ghost .ppcart-premium-addon a {
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 6px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-action-chip .ppcart-premium-addon a {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  text-decoration: none;
+  margin-right: 6px;
+}
+
+/* Subscription detail status pill (applied to .status-text or label region) */
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-status-pill .status-text,
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-status-square .status-text {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #f1f5f9;
+  color: #1f2937;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-status-pill .status-text {
+  border-radius: 999px;
+}
+.publishpress-cart-account-subscription-detail.ppcart-account-detail-status-square .status-text {
+  border-radius: 4px;
+}
+
+/* === Downloads === */
+.ppcart-downloads-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ppcart-download-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: var(--ppcart-account-downloads-item-background, transparent);
+  border: 1px solid var(--ppcart-account-downloads-item-border-color, transparent);
+  border-radius: 8px;
+  transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.ppcart-download-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+.publishpress-cart-account-downloads:not(.ppcart-account-downloads-show-icon) .ppcart-download-icon {
+  display: none;
+}
+.ppcart-download-meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.ppcart-download-meta strong {
+  font-weight: 500;
+}
+.ppcart-download-meta span {
+  color: #6b7280;
+  font-size: 12px;
+}
+.ppcart-download-action {
+  color: var(--ppcart-account-downloads-link-color, inherit);
+  text-decoration: none;
+}
+.ppcart-download-action:hover {
+  color: var(--ppcart-account-downloads-link-hover-color, var(--ppcart-account-downloads-link-color, inherit));
+}
+.ppcart-downloads-empty {
+  color: var(--ppcart-account-downloads-empty-color, #6b7280);
+  padding: 16px;
+  text-align: center;
+}
+
+/* Downloads block presets */
+.publishpress-cart-account-downloads.ppcart-account-downloads-style-card .ppcart-download-item {
+  background: #fff;
+  border-color: #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-style-minimal .ppcart-download-item {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  border-radius: 0;
+  padding: 14px 0;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-style-dashboard .ppcart-downloads-list {
+  background: #0f172a;
+  border-radius: 12px;
+  padding: 8px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-style-dashboard .ppcart-download-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 0;
+  color: #e2e8f0;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-style-dashboard .ppcart-download-action {
+  color: #38bdf8;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-style-folder .ppcart-downloads-list {
+  background: #fef9c3;
+  border-radius: 12px;
+  padding: 18px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-style-folder .ppcart-download-item {
+  background: #fff;
+  border-color: #fde68a;
+}
+
+/* Downloads layout */
+.publishpress-cart-account-downloads.ppcart-account-downloads-layout-cards .ppcart-downloads-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-layout-cards .ppcart-download-item {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 18px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-layout-rows .ppcart-download-item {
+  padding: 6px 12px;
+  gap: 10px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-layout-tiles .ppcart-downloads-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-layout-tiles .ppcart-download-item {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 18px 12px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-layout-tiles .ppcart-download-icon {
+  font-size: 32px;
+}
+
+/* Downloads hover effects */
+.publishpress-cart-account-downloads.ppcart-account-downloads-hover-lift .ppcart-download-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-hover-tint .ppcart-download-item:hover {
+  background: #f1f5f9;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-hover-border-slide .ppcart-download-item {
+  position: relative;
+  overflow: hidden;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-hover-border-slide .ppcart-download-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: currentColor;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.18s ease;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-hover-border-slide .ppcart-download-item:hover::before {
+  transform: scaleY(1);
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-hover-reveal .ppcart-download-action {
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-hover-reveal .ppcart-download-item:hover .ppcart-download-action {
+  opacity: 1;
+}
+
+/* Downloads button shapes */
+.publishpress-cart-account-downloads.ppcart-account-downloads-button-filled .ppcart-download-action {
+  background: #111;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-button-ghost .ppcart-download-action {
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-button-chip .ppcart-download-action {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-button-icon .ppcart-download-action {
+  font-size: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.publishpress-cart-account-downloads.ppcart-account-downloads-button-icon .ppcart-download-action::after {
+  content: "\2B07";
+  font-size: 14px;
+}
+.ppcart-my-account table td a,
+.ppcart-my-account table th a {
+  text-decoration: none;
+}
+.ppcart-my-account table th {
+  line-height: normal;
+}
+
+.ppcart-my-account table td {
+  color: #707070;
+}
+.ppcart-my-account .ppcart-subscription-table,
+.ppcart-my-account .ppcart-subscription-table td,
+.ppcart-my-account .ppcart-subscription-table th {
+  border: 0;
+  padding: 0;
+}
+.ppcart-my-account #ppcart-loader,
+.ppcart-my-account #ppcart-update-profile,
+.ppcart-my-account #ppcart-edit-profile-cancel {
+  display: none;
+}
+.ppcart-my-account .alert-success {
+  color: #155724;
+}
+.ppcart-my-account .alert-error {
+  color: #721c24;
+}
+.ppcart-my-account .ppcart-account-table {
+  border: none;
+  margin: 0 0 20px;
+  min-width: 600px;
+  width: 100%;
+}
+.ppcart-my-account .ppcart-account-table thead tr th {
+  background: #f2f4f6;
+  border: none;
+  padding: 12px 12px;
+  text-align: left;
+}
+.ppcart-my-account .ppcart-account-table tbody tr td {
+  border: none;
+  background: #fafbfd;
+  padding: 12px 12px;
+  vertical-align: top;
+}
+.ppcart-my-account .ppcart-table-btn {
+  border: 1px solid;
+  border-radius: 3px;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: -10px;
+  margin-right: 10px;
+  padding: 4px 15px 5px;
+  text-decoration: none;
+}

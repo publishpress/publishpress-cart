@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle name="PublishPress Cart">
+  <domain name="publishpress-cart">
+    <project name="PublishPress Cart" slug="publishpress-cart">
+      <source>
+        <directory>.</directory>
+      </source>
+      <target>
+        <directory>languages</directory>
+      </target>
+      <template>
+        <file>languages/publishpress-cart.pot</file>
+      </template>
+    </project>
+  </domain>
+  <exclude>
+    <directory>dev-workspace-cache</directory>
+    <directory>dist</directory>
+    <directory>lib/vendor</directory>
+    <directory>vendor</directory>
+  </exclude>
+</bundle>

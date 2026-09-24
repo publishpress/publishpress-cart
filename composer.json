@@ -1,0 +1,111 @@
+{
+    "name": "publishpress/publishpress-cart",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
+    "description": "PublishPress Cart",
+    "authors": [
+        {
+            "name": "N.Creatives",
+            "email": "hello@ncreatives.com",
+            "homepage": "https://ncreatives.com",
+            "role": "Developer"
+        },
+        {
+            "name": "PublishPress",
+            "email": "help@publishpress.com",
+            "homepage": "https://publishpress.com/",
+            "role": "Developer"
+        }
+    ],
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "allow-plugins": {
+            "publishpress/dev-workspace": true,
+            "composer/installers": true,
+            "php-http/discovery": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true,
+            "automattic/jetpack-autoloader": true
+        },
+        "process-timeout": 0
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "publishpress/dev-workspace": "^1.8"
+    },
+    "scripts": {
+        "pre-autoload-dump": "@composer dumpautoload --working-dir=./lib",
+        "pre-update-cmd": "@composer update --working-dir=./lib",
+        "pre-install-cmd": "@composer install --working-dir=./lib",
+        "post-install-cmd": "bash tests/bin/sync-env-bind-paths.sh",
+        "post-update-cmd": "bash tests/bin/sync-env-bind-paths.sh",
+        "fixtures:link": "bash tests/link-fixtures.sh",
+        "fixtures:build": "bash tests/build-fixtures.sh",
+        "test:regression": "bash tests/bin/set-mocked-gateways.sh 0 || true; npm run test:e2e -- --grep @regression",
+        "test:regression:mocked": "bash tests/bin/set-mocked-gateways.sh 1 || true; npm run test:e2e:regression:mocked",
+        "test:regression:ui": "npm run test:e2e:regression:ui",
+        "test:regression:generate": "php tests/bin/side-to-playwright.php",
+        "test:smoke": "npm run test:e2e -- --grep @smoke",
+        "test:smoke:ui": "npm run test:e2e:smoke:ui",
+        "test:smoke:generate": "php tests/bin/json-to-playwright.php",
+        "test:setup": "bash tests/bin/setup-site.sh all",
+        "test:reset": "bash tests/bin/reset-site.sh all",
+        "test:regression:setup": "REGRESSION_MOCKED_GATEWAYS=0 bash tests/bin/setup-site.sh regression",
+        "test:regression:setup:mocked": "REGRESSION_MOCKED_GATEWAYS=1 bash tests/bin/setup-site.sh regression",
+        "test:regression:reset": "bash tests/bin/reset-site.sh regression",
+        "test:admin:setup": "bash tests/bin/setup-site.sh admin",
+        "test:admin": "npm run test:e2e -- --grep @admin --grep-invert @email",
+        "test:admin:fixtures": "npm run test:e2e:admin:fixtures",
+        "test:admin:workflows": "npm run test:e2e:admin:workflows",
+        "test:admin:ui": "npm run test:e2e:admin:ui",
+        "test:admin:reset": "bash tests/bin/reset-site.sh admin",
+        "test:admin:validate": "node tests/playwright/admin/validate-admin-specs.js",
+        "test:email": "npm run test:e2e -- --grep @email --workers=1",
+        "test:email:ui": "npm run test:e2e:email:ui",
+        "test:e2e:validate": "npm run test:e2e:validate",
+        "test:e2e:ui": "npm run test:e2e:ui",
+        "test:unit": "bash tests/bin/run-codecept-suite.sh Unit UNIT_WORKERS",
+        "test:integration": "bash tests/bin/run-integration-tests.sh",
+        "test:integration:prefix": "bash tests/bin/run-prefix-integration-tests.sh",
+        "test:all": [
+            "@test:unit",
+            "@test:integration",
+            "@test:regression",
+            "@test:admin",
+            "@test:email"
+        ],
+        "test:all:mocked": [
+            "@test:unit",
+            "@test:integration",
+            "@test:regression:mocked",
+            "@test:admin",
+            "@test:email"
+        ],
+        "test:hook-manifest": "php tests/bin/hook-manifest.php --check-policy && php tests/bin/hook-prefix-policy.php && php tests/bin/constant-prefix-policy.php",
+        "test:docs": "@scribe",
+        "test:docs:import": "npm run test:docs:import",
+        "test:docs:import-rt": "npm run test:docs:import-rt",
+        "test:docs:sync": "npm run test:docs:sync",
+        "test:jev:regression": "node tests/tools/jev-regression-effectiveness/run.mjs",
+        "scribe": "npm run scribe",
+        "scribe:doctor": "npm run scribe:doctor",
+        "scribe:init": "npm run scribe:init",
+        "metrics": "vendor/bin/phpmetrics --config=phpmetrics.json --report-json=metrics/report.json --report-summary-json=metrics/summary.json --report-violations=metrics/violations.xml",
+        "lint:phpcs": "bash tests/bin/lint-phpcs.sh"
+    },
+    "extra": {
+        "plugin-name": "publishpress-cart",
+        "plugin-slug": "publishpress-cart",
+        "plugin-folder": "publishpress-cart",
+        "version-constant": "PPCART_VERSION",
+        "plugin-lang-domain": "publishpress-cart",
+        "plugin-github-repo": "publishpress/publishpress-cart",
+        "plugin-composer-package": "publishpress/publishpress-cart"
+    }
+}

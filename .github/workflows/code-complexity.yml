@@ -1,0 +1,14 @@
+name: Analyze Code Complexity
+
+permissions:
+  contents: read
+
+on:
+  workflow_call:
+
+  workflow_dispatch:
+
+jobs:
+  code_complexity:
+    name: Run Code Complexity Analysis
+    uses: publishpress/github-workflows/.github/workflows/code-complexity.yml@v3

@@ -1,0 +1,688 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "c12514a25f689603d21356ad5d9a1d8f",
+    "packages": [
+        {
+            "name": "publishpress/bundled-translations",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-bundled-translations.git",
+                "reference": "95b06baed793a3a4ec44c5d932b68785302a0559"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-bundled-translations/zipball/95b06baed793a3a4ec44c5d932b68785302a0559",
+                "reference": "95b06baed793a3a4ec44c5d932b68785302a0559",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "publishpress/dev-workspace": "^1.0",
+                "publishpress/version-loader-generator": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "generator": {
+                    "src-dir": "core",
+                    "version": "1.0.3",
+                    "lib-class-test": "class_exists('PublishPress\\BundledTranslations\\BundledTranslations')",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-190"
+                },
+                "plugin-name": "bundled-translations",
+                "plugin-slug": "bundled-translations",
+                "plugin-folder": "bundled-translations",
+                "version-constant": "PUBLISHPRESS_BUNDLED_TRANSLATIONS_VERSION",
+                "plugin-github-repo": "publishpress/bundled-translations",
+                "plugin-lang-domain": "bundled-translations",
+                "plugin-composer-package": "publishpress/bundled-translations"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Forces WordPress plugins to use their bundled translations instead of global translations from wordpress.org.",
+            "homepage": "http://publishpress.com/",
+            "keywords": [
+                "wordpress plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/publishpress/library-bundled-translations/issues",
+                "source": "https://github.com/publishpress/library-bundled-translations/tree/v1.0.3"
+            },
+            "time": "2026-05-13T14:34:02+00:00"
+        },
+        {
+            "name": "publishpress/dompdf-dompdf",
+            "version": "3.1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-dompdf-dompdf.git",
+                "reference": "56fd845bd74fc0b8c16bd7d3261be1ee167e05d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-dompdf-dompdf/zipball/56fd845bd74fc0b8c16bd7d3261be1ee167e05d6",
+                "reference": "56fd845bd74fc0b8c16bd7d3261be1ee167e05d6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.4.0"
+            },
+            "require-dev": {
+                "brianhenryie/strauss": "0.29.2",
+                "dompdf/dompdf": "3.1.6",
+                "publishpress/dev-workspace": "^1.8",
+                "publishpress/version-loader-generator": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "plugin-name": "library-dompdf-dompdf",
+                "plugin-slug": "library-dompdf-dompdf",
+                "plugin-folder": "library-dompdf-dompdf",
+                "plugin-lang-domain": "dompdf-dompdf",
+                "plugin-github-repo": "publishpress/library-dompdf-dompdf",
+                "plugin-composer-package": "publishpress/dompdf-dompdf",
+                "generator": {
+                    "lib-class-test": "class_exists('PublishPress\\Dompdf\\Dompdf', false)",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-185"
+                },
+                "strauss": {
+                    "target_directory": "lib",
+                    "namespace_prefix": "PublishPress\\",
+                    "classmap_prefix": "PublishPress_",
+                    "constant_prefix": "PUBLISHPRESS_",
+                    "include_author": true,
+                    "classmap_output": true,
+                    "packages": [
+                        "dompdf/dompdf",
+                        "dompdf/php-font-lib",
+                        "dompdf/php-svg-lib",
+                        "masterminds/html5",
+                        "sabberworm/php-css-parser"
+                    ],
+                    "delete_vendor_packages": true,
+                    "delete_vendor_files": true
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/include.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Helper\\": "tests/_support/Helper/"
+                }
+            },
+            "scripts": {
+                "strauss": [
+                    "vendor/bin/strauss"
+                ],
+                "generate-files": [
+                    "vendor/bin/version-loader-generator",
+                    "php tests/bin/guard-generated-include.php",
+                    "php tests/bin/patch-version-loader-cest.php"
+                ],
+                "post-install-cmd": [
+                    "@strauss",
+                    "@generate-files"
+                ],
+                "post-update-cmd": [
+                    "@strauss",
+                    "@generate-files"
+                ],
+                "test:unit": [
+                    "vendor/bin/codecept run Unit"
+                ],
+                "test:integration": [
+                    "bash tests/bin/fix-linux-test-volume-perms.sh",
+                    "vendor/bin/codecept run Integration"
+                ],
+                "test:all": [
+                    "@test:unit",
+                    "@test:integration"
+                ]
+            },
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "The Dompdf Community",
+                    "homepage": "https://github.com/dompdf/dompdf/blob/master/AUTHORS.md"
+                },
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Dompdf and its runtime dependencies, prefixed for PublishPress",
+            "homepage": "https://github.com/dompdf/dompdf",
+            "keywords": [
+                "dompdf",
+                "pdf",
+                "publishpress"
+            ],
+            "support": {
+                "source": "https://github.com/publishpress/library-dompdf-dompdf/tree/3.1.6.2",
+                "issues": "https://github.com/publishpress/library-dompdf-dompdf/issues"
+            },
+            "time": "2026-09-21T17:16:26+00:00"
+        },
+        {
+            "name": "publishpress/instance-protection",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-instance-protection.git",
+                "reference": "24289afd5ac8f1f4098a22a45cab3939c02db15f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-instance-protection/zipball/24289afd5ac8f1f4098a22a45cab3939c02db15f",
+                "reference": "24289afd5ac8f1f4098a22a45cab3939c02db15f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "publishpress/translations": "dev-development"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Library for protecting WordPress plugins to run twice.",
+            "homepage": "http://publishpress.com/",
+            "keywords": [
+                "wordpress plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/publishpress/library-instance-protection/issues",
+                "source": "https://github.com/publishpress/library-instance-protection/tree/2.1.0"
+            },
+            "time": "2025-12-09T00:25:13+00:00"
+        },
+        {
+            "name": "publishpress/pimple-pimple",
+            "version": "3.5.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-pimple-pimple.git",
+                "reference": "c5246f8b0b1aaa59088b058d7bee1434ad6dd25c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-pimple-pimple/zipball/c5246f8b0b1aaa59088b058d7bee1434ad6dd25c",
+                "reference": "c5246f8b0b1aaa59088b058d7bee1434ad6dd25c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0",
+                "publishpress/psr-container": "^2.0.1.10"
+            },
+            "require-dev": {
+                "brianhenryie/strauss": "0.29.2",
+                "pimple/pimple": "3.5.0",
+                "publishpress/dev-workspace": "^1.8",
+                "publishpress/version-loader-generator": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "strauss": {
+                    "packages": [
+                        "pimple/pimple",
+                        "psr/container"
+                    ],
+                    "include_author": true,
+                    "classmap_output": true,
+                    "classmap_prefix": "PublishPress_",
+                    "constant_prefix": "PUBLISHPRESS_",
+                    "namespace_prefix": "PublishPress\\",
+                    "target_directory": "lib",
+                    "delete_vendor_files": true,
+                    "delete_vendor_packages": true
+                },
+                "generator": {
+                    "lib-class-test": "class_exists('PublishPress\\Pimple\\Container', false)",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-185"
+                },
+                "plugin-name": "library-pimple-pimple",
+                "plugin-slug": "library-pimple-pimple",
+                "plugin-folder": "library-pimple-pimple",
+                "plugin-github-repo": "publishpress/library-pimple-pimple",
+                "plugin-lang-domain": "pimple-pimple",
+                "plugin-composer-package": "publishpress/pimple-pimple"
+            },
+            "autoload": {
+                "files": [
+                    "lib/include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Pimple, a simple Dependency Injection Container, prefixed for PublishPress",
+            "homepage": "https://github.com/silexphp/Pimple/",
+            "keywords": [
+                "container",
+                "dependency injection",
+                "publishpress"
+            ],
+            "support": {
+                "issues": "https://github.com/publishpress/library-pimple-pimple/issues",
+                "source": "https://github.com/publishpress/library-pimple-pimple/tree/3.5.0.11"
+            },
+            "time": "2026-09-11T18:31:32+00:00"
+        },
+        {
+            "name": "publishpress/psr-container",
+            "version": "2.0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-psr-container.git",
+                "reference": "773a2510aa39a7f0ad5d5dfc78878abb939f5704"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-psr-container/zipball/773a2510aa39a7f0ad5d5dfc78878abb939f5704",
+                "reference": "773a2510aa39a7f0ad5d5dfc78878abb939f5704",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "brianhenryie/strauss": "^0.14.0",
+                "codeception/module-asserts": "^1.0",
+                "codeception/module-cli": "^1.0",
+                "codeception/module-db": "^1.0",
+                "codeception/module-filesystem": "^1.0",
+                "codeception/module-phpbrowser": "^1.0",
+                "codeception/module-webdriver": "^1.0",
+                "codeception/util-universalframework": "^1.0",
+                "lucatume/wp-browser": "^3.1",
+                "psr/container": "2.0.2",
+                "publishpress/codeception-extension-extended-copier": "^1.0",
+                "publishpress/version-loader-generator": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "strauss": {
+                    "packages": [
+                        "psr/container"
+                    ],
+                    "include_author": "true",
+                    "classmap_output": "true",
+                    "classmap_prefix": "PublishPress_",
+                    "constant_prefix": "PUBLISHPRESS_",
+                    "namespace_prefix": "PublishPress\\",
+                    "target_directory": "lib",
+                    "exclude_from_copy": {
+                        "packages": [],
+                        "namespaces": [],
+                        "file_patterns": []
+                    },
+                    "override_autoload": [],
+                    "delete_vendor_files": true,
+                    "exclude_from_prefix": {
+                        "packages": [],
+                        "namespaces": [],
+                        "file_patterns": []
+                    },
+                    "delete_vendor_packages": true,
+                    "namespace_replacement_patterns": []
+                },
+                "generator": {
+                    "lib-class-test": "interface_exists('PublishPress\\Psr\\Container\\ContainerInterface')",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-190"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                },
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11), prefixed for PublishPress plugins",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr",
+                "publishpress"
+            ],
+            "support": {
+                "issues": "https://github.com/publishpress/library-psr-container/issues",
+                "source": "https://github.com/publishpress/library-psr-container/tree/2.0.2.1"
+            },
+            "time": "2025-12-09T15:18:16+00:00"
+        },
+        {
+            "name": "publishpress/stripe-php",
+            "version": "20.3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-stripe-php.git",
+                "reference": "053b3da648d0c6a99f375c991f943b0a60ed265a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-stripe-php/zipball/053b3da648d0c6a99f375c991f943b0a60ed265a",
+                "reference": "053b3da648d0c6a99f375c991f943b0a60ed265a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.4.0"
+            },
+            "require-dev": {
+                "brianhenryie/strauss": "0.29.2",
+                "publishpress/dev-workspace": "^1.8",
+                "publishpress/version-loader-generator": "^1.0",
+                "stripe/stripe-php": "20.3.1"
+            },
+            "type": "library",
+            "extra": {
+                "plugin-name": "library-stripe-php",
+                "plugin-slug": "library-stripe-php",
+                "plugin-folder": "library-stripe-php",
+                "plugin-lang-domain": "stripe-php",
+                "plugin-github-repo": "publishpress/library-stripe-php",
+                "plugin-composer-package": "publishpress/stripe-php",
+                "generator": {
+                    "lib-class-test": "class_exists('PublishPress\\Stripe\\StripeClient', false)",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-185"
+                },
+                "strauss": {
+                    "target_directory": "lib",
+                    "namespace_prefix": "PublishPress\\",
+                    "classmap_prefix": "PublishPress_",
+                    "constant_prefix": "PUBLISHPRESS_",
+                    "include_author": true,
+                    "classmap_output": true,
+                    "packages": [
+                        "stripe/stripe-php"
+                    ],
+                    "delete_vendor_packages": true,
+                    "delete_vendor_files": true
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/include.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Helper\\": "tests/_support/Helper/"
+                }
+            },
+            "scripts": {
+                "strauss": [
+                    "vendor/bin/strauss"
+                ],
+                "generate-files": [
+                    "php scripts/post-update.php",
+                    "vendor/bin/version-loader-generator",
+                    "php tests/bin/guard-generated-include.php",
+                    "php tests/bin/patch-version-loader-cest.php"
+                ],
+                "post-install-cmd": [
+                    "@strauss",
+                    "@generate-files"
+                ],
+                "post-update-cmd": [
+                    "@strauss",
+                    "@generate-files"
+                ],
+                "test:unit": [
+                    "vendor/bin/codecept run Unit"
+                ],
+                "test:integration": [
+                    "bash tests/bin/fix-linux-test-volume-perms.sh",
+                    "vendor/bin/codecept run Integration"
+                ],
+                "test:all": [
+                    "@test:unit",
+                    "@test:integration"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                },
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "Stripe PHP Library, prefixed for PublishPress",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "publishpress",
+                "stripe"
+            ],
+            "support": {
+                "source": "https://github.com/publishpress/library-stripe-php/tree/20.3.1.2",
+                "issues": "https://github.com/publishpress/library-stripe-php/issues"
+            },
+            "time": "2026-09-14T15:20:27+00:00"
+        },
+        {
+            "name": "publishpress/wordpress-reviews",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-wordpress-reviews.git",
+                "reference": "0a8cd140cdc17088c1910f8db6a6ba8ccc17482d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-wordpress-reviews/zipball/0a8cd140cdc17088c1910f8db6a6ba8ccc17482d",
+                "reference": "0a8cd140cdc17088c1910f8db6a6ba8ccc17482d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "automattic/vipwpcs": "^3",
+                "brain/monkey": "^2.6",
+                "friendsofphp/php-cs-fixer": "^3.49",
+                "overtrue/phplint": "^9.1",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^8.5 || ^9.0",
+                "publishpress/publishpress-phpcs-standards": "dev-main",
+                "publishpress/translations": "^1.0.0",
+                "squizlabs/php_codesniffer": "^3.8",
+                "szepeviktor/phpstan-wordpress": "^1.3",
+                "wp-coding-standards/wpcs": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "ReviewsController.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                },
+                {
+                    "name": "Daniel Iser",
+                    "homepage": "https://github.com/danieliser/WP-Product-In-Dash-Review-Requests"
+                }
+            ],
+            "description": "Library for showing a five-star review banner.",
+            "homepage": "http://publishpress.com/",
+            "keywords": [
+                "review",
+                "reviews",
+                "wordpress plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/publishpress/library-wordpress-reviews/issues",
+                "source": "https://github.com/publishpress/library-wordpress-reviews/tree/1.2.2"
+            },
+            "time": "2026-09-11T02:52:42+00:00"
+        },
+        {
+            "name": "publishpress/wordpress-version-notices",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-wordpress-version-notices.git",
+                "reference": "95447d36d53e4abec9f9b988755acf1c72353677"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-wordpress-version-notices/zipball/95447d36d53e4abec9f9b988755acf1c72353677",
+                "reference": "95447d36d53e4abec9f9b988755acf1c72353677",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "publishpress/pimple-pimple": "^3.5.0.0",
+                "publishpress/psr-container": "^2.0.1.0"
+            },
+            "require-dev": {
+                "automattic/vipwpcs": "^3",
+                "codeception/module-asserts": "^1.0",
+                "codeception/module-cli": "^1.0",
+                "codeception/module-db": "^1.0",
+                "codeception/module-filesystem": "^1.0",
+                "codeception/module-phpbrowser": "^1.0",
+                "codeception/module-rest": "^1.3",
+                "codeception/module-webdriver": "^1.0",
+                "codeception/util-universalframework": "^1.0",
+                "composer/composer": "^2.7",
+                "friendsofphp/php-cs-fixer": "^3.49",
+                "lucatume/wp-browser": "^3",
+                "overtrue/phplint": "^2.1",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpstan/phpstan": "^1.10",
+                "publishpress/publishpress-phpcs-standards": "^1.0",
+                "publishpress/translations": "^1.0.0",
+                "publishpress/version-loader-generator": "^1.0",
+                "squizlabs/php_codesniffer": "^3.8",
+                "szepeviktor/phpstan-wordpress": "^1.3",
+                "wp-coding-standards/wpcs": "^3"
+            },
+            "type": "library",
+            "extra": {
+                "generator": {
+                    "src-dir": "src",
+                    "lib-class-test": "class_exists('PublishPress\\WordpressVersionNotices\\ServicesProvider')",
+                    "action-register-priority": "-190",
+                    "action-initialize-priority": "-150"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com",
+                    "homepage": "https://publishpress.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Library for displaying version notices for Pro plugins in WordPress.",
+            "support": {
+                "issues": "https://github.com/publishpress/library-wordpress-version-notices/issues",
+                "source": "https://github.com/publishpress/library-wordpress-version-notices/tree/2.2.1"
+            },
+            "time": "2026-05-13T15:05:11+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=7.4"
+    },
+    "platform-dev": {},
+    "platform-overrides": {
+        "php": "7.4.0"
+    },
+    "plugin-api-version": "2.9.0"
+}

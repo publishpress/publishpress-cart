@@ -1,0 +1,13 @@
+name: Tests (Unit)
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  unit-tests:
+    uses: publishpress/github-workflows/.github/workflows/unit-tests.yml@v3

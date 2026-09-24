@@ -1,0 +1,27 @@
+name: Tests (Admin)
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    branches:
+      - development
+  workflow_dispatch:
+
+concurrency:
+  group: playwright-admin-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  execute:
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || vars.PLAYWRIGHT_FREE_ENABLED == 'true'
+    uses: ./.github/workflows/_playwright-run.yml
+    with:
+      job-name: Execute Playwright admin suite
+      test-command: composer test:admin
+      artifact-name: playwright-admin
+      fixture-scope: admin
+      enable-admin-workflows: true
+      enable-admin-external: false
+      workers: 1

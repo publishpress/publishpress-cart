@@ -1,0 +1,35 @@
+import { AdminConfig } from '../support/admin-config';
+import { test } from '../support/admin-test';
+import { EMAIL_TYPES, setEmailEnabled, triggerFixture, uniqueRecipient } from '../support/email-settings';
+import { Mailpit } from '../support/mailpit';
+
+const config = AdminConfig.fromEnv();
+const mailpit = Mailpit.fromEnv();
+
+test.describe.configure({ mode: 'serial' });
+
+test('EM-002 Pending — disabled does not send', { tag: ["@admin","@email"] }, async ({ page, request }) => {
+  test.skip(!config.hasCredentials(), 'Set WP_TESTS_ADMIN_USER and WP_TESTS_ADMIN_PASSWORD in .env');
+  test.skip(!config.hasEmailFixtureIds(), 'Run composer test:admin:setup');
+  test.setTimeout(120_000);
+
+  const descriptor = EMAIL_TYPES.pending;
+  const recipient = uniqueRecipient('pending-disabled');
+
+  // setEmailEnabled asserts the "off" state persisted before anything is fired.
+  // Without that, a silently failed save would make the no-send result a false pass.
+  await setEmailEnabled(page, config, 'pending', false);
+
+  await mailpit.deleteAll();
+
+  // triggerFixture throws unless the endpoint reports success, so "nothing arrived"
+  // cannot be explained away by the trigger never having run.
+  await triggerFixture(request, config, {
+    trigger: 'order_status',
+    order_id: config.var('admin_email_order_id'),
+    status: descriptor.triggerStatus,
+    email: recipient,
+  });
+
+  await mailpit.expectNoMessage({ to: recipient });
+});

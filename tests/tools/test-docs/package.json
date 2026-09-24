@@ -1,0 +1,25 @@
+{
+  "name": "@publishpress/test-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local test catalog tooling — markdown cases and dashboard",
+  "scripts": {
+    "build:ui": "vite build --config ui/vite.config.js",
+    "dev:ui": "vite --config ui/vite.config.js",
+    "prestart": "npm install --no-audit --no-fund && npm run build:ui",
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.18.2",
+    "react-syntax-highlighter": "^16.1.1",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.6.0",
+    "vite": "^6.3.5"
+  }
+}

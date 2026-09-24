@@ -1,0 +1,106 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishpress-cart/account-navigation",
+	"version": "1.0.0",
+	"title": "Account Navigation",
+	"category": "widgets",
+	"icon": "menu",
+	"description": "Display customer account navigation tabs and sortable account sections.",
+	"textdomain": "publishpress-cart",
+	"render": "file:./render.php",
+	"editorScript": "ppcart-account-page-editor",
+	"style": "ppcart-account-block-style",
+	"editorStyle": "ppcart-account-block-editor-style",
+	"attributes": {
+		"activeTab": {
+			"type": "string",
+			"default": "tab-orders"
+		},
+		"includedTabs": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "string"
+			}
+		},
+		"includedTabsConfigured": {
+			"type": "boolean",
+			"default": false
+		},
+		"tabStyle": {
+			"type": "string",
+			"default": "underline"
+		},
+		"tabAlignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"tabGap": {
+			"type": "number"
+		},
+		"tabPaddingX": {
+			"type": "number"
+		},
+		"tabPaddingY": {
+			"type": "number"
+		},
+		"tabFontSize": {
+			"type": "number"
+		},
+		"tabFontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"tabTextTransform": {
+			"type": "string",
+			"default": ""
+		},
+		"tabIndicatorThickness": {
+			"type": "number"
+		},
+		"accentColor": {
+			"type": "string",
+			"default": ""
+		},
+		"tabTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"activeTabTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"hoverTabTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"tabBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"activeTabBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"hoverTabBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"margin": true
+		}
+	}
+}

@@ -1,0 +1,168 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishpress-cart/account-profile",
+	"version": "1.0.0",
+	"title": "Account Profile",
+	"category": "widgets",
+	"icon": "admin-users",
+	"description": "Display the customer profile account section.",
+	"textdomain": "publishpress-cart",
+	"render": "file:./render.php",
+	"editorScript": "ppcart-account-page-editor",
+	"style": "ppcart-account-block-style",
+	"editorStyle": "ppcart-account-block-editor-style",
+	"attributes": {
+		"active": {
+			"type": "boolean",
+			"default": true
+		},
+		"blockStyle": {
+			"type": "string",
+			"default": ""
+		},
+		"layoutMode": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonShape": {
+			"type": "string",
+			"default": ""
+		},
+		"inputHoverEffect": {
+			"type": "string",
+			"default": ""
+		},
+		"showAvatar": {
+			"type": "boolean",
+			"default": false
+		},
+		"formMaxWidth": {
+			"type": "number"
+		},
+		"fieldGap": {
+			"type": "number"
+		},
+		"headingColor": {
+			"type": "string",
+			"default": ""
+		},
+		"headingFontSize": {
+			"type": "number"
+		},
+		"headingFontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"labelColor": {
+			"type": "string",
+			"default": ""
+		},
+		"labelFontSize": {
+			"type": "number"
+		},
+		"inputFontSize": {
+			"type": "number"
+		},
+		"labelFontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"labelMinWidth": {
+			"type": "number"
+		},
+		"inputBorderColor": {
+			"type": "string",
+			"default": ""
+		},
+		"inputFocusBorderColor": {
+			"type": "string",
+			"default": ""
+		},
+		"inputRadius": {
+			"type": "number"
+		},
+		"buttonBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"editButtonBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"editButtonTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"editButtonHoverBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"editButtonHoverTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"saveButtonBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"saveButtonTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"saveButtonHoverBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"saveButtonHoverTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"cancelButtonBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"cancelButtonTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"cancelButtonHoverBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"cancelButtonHoverTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonHoverBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonHoverTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonRadius": {
+			"type": "number"
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"margin": true
+		}
+	}
+}

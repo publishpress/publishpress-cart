@@ -1,0 +1,124 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishpress-cart/account-tab",
+	"version": "1.0.0",
+	"title": "Account Tab",
+	"category": "widgets",
+	"icon": "index-card",
+	"description": "Group account component blocks inside one account navigation tab.",
+	"textdomain": "publishpress-cart",
+	"render": "file:./render.php",
+	"editorScript": "ppcart-account-page-editor",
+	"style": "ppcart-account-block-style",
+	"editorStyle": "ppcart-account-block-editor-style",
+	"attributes": {
+		"tabId": {
+			"type": "string",
+			"default": "tab-orders"
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"panelStyle": {
+			"type": "string",
+			"default": "plain"
+		},
+		"panelPadding": {
+			"type": "number"
+		},
+		"panelRadius": {
+			"type": "number"
+		},
+		"panelBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"panelTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"panelBorderColor": {
+			"type": "string",
+			"default": ""
+		},
+		"panelLinkColor": {
+			"type": "string",
+			"default": ""
+		},
+		"panelLinkHoverColor": {
+			"type": "string",
+			"default": ""
+		},
+		"headingColor": {
+			"type": "string",
+			"default": ""
+		},
+		"headingFontSize": {
+			"type": "number"
+		},
+		"headingFontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"tableDensity": {
+			"type": "string",
+			"default": ""
+		},
+		"tableHeaderBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"tableHeaderTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"tableRowBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"tableRowAltBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"tableRowTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"tableBorderColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonHoverBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonHoverTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonRadius": {
+			"type": "number"
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"margin": true
+		}
+	}
+}

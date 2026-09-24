@@ -1,0 +1,274 @@
+/**
+ * PublishPress Cart - in-context Pro upsell locks.
+ *
+ * Self-contained (literal colours, no CSS variables) so the badge/lock/banner
+ * primitives render correctly wherever this file is enqueued - in particular the
+ * product settings metabox, which does not load the modern-settings stylesheet.
+ */
+
+/* --- Shared primitives -------------------------------------------------- */
+.ppcart-settings__nav-pro-badge {
+    margin-left: auto;
+    flex: 0 0 auto;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: #fdb324;
+    color: #1f2430;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.6;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.ppcart-settings__pro-lock {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid #f3a712;
+    border-radius: 8px;
+    background: #feb123;
+    color: #1f2430;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(20, 24, 38, .12);
+    transition: background .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+.ppcart-settings__pro-lock:hover,
+.ppcart-settings__pro-lock:focus {
+    background: #fcca46;
+    color: #1f2430;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(245, 166, 35, .35);
+    transform: translateY(-1px);
+}
+
+.ppcart-settings__pro-lock:focus-visible {
+    outline: 2px solid #1f2430;
+    outline-offset: 2px;
+}
+
+.ppcart-settings__pro-lock .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.ppcart-settings__pro-lock.ppcart-settings__pro-lock--sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    gap: 5px;
+}
+
+.ppcart-settings__pro-lock--sm .dashicons {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+}
+
+.ppcart-settings__pro-toggle {
+    display: inline-block;
+    width: 38px;
+    height: 22px;
+    border-radius: 999px;
+    background: #cbd2dc;
+    position: relative;
+}
+
+.ppcart-settings__pro-toggle::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+/* --- Product metabox: PRO badge in the tab nav -------------------------- */
+.ppcart-settings-tabs .ppcart-tab-nav .ppcart-settings__nav-pro-badge {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* --- Product metabox: locked field rows -------------------------------- */
+.ppcart-settings-tabs .ppcart-pro-locked-field {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-field__label {
+    flex: 0 0 180px;
+    min-width: 180px;
+    font-weight: 600;
+    color: #344054;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-field__control {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 420px;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-field__control .input-group {
+    display: block;
+    width: 100%;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-field__control input,
+.ppcart-settings-tabs .ppcart-pro-locked-field__control select,
+.ppcart-settings-tabs .ppcart-pro-locked-field__control textarea {
+    width: 100%;
+    min-height: 36px;
+    padding: 7px 10px;
+    border: 1px solid #cfd7df !important;
+    border-radius: 6px !important;
+    background: #f1f3f6 !important;
+    color: #98a1b0 !important;
+    cursor: not-allowed;
+    box-sizing: border-box;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-field__control textarea {
+    min-height: 70px;
+}
+
+/* A native <select> clips its label when vertical padding is added on top of
+   the metabox's fixed select height (ppcart-admin.css sets height: 39px). Give
+   it that height with horizontal padding only, so the browser vertically centres
+   the (disabled) label instead of cropping it. */
+.ppcart-settings-tabs .ppcart-pro-locked-field__control select {
+    height: 39px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-field .ppcart-settings__pro-lock {
+    flex: 0 0 auto;
+}
+
+/* Informational notice / section heading inside a locked tab (e.g. the
+   Payment Methods "Globally Enabled Methods" intro). */
+.ppcart-settings-tabs .ppcart-pro-locked-notice {
+    flex-basis: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    color: #344054;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-notice a {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-notice a:hover {
+    text-decoration: underline;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-notice .ppcart-pro-locked-heading {
+    margin: 18px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid #e2e5ea;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.ppcart-settings-tabs .ppcart-pro-locked-note {
+    flex-basis: 100%;
+    width: 100%;
+    margin: -2px 0 0;
+    padding-left: 194px;
+    color: #667085;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+@media (max-width: 1300px) {
+    .ppcart-settings-tabs .ppcart-pro-locked-note {
+        padding-left: 114px;
+    }
+}
+
+/* --- Whole-tab blur + "Pro feature" overlay (Pro-only tabs) ------------- */
+.ppcart-settings-tabs .ppcart-settings__pro-tab-lock {
+    position: relative;
+    flex-basis: 100%;
+    width: 100%;
+}
+
+.ppcart-settings-tabs .ppcart-settings__pro-tab-lock-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 2px;
+    min-height: 230px;
+    filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
+    opacity: .7;
+}
+
+.ppcart-settings-tabs .ppcart-settings__pro-tab-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.ppcart-settings-tabs .ppcart-settings__pro-tab-overlay-card {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e3e5ea;
+    border-radius: 8px;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, .18);
+    padding: 28px 26px;
+}
+
+.ppcart-settings-tabs .ppcart-settings__pro-tab-overlay-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    font-size: 24px;
+    border-radius: 50%;
+    background: #fff5e0;
+    color: #e09b00;
+    margin-bottom: 12px;
+}
+
+.ppcart-settings-tabs .ppcart-settings__pro-tab-overlay-title {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1d24;
+}
+
+.ppcart-settings-tabs .ppcart-settings__pro-tab-overlay-text {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #5b6473;
+}

@@ -1,0 +1,24 @@
+name: Tests (Regression:Mocked)
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    branches:
+      - development
+  workflow_dispatch:
+
+concurrency:
+  group: playwright-regression-mocked-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  execute:
+    uses: ./.github/workflows/_playwright-run.yml
+    with:
+      job-name: Execute Playwright mocked regression
+      test-command: composer test:regression:mocked
+      artifact-name: playwright-regression-mocked
+      fixture-scope: regression
+      mocked-gateways: true

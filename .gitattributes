@@ -1,0 +1,83 @@
+.babelrc export-ignore
+.claude export-ignore
+.cursor export-ignore
+.distignore export-ignore
+.env export-ignore
+.env.example export-ignore
+.git export-ignore
+.gitattributes text eol=lf export-ignore
+.github export-ignore
+.gitignore export-ignore
+.agents export-ignore
+.agents/** export-ignore
+.idea export-ignore
+.php-cs-fixer.cache export-ignore
+.php-cs-fixer.php export-ignore
+.phpcs-php-compatibility.xml export-ignore
+.phpcs-plugin-review.xml export-ignore
+.phpcs.xml export-ignore
+.phplint-cache export-ignore
+.phplint.yml export-ignore
+.rsync-filters-dev-sync export-ignore
+.rsync-filters-post-build export-ignore
+.rsync-filters-pre-build export-ignore
+.rsync-filters-sync export-ignore
+.tests.config.yaml export-ignore
+.vscode export-ignore
+.wordpress-org export-ignore
+*.code-workspace export-ignore
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.php text eol=lf
+*.sh text eol=lf
+*.ts text eol=lf
+*.xml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+**/node_modules export-ignore
+**/node_modules/** export-ignore
+/.cache export-ignore
+/.cursor export-ignore
+/assets/adobe-animate export-ignore
+/cache export-ignore
+/composer.lock
+/dev-workspace export-ignore
+/dist export-ignore
+/docs export-ignore
+/includes/assets/font-awesome export-ignore
+/vendor export-ignore
+/version.txt export-ignore
+bin export-ignore
+builder export-ignore
+builder.yml export-ignore
+CHANGELOG.md export-ignore
+codeception.dist.yml export-ignore
+codeception.yml export-ignore
+codegraph.json export-ignore
+cs export-ignore
+Gruntfile.js export-ignore
+jsconfig.json export-ignore
+makefile export-ignore
+node_modules export-ignore
+node_modules/** export-ignore
+package-lock.json export-ignore
+package.json export-ignore
+phpmd.ruleset.xml export-ignore
+phpmetrics.json export-ignore
+phpstan.neon export-ignore
+playwright.config.ts export-ignore
+psalm.xml export-ignore
+ray-dist.php export-ignore
+ray.php export-ignore
+README-build.md export-ignore
+README.md export-ignore
+RoboFile.php export-ignore
+tests export-ignore
+WPORG-REVIEW-*.md export-ignore
+webpack.config.js export-ignore
+yarn.lock export-ignore
+AGENTS.md export-ignore
+CONTEXT.md export-ignore
+REVIEW.md export-ignore

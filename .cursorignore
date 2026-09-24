@@ -1,0 +1,42 @@
+# Agent search/access ignore. gitignore syntax.
+# Do not list .cursor/, .github/, tests/, or docs/ — agents edit those.
+
+# Secrets (gitignore hides them from git; this blocks Agent Read/@)
+.env
+.env.*
+!.env.example
+
+# Committed third-party PHP (not in .gitignore). Main grep tax.
+lib/vendor/
+
+# Composer / npm / build (also gitignored; listed so search stays clean if gitignore is skipped)
+/vendor/
+node_modules/
+dist/
+
+# Local caches, reports, indexes
+dev-workspace-cache/
+dev-workspace/
+.codegraph/
+graphify-out/
+/metrics/
+/metrics-current/
+playwright-report/
+test-results/
+tests/e2e-results/
+.ci-wordpress/
+.web/
+.ddev/
+/cart-packed/
+tmp/
+.bench-admin/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+
+# WordPress.org assets (pngs; dir listed so the tree is skipped)
+.wordpress-org/
+
+# Compiled translations (keep .po / .pot / .l10n.php readable)
+languages/*.mo
+languages/*.json

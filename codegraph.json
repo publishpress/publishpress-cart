@@ -1,0 +1,15 @@
+{
+    "exclude": [
+      "vendor/",
+      "lib/vendor/",
+      "**/vendor/**",
+      ".cursor/",
+      ".github/",
+      ".wordpress-org/",
+      "dev-workspace-cache/",
+      "dist/",
+      "metrics/",
+      "playwright-report/",
+      "test-results/"
+    ]
+  }

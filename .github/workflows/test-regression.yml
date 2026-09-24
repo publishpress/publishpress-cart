@@ -1,0 +1,25 @@
+name: Tests (Regression)
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: playwright-regression-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  execute:
+    uses: ./.github/workflows/_playwright-run.yml
+    with:
+      job-name: Execute Playwright regression
+      test-command: composer test:regression
+      test-command-no-credentials: npm run test:e2e:free
+      artifact-name: playwright-regression
+      fixture-scope: regression
+      needs-gateway-credentials: true
+    secrets:
+      env-content: ${{ secrets.PLAYWRIGHT_REGRESSION_ENV }}
+      env-content-fallback: ${{ secrets.PLAYWRIGHT_FREE_ENV }}

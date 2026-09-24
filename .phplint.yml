@@ -1,0 +1,29 @@
+path:
+  - admin/
+  - api/
+  - includes/
+  - models/
+  - public/
+  - publishpress-cart.php
+  - index.php
+jobs: 10
+extensions:
+  - php
+exclude:
+  - .github
+  - .vscode
+  - .idea
+  - vendor
+  - node_modules
+  - dist
+  - cache
+  - .cache
+  - .env
+  - .env.example
+  - .cursor
+  - .distignore
+  - .gitattributes
+  - .gitignore
+  - .phpcs.xml
+  - .web
+  - .ddev

@@ -1,0 +1,28 @@
+{
+    "includes": [
+        "admin",
+        "includes",
+        "models",
+        "public",
+        "publishpress-cart.php"
+    ],
+    "excludes": [
+        ".cursor",
+        ".git",
+        ".github",
+        "dev-workspace-cache",
+        "dev-workspace",
+        "dist",
+        "docs",
+        "languages",
+        "lib",
+        "lib/vendor",
+        "logs",
+        "metrics",
+        "tests",
+        "vendor"
+    ],
+    "report": {
+        "html": "metrics"
+    }
+}

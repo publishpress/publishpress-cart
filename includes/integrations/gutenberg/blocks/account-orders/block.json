@@ -1,0 +1,88 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishpress-cart/account-orders",
+	"version": "1.0.0",
+	"title": "Account Orders",
+	"category": "widgets",
+	"icon": "list-view",
+	"description": "Display the customer order history account section.",
+	"textdomain": "publishpress-cart",
+	"render": "file:./render.php",
+	"editorScript": "ppcart-account-page-editor",
+	"style": "ppcart-account-block-style",
+	"editorStyle": "ppcart-account-block-editor-style",
+	"attributes": {
+		"active": {
+			"type": "boolean",
+			"default": true
+		},
+		"blockStyle": {
+			"type": "string",
+			"default": ""
+		},
+		"itemLayout": {
+			"type": "string",
+			"default": ""
+		},
+		"statusPillStyle": {
+			"type": "string",
+			"default": "pill"
+		},
+		"actionButtonShape": {
+			"type": "string",
+			"default": "chip"
+		},
+		"rowHoverEffect": {
+			"type": "string",
+			"default": ""
+		},
+		"emptyText": {
+			"type": "string",
+			"default": ""
+		},
+		"emptyTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"actionLinkColor": {
+			"type": "string",
+			"default": ""
+		},
+		"actionLinkHoverColor": {
+			"type": "string",
+			"default": ""
+		},
+		"productLinkColor": {
+			"type": "string",
+			"default": ""
+		},
+		"productLinkHoverColor": {
+			"type": "string",
+			"default": ""
+		},
+		"statusColor": {
+			"type": "string",
+			"default": ""
+		},
+		"detailPresentation": {
+			"type": "string",
+			"default": ""
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"margin": true
+		}
+	}
+}

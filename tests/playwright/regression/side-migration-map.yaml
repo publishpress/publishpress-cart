@@ -1,0 +1,88 @@
+# TEMPORARY migration dictionary — Ghost Inspector (.side) -> current Playwright regression specs.
+#
+# Ghost Inspector exports carry the legacy code in the test name, e.g.
+#   "[StudioCart] TC-001 Critical - <name>"  /  "[StudioCartPro] TC-024 Smoke - <name>"
+# The regression suite was renamed TC- -> RT- (numbers preserved).
+#
+# IMPORTANT: some Ghost Inspector suites REUSE the same number for different scenarios,
+# so match on the full test NAME (slug), not on the code alone.
+#
+# Remove this file once the side-to-playwright migration is complete.
+edition: free
+mappings:
+  - side_code: TC-001
+    code: RT-001
+    name: "purchase one-time Stripe checkout flow first price"
+    spec: tests/playwright/regression/rt001-purchase-one-time-stripe-checkout-flow-first-price.spec.ts
+  - side_code: TC-002
+    code: RT-002
+    name: "purchase one-time Stripe checkout flow secondary price"
+    spec: tests/playwright/regression/rt002-purchase-one-time-stripe-checkout-flow-secondary-price.spec.ts
+  - side_code: TC-003
+    code: RT-003
+    name: "purchase one-time Stripe checkout flow first sale price"
+    spec: tests/playwright/regression/rt003-purchase-one-time-stripe-checkout-flow-first-sale-price.spec.ts
+  - side_code: TC-004
+    code: RT-004
+    name: "purchase one-time Stripe checkout flow secondary sale price"
+    spec: tests/playwright/regression/rt004-purchase-one-time-stripe-checkout-flow-secondary-sale-price.spec.ts
+  - side_code: TC-005
+    code: RT-005
+    name: "purchase subscription Stripe checkout flow monthly"
+    spec: tests/playwright/regression/rt005-purchase-subscription-stripe-checkout-flow-monthly.spec.ts
+  - side_code: TC-006
+    code: RT-006
+    name: "purchase subscription Stripe checkout flow annually"
+    spec: tests/playwright/regression/rt006-purchase-subscription-stripe-checkout-flow-annually.spec.ts
+  - side_code: TC-007
+    code: RT-007
+    name: "purchase subscription Stripe checkout flow monthly sale price"
+    spec: tests/playwright/regression/rt007-purchase-subscription-stripe-checkout-flow-monthly-sale-price.spec.ts
+  - side_code: TC-008
+    code: RT-008
+    name: "purchase subscription Stripe checkout flow annually sale price"
+    spec: tests/playwright/regression/rt008-purchase-subscription-stripe-checkout-flow-annually-sale-price.spec.ts
+  - side_code: TC-009
+    code: RT-009
+    name: "purchase custom price Stripe checkout flow"
+    spec: tests/playwright/regression/rt009-purchase-custom-price-stripe-checkout-flow.spec.ts
+  - side_code: TC-010
+    code: RT-010
+    name: "purchase one-time PayPal checkout flow first price"
+    spec: tests/playwright/regression/rt010-purchase-one-time-paypal-checkout-flow-first-price.spec.ts
+  - side_code: TC-011
+    code: RT-011
+    name: "purchase one-time PayPal checkout flow secondary price"
+    spec: tests/playwright/regression/rt011-purchase-one-time-paypal-checkout-flow-secondary-price.spec.ts
+  - side_code: TC-012
+    code: RT-012
+    name: "purchase one-time PayPal checkout flow first sale price"
+    spec: tests/playwright/regression/rt012-purchase-one-time-paypal-checkout-flow-first-sale-price.spec.ts
+  - side_code: TC-013
+    code: RT-013
+    name: "purchase one-time PayPal checkout flow secondary sale price"
+    spec: tests/playwright/regression/rt013-purchase-one-time-paypal-checkout-flow-secondary-sale-price.spec.ts
+  - side_code: TC-014
+    code: RT-014
+    name: "purchase subscription PayPal checkout flow monthly"
+    spec: tests/playwright/regression/rt014-purchase-subscription-paypal-checkout-flow-monthly.spec.ts
+  - side_code: TC-015
+    code: RT-015
+    name: "purchase subscription PayPal checkout flow annually"
+    spec: tests/playwright/regression/rt015-purchase-subscription-paypal-checkout-flow-annually.spec.ts
+  - side_code: TC-016
+    code: RT-016
+    name: "purchase subscription PayPal checkout flow monthly sale price"
+    spec: tests/playwright/regression/rt016-purchase-subscription-paypal-checkout-flow-monthly-sale-price.spec.ts
+  - side_code: TC-017
+    code: RT-017
+    name: "purchase subscription PayPal checkout flow annually sale price"
+    spec: tests/playwright/regression/rt017-purchase-subscription-paypal-checkout-flow-annually-sale-price.spec.ts
+  - side_code: TC-018
+    code: RT-018
+    name: "purchase custom price PayPal checkout flow"
+    spec: tests/playwright/regression/rt018-purchase-custom-price-paypal-checkout-flow.spec.ts
+  - side_code: TC-019
+    code: RT-019
+    name: "purchase free checkout flow"
+    spec: tests/playwright/regression/rt019-purchase-free-checkout-flow.spec.ts
