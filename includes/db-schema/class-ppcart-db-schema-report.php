@@ -46,6 +46,15 @@ final class PPCart_DB_Schema_Report
     }
 
     /**
+     * @param string $table_name Table name.
+     * @return PPCart_DB_Schema_Issue[]
+     */
+    public function get_issues($table_name)
+    {
+        return $this->tables[ (string) $table_name ]['issues'] ?? [];
+    }
+
+    /**
      * @return bool
      */
     public function is_healthy()

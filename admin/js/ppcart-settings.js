@@ -1413,6 +1413,45 @@
             return;
         }
 
+        $(document).on('ppcart-settings:tab-changed', function (event, tabId) {
+            if (tabId === 'maintenance') {
+                loadDbSchemaPanel();
+            }
+        });
+
+        function loadDbSchemaPanel() {
+            var $panel = $page.find('[data-ppcart-db-schema-panel]');
+            if (!$panel.length || $panel.data('ppcartLoading')) {
+                return;
+            }
+            $panel.data('ppcartLoading', true);
+
+            $.post(
+                window.ajaxurl || '/wp-admin/admin-ajax.php',
+                {
+                    action: 'ppcart_db_schema_status',
+                    nonce: $panel.attr('data-nonce')
+                }
+            ).done(function (response) {
+                if (response && response.success && response.data && typeof response.data.html === 'string') {
+                    $panel.replaceWith(response.data.html);
+                    return;
+                }
+                showDbSchemaStatusFailure($panel, response);
+            }).fail(function (xhr) {
+                showDbSchemaStatusFailure($panel, xhr && xhr.responseJSON);
+            });
+        }
+
+        function showDbSchemaStatusFailure($panel, response) {
+            var message = response && response.data && response.data.message
+                ? response.data.message
+                : (window.ppcartSettingsI18n && window.ppcartSettingsI18n.dbSchemaStatusFailed
+                    ? window.ppcartSettingsI18n.dbSchemaStatusFailed
+                    : 'Could not check the database schema.');
+            $panel.data('ppcartLoading', false).find('.description').text(message);
+        }
+
         $page.on('click', '[data-ppcart-fix-db-schema]', function (event) {
             event.preventDefault();
 

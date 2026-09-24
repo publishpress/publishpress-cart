@@ -59,10 +59,21 @@ final class PPCart_DB_Schema_Service
      */
     public function repair_all()
     {
+        return $this->repair($this->check_all());
+    }
+
+    /**
+     * Repairs the issues in an existing check report, then re-checks.
+     *
+     * @param PPCart_DB_Schema_Report $report Report from check_all().
+     * @return PPCart_DB_Schema_Report
+     */
+    public function repair(PPCart_DB_Schema_Report $report)
+    {
         $fix_errors_by_table = [];
 
         foreach ($this->registry->get_schemas() as $schema) {
-            $issues = $this->collect_issues($schema);
+            $issues = $report->get_issues($schema->get_table_name());
 
             if (empty($issues)) {
                 continue;
@@ -101,12 +112,15 @@ final class PPCart_DB_Schema_Service
      */
     private function collect_issues(PPCart_DB_Table_Schema $schema)
     {
-        $table  = $schema->get_table_name();
-        $exists = $this->inspector->table_exists($table);
+        $table = $schema->get_table_name();
+
+        if (! $this->inspector->table_exists($table)) {
+            return $this->comparator->compare($schema, false, [], []);
+        }
 
         return $this->comparator->compare(
             $schema,
-            $exists,
+            true,
             $this->inspector->get_columns($table),
             $this->inspector->get_indexes($table)
         );

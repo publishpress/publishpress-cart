@@ -59,8 +59,7 @@ trait PPCart_Admin_Settings_Input_Fields_Trait
     public function field_maintenance_db_schema($args)
     {
         if (class_exists('PPCart_DB_Schema')) {
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in render_maintenance_html().
-            echo PPCart_DB_Schema::admin()->render_maintenance_html();
+            echo wp_kses(PPCart_DB_Schema::admin()->render_maintenance_placeholder_html(), ppcart_admin_allowed_html());
         }
     }
 

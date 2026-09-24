@@ -1,6 +1,6 @@
 # PublishPress Cart Hook Manifest
 
-Generated on 2026-09-23 from a static PHP token audit of `publishpress-cart`.
+Generated on 2026-09-24 from a static PHP token audit of `publishpress-cart`.
 
 ## Prefix Policy
 
@@ -680,6 +680,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `wp_ajax_ppcart_create_payment_intent` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/class-ppcart-public-hook-registrar.php` |  |
 | `wp_ajax_ppcart_create_setup_intent` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/class-ppcart-public-hook-registrar.php` |  |
 | `wp_ajax_ppcart_create_subscription` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/class-ppcart-public-hook-registrar.php` |  |
+| `wp_ajax_ppcart_db_schema_status` | Action | `add_action` | External | wordpress_core | `includes/db-schema/class-ppcart-db-schema-admin.php` |  |
 | `wp_ajax_ppcart_dismissed_notice_handler` | Action | `add_action` | External | wordpress_core | `includes/functions/admin-ajax-and-notices.php` |  |
 | `wp_ajax_ppcart_fix_db_schema` | Action | `add_action` | External | wordpress_core | `includes/db-schema/class-ppcart-db-schema-admin.php` |  |
 | `wp_ajax_ppcart_fresh_product` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/templates/admin-hook-registrar-register.php` |  |

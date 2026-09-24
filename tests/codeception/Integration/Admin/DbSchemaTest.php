@@ -465,12 +465,61 @@ class DbSchemaTest extends NoTransactionWPTestCase
         $this->assertStringContainsString('data-ppcart-db-schema-status', $html);
     }
 
+    public function test_IT_377_settings_placeholder_runs_no_schema_queries(): void
+    {
+        global $wpdb;
+
+        $queries_before = $wpdb->num_queries;
+        $html           = wp_kses(PPCart_DB_Schema::admin()->render_maintenance_placeholder_html(), ppcart_admin_allowed_html());
+
+        $this->assertSame($queries_before, $wpdb->num_queries);
+        $this->assertMatchesRegularExpression('/<div[^>]*\sdata-ppcart-db-schema-panel[\s=>]/', $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*\sdata-nonce="[^"]+"/', $html);
+        $this->assertStringNotContainsString('data-ppcart-db-schema-status', $html);
+    }
+
+    public function test_IT_377_status_ajax_returns_checked_panel_markup(): void
+    {
+        wp_set_current_user($this->factory()->user->create([ 'role' => 'administrator' ]));
+        $this->dropPluginTable(ppcart_live_table('tax_rate'));
+
+        list($response) = $this->callAjax('ajax_db_schema_status', 'ppcart_db_schema_status');
+        PPCart_DB_Schema::service()->repair_all();
+
+        $this->assertIsArray($response);
+        $this->assertTrue($response['success']);
+        $this->assertStringContainsString('data-ppcart-db-schema-status', $response['data']['html']);
+        $this->assertMatchesRegularExpression('/<button[^>]*\sdata-ppcart-fix-db-schema[\s=>]/', $response['data']['html']);
+    }
+
+    public function test_IT_377_status_ajax_returns_403_without_manage_options(): void
+    {
+        wp_set_current_user($this->factory()->user->create([ 'role' => 'subscriber' ]));
+
+        list($response, $status_code) = $this->callAjax('ajax_db_schema_status', 'ppcart_db_schema_status');
+
+        $this->assertIsArray($response);
+        $this->assertFalse($response['success']);
+        $this->assertSame(403, $status_code);
+        $this->assertArrayNotHasKey('html', $response['data']);
+    }
+
     /**
      * @return array{0: mixed, 1: int|null} Decoded JSON response and HTTP status code.
      */
     private function callAjaxFixDbSchema()
     {
-        $_POST             = [ 'nonce' => wp_create_nonce('ppcart_fix_db_schema') ];
+        return $this->callAjax('ajax_fix_db_schema', 'ppcart_fix_db_schema');
+    }
+
+    /**
+     * @param string $handler PPCart_DB_Schema_Admin AJAX method name.
+     * @param string $nonce_action Nonce action the handler checks.
+     * @return array{0: mixed, 1: int|null} Decoded JSON response and HTTP status code.
+     */
+    private function callAjax($handler, $nonce_action)
+    {
+        $_POST             = [ 'nonce' => wp_create_nonce($nonce_action) ];
         $_REQUEST['nonce'] = $_POST['nonce'];
 
         $status_code    = null;
@@ -486,7 +535,7 @@ class DbSchemaTest extends NoTransactionWPTestCase
 
         ob_start();
         try {
-            PPCart_DB_Schema::admin()->ajax_fix_db_schema();
+            PPCart_DB_Schema::admin()->{$handler}();
         } catch (\RuntimeException $exception) {
             $this->assertSame('wp_die', $exception->getMessage());
         } finally {

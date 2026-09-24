@@ -111,7 +111,7 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
                                             <?php endif; ?>
                                             <?php
                         if (class_exists('PPCart_DB_Schema')) {
-                            echo wp_kses(PPCart_DB_Schema::admin()->render_maintenance_html(), ppcart_admin_allowed_html());
+                            echo wp_kses(PPCart_DB_Schema::admin()->render_maintenance_placeholder_html(), ppcart_admin_allowed_html());
                         }
                 ?>
                                         </div>

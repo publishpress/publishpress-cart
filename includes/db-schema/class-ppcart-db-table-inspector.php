@@ -41,6 +41,8 @@ final class PPCart_DB_Table_Inspector
     }
 
     /**
+     * Call only after table_exists() returned true.
+     *
      * @param string $table Table name.
      * @return array<string, string> Column name => raw Type.
      */
@@ -48,7 +50,7 @@ final class PPCart_DB_Table_Inspector
     {
         $table = (string) $table;
 
-        if ('' === $table || ! $this->table_exists($table)) {
+        if ('' === $table) {
             return [];
         }
 
@@ -75,6 +77,8 @@ final class PPCart_DB_Table_Inspector
     }
 
     /**
+     * Call only after table_exists() returned true.
+     *
      * @param string $table Table name.
      * @return array<string, array{columns: string[], unique: bool}>
      */
@@ -82,7 +86,7 @@ final class PPCart_DB_Table_Inspector
     {
         $table = (string) $table;
 
-        if ('' === $table || ! $this->table_exists($table)) {
+        if ('' === $table) {
             return [];
         }
 

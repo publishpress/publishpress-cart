@@ -390,6 +390,7 @@ function ppcart_admin_allowed_html()
         'data-placeholder' => true,
         'data-plaintext-count' => true,
         'data-ppcart-db-schema-maintenance' => true,
+        'data-ppcart-db-schema-panel' => true,
         'data-ppcart-db-schema-status' => true,
         'data-ppcart-editor-field' => true,
         'data-ppcart-editor-settings' => true,
