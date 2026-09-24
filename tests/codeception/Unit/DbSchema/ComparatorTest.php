@@ -22,6 +22,7 @@ class ComparatorTest extends Unit
     {
         require_once PPCART_PLUGIN_ROOT . 'includes/db-schema/class-ppcart-db-table-schema.php';
         require_once PPCART_PLUGIN_ROOT . 'includes/db-schema/class-ppcart-db-schema-issue.php';
+        require_once PPCART_PLUGIN_ROOT . 'includes/db-schema/class-ppcart-db-column-type-policy.php';
         require_once PPCART_PLUGIN_ROOT . 'includes/db-schema/class-ppcart-db-schema-comparator.php';
 
         $this->comparator = new PPCart_DB_Schema_Comparator();
@@ -70,7 +71,7 @@ class ComparatorTest extends Unit
     {
         $schema = $this->sampleSchema(
             [
-                'amount' => 'varchar(255) NOT NULL',
+                'amount' => 'text',
             ],
             []
         );
@@ -78,12 +79,67 @@ class ComparatorTest extends Unit
         $issues = $this->comparator->compare(
             $schema,
             true,
-            [ 'amount' => 'text' ],
+            [ 'amount' => 'varchar(255)' ],
             []
         );
 
         $this->assertCount(1, $issues);
         $this->assertSame(PPCart_DB_Schema_Issue::COLUMN_MISMATCH, $issues[0]->get_type());
+    }
+
+    /**
+     * @dataProvider widening_changes
+     */
+    public function test_UT_359_widening_type_change_is_fixable(string $expected, string $live): void
+    {
+        $issues = $this->comparator->compare($this->sampleSchema([ 'col' => $expected ], []), true, [ 'col' => $live ], []);
+
+        $this->assertCount(1, $issues);
+        $this->assertSame(PPCart_DB_Schema_Issue::COLUMN_MISMATCH, $issues[0]->get_type());
+    }
+
+    /**
+     * @return array<string, array{string, string}>
+     */
+    public function widening_changes(): array
+    {
+        return [
+            'varchar grows'          => [ 'varchar(255) NOT NULL', 'varchar(64)' ],
+            'varchar to text'        => [ 'text', 'varchar(20)' ],
+            'short varchar tinytext' => [ 'tinytext NOT NULL', 'varchar(40)' ],
+            'text family grows'      => [ 'longtext', 'mediumtext' ],
+            'integer grows'          => [ 'bigint(20) NOT NULL', 'int' ],
+            'unsigned integer grows' => [ 'bigint(20) unsigned NOT NULL', 'mediumint unsigned' ],
+            'char to varchar'        => [ 'varchar(20)', 'char(20)' ],
+        ];
+    }
+
+    /**
+     * @dataProvider narrowing_changes
+     */
+    public function test_UT_359_narrowing_type_change_needs_manual_fix(string $expected, string $live): void
+    {
+        $issues = $this->comparator->compare($this->sampleSchema([ 'col' => $expected ], []), true, [ 'col' => $live ], []);
+
+        $this->assertCount(1, $issues);
+        $this->assertSame(PPCart_DB_Schema_Issue::COLUMN_UNSAFE_CHANGE, $issues[0]->get_type());
+    }
+
+    /**
+     * @return array<string, array{string, string}>
+     */
+    public function narrowing_changes(): array
+    {
+        return [
+            'varchar shrinks'        => [ 'varchar(20) NOT NULL', 'varchar(255)' ],
+            'text to varchar'        => [ 'varchar(255) NOT NULL', 'text' ],
+            'long varchar tinytext'  => [ 'tinytext', 'varchar(255)' ],
+            'text family shrinks'    => [ 'text', 'longtext' ],
+            'integer shrinks'        => [ 'int', 'bigint' ],
+            'signed to unsigned'     => [ 'bigint unsigned', 'bigint' ],
+            'text to integer'        => [ 'bigint(20) NOT NULL', 'varchar(20)' ],
+            'datetime to timestamp'  => [ 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP', 'datetime' ],
+        ];
     }
 
     public function test_UT_359_index_column_order_mismatch_is_reported(): void

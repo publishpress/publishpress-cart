@@ -10,6 +10,7 @@ require_once __DIR__ . '/db-schema/class-ppcart-db-schema-report.php';
 require_once __DIR__ . '/db-schema/class-ppcart-db-schema-free-definitions.php';
 require_once __DIR__ . '/db-schema/class-ppcart-db-schema-registry.php';
 require_once __DIR__ . '/db-schema/class-ppcart-db-table-inspector.php';
+require_once __DIR__ . '/db-schema/class-ppcart-db-column-type-policy.php';
 require_once __DIR__ . '/db-schema/class-ppcart-db-schema-comparator.php';
 require_once __DIR__ . '/db-schema/class-ppcart-db-table-fixer.php';
 require_once __DIR__ . '/db-schema/class-ppcart-db-schema-service.php';

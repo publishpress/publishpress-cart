@@ -9,6 +9,17 @@ if (! defined('ABSPATH')) {
  */
 final class PPCart_DB_Schema_Comparator
 {
+    /** @var PPCart_DB_Column_Type_Policy */
+    private $type_policy;
+
+    /**
+     * @param PPCart_DB_Column_Type_Policy|null $type_policy Decides which type changes are safe to apply.
+     */
+    public function __construct(?PPCart_DB_Column_Type_Policy $type_policy = null)
+    {
+        $this->type_policy = $type_policy ?? new PPCart_DB_Column_Type_Policy();
+    }
+
     /**
      * @param PPCart_DB_Table_Schema $schema Expected schema.
      * @param bool $exists Whether the table exists.
@@ -43,7 +54,9 @@ final class PPCart_DB_Schema_Comparator
 
             if ($expected_type !== $actual_type) {
                 $issues[] = new PPCart_DB_Schema_Issue(
-                    PPCart_DB_Schema_Issue::COLUMN_MISMATCH,
+                    $this->type_policy->is_lossless_change($actual_type, $expected_type)
+                        ? PPCart_DB_Schema_Issue::COLUMN_MISMATCH
+                        : PPCart_DB_Schema_Issue::COLUMN_UNSAFE_CHANGE,
                     $table,
                     $column_name,
                     $expected_type,

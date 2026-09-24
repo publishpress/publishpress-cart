@@ -373,6 +373,35 @@ class DbSchemaTest extends NoTransactionWPTestCase
         $this->assertContains($table, $tables);
     }
 
+    public function test_IT_377_widened_column_is_reported_but_not_narrowed_by_repair(): void
+    {
+        global $wpdb;
+
+        $table   = ppcart_live_table('downloads');
+        $file_id = str_repeat('f', 40);
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Simulate a site-widened column.
+        $wpdb->query($wpdb->prepare('ALTER TABLE %i MODIFY COLUMN file_id varchar(64) NOT NULL', $table));
+        // wpdb::insert() would reject the value against its cached varchar(20) column length.
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Seed a value longer than the expected column.
+        $wpdb->query($wpdb->prepare('INSERT INTO %i (file_id, order_id, order_key, product_id) VALUES (%s, 1, %s, 1)', $table, $file_id, 'widened-key'));
+
+        $repaired = PPCart_DB_Schema::service()->repair_all();
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Inspect column after repair.
+        $column = $wpdb->get_row($wpdb->prepare('SHOW COLUMNS FROM %i LIKE %s', $table, 'file_id'), ARRAY_A);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Inspect stored value after repair.
+        $stored = $wpdb->get_var($wpdb->prepare('SELECT file_id FROM %i LIMIT 1', $table));
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Restore the expected column for later tests.
+        $wpdb->query($wpdb->prepare('TRUNCATE TABLE %i', $table));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.SchemaChange -- Restore the expected column for later tests.
+        $wpdb->query($wpdb->prepare('ALTER TABLE %i MODIFY COLUMN file_id varchar(20) NOT NULL', $table));
+
+        $this->assertFalse($repaired->is_healthy());
+        $this->assertSame('varchar(64)', $column['Type']);
+        $this->assertSame($file_id, $stored);
+    }
+
     public function test_IT_377_ajax_repair_returns_403_without_manage_options(): void
     {
         wp_set_current_user($this->factory()->user->create([ 'role' => 'subscriber' ]));

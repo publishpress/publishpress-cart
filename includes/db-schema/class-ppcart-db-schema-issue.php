@@ -9,15 +9,18 @@ if (! defined('ABSPATH')) {
  */
 final class PPCart_DB_Schema_Issue
 {
-    const MISSING_TABLE = 'missing_table';
+    public const MISSING_TABLE = 'missing_table';
 
-    const MISSING_COLUMN = 'missing_column';
+    public const MISSING_COLUMN = 'missing_column';
 
-    const COLUMN_MISMATCH = 'column_mismatch';
+    public const COLUMN_MISMATCH = 'column_mismatch';
 
-    const MISSING_INDEX = 'missing_index';
+    /** Type change that could lose stored values; reported, never applied. */
+    public const COLUMN_UNSAFE_CHANGE = 'column_unsafe_change';
 
-    const INDEX_MISMATCH = 'index_mismatch';
+    public const MISSING_INDEX = 'missing_index';
+
+    public const INDEX_MISMATCH = 'index_mismatch';
 
     /** @var string */
     private $type;
@@ -84,6 +87,14 @@ final class PPCart_DB_Schema_Issue
                 return sprintf(
                     /* translators: 1: column name, 2: expected type, 3: actual type. */
                     __('Column "%1$s" should be %2$s but is %3$s.', 'publishpress-cart'),
+                    $this->name,
+                    $this->expected,
+                    $this->actual
+                );
+            case self::COLUMN_UNSAFE_CHANGE:
+                return sprintf(
+                    /* translators: 1: column name, 2: expected type, 3: actual type. */
+                    __('Column "%1$s" should be %2$s but is %3$s. Changing it could lose data, so it must be fixed manually.', 'publishpress-cart'),
                     $this->name,
                     $this->expected,
                     $this->actual
