@@ -167,9 +167,11 @@ only through the public filter `ppcart_db_table_schemas`.
 - Constructor: `new PPCart_DB_Table_Schema( $table_name, $columns, $indexes, $label )`.
 - `$columns`: map of column name => SQL fragment (for example `bigint(20) unsigned NOT NULL AUTO_INCREMENT`).
 - `$indexes`: map of index name => `[ 'columns' => [ 'col' or 'meta_key(191)' ], 'unique' => bool ]`; use `PRIMARY` for the primary key (always treated as unique).
-- Declare `UNIQUE` and `PRIMARY KEY` only in `$indexes`, never inline in a column fragment. Table, column, and index names must match `[A-Za-z0-9_$]`. The registry skips a schema that breaks these rules and raises `_doing_it_wrong`.
+- Declare `UNIQUE` and `PRIMARY KEY` only in `$indexes`, never inline in a column fragment. Table, column, and index names must match `[A-Za-z0-9_$]`. The table name must start with the site table prefix and must not be a WordPress core table.
+- A column fragment is one column definition: type plus attributes such as `NOT NULL`, `DEFAULT 'x'`, `AUTO_INCREMENT`. It must not contain `;`, backticks, double quotes, `--` / `#` / `/* */` comments, a comma outside parentheses, or an unterminated quote. Commas and semicolons inside a quoted `DEFAULT` literal are fine.
+- The registry skips a schema that breaks any of these rules and raises `_doing_it_wrong`.
 - Mismatched indexes are rebuilt with one atomic `ALTER TABLE … DROP INDEX …, ADD [UNIQUE] INDEX …` (primary key: `DROP PRIMARY KEY, ADD PRIMARY KEY (…)`). The fixer never drops tables or columns.
-- Column type drift is fixed with `MODIFY COLUMN` using your fragment. If a site widened a column, this can shrink it back and truncate data; keep fragments at the widest type you ship.
+- Column type drift is fixed with `MODIFY COLUMN` only when the change keeps every stored value: a wider integer with the same signedness, or a same-or-larger `char` / `varchar` / text type. Any other type change (for example a site-widened `varchar` that your fragment would shrink) is reported as needing a manual fix and never applied.
 - Listen for `ppcart_db_schema_repaired` when Pro needs to react to a maintenance repair run (optional).
 
 ## Current Free/Pro contract
