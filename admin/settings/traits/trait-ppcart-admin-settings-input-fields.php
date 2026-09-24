@@ -50,6 +50,19 @@ trait PPCart_Admin_Settings_Input_Fields_Trait
         }
     }
 
+    /**
+     * Renders the Maintenance database schema panel.
+     *
+     * @param array $args Field arguments.
+     * @return void
+     */
+    public function field_maintenance_db_schema($args)
+    {
+        if (class_exists('PPCart_DB_Schema')) {
+            echo wp_kses(PPCart_DB_Schema::admin()->render_maintenance_placeholder_html(), ppcart_admin_allowed_html());
+        }
+    }
+
     private static function get_pages()
     {
         $pages = get_pages();

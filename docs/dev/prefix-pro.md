@@ -157,6 +157,24 @@ off**. Mode on is only a third-party check, not Pro’s own contract.
 | Do not dual-fire legacy hooks from Pro | Free Compatibility Mode already bridges `sc_*` ↔ `ppcart_*`. Pro call sites fire/listen on canonical names only. |
 | Coordinate Free JS for Pro AJAX | Free checkout JS posts canonical `ppcart_check_username` / `ppcart_capture_lead` (slice 30). Leftover names bridge in Free Compat. Coupon / upsell leftovers stay Pro until a later Pro slice. |
 
+## Database schema extension (Maintenance)
+
+Free ships the schema engine and Settings → Maintenance UI
+(`PPCart_DB_Schema`, `includes/db-schema/`). Pro registers additional tables
+only through the public filter `ppcart_db_table_schemas`.
+
+- Build `PPCart_DB_Table_Schema` with the **resolved** table name (`ppcart_pro_live_table()` for affiliate tables). Never pass unprefixed suffixes.
+- Constructor: `new PPCart_DB_Table_Schema( $table_name, $columns, $indexes, $label )`.
+- `$columns`: map of column name => SQL fragment (for example `bigint(20) unsigned NOT NULL AUTO_INCREMENT`).
+- `$indexes`: map of index name => `[ 'columns' => [ 'col' or 'meta_key(191)' ], 'unique' => bool ]`; use `PRIMARY` for the primary key (always treated as unique).
+- Declare `UNIQUE` and `PRIMARY KEY` only in `$indexes`, never inline in a column fragment. Table, column, and index names must match `[A-Za-z0-9_$]`. The table name must start with the site table prefix and must not be a WordPress core table.
+- Filter-registered tables must be Cart-owned: `$wpdb->prefix` followed by an owned prefix, `ppcart_` by default (so `wp_ppcart_affiliates` passes, `wp_wc_orders` does not). Add more with `ppcart_db_schema_owned_table_prefixes` (array of unprefixed prefixes ending in `_`). Free's own four definitions are exempt because they come from the live table helpers. Compat adds any leftover prefix it maps live tables to; Free never names one.
+- A column fragment is one column definition: type plus attributes such as `NOT NULL`, `DEFAULT 'x'`, `AUTO_INCREMENT`. It must not contain `;`, backticks, double quotes, `--` / `#` / `/* */` comments, a comma outside parentheses, or an unterminated quote. Commas and semicolons inside a quoted `DEFAULT` literal are fine.
+- The registry skips a schema that breaks any of these rules and raises `_doing_it_wrong`.
+- Mismatched indexes are rebuilt with one atomic `ALTER TABLE … DROP INDEX …, ADD [UNIQUE] INDEX …` (primary key: `DROP PRIMARY KEY, ADD PRIMARY KEY (…)`). The fixer never drops tables or columns.
+- Column type drift is fixed with `MODIFY COLUMN` only when the change keeps every stored value: a wider integer with the same signedness, or a same-or-larger `char` / `varchar` / text type. Any other type change (for example a site-widened `varchar` that your fragment would shrink) is reported as needing a manual fix and never applied.
+- Listen for `ppcart_db_schema_repaired` when Pro needs to react to a maintenance repair run (optional).
+
 ## Current Free/Pro contract
 
 These are the names Free already uses. Pro must match them. Live leftover maps in sibling `publishpress-cart-compat` (paths companion-relative; Free has no `includes/compat/`):

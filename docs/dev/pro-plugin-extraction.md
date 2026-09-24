@@ -385,6 +385,8 @@ Pro should extend Free through these hooks. Add new ones in Free only when a gap
 | `ppcart_load_pro_modules` | **New** — require Pro module files |
 | `ppcart_register_pro_hooks` | **New** — REST, admin, public Pro hooks |
 | `ppcart_register_public_ajax_handlers` | **New** — Pro AJAX on public class |
+| `ppcart_db_table_schemas` | **New** — Pro registers `PPCart_DB_Table_Schema` objects for extra custom tables |
+| `ppcart_db_schema_repaired` | **New** — after Maintenance schema repair completes (`$report` array) |
 
 ### Product admin
 

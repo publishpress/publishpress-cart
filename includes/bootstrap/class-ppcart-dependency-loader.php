@@ -64,6 +64,11 @@ class PPCart_Dependency_Loader
             PPCart_Secrets::init();
         }
 
+        require_once $base_path . 'includes/class-ppcart-db-schema.php';
+        if (class_exists('PPCart_DB_Schema')) {
+            PPCart_DB_Schema::init();
+        }
+
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */

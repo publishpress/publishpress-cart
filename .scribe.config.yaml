@@ -166,6 +166,13 @@ modules:
     test_range: UT-146–UT-162
     features: []
 
+  - id: db-schema
+    name: Database schema check and repair
+    suites: [unit, integration]
+    test_range: UT-359, IT-377
+    features: []
+    notes: Settings → Maintenance schema comparator, fixer, and ppcart_db_table_schemas registry.
+
   - id: mailchimp-api
     name: Mailchimp REST helpers
     suites: [unit, integration]

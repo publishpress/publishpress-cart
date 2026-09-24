@@ -126,6 +126,8 @@ if (PPCart_Admin_Screens::is_settings_screen($hook_suffix)) {
         /* translators: %d: number of plaintext credentials. */
         'migrateSecretsConfirm' => __('Encrypt %d plaintext credential(s) in the database? Take a backup first and run this during a maintenance window.', 'publishpress-cart'),
         'migrateSecretsConfirmEmpty' => __('Scan stored credentials and encrypt any plaintext values? Take a backup first and run this during a maintenance window.', 'publishpress-cart'),
+        'fixDbSchemaFailed' => __('Database schema repair failed.', 'publishpress-cart'),
+        'dbSchemaStatusFailed' => __('Could not check the database schema.', 'publishpress-cart'),
     ]);
 
     $this->enqueue_tax_rate_templates();

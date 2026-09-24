@@ -50,6 +50,7 @@ $this->register_email_tab_section();
 $this->register_tax_tab_section();
 $this->register_invoice_tab_section();
 $this->register_maintenance_tab_section();
+$this->register_maintenance_db_schema_section();
 
 /* register custom tab field */
 $ppcart_tabs = apply_filters('ppcart_setting_tabs', []);
