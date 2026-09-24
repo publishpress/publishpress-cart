@@ -89,6 +89,10 @@ final class PPCart_DB_Schema_Registry
             return 'invalid table name';
         }
 
+        if (! $this->is_plugin_table_name($schema->get_table_name())) {
+            return 'table name must use the site table prefix and must not be a WordPress core table';
+        }
+
         $columns = $schema->get_columns();
 
         if (empty($columns)) {
@@ -96,7 +100,7 @@ final class PPCart_DB_Schema_Registry
         }
 
         foreach ($columns as $name => $fragment) {
-            if (! $this->is_identifier($name) || ! is_string($fragment) || '' === trim($fragment)) {
+            if (! $this->is_identifier($name) || ! is_string($fragment) || ! $this->is_single_column_definition($fragment)) {
                 return 'invalid column definition';
             }
 
@@ -118,6 +122,68 @@ final class PPCart_DB_Schema_Registry
         }
 
         return '';
+    }
+
+    /**
+     * @param string $table Table name.
+     * @return bool
+     */
+    private function is_plugin_table_name($table)
+    {
+        global $wpdb;
+
+        if (! isset($wpdb) || ! is_object($wpdb)) {
+            return false;
+        }
+
+        $prefix = (string) $wpdb->base_prefix;
+
+        if ('' === $prefix || 0 !== strpos($table, $prefix)) {
+            return false;
+        }
+
+        return ! in_array($table, $wpdb->tables('all', true), true);
+    }
+
+    /**
+     * Column definitions are appended to ALTER / CREATE TABLE as raw SQL, so a
+     * definition must not be able to end the clause or the statement.
+     *
+     * @param string $fragment Column definition, e.g. "varchar(20) NOT NULL DEFAULT 'x'".
+     * @return bool
+     */
+    private function is_single_column_definition($fragment)
+    {
+        $fragment = trim($fragment);
+
+        if (! preg_match('/^[A-Za-z]/', $fragment)) {
+            return false;
+        }
+
+        // Replace complete single-quoted literals ('' and \' escapes) so a quote left over means an unterminated literal.
+        $outside_literals = preg_replace("/'(?:[^'\\\\]|\\\\.|'')*'/s", 'LITERAL', $fragment);
+
+        if (null === $outside_literals || preg_match('/[\'";`#\\\\]|--|\/\*|\*\//', $outside_literals)) {
+            return false;
+        }
+
+        $depth = 0;
+
+        foreach (str_split($outside_literals) as $char) {
+            if ('(' === $char) {
+                ++$depth;
+            } elseif (')' === $char) {
+                --$depth;
+            } elseif (',' === $char && 0 === $depth) {
+                return false;
+            }
+
+            if ($depth < 0) {
+                return false;
+            }
+        }
+
+        return 0 === $depth;
     }
 
     /**

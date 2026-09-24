@@ -253,7 +253,7 @@ final class PPCart_DB_Table_Fixer
     {
         $wpdb = $this->wpdb;
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.NotPrepared -- Schema repair on a plugin-owned table; identifiers are prepared by the caller.
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.NotPrepared -- Schema repair on a plugin-owned table; table/index names go through %i in the caller, and column definitions and index columns are validated by PPCart_DB_Schema_Registry.
         $wpdb->query($sql);
 
         return $this->collect_last_error();

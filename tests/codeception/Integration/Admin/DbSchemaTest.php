@@ -317,6 +317,13 @@ class DbSchemaTest extends NoTransactionWPTestCase
                 [ 'row_id' => [ 'columns' => [ 'row_id`) , DROP INDEX PRIMARY' ], 'unique' => true ] ]
             ),
             new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_inline_unique', [ 'code' => 'varchar(64) UNIQUE NOT NULL' ], []),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_def_comma', [ 'code' => 'int, DROP COLUMN order_id' ], []),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_def_semicolon', [ 'code' => 'int; DROP TABLE wp_users' ], []),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_def_comment', [ 'code' => 'int -- trailing' ], []),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_def_quote', [ 'code' => "varchar(20) DEFAULT 'open" ], []),
+            new PPCart_DB_Table_Schema($wpdb->prefix . 'ppcart_def_paren', [ 'code' => 'decimal(10,2))' ], []),
+            new PPCart_DB_Table_Schema('other_ppcart_unprefixed', $valid_columns, $valid_indexes),
+            new PPCart_DB_Table_Schema($wpdb->users, $valid_columns, $valid_indexes),
         ];
         $add_unsafe = static function ($schemas) use ($unsafe) {
             return array_merge($schemas, $unsafe);
@@ -334,6 +341,36 @@ class DbSchemaTest extends NoTransactionWPTestCase
         foreach ($unsafe as $schema) {
             $this->assertNotContains($schema->get_table_name(), $tables);
         }
+    }
+
+    public function test_IT_377_filter_schemas_with_quoted_defaults_and_decimals_are_accepted(): void
+    {
+        global $wpdb;
+
+        $table  = $wpdb->prefix . 'ppcart_db_schema_literal_test';
+        $schema = new PPCart_DB_Table_Schema(
+            $table,
+            [
+                'row_id' => 'bigint(20) NOT NULL AUTO_INCREMENT',
+                'amount' => 'decimal(10,2) NOT NULL DEFAULT 0.00',
+                'note'   => "varchar(40) NOT NULL DEFAULT 'a, b; it''s -- ok'",
+            ],
+            [ 'PRIMARY' => [ 'columns' => [ 'row_id' ], 'unique' => true ] ]
+        );
+        $add_schema = static function ($schemas) use ($schema) {
+            $schemas[] = $schema;
+
+            return $schemas;
+        };
+
+        add_filter('ppcart_db_table_schemas', $add_schema);
+        try {
+            $tables = array_keys((new \PPCart_DB_Schema_Registry(new \PPCart_DB_Schema_Free_Definitions()))->get_schemas());
+        } finally {
+            remove_filter('ppcart_db_table_schemas', $add_schema);
+        }
+
+        $this->assertContains($table, $tables);
     }
 
     public function test_IT_377_ajax_repair_returns_403_without_manage_options(): void
