@@ -1,0 +1,19 @@
+name: Dependency Security Audit
+
+on:
+  pull_request:
+    branches:
+      - "*"
+    paths:
+      - "composer.json"
+      - "composer.lock"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dependency_audit:
+    name: Run Dependency Audit
+    uses: publishpress/github-workflows/.github/workflows/dependency-security-audit.yml@dependency-security-audit
