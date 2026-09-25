@@ -85,7 +85,7 @@ if (0 === $render_count) {
                 // Ensure default visible repeater rows have a required unique id.
                 if (null !== $k && isset($atts['class']) && false !== strpos((string) $atts['class'], 'ppcart-unique')) {
                     if (! isset($atts['value']) || '' === (string) $atts['value']) {
-                        $atts['value'] = wp_unique_id('ppcart_repeater_');
+                        $atts['value'] = uniqid();
                     }
                 }
 
