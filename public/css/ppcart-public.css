@@ -1250,7 +1250,7 @@ body.ppcart-checkout-1 .ppcart-container {
   padding: 4px 15px;
   border-radius: 50px;
 }
-.ppcart #coupon-status {
+.ppcart #ppcart-coupon-status {
   display: none;
   font-size: 13px;
   color: red;
