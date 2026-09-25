@@ -231,7 +231,7 @@ if ($this->scripts != '') :
     $product_field_script = trim(ob_get_clean());
 
     if ('' !== $ppcart_product_field_scripts) {
-        $product_field_script = $ppcart_product_field_scripts . "\n" . $product_field_script;
+        $product_field_script = "jQuery(function($){\n" . $ppcart_product_field_scripts . "\n});\n" . $product_field_script;
     }
 
     if ('' !== $product_field_script) {
