@@ -680,6 +680,31 @@
             }
         });
 
+        function format_price(amt) {
+            var currency = (typeof ppcart_currency !== 'undefined') ? ppcart_currency : {symbol: '$', position: '', thousep: ',', decisep: '.', decinum: 2};
+            var parts = parseFloat(amt).toFixed(currency.decinum).split('.');
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, currency.thousep);
+            var number = parts.join(currency.decisep);
+
+            switch (currency.position) {
+                case 'right':
+                    return number + currency.symbol;
+                case 'right-space':
+                    return number + ' ' + currency.symbol;
+                case 'left-space':
+                    return currency.symbol + ' ' + number;
+                default:
+                    return currency.symbol + number;
+            }
+        }
+
+        // Public API used by the Pro add-on (coupons, order bumps).
+        window.ppcartPublic = {
+            updateForm: update_form,
+            formatPrice: format_price,
+            parseJsonResponse: ppcart_parse_json_response,
+        };
+
         function isProductSingular() {
             var selector = (typeof ppcart !== 'undefined' && ppcart.product_singular_selector)
                 ? ppcart.product_singular_selector
