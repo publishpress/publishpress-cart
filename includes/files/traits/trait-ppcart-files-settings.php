@@ -90,7 +90,7 @@ trait PPCart_Files_Settings_Trait
     {
         return [
             [
-                'class'         => 'repeater',
+                'class'         => 'ppcart-repeater',
                 'id'            => '_ppcart_files',
                 'label-add'     => __('+ Add New', 'publishpress-cart'),
                 'label-edit'    => __('Edit File', 'publishpress-cart'),
