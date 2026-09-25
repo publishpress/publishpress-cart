@@ -93,23 +93,21 @@ if ($this->scripts != '') :
                 }
             });
 
-            if(!$('#_ppcart_on_sale').is(':checked') && !$('#_ppcart_schedule_sale').is(':checked')) {
-                $('.ridsale_option_name, .ridsale_price').find('input').attr('disabled','').css({background:'#f0eeee', opacity: '0.6'}).removeClass('required error');
-                $('#rid_ppcart_show_full_price').hide();
-            } else {
-                $('.ridsale_option_name, .ridsale_price').find('input').removeAttr('disabled').removeAttr('style').addClass('required');
-                $('#rid_ppcart_show_full_price').show();
-            }
-
-            $('#_ppcart_on_sale, #_ppcart_schedule_sale').change(function(){
-                if ($(this).is(':checked')) {
-                    $('.ridsale_option_name, .ridsale_price').find('input').removeAttr('disabled').removeAttr('style').addClass('required');
+            var saleFields = '.ridsale_option_name, .ridsale_price, .ridsale_frequency, .ridsale_interval, .ridsale_installments, .ridsale_sign_up_fee';
+            var toggleSaleFields = function() {
+                var onSale = $('#_ppcart_on_sale').is(':checked') || $('#_ppcart_schedule_sale').is(':checked');
+                var $inputs = $(saleFields).find('input, select');
+                if (onSale) {
+                    $inputs.removeAttr('disabled').removeAttr('style');
+                    $('.ridsale_option_name, .ridsale_price').find('input').addClass('required');
                     $('#rid_ppcart_show_full_price').show();
-                } else if(!$('#_ppcart_on_sale').is(':checked') && !$('#_ppcart_schedule_sale').is(':checked')) {
-                    $('.ridsale_option_name, .ridsale_price').find('input').attr('disabled','').css({background:'#f0eeee', opacity: '0.6'}).removeClass('required error');
+                } else {
+                    $inputs.attr('disabled', '').css({background: '#f0eeee', opacity: '0.6'}).removeClass('required error');
                     $('#rid_ppcart_show_full_price').hide();
                 }
-            });
+            };
+            toggleSaleFields();
+            $('#_ppcart_on_sale, #_ppcart_schedule_sale').change(toggleSaleFields);
 
             $('.riddrip_action select').on('change', function(){
                 var fields = '.riddrip_tag';
@@ -231,7 +229,7 @@ if ($this->scripts != '') :
     $product_field_script = trim(ob_get_clean());
 
     if ('' !== $ppcart_product_field_scripts) {
-        $product_field_script = $ppcart_product_field_scripts . "\n" . $product_field_script;
+        $product_field_script = "jQuery(function($){\n" . $ppcart_product_field_scripts . "\n});\n" . $product_field_script;
     }
 
     if ('' !== $product_field_script) {
