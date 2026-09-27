@@ -49,6 +49,17 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
                     'tab'      => 'maintenance',
                 ],
             ],
+            'maintenance-db-schema' => [
+                'maintenance-db-schema-check' => [
+                    'type'     => 'maintenance_db_schema',
+                    'label'    => '',
+                    'settings' => [
+                        'id'            => 'ppcart_maintenance_db_schema',
+                        'skip_register' => true,
+                    ],
+                    'tab'      => 'maintenance',
+                ],
+            ],
         ];
     }
 

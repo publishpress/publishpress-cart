@@ -4241,6 +4241,25 @@ body.ppcart-settings-modal-open {
     font-weight: 700;
 }
 
+.ppcart-settings__db-schema-status {
+    display: inline-block;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+.ppcart-settings__db-schema-status.is-passed {
+    color: #008a20;
+}
+
+.ppcart-settings__db-schema-status.is-failed {
+    color: #b32d2e;
+}
+
+.ppcart-settings__db-schema-issues,
+.ppcart-settings__db-schema-fix-errors {
+    margin: 0 0 12px 1.2em;
+}
+
 .ppcart-ready__meta {
     color: #047857;
     font-size: 12.5px;

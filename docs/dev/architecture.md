@@ -50,6 +50,7 @@ There is **no** first-party `api/` REST directory.
 | `includes/files/` | Product file downloads |
 | `includes/email/` | Transactional email templates |
 | `includes/order-items/` | Order line items and details renderer |
+| `includes/class-ppcart-db-schema.php` + `includes/db-schema/` | Settings → Maintenance database schema check/repair |
 | `includes/integrations/gutenberg/` | Checkout and account blocks |
 | `public/class-ppcart-public.php` | Storefront coordinator (hooks, order-status integrations) |
 | `public/controllers/` | Checkout, account, assets, payment, orders, hosted checkout |
