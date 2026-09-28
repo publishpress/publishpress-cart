@@ -23,7 +23,7 @@ foreach ($groups as $groupKey) {
                     $fieldType = $v['type'] ?? $k;
                     $field = [$v['id'], $fieldType];
 
-                    $pos = strpos($v['class'], 'required');
+                    $pos = strpos($v['class'] ?? '', 'required');
                     if ($pos !== false && !isset($v['conditional_logic'])) {
                         $field[] = 'required';
                     }
