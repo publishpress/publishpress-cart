@@ -49,7 +49,7 @@ if ('invoice.payment_failed' === $event_type) {
 $invoice_id = self::get($invoice, 'id', '');
 if ($invoice_id && 'invoice.payment_failed' !== $event_type) {
     try {
-        $invoice = $stripe->invoices->retrieve($invoice_id);
+        $invoice = $stripe->invoices->retrieve($invoice_id, [ 'expand' => [ 'payments' ] ]);
     } catch (Exception $e) {
         // Continue with event invoice if retrieval fails.
     }
