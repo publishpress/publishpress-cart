@@ -645,6 +645,33 @@
             return false;
         });
 
+        var pwywTimer;
+        $(document).on('input change', 'input[name^="pwyw_amount["]', function(e) {
+            var $input = $(this),
+                form = $input.closest('form').parent().attr('id');
+
+            clearTimeout(pwywTimer);
+            pwywTimer = setTimeout(function() {
+                var value = parseFloat($input.val()),
+                    min = parseFloat($input.attr('min'));
+
+                $input.closest('.ppcart-form-group').find('.error').remove();
+                $input.removeClass('invalid');
+
+                if (isNaN(value)) {
+                    return;
+                }
+
+                if (!isNaN(min) && value < min) {
+                    $input.addClass('invalid');
+                    return;
+                }
+
+                $('input[name=ppcart_product_option]:checked', '#' + form).attr('data-price', value).data('price', value);
+                update_form(form);
+            }, 'change' === e.type ? 0 : 500);
+        });
+
         $(document).on('change', 'input[name^="ppcart-orderbump["]', function() {
             var form = $(this).closest('form').parent().attr('id');
 
