@@ -21,6 +21,10 @@ try {
         return false;
     }
 
+    if (! $this->setSubscriptionPaymentMethod($subscription_id, $payment_method)) {
+        return false;
+    }
+
     return $response;
 } catch (\PublishPress\Stripe\Exception\InvalidRequestException $e) {
     ppcart_helper()->logException($e, __LINE__, __FILE__);

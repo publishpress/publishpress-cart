@@ -112,6 +112,7 @@
                 action: "ppcart_update_stripe_payment_method",
                 payment_method: payment_method,
                 post_id: subscription_id,
+                all_subscription: jQuery("#ppcart-all-subscription").is(":checked") ? 1 : 0,
                 nonce: jQuery("#ppcart_nonce").val(),
             },
             success: function (response) {
@@ -130,6 +131,12 @@
                     let url = location.pathname + location.search.replace(/[\?&]action=[^&]+/, '').replace(/^&/, '?')
                     setTimeout(function(){ window.location.href = url; }, 3000);
                 }
+            },
+            error: function (xhr) {
+                ppcartStripe.hideLoader(buttonElem);
+
+                var data = xhr.responseJSON && xhr.responseJSON.data ? xhr.responseJSON.data : {};
+                alert(data.message ? data.message : 'Unable to save the new card. Please try again.');
             },
         });
     };
