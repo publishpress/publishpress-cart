@@ -325,7 +325,6 @@ function ppcart_order_detail($atts)
     $step = intval($_GET['step'] ?? 1);
 
     $order = false;
-    $resolved_from_public_order_id = false;
 
     // main order
     // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended -- Order detail resolver reads request routing parameters.
@@ -333,13 +332,14 @@ function ppcart_order_detail($atts)
         // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended -- Order detail resolver reads request routing parameters.
         $order_id = intval($_POST['ppcart_order_id'] ?? $_GET['ppcart-order']);
         $order = new PPCart_Order($order_id);
-        $resolved_from_public_order_id = true;
         // downsell
     } elseif ($oto2) {
         $order = new PPCart_Order($oto2);
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Request value is used for frontend order routing.
     } elseif (isset($_GET['ppcart-oto']) && !$oto && $step > 1) {
-        $downsell = $order->get_downsell($step);
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Request value is used for frontend order routing.
+        $parent_id = intval($_GET['ppcart-order'] ?? 0);
+        $downsell  = $parent_id ? (new PPCart_Order($parent_id))->get_downsell($step) : false;
         if ($downsell) {
             $order = $downsell;
         }
@@ -352,7 +352,8 @@ function ppcart_order_detail($atts)
         return;
     }
 
-    if ($resolved_from_public_order_id && ! PPCart_Order::visitor_can_view(absint($order->id))) {
+    // Every resolved order (main, upsell or downsell) needs the same public-page proof.
+    if (! PPCart_Order::visitor_can_view(absint($order->id))) {
         return;
     }
 
