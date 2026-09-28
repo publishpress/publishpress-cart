@@ -8,26 +8,23 @@ require_once plugin_dir_path(__FILE__) . 'template-functions.php';
 
 global $ppcart_product, $post;
 
-$product_id = $post instanceof WP_Post ? $post->ID : get_the_ID();
-$ppcart_product = ppcart_checkout_product_context($product_id);
+$ppcart_product_id = $post instanceof WP_Post ? $post->ID : get_the_ID();
+$ppcart_product = ppcart_checkout_product_context($ppcart_product_id);
 if (! is_object($ppcart_product) || ! isset($ppcart_product->ID)) {
     return;
 }
 
-$prod_id        = $ppcart_product->ID;
-$post_types = (array) apply_filters('ppcart_product_post_type', ppcart_live_post_type('product'));
-if (!in_array(get_post_type($prod_id), $post_types)) {
+$ppcart_prod_id    = $ppcart_product->ID;
+$ppcart_post_types = (array) apply_filters('ppcart_product_post_type', ppcart_live_post_type('product'));
+if (!in_array(get_post_type($ppcart_prod_id), $ppcart_post_types)) {
     return;
 }
-$cart_closed    = ppcart_is_cart_closed();
-$request_ppcart_order = filter_input(INPUT_GET, 'ppcart-order', FILTER_VALIDATE_INT);
-$request_ppcart_method_change = ppcart_filter_input(INPUT_GET, 'ppcart-method-change', FILTER_VALIDATE_INT);
-$show_confirm   = (false !== $request_ppcart_order && null !== $request_ppcart_order && absint($request_ppcart_order) > 0) ? true : false;
-$orderID        = ($show_confirm) ? absint($request_ppcart_order) : false;
-
-$method_change  = (false !== $request_ppcart_method_change && null !== $request_ppcart_method_change && absint($request_ppcart_method_change) > 0) ? true : false;
-$orderID        = ($method_change) ? absint($request_ppcart_method_change) : false;
-$hide_labels = (bool) apply_filters('ppcart_checkout_hide_labels', false, $ppcart_product);
+$ppcart_cart_closed = ppcart_is_cart_closed();
+$ppcart_request_order = filter_input(INPUT_GET, 'ppcart-order', FILTER_VALIDATE_INT);
+$ppcart_request_method_change = ppcart_filter_input(INPUT_GET, 'ppcart-method-change', FILTER_VALIDATE_INT);
+$ppcart_show_confirm  = (false !== $ppcart_request_order && null !== $ppcart_request_order && absint($ppcart_request_order) > 0) ? true : false;
+$ppcart_method_change = (false !== $ppcart_request_method_change && null !== $ppcart_request_method_change && absint($ppcart_request_method_change) > 0) ? true : false;
+$ppcart_hide_labels   = (bool) apply_filters('ppcart_checkout_hide_labels', false, $ppcart_product);
 
 if (isset($ppcart_product->show_optin)) {
     unset($ppcart_product->upsell_path, $ppcart_product->order_bump, $ppcart_product->order_bump_options, $ppcart_product->show_coupon_field);
@@ -91,9 +88,9 @@ if (!isset($ppcart_product->show_2_step)) {
         }
 
         <?php
-    $show_bump = isset($ppcart_product->order_bump_options);
-$show_bump = apply_filters('ppcart_show_orderbump', $show_bump, $ppcart_product->ID);
-if ($show_bump || isset($ppcart_product->bump_bg_color)) {
+    $ppcart_show_bump = isset($ppcart_product->order_bump_options);
+$ppcart_show_bump = apply_filters('ppcart_show_orderbump', $ppcart_show_bump, $ppcart_product->ID);
+if ($ppcart_show_bump || isset($ppcart_product->bump_bg_color)) {
     if (isset($ppcart_product->bump_bg_color)) :
         ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-main {
             background-color: <?php echo esc_attr($ppcart_product->bump_bg_color); ?>
@@ -101,10 +98,10 @@ if ($show_bump || isset($ppcart_product->bump_bg_color)) {
 
     <?php endif;
 
-    for ($k = 0; $k < count($ppcart_product->order_bump_options); $k++) {
-        if (isset($ppcart_product->order_bump_options[$k]['bump_bg_color']) && $ppcart_product->order_bump_options[$k]['bump_bg_color']) {
-            ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-<?php echo esc_attr($k); ?>.ppcart-section.orderbump {
-            background-color: <?php echo esc_attr($ppcart_product->order_bump_options[$k]['bump_bg_color']); ?>
+    for ($ppcart_bump_index = 0; $ppcart_bump_index < count($ppcart_product->order_bump_options); $ppcart_bump_index++) {
+        if (isset($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) && $ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) {
+            ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-<?php echo esc_attr($ppcart_bump_index); ?>.ppcart-section.orderbump {
+            background-color: <?php echo esc_attr($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']); ?>
         }
 
                 <?php
@@ -122,9 +119,9 @@ if ($show_bump || isset($ppcart_product->bump_bg_color)) {
 
         <?php endif; ?>
     <?php
-    $checkout_css = trim(ob_get_clean());
+    $ppcart_checkout_css = trim(ob_get_clean());
 
-ppcart_enqueue_checkout_inline_style($checkout_css);
+ppcart_enqueue_checkout_inline_style($ppcart_checkout_css);
 
 $ppcart_hero_banner_style_parts = [];
 if (! empty($ppcart_product->header_color)) {
@@ -152,20 +149,20 @@ $ppcart_hero_banner_style = implode('; ', $ppcart_hero_banner_style_parts);
         </div>
 
         <?php
-        $page_classes = [
+        $ppcart_page_classes = [
             'ppcart-page',
             'payment-page',
-            ($show_confirm || $cart_closed) ? 'page-closed' : '',
+            ($ppcart_show_confirm || $ppcart_cart_closed) ? 'page-closed' : '',
             (isset($ppcart_product->show_splitin) ? 'splitin-page' : ''),
         ];
         ?>
-        <main class="<?php echo esc_attr(implode(' ', $page_classes)); ?>">
-            <?php if ($show_confirm || $cart_closed) : ?>
+        <main class="<?php echo esc_attr(implode(' ', $ppcart_page_classes)); ?>">
+            <?php if ($ppcart_show_confirm || $ppcart_cart_closed) : ?>
                 <div class="ppcart-container">
-                    <?php do_action('ppcart_payment_confirmation', $prod_id); ?>
+                    <?php do_action('ppcart_payment_confirmation', $ppcart_prod_id); ?>
                 </div>
 
-            <?php elseif ($method_change || $cart_closed) : ?>
+            <?php elseif ($ppcart_method_change || $ppcart_cart_closed) : ?>
                 <?php if (! isset($ppcart_product->show_splitin)) : ?>
                     <div class="ppcart-container">
                         <div class="main-content">
@@ -177,28 +174,28 @@ $ppcart_hero_banner_style = implode('; ', $ppcart_hero_banner_style_parts);
                         <?php if (isset($ppcart_product->show_splitin)) : ?>
                             <div class="splitin-checkout-wrap">
                                 <div class="checkout-lhs checkout-inner bg-light">
-                                    <?php do_action('ppcart_order_summary_items', $prod_id); ?>
+                                    <?php do_action('ppcart_order_summary_items', $ppcart_prod_id); ?>
                                 </div>
                                 <div class="checkout-rhs checkout-inner bg-white">
                                     <?php
-                                    do_action('ppcart_checkout_page_heading', $prod_id);
-                            do_action('ppcart_checkout_form_open', $prod_id);
+                                    do_action('ppcart_checkout_page_heading', $ppcart_prod_id);
+                            do_action('ppcart_checkout_form_open', $ppcart_prod_id);
                             ?>
                                     <h2 class="page-title"><?php echo esc_html(ppcart_checkout_text_setting('splitFormHeading', esc_html__('Get ready to start selling', 'publishpress-cart'))); ?></h2>
                                     <?php
-                            do_action('ppcart_checkout_form', $prod_id, $hide_labels);
+                            do_action('ppcart_checkout_form', $ppcart_prod_id, $ppcart_hide_labels);
                             do_action('ppcart_checkout_form_close');
-                            do_action('ppcart_payment_method_change', $prod_id);
+                            do_action('ppcart_payment_method_change', $ppcart_prod_id);
                             ?>
                                 </div>
                             </div>
                         <?php else : ?>
                             <?php
-                            do_action('ppcart_checkout_page_heading', $prod_id);
-                            do_action('ppcart_checkout_form_open', $prod_id);
-                            do_action('ppcart_checkout_form', $prod_id, $hide_labels);
+                            do_action('ppcart_checkout_page_heading', $ppcart_prod_id);
+                            do_action('ppcart_checkout_form_open', $ppcart_prod_id);
+                            do_action('ppcart_checkout_form', $ppcart_prod_id, $ppcart_hide_labels);
                             do_action('ppcart_checkout_form_close');
-                            do_action('ppcart_payment_method_change', $prod_id);
+                            do_action('ppcart_payment_method_change', $ppcart_prod_id);
                             ?>
                         <?php endif; ?>
                     </section>
@@ -219,26 +216,26 @@ $ppcart_hero_banner_style = implode('; ', $ppcart_hero_banner_style_parts);
                         <?php if (isset($ppcart_product->show_splitin)) : ?>
                             <div class="splitin-checkout-wrap">
                                 <div class="checkout-lhs checkout-inner bg-light">
-                                    <?php do_action('ppcart_order_summary_items', $prod_id); ?>
+                                    <?php do_action('ppcart_order_summary_items', $ppcart_prod_id); ?>
                                 </div>
                                 <div class="checkout-rhs checkout-inner bg-white">
                                     <?php
-                                    do_action('ppcart_checkout_page_heading', $prod_id);
-                            do_action('ppcart_checkout_form_open', $prod_id);
+                                    do_action('ppcart_checkout_page_heading', $ppcart_prod_id);
+                            do_action('ppcart_checkout_form_open', $ppcart_prod_id);
                             ?>
                                     <h2 class="page-title"><?php echo esc_html(ppcart_checkout_text_setting('splitFormHeading', esc_html__('Get ready to start selling', 'publishpress-cart'))); ?></h2>
                                     <?php
-                            do_action('ppcart_checkout_form', $prod_id, $hide_labels);
+                            do_action('ppcart_checkout_form', $ppcart_prod_id, $ppcart_hide_labels);
                             do_action('ppcart_checkout_form_close');
                             ?>
                                 </div>
                             </div>
                         <?php else : ?>
                             <?php
-                            do_action('ppcart_order_summary_items', $prod_id);
-                            do_action('ppcart_checkout_page_heading', $prod_id);
-                            do_action('ppcart_checkout_form_open', $prod_id);
-                            do_action('ppcart_checkout_form', $prod_id, $hide_labels);
+                            do_action('ppcart_order_summary_items', $ppcart_prod_id);
+                            do_action('ppcart_checkout_page_heading', $ppcart_prod_id);
+                            do_action('ppcart_checkout_form_open', $ppcart_prod_id);
+                            do_action('ppcart_checkout_form', $ppcart_prod_id, $ppcart_hide_labels);
                             do_action('ppcart_checkout_form_close');
                             ?>
                         <?php endif; ?>
@@ -253,8 +250,8 @@ $ppcart_hero_banner_style = implode('; ', $ppcart_hero_banner_style_parts);
 
     <?php endwhile; ?>
 
-    <?php if (!$show_confirm && !$cart_closed) {
-        do_action('ppcart_checkout_form_scripts', $prod_id);
+    <?php if (!$ppcart_show_confirm && !$ppcart_cart_closed) {
+        do_action('ppcart_checkout_form_scripts', $ppcart_prod_id);
     }
 
 wp_footer();
