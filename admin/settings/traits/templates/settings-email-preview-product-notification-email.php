@@ -31,7 +31,7 @@ $email      = ppcart_build_product_notification_email($entry, $order_info);
 
 // Truthy fallback mirrors how the header is actually built, so the shown From is faithful.
 $from_name  = $entry['from_name'] ? $entry['from_name'] : get_bloginfo('name');
-$from_email = $entry['from_email'] ? $entry['from_email'] : get_option('admin_email');
+$from_email = $entry['from_email'] ? $entry['from_email'] : ppcart_get_admin_email();
 $subject    = ('' !== trim(wp_strip_all_tags((string) $email['subject']))) ? $email['subject'] : __('(no subject)', 'publishpress-cart');
 
 wp_send_json_success(

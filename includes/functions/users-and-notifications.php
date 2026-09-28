@@ -192,7 +192,7 @@ function ppcart_new_user_notification($user, $order_id, $test = false)
 
     if (get_option('_ppcart_registration_email_admin') || $test) {
         if (!$admin_email = get_option('ppcart_admin_email')) {
-            $admin_email = get_option('admin_email');
+            $admin_email = ppcart_get_admin_email();
         }
 
         $to = apply_filters('ppcart_admin_notification_email', $admin_email, $order_info);
@@ -278,7 +278,7 @@ function ppcart_notification_send($status, $order_info, $test = false)
 
         if (get_option($em . 'admin') || $test) {
             if (!$admin_email = get_option('ppcart_admin_email')) {
-                $admin_email = get_option('admin_email');
+                $admin_email = ppcart_get_admin_email();
             }
             $to = apply_filters('ppcart_admin_notification_email', $admin_email, $order_info);
             // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail -- Transactional admin notification email.
@@ -310,7 +310,7 @@ function ppcart_get_email_html($atts)
 function ppcart_build_product_notification_email($n, $order_info)
 {
     if (!$admin_email = get_option('ppcart_admin_email')) {
-        $admin_email = get_option('admin_email');
+        $admin_email = ppcart_get_admin_email();
     }
 
     $n = is_array($n) ? $n : [];
@@ -331,7 +331,7 @@ function ppcart_build_product_notification_email($n, $order_info)
     }
 
     $from_name = ($n['from_name']) ? ($n['from_name']) : get_bloginfo('name');
-    $from_email = ($n['from_email']) ? ($n['from_email']) : get_option('admin_email');
+    $from_email = ($n['from_email']) ? ($n['from_email']) : ppcart_get_admin_email();
     // Cast: ppcart_personalize() returns null for empty input (avoids PHP 8.1 null-arg deprecations).
     $subject = wp_specialchars_decode((string) ppcart_personalize($n['subject'], $order_info));
     // Decode stored template entities before merge so later kses is not undone.

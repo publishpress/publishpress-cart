@@ -57,9 +57,31 @@ class PPCart_Order_Items
         ppcart_register_live_meta_table();
         add_action('ppcart_activate', [$this, 'setup_items_table']);
         add_action('ppcart_upgrade', [$this, 'setup_items_table']);
+        if (function_exists('is_multisite') && is_multisite()) {
+            add_action('wp_initialize_site', [$this, 'setup_items_table_for_new_site']);
+        }
         $this->maybe_setup_items_table();
 
         require_once plugin_dir_path(__FILE__) . 'class-ppcart-order-item.php';
+    }
+
+    /**
+     * Create order-item tables for newly initialized multisite blogs.
+     *
+     * @param WP_Site $new_site New site object.
+     */
+    public function setup_items_table_for_new_site($new_site)
+    {
+        if (! is_object($new_site) || empty($new_site->blog_id) || ! function_exists('switch_to_blog') || ! function_exists('restore_current_blog')) {
+            return;
+        }
+
+        switch_to_blog((int) $new_site->blog_id);
+        try {
+            $this->setup_items_table();
+        } finally {
+            restore_current_blog();
+        }
     }
 
     /**

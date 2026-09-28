@@ -20,7 +20,7 @@ trait PPCart_Admin_Settings_Core_Options_Trait
 
     public function get_options_list()
     {
-        $to_email   = get_option('admin_email');
+        $to_email   = ppcart_get_admin_email();
         $currencies = ppcart_get_currencies();
         if (! is_array($currencies)) {
             $currencies = [];
