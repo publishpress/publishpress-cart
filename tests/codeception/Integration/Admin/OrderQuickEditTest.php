@@ -15,6 +15,23 @@ class OrderQuickEditTest extends WPTestCase
      */
     private $createdPostIds = [];
 
+    /**
+     * @var int[]
+     */
+    private $createdUserIds = [];
+
+    /**
+     * @var int
+     */
+    private $previousUserId = 0;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->previousUserId = (int) get_current_user_id();
+    }
+
     protected function tearDown(): void
     {
         foreach ($this->createdPostIds as $postId) {
@@ -22,6 +39,13 @@ class OrderQuickEditTest extends WPTestCase
         }
 
         $this->createdPostIds = [];
+
+        foreach ($this->createdUserIds as $userId) {
+            wp_delete_user($userId);
+        }
+
+        $this->createdUserIds = [];
+        wp_set_current_user($this->previousUserId);
 
         parent::tearDown();
     }
@@ -34,6 +58,19 @@ class OrderQuickEditTest extends WPTestCase
         if (! function_exists('get_inline_data')) {
             require_once ABSPATH . 'wp-admin/includes/template.php';
         }
+
+        $adminId = (int) wp_insert_user(
+            [
+                'user_login' => 'it379_admin_' . wp_generate_password(8, false),
+                'user_email' => 'it379_' . wp_generate_password(8, false) . '@example.test',
+                'user_pass' => wp_generate_password(12, false),
+                'role' => 'administrator',
+            ]
+        );
+
+        $this->assertGreaterThan(0, $adminId);
+        $this->createdUserIds[] = $adminId;
+        wp_set_current_user($adminId);
 
         $postId = wp_insert_post(
             [
@@ -57,7 +94,7 @@ class OrderQuickEditTest extends WPTestCase
 
         $this->assertStringContainsString('id="inline_' . $postId . '"', $html);
         $this->assertStringContainsString('<div class="post_title">Quick Edit Order</div>', $html);
-        $this->assertStringContainsString('<div class="post_status">publish</div>', $html);
+        $this->assertStringContainsString('<div class="_status">publish</div>', $html);
         $this->assertStringContainsString('<div class="jj">28</div>', $html);
         $this->assertStringContainsString('<div class="hh">12</div>', $html);
         $this->assertStringContainsString('<div class="mn">57</div>', $html);
