@@ -285,7 +285,8 @@ function ppcart_run_price_formatting()
     $priceFormat = new PPCart_Price_Format();
 }
 
-if (is_admin()) {
+function ppcart_maybe_run_price_format_upgrade()
+{
     // phpcs:disable WordPress.Security.NonceVerification.Recommended -- This upgrade trigger reads the nonce value before verifying it below.
     $price_format_requested = isset($_GET['price_format']) && 'yes' === sanitize_text_field(wp_unslash($_GET['price_format']));
     $price_format_nonce = isset($_GET['_ppcart_price_format_nonce']) ? sanitize_text_field(wp_unslash($_GET['_ppcart_price_format_nonce'])) : '';
@@ -299,9 +300,8 @@ if (is_admin()) {
         && ppcart_verify_nonce($price_format_nonce, 'ppcart_price_format')
     ) {
         require_once dirname(__DIR__) . '/class-ppcart-price-format.php';
-        $priceFormat = new PPCart_Price_Format();
+        new PPCart_Price_Format();
         // delete scheduled db update since we just ran it manually
-        wp_clear_scheduled_hook('ppcart_run_price_formatting', []);
         wp_clear_scheduled_hook('ppcart_run_price_formatting', []);
     }
 
@@ -312,6 +312,7 @@ if (is_admin()) {
         add_action('admin_notices', 'ppcart_price_format_error');
     }
 }
+add_action('admin_init', 'ppcart_maybe_run_price_format_upgrade');
 
 function ppcart_price_format_error()
 {
