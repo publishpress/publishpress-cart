@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH') && ! defined('WPINC')) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
