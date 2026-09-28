@@ -99,6 +99,63 @@ class PPCart_Stripe
         return false;
     }
 
+    /**
+     * Set the payment method a subscription is charged on. Stripe uses it before the customer default.
+     */
+    public function setSubscriptionPaymentMethod($subscription_id, $payment_method)
+    {
+        if (! $this->stripe) {
+            return false;
+        }
+
+        try {
+            $this->stripe->subscriptions->update(
+                $subscription_id,
+                ['default_payment_method' => $payment_method]
+            );
+
+            return true;
+        } catch (\Exception $e) {
+            ppcart_helper()->logException($e, __LINE__, __FILE__);
+        }
+
+        return false;
+    }
+
+    /**
+     * Set the payment method on every open subscription of a customer.
+     *
+     * @return int Number of subscriptions that could not be updated.
+     */
+    public function setCustomerSubscriptionsPaymentMethod($customer_id, $payment_method, $skip_subscription_id = '')
+    {
+        if (! $this->stripe) {
+            return 0;
+        }
+
+        $failed = 0;
+
+        try {
+            // Without a status filter Stripe lists every subscription except canceled ones.
+            $subscriptions = $this->stripe->subscriptions->all(['customer' => $customer_id, 'limit' => 100]);
+        } catch (\Exception $e) {
+            ppcart_helper()->logException($e, __LINE__, __FILE__);
+            return 1;
+        }
+
+        foreach ($subscriptions->data as $subscription) {
+            if ($subscription->id === $skip_subscription_id || 'incomplete_expired' === $subscription->status) {
+                continue;
+            }
+
+            if (! $this->setSubscriptionPaymentMethod($subscription->id, $payment_method)) {
+                $failed++;
+            }
+        }
+
+        return $failed;
+    }
+
     public function getPaymentMethods($customer_id)
     {
         $cards = [];

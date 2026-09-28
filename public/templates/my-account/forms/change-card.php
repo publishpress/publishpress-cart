@@ -52,10 +52,10 @@ $request_action = ppcart_filter_input_request('action', FILTER_SANITIZE_FULL_SPE
                                     <div id="ppcart-card-expiry" class="ppcart-form-control" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-expiry')); ?>"></div>
                                 </div>
 
-                                <!--<div class="ppcart-form-group ppcart-col-sm-12">
-                                    <input type="checkbox" id="ppcart-all-subscription" name="all_subscription" class="">
-                                    <label for="ppcart-all-subscription">Set default for all active subscriptions</label>
-                                </div>-->
+                                <div class="ppcart-form-group ppcart-col-sm-12">
+                                    <input type="checkbox" id="ppcart-all-subscription" name="all_subscription" value="1" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-all-subscriptions')); ?>">
+                                    <label for="ppcart-all-subscription"><?php esc_html_e('Set default for all active subscriptions', 'publishpress-cart'); ?></label>
+                                </div>
 
                                 <div class="ppcart-form-group ppcart-col-sm-12">
                                     <button id="ppcart_update_card_button" type="submit" class="ppcart-btn ppcart-btn-primary ppcart-btn-block" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-submit')); ?>">

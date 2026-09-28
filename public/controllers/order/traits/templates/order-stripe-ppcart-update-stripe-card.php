@@ -11,11 +11,13 @@ $post_data = filter_input_array(
         'nonce' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'post_id' => FILTER_VALIDATE_INT,
         'payment_method' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+        'all_subscription' => FILTER_VALIDATE_BOOLEAN,
     ]
 );
 $nonce = isset($post_data['nonce']) && is_string($post_data['nonce']) ? sanitize_text_field($post_data['nonce']) : '';
 $subscription_post_id = isset($post_data['post_id']) && false !== $post_data['post_id'] && null !== $post_data['post_id'] ? absint($post_data['post_id']) : 0;
 $payment_method = isset($post_data['payment_method']) && is_string($post_data['payment_method']) ? sanitize_text_field($post_data['payment_method']) : '';
+$all_subscriptions = ! empty($post_data['all_subscription']);
 
 if (! ppcart_verify_nonce($nonce, 'ppcart_ajax_nonce')) {
     wp_send_json_error(['message' => __("Invalid Request", "publishpress-cart")], 401);
@@ -58,15 +60,6 @@ if (! $stripe) {
     wp_send_json_error([ 'message' => __('Payment processor is unavailable. Please try again later.', 'publishpress-cart') ], 503);
 }
 
-if ($sub->status == 'incomplete' || $sub->status == 'past_due' || $sub->status == 'pending-payment') {
-    $invoice = $stripe->subscriptions->retrieve($ppcart_subscription_id, ['expand' => ['latest_invoice']]);
-    $invoice = $invoice['latest_invoice'];
-
-    if ($invoice->status == 'open' || $invoice->status == 'uncollectible') {
-        $stripe->invoices->pay($invoice->id);
-    }
-}
-
 $response = $ppcart_stripe->updatePaymentMethod(
     $ppcart_subscription_id,
     $payment_method,
@@ -75,6 +68,25 @@ $response = $ppcart_stripe->updatePaymentMethod(
 
 if (false === $response) {
     wp_send_json_error([ 'message' => __('Unable to save the new card. Please check your payment details and try again.', 'publishpress-cart') ], 400);
+}
+
+if ($all_subscriptions && $ppcart_stripe->setCustomerSubscriptionsPaymentMethod($ppcart_customer_id, $payment_method, $ppcart_subscription_id) > 0) {
+    wp_send_json_error([ 'message' => __('The new card was saved, but some of your other subscriptions could not be updated. Please try again.', 'publishpress-cart') ], 500);
+}
+
+// Retry the open invoice only after the new card is saved, so it is charged to the new card.
+if ($sub->status == 'incomplete' || $sub->status == 'past_due' || $sub->status == 'pending-payment') {
+    try {
+        $invoice = $stripe->subscriptions->retrieve($ppcart_subscription_id, ['expand' => ['latest_invoice']]);
+        $invoice = $invoice['latest_invoice'];
+
+        if ($invoice && ($invoice->status == 'open' || $invoice->status == 'uncollectible')) {
+            $stripe->invoices->pay($invoice->id, ['payment_method' => $payment_method]);
+        }
+    } catch (\Exception $e) {
+        ppcart_helper()->logException($e, __LINE__, __FILE__);
+        wp_send_json_error([ 'message' => __('The new card was saved, but the payment failed: ', 'publishpress-cart') . $e->getMessage() ], 402);
+    }
 }
 
 if (is_object($response) && ! empty($response->id)) {
