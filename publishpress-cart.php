@@ -13,7 +13,7 @@
  * @package PPCart
  *
  * @wordpress-plugin
- * Plugin Name:       PublishPress Cart
+ * Plugin Name:       PublishPress Cart - eCommerce for Digital Products
  * Plugin URI:        https://publishpress.com/publishpress-cart/
  * Description:       Create order pages and simplified sales flow creation that helps you sell digital products, programs, and services.
  * Version:           1.0.0
