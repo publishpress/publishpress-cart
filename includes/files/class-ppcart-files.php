@@ -134,9 +134,9 @@ class PPCart_Files
         add_action('init', [$this, 'download_page_rewrites'], 1, 0);
         add_action('ppcart_email_after_order_table', [$this, 'email_download_links']);
         add_action('ppcart_receipt_after_order_details', [$this, 'receipt_download_links']);
-        add_filter('_ppcart_option_list', [$this, 'login_to_download_setting']);
+        add_filter('ppcart_option_list', [$this, 'login_to_download_setting']);
         add_filter('upload_dir', [ $this, 'upload_dir' ]);
-        add_filter('_ppcart_option_list', [$this, 'download_slug_setting']);
+        add_filter('ppcart_option_list', [$this, 'download_slug_setting']);
         add_action('add_option_ppcart_download_slug', [$this, 'flush_permalinks'], 10, 2);
         add_action('update_option_ppcart_download_slug', [$this, 'flush_permalinks'], 10, 2);
 

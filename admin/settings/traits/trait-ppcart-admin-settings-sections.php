@@ -32,7 +32,7 @@ trait PPCart_Admin_Settings_Sections_Trait
             'stripe' => __('Stripe', 'publishpress-cart'),
             'paypal' => __('PayPal', 'publishpress-cart'),
         ];
-        $payment_gateways = apply_filters('_ppcart_payment_gateway_tab_section', $payment_gateways);
+        $payment_gateways = apply_filters('ppcart_payment_gateway_tab_section', $payment_gateways);
         foreach ($payment_gateways as $payment_gateway_key => $payment_gateway) :
             add_settings_section(
                 $this->plugin_name . '-' . $payment_gateway_key,
@@ -41,7 +41,7 @@ trait PPCart_Admin_Settings_Sections_Trait
                 $this->plugin_name . '-payment'
             );
         endforeach;
-        do_action('_ppcart_register_gateways', $this, $this->plugin_name . '-payment');
+        do_action('ppcart_register_gateways', $this, $this->plugin_name . '-payment');
     }
 
     /**
@@ -60,7 +60,7 @@ trait PPCart_Admin_Settings_Sections_Trait
         $taxes = [
             'tax-setting' => __('Tax Options', 'publishpress-cart'),
         ];
-        $taxes = apply_filters('_ppcart_taxes_tab_section', $taxes);
+        $taxes = apply_filters('ppcart_taxes_tab_section', $taxes);
         foreach ($taxes as $tax_key => $tax) :
             add_settings_section(
                 $this->plugin_name . '-' . $tax_key,
@@ -79,7 +79,7 @@ trait PPCart_Admin_Settings_Sections_Trait
         $invoices = [
             'invoice-setting' => __('Invoice Options', 'publishpress-cart'),
         ];
-        $invoices = apply_filters('_ppcart_invoice_tab_section', $invoices);
+        $invoices = apply_filters('ppcart_invoice_tab_section', $invoices);
 
         foreach ($invoices as $invoice_key => $invoice) :
             add_settings_section(

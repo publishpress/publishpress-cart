@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-09-28",
+    "generated_at": "2026-09-29",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -25,216 +25,6 @@
         ]
     },
     "hooks": [
-        {
-            "name": "_ppcart_custom_option_list",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-integration-options.php",
-            "recommended_hook": "_ppcart_custom_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_emails_tab_section",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/templates/settings-sections-emails.php",
-            "recommended_hook": "_ppcart_emails_tab_section",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_integrations_option_list",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/integrations/templates/ppcart-googlerecaptcha---construct.php",
-            "recommended_hook": "_ppcart_integrations_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_integrations_option_list",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/integrations/templates/ppcart-kit-init.php",
-            "recommended_hook": "_ppcart_integrations_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_integrations_option_list",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-integration-options.php",
-            "recommended_hook": "_ppcart_integrations_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_integrations_tab_section",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/integrations/templates/ppcart-googlerecaptcha---construct.php",
-            "recommended_hook": "_ppcart_integrations_tab_section",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_integrations_tab_section",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/integrations/templates/ppcart-kit-init.php",
-            "recommended_hook": "_ppcart_integrations_tab_section",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_integrations_tab_section",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
-            "recommended_hook": "_ppcart_integrations_tab_section",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_invoice_option_list",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-billing-options.php",
-            "recommended_hook": "_ppcart_invoice_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_invoice_tab_section",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "_ppcart_invoice_tab_section",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_option_list",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/files/class-ppcart-files.php",
-            "recommended_hook": "_ppcart_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_option_list",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/logging/class-ppcart-stripe-webhook-logger.php",
-            "recommended_hook": "_ppcart_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_option_list",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/logging/templates/ppcart-debug-logger---construct.php",
-            "recommended_hook": "_ppcart_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_option_list",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-core-options.php",
-            "recommended_hook": "_ppcart_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_payment_field_option_list",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-billing-options.php",
-            "recommended_hook": "_ppcart_payment_field_option_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_payment_gateway_tab_section",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "_ppcart_payment_gateway_tab_section",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_plan",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/functions/plans-and-subscriptions.php",
-            "recommended_hook": "_ppcart_plan",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_register_gateways",
-            "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "_ppcart_register_gateways",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_register_sections",
-            "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
-            "recommended_hook": "_ppcart_register_sections",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_taxes_tab_section",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "_ppcart_taxes_tab_section",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "_ppcart_{$ppcart_tab_key}_tab_section",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
-            "recommended_hook": "_ppcart_{$ppcart_tab_key}_tab_section",
-            "notes": "Canonical hook prefix."
-        },
         {
             "name": "add_option__ppcart_activecampaign_secret_key",
             "type": "action",
@@ -2586,6 +2376,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_custom_option_list",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-integration-options.php",
+            "recommended_hook": "ppcart_custom_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_customer_defaults",
             "type": "filter",
             "operation": "apply_filters",
@@ -2803,6 +2603,16 @@
             "status": "canonical",
             "file": "includes/email/ppcart-template-functions/templates.php",
             "recommended_hook": "ppcart_email_templates",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_emails_tab_section",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/templates/settings-sections-emails.php",
+            "recommended_hook": "ppcart_emails_tab_section",
             "notes": "Canonical hook prefix."
         },
         {
@@ -3266,6 +3076,66 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_integrations_option_list",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/templates/ppcart-googlerecaptcha---construct.php",
+            "recommended_hook": "ppcart_integrations_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integrations_option_list",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/templates/ppcart-kit-init.php",
+            "recommended_hook": "ppcart_integrations_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integrations_option_list",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-integration-options.php",
+            "recommended_hook": "ppcart_integrations_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integrations_tab_section",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/templates/ppcart-googlerecaptcha---construct.php",
+            "recommended_hook": "ppcart_integrations_tab_section",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integrations_tab_section",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/templates/ppcart-kit-init.php",
+            "recommended_hook": "ppcart_integrations_tab_section",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integrations_tab_section",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
+            "recommended_hook": "ppcart_integrations_tab_section",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_invoice_date_documentation_url",
             "type": "filter",
             "operation": "apply_filters",
@@ -3283,6 +3153,26 @@
             "status": "canonical",
             "file": "includes/functions/orders-products-and-formatting.php",
             "recommended_hook": "ppcart_invoice_format",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_invoice_option_list",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-billing-options.php",
+            "recommended_hook": "ppcart_invoice_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_invoice_tab_section",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcart_invoice_tab_section",
             "notes": "Canonical hook prefix."
         },
         {
@@ -3453,6 +3343,46 @@
             "status": "canonical",
             "file": "includes/functions/users-and-notifications.php",
             "recommended_hook": "ppcart_notification_email_to",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_option_list",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/files/class-ppcart-files.php",
+            "recommended_hook": "ppcart_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_option_list",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/logging/class-ppcart-stripe-webhook-logger.php",
+            "recommended_hook": "ppcart_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_option_list",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/logging/templates/ppcart-debug-logger---construct.php",
+            "recommended_hook": "ppcart_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_option_list",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-core-options.php",
+            "recommended_hook": "ppcart_option_list",
             "notes": "Canonical hook prefix."
         },
         {
@@ -4096,6 +4026,26 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_payment_field_option_list",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-billing-options.php",
+            "recommended_hook": "ppcart_payment_field_option_list",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_payment_gateway_tab_section",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcart_payment_gateway_tab_section",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_payment_intent",
             "type": "filter",
             "operation": "apply_filters",
@@ -4283,6 +4233,16 @@
             "status": "canonical",
             "file": "models/order/traits/templates/order-checkout-input-setup-atts-from-post.php",
             "recommended_hook": "ppcart_plan_at_checkout",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_plan_data",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/plans-and-subscriptions.php",
+            "recommended_hook": "ppcart_plan_data",
             "notes": "Canonical hook prefix."
         },
         {
@@ -5096,6 +5056,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_register_gateways",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcart_register_gateways",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_register_importers",
             "type": "action",
             "operation": "do_action",
@@ -5103,6 +5073,16 @@
             "status": "canonical",
             "file": "admin/traits/trait-ppcart-admin-product-duplicate.php",
             "recommended_hook": "ppcart_register_importers",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_register_integration_sections",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
+            "recommended_hook": "ppcart_register_integration_sections",
             "notes": "Canonical hook prefix."
         },
         {
@@ -5876,6 +5856,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_taxes_tab_section",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcart_taxes_tab_section",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_taxonomies",
             "type": "filter",
             "operation": "apply_filters",
@@ -6103,6 +6093,16 @@
             "status": "canonical",
             "file": "includes/functions/integrations-and-stock.php",
             "recommended_hook": "ppcart_{$ppcart_services}_integrations",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_{$ppcart_tab_key}_tab_section",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
+            "recommended_hook": "ppcart_{$ppcart_tab_key}_tab_section",
             "notes": "Canonical hook prefix."
         },
         {
@@ -7666,14 +7666,6 @@
     ],
     "dynamic_patterns": [
         {
-            "pattern": "_ppcart_{$ppcart_tab_key}_tab_section",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
-            "classification": "public",
-            "status": "canonical",
-            "recommended_pattern": "_ppcart_{$ppcart_tab_key}_tab_section"
-        },
-        {
             "pattern": "bulk_actions-edit-{$ppcart_order_type}",
             "operation": "add_filter",
             "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
@@ -7904,6 +7896,14 @@
             "classification": "public",
             "status": "canonical",
             "recommended_pattern": "ppcart_{$ppcart_services}_integrations"
+        },
+        {
+            "pattern": "ppcart_{$ppcart_tab_key}_tab_section",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
+            "classification": "public",
+            "status": "canonical",
+            "recommended_pattern": "ppcart_{$ppcart_tab_key}_tab_section"
         },
         {
             "pattern": "ppcart_{$this}{->}{service_name}_integrations",

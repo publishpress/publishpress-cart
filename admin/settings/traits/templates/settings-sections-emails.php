@@ -15,7 +15,7 @@ $emails = [
     'emailtemplate_failed' => esc_html__('Subscription Renewal Failed', 'publishpress-cart'),
     'emailtemplate_canceled' => esc_html__('Subscription Canceled Confirmation', 'publishpress-cart'),
 ];
-$emails = apply_filters('_ppcart_emails_tab_section', $emails);
+$emails = apply_filters('ppcart_emails_tab_section', $emails);
 
 foreach ($emails as $email_key => $email) :
     add_settings_section(

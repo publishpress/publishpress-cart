@@ -32,8 +32,8 @@ if (!empty($grecaptchav3)) {
     $this->site_secret = ppcart_get_sensitive_option('_ppcart_googlerecaptchav2_site_secret');
 }
 
-add_filter('_ppcart_integrations_tab_section', [$this, 'settings_section'], 10, 1);
-add_filter('_ppcart_integrations_option_list', [$this, 'service_settings']);
+add_filter('ppcart_integrations_tab_section', [$this, 'settings_section'], 10, 1);
+add_filter('ppcart_integrations_option_list', [$this, 'service_settings']);
 
 if ($this->iscaptchakey !== false) {
     add_action('plugins_loaded', [$this, 'init']);

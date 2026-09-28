@@ -52,7 +52,7 @@ class PPCart_Stripe_Webhook_Logger
         }
 
         if (function_exists('add_filter')) {
-            add_filter('_ppcart_option_list', [ __CLASS__, 'register_settings' ], 999);
+            add_filter('ppcart_option_list', [ __CLASS__, 'register_settings' ], 999);
         }
     }
 }

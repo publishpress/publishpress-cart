@@ -158,7 +158,7 @@ function ppcart_plan($option_id, $sale = '', $product_id = '', $array = false)
         $plan['text'] = $text;
     }
 
-    $plan = apply_filters('_ppcart_plan', $plan, $option, $sale);
+    $plan = apply_filters('ppcart_plan_data', $plan, $option, $sale);
     if (!$array) {
         return (object) $plan;
     } else {

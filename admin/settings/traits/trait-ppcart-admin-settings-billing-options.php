@@ -27,7 +27,7 @@ trait PPCart_Admin_Settings_Billing_Options_Trait
     public function get_invoice_fields()
     {
         $invoice_fields = require __DIR__ . '/options/invoice-fields.php';
-        return apply_filters('_ppcart_invoice_option_list', $invoice_fields);
+        return apply_filters('ppcart_invoice_option_list', $invoice_fields);
     }
 
     /**
@@ -45,6 +45,6 @@ trait PPCart_Admin_Settings_Billing_Options_Trait
         $paypal_ssl_verify_note     = __('Always enabled for PayPal API requests.', 'publishpress-cart');
 
         $payment_fields = require __DIR__ . '/options/payment-fields.php';
-        return apply_filters('_ppcart_payment_field_option_list', $payment_fields);
+        return apply_filters('ppcart_payment_field_option_list', $payment_fields);
     }
 }
