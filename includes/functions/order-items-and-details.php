@@ -15,7 +15,10 @@ if (! defined('ABSPATH')) {
 function ppcart_get_items_from_legacy_order($order, $qty_col = true)
 {
     $items = [];
-    if ($order->plan && $order->main_offer_amt) {
+    $order_plan = $order->plan ?? null;
+    $subscription_id = $order->subscription_id ?? 0;
+
+    if ($order_plan && $order->main_offer_amt) {
         $arr = [
             'product_id' => $order->product_id,
             'price_id' => $order->option_id,
@@ -29,8 +32,8 @@ function ppcart_get_items_from_legacy_order($order, $qty_col = true)
             'subtotal' => $order->main_offer_amt,
         ];
 
-        if ($order->subscription_id) {
-            $sub = new PPCart_Subscription($order->subscription_id);
+        if ($subscription_id) {
+            $sub = new PPCart_Subscription($subscription_id);
             if ($order->product_id == $sub->product_id) {
                 $sub = $sub->get_data();
                 $arr['subscription_id'] = $sub['ID'];
@@ -76,10 +79,10 @@ function ppcart_get_items_from_legacy_order($order, $qty_col = true)
                     'total_amount'   => $order_bump['amount'],
                 ];
 
-                if (isset($order_bump['plan']) && isset($order_bump['plan']->type) && $order_bump['plan']->type == 'recurring' && $order->subscription_id) {
-                    $sub = new PPCart_Subscription($order->subscription_id);
+                if (isset($order_bump['plan']) && isset($order_bump['plan']->type) && $order_bump['plan']->type == 'recurring' && $subscription_id) {
+                    $sub = new PPCart_Subscription($subscription_id);
                     if ($order_bump['id'] == $sub->product_id) {
-                        $arr['subscription_id'] = $order->subscription_id;
+                        $arr['subscription_id'] = $subscription_id;
                         $sub = $sub->get_data();
                         $arr['sub_summary'] = apply_filters('ppcart_format_subscription_order_detail', $sub['sub_payment_terms_plain'], $sub['sub_payment_terms_plain'], $order->plan, $sub['free_trial_days'], $sub['sign_up_fee'], $sub['sub_discount'], $sub['sub_discount_duration']);
                     }
@@ -127,8 +130,9 @@ function ppcart_get_order_items($order, $qty_col = true, $show_hidden = false)
     }
     $sub = false;
 
-    if ($order->subscription_id) {
-        $sub = new PPCart_Subscription($order->subscription_id);
+    $subscription_id = $order->subscription_id ?? 0;
+    if ($subscription_id) {
+        $sub = new PPCart_Subscription($subscription_id);
         $sub = $sub->get_data();
     }
 
