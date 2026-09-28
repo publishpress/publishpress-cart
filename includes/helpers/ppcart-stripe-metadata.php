@@ -320,3 +320,26 @@ function ppcart_stripe_subscription_on_session_args($args)
 
     return $args;
 }
+
+/**
+ * Current period end of a Stripe subscription.
+ *
+ * Newer Stripe API versions only set current_period_end on the subscription items.
+ *
+ * @param array|object $subscription Stripe subscription.
+ * @return int Unix timestamp, or 0 when not found.
+ */
+function ppcart_get_stripe_subscription_period_end($subscription)
+{
+    if (! is_array($subscription) && ! $subscription instanceof \ArrayAccess) {
+        return 0;
+    }
+
+    if (! empty($subscription['current_period_end'])) {
+        return absint($subscription['current_period_end']);
+    }
+
+    $item = $subscription['items']['data'][0] ?? null;
+
+    return ! empty($item['current_period_end']) ? absint($item['current_period_end']) : 0;
+}
