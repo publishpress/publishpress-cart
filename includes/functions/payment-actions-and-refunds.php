@@ -465,7 +465,7 @@ function ppcart_pause_restart_subscription()
                 ];
             }
             $stripesub = $stripe->subscriptions->update($sub->subscription_id, $data);
-            $response = $stripesub->current_period_end;
+            $response = ppcart_get_stripe_subscription_period_end($stripesub);
         } catch (\Exception $e) {
             echo esc_html($e->getMessage()); //add custom message
         }

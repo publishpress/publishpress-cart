@@ -215,7 +215,7 @@ if (!$subscription) {
     $sub->sub_status = $subscription->status;
     $sub->status = $subscription->status;
     $sub->subscription_id = $subscription->id;
-    $sub->sub_next_bill_date = $this->get_stripe_resource_value($subscription, 'current_period_end', 0);
+    $sub->sub_next_bill_date = ppcart_get_stripe_subscription_period_end($subscription);
     $sub->customer_id = $subscription->customer;
     $sub->cancel_at = $subscription->cancel_at;
     $sub->sub_end_date = gmdate('Y-m-d', $subscription->cancel_at);

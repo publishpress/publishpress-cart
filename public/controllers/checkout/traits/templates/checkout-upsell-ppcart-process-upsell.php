@@ -115,7 +115,7 @@ if ($cart_order->pay_method == 'stripe') {
             $sub->sub_status = $subscription->status;
             $sub->status = $subscription->status;
             $sub->subscription_id = $subscription->id;
-            $sub->sub_next_bill_date = $this->get_stripe_resource_value($subscription, 'current_period_end', 0);
+            $sub->sub_next_bill_date = ppcart_get_stripe_subscription_period_end($subscription);
 
             if ($sub->status == 'trialing' && !$sub->free_trial_days) {
                 $sub->status = 'active';
