@@ -254,7 +254,7 @@ function ppcart_log_entry($order_id, $entry)
     }
 
     $log_entries = ppcart_order_log($order_id);
-    $log_entries[time() . ' - sc' . wp_rand()] = sanitize_text_field($entry);
+    $log_entries[time() . ' - ppcart' . wp_rand()] = sanitize_text_field($entry);
     ppcart_update_post_meta($order_id, 'order_log', $log_entries);
 }
 
