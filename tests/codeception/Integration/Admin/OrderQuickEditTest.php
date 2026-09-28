@@ -66,7 +66,7 @@ class OrderQuickEditTest extends WPTestCase
                 'post_type' => ppcart_live_post_type('order'),
                 'post_status' => 'publish',
                 'post_title' => 'Quick Edit Order',
-                'post_date' => '2026-09-28 12:57:00',
+                'post_date' => '2020-09-28 12:57:00',
             ]
         );
 
@@ -85,6 +85,7 @@ class OrderQuickEditTest extends WPTestCase
         $this->assertStringContainsString('<div class="post_title">Quick Edit Order</div>', $html);
         $this->assertStringContainsString('<div class="_status">publish</div>', $html);
         $this->assertStringContainsString('<div class="jj">28</div>', $html);
+        $this->assertStringContainsString('<div class="aa">2020</div>', $html);
         $this->assertStringContainsString('<div class="hh">12</div>', $html);
         $this->assertStringContainsString('<div class="mn">57</div>', $html);
     }
@@ -105,7 +106,7 @@ class OrderQuickEditTest extends WPTestCase
                 'post_type' => ppcart_live_post_type('subscription'),
                 'post_status' => 'publish',
                 'post_title' => 'Quick Edit Subscription',
-                'post_date' => '2026-09-29 13:58:00',
+                'post_date' => '2020-09-29 13:58:00',
             ]
         );
 
@@ -124,6 +125,7 @@ class OrderQuickEditTest extends WPTestCase
         $this->assertStringContainsString('<div class="post_title">Quick Edit Subscription</div>', $html);
         $this->assertStringContainsString('<div class="_status">publish</div>', $html);
         $this->assertStringContainsString('<div class="jj">29</div>', $html);
+        $this->assertStringContainsString('<div class="aa">2020</div>', $html);
         $this->assertStringContainsString('<div class="hh">13</div>', $html);
         $this->assertStringContainsString('<div class="mn">58</div>', $html);
     }
