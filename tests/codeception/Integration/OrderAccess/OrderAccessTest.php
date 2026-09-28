@@ -146,6 +146,35 @@ class OrderAccessTest extends WPTestCase
         $this->assertSame('', (string) (new PPCart_Files())->downloads_shortcode([ 'id' => $childId, 'full' => false ]));
     }
 
+    public function test_IT_327_order_detail_offer_orders_need_their_own_proof(): void
+    {
+        $parentId = $this->createPaidOrder(0, 'parent-token');
+        $childId  = $this->createPaidOrder(0, 'child-token');
+
+        foreach ([ 'ppcart-oto', 'ppcart-oto-2' ] as $param) {
+            $_GET = [ 'ppcart-order' => (string) $parentId, $param => (string) $childId ];
+            if ('ppcart-oto-2' === $param) {
+                $_GET['ppcart-oto'] = '0';
+            }
+
+            $this->assertSame('', (string) ppcart_order_detail([ 'field' => 'email' ]));
+
+            $_GET['token'] = 'parent-token';
+            $this->assertSame('', (string) ppcart_order_detail([ 'field' => 'email' ]));
+
+            $_GET['token'] = 'child-token';
+            $this->assertSame('guest@example.test', ppcart_order_detail([ 'field' => 'email' ]));
+        }
+    }
+
+    public function test_IT_328_order_detail_downsell_step_without_order_returns_empty(): void
+    {
+        $parentId = $this->createPaidOrder(0, 'parent-token');
+        $_GET = [ 'ppcart-order' => (string) $parentId, 'ppcart-oto' => '0', 'step' => '2' ];
+
+        $this->assertSame('', (string) ppcart_order_detail([ 'field' => 'email' ]));
+    }
+
     public function test_IT_321_confirmation_without_proof_matches_missing_order(): void
     {
         $orderId = $this->createPaidOrder(0, 'secret-token');
