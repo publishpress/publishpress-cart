@@ -121,6 +121,35 @@ class MutatorCapabilitiesTest extends WPTestCase
     }
 
     /**
+     * @test-id IT-377
+     */
+    public function test_IT_377_cart_manager_can_create_empty_order_without_checkout_warnings(): void
+    {
+        $managerId = $this->factory()->user->create([ 'role' => ppcart_live_role('cart_manager') ]);
+        $this->createdUserIds[] = (int) $managerId;
+        wp_set_current_user($managerId);
+
+        $orderId = wp_insert_post(
+            [
+                'post_type'   => ppcart_live_post_type('order'),
+                'post_status' => 'publish',
+                'post_title'  => 'Empty Admin Order',
+                'post_author' => $managerId,
+            ]
+        );
+        $this->assertIsInt($orderId);
+        $this->createdPostIds[] = (int) $orderId;
+
+        $this->submitOrderSave($orderId, '');
+
+        $order = new \PPCart_Order($orderId);
+        $this->assertSame(0, (int) $order->product_id);
+        $this->assertNull($order->plan);
+        $this->assertSame(0.0, (float) $order->amount);
+        $this->assertNotEmpty(ppcart_order_log($orderId));
+    }
+
+    /**
      * @test-id IT-365
      */
     public function test_IT_365_subscriber_cannot_update_order_downloads_with_valid_nonce(): void

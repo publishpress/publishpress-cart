@@ -7,6 +7,10 @@ if (! defined('ABSPATH')) {
 
 $posted = $this->get_posted_data();
 
+if (! is_object($this->plan)) {
+    return false;
+}
+
 $product_name   = $this->product_name;
 $product_id     = $this->product_id;
 $price_id       = $this->option_id;
