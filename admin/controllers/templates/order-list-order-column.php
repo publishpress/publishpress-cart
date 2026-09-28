@@ -13,6 +13,10 @@ $order_data = $ppcart_order->get_data();
 switch ($column) {
     case 'order':
         echo '<a href="' . esc_url(get_edit_post_link($post_id)) . '">#' . esc_html($post_id) . '</a>';
+        $order_post = get_post($post_id);
+        if ($order_post instanceof WP_Post) {
+            get_inline_data($order_post);
+        }
         break;
     case 'status':
         $status_class = $order_data['status'];
