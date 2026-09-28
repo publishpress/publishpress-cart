@@ -146,9 +146,9 @@ return [
             'label'         => __('New User Role', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
-            'value'         => '',
+            'value'         => 'subscriber',
             'class_size'    => '',
-            'selections'    => ($save) ? '' : $this->option_sources->get_user_roles(),
+            'selections'    => ($save) ? '' : $this->option_sources->get_customer_user_roles(),
             'conditional_logic' =>  [
                 [
                     'field' => 'services',

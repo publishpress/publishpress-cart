@@ -53,4 +53,26 @@ class PPCart_Product_Metabox_Option_Sources
         }
         return $options;
     }
+
+    /**
+     * Roles a purchase may assign: privileged roles are left out and the
+     * lowest-privilege role comes first so it is the default selection.
+     *
+     * @return array<string, string>
+     */
+    public function get_customer_user_roles()
+    {
+        $options = [];
+        foreach ((array) $this->get_user_roles() as $role_name => $label) {
+            if (! ppcart_is_privileged_role($role_name)) {
+                $options[$role_name] = $label;
+            }
+        }
+
+        if (isset($options['subscriber'])) {
+            $options = [ 'subscriber' => $options['subscriber'] ] + $options;
+        }
+
+        return $options;
+    }
 }
