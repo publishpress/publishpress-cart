@@ -11,6 +11,10 @@ $sub = $ppcart_subscription->get_data();
 switch ($column) {
     case 'sub_id':
         echo '<a href="' . esc_url(get_edit_post_link($post_id)) . '">#' . esc_html($post_id) . '</a>';
+        $subscription_post = get_post($post_id);
+        if ($subscription_post instanceof WP_Post) {
+            get_inline_data($subscription_post);
+        }
         break;
     case 'status':
         echo '<span class="ppcart-status ' . esc_attr($sub['status']) . '">' . esc_html($sub['status_label']) . '</span>';
