@@ -8,6 +8,7 @@ if (! defined('ABSPATH')) {
 global $ppcart_product, $ppcart_currency;
 $posted = $this->get_posted_data();
 
+$this->items = [];
 $this->setup_atts_from_post();
 do_action('ppcart_after_setup_atts_from_post', $this, $posted);
 
