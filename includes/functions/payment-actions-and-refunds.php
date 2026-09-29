@@ -75,6 +75,17 @@ function ppcart_unsubscribe_customer()
         wp_send_json_error([ 'error' => __('Permission denied.', 'publishpress-cart') ], 403);
     }
 
+    // The ownership check above covers the local record only. A customer must not
+    // cancel a different gateway subscription by posting its ID, so use the one stored
+    // on the record they own.
+    if (! $can_manage_subscription) {
+        $sub_id = (string) $order['subscription_id'];
+        if ('' === $sub_id) {
+            esc_html_e('Invalid subscription ID', 'publishpress-cart');
+            wp_die();
+        }
+    }
+
     $plan = ppcart_plan($order['option_id'], '', $order['product_id']);
     if (!$plan) {
         $plan = ppcart_plan($order['plan_id'], '', $order['product_id']);

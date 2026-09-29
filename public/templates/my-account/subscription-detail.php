@@ -15,7 +15,9 @@ if (! defined('ABSPATH')) {
 if ((false === $ppcart_plan || null === $ppcart_plan) && ! empty($attr['plan'])) {
     $ppcart_plan = absint($attr['plan']);
 }
-if (false !== $ppcart_plan && null !== $ppcart_plan) {
+$sub = null;
+// Fail closed: only the owner (or an administrator) sees this subscription and its controls.
+if (false !== $ppcart_plan && null !== $ppcart_plan && ppcart_current_user_can_view_account_record(absint($ppcart_plan), 'subscription')) {
     $subscription_post_id = absint($ppcart_plan);
     $sub = new PPCart_Subscription($subscription_post_id);
     $subscription_order = (object) $sub->get_data();
