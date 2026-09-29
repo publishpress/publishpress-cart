@@ -611,6 +611,33 @@ function ppcart_safe_meta_unserialize($value)
 }
 
 /**
+ * Rehydrate a serialized plain-data object (plan or tax data) stored by this plugin.
+ *
+ * Some order meta (plan, tax_data) can be serialized twice, so it reaches the order
+ * model as a serialized string of a stdClass. Only stdClass may be instantiated: any
+ * other class, at any depth, is refused so no object-injection gadget can run.
+ *
+ * @param mixed $value Serialized string.
+ *
+ * @return stdClass|null The object, or null when the value is not a clean stdClass payload.
+ */
+function ppcart_unserialize_plain_object($value)
+{
+    if (! is_string($value) || '' === $value || ! is_serialized($value)) {
+        return null;
+    }
+
+    // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize -- Limited to stdClass; any other class becomes __PHP_Incomplete_Class and is rejected below.
+    $parsed = @unserialize(trim($value), [ 'allowed_classes' => [ 'stdClass' ] ]);
+
+    if (! ($parsed instanceof stdClass) || ppcart_meta_value_has_incomplete_object($parsed)) {
+        return null;
+    }
+
+    return $parsed;
+}
+
+/**
  * Report whether an unserialized meta value holds an unreadable object at any depth.
  *
  * @param mixed $value Unserialized meta value.

@@ -48,9 +48,8 @@ foreach ($keysets as $set) {
 // A double-serialized _ppcart_tax_data rehydrates as a string; normalize it back to an
 // object so every consumer (receipt, admin order screen, invoice, email) can read it.
 if (is_string($this->tax_data) && '' !== $this->tax_data) {
-    // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize -- Canonical _ppcart_tax_data can be double-serialized as an object; this branch only rehydrates existing order meta for display.
-    $maybe_tax_data = @unserialize($this->tax_data);
-    if (is_object($maybe_tax_data)) {
+    $maybe_tax_data = ppcart_unserialize_plain_object($this->tax_data);
+    if (null !== $maybe_tax_data) {
         $this->tax_data = $maybe_tax_data;
     }
 }
