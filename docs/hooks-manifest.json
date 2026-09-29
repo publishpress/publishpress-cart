@@ -241,6 +241,16 @@
             "operation": "add_action",
             "classification": "external",
             "status": "wordpress_core",
+            "file": "includes/functions/admin-ajax-and-notices.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "admin_init",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
             "file": "includes/secrets/traits/trait-ppcart-secrets-config.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
@@ -363,16 +373,6 @@
             "status": "unclassified",
             "file": "admin/controllers/class-ppcart-admin-page-notices.php",
             "recommended_hook": "all_admin_notices",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "alloptions",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "internal",
-            "status": "unclassified",
-            "file": "includes/secrets/traits/trait-ppcart-secrets-config.php",
-            "recommended_hook": "alloptions",
             "notes": "Review before documenting as public API."
         },
         {
@@ -993,6 +993,306 @@
             "status": "unclassified",
             "file": "includes/class-ppcart-version-notices.php",
             "recommended_hook": "pp_version_notice_menu_link_settings",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-checkbox-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-input-fields-field-checkbox.php",
+            "recommended_hook": "ppcart-field-checkbox-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-editor-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-input-fields-field-editor.php",
+            "recommended_hook": "ppcart-field-editor-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-radios-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-input-fields-field-radios.php",
+            "recommended_hook": "ppcart-field-radios-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-repeater-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-input-fields-field-repeater.php",
+            "recommended_hook": "ppcart-field-repeater-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-repeater-{$setatts[...]}]",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
+            "recommended_hook": "ppcart-field-repeater-{$setatts[...]}]",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-repeater-{$setatts[...]}]",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
+            "recommended_hook": "ppcart-field-repeater-{$setatts[...]}]",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-select-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-input-fields-field-select.php",
+            "recommended_hook": "ppcart-field-select-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-text-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-text-fields-field-color.php",
+            "recommended_hook": "ppcart-field-text-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-text-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-text-fields-field-email.php",
+            "recommended_hook": "ppcart-field-text-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-text-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-text-fields-field-html.php",
+            "recommended_hook": "ppcart-field-text-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-text-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-text-fields-field-password.php",
+            "recommended_hook": "ppcart-field-text-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-text-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-text-fields-field-text.php",
+            "recommended_hook": "ppcart-field-text-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-textarea-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-text-fields-field-textarea.php",
+            "recommended_hook": "ppcart-field-textarea-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-textarea-options-defaults",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-text-fields-field-upload.php",
+            "recommended_hook": "ppcart-field-textarea-options-defaults",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-{$atts[...]}]",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
+            "recommended_hook": "ppcart-field-{$atts[...]}]",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-field-{$atts[...]}]",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
+            "recommended_hook": "ppcart-field-{$atts[...]}]",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-metabox-title-access",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "ppcart-metabox-title-access",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-metabox-title-order-details",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-order-metaboxes.php",
+            "recommended_hook": "ppcart-metabox-title-order-details",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-metabox-title-order-notes",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "ppcart-metabox-title-order-notes",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-metabox-title-product-settings",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php",
+            "recommended_hook": "ppcart-metabox-title-product-settings",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-repeater-more-link-label",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/partials/ppcart-admin-field-repeater.php",
+            "recommended_hook": "ppcart-repeater-more-link-label",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-repeater-remove-link-label",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/partials/ppcart-admin-field-repeater.php",
+            "recommended_hook": "ppcart-repeater-remove-link-label",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-menu-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-admin-reports.php",
+            "recommended_hook": "ppcart-settings-menu-title",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-menu-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-contacts-page.php",
+            "recommended_hook": "ppcart-settings-menu-title",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-menu-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-extension-page.php",
+            "recommended_hook": "ppcart-settings-menu-title",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-menu-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
+            "recommended_hook": "ppcart-settings-menu-title",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-page-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-admin-reports.php",
+            "recommended_hook": "ppcart-settings-page-title",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-page-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-contacts-page.php",
+            "recommended_hook": "ppcart-settings-page-title",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-page-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-extension-page.php",
+            "recommended_hook": "ppcart-settings-page-title",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcart-settings-page-title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
+            "recommended_hook": "ppcart-settings-page-title",
             "notes": "Review before documenting as public API."
         },
         {
@@ -2493,6 +2793,16 @@
             "status": "canonical",
             "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
             "recommended_hook": "ppcart_defualt_fields_html",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_dismissible_notice_types",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/admin-ajax-and-notices.php",
+            "recommended_hook": "ppcart_dismissible_notice_types",
             "notes": "Canonical hook prefix."
         },
         {
@@ -6146,6 +6456,146 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcartlabel-{$k}",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/templates/settings-fields-register-fields.php",
+            "recommended_hook": "ppcartlabel-{$k}",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-company",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-sections-register.php",
+            "recommended_hook": "ppcartsection-title-company",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-currency",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-sections-register.php",
+            "recommended_hook": "ppcartsection-title-currency",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-debug",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-sections-register.php",
+            "recommended_hook": "ppcartsection-title-debug",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-downloads",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-sections-register.php",
+            "recommended_hook": "ppcartsection-title-downloads",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-maintenance-secrets",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcartsection-title-maintenance-secrets",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-pages",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-sections-register.php",
+            "recommended_hook": "ppcartsection-title-pages",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-settings",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/settings/traits/templates/settings-sections-register.php",
+            "recommended_hook": "ppcartsection-title-settings",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-{$email_key}",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/templates/settings-sections-emails.php",
+            "recommended_hook": "ppcartsection-title-{$email_key}",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-{$intigration_key}",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
+            "recommended_hook": "ppcartsection-title-{$intigration_key}",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-{$invoice_key}",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcartsection-title-{$invoice_key}",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-{$payment_gateway_key}",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcartsection-title-{$payment_gateway_key}",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-{$ppcart_section_key}",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
+            "recommended_hook": "ppcartsection-title-{$ppcart_section_key}",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "ppcartsection-title-{$tax_key}",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "internal",
+            "status": "dynamic",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "recommended_hook": "ppcartsection-title-{$tax_key}",
+            "notes": "Review before documenting as public API."
+        },
+        {
             "name": "pre_get_posts",
             "type": "action",
             "operation": "add_action",
@@ -6184,6 +6634,16 @@
             "file": "includes/class-ppcart-post-status-sync.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
+        },
+        {
+            "name": "pre_option",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/secrets/traits/trait-ppcart-secrets-config.php",
+            "recommended_hook": "pre_option",
+            "notes": "Review before documenting as public API."
         },
         {
             "name": "pre_update_option",
@@ -7206,446 +7666,6 @@
             "notes": "Review before documenting as public API."
         },
         {
-            "name": "{$this}{->}{plugin_name}-field-checkbox-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-checkbox.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-checkbox-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-editor-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-editor.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-editor-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-radios-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-radios.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-radios-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-repeater-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-repeater.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-repeater-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-select-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-select.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-select-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-color.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-email.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-html.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-password.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-text.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-textarea-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-textarea.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-textarea-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-textarea-options-defaults",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-upload.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-textarea-options-defaults",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-{$atts[...]}]",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-{$atts[...]}]",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-field-{$atts[...]}]",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-field-{$atts[...]}]",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-metabox-title-access",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-metabox-title-access",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-metabox-title-order-details",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/class-ppcart-order-metaboxes.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-metabox-title-order-details",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-metabox-title-order-notes",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-metabox-title-order-notes",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-metabox-title-product-settings",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-metabox-title-product-settings",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-repeater-more-link-label",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/partials/ppcart-admin-field-repeater.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-repeater-more-link-label",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-repeater-remove-link-label",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/partials/ppcart-admin-field-repeater.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-repeater-remove-link-label",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-menu-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/class-ppcart-admin-reports.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-menu-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-menu-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/class-ppcart-contacts-page.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-menu-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-menu-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/class-ppcart-extension-page.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-menu-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-menu-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-menu-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-page-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/class-ppcart-admin-reports.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-page-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-page-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/class-ppcart-contacts-page.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-page-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-page-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/class-ppcart-extension-page.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-page-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}-settings-page-title",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
-            "recommended_hook": "{$this}{->}{plugin_name}-settings-page-title",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}label-{$k}",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-fields-register-fields.php",
-            "recommended_hook": "{$this}{->}{plugin_name}label-{$k}",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-company",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-company",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-currency",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-currency",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-debug",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-debug",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-downloads",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-downloads",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-maintenance-secrets",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-maintenance-secrets",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-pages",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-pages",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-settings",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-settings",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-{$email_key}",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-emails.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-{$email_key}",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-{$intigration_key}",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-{$intigration_key}",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-{$invoice_key}",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-{$invoice_key}",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-{$payment_gateway_key}",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-{$payment_gateway_key}",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-{$ppcart_section_key}",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-{$ppcart_section_key}",
-            "notes": "Review before documenting as public API."
-        },
-        {
-            "name": "{$this}{->}{plugin_name}section-title-{$tax_key}",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "internal",
-            "status": "dynamic",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "recommended_hook": "{$this}{->}{plugin_name}section-title-{$tax_key}",
-            "notes": "Review before documenting as public API."
-        },
-        {
             "name": "{$top_notice_settings_filter}",
             "type": "filter",
             "operation": "add_filter",
@@ -7796,6 +7816,22 @@
             "recommended_pattern": "option_{$option}"
         },
         {
+            "pattern": "ppcart-field-repeater-{$setatts[...]}]",
+            "operation": "apply_filters",
+            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcart-field-repeater-{$setatts[...]}]"
+        },
+        {
+            "pattern": "ppcart-field-{$atts[...]}]",
+            "operation": "apply_filters",
+            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcart-field-{$atts[...]}]"
+        },
+        {
             "pattern": "ppcart_backend_message_{$k}",
             "operation": "apply_filters",
             "file": "includes/functions/merge-tags-and-dates.php",
@@ -7932,6 +7968,62 @@
             "recommended_pattern": "ppcart_{$trigger}_integrations"
         },
         {
+            "pattern": "ppcartlabel-{$k}",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/templates/settings-fields-register-fields.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcartlabel-{$k}"
+        },
+        {
+            "pattern": "ppcartsection-title-{$email_key}",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/templates/settings-sections-emails.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcartsection-title-{$email_key}"
+        },
+        {
+            "pattern": "ppcartsection-title-{$intigration_key}",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcartsection-title-{$intigration_key}"
+        },
+        {
+            "pattern": "ppcartsection-title-{$invoice_key}",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcartsection-title-{$invoice_key}"
+        },
+        {
+            "pattern": "ppcartsection-title-{$payment_gateway_key}",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcartsection-title-{$payment_gateway_key}"
+        },
+        {
+            "pattern": "ppcartsection-title-{$ppcart_section_key}",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcartsection-title-{$ppcart_section_key}"
+        },
+        {
+            "pattern": "ppcartsection-title-{$tax_key}",
+            "operation": "apply_filters",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
+            "classification": "internal",
+            "status": "dynamic",
+            "recommended_pattern": "ppcartsection-title-{$tax_key}"
+        },
+        {
             "pattern": "save_post_{$post}{->}{post_type}",
             "operation": "add_action",
             "file": "includes/files/traits/templates/files-admin-update-order-downloads.php",
@@ -7994,254 +8086,6 @@
             "classification": "internal",
             "status": "dynamic",
             "recommended_pattern": "{$hook}"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-checkbox-options-defaults",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-checkbox.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-checkbox-options-defaults"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-editor-options-defaults",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-editor.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-editor-options-defaults"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-radios-options-defaults",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-radios.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-radios-options-defaults"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-repeater-options-defaults",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-repeater.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-repeater-options-defaults"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]",
-            "operation": "apply_filters",
-            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-select-options-defaults",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-input-fields-field-select.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-select-options-defaults"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-text-options-defaults",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-text.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-text-options-defaults"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-textarea-options-defaults",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-text-fields-field-upload.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-textarea-options-defaults"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-field-{$atts[...]}]",
-            "operation": "apply_filters",
-            "file": "admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-field-{$atts[...]}]"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-metabox-title-access",
-            "operation": "apply_filters",
-            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-metabox-title-access"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-metabox-title-order-details",
-            "operation": "apply_filters",
-            "file": "admin/class-ppcart-order-metaboxes.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-metabox-title-order-details"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-metabox-title-order-notes",
-            "operation": "apply_filters",
-            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-metabox-title-order-notes"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-metabox-title-product-settings",
-            "operation": "apply_filters",
-            "file": "admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-metabox-title-product-settings"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-repeater-more-link-label",
-            "operation": "apply_filters",
-            "file": "admin/partials/ppcart-admin-field-repeater.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-repeater-more-link-label"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-repeater-remove-link-label",
-            "operation": "apply_filters",
-            "file": "admin/partials/ppcart-admin-field-repeater.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-repeater-remove-link-label"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-settings-menu-title",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-settings-menu-title"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}-settings-page-title",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}-settings-page-title"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}label-{$k}",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-fields-register-fields.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}label-{$k}"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-company",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-company"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-currency",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-currency"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-debug",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-debug"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-downloads",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-downloads"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-maintenance-secrets",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-maintenance-secrets"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-pages",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-pages"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-settings",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-register.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-settings"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-{$email_key}",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-emails.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-{$email_key}"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-{$intigration_key}",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-integrations.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-{$intigration_key}"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-{$invoice_key}",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-{$invoice_key}"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-{$payment_gateway_key}",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-{$payment_gateway_key}"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-{$ppcart_section_key}",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/templates/settings-sections-custom-tabs.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-{$ppcart_section_key}"
-        },
-        {
-            "pattern": "{$this}{->}{plugin_name}section-title-{$tax_key}",
-            "operation": "apply_filters",
-            "file": "admin/settings/traits/trait-ppcart-admin-settings-sections.php",
-            "classification": "internal",
-            "status": "dynamic",
-            "recommended_pattern": "{$this}{->}{plugin_name}section-title-{$tax_key}"
         },
         {
             "pattern": "{$top_notice_settings_filter}",

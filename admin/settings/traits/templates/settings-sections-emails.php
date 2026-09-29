@@ -20,7 +20,8 @@ $emails = apply_filters('ppcart_emails_tab_section', $emails);
 foreach ($emails as $email_key => $email) :
     add_settings_section(
         $this->plugin_name . '-' . $email_key,
-        apply_filters($this->plugin_name . 'section-title-' . $email_key, esc_html($email)),
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+        apply_filters('ppcartsection-title-' . $email_key, esc_html($email)),
         [$this, 'section_settings'],
         $this->plugin_name . '-email'
     );

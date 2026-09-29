@@ -16,7 +16,7 @@ $defaults['settings']    = [
     'teeny'         => true,
 ];
 $defaults['value']       = '';
-apply_filters($this->plugin_name . '-field-editor-options-defaults', $defaults);
+apply_filters('ppcart-field-editor-options-defaults', $defaults);
 $atts         = wp_parse_args($args, $defaults);
 $atts['name'] = $atts['id'];
 

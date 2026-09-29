@@ -8,7 +8,7 @@ if (! defined('ABSPATH')) {
 $defaults['class']          = 'regular-text';
 $defaults['description']    = '';
 $defaults['label']          = '';
-apply_filters($this->plugin_name . '-field-text-options-defaults', $defaults);
+apply_filters('ppcart-field-text-options-defaults', $defaults);
 $atts = wp_parse_args($args, $defaults);
 $allowed_html = wp_kses_allowed_html('post');
 $allowed_html['select'] = [

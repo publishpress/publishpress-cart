@@ -36,7 +36,8 @@ trait PPCart_Admin_Settings_Sections_Trait
         foreach ($payment_gateways as $payment_gateway_key => $payment_gateway) :
             add_settings_section(
                 $this->plugin_name . '-' . $payment_gateway_key,
-                apply_filters($this->plugin_name . 'section-title-' . $payment_gateway_key, esc_html($payment_gateway)),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+                apply_filters('ppcartsection-title-' . $payment_gateway_key, esc_html($payment_gateway)),
                 [ $this, 'section_settings' ],
                 $this->plugin_name . '-payment'
             );
@@ -64,7 +65,8 @@ trait PPCart_Admin_Settings_Sections_Trait
         foreach ($taxes as $tax_key => $tax) :
             add_settings_section(
                 $this->plugin_name . '-' . $tax_key,
-                apply_filters($this->plugin_name . 'section-title-' . $tax_key, esc_html($tax)),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+                apply_filters('ppcartsection-title-' . $tax_key, esc_html($tax)),
                 [ $this, 'section_settings' ],
                 $this->plugin_name . '-tax'
             );
@@ -84,7 +86,8 @@ trait PPCart_Admin_Settings_Sections_Trait
         foreach ($invoices as $invoice_key => $invoice) :
             add_settings_section(
                 $this->plugin_name . '-' . $invoice_key,
-                apply_filters($this->plugin_name . 'section-title-' . $invoice_key, esc_html($invoice)),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+                apply_filters('ppcartsection-title-' . $invoice_key, esc_html($invoice)),
                 [ $this, 'section_settings' ],
                 $this->plugin_name . '-invoice'
             );
@@ -100,7 +103,8 @@ trait PPCart_Admin_Settings_Sections_Trait
     {
         add_settings_section(
             $this->plugin_name . '-maintenance-secrets',
-            apply_filters($this->plugin_name . 'section-title-maintenance-secrets', esc_html__('Security', 'publishpress-cart')),
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+            apply_filters('ppcartsection-title-maintenance-secrets', esc_html__('Security', 'publishpress-cart')),
             [ $this, 'section_settings' ],
             $this->plugin_name . '-maintenance'
         );

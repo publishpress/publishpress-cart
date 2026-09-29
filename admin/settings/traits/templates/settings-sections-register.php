@@ -10,37 +10,43 @@ if (!defined('ABSPATH')) {
 // render under the catch-all section below for backwards compatibility.
 add_settings_section(
     $this->plugin_name . '-currency',
-    apply_filters($this->plugin_name . 'section-title-currency', esc_html__('Currency & Pricing', 'publishpress-cart')),
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+    apply_filters('ppcartsection-title-currency', esc_html__('Currency & Pricing', 'publishpress-cart')),
     [ $this, 'section_settings' ],
     $this->plugin_name
 );
 add_settings_section(
     $this->plugin_name . '-pages',
-    apply_filters($this->plugin_name . 'section-title-pages', esc_html__('Pages & Customer Account', 'publishpress-cart')),
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+    apply_filters('ppcartsection-title-pages', esc_html__('Pages & Customer Account', 'publishpress-cart')),
     [ $this, 'section_settings' ],
     $this->plugin_name
 );
 add_settings_section(
     $this->plugin_name . '-company',
-    apply_filters($this->plugin_name . 'section-title-company', esc_html__('Company & Branding', 'publishpress-cart')),
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+    apply_filters('ppcartsection-title-company', esc_html__('Company & Branding', 'publishpress-cart')),
     [ $this, 'section_settings' ],
     $this->plugin_name
 );
 add_settings_section(
     $this->plugin_name . '-downloads',
-    apply_filters($this->plugin_name . 'section-title-downloads', esc_html__('Downloads', 'publishpress-cart')),
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+    apply_filters('ppcartsection-title-downloads', esc_html__('Downloads', 'publishpress-cart')),
     [ $this, 'section_settings' ],
     $this->plugin_name
 );
 add_settings_section(
     $this->plugin_name . '-debug',
-    apply_filters($this->plugin_name . 'section-title-debug', esc_html__('Debug', 'publishpress-cart')),
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+    apply_filters('ppcartsection-title-debug', esc_html__('Debug', 'publishpress-cart')),
     [ $this, 'section_settings' ],
     $this->plugin_name
 );
 add_settings_section(
     $this->plugin_name . '-settings',
-    apply_filters($this->plugin_name . 'section-title-settings', esc_html__('Other Settings', 'publishpress-cart')),
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+    apply_filters('ppcartsection-title-settings', esc_html__('Other Settings', 'publishpress-cart')),
     [ $this, 'section_settings' ],
     $this->plugin_name
 );

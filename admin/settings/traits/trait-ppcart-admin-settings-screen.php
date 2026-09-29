@@ -161,14 +161,14 @@ trait PPCart_Admin_Settings_Screen_Trait
         add_submenu_page(
             $menu_slug,
             apply_filters(
-                $this->plugin_name . '-settings-page-title',
+                'ppcart-settings-page-title',
                 sprintf(
                     /* translators: %s: plugin title. */
                     esc_html__('%s Settings', 'publishpress-cart'),
                     apply_filters('ppcart_plugin_title', $this->plugin_title)
                 )
             ),
-            apply_filters($this->plugin_name . '-settings-menu-title', esc_html__('Settings', 'publishpress-cart')),
+            apply_filters('ppcart-settings-menu-title', esc_html__('Settings', 'publishpress-cart')),
             'manage_options',
             PPCart_Admin_Screens::PAGE_SETTINGS,
             [ $this, 'page_options' ]

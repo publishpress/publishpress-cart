@@ -82,6 +82,7 @@ function ppcart_check_ajax_referer($action = -1, $query_arg = false, $stop = tru
 
     $result = ppcart_verify_nonce($nonce, $action);
 
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Intentionally mirrors the core check_ajax_referer action and signature.
     do_action('check_ajax_referer', $action, $result);
 
     if ($stop && false === $result) {
@@ -119,6 +120,7 @@ function ppcart_check_admin_referer($action = -1, $query_arg = '_wpnonce')
 
     $result = ppcart_verify_nonce($nonce, $action);
 
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Intentionally mirrors the core check_admin_referer action and signature.
     do_action('check_admin_referer', $action, $result);
 
     if (false === $result) {

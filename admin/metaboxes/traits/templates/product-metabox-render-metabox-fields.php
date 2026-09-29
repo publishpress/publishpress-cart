@@ -25,7 +25,7 @@ foreach ($fields as $atts) {
             if (ppcart_is_meta_field_id($atts['id'], 'default_fields') || ppcart_is_meta_field_id($atts['id'], 'address_fields')) {
                 $setatts = $atts;
 
-                apply_filters($this->plugin_name . '-field-repeater-' . $setatts['id'], $setatts);
+                apply_filters('ppcart-field-repeater-' . $setatts['id'], $setatts);
 
                 $count      = 0;
                 $repeater   = [];
@@ -45,7 +45,7 @@ foreach ($fields as $atts) {
                 $atts['value'] = $this->meta[$atts['id']][0];
             }
 
-            apply_filters($this->plugin_name . '-field-' . $atts['id'], $atts);
+            apply_filters('ppcart-field-' . $atts['id'], $atts);
             $atts['name'] = $atts['id'];
 
             ?><div id="rid<?php echo esc_attr($atts['id']); ?>" class="ppcart-field ppcart-row <?php echo esc_attr($atts['class_size']); ?>"><?php
@@ -67,7 +67,7 @@ foreach ($fields as $atts) {
     } else {
         $setatts = $atts;
 
-        apply_filters($this->plugin_name . '-field-repeater-' . $setatts['id'], $setatts);
+        apply_filters('ppcart-field-repeater-' . $setatts['id'], $setatts);
 
         $count      = 0;
         $repeater   = [];

@@ -17,7 +17,8 @@ $intigrations = apply_filters('ppcart_integrations_tab_section', $intigrations);
 foreach ($intigrations as $intigration_key => $intigration) :
     add_settings_section(
         $this->plugin_name . '-' . $intigration_key,
-        apply_filters($this->plugin_name . 'section-title-' . $intigration_key, esc_html($intigration)),
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+        apply_filters('ppcartsection-title-' . $intigration_key, esc_html($intigration)),
         [$this, 'section_settings'],
         $this->plugin_name . '-integrations'
     );

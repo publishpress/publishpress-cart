@@ -11,7 +11,7 @@ $defaults['label']        = '';
 $defaults['label-remove'] = '';
 $defaults['label-upload'] = '';
 $defaults['field-type']   = 'url';
-apply_filters($this->plugin_name . '-field-textarea-options-defaults', $defaults);
+apply_filters('ppcart-field-textarea-options-defaults', $defaults);
 $atts = wp_parse_args($args, $defaults);
 
 if ($option_val = get_option($atts['id'])) {

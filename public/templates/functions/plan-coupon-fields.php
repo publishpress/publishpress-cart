@@ -57,6 +57,7 @@ function ppcart_order_summary_info($post_id, $plan = false)
     echo wp_kses_post(ppcart_render_site_info());
     echo '<div class="checkout-order-summary">';
     $content = get_post_field('post_content', $post_id);
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Applies WordPress core content rendering intentionally.
     $post_content = apply_filters('the_content', $content);
     $class = '';
     $skip_default = function_exists('has_shortcode') && has_shortcode($content, 'ppcart_order_summary_items_view');
