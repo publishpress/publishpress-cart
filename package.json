@@ -102,12 +102,13 @@
   },
   "homepage": "https://github.com/publishpress/publishpress-cart#readme",
   "overrides": {
-    "brace-expansion": "5.0.6",
+    "brace-expansion": "5.0.12",
     "markdownlint-cli": {
       "minimatch": "3.1.5"
     },
+    "markdown-it": "14.3.2",
     "uuid": "11.1.1",
     "serialize-javascript": "7.0.5",
-    "ws": "8.20.1"
+    "ws": "8.22.0"
   }
 }
