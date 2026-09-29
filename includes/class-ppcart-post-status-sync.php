@@ -87,12 +87,8 @@ class PPCart_Post_Status_Sync
 
         $expanded = self::expand_query_status_value($status);
 
-        // posts_where does not run for suppress_filters queries (get_posts()), so keep the registered slugs WP_Query accepts.
-        if ($query->get('suppress_filters')) {
-            $query->set('post_status', array_values(array_filter((array) $expanded, 'get_post_status_object')));
-            return;
-        }
-
+        // get_posts() suppresses filters by default; posts_where must run to apply the status IN clause.
+        $query->set('suppress_filters', false);
         $query->set('ppcart_post_status_in', (array) $expanded);
         // WP_Query drops unregistered slugs like leftover `paid`; apply them in posts_where.
         $query->set('post_status', 'any');
