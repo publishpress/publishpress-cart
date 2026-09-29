@@ -66,7 +66,7 @@ class PPCart_Order_Items
     }
 
     /**
-     * Create order-item tables for newly initialized multisite blogs.
+     * Create plugin tables for newly initialized multisite blogs.
      *
      * @param WP_Site $new_site New site object.
      */
@@ -78,9 +78,17 @@ class PPCart_Order_Items
 
         switch_to_blog((int) $new_site->blog_id);
         try {
+            if (! class_exists('PPCart_Activator')) {
+                require_once dirname(__DIR__) . '/class-ppcart-activator.php';
+            }
+
+            PPCart_Activator::setup_tax_table();
             $this->setup_items_table();
+            PPCart_Files::setup_download_table_for_site();
         } finally {
             restore_current_blog();
+            ppcart_flush_live_table_cache();
+            ppcart_register_live_meta_table();
         }
     }
 

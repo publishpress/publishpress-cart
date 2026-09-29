@@ -1,6 +1,6 @@
 # PublishPress Cart Hook Manifest
 
-Generated on 2026-09-28 from a static PHP token audit of `publishpress-cart`.
+Generated on 2026-09-29 from a static PHP token audit of `publishpress-cart`.
 
 ## Prefix Policy
 

@@ -205,6 +205,17 @@ trait PPCart_Files_Storage_Trait
 
     public function setup_download_table()
     {
+        self::setup_download_table_for_site();
+    }
+
+    /**
+     * Create the downloads table for the current site.
+     *
+     * This static entry point lets multisite initialization create the table
+     * without constructing another file handler and registering its hooks.
+     */
+    public static function setup_download_table_for_site()
+    {
         global $wpdb;
 
         $ppcart_downloads_table = self::live_table();
