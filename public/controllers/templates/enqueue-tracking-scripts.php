@@ -152,7 +152,8 @@ if (is_object($ppcart_product) && get_option('_ppcart_fb_lead')) {
     $ppcart['content_id'] = $ppcart_product->ID;
 }
 
-if ('' !== $purchase_amount || ($ppcart_order_get && ! $ppcart_oto_get)) {
+// Only read order data for the purchase event when the visitor may view that order.
+if ('' !== $purchase_amount || ($ppcart_order_get && ! $ppcart_oto_get && PPCart_Order::visitor_can_view(absint($ppcart_order_get)))) {
     if ('' === $purchase_amount) {
         $order_info = (array) ppcart_setup_order(absint($ppcart_order_get));
         $purchase_amount = isset($order_info['amount']) ? (string) $order_info['amount'] : '';

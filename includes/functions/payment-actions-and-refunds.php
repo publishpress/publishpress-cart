@@ -255,14 +255,9 @@ function ppcart_do_cancel_subscription($sub, $sub_id = false, $now = true, $echo
     }
 
     if (!$sub_id) {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Called from internal cancellation flow where nonce is already validated at entrypoint.
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Internal cancellation flow reads posted subscription identifier.
-        if (isset($_POST['subscription_id'])) {
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Internal cancellation flow reads posted subscription identifier.
-            $sub_id = sanitize_text_field(wp_unslash($_POST['subscription_id']));
-        } else {
-            $sub_id = $sub->subscription_id;
-        }
+        // Never fall back to request data here: callers run in checkout, webhook,
+        // and integration contexts where the request body is not the admin's.
+        $sub_id = $sub->subscription_id;
     }
 
     $canceled = false;
