@@ -1169,7 +1169,6 @@ into chat.
 | 58 | Optional `esc_attr()` on literal `ppcart-splitin-form` echo in `checkout1.php` |
 | 58 | Low — dead `includes/compat/` skip in scanner copied from HtmlIdsTest |
 | 71 | Catalog “canonical wins when both keys are set” is true in the copy helper but not asserted in IT-360 |
-| 71 | `order-downloads-metabox.php` appends `&ppcart-revoke=` after `wp_nonce_url(get_edit_post_link())` (default action `-1`) while the handler verifies `update-post_{id}` — pre-existing nonce mismatch vs product-form link |
 
 ---
 
