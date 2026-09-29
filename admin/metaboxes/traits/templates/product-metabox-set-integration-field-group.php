@@ -7,8 +7,11 @@ if (! defined('ABSPATH')) {
 
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only context value for product title lookup.
 $current_post_id = isset($_GET['post']) ? absint(wp_unslash($_GET['post'])) : null;
-if (!$name = get_the_title($current_post_id)) {
-    $name = __('this product', 'publishpress-cart');
+$name = get_the_title($current_post_id);
+if (! $name) {
+    $name = esc_html__('this product', 'publishpress-cart');
+} else {
+    $name = esc_html($name);
 }
 $name = '<strong>' . $name . '</strong>';
 $integration_fields = array_merge(
