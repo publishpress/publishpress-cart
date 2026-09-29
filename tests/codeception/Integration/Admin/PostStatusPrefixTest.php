@@ -43,6 +43,7 @@ class PostStatusPrefixTest extends WPTestCase
 
         $prefixedId = $this->insertOrder('paid');
         $legacyId   = $this->insertOrder('paid');
+        $refundedId = $this->insertOrder('refunded');
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Test plants a pre-prefix row the query filter must still find.
         $wpdb->update(
@@ -65,6 +66,7 @@ class PostStatusPrefixTest extends WPTestCase
 
         $this->assertContains($prefixedId, $found);
         $this->assertContains($legacyId, $found);
+        $this->assertNotContains($refundedId, $found);
     }
 
     public function test_IT_372_upgrade_migrates_legacy_canonical_post_status(): void
