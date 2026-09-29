@@ -31,11 +31,11 @@ foreach ($groups as $group_index => $group) {
 
     echo '<article class="ppcart-debug-log-group-card' . esc_attr($expanded ? ' is-expanded' : '') . '">';
     echo '<button type="button" class="ppcart-debug-log-group-toggle" aria-expanded="' . esc_attr($expanded ? 'true' : 'false') . '" aria-controls="' . esc_attr($group_id) . '" data-ppcart-debug-group-toggle="' . esc_attr($group_id) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-debug-log-group-' . $group_index . '-toggle')) . '">';
-    echo self::render_workflow_icon(self::get($group, 'workflow', 'General')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static icon markup is escaped inside render_workflow_icon().
+    echo wp_kses(self::render_workflow_icon(self::get($group, 'workflow', 'General')), ppcart_log_viewer_allowed_html());
     echo '<span class="ppcart-debug-log-group-main">';
     echo '<span class="ppcart-debug-log-group-title">';
     echo '<strong>' . esc_html(self::get($group, 'title', '')) . '</strong>';
-    echo self::render_level_badge(self::get($group, 'level', 'UNKNOWN')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup is escaped inside render_level_badge().
+    echo wp_kses(self::render_level_badge(self::get($group, 'level', 'UNKNOWN')), ppcart_log_viewer_allowed_html());
     echo '<span class="ppcart-debug-log-workflow-label">' . esc_html(self::get($group, 'workflow', 'General')) . '</span>';
     echo '</span>';
     echo '<span class="ppcart-debug-log-group-meta">' . esc_html($count_text . ' - ' . self::get($group, 'summary', '')) . '</span>';
@@ -62,7 +62,7 @@ foreach ($groups as $group_index => $group) {
         echo '<button type="button" class="ppcart-debug-log-event-card' . esc_attr($is_first_item ? ' is-active' : '') . '" data-ppcart-debug-event="' . esc_attr($event_id) . '" data-ppcart-debug-group="' . esc_attr($group_id) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-debug-log-event-' . $group_index . '-' . $entry_index)) . '">';
         echo '<span class="ppcart-debug-log-event-marker" aria-hidden="true"></span>';
         echo '<span class="ppcart-debug-log-event-time">' . esc_html(self::format_event_clock_time($entry)) . '</span>';
-        echo self::render_level_badge(self::get($entry, 'level', 'UNKNOWN')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup is escaped inside render_level_badge().
+        echo wp_kses(self::render_level_badge(self::get($entry, 'level', 'UNKNOWN')), ppcart_log_viewer_allowed_html());
         echo '<span class="ppcart-debug-log-event-body">';
         echo '<span class="ppcart-debug-log-event-workflow">' . esc_html(self::get($entry, 'workflow', 'General')) . '</span>';
         echo '<strong>' . esc_html(self::get($entry, 'message', '')) . '</strong>';
@@ -85,7 +85,7 @@ if (empty($panel_entries)) {
 foreach ($panel_entries as $panel_index => $panel) {
     $previous_id = isset($panel_entries[ $panel_index - 1 ]) ? $panel_entries[ $panel_index - 1 ]['id'] : '';
     $next_id     = isset($panel_entries[ $panel_index + 1 ]) ? $panel_entries[ $panel_index + 1 ]['id'] : '';
-    echo self::render_inspector_panel($panel, 0 === $panel_index, $previous_id, $next_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup is escaped inside render_inspector_panel().
+    echo wp_kses((string) self::render_inspector_panel($panel, 0 === $panel_index, $previous_id, $next_id), ppcart_log_viewer_allowed_html());
 }
 
 echo '</section>';

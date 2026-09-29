@@ -499,6 +499,68 @@ function ppcart_admin_allowed_html()
 }
 
 /**
+ * Return the HTML allowlist for the debug log and Stripe webhook log viewers.
+ *
+ * The viewers build their markup in helpers that escape every dynamic value.
+ * The echo sites still pass that markup through wp_kses() with this list. The
+ * list keeps the tags, the SVG icons and the data-* hooks that the viewer
+ * JavaScript needs.
+ *
+ * @return array
+ */
+function ppcart_log_viewer_allowed_html()
+{
+    static $allowed = null;
+
+    if (null !== $allowed) {
+        return $allowed;
+    }
+
+    $allowed = wp_kses_allowed_html('post');
+
+    $state = [
+        'aria-controls' => true,
+        'aria-expanded' => true,
+        'aria-hidden'   => true,
+        'aria-label'    => true,
+        'class'         => true,
+        'data-*'        => true,
+        'disabled'      => true,
+        'hidden'        => true,
+        'id'            => true,
+        'type'          => true,
+    ];
+
+    foreach ([ 'article', 'button', 'details', 'div', 'span', 'tr', 'td' ] as $tag) {
+        $allowed[ $tag ] = array_merge(isset($allowed[ $tag ]) ? (array) $allowed[ $tag ] : [], $state);
+    }
+
+    $allowed['details']['open'] = true;
+    $allowed['time']            = [ 'class' => true ];
+    $allowed['svg']             = [
+        'aria-hidden' => true,
+        'class'       => true,
+        'focusable'   => true,
+        'viewbox'     => true,
+    ];
+    $allowed['path']   = [ 'd' => true ];
+    $allowed['rect']   = [
+        'height' => true,
+        'rx'     => true,
+        'width'  => true,
+        'x'      => true,
+        'y'      => true,
+    ];
+    $allowed['circle'] = [
+        'cx' => true,
+        'cy' => true,
+        'r'  => true,
+    ];
+
+    return $allowed;
+}
+
+/**
  * Adds inline CSS to an enqueued handle, or prints a fallback handle if the
  * primary handle has already been printed.
  *

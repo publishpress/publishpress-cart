@@ -78,8 +78,7 @@ class PPCart_Admin_Page_Notices
             return;
         }
 
-        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Captured notices are already rendered by WordPress/admin notice callbacks.
-        echo $this->settings_captured_admin_notices;
+        echo wp_kses($this->settings_captured_admin_notices, ppcart_admin_allowed_html());
         $this->settings_captured_admin_notices = '';
     }
 }

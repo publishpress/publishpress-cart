@@ -59,7 +59,7 @@ foreach ($email_template_sections as $email_section) {
 
 // Locked Pro email notifications, deduped against the rendered ones.
 if (function_exists('ppcart_pro_locked_email_rows_html')) {
-    echo ppcart_pro_locked_email_rows_html($rendered_email_titles); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in helper.
+    echo wp_kses(ppcart_pro_locked_email_rows_html($rendered_email_titles), ppcart_admin_allowed_html());
 }
 ?>
     </div>

@@ -373,6 +373,6 @@ header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 header("Content-Type: text/csv; charset=utf-8");
 header("Content-Disposition: attachment; filename=\"" . $filename . "-" . $export_type . "-export.csv\";");
 header("Content-Transfer-Encoding: binary");
-// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV stream intentionally outputs generated raw CSV content.
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- text/csv attachment, not HTML. Each cell went through ppcart_csv_escape_cell() (tags stripped, formulas neutralized, CSV-quoted). HTML escaping here would corrupt the CSV data.
 echo $csv_output_report;
 exit();

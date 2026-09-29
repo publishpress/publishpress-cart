@@ -24,6 +24,6 @@ $atts = [
     'body' => ppcart_personalize($body, $order_info, false, true, true),
 ];
 
-$body = ppcart_get_email_html($atts);
-// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Email shell already escapes at each output statement in email-main.php.
-echo $body;
+// Render the email shell directly. email-main.php escapes each value where it
+// prints it, so this preview does not echo a pre-built HTML string.
+ppcart_helper()->renderTemplate('email/email-main', $atts);
