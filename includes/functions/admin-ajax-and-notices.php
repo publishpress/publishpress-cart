@@ -380,7 +380,13 @@ function ppcart_ajax_notice_handler()
 
     // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Notice type is consumed only after ppcart_verify_nonce() succeeds above.
     $type = sanitize_key(wp_unslash($_POST['type'] ?? ''));
-    if ('' === $type) {
+    /**
+     * Notice types that the dismiss AJAX action may store as dismissed.
+     *
+     * @param string[] $types Notice types (the data-notice value of a `.notice-ppcart-db-update` notice).
+     */
+    $allowed_types = array_map('strval', (array) apply_filters('ppcart_dismissible_notice_types', [ 'ppcart_price_formatted' ]));
+    if ('' === $type || ! in_array($type, $allowed_types, true)) {
         wp_send_json_error(__('Invalid request.', 'publishpress-cart'), 400);
     }
 
