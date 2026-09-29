@@ -90,7 +90,7 @@
                 if (result.error.code == "incomplete_expiry") {}
                 if (result.error.code == "incomplete_cvc") {}
                 if (result.error.code == "card_declined"){
-                    document.getElementById("ppcart-card-error").innerHTML = result.error.message;
+                    document.getElementById("ppcart-card-error").textContent = result.error.message;
                     document.getElementById("ppcart-card-error").classList.add("error-label");
                 }
             } else {
@@ -147,7 +147,7 @@
         var cardInput = document.getElementById(inputElemId);
 
         if (event.error) {
-            cardError.innerHTML = event.error.message;
+            cardError.textContent = event.error.message;
             cardError.classList.add("error-label");
             cardInput.classList.add("error-border");
         } else {
