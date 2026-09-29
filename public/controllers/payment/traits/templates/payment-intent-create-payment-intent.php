@@ -6,11 +6,11 @@ if (! defined('ABSPATH')) {
 
 
 global $ppcart_stripe, $ppcart_currency, $ppcart_product, $ppcart_debug_logger;
+// Included only from create_payment_intent(), which verifies the
+// ppcart_purchase_nonce checkout nonce before any other request field is read.
 $ppcart_product_id = ppcart_filter_input(INPUT_POST, 'ppcart_product_id', FILTER_VALIDATE_INT);
-$nonce         = ppcart_filter_input(INPUT_POST, 'ppcart-nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $preload_intent = ppcart_filter_input(INPUT_POST, 'ppcart_preload_intent', FILTER_VALIDATE_INT);
 $ppcart_product_id = (false !== $ppcart_product_id && null !== $ppcart_product_id) ? absint($ppcart_product_id) : 0;
-$nonce         = is_string($nonce) ? sanitize_text_field($nonce) : '';
 $preload_intent = (false !== $preload_intent && null !== $preload_intent) ? absint($preload_intent) : 0;
 
 $ppcart_debug_logger->log_event(
@@ -20,19 +20,6 @@ $ppcart_debug_logger->log_event(
         'product_id' => $ppcart_product_id,
     ]
 );
-
-if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
-    $ppcart_debug_logger->log_event(
-        'checkout.security.failed',
-        'Checkout security check failed before creating Stripe PaymentIntent.',
-        [
-            'product_id' => $ppcart_product_id,
-            'check'      => 'ppcart_purchase_nonce:1',
-        ],
-        4
-    );
-    wp_send_json_error(['error' => __('Invalid Request', 'publishpress-cart')]);
-}
 
 if (! $this->is_connect_destination_configured()) {
     $ppcart_debug_logger->log_debug('Stripe Connect destination is missing or invalid during payment intent creation.', 4);
@@ -104,6 +91,8 @@ if ($cached_customer_id) {
     $customer = $this->get_or_create_stripe_customer($stripe, $customer_args, $email);
 }
 
+// Server-side write, not a read: PPCart_Order::load_from_post() takes the
+// Stripe customer from this key, so it gets the customer created above.
 $_POST['customerId'] = $customer->id;
 
 $ppcart_option_id = isset($posted_values['ppcart_product_option']) ? sanitize_text_field($posted_values['ppcart_product_option']) : '';
