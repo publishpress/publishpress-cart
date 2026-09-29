@@ -322,8 +322,10 @@ trait PPCart_Order_Invoices
         if ($link = $this->receipt_link()) {
             if ($label === false) {
                 $label = esc_html__('Download Receipt', 'publishpress-cart');
+            } else {
+                $label = esc_html((string) $label);
             }
-            return '<a href="' . $link . '" target="_blank" rel="noopener noreferrer">' . $label . '</a>';
+            return '<a href="' . esc_url($link) . '" target="_blank" rel="noopener noreferrer">' . $label . '</a>';
         } else {
             return false;
         }
