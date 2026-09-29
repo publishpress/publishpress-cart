@@ -107,14 +107,26 @@ trait PPCart_Admin_Screen_Context_Trait
             return $raw_value;
         }
 
+        // Fallback for CLI tests, where filter_input() does not see $_GET / $_POST.
+        // Return only sanitized scalars, so no caller receives a raw request value.
         if (INPUT_GET === $input_type) {
-            // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read-only screen detection fallback for CLI tests; sanitized before use.
-            return $_GET[ $key ] ?? null;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only screen detection.
+            if (! isset($_GET[ $key ]) || ! is_scalar($_GET[ $key ])) {
+                return null;
+            }
+
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only screen detection.
+            return sanitize_text_field(wp_unslash((string) $_GET[ $key ]));
         }
 
         if (INPUT_POST === $input_type) {
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read-only route detection fallback for CLI tests; sanitized before use.
-            return $_POST[ $key ] ?? null;
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Read-only route detection.
+            if (! isset($_POST[ $key ]) || ! is_scalar($_POST[ $key ])) {
+                return null;
+            }
+
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Read-only route detection.
+            return sanitize_text_field(wp_unslash((string) $_POST[ $key ]));
         }
 
         return null;

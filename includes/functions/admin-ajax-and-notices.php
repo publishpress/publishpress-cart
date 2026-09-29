@@ -28,12 +28,15 @@ function ppcart_update_user_profile()
 
     $response = [];
 
-    // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Data is parsed after nonce verification then field-level validated/sanitized below.
-    parse_str(wp_unslash($_POST['form_data'] ?? ''), $data);
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verified above. form_data is a serialized form that carries a new password. As in core (wp-login.php), the password is not sanitized because that would change it. Each other field is sanitized for its type below.
+    $form_data = isset($_POST['form_data']) && is_string($_POST['form_data']) ? wp_unslash($_POST['form_data']) : '';
+    parse_str($form_data, $data);
 
-    $first_name = isset($data['first_name']) ? sanitize_text_field($data['first_name']) : '';
-    $last_name  = isset($data['last_name']) ? sanitize_text_field($data['last_name']) : '';
-    $email      = isset($data['email']) ? sanitize_email($data['email']) : '';
+    $first_name = isset($data['first_name']) && is_string($data['first_name']) ? sanitize_text_field($data['first_name']) : '';
+    $last_name  = isset($data['last_name']) && is_string($data['last_name']) ? sanitize_text_field($data['last_name']) : '';
+    $email      = isset($data['email']) && is_string($data['email']) ? sanitize_email($data['email']) : '';
+    $password         = isset($data['password']) && is_string($data['password']) ? $data['password'] : '';
+    $password_confirm = isset($data['new_password']) && is_string($data['new_password']) ? $data['new_password'] : '';
 
     if (empty($first_name)) {
         $response['error'] = __('Please enter first name.', "publishpress-cart");
@@ -46,10 +49,8 @@ function ppcart_update_user_profile()
         $response['error'] = __('Enter a valid email', "publishpress-cart");
     }
 
-    if (!empty($data['password'])) {
-        if ($data['password'] != $data['new_password']) {
-            $response['error'] = __('Password and confirm password should match.', "publishpress-cart");
-        }
+    if ('' !== $password && $password !== $password_confirm) {
+        $response['error'] = __('Password and confirm password should match.', "publishpress-cart");
     }
 
     if (isset($response['error'])) {
@@ -120,9 +121,9 @@ function ppcart_update_user_profile()
         'user_email' => $email,
     ]);
 
-    if (!empty($data['password'])) {
+    if ('' !== $password) {
         // Change password.
-        wp_set_password($data['password'], $current_user->ID);
+        wp_set_password($password, $current_user->ID);
     }
 
     wp_send_json(['success' => true,'message' => esc_html__('Profile details have been saved.', 'publishpress-cart')]);

@@ -48,9 +48,9 @@ trait PPCart_Admin_Settings_Email_Trait
      */
     private function read_notification_post_entry()
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verified in caller; email HTML sanitized just below.
-        $message = isset($_POST['body']) ? wp_unslash($_POST['body']) : '';
-        $message = function_exists('ppcart_kses_email_html') ? ppcart_kses_email_html($message) : wp_kses_post($message);
+        $email_allowed_html = function_exists('ppcart_get_email_allowed_html') ? ppcart_get_email_allowed_html() : 'post';
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified in caller.
+        $message = isset($_POST['body']) ? wp_kses(wp_unslash($_POST['body']), $email_allowed_html) : '';
 
         // phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verified in the calling AJAX handler.
         return [

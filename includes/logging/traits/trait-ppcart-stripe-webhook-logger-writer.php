@@ -262,9 +262,7 @@ trait PPCart_Stripe_Webhook_Logger_Writer_Trait
             return '';
         }
 
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized immediately after unslashing.
-        $value = wp_unslash($_SERVER[ $key ]);
-        return self::sanitize_text($value);
+        return sanitize_text_field(wp_unslash($_SERVER[ $key ]));
     }
 
     /**

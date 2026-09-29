@@ -72,7 +72,7 @@ $ppcart_order_post_get = (false !== $ppcart_order_post_get && null !== $ppcart_o
 
 // phpcs:disable WordPress.Security.NonceVerification.Missing -- Read-only: these values only pick which tracking scripts and script vars to print on this page view; nothing is stored or changed. The upsell/downsell nonces are passed through as flags, not verified here.
 if (empty($ppcart_order_post) && isset($_POST['ppcart_order']) && is_array($_POST['ppcart_order'])) {
-    $ppcart_order_post = ppcart_parse_tracking_order_fields(wp_unslash($_POST['ppcart_order']), false); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Parser sanitizes by field after unslash at the read site.
+    $ppcart_order_post = ppcart_parse_tracking_order_fields(map_deep(wp_unslash($_POST['ppcart_order']), 'sanitize_text_field'), false);
     $ppcart_order_post_id = isset($ppcart_order_post['ID']) ? absint($ppcart_order_post['ID']) : 0;
     $pay_method = $ppcart_order_post['pay_method'] ?? '';
 }

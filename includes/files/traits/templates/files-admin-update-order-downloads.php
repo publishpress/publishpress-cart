@@ -33,10 +33,8 @@ if (!$files = $this->get_order_downloads($post_id, ['status' => 'all'])) {
     return;
 }
 
-// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Bulk array is unslashed and each value is sanitized before use.
-$posted_expires = isset($_POST['expires']) && is_array($_POST['expires']) ? wp_unslash($_POST['expires']) : [];
-// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Bulk array is unslashed and each value is sanitized before use.
-$posted_remaining = isset($_POST['remaining']) && is_array($_POST['remaining']) ? wp_unslash($_POST['remaining']) : [];
+$posted_expires = isset($_POST['expires']) && is_array($_POST['expires']) ? map_deep(wp_unslash($_POST['expires']), 'sanitize_text_field') : [];
+$posted_remaining = isset($_POST['remaining']) && is_array($_POST['remaining']) ? map_deep(wp_unslash($_POST['remaining']), 'sanitize_text_field') : [];
 
 foreach ($files as $download) {
     $changes = [];
