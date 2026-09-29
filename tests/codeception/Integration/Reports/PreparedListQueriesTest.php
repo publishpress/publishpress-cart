@@ -157,7 +157,7 @@ class PreparedListQueriesTest extends WPTestCase
         $customers = ppcart_get_customers($userId);
 
         $this->assertArrayHasKey('customer.prepared@example.com', $customers);
-        $this->assertSame([ $paidId ], array_column($customers['customer.prepared@example.com'], 'id'));
+        $this->assertSame([ $paidId ], array_map('intval', array_column($customers['customer.prepared@example.com'], 'id')));
         $this->assertArrayHasKey('customer.prepared@example.com', ppcart_get_customers());
     }
 
