@@ -12,7 +12,7 @@ $defaults['name']        = $args['id'];
 $defaults['placeholder'] = '';
 $defaults['type']        = 'color';
 $defaults['value']       = '';
-apply_filters($this->plugin_name . '-field-text-options-defaults', $defaults);
+apply_filters('ppcart-field-text-options-defaults', $defaults);
 $atts = wp_parse_args($args, $defaults);
 
 if ($option_val = get_option($atts['id'])) {

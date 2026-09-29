@@ -31,6 +31,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `admin_init` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/templates/admin-hook-registrar-register.php` |  |
 | `admin_init` | Action | `add_action` | External | wordpress_core | `includes/class-ppcart-reviews.php` |  |
 | `admin_init` | Action | `add_action` | External | wordpress_core | `includes/files/class-ppcart-files.php` |  |
+| `admin_init` | Action | `add_action` | External | wordpress_core | `includes/functions/admin-ajax-and-notices.php` |  |
 | `admin_init` | Action | `add_action` | External | wordpress_core | `includes/secrets/traits/trait-ppcart-secrets-config.php` |  |
 | `admin_init` | Filter | `add_filter` | External | wordpress_core | `includes/bootstrap/class-ppcart-public-hook-registrar.php` |  |
 | `admin_menu` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/templates/admin-hook-registrar-register.php` |  |
@@ -44,7 +45,6 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `admin_notices` | Action | `add_action` | External | wordpress_core | `includes/secrets/traits/trait-ppcart-secrets-config.php` |  |
 | `admin_post_ppcart_stripe_webhook_manual_setup` | Action | `add_action` | Internal | unclassified | `admin/settings/class-ppcart-admin-stripe-webhook-settings.php` | admin_post_ppcart_stripe_webhook_manual_setup |
 | `all_admin_notices` | Action | `add_action` | Internal | unclassified | `admin/controllers/class-ppcart-admin-page-notices.php` | all_admin_notices |
-| `alloptions` | Filter | `add_filter` | Internal | unclassified | `includes/secrets/traits/trait-ppcart-secrets-config.php` | alloptions |
 | `authenticate` | Filter | `add_filter` | Internal | unclassified | `public/controllers/class-ppcart-public-account-controller.php` | authenticate |
 | `body_class` | Filter | `add_filter` | Internal | unclassified | `public/controllers/class-ppcart-public-account-controller.php` | body_class |
 | `bulk_actions-edit-{$ppcart_order_type}` | Filter | `add_filter` | Internal | dynamic | `includes/bootstrap/templates/admin-hook-registrar-register.php` | bulk_actions-edit-{$ppcart_order_type} |
@@ -107,6 +107,36 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `posts_search` | Filter | `add_filter` | Internal | unclassified | `admin/class-ppcart-admin-filters.php` | posts_search |
 | `posts_where` | Filter | `add_filter` | Internal | unclassified | `includes/class-ppcart-post-status-sync.php` | posts_where |
 | `pp_version_notice_menu_link_settings` | Filter | `add_filter` | Internal | unclassified | `includes/class-ppcart-version-notices.php` | pp_version_notice_menu_link_settings |
+| `ppcart-field-checkbox-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-input-fields-field-checkbox.php` | ppcart-field-checkbox-options-defaults |
+| `ppcart-field-editor-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-input-fields-field-editor.php` | ppcart-field-editor-options-defaults |
+| `ppcart-field-radios-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-input-fields-field-radios.php` | ppcart-field-radios-options-defaults |
+| `ppcart-field-repeater-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-input-fields-field-repeater.php` | ppcart-field-repeater-options-defaults |
+| `ppcart-field-repeater-{$setatts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php` | ppcart-field-repeater-{$setatts[...]}] |
+| `ppcart-field-repeater-{$setatts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | ppcart-field-repeater-{$setatts[...]}] |
+| `ppcart-field-select-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-input-fields-field-select.php` | ppcart-field-select-options-defaults |
+| `ppcart-field-text-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-text-fields-field-color.php` | ppcart-field-text-options-defaults |
+| `ppcart-field-text-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-text-fields-field-email.php` | ppcart-field-text-options-defaults |
+| `ppcart-field-text-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-text-fields-field-html.php` | ppcart-field-text-options-defaults |
+| `ppcart-field-text-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-text-fields-field-password.php` | ppcart-field-text-options-defaults |
+| `ppcart-field-text-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-text-fields-field-text.php` | ppcart-field-text-options-defaults |
+| `ppcart-field-textarea-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-text-fields-field-textarea.php` | ppcart-field-textarea-options-defaults |
+| `ppcart-field-textarea-options-defaults` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-text-fields-field-upload.php` | ppcart-field-textarea-options-defaults |
+| `ppcart-field-{$atts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php` | ppcart-field-{$atts[...]}] |
+| `ppcart-field-{$atts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | ppcart-field-{$atts[...]}] |
+| `ppcart-metabox-title-access` | Filter | `apply_filters` | Internal | unclassified | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | ppcart-metabox-title-access |
+| `ppcart-metabox-title-order-details` | Filter | `apply_filters` | Internal | unclassified | `admin/class-ppcart-order-metaboxes.php` | ppcart-metabox-title-order-details |
+| `ppcart-metabox-title-order-notes` | Filter | `apply_filters` | Internal | unclassified | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | ppcart-metabox-title-order-notes |
+| `ppcart-metabox-title-product-settings` | Filter | `apply_filters` | Internal | unclassified | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | ppcart-metabox-title-product-settings |
+| `ppcart-repeater-more-link-label` | Filter | `apply_filters` | Internal | unclassified | `admin/partials/ppcart-admin-field-repeater.php` | ppcart-repeater-more-link-label |
+| `ppcart-repeater-remove-link-label` | Filter | `apply_filters` | Internal | unclassified | `admin/partials/ppcart-admin-field-repeater.php` | ppcart-repeater-remove-link-label |
+| `ppcart-settings-menu-title` | Filter | `apply_filters` | Internal | unclassified | `admin/class-ppcart-admin-reports.php` | ppcart-settings-menu-title |
+| `ppcart-settings-menu-title` | Filter | `apply_filters` | Internal | unclassified | `admin/class-ppcart-contacts-page.php` | ppcart-settings-menu-title |
+| `ppcart-settings-menu-title` | Filter | `apply_filters` | Internal | unclassified | `admin/class-ppcart-extension-page.php` | ppcart-settings-menu-title |
+| `ppcart-settings-menu-title` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/trait-ppcart-admin-settings-screen.php` | ppcart-settings-menu-title |
+| `ppcart-settings-page-title` | Filter | `apply_filters` | Internal | unclassified | `admin/class-ppcart-admin-reports.php` | ppcart-settings-page-title |
+| `ppcart-settings-page-title` | Filter | `apply_filters` | Internal | unclassified | `admin/class-ppcart-contacts-page.php` | ppcart-settings-page-title |
+| `ppcart-settings-page-title` | Filter | `apply_filters` | Internal | unclassified | `admin/class-ppcart-extension-page.php` | ppcart-settings-page-title |
+| `ppcart-settings-page-title` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/trait-ppcart-admin-settings-screen.php` | ppcart-settings-page-title |
 | `ppcart_account_before_subscription_details` | Action | `do_action` | Public | canonical | `public/templates/my-account/subscription-detail.php` | ppcart_account_before_subscription_details |
 | `ppcart_account_block_navigation_options` | Filter | `apply_filters` | Public | canonical | `includes/integrations/gutenberg/lib/class-ppcart-account-context.php` | ppcart_account_block_navigation_options |
 | `ppcart_account_subscription_action_links` | Action | `do_action` | Public | canonical | `public/templates/my-account/subscription-detail.php` | ppcart_account_subscription_action_links |
@@ -257,6 +287,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_default_fields_ids` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-save-validate-meta.php` | ppcart_default_fields_ids |
 | `ppcart_default_{$field[...]}]_field_settings_attributes` | Filter | `apply_filters` | Public | canonical | `admin/partials/ppcart-admin-field-default-fields.php` | ppcart_default_{$field[...]}]_field_settings_attributes |
 | `ppcart_defualt_fields_html` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php` | ppcart_defualt_fields_html |
+| `ppcart_dismissible_notice_types` | Filter | `apply_filters` | Public | canonical | `includes/functions/admin-ajax-and-notices.php` | ppcart_dismissible_notice_types |
 | `ppcart_download` | Filter | `apply_filters` | Public | canonical | `includes/files/traits/templates/files-repository-setup-download.php` | ppcart_download |
 | `ppcart_download_allowed_redirect_hosts` | Filter | `apply_filters` | Public | canonical | `includes/files/download.php` | ppcart_download_allowed_redirect_hosts |
 | `ppcart_download_allowed_roots` | Filter | `apply_filters` | Public | canonical | `includes/files/traits/trait-ppcart-files-storage.php` | ppcart_download_allowed_roots |
@@ -622,10 +653,25 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_{$this}{->}{service_name}_integrations` | Action | `add_action` | Public | canonical | `includes/integrations/CancelSubscription.php` | ppcart_{$this}{->}{service_name}_integrations |
 | `ppcart_{$this}{->}{service_name}_integrations` | Action | `add_action` | Public | canonical | `includes/integrations/templates/ppcart-kit-init.php` | ppcart_{$this}{->}{service_name}_integrations |
 | `ppcart_{$trigger}_integrations` | Action | `do_action` | Public | canonical | `includes/functions/integrations-and-stock.php` | ppcart_{$trigger}_integrations |
+| `ppcartlabel-{$k}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-fields-register-fields.php` | ppcartlabel-{$k} |
+| `ppcartsection-title-company` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-sections-register.php` | ppcartsection-title-company |
+| `ppcartsection-title-currency` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-sections-register.php` | ppcartsection-title-currency |
+| `ppcartsection-title-debug` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-sections-register.php` | ppcartsection-title-debug |
+| `ppcartsection-title-downloads` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-sections-register.php` | ppcartsection-title-downloads |
+| `ppcartsection-title-maintenance-secrets` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | ppcartsection-title-maintenance-secrets |
+| `ppcartsection-title-pages` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-sections-register.php` | ppcartsection-title-pages |
+| `ppcartsection-title-settings` | Filter | `apply_filters` | Internal | unclassified | `admin/settings/traits/templates/settings-sections-register.php` | ppcartsection-title-settings |
+| `ppcartsection-title-{$email_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-emails.php` | ppcartsection-title-{$email_key} |
+| `ppcartsection-title-{$intigration_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-integrations.php` | ppcartsection-title-{$intigration_key} |
+| `ppcartsection-title-{$invoice_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | ppcartsection-title-{$invoice_key} |
+| `ppcartsection-title-{$payment_gateway_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | ppcartsection-title-{$payment_gateway_key} |
+| `ppcartsection-title-{$ppcart_section_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-custom-tabs.php` | ppcartsection-title-{$ppcart_section_key} |
+| `ppcartsection-title-{$tax_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | ppcartsection-title-{$tax_key} |
 | `pre_get_posts` | Action | `add_action` | External | wordpress_core | `admin/class-ppcart-admin-filters.php` |  |
 | `pre_get_posts` | Action | `add_action` | External | wordpress_core | `admin/controllers/class-ppcart-admin-order-list-controller.php` |  |
 | `pre_get_posts` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/templates/admin-hook-registrar-register.php` |  |
 | `pre_get_posts` | Action | `add_action` | External | wordpress_core | `includes/class-ppcart-post-status-sync.php` |  |
+| `pre_option` | Filter | `add_filter` | Internal | unclassified | `includes/secrets/traits/trait-ppcart-secrets-config.php` | pre_option |
 | `pre_update_option` | Filter | `add_filter` | Internal | unclassified | `includes/secrets/traits/trait-ppcart-secrets-config.php` | pre_update_option |
 | `pre_update_option__ppcart_tax_rates` | Filter | `add_filter` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | pre_update_option__ppcart_tax_rates |
 | `publishpress-cart_wp_reviews_allow_display_notice` | Filter | `add_filter` | Internal | unclassified | `includes/class-ppcart-reviews.php` | publishpress-cart_wp_reviews_allow_display_notice |
@@ -728,50 +774,6 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `{$hook[...]}]` | Filter | `add_filter` | Internal | dynamic | `includes/class-ppcart-loader.php` | {$hook[...]}] |
 | `{$hook}` | Action | `add_action` | Internal | dynamic | `includes/class-ppcart-loader.php` | {$hook} |
 | `{$hook}` | Filter | `add_filter` | Internal | dynamic | `includes/class-ppcart-loader.php` | {$hook} |
-| `{$this}{->}{plugin_name}-field-checkbox-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-checkbox.php` | {$this}{->}{plugin_name}-field-checkbox-options-defaults |
-| `{$this}{->}{plugin_name}-field-editor-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-editor.php` | {$this}{->}{plugin_name}-field-editor-options-defaults |
-| `{$this}{->}{plugin_name}-field-radios-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-radios.php` | {$this}{->}{plugin_name}-field-radios-options-defaults |
-| `{$this}{->}{plugin_name}-field-repeater-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-repeater.php` | {$this}{->}{plugin_name}-field-repeater-options-defaults |
-| `{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php` | {$this}{->}{plugin_name}-field-repeater-{$setatts[...]}] |
-| `{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | {$this}{->}{plugin_name}-field-repeater-{$setatts[...]}] |
-| `{$this}{->}{plugin_name}-field-select-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-select.php` | {$this}{->}{plugin_name}-field-select-options-defaults |
-| `{$this}{->}{plugin_name}-field-text-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-color.php` | {$this}{->}{plugin_name}-field-text-options-defaults |
-| `{$this}{->}{plugin_name}-field-text-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-email.php` | {$this}{->}{plugin_name}-field-text-options-defaults |
-| `{$this}{->}{plugin_name}-field-text-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-html.php` | {$this}{->}{plugin_name}-field-text-options-defaults |
-| `{$this}{->}{plugin_name}-field-text-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-password.php` | {$this}{->}{plugin_name}-field-text-options-defaults |
-| `{$this}{->}{plugin_name}-field-text-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-text.php` | {$this}{->}{plugin_name}-field-text-options-defaults |
-| `{$this}{->}{plugin_name}-field-textarea-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-textarea.php` | {$this}{->}{plugin_name}-field-textarea-options-defaults |
-| `{$this}{->}{plugin_name}-field-textarea-options-defaults` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-upload.php` | {$this}{->}{plugin_name}-field-textarea-options-defaults |
-| `{$this}{->}{plugin_name}-field-{$atts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php` | {$this}{->}{plugin_name}-field-{$atts[...]}] |
-| `{$this}{->}{plugin_name}-field-{$atts[...]}]` | Filter | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | {$this}{->}{plugin_name}-field-{$atts[...]}] |
-| `{$this}{->}{plugin_name}-metabox-title-access` | Filter | `apply_filters` | Internal | dynamic | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | {$this}{->}{plugin_name}-metabox-title-access |
-| `{$this}{->}{plugin_name}-metabox-title-order-details` | Filter | `apply_filters` | Internal | dynamic | `admin/class-ppcart-order-metaboxes.php` | {$this}{->}{plugin_name}-metabox-title-order-details |
-| `{$this}{->}{plugin_name}-metabox-title-order-notes` | Filter | `apply_filters` | Internal | dynamic | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | {$this}{->}{plugin_name}-metabox-title-order-notes |
-| `{$this}{->}{plugin_name}-metabox-title-product-settings` | Filter | `apply_filters` | Internal | dynamic | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | {$this}{->}{plugin_name}-metabox-title-product-settings |
-| `{$this}{->}{plugin_name}-repeater-more-link-label` | Filter | `apply_filters` | Internal | dynamic | `admin/partials/ppcart-admin-field-repeater.php` | {$this}{->}{plugin_name}-repeater-more-link-label |
-| `{$this}{->}{plugin_name}-repeater-remove-link-label` | Filter | `apply_filters` | Internal | dynamic | `admin/partials/ppcart-admin-field-repeater.php` | {$this}{->}{plugin_name}-repeater-remove-link-label |
-| `{$this}{->}{plugin_name}-settings-menu-title` | Filter | `apply_filters` | Internal | dynamic | `admin/class-ppcart-admin-reports.php` | {$this}{->}{plugin_name}-settings-menu-title |
-| `{$this}{->}{plugin_name}-settings-menu-title` | Filter | `apply_filters` | Internal | dynamic | `admin/class-ppcart-contacts-page.php` | {$this}{->}{plugin_name}-settings-menu-title |
-| `{$this}{->}{plugin_name}-settings-menu-title` | Filter | `apply_filters` | Internal | dynamic | `admin/class-ppcart-extension-page.php` | {$this}{->}{plugin_name}-settings-menu-title |
-| `{$this}{->}{plugin_name}-settings-menu-title` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-screen.php` | {$this}{->}{plugin_name}-settings-menu-title |
-| `{$this}{->}{plugin_name}-settings-page-title` | Filter | `apply_filters` | Internal | dynamic | `admin/class-ppcart-admin-reports.php` | {$this}{->}{plugin_name}-settings-page-title |
-| `{$this}{->}{plugin_name}-settings-page-title` | Filter | `apply_filters` | Internal | dynamic | `admin/class-ppcart-contacts-page.php` | {$this}{->}{plugin_name}-settings-page-title |
-| `{$this}{->}{plugin_name}-settings-page-title` | Filter | `apply_filters` | Internal | dynamic | `admin/class-ppcart-extension-page.php` | {$this}{->}{plugin_name}-settings-page-title |
-| `{$this}{->}{plugin_name}-settings-page-title` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-screen.php` | {$this}{->}{plugin_name}-settings-page-title |
-| `{$this}{->}{plugin_name}label-{$k}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-fields-register-fields.php` | {$this}{->}{plugin_name}label-{$k} |
-| `{$this}{->}{plugin_name}section-title-company` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | {$this}{->}{plugin_name}section-title-company |
-| `{$this}{->}{plugin_name}section-title-currency` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | {$this}{->}{plugin_name}section-title-currency |
-| `{$this}{->}{plugin_name}section-title-debug` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | {$this}{->}{plugin_name}section-title-debug |
-| `{$this}{->}{plugin_name}section-title-downloads` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | {$this}{->}{plugin_name}section-title-downloads |
-| `{$this}{->}{plugin_name}section-title-maintenance-secrets` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | {$this}{->}{plugin_name}section-title-maintenance-secrets |
-| `{$this}{->}{plugin_name}section-title-pages` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | {$this}{->}{plugin_name}section-title-pages |
-| `{$this}{->}{plugin_name}section-title-settings` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | {$this}{->}{plugin_name}section-title-settings |
-| `{$this}{->}{plugin_name}section-title-{$email_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-emails.php` | {$this}{->}{plugin_name}section-title-{$email_key} |
-| `{$this}{->}{plugin_name}section-title-{$intigration_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-integrations.php` | {$this}{->}{plugin_name}section-title-{$intigration_key} |
-| `{$this}{->}{plugin_name}section-title-{$invoice_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | {$this}{->}{plugin_name}section-title-{$invoice_key} |
-| `{$this}{->}{plugin_name}section-title-{$payment_gateway_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | {$this}{->}{plugin_name}section-title-{$payment_gateway_key} |
-| `{$this}{->}{plugin_name}section-title-{$ppcart_section_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-custom-tabs.php` | {$this}{->}{plugin_name}section-title-{$ppcart_section_key} |
-| `{$this}{->}{plugin_name}section-title-{$tax_key}` | Filter | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | {$this}{->}{plugin_name}section-title-{$tax_key} |
 | `{$top_notice_settings_filter}` | Filter | `add_filter` | Internal | dynamic | `includes/class-ppcart-version-notices.php` | {$top_notice_settings_filter} |
 | `{self}{::}{CRON_HOOK}` | Action | `add_action` | Internal | dynamic | `includes/class-ppcart-stripe-sync.php` | {self}{::}{CRON_HOOK} |
 
@@ -800,6 +802,8 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `manage_{$ppcart_subscription_type}_posts_custom_column` | `add_action` | External | wordpress_core | `includes/bootstrap/templates/admin-hook-registrar-register.php` | `` |
 | `option_{$option_name}` | `add_filter` | Internal | dynamic | `includes/secrets/traits/trait-ppcart-secrets-config.php` | `option_{$option_name}` |
 | `option_{$option}` | `add_filter` | Internal | dynamic | `includes/email/ppcart-template-functions/options-and-hooks.php` | `option_{$option}` |
+| `ppcart-field-repeater-{$setatts[...]}]` | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | `ppcart-field-repeater-{$setatts[...]}]` |
+| `ppcart-field-{$atts[...]}]` | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | `ppcart-field-{$atts[...]}]` |
 | `ppcart_backend_message_{$k}` | `apply_filters` | Public | canonical | `includes/functions/merge-tags-and-dates.php` | `ppcart_backend_message_{$k}` |
 | `ppcart_default_{$field[...]}]_field_settings_attributes` | `apply_filters` | Public | canonical | `admin/partials/ppcart-admin-field-default-fields.php` | `ppcart_default_{$field[...]}]_field_settings_attributes` |
 | `ppcart_frontend_message_{$k}` | `apply_filters` | Public | canonical | `includes/functions/merge-tags-and-dates.php` | `ppcart_frontend_message_{$k}` |
@@ -817,6 +821,13 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_{$ppcart_tab_key}_tab_section` | `apply_filters` | Public | canonical | `admin/settings/traits/templates/settings-sections-custom-tabs.php` | `ppcart_{$ppcart_tab_key}_tab_section` |
 | `ppcart_{$this}{->}{service_name}_integrations` | `add_action` | Public | canonical | `includes/integrations/templates/ppcart-kit-init.php` | `ppcart_{$this}{->}{service_name}_integrations` |
 | `ppcart_{$trigger}_integrations` | `do_action` | Public | canonical | `includes/functions/integrations-and-stock.php` | `ppcart_{$trigger}_integrations` |
+| `ppcartlabel-{$k}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-fields-register-fields.php` | `ppcartlabel-{$k}` |
+| `ppcartsection-title-{$email_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-emails.php` | `ppcartsection-title-{$email_key}` |
+| `ppcartsection-title-{$intigration_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-integrations.php` | `ppcartsection-title-{$intigration_key}` |
+| `ppcartsection-title-{$invoice_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | `ppcartsection-title-{$invoice_key}` |
+| `ppcartsection-title-{$payment_gateway_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | `ppcartsection-title-{$payment_gateway_key}` |
+| `ppcartsection-title-{$ppcart_section_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-custom-tabs.php` | `ppcartsection-title-{$ppcart_section_key}` |
+| `ppcartsection-title-{$tax_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | `ppcartsection-title-{$tax_key}` |
 | `save_post_{$post}{->}{post_type}` | `add_action` | Internal | dynamic | `includes/files/traits/templates/files-admin-update-order-downloads.php` | `save_post_{$post}{->}{post_type}` |
 | `save_post_{$ppcart_order_type}` | `add_action` | Internal | dynamic | `includes/files/class-ppcart-files.php` | `save_post_{$ppcart_order_type}` |
 | `save_post_{$ppcart_product_type}` | `add_action` | Internal | dynamic | `includes/bootstrap/templates/admin-hook-registrar-register.php` | `save_post_{$ppcart_product_type}` |
@@ -825,36 +836,5 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `{$action}` | `do_action` | Internal | dynamic | `includes/functions/integrations-and-stock.php` | `{$action}` |
 | `{$hook[...]}]` | `add_action` | Internal | dynamic | `includes/class-ppcart-loader.php` | `{$hook[...]}]` |
 | `{$hook}` | `add_filter` | Internal | dynamic | `includes/class-ppcart-loader.php` | `{$hook}` |
-| `{$this}{->}{plugin_name}-field-checkbox-options-defaults` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-checkbox.php` | `{$this}{->}{plugin_name}-field-checkbox-options-defaults` |
-| `{$this}{->}{plugin_name}-field-editor-options-defaults` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-editor.php` | `{$this}{->}{plugin_name}-field-editor-options-defaults` |
-| `{$this}{->}{plugin_name}-field-radios-options-defaults` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-radios.php` | `{$this}{->}{plugin_name}-field-radios-options-defaults` |
-| `{$this}{->}{plugin_name}-field-repeater-options-defaults` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-repeater.php` | `{$this}{->}{plugin_name}-field-repeater-options-defaults` |
-| `{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]` | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | `{$this}{->}{plugin_name}-field-repeater-{$setatts[...]}]` |
-| `{$this}{->}{plugin_name}-field-select-options-defaults` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-input-fields-field-select.php` | `{$this}{->}{plugin_name}-field-select-options-defaults` |
-| `{$this}{->}{plugin_name}-field-text-options-defaults` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-text.php` | `{$this}{->}{plugin_name}-field-text-options-defaults` |
-| `{$this}{->}{plugin_name}-field-textarea-options-defaults` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-text-fields-field-upload.php` | `{$this}{->}{plugin_name}-field-textarea-options-defaults` |
-| `{$this}{->}{plugin_name}-field-{$atts[...]}]` | `apply_filters` | Internal | dynamic | `admin/order-metaboxes/traits/templates/order-metabox-edit-fields-metabox-fields.php` | `{$this}{->}{plugin_name}-field-{$atts[...]}]` |
-| `{$this}{->}{plugin_name}-metabox-title-access` | `apply_filters` | Internal | dynamic | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | `{$this}{->}{plugin_name}-metabox-title-access` |
-| `{$this}{->}{plugin_name}-metabox-title-order-details` | `apply_filters` | Internal | dynamic | `admin/class-ppcart-order-metaboxes.php` | `{$this}{->}{plugin_name}-metabox-title-order-details` |
-| `{$this}{->}{plugin_name}-metabox-title-order-notes` | `apply_filters` | Internal | dynamic | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | `{$this}{->}{plugin_name}-metabox-title-order-notes` |
-| `{$this}{->}{plugin_name}-metabox-title-product-settings` | `apply_filters` | Internal | dynamic | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | `{$this}{->}{plugin_name}-metabox-title-product-settings` |
-| `{$this}{->}{plugin_name}-repeater-more-link-label` | `apply_filters` | Internal | dynamic | `admin/partials/ppcart-admin-field-repeater.php` | `{$this}{->}{plugin_name}-repeater-more-link-label` |
-| `{$this}{->}{plugin_name}-repeater-remove-link-label` | `apply_filters` | Internal | dynamic | `admin/partials/ppcart-admin-field-repeater.php` | `{$this}{->}{plugin_name}-repeater-remove-link-label` |
-| `{$this}{->}{plugin_name}-settings-menu-title` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-screen.php` | `{$this}{->}{plugin_name}-settings-menu-title` |
-| `{$this}{->}{plugin_name}-settings-page-title` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-screen.php` | `{$this}{->}{plugin_name}-settings-page-title` |
-| `{$this}{->}{plugin_name}label-{$k}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-fields-register-fields.php` | `{$this}{->}{plugin_name}label-{$k}` |
-| `{$this}{->}{plugin_name}section-title-company` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | `{$this}{->}{plugin_name}section-title-company` |
-| `{$this}{->}{plugin_name}section-title-currency` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | `{$this}{->}{plugin_name}section-title-currency` |
-| `{$this}{->}{plugin_name}section-title-debug` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | `{$this}{->}{plugin_name}section-title-debug` |
-| `{$this}{->}{plugin_name}section-title-downloads` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | `{$this}{->}{plugin_name}section-title-downloads` |
-| `{$this}{->}{plugin_name}section-title-maintenance-secrets` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | `{$this}{->}{plugin_name}section-title-maintenance-secrets` |
-| `{$this}{->}{plugin_name}section-title-pages` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | `{$this}{->}{plugin_name}section-title-pages` |
-| `{$this}{->}{plugin_name}section-title-settings` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-register.php` | `{$this}{->}{plugin_name}section-title-settings` |
-| `{$this}{->}{plugin_name}section-title-{$email_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-emails.php` | `{$this}{->}{plugin_name}section-title-{$email_key}` |
-| `{$this}{->}{plugin_name}section-title-{$intigration_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-integrations.php` | `{$this}{->}{plugin_name}section-title-{$intigration_key}` |
-| `{$this}{->}{plugin_name}section-title-{$invoice_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | `{$this}{->}{plugin_name}section-title-{$invoice_key}` |
-| `{$this}{->}{plugin_name}section-title-{$payment_gateway_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | `{$this}{->}{plugin_name}section-title-{$payment_gateway_key}` |
-| `{$this}{->}{plugin_name}section-title-{$ppcart_section_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/templates/settings-sections-custom-tabs.php` | `{$this}{->}{plugin_name}section-title-{$ppcart_section_key}` |
-| `{$this}{->}{plugin_name}section-title-{$tax_key}` | `apply_filters` | Internal | dynamic | `admin/settings/traits/trait-ppcart-admin-settings-sections.php` | `{$this}{->}{plugin_name}section-title-{$tax_key}` |
 | `{$top_notice_settings_filter}` | `add_filter` | Internal | dynamic | `includes/class-ppcart-version-notices.php` | `{$top_notice_settings_filter}` |
 | `{self}{::}{CRON_HOOK}` | `add_action` | Internal | dynamic | `includes/class-ppcart-stripe-sync.php` | `{self}{::}{CRON_HOOK}` |

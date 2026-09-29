@@ -585,7 +585,13 @@ function ppcart_set_time_limit($limit = 0)
     }
 
     // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged,WordPress.PHP.NoSilencedErrors.Discouraged -- Scoped to the caller's long task; raises the limit only, and some hosts emit a warning when it is locked.
-    return (bool) @set_time_limit($limit);
+    @set_time_limit($limit);
+
+    // Some SAPIs apply the new limit but return a falsey value. The effective
+    // setting is the contract that callers care about.
+    $current = (int) ini_get('max_execution_time');
+
+    return 0 === $current || ($limit > 0 && $current >= $limit);
 }
 
 add_action('wp_ajax_ppcart_update_user_profile', 'ppcart_update_user_profile');

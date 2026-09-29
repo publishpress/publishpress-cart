@@ -86,8 +86,8 @@ class PPCart_Admin_Reports
     {
         add_submenu_page(
             PPCart_Admin_Screens::menu_slug(),
-            apply_filters($this->plugin_name . '-settings-page-title', esc_html__('Reports', 'publishpress-cart')),
-            apply_filters($this->plugin_name . '-settings-menu-title', esc_html__('Reports', 'publishpress-cart')),
+            apply_filters('ppcart-settings-page-title', esc_html__('Reports', 'publishpress-cart')),
+            apply_filters('ppcart-settings-menu-title', esc_html__('Reports', 'publishpress-cart')),
             ppcart_live_cap('manager_option'),
             PPCart_Admin_Screens::PAGE_REPORTS,
             [ $this, 'render_reports_page_content' ]

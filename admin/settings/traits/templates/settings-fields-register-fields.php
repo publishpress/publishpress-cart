@@ -20,7 +20,8 @@ foreach ($fields as $section => $sfields) {
         }
         add_settings_field(
             $k,
-            apply_filters($this->plugin_name . 'label-' . $k, $v['label']),
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+            apply_filters('ppcartlabel-' . $k, $v['label']),
             [$this, 'field_' . $v['type']],
             $settings_page,
             $this->plugin_name . '-' . $effective_section,

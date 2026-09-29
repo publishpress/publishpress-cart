@@ -120,6 +120,19 @@ final class PPCart_Regression_Stripe_Mock {
 
 		return $prefix . '_mock_' . self::$id_seq . '_' . $suffix;
 	}
+
+	/**
+	 * Generate an ID accepted by Cart's Stripe resource validators.
+	 */
+	public static function next_checkout_id( string $prefix ): string {
+		++self::$id_seq;
+
+		$suffix = function_exists( 'wp_generate_password' )
+			? wp_generate_password( 8, false, false )
+			: bin2hex( random_bytes( 4 ) );
+
+		return $prefix . '_mock' . self::$id_seq . $suffix;
+	}
 }
 
 /**
@@ -200,6 +213,10 @@ final class PPCart_Regression_Stripe_Http_Client {
 			return $this->create_setup_intent( $params );
 		}
 
+		if ( preg_match( '#/v1/setup_intents/([^/]+)$#', $path, $m ) && 'get' === $method ) {
+			return $this->retrieve_setup_intent( $m[1] );
+		}
+
 		if ( preg_match( '#/v1/payment_methods/([^/]+)/attach$#', $path, $m ) && 'post' === $method ) {
 			$pm = $this->get_object( 'pm', $m[1], $this->payment_method_defaults( $m[1] ) );
 			$pm['customer'] = isset( $params['customer'] ) ? (string) $params['customer'] : null;
@@ -261,7 +278,7 @@ final class PPCart_Regression_Stripe_Http_Client {
 	 * @return array<string, mixed>
 	 */
 	private function create_customer( array $params ): array {
-		$id = PPCart_Regression_Stripe_Mock::next_id( 'cus' );
+		$id = PPCart_Regression_Stripe_Mock::next_checkout_id( 'cus' );
 		$customer = array_merge(
 			$this->customer_defaults( $id ),
 			array(
@@ -279,7 +296,7 @@ final class PPCart_Regression_Stripe_Http_Client {
 	 * @return array<string, mixed>
 	 */
 	private function create_payment_intent( array $params ): array {
-		$id = PPCart_Regression_Stripe_Mock::next_id( 'pi' );
+		$id = PPCart_Regression_Stripe_Mock::next_checkout_id( 'pi' );
 		$intent = array_merge(
 			$this->payment_intent_defaults( $id, $params ),
 			array(
@@ -298,16 +315,54 @@ final class PPCart_Regression_Stripe_Http_Client {
 	 * @return array<string, mixed>
 	 */
 	private function create_setup_intent( array $params ): array {
-		$id = PPCart_Regression_Stripe_Mock::next_id( 'seti' );
+		$id = PPCart_Regression_Stripe_Mock::next_checkout_id( 'seti' );
 
 		$intent = array(
-			'id'            => $id,
-			'object'        => 'setup_intent',
-			'client_secret' => $id . '_secret_mock',
-			'customer'      => isset( $params['customer'] ) ? (string) $params['customer'] : null,
-			'status'        => 'requires_payment_method',
-			'usage'         => 'off_session',
+			'id'             => $id,
+			'object'         => 'setup_intent',
+			'client_secret'  => $id . '_secret_mock',
+			'customer'       => isset( $params['customer'] ) ? (string) $params['customer'] : null,
+			'status'         => 'requires_payment_method',
+			'usage'          => 'off_session',
+			'metadata'       => isset( $params['metadata'] ) && is_array( $params['metadata'] ) ? $params['metadata'] : array(),
+			'payment_method' => null,
 		);
+
+		return $this->put_object( 'seti', $id, $intent );
+	}
+
+	/**
+	 * Return the SetupIntent after the browser-side mock has confirmed it.
+	 *
+	 * Stripe.js confirmation does not make an HTTP request through the PHP SDK,
+	 * so retrieval is where the test double records the successful confirmation.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private function retrieve_setup_intent( string $id ): array {
+		$intent = $this->get_object(
+			'seti',
+			$id,
+			array(
+				'id'             => $id,
+				'object'         => 'setup_intent',
+				'customer'       => null,
+				'status'         => 'requires_payment_method',
+				'metadata'       => array(),
+				'payment_method' => null,
+			)
+		);
+
+		if ( 'succeeded' !== ( $intent['status'] ?? '' ) ) {
+			$payment_method_id = PPCart_Regression_Stripe_Mock::next_checkout_id( 'pm' );
+			$payment_method     = $this->payment_method_defaults( $payment_method_id );
+			$payment_method['customer'] = $intent['customer'] ?? null;
+
+			$this->put_object( 'pm', $payment_method_id, $payment_method );
+
+			$intent['status']         = 'succeeded';
+			$intent['payment_method'] = $payment_method_id;
+		}
 
 		return $this->put_object( 'seti', $id, $intent );
 	}
@@ -317,9 +372,9 @@ final class PPCart_Regression_Stripe_Http_Client {
 	 * @return array<string, mixed>
 	 */
 	private function create_subscription( array $params ): array {
-		$id         = PPCart_Regression_Stripe_Mock::next_id( 'sub' );
-		$invoice_id = PPCart_Regression_Stripe_Mock::next_id( 'in' );
-		$pi_id      = PPCart_Regression_Stripe_Mock::next_id( 'pi' );
+		$id         = PPCart_Regression_Stripe_Mock::next_checkout_id( 'sub' );
+		$invoice_id = PPCart_Regression_Stripe_Mock::next_checkout_id( 'in' );
+		$pi_id      = PPCart_Regression_Stripe_Mock::next_checkout_id( 'pi' );
 
 		$payment_intent = array(
 			'id'            => $pi_id,
@@ -402,6 +457,13 @@ final class PPCart_Regression_Stripe_Http_Client {
 			return $this->store[ $key ];
 		}
 
+		$stored = get_transient( $this->transient_key( $key ) );
+		if ( is_array( $stored ) ) {
+			$this->store[ $key ] = $stored;
+
+			return $stored;
+		}
+
 		return $this->put_object( $type, $id, $defaults );
 	}
 
@@ -426,8 +488,13 @@ final class PPCart_Regression_Stripe_Http_Client {
 	private function put_object( string $type, string $id, array $object ): array {
 		$object['id'] = $id;
 		$this->store[ $type . ':' . $id ] = $object;
+		set_transient( $this->transient_key( $type . ':' . $id ), $object, HOUR_IN_SECONDS );
 
 		return $object;
+	}
+
+	private function transient_key( string $key ): string {
+		return 'ppcart_regression_stripe_' . md5( $key );
 	}
 
 	/**

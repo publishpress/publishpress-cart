@@ -77,8 +77,8 @@ class PPCart_Contacts_Page
 
         add_submenu_page(
             PPCart_Admin_Screens::menu_slug(),
-            apply_filters($this->plugin_name . '-settings-page-title', esc_html__('Contacts', 'publishpress-cart')),
-            apply_filters($this->plugin_name . '-settings-menu-title', esc_html__('Contacts', 'publishpress-cart')),
+            apply_filters('ppcart-settings-page-title', esc_html__('Contacts', 'publishpress-cart')),
+            apply_filters('ppcart-settings-menu-title', esc_html__('Contacts', 'publishpress-cart')),
             ppcart_live_cap('manager_option'),
             PPCart_Admin_Screens::PAGE_CONTACTS,
             [ $this, 'render_page_contacts' ]

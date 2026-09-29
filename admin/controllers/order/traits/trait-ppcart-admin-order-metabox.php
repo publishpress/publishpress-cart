@@ -15,7 +15,7 @@ trait PPCart_Admin_Order_Metabox_Trait
 
         add_meta_box(
             'ppcart-order-notes',
-            apply_filters($this->plugin_name . '-metabox-title-order-notes', esc_html__('Order Notes', 'publishpress-cart')),
+            apply_filters('ppcart-metabox-title-order-notes', esc_html__('Order Notes', 'publishpress-cart')),
             [$this, 'order_notes'],
             array_merge(ppcart_query_post_types('order'), ppcart_query_post_types('subscription')),
             'side',
@@ -24,7 +24,7 @@ trait PPCart_Admin_Order_Metabox_Trait
 
         add_meta_box(
             'ppcart-product',
-            apply_filters($this->plugin_name . '-metabox-title-access', esc_html(apply_filters('ppcart_plugin_title', __('PublishPress Cart', 'publishpress-cart')))),
+            apply_filters('ppcart-metabox-title-access', esc_html(apply_filters('ppcart_plugin_title', __('PublishPress Cart', 'publishpress-cart')))),
             [$this, 'related_product'],
             ['page', 'post'],
             'side',

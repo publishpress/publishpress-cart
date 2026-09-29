@@ -8,7 +8,7 @@
   window.PPCART_REGRESSION_STRIPE_MOCKED = true;
 
   function nextId(prefix) {
-    return prefix + '_mock_' + Math.random().toString(36).slice(2, 10);
+    return prefix + '_mock' + Math.random().toString(36).slice(2, 10);
   }
 
   function createCardElement() {
