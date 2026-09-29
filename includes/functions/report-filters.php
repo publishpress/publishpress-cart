@@ -411,9 +411,9 @@ function ppcart_search_report_customers($term, $limit = 10)
 
     $like       = '%' . $wpdb->esc_like($term) . '%';
     $prefixLike = $wpdb->esc_like($term) . '%';
+    $orderTypes = ppcart_query_post_types('order');
 
     // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Bounded admin search of distinct order customers.
-    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_post_types() returns a placeholder list prepared from canonical post types.
     $rows = $wpdb->get_results(
         $wpdb->prepare(
             "SELECT email.meta_value AS email,
@@ -426,7 +426,7 @@ function ppcart_search_report_customers($term, $limit = 10)
                 ON firstname.post_id = p.ID AND firstname.meta_key = %s
             LEFT JOIN {$wpdb->postmeta} lastname
                 ON lastname.post_id = p.ID AND lastname.meta_key = %s
-            WHERE p.post_type IN (" . ppcart_sql_in_post_types('order') . ")
+            WHERE p.post_type IN (" . implode(',', array_fill(0, count($orderTypes), '%s')) . ")
                 AND p.post_status NOT IN (%s, %s)
                 AND email.meta_value <> ''
                 AND (
@@ -448,23 +448,29 @@ function ppcart_search_report_customers($term, $limit = 10)
                 MAX(firstname.meta_value) ASC,
                 email.meta_value ASC
             LIMIT %d",
-            ppcart_meta_key('email'),
-            ppcart_meta_key('firstname'),
-            ppcart_meta_key('lastname'),
-            'trash',
-            'auto-draft',
-            $like,
-            $like,
-            $like,
-            $like,
-            $prefixLike,
-            $prefixLike,
-            $prefixLike,
-            $prefixLike,
-            $limit
+            array_merge(
+                [
+                    ppcart_meta_key('email'),
+                    ppcart_meta_key('firstname'),
+                    ppcart_meta_key('lastname'),
+                ],
+                $orderTypes,
+                [
+                    'trash',
+                    'auto-draft',
+                    $like,
+                    $like,
+                    $like,
+                    $like,
+                    $prefixLike,
+                    $prefixLike,
+                    $prefixLike,
+                    $prefixLike,
+                    $limit,
+                ]
+            )
         )
     );
-    // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
     // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
     $results = [];
 
