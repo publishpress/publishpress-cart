@@ -276,10 +276,10 @@ function ppcart_do_remaining_card_details_fields($post_id, $hide_labels, $plan =
     echo wp_kses($fields, ppcart_frontend_allowed_html());
 }
 
-$product_post_types = (array) apply_filters('ppcart_product_post_type', ppcart_live_post_type('product'));
-if (in_array(get_post_type(), $product_post_types)) {
-    $product_id = $post instanceof WP_Post ? $post->ID : get_the_ID();
-    $ppcart_product = ppcart_checkout_product_context($product_id);
+$ppcart_product_post_types = (array) apply_filters('ppcart_product_post_type', ppcart_live_post_type('product'));
+if (in_array(get_post_type(), $ppcart_product_post_types)) {
+    $ppcart_product_id = $post instanceof WP_Post ? $post->ID : get_the_ID();
+    $ppcart_product = ppcart_checkout_product_context($ppcart_product_id);
     do_action('ppcart_after_product_setup', $ppcart_product);
 }
 
