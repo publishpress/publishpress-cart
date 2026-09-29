@@ -60,7 +60,7 @@ function ppcart_mailchimp_api_request($endpoint, $method = 'GET', $body = [], $q
         'method' => strtoupper($method),
         'headers' => [
             'Accept' => 'application/json',
-            'Authorization' => 'Basic ' . base64_encode('publishpress:' . $config['api_key']),
+            'Authorization' => PPCart_Base64::basic_auth_header('publishpress', $config['api_key']),
             'Content-Type' => 'application/json',
         ],
         // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- External API requests can require more than 3 seconds.
