@@ -90,7 +90,7 @@
                 if (result.error.code == "incomplete_expiry") {}
                 if (result.error.code == "incomplete_cvc") {}
                 if (result.error.code == "card_declined"){
-                    document.getElementById("ppcart-card-error").innerHTML = result.error.message;
+                    document.getElementById("ppcart-card-error").textContent = result.error.message;
                     document.getElementById("ppcart-card-error").classList.add("error-label");
                 }
             } else {
@@ -112,6 +112,7 @@
                 action: "ppcart_update_stripe_payment_method",
                 payment_method: payment_method,
                 post_id: subscription_id,
+                all_subscription: jQuery("#ppcart-all-subscription").is(":checked") ? 1 : 0,
                 nonce: jQuery("#ppcart_nonce").val(),
             },
             success: function (response) {
@@ -131,6 +132,12 @@
                     setTimeout(function(){ window.location.href = url; }, 3000);
                 }
             },
+            error: function (xhr) {
+                ppcartStripe.hideLoader(buttonElem);
+
+                var data = xhr.responseJSON && xhr.responseJSON.data ? xhr.responseJSON.data : {};
+                alert(data.message ? data.message : 'Unable to save the new card. Please try again.');
+            },
         });
     };
 
@@ -140,7 +147,7 @@
         var cardInput = document.getElementById(inputElemId);
 
         if (event.error) {
-            cardError.innerHTML = event.error.message;
+            cardError.textContent = event.error.message;
             cardError.classList.add("error-label");
             cardInput.classList.add("error-border");
         } else {

@@ -10,8 +10,8 @@ if (! $order || is_object($order->plan)) {
 }
 
 if (is_string($order->plan) && '' !== $order->plan) {
-    $maybe_plan = @unserialize($order->plan); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize -- Rehydrating a first-party plan object stored by this plugin.
-    if (is_object($maybe_plan)) {
+    $maybe_plan = ppcart_unserialize_plain_object($order->plan);
+    if (null !== $maybe_plan) {
         $order->plan = $maybe_plan;
         return;
     }

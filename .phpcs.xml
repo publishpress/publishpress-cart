@@ -43,6 +43,16 @@
         <exclude name="WordPressVIPMinimum.JS.StrippingTags"/>
         <exclude name="WordPressVIPMinimum.JS.Window"/>
     </rule>
+    <!-- The ppcart_* nonce helpers wrap wp_verify_nonce(); see includes/functions/ajax-security.php. -->
+    <rule ref="WordPress.Security.NonceVerification">
+        <properties>
+            <property name="customNonceVerificationFunctions" type="array">
+                <element value="ppcart_verify_nonce"/>
+                <element value="ppcart_check_ajax_referer"/>
+                <element value="ppcart_check_admin_referer"/>
+            </property>
+        </properties>
+    </rule>
     <rule ref="VariableAnalysis"/>
     <rule ref="PublishPressStandards"/>
 

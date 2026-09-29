@@ -189,7 +189,7 @@ if (0 === $render_count) {
                     <a class="link-remove" href="#" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-remove-' . $row_testid_suffix)); ?>">
                         <span><?php
 
-                    echo esc_html(apply_filters($this->plugin_name . '-repeater-remove-link-label', $setatts['label-remove']));
+                    echo esc_html(apply_filters('ppcart-repeater-remove-link-label', $setatts['label-remove']));
 
         ?></span>
                     </a>
@@ -204,7 +204,7 @@ if (0 === $render_count) {
         <span class="status"></span>
         <a class="button add-repeater" href="#" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-add')); ?>"><?php
 
-        echo esc_html(apply_filters($this->plugin_name . '-repeater-more-link-label', $setatts['label-add']));
+        echo esc_html(apply_filters('ppcart-repeater-more-link-label', $setatts['label-add']));
 
 ?></a>
     </div><!-- .repeater-more -->

@@ -10,7 +10,7 @@ $defaults['description'] = '';
 $defaults['label']       = '';
 $defaults['name']        = $this->plugin_name . '-options[' . $args['id'] . ']';
 $defaults['value']       = 0;
-apply_filters($this->plugin_name . '-field-radios-options-defaults', $defaults);
+apply_filters('ppcart-field-radios-options-defaults', $defaults);
 $atts = wp_parse_args($args, $defaults);
 
 if (! empty($this->options[$atts['id']])) {

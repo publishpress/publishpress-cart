@@ -10,6 +10,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+require_once __DIR__ . '/class-ppcart-base64.php';
 require_once __DIR__ . '/secrets/traits/trait-ppcart-secrets-config.php';
 require_once __DIR__ . '/secrets/traits/trait-ppcart-secrets-read.php';
 require_once __DIR__ . '/secrets/traits/trait-ppcart-secrets-migration.php';
@@ -82,4 +83,18 @@ class PPCart_Secrets
      * @var bool
      */
     private static $alloptions_decrypt_done = false;
+
+    /**
+     * Option names already checked by the pre_option decrypt registration.
+     *
+     * @var array<string, bool>
+     */
+    private static $pre_option_checked = [];
+
+    /**
+     * Re-entrancy guard for the pre_option decrypt registration.
+     *
+     * @var bool
+     */
+    private static $pre_option_running = false;
 }

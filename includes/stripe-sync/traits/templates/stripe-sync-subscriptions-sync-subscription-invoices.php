@@ -17,7 +17,8 @@ if (! $stripe) {
 
 $invoices = $stripe->invoices->search(
     [
-        'query' => 'subscription:"' . $sub->subscription_id . '"',
+        'query'  => 'subscription:"' . $sub->subscription_id . '"',
+        'expand' => [ 'data.payments' ],
     ]
 );
 

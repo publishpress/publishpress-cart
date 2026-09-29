@@ -28,6 +28,9 @@ trait PPCart_Files_Order_Trait
         global $wpdb;
 
         $items = $order->get_items();
+        if (! is_countable($items)) {
+            return;
+        }
 
         foreach ($items as $item) {
             $product_id = $item->product_id;

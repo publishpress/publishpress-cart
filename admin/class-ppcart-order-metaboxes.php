@@ -103,7 +103,7 @@ class PPCart_Order_Metaboxes
 
         add_meta_box(
             'ppcart-edit-order-details',
-            apply_filters($this->plugin_name . '-metabox-title-order-details', esc_html__('Customer & Billing Details', 'publishpress-cart')),
+            apply_filters('ppcart-metabox-title-order-details', esc_html__('Customer & Billing Details', 'publishpress-cart')),
             [ $this, 'order_detail_fields' ],
             ppcart_query_post_types('order'),
             'normal',
@@ -112,7 +112,7 @@ class PPCart_Order_Metaboxes
 
         add_meta_box(
             'ppcart-edit-order-details',
-            apply_filters($this->plugin_name . '-metabox-title-order-details', esc_html__('Customer & Billing Details', 'publishpress-cart')),
+            apply_filters('ppcart-metabox-title-order-details', esc_html__('Customer & Billing Details', 'publishpress-cart')),
             [ $this, 'sub_detail_fields' ],
             ppcart_query_post_types('subscription'),
             'normal',

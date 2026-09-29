@@ -45,8 +45,7 @@ trait PPCart_Admin_Settings_Input_Fields_Trait
     public function field_maintenance_secrets($args)
     {
         if (class_exists('PPCart_Secrets')) {
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in render_maintenance_secret_storage_html().
-            echo PPCart_Secrets::render_maintenance_secret_storage_html();
+            echo wp_kses((string) PPCart_Secrets::render_maintenance_secret_storage_html(), ppcart_admin_allowed_html());
         }
     }
 

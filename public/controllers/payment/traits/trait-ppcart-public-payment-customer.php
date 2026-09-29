@@ -6,74 +6,43 @@ if (! defined('ABSPATH')) {
 
 trait PPCart_Public_Payment_Customer_Trait
 {
+    /**
+     * The Stripe customer stored on the logged-in user's own account, or ''.
+     *
+     * The posted email is not proof of identity, so it is not used to find a
+     * customer. Guests always get a new customer.
+     *
+     * @param string $email        Posted email (not used).
+     * @param string $gateway_mode Stripe gateway mode.
+     * @return string
+     */
     private function get_cached_stripe_customer_id($email, $gateway_mode)
     {
-        $email = strtolower(sanitize_email($email));
+        global $ppcart_stripe;
+        unset($email);
 
-        if (! is_email($email)) {
+        if ('' === PPCart_Stripe_Checkout_Customer::get_current_user_customer_id($gateway_mode) || empty($ppcart_stripe['sk'])) {
             return '';
         }
 
-        $meta_query = [
-            'relation' => 'AND',
-            [
-                'key' => ppcart_meta_key('email'),
-                'value' => $email,
-            ],
-            [
-                'key' => ppcart_meta_key('customer_id'),
-                'compare' => 'EXISTS',
-            ],
-        ];
-
-        if (! empty($gateway_mode)) {
-            $meta_query[] = [
-                'key' => ppcart_meta_key('gateway_mode'),
-                'value' => sanitize_text_field($gateway_mode),
-            ];
-        }
-
-        $customer_posts = get_posts(
-            [
-                'post_type'              => array_merge(ppcart_query_post_types('order'), ppcart_query_post_types('subscription')),
-                'post_status'            => 'any',
-                'posts_per_page'         => 5,
-                'orderby'                => 'date',
-                'order'                  => 'DESC',
-                'fields'                 => 'ids',
-                'no_found_rows'          => true,
-                'update_post_meta_cache' => false,
-                'update_post_term_cache' => false,
-                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required to reuse a previously stored Stripe customer during checkout.
-                'meta_query'             => $meta_query,
-            ]
-        );
-
-        foreach ($customer_posts as $post_id) {
-            $customer_id = ppcart_get_post_meta($post_id, 'customer_id', true);
-
-            if (is_string($customer_id) && preg_match('/^cus_[A-Za-z0-9]+$/', $customer_id)) {
-                return $customer_id;
-            }
-        }
-
-        return '';
+        return PPCart_Stripe_Checkout_Customer::get_live_current_user_customer_id(ppcart_stripe_client($ppcart_stripe['sk']), $gateway_mode);
     }
 
+    /**
+     * Create a new Stripe customer for this checkout. Never reuses a customer
+     * found by email, because anyone can post any email.
+     *
+     * @param object $stripe        Stripe client.
+     * @param array  $customer_args Customer create params.
+     * @param string $email         Posted email (not used).
+     * @return object
+     */
     private function get_or_create_stripe_customer($stripe, $customer_args, $email)
     {
-        $customer = $stripe->customers->all(
-            [
-                'email' => $email,
-                'limit' => 1,
-            ]
-        );
+        global $ppcart_stripe;
+        unset($email);
 
-        if (! empty($customer->data)) {
-            return $customer->data[0];
-        }
-
-        return $stripe->customers->create($customer_args);
+        return PPCart_Stripe_Checkout_Customer::create_customer($stripe, (array) $customer_args, $ppcart_stripe['mode'] ?? '');
     }
 
     private function is_missing_stripe_customer_exception($exception)

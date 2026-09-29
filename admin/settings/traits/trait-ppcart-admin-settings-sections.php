@@ -32,16 +32,17 @@ trait PPCart_Admin_Settings_Sections_Trait
             'stripe' => __('Stripe', 'publishpress-cart'),
             'paypal' => __('PayPal', 'publishpress-cart'),
         ];
-        $payment_gateways = apply_filters('_ppcart_payment_gateway_tab_section', $payment_gateways);
+        $payment_gateways = apply_filters('ppcart_payment_gateway_tab_section', $payment_gateways);
         foreach ($payment_gateways as $payment_gateway_key => $payment_gateway) :
             add_settings_section(
                 $this->plugin_name . '-' . $payment_gateway_key,
-                apply_filters($this->plugin_name . 'section-title-' . $payment_gateway_key, esc_html($payment_gateway)),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+                apply_filters('ppcartsection-title-' . $payment_gateway_key, esc_html($payment_gateway)),
                 [ $this, 'section_settings' ],
                 $this->plugin_name . '-payment'
             );
         endforeach;
-        do_action('_ppcart_register_gateways', $this, $this->plugin_name . '-payment');
+        do_action('ppcart_register_gateways', $this, $this->plugin_name . '-payment');
     }
 
     /**
@@ -60,11 +61,12 @@ trait PPCart_Admin_Settings_Sections_Trait
         $taxes = [
             'tax-setting' => __('Tax Options', 'publishpress-cart'),
         ];
-        $taxes = apply_filters('_ppcart_taxes_tab_section', $taxes);
+        $taxes = apply_filters('ppcart_taxes_tab_section', $taxes);
         foreach ($taxes as $tax_key => $tax) :
             add_settings_section(
                 $this->plugin_name . '-' . $tax_key,
-                apply_filters($this->plugin_name . 'section-title-' . $tax_key, esc_html($tax)),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+                apply_filters('ppcartsection-title-' . $tax_key, esc_html($tax)),
                 [ $this, 'section_settings' ],
                 $this->plugin_name . '-tax'
             );
@@ -79,12 +81,13 @@ trait PPCart_Admin_Settings_Sections_Trait
         $invoices = [
             'invoice-setting' => __('Invoice Options', 'publishpress-cart'),
         ];
-        $invoices = apply_filters('_ppcart_invoice_tab_section', $invoices);
+        $invoices = apply_filters('ppcart_invoice_tab_section', $invoices);
 
         foreach ($invoices as $invoice_key => $invoice) :
             add_settings_section(
                 $this->plugin_name . '-' . $invoice_key,
-                apply_filters($this->plugin_name . 'section-title-' . $invoice_key, esc_html($invoice)),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+                apply_filters('ppcartsection-title-' . $invoice_key, esc_html($invoice)),
                 [ $this, 'section_settings' ],
                 $this->plugin_name . '-invoice'
             );
@@ -100,7 +103,8 @@ trait PPCart_Admin_Settings_Sections_Trait
     {
         add_settings_section(
             $this->plugin_name . '-maintenance-secrets',
-            apply_filters($this->plugin_name . 'section-title-maintenance-secrets', esc_html__('Security', 'publishpress-cart')),
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.
+            apply_filters('ppcartsection-title-maintenance-secrets', esc_html__('Security', 'publishpress-cart')),
             [ $this, 'section_settings' ],
             $this->plugin_name . '-maintenance'
         );

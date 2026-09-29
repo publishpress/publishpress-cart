@@ -13,7 +13,7 @@ $defaults['label-edit']   = 'Edit Item';
 $defaults['label-header'] = 'Item Name';
 $defaults['label-remove'] = 'Remove Item';
 $defaults['title-field']  = '';
-apply_filters($this->plugin_name . '-field-repeater-options-defaults', $defaults);
+apply_filters('ppcart-field-repeater-options-defaults', $defaults);
 $setatts = wp_parse_args($args, $defaults);
 
 $count    = 1;

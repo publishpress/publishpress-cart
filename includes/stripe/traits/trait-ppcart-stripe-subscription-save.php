@@ -96,7 +96,7 @@ trait PPCart_Stripe_Subscription_Save_Trait
             ppcart_update_post_meta($post_id, 'stripe_customer_id', $subscription->customer);
             ppcart_update_post_meta($post_id, 'sub_customer_id', $subscription->customer);
             ppcart_update_post_meta($post_id, 'sub_interval', $subscription->plan->interval);
-            ppcart_update_post_meta($post_id, 'sub_next_bill_date', PPCart_Public::get_stripe_resource_value($subscription, 'current_period_end', 0));
+            ppcart_update_post_meta($post_id, 'sub_next_bill_date', ppcart_get_stripe_subscription_period_end($subscription));
             ppcart_update_post_meta($post_id, 'stripe_mode', $order['stripe_mode']);
 
             $sub_intent_id = '';

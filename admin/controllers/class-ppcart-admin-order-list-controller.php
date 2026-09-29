@@ -40,10 +40,18 @@ class PPCart_Admin_Order_List_Controller
 
     public function modify_order_details($data)
     {
-        if (ppcart_is_order_post_type($data['post_type']) && isset($_POST['_ppcart_firstname']) && isset($_POST['post_ID'])) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- wp_insert_post_data filter; WordPress core verifies nonce on post save.
-            $order_title = sanitize_title("#" . sanitize_text_field(wp_unslash($_POST['post_ID'])) . " " . sanitize_text_field(wp_unslash($_POST['_ppcart_firstname'])) . " " . (isset($_POST['_ppcart_lastname']) ? sanitize_text_field(wp_unslash($_POST['_ppcart_lastname'])) : '')); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- wp_insert_post_data filter.
-            $data['post_title'] =  $order_title; //Updates the post title to your new title.
+        if (! ppcart_is_order_post_type($data['post_type']) || ! isset($_POST['_ppcart_firstname'], $_POST['post_ID'])) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Presence check only; the edit-post nonce is verified below before any value is used.
+            return $data;
         }
+
+        $post_id = absint(wp_unslash($_POST['post_ID'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Needed to build the nonce action that is verified on the next line.
+        $nonce   = isset($_POST['_wpnonce']) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
+        if (! $post_id || ! wp_verify_nonce($nonce, 'update-post_' . $post_id) || ! current_user_can('edit_post', $post_id)) {
+            return $data;
+        }
+
+        $order_title = sanitize_title("#" . $post_id . " " . sanitize_text_field(wp_unslash($_POST['_ppcart_firstname'])) . " " . (isset($_POST['_ppcart_lastname']) ? sanitize_text_field(wp_unslash($_POST['_ppcart_lastname'])) : ''));
+        $data['post_title'] =  $order_title; //Updates the post title to your new title.
 
         return $data; // Returns the modified data.
     }

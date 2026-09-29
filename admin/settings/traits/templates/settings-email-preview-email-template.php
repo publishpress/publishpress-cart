@@ -27,8 +27,7 @@ if (! $template_key || ! isset($templates[ $template_key ])) {
 }
 
 $headline = isset($_POST['headline']) ? sanitize_text_field(wp_unslash($_POST['headline'])) : ppcart_get_email_template_value($template_key, 'headline');
-// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Email HTML is sanitized by ppcart_kses_email_html() to preserve allowed markup.
-$body     = isset($_POST['body']) ? ppcart_kses_email_html(wp_unslash($_POST['body'])) : ppcart_get_email_template_value($template_key, 'body');
+$body     = isset($_POST['body']) ? wp_kses(wp_unslash($_POST['body']), ppcart_get_email_allowed_html()) : ppcart_get_email_template_value($template_key, 'body');
 
 $order_info = ppcart_get_email_preview_order_data();
 

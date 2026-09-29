@@ -422,6 +422,71 @@ class DebugLogViewerTest extends Unit
         $this->assertNotFalse(strpos($entries[0]['message'], 'Log File Reset'));
     }
 
+    public function test_new_install_creates_a_log_file_with_log_extension(): void
+    {
+        new PPCart_Debug_Logger();
+
+        $file_name = (string) get_option('_ppcart_log_file');
+
+        $this->assertStringEndsWith('-debug.log', $file_name);
+        $this->assertFileExists(trailingslashit(PPCART_DEBUG_LOG_DIR) . $file_name);
+        $this->assertSame([], glob(trailingslashit(PPCART_DEBUG_LOG_DIR) . '*.txt*'));
+    }
+
+    public function test_legacy_txt_log_and_rotations_are_renamed_and_the_option_updated(): void
+    {
+        $dir = trailingslashit(PPCART_DEBUG_LOG_DIR);
+        update_option('_ppcart_log_file', 'legacy-uuid-log.txt');
+        file_put_contents($dir . 'legacy-uuid-log.txt', "[05/12/2026 6:31 AM] - SUCCESS : Order #901 saved successfully with status paid.\n");
+        file_put_contents($dir . 'legacy-uuid-log.txt.1', "[05/12/2026 6:30 AM] - SUCCESS : Order #900 saved successfully with status paid.\n");
+        file_put_contents($dir . 'legacy-uuid-log.txt.2', "rotated two\n");
+
+        $logger = new PPCart_Debug_Logger();
+
+        $this->assertSame('legacy-uuid-debug.log', get_option('_ppcart_log_file'));
+        $this->assertFileExists($dir . 'legacy-uuid-debug.log');
+        $this->assertFileExists($dir . 'legacy-uuid-debug.log.1');
+        $this->assertFileExists($dir . 'legacy-uuid-debug.log.2');
+        $this->assertSame([], glob($dir . '*.txt*'));
+
+        // The admin viewer reads the renamed file and its rotation.
+        $order_ids = array_column(PPCart_Debug_Log_Viewer::read_entries(array('limit' => 10)), 'order_id');
+        $this->assertContains(901, $order_ids);
+        $this->assertContains(900, $order_ids);
+
+        // New writes and resets go to the renamed file.
+        $logger->log_debug('After migration row', 1);
+        $this->assertStringContainsString('After migration row', (string) file_get_contents($dir . 'legacy-uuid-debug.log'));
+
+        $logger->reset_log_file();
+        $this->assertFileDoesNotExist($dir . 'legacy-uuid-debug.log.1');
+    }
+
+    public function test_legacy_txt_log_keeps_its_name_when_the_target_already_exists(): void
+    {
+        $dir = trailingslashit(PPCART_DEBUG_LOG_DIR);
+        update_option('_ppcart_log_file', 'clash-log.txt');
+        file_put_contents($dir . 'clash-log.txt', "old content\n");
+        file_put_contents($dir . 'clash-debug.log', "unrelated content\n");
+
+        new PPCart_Debug_Logger();
+
+        $this->assertSame('clash-log.txt', get_option('_ppcart_log_file'));
+        $this->assertSame("old content\n", file_get_contents($dir . 'clash-log.txt'));
+        $this->assertSame("unrelated content\n", file_get_contents($dir . 'clash-debug.log'));
+    }
+
+    public function test_log_directory_gets_a_deny_all_htaccess(): void
+    {
+        $logger = new PPCart_Debug_Logger();
+        $logger->log_debug('Guard row', 1);
+
+        $htaccess = trailingslashit(PPCART_DEBUG_LOG_DIR) . '.htaccess';
+
+        $this->assertFileExists($htaccess);
+        $this->assertStringContainsString('Require all denied', (string) file_get_contents($htaccess));
+    }
+
     /**
      * @return void
      */

@@ -12,7 +12,7 @@ if (function_exists('sodium_crypto_box_keypair')) {
     return [
         'algorithm'       => 'sodium_box_seal',
         'public_key'      => $public_key,
-        'private_key'     => base64_encode(sodium_crypto_box_secretkey($key_pair)),
+        'private_key'     => PPCart_Base64::encode(sodium_crypto_box_secretkey($key_pair)),
         'public_key_hash' => hash('sha256', $public_key),
     ];
 }

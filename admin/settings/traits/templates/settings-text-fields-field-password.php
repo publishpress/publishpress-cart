@@ -12,7 +12,7 @@ $defaults['name']        = $args['id'];
 $defaults['placeholder'] = '';
 $defaults['type']        = 'password';
 $defaults['value']       = '';
-apply_filters($this->plugin_name . '-field-text-options-defaults', $defaults);
+apply_filters('ppcart-field-text-options-defaults', $defaults);
 $atts = wp_parse_args($args, $defaults);
 
 if ($option_val = ppcart_get_sensitive_option($atts['id'])) {

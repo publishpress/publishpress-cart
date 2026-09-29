@@ -13,7 +13,7 @@ $defaults['label']       = '';
 $defaults['name']        = $args['id'];
 $defaults['rows']        = 10;
 $defaults['value']       = '';
-apply_filters($this->plugin_name . '-field-textarea-options-defaults', $defaults);
+apply_filters('ppcart-field-textarea-options-defaults', $defaults);
 $atts = wp_parse_args($args, $defaults);
 
 if (! empty($atts['email_template_key']) && ! empty($atts['email_template_field']) && function_exists('ppcart_get_email_template_value')) {

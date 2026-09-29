@@ -78,8 +78,94 @@ function ppcart_generate_login_creds($customerEmail, $password = false)
     return $creds;
 }
 
+/**
+ * Capabilities that make a role unsafe to hand out to buyers automatically.
+ *
+ * @return string[]
+ */
+function ppcart_privileged_role_capabilities()
+{
+    $caps = [
+        'manage_options',
+        'promote_users',
+        'create_users',
+        'edit_users',
+        'delete_users',
+        'activate_plugins',
+        'install_plugins',
+        'edit_plugins',
+        'update_plugins',
+        'install_themes',
+        'edit_themes',
+        'update_core',
+        'unfiltered_upload',
+    ];
+
+    return (array) apply_filters('ppcart_privileged_role_capabilities', $caps);
+}
+
+/**
+ * Whether a role grants site-management capabilities.
+ *
+ * Unknown roles count as privileged so callers fall back to a safe role.
+ *
+ * @param string $role Role slug.
+ * @return bool
+ */
+function ppcart_is_privileged_role($role)
+{
+    $role_obj = get_role((string) $role);
+    if (! $role_obj) {
+        return true;
+    }
+
+    foreach (ppcart_privileged_role_capabilities() as $cap) {
+        if (! empty($role_obj->capabilities[ $cap ])) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Role to give a buyer from a product integration, never a privileged one.
+ *
+ * Privileged roles are replaced with the site default role (or subscriber)
+ * unless a developer opts in through `ppcart_allow_privileged_customer_role`.
+ *
+ * @param string $user_role Requested role slug.
+ * @param int    $order_id  Order post ID.
+ * @return string
+ */
+function ppcart_safe_customer_role($user_role, $order_id = 0)
+{
+    $user_role = (string) $user_role;
+    if ('' === $user_role || ! ppcart_is_privileged_role($user_role)) {
+        return $user_role;
+    }
+
+    if (apply_filters('ppcart_allow_privileged_customer_role', false, $user_role, $order_id)) {
+        return $user_role;
+    }
+
+    $fallback = (string) get_option('default_role', 'subscriber');
+    if ('' === $fallback || ppcart_is_privileged_role($fallback)) {
+        $fallback = 'subscriber';
+    }
+
+    if ($order_id) {
+        /* translators: 1: requested role, 2: role used instead. */
+        ppcart_log_entry($order_id, sprintf(__('User role %1$s is not allowed for customers; %2$s was used instead.', 'publishpress-cart'), $user_role, $fallback));
+    }
+
+    return $fallback;
+}
+
 function ppcart_create_user($order_id, $customerEmail, $first_name, $last_name, $user_role = '', $send_email_override = null, $change_roles = false)
 {
+
+    $user_role = ppcart_safe_customer_role($user_role, $order_id);
 
     $sub_id = false;
     if (ppcart_is_order_post_type(get_post_type($order_id))) {

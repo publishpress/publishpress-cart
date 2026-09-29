@@ -41,7 +41,7 @@ class PPCart_Stripe_Client extends \PublishPress\Stripe\StripeClient
         $received = is_object($obj) ? get_class($obj) : gettype($obj);
 
         throw new \PublishPress\Stripe\Exception\UnexpectedValueException(
-            'Expected to receive a Stripe list collection. Instead received `' . $received . '`.'
+            'Expected to receive a Stripe list collection. Instead received `' . esc_html($received) . '`.'
         );
     }
 
@@ -63,7 +63,7 @@ class PPCart_Stripe_Client extends \PublishPress\Stripe\StripeClient
         $received = is_object($obj) ? get_class($obj) : gettype($obj);
 
         throw new \PublishPress\Stripe\Exception\UnexpectedValueException(
-            'Expected to receive a Stripe search result. Instead received `' . $received . '`.'
+            'Expected to receive a Stripe search result. Instead received `' . esc_html($received) . '`.'
         );
     }
 

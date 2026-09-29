@@ -12,7 +12,7 @@ $defaults['name']        = $args['id'];
 $defaults['placeholder'] = '';
 $defaults['type']        = 'email';
 $defaults['value']       = '';
-apply_filters($this->plugin_name . '-field-text-options-defaults', $defaults);
+apply_filters('ppcart-field-text-options-defaults', $defaults);
 $atts       = wp_parse_args($args, $defaults);
 $option_val = get_option($atts['id']);
 

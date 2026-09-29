@@ -77,8 +77,8 @@ class PPCart_Contacts_Page
 
         add_submenu_page(
             PPCart_Admin_Screens::menu_slug(),
-            apply_filters($this->plugin_name . '-settings-page-title', esc_html__('Contacts', 'publishpress-cart')),
-            apply_filters($this->plugin_name . '-settings-menu-title', esc_html__('Contacts', 'publishpress-cart')),
+            apply_filters('ppcart-settings-page-title', esc_html__('Contacts', 'publishpress-cart')),
+            apply_filters('ppcart-settings-menu-title', esc_html__('Contacts', 'publishpress-cart')),
             ppcart_live_cap('manager_option'),
             PPCart_Admin_Screens::PAGE_CONTACTS,
             [ $this, 'render_page_contacts' ]
@@ -94,24 +94,26 @@ class PPCart_Contacts_Page
     {
         global $ppcart_currency_symbol, $wpdb;
 
-        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Reporting query across orders/postmeta is intentionally SQL-based for grouped contact listing.
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_post_types() returns a placeholder list prepared from canonical post types.
+        $order_types = ppcart_query_post_types('order');
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reporting query across orders/postmeta is intentionally SQL-based for grouped contact listing.
         $get_user = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT {$wpdb->posts}.ID, {$wpdb->postmeta}.meta_value
                 FROM {$wpdb->posts}
                 INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id )
                 WHERE {$wpdb->postmeta}.meta_key = %s
-                    AND {$wpdb->posts}.post_type IN (" . ppcart_sql_in_post_types('order') . ")
+                    AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ")
                     AND {$wpdb->posts}.post_status NOT IN (%s, %s)
                 ORDER BY {$wpdb->posts}.post_date DESC",
-                ppcart_meta_key('email'),
-                'trash',
-                'auto-draft'
+                array_merge(
+                    [ ppcart_meta_key('email') ],
+                    $order_types,
+                    [ 'trash', 'auto-draft' ]
+                )
             )
         );
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
-        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,PluginCheck.Security.DirectDB.UnescapedDBParameter
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
         $user_contact_array = [];
 
         foreach ($get_user as $post) {

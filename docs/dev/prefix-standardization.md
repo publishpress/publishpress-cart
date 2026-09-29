@@ -460,24 +460,24 @@ not the shortcode tag).
 |----------|-----------|
 | `save_post_sc_*` / `manage_sc_*` / `bulk_actions-edit-sc_*` | Follow the **live** CPT slug (`save_post_ppcart_*` after Data migration). Callback methods were renamed in slice 20. |
 
-##### Plugin hooks (`ppcart_*` / `_ppcart_*`)
+##### Plugin hooks (`ppcart_*`)
 
 | Leftover | Canonical | Type |
 |----------|-----------|------|
-| `_sc_custom_option_list` | `_ppcart_custom_option_list` | filter |
-| `_sc_emails_tab_section` | `_ppcart_emails_tab_section` | filter |
-| `_sc_integrations_option_list` | `_ppcart_integrations_option_list` | filter |
-| `_sc_integrations_tab_section` | `_ppcart_integrations_tab_section` | filter |
-| `_sc_invoice_option_list` | `_ppcart_invoice_option_list` | filter |
-| `_sc_invoice_tab_section` | `_ppcart_invoice_tab_section` | filter |
-| `_sc_option_list` | `_ppcart_option_list` | filter |
-| `_sc_payment_field_option_list` | `_ppcart_payment_field_option_list` | filter |
-| `_sc_payment_gateway_tab_section` | `_ppcart_payment_gateway_tab_section` | filter |
-| `_sc_plan` | `_ppcart_plan` | filter |
-| `_sc_register_gateways` | `_ppcart_register_gateways` | action |
-| `_sc_register_sections` | `_ppcart_register_sections` | action |
-| `_sc_taxes_tab_section` | `_ppcart_taxes_tab_section` | filter |
-| `_sc_{$ppcart_tab_key}_tab_section` | `_ppcart_{$ppcart_tab_key}_tab_section` | filter |
+| `_sc_custom_option_list` | `ppcart_custom_option_list` | filter |
+| `_sc_emails_tab_section` | `ppcart_emails_tab_section` | filter |
+| `_sc_integrations_option_list` | `ppcart_integrations_option_list` | filter |
+| `_sc_integrations_tab_section` | `ppcart_integrations_tab_section` | filter |
+| `_sc_invoice_option_list` | `ppcart_invoice_option_list` | filter |
+| `_sc_invoice_tab_section` | `ppcart_invoice_tab_section` | filter |
+| `_sc_option_list` | `ppcart_option_list` | filter |
+| `_sc_payment_field_option_list` | `ppcart_payment_field_option_list` | filter |
+| `_sc_payment_gateway_tab_section` | `ppcart_payment_gateway_tab_section` | filter |
+| `_sc_plan` | `ppcart_plan_data` | filter |
+| `_sc_register_gateways` | `ppcart_register_gateways` | action |
+| `_sc_register_sections` | `ppcart_register_integration_sections` | action |
+| `_sc_taxes_tab_section` | `ppcart_taxes_tab_section` | filter |
+| `_sc_{$ppcart_tab_key}_tab_section` | `ppcart_{$ppcart_tab_key}_tab_section` | filter |
 | `sc_account_before_subscription_details` | `ppcart_account_before_subscription_details` | action |
 | `sc_account_block_navigation_options` | `ppcart_account_block_navigation_options` | filter |
 | `sc_account_subscription_action_links` | `ppcart_account_subscription_action_links` | action |
@@ -815,7 +815,7 @@ _344 unique Cart plugin hooks from `docs/hooks-manifest.json`._
 
 | Leftover | Canonical |
 |----------|-----------|
-| `_sc_{$ppcart_tab_key}_tab_section` | `_ppcart_{$ppcart_tab_key}_tab_section` |
+| `_sc_{$ppcart_tab_key}_tab_section` | `ppcart_{$ppcart_tab_key}_tab_section` |
 | `sc_backend_message_{$k}` | `ppcart_backend_message_{$k}` |
 | `sc_default_{$field[...]}]_field_settings_attributes` | `ppcart_default_{$field[...]}]_field_settings_attributes` |
 | `sc_frontend_message_{$k}` | `ppcart_frontend_message_{$k}` |
@@ -1169,7 +1169,6 @@ into chat.
 | 58 | Optional `esc_attr()` on literal `ppcart-splitin-form` echo in `checkout1.php` |
 | 58 | Low — dead `includes/compat/` skip in scanner copied from HtmlIdsTest |
 | 71 | Catalog “canonical wins when both keys are set” is true in the copy helper but not asserted in IT-360 |
-| 71 | `order-downloads-metabox.php` appends `&ppcart-revoke=` after `wp_nonce_url(get_edit_post_link())` (default action `-1`) while the handler verifies `update-post_{id}` — pre-existing nonce mismatch vs product-form link |
 
 ---
 

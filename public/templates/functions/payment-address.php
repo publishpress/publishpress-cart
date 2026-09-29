@@ -175,6 +175,7 @@ function ppcart_do_checkout_hidden_fields($post_id)
     global $ppcart_product;
 
     if (!defined('DONOTCACHEPAGE')) {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- Shared constant recognized by page-cache plugins.
         define('DONOTCACHEPAGE', true);
     }
     $on_sale = ppcart_is_prod_on_sale();

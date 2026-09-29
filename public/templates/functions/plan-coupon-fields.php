@@ -57,6 +57,7 @@ function ppcart_order_summary_info($post_id, $plan = false)
     echo wp_kses_post(ppcart_render_site_info());
     echo '<div class="checkout-order-summary">';
     $content = get_post_field('post_content', $post_id);
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Applies WordPress core content rendering intentionally.
     $post_content = apply_filters('the_content', $content);
     $class = '';
     $skip_default = function_exists('has_shortcode') && has_shortcode($content, 'ppcart_order_summary_items_view');
@@ -265,8 +266,7 @@ function ppcart_do_coupon_section($post_id)
         return;
     }
 
-    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Internal checkout templates render sanitized form controls.
-    echo '<div class="ppcart-section ppcart-coupon-section">' . $coupon . '</div>';
+    echo '<div class="ppcart-section ppcart-coupon-section">' . wp_kses($coupon, ppcart_frontend_allowed_html()) . '</div>';
 }
 
 function ppcart_do_checkout_form_close()
@@ -298,7 +298,22 @@ function ppcart_do_field($args)
     ];
 
     $args = wp_parse_args($args, $defaults);
-    extract($args);
+
+    // Explicit assignments instead of extract(): only the known field keys become locals.
+    $id          = $args['id'];
+    $required    = $args['required'];
+    $type        = $args['type'];
+    $hide_labels = $args['hide_labels'];
+    $cols        = $args['cols'];
+    $description = $args['description'];
+    $class       = $args['class'];
+    $value       = $args['value'];
+    $div_class   = $args['div_class'];
+    $qty_price   = $args['qty_price'];
+    $testid      = $args['testid'];
+    $name        = isset($args['name']) ? $args['name'] : null;
+    $label       = isset($args['label']) ? $args['label'] : null;
+    $choices     = isset($args['choices']) ? $args['choices'] : null;
     $posted_ppcart_errors = ppcart_filter_input(INPUT_POST, 'ppcart_errors', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
 
     if (!$id) {

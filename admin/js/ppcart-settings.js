@@ -16,6 +16,8 @@
     var $savebar;
     var initialFormSnapshot = '';
     var saveBarBound = false;
+    var userEditedForm = false;
+    var leavingPage = false;
     var initialised = false;
     var pendingTabRequest = null;
     var lastEmailModalTrigger = null;
@@ -588,6 +590,10 @@
         if (!$form || !$form.length) {
             return '';
         }
+        // TinyMCE rewrites the email body textareas whenever it saves; compare its saved output.
+        if (window.tinymce && typeof window.tinymce.triggerSave === 'function') {
+            window.tinymce.triggerSave();
+        }
         return $form.find(':input').not('[name="_wp_http_referer"]').serialize();
     }
 
@@ -611,19 +617,47 @@
         saveBarBound = true;
         initialFormSnapshot = snapshotForm();
 
-        var checkChanges = function () {
+        var checkChanges = function (event) {
+            if (event && event.originalEvent && event.originalEvent.isTrusted) {
+                userEditedForm = true;
+            }
             window.setTimeout(function () {
                 var currentSnapshot = snapshotForm();
                 setSavebarVisible(currentSnapshot !== initialFormSnapshot);
             }, 30);
         };
 
+        // Other admin scripts (e.g. selectize) still adjust fields after init.
+        var resetBaseline = function () {
+            window.setTimeout(function () {
+                if (!userEditedForm) {
+                    initialFormSnapshot = snapshotForm();
+                    setSavebarVisible(false);
+                }
+            }, 0);
+        };
+        if ('complete' === document.readyState) {
+            resetBaseline();
+        } else {
+            $(window).on('load', resetBaseline);
+        }
+
         $page.on('ppcartSettingsChanged', checkChanges);
         $form.on('input change keyup', 'input, select, textarea', checkChanges);
 
         $form.on('submit', function () {
+            leavingPage = true;
             syncHttpRefererToTab();
             setSavingState(true);
+        });
+
+        $(window).on('beforeunload', function (event) {
+            if (leavingPage || snapshotForm() === initialFormSnapshot) {
+                return undefined;
+            }
+            event.preventDefault();
+            event.originalEvent.returnValue = '';
+            return '';
         });
 
         $savebar.find('[data-pp-discard]').on('click', function () {
@@ -631,11 +665,13 @@
             if (!window.confirm(msg)) {
                 return;
             }
+            leavingPage = true;
             window.location.reload();
         });
 
         var submitForm = function (e) {
             e.preventDefault();
+            leavingPage = true;
             syncHttpRefererToTab();
             setSavingState(true);
             // Find the bottom submit control and click it

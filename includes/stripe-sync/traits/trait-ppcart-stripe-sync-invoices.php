@@ -88,4 +88,19 @@ trait PPCart_Stripe_Sync_Invoices_Trait
         $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-invoices-find-invoice-product-line.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
     }
+
+    /**
+     * Find the charge and PaymentIntent ids that paid an invoice.
+     *
+     * Newer Stripe API versions removed invoice.charge and invoice.payment_intent;
+     * the ids are under invoice.payments instead.
+     *
+     * @param object|array $invoice Stripe invoice resource.
+     * @return array{charge: string, payment_intent: string}
+     */
+    private static function invoice_payment_ids($invoice)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-invoices-invoice-payment-ids.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
 }

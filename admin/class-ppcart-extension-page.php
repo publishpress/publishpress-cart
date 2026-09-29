@@ -78,8 +78,8 @@ class PPCart_Extension_Page
     {
         add_submenu_page(
             PPCart_Admin_Screens::menu_slug(),
-            apply_filters($this->plugin_name . '-settings-page-title', esc_html__('Extensions', 'publishpress-cart')),
-            apply_filters($this->plugin_name . '-settings-menu-title', esc_html__('Extensions', 'publishpress-cart')),
+            apply_filters('ppcart-settings-page-title', esc_html__('Extensions', 'publishpress-cart')),
+            apply_filters('ppcart-settings-menu-title', esc_html__('Extensions', 'publishpress-cart')),
             ppcart_live_cap('manager_option'),
             PPCart_Admin_Screens::PAGE_EXTENSIONS,
             [ $this, 'render_page_contacts' ]

@@ -19,8 +19,10 @@ trait PPCart_Files_Frontend_Trait
 
     public function download_file()
     {
-        if (get_query_var(self::DOWNLOAD_QUERY_VAR) && file_exists(plugin_dir_path(__FILE__) . 'download.php')) {
-            require_once((defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR : dirname(__DIR__, 2) . '/') . 'includes/files/download.php');
+        $download_handler = dirname(__DIR__) . '/download.php';
+
+        if (get_query_var(self::DOWNLOAD_QUERY_VAR) && file_exists($download_handler)) {
+            require_once $download_handler;
             exit();
         }
     }
@@ -145,6 +147,6 @@ trait PPCart_Files_Frontend_Trait
             return false;
         }
 
-        echo ppcart_kses_frontend_html($buffered); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by ppcart_kses_frontend_html().
+        echo wp_kses((string) $buffered, ppcart_frontend_allowed_html());
     }
 }

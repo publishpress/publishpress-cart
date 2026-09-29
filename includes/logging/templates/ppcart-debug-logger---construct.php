@@ -16,4 +16,4 @@ if ($enabled = get_option('_ppcart_enable_debug')) {//Debugging is enabled
 $this->init_default_log_file();
 
 add_action('init', [$this, 'view_log_request']);
-add_filter('_ppcart_option_list', [$this, 'enable_debug_log_setting'], 999);
+add_filter('ppcart_option_list', [$this, 'enable_debug_log_setting'], 999);

@@ -499,6 +499,68 @@ function ppcart_admin_allowed_html()
 }
 
 /**
+ * Return the HTML allowlist for the debug log and Stripe webhook log viewers.
+ *
+ * The viewers build their markup in helpers that escape every dynamic value.
+ * The echo sites still pass that markup through wp_kses() with this list. The
+ * list keeps the tags, the SVG icons and the data-* hooks that the viewer
+ * JavaScript needs.
+ *
+ * @return array
+ */
+function ppcart_log_viewer_allowed_html()
+{
+    static $allowed = null;
+
+    if (null !== $allowed) {
+        return $allowed;
+    }
+
+    $allowed = wp_kses_allowed_html('post');
+
+    $state = [
+        'aria-controls' => true,
+        'aria-expanded' => true,
+        'aria-hidden'   => true,
+        'aria-label'    => true,
+        'class'         => true,
+        'data-*'        => true,
+        'disabled'      => true,
+        'hidden'        => true,
+        'id'            => true,
+        'type'          => true,
+    ];
+
+    foreach ([ 'article', 'button', 'details', 'div', 'span', 'tr', 'td' ] as $tag) {
+        $allowed[ $tag ] = array_merge(isset($allowed[ $tag ]) ? (array) $allowed[ $tag ] : [], $state);
+    }
+
+    $allowed['details']['open'] = true;
+    $allowed['time']            = [ 'class' => true ];
+    $allowed['svg']             = [
+        'aria-hidden' => true,
+        'class'       => true,
+        'focusable'   => true,
+        'viewbox'     => true,
+    ];
+    $allowed['path']   = [ 'd' => true ];
+    $allowed['rect']   = [
+        'height' => true,
+        'rx'     => true,
+        'width'  => true,
+        'x'      => true,
+        'y'      => true,
+    ];
+    $allowed['circle'] = [
+        'cx' => true,
+        'cy' => true,
+        'r'  => true,
+    ];
+
+    return $allowed;
+}
+
+/**
  * Adds inline CSS to an enqueued handle, or prints a fallback handle if the
  * primary handle has already been printed.
  *
@@ -605,6 +667,33 @@ function ppcart_safe_meta_unserialize($value)
     // writing it back through update_post_meta() raises a fatal error in wp_unslash().
     if (ppcart_meta_value_has_incomplete_object($parsed)) {
         return $value;
+    }
+
+    return $parsed;
+}
+
+/**
+ * Rehydrate a serialized plain-data object (plan or tax data) stored by this plugin.
+ *
+ * Some order meta (plan, tax_data) can be serialized twice, so it reaches the order
+ * model as a serialized string of a stdClass. Only stdClass may be instantiated: any
+ * other class, at any depth, is refused so no object-injection gadget can run.
+ *
+ * @param mixed $value Serialized string.
+ *
+ * @return stdClass|null The object, or null when the value is not a clean stdClass payload.
+ */
+function ppcart_unserialize_plain_object($value)
+{
+    if (! is_string($value) || '' === $value || ! is_serialized($value)) {
+        return null;
+    }
+
+    // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize -- Limited to stdClass; any other class becomes __PHP_Incomplete_Class and is rejected below.
+    $parsed = @unserialize(trim($value), [ 'allowed_classes' => [ 'stdClass' ] ]);
+
+    if (! ($parsed instanceof stdClass) || ppcart_meta_value_has_incomplete_object($parsed)) {
+        return null;
     }
 
     return $parsed;
@@ -762,4 +851,5 @@ require_once __DIR__ . '/functions/payment-actions-and-refunds.php';
 require_once __DIR__ . '/functions/admin-ajax-and-notices.php';
 require_once __DIR__ . '/functions/admin-conditional-logic.php';
 require_once __DIR__ . '/functions/report-filters.php';
+require_once __DIR__ . '/functions/report-queries.php';
 require_once __DIR__ . '/functions/request-sanitization.php';

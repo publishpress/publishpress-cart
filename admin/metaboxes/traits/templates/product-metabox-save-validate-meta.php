@@ -24,14 +24,9 @@ if (!in_array($object->post_type, $product_metabox_post_types, true)) {
     return $post_id;
 }
 
-if (
-    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This reads the nonce field for verification.
-    ! isset($_POST['ppcart_fields_nonce']) ||
-    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This validates the nonce field.
-    ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ppcart_fields_nonce'])), $this->plugin_name)
-) {
-    return $post_id;
-}
+// Included only from validate_meta(), which verifies the ppcart_fields_nonce
+// nonce and edit_post capability before this template reads any field.
+// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verified in validate_meta() before include.
 
 do_action('ppcart_before_validate_meta', $post_id);
 
@@ -54,8 +49,8 @@ foreach ($metas as $meta) {
         if (! isset($_POST[$name]) || ! is_array($_POST[$name])) {
             continue;
         }
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Values are sanitized field-by-field in the nested loop below.
-        foreach (wp_unslash($_POST[$name]) as $key => $fields) {
+        // Default checkout fields are plain text. Sanitize the whole group at read time.
+        foreach (map_deep(wp_unslash($_POST[$name]), 'sanitize_text_field') as $key => $fields) {
             if (! is_array($fields)) {
                 continue;
             }
@@ -80,7 +75,7 @@ foreach ($metas as $meta) {
             if (isset($_POST[$name][$field[0]])) {
                 $i = 0;
 
-                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Values are sanitized in the inner branches before use.
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each value goes through $this->sanitizer() with the field's declared type (PPCart_Sanitize: text, email, url, price, html...). One generic sanitizer here would corrupt typed values.
                 foreach (wp_unslash($_POST[$name][$field[0]]) as $k => $data) {
                     if (isset($field[2]) && strpos($field[2], 'required') !== false) {
                         $required_key = $field[0];
@@ -186,3 +181,4 @@ if (apply_filters('ppcart_process_stripe_products', true)) {
     $stripe_product->save_stripe_objects($post_id, $stripe_objects);
 }
 do_action('ppcart_after_validate_meta', $post_id, $stripe_objects);
+// phpcs:enable WordPress.Security.NonceVerification.Missing

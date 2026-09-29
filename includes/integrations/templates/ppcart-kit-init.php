@@ -5,8 +5,8 @@ if (! defined('ABSPATH')) {
 }
 
 
-add_filter('_ppcart_integrations_tab_section', [$this, 'settings_section'], 10, 1);
-add_filter('_ppcart_integrations_option_list', [$this, 'service_settings']);
+add_filter('ppcart_integrations_tab_section', [$this, 'settings_section'], 10, 1);
+add_filter('ppcart_integrations_option_list', [$this, 'service_settings']);
 add_filter('ppcart_show_optin_checkbox_services', [$this, 'add_optin_service']);
 
 add_action('add_option__ppcart_converkit_api', [$this, 'get_' . $this->service_name . '_forms'], 10);

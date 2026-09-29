@@ -421,7 +421,13 @@ function classify_hook($name, $operation, $type, $file, $dynamic, array $coreHoo
     }
 
     if ($classification !== 'external') {
-        if (strpos($name, '_ppcart_') === 0 || strpos($name, 'ppcart_') === 0) {
+        $underscore_replacement = underscore_hook_replacement($name);
+        if ($underscore_replacement !== null) {
+            $classification = 'deprecated';
+            $status = 'removed';
+            $recommended = $underscore_replacement;
+            $notes = 'Removed underscore hook. Use ' . $underscore_replacement . '.';
+        } elseif (strpos($name, '_ppcart_') === 0 || strpos($name, 'ppcart_') === 0) {
             $status = 'canonical';
             $notes = 'Canonical hook prefix.';
         } elseif ($is_compat_package && (strpos($name, 'studiocart_') === 0 || strpos($name, '_sc_') === 0 || strpos($name, 'sc_') === 0 || strpos($name, 'ncs_') === 0 || strpos($name, 'nsc_') === 0)) {
@@ -433,8 +439,8 @@ function classify_hook($name, $operation, $type, $file, $dynamic, array $coreHoo
             $notes = 'Legacy public hook. Use ppcart_* in first-party code; bridge in Compatibility Mode.';
         } elseif (strpos($name, '_sc_') === 0) {
             $status = 'legacy_public';
-            $recommended = '_ppcart_' . substr($name, 4);
-            $notes = 'Legacy settings registration hook. Use _ppcart_* in first-party code.';
+            $recommended = underscore_hook_replacement('_ppcart_' . substr($name, 4)) ?? 'ppcart_' . substr($name, 4);
+            $notes = 'Legacy settings registration hook. Use ppcart_* in first-party code.';
         } elseif (strpos($name, 'sc_') === 0) {
             $status = 'legacy_public';
             $recommended = 'ppcart_' . substr($name, 3);
@@ -491,6 +497,28 @@ function classify_hook($name, $operation, $type, $file, $dynamic, array $coreHoo
         'recommended_hook' => $recommended,
         'notes' => $notes,
     ];
+}
+
+/**
+ * Canonical replacement for a removed `_ppcart_*` settings/plan hook, or null.
+ */
+function underscore_hook_replacement($name)
+{
+    $renamed = [
+        '_ppcart_plan' => 'ppcart_plan_data',
+        '_ppcart_register_sections' => 'ppcart_register_integration_sections',
+        '_ppcart_register_gateways' => 'ppcart_register_gateways',
+    ];
+
+    if (isset($renamed[$name])) {
+        return $renamed[$name];
+    }
+
+    if (preg_match('/^_ppcart_(.*_tab_section|(?:.+_)?option_list)$/', $name, $matches)) {
+        return 'ppcart_' . $matches[1];
+    }
+
+    return null;
 }
 
 function overlaps_for_repo($repoName)

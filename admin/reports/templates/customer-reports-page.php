@@ -335,37 +335,7 @@ if ($subscription_results->have_posts()) {
 }
 wp_reset_postdata();
 
-$subscription_order_totals = [];
-if (! empty($subscription_ids)) {
-    $subscription_id_placeholders = implode(',', array_fill(0, count($subscription_ids), '%d'));
-    $subscription_order_sql = "SELECT subscription_meta.meta_value AS subscription_id, COUNT(DISTINCT posts.ID) AS order_count, COALESCE(SUM(CAST(amount_meta.meta_value AS DECIMAL(20,6))), 0) AS total_amount
-                        FROM {$wpdb->posts} posts
-                        INNER JOIN {$wpdb->postmeta} subscription_meta
-                            ON posts.ID = subscription_meta.post_id
-                            AND subscription_meta.meta_key IN (" . ppcart_sql_in_meta_keys('subscription_id') . ")
-                        LEFT JOIN {$wpdb->postmeta} amount_meta
-                            ON posts.ID = amount_meta.post_id
-                            AND amount_meta.meta_key IN (" . ppcart_sql_in_meta_keys('amount') . ")
-                        WHERE posts.post_type IN (" . ppcart_sql_in_post_types('order') . ")
-                            AND posts.post_status IN (" . ppcart_sql_in_post_statuses('paid') . ")
-                            AND subscription_meta.meta_value IN ($subscription_id_placeholders)
-                        GROUP BY subscription_meta.meta_value";
-    // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared -- Report aggregate query uses generated integer placeholders for the subscription ID list.
-    $subscription_order_rows = $wpdb->get_results(
-        $wpdb->prepare(
-            $subscription_order_sql,
-            ...$subscription_ids
-        )
-    );
-    // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared
-
-    foreach ($subscription_order_rows as $subscription_order_row) {
-        $subscription_order_totals[absint($subscription_order_row->subscription_id)] = [
-            'count' => absint($subscription_order_row->order_count),
-            'total' => (float) $subscription_order_row->total_amount,
-        ];
-    }
-}
+$subscription_order_totals = ppcart_get_report_subscription_order_totals($subscription_ids);
 
 foreach ($subscription_items as $subscription_item) {
     $subscription_post_id = $subscription_item['id'];

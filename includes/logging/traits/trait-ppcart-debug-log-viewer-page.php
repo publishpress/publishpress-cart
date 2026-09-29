@@ -14,6 +14,14 @@ trait PPCart_Debug_Log_Viewer_Page_Trait
      */
     public static function render_log_page($file_name = '')
     {
+        // The log shows checkout data. Check the capability and the view nonce
+        // here as well as in the route handler, so this public method cannot
+        // render the log from any other call path.
+        if (! current_user_can('manage_options')) {
+            wp_die(esc_html__('Sorry, you are not allowed to access this page.', 'publishpress-cart'), 403);
+        }
+        ppcart_check_admin_referer('ppcart_view_debug_log', 'ppcart_view_debug_log_nonce');
+
         $__ppcart_template_result = include __DIR__ . '/templates/debug-log-viewer-page-render-log-page.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
     }

@@ -207,8 +207,8 @@ class PPCart_Admin_Filters
 
             // Add the custom meta field to the search query
             if (!empty($search_term)) {
-                $like_term = '%' . $wpdb->esc_like($search_term) . '%';
-                // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_meta_keys() returns a placeholder list prepared from canonical meta keys.
+                $like_term  = '%' . $wpdb->esc_like($search_term) . '%';
+                $email_keys = ppcart_query_meta_keys('email');
                 $search .= $wpdb->prepare(
                     " AND (
                         {$wpdb->posts}.post_title LIKE %s
@@ -216,14 +216,15 @@ class PPCart_Admin_Filters
                         OR EXISTS (
                             SELECT * FROM {$wpdb->postmeta}
                             WHERE post_id = {$wpdb->posts}.ID
-                            AND (meta_key IN (" . ppcart_sql_in_meta_keys('email') . ") AND meta_value LIKE %s)
+                            AND (meta_key IN (" . implode(',', array_fill(0, count($email_keys), '%s')) . ") AND meta_value LIKE %s)
                         )
                     ) ",
-                    $like_term,
-                    $like_term,
-                    $like_term
+                    array_merge(
+                        [ $like_term, $like_term ],
+                        $email_keys,
+                        [ $like_term ]
+                    )
                 );
-                // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
             }
         }
 

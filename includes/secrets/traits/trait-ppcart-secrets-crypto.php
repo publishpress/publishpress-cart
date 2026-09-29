@@ -49,7 +49,7 @@ trait PPCart_Secrets_Crypto_Trait
             return false;
         }
 
-        return self::ENCRYPTED_PREFIX . base64_encode($iv . $ciphertext);
+        return self::ENCRYPTED_PREFIX . PPCart_Base64::encode($iv . $ciphertext);
     }
 
     /**
@@ -69,13 +69,20 @@ trait PPCart_Secrets_Crypto_Trait
             return false;
         }
 
-        $payload = base64_decode(substr($stored, strlen(self::ENCRYPTED_PREFIX)), true);
+        $payload = PPCart_Base64::decode(substr($stored, strlen(self::ENCRYPTED_PREFIX)));
         if (false === $payload) {
             return false;
         }
 
+        // Payload is IV followed by AES-CBC cipher text: at least one full block after the IV,
+        // and whole blocks only. Reject anything else before OpenSSL sees it.
         $iv_length = openssl_cipher_iv_length('AES-256-CBC');
-        if (false === $iv_length || strlen($payload) <= $iv_length) {
+        if (false === $iv_length || $iv_length < 1) {
+            return false;
+        }
+
+        $ciphertext_length = strlen($payload) - $iv_length;
+        if ($ciphertext_length < 16 || 0 !== $ciphertext_length % 16) {
             return false;
         }
 

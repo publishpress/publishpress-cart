@@ -56,9 +56,9 @@ if (! $order_status) {
     return false;
 }
 
-$charge_id = self::get($invoice, 'charge', '');
-$payment_intent = self::get($invoice, 'payment_intent', '');
-$payment_intent = is_string($payment_intent) ? $payment_intent : self::get($payment_intent, 'id', '');
+$payment_ids = self::invoice_payment_ids($invoice);
+$charge_id = $payment_ids['charge'];
+$payment_intent = $payment_ids['payment_intent'];
 $existing = $charge_id ? PPCart_Order::get_by_trans_id($charge_id) : false;
 if (! $existing && $payment_intent) {
     $existing = PPCart_Order::get_by_trans_id($payment_intent);

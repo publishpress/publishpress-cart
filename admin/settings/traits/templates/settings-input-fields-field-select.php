@@ -14,7 +14,7 @@ $defaults['label']       = '';
 $defaults['name']        = $args['id'];
 $defaults['selections']  = [];
 $defaults['value']       = '';
-apply_filters($this->plugin_name . '-field-select-options-defaults', $defaults);
+apply_filters('ppcart-field-select-options-defaults', $defaults);
 $atts = wp_parse_args($args, $defaults);
 
 if ('_ppcart_invoice_format' === $atts['id'] && function_exists('ppcart_get_invoice_format')) {

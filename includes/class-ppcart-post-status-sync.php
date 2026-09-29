@@ -86,6 +86,9 @@ class PPCart_Post_Status_Sync
         }
 
         $expanded = self::expand_query_status_value($status);
+
+        // get_posts() suppresses filters by default; posts_where must run to apply the status IN clause.
+        $query->set('suppress_filters', false);
         $query->set('ppcart_post_status_in', (array) $expanded);
         // WP_Query drops unregistered slugs like leftover `paid`; apply them in posts_where.
         $query->set('post_status', 'any');
@@ -112,11 +115,11 @@ class PPCart_Post_Status_Sync
             return $where;
         }
 
-        $placeholders = implode(',', array_fill(0, count($in), '%s'));
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Placeholder string is generated from the number of status values.
-        $prepared_statuses = $wpdb->prepare($placeholders, $in);
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- $prepared_statuses contains only values escaped by wpdb::prepare().
-        $where .= " AND {$wpdb->posts}.post_status IN (" . $prepared_statuses . ') ';
+        $in     = array_values(array_map('strval', $in));
+        $where .= $wpdb->prepare(
+            " AND {$wpdb->posts}.post_status IN (" . implode(',', array_fill(0, count($in), '%s')) . ') ',
+            $in
+        );
 
         return $where;
     }
@@ -173,18 +176,14 @@ class PPCart_Post_Status_Sync
             return;
         }
 
-        $type_placeholders = implode(',', array_fill(0, count($types), '%s'));
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Placeholder string is generated from the number of canonical post types.
-        $prepared_types = $wpdb->prepare($type_placeholders, $types);
+        $types = array_values($types);
 
         foreach (PPCart_Status_Labels::registered_map() as $logical => $registered) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-shot upgrade rewrite of plugin-owned post_status slugs.
             $wpdb->query(
                 $wpdb->prepare(
-                    // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- $prepared_types contains only values escaped by wpdb::prepare().
-                    "UPDATE {$wpdb->posts} SET post_status = %s WHERE post_status = %s AND post_type IN (" . $prepared_types . ')',
-                    $registered,
-                    $logical
+                    "UPDATE {$wpdb->posts} SET post_status = %s WHERE post_status = %s AND post_type IN (" . implode(',', array_fill(0, count($types), '%s')) . ')',
+                    array_merge([ $registered, $logical ], $types)
                 )
             );
         }

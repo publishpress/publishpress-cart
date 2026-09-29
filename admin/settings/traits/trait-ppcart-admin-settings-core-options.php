@@ -50,7 +50,7 @@ trait PPCart_Admin_Settings_Core_Options_Trait
             is_array($maintenance_options) ? $maintenance_options : [],
             is_array($ppcart_tab_option) ? $ppcart_tab_option : []
         );
-        $filtered_options = apply_filters('_ppcart_option_list', $options);
+        $filtered_options = apply_filters('ppcart_option_list', $options);
         if (is_array($filtered_options)) {
             $options = $filtered_options;
         }

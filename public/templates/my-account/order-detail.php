@@ -19,7 +19,8 @@ $show_back_link = ! isset($attr['showBackLink']) || (bool) $attr['showBackLink']
 if ((false === $order_post_id || null === $order_post_id) && ! empty($attr['order'])) {
     $order_post_id = absint($attr['order']);
 }
-if (false !== $order_post_id && null !== $order_post_id) {
+// Fail closed: only the owner (or an administrator) sees this receipt.
+if (false !== $order_post_id && null !== $order_post_id && ppcart_current_user_can_view_account_record(absint($order_post_id), 'order')) {
     $order_post_id = absint($order_post_id);
     $ppcart_order  = new PPCart_Order($order_post_id);
     $order_data    = $ppcart_order->get_data();

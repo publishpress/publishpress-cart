@@ -61,8 +61,11 @@ class PPCart_Price_Format
     {
         global $wpdb;
         $table_name = ppcart_live_table('order_items');
-        $query = $wpdb->prepare('SELECT order_item_id,total_amount,tax_amount from %i', $table_name);
-        $result = $wpdb->get_results($query, ARRAY_A); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- One-off migration query on plugin-owned table.
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration query on plugin-owned table.
+        $result = $wpdb->get_results(
+            $wpdb->prepare('SELECT order_item_id,total_amount,tax_amount from %i', $table_name),
+            ARRAY_A
+        );
         if (!empty($result)) {
             foreach ($result as $item_amount) {
                 $amount = $this->check_price_format($item_amount['total_amount']);
@@ -82,11 +85,15 @@ class PPCart_Price_Format
     {
         global $wpdb;
         $table_name = ppcart_live_table('order_itemmeta');
-        $query = $wpdb->prepare(
-            "SELECT meta_id,meta_value from %i WHERE meta_key IN ('unit_price','subtotal','discount_amount','shipping_amount','sign_up_fee')",
-            $table_name
-        ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- One-off migration query scans legacy numeric meta values to normalize formatting.
-        $result = $wpdb->get_results($query, ARRAY_A); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- One-off migration query on plugin-owned item meta table.
+        $meta_keys  = ['unit_price', 'subtotal', 'discount_amount', 'shipping_amount', 'sign_up_fee'];
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration query on plugin-owned item meta table.
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT meta_id,meta_value from %i WHERE meta_key IN (' . implode(',', array_fill(0, count($meta_keys), '%s')) . ')',
+                array_merge([ $table_name ], $meta_keys)
+            ),
+            ARRAY_A
+        );
         if (!empty($result)) {
             foreach ($result as $item_meta) {
                 $amount = $this->check_price_format($item_meta['meta_value']);
@@ -100,8 +107,15 @@ class PPCart_Price_Format
     public function update_ppcart_subscriptions_amount()
     {
         global $wpdb;
-        $query = "SELECT ID from $wpdb->posts WHERE post_type IN (" . ppcart_sql_in_post_types('subscription') . ")";
-        $result = $wpdb->get_results($query, ARRAY_A); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- One-off migration query to normalize subscription amounts.
+        $post_types = ppcart_query_post_types('subscription');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration query to normalize subscription amounts.
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT ID from {$wpdb->posts} WHERE post_type IN (" . implode(',', array_fill(0, count($post_types), '%s')) . ')',
+                $post_types
+            ),
+            ARRAY_A
+        );
         $subscriptionIds = array_column($result, 'ID');
 
         foreach ($subscriptionIds as $key => $subs_id) {

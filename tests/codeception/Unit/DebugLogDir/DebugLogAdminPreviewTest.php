@@ -107,13 +107,13 @@ namespace unit\DebugLogDir {
             );
 
             $log_dir  = $this->uploadBase . '/publishpress-cart/logs';
-            $log_path = $log_dir . '/log.txt';
+            $log_path = $log_dir . '/debug.log';
             file_put_contents($log_path, "[09/20/2026 10:00 PM] - STATUS: hello-779\n");
 
             $data = PPCart_Debug_Logger::get_admin_log_data();
 
             $this->assertTrue($data['exists']);
-            $this->assertSame('log.txt', $data['file_name']);
+            $this->assertSame('debug.log', $data['file_name']);
             $this->assertStringContainsString('hello-779', $data['preview']);
         }
 

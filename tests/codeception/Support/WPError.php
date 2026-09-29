@@ -20,13 +20,36 @@ class WPError
     private $message;
 
     /**
+     * @var mixed
+     */
+    private $data;
+
+    /**
      * @param string $code
      * @param string $message
+     * @param mixed  $data
      */
-    public function __construct(string $code, string $message)
+    public function __construct(string $code, string $message, $data = '')
     {
         $this->code = $code;
         $this->message = $message;
+        $this->data = $data;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_error_code(): string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function get_error_data()
+    {
+        return $this->data;
     }
 
     /**

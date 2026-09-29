@@ -23,7 +23,7 @@ trait PPCart_Product_Metaboxes_Render_Trait
         foreach ($post_type as $type) {
             add_meta_box(
                 'ppcart-product-settings',
-                apply_filters($this->plugin_name . '-metabox-title-product-settings', esc_html__('PublishPress Cart', 'publishpress-cart')),
+                apply_filters('ppcart-metabox-title-product-settings', esc_html__('PublishPress Cart', 'publishpress-cart')),
                 [ $this, 'product_settings_fields' ],
                 $type,
                 'normal',

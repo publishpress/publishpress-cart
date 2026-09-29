@@ -417,6 +417,82 @@ class ChargeAndInvoiceSyncTest extends StripeSyncTestCase
         $this->assertSame('10.00', ppcart_get_post_meta($orderId, 'amount', true));
     }
 
+    public function test_dahlia_invoice_payments_store_the_charge_and_keep_renewals_separate(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(
+            array(
+                'subscription_id' => 'sub_dahlia_payments',
+            )
+        );
+        $orderId = $this->createStripeOrder(
+            array(
+                'status' => 'pending-payment',
+                'payment_status' => 'pending',
+                'transaction_id' => '',
+                'amount' => 0,
+                'subscription_id' => $subscriptionId,
+            )
+        );
+        ppcart_update_post_meta($subscriptionId, 'first_order', $orderId);
+
+        $invoice = function (string $paymentIntentId, string $chargeId) use ($subscriptionId) {
+            return (object) array(
+                'status' => 'paid',
+                'currency' => 'usd',
+                'amount_paid' => 1000,
+                'payments' => (object) array(
+                    'data' => array(
+                        (object) array(
+                            'status' => 'paid',
+                            'payment' => (object) array(
+                                'type' => 'payment_intent',
+                                'payment_intent' => (object) array(
+                                    'id' => $paymentIntentId,
+                                    'latest_charge' => $chargeId,
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+                'lines' => (object) array(
+                    'data' => array(
+                        (object) array(
+                            'parent' => (object) array(
+                                'subscription_item_details' => (object) array(
+                                    'subscription' => 'sub_dahlia_payments',
+                                    'subscription_item' => 'si_dahlia_payments',
+                                ),
+                            ),
+                            'metadata' => (object) array(
+                                'origin' => get_site_url(),
+                                'ppcart_subscription_id' => $subscriptionId,
+                            ),
+                            'period' => (object) array(
+                                'end' => 3333333333,
+                            ),
+                        ),
+                    ),
+                ),
+            );
+        };
+
+        PPCart_Stripe_Sync::sync_invoice_resource(
+            $invoice('pi_dahlia_first', 'ch_dahlia_first'),
+            new PPCart_Subscription($subscriptionId),
+            'invoice.payment_succeeded'
+        );
+        $renewal = PPCart_Stripe_Sync::sync_invoice_resource(
+            $invoice('pi_dahlia_renewal', 'ch_dahlia_renewal'),
+            new PPCart_Subscription($subscriptionId),
+            'invoice.payment_succeeded'
+        );
+
+        $this->assertSame('ch_dahlia_first', ppcart_get_post_meta($orderId, 'transaction_id', true));
+        $this->assertInstanceOf(PPCart_Order::class, $renewal);
+        $this->assertNotSame($orderId, (int) $renewal->id);
+        $this->assertSame('ch_dahlia_renewal', ppcart_get_post_meta($renewal->id, 'transaction_id', true));
+    }
+
     public function test_IT_012_invoice_sync_does_not_restore_next_bill_date_for_paused_subscriptions(): void
     {
         $subscriptionId = $this->createStripeSubscription(

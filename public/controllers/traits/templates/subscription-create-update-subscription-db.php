@@ -13,7 +13,7 @@ ppcart_update_post_meta($post_id, 'stripe_plan_id', $subscription->plan->id);
 ppcart_update_post_meta($post_id, 'stripe_customer_id', $subscription->customer);
 ppcart_update_post_meta($post_id, 'sub_customer_id', $subscription->customer);
 ppcart_update_post_meta($post_id, 'sub_interval', $subscription->plan->interval);
-ppcart_update_post_meta($post_id, 'sub_next_bill_date', $this->get_stripe_resource_value($subscription, 'current_period_end', 0));
+ppcart_update_post_meta($post_id, 'sub_next_bill_date', ppcart_get_stripe_subscription_period_end($subscription));
 
 if (isset($subscription->plan->trial_period_days)) {
     ppcart_update_post_meta($post_id, 'free_trial_days', $subscription->plan->trial_period_days);

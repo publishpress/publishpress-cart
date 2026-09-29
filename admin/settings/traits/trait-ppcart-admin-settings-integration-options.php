@@ -26,8 +26,7 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
         $invoice_fields = [ $key . '-setting' => [
         ] ];
 
-        $d = apply_filters('_ppcart_custom_option_list', $invoice_fields);
-        return $d;
+        return apply_filters('ppcart_custom_option_list', $invoice_fields);
     }
 
     /**
@@ -224,6 +223,6 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
             ],
         ];
 
-        return apply_filters('_ppcart_integrations_option_list', $integration_fields);
+        return apply_filters('ppcart_integrations_option_list', $integration_fields);
     }
 }

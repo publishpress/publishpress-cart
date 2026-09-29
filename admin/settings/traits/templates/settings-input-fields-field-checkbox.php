@@ -10,7 +10,7 @@ $defaults['description'] = '';
 $defaults['label']       = '';
 $defaults['name']        = $args['id'];
 $defaults['value']       = 0;
-apply_filters($this->plugin_name . '-field-checkbox-options-defaults', $defaults);
+apply_filters('ppcart-field-checkbox-options-defaults', $defaults);
 $atts       = wp_parse_args($args, $defaults);
 $option_val = get_option($atts['id'], false);
 

@@ -23,7 +23,7 @@ $response = ppcart_safe_remote_post(
             'Accept'        => 'application/json',
             'Accept-Language' => 'en_US',
             'Content-Type'  => 'application/x-www-form-urlencoded',
-            'Authorization' => 'Basic ' . base64_encode($clientID . ':' . $secret),
+            'Authorization' => PPCart_Base64::basic_auth_header($clientID, $secret),
         ],
         'body'    => 'grant_type=client_credentials',
         'timeout' => 3,

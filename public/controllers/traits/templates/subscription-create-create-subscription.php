@@ -11,7 +11,7 @@ $post_data = ppcart_filter_input_array(
     [
         'ppcart-nonce'        => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'email'           => FILTER_SANITIZE_EMAIL,
-        'customerId'      => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+        'checkoutRef'     => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'paymentMethodId' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'first_name'      => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'last_name'       => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -22,7 +22,8 @@ $post_data = ppcart_filter_input_array(
 );
 $nonce = isset($post_data['ppcart-nonce']) && is_string($post_data['ppcart-nonce']) ? sanitize_text_field($post_data['ppcart-nonce']) : '';
 $email = isset($post_data['email']) && is_string($post_data['email']) ? sanitize_email($post_data['email']) : '';
-$customer_id = isset($post_data['customerId']) && is_string($post_data['customerId']) ? sanitize_text_field($post_data['customerId']) : '';
+// The customer comes from the server-side checkout binding, never from a posted customer ID.
+$checkout_ref = isset($post_data['checkoutRef']) && is_string($post_data['checkoutRef']) ? sanitize_text_field($post_data['checkoutRef']) : '';
 $paymethod_id = isset($post_data['paymentMethodId']) && is_string($post_data['paymentMethodId']) ? sanitize_text_field($post_data['paymentMethodId']) : '';
 $first_name = isset($post_data['first_name']) && is_string($post_data['first_name']) ? sanitize_text_field($post_data['first_name']) : '';
 $last_name = isset($post_data['last_name']) && is_string($post_data['last_name']) ? sanitize_text_field($post_data['last_name']) : '';
@@ -57,6 +58,22 @@ if (! $this->is_connect_destination_configured()) {
     wp_send_json_error([ 'error' => $this->get_connect_configuration_error_message() ]);
 }
 
+$checkout_binding = PPCart_Stripe_Checkout_Customer::read_ref($checkout_ref, $ppcart_stripe['mode'] ?? '');
+if (! $checkout_binding) {
+    $ppcart_debug_logger->log_event(
+        'checkout.security.failed',
+        'Subscription checkout has no valid server-side customer binding.',
+        [
+            'product_id' => $ppcart_product_id,
+            'check'      => 'checkout_ref:subscription',
+        ],
+        4
+    );
+
+    wp_send_json_error([ 'error' => __('This payment could not be verified. Please reload the page and try again.', 'publishpress-cart') ]);
+}
+$customer_id = $checkout_binding['customer_id'];
+
 $ppcart_debug_logger->log_event(
     'checkout.subscription.validation.started',
     'Subscription checkout validation hooks started.',
@@ -77,10 +94,12 @@ $ppcart_debug_logger->log_event(
     0
 );
 
+$_POST['customerId'] = $customer_id;
 $ppcart_order = new PPCart_Order();
 $ppcart_order->load_from_post();
 $ppcart_order = apply_filters('ppcart_after_order_load_from_post', $ppcart_order);
 $ppcart_order->gateway_mode = $ppcart_stripe['mode'];
+$ppcart_order->customer_id = $customer_id;
 
 $apikey = $ppcart_stripe['sk'];
 $stripe = ppcart_stripe_client($apikey);
@@ -95,12 +114,8 @@ $ppcart_debug_logger->log_event(
 );
 
 try {
-    $payment_method = $stripe->paymentMethods->retrieve(
-        $paymethod_id
-    );
-    $payment_method->attach([
-        'customer' => $customer_id,
-    ]);
+    // From the bound SetupIntent, or a posted method that is free or already on the bound customer.
+    $paymethod_id = PPCart_Stripe_Checkout_Customer::resolve_subscription_payment_method($stripe, $checkout_binding, $paymethod_id, get_site_url());
 } catch (Exception $e) {
     $ppcart_debug_logger->log_event(
         'checkout.subscription.payment_method.failed',
@@ -114,6 +129,20 @@ try {
     wp_send_json_error([ 'error' => sanitize_text_field($e->getMessage()) ]);
 }
 
+if (is_wp_error($paymethod_id)) {
+    $ppcart_debug_logger->log_event(
+        'checkout.security.failed',
+        'Subscription payment method does not belong to this checkout.',
+        [
+            'product_id' => $ppcart_product_id,
+            'check'      => 'payment_method:subscription',
+        ],
+        4
+    );
+
+    wp_send_json_error([ 'error' => $paymethod_id->get_error_message() ]);
+}
+
 $ppcart_debug_logger->log_event(
     'checkout.subscription.payment_method.retrieved',
     'Stripe PaymentMethod attached to the customer successfully.',
@@ -124,15 +153,21 @@ $ppcart_debug_logger->log_event(
 );
 
 $args = [
-        'name' => $first_name . ' ' . $last_name,
-        'email' => $email,
-        'invoice_settings' => [
-            'default_payment_method' => $paymethod_id,
+    'invoice_settings' => [
+        'default_payment_method' => $paymethod_id,
     ],
 ];
 
-if (isset($post_data['phone']) && is_string($post_data['phone'])) {
-    $args['phone'] = sanitize_text_field($post_data['phone']);
+// Contact details go only on a customer created for this checkout, never on a reused one.
+if ($checkout_binding['is_new']) {
+    $args['name'] = $first_name . ' ' . $last_name;
+    if ('' !== $email) {
+        $args['email'] = $email;
+    }
+
+    if (isset($post_data['phone']) && is_string($post_data['phone']) && '' !== $post_data['phone']) {
+        $args['phone'] = sanitize_text_field($post_data['phone']);
+    }
 }
 
 // Set the default payment method on the customer
@@ -155,8 +190,8 @@ if ('' !== $invoice_id) {
         $invoice = $stripe->invoices->retrieve($invoice_id, [
             'expand' => ['confirmation_secret'],
         ]);
-        wp_send_json($invoice);
     } catch (Exception $e) {
+        $invoice = null;
         $ppcart_debug_logger->log_event(
             'checkout.subscription.invoice.failed',
             'Stripe invoice retry failed: ' . $e->getMessage(),
@@ -165,6 +200,24 @@ if ('' !== $invoice_id) {
             ],
             4
         );
+    }
+
+    if (null !== $invoice) {
+        if (! PPCart_Stripe_Checkout_Customer::invoice_belongs_to_customer($invoice, $customer_id)) {
+            $ppcart_debug_logger->log_event(
+                'checkout.security.failed',
+                'Stripe invoice retry refused: the invoice belongs to another customer.',
+                [
+                    'invoice_id' => $invoice_id,
+                    'check'      => 'invoice_customer:subscription',
+                ],
+                4
+            );
+
+            wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
+        }
+
+        wp_send_json($invoice);
     }
 }
 
@@ -182,6 +235,9 @@ $this->store_stripe_owned_record($sub);
 
 $ppcart_order->subscription_id = $sub->id;
 $this->store_stripe_owned_record($ppcart_order);
+
+// Upsells and downsells charge only this method, never the customer's default.
+PPCart_Stripe_Checkout_Customer::remember_order_payment_method($ppcart_order->id, $paymethod_id);
 
 if ($sub->id) {
     $ppcart_debug_logger->log_event(
@@ -215,7 +271,7 @@ if (!$subscription) {
     $sub->sub_status = $subscription->status;
     $sub->status = $subscription->status;
     $sub->subscription_id = $subscription->id;
-    $sub->sub_next_bill_date = $this->get_stripe_resource_value($subscription, 'current_period_end', 0);
+    $sub->sub_next_bill_date = ppcart_get_stripe_subscription_period_end($subscription);
     $sub->customer_id = $subscription->customer;
     $sub->cancel_at = $subscription->cancel_at;
     $sub->sub_end_date = gmdate('Y-m-d', $subscription->cancel_at);

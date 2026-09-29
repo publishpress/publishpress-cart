@@ -70,9 +70,9 @@ $upsell_nonce      = is_string($upsell_nonce) ? sanitize_text_field($upsell_nonc
 $downsell_nonce    = is_string($downsell_nonce) ? sanitize_text_field($downsell_nonce) : '';
 $ppcart_order_post_get = (false !== $ppcart_order_post_get && null !== $ppcart_order_post_get) ? absint($ppcart_order_post_get) : 0;
 
-// phpcs:disable WordPress.Security.NonceVerification.Missing -- Checkout/upsell nonce validation happens before these tracking-only values are consumed.
+// phpcs:disable WordPress.Security.NonceVerification.Missing -- Read-only: these values only pick which tracking scripts and script vars to print on this page view; nothing is stored or changed. The upsell/downsell nonces are passed through as flags, not verified here.
 if (empty($ppcart_order_post) && isset($_POST['ppcart_order']) && is_array($_POST['ppcart_order'])) {
-    $ppcart_order_post = ppcart_parse_tracking_order_fields(wp_unslash($_POST['ppcart_order']), false); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Parser sanitizes by field after unslash at the read site.
+    $ppcart_order_post = ppcart_parse_tracking_order_fields(map_deep(wp_unslash($_POST['ppcart_order']), 'sanitize_text_field'), false);
     $ppcart_order_post_id = isset($ppcart_order_post['ID']) ? absint($ppcart_order_post['ID']) : 0;
     $pay_method = $ppcart_order_post['pay_method'] ?? '';
 }
@@ -152,7 +152,8 @@ if (is_object($ppcart_product) && get_option('_ppcart_fb_lead')) {
     $ppcart['content_id'] = $ppcart_product->ID;
 }
 
-if ('' !== $purchase_amount || ($ppcart_order_get && ! $ppcart_oto_get)) {
+// Only read order data for the purchase event when the visitor may view that order.
+if ('' !== $purchase_amount || ($ppcart_order_get && ! $ppcart_oto_get && PPCart_Order::visitor_can_view(absint($ppcart_order_get)))) {
     if ('' === $purchase_amount) {
         $order_info = (array) ppcart_setup_order(absint($ppcart_order_get));
         $purchase_amount = isset($order_info['amount']) ? (string) $order_info['amount'] : '';

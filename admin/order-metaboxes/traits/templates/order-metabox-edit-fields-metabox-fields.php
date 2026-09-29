@@ -51,7 +51,7 @@ foreach ($fields as $atts) {
                 $atts['value'] = PPCart_Status_Labels::edit_select_value($atts['value']);
             }
 
-            apply_filters($this->plugin_name . '-field-' . $atts['id'], $atts);
+            apply_filters('ppcart-field-' . $atts['id'], $atts);
             $atts['name'] = $atts['id'];
             $field_slug = sanitize_html_class(str_replace('_ppcart_', '', $atts['id']));
             $field_classes = array_filter(
@@ -86,7 +86,7 @@ foreach ($fields as $atts) {
     } else {
         $setatts = $atts;
 
-        apply_filters($this->plugin_name . '-field-repeater-' . $setatts['id'], $setatts);
+        apply_filters('ppcart-field-repeater-' . $setatts['id'], $setatts);
 
         $count      = 1;
         $repeater   = [];

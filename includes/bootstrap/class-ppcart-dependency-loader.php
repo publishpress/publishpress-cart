@@ -144,6 +144,7 @@ class PPCart_Dependency_Loader
         * The class responsible for stripe services
         */
         require_once $base_path . 'includes/class-ppcart-stripe.php';
+        require_once $base_path . 'includes/stripe/class-ppcart-stripe-checkout-customer.php';
 
         /**
          * The class responsible for admin ajax

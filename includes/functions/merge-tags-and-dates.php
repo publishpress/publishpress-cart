@@ -263,15 +263,23 @@ function ppcart_personalize($str, $order_info, $filter = false, $include_order_d
 
     $search = $replace = [];
     foreach ($replacements as $k => $v) {
-        if ($v) {
-            $search[] = '{' . $k . '}';
-            if ($filter) {
-                $replace[] = $filter($v);
-            } elseif ($escape_text && ! isset($html_keys[ $k ]) && 0 !== strpos($k, 'custom_')) {
-                $replace[] = esc_html((string) $v);
-            } else {
-                $replace[] = $v;
-            }
+        if (null === $v || false === $v) {
+            $v = '';
+        }
+        if (! is_scalar($v)) {
+            continue;
+        }
+
+        // A known tag with no value renders empty instead of as the literal {tag}.
+        $search[] = '{' . $k . '}';
+        if ('' === (string) $v) {
+            $replace[] = '';
+        } elseif ($filter) {
+            $replace[] = $filter($v);
+        } elseif ($escape_text && ! isset($html_keys[ $k ]) && 0 !== strpos($k, 'custom_')) {
+            $replace[] = esc_html((string) $v);
+        } else {
+            $replace[] = $v;
         }
     }
     return str_replace($search, $replace, $str);

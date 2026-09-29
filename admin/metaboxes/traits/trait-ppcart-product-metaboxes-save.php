@@ -85,6 +85,17 @@ trait PPCart_Product_Metaboxes_Save_Trait
      */
     public function validate_meta($post_id, $object)
     {
+        // Verify the metabox nonce and the capability here, in the save_post
+        // handler, before the template reads any submitted field.
+        $fields_nonce = isset($_POST['ppcart_fields_nonce']) ? sanitize_text_field(wp_unslash($_POST['ppcart_fields_nonce'])) : '';
+        if ('' === $fields_nonce || ! wp_verify_nonce($fields_nonce, $this->plugin_name)) {
+            return $post_id;
+        }
+
+        if (! current_user_can('edit_post', $post_id)) {
+            return $post_id;
+        }
+
         $__ppcart_template_result = include __DIR__ . '/templates/product-metabox-save-validate-meta.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
     }
