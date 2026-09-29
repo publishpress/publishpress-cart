@@ -453,6 +453,30 @@ if (! function_exists('ppcart_sql_in_post_types')) {
     }
 }
 
+if (! function_exists('ppcart_query_post_statuses')) {
+    /**
+     * Stored post_status values for one or more logical statuses.
+     *
+     * Use the result as `$wpdb->prepare()` arguments behind `%s` placeholders.
+     *
+     * @param string|array<int, string> $statuses Logical status slug or list.
+     * @return array<int, string>
+     */
+    function ppcart_query_post_statuses($statuses)
+    {
+        $slugs = [];
+        foreach ((array) $statuses as $status) {
+            if (class_exists('PPCart_Status_Labels')) {
+                $slugs = array_merge($slugs, PPCart_Status_Labels::query_slugs($status));
+            } else {
+                $slugs[] = (string) $status;
+            }
+        }
+
+        return array_values(array_unique($slugs));
+    }
+}
+
 if (! function_exists('ppcart_sql_in_post_statuses')) {
     /**
      * @param string|array<int, string> $statuses Logical status slug or list.
@@ -462,15 +486,7 @@ if (! function_exists('ppcart_sql_in_post_statuses')) {
     {
         global $wpdb;
 
-        $slugs = [];
-        foreach ((array) $statuses as $status) {
-            if (class_exists('PPCart_Status_Labels')) {
-                $slugs = array_merge($slugs, PPCart_Status_Labels::query_slugs($status));
-            } else {
-                $slugs[] = (string) $status;
-            }
-        }
-        $slugs = array_values(array_unique($slugs));
+        $slugs = ppcart_query_post_statuses($statuses);
         if (! $slugs) {
             return "''";
         }

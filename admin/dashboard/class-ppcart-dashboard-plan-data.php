@@ -94,31 +94,44 @@ class PPCart_Dashboard_Plan_Data
     {
         global $wpdb;
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_meta_keys(), ppcart_sql_in_post_types(), and ppcart_sql_in_post_statuses() return placeholder lists prepared from canonical keys/types/statuses.
-        $query = $wpdb->prepare(
-            "SELECT SUM(order_amount.meta_value)
-            FROM {$wpdb->posts} AS orders
-            JOIN {$wpdb->postmeta} AS subscription_id ON orders.ID = subscription_id.post_id
-            JOIN {$wpdb->postmeta} AS order_amount ON orders.ID = order_amount.post_id
-            WHERE subscription_id.meta_key IN (" . ppcart_sql_in_meta_keys('subscription_id') . ")
-            AND orders.post_type IN (" . ppcart_sql_in_post_types('order') . ")
-            AND order_amount.meta_key IN (" . ppcart_sql_in_meta_keys('amount') . ")
-            AND orders.post_status IN (" . ppcart_sql_in_post_statuses('paid') . ")
-            AND orders.post_date >= %s
-            AND subscription_id.meta_value IN (
-                SELECT posts.ID
-                FROM {$wpdb->posts} AS posts
-                JOIN {$wpdb->postmeta} AS sub_installments ON posts.ID = sub_installments.post_id
-                AND sub_installments.meta_key IN (" . ppcart_sql_in_meta_keys('sub_installments') . ")
-                AND sub_installments.meta_value != '-1'
-                AND posts.post_status IN (" . ppcart_sql_in_post_statuses('active') . ")
-            )",
-            wp_date('Y-m-01')
-        );
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
+        $subscription_keys = ppcart_query_meta_keys('subscription_id');
+        $order_types       = ppcart_query_post_types('order');
+        $amount_keys       = ppcart_query_meta_keys('amount');
+        $paid_statuses     = ppcart_query_post_statuses('paid');
+        $installment_keys  = ppcart_query_meta_keys('sub_installments');
+        $active_statuses   = ppcart_query_post_statuses('active');
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- $query is built via $wpdb->prepare() above.
-        $total_amount = $wpdb->get_var($query);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Dashboard widget total.
+        $total_amount = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT SUM(order_amount.meta_value)
+                FROM {$wpdb->posts} AS orders
+                JOIN {$wpdb->postmeta} AS subscription_id ON orders.ID = subscription_id.post_id
+                JOIN {$wpdb->postmeta} AS order_amount ON orders.ID = order_amount.post_id
+                WHERE subscription_id.meta_key IN (" . implode(',', array_fill(0, count($subscription_keys), '%s')) . ")
+                AND orders.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ")
+                AND order_amount.meta_key IN (" . implode(',', array_fill(0, count($amount_keys), '%s')) . ")
+                AND orders.post_status IN (" . implode(',', array_fill(0, count($paid_statuses), '%s')) . ")
+                AND orders.post_date >= %s
+                AND subscription_id.meta_value IN (
+                    SELECT posts.ID
+                    FROM {$wpdb->posts} AS posts
+                    JOIN {$wpdb->postmeta} AS sub_installments ON posts.ID = sub_installments.post_id
+                    AND sub_installments.meta_key IN (" . implode(',', array_fill(0, count($installment_keys), '%s')) . ")
+                    AND sub_installments.meta_value != '-1'
+                    AND posts.post_status IN (" . implode(',', array_fill(0, count($active_statuses), '%s')) . ')
+                )',
+                array_merge(
+                    $subscription_keys,
+                    $order_types,
+                    $amount_keys,
+                    $paid_statuses,
+                    [ wp_date('Y-m-01') ],
+                    $installment_keys,
+                    $active_statuses
+                )
+            )
+        );
 
         return $total_amount ? (float) $total_amount : 0;
     }

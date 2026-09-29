@@ -397,11 +397,14 @@ function ppcart_get_user_phone($user_id)
     global $wpdb;
     $user_phone = ppcart_get_user_meta($user_id, 'phone', true);
     if (!$user_phone) {
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_meta_keys() returns a placeholder list prepared from canonical meta keys.
-        $query = $wpdb->prepare("SELECT max(post_id) FROM {$wpdb->postmeta} WHERE meta_key IN (" . ppcart_sql_in_meta_keys('user_account') . ") AND meta_value = %d", $user_id);
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Query string is prepared immediately above and read once for profile hydration.
-        $post_id_meta = $wpdb->get_var($query);
+        $account_keys = ppcart_query_meta_keys('user_account');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Read once for profile hydration.
+        $post_id_meta = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT max(post_id) FROM {$wpdb->postmeta} WHERE meta_key IN (" . implode(',', array_fill(0, count($account_keys), '%s')) . ") AND meta_value = %d",
+                array_merge($account_keys, [ (int) $user_id ])
+            )
+        );
         $user_phone = ppcart_get_post_meta($post_id_meta, 'phone', true);
         ppcart_add_user_meta($user_id, 'phone', $user_phone, true);
     }
@@ -424,11 +427,14 @@ function ppcart_get_user_address($user_id)
         ];
         return $address;
     } else {
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_meta_keys() returns a placeholder list prepared from canonical meta keys.
-        $query = $wpdb->prepare("SELECT max(post_id) FROM {$wpdb->postmeta} WHERE meta_key IN (" . ppcart_sql_in_meta_keys('user_account') . ") AND meta_value = %d", $user_id);
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Query string is prepared immediately above and read once for profile hydration.
-        $post_id_meta = $wpdb->get_var($query);
+        $account_keys = ppcart_query_meta_keys('user_account');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Read once for profile hydration.
+        $post_id_meta = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT max(post_id) FROM {$wpdb->postmeta} WHERE meta_key IN (" . implode(',', array_fill(0, count($account_keys), '%s')) . ") AND meta_value = %d",
+                array_merge($account_keys, [ (int) $user_id ])
+            )
+        );
 
         $address_1 = ppcart_get_post_meta($post_id_meta, 'address1', true);
         $address_2 = ppcart_get_post_meta($post_id_meta, 'address2', true);

@@ -30,8 +30,7 @@ if ('' !== $customer_notices) :
     ?>
         <div class="ppcart-customer-notices">
             <?php
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Captured notices are already rendered by WordPress/admin notice callbacks.
-            echo $customer_notices;
+            echo wp_kses($customer_notices, ppcart_admin_allowed_html());
     ?>
         </div>
 <?php endif; ?>

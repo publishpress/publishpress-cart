@@ -8,20 +8,16 @@ if (! defined('ABSPATH')) {
 global $wpdb;
 $us_path_types = function_exists('ppcart_query_pro_post_types') ? ppcart_query_pro_post_types('us_path') : [ 'ppcart_us_path' ];
 if (! $us_path_types) {
-    $prepared_types = "''";
-} else {
-    $placeholders = implode(',', array_fill(0, count($us_path_types), '%s'));
-    // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Placeholder string is generated from the count of sanitized Pro post types.
-    $prepared_types = $wpdb->prepare($placeholders, $us_path_types);
+    $us_path_types = [ '' ];
 }
-// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,PluginCheck.Security.DirectDB.UnescapedDBParameter -- One-off migration query uses a prepared Pro post type list.
-// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- $prepared_types is produced by $wpdb->prepare() from sanitized post type slugs.
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration query.
 $result = $wpdb->get_results(
-    "SELECT ID FROM {$wpdb->posts} WHERE post_type IN (" . $prepared_types . ")",
+    $wpdb->prepare(
+        "SELECT ID FROM {$wpdb->posts} WHERE post_type IN (" . implode(',', array_fill(0, count($us_path_types), '%s')) . ')',
+        array_values($us_path_types)
+    ),
     ARRAY_A
 );
-// phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
-// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,PluginCheck.Security.DirectDB.UnescapedDBParameter
 $usIds = array_column($result, 'ID');
 
 if (!empty($usIds)) {

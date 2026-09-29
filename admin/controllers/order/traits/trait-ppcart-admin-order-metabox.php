@@ -42,14 +42,30 @@ trait PPCart_Admin_Order_Metabox_Trait
 
         echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label" for="ppcart-product">' . esc_html__('Related Product', 'publishpress-cart') . '</label>
         <br>' . esc_html__('Apply a product\'s access rules to this page.', 'publishpress-cart') . '</p>';
-        wp_dropdown_pages([
+        $dropdown = wp_dropdown_pages([
             'name'      => '_ppcart_related_product',
             'id'        => 'ppcart-product',
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_dropdown_pages() expects raw registered post type slugs, not HTML output.
-            'post_type' => ppcart_query_post_types('product'),
+            'post_type' => array_map('sanitize_key', (array) ppcart_query_post_types('product')),
             'show_option_none' => esc_html__('None', 'publishpress-cart'),
             'selected' => absint($value),
+            'echo'     => 0,
         ]);
+
+        echo wp_kses(
+            (string) $dropdown,
+            [
+                'select' => [
+                    'class' => true,
+                    'id'    => true,
+                    'name'  => true,
+                ],
+                'option' => [
+                    'class'    => true,
+                    'selected' => true,
+                    'value'    => true,
+                ],
+            ]
+        );
     }
 
     public function save_access_info($post_id)

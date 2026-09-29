@@ -5,16 +5,19 @@ if (! defined('ABSPATH')) {
 }
 
 
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- View nonce already checked; sanitized immediately after unslash.
-$log_status = isset($_GET['status']) ? self::sanitize_key(wp_unslash($_GET['status'])) : '';
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- View nonce already checked; sanitized immediately after unslash.
-$event_type = isset($_GET['event_type']) ? self::sanitize_text(wp_unslash($_GET['event_type'])) : '';
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- View nonce already checked; sanitized immediately after unslash.
-$log_search = isset($_GET['s']) ? self::sanitize_text(wp_unslash($_GET['s'])) : '';
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- View nonce already checked; sanitized immediately after unslash.
-$date_from = isset($_GET['date_from']) ? self::sanitize_text(wp_unslash($_GET['date_from'])) : '';
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- View nonce already checked; sanitized immediately after unslash.
-$date_to = isset($_GET['date_to']) ? self::sanitize_text(wp_unslash($_GET['date_to'])) : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce already checked.
+$log_status = isset($_GET['status']) ? sanitize_key(wp_unslash($_GET['status'])) : '';
+if (! in_array($log_status, self::allowed_statuses(), true)) {
+    $log_status = '';
+}
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce already checked.
+$event_type = isset($_GET['event_type']) ? sanitize_text_field(wp_unslash($_GET['event_type'])) : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce already checked.
+$log_search = isset($_GET['s']) ? sanitize_text_field(wp_unslash($_GET['s'])) : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce already checked.
+$date_from = isset($_GET['date_from']) ? sanitize_text_field(wp_unslash($_GET['date_from'])) : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce already checked.
+$date_to = isset($_GET['date_to']) ? sanitize_text_field(wp_unslash($_GET['date_to'])) : '';
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce already checked.
 $log_page = isset($_GET['log_paged']) ? max(1, absint($_GET['log_paged'])) : 1;
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce already checked.
@@ -138,7 +141,7 @@ foreach ($rows as $row) {
     echo '<td><button type="button" class="ppcart-webhook-log-details-button" aria-expanded="false" aria-controls="' . esc_attr($details_id) . '" data-ppcart-webhook-details="' . esc_attr($details_id) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-webhook-log-row-' . $row_index . '-details')) . '">&lt;/&gt;</button></td>';
     echo '</tr>';
     echo '<tr id="' . esc_attr($details_id) . '" class="ppcart-webhook-log-details-row" hidden><td class="ppcart-webhook-log-details-cell" colspan="10">';
-    echo self::render_details_panel($row, $context); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup is escaped inside render_details_panel().
+    echo wp_kses((string) self::render_details_panel($row, $context), ppcart_log_viewer_allowed_html());
     echo '</td></tr>';
 }
 

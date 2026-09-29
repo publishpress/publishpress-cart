@@ -6,14 +6,15 @@ if (! defined('ABSPATH')) {
 
 
 global $wpdb;
-// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,PluginCheck.Security.DirectDB.UnescapedDBParameter -- One-off migration query uses ppcart_sql_in_post_types(), which returns a prepared canonical post type list.
-// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_post_types() returns a placeholder list prepared from canonical post types.
+$ppcart_post_types = ppcart_query_post_types('order');
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration query.
 $result = $wpdb->get_results(
-    "SELECT ID FROM {$wpdb->posts} WHERE post_type IN (" . ppcart_sql_in_post_types('order') . ")",
+    $wpdb->prepare(
+        "SELECT ID FROM {$wpdb->posts} WHERE post_type IN (" . implode(',', array_fill(0, count($ppcart_post_types), '%s')) . ')',
+        $ppcart_post_types
+    ),
     ARRAY_A
 );
-// phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
-// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,PluginCheck.Security.DirectDB.UnescapedDBParameter
 $orderIds = array_column($result, 'ID');
 
 foreach ($orderIds as $key => $order_id) {

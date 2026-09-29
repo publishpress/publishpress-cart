@@ -49,16 +49,15 @@ if ($export_mode === 'contacts') {
     if (! $order_types) {
         $order_types = [''];
     }
-    $order_in = implode(',', array_fill(0, count($order_types), '%s'));
 
-    // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- One-time export; $order_in is %s placeholders bound in prepare().
+    // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-time export.
     $get_user = $wpdb->get_results(
         $wpdb->prepare(
             "SELECT {$wpdb->posts}.ID, {$wpdb->postmeta}.meta_value
             FROM {$wpdb->posts}
             INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id )
             WHERE {$wpdb->postmeta}.meta_key = %s
-                AND {$wpdb->posts}.post_type IN ($order_in)
+                AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ")
                 AND {$wpdb->posts}.post_status NOT IN (%s, %s)
             ORDER BY {$wpdb->posts}.post_date DESC",
             array_merge(
@@ -79,7 +78,7 @@ if ($export_mode === 'contacts') {
                 INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id )
                 WHERE {$wpdb->postmeta}.meta_key = %s
                     AND {$wpdb->postmeta}.meta_value = %s
-                    AND {$wpdb->posts}.post_type IN ($order_in)
+                    AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ")
                     AND {$wpdb->posts}.post_status NOT IN (%s, %s)
                 ORDER BY {$wpdb->posts}.post_date DESC
                 LIMIT 1",
@@ -99,7 +98,7 @@ if ($export_mode === 'contacts') {
             get_the_time('M j Y', $get_date->ID),
         ]);
     }
-    // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
+    // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 } else {
     $daterange = $export_date_range;
     $dates = explode(" to ", $daterange);
@@ -374,6 +373,6 @@ header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 header("Content-Type: text/csv; charset=utf-8");
 header("Content-Disposition: attachment; filename=\"" . $filename . "-" . $export_type . "-export.csv\";");
 header("Content-Transfer-Encoding: binary");
-// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV stream intentionally outputs generated raw CSV content.
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- text/csv attachment, not HTML. Each cell went through ppcart_csv_escape_cell() (tags stripped, formulas neutralized, CSV-quoted). HTML escaping here would corrupt the CSV data.
 echo $csv_output_report;
 exit();

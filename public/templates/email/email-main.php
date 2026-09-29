@@ -204,7 +204,7 @@ a[x-apple-data-detectors='true'] {
               <h4 style="font-size: 20px; line-height: 24px; text-align: center; margin:0 0 10px; font-weight:normal"><?php echo esc_html($atts['headline']); ?></h4>
             <?php endif; ?>
             <?php if ($atts['body']) : ?>
-              <div id="email-body" style="font-size: 14px; line-height: 120%;"><?php echo ppcart_kses_email_html(wpautop($atts['body'])); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by ppcart_kses_email_html().?></div>
+              <div id="email-body" style="font-size: 14px; line-height: 120%;"><?php echo wp_kses(wpautop((string) $atts['body']), ppcart_get_email_allowed_html()); ?></div>
             <?php endif; ?>
           </div>
       </td>
@@ -240,7 +240,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:20px;font-family:'Lato',sans-serif;" align="left">
 
   <div style="color: #7d7d7d; line-height: 140%; text-align: center; word-wrap: break-word;">
-<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 12px; line-height: 16.8px;"><?php echo ppcart_kses_email_html(ppcart_personalize($footer_text, $atts['order_info'], false, true, true)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by ppcart_kses_email_html().?></span></p>
+<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 12px; line-height: 16.8px;"><?php echo wp_kses((string) ppcart_personalize($footer_text, $atts['order_info'], false, true, true), ppcart_get_email_allowed_html()); ?></span></p>
   </div>
 
       </td>

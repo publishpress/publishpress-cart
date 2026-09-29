@@ -265,8 +265,7 @@ function ppcart_do_coupon_section($post_id)
         return;
     }
 
-    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Internal checkout templates render sanitized form controls.
-    echo '<div class="ppcart-section ppcart-coupon-section">' . $coupon . '</div>';
+    echo '<div class="ppcart-section ppcart-coupon-section">' . wp_kses($coupon, ppcart_frontend_allowed_html()) . '</div>';
 }
 
 function ppcart_do_checkout_form_close()

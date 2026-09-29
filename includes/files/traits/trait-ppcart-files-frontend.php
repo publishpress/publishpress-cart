@@ -147,6 +147,6 @@ trait PPCart_Files_Frontend_Trait
             return false;
         }
 
-        echo ppcart_kses_frontend_html($buffered); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by ppcart_kses_frontend_html().
+        echo wp_kses((string) $buffered, ppcart_frontend_allowed_html());
     }
 }

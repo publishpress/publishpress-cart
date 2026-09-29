@@ -5,8 +5,8 @@ if (! defined('ABSPATH')) {
 }
 
 
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- View nonce is checked by caller; sanitized immediately after unslash.
-$level = isset($_GET['level']) ? self::normalize_level(wp_unslash($_GET['level'])) : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce is checked by caller; normalize_level() limits the value to the known levels.
+$level = isset($_GET['level']) ? self::normalize_level(sanitize_text_field(wp_unslash($_GET['level']))) : '';
 if ('UNKNOWN' === $level && empty($_GET['level'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- View nonce is checked by caller.
     $level = '';
 }

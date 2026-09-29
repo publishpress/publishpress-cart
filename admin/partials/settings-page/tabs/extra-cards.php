@@ -14,7 +14,7 @@ if ('tax' === $tab_slug) {
 if ('white_label' === $tab_slug && ! empty($is_pro_locked_tab) && function_exists('ppcart_pro_locked_field_rows_html')) {
     echo '<div class="ppcart-settings__card ppcart-settings__card--plain">';
     echo '<table class="form-table" role="presentation">';
-    echo ppcart_pro_locked_field_rows_html('white_label'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in helper.
+    echo wp_kses(ppcart_pro_locked_field_rows_html('white_label'), ppcart_admin_allowed_html());
     echo '</table>';
     echo '</div>';
 }

@@ -213,6 +213,14 @@ These are the names Free already uses. Pro must match them. Live leftover maps i
   Leftover **rows** move in the merchant Data migration. Map:
   `includes/compat/meta-key-migration/helpers.php`. `$this->prefix` /
   `get_prefix()` is `ppcart_`.
+- Raw SQL `IN (...)` lists: get the values from `ppcart_query_meta_keys()`,
+  `ppcart_query_post_types()`, or `ppcart_query_post_statuses()`. Build the
+  placeholders in the final `$wpdb->prepare()` call with
+  `implode(',', array_fill(0, count($values), '%s'))` and pass the values as
+  prepare arguments. Do **not** concatenate `ppcart_sql_in_meta_keys()`,
+  `ppcart_sql_in_post_types()`, or `ppcart_sql_in_post_statuses()` into SQL:
+  WordPress.org review rejects it. Those three helpers stay for back-compat
+  only; Free no longer calls them.
 - HTML `id` / `class` / `for`: `ppcart_` / `ppcart-` (Free slices 19 + **25b**
   hard cutover). Field ids `_ppcart_*` / wrappers `rid_ppcart_*` /
   `repeater_ppcart_*`. Metabox ids `ppcart-product-settings` /

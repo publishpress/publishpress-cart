@@ -28,12 +28,15 @@ function ppcart_update_user_profile()
 
     $response = [];
 
-    // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Data is parsed after nonce verification then field-level validated/sanitized below.
-    parse_str(wp_unslash($_POST['form_data'] ?? ''), $data);
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verified above. form_data is a serialized form that carries a new password. As in core (wp-login.php), the password is not sanitized because that would change it. Each other field is sanitized for its type below.
+    $form_data = isset($_POST['form_data']) && is_string($_POST['form_data']) ? wp_unslash($_POST['form_data']) : '';
+    parse_str($form_data, $data);
 
-    $first_name = isset($data['first_name']) ? sanitize_text_field($data['first_name']) : '';
-    $last_name  = isset($data['last_name']) ? sanitize_text_field($data['last_name']) : '';
-    $email      = isset($data['email']) ? sanitize_email($data['email']) : '';
+    $first_name = isset($data['first_name']) && is_string($data['first_name']) ? sanitize_text_field($data['first_name']) : '';
+    $last_name  = isset($data['last_name']) && is_string($data['last_name']) ? sanitize_text_field($data['last_name']) : '';
+    $email      = isset($data['email']) && is_string($data['email']) ? sanitize_email($data['email']) : '';
+    $password         = isset($data['password']) && is_string($data['password']) ? $data['password'] : '';
+    $password_confirm = isset($data['new_password']) && is_string($data['new_password']) ? $data['new_password'] : '';
 
     if (empty($first_name)) {
         $response['error'] = __('Please enter first name.', "publishpress-cart");
@@ -46,10 +49,8 @@ function ppcart_update_user_profile()
         $response['error'] = __('Enter a valid email', "publishpress-cart");
     }
 
-    if (!empty($data['password'])) {
-        if ($data['password'] != $data['new_password']) {
-            $response['error'] = __('Password and confirm password should match.', "publishpress-cart");
-        }
+    if ('' !== $password && $password !== $password_confirm) {
+        $response['error'] = __('Password and confirm password should match.', "publishpress-cart");
     }
 
     if (isset($response['error'])) {
@@ -120,9 +121,9 @@ function ppcart_update_user_profile()
         'user_email' => $email,
     ]);
 
-    if (!empty($data['password'])) {
+    if ('' !== $password) {
         // Change password.
-        wp_set_password($data['password'], $current_user->ID);
+        wp_set_password($password, $current_user->ID);
     }
 
     wp_send_json(['success' => true,'message' => esc_html__('Profile details have been saved.', 'publishpress-cart')]);
@@ -155,14 +156,24 @@ function ppcart_get_customers($customer_id = 0)
 {
 
     global $wpdb;
+    $account_keys = ppcart_query_meta_keys('user_account');
+    $order_types  = ppcart_query_post_types('order');
     if ($customer_id > 0) {
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_meta_keys() and ppcart_sql_in_post_types() return prepared placeholder lists.
-        $query = $wpdb->prepare("SELECT {$wpdb->prefix}posts.ID,{$wpdb->prefix}postmeta.meta_value FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id ) WHERE 1=1 AND ( {$wpdb->prefix}postmeta.meta_key IN (" . ppcart_sql_in_meta_keys('user_account') . ") AND {$wpdb->prefix}postmeta.meta_value = %d ) AND {$wpdb->prefix}posts.post_type IN (" . ppcart_sql_in_post_types('order') . ") AND (({$wpdb->prefix}posts.post_status <> 'trash' AND {$wpdb->prefix}posts.post_status <> 'auto-draft')) ORDER BY `{$wpdb->prefix}posts`.`post_date` DESC", $customer_id);
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Legacy customer lookup query uses prepared customer filter.
-        $result = $wpdb->get_results($query);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Customer order lookup for the admin customer list.
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT {$wpdb->posts}.ID,{$wpdb->postmeta}.meta_value FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id ) WHERE 1=1 AND ( {$wpdb->postmeta}.meta_key IN (" . implode(',', array_fill(0, count($account_keys), '%s')) . ") AND {$wpdb->postmeta}.meta_value = %d ) AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ") AND (({$wpdb->posts}.post_status <> 'trash' AND {$wpdb->posts}.post_status <> 'auto-draft')) ORDER BY {$wpdb->posts}.post_date DESC",
+                array_merge($account_keys, [ (int) $customer_id ], $order_types)
+            )
+        );
     } else {
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Legacy customer listing query uses prepared helper-generated IN() lists for canonical keys/types.
-        $result = $wpdb->get_results("SELECT {$wpdb->prefix}posts.ID,{$wpdb->prefix}postmeta.meta_value FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id ) WHERE 1=1 AND ( {$wpdb->prefix}postmeta.meta_key IN (" . ppcart_sql_in_meta_keys('user_account') . ") ) AND {$wpdb->prefix}posts.post_type IN (" . ppcart_sql_in_post_types('order') . ") AND (({$wpdb->prefix}posts.post_status <> 'trash' AND {$wpdb->prefix}posts.post_status <> 'auto-draft')) ORDER BY `{$wpdb->prefix}posts`.`post_date` DESC");
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Customer order listing for the admin customer list.
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT {$wpdb->posts}.ID,{$wpdb->postmeta}.meta_value FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id ) WHERE 1=1 AND ( {$wpdb->postmeta}.meta_key IN (" . implode(',', array_fill(0, count($account_keys), '%s')) . ") ) AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ") AND (({$wpdb->posts}.post_status <> 'trash' AND {$wpdb->posts}.post_status <> 'auto-draft')) ORDER BY {$wpdb->posts}.post_date DESC",
+                array_merge($account_keys, $order_types)
+            )
+        );
     }
 
     $customers = [];
