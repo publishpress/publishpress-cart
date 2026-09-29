@@ -75,20 +75,27 @@ class PPCart_Public_Hosted_Checkout_Controller
         return $record->store();
     }
 
+    /**
+     * Reuse only the logged-in user's own stored customer; otherwise create a
+     * new one. Never looks customers up by the posted email.
+     *
+     * @param object $stripe        Stripe client.
+     * @param array  $customer_args Customer create params.
+     * @param string $email         Posted email (not used).
+     * @return object
+     */
     private function get_or_create_stripe_customer($stripe, $customer_args, $email)
     {
-        $customer = $stripe->customers->all(
-            [
-                'email' => $email,
-                'limit' => 1,
-            ]
-        );
+        global $ppcart_stripe;
+        unset($email);
 
-        if (! empty($customer->data)) {
-            return $customer->data[0];
+        $mode        = $ppcart_stripe['mode'] ?? '';
+        $customer_id = PPCart_Stripe_Checkout_Customer::get_live_current_user_customer_id($stripe, $mode);
+        if ('' !== $customer_id) {
+            return (object) ['id' => $customer_id];
         }
 
-        return $stripe->customers->create($customer_args);
+        return PPCart_Stripe_Checkout_Customer::create_customer($stripe, (array) $customer_args, $mode);
     }
 
     private function is_missing_stripe_customer_exception($exception)

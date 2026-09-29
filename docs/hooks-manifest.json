@@ -2168,6 +2168,16 @@
         {
             "name": "ppcart_checkout_stripe_subscription_args",
             "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php",
+            "recommended_hook": "ppcart_checkout_stripe_subscription_args",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_checkout_stripe_subscription_args",
+            "type": "filter",
             "operation": "apply_filters",
             "classification": "public",
             "status": "canonical",

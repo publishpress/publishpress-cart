@@ -224,6 +224,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_checkout_payment_method_enabled` | Filter | `apply_filters` | Public | canonical | `public/templates/functions/payment-address.php` | ppcart_checkout_payment_method_enabled |
 | `ppcart_checkout_should_guard_duplicate_render` | Filter | `apply_filters` | Public | canonical | `includes/functions.php` | ppcart_checkout_should_guard_duplicate_render |
 | `ppcart_checkout_step_viewed` | Action | `do_action` | Public | canonical | `includes/functions/checkout-completion.php` | ppcart_checkout_step_viewed |
+| `ppcart_checkout_stripe_subscription_args` | Filter | `add_filter` | Public | canonical | `public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php` | ppcart_checkout_stripe_subscription_args |
 | `ppcart_checkout_stripe_subscription_args` | Filter | `apply_filters` | Public | canonical | `public/controllers/traits/templates/subscription-create-create-stripe-subscription.php` | ppcart_checkout_stripe_subscription_args |
 | `ppcart_checkout_template_path` | Filter | `apply_filters` | Public | canonical | `public/controllers/page/traits/templates/page-shortcodes-ppcart-product-shortcode.php` | ppcart_checkout_template_path |
 | `ppcart_cleanup_preloaded_intents` | Action | `add_action` | Public | canonical | `public/controllers/class-ppcart-public-payment-controller.php` | ppcart_cleanup_preloaded_intents |

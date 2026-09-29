@@ -109,6 +109,14 @@ if ($ppcart_order_post) {
 
         $cart_order = new PPCart_Order($ppcart_temp_order_id);
     } else {
+        // The Stripe customer comes from the server-side checkout binding for this intent, never from POST.
+        $ppcart_checkout_ref = ppcart_filter_input(INPUT_POST, 'ppcart_checkout_ref', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $_POST['customerId'] = PPCart_Stripe_Checkout_Customer::customer_id_for_order(
+            is_string($ppcart_checkout_ref) ? sanitize_text_field($ppcart_checkout_ref) : '',
+            $intent_id,
+            $ppcart_stripe['mode'] ?? ''
+        );
+
         // setup order info
         $cart_order = new PPCart_Order();
         $cart_order->load_from_post();

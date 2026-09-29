@@ -199,6 +199,13 @@ modules:
     features: [core-checkout, subscriptions]
     notes: First invoice stays incomplete until confirmCardPayment; create args expand confirmation_secret.
 
+  - id: stripe-checkout-customer
+    name: Stripe checkout customer binding
+    suites: [unit]
+    test_range: UT-364–UT-369
+    features: [core-checkout, subscriptions, order-bumps-upsells]
+    notes: Guests never reuse a Stripe customer by email; subscription and upsell charges use only server-bound customers and payment methods.
+
   - id: stripe-prefixed-sdk
     name: Prefixed Stripe SDK list responses
     suites: [unit]

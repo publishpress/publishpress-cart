@@ -230,7 +230,7 @@
             state.intent = {
                 'clientSecret': response.clientSecret,
                 'intent_id': response.intent_id,
-                'customer_id': response.customer_id,
+                'checkout_ref': response.checkout_ref,
                 'amount': response.amount,
                 'prod_id': response.prod_id,
                 'ppcart_temp_order_id': response.ppcart_temp_order_id,
@@ -244,7 +244,7 @@
 
             clientSecret = response.clientSecret;
             intent_id = response.intent_id;
-            customer_id = response.customer_id;
+            checkout_ref = response.checkout_ref;
             amount = response.amount;
             ppcart_temp_order_id = response.ppcart_temp_order_id;
             ppcart_temp_order_token = response.ppcart_temp_order_token;
@@ -1080,7 +1080,7 @@
             clientSecret,
             intent_id,
             amount,
-            customer_id,
+            checkout_ref,
             ppcart_temp_order_id,
             ppcart_temp_order_token,
             prod_id,
@@ -1526,7 +1526,7 @@
                             submitPaymentIntent({
                                 'clientSecret': clientSecret,
                                 'intent_id': intent_id,
-                                'customer_id': customer_id,
+                                'checkout_ref': checkout_ref,
                                 'amount': amount,
                                 'prod_id':prod_id,
                                 'ppcart_temp_order_id':ppcart_temp_order_id,
@@ -1816,7 +1816,7 @@
                                             } else {
                                                 clientSecret = response.clientSecret;
                                                 intent_id = response.intent_id;
-                                                customer_id = response.customer_id;
+                                                checkout_ref = response.checkout_ref;
                                                 amount = response.amount;
                                                 ppcart_temp_order_id = response.ppcart_temp_order_id;
                                                 ppcart_temp_order_token = response.ppcart_temp_order_token;
@@ -1826,7 +1826,7 @@
                                                 if (is_subscription) {
                                                     // Create the subscription
                                                     createSubscription(
-                                                        customer_id,
+                                                        checkout_ref,
                                                         paymentMethodId,
                                                         false,
                                                         form,
@@ -1849,7 +1849,7 @@
                                         var intent = {
                                             'clientSecret': clientSecret,
                                             'intent_id': intent_id,
-                                            'customer_id': customer_id,
+                                            'checkout_ref': checkout_ref,
                                             'amount': amount,
                                             'prod_id':prod_id,
                                             'ppcart_temp_order_id':ppcart_temp_order_id,
@@ -1962,13 +1962,13 @@
             return retry;
         }
 
-        function createSubscription(customerId, paymentMethodId, invoiceId, wrap_id, ev) {
+        function createSubscription(checkoutRef, paymentMethodId, invoiceId, wrap_id, ev) {
             var f = document.getElementById(wrap_id);
             f = f.getElementsByTagName('form')[0];
             const checkoutFingerprint = getSubscriptionCheckoutFingerprint(wrap_id);
             const form = new FormData(f);
             form.set('action', 'ppcart_create_subscription');
-            form.set('customerId', customerId);
+            form.set('checkoutRef', checkoutRef);
             form.set('paymentMethodId', paymentMethodId);
             if (invoiceId) {
                 form.set('invoiceId', invoiceId);
@@ -2040,7 +2040,7 @@
         }
 
         function retryInvoiceWithNewPaymentMethod(
-            customerId,
+            checkoutRef,
             paymentMethodId,
             invoiceId,
             wrap_id,
@@ -2051,7 +2051,7 @@
             const checkoutFingerprint = getSubscriptionCheckoutFingerprint(wrap_id);
             const form = new FormData(f);
             form.set('action', 'ppcart_create_subscription');
-            form.set('customerId', customerId);
+            form.set('checkoutRef', checkoutRef);
             form.set('paymentMethodId', paymentMethodId);
             if (invoiceId) {
                 form.set('invoiceId', invoiceId);
@@ -2282,7 +2282,7 @@
                         if (isPaymentRetry) {
                             // Update the payment method and retry invoice payment
                             retryInvoiceWithNewPaymentMethod(
-                                intent.customer_id,
+                                intent.checkout_ref,
                                 result.paymentMethod.id,
                                 invoiceId,
                                 form_wrapper,
@@ -2291,7 +2291,7 @@
                         } else {
                             // Create the subscription
                             createSubscription(
-                                intent.customer_id,
+                                intent.checkout_ref,
                                 result.paymentMethod.id,
                                 false,
                                 form_wrapper,
@@ -2480,7 +2480,7 @@
                 state.peIntent = {
                     'clientSecret': response.clientSecret,
                     'intent_id': response.intent_id,
-                    'customer_id': response.customer_id,
+                    'checkout_ref': response.checkout_ref,
                     'amount': response.amount,
                     'prod_id': response.prod_id,
                     'ppcart_temp_order_id': response.ppcart_temp_order_id,
@@ -2492,7 +2492,7 @@
 
                 clientSecret = response.clientSecret;
                 intent_id = response.intent_id;
-                customer_id = response.customer_id;
+                checkout_ref = response.checkout_ref;
                 amount = response.amount;
                 ppcart_temp_order_id = response.ppcart_temp_order_id;
                 ppcart_temp_order_token = response.ppcart_temp_order_token;
@@ -2577,7 +2577,7 @@
                     }
                     // Bridge to the existing subscription flow using the confirmed method.
                     createSubscription(
-                        intent.customer_id,
+                        intent.checkout_ref,
                         result.setupIntent.payment_method,
                         false,
                         wrap_id
@@ -2619,9 +2619,8 @@
             if (intent.ppcart_temp_order_token) {
                 paramObj['ppcart_temp_order_token'] = intent.ppcart_temp_order_token;
             }
-            paramObj['customer_id'] = intent.customer_id;
-            // load_from_post() reads the customer from camelCase 'customerId'; upsells need it for off-session charges.
-            paramObj['customerId'] = intent.customer_id;
+            // The server maps this opaque reference to the Stripe customer; the browser never sends a customer ID.
+            paramObj['ppcart_checkout_ref'] = intent.checkout_ref;
             paramObj['intent_id'] = intent.intent_id;
             paramObj['amount'] = intent.amount;
 
@@ -2749,7 +2748,7 @@
                     if (intent.ppcart_temp_order_token) {
                         paramObj['ppcart_temp_order_token'] = intent.ppcart_temp_order_token;
                     }
-                    paramObj['customer_id'] = intent.customer_id;
+                    paramObj['ppcart_checkout_ref'] = intent.checkout_ref;
                     paramObj['intent_id'] = intent.intent_id;
                     paramObj['amount'] = intent.amount;
                     var completeConfirmedPayment = function(response, verifyTempOrder) {
