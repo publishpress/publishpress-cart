@@ -46,7 +46,7 @@ function ppcart_get_email_from_email()
 {
     $from_email = trim((string) get_option('_ppcart_email_from_email', ''));
 
-    return '' !== $from_email ? $from_email : get_option('admin_email');
+    return '' !== $from_email ? $from_email : ppcart_get_admin_email();
 }
 
 function ppcart_get_email_reply_to()
@@ -60,7 +60,7 @@ function ppcart_get_admin_notification_recipients()
 {
     $admin_email = trim((string) get_option('ppcart_admin_email', ''));
 
-    return '' !== $admin_email ? $admin_email : get_option('admin_email');
+    return '' !== $admin_email ? $admin_email : ppcart_get_admin_email();
 }
 
 function ppcart_get_email_headers($reply_to = '')
@@ -220,7 +220,7 @@ function ppcart_email_template_option_defaults()
 {
     $defaults = [
         '_ppcart_email_from_name'  => get_bloginfo('name'),
-        '_ppcart_email_from_email' => get_option('admin_email'),
+        '_ppcart_email_from_email' => ppcart_get_admin_email(),
     ];
 
     foreach (ppcart_email_templates() as $template) {

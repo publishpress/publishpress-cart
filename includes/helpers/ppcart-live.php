@@ -210,6 +210,22 @@ if (! function_exists('ppcart_user_can')) {
     }
 }
 
+if (! function_exists('ppcart_get_admin_email')) {
+    /**
+     * Returns the current site's admin email in single-site and multisite.
+     *
+     * @return string
+     */
+    function ppcart_get_admin_email()
+    {
+        if (function_exists('is_multisite') && is_multisite() && function_exists('get_blog_option')) {
+            return (string) get_blog_option(get_current_blog_id(), 'admin_email');
+        }
+
+        return (string) get_bloginfo('admin_email');
+    }
+}
+
 if (! function_exists('ppcart_live_role')) {
     /**
      * @param string $family_or_role Family key or canonical role slug.

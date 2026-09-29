@@ -17,7 +17,7 @@ function ppcart_schedule_email_function()
 {
     $to_email = function_exists('ppcart_get_admin_notification_recipients') ? ppcart_get_admin_notification_recipients() : get_option('ppcart_admin_email');
     if (empty($to_email)) {
-        $to_email = get_option('admin_email');
+        $to_email = ppcart_get_admin_email();
     }
 
     $email_list = array_filter(array_map('trim', explode(',', $to_email)), function ($email) {

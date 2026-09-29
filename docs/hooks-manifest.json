@@ -7546,6 +7546,16 @@
             "notes": "Review before documenting as public API."
         },
         {
+            "name": "wp_initialize_site",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/order-items/class-ppcart-order-items.php",
+            "recommended_hook": "wp_initialize_site",
+            "notes": "Review before documenting as public API."
+        },
+        {
             "name": "wp_insert_post_data",
             "type": "action",
             "operation": "add_action",
