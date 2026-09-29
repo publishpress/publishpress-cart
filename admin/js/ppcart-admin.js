@@ -437,7 +437,10 @@ jQuery(document).ready(function($){
 
     $('#ppcart-email-type').change(function(){
         var email = $(this).val(),
-            link = $('#ppcart-preview-email').attr('href').replace(/\[[a-z_]+\]/, '['+email+']');
+            link = $('#ppcart-preview-email').attr('href').replace(
+                /(type=)(?:\[|%5B)[a-z_]+(?:\]|%5D)/i,
+                '$1%5B' + email + '%5D'
+            );
         $('#ppcart-preview-email').attr('href',link);
     });
 
