@@ -485,7 +485,7 @@ known to use against Free (verify in the Pro tree):
 | `ppcart_product_setting_tab_{$tab}_fields` | `sc_product_{$tab}_fields` |
 | `ppcart_confirmation_fields` | `sc_confirmation_fields` |
 | `ppcart_setting_tabs` | `sc_setting_tabs` |
-| `ppcart_register_sections` / `_ppcart_register_sections` | `sc_register_sections` |
+| `ppcart_register_sections` / `ppcart_register_integration_sections` | `sc_register_sections` / `_ppcart_register_sections` ([#879](#underscore-settings-and-plan-hooks-free-879)) |
 | `ppcart_coupon_fields` / `ppcart_coupon_status` | `sc_coupon_fields` / `sc_coupon_status` |
 | `ppcart_checkout_step_viewed` | funnel step after completion fired once |
 | `PPCart_Order::access_arg()` | `ppcart-access` query arg for completion URLs |
@@ -503,7 +503,7 @@ known to use against Free (verify in the Pro tree):
 | `ppcart_integration_plan_targets` | bump/upsell/downsell plan targets |
 | `ppcart_pay_plan_recurring_fields` | sign-up fee, trial, cancel-immediately; runs before is_hidden |
 | `ppcart_cpt_options` | collection CPT show_in_rest |
-| `_ppcart_option_list` | coupon URL param, disable product template, white-label link |
+| `ppcart_option_list` | coupon URL param, disable product template, white-label link (was `_ppcart_option_list`, [#879](#underscore-settings-and-plan-hooks-free-879)) |
 | `ppcart_integrations` | WishList / Tutor / RCP / webhook services |
 | `ppcart_product_field_groups` | coupons, order bump, and upsell path groups |
 | `ppcart_product_general_fields` | hide-page, tax status, purchase note, and other Pro general fields |
@@ -902,6 +902,47 @@ checkout-window meta suffixes and `$ppcart_product` properties are
 `cart_open` / `_ppcart_cart_*`. Thank-you URL stays `_ppcart_redirect`.
 Leftover `_sc_cart_open` (and siblings) only via Free Compat. Free landed in
 `186e0f69`.
+
+### Underscore settings and plan hooks (Free #879)
+
+Plugin Check flags `_ppcart_*` hook names as `NonPrefixedHooknameFound`: the
+leading underscore means the name does not start with the plugin prefix. Hard
+cutover: Free fires only the canonical name, and callbacks on the old name no
+longer run. Pro moved to the canonical names in the same change.
+
+| Canonical | Was | Pro call sites |
+|-----------|-----|----------------|
+| `ppcart_option_list` | `_ppcart_option_list` | 5 |
+| `ppcart_invoice_option_list` | `_ppcart_invoice_option_list` | 1 |
+| `ppcart_payment_field_option_list` | `_ppcart_payment_field_option_list` | 3 |
+| `ppcart_custom_option_list` | `_ppcart_custom_option_list` | 3 |
+| `ppcart_integrations_option_list` | `_ppcart_integrations_option_list` | 12 |
+| `ppcart_payment_gateway_tab_section` | `_ppcart_payment_gateway_tab_section` | 3 |
+| `ppcart_register_gateways` | `_ppcart_register_gateways` | 0 |
+| `ppcart_taxes_tab_section` | `_ppcart_taxes_tab_section` | 0 |
+| `ppcart_invoice_tab_section` | `_ppcart_invoice_tab_section` | 0 |
+| `ppcart_emails_tab_section` | `_ppcart_emails_tab_section` | 3 |
+| `ppcart_integrations_tab_section` | `_ppcart_integrations_tab_section` | 12 |
+| `ppcart_register_integration_sections` | `_ppcart_register_sections` | 0 |
+| `ppcart_{$tab}_tab_section` | `_ppcart_{$tab}_tab_section` (Pro: `_ppcart_affiliate_tab_section`) | 1 |
+| `ppcart_plan_data` | `_ppcart_plan` | 3 |
+
+Two names do not follow the strip-the-underscore rule, because the plain name
+was already taken by a hook with different arguments:
+
+- `_ppcart_plan` → `ppcart_plan_data`. `ppcart_plan` already filters the raw
+  pay option (`$option, $sale`) before the plan is built. `ppcart_plan_data`
+  filters the built plan (`$plan, $option, $sale`).
+- `_ppcart_register_sections` → `ppcart_register_integration_sections`.
+  `ppcart_register_sections` already fires with no arguments after all
+  settings sections are registered. The new name keeps `$settings,
+  $plugin_name` and fires from the Integrations tab.
+
+Pro must bundle a Free version with this change; older Free still fires the
+underscore names. The hook manifest marks the old names `removed`, so
+`--check-policy` fails if Pro reintroduces one. Pro's own
+`_ppcart_tax_rate_added` / `_updated` / `_deleted` hooks have the same Plugin
+Check problem but are Pro-owned and not covered here.
 
 ## Suggested Pro slice order
 

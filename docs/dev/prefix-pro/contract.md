@@ -169,7 +169,7 @@ known to use against Free (verify in the Pro tree):
 | `ppcart_product_setting_tab_{$tab}_fields` | `sc_product_{$tab}_fields` |
 | `ppcart_confirmation_fields` | `sc_confirmation_fields` |
 | `ppcart_setting_tabs` | `sc_setting_tabs` |
-| `ppcart_register_sections` / `_ppcart_register_sections` | `sc_register_sections` |
+| `ppcart_register_sections` / `ppcart_register_integration_sections` | `sc_register_sections` / `_ppcart_register_sections` ([#879](../prefix-pro.md#underscore-settings-and-plan-hooks-free-879)) |
 | `ppcart_coupon_fields` / `ppcart_coupon_status` | `sc_coupon_fields` / `sc_coupon_status` |
 | `ppcart_checkout_template_path` | checkout template filter |
 | `ppcart_enqueue_scripts_upsell_downsell` / `ppcart_script_vars` | upsell script vars |

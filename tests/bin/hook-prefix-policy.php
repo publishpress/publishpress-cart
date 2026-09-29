@@ -22,7 +22,11 @@ foreach ($manifest['hooks'] as $hook) {
 }
 
 assert_hook($hooks, 'ppcart_after_order_paid', 'canonical');
-assert_hook($hooks, '_ppcart_option_list', 'canonical');
+assert_hook($hooks, 'ppcart_option_list', 'canonical');
+assert_hook($hooks, 'ppcart_plan_data', 'canonical');
+if (isset($hooks['_ppcart_option_list']) || isset($hooks['_ppcart_plan'])) {
+    fail('Underscore _ppcart_* settings/plan hooks were removed; use ppcart_* names.');
+}
 assert_hook($hooks, 'ppcart_product_setting_tab_{$tab_id}_fields', 'canonical');
 assert_hook($hooks, 'ppcart_product_field_scripts', 'canonical');
 

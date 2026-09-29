@@ -12,7 +12,7 @@ foreach ($fields as $section => $sfields) {
         // Allow individual fields to opt into a subsection (renders
         // under a different card on the same tab) without changing
         // their parent section key (preserving back-compat with
-        // _ppcart_option_list filter usage).
+        // ppcart_option_list filter usage).
         $effective_section = ! empty($v['subsection']) ? $v['subsection'] : $section;
         $v['settings']['section'] = $effective_section;
         if (!empty($v['tab'])) {
