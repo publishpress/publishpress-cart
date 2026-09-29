@@ -8,6 +8,7 @@
   window.PPCART_REGRESSION_STRIPE_MOCKED = true;
 
   function nextId(prefix) {
+    // Match Stripe id shape: prefix, one underscore, then alphanumeric.
     return prefix + '_mock' + Math.random().toString(36).slice(2, 10);
   }
 

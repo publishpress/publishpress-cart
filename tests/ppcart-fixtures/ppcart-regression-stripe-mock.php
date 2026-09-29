@@ -118,6 +118,13 @@ final class PPCart_Regression_Stripe_Mock {
 			? wp_generate_password( 8, false, false )
 			: bin2hex( random_bytes( 4 ) );
 
+		// Checkout binding accepts Stripe-shaped ids only: one underscore, then
+		// alphanumeric (cus_ / pm_ / pi_ / seti_). Extra underscores never match.
+		$stripe_shaped = array( 'cus', 'pm', 'card', 'src', 'pi', 'seti', 'ch', 'py' );
+		if ( in_array( $prefix, $stripe_shaped, true ) ) {
+			return $prefix . '_mock' . self::$id_seq . $suffix;
+		}
+
 		return $prefix . '_mock_' . self::$id_seq . '_' . $suffix;
 	}
 
