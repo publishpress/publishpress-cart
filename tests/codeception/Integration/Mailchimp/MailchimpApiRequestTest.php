@@ -176,6 +176,191 @@ class MailchimpApiRequestTest extends WPTestCase
     }
 
     /**
+     * @test-id IT-373
+     */
+    public function test_IT_373_list_fetch_error_returns_wp_error_with_status(): void
+    {
+        ppcart_set_sensitive_option('_ppcart_mailchimp_api', 'abc123-us1');
+
+        $this->interceptHttp(
+            function () {
+                return $this->mockResponse(401, '{"title":"API Key Invalid","status":401,"detail":"Your API key may be invalid."}');
+            }
+        );
+
+        $result = ppcart_mailchimp_api_request('lists', 'GET', [], ['count' => 100]);
+
+        $this->assertInstanceOf(WP_Error::class, $result);
+        $this->assertSame('ppcart_mailchimp_api_error', $result->get_error_code());
+        $this->assertSame('Your API key may be invalid.', $result->get_error_message());
+        $this->assertSame(['status' => 401], $result->get_error_data());
+        $this->assertCount(1, $this->capturedRequests);
+        $this->assertSame('https://us1.api.mailchimp.com/3.0/lists?count=100', $this->capturedRequests[0]['url']);
+        $this->assertSame(
+            'Basic ' . base64_encode('publishpress:abc123-us1'),
+            $this->capturedRequests[0]['args']['headers']['Authorization']
+        );
+    }
+
+    /**
+     * @test-id IT-373
+     */
+    public function test_IT_373_subscribe_upserts_member_then_sets_groups_and_tags(): void
+    {
+        ppcart_set_sensitive_option('_ppcart_mailchimp_api', 'abc123-us1');
+
+        $orderId = $this->factory()->post->create(['post_type' => 'post']);
+        $email = 'Buyer@Example.com';
+        $memberPath = 'https://us1.api.mailchimp.com/3.0/lists/list123/members/' . md5(strtolower($email));
+
+        $mergeFilter = static function ($merge, $filteredOrderId) use ($orderId) {
+            if ((int) $filteredOrderId === (int) $orderId) {
+                $merge['SOURCE'] = 'cart';
+            }
+
+            return $merge;
+        };
+        add_filter('ppcart_mailchimp_merge_data', $mergeFilter, 10, 2);
+
+        $this->interceptHttp(
+            function () {
+                return $this->mockResponse(200, '{"id":"ok"}');
+            }
+        );
+
+        ppcart_add_remove_mailchimp_subscriber(
+            $orderId,
+            'mailchimp',
+            'subscribed',
+            'list123',
+            'tag-55',
+            'grp1,grp2',
+            $email,
+            '555-0100',
+            'Ada',
+            'Lovelace',
+            ['mc_phone_tag' => 'PHONE'],
+            null
+        );
+
+        remove_filter('ppcart_mailchimp_merge_data', $mergeFilter, 10);
+
+        $this->assertCount(3, $this->capturedRequests);
+
+        [$upsert, $groups, $tags] = $this->capturedRequests;
+
+        $this->assertSame($memberPath, $upsert['url']);
+        $this->assertSame('PUT', $upsert['args']['method']);
+        $upsertBody = json_decode((string) $upsert['args']['body'], true);
+        $this->assertSame($email, $upsertBody['email_address']);
+        $this->assertSame('subscribed', $upsertBody['status_if_new']);
+        $this->assertSame(
+            ['FNAME' => 'Ada', 'LNAME' => 'Lovelace', 'PHONE' => '555-0100', 'SOURCE' => 'cart'],
+            $upsertBody['merge_fields']
+        );
+
+        $this->assertSame($memberPath, $groups['url']);
+        $this->assertSame('PATCH', $groups['args']['method']);
+        $groupsBody = json_decode((string) $groups['args']['body'], true);
+        $this->assertSame(['grp1' => true, 'grp2' => true], $groupsBody['interests']);
+
+        $this->assertSame('https://us1.api.mailchimp.com/3.0/lists/list123/segments/55', $tags['url']);
+        $this->assertSame('PATCH', $tags['args']['method']);
+        $tagsBody = json_decode((string) $tags['args']['body'], true);
+        $this->assertSame(['members_to_add' => [$email]], $tagsBody);
+    }
+
+    /**
+     * @test-id IT-373
+     */
+    public function test_IT_373_subscribe_stops_after_rejected_upsert(): void
+    {
+        ppcart_set_sensitive_option('_ppcart_mailchimp_api', 'abc123-us1');
+
+        $orderId = $this->factory()->post->create(['post_type' => 'post']);
+
+        $this->interceptHttp(
+            function () {
+                return $this->mockResponse(400, '{"detail":"Invalid Resource"}');
+            }
+        );
+
+        ppcart_add_remove_mailchimp_subscriber(
+            $orderId,
+            'mailchimp',
+            'subscribed',
+            'list123',
+            'tag-55',
+            'grp1',
+            'buyer@example.com',
+            '',
+            'Ada',
+            'Lovelace',
+            [],
+            null
+        );
+
+        $this->assertCount(1, $this->capturedRequests);
+        $this->assertSame('PUT', $this->capturedRequests[0]['args']['method']);
+        $this->assertEmpty(ppcart_get_post_meta($orderId, 'order_log', true));
+    }
+
+    /**
+     * @test-id IT-373
+     */
+    public function test_IT_373_unsubscribe_deletes_member(): void
+    {
+        ppcart_set_sensitive_option('_ppcart_mailchimp_api', 'abc123-us1');
+
+        $this->interceptHttp(
+            function () {
+                return $this->mockResponse(204, '');
+            }
+        );
+
+        ppcart_add_remove_mailchimp_subscriber(
+            0,
+            'mailchimp',
+            'unsubscribed',
+            'list123',
+            '',
+            '',
+            'buyer@example.com',
+            '',
+            '',
+            '',
+            [],
+            null
+        );
+
+        $this->assertCount(1, $this->capturedRequests);
+        $this->assertSame('DELETE', $this->capturedRequests[0]['args']['method']);
+        $this->assertSame(
+            'https://us1.api.mailchimp.com/3.0/lists/list123/members/' . md5('buyer@example.com'),
+            $this->capturedRequests[0]['url']
+        );
+    }
+
+    /**
+     * @param int    $code HTTP status.
+     * @param string $body Response body.
+     * @return array
+     */
+    private function mockResponse(int $code, string $body): array
+    {
+        return [
+            'headers' => [],
+            'body' => $body,
+            'response' => [
+                'code' => $code,
+                'message' => '',
+            ],
+            'cookies' => [],
+            'filename' => null,
+        ];
+    }
+
+    /**
      * @param callable $responder
      */
     private function interceptHttp(callable $responder): void
