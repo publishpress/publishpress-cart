@@ -59,7 +59,9 @@ if (isset($posted_values['phone'])) {
     $customer_args['phone'] = sanitize_text_field($posted_values['phone']);
 }
 
+// Reuse only the logged-in user's own customer; guests get a new one.
 $cached_customer_id = $this->get_cached_stripe_customer_id($email, $ppcart_stripe['mode'] ?? '');
+$customer_is_new    = '' === $cached_customer_id;
 
 if ($cached_customer_id) {
     $customer = (object) ['id' => $cached_customer_id];
@@ -111,7 +113,8 @@ $ppcart_debug_logger->log_event(
 wp_send_json([
     'clientSecret' => $intent->client_secret,
     'intent_id'    => $intent->id,
-    'customer_id'  => $customer->id,
+    // The browser gets an opaque reference; the customer ID stays on the server.
+    'checkout_ref' => PPCart_Stripe_Checkout_Customer::create_ref($customer->id, $intent->id, $ppcart_stripe['mode'] ?? '', $customer_is_new),
     'prod_id'      => $ppcart_product_id,
     'is_setup_intent' => '1',
 ]);

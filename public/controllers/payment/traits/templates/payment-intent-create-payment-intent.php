@@ -94,6 +94,7 @@ if (isset($posted_values['country'], $posted_values['address1'], $posted_values[
     ];
 }
 
+// Reuse only the logged-in user's own customer; guests get a new one.
 $customer_from_cache = false;
 $cached_customer_id  = $this->get_cached_stripe_customer_id($email, $ppcart_stripe['mode'] ?? '');
 
@@ -274,10 +275,11 @@ if ($customer) {
         ],
         0
     );
+    // The browser gets an opaque reference; the customer ID stays on the server.
     $response = [
         'clientSecret' => $client_secret,
         'intent_id' => $intent_id,
-        'customer_id' => $customer->id,
+        'checkout_ref' => PPCart_Stripe_Checkout_Customer::create_ref($customer->id, $intent_id, $ppcart_stripe['mode'] ?? '', ! $customer_from_cache),
         'amount' => $amount,
         'sub_total' => $sub_total,
         'tax_applied' => $tax_applied,

@@ -42,7 +42,7 @@ There is **no** first-party `api/` REST directory.
 | `includes/class-ppcart-reviews.php` | wordpress-reviews (WP.org review notice on dashboard/settings) |
 | `includes/bootstrap/` | Dependency loader and admin/public hook registrars |
 | `includes/functions.php` + `includes/functions/` | Global helpers (checkout, pricing, orders, integrations) |
-| `includes/stripe/`, `includes/class-ppcart-stripe.php` | First-party Stripe helpers (`StripeClient` wrapper, order-save traits/templates) |
+| `includes/stripe/`, `includes/class-ppcart-stripe.php` | First-party Stripe helpers (`StripeClient` wrapper, order-save traits/templates, `PPCart_Stripe_Checkout_Customer` server-side customer and payment-method binding for checkout, subscriptions, and upsells) |
 | Composer `publishpress/stripe-php` (`lib/`) | Vendored SDK, namespace `PublishPress\Stripe\`; client `new \PublishPress\Stripe\StripeClient` |
 | `includes/stripe-sync/`, `includes/class-ppcart-stripe-sync.php` | Stripe webhook / subscription sync |
 | `includes/secrets/` | Credential encryption/storage |

@@ -49,26 +49,9 @@ if ($cart_order->pay_method == 'stripe') {
 
     $stripe = ppcart_stripe_client($apikey);
 
-    // Prefer the customer's default method, then a saved card, then Link — a pure Link payment saves a type=link method a card-only lookup misses.
-    $paymethod_id = null;
-
-    $customer = $stripe->customers->retrieve($cart_order->customer_id);
-    if ($customer && ! empty($customer->invoice_settings->default_payment_method)) {
-        $paymethod_id = $customer->invoice_settings->default_payment_method;
-    }
-
-    if (! $paymethod_id) {
-        foreach ([ 'card', 'link' ] as $pm_type) {
-            $payment_methods = $stripe->paymentMethods->all([
-              'customer' => $cart_order->customer_id,
-              'type' => $pm_type,
-            ]);
-            if (! empty($payment_methods->data)) {
-                $paymethod_id = $payment_methods->data[0]->id;
-                break;
-            }
-        }
-    }
+    // Charge only the payment method that paid the parent order, proven from its own
+    // Stripe payment. Never the customer's default or another saved card.
+    $paymethod_id = PPCart_Stripe_Checkout_Customer::get_order_payment_method_id($stripe, $order_id_post, $cart_order->customer_id);
 
     if (! $paymethod_id) {
         $ppcart_debug_logger->log_debug("Stripe payment method not found, aborting", 4);
@@ -76,10 +59,6 @@ if ($cart_order->pay_method == 'stripe') {
     }
 
     $ppcart_debug_logger->log_debug("Stripe payment method retrieved", 0);
-
-    if ($customer && !$customer->invoice_settings->default_payment_method) {
-        $customer = $stripe->customers->update($cart_order->customer_id, ['invoice_settings' => ['default_payment_method' => $paymethod_id]]);
-    }
 
     if ($cart_order->plan->type == 'recurring') {
         $ppcart_debug_logger->log_event(
@@ -107,7 +86,17 @@ if ($cart_order->pay_method == 'stripe') {
             0
         );
 
+        // The upsell subscription bills the parent order's payment method, not the customer's default.
+        $ppcart_upsell_pm_filter = function ($args) use ($paymethod_id) {
+            if (is_array($args)) {
+                $args['default_payment_method'] = $paymethod_id;
+            }
+
+            return $args;
+        };
+        add_filter('ppcart_checkout_stripe_subscription_args', $ppcart_upsell_pm_filter, PHP_INT_MAX);
         $subscription = PPCart_Public_Subscription_Checkout_Controller::instance()->create_stripe_subscription($cart_order, $sub);
+        remove_filter('ppcart_checkout_stripe_subscription_args', $ppcart_upsell_pm_filter, PHP_INT_MAX);
 
         if (!$subscription) {
             wp_send_json_error([ 'message' => 'Something went wrong, please try again later.' ]);
@@ -194,6 +183,7 @@ if ($cart_order->pay_method == 'stripe') {
             $cart_order->payment_status = $intent->status;
             $cart_order->transaction_id = $intent->id;
             $this->store_stripe_owned_record($cart_order);
+            PPCart_Stripe_Checkout_Customer::remember_order_payment_method($cart_order->id, $paymethod_id);
             echo esc_html($cart_order->id);
             exit();
         } catch (Exception $e) {
@@ -204,7 +194,7 @@ if ($cart_order->pay_method == 'stripe') {
             if ($error_code == 'authentication_required') {
                 wp_send_json([
                 'error' => 'authentication_required',
-                'paymentMethod' => $payment_methods->data[0]->id,
+                'paymentMethod' => $paymethod_id,
                 'clientSecret' => $err->payment_intent->client_secret,
                 'intentId' => $err->payment_intent->id,
                                     ]);
