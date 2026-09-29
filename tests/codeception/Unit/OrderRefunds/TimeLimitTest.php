@@ -56,7 +56,7 @@ class TimeLimitTest extends Unit
 
     public function test_a_lower_limit_does_not_reduce_the_host_limit(): void
     {
-        set_time_limit(300);
+        $this->setHostLimitOrSkip(300);
 
         $this->assertTrue(ppcart_set_time_limit(60));
         $this->assertSame('300', ini_get('max_execution_time'));
@@ -64,7 +64,7 @@ class TimeLimitTest extends Unit
 
     public function test_a_higher_limit_raises_the_host_limit(): void
     {
-        set_time_limit(30);
+        $this->setHostLimitOrSkip(30);
 
         $this->assertTrue(ppcart_set_time_limit(120));
         $this->assertSame('120', ini_get('max_execution_time'));
@@ -72,7 +72,7 @@ class TimeLimitTest extends Unit
 
     public function test_an_unlimited_host_stays_unlimited(): void
     {
-        set_time_limit(0);
+        $this->setHostLimitOrSkip(0);
 
         $this->assertTrue(ppcart_set_time_limit(60));
         $this->assertSame('0', ini_get('max_execution_time'));
@@ -80,7 +80,7 @@ class TimeLimitTest extends Unit
 
     public function test_zero_removes_the_limit_only_when_asked(): void
     {
-        set_time_limit(30);
+        $this->setHostLimitOrSkip(30);
 
         $this->assertTrue(ppcart_set_time_limit(0));
         $this->assertSame('0', ini_get('max_execution_time'));
@@ -88,9 +88,19 @@ class TimeLimitTest extends Unit
 
     public function test_a_negative_limit_changes_nothing(): void
     {
-        set_time_limit(30);
+        $this->setHostLimitOrSkip(30);
 
         $this->assertFalse(ppcart_set_time_limit(-5));
         $this->assertSame('30', ini_get('max_execution_time'));
+    }
+
+    private function setHostLimitOrSkip(int $limit): void
+    {
+        // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged,WordPress.PHP.NoSilencedErrors.Discouraged -- The test must probe whether this PHP runtime permits changing its time limit.
+        @set_time_limit($limit);
+
+        if ((string) $limit !== ini_get('max_execution_time')) {
+            $this->markTestSkipped('This PHP process does not permit changing max_execution_time.');
+        }
     }
 }
