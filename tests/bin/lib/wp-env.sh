@@ -912,45 +912,89 @@ regression_is_plugin_ddev_web() {
 	return 1
 }
 
-# Link mu-plugin that lowers error_reporting after wp_debug_mode().
-# Isolated test WordPress and this plugin's DDEV .web site. DDEV uses a
-# relative target so the host bind-mount does not see a dangling /var/www/html
-# symlink.
+# Install the mu-plugin that lowers error_reporting after wp_debug_mode().
+# A single symlink cannot resolve on both sides of a dev-workspace bind mount:
+# the container sees the plugin under wp-content/plugins, and host WPLoader
+# sees the repo next to dev-workspace-cache. A loader tries both.
 regression_ensure_silence_deprecations_mu_plugin() {
-	local root slug target link_path mu_dir source_file
+	local root slug source_file host_mu host_wp dest
 	root="$(regression_plugin_root)"
 	slug="$(basename "$root")"
 	source_file="$_REGRESSION_LIB_DIR/silence-php-deprecations.php"
-	mu_dir="$(regression_mu_plugins_dir)"
-	link_path="$mu_dir/ppcart-silence-php-deprecations.php"
-	target="${REGRESSION_PLUGIN_CONTAINER_PATH:-$slug}/tests/bin/lib/silence-php-deprecations.php"
 
 	if [ ! -f "$source_file" ]; then
 		return 0
 	fi
 
-	# DDEV docroot is .web; plugin repo is ../../../ from mu-plugins.
-	if regression_is_plugin_ddev_web; then
-		target="../../../tests/bin/lib/silence-php-deprecations.php"
+	host_mu=""
+	if host_wp="$(regression_resolve_wp_path_from_dev_workspace 2>/dev/null)"; then
+		host_mu="$host_wp/wp-content/mu-plugins"
+	elif regression_is_plugin_ddev_web && [ -d "$root/.web/wp-content" ]; then
+		host_mu="$root/.web/wp-content/mu-plugins"
 	fi
 
-	if [ "${REGRESSION_WP_RUNTIME:-host}" = "docker" ]; then
-		regression_docker_exec mkdir -p "$mu_dir"
-		regression_docker_exec ln -sfn "$target" "$link_path"
+	if [ -n "$host_mu" ]; then
+		mkdir -p "$host_mu"
+		regression_write_silence_mu_plugin "$host_mu/ppcart-silence-php-deprecations.php" "$slug"
 		return 0
 	fi
 
-	mkdir -p "$mu_dir"
-	if regression_is_plugin_ddev_web; then
-		:
-	elif [ -e "$mu_dir/../plugins/$slug/tests/bin/lib/silence-php-deprecations.php" ]; then
-		target="../plugins/$slug/tests/bin/lib/silence-php-deprecations.php"
-	elif command -v realpath >/dev/null 2>&1; then
-		target="$(realpath --relative-to="$mu_dir" "$source_file" 2>/dev/null || echo "$source_file")"
-	else
-		target="$source_file"
+	if [ "${REGRESSION_WP_RUNTIME:-host}" = "docker" ]; then
+		dest="$(regression_mu_plugins_dir)/ppcart-silence-php-deprecations.php"
+		regression_docker_exec mkdir -p "$(dirname "$dest")"
+		regression_write_silence_mu_plugin_via_docker "$dest" "$slug"
+		return 0
 	fi
-	ln -sfn "$target" "$link_path"
+
+	dest="$(regression_mu_plugins_dir)/ppcart-silence-php-deprecations.php"
+	mkdir -p "$(dirname "$dest")"
+	regression_write_silence_mu_plugin "$dest" "$slug"
+}
+
+regression_silence_mu_plugin_php() {
+	local slug="$1"
+	cat <<EOF
+<?php
+/**
+ * Plugin Name: PublishPress Cart - Silence vendor deprecations
+ * Description: Loads the repo mu-plugin from the path this WordPress tree can see.
+ *
+ * @package PublishPressCart
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+\$ppcart_silence_candidates = array(
+	__DIR__ . '/../plugins/${slug}/tests/bin/lib/silence-php-deprecations.php',
+	__DIR__ . '/../../../../tests/bin/lib/silence-php-deprecations.php',
+	__DIR__ . '/../../../tests/bin/lib/silence-php-deprecations.php',
+);
+
+foreach ( \$ppcart_silence_candidates as \$ppcart_silence_file ) {
+	if ( is_readable( \$ppcart_silence_file ) ) {
+		require_once \$ppcart_silence_file;
+		return;
+	}
+}
+EOF
+}
+
+regression_write_silence_mu_plugin() {
+	local dest="$1"
+	local slug="$2"
+
+	rm -f "$dest"
+	regression_silence_mu_plugin_php "$slug" >"$dest"
+}
+
+regression_write_silence_mu_plugin_via_docker() {
+	local dest="$1"
+	local slug="$2"
+
+	regression_docker_exec rm -f "$dest"
+	regression_silence_mu_plugin_php "$slug" | docker exec -i "$REGRESSION_WP_CONTAINER" tee "$dest" >/dev/null
 }
 
 regression_ensure_plugin_active() {
