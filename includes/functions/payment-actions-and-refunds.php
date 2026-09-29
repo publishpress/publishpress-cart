@@ -75,6 +75,17 @@ function ppcart_unsubscribe_customer()
         wp_send_json_error([ 'error' => __('Permission denied.', 'publishpress-cart') ], 403);
     }
 
+    // The ownership check above covers the local record only. A customer must not
+    // cancel a different gateway subscription by posting its ID, so use the one stored
+    // on the record they own.
+    if (! $can_manage_subscription) {
+        $sub_id = (string) $order['subscription_id'];
+        if ('' === $sub_id) {
+            esc_html_e('Invalid subscription ID', 'publishpress-cart');
+            wp_die();
+        }
+    }
+
     $plan = ppcart_plan($order['option_id'], '', $order['product_id']);
     if (!$plan) {
         $plan = ppcart_plan($order['plan_id'], '', $order['product_id']);
@@ -244,14 +255,9 @@ function ppcart_do_cancel_subscription($sub, $sub_id = false, $now = true, $echo
     }
 
     if (!$sub_id) {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Called from internal cancellation flow where nonce is already validated at entrypoint.
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Internal cancellation flow reads posted subscription identifier.
-        if (isset($_POST['subscription_id'])) {
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Internal cancellation flow reads posted subscription identifier.
-            $sub_id = sanitize_text_field(wp_unslash($_POST['subscription_id']));
-        } else {
-            $sub_id = $sub->subscription_id;
-        }
+        // Never fall back to request data here: callers run in checkout, webhook,
+        // and integration contexts where the request body is not the admin's.
+        $sub_id = $sub->subscription_id;
     }
 
     $canceled = false;

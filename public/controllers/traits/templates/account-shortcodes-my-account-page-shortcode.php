@@ -39,6 +39,11 @@ if (is_user_logged_in()) {
 
             $ret = ppcart_get_template('my-account/order', 'detail', $attr);
         } elseif (false !== $ppcart_plan_request && null !== $ppcart_plan_request && 'stripe' === $ppcart_manage_request) {
+            // The billing portal acts on the subscription's Stripe customer, so only its owner may open it.
+            if (!$this->verify_user_access(absint($ppcart_plan_request), 'subscription')) {
+                wp_die(esc_html__('You do not have permission to access this subscription.', 'publishpress-cart'));
+            }
+
             $sub = new PPCart_Subscription(absint($ppcart_plan_request));
             $order_data = (object) $sub->get_data();
 

@@ -223,3 +223,38 @@ function ppcart_filter_format_subcription_terms_text($text, $terms, $plan, $tria
 
     return $terms;
 }
+
+/**
+ * Whether the current user may view a My Account order or subscription record.
+ *
+ * Owners can view their own records. Site administrators can view any record.
+ * Guests and other customers cannot. Account templates call this so they fail
+ * closed when a caller forgets its own ownership check.
+ *
+ * @param int    $id   Order or subscription post ID.
+ * @param string $type 'order' or 'subscription'.
+ * @return bool
+ */
+function ppcart_current_user_can_view_account_record($id, $type = 'order')
+{
+    $id = absint($id);
+    if (! $id || ! is_user_logged_in()) {
+        return false;
+    }
+
+    if (current_user_can('manage_options')) {
+        return true;
+    }
+
+    $record = 'subscription' === $type ? new PPCart_Subscription($id) : new PPCart_Order($id);
+    $data   = $record->get_data();
+
+    $owner_id = 0;
+    if (is_array($data) && isset($data['user_account'])) {
+        $owner_id = absint($data['user_account']);
+    } elseif (is_object($data) && isset($data->user_account)) {
+        $owner_id = absint($data->user_account);
+    }
+
+    return $owner_id && get_current_user_id() === $owner_id;
+}

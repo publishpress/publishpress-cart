@@ -27,24 +27,63 @@ trait PPCart_Public_Account_Shortcodes_Trait
         return !empty($user_id) && get_current_user_id() == intval($user_id);
     }
 
+    /**
+     * Resolve a detail record ID the same way the detail templates do:
+     * the request parameter first, then the shortcode attribute.
+     *
+     * @param string       $request_key Request parameter name.
+     * @param string       $attr_key    Shortcode attribute name.
+     * @param array|string $attr        Shortcode attributes.
+     * @return int
+     */
+    private function resolve_account_detail_id($request_key, $attr_key, $attr)
+    {
+        $request_id = ppcart_filter_input_request($request_key, FILTER_VALIDATE_INT);
+        if (false !== $request_id && null !== $request_id) {
+            return absint($request_id);
+        }
+
+        if (is_array($attr) && ! empty($attr[ $attr_key ])) {
+            return absint($attr[ $attr_key ]);
+        }
+
+        return 0;
+    }
+
     public function order_detail_shortcode($attr, $content = null)
     {
-        $ppcart_order_request = ppcart_filter_input_request('ppcart-order', FILTER_VALIDATE_INT);
-        if (is_user_logged_in() && false !== $ppcart_order_request && null !== $ppcart_order_request) {
-            do_action('ppcart_enqueue_frontend_assets');
-            return ppcart_kses_frontend_html(ppcart_get_template('my-account/order', 'detail', $attr));
+        if (! is_user_logged_in()) {
+            return;
         }
-        return;
+
+        $order_id = $this->resolve_account_detail_id('ppcart-order', 'order', $attr);
+        if (! $order_id || ! $this->verify_user_access($order_id, 'order')) {
+            return;
+        }
+
+        $attr          = is_array($attr) ? $attr : [];
+        $attr['order'] = $order_id;
+
+        do_action('ppcart_enqueue_frontend_assets');
+        return ppcart_kses_frontend_html(ppcart_get_template('my-account/order', 'detail', $attr));
     }
 
     public function subscription_detail_shortcode($attr, $content = null)
     {
-        $ppcart_plan_request = ppcart_filter_input_request('ppcart-plan', FILTER_VALIDATE_INT);
-        if (is_user_logged_in() && false !== $ppcart_plan_request && null !== $ppcart_plan_request) {
-            do_action('ppcart_enqueue_frontend_assets');
-            return ppcart_kses_frontend_html(ppcart_get_template('my-account/subscription', 'detail', $attr));
+        if (! is_user_logged_in()) {
+            return;
         }
-        return;
+
+        $plan_id = $this->resolve_account_detail_id('ppcart-plan', 'plan', $attr);
+        if (! $plan_id || ! $this->verify_user_access($plan_id, 'subscription')) {
+            return;
+        }
+
+        $attr         = is_array($attr) ? $attr : [];
+        $attr['plan'] = $plan_id;
+
+        do_action('ppcart_enqueue_frontend_assets');
+        return ppcart_kses_frontend_html(ppcart_get_template('my-account/subscription', 'detail', $attr));
     }
 
     public function my_account_page_link_shortcode($attr, $content = null)
