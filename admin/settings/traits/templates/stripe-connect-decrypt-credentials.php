@@ -20,11 +20,13 @@ if ('' === $algorithm || $algorithm !== $expected_algorithm || '' === $public_ke
 }
 
 if ('sodium_box_seal' === $algorithm && function_exists('sodium_crypto_box_seal_open')) {
-    $ciphertext = ! empty($encrypted_payload['ciphertext']) ? base64_decode((string) $encrypted_payload['ciphertext'], true) : false;
-    $public_key = ! empty($encryption['public_key']) ? $this->base64url_decode((string) $encryption['public_key']) : false;
-    $private_key = ! empty($encryption['private_key']) ? base64_decode((string) $encryption['private_key'], true) : false;
+    // Cipher text comes from the Connect server response; keys come from the pending state this site stored.
+    // Decode strictly and check byte lengths so libsodium never receives malformed input.
+    $ciphertext = ! empty($encrypted_payload['ciphertext']) ? PPCart_Base64::decode((string) $encrypted_payload['ciphertext']) : false;
+    $public_key = ! empty($encryption['public_key']) ? $this->base64url_decode((string) $encryption['public_key'], SODIUM_CRYPTO_BOX_PUBLICKEYBYTES) : false;
+    $private_key = ! empty($encryption['private_key']) ? PPCart_Base64::decode((string) $encryption['private_key'], SODIUM_CRYPTO_BOX_SECRETKEYBYTES) : false;
 
-    if (false === $ciphertext || false === $public_key || false === $private_key) {
+    if (false === $ciphertext || false === $public_key || false === $private_key || strlen($ciphertext) <= SODIUM_CRYPTO_BOX_SEALBYTES) {
         return [];
     }
 
@@ -35,13 +37,18 @@ if ('sodium_box_seal' === $algorithm && function_exists('sodium_crypto_box_seal_
 }
 
 if ('openssl_rsa_aes_256_cbc_hmac_sha256' === $algorithm && function_exists('openssl_private_decrypt')) {
-    $encrypted_key = ! empty($encrypted_payload['encrypted_key']) ? base64_decode((string) $encrypted_payload['encrypted_key'], true) : false;
-    $ciphertext = ! empty($encrypted_payload['ciphertext']) ? base64_decode((string) $encrypted_payload['ciphertext'], true) : false;
-    $iv = ! empty($encrypted_payload['iv']) ? base64_decode((string) $encrypted_payload['iv'], true) : false;
+    // Strict decode; the AES-256-CBC IV is exactly 16 bytes and the cipher text is whole 16-byte blocks.
+    $encrypted_key = ! empty($encrypted_payload['encrypted_key']) ? PPCart_Base64::decode((string) $encrypted_payload['encrypted_key']) : false;
+    $ciphertext = ! empty($encrypted_payload['ciphertext']) ? PPCart_Base64::decode((string) $encrypted_payload['ciphertext']) : false;
+    $iv = ! empty($encrypted_payload['iv']) ? PPCart_Base64::decode((string) $encrypted_payload['iv'], 16) : false;
     $hmac = ! empty($encrypted_payload['hmac']) ? (string) $encrypted_payload['hmac'] : '';
     $private_key = isset($encryption['private_key']) ? (string) $encryption['private_key'] : '';
 
-    if (false === $encrypted_key || false === $ciphertext || false === $iv || '' === $hmac || '' === $private_key) {
+    if (false === $encrypted_key || '' === $encrypted_key || false === $iv || '' === $hmac || '' === $private_key) {
+        return [];
+    }
+
+    if (false === $ciphertext || '' === $ciphertext || 0 !== strlen($ciphertext) % 16) {
         return [];
     }
 

@@ -4,6 +4,8 @@ if (! defined('ABSPATH')) {
     die('You are not allowed to call this page directly.');
 }
 
+require_once dirname(__DIR__, 3) . '/includes/class-ppcart-base64.php';
+
 trait PPCart_Admin_Stripe_Connect_Encryption_Trait
 {
     private function generate_stripe_connect_encryption_key_pair()
@@ -27,18 +29,11 @@ trait PPCart_Admin_Stripe_Connect_Encryption_Trait
 
     private function base64url_encode($data)
     {
-        return rtrim(strtr(base64_encode((string) $data), '+/', '-_'), '=');
+        return PPCart_Base64::url_encode((string) $data);
     }
 
-    private function base64url_decode($data)
+    private function base64url_decode($data, $expected_length = null)
     {
-        $data = strtr((string) $data, '-_', '+/');
-        $padding = strlen($data) % 4;
-
-        if ($padding) {
-            $data .= str_repeat('=', 4 - $padding);
-        }
-
-        return base64_decode($data, true);
+        return PPCart_Base64::url_decode((string) $data, $expected_length);
     }
 }

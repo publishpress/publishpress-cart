@@ -286,6 +286,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-post-status-sync
 require_once plugin_dir_path(__FILE__) . 'models/class-ppcart-order.php';
 require_once plugin_dir_path(__FILE__) . 'models/class-ppcart-subscription.php';
 require_once plugin_dir_path(__FILE__) . 'includes/logging/class-ppcart-debug-log-viewer.php';
+require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-base64.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-secrets.php';
 require_once plugin_dir_path(__FILE__) . 'includes/helpers/ppcart-secrets-functions.php';
 
