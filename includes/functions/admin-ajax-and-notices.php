@@ -155,14 +155,24 @@ function ppcart_get_customers($customer_id = 0)
 {
 
     global $wpdb;
+    $account_keys = ppcart_query_meta_keys('user_account');
+    $order_types  = ppcart_query_post_types('order');
     if ($customer_id > 0) {
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_meta_keys() and ppcart_sql_in_post_types() return prepared placeholder lists.
-        $query = $wpdb->prepare("SELECT {$wpdb->prefix}posts.ID,{$wpdb->prefix}postmeta.meta_value FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id ) WHERE 1=1 AND ( {$wpdb->prefix}postmeta.meta_key IN (" . ppcart_sql_in_meta_keys('user_account') . ") AND {$wpdb->prefix}postmeta.meta_value = %d ) AND {$wpdb->prefix}posts.post_type IN (" . ppcart_sql_in_post_types('order') . ") AND (({$wpdb->prefix}posts.post_status <> 'trash' AND {$wpdb->prefix}posts.post_status <> 'auto-draft')) ORDER BY `{$wpdb->prefix}posts`.`post_date` DESC", $customer_id);
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Legacy customer lookup query uses prepared customer filter.
-        $result = $wpdb->get_results($query);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Customer order lookup for the admin customer list.
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT {$wpdb->posts}.ID,{$wpdb->postmeta}.meta_value FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id ) WHERE 1=1 AND ( {$wpdb->postmeta}.meta_key IN (" . implode(',', array_fill(0, count($account_keys), '%s')) . ") AND {$wpdb->postmeta}.meta_value = %d ) AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ") AND (({$wpdb->posts}.post_status <> 'trash' AND {$wpdb->posts}.post_status <> 'auto-draft')) ORDER BY {$wpdb->posts}.post_date DESC",
+                array_merge($account_keys, [ (int) $customer_id ], $order_types)
+            )
+        );
     } else {
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Legacy customer listing query uses prepared helper-generated IN() lists for canonical keys/types.
-        $result = $wpdb->get_results("SELECT {$wpdb->prefix}posts.ID,{$wpdb->prefix}postmeta.meta_value FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id ) WHERE 1=1 AND ( {$wpdb->prefix}postmeta.meta_key IN (" . ppcart_sql_in_meta_keys('user_account') . ") ) AND {$wpdb->prefix}posts.post_type IN (" . ppcart_sql_in_post_types('order') . ") AND (({$wpdb->prefix}posts.post_status <> 'trash' AND {$wpdb->prefix}posts.post_status <> 'auto-draft')) ORDER BY `{$wpdb->prefix}posts`.`post_date` DESC");
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Customer order listing for the admin customer list.
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT {$wpdb->posts}.ID,{$wpdb->postmeta}.meta_value FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id ) WHERE 1=1 AND ( {$wpdb->postmeta}.meta_key IN (" . implode(',', array_fill(0, count($account_keys), '%s')) . ") ) AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ") AND (({$wpdb->posts}.post_status <> 'trash' AND {$wpdb->posts}.post_status <> 'auto-draft')) ORDER BY {$wpdb->posts}.post_date DESC",
+                array_merge($account_keys, $order_types)
+            )
+        );
     }
 
     $customers = [];

@@ -31,59 +31,59 @@ class PPCart_Dashboard_Order_Data
     {
         global $wpdb;
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_post_types() returns a placeholder list prepared from canonical post types.
-        $query = $wpdb->prepare(
-            "SELECT COUNT(*) FROM $wpdb->posts WHERE post_type IN (" . ppcart_sql_in_post_types('order') . ") AND post_date >= %s",
-            wp_date('Y-m-01')
-        );
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
+        $order_types = ppcart_query_post_types('order');
 
-	    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- $query is built via $wpdb->prepare(); IN() lists come from ppcart_sql_in_post_types().
-        return (int) $wpdb->get_var($query);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Dashboard widget count.
+        return (int) $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ') AND post_date >= %s',
+                array_merge($order_types, [ wp_date('Y-m-01') ])
+            )
+        );
     }
 
     private function get_total_sales()
     {
         global $wpdb;
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_post_types() returns a placeholder list prepared from canonical post types.
-        $query = $wpdb->prepare(
-            "SELECT SUM(meta_value) FROM $wpdb->postmeta WHERE meta_key = %s AND post_id IN (SELECT ID FROM $wpdb->posts WHERE post_type IN (" . ppcart_sql_in_post_types('order') . ") AND post_date >= %s)",
-            ppcart_meta_key('amount'),
-            wp_date('Y-m-01')
-        );
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
+        $order_types = ppcart_query_post_types('order');
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- $query is built via $wpdb->prepare() above.
-        return (float) $wpdb->get_var($query);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Dashboard widget total.
+        return (float) $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT SUM(meta_value) FROM {$wpdb->postmeta} WHERE meta_key = %s AND post_id IN (SELECT ID FROM {$wpdb->posts} WHERE post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ') AND post_date >= %s)',
+                array_merge([ ppcart_meta_key('amount') ], $order_types, [ wp_date('Y-m-01') ])
+            )
+        );
     }
 
     private function get_orders($status)
     {
         global $wpdb;
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared -- ppcart_sql_in_post_types() returns a placeholder list prepared from canonical post types.
-        $query = $wpdb->prepare(
-            "SELECT COUNT(*) FROM $wpdb->postmeta
-            WHERE meta_key = %s
-            AND meta_value = %s
-            AND post_id IN (
-                SELECT ID FROM $wpdb->posts
-                WHERE post_type IN (" . ppcart_sql_in_post_types('order') . ")
-                AND post_date >= %s
-                AND ID NOT IN (
-                    SELECT post_id FROM $wpdb->postmeta
-                    WHERE meta_key = %s
-                )
-            )",
-            ppcart_meta_key('status'),
-            $status,
-            wp_date('Y-m-01'),
-            ppcart_meta_key('renewal')
-        );
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
+        $order_types = ppcart_query_post_types('order');
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- $query is built via $wpdb->prepare() above.
-        return (int) $wpdb->get_var($query);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Dashboard widget count.
+        return (int) $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT COUNT(*) FROM {$wpdb->postmeta}
+                WHERE meta_key = %s
+                AND meta_value = %s
+                AND post_id IN (
+                    SELECT ID FROM {$wpdb->posts}
+                    WHERE post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ")
+                    AND post_date >= %s
+                    AND ID NOT IN (
+                        SELECT post_id FROM {$wpdb->postmeta}
+                        WHERE meta_key = %s
+                    )
+                )",
+                array_merge(
+                    [ ppcart_meta_key('status'), $status ],
+                    $order_types,
+                    [ wp_date('Y-m-01'), ppcart_meta_key('renewal') ]
+                )
+            )
+        );
     }
 }
