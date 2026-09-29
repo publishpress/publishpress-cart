@@ -23,6 +23,14 @@ $this->write_guard_file(
     ''
 );
 
+// Logs are served only through the admin viewer. Deny direct web access on Apache.
+$this->write_guard_file(
+    $this->log_folder_path . '/.htaccess',
+    "# Deny direct access to PublishPress Cart log files.\n"
+    . "<IfModule mod_authz_core.c>\n    Require all denied\n</IfModule>\n"
+    . "<IfModule !mod_authz_core.c>\n    Order Deny,Allow\n    Deny from all\n</IfModule>\n"
+);
+
 $legacy_php_guard = $this->log_folder_path . '/index.php';
 if (is_file($this->log_folder_path . '/index.html') && is_file($legacy_php_guard)) {
     // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink,WordPress.WP.AlternativeFunctions.unlink_unlink -- Removes leftover generated PHP log guard after the HTML guard exists.

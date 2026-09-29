@@ -20,7 +20,7 @@ class PPCart_Debug_Logger
     protected static $instance;
     protected static $current_flow_id;
     protected $log_folder_path;
-    protected $default_log_file = 'log.txt';
+    protected $default_log_file = 'debug.log';
     protected $overwrite        = false;
     public const MAX_ROTATED_FILES     = 3;
     public const DEFAULT_MAX_BYTES     = 2097152;
@@ -55,6 +55,17 @@ class PPCart_Debug_Logger
     {
         $__ppcart_template_result = include __DIR__ . '/templates/ppcart-debug-logger-init-default-log-file.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
+     * Renames a legacy .txt debug log (and its rotations) to .log and stores the new name.
+     *
+     * @param string $file_name Stored log file name.
+     * @return string File name to use for this request.
+     */
+    public function migrate_legacy_log_file_name($file_name)
+    {
+        return include __DIR__ . '/templates/ppcart-debug-logger-migrate-legacy-log-file-name.php';
     }
 
     public function get_debug_timestamp()
