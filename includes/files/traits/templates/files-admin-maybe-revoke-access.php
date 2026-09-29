@@ -29,13 +29,15 @@ if ($revoke_id && $current_post_id && $key && $nonce && wp_verify_nonce($nonce, 
         if ($this->revoke_access($revoke_id)) {
             /* translators: 1: file name, 2: user login. */
             ppcart_log_entry($current_post_id, sprintf(__('Access to file "%1$s" revoked by %2$s', 'publishpress-cart'), $download->name, $authenticated_user->user_login));
-            $redirect .= '&ppcart-revoked=' . urlencode($download->name);
+            $revoked = rawurlencode((string) $download->name);
         } else {
-            $redirect .= '&ppcart-revoked=error';
+            $revoked = 'error';
         }
     } else {
-        $redirect .= '&ppcart-revoked=download-not-found';
+        $revoked = 'download-not-found';
     }
+
+    $redirect = add_query_arg('ppcart-revoked', $revoked, $redirect);
 
     ppcart_redirect($redirect);
 }
