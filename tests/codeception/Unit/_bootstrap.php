@@ -685,3 +685,92 @@ if (! function_exists('get_edit_post_link')) {
         return WordPressStubContext::invoke('get_edit_post_link', func_get_args());
     }
 }
+
+if (! function_exists('remove_query_arg')) {
+    /**
+     * @param array|string $keys Keys to remove.
+     * @param string|false $url  URL.
+     * @return string
+     */
+    function remove_query_arg($keys, $url = false)
+    {
+        if (WordPressStubContext::has('remove_query_arg')) {
+            return WordPressStubContext::invoke('remove_query_arg', func_get_args());
+        }
+
+        if (false === $url || '' === $url) {
+            return '';
+        }
+
+        return (string) $url;
+    }
+}
+
+if (! function_exists('add_query_arg')) {
+    /**
+     * @param array|string $key   Query args or key.
+     * @param string|mixed $value Value or URL when the first argument is an array.
+     * @param string       $url   Optional base URL.
+     * @return string
+     */
+    function add_query_arg($key, $value = '', $url = null)
+    {
+        if (WordPressStubContext::has('add_query_arg')) {
+            return WordPressStubContext::invoke('add_query_arg', func_get_args());
+        }
+
+        if (is_array($key)) {
+            $args = $key;
+            $url  = func_num_args() > 1 ? (string) $value : '';
+        } else {
+            $args = [ (string) $key => $value ];
+            if (func_num_args() > 2) {
+                $url = (string) func_get_arg(2);
+            } elseif (func_num_args() > 1 && is_string($value) && (false !== strpos($value, 'http') || '' === $value)) {
+                $url = (string) $value;
+            } else {
+                $url = '';
+            }
+        }
+
+        $query = http_build_query($args);
+        if ('' === $url) {
+            return '?' . $query;
+        }
+
+        $separator = false === strpos($url, '?') ? '?' : '&';
+
+        return $url . $separator . $query;
+    }
+}
+
+if (! function_exists('wp_nonce_url')) {
+    /**
+     * @param string $actionurl Action URL.
+     * @param string $action    Nonce action.
+     * @param string $name      Nonce query-arg name.
+     * @return string
+     */
+    function wp_nonce_url($actionurl, $action = -1, $name = '_wpnonce')
+    {
+        if (WordPressStubContext::has('wp_nonce_url')) {
+            return WordPressStubContext::invoke('wp_nonce_url', func_get_args());
+        }
+
+        $separator = false === strpos((string) $actionurl, '?') ? '?' : '&';
+
+        return $actionurl . $separator . $name . '=nonce';
+    }
+}
+
+if (! function_exists('esc_html_e')) {
+    /**
+     * @param string $text   Text.
+     * @param string $domain Text domain.
+     * @return void
+     */
+    function esc_html_e($text, $domain = 'default')
+    {
+        echo esc_html($text);
+    }
+}
