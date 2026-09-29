@@ -34,7 +34,7 @@ trait PPCart_Debug_Log_Viewer_Files_Trait
     {
         $file_name = self::sanitize_file_name($file_name);
         if ('' === $file_name) {
-            $file_name = self::sanitize_file_name((string) get_option('_ppcart_log_file', 'log.txt'));
+            $file_name = self::sanitize_file_name((string) get_option('_ppcart_log_file', 'debug.log'));
         }
 
         $path = trailingslashit(self::get_log_folder_path()) . $file_name;

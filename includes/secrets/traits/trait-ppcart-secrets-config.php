@@ -22,7 +22,10 @@ trait PPCart_Secrets_Config_Trait
         self::$initialized = true;
 
         add_filter('pre_update_option', [ __CLASS__, 'filter_pre_update_any_option' ], 10, 3);
-        add_filter('alloptions', [ __CLASS__, 'filter_alloptions_decrypt' ], 10, 1);
+        // Decrypt at read time through option_{$name} filters. Never rewrite core's
+        // alloptions/options cache with plaintext: a persistent object cache would
+        // then hold decrypted credentials.
+        add_filter('pre_option', [ __CLASS__, 'filter_pre_option_register_decrypt' ], 10, 2);
 
         self::register_option_decrypt_filters();
 
@@ -46,50 +49,139 @@ trait PPCart_Secrets_Config_Trait
     {
         // Rebuild the memoized list so late ppcart_sensitive_option_names registrations are picked up.
         self::$sensitive_option_names_cache = null;
+        self::$pre_option_checked           = [];
 
         foreach (self::get_sensitive_option_names() as $option_name) {
-            if (isset(self::$decrypt_filters_registered[ $option_name ])) {
-                continue;
-            }
-
-            add_filter(
-                'option_' . $option_name,
-                static function ($value) use ($option_name) {
-                    return self::handle_sensitive_option_read($option_name, $value);
-                },
-                999,
-                1
-            );
-            self::$decrypt_filters_registered[ $option_name ] = true;
+            self::register_option_decrypt_filter($option_name);
         }
     }
 
     /**
-     * Re-decrypts sensitive values already present in the options object cache.
+     * Registers the per-option decrypt filter for one sensitive option name.
      *
-     * WordPress can prime alloptions before plugin hooks are registered on some requests.
+     * @param string $option_name Option name.
+     * @return void
+     */
+    public static function register_option_decrypt_filter($option_name)
+    {
+        $option_name = (string) $option_name;
+
+        if ('' === $option_name || isset(self::$decrypt_filters_registered[ $option_name ])) {
+            return;
+        }
+
+        add_filter(
+            'option_' . $option_name,
+            static function ($value) use ($option_name) {
+                return self::handle_sensitive_option_read($option_name, $value);
+            },
+            999,
+            1
+        );
+        self::$decrypt_filters_registered[ $option_name ] = true;
+    }
+
+    /**
+     * Adds a decrypt filter for sensitive names that are not in the static registry.
+     *
+     * Names that match only a sensitive pattern (for example `_ppcart_<x>_api_key`)
+     * get their option_{$name} filter the first time get_option() asks for them.
+     * The filtered value is never changed here.
+     *
+     * @param mixed  $pre         Short-circuit value from earlier pre_option filters.
+     * @param string $option_name Option name.
+     * @return mixed
+     */
+    public static function filter_pre_option_register_decrypt($pre, $option_name = '')
+    {
+        $option_name = (string) $option_name;
+
+        if (
+            '' === $option_name
+            || self::$pre_option_running
+            || isset(self::$decrypt_filters_registered[ $option_name ])
+            || isset(self::$pre_option_checked[ $option_name ])
+        ) {
+            return $pre;
+        }
+
+        // is_sensitive_option() runs public filters that can call get_option() again.
+        self::$pre_option_running                 = true;
+        self::$pre_option_checked[ $option_name ] = true;
+
+        if (self::is_sensitive_option($option_name)) {
+            self::register_option_decrypt_filter($option_name);
+        }
+
+        self::$pre_option_running = false;
+
+        return $pre;
+    }
+
+    /**
+     * Removes plaintext secrets that earlier versions wrote into the options object cache.
+     *
+     * Earlier versions stored decrypted values in core's `alloptions` and per-option
+     * cache entries. With a persistent object cache (Redis, Memcached) that kept
+     * plaintext credentials outside the database. This only deletes stale entries,
+     * so WordPress reloads the stored ciphertext. It never writes plaintext.
      *
      * @return void
      */
     public static function refresh_cached_secret_options()
     {
-        if (! function_exists('wp_cache_get') || ! function_exists('wp_cache_set')) {
+        if (! function_exists('wp_cache_get') || ! function_exists('wp_cache_delete')) {
+            return;
+        }
+
+        if (! self::encryption_available()) {
             return;
         }
 
         $alloptions = wp_cache_get('alloptions', 'options');
         if (is_array($alloptions)) {
-            wp_cache_set('alloptions', self::decrypt_alloptions($alloptions), 'options');
+            foreach ($alloptions as $option_name => $value) {
+                if (self::is_stale_plaintext_cache_value((string) $option_name, $value)) {
+                    wp_cache_delete('alloptions', 'options');
+                    break;
+                }
+            }
         }
 
         foreach (self::get_sensitive_option_names() as $option_name) {
             $cached = wp_cache_get($option_name, 'options');
-            if (! is_string($cached)) {
-                continue;
-            }
 
-            wp_cache_set($option_name, self::maybe_decrypt_option_value($cached), 'options');
+            if (self::is_stale_plaintext_cache_value($option_name, $cached)) {
+                wp_cache_delete($option_name, 'options');
+            }
         }
+    }
+
+    /**
+     * Whether a cached option value is plaintext while the database holds ciphertext.
+     *
+     * Plaintext that is also plaintext in the database is encrypted in place, so the
+     * cache then holds ciphertext and later requests skip it.
+     *
+     * @param string $option_name Option name.
+     * @param mixed  $value       Cached value.
+     * @return bool
+     */
+    private static function is_stale_plaintext_cache_value($option_name, $value)
+    {
+        if (! is_string($value) || '' === $value || self::is_encrypted_value($value)) {
+            return false;
+        }
+
+        if (! self::is_sensitive_option($option_name)) {
+            return false;
+        }
+
+        if (self::migrate_plaintext_option($option_name)) {
+            return false;
+        }
+
+        return self::is_encrypted_value(self::get_raw_option_value($option_name));
     }
 
     /**

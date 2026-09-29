@@ -557,16 +557,35 @@ function ppcart_is_file_valid_csv($file, $check_path = true)
 }
 
 /**
- * Wrapper for set_time_limit to see if it is enabled.
+ * Raises the PHP time limit for the current long-running task only.
+ *
+ * Call it inside the exact function that needs more time (for example a bulk
+ * import), never on a global hook. It only raises the limit: it does nothing
+ * when the host limit is already unlimited or already at least $limit. Pass 0
+ * only when the task must run without a limit.
  *
  * @since 1.0.0
- * @param int $limit Time limit.
+ * @param int $limit Time limit in seconds. 0 means no limit.
+ * @return bool Whether the limit is now at least $limit.
  */
 function ppcart_set_time_limit($limit = 0)
 {
-    if (function_exists('set_time_limit') && false === strpos(ini_get('disable_functions'), 'set_time_limit') && ! ini_get('safe_mode')) { // phpcs:ignore PHPCompatibility.IniDirectives.RemovedIniDirectives.safe_modeDeprecatedRemoved
-        @set_time_limit($limit); // @codingStandardsIgnoreLine
+    $limit = (int) $limit;
+    if ($limit < 0) {
+        return false;
     }
+
+    $current = (int) ini_get('max_execution_time');
+    if (0 === $current || ($limit > 0 && $limit <= $current)) {
+        return true;
+    }
+
+    if (! function_exists('set_time_limit') || false !== strpos((string) ini_get('disable_functions'), 'set_time_limit')) {
+        return false;
+    }
+
+    // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged,WordPress.PHP.NoSilencedErrors.Discouraged -- Scoped to the caller's long task; raises the limit only, and some hosts emit a warning when it is locked.
+    return (bool) @set_time_limit($limit);
 }
 
 add_action('wp_ajax_ppcart_update_user_profile', 'ppcart_update_user_profile');

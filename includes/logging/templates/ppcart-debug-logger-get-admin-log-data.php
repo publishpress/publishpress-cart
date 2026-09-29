@@ -7,7 +7,7 @@ if (! defined('ABSPATH')) {
 // phpcs:disable VariableAnalysis.CodeAnalysis.VariableAnalysis.SelfOutsideClass -- Included from PPCart_Debug_Logger::get_admin_log_data().
 
 
-$file_name = basename((string) get_option('_ppcart_log_file', 'log.txt'));
+$file_name = basename((string) get_option('_ppcart_log_file', 'debug.log'));
 $log_dir   = self::resolve_log_dir();
 $log_path  = $log_dir ? trailingslashit($log_dir) . $file_name : '';
 $exists    = $log_path && file_exists($log_path);

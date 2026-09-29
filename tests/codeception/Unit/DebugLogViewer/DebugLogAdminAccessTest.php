@@ -43,8 +43,8 @@ class DebugLogAdminAccessTest extends Unit
         WordPressStubContext::setState(
             'options',
             array(
-                '_sc_enable_debug' => 1,
-                '_sc_log_file'     => 'unit-access-log.txt',
+                '_ppcart_enable_debug' => 1,
+                '_ppcart_log_file' => 'unit-access-debug.log',
             )
         );
         WordPressStubContext::setState('nonce_checked', false);

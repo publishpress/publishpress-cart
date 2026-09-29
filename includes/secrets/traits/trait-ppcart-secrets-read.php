@@ -112,11 +112,12 @@ trait PPCart_Secrets_Read_Trait
     }
 
     /**
-     * Decrypts encrypted values in the autoloaded options cache.
+     * Returns a copy of autoloaded options with sensitive values decrypted.
      *
-     * Runs the decrypt scan at most once per request and skips entirely when
-     * encryption is disabled. Latch is set before encryption_enabled() because
-     * that call reads an option and re-enters this filter.
+     * Not hooked to the `alloptions` filter: core writes the filtered array back to
+     * the object cache on option updates, which would store plaintext secrets there.
+     * Reads decrypt through option_{$name} filters instead. The copy is never cached.
+     * Scans at most once per request and skips when encryption is disabled.
      *
      * @param array<string, mixed> $alloptions Autoloaded options.
      * @return array<string, mixed>
@@ -127,7 +128,6 @@ trait PPCart_Secrets_Read_Trait
             return $alloptions;
         }
 
-        // 'alloptions' fires hundreds of times per request; scan at most once.
         if (self::$alloptions_decrypt_done) {
             return $alloptions;
         }
@@ -138,21 +138,13 @@ trait PPCart_Secrets_Read_Trait
             return $alloptions;
         }
 
-        $decrypted = self::decrypt_alloptions($alloptions);
-
-        // Write back so later (latched) reads see plaintext — required for regex-only
-        // sensitive names, which have no per-option option_<name> decrypt filter.
-        if (function_exists('wp_cache_set')) {
-            wp_cache_set('alloptions', $decrypted, 'options');
-        }
-
-        return $decrypted;
+        return self::decrypt_alloptions($alloptions);
     }
 
     /**
      * Decrypts encrypted values in an alloptions array. No latch — always scans.
      *
-     * Used by refresh_cached_secret_options() for explicit cache refresh.
+     * The result is plaintext. Do not store it in the object cache.
      *
      * @param array<string, mixed> $alloptions Autoloaded options.
      * @return array<string, mixed>
