@@ -298,7 +298,22 @@ function ppcart_do_field($args)
     ];
 
     $args = wp_parse_args($args, $defaults);
-    extract($args);
+
+    // Explicit assignments instead of extract(): only the known field keys become locals.
+    $id          = $args['id'];
+    $required    = $args['required'];
+    $type        = $args['type'];
+    $hide_labels = $args['hide_labels'];
+    $cols        = $args['cols'];
+    $description = $args['description'];
+    $class       = $args['class'];
+    $value       = $args['value'];
+    $div_class   = $args['div_class'];
+    $qty_price   = $args['qty_price'];
+    $testid      = $args['testid'];
+    $name        = isset($args['name']) ? $args['name'] : null;
+    $label       = isset($args['label']) ? $args['label'] : null;
+    $choices     = isset($args['choices']) ? $args['choices'] : null;
     $posted_ppcart_errors = ppcart_filter_input(INPUT_POST, 'ppcart_errors', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
 
     if (!$id) {

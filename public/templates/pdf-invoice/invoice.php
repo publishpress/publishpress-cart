@@ -48,19 +48,29 @@ if ($image_file) {
     $image_file = str_replace($baseurl, $basedir, $image_file);
     $upload_basedir = realpath($basedir);
     $resolved_image_file = realpath($image_file);
+    $image_mime = false;
 
+    // Only a real image file inside the uploads directory can be embedded. realpath() resolves
+    // "../" and symlinks before the prefix check, and the MIME sniff stops non-image files
+    // (for example PHP or config files) from being copied into the PDF.
     if (
-        false === $upload_basedir ||
-        false === $resolved_image_file ||
-        0 !== strpos(wp_normalize_path($resolved_image_file), trailingslashit(wp_normalize_path($upload_basedir))) ||
-        ! is_file($resolved_image_file) ||
-        ! is_readable($resolved_image_file)
+        false !== $upload_basedir &&
+        false !== $resolved_image_file &&
+        0 === strpos(wp_normalize_path($resolved_image_file), trailingslashit(wp_normalize_path($upload_basedir))) &&
+        is_file($resolved_image_file) &&
+        is_readable($resolved_image_file)
     ) {
+        $image_mime = wp_get_image_mime($resolved_image_file);
+    }
+
+    if (! in_array($image_mime, [ 'image/png', 'image/jpeg', 'image/gif', 'image/webp' ], true)) {
         $image_file = '';
     } else {
-        // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- Reads a confined local uploads file path, not a remote URL.
-        $image_file = base64_encode(file_get_contents($resolved_image_file));
-        $image_file = '<img src="data:image/png;base64,' . $image_file . '" alt="' . esc_attr($company_name) . '" style="max-width:250px;margin-bottom:40px">';
+        // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- Reads a confined local uploads image file, not a remote URL.
+        $image_bytes = file_get_contents($resolved_image_file);
+        $image_file = false === $image_bytes
+            ? ''
+            : '<img src="data:' . esc_attr($image_mime) . ';base64,' . PPCart_Base64::encode($image_bytes) . '" alt="' . esc_attr($company_name) . '" style="max-width:250px;margin-bottom:40px">';
     }
 } else {
     $image_file = '';

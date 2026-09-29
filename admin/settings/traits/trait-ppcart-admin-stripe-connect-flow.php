@@ -115,7 +115,7 @@ trait PPCart_Admin_Stripe_Connect_Flow_Trait
             return new WP_Error('stripe_connect_site_credential_encryption_error', __('Unable to encrypt the Stripe Connect site credential.', 'publishpress-cart'));
         }
 
-        return base64_encode($ciphertext);
+        return PPCart_Base64::encode($ciphertext);
     }
 
     private function get_stripe_connect_preregistration_public_key($connect_server_url)

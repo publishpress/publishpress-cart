@@ -48,7 +48,7 @@ if ($default_template == 'two_step') {
     $default_template = '2-step';
 }
 
-extract(shortcode_atts([
+$product_shortcode_atts = shortcode_atts([
     'product_id' => $atts['id'],
     'plan' => false,
     'hide_labels' => false,
@@ -57,7 +57,18 @@ extract(shortcode_atts([
     'coupon'  => false,
     'builder' => false,
     'ele_popup' => false,
-], $atts));
+], $atts);
+
+// Explicit assignments instead of extract(). The checkout template included below reads these locals.
+$product_id  = $product_shortcode_atts['product_id'];
+$plan        = $product_shortcode_atts['plan'];
+$hide_labels = $product_shortcode_atts['hide_labels'];
+$template    = $product_shortcode_atts['template'];
+$skin        = $product_shortcode_atts['skin'];
+$coupon      = $product_shortcode_atts['coupon'];
+$builder     = $product_shortcode_atts['builder'];
+$ele_popup   = $product_shortcode_atts['ele_popup'];
+unset($product_shortcode_atts);
 
 if (! ppcart_checkout_claim_request_render([ 'source' => 'shortcode', 'builder' => $builder, 'ele_popup' => $ele_popup, 'product_id' => absint($product_id) ])) {
     return '';
@@ -96,7 +107,8 @@ $template_dir              = PPCART_BASE_DIR . 'public/templates/';
 $default_checkout_template = $template_dir . 'checkout-shortcode.php';
 $checkout_template         = $default_checkout_template;
 
-if ($template && file_exists($template_dir . 'checkout-shortcode-' . $template . '.php')) {
+// The template/skin names come from shortcode attributes: allow only a plain slug in the file path.
+if ($template && is_string($template) && preg_match('/^[a-z0-9_-]+$/i', $template) && file_exists($template_dir . 'checkout-shortcode-' . $template . '.php')) {
     $checkout_template = $template_dir . 'checkout-shortcode-' . $template . '.php';
 }
 

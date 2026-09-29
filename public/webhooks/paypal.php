@@ -330,7 +330,10 @@ function ppcart_verifyTransaction($data)
 
     $req = 'cmd=_notify-validate';
     foreach ($data as $key => $value) {
-        $value = urlencode(stripslashes($value));
+        // PayPal IPN verification must post the message back exactly as received, encoded as
+        // application/x-www-form-urlencoded (spaces as "+"), as PayPal's IPN sample code does.
+        // rawurlencode() would change the bytes PayPal compares and turn VERIFIED into INVALID.
+        $value = urlencode(stripslashes($value)); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode -- Legacy form encoding required by the PayPal IPN protocol.
         $value = preg_replace('/(.*[^%^0^D])(%0A)(.*)/i', '${1}%0D%0A${3}', $value); // IPN fix
         $req .= "&$key=$value";
     }
