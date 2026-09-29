@@ -383,13 +383,16 @@ function ppcart_plan_detail($atts)
         $atts['product_id'] = $post->ID;
     }
 
-    extract(shortcode_atts([
+    $atts = shortcode_atts([
         'id' => $atts['product_id'],
-        'plan_id' => $atts['plan_id'],
+        'plan_id' => isset($atts['plan_id']) ? $atts['plan_id'] : null,
         'field' => 'name',
-    ], $atts));
+    ], $atts);
+    $id      = $atts['id'];
+    $plan_id = $atts['plan_id'];
+    $field   = $atts['field'];
 
-    $plan = ppcart_plan($plan_id, $on_sale = 'current', $id);
+    $plan = ppcart_plan($plan_id, 'current', $id);
 
     if (isset($plan->$field)) {
         if ($field == 'price') {
@@ -421,9 +424,10 @@ function ppcart_product_detail($atts)
         return;
     }
 
-    extract(shortcode_atts([
+    $atts  = shortcode_atts([
         'field' => 'name',
-    ], $atts));
+    ], $atts);
+    $field = $atts['field'];
 
     if ($prod && $field == 'name') {
         return esc_html(ppcart_get_public_product_name($prod->ID));
