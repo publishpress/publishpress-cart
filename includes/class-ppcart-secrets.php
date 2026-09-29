@@ -82,4 +82,18 @@ class PPCart_Secrets
      * @var bool
      */
     private static $alloptions_decrypt_done = false;
+
+    /**
+     * Option names already checked by the pre_option decrypt registration.
+     *
+     * @var array<string, bool>
+     */
+    private static $pre_option_checked = [];
+
+    /**
+     * Re-entrancy guard for the pre_option decrypt registration.
+     *
+     * @var bool
+     */
+    private static $pre_option_running = false;
 }
