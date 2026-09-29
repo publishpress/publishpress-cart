@@ -246,7 +246,7 @@ $options = [
                                     <option value="canceled">' . esc_html__('Subscription Canceled Confirmation', 'publishpress-cart') . '</option>
                                     <option value="paused">' . esc_html__('Subscription Paused Confirmation', 'publishpress-cart') . '</option>
                                 </select>
-                                <a id="ppcart-preview-email" class="button" href="' . site_url('/?ppcart-preview=email&type=[confirmation]&_wpnonce=' . wp_create_nonce('ppcart_cart')) . '" target="_blank" data-testid="ppcart-admin-email-preview-open">' . esc_html__('Preview Email', 'publishpress-cart') . '</a>
+                                <a id="ppcart-preview-email" class="button" href="' . esc_url(site_url('/?ppcart-preview=email&type=[confirmation]&_wpnonce=' . wp_create_nonce('ppcart_cart'))) . '" target="_blank" data-testid="ppcart-admin-email-preview-open">' . esc_html__('Preview Email', 'publishpress-cart') . '</a>
                                 <a id="ppcart-email-send" class="button" href="#" data-testid="ppcart-admin-email-preview-send">' . esc_html__('Send Test', 'publishpress-cart') . '</a>
                             </div>
                             <p class="description">' . esc_html__('Preview and test emails use sample order data for personalization tags.', 'publishpress-cart') . '</p>

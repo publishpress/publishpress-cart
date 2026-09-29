@@ -1,3 +1,5 @@
+import { expect } from '@playwright/test';
+
 import { AdminConfig } from '../support/admin-config';
 import { executeAdminTest } from '../support/admin-executor';
 import { test } from '../support/admin-test';
@@ -15,4 +17,15 @@ test('AD-026 Settings Email Tab', { tag: ["@admin","@admin-core"] }, async ({ pa
   test.setTimeout(90_000);
 
   await executeAdminTest(page, testCase, config);
+
+  const previewType = page.getByTestId('ppcart-admin-email-preview-type');
+  const previewLink = page.getByTestId('ppcart-admin-email-preview-open');
+
+  await expect(previewType).toBeVisible();
+  await expect(previewLink).toBeVisible();
+
+  await expect(previewLink).toHaveAttribute('href', /type=%5Bconfirmation%5D/i);
+
+  await previewType.selectOption('refunded');
+  await expect(previewLink).toHaveAttribute('href', /type=%5Brefunded%5D/i);
 });
