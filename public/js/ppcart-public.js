@@ -509,9 +509,9 @@
                                 vat_error = response.vat_error;
                             }
                             if ($('#vat_number', '#'+wrap_id).parent().find('.error').length == 0) {
-                                $('#vat_number', '#'+wrap_id).parent().append('<div class="error">' + vat_error + '</div>')
+                                $('#vat_number', '#'+wrap_id).parent().append($('<div class="error"></div>').text(vat_error))
                             } else {
-                                $('#vat_number', '#'+wrap_id).parent().find('.error').html(vat_error);
+                                $('#vat_number', '#'+wrap_id).parent().find('.error').text(vat_error);
                             }
                         } else if(tax_obj.vat_number != '') {
                             $('#vat_number', '#'+wrap_id).addClass('valid');
@@ -743,14 +743,14 @@
             $field.removeClass('invalid').siblings('.error').remove();
 
             if (($field.attr('type') == 'checkbox' && !$field.is(':checked'))) {
-                $field.closest('.checkbox-wrap').addClass('invalid').append('<div class="error">' + message + '</div>');
+                $field.closest('.checkbox-wrap').addClass('invalid').append($('<div class="error"></div>').text(message));
             } else {
                 var $el = $field;
                 if ($field.attr('id') == 'address1' && isProductSingular()) {
                     $el = $('#ppcart-payment-form #address2');
                 }
                 $field.addClass('invalid');
-                $el.closest('.ppcart-form-group').append('<div class="error">' + message + '</div>');
+                $el.closest('.ppcart-form-group').append($('<div class="error"></div>').text(message));
                 if ($field.hasClass('selectized')) {
                     $field.next('.selectize-control').find('.selectize-input').addClass('invalid');
                 }
@@ -856,7 +856,7 @@
 						$('#ppcart_card_button, .ppcart-next-btn').removeAttr("disabled");
 					} else{
 						$el.addClass('invalid');
-						$el.closest('.ppcart-form-group').append('<div class="error">' + resp.data.error + '</div>');
+						$el.closest('.ppcart-form-group').append($('<div class="error"></div>').text(resp.data && resp.data.error ? resp.data.error : ''));
 						$('#ppcart_card_button, .ppcart-next-btn').attr("disabled", true);
 					}
 					return resp.success;

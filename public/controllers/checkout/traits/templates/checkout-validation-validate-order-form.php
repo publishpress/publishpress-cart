@@ -139,7 +139,7 @@ if (isset($posted_values['ppcart_product_option'])) {
             /* translators: %s: minimum amount. */
             $messages[] = '• ' . sprintf(__("Please enter an amount greater than or equal to %s", "publishpress-cart"), html_entity_decode($price));
             /* translators: %s: minimum amount. */
-            $validation_errors[] = ['field' => 'pwyw_amount[' . $ppcart_option_id . ']', 'message' => sprintf(__("Please enter an amount greater than or equal to %s", "publishpress-cart"), ppcart_format_price($plan->price))];
+            $validation_errors[] = ['field' => 'pwyw_amount[' . $ppcart_option_id . ']', 'message' => sprintf(__("Please enter an amount greater than or equal to %s", "publishpress-cart"), ppcart_format_price($plan->price, false))];
         }
     }
 }
