@@ -143,12 +143,7 @@ class PPCart_Sanitize
      */
     private function sanitize_random($input)
     {
-
-        $one    = trim($input);
-        $two    = stripslashes($one);
-        $return = htmlspecialchars($two);
-
-        return $return;
+        return sanitize_text_field($input);
     }
 
     /**
