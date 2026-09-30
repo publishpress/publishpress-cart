@@ -3,12 +3,6 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.0.1] - Unreleased
-
-### Security
-
-- Escape URL and label output in `PPCart_Order::receipt_link_html()` to match `invoice_link_html()`.
-
 ## [1.0.0] - 21 Sep, 2026
 
 Initial release of **PublishPress Cart**, forked from [Studiocart](https://studiocart.co/) v2.9.0. This version carries forward the Studiocart v2.9.0 feature set under the PublishPress brand, with updated plugin identity, packaging, and ongoing maintenance by PublishPress.
