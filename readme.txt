@@ -125,6 +125,24 @@ Shared helpers are under `includes/integrations/gutenberg/blocks/_shared/`.
 
 * Montserrat by The Montserrat Project Authors, SIL Open Font License 1.1. License: `public/fonts/OFL.txt`. https://github.com/JulietaUla/Montserrat
 * balloon.css 1.2.0 by Claudio Holanda, MIT. License: `admin/assets/libs/balloon.LICENSE.txt`. https://github.com/kazzkiq/balloon.css
+* flatpickr 4.6.13, MIT. License: `admin/assets/libs/flatpickr.js`. https://github.com/flatpickr/flatpickr
+* DataTables 3.0.4 by SpryMedia Ltd, MIT. License: `admin/js/jquery.dataTables.js`, `admin/css/jquery.dataTables.css`. https://datatables.net/license
+* jquery.daterangepicker by Chunlong Liu, MIT. License: `admin/js/ppcart-daterangepicker.js`, `admin/css/ppcart-daterangepicker.css`. https://github.com/longbill/jquery-date-range-picker
+* Selectize 0.15.2, Apache License 2.0. JavaScript: `admin/js/selectize.js`, `public/js/selectize.js`. Minified theme CSS: `admin/css/selectize.default.css`, `public/css/selectize.default.css`. https://github.com/selectize/selectize.js
+* Font Awesome Free 7.3.1 by Fonticons, Inc. Icons: CC BY 4.0; fonts: SIL Open Font License 1.1; code: MIT. License: `includes/assets/font-awesome-all.js`, `includes/assets/font-awesome-all.min.js`, `includes/assets/font-awesome-svg-with-js.css`, `includes/assets/font-awesome-svg-with-js.min.css`. https://fontawesome.com/license/free
+* Stripe PHP SDK 20.3.1, MIT. License: `lib/vendor/publishpress/stripe-php/lib/stripe/stripe-php/LICENSE`. https://github.com/stripe/stripe-php
+* Dompdf 3.1.6 (publishpress/dompdf-dompdf 3.1.6.2), LGPL-2.1-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/dompdf/LICENSE.LGPL`. https://github.com/dompdf/dompdf
+* php-font-lib, LGPL-2.1-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/php-font-lib/LICENSE`. https://github.com/dompdf/php-font-lib
+* php-svg-lib, LGPL-3.0-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/php-svg-lib/LICENSE`. https://github.com/dompdf/php-svg-lib
+* Masterminds HTML5, MIT. License: `lib/vendor/publishpress/dompdf-dompdf/lib/masterminds/html5/LICENSE.txt`. https://github.com/Masterminds/html5-php
+* sabberworm/php-css-parser, MIT. License: `lib/vendor/publishpress/dompdf-dompdf/lib/sabberworm/php-css-parser/LICENSE`. https://github.com/sabberworm/PHP-CSS-Parser
+* Pimple 3.5.0 (publishpress/pimple-pimple 3.5.0.11), MIT. License: `lib/vendor/publishpress/pimple-pimple/lib/pimple/pimple/LICENSE`. https://github.com/silexphp/Pimple
+* psr/container 2.0.2 (publishpress/psr-container 2.0.2.1), MIT. License: `lib/vendor/publishpress/psr-container/LICENSE`. https://github.com/php-fig/container
+* PublishPress Bundled Translations 1.0.3, GPL-3.0-or-later. License: `lib/vendor/publishpress/bundled-translations/LICENSE`. https://github.com/publishpress/library-bundled-translations
+* PublishPress Instance Protection 2.1.0, GPL-3.0-or-later. License: `lib/vendor/publishpress/instance-protection/LICENSE`. https://github.com/publishpress/library-instance-protection
+* PublishPress WordPress Reviews 1.2.2, GPL-3.0-or-later. License: `lib/vendor/publishpress/wordpress-reviews/LICENSE`. https://github.com/publishpress/library-wordpress-reviews
+* PublishPress WordPress Version Notices 2.2.1, GPL-3.0-or-later. License: `lib/vendor/publishpress/wordpress-version-notices/LICENSE`. https://github.com/publishpress/library-wordpress-version-notices
+* Composer autoloader (Composer), MIT. License: `lib/vendor/composer/LICENSE`. https://getcomposer.org/
 
 == Installation ==
 
