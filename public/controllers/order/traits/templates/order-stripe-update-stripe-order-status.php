@@ -5,10 +5,17 @@ if (! defined('ABSPATH')) {
 }
 
 
+$nonce = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
+
+if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
+    wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
+}
+
 $post_data = ppcart_filter_input_array(
     INPUT_POST,
     [
-        'ppcart-nonce'      => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'paymentIntent' => [
             'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'flags'  => FILTER_REQUIRE_ARRAY,
@@ -17,14 +24,9 @@ $post_data = ppcart_filter_input_array(
         'ppcart_temp_order_token' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     ]
 );
-$nonce          = isset($post_data['ppcart-nonce']) && is_string($post_data['ppcart-nonce']) ? sanitize_text_field($post_data['ppcart-nonce']) : '';
 $payment_intent = isset($post_data['paymentIntent']) ? ppcart_parse_stripe_payment_intent($post_data['paymentIntent'], false) : [];
 $temp_order_id  = isset($post_data['ppcart_temp_order_id']) && false !== $post_data['ppcart_temp_order_id'] && null !== $post_data['ppcart_temp_order_id'] ? absint($post_data['ppcart_temp_order_id']) : 0;
 $temp_token     = isset($post_data['ppcart_temp_order_token']) && is_string($post_data['ppcart_temp_order_token']) ? sanitize_text_field($post_data['ppcart_temp_order_token']) : '';
-
-if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
-    wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
-}
 
 $response = $this->sanitize_order_status_response();
 

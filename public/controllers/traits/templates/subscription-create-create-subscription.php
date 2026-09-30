@@ -6,10 +6,26 @@ if (! defined('ABSPATH')) {
 
 
 global $ppcart_stripe, $ppcart_currency, $ppcart_debug_logger;
+$nonce = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
+
+if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
+    $ppcart_debug_logger->log_event(
+        'checkout.security.failed',
+        'Checkout security check failed before subscription checkout.',
+        [
+            'check' => 'ppcart_purchase_nonce:3',
+        ],
+        4
+    );
+
+    wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
+}
+
 $post_data = ppcart_filter_input_array(
     INPUT_POST,
     [
-        'ppcart-nonce'        => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'email'           => FILTER_SANITIZE_EMAIL,
         'checkoutRef'     => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'paymentMethodId' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -20,7 +36,6 @@ $post_data = ppcart_filter_input_array(
         'ppcart_product_id'   => FILTER_VALIDATE_INT,
     ]
 );
-$nonce = isset($post_data['ppcart-nonce']) && is_string($post_data['ppcart-nonce']) ? sanitize_text_field($post_data['ppcart-nonce']) : '';
 $email = isset($post_data['email']) && is_string($post_data['email']) ? sanitize_email($post_data['email']) : '';
 // The customer comes from the server-side checkout binding, never from a posted customer ID.
 $checkout_ref = isset($post_data['checkoutRef']) && is_string($post_data['checkoutRef']) ? sanitize_text_field($post_data['checkoutRef']) : '';
@@ -37,21 +52,6 @@ $ppcart_debug_logger->log_event(
         'product_id' => $ppcart_product_id,
     ]
 );
-
-// base order
-if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
-    $ppcart_debug_logger->log_event(
-        'checkout.security.failed',
-        'Checkout security check failed before subscription checkout.',
-        [
-            'product_id' => $ppcart_product_id,
-            'check'      => 'ppcart_purchase_nonce:3',
-        ],
-        4
-    );
-
-    wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
-}
 
 if (! $this->is_connect_destination_configured()) {
     $ppcart_debug_logger->log_debug('Stripe Connect destination is missing or invalid during subscription checkout.', 4);
