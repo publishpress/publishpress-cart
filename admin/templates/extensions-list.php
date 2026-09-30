@@ -10,7 +10,7 @@ return [
         'id'          => 25,
         'slug'        => 'affiliate',
         'name'        => 'Affiliate Addon',
-        'icon'        => $assets_url . 'noun-affiliate-1071486-150x150.png',
+        'icon'        => $assets_url . 'affiliate-150x150.png',
         'description' => 'Run referral, influencer, and affiliate programs effortlessly. Recruit partners, customize commission plans, and automate payouts. The trusted plugin to expand reach, boost sales, grow your brand, and maximize ROI.',
         'downloads'   => 22,
         'url'         => 'https://publishpress.com/publishpress-cart/',
