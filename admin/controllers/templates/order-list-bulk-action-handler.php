@@ -31,6 +31,10 @@ if ('ppcart_sync_stripe' === $doaction) {
             break;
         }
 
+        if (! current_user_can('edit_post', $object_id)) {
+            continue;
+        }
+
         if (! ppcart_is_subscription_post_type(get_post_type($object_id))) {
             continue;
         }
@@ -61,6 +65,10 @@ if ('ppcart_sync_stripe' === $doaction) {
 if (in_array('bulk_' . $doaction, $bulk_actions)) {
     $status_to = str_replace('ppcart_make_', '', $doaction);
     foreach ($object_ids as $object_id) {
+        if (! current_user_can('edit_post', $object_id)) {
+            continue;
+        }
+
         $object_type = get_post_type($object_id);
         switch ($object_type) {
             case "ppcart_order":
