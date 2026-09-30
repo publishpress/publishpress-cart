@@ -3,6 +3,7 @@
 namespace unit\Bootstrap;
 
 use Codeception\Test\Unit;
+use PPCart_Admin_Screens;
 use PPCart_Version_Notices;
 use Tests\Support\WordPressStubContext;
 use UnitTester;
@@ -16,12 +17,20 @@ class VersionNoticesTest extends Unit
 
     protected function _before(): void
     {
+        if (! defined('PPCART_BASE_URL')) {
+            define('PPCART_BASE_URL', 'https://example.test/wp-content/plugins/publishpress-cart/');
+        }
+        if (! defined('PPCART_VERSION')) {
+            define('PPCART_VERSION', 'test-version');
+        }
+
         WordPressStubContext::clear();
         WordPressStubContext::setState('filters', []);
         WordPressStubContext::setState('filter_overrides', []);
         WordPressStubContext::setState('caps', ['install_plugins']);
         WordPressStubContext::setState('user_meta', []);
         WordPressStubContext::setState('current_user_id', 1);
+        WordPressStubContext::setState('screen', null);
 
         WordPressStubContext::set(
             'apply_filters',
@@ -69,7 +78,28 @@ class VersionNoticesTest extends Unit
                 return $single ? $value : [ $value ];
             }
         );
+        WordPressStubContext::set(
+            'get_current_screen',
+            static function () {
+                return WordPressStubContext::getState('screen');
+            }
+        );
+        WordPressStubContext::set(
+            'get_admin_page_parent',
+            static function () {
+                return '';
+            }
+        );
+        WordPressStubContext::set(
+            'get_post_type',
+            static function () {
+                return '';
+            }
+        );
 
+        if (! class_exists('PPCart_Admin_Screens', false)) {
+            require_once PPCART_PLUGIN_ROOT . 'includes/class-ppcart-admin-screens.php';
+        }
         if (! class_exists('PPCart_Version_Notices', false)) {
             require_once PPCART_PLUGIN_ROOT . 'includes/class-ppcart-version-notices.php';
         }
@@ -77,6 +107,7 @@ class VersionNoticesTest extends Unit
 
     protected function _after(): void
     {
+        unset($_GET['page']);
         WordPressStubContext::clear();
         parent::_after();
     }
@@ -113,6 +144,36 @@ class VersionNoticesTest extends Unit
     /**
      * @test-id UT-329
      */
+    public function test_UT_329_registers_banner_styles_with_admin_enqueue_scripts(): void
+    {
+        $actions = [];
+
+        WordPressStubContext::set(
+            'is_admin',
+            static function () {
+                return true;
+            }
+        );
+        WordPressStubContext::set(
+            'add_action',
+            static function ($hook_name, $callback, $priority = 10) use (&$actions) {
+                $actions[] = [$hook_name, $callback, $priority];
+
+                return true;
+            }
+        );
+
+        PPCart_Version_Notices::init();
+
+        $hook_names = array_column($actions, 0);
+
+        $this->assertContains('admin_enqueue_scripts', $hook_names);
+        $this->assertNotContains('admin_head', $hook_names);
+    }
+
+    /**
+     * @test-id UT-329
+     */
     public function test_UT_329_pro_upgrade_banner_includes_dismiss_link_when_not_dismissed(): void
     {
         ob_start();
@@ -138,5 +199,37 @@ class VersionNoticesTest extends Unit
         );
 
         $this->assertFalse(PPCart_Version_Notices::should_display_pro_upgrade_top_notice());
+    }
+
+    /**
+     * @test-id UT-329
+     */
+    public function test_UT_329_pro_upgrade_banner_enqueues_styles_on_cart_screen(): void
+    {
+        $enqueued = [];
+        $_GET['page'] = PPCart_Admin_Screens::PAGE_DASHBOARD;
+
+        WordPressStubContext::set(
+            'wp_enqueue_style',
+            static function ($handle, $src, $dependencies, $version) use (&$enqueued) {
+                $enqueued[] = [$handle, $src, $dependencies, $version];
+
+                return true;
+            }
+        );
+
+        PPCart_Version_Notices::maybe_print_pro_upgrade_notice_styles();
+
+        $this->assertSame(
+            [
+                [
+                    'ppcart-version-notices',
+                    PPCART_BASE_URL . 'admin/css/ppcart-version-notices.css',
+                    [],
+                    PPCART_VERSION,
+                ],
+            ],
+            $enqueued
+        );
     }
 }

@@ -5,23 +5,25 @@ if (! defined('ABSPATH')) {
 }
 
 
+$nonce = isset($_POST['nonce']) && is_string($_POST['nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
+
+if (! ppcart_verify_nonce($nonce, 'ppcart_ajax_nonce')) {
+    wp_send_json_error(['message' => __("Invalid Request", "publishpress-cart")], 401);
+}
+
 $post_data = filter_input_array(
     INPUT_POST,
     [
-        'nonce' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'post_id' => FILTER_VALIDATE_INT,
         'payment_method' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'all_subscription' => FILTER_VALIDATE_BOOLEAN,
     ]
 );
-$nonce = isset($post_data['nonce']) && is_string($post_data['nonce']) ? sanitize_text_field($post_data['nonce']) : '';
 $subscription_post_id = isset($post_data['post_id']) && false !== $post_data['post_id'] && null !== $post_data['post_id'] ? absint($post_data['post_id']) : 0;
 $payment_method = isset($post_data['payment_method']) && is_string($post_data['payment_method']) ? sanitize_text_field($post_data['payment_method']) : '';
 $all_subscriptions = ! empty($post_data['all_subscription']);
-
-if (! ppcart_verify_nonce($nonce, 'ppcart_ajax_nonce')) {
-    wp_send_json_error(['message' => __("Invalid Request", "publishpress-cart")], 401);
-}
 
 if (! is_user_logged_in()) {
     wp_send_json_error([ 'message' => __('Authentication required.', 'publishpress-cart') ], 401);

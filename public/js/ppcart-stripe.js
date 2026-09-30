@@ -127,7 +127,7 @@
 
                 }else{
 
-                    document.getElementById('ppcart-update-card-success').innerHTML = response.message;
+                    document.getElementById('ppcart-update-card-success').textContent = response.message || '';
                     let url = location.pathname + location.search.replace(/[\?&]action=[^&]+/, '').replace(/^&/, '?')
                     setTimeout(function(){ window.location.href = url; }, 3000);
                 }

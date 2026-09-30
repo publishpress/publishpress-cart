@@ -33,7 +33,7 @@ class PPCart_Version_Notices
         add_action('plugins_loaded', [ __CLASS__, 'register_notice_settings' ], 20);
         add_action('admin_init', [ __CLASS__, 'maybe_dismiss_pro_upgrade_notice' ]);
         add_action('in_admin_header', [ __CLASS__, 'maybe_render_pro_upgrade_top_notice' ]);
-        add_action('admin_head', [ __CLASS__, 'maybe_print_pro_upgrade_notice_styles' ]);
+        add_action('admin_enqueue_scripts', [ __CLASS__, 'maybe_print_pro_upgrade_notice_styles' ]);
     }
 
     /**
@@ -146,7 +146,7 @@ class PPCart_Version_Notices
     }
 
     /**
-     * Prints banner styles on Cart admin screens when the banner may show.
+     * Enqueues banner styles on Cart admin screens when the banner may show.
      *
      * @return void
      */
@@ -156,92 +156,12 @@ class PPCart_Version_Notices
             return;
         }
 
-        ?>
-        <style>
-            .pp-version-notice-bold-purple {
-                background: #655997;
-                height: auto;
-                box-sizing: border-box;
-                padding: 10px 40px;
-                text-align: center;
-                position: relative;
-                overflow: hidden;
-                line-height: 20px;
-                margin-left: -20px;
-                font-size: 14px;
-                color: #ffffff;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                vertical-align: middle;
-                justify-content: space-between;
-            }
-
-            .pp-version-notice-bold-purple-message {
-                width: 90%;
-                text-align: center;
-                margin-right: 20px;
-            }
-
-            .pp-version-notice-bold-purple-button {
-                background: #FEB123;
-                color: #000000 !important;
-                font-weight: normal;
-                text-decoration: none;
-                padding: 6px 10px;
-                -webkit-border-radius: 4px;
-                -moz-border-radius: 4px;
-                border-radius: 4px;
-                box-sizing: border-box;
-                border: 1px solid #fca871;
-                break-inside: avoid;
-                white-space: nowrap;
-                max-width: 170px;
-            }
-
-            .pp-version-notice-bold-purple-button:hover {
-                background: #fcca46;
-                color:#181818 !important;
-            }
-
-            .pp-version-notice-bold-purple-button:active {
-                background: #FEB123;
-                color: #000000 !important;
-            }
-
-            .pp-version-notice-bold-purple-button a {
-                text-decoration: none !important;
-                color: #414141 !important;
-            }
-
-            .pp-version-notice-bold-purple-dismiss {
-                color: #ffffff !important;
-                margin-left: 12px;
-                text-decoration: underline;
-                white-space: nowrap;
-            }
-
-            @media only screen and (max-width: 600px) {
-                .pp-version-notice-bold-purple {
-                    padding: 55px 15px 10px 15px;
-                }
-
-                .pp-version-notice-bold-purple-message {
-                    width: 62%;
-                    text-align: center;
-                    margin-right: 10px;
-                    margin-left: 10px;
-                }
-
-                .pp-version-notice-bold-purple-button {
-                    width: 38%;
-                    text-align: center;
-                }
-            }
-        </style>
-        <?php
+        wp_enqueue_style(
+            'ppcart-version-notices',
+            PPCART_BASE_URL . 'admin/css/ppcart-version-notices.css',
+            [],
+            defined('PPCART_VERSION') ? PPCART_VERSION : null
+        );
     }
 
     /**

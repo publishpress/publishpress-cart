@@ -69,16 +69,12 @@ switch ($this->type) {
         $sanitized = $this->sanitize_phone($this->data);
         break;
     case 'textarea':
-        $sanitized = esc_textarea($this->data);
+        $sanitized = sanitize_textarea_field($this->data);
         break;
     case 'file-upload':
-        $sanitized = esc_url($this->data);
-        break;
     case 'secure-file-upload':
-        $sanitized = esc_url($this->data);
-        break;
     case 'url':
-        $sanitized = esc_url($this->data);
+        $sanitized = esc_url_raw($this->data);
         break;
 } // switch
 

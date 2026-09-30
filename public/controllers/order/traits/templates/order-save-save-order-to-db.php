@@ -6,27 +6,37 @@ if (! defined('ABSPATH')) {
 
 
 global $ppcart_stripe, $ppcart_product, $ppcart_debug_logger;
-$ppcart_order_post = filter_input(INPUT_POST, 'ppcart-order', FILTER_VALIDATE_INT);
-$nonce = ppcart_filter_input(INPUT_POST, 'ppcart-nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$is_downsell = null !== filter_input(INPUT_POST, 'downsell', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$ppcart_order_post = (false !== $ppcart_order_post && null !== $ppcart_order_post) ? absint($ppcart_order_post) : 0;
-$nonce = is_string($nonce) ? sanitize_text_field($nonce) : '';
+$nonce = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- The order ID is required to build an upsell/downsell nonce action.
+$ppcart_order_post = isset($_POST['ppcart-order']) ? absint(sanitize_text_field(wp_unslash($_POST['ppcart-order']))) : 0;
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- The offer type is required to build an upsell/downsell nonce action.
+$is_downsell = isset($_POST['downsell']);
+$nonce_action = 'ppcart_purchase_nonce';
 
-if (! $ppcart_order_post) {
-    if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
-        wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
+if ($ppcart_order_post) {
+    $nonce_action = 'ppcart_' . ($is_downsell ? 'downsell' : 'upsell') . '-' . $ppcart_order_post;
+}
+
+if (! ppcart_verify_nonce($nonce, $nonce_action)) {
+    if (! $ppcart_order_post) {
+        $ppcart_debug_logger->log_event(
+            'checkout.security.failed',
+            'Checkout security check failed before saving order.',
+            [
+                'check' => 'ppcart_purchase_nonce:2',
+            ],
+            4
+        );
     }
+
+    wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
 }
 
 // order id only present for upsells
 if ($ppcart_order_post) {
-    $oto_type = $is_downsell ? 'downsell' : 'upsell';
-
     $order_info = (array) ppcart_setup_order($ppcart_order_post);
-
-    if (! ppcart_verify_nonce($nonce, 'ppcart_' . $oto_type . '-' . $order_info['ID'])) {
-        wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
-    }
 
     $order_info = apply_filters('ppcart_before_order_save', $order_info, $subscription, $this);
 
@@ -39,14 +49,12 @@ if ($ppcart_order_post) {
     $post_data = ppcart_filter_input_array(
         INPUT_POST,
         [
-            'ppcart-nonce'        => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'ppcart_product_id'   => FILTER_VALIDATE_INT,
             'ppcart_product_option' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'ppcart_temp_order_id' => FILTER_VALIDATE_INT,
             'intent_id'       => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         ]
     );
-    $nonce        = isset($post_data['ppcart-nonce']) && is_string($post_data['ppcart-nonce']) ? sanitize_text_field($post_data['ppcart-nonce']) : '';
     $ppcart_product_id = isset($post_data['ppcart_product_id']) && false !== $post_data['ppcart_product_id'] && null !== $post_data['ppcart_product_id'] ? absint($post_data['ppcart_product_id']) : 0;
     $ppcart_option_id = isset($post_data['ppcart_product_option']) && is_string($post_data['ppcart_product_option']) ? sanitize_text_field($post_data['ppcart_product_option']) : '';
     $ppcart_temp_order_id = isset($post_data['ppcart_temp_order_id']) && false !== $post_data['ppcart_temp_order_id'] && null !== $post_data['ppcart_temp_order_id'] ? absint($post_data['ppcart_temp_order_id']) : 0;
@@ -64,20 +72,6 @@ if ($ppcart_order_post) {
             'has_stripe_intent' => '' !== $intent_id,
         ]
     );
-
-    // base order
-    if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
-        $ppcart_debug_logger->log_event(
-            'checkout.security.failed',
-            'Checkout security check failed before saving order.',
-            [
-                'product_id' => $ppcart_product_id,
-                'check'      => 'ppcart_purchase_nonce:2',
-            ],
-            4
-        );
-        wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
-    }
 
     $ppcart_debug_logger->log_event(
         'checkout.order.validation.started',

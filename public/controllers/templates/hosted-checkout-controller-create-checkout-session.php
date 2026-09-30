@@ -6,10 +6,24 @@ if (! defined('ABSPATH')) {
 
 
 global $ppcart_stripe, $ppcart_currency, $ppcart_product, $ppcart_debug_logger;
+$nonce = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
+
+if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
+    $ppcart_debug_logger->log_event(
+        'checkout.security.failed',
+        'Checkout security check failed before creating Stripe Checkout Session.',
+        [
+            'check' => 'ppcart_purchase_nonce:hosted',
+        ],
+        4
+    );
+    wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
+}
+
 $ppcart_product_id = ppcart_filter_input(INPUT_POST, 'ppcart_product_id', FILTER_VALIDATE_INT);
-$nonce         = ppcart_filter_input(INPUT_POST, 'ppcart-nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $ppcart_product_id = (false !== $ppcart_product_id && null !== $ppcart_product_id) ? absint($ppcart_product_id) : 0;
-$nonce         = is_string($nonce) ? sanitize_text_field($nonce) : '';
 
 $ppcart_debug_logger->log_event(
     'checkout.hosted_session.creating',
@@ -18,19 +32,6 @@ $ppcart_debug_logger->log_event(
         'product_id' => $ppcart_product_id,
     ]
 );
-
-if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
-    $ppcart_debug_logger->log_event(
-        'checkout.security.failed',
-        'Checkout security check failed before creating Stripe Checkout Session.',
-        [
-            'product_id' => $ppcart_product_id,
-            'check'      => 'ppcart_purchase_nonce:hosted',
-        ],
-        4
-    );
-    wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
-}
 
 if (empty($ppcart_stripe['is_hosted_checkout'])) {
     wp_send_json_error([ 'error' => __('Hosted Checkout is not enabled.', 'publishpress-cart') ]);

@@ -6,28 +6,28 @@ if (! defined('ABSPATH')) {
 
 
 global $ppcart_stripe, $ppcart_currency, $ppcart_debug_logger;
-$order_id_post = filter_input(INPUT_POST, 'ppcart-order', FILTER_VALIDATE_INT);
-$nonce_post    = ppcart_filter_input(INPUT_POST, 'ppcart-nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$is_downsell   = null !== filter_input(INPUT_POST, 'downsell', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-$order_id_post = (false !== $order_id_post && null !== $order_id_post) ? absint($order_id_post) : 0;
-$nonce_post    = is_string($nonce_post) ? sanitize_text_field($nonce_post) : '';
-
-$ppcart_debug_logger->log_debug("Processing upsell purchase");
+$nonce_post = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- The order ID is required to build the nonce action verified below.
+$order_id_post = isset($_POST['ppcart-order']) ? absint(sanitize_text_field(wp_unslash($_POST['ppcart-order']))) : 0;
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- The offer type is required to build the nonce action verified below.
+$is_downsell = isset($_POST['downsell']);
 
 if (! $order_id_post || '' === $nonce_post) {
     wp_send_json_error([ 'message' => __('Invalid Request', 'publishpress-cart') ], 400);
 }
 
+$oto_type = $is_downsell ? 'downsell' : 'upsell';
+if (! ppcart_verify_nonce($nonce_post, 'ppcart_' . $oto_type . '-' . $order_id_post)) {
+    wp_send_json_error([ 'message' => __('Invalid Request', 'publishpress-cart') ], 401);
+}
+
+$ppcart_debug_logger->log_debug("Processing upsell purchase");
+
 if ($is_downsell) {
-    if (! ppcart_verify_nonce($nonce_post, 'ppcart_downsell-' . $order_id_post)) {
-        wp_send_json_error([ 'message' => __('Invalid Request', 'publishpress-cart') ], 401);
-    }
     $cart_order = PPCart_Order::child_of($order_id_post, 'downsell');
 } else {
-    if (! ppcart_verify_nonce($nonce_post, 'ppcart_upsell-' . $order_id_post)) {
-        wp_send_json_error([ 'message' => __('Invalid Request', 'publishpress-cart') ], 401);
-    }
     $cart_order = PPCart_Order::child_of($order_id_post, 'upsell');
 }
 
