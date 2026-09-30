@@ -7,9 +7,9 @@ if (! defined('ABSPATH')) {
 
 global $ppcart_product;
 
-$nonce = ppcart_filter_input(INPUT_POST, 'ppcart-nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$ppcart_product_id = ppcart_filter_input(INPUT_POST, 'ppcart_product_id', FILTER_VALIDATE_INT);
-$cancel_url = filter_input(INPUT_POST, 'cancel_url', FILTER_SANITIZE_URL);
+$nonce = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
 
 if (empty($nonce) || ! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
     echo wp_json_encode([
@@ -17,6 +17,9 @@ if (empty($nonce) || ! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
     ]);
     exit();
 }
+
+$ppcart_product_id = ppcart_filter_input(INPUT_POST, 'ppcart_product_id', FILTER_VALIDATE_INT);
+$cancel_url = filter_input(INPUT_POST, 'cancel_url', FILTER_SANITIZE_URL);
 
 do_action('ppcart_before_create_main_order');
 $is_sub = false;

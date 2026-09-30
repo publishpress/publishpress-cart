@@ -5,13 +5,16 @@ if (! defined('ABSPATH')) {
 }
 
 
-$nonce = ppcart_filter_input(INPUT_POST, 'ppcart-nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$ppcart_product_id = ppcart_filter_input(INPUT_POST, 'ppcart_product_id', FILTER_VALIDATE_INT);
-$nonce = is_string($nonce) ? sanitize_text_field($nonce) : '';
-$ppcart_product_id = (false !== $ppcart_product_id && null !== $ppcart_product_id) ? absint($ppcart_product_id) : 0;
+$nonce = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
+    ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+    : '';
+
 if (! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
     wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
 }
+
+$ppcart_product_id = ppcart_filter_input(INPUT_POST, 'ppcart_product_id', FILTER_VALIDATE_INT);
+$ppcart_product_id = (false !== $ppcart_product_id && null !== $ppcart_product_id) ? absint($ppcart_product_id) : 0;
 
 // setup product info
 $ppcart_product = ppcart_setup_product($ppcart_product_id);
