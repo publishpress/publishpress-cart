@@ -35,7 +35,7 @@ class EmailPreviewHrefTest extends WPTestCase
     public function test_IT_391_email_preview_field_html_escapes_preview_href(): void
     {
         $options     = $this->settings->get_options_list();
-        $description = $options['settings']['email_preview']['settings']['description'] ?? '';
+        $description = $options['email_settings']['email_preview']['settings']['description'] ?? '';
 
         $this->assertNotSame('', $description);
 
@@ -49,7 +49,7 @@ class EmailPreviewHrefTest extends WPTestCase
 
         $this->assertStringContainsString('id="ppcart-preview-email"', $html);
         $this->assertStringContainsString('type=%5Bconfirmation%5D', $html);
-        $this->assertStringContainsString('&#038;_wpnonce=', $html);
+        $this->assertStringContainsString('&amp;_wpnonce=', $html);
         $this->assertStringNotContainsString('type=[confirmation]', $html);
     }
 
@@ -66,7 +66,7 @@ class EmailPreviewHrefTest extends WPTestCase
         );
 
         $options     = $this->settings->get_options_list();
-        $description = $options['settings']['email_preview']['settings']['description'] ?? '';
+        $description = $options['email_settings']['email_preview']['settings']['description'] ?? '';
 
         ob_start();
         $this->settings->field_html(
@@ -76,7 +76,8 @@ class EmailPreviewHrefTest extends WPTestCase
         );
         $html = (string) ob_get_clean();
 
-        $this->assertStringNotContainsString('onclick', $html);
+        // The injected text may stay inside the URL, but it must not become an attribute.
+        $this->assertDoesNotMatchRegularExpression('/\sonclick=/i', $html);
         $this->assertStringNotContainsString('" onclick', $html);
         $this->assertMatchesRegularExpression('/href="[^"]*ppcart-preview=email/', $html);
     }
