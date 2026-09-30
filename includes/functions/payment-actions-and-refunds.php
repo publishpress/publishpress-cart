@@ -556,42 +556,4 @@ function ppcart_is_file_valid_csv($file, $check_path = true)
     return false;
 }
 
-/**
- * Raises the PHP time limit for the current long-running task only.
- *
- * Call it inside the exact function that needs more time (for example a bulk
- * import), never on a global hook. It only raises the limit: it does nothing
- * when the host limit is already unlimited or already at least $limit. Pass 0
- * only when the task must run without a limit.
- *
- * @since 1.0.0
- * @param int $limit Time limit in seconds. 0 means no limit.
- * @return bool Whether the limit is now at least $limit.
- */
-function ppcart_set_time_limit($limit = 0)
-{
-    $limit = (int) $limit;
-    if ($limit < 0) {
-        return false;
-    }
-
-    $current = (int) ini_get('max_execution_time');
-    if (0 === $current || ($limit > 0 && $limit <= $current)) {
-        return true;
-    }
-
-    if (! function_exists('set_time_limit') || false !== strpos((string) ini_get('disable_functions'), 'set_time_limit')) {
-        return false;
-    }
-
-    // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged,WordPress.PHP.NoSilencedErrors.Discouraged -- Scoped to the caller's long task; raises the limit only, and some hosts emit a warning when it is locked.
-    @set_time_limit($limit);
-
-    // Some SAPIs apply the new limit but return a falsey value. The effective
-    // setting is the contract that callers care about.
-    $current = (int) ini_get('max_execution_time');
-
-    return 0 === $current || ($limit > 0 && $current >= $limit);
-}
-
 add_action('wp_ajax_ppcart_update_user_profile', 'ppcart_update_user_profile');
