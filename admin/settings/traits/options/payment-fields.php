@@ -32,8 +32,12 @@ $payment_fields = [
             'type'          => 'select',
             'label'         => esc_html__('API', 'publishpress-cart'),
             'settings'      => [
-                /* translators: %s: Stripe subscriptions documentation URL. */
-                'note'   => sprintf(esc_html__('GOING LIVE? Click the "Update" button on any subscription products created on the Test API after switching this setting to Live!<br><a href="%s" target="_blank" rel="noopener noreferrer">More Information</a>', 'publishpress-cart'), apply_filters('ppcart_stripe_subscriptions_documentation_url', PPCART_DOCS_URL . 'subscriptions/using-stripe-with-recurring-payment-plans')),
+                'note'          => sprintf(
+                    '%1$s<br><a href="%2$s" target="_blank" rel="noopener noreferrer">%3$s</a>',
+                    esc_html__('GOING LIVE? Click the "Update" button on any subscription products created on the Test API after switching this setting to Live!', 'publishpress-cart'),
+                    esc_url(apply_filters('ppcart_stripe_subscriptions_documentation_url', PPCART_DOCS_URL . 'subscriptions/using-stripe-with-recurring-payment-plans')),
+                    esc_html__('More Information', 'publishpress-cart')
+                ),
                 'id'            => '_ppcart_stripe_api',
                 'value'         => 'test',
                 'selections'    => [
