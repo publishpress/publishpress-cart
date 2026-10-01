@@ -2,27 +2,21 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Cart 1.0.0\n"
+"Project-Id-Version: PublishPress Cart - eCommerce for Digital Products 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-21T22:12:16+00:00\n"
+"POT-Creation-Date: 2026-10-01T15:24:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 
 #. Plugin Name of the plugin
 #: publishpress-cart.php:16
-#: admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php:27
-#: admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php:26
-#: admin/partials/ppcart-admin-page-settings.php:39
-#: admin/traits/trait-ppcart-admin-profile.php:32
-#: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:16
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22
-msgid "PublishPress Cart"
+msgid "PublishPress Cart - eCommerce for Digital Products"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -76,27 +70,27 @@ msgstr ""
 
 #: admin/class-ppcart-contacts-page.php:80
 #: admin/class-ppcart-contacts-page.php:81
-#: admin/class-ppcart-contacts-page.php:170
+#: admin/class-ppcart-contacts-page.php:172
 msgid "Contacts"
 msgstr ""
 
 #. translators: %s: plugin title.
-#: admin/class-ppcart-contacts-page.php:161
+#: admin/class-ppcart-contacts-page.php:163
 #, php-format
 msgid "%s Contacts"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:164
+#: admin/class-ppcart-contacts-page.php:166
 msgid "Export Contacts"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:168
+#: admin/class-ppcart-contacts-page.php:170
 msgid "Contact summary"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:174
-#: admin/class-ppcart-contacts-page.php:190
-#: admin/reports/templates/customer-report/page.php:85
+#: admin/class-ppcart-contacts-page.php:176
+#: admin/class-ppcart-contacts-page.php:192
+#: admin/reports/templates/customer-report/page.php:84
 #: includes/helpers/ppcart-general-functions.php:109
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-navigation.php:173
 #: includes/integrations/gutenberg/lib/class-ppcart-account-context.php:190
@@ -109,27 +103,27 @@ msgstr ""
 msgid "Orders"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:178
+#: admin/class-ppcart-contacts-page.php:180
 msgid "Lifetime value"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:187
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:86
+#: admin/class-ppcart-contacts-page.php:189
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:94
 #: admin/controllers/order/templates/product-form.php:320
 #: admin/controllers/order/templates/product-form.php:337
 #: admin/controllers/order/templates/product-form.php:453
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:201
-#: admin/reports/templates/customer-report/page.php:156
+#: admin/reports/templates/customer-report/page.php:155
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:13
-#: public/partials/csv-export.php:159
-#: public/partials/csv-export.php:252
+#: public/partials/csv-export.php:158
+#: public/partials/csv-export.php:251
 #: public/templates/my-account/tabs/order-history.php:13
 msgid "Date"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:188
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:91
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:114
+#: admin/class-ppcart-contacts-page.php:190
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:99
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:122
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:48
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:216
 #: admin/partials/ppcart-admin-field-default-fields.php:28
@@ -138,48 +132,48 @@ msgstr ""
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:10
 #: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:35
 #: public/partials/csv-export.php:44
-#: public/partials/csv-export.php:162
-#: public/templates/functions/plan-coupon-fields.php:422
-#: public/templates/functions/plan-coupon-fields.php:425
+#: public/partials/csv-export.php:161
+#: public/templates/functions/plan-coupon-fields.php:437
+#: public/templates/functions/plan-coupon-fields.php:440
 #: public/templates/my-account/tabs/user-profile.php:27
 msgid "Email"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:189
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:90
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:113
+#: admin/class-ppcart-contacts-page.php:191
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:98
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:121
 #: includes/files/traits/templates/files-frontend-file-tab-content.php:30
 #: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:34
 msgid "Name"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:191
-#: admin/reports/templates/customer-report/page.php:60
+#: admin/class-ppcart-contacts-page.php:193
+#: admin/reports/templates/customer-report/page.php:59
 msgid "LTV"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:192
+#: admin/class-ppcart-contacts-page.php:194
 #: public/partials/csv-export.php:46
 msgid "Last Order Date"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:223
+#: admin/class-ppcart-contacts-page.php:225
 msgid "Search contacts"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:224
+#: admin/class-ppcart-contacts-page.php:226
 msgid "Show _MENU_ contacts"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:225
+#: admin/class-ppcart-contacts-page.php:227
 msgid "_START_ - _END_ of _TOTAL_ contacts"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:226
+#: admin/class-ppcart-contacts-page.php:228
 msgid "No contacts found"
 msgstr ""
 
-#: admin/class-ppcart-contacts-page.php:227
+#: admin/class-ppcart-contacts-page.php:229
 msgid "No matching contacts found"
 msgstr ""
 
@@ -191,7 +185,8 @@ msgstr ""
 #: admin/class-ppcart-extension-page.php:119
 #: admin/class-ppcart-extension-page.php:135
 #: admin/class-ppcart-extension-page.php:145
-#: includes/class-ppcart-version-notices.php:139
+#: includes/class-ppcart-version-notices.php:93
+#: includes/class-ppcart-version-notices.php:182
 #: includes/helpers/pro-locks/settings-locks.php:250
 msgid "Upgrade to Pro"
 msgstr ""
@@ -241,49 +236,49 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:68
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:76
 msgid "Shortcode"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:85
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:93
 msgid "Order #"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:87
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:109
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:95
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:117
 #: admin/controllers/order/templates/product-form.php:321
 #: admin/controllers/order/templates/product-form.php:338
 #: includes/helpers/pro-locks/product-locks.php:81
 #: includes/scheduled-reports/report-email-template.php:48
-#: public/templates/pdf-invoice/invoice.php:138
+#: public/templates/pdf-invoice/invoice.php:148
 msgid "Amount"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:88
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:108
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:96
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:116
 #: admin/controllers/order/templates/product-form.php:322
 #: admin/controllers/order/templates/product-form.php:339
 #: admin/controllers/order/templates/product-form.php:454
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:202
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:238
-#: admin/reports/templates/customer-report/page.php:160
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:136
+#: admin/reports/templates/customer-report/page.php:159
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:135
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:14
 #: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:15
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:15
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:89
-#: public/partials/csv-export.php:174
-#: public/partials/csv-export.php:256
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:92
+#: public/partials/csv-export.php:173
+#: public/partials/csv-export.php:255
 #: public/templates/my-account/tabs/order-history.php:14
 #: public/templates/my-account/tabs/plans.php:38
 #: public/templates/my-account/tabs/subscriptions.php:43
 msgid "Status"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:89
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:112
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:97
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:120
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:173
-#: admin/reports/templates/customer-report/page.php:157
+#: admin/reports/templates/customer-report/page.php:156
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:12
 #: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:14
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:14
@@ -300,64 +295,64 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:93
-#: public/templates/pdf-invoice/invoice.php:74
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:101
+#: public/templates/pdf-invoice/invoice.php:84
 msgid "Invoice Number"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:107
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:115
 msgid "Sub ID"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:110
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:118
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:325
-#: public/templates/my-account/subscription-detail.php:82
+#: public/templates/my-account/subscription-detail.php:84
 msgid "Start Date"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:111
-#: admin/reports/templates/customer-report/page.php:250
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:119
+#: admin/reports/templates/customer-report/page.php:249
 #: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:16
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:16
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:326
-#: public/templates/my-account/subscription-detail.php:93
+#: public/templates/my-account/subscription-detail.php:95
 #: public/templates/my-account/tabs/plans.php:39
 #: public/templates/my-account/tabs/subscriptions.php:44
 msgid "Next Payment"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:156
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:164
 msgid "Update status to paid"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:157
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:165
 msgid "Update status to failed"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:158
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:166
 msgid "Update status to pending"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:159
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:167
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
 msgid "Update status to completed"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:165
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:173
 msgid "Resume in Stripe / update active"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:166
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
 msgid "Update status to canceled"
 msgstr ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:168
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
 msgstr ""
 
 #. translators: %s: number of subscriptions synced.
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:207
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
@@ -365,29 +360,29 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: number of subscriptions that failed to sync.
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:211
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:221
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid "Each run syncs a limited number of subscriptions. Select the rest and run it again to continue."
 msgstr ""
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:44
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:51
 #: includes/functions/payment-actions-and-refunds.php:51
-#: includes/functions/payment-actions-and-refunds.php:434
+#: includes/functions/payment-actions-and-refunds.php:440
 msgid "Oops, something went wrong, please try again later."
 msgstr ""
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:56
-#: includes/functions/admin-ajax-and-notices.php:339
+#: includes/functions/admin-ajax-and-notices.php:351
 #: includes/functions/ajax-and-fields.php:17
-#: includes/functions/report-filters.php:205
-#: includes/functions/report-filters.php:312
+#: includes/functions/report-filters.php:223
+#: includes/functions/report-filters.php:330
 #: public/controllers/page/traits/trait-ppcart-public-page-downloads.php:16
 msgid "Unauthorized."
 msgstr ""
@@ -429,7 +424,7 @@ msgstr ""
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:41
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:94
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:203
-#: includes/functions/order-items-and-details.php:295
+#: includes/functions/order-items-and-details.php:299
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:15
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:309
 #: public/templates/my-account/tabs/order-history.php:15
@@ -476,7 +471,7 @@ msgid "Coupon: "
 msgstr ""
 
 #: admin/controllers/order/templates/product-form.php:173
-#: includes/functions/order-items-and-details.php:233
+#: includes/functions/order-items-and-details.php:237
 #: includes/helpers/pro-locks/field-and-email-locks.php:234
 msgid "Shipping"
 msgstr ""
@@ -491,7 +486,7 @@ msgid "Issue refund"
 msgstr ""
 
 #: admin/controllers/order/templates/product-form.php:294
-#: admin/reports/templates/customer-report/page.php:72
+#: admin/reports/templates/customer-report/page.php:71
 #: includes/scheduled-reports/report-email-template.php:78
 msgid "Refunds"
 msgstr ""
@@ -570,7 +565,7 @@ msgstr ""
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:14
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:322
 #: includes/integrations/templates/cancel-subscription-integration-fields.php:52
-#: public/templates/my-account/subscription-detail.php:54
+#: public/templates/my-account/subscription-detail.php:56
 #: public/templates/my-account/tabs/user-profile.php:92
 msgid "Cancel"
 msgstr ""
@@ -644,7 +639,7 @@ msgid "Manually created"
 msgstr ""
 
 #: admin/controllers/order/templates/product-info-metabox.php:103
-#: admin/controllers/templates/order-list-order-column.php:22
+#: admin/controllers/templates/order-list-order-column.php:26
 msgid "Partially refunded"
 msgstr ""
 
@@ -669,13 +664,13 @@ msgstr ""
 
 #: admin/controllers/order/templates/product-info-metabox.php:146
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:311
-#: public/templates/my-account/order-detail.php:39
-#: public/templates/pdf-invoice/invoice.php:73
+#: public/templates/my-account/order-detail.php:40
+#: public/templates/pdf-invoice/invoice.php:83
 msgid "Invoice"
 msgstr ""
 
 #: admin/controllers/order/templates/product-info-metabox.php:153
-#: public/templates/pdf-invoice/invoice.php:73
+#: public/templates/pdf-invoice/invoice.php:83
 msgid "Receipt"
 msgstr ""
 
@@ -769,9 +764,9 @@ msgstr ""
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:180
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:57
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:225
-#: admin/reports/templates/customer-report/page.php:202
+#: admin/reports/templates/customer-report/page.php:201
 #: admin/traits/trait-ppcart-admin-profile.php:28
-#: public/partials/csv-export.php:163
+#: public/partials/csv-export.php:162
 #: public/templates/my-account/tabs/user-profile.php:32
 #: public/templates/my-account/tabs/user-profile.php:33
 msgid "Phone"
@@ -791,7 +786,7 @@ msgstr ""
 #: public/templates/email/order-table.php:233
 #: public/templates/functions/payment-address.php:150
 #: public/templates/functions/payment-address.php:151
-#: public/templates/pdf-invoice/invoice.php:109
+#: public/templates/pdf-invoice/invoice.php:119
 msgid "VAT Number"
 msgstr ""
 
@@ -801,8 +796,8 @@ msgstr ""
 #: admin/traits/trait-ppcart-admin-profile.php:22
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:11
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:311
-#: public/templates/functions/payment-address.php:307
-#: public/templates/my-account/order-detail.php:34
+#: public/templates/functions/payment-address.php:308
+#: public/templates/my-account/order-detail.php:35
 #: public/templates/my-account/tabs/user-profile.php:38
 #: public/templates/my-account/tabs/user-profile.php:39
 msgid "Address"
@@ -810,7 +805,7 @@ msgstr ""
 
 #: admin/controllers/order/templates/product-info-metabox.php:236
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:196
-#: public/partials/csv-export.php:165
+#: public/partials/csv-export.php:164
 #: public/templates/my-account/tabs/user-profile.php:43
 #: public/templates/my-account/tabs/user-profile.php:44
 msgid "Address 2"
@@ -820,7 +815,7 @@ msgstr ""
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:200
 #: admin/partials/ppcart-admin-page-settings-tax.php:25
 #: admin/traits/trait-ppcart-admin-profile.php:24
-#: public/partials/csv-export.php:166
+#: public/partials/csv-export.php:165
 #: public/templates/my-account/tabs/user-profile.php:48
 #: public/templates/my-account/tabs/user-profile.php:49
 msgid "City"
@@ -829,7 +824,7 @@ msgstr ""
 #: admin/controllers/order/templates/product-info-metabox.php:244
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:204
 #: admin/traits/trait-ppcart-admin-profile.php:25
-#: public/partials/csv-export.php:167
+#: public/partials/csv-export.php:166
 #: public/templates/my-account/tabs/user-profile.php:53
 #: public/templates/my-account/tabs/user-profile.php:54
 msgid "State"
@@ -838,7 +833,7 @@ msgstr ""
 #: admin/controllers/order/templates/product-info-metabox.php:248
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:208
 #: admin/traits/trait-ppcart-admin-profile.php:26
-#: public/partials/csv-export.php:168
+#: public/partials/csv-export.php:167
 #: public/templates/my-account/tabs/user-profile.php:58
 #: public/templates/my-account/tabs/user-profile.php:59
 msgid "Zip"
@@ -850,8 +845,8 @@ msgstr ""
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:297
 #: admin/partials/ppcart-admin-field-default-fields.php:35
 #: admin/traits/trait-ppcart-admin-profile.php:27
-#: public/partials/csv-export.php:169
-#: public/templates/functions/payment-address.php:297
+#: public/partials/csv-export.php:168
+#: public/templates/functions/payment-address.php:298
 #: public/templates/my-account/tabs/user-profile.php:63
 #: public/templates/my-account/tabs/user-profile.php:64
 msgid "Country"
@@ -890,14 +885,14 @@ msgid "Order status"
 msgstr ""
 
 #: admin/controllers/order/templates/product-info-metabox.php:283
-#: public/partials/csv-export.php:179
+#: public/partials/csv-export.php:178
 msgid "Opted-in"
 msgstr ""
 
 #: admin/controllers/order/templates/product-info-metabox.php:295
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:253
 #: includes/functions/merge-tags-and-dates.php:39
-#: public/partials/csv-export.php:178
+#: public/partials/csv-export.php:177
 msgid "Custom Fields"
 msgstr ""
 
@@ -948,6 +943,15 @@ msgstr ""
 msgid "Order Notes"
 msgstr ""
 
+#: admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php:27
+#: admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php:26
+#: admin/partials/ppcart-admin-page-settings.php:39
+#: admin/traits/trait-ppcart-admin-profile.php:32
+#: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:16
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22
+msgid "PublishPress Cart"
+msgstr ""
+
 #: admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php:43
 msgid "Related Product"
 msgstr ""
@@ -956,7 +960,7 @@ msgstr ""
 msgid "Apply a product's access rules to this page."
 msgstr ""
 
-#: admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php:50
+#: admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php:49
 #: admin/settings/traits/options/core-settings.php:173
 #: includes/integrations/gutenberg/blocks/_shared/options.js:93
 #: includes/integrations/gutenberg/blocks/_shared/options.js:156
@@ -966,13 +970,13 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php:66
+#: admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php:82
 msgid "No notes found"
 msgstr ""
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:38
-#: public/templates/functions/plan-coupon-fields.php:375
-#: public/templates/pdf-invoice/invoice.php:136
+#: public/templates/functions/plan-coupon-fields.php:390
+#: public/templates/pdf-invoice/invoice.php:146
 msgid "Qty"
 msgstr ""
 
@@ -986,18 +990,18 @@ msgstr ""
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:108
 #: admin/partials/settings-page/metadata.php:430
-#: public/templates/my-account/subscription-detail.php:54
+#: public/templates/my-account/subscription-detail.php:56
 msgid "Cancel Subscription"
 msgstr ""
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:110
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:323
-#: public/templates/my-account/subscription-detail.php:58
+#: public/templates/my-account/subscription-detail.php:60
 msgid "Pause"
 msgstr ""
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:112
-#: public/templates/my-account/subscription-detail.php:60
+#: public/templates/my-account/subscription-detail.php:62
 msgid "Resume"
 msgstr ""
 
@@ -1005,7 +1009,7 @@ msgstr ""
 #: admin/controllers/templates/order-list-custom-status.php:108
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:29
 #: admin/reports/templates/admin-reports-page.php:462
-#: public/partials/csv-export.php:348
+#: public/partials/csv-export.php:347
 #: includes/integrations/gutenberg/blocks/account-subscriptions/block.js:41
 #: includes/integrations/gutenberg/build/account-blocks.js:1
 msgid "Canceled"
@@ -1026,7 +1030,7 @@ msgstr ""
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:148
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:185
-#: includes/functions/merge-tags-and-dates.php:551
+#: includes/functions/merge-tags-and-dates.php:559
 msgid "Cancel subscription"
 msgstr ""
 
@@ -1168,40 +1172,40 @@ msgstr ""
 msgid "Subscription and invoices synced successfully."
 msgstr ""
 
-#: admin/controllers/templates/order-list-bulk-action-handler.php:44
+#: admin/controllers/templates/order-list-bulk-action-handler.php:48
 msgid "Subscription synced from Stripe by admin"
 msgstr ""
 
 #. translators: %s: error message.
-#: admin/controllers/templates/order-list-bulk-action-handler.php:48
+#: admin/controllers/templates/order-list-bulk-action-handler.php:52
 #, php-format
 msgid "Error syncing subscription from Stripe! Message: %s"
 msgstr ""
 
-#: admin/controllers/templates/order-list-bulk-action-handler.php:69
+#: admin/controllers/templates/order-list-bulk-action-handler.php:77
 msgid "Stripe-backed order status was not changed locally. Sync from Stripe or perform the action in Stripe."
 msgstr ""
 
-#: admin/controllers/templates/order-list-bulk-action-handler.php:81
+#: admin/controllers/templates/order-list-bulk-action-handler.php:89
 msgid "Subscription resumed from Stripe by admin"
 msgstr ""
 
 #. translators: %s: error message.
-#: admin/controllers/templates/order-list-bulk-action-handler.php:84
+#: admin/controllers/templates/order-list-bulk-action-handler.php:92
 #, php-format
 msgid "Error resuming Stripe subscription! Message: %s"
 msgstr ""
 
-#: admin/controllers/templates/order-list-bulk-action-handler.php:93
+#: admin/controllers/templates/order-list-bulk-action-handler.php:101
 msgid "Stripe-backed subscription was not marked completed locally. Stripe state remains authoritative."
 msgstr ""
 
-#: admin/controllers/templates/order-list-bulk-action-handler.php:102
+#: admin/controllers/templates/order-list-bulk-action-handler.php:110
 msgid "Subscription canceled by admin"
 msgstr ""
 
 #. translators: %s: error message.
-#: admin/controllers/templates/order-list-bulk-action-handler.php:105
+#: admin/controllers/templates/order-list-bulk-action-handler.php:113
 #, php-format
 msgid "Error canceling subscription! Message: %s"
 msgstr ""
@@ -1316,7 +1320,7 @@ msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
-#: public/partials/csv-export.php:350
+#: public/partials/csv-export.php:349
 #: includes/integrations/gutenberg/blocks/account-subscriptions/block.js:33
 #: includes/integrations/gutenberg/build/account-blocks.js:1
 msgid "Paused"
@@ -1405,7 +1409,7 @@ msgid "Pending Orders"
 msgstr ""
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:39
-#: admin/reports/templates/customer-report/page.php:64
+#: admin/reports/templates/customer-report/page.php:63
 msgid "Paid Orders"
 msgstr ""
 
@@ -1423,7 +1427,7 @@ msgid "View all subscriptions"
 msgstr ""
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:51
-#: admin/reports/templates/customer-report/page.php:76
+#: admin/reports/templates/customer-report/page.php:75
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:7
 #: public/templates/my-account/tabs/subscriptions.php:20
 msgid "Active Subscriptions"
@@ -1517,7 +1521,7 @@ msgstr ""
 
 #: admin/metaboxes/class-ppcart-product-metabox-option-sources.php:31
 #: admin/metaboxes/field-groups/message-fields.php:41
-#: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:56
+#: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:55
 msgid "Select Page"
 msgstr ""
 
@@ -1576,7 +1580,7 @@ msgstr ""
 
 #: admin/metaboxes/field-groups/message-fields.php:121
 #: admin/metaboxes/field-groups/sales-plan-fields.php:37
-#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:30
+#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:33
 #: includes/files/traits/trait-ppcart-files-settings.php:95
 msgid "+ Add New"
 msgstr ""
@@ -1603,7 +1607,7 @@ msgstr ""
 #: admin/settings/traits/options/core-settings.php:378
 #: admin/settings/traits/options/payment-fields.php:11
 #: admin/settings/traits/options/payment-fields.php:23
-#: admin/settings/traits/options/payment-fields.php:131
+#: admin/settings/traits/options/payment-fields.php:135
 msgid "Enable"
 msgstr ""
 
@@ -1700,7 +1704,7 @@ msgid "Submit Button Text"
 msgstr ""
 
 #: admin/metaboxes/field-groups/sales-checkout-fields.php:33
-#: includes/functions/merge-tags-and-dates.php:600
+#: includes/functions/merge-tags-and-dates.php:608
 #: includes/functions/product-and-order-setup.php:27
 #: includes/functions/product-and-order-setup.php:174
 #: public/templates/order-form/submit-button.php:28
@@ -1746,7 +1750,7 @@ msgid "Limit reached message"
 msgstr ""
 
 #: admin/metaboxes/field-groups/sales-customer-limit-fields.php:41
-#: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:55
+#: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:57
 msgid "Sorry, you have already purchased this product!"
 msgstr ""
 
@@ -1785,9 +1789,9 @@ msgstr ""
 #: admin/metaboxes/field-groups/sales-plan-fields.php:25
 #: admin/metaboxes/field-groups/sales-plan-fields.php:39
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:184
-#: public/partials/csv-export.php:172
-#: public/partials/csv-export.php:254
-#: public/templates/functions/plan-coupon-fields.php:128
+#: public/partials/csv-export.php:171
+#: public/partials/csv-export.php:253
+#: public/templates/functions/plan-coupon-fields.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:89
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:103
 #: includes/integrations/gutenberg/build/order-form.js:1
@@ -1857,7 +1861,7 @@ msgstr ""
 #: includes/order-items/order-details-renderer.php:27
 #: public/templates/my-account/tabs/plans.php:40
 #: public/templates/my-account/tabs/subscriptions.php:45
-#: public/templates/pdf-invoice/invoice.php:137
+#: public/templates/pdf-invoice/invoice.php:147
 #: public/templates/shortcodes/receipt.php:19
 msgid "Price"
 msgstr ""
@@ -1935,8 +1939,8 @@ msgid "Frequency (On Sale)"
 msgstr ""
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:205
-#: admin/reports/templates/customer-report/page.php:159
-#: public/partials/csv-export.php:255
+#: admin/reports/templates/customer-report/page.php:158
+#: public/partials/csv-export.php:254
 msgid "Pay Interval"
 msgstr ""
 
@@ -2321,23 +2325,23 @@ msgstr ""
 msgid "Send test email"
 msgstr ""
 
-#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:11
+#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:12
 msgid "this product"
 msgstr ""
 
-#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:23
+#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:26
 msgid "Renew mailing lists"
 msgstr ""
 
-#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:31
+#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:34
 msgid "Edit Integration"
 msgstr ""
 
-#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:32
+#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:35
 msgid "Integration"
 msgstr ""
 
-#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:33
+#: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:36
 msgid "Remove Integration"
 msgstr ""
 
@@ -2531,7 +2535,7 @@ msgid "Header Background Image"
 msgstr ""
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:24
-#: public/partials/csv-export.php:352
+#: public/partials/csv-export.php:351
 msgid "Never expires"
 msgstr ""
 
@@ -2557,8 +2561,8 @@ msgstr ""
 #: admin/partials/ppcart-admin-field-default-fields.php:27
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:9
 #: public/partials/csv-export.php:43
-#: public/partials/csv-export.php:161
-#: public/templates/functions/plan-coupon-fields.php:418
+#: public/partials/csv-export.php:160
+#: public/templates/functions/plan-coupon-fields.php:433
 #: public/templates/my-account/tabs/user-profile.php:22
 msgid "Last Name"
 msgstr ""
@@ -2627,42 +2631,42 @@ msgstr ""
 #: admin/partials/ppcart-admin-field-default-fields.php:26
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:8
 #: public/partials/csv-export.php:42
-#: public/partials/csv-export.php:160
-#: public/templates/functions/plan-coupon-fields.php:417
+#: public/partials/csv-export.php:159
+#: public/templates/functions/plan-coupon-fields.php:432
 #: public/templates/my-account/tabs/user-profile.php:17
 msgid "First Name"
 msgstr ""
 
 #: admin/partials/ppcart-admin-field-default-fields.php:29
-#: public/templates/functions/plan-coupon-fields.php:423
+#: public/templates/functions/plan-coupon-fields.php:438
 msgid "Phone Number"
 msgstr ""
 
 #: admin/partials/ppcart-admin-field-default-fields.php:30
 #: admin/settings/traits/options/core-settings.php:114
-#: public/templates/functions/plan-coupon-fields.php:428
+#: public/templates/functions/plan-coupon-fields.php:443
 msgid "Company Name"
 msgstr ""
 
 #: admin/partials/ppcart-admin-field-default-fields.php:37
 #: admin/traits/trait-ppcart-admin-profile.php:23
-#: public/templates/functions/payment-address.php:316
+#: public/templates/functions/payment-address.php:317
 msgid "Address Line 2"
 msgstr ""
 
 #: admin/partials/ppcart-admin-field-default-fields.php:38
-#: public/templates/functions/payment-address.php:324
+#: public/templates/functions/payment-address.php:325
 msgid "Town / City"
 msgstr ""
 
 #: admin/partials/ppcart-admin-field-default-fields.php:39
-#: public/templates/functions/payment-address.php:278
-#: public/templates/functions/payment-address.php:333
+#: public/templates/functions/payment-address.php:279
+#: public/templates/functions/payment-address.php:334
 msgid "State / County"
 msgstr ""
 
 #: admin/partials/ppcart-admin-field-default-fields.php:40
-#: public/templates/functions/payment-address.php:342
+#: public/templates/functions/payment-address.php:343
 msgid "Postcode / Zip"
 msgstr ""
 
@@ -2798,12 +2802,11 @@ msgid "Invoices"
 msgstr ""
 
 #: admin/partials/ppcart-admin-page-settings.php:110
-#: admin/settings/traits/templates/settings-sections-register.php:31
-#: includes/files/templates/order-downloads-metabox.php:12
+#: admin/settings/traits/templates/settings-sections-register.php:35
 #: includes/files/traits/templates/files-admin-product-form-callback.php:29
 #: includes/files/traits/templates/files-frontend-downloads-shortcode.php:43
-#: includes/files/traits/trait-ppcart-files-frontend.php:42
-#: includes/files/traits/trait-ppcart-files-frontend.php:64
+#: includes/files/traits/trait-ppcart-files-frontend.php:44
+#: includes/files/traits/trait-ppcart-files-frontend.php:66
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-navigation.php:177
 #: includes/integrations/gutenberg/lib/class-ppcart-account-context.php:206
 #: includes/integrations/gutenberg/blocks/_shared/options.js:25
@@ -2813,7 +2816,7 @@ msgid "Downloads"
 msgstr ""
 
 #: admin/partials/ppcart-admin-page-settings.php:114
-#: admin/settings/traits/templates/settings-sections-register.php:37
+#: admin/settings/traits/templates/settings-sections-register.php:42
 msgid "Debug"
 msgstr ""
 
@@ -3250,7 +3253,7 @@ msgid "Membership"
 msgstr ""
 
 #: admin/partials/settings-page/metadata.php:457
-#: admin/settings/traits/trait-ppcart-admin-settings-sections.php:103
+#: admin/settings/traits/trait-ppcart-admin-settings-sections.php:107
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:21
 msgid "Security"
 msgstr ""
@@ -3455,13 +3458,13 @@ msgid "Close payment method settings"
 msgstr ""
 
 #: admin/partials/settings-page/sections/payment-method.php:185
-#: admin/settings/traits/options/payment-fields.php:40
+#: admin/settings/traits/options/payment-fields.php:44
 msgid "Test"
 msgstr ""
 
 #: admin/partials/settings-page/sections/payment-method.php:192
 #: admin/partials/settings-page/sections/payment-method.php:221
-#: admin/settings/traits/options/payment-fields.php:41
+#: admin/settings/traits/options/payment-fields.php:45
 msgid "Live"
 msgstr ""
 
@@ -3621,7 +3624,7 @@ msgid "Filters by the order or subscription's primary product"
 msgstr ""
 
 #: admin/reports/templates/admin-reports-page.php:120
-#: admin/reports/templates/customer-report/page.php:50
+#: admin/reports/templates/customer-report/page.php:49
 msgid "Apply"
 msgstr ""
 
@@ -3640,7 +3643,7 @@ msgstr ""
 
 #: admin/reports/templates/admin-reports-page.php:352
 #: includes/order-items/order-details-renderer.php:67
-#: public/templates/functions/plan-coupon-fields.php:219
+#: public/templates/functions/plan-coupon-fields.php:220
 msgid "Free"
 msgstr ""
 
@@ -3661,7 +3664,7 @@ msgid "Report overview"
 msgstr ""
 
 #: admin/reports/templates/admin-reports-page.php:380
-#: admin/reports/templates/customer-report/page.php:56
+#: admin/reports/templates/customer-report/page.php:55
 msgid "Net Revenue"
 msgstr ""
 
@@ -3851,28 +3854,28 @@ msgstr ""
 msgid "View Orders"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:41
+#: admin/reports/templates/customer-report/page.php:40
 msgid "Customer activity"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:48
+#: admin/reports/templates/customer-report/page.php:47
 msgid "Report date range"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:54
+#: admin/reports/templates/customer-report/page.php:53
 msgid "Customer summary"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:68
+#: admin/reports/templates/customer-report/page.php:67
 msgid "Average Order"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:83
+#: admin/reports/templates/customer-report/page.php:82
 msgid "Customer report tabs"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:89
-#: admin/reports/templates/customer-report/page.php:146
+#: admin/reports/templates/customer-report/page.php:88
+#: admin/reports/templates/customer-report/page.php:145
 #: includes/helpers/ppcart-general-functions.php:116
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-navigation.php:174
 #: includes/integrations/gutenberg/lib/class-ppcart-account-context.php:194
@@ -3884,107 +3887,107 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:98
+#: admin/reports/templates/customer-report/page.php:97
 msgid "Order Timeline"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:99
+#: admin/reports/templates/customer-report/page.php:98
 msgid "Paid, refunded, upsell, downsell, and bump activity for the selected period."
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:101
+#: admin/reports/templates/customer-report/page.php:100
 msgid "Open Orders List"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:126
+#: admin/reports/templates/customer-report/page.php:125
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:11
 #: public/templates/my-account/tabs/order-history.php:48
 msgid "View Order"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:135
+#: admin/reports/templates/customer-report/page.php:134
 msgid "No orders in this date range"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:136
+#: admin/reports/templates/customer-report/page.php:135
 msgid "Try a broader date range or open the full orders list for this customer."
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:147
+#: admin/reports/templates/customer-report/page.php:146
 msgid "Recurring plans, status, collected revenue, and remaining payments for this customer."
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:149
+#: admin/reports/templates/customer-report/page.php:148
 msgid "Open Subscriptions List"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:158
+#: admin/reports/templates/customer-report/page.php:157
 msgid "Plan"
+msgstr ""
+
+#: admin/reports/templates/customer-report/page.php:160
+#: public/partials/csv-export.php:256
+msgid "Total Revenue"
 msgstr ""
 
 #: admin/reports/templates/customer-report/page.php:161
 #: public/partials/csv-export.php:257
-msgid "Total Revenue"
-msgstr ""
-
-#: admin/reports/templates/customer-report/page.php:162
-#: public/partials/csv-export.php:258
 msgid "Remaining Payments"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:182
+#: admin/reports/templates/customer-report/page.php:181
 msgid "No subscriptions in this date range"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:183
+#: admin/reports/templates/customer-report/page.php:182
 msgid "Try a broader date range or open the full subscriptions list for this customer."
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:190
+#: admin/reports/templates/customer-report/page.php:189
 msgid "Customer details"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:192
+#: admin/reports/templates/customer-report/page.php:191
 msgid "Customer Details"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:206
+#: admin/reports/templates/customer-report/page.php:205
 msgid "Location"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:210
+#: admin/reports/templates/customer-report/page.php:209
 msgid "WordPress Account"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:215
+#: admin/reports/templates/customer-report/page.php:214
 msgid "Guest checkout"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:220
+#: admin/reports/templates/customer-report/page.php:219
 msgid "Customer ID"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:224
+#: admin/reports/templates/customer-report/page.php:223
 msgid "Last Gateway"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:231
+#: admin/reports/templates/customer-report/page.php:230
 msgid "Customer History"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:234
+#: admin/reports/templates/customer-report/page.php:233
 msgid "First Order"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:238
+#: admin/reports/templates/customer-report/page.php:237
 msgid "Last Order"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:242
+#: admin/reports/templates/customer-report/page.php:241
 msgid "Products Purchased"
 msgstr ""
 
-#: admin/reports/templates/customer-report/page.php:246
+#: admin/reports/templates/customer-report/page.php:245
 msgid "Subscription Revenue"
 msgstr ""
 
@@ -4013,8 +4016,8 @@ msgid "Order"
 msgstr ""
 
 #: admin/reports/templates/customer-reports-page.php:283
-#: includes/functions/order-items-and-details.php:72
-#: includes/functions/order-items-and-details.php:100
+#: includes/functions/order-items-and-details.php:75
+#: includes/functions/order-items-and-details.php:103
 #: public/controllers/templates/ga-purchase-tracking.php:52
 #: public/controllers/templates/ga-purchase-tracking.php:112
 #: public/controllers/templates/ga-purchase-tracking.php:165
@@ -4022,7 +4025,7 @@ msgstr ""
 msgid "Order Bump"
 msgstr ""
 
-#: admin/reports/templates/customer-reports-page.php:418
+#: admin/reports/templates/customer-reports-page.php:388
 msgid "Guest customer"
 msgstr ""
 
@@ -4450,100 +4453,102 @@ msgstr ""
 msgid "API"
 msgstr ""
 
-#. translators: %s: Stripe subscriptions documentation URL.
-#: admin/settings/traits/options/payment-fields.php:36
-#, php-format
-msgid "GOING LIVE? Click the \"Update\" button on any subscription products created on the Test API after switching this setting to Live!<br><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">More Information</a>"
+#: admin/settings/traits/options/payment-fields.php:37
+msgid "GOING LIVE? Click the \"Update\" button on any subscription products created on the Test API after switching this setting to Live!"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:48
+#: admin/settings/traits/options/payment-fields.php:39
+msgid "More Information"
+msgstr ""
+
+#: admin/settings/traits/options/payment-fields.php:52
 msgid "Connection Status"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:57
+#: admin/settings/traits/options/payment-fields.php:61
 msgid "Checkout experience"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:66
+#: admin/settings/traits/options/payment-fields.php:70
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:97
 #: includes/integrations/gutenberg/build/order-form.js:1
 msgid "Express Payment"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:76
+#: admin/settings/traits/options/payment-fields.php:80
 msgid "Customer Portal"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:87
+#: admin/settings/traits/options/payment-fields.php:91
 msgid "Hosted Checkout"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:97
+#: admin/settings/traits/options/payment-fields.php:101
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:20
 msgid "Payment Element"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:107
+#: admin/settings/traits/options/payment-fields.php:111
 msgid "Statement Descriptor"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:111
+#: admin/settings/traits/options/payment-fields.php:115
 msgid "Required. 22 character maximum, no special characters"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:118
+#: admin/settings/traits/options/payment-fields.php:122
 msgid "Update subscription payment status in webhook only"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:141
+#: admin/settings/traits/options/payment-fields.php:145
 msgid "Enable Sandbox"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:146
+#: admin/settings/traits/options/payment-fields.php:150
 msgid "Yes"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:147
+#: admin/settings/traits/options/payment-fields.php:151
 msgid "No"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:154
+#: admin/settings/traits/options/payment-fields.php:158
 msgid "Verify SSL certificates"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:158
+#: admin/settings/traits/options/payment-fields.php:162
 msgid "Verifies PayPal TLS certificates and hostname matches for server-side PayPal API requests."
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:168
+#: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:178
+#: admin/settings/traits/options/payment-fields.php:182
 msgid "Client ID"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:188
+#: admin/settings/traits/options/payment-fields.php:192
 msgid "Secret"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:198
+#: admin/settings/traits/options/payment-fields.php:202
 msgid "PDT Token"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:208
+#: admin/settings/traits/options/payment-fields.php:212
 msgid "Sandbox Email"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:218
+#: admin/settings/traits/options/payment-fields.php:222
 msgid "Sandbox Client ID"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:228
+#: admin/settings/traits/options/payment-fields.php:232
 msgid "Sandbox Secret"
 msgstr ""
 
-#: admin/settings/traits/options/payment-fields.php:238
+#: admin/settings/traits/options/payment-fields.php:242
 msgid "Sandbox PDT Token"
 msgstr ""
 
@@ -4580,7 +4585,7 @@ msgid "Reverse Charge Description"
 msgstr ""
 
 #: admin/settings/traits/options/tax-fields.php:93
-#: includes/functions/order-items-and-details.php:277
+#: includes/functions/order-items-and-details.php:281
 msgid "VAT Reversal"
 msgstr ""
 
@@ -4591,9 +4596,9 @@ msgstr ""
 #: includes/functions/admin-ajax-and-notices.php:16
 #: includes/functions/admin-ajax-and-notices.php:21
 #: includes/functions/admin-ajax-and-notices.php:26
-#: includes/functions/admin-ajax-and-notices.php:335
-#: includes/functions/admin-ajax-and-notices.php:373
-#: includes/functions/admin-ajax-and-notices.php:383
+#: includes/functions/admin-ajax-and-notices.php:347
+#: includes/functions/admin-ajax-and-notices.php:385
+#: includes/functions/admin-ajax-and-notices.php:401
 #: public/controllers/page/traits/trait-ppcart-public-page-downloads.php:21
 msgid "Invalid request."
 msgstr ""
@@ -4687,19 +4692,19 @@ msgstr ""
 msgid "Google Analytics Purchase Event Tracking"
 msgstr ""
 
-#: admin/settings/traits/templates/settings-sections-register.php:13
+#: admin/settings/traits/templates/settings-sections-register.php:14
 msgid "Currency & Pricing"
 msgstr ""
 
-#: admin/settings/traits/templates/settings-sections-register.php:19
+#: admin/settings/traits/templates/settings-sections-register.php:21
 msgid "Pages & Customer Account"
 msgstr ""
 
-#: admin/settings/traits/templates/settings-sections-register.php:25
+#: admin/settings/traits/templates/settings-sections-register.php:28
 msgid "Company & Branding"
 msgstr ""
 
-#: admin/settings/traits/templates/settings-sections-register.php:43
+#: admin/settings/traits/templates/settings-sections-register.php:49
 msgid "Other Settings"
 msgstr ""
 
@@ -4872,109 +4877,109 @@ msgstr ""
 msgid "Configured (value hidden)"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:67
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:66
 msgid "Mailchimp API Key"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:79
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:78
 msgid "ActiveCampaign URL"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:89
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:88
 msgid "ActiveCampaign Secret Key"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:101
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:100
 msgid "MemberVault URL"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:111
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:110
 msgid "MemberVault API Key"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:123
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:122
 msgid "SendFox API Key"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:141
 msgid "MailPoet is active. Assign lists on each product’s Integrations settings — no API key is required."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:143
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
 msgid "Install and activate the MailPoet plugin to sync customers to lists. No API key is required."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:151
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:150
 msgid "Add Payment Info"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:154
 msgid "Sends an AddPaymentInfo event to an existing Meta Pixel installation."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:156
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:167
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:178
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:177
 msgid "Requires Meta Pixel or another plugin/theme to load fbq on the checkout page."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:162
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:186
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:161
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:185
 msgid "Purchase Complete"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:165
 msgid "Sends a Purchase event to an existing Meta Pixel installation."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:173
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:197
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:172
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:196
 msgid "Lead Captured"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:177
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:176
 msgid "Sends a Lead event when a two-step checkout captures customer details."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:189
 msgid "Sends a purchase event to an existing Google Analytics or Data Layer installation."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:191
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:202
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
 msgid "Requires Google Analytics, Google Tag Manager, or another plugin/theme to load ga, gtag, or dataLayer on the checkout page."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:200
 msgid "Sends a generate_lead event when a two-step checkout captures customer details."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:208
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:207
 #: includes/helpers/pro-locks/product-locks.php:80
 msgid "Type"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:213
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:212
 msgid "Choose the event format that matches the analytics script already installed on this site."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214
 msgid "analytics.js"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:216
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
 msgid "Google Analytics 4"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:217
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:216
 msgid "Universal Analytics"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:218
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:217
 msgid "DataLayer with GA4"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:219
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:218
 msgid "DataLayer with Enhanced Ecommerce (UA)"
 msgstr ""
 
@@ -5039,14 +5044,15 @@ msgstr ""
 #: admin/settings/traits/trait-ppcart-admin-settings-screen.php:249
 #: includes/logging/templates/ppcart-debug-logger-view-log-request.php:21
 #: includes/logging/traits/templates/stripe-webhook-logger-admin-handle-admin-request.php:14
+#: includes/logging/traits/trait-ppcart-debug-log-viewer-page.php:21
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-sections.php:61
+#: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
 msgstr ""
 
-#: admin/settings/traits/trait-ppcart-admin-settings-sections.php:80
+#: admin/settings/traits/trait-ppcart-admin-settings-sections.php:82
 msgid "Invoice Options"
 msgstr ""
 
@@ -5175,7 +5181,7 @@ msgid "Wait..."
 msgstr ""
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:60
-#: includes/functions/merge-tags-and-dates.php:545
+#: includes/functions/merge-tags-and-dates.php:553
 msgid "Error: Please try again."
 msgstr ""
 
@@ -5343,26 +5349,24 @@ msgid "Mailchimp tags sync error: %s"
 msgstr ""
 
 #: admin/traits/templates/integrations-ppcart-mailchimp-groups-tags.php:10
-#: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:19
-#: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:24
-#: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:29
-#: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:26
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:23
+#: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:18
+#: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:23
+#: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:16
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:14
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:13
-#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:17
-#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:28
-#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:79
-#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:107
-#: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:21
-#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:26
-#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:38
-#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:43
-#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:59
-#: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:34
-#: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:32
+#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:34
+#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:101
+#: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:13
+#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:13
+#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:40
+#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:45
+#: public/controllers/order/traits/templates/order-stripe-update-stripe-order-status.php:61
+#: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:22
 #: public/controllers/payment/traits/templates/payment-update-intent-amount.php:19
-#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:32
-#: public/controllers/traits/templates/subscription-create-create-subscription.php:52
+#: public/controllers/payment/traits/trait-ppcart-public-payment-intent.php:30
+#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:22
+#: public/controllers/traits/templates/subscription-create-create-subscription.php:23
+#: public/controllers/traits/templates/subscription-create-create-subscription.php:217
 msgid "Invalid Request"
 msgstr ""
 
@@ -5542,11 +5546,11 @@ msgstr ""
 msgid "Copy of %s"
 msgstr ""
 
-#: includes/class-ppcart-sanitize.php:176
+#: includes/class-ppcart-sanitize.php:171
 msgid "Specify the data type to sanitize."
 msgstr ""
 
-#: includes/class-ppcart-sanitize.php:180
+#: includes/class-ppcart-sanitize.php:175
 msgid "Forgot data type"
 msgstr ""
 
@@ -5558,10 +5562,12 @@ msgstr ""
 msgid "PublishPress Cart and PublishPress Cart Compatibility cannot run while Studiocart is active. Deactivate Studiocart to start those plugins."
 msgstr ""
 
-#. translators: %1$s and %2$s are placeholders for the Pro link markup.
-#: includes/class-ppcart-version-notices.php:70
-#, php-format
-msgid "You're using PublishPress Cart. The Pro version has more features and support. %1$sUpgrade to Pro%2$s"
+#: includes/class-ppcart-version-notices.php:85
+msgid "You're using PublishPress Cart. The Pro version has more features and support."
+msgstr ""
+
+#: includes/class-ppcart-version-notices.php:97
+msgid "Dismiss"
 msgstr ""
 
 #: includes/data/states/states-01.php:8
@@ -11623,10 +11629,10 @@ msgid "Purchase Date:"
 msgstr ""
 
 #: includes/email/ppcart-template-functions/templates.php:94
-#: includes/functions/order-items-and-details.php:225
+#: includes/functions/order-items-and-details.php:229
 #: includes/order-items/order-details-renderer.php:141
 #: public/templates/email/order-table.php:121
-#: public/templates/pdf-invoice/invoice.php:209
+#: public/templates/pdf-invoice/invoice.php:219
 msgid "Subtotal"
 msgstr ""
 
@@ -11814,43 +11820,32 @@ msgstr ""
 msgid "Sorry, this file is no longer available."
 msgstr ""
 
-#: includes/files/templates/order-downloads-metabox.php:11
+#. translators: 1: file name, 2: user login.
+#: includes/files/traits/templates/files-admin-maybe-revoke-access.php:31
+#, php-format
+msgid "Access to file \"%1$s\" revoked by %2$s"
+msgstr ""
+
 #: includes/files/traits/templates/files-admin-product-form-callback.php:28
 #: includes/files/traits/trait-ppcart-files-settings.php:132
 msgid "File Name"
 msgstr ""
 
-#: includes/files/templates/order-downloads-metabox.php:13
-#: includes/files/traits/templates/files-frontend-file-tab-content.php:31
-#: public/templates/my-account/card-details.php:25
-msgid "Expires"
-msgstr ""
-
-#: includes/files/templates/order-downloads-metabox.php:14
 #: includes/files/traits/templates/files-admin-product-form-callback.php:30
 #: includes/files/traits/templates/files-frontend-file-tab-content.php:32
 msgid "Downloads Remaining"
 msgstr ""
 
-#: includes/files/templates/order-downloads-metabox.php:26
 #: includes/files/traits/templates/files-admin-product-form-callback.php:41
 msgid "Copy URL"
 msgstr ""
 
-#: includes/files/templates/order-downloads-metabox.php:27
 #: includes/files/traits/templates/files-admin-product-form-callback.php:42
 msgid "Are you sure? This action can't be undone."
 msgstr ""
 
-#: includes/files/templates/order-downloads-metabox.php:27
 #: includes/files/traits/templates/files-admin-product-form-callback.php:42
 msgid "Revoke Access"
-msgstr ""
-
-#. translators: 1: file name, 2: user login.
-#: includes/files/traits/templates/files-admin-maybe-revoke-access.php:31
-#, php-format
-msgid "Access to file \"%1$s\" revoked by %2$s"
 msgstr ""
 
 #: includes/files/traits/templates/files-admin-revoke-notice.php:16
@@ -11867,7 +11862,12 @@ msgstr ""
 msgid "Access to file \"%s\" has been revoked."
 msgstr ""
 
-#: includes/files/traits/trait-ppcart-files-frontend.php:126
+#: includes/files/traits/templates/files-frontend-file-tab-content.php:31
+#: public/templates/my-account/card-details.php:25
+msgid "Expires"
+msgstr ""
+
+#: includes/files/traits/trait-ppcart-files-frontend.php:128
 msgid "Your Downloads"
 msgstr ""
 
@@ -11935,55 +11935,55 @@ msgstr ""
 msgid "Redirect to file"
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:39
+#: includes/functions/admin-ajax-and-notices.php:42
 msgid "Please enter first name."
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:44
+#: includes/functions/admin-ajax-and-notices.php:47
 msgid "Please enter a valid email."
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:46
-#: includes/functions/merge-tags-and-dates.php:588
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:151
+#: includes/functions/admin-ajax-and-notices.php:49
+#: includes/functions/merge-tags-and-dates.php:596
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:153
 msgid "Enter a valid email"
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:51
+#: includes/functions/admin-ajax-and-notices.php:53
 msgid "Password and confirm password should match."
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:128
+#: includes/functions/admin-ajax-and-notices.php:129
 msgid "Profile details have been saved."
 msgstr ""
 
 #. translators: %s: manual update URL.
-#: includes/functions/admin-ajax-and-notices.php:246
+#: includes/functions/admin-ajax-and-notices.php:257
 #, php-format
 msgid "<b>PublishPress Cart Data Updater</b> - The database update is taking longer than expected. Click <a href=\"%s\">here</a> to run it manually."
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:268
+#: includes/functions/admin-ajax-and-notices.php:279
 msgid "<b>PublishPress Cart Data Updater</b> - The database update process is complete."
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:277
+#: includes/functions/admin-ajax-and-notices.php:288
 msgid "<b>PublishPress Cart Data Updater</b> - Version 2.6 database update is in progress."
 msgstr ""
 
 #. translators: %s: invalid price format.
-#: includes/functions/admin-ajax-and-notices.php:324
+#: includes/functions/admin-ajax-and-notices.php:336
 #, php-format
 msgid "Error: Invalid price format - %s. Price format should match price format setting."
 msgstr ""
 
 #. translators: %s: user login.
-#: includes/functions/admin-ajax-and-notices.php:361
+#: includes/functions/admin-ajax-and-notices.php:373
 #, php-format
 msgid "Purchase confirmation email resent by %s"
 msgstr ""
 
-#: includes/functions/admin-ajax-and-notices.php:377
+#: includes/functions/admin-ajax-and-notices.php:389
 msgid "You are not allowed to dismiss this notice."
 msgstr ""
 
@@ -12689,25 +12689,25 @@ msgid "Zambian kwacha"
 msgstr ""
 
 #. translators: %s: product name.
-#: includes/functions/integrations-and-stock.php:214
+#: includes/functions/integrations-and-stock.php:215
 #, php-format
 msgid "Low Stock Alert: %s"
 msgstr ""
 
 #. translators: 1: product name, 2: product ID, 3: current stock level.
-#: includes/functions/integrations-and-stock.php:216
+#: includes/functions/integrations-and-stock.php:217
 #, php-format
 msgid "The stock for product \"%1$s\" (ID: %2$d) is running low. Current stock: %3$d"
 msgstr ""
 
 #. translators: %s: product name.
-#: includes/functions/integrations-and-stock.php:219
+#: includes/functions/integrations-and-stock.php:220
 #, php-format
 msgid "Out of Stock Alert: %s"
 msgstr ""
 
 #. translators: 1: product name, 2: product ID.
-#: includes/functions/integrations-and-stock.php:221
+#: includes/functions/integrations-and-stock.php:222
 #, php-format
 msgid "The product \"%1$s\" (ID: %2$d) is now out of stock."
 msgstr ""
@@ -12878,254 +12878,254 @@ msgstr ""
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:541
+#: includes/functions/merge-tags-and-dates.php:549
 msgid "Invalid Charge ID"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:542
+#: includes/functions/merge-tags-and-dates.php:550
 msgid "Are you sure you wish to process this refund? This action cannot be undone."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:543
+#: includes/functions/merge-tags-and-dates.php:551
 msgid "Please wait..."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:544
+#: includes/functions/merge-tags-and-dates.php:552
 msgid "Refund Successful"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:546
+#: includes/functions/merge-tags-and-dates.php:554
 msgid "Invalid Subscriber ID"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:547
-#: includes/functions/merge-tags-and-dates.php:582
+#: includes/functions/merge-tags-and-dates.php:555
+#: includes/functions/merge-tags-and-dates.php:590
 msgid "This subscription has been canceled."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:548
-#: includes/functions/merge-tags-and-dates.php:583
+#: includes/functions/merge-tags-and-dates.php:556
+#: includes/functions/merge-tags-and-dates.php:591
 msgid "Subscription resumed."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:549
-#: includes/functions/merge-tags-and-dates.php:584
+#: includes/functions/merge-tags-and-dates.php:557
+#: includes/functions/merge-tags-and-dates.php:592
 msgid "This subscription has been paused."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:550
-#: includes/functions/merge-tags-and-dates.php:585
+#: includes/functions/merge-tags-and-dates.php:558
+#: includes/functions/merge-tags-and-dates.php:593
 msgid "Are you sure you wish to cancel this subscription? This action cannot be undone."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:552
-#: includes/functions/merge-tags-and-dates.php:586
+#: includes/functions/merge-tags-and-dates.php:560
+#: includes/functions/merge-tags-and-dates.php:594
 msgid "Are you sure you wish to pause this subscription?"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:553
-#: includes/functions/merge-tags-and-dates.php:587
+#: includes/functions/merge-tags-and-dates.php:561
+#: includes/functions/merge-tags-and-dates.php:595
 msgid "Are you sure you wish to resume this subscription?"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:554
+#: includes/functions/merge-tags-and-dates.php:562
 msgid "This subscription has been scheduled to cancel at the end of the current billing period."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:555
+#: includes/functions/merge-tags-and-dates.php:563
 msgid "This subscription has been canceled, but the refund could not be created."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:556
+#: includes/functions/merge-tags-and-dates.php:564
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:557
+#: includes/functions/merge-tags-and-dates.php:565
 msgid "All lists successfully renewed"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:558
-#: includes/functions/merge-tags-and-dates.php:613
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:120
+#: includes/functions/merge-tags-and-dates.php:566
+#: includes/functions/merge-tags-and-dates.php:621
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:122
 msgid "Required fields missing"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:566
+#: includes/functions/merge-tags-and-dates.php:574
 msgid "You need to enter your email address or username to continue."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:567
-#: includes/functions/merge-tags-and-dates.php:568
+#: includes/functions/merge-tags-and-dates.php:575
+#: includes/functions/merge-tags-and-dates.php:576
 msgid "There are no users registered with this username or email address."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:569
+#: includes/functions/merge-tags-and-dates.php:577
 msgid "Invalid email or password."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:570
+#: includes/functions/merge-tags-and-dates.php:578
 msgid "Failed to send reset email. Please try again later or contact support."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:571
+#: includes/functions/merge-tags-and-dates.php:579
 msgid "Your session has expired. Please try again."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:572
-#: includes/functions/merge-tags-and-dates.php:573
+#: includes/functions/merge-tags-and-dates.php:580
+#: includes/functions/merge-tags-and-dates.php:581
 msgid "The password reset link you used is not valid anymore."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:574
+#: includes/functions/merge-tags-and-dates.php:582
 msgid "The two passwords you entered don't match."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:575
+#: includes/functions/merge-tags-and-dates.php:583
 msgid "Please enter in a password."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:576
+#: includes/functions/merge-tags-and-dates.php:584
 msgid "Please enter a password to login."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:577
+#: includes/functions/merge-tags-and-dates.php:585
 msgid "We don't have any users with that username or email address. Maybe you used a different one when signing up?"
 msgstr ""
 
 #. translators: %s: lost password URL.
-#: includes/functions/merge-tags-and-dates.php:579
+#: includes/functions/merge-tags-and-dates.php:587
 #, php-format
 msgid "The password you entered wasn't quite right. <a href='%s'>Did you forget your password?</a>"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:580
+#: includes/functions/merge-tags-and-dates.php:588
 msgid "Your password is too weak. It must be at least 12 characters long and include one uppercase letter, one lowercase letter, one number, and one special character."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:581
+#: includes/functions/merge-tags-and-dates.php:589
 msgid "Invalid username or password."
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:589
+#: includes/functions/merge-tags-and-dates.php:597
 msgid "Enter a valid phone number"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:590
+#: includes/functions/merge-tags-and-dates.php:598
 msgid "Use 8 or more characters with a mix of letters, numbers, and symbols"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:591
+#: includes/functions/merge-tags-and-dates.php:599
 msgid "includes"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:592
+#: includes/functions/merge-tags-and-dates.php:600
 msgid "Included In Price"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:593
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:105
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:111
+#: includes/functions/merge-tags-and-dates.php:601
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:107
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:113
 msgid "This field is required"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:594
+#: includes/functions/merge-tags-and-dates.php:602
 msgid "This username already exists"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:595
+#: includes/functions/merge-tags-and-dates.php:603
 msgid "with a"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:596
+#: includes/functions/merge-tags-and-dates.php:604
 msgid "-day free trial"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:597
+#: includes/functions/merge-tags-and-dates.php:605
 msgid "and a"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:598
+#: includes/functions/merge-tags-and-dates.php:606
 msgid "sign-up fee"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:599
+#: includes/functions/merge-tags-and-dates.php:607
 msgid "Processing"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:601
+#: includes/functions/merge-tags-and-dates.php:609
 msgid "You got"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:602
+#: includes/functions/merge-tags-and-dates.php:610
 msgid "off!"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:603
+#: includes/functions/merge-tags-and-dates.php:611
 #: includes/order-items/order-details-renderer.php:46
-#: public/templates/pdf-invoice/invoice.php:217
+#: public/templates/pdf-invoice/invoice.php:227
 msgid "Coupon:"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:604
+#: includes/functions/merge-tags-and-dates.php:612
 msgid "off"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:605
+#: includes/functions/merge-tags-and-dates.php:613
 msgid "forever"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:606
+#: includes/functions/merge-tags-and-dates.php:614
 msgid "expires"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:607
+#: includes/functions/merge-tags-and-dates.php:615
 #: includes/functions/product-and-order-setup.php:533
 msgid "day"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:608
+#: includes/functions/merge-tags-and-dates.php:616
 #: includes/functions/product-and-order-setup.php:512
 msgid "days"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:609
+#: includes/functions/merge-tags-and-dates.php:617
 #: includes/functions/product-and-order-setup.php:536
 msgid "week"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:610
+#: includes/functions/merge-tags-and-dates.php:618
 #: includes/functions/product-and-order-setup.php:515
 msgid "weeks"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:611
+#: includes/functions/merge-tags-and-dates.php:619
 #: includes/functions/product-and-order-setup.php:539
 msgid "month"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:612
+#: includes/functions/merge-tags-and-dates.php:620
 #: includes/functions/product-and-order-setup.php:518
 msgid "months"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:614
+#: includes/functions/merge-tags-and-dates.php:622
 #: includes/functions/product-and-order-setup.php:542
 msgid "year"
 msgstr ""
 
-#: includes/functions/merge-tags-and-dates.php:615
+#: includes/functions/merge-tags-and-dates.php:623
 #: includes/functions/product-and-order-setup.php:521
 msgid "years"
 msgstr ""
 
 #. translators: %s: coupon code.
-#: includes/functions/order-items-and-details.php:187
-#: includes/functions/order-items-and-details.php:207
+#: includes/functions/order-items-and-details.php:191
+#: includes/functions/order-items-and-details.php:211
 #, php-format
 msgid "Coupon: %s"
 msgstr ""
 
-#: includes/functions/order-items-and-details.php:273
+#: includes/functions/order-items-and-details.php:277
 #: models/order/traits/templates/order-lookups-get-data.php:49
 msgid "incl."
 msgstr ""
@@ -13190,73 +13190,74 @@ msgid "Authentication required."
 msgstr ""
 
 #: includes/functions/payment-actions-and-refunds.php:66
+#: includes/functions/payment-actions-and-refunds.php:84
 msgid "Invalid subscription ID"
 msgstr ""
 
 #: includes/functions/payment-actions-and-refunds.php:75
-#: includes/functions/payment-actions-and-refunds.php:101
-#: includes/functions/payment-actions-and-refunds.php:445
+#: includes/functions/payment-actions-and-refunds.php:112
+#: includes/functions/payment-actions-and-refunds.php:451
 #: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:45
 msgid "Permission denied."
 msgstr ""
 
-#: includes/functions/payment-actions-and-refunds.php:158
+#: includes/functions/payment-actions-and-refunds.php:169
 msgid "Unable to refund subscription because Stripe did not return a latest invoice."
 msgstr ""
 
-#: includes/functions/payment-actions-and-refunds.php:163
+#: includes/functions/payment-actions-and-refunds.php:174
 msgid "Unable to refund subscription because the Stripe invoice could not be loaded."
 msgstr ""
 
-#: includes/functions/payment-actions-and-refunds.php:175
+#: includes/functions/payment-actions-and-refunds.php:186
 msgid "Unable to refund subscription because the latest Stripe invoice has no refundable paid amount."
 msgstr ""
 
 #. translators: %s Stripe credit note ID.
-#: includes/functions/payment-actions-and-refunds.php:198
+#: includes/functions/payment-actions-and-refunds.php:209
 #, php-format
 msgid "Stripe credit note %s created while canceling subscription."
 msgstr ""
 
 #. translators: %s Stripe refund failure message.
-#: includes/functions/payment-actions-and-refunds.php:289
+#: includes/functions/payment-actions-and-refunds.php:295
 #, php-format
 msgid "Stripe refund failed after subscription cancellation: %s"
 msgstr ""
 
-#: includes/functions/payment-actions-and-refunds.php:297
-#: includes/functions/payment-actions-and-refunds.php:314
+#: includes/functions/payment-actions-and-refunds.php:303
+#: includes/functions/payment-actions-and-refunds.php:320
 msgid "Unable to cancel subscription."
 msgstr ""
 
 #. translators: %s: user login.
-#: includes/functions/payment-actions-and-refunds.php:332
+#: includes/functions/payment-actions-and-refunds.php:338
 #, php-format
 msgid "Subscription canceled by %s"
 msgstr ""
 
-#: includes/functions/payment-actions-and-refunds.php:358
+#: includes/functions/payment-actions-and-refunds.php:364
 msgid "INVALID CHARGE ID"
 msgstr ""
 
 #. translators: %s: Stripe gateway mode (e.g. live or test)
-#: includes/functions/payment-actions-and-refunds.php:365
+#: includes/functions/payment-actions-and-refunds.php:371
 #, php-format
 msgid "Oops, Stripe %s key missing!"
 msgstr ""
 
-#: includes/functions/payment-actions-and-refunds.php:409
+#: includes/functions/payment-actions-and-refunds.php:415
 msgid "Payment refunded by"
 msgstr ""
 
 #. translators: %s: user login.
-#: includes/functions/payment-actions-and-refunds.php:481
+#: includes/functions/payment-actions-and-refunds.php:487
 #, php-format
 msgid "Subscription paused by %s"
 msgstr ""
 
 #. translators: %s: user login.
-#: includes/functions/payment-actions-and-refunds.php:484
+#: includes/functions/payment-actions-and-refunds.php:490
 #, php-format
 msgid "Subscription started by %s"
 msgstr ""
@@ -13332,25 +13333,31 @@ msgid " day"
 msgstr ""
 
 #. translators: %d: product ID.
-#: includes/functions/report-filters.php:188
+#: includes/functions/report-filters.php:206
 #, php-format
 msgid "Product #%d"
 msgstr ""
 
+#. translators: 1: requested role, 2: role used instead.
+#: includes/functions/users-and-notifications.php:159
+#, php-format
+msgid "User role %1$s is not allowed for customers; %2$s was used instead."
+msgstr ""
+
 #. translators: 1: user ID, 2: role name.
-#: includes/functions/users-and-notifications.php:106
+#: includes/functions/users-and-notifications.php:192
 #, php-format
 msgid "Role for User ID: %1$s updated to %2$s"
 msgstr ""
 
 #. translators: %s: user ID.
-#: includes/functions/users-and-notifications.php:123
+#: includes/functions/users-and-notifications.php:209
 #, php-format
 msgid "New user created (ID: %s)"
 msgstr ""
 
 #. translators: %s: email subject.
-#: includes/functions/users-and-notifications.php:276
+#: includes/functions/users-and-notifications.php:362
 #, php-format
 msgid "Test: %s"
 msgstr ""
@@ -13380,7 +13387,7 @@ msgid "Coupons"
 msgstr ""
 
 #: includes/helpers/pro-locks/field-and-email-locks.php:232
-#: public/partials/csv-export.php:173
+#: public/partials/csv-export.php:172
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:94
 #: includes/integrations/gutenberg/build/order-form.js:1
 msgid "Order Bumps"
@@ -13494,7 +13501,7 @@ msgid "Enable affiliate sales"
 msgstr ""
 
 #: includes/helpers/pro-locks/product-locks.php:77
-#: public/templates/pdf-invoice/invoice.php:135
+#: public/templates/pdf-invoice/invoice.php:145
 #: includes/integrations/gutenberg/blocks/account-login/block.js:139
 #: includes/integrations/gutenberg/build/account-blocks.js:1
 msgid "Description"
@@ -13754,7 +13761,7 @@ msgid "Premium Plan - $19/month"
 msgstr ""
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:324
-#: public/templates/my-account/subscription-detail.php:77
+#: public/templates/my-account/subscription-detail.php:79
 msgid "Details"
 msgstr ""
 
@@ -13968,20 +13975,20 @@ msgstr ""
 msgid "Kit Secret Key"
 msgstr ""
 
-#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:10
+#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:13
 msgid "Enable debug logging"
 msgstr ""
 
-#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:19
+#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:22
 msgid "view log"
 msgstr ""
 
-#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:22
+#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:25
 #: includes/logging/traits/trait-ppcart-stripe-webhook-logger-admin.php:134
 msgid "download log"
 msgstr ""
 
-#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:25
+#: includes/logging/templates/debug-logger-enable-debug-log-setting.php:28
 #: includes/logging/traits/trait-ppcart-stripe-webhook-logger-admin.php:136
 msgid "delete log"
 msgstr ""
@@ -14151,36 +14158,36 @@ msgid "All levels"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-log-page.php:140
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:96
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:99
 msgid "From date"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-log-page.php:142
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:98
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:101
 msgid "To date"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-log-page.php:144
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:100
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:103
 msgid "Rows per page"
 msgstr ""
 
 #. translators: %s: number of rows per page.
 #: includes/logging/traits/templates/debug-log-viewer-page-render-log-page.php:148
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:104
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:107
 #, php-format
 msgid "%s per page"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-log-page.php:151
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:107
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:110
 #: includes/integrations/gutenberg/blocks/_shared/controls.js:177
 #: includes/integrations/gutenberg/build/account-blocks.js:1
 msgid "Reset"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-log-page.php:152
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:108
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:111
 msgid "Filter"
 msgstr ""
 
@@ -14195,17 +14202,17 @@ msgid "Showing %1$s to %2$s of %3$s %4$s"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-pagination-footer.php:11
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:149
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:152
 msgid "Pagination"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-pagination-footer.php:12
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:150
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:153
 msgid "Prev"
 msgstr ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-pagination-footer.php:22
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:160
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:163
 msgid "Next"
 msgstr ""
 
@@ -14280,8 +14287,8 @@ msgid "Turn on only when you need to inspect all Stripe events sent to this site
 msgstr ""
 
 #: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:16
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:87
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:88
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:90
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:91
 msgid "Event type"
 msgstr ""
 
@@ -14321,40 +14328,40 @@ msgstr ""
 msgid "Raw context"
 msgstr ""
 
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:72
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:75
 msgid "Stripe Webhook Log"
 msgstr ""
 
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:73
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:76
 msgid "Recent Stripe webhook outcomes recorded by PublishPress Cart."
 msgstr ""
 
 #. translators: %s: number of results.
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:76
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:79
 #, php-format
 msgid "%s result"
 msgid_plural "%s results"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:85
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:88
 msgid "Search Stripe webhook log"
 msgstr ""
 
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:86
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:89
 msgid "Search events, objects, records..."
 msgstr ""
 
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:91
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:94
 msgid "All statuses"
 msgstr ""
 
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:120
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:123
 msgid "No Stripe webhook log entries found."
 msgstr ""
 
 #. translators: 1: first item number, 2: last item number, 3: total results.
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:148
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:151
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s results"
 msgstr ""
@@ -15594,7 +15601,7 @@ msgstr ""
 msgid "Migration complete. Encrypted: %1$d. Skipped: %2$d. Failed: %3$d."
 msgstr ""
 
-#: includes/secrets/traits/trait-ppcart-secrets-crypto.php:122
+#: includes/secrets/traits/trait-ppcart-secrets-crypto.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:511
 #: includes/integrations/gutenberg/build/order-form.js:3
 msgid "Unavailable"
@@ -15636,6 +15643,11 @@ msgstr ""
 
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-sync-subscription-by-local.php:21
 msgid "Stripe subscription is not linked to a PublishPress Cart subscription."
+msgstr ""
+
+#: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
+#: public/controllers/traits/templates/subscription-create-create-subscription.php:73
+msgid "This payment could not be verified. Please reload the page and try again."
 msgstr ""
 
 #. translators: %s: order status.
@@ -15782,36 +15794,36 @@ msgstr ""
 msgid "This offer is no longer available."
 msgstr ""
 
-#: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:180
-#: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:186
+#: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:169
+#: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:176
 #: public/controllers/payment/traits/templates/payment-update-intent-amount.php:75
-#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:249
-#: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:144
-#: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:159
+#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:250
+#: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:152
+#: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:167
 msgid "This checkout could not be started. Please contact the site administrator."
 msgstr ""
 
-#: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:34
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:29
+#: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:36
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:31
 msgid "There was a problem with your submission, please refresh the page and try again."
 msgstr ""
 
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:130
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:132
 msgid "Something went wrong, please refresh the page and try again. "
 msgstr ""
 
 #. translators: %s: minimum amount.
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:140
 #: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:142
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:144
 #, php-format
 msgid "Please enter an amount greater than or equal to %s"
 msgstr ""
 
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:150
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:152
 msgid "Invalid email address"
 msgstr ""
 
-#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:170
+#: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:172
 msgid "There was a problem with your submission, please check your info and try again:"
 msgstr ""
 
@@ -15826,26 +15838,26 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
-#: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:28
+#: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:31
 #: public/templates/functions/checkout-core.php:186
 #: public/templates/functions/checkout-core.php:193
-#: public/templates/functions/payment-address.php:198
-#: public/templates/pdf-invoice/invoice.php:75
+#: public/templates/functions/payment-address.php:199
+#: public/templates/pdf-invoice/invoice.php:85
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:108
 #: includes/integrations/gutenberg/build/order-form.js:1
 msgid "Amount Due"
 msgstr ""
 
-#: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:33
+#: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:36
 #: public/templates/functions/checkout-core.php:183
 #: public/templates/functions/checkout-core.php:190
-#: public/templates/functions/payment-address.php:199
+#: public/templates/functions/payment-address.php:200
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:107
 #: includes/integrations/gutenberg/build/order-form.js:1
 msgid "Due Today"
 msgstr ""
 
-#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:119
+#: public/controllers/order/traits/templates/order-save-save-order-to-db.php:121
 msgid "No items added"
 msgstr ""
 
@@ -15857,8 +15869,16 @@ msgstr ""
 msgid "Payment processor is unavailable. Please try again later."
 msgstr ""
 
-#: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:77
+#: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:68
 msgid "Unable to save the new card. Please check your payment details and try again."
+msgstr ""
+
+#: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:72
+msgid "The new card was saved, but some of your other subscriptions could not be updated. Please try again."
+msgstr ""
+
+#: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:86
+msgid "The new card was saved, but the payment failed: "
 msgstr ""
 
 #: public/controllers/order/traits/trait-ppcart-public-order-cart.php:74
@@ -15885,20 +15905,20 @@ msgstr ""
 msgid "View order status"
 msgstr ""
 
-#: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:34
+#: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Purchase"
 msgstr ""
 
-#: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:34
+#: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Already Purchased"
 msgstr ""
 
-#: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:46
+#: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:33
 msgid "Payment preparation is unavailable for this checkout."
 msgstr ""
 
-#: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:71
-#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:116
+#: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:74
+#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:117
 msgid "There was an error, please try again."
 msgstr ""
 
@@ -15909,56 +15929,57 @@ msgstr ""
 msgid "Custom add-on"
 msgstr ""
 
-#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:36
+#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:37
 msgid "Hosted Checkout is not enabled."
 msgstr ""
 
-#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:183
+#: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:184
 msgid "This subscription is not ready for checkout, please contact the site administrator."
 msgstr ""
 
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:37
-#: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:77
+#: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:82
 msgid "You do not have permission to access this order."
 msgstr ""
 
-#: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:70
+#: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:44
+#: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:75
 msgid "You do not have permission to access this subscription."
 msgstr ""
 
-#: public/controllers/traits/trait-ppcart-public-account-shortcodes.php:52
+#: public/controllers/traits/trait-ppcart-public-account-shortcodes.php:91
 msgid "My Account"
 msgstr ""
 
-#: public/partials/csv-export.php:158
+#: public/partials/csv-export.php:157
 msgid "ID"
 msgstr ""
 
-#: public/partials/csv-export.php:164
+#: public/partials/csv-export.php:163
 msgid "Address 1"
 msgstr ""
 
-#: public/partials/csv-export.php:170
-#: public/templates/pdf-invoice/invoice.php:75
+#: public/partials/csv-export.php:169
+#: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Paid"
 msgstr ""
 
-#: public/partials/csv-export.php:171
-#: public/partials/csv-export.php:253
+#: public/partials/csv-export.php:170
+#: public/partials/csv-export.php:252
 msgid "Product Name"
 msgstr ""
 
-#: public/partials/csv-export.php:175
+#: public/partials/csv-export.php:174
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:90
 #: includes/integrations/gutenberg/build/order-form.js:1
 msgid "Coupon"
 msgstr ""
 
-#: public/partials/csv-export.php:176
+#: public/partials/csv-export.php:175
 msgid "Purchase URL"
 msgstr ""
 
-#: public/partials/csv-export.php:177
+#: public/partials/csv-export.php:176
 msgid "IP Address"
 msgstr ""
 
@@ -15990,8 +16011,8 @@ msgstr ""
 msgid "<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg>"
 msgstr ""
 
-#: public/templates/checkout1.php:187
-#: public/templates/checkout1.php:229
+#: public/templates/checkout1.php:184
+#: public/templates/checkout1.php:226
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:114
 #: includes/integrations/gutenberg/build/order-form.js:1
 msgid "Get ready to start selling"
@@ -16017,16 +16038,16 @@ msgstr ""
 msgid "Enter VAT number"
 msgstr ""
 
-#: public/templates/functions/payment-address.php:233
-#: public/templates/functions/payment-address.php:237
+#: public/templates/functions/payment-address.php:234
+#: public/templates/functions/payment-address.php:238
 msgid "Credit or debit card"
 msgstr ""
 
-#: public/templates/functions/plan-coupon-fields.php:392
+#: public/templates/functions/plan-coupon-fields.php:407
 msgid "Show password"
 msgstr ""
 
-#: public/templates/functions/plan-coupon-fields.php:409
+#: public/templates/functions/plan-coupon-fields.php:424
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:91
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:102
 #: includes/integrations/gutenberg/build/order-form.js:1
@@ -16085,6 +16106,10 @@ msgstr ""
 msgid "Expiry Date"
 msgstr ""
 
+#: public/templates/my-account/forms/change-card.php:57
+msgid "Set default for all active subscriptions"
+msgstr ""
+
 #: public/templates/my-account/forms/change-card.php:65
 msgid "Pay Now and Save Card"
 msgstr ""
@@ -16134,7 +16159,7 @@ msgstr ""
 msgid "Your password has been changed. Please sign in below."
 msgstr ""
 
-#: public/templates/my-account/order-detail.php:45
+#: public/templates/my-account/order-detail.php:46
 #: public/templates/my-account/slm-plan-detail.php:158
 msgid "No orders found."
 msgstr ""
@@ -16162,24 +16187,24 @@ msgstr ""
 msgid "Billing History"
 msgstr ""
 
-#: public/templates/my-account/subscription-detail.php:58
+#: public/templates/my-account/subscription-detail.php:60
 msgid "Pause Subscription"
 msgstr ""
 
-#: public/templates/my-account/subscription-detail.php:60
+#: public/templates/my-account/subscription-detail.php:62
 msgid "Restart Subscription"
 msgstr ""
 
-#: public/templates/my-account/subscription-detail.php:88
+#: public/templates/my-account/subscription-detail.php:90
 msgid "End Date "
 msgstr ""
 
-#: public/templates/my-account/subscription-detail.php:110
+#: public/templates/my-account/subscription-detail.php:112
 msgid "Cancels on"
 msgstr ""
 
-#: public/templates/my-account/subscription-detail.php:119
-#: public/templates/my-account/subscription-detail.php:122
+#: public/templates/my-account/subscription-detail.php:121
+#: public/templates/my-account/subscription-detail.php:124
 msgid "No subscription found."
 msgstr ""
 
@@ -16224,29 +16249,29 @@ msgstr ""
 msgid "Confirm Password"
 msgstr ""
 
-#: public/templates/pdf-invoice/invoice.php:74
+#: public/templates/pdf-invoice/invoice.php:84
 msgid "Receipt Number"
 msgstr ""
 
-#: public/templates/pdf-invoice/invoice.php:91
+#: public/templates/pdf-invoice/invoice.php:101
 msgid "Bill To"
 msgstr ""
 
-#: public/templates/pdf-invoice/invoice.php:121
+#: public/templates/pdf-invoice/invoice.php:131
 msgid "Issue Date"
 msgstr ""
 
-#: public/templates/pdf-invoice/invoice.php:198
+#: public/templates/pdf-invoice/invoice.php:208
 msgid "Sign-up Fee"
 msgstr ""
 
 #. translators: %s: refund date.
-#: public/templates/pdf-invoice/invoice.php:261
+#: public/templates/pdf-invoice/invoice.php:271
 #, php-format
 msgid "Refunded on %s"
 msgstr ""
 
-#: public/templates/pdf-invoice/invoice.php:271
+#: public/templates/pdf-invoice/invoice.php:281
 msgid "Notes / Terms"
 msgstr ""
 
