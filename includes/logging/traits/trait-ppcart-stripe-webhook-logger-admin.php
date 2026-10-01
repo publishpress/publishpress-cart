@@ -128,11 +128,11 @@ trait PPCart_Stripe_Webhook_Logger_Admin_Trait
 
         return sprintf(
             '<a href="%1$s" rel="noopener noreferrer" data-testid="%7$s">%2$s</a> &nbsp; <a href="%3$s" rel="noopener noreferrer" data-testid="%8$s">%4$s</a> &nbsp; <a href="%5$s" rel="noopener noreferrer" data-testid="%9$s">%6$s</a>',
-            esc_attr($view_url),
+            esc_url($view_url),
             esc_html__('view Stripe webhook log', 'publishpress-cart'),
-            esc_attr($download_url),
+            esc_url($download_url),
             esc_html__('download log', 'publishpress-cart'),
-            esc_attr($clear_url),
+            esc_url($clear_url),
             esc_html__('delete log', 'publishpress-cart'),
             esc_attr(ppcart_testid('ppcart-admin-stripe-webhook-log-note-view')),
             esc_attr(ppcart_testid('ppcart-admin-stripe-webhook-log-note-download')),

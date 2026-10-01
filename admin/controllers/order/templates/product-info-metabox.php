@@ -49,14 +49,14 @@ if (isset($order_data->stripe_charge_id) || $order_data->pay_method == 'stripe')
     $payment_reference = (string) $stripe_id;
     $payment_reference_url = 'https://dashboard.stripe.com/' . $str_url . 'payments/' . $stripe_id;
     $order_details_link   .= esc_html__('Stripe ID:', 'publishpress-cart') . ' ';
-    $order_details_link   .= '<a id="stripe-id" href="https://dashboard.stripe.com/' . esc_attr($str_url) . 'payments/' . esc_attr($stripe_id) . '" target="_blank" rel="noopener noreferrer">';
+    $order_details_link   .= '<a id="stripe-id" href="' . esc_url($payment_reference_url) . '" target="_blank" rel="noopener noreferrer">';
     $order_details_link   .= esc_html($stripe_id) . '</a>';
 } elseif (isset($order_data->paypal_txn_id) || $order_data->pay_method == 'paypal') {
     $payment_label = __('PayPal payment', 'publishpress-cart');
     $payment_reference = (string) $paypal_id;
     $payment_reference_url = 'https://www.paypal.com/activity/payment/' . $paypal_id;
     $order_details_link .= esc_html__('PayPal ID:', 'publishpress-cart') . ' ';
-    $order_details_link .= '<a id="paypal-id" href="https://www.paypal.com/activity/payment/' . esc_attr($paypal_id) . '" target="_blank" rel="noopener noreferrer">';
+    $order_details_link .= '<a id="paypal-id" href="' . esc_url($payment_reference_url) . '" target="_blank" rel="noopener noreferrer">';
     $order_details_link .= esc_html($paypal_id) . '</a>';
 } elseif (isset($order_data->pay_method)) {
     switch ($order_data->pay_method) {

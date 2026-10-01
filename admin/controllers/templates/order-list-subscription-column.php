@@ -31,7 +31,8 @@ switch ($column) {
         }
         break;
     case 'email':
-        echo '<a href="mailto:' . esc_attr($sub['email']) . '" target="_blank" rel="noopener noreferrer">' . esc_html($sub['email']) . '</a>';
+        $email_url = 'mailto:' . (string) $sub['email'];
+        echo '<a href="' . esc_url($email_url) . '" target="_blank" rel="noopener noreferrer">' . esc_html($sub['email']) . '</a>';
         break;
     case 'start_date':
         echo esc_html($sub['start_date']);
