@@ -6,16 +6,24 @@ if (! defined('ABSPATH')) {
 
 
 global $ppcart_stripe, $ppcart_currency, $ppcart_debug_logger;
-$pwyw_post = filter_input_array(
-    INPUT_POST,
-    [
-        'pwyw_amount' => [
-            'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-            'flags'  => FILTER_REQUIRE_ARRAY,
-        ],
-    ]
-);
-$pwyw_amounts = isset($pwyw_post['pwyw_amount']) ? ppcart_parse_pwyw_amounts($pwyw_post['pwyw_amount'], false) : [];
+$pwyw_post = [];
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- The checkout nonce is verified before this template is included.
+if (isset($_POST['pwyw_amount']) && is_array($_POST['pwyw_amount'])) {
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Checkout nonce verified before include; keys and scalar values are unslashed and sanitized below.
+    foreach ($_POST['pwyw_amount'] as $option_id => $amount) {
+        if (! is_scalar($amount)) {
+            continue;
+        }
+
+        $option_id = sanitize_text_field(wp_unslash((string) $option_id));
+        if ('' === $option_id) {
+            continue;
+        }
+
+        $pwyw_post[ $option_id ] = sanitize_text_field(wp_unslash((string) $amount));
+    }
+}
+$pwyw_amounts = ppcart_parse_pwyw_amounts($pwyw_post, false);
 
 $ppcart_debug_logger->log_event(
     'checkout.stripe_subscription.creating',
