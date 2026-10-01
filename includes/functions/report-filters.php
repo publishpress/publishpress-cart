@@ -36,7 +36,25 @@ function ppcart_report_filter_scalar($value)
 function ppcart_parse_report_filters($source = null)
 {
     if (! is_array($source)) {
-        $source = wp_unslash($_GET); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only report filters.
+        $source = [];
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only report filters.
+        if (isset($_GET['date']) && is_scalar($_GET['date'])) {
+            $source['date'] = sanitize_text_field(wp_unslash($_GET['date']));
+        }
+
+        if (isset($_GET['customer']) && is_scalar($_GET['customer'])) {
+            $source['customer'] = sanitize_email(wp_unslash($_GET['customer']));
+        }
+
+        if (isset($_GET['emailid']) && is_scalar($_GET['emailid'])) {
+            $source['emailid'] = sanitize_email(wp_unslash($_GET['emailid']));
+        }
+
+        if (isset($_GET['product_id']) && is_scalar($_GET['product_id'])) {
+            $source['product_id'] = absint(wp_unslash($_GET['product_id']));
+        }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
     }
 
     $date = null;

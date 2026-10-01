@@ -13,17 +13,13 @@ if (! ppcart_verify_nonce($nonce, 'ppcart_ajax_nonce')) {
     wp_send_json_error(['message' => __("Invalid Request", "publishpress-cart")], 401);
 }
 
-$post_data = filter_input_array(
-    INPUT_POST,
-    [
-        'post_id' => FILTER_VALIDATE_INT,
-        'payment_method' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-        'all_subscription' => FILTER_VALIDATE_BOOLEAN,
-    ]
-);
-$subscription_post_id = isset($post_data['post_id']) && false !== $post_data['post_id'] && null !== $post_data['post_id'] ? absint($post_data['post_id']) : 0;
-$payment_method = isset($post_data['payment_method']) && is_string($post_data['payment_method']) ? sanitize_text_field($post_data['payment_method']) : '';
-$all_subscriptions = ! empty($post_data['all_subscription']);
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified above.
+$subscription_post_id = isset($_POST['post_id']) && is_scalar($_POST['post_id']) ? absint(wp_unslash($_POST['post_id'])) : 0;
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified above.
+$payment_method = isset($_POST['payment_method']) && is_scalar($_POST['payment_method']) ? sanitize_text_field(wp_unslash($_POST['payment_method'])) : '';
+// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified above.
+$all_subscriptions_raw = isset($_POST['all_subscription']) && is_scalar($_POST['all_subscription']) ? sanitize_text_field(wp_unslash($_POST['all_subscription'])) : '';
+$all_subscriptions = (bool) filter_var($all_subscriptions_raw, FILTER_VALIDATE_BOOLEAN);
 
 if (! is_user_logged_in()) {
     wp_send_json_error([ 'message' => __('Authentication required.', 'publishpress-cart') ], 401);

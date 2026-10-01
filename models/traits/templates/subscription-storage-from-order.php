@@ -9,7 +9,21 @@ global $ppcart_product, $ppcart_currency;
 $posted_pwyw_amount = [];
 // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Read-only extraction for amount validation.
 if (isset($_POST['pwyw_amount']) && is_array($_POST['pwyw_amount'])) {
-    $posted_pwyw_amount = ppcart_parse_pwyw_amounts(map_deep(wp_unslash($_POST['pwyw_amount']), 'sanitize_text_field'), false); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Read-only extraction for amount validation.
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Read-only container traversal; keys and scalar values are unslashed and sanitized below.
+    foreach ($_POST['pwyw_amount'] as $option_id => $amount) {
+        if (! is_scalar($amount)) {
+            continue;
+        }
+
+        $option_id = sanitize_text_field(wp_unslash((string) $option_id));
+        if ('' === $option_id) {
+            continue;
+        }
+
+        $posted_pwyw_amount[ $option_id ] = sanitize_text_field(wp_unslash((string) $amount));
+    }
+
+    $posted_pwyw_amount = ppcart_parse_pwyw_amounts($posted_pwyw_amount, false);
 }
 
 if ($order === false) {

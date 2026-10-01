@@ -49,12 +49,21 @@ foreach ($metas as $meta) {
         if (! isset($_POST[$name]) || ! is_array($_POST[$name])) {
             continue;
         }
-        // Default checkout fields are plain text. Sanitize the whole group at read time.
-        foreach (map_deep(wp_unslash($_POST[$name]), 'sanitize_text_field') as $key => $fields) {
+        // Default checkout fields are plain text. Sanitize each value at read time.
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Container traversal only; keys and scalar values are unslashed and sanitized below.
+        foreach ($_POST[$name] as $key => $fields) {
             if (! is_array($fields)) {
                 continue;
             }
+
+            $key = sanitize_text_field(wp_unslash((string) $key));
             foreach ($fields as $field => $val) {
+                if (! is_scalar($val)) {
+                    continue;
+                }
+
+                $field = sanitize_text_field(wp_unslash((string) $field));
+                $val = sanitize_text_field(wp_unslash((string) $val));
                 $new_value[$key][$field] = $this->sanitizer('text', $val);
             }
         }
@@ -72,11 +81,43 @@ foreach ($metas as $meta) {
 
 
         foreach ($meta[2] as $field) {
-            if (isset($_POST[$name][$field[0]])) {
+            if (isset($_POST[$name][$field[0]]) && is_array($_POST[$name][$field[0]])) {
                 $i = 0;
 
-                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each value goes through $this->sanitizer() with the field's declared type (PPCart_Sanitize: text, email, url, price, html...). One generic sanitizer here would corrupt typed values.
-                foreach (wp_unslash($_POST[$name][$field[0]]) as $k => $data) {
+                $posted_repeater_values = [];
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Container traversal only; every scalar leaf is unslashed and sanitized below.
+                foreach ($_POST[$name][$field[0]] as $row_key => $row_value) {
+                    $row_key = sanitize_text_field(wp_unslash((string) $row_key));
+                    if (! is_array($row_value)) {
+                        if (is_scalar($row_value)) {
+                            $posted_repeater_values[ $row_key ] = wp_kses_post(wp_unslash((string) $row_value));
+                        }
+                        continue;
+                    }
+
+                    $posted_repeater_values[ $row_key ] = [];
+                    foreach ($row_value as $value_key => $value) {
+                        $value_key = sanitize_text_field(wp_unslash((string) $value_key));
+                        if (! is_array($value)) {
+                            if (is_scalar($value)) {
+                                $posted_repeater_values[ $row_key ][ $value_key ] = wp_kses_post(wp_unslash((string) $value));
+                            }
+                            continue;
+                        }
+
+                        $posted_repeater_values[ $row_key ][ $value_key ] = [];
+                        foreach ($value as $nested_key => $nested_value) {
+                            if (! is_scalar($nested_value)) {
+                                continue;
+                            }
+
+                            $nested_key = sanitize_text_field(wp_unslash((string) $nested_key));
+                            $posted_repeater_values[ $row_key ][ $value_key ][ $nested_key ] = wp_kses_post(wp_unslash((string) $nested_value));
+                        }
+                    }
+                }
+
+                foreach ($posted_repeater_values as $k => $data) {
                     if (isset($field[2]) && strpos($field[2], 'required') !== false) {
                         $required_key = $field[0];
                     }
@@ -159,8 +200,37 @@ foreach ($metas as $meta) {
 
         $stripe_objects[$name] = $new_value;
     } elseif ('html' !== $field_type) {
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- $posted_value is sanitized via $this->sanitizer() before persistence.
-        $posted_value = isset($_POST[$name]) ? wp_unslash($_POST[$name]) : null;
+        $posted_value = null;
+        if (isset($_POST[$name]) && is_scalar($_POST[$name])) {
+            switch ($field_type) {
+                case 'email':
+                    $posted_value = sanitize_email(wp_unslash($_POST[$name]));
+                    break;
+
+                case 'file':
+                    $posted_value = sanitize_file_name(wp_unslash($_POST[$name]));
+                    break;
+
+                case 'file-upload':
+                case 'secure-file-upload':
+                case 'url':
+                    $posted_value = esc_url_raw(wp_unslash($_POST[$name]));
+                    break;
+
+                case 'textarea':
+                    $posted_value = sanitize_textarea_field(wp_unslash($_POST[$name]));
+                    break;
+
+                case 'editor':
+                case 'email_editor':
+                    $posted_value = wp_kses_post(wp_unslash($_POST[$name]));
+                    break;
+
+                default:
+                    $posted_value = sanitize_text_field(wp_unslash($_POST[$name]));
+                    break;
+            }
+        }
         if (null === $posted_value || ('' === $posted_value && '0' !== $posted_value)) {
             ppcart_delete_post_meta($post_id, $name);
             continue;
