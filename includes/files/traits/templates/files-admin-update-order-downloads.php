@@ -33,8 +33,31 @@ if (!$files = $this->get_order_downloads($post_id, ['status' => 'all'])) {
     return;
 }
 
-$posted_expires = isset($_POST['expires']) && is_array($_POST['expires']) ? map_deep(wp_unslash($_POST['expires']), 'sanitize_text_field') : [];
-$posted_remaining = isset($_POST['remaining']) && is_array($_POST['remaining']) ? map_deep(wp_unslash($_POST['remaining']), 'sanitize_text_field') : [];
+$posted_expires = [];
+if (isset($_POST['expires']) && is_array($_POST['expires'])) {
+    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Container traversal only; keys and scalar values are unslashed and sanitized below.
+    foreach ($_POST['expires'] as $download_id => $expires) {
+        if (! is_scalar($expires)) {
+            continue;
+        }
+
+        $download_id = sanitize_text_field(wp_unslash((string) $download_id));
+        $posted_expires[ $download_id ] = sanitize_text_field(wp_unslash((string) $expires));
+    }
+}
+
+$posted_remaining = [];
+if (isset($_POST['remaining']) && is_array($_POST['remaining'])) {
+    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Container traversal only; keys and scalar values are unslashed and sanitized below.
+    foreach ($_POST['remaining'] as $download_id => $remaining) {
+        if (! is_scalar($remaining)) {
+            continue;
+        }
+
+        $download_id = sanitize_text_field(wp_unslash((string) $download_id));
+        $posted_remaining[ $download_id ] = sanitize_text_field(wp_unslash((string) $remaining));
+    }
+}
 
 foreach ($files as $download) {
     $changes = [];

@@ -10,7 +10,76 @@ if (! defined('ABSPATH')) {
 // submitted key back to PayPal as the cmd=_notify-validate body, and PayPal rejects an
 // altered copy. Only the consumed copy below is narrowed and read by field.
 $raw_request_data = (isset($_POST) && is_array($_POST)) ? wp_unslash($_POST) : []; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- PayPal IPN endpoint verifies the raw payload with PayPal below.
-$request_data = ppcart_parse_paypal_ipn_fields(isset($_POST) ? $_POST : []); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified with PayPal below; every value is read by field.
+$request_data = [];
+
+// phpcs:disable WordPress.Security.NonceVerification.Missing -- PayPal IPN authenticity is verified with PayPal below.
+foreach ([ 'payer_email', 'receiver_email' ] as $field) {
+    if (isset($_POST[ $field ]) && is_scalar($_POST[ $field ])) {
+        $request_data[ $field ] = sanitize_email(wp_unslash($_POST[ $field ]));
+    }
+}
+
+$text_fields = [
+    'txn_id',
+    'parent_txn_id',
+    'txn_type',
+    'subscr_id',
+    'item_name',
+    'item_number',
+    'payment_status',
+    'mc_gross',
+    'mc_currency',
+    'amount1',
+    'payment_gross',
+    'ipn_track_id',
+    'custom',
+];
+foreach ($text_fields as $field) {
+    if (isset($_POST[ $field ]) && is_scalar($_POST[ $field ])) {
+        $request_data[ $field ] = sanitize_text_field(wp_unslash($_POST[ $field ]));
+    }
+}
+
+$core_fields = array_merge([ 'payer_email', 'receiver_email' ], $text_fields);
+// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Extension-field container traversal; every key and scalar leaf is unslashed and sanitized below.
+foreach ($_POST as $field => $value) {
+    $field = sanitize_text_field(wp_unslash((string) $field));
+    if (in_array($field, $core_fields, true) || '' === $field) {
+        continue;
+    }
+
+    if (! is_array($value)) {
+        if (is_scalar($value)) {
+            $request_data[ $field ] = wp_kses_post(wp_unslash((string) $value));
+        }
+        continue;
+    }
+
+    $request_data[ $field ] = [];
+    foreach ($value as $member_key => $member) {
+        $member_key = sanitize_text_field(wp_unslash((string) $member_key));
+        if ('' === $member_key) {
+            continue;
+        }
+
+        if (! is_array($member)) {
+            if (is_scalar($member)) {
+                $request_data[ $field ][ $member_key ] = wp_kses_post(wp_unslash((string) $member));
+            }
+            continue;
+        }
+
+        $request_data[ $field ][ $member_key ] = [];
+        foreach ($member as $entry) {
+            if (is_scalar($entry)) {
+                $request_data[ $field ][ $member_key ][] = wp_kses_post(wp_unslash((string) $entry));
+            }
+        }
+    }
+}
+// phpcs:enable WordPress.Security.NonceVerification.Missing
+
+$request_data = ppcart_parse_paypal_ipn_fields($request_data);
 
 if (empty($request_data['payer_email'])) {
     http_response_code(200);
@@ -34,8 +103,8 @@ $order_id = '';
 $subscription_id = '0';
 
 // Grab PublishPress Cart order/subscription IDs from custom meta.
-if (isset($raw_request_data['custom'])) {
-    $custom = is_scalar($raw_request_data['custom']) ? (string) $raw_request_data['custom'] : '';
+if (isset($request_data['custom'])) {
+    $custom = (string) $request_data['custom'];
     if (is_numeric($custom) || strpos($custom, '=') !== false) { // deprecated
         $custom_id  = explode("=", $custom);
         $order_id = absint($custom_id[0]);

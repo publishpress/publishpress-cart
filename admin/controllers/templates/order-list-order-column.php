@@ -38,7 +38,8 @@ switch ($column) {
         }
         break;
     case 'email':
-        echo '<a href="mailto:' . esc_attr($order_data['email']) . '" target="_blank" rel="noopener noreferrer">' . esc_html($order_data['email']) . '</a>';
+        $email_url = 'mailto:' . (string) $order_data['email'];
+        echo '<a href="' . esc_url($email_url) . '" target="_blank" rel="noopener noreferrer">' . esc_html($order_data['email']) . '</a>';
         break;
     case 'order_date':
         echo esc_html(get_the_time('M j, Y', $post_id));

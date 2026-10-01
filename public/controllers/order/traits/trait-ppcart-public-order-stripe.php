@@ -55,13 +55,84 @@ trait PPCart_Public_Order_Stripe_Trait
 
     private function sanitize_order_status_response()
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified before this helper reads the nested response payload.
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce is verified before this helper reads the nested response payload.
         if (! isset($_POST['response']) || ! is_array($_POST['response'])) {
             return [];
         }
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Parser sanitizes by field after unslash at the read site; URL fields keep their query separators.
-        return ppcart_parse_stripe_status_response(wp_unslash($_POST['response']), false);
+        $response = [];
+
+        foreach ([ 'formAction', 'redirect' ] as $field) {
+            if (isset($_POST['response'][ $field ]) && is_scalar($_POST['response'][ $field ])) {
+                $response[ $field ] = esc_url_raw(wp_unslash($_POST['response'][ $field ]));
+            }
+        }
+
+        foreach ([ 'order_id', 'ppcart_order_id', 'ppcart_temp_order_id', 'prod_id' ] as $field) {
+            if (isset($_POST['response'][ $field ]) && is_scalar($_POST['response'][ $field ])) {
+                $response[ $field ] = absint(wp_unslash($_POST['response'][ $field ]));
+            }
+        }
+
+        $text_fields = [
+            'ppcart_temp_order_token',
+            'intent_id',
+            'customer_id',
+            'clientSecret',
+            'paymentMethodId',
+            'preloadedIntent',
+            'directConfirmation',
+            'amount',
+            'error',
+            'vat_error',
+            'is_vat',
+        ];
+        foreach ($text_fields as $field) {
+            if (isset($_POST['response'][ $field ]) && is_scalar($_POST['response'][ $field ])) {
+                $response[ $field ] = sanitize_text_field(wp_unslash($_POST['response'][ $field ]));
+            }
+        }
+
+        $core_fields = array_merge([ 'formAction', 'redirect', 'order_id', 'ppcart_order_id', 'ppcart_temp_order_id', 'prod_id' ], $text_fields);
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Extension-field container traversal; every key and scalar leaf is unslashed and sanitized below.
+        foreach ($_POST['response'] as $field => $value) {
+            $field = sanitize_text_field(wp_unslash((string) $field));
+            if (in_array($field, $core_fields, true) || '' === $field) {
+                continue;
+            }
+
+            if (! is_array($value)) {
+                if (is_scalar($value)) {
+                    $response[ $field ] = wp_kses_post(wp_unslash((string) $value));
+                }
+                continue;
+            }
+
+            $response[ $field ] = [];
+            foreach ($value as $member_key => $member) {
+                $member_key = sanitize_text_field(wp_unslash((string) $member_key));
+                if ('' === $member_key) {
+                    continue;
+                }
+
+                if (! is_array($member)) {
+                    if (is_scalar($member)) {
+                        $response[ $field ][ $member_key ] = wp_kses_post(wp_unslash((string) $member));
+                    }
+                    continue;
+                }
+
+                $response[ $field ][ $member_key ] = [];
+                foreach ($member as $entry) {
+                    if (is_scalar($entry)) {
+                        $response[ $field ][ $member_key ][] = wp_kses_post(wp_unslash((string) $entry));
+                    }
+                }
+            }
+        }
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
+
+        return ppcart_parse_stripe_status_response($response, false);
     }
 
     public function update_stripe_card()
