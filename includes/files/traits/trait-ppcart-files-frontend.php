@@ -139,9 +139,43 @@ trait PPCart_Files_Frontend_Trait
 
     public function file_tab_content()
     {
-        $buffered = ppcart_capture_output(function () use (&$__ppcart_template_result) {
-            $__ppcart_template_result = include __DIR__ . '/templates/files-frontend-file-tab-content.php';
+        $ppcart_files_tab_buffer_level = ob_get_level();
+        $ppcart_files_tab_buffer_active = true;
+        $ppcart_files_tab_buffer_error = null;
+        ob_start(static function ($buffer, $phase) use (&$ppcart_files_tab_buffer_active) {
+            if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+                $ppcart_files_tab_buffer_active = false;
+            }
+            return $buffer;
         });
+        try {
+            $__ppcart_template_result = include __DIR__ . '/templates/files-frontend-file-tab-content.php';
+        } catch (Throwable $ppcart_files_tab_buffer_exception) {
+            $ppcart_files_tab_buffer_error = $ppcart_files_tab_buffer_exception;
+        } finally {
+            $ppcart_files_tab_buffer_output = '';
+            // Flush nested buffers into ours; never close a caller's or replacement buffer.
+            while ($ppcart_files_tab_buffer_active && ob_get_level() > $ppcart_files_tab_buffer_level + 1) {
+                $ppcart_files_tab_buffer_nested_level = ob_get_level();
+                try {
+                    if (! ob_end_flush()) {
+                        break;
+                    }
+                } catch (Throwable $ppcart_files_tab_buffer_exception) {
+                    $ppcart_files_tab_buffer_error = $ppcart_files_tab_buffer_error ?? $ppcart_files_tab_buffer_exception;
+                    if (ob_get_level() >= $ppcart_files_tab_buffer_nested_level) {
+                        break;
+                    }
+                }
+            }
+            if ($ppcart_files_tab_buffer_active && ob_get_level() === $ppcart_files_tab_buffer_level + 1) {
+                $ppcart_files_tab_buffer_output = (string) ob_get_clean();
+            }
+        }
+        if (null !== $ppcart_files_tab_buffer_error) {
+            throw $ppcart_files_tab_buffer_error;
+        }
+        $buffered = $ppcart_files_tab_buffer_output;
 
         if (false === $__ppcart_template_result) {
             return false;

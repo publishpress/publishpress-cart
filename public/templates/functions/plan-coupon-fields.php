@@ -8,9 +8,43 @@ function ppcart_order_summary_shortcode()
     global $ppcart_product;
     $prod_id = $ppcart_product->ID;
 
-    return ppcart_capture_output(function () use ($prod_id) {
-        ppcart_render_order_summary_items($prod_id);
+    $ppcart_summary_shortcode_buffer_level = ob_get_level();
+    $ppcart_summary_shortcode_buffer_active = true;
+    $ppcart_summary_shortcode_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_summary_shortcode_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_summary_shortcode_buffer_active = false;
+        }
+        return $buffer;
     });
+    try {
+        ppcart_render_order_summary_items($prod_id);
+    } catch (Throwable $ppcart_summary_shortcode_buffer_exception) {
+        $ppcart_summary_shortcode_buffer_error = $ppcart_summary_shortcode_buffer_exception;
+    } finally {
+        $ppcart_summary_shortcode_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_summary_shortcode_buffer_active && ob_get_level() > $ppcart_summary_shortcode_buffer_level + 1) {
+            $ppcart_summary_shortcode_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_summary_shortcode_buffer_exception) {
+                $ppcart_summary_shortcode_buffer_error = $ppcart_summary_shortcode_buffer_error ?? $ppcart_summary_shortcode_buffer_exception;
+                if (ob_get_level() >= $ppcart_summary_shortcode_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_summary_shortcode_buffer_active && ob_get_level() === $ppcart_summary_shortcode_buffer_level + 1) {
+            $ppcart_summary_shortcode_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_summary_shortcode_buffer_error) {
+        throw $ppcart_summary_shortcode_buffer_error;
+    }
+    return $ppcart_summary_shortcode_buffer_output;
 }
 
 function ppcart_render_site_info()
@@ -22,7 +56,16 @@ function ppcart_render_site_info()
         return '';
     }
 
-    return ppcart_capture_output(function () use ($has_site_icon, $site_heading) {
+    $ppcart_site_info_buffer_level = ob_get_level();
+    $ppcart_site_info_buffer_active = true;
+    $ppcart_site_info_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_site_info_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_site_info_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         ?>
     <div class="image-box-wrapper">
         <?php if ($has_site_icon) : ?>
@@ -43,7 +86,32 @@ function ppcart_render_site_info()
         <?php endif; ?>
     </div>
     <?php
-    });
+    } catch (Throwable $ppcart_site_info_buffer_exception) {
+        $ppcart_site_info_buffer_error = $ppcart_site_info_buffer_exception;
+    } finally {
+        $ppcart_site_info_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_site_info_buffer_active && ob_get_level() > $ppcart_site_info_buffer_level + 1) {
+            $ppcart_site_info_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_site_info_buffer_exception) {
+                $ppcart_site_info_buffer_error = $ppcart_site_info_buffer_error ?? $ppcart_site_info_buffer_exception;
+                if (ob_get_level() >= $ppcart_site_info_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_site_info_buffer_active && ob_get_level() === $ppcart_site_info_buffer_level + 1) {
+            $ppcart_site_info_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_site_info_buffer_error) {
+        throw $ppcart_site_info_buffer_error;
+    }
+    return $ppcart_site_info_buffer_output;
 }
 
 function ppcart_order_summary_info($post_id, $plan = false)
@@ -257,10 +325,44 @@ function ppcart_do_coupon_section($post_id)
         return;
     }
 
-    $coupon = trim(ppcart_capture_output(function () use ($post_id) {
+    $ppcart_coupon_buffer_level = ob_get_level();
+    $ppcart_coupon_buffer_active = true;
+    $ppcart_coupon_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_coupon_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_coupon_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         do_action('ppcart_coupon_fields', $post_id);
         do_action('ppcart_coupon_status', $post_id);
-    }));
+    } catch (Throwable $ppcart_coupon_buffer_exception) {
+        $ppcart_coupon_buffer_error = $ppcart_coupon_buffer_exception;
+    } finally {
+        $ppcart_coupon_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_coupon_buffer_active && ob_get_level() > $ppcart_coupon_buffer_level + 1) {
+            $ppcart_coupon_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_coupon_buffer_exception) {
+                $ppcart_coupon_buffer_error = $ppcart_coupon_buffer_error ?? $ppcart_coupon_buffer_exception;
+                if (ob_get_level() >= $ppcart_coupon_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_coupon_buffer_active && ob_get_level() === $ppcart_coupon_buffer_level + 1) {
+            $ppcart_coupon_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_coupon_buffer_error) {
+        throw $ppcart_coupon_buffer_error;
+    }
+    $coupon = trim($ppcart_coupon_buffer_output);
 
     if ('' === $coupon) {
         return;

@@ -58,12 +58,46 @@ class PPCart_Public_Account_Controller
             $attr = [];
         }
 
-        $html = ppcart_capture_output(function () use ($template_name, $attr) {
+        $ppcart_login_buffer_level = ob_get_level();
+        $ppcart_login_buffer_active = true;
+        $ppcart_login_buffer_error = null;
+        ob_start(static function ($buffer, $phase) use (&$ppcart_login_buffer_active) {
+            if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+                $ppcart_login_buffer_active = false;
+            }
+            return $buffer;
+        });
+        try {
             do_action('ppcart_login_before_' . $template_name);
             require dirname(__DIR__) . '/templates/' . $template_name . '.php';
             do_action('ppcart_login_after_' . $template_name);
 
-        });
+        } catch (Throwable $ppcart_login_buffer_exception) {
+            $ppcart_login_buffer_error = $ppcart_login_buffer_exception;
+        } finally {
+            $ppcart_login_buffer_output = '';
+            // Flush nested buffers into ours; never close a caller's or replacement buffer.
+            while ($ppcart_login_buffer_active && ob_get_level() > $ppcart_login_buffer_level + 1) {
+                $ppcart_login_buffer_nested_level = ob_get_level();
+                try {
+                    if (! ob_end_flush()) {
+                        break;
+                    }
+                } catch (Throwable $ppcart_login_buffer_exception) {
+                    $ppcart_login_buffer_error = $ppcart_login_buffer_error ?? $ppcart_login_buffer_exception;
+                    if (ob_get_level() >= $ppcart_login_buffer_nested_level) {
+                        break;
+                    }
+                }
+            }
+            if ($ppcart_login_buffer_active && ob_get_level() === $ppcart_login_buffer_level + 1) {
+                $ppcart_login_buffer_output = (string) ob_get_clean();
+            }
+        }
+        if (null !== $ppcart_login_buffer_error) {
+            throw $ppcart_login_buffer_error;
+        }
+        $html = $ppcart_login_buffer_output;
 
         return $html;
     }

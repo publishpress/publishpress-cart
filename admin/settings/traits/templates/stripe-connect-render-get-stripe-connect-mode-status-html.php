@@ -26,17 +26,18 @@ $disconnect_url = wp_nonce_url(
     'ppcart_stripe_connect_nonce'
 );
 
-return ppcart_capture_output(function () use (
-    $account_id,
-    $credentials_status,
-    $requires_reconnect,
-    $connect_url,
-    $connect_label,
-    $disconnect_url,
-    $mode,
-    $connect_server_url,
-    $stripe_enabled
-) {
+$is_connected = ('' !== $account_id) && ! $requires_reconnect && ! empty($credentials_status['is_usable']);
+
+$ppcart_stripe_status_buffer_level = ob_get_level();
+$ppcart_stripe_status_buffer_active = true;
+$ppcart_stripe_status_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_stripe_status_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_stripe_status_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
 
     $allowed_html = PPCart_Admin_Stripe_Webhook_Settings::augment_allowed_html(wp_kses_allowed_html('post'));
 
@@ -46,12 +47,7 @@ return ppcart_capture_output(function () use (
         echo '<div class="ppcart-stripe-connect__sync-state is-warning"><span class="ppcart-stripe-connect__dot" aria-hidden="true"></span>' . esc_html__('Connect server not configured', 'publishpress-cart') . '</div>';
         echo '<p class="ppcart-stripe-connect__helper">' . esc_html__('Set PPCART_STRIPE_CONNECT_SERVER_URL to your PublishPress intermediary URL.', 'publishpress-cart') . '</p>';
         echo '</div>';
-        return;
-    }
-
-    $is_connected = ('' !== $account_id) && ! $requires_reconnect && ! empty($credentials_status['is_usable']);
-
-    if (! $is_connected) {
+    } elseif (! $is_connected) {
         // Step 1 open, step 2 waiting.
         echo '<div class="ppcart-step is-open">';
         echo '<span class="ppcart-step__rail"><span class="ppcart-step__mark is-current">1</span><span class="ppcart-step__line"></span></span>';
@@ -81,28 +77,26 @@ return ppcart_capture_output(function () use (
         echo '</div>';
 
         echo '</div>';
-        return;
-    }
-
-    $dashboard_url = 'test' === $mode
+    } else {
+        $dashboard_url = 'test' === $mode
         ? 'https://dashboard.stripe.com/test/connect/accounts/' . rawurlencode($account_id)
         : 'https://dashboard.stripe.com/connect/accounts/' . rawurlencode($account_id);
 
-    $webhook = $this->webhooks->get_webhook_state($mode);
-    $webhook_state = $webhook['state'] ?? 'unknown';
-    $webhook_note = isset($webhook['note']) ? (string) $webhook['note'] : '';
-    $webhook_events = isset($webhook['events']) ? (int) $webhook['events'] : 0;
+        $webhook = $this->webhooks->get_webhook_state($mode);
+        $webhook_state = $webhook['state'] ?? 'unknown';
+        $webhook_note = isset($webhook['note']) ? (string) $webhook['note'] : '';
+        $webhook_events = isset($webhook['events']) ? (int) $webhook['events'] : 0;
 
-    $disconnect_link = '<a class="button ppcart-step__disconnect" href="' . esc_url($disconnect_url) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-disconnect-' . $mode)) . '">' . esc_html__('Disconnect', 'publishpress-cart') . '</a>';
-    $dashboard_link = '<a href="' . esc_url($dashboard_url) . '" target="_blank" rel="noopener noreferrer" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-dashboard-' . $mode)) . '">' . esc_html__('Open in Stripe Dashboard', 'publishpress-cart') . '</a>';
+        $disconnect_link = '<a class="button ppcart-step__disconnect" href="' . esc_url($disconnect_url) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-disconnect-' . $mode)) . '">' . esc_html__('Disconnect', 'publishpress-cart') . '</a>';
+        $dashboard_link = '<a href="' . esc_url($dashboard_url) . '" target="_blank" rel="noopener noreferrer" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-dashboard-' . $mode)) . '">' . esc_html__('Open in Stripe Dashboard', 'publishpress-cart') . '</a>';
 
-    if ('active' === $webhook_state) {
-        // Both steps are done, so they collapse into one line.
-        echo '<div class="ppcart-ready">';
-        echo '<span class="ppcart-step__mark is-done" aria-hidden="true"></span>';
-        echo '<span class="ppcart-ready__body">';
-        echo '<span class="ppcart-ready__title">' . esc_html__('Stripe is ready', 'publishpress-cart') . '</span>';
-        echo '<span class="ppcart-ready__meta">'
+        if ('active' === $webhook_state) {
+            // Both steps are done, so they collapse into one line.
+            echo '<div class="ppcart-ready">';
+            echo '<span class="ppcart-step__mark is-done" aria-hidden="true"></span>';
+            echo '<span class="ppcart-ready__body">';
+            echo '<span class="ppcart-ready__title">' . esc_html__('Stripe is ready', 'publishpress-cart') . '</span>';
+            echo '<span class="ppcart-ready__meta">'
             . esc_html__('Keys synced', 'publishpress-cart')
             . ' &middot; '
             /* translators: %d: number of Stripe events. */
@@ -110,58 +104,83 @@ return ppcart_capture_output(function () use (
             . ' &middot; ' . wp_kses($dashboard_link, $allowed_html)
             . '</span>';
 
-        if ('' !== $webhook_note) {
-            echo '<span class="ppcart-step__note">' . esc_html($webhook_note) . '</span>';
-        }
+            if ('' !== $webhook_note) {
+                echo '<span class="ppcart-step__note">' . esc_html($webhook_note) . '</span>';
+            }
 
-        echo '</span>';
-        echo wp_kses($disconnect_link, $allowed_html);
-        echo '</div>';
-        echo '</div>';
-        return;
+            echo '</span>';
+            echo wp_kses($disconnect_link, $allowed_html);
+            echo '</div>';
+            echo '</div>';
+        } else {
+        // Step 1 done, step 2 still open.
+            echo '<div class="ppcart-step is-done">';
+            echo '<span class="ppcart-step__rail"><span class="ppcart-step__mark is-done" aria-hidden="true"></span><span class="ppcart-step__line"></span></span>';
+            echo '<div class="ppcart-step__body">';
+            echo '<span class="ppcart-step__title">' . esc_html__('1. Stripe account connected', 'publishpress-cart') . '</span>';
+            echo '<span class="ppcart-step__meta">' . esc_html__('Keys synced', 'publishpress-cart') . ' &middot; ' . wp_kses($dashboard_link, $allowed_html) . '</span>';
+            echo '</div>';
+            echo wp_kses($disconnect_link, $allowed_html);
+            echo '</div>';
+
+            echo '<div class="ppcart-step is-open">';
+            echo '<span class="ppcart-step__rail"><span class="ppcart-step__mark is-current">2</span></span>';
+            echo '<div class="ppcart-step__panel">';
+            echo '<div class="ppcart-step__head">';
+            echo '<span class="ppcart-step__headings">';
+            echo '<span class="ppcart-step__title">' . esc_html__('2. Install the webhook', 'publishpress-cart') . '</span>';
+            echo '<span class="ppcart-step__warn">' . esc_html__('Orders will not complete until this is done.', 'publishpress-cart') . '</span>';
+            echo '</span>';
+            echo '<span class="ppcart-chip is-warning"><span class="ppcart-chip__dot" aria-hidden="true"></span>'
+            . ('incomplete' === $webhook_state ? esc_html__('Needs attention', 'publishpress-cart') : esc_html__('Not installed', 'publishpress-cart'))
+            . '</span>';
+            echo '</div>';
+
+            $show_owner_key_form = in_array($webhook_state, [ 'missing', 'blocked' ], true)
+            || ('incomplete' === $webhook_state && empty($webhook['fix_url']));
+
+            if ($show_owner_key_form) {
+                echo wp_kses($this->webhooks->get_stripe_webhook_manual_setup_html($mode), $allowed_html);
+            } else {
+                if ('' !== $webhook_note) {
+                    echo '<p class="ppcart-step__text">' . esc_html($webhook_note) . '</p>';
+                }
+
+                if (! empty($webhook['fix_url'])) {
+                    echo '<p class="ppcart-step__links"><a href="' . esc_url($webhook['fix_url']) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-webhook-' . $mode . '-update-events')) . '">' . esc_html__('Fix the events', 'publishpress-cart') . '</a></p>';
+                }
+            }
+
+            echo '</div>';
+            echo '</div>';
+
+            echo '</div>';
+
+        }
     }
-
-    // Step 1 done, step 2 still open.
-    echo '<div class="ppcart-step is-done">';
-    echo '<span class="ppcart-step__rail"><span class="ppcart-step__mark is-done" aria-hidden="true"></span><span class="ppcart-step__line"></span></span>';
-    echo '<div class="ppcart-step__body">';
-    echo '<span class="ppcart-step__title">' . esc_html__('1. Stripe account connected', 'publishpress-cart') . '</span>';
-    echo '<span class="ppcart-step__meta">' . esc_html__('Keys synced', 'publishpress-cart') . ' &middot; ' . wp_kses($dashboard_link, $allowed_html) . '</span>';
-    echo '</div>';
-    echo wp_kses($disconnect_link, $allowed_html);
-    echo '</div>';
-
-    echo '<div class="ppcart-step is-open">';
-    echo '<span class="ppcart-step__rail"><span class="ppcart-step__mark is-current">2</span></span>';
-    echo '<div class="ppcart-step__panel">';
-    echo '<div class="ppcart-step__head">';
-    echo '<span class="ppcart-step__headings">';
-    echo '<span class="ppcart-step__title">' . esc_html__('2. Install the webhook', 'publishpress-cart') . '</span>';
-    echo '<span class="ppcart-step__warn">' . esc_html__('Orders will not complete until this is done.', 'publishpress-cart') . '</span>';
-    echo '</span>';
-    echo '<span class="ppcart-chip is-warning"><span class="ppcart-chip__dot" aria-hidden="true"></span>'
-        . ('incomplete' === $webhook_state ? esc_html__('Needs attention', 'publishpress-cart') : esc_html__('Not installed', 'publishpress-cart'))
-        . '</span>';
-    echo '</div>';
-
-    $show_owner_key_form = in_array($webhook_state, [ 'missing', 'blocked' ], true)
-        || ('incomplete' === $webhook_state && empty($webhook['fix_url']));
-
-    if ($show_owner_key_form) {
-        echo wp_kses($this->webhooks->get_stripe_webhook_manual_setup_html($mode), $allowed_html);
-    } else {
-        if ('' !== $webhook_note) {
-            echo '<p class="ppcart-step__text">' . esc_html($webhook_note) . '</p>';
-        }
-
-        if (! empty($webhook['fix_url'])) {
-            echo '<p class="ppcart-step__links"><a href="' . esc_url($webhook['fix_url']) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-webhook-' . $mode . '-update-events')) . '">' . esc_html__('Fix the events', 'publishpress-cart') . '</a></p>';
+} catch (Throwable $ppcart_stripe_status_buffer_exception) {
+    $ppcart_stripe_status_buffer_error = $ppcart_stripe_status_buffer_exception;
+} finally {
+    $ppcart_stripe_status_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_stripe_status_buffer_active && ob_get_level() > $ppcart_stripe_status_buffer_level + 1) {
+        $ppcart_stripe_status_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_stripe_status_buffer_exception) {
+            $ppcart_stripe_status_buffer_error = $ppcart_stripe_status_buffer_error ?? $ppcart_stripe_status_buffer_exception;
+            if (ob_get_level() >= $ppcart_stripe_status_buffer_nested_level) {
+                break;
+            }
         }
     }
-
-    echo '</div>';
-    echo '</div>';
-
-    echo '</div>';
-
-});
+    if ($ppcart_stripe_status_buffer_active && ob_get_level() === $ppcart_stripe_status_buffer_level + 1) {
+        $ppcart_stripe_status_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_stripe_status_buffer_error) {
+    throw $ppcart_stripe_status_buffer_error;
+}
+return $ppcart_stripe_status_buffer_output;

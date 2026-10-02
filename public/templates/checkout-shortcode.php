@@ -41,7 +41,16 @@ if (!empty($ppcart_product->show_address_fields)) {
 }
 
 if (!$builder) :
-    $checkout_css = trim(ppcart_capture_output(function () use ($ppcart_product, $product_id) {
+    $ppcart_shortcode_css_buffer_level = ob_get_level();
+    $ppcart_shortcode_css_buffer_active = true;
+    $ppcart_shortcode_css_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_shortcode_css_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_shortcode_css_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         ?>
         .ppcart button,
         .ppcart .ppcart-btn-block {
@@ -70,7 +79,32 @@ if (!$builder) :
         ?>
 
     <?php
-    }));
+    } catch (Throwable $ppcart_shortcode_css_buffer_exception) {
+        $ppcart_shortcode_css_buffer_error = $ppcart_shortcode_css_buffer_exception;
+    } finally {
+        $ppcart_shortcode_css_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_shortcode_css_buffer_active && ob_get_level() > $ppcart_shortcode_css_buffer_level + 1) {
+            $ppcart_shortcode_css_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_shortcode_css_buffer_exception) {
+                $ppcart_shortcode_css_buffer_error = $ppcart_shortcode_css_buffer_error ?? $ppcart_shortcode_css_buffer_exception;
+                if (ob_get_level() >= $ppcart_shortcode_css_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_shortcode_css_buffer_active && ob_get_level() === $ppcart_shortcode_css_buffer_level + 1) {
+            $ppcart_shortcode_css_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_shortcode_css_buffer_error) {
+        throw $ppcart_shortcode_css_buffer_error;
+    }
+    $checkout_css = trim($ppcart_shortcode_css_buffer_output);
 
     ppcart_enqueue_checkout_inline_style($checkout_css);
 endif; ?>

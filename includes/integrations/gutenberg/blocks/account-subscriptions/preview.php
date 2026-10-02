@@ -16,19 +16,16 @@ $status_lbl  = esc_html__('Status', 'publishpress-cart');
 $next_lbl    = esc_html__('Next Payment', 'publishpress-cart');
 $price_lbl   = esc_html__('Price', 'publishpress-cart');
 
-return ppcart_capture_output(function () use (
-    $heading,
-    $product,
-    $status_text,
-    $next,
-    $price,
-    $pay,
-    $manage,
-    $product_lbl,
-    $status_lbl,
-    $next_lbl,
-    $price_lbl
-) {
+$ppcart_account_subscriptions_preview_buffer_level = ob_get_level();
+$ppcart_account_subscriptions_preview_buffer_active = true;
+$ppcart_account_subscriptions_preview_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_account_subscriptions_preview_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_account_subscriptions_preview_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
     ?>
 <div class="tab-container subscriptions-tab">
     <div id="subscriptions" class="tab-content">
@@ -46,4 +43,29 @@ return ppcart_capture_output(function () use (
     </div>
 </div>
 <?php
-});
+} catch (Throwable $ppcart_account_subscriptions_preview_buffer_exception) {
+    $ppcart_account_subscriptions_preview_buffer_error = $ppcart_account_subscriptions_preview_buffer_exception;
+} finally {
+    $ppcart_account_subscriptions_preview_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_account_subscriptions_preview_buffer_active && ob_get_level() > $ppcart_account_subscriptions_preview_buffer_level + 1) {
+        $ppcart_account_subscriptions_preview_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_account_subscriptions_preview_buffer_exception) {
+            $ppcart_account_subscriptions_preview_buffer_error = $ppcart_account_subscriptions_preview_buffer_error ?? $ppcart_account_subscriptions_preview_buffer_exception;
+            if (ob_get_level() >= $ppcart_account_subscriptions_preview_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_account_subscriptions_preview_buffer_active && ob_get_level() === $ppcart_account_subscriptions_preview_buffer_level + 1) {
+        $ppcart_account_subscriptions_preview_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_account_subscriptions_preview_buffer_error) {
+    throw $ppcart_account_subscriptions_preview_buffer_error;
+}
+return $ppcart_account_subscriptions_preview_buffer_output;

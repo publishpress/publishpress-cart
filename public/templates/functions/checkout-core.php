@@ -261,15 +261,46 @@ function ppcart_do_remaining_card_details_fields($post_id, $hide_labels, $plan =
         remove_action('ppcart_card_details_fields', $registered_callback['function'], $callback['priority']);
     }
 
+    $ppcart_card_fields_buffer_level = ob_get_level();
+    $ppcart_card_fields_buffer_active = true;
+    $ppcart_card_fields_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_card_fields_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_card_fields_buffer_active = false;
+        }
+        return $buffer;
+    });
     try {
-        $fields = trim(ppcart_capture_output(function () use ($post_id, $hide_labels, $plan) {
-            do_action('ppcart_card_details_fields', $post_id, $hide_labels, $plan);
-        }));
+        do_action('ppcart_card_details_fields', $post_id, $hide_labels, $plan);
+    } catch (Throwable $ppcart_card_fields_buffer_exception) {
+        $ppcart_card_fields_buffer_error = $ppcart_card_fields_buffer_exception;
     } finally {
+        $ppcart_card_fields_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_card_fields_buffer_active && ob_get_level() > $ppcart_card_fields_buffer_level + 1) {
+            $ppcart_card_fields_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_card_fields_buffer_exception) {
+                $ppcart_card_fields_buffer_error = $ppcart_card_fields_buffer_error ?? $ppcart_card_fields_buffer_exception;
+                if (ob_get_level() >= $ppcart_card_fields_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_card_fields_buffer_active && ob_get_level() === $ppcart_card_fields_buffer_level + 1) {
+            $ppcart_card_fields_buffer_output = (string) ob_get_clean();
+        }
         foreach ($removed_callbacks as $callback) {
             add_action('ppcart_card_details_fields', $callback['callback'], $callback['priority'], $callback['accepted_args']);
         }
     }
+    if (null !== $ppcart_card_fields_buffer_error) {
+        throw $ppcart_card_fields_buffer_error;
+    }
+    $fields = trim($ppcart_card_fields_buffer_output);
 
     if ('' === $fields) {
         return;

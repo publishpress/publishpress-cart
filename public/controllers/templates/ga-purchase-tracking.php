@@ -10,7 +10,16 @@ if (get_option('_ppcart_ga_purchase')) {
     $order_data = $order->get_data();
     $order_data = (object) $order_data;
     $ga_type = get_option('_ppcart_ga_type');
-    $script = trim(ppcart_capture_output(function () use ($ga_type, $order_data) {
+    $ppcart_purchase_tracking_buffer_level = ob_get_level();
+    $ppcart_purchase_tracking_buffer_active = true;
+    $ppcart_purchase_tracking_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_purchase_tracking_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_purchase_tracking_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         ?>
     <?php if (!$ga_type) : ?>
         if ( typeof ga !== "undefined") {
@@ -235,7 +244,32 @@ if (get_option('_ppcart_ga_purchase')) {
         });
     <?php endif; ?>
 <?php
-    }));
+    } catch (Throwable $ppcart_purchase_tracking_buffer_exception) {
+        $ppcart_purchase_tracking_buffer_error = $ppcart_purchase_tracking_buffer_exception;
+    } finally {
+        $ppcart_purchase_tracking_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_purchase_tracking_buffer_active && ob_get_level() > $ppcart_purchase_tracking_buffer_level + 1) {
+            $ppcart_purchase_tracking_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_purchase_tracking_buffer_exception) {
+                $ppcart_purchase_tracking_buffer_error = $ppcart_purchase_tracking_buffer_error ?? $ppcart_purchase_tracking_buffer_exception;
+                if (ob_get_level() >= $ppcart_purchase_tracking_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_purchase_tracking_buffer_active && ob_get_level() === $ppcart_purchase_tracking_buffer_level + 1) {
+            $ppcart_purchase_tracking_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_purchase_tracking_buffer_error) {
+        throw $ppcart_purchase_tracking_buffer_error;
+    }
+    $script = trim($ppcart_purchase_tracking_buffer_output);
 
     if ('' !== $script) {
         wp_add_inline_script('ppcart', $script);

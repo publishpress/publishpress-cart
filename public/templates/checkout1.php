@@ -79,7 +79,16 @@ if (!isset($ppcart_product->show_2_step)) {
         <title><?php echo esc_html(wp_get_document_title()); ?></title>
     <?php endif; ?>
     <?php
-    $ppcart_checkout_css = trim(ppcart_capture_output(function () use ($ppcart_product) {
+    $ppcart_checkout_css_buffer_level = ob_get_level();
+    $ppcart_checkout_css_buffer_active = true;
+    $ppcart_checkout_css_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_checkout_css_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_checkout_css_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
     ?>
         .ppcart .ppcart-btn-block,
         .ppcart input[type="button"],
@@ -119,7 +128,32 @@ if (!isset($ppcart_product->show_2_step)) {
 
         <?php endif; ?>
     <?php
-    }));
+    } catch (Throwable $ppcart_checkout_css_buffer_exception) {
+        $ppcart_checkout_css_buffer_error = $ppcart_checkout_css_buffer_exception;
+    } finally {
+        $ppcart_checkout_css_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_checkout_css_buffer_active && ob_get_level() > $ppcart_checkout_css_buffer_level + 1) {
+            $ppcart_checkout_css_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_checkout_css_buffer_exception) {
+                $ppcart_checkout_css_buffer_error = $ppcart_checkout_css_buffer_error ?? $ppcart_checkout_css_buffer_exception;
+                if (ob_get_level() >= $ppcart_checkout_css_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_checkout_css_buffer_active && ob_get_level() === $ppcart_checkout_css_buffer_level + 1) {
+            $ppcart_checkout_css_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_checkout_css_buffer_error) {
+        throw $ppcart_checkout_css_buffer_error;
+    }
+    $ppcart_checkout_css = trim($ppcart_checkout_css_buffer_output);
 
 ppcart_enqueue_checkout_inline_style($ppcart_checkout_css);
 

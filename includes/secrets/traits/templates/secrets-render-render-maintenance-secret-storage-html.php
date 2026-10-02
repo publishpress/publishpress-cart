@@ -10,7 +10,16 @@ $nonce        = wp_create_nonce('ppcart_migrate_secrets');
 $toggle_nonce = wp_create_nonce('ppcart_set_encrypt_secrets');
 $migration_notice = self::get_plaintext_migration_notice($migration_status);
 
-return (string) ppcart_capture_output(function () use ($migration_status, $toggle_nonce, $migration_notice, $nonce) {
+$ppcart_secret_maintenance_buffer_level = ob_get_level();
+$ppcart_secret_maintenance_buffer_active = true;
+$ppcart_secret_maintenance_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_secret_maintenance_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_secret_maintenance_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
     ?>
 <div class="ppcart-secrets-maintenance" data-ppcart-secrets-maintenance>
     <table class="form-table" role="presentation">
@@ -159,4 +168,29 @@ return (string) ppcart_capture_output(function () use ($migration_status, $toggl
 </div>
 <?php
 
-});
+} catch (Throwable $ppcart_secret_maintenance_buffer_exception) {
+    $ppcart_secret_maintenance_buffer_error = $ppcart_secret_maintenance_buffer_exception;
+} finally {
+    $ppcart_secret_maintenance_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_secret_maintenance_buffer_active && ob_get_level() > $ppcart_secret_maintenance_buffer_level + 1) {
+        $ppcart_secret_maintenance_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_secret_maintenance_buffer_exception) {
+            $ppcart_secret_maintenance_buffer_error = $ppcart_secret_maintenance_buffer_error ?? $ppcart_secret_maintenance_buffer_exception;
+            if (ob_get_level() >= $ppcart_secret_maintenance_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_secret_maintenance_buffer_active && ob_get_level() === $ppcart_secret_maintenance_buffer_level + 1) {
+        $ppcart_secret_maintenance_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_secret_maintenance_buffer_error) {
+    throw $ppcart_secret_maintenance_buffer_error;
+}
+return (string) $ppcart_secret_maintenance_buffer_output;

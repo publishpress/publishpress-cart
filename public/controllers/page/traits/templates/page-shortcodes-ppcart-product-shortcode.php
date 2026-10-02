@@ -74,82 +74,98 @@ if (! ppcart_checkout_claim_request_render([ 'source' => 'shortcode', 'builder' 
     return '';
 }
 
-if ($skin) {
-    $template = $skin;
-} elseif (!$template) {
-    $template = $default_template;
-} elseif ($template == 'normal') {
-    $template = '';
-}
-
-if ($ele_popup) {
-    wp_localize_script('ppcart', 'ppcart_popup', ['is_popup' => 'true']);
-} else {
-    wp_localize_script('ppcart', 'ppcart_popup', ['is_popup' => 'false']);
-}
-
 global $ppcart_checkout_block_arrangement;
-
 $previous_checkout_block_arrangement = $ppcart_checkout_block_arrangement ?? null;
+
+$ppcart_product_shortcode_buffer_level = ob_get_level();
+$ppcart_product_shortcode_buffer_active = true;
+$ppcart_product_shortcode_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_product_shortcode_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_product_shortcode_buffer_active = false;
+    }
+    return $buffer;
+});
 try {
-    $output_string = ppcart_capture_output(function () use (
-        $skin,
+
+    if ($skin) {
+        $template = $skin;
+    } elseif (!$template) {
+        $template = $default_template;
+    } elseif ($template == 'normal') {
+        $template = '';
+    }
+
+    if ($ele_popup) {
+        wp_localize_script('ppcart', 'ppcart_popup', ['is_popup' => 'true']);
+    } else {
+        wp_localize_script('ppcart', 'ppcart_popup', ['is_popup' => 'false']);
+    }
+
+    $ppcart_checkout_block_arrangement = apply_filters(
+        'ppcart_checkout_block_arrangement',
+        null,
+        [
+            'product_id' => absint($product_id),
+            'template'   => $template,
+            'atts'       => $atts,
+        ]
+    );
+
+    $template_dir              = PPCART_BASE_DIR . 'public/templates/';
+    $default_checkout_template = $template_dir . 'checkout-shortcode.php';
+    $checkout_template         = $default_checkout_template;
+
+    // The template/skin names come from shortcode attributes: allow only a plain slug in the file path.
+    if ($template && is_string($template) && preg_match('/^[a-z0-9_-]+$/i', $template) && file_exists($template_dir . 'checkout-shortcode-' . $template . '.php')) {
+        $checkout_template = $template_dir . 'checkout-shortcode-' . $template . '.php';
+    }
+
+    $checkout_template = apply_filters(
+        'ppcart_checkout_template_path',
+        $checkout_template,
         $template,
-        $default_template,
-        $ele_popup,
-        $product_id,
-        $atts,
-        $plan,
-        $hide_labels,
-        $coupon,
-        $builder,
-        $post,
-        $ppcart_stripe,
-        $ppcart_order_get,
-        $post_types
-    ) {
-        global $ppcart_checkout_block_arrangement;
-        $ppcart_checkout_block_arrangement = apply_filters(
-            'ppcart_checkout_block_arrangement',
-            null,
-            [
-                'product_id' => absint($product_id),
-                'template'   => $template,
-                'atts'       => $atts,
-            ]
-        );
+        [
+            'product_id' => absint($product_id),
+            'atts'       => $atts,
+        ]
+    );
 
-        $template_dir              = PPCART_BASE_DIR . 'public/templates/';
-        $default_checkout_template = $template_dir . 'checkout-shortcode.php';
-        $checkout_template         = $default_checkout_template;
+    if (! is_string($checkout_template) || ! is_readable($checkout_template)) {
+        $checkout_template = $default_checkout_template;
+    }
 
-        // The template/skin names come from shortcode attributes: allow only a plain slug in the file path.
-        if ($template && is_string($template) && preg_match('/^[a-z0-9_-]+$/i', $template) && file_exists($template_dir . 'checkout-shortcode-' . $template . '.php')) {
-            $checkout_template = $template_dir . 'checkout-shortcode-' . $template . '.php';
-        }
-
-        $checkout_template = apply_filters(
-            'ppcart_checkout_template_path',
-            $checkout_template,
-            $template,
-            [
-                'product_id' => absint($product_id),
-                'atts'       => $atts,
-            ]
-        );
-
-        if (! is_string($checkout_template) || ! is_readable($checkout_template)) {
-            $checkout_template = $default_checkout_template;
-        }
-
-        include $checkout_template;
-    });
+    include $checkout_template;
+} catch (Throwable $ppcart_product_shortcode_buffer_exception) {
+    $ppcart_product_shortcode_buffer_error = $ppcart_product_shortcode_buffer_exception;
 } finally {
     if (null === $previous_checkout_block_arrangement) {
         unset($GLOBALS['ppcart_checkout_block_arrangement']);
     } else {
         $ppcart_checkout_block_arrangement = $previous_checkout_block_arrangement;
     }
+    $ppcart_product_shortcode_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_product_shortcode_buffer_active && ob_get_level() > $ppcart_product_shortcode_buffer_level + 1) {
+        $ppcart_product_shortcode_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_product_shortcode_buffer_exception) {
+            $ppcart_product_shortcode_buffer_error = $ppcart_product_shortcode_buffer_error ?? $ppcart_product_shortcode_buffer_exception;
+            if (ob_get_level() >= $ppcart_product_shortcode_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_product_shortcode_buffer_active && ob_get_level() === $ppcart_product_shortcode_buffer_level + 1) {
+        $ppcart_product_shortcode_buffer_output = (string) ob_get_clean();
+    }
 }
+if (null !== $ppcart_product_shortcode_buffer_error) {
+    throw $ppcart_product_shortcode_buffer_error;
+}
+$output_string = $ppcart_product_shortcode_buffer_output;
 
 return $output_string;

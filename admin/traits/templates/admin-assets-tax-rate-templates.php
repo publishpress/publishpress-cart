@@ -6,7 +6,16 @@ if (! defined('ABSPATH')) {
 
 $templates = [];
 
-$templates['tmpl-ppcart-tax-table-row'] = ppcart_capture_output(function () {
+$ppcart_tax_row_buffer_level = ob_get_level();
+$ppcart_tax_row_buffer_active = true;
+$ppcart_tax_row_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_tax_row_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_tax_row_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
     ?>
     <tr class="tax-tips" data-tip="<?php
         printf(
@@ -43,17 +52,85 @@ $templates['tmpl-ppcart-tax-table-row'] = ppcart_capture_output(function () {
         </td>
     </tr>
 <?php
-});
+} catch (Throwable $ppcart_tax_row_buffer_exception) {
+    $ppcart_tax_row_buffer_error = $ppcart_tax_row_buffer_exception;
+} finally {
+    $ppcart_tax_row_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_tax_row_buffer_active && ob_get_level() > $ppcart_tax_row_buffer_level + 1) {
+        $ppcart_tax_row_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_tax_row_buffer_exception) {
+            $ppcart_tax_row_buffer_error = $ppcart_tax_row_buffer_error ?? $ppcart_tax_row_buffer_exception;
+            if (ob_get_level() >= $ppcart_tax_row_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_tax_row_buffer_active && ob_get_level() === $ppcart_tax_row_buffer_level + 1) {
+        $ppcart_tax_row_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_tax_row_buffer_error) {
+    throw $ppcart_tax_row_buffer_error;
+}
+$templates['tmpl-ppcart-tax-table-row'] = $ppcart_tax_row_buffer_output;
 
-$templates['tmpl-ppcart-tax-table-row-empty'] = ppcart_capture_output(function () {
+$ppcart_tax_empty_buffer_level = ob_get_level();
+$ppcart_tax_empty_buffer_active = true;
+$ppcart_tax_empty_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_tax_empty_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_tax_empty_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
     ?>
     <tr>
         <th colspan="7" class="ppcart-settings__tax-rates-empty"><?php esc_html_e('No matching tax rates found.', 'publishpress-cart'); ?></th>
     </tr>
 <?php
-});
+} catch (Throwable $ppcart_tax_empty_buffer_exception) {
+    $ppcart_tax_empty_buffer_error = $ppcart_tax_empty_buffer_exception;
+} finally {
+    $ppcart_tax_empty_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_tax_empty_buffer_active && ob_get_level() > $ppcart_tax_empty_buffer_level + 1) {
+        $ppcart_tax_empty_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_tax_empty_buffer_exception) {
+            $ppcart_tax_empty_buffer_error = $ppcart_tax_empty_buffer_error ?? $ppcart_tax_empty_buffer_exception;
+            if (ob_get_level() >= $ppcart_tax_empty_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_tax_empty_buffer_active && ob_get_level() === $ppcart_tax_empty_buffer_level + 1) {
+        $ppcart_tax_empty_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_tax_empty_buffer_error) {
+    throw $ppcart_tax_empty_buffer_error;
+}
+$templates['tmpl-ppcart-tax-table-row-empty'] = $ppcart_tax_empty_buffer_output;
 
-$templates['tmpl-ppcart-tax-table-pagination'] = ppcart_capture_output(function () {
+$ppcart_tax_pagination_buffer_level = ob_get_level();
+$ppcart_tax_pagination_buffer_active = true;
+$ppcart_tax_pagination_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_tax_pagination_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_tax_pagination_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
     ?>
     <div class="tablenav">
         <div class="tablenav-pages">
@@ -102,6 +179,31 @@ $templates['tmpl-ppcart-tax-table-pagination'] = ppcart_capture_output(function 
         </div>
     </div>
 <?php
-});
+} catch (Throwable $ppcart_tax_pagination_buffer_exception) {
+    $ppcart_tax_pagination_buffer_error = $ppcart_tax_pagination_buffer_exception;
+} finally {
+    $ppcart_tax_pagination_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_tax_pagination_buffer_active && ob_get_level() > $ppcart_tax_pagination_buffer_level + 1) {
+        $ppcart_tax_pagination_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_tax_pagination_buffer_exception) {
+            $ppcart_tax_pagination_buffer_error = $ppcart_tax_pagination_buffer_error ?? $ppcart_tax_pagination_buffer_exception;
+            if (ob_get_level() >= $ppcart_tax_pagination_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_tax_pagination_buffer_active && ob_get_level() === $ppcart_tax_pagination_buffer_level + 1) {
+        $ppcart_tax_pagination_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_tax_pagination_buffer_error) {
+    throw $ppcart_tax_pagination_buffer_error;
+}
+$templates['tmpl-ppcart-tax-table-pagination'] = $ppcart_tax_pagination_buffer_output;
 
 return $templates;

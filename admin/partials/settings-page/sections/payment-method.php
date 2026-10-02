@@ -120,29 +120,16 @@ $panel_id         = 'ppcart-payment-panel-' . sanitize_html_class($payment_key);
                                     <?php
 
 if ($has_panel) {
-    $payment_panels_html .= ppcart_capture_output(function () use (
-        $payment_key,
-        $panel_id,
-        $method_logo_url,
-        $method_logo_label,
-        $method_panel_title,
-        $payment_status,
-        $enable_field,
-        $method_title,
-        $render_payment_toggle_control,
-        $method_desc,
-        $stripe_mode_field,
-        $stripe_mode_args,
-        $stripe_mode_id,
-        $paypal_mode_field,
-        $paypal_mode_args,
-        $paypal_mode_id,
-        $panel_fields,
-        $panel_header_option_ids,
-        $paypal_live_fields,
-        $paypal_sandbox_fields,
-        $render_setting_field_row
-    ) {
+    $ppcart_payment_panel_buffer_level = ob_get_level();
+    $ppcart_payment_panel_buffer_active = true;
+    $ppcart_payment_panel_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_payment_panel_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_payment_panel_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         ?>
                                         <aside class="ppcart-settings__payment-panel ppcart-settings__payment-panel--<?php echo esc_attr(sanitize_html_class($payment_key)); ?>"
                                                id="<?php echo esc_attr($panel_id); ?>"
@@ -294,5 +281,30 @@ if ($has_panel) {
                                             </div>
                                         </aside>
                                         <?php
-    });
+    } catch (Throwable $ppcart_payment_panel_buffer_exception) {
+        $ppcart_payment_panel_buffer_error = $ppcart_payment_panel_buffer_exception;
+    } finally {
+        $ppcart_payment_panel_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_payment_panel_buffer_active && ob_get_level() > $ppcart_payment_panel_buffer_level + 1) {
+            $ppcart_payment_panel_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_payment_panel_buffer_exception) {
+                $ppcart_payment_panel_buffer_error = $ppcart_payment_panel_buffer_error ?? $ppcart_payment_panel_buffer_exception;
+                if (ob_get_level() >= $ppcart_payment_panel_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_payment_panel_buffer_active && ob_get_level() === $ppcart_payment_panel_buffer_level + 1) {
+            $ppcart_payment_panel_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_payment_panel_buffer_error) {
+        throw $ppcart_payment_panel_buffer_error;
+    }
+    $payment_panels_html .= $ppcart_payment_panel_buffer_output;
 }

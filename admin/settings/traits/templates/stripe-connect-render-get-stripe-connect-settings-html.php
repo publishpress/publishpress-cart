@@ -22,7 +22,16 @@ if (is_array($notice) && ! empty($notice['message'])) {
     delete_transient('ppcart_stripe_connect_admin_notice');
 }
 
-return ppcart_capture_output(function () use ($notice_html, $active_mode, $stripe_enabled, $connect_server_url) {
+$ppcart_stripe_settings_buffer_level = ob_get_level();
+$ppcart_stripe_settings_buffer_active = true;
+$ppcart_stripe_settings_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_stripe_settings_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_stripe_settings_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
     echo '<div class="ppcart-stripe-connect">';
     echo wp_kses_post($notice_html);
 
@@ -37,4 +46,29 @@ return ppcart_capture_output(function () use ($notice_html, $active_mode, $strip
 
     echo '</div>';
 
-});
+} catch (Throwable $ppcart_stripe_settings_buffer_exception) {
+    $ppcart_stripe_settings_buffer_error = $ppcart_stripe_settings_buffer_exception;
+} finally {
+    $ppcart_stripe_settings_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_stripe_settings_buffer_active && ob_get_level() > $ppcart_stripe_settings_buffer_level + 1) {
+        $ppcart_stripe_settings_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_stripe_settings_buffer_exception) {
+            $ppcart_stripe_settings_buffer_error = $ppcart_stripe_settings_buffer_error ?? $ppcart_stripe_settings_buffer_exception;
+            if (ob_get_level() >= $ppcart_stripe_settings_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_stripe_settings_buffer_active && ob_get_level() === $ppcart_stripe_settings_buffer_level + 1) {
+        $ppcart_stripe_settings_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_stripe_settings_buffer_error) {
+    throw $ppcart_stripe_settings_buffer_error;
+}
+return $ppcart_stripe_settings_buffer_output;

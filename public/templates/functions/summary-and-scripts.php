@@ -18,9 +18,43 @@ function ppcart_do_order_summary($post_id, $plan = false)
 
 function ppcart_do_order_summary_section($post_id, $plan = false)
 {
-    $summary = trim(ppcart_capture_output(function () use ($post_id, $plan) {
+    $ppcart_summary_section_buffer_level = ob_get_level();
+    $ppcart_summary_section_buffer_active = true;
+    $ppcart_summary_section_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_summary_section_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_summary_section_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         ppcart_do_order_summary_content($post_id, $plan);
-    }));
+    } catch (Throwable $ppcart_summary_section_buffer_exception) {
+        $ppcart_summary_section_buffer_error = $ppcart_summary_section_buffer_exception;
+    } finally {
+        $ppcart_summary_section_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_summary_section_buffer_active && ob_get_level() > $ppcart_summary_section_buffer_level + 1) {
+            $ppcart_summary_section_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_summary_section_buffer_exception) {
+                $ppcart_summary_section_buffer_error = $ppcart_summary_section_buffer_error ?? $ppcart_summary_section_buffer_exception;
+                if (ob_get_level() >= $ppcart_summary_section_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_summary_section_buffer_active && ob_get_level() === $ppcart_summary_section_buffer_level + 1) {
+            $ppcart_summary_section_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_summary_section_buffer_error) {
+        throw $ppcart_summary_section_buffer_error;
+    }
+    $summary = trim($ppcart_summary_section_buffer_output);
 
     if ('' === $summary) {
         return;
@@ -40,9 +74,43 @@ function ppcart_do_order_summary_content($post_id, $plan = false)
 
 function ppcart_do_terms_consent_section($post_id)
 {
-    $terms = trim(ppcart_capture_output(function () use ($post_id) {
+    $ppcart_terms_buffer_level = ob_get_level();
+    $ppcart_terms_buffer_active = true;
+    $ppcart_terms_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_terms_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_terms_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         ppcart_do_terms_consent_content($post_id);
-    }));
+    } catch (Throwable $ppcart_terms_buffer_exception) {
+        $ppcart_terms_buffer_error = $ppcart_terms_buffer_exception;
+    } finally {
+        $ppcart_terms_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_terms_buffer_active && ob_get_level() > $ppcart_terms_buffer_level + 1) {
+            $ppcart_terms_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_terms_buffer_exception) {
+                $ppcart_terms_buffer_error = $ppcart_terms_buffer_error ?? $ppcart_terms_buffer_exception;
+                if (ob_get_level() >= $ppcart_terms_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_terms_buffer_active && ob_get_level() === $ppcart_terms_buffer_level + 1) {
+            $ppcart_terms_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_terms_buffer_error) {
+        throw $ppcart_terms_buffer_error;
+    }
+    $terms = trim($ppcart_terms_buffer_output);
 
     if ('' === $terms) {
         return;
@@ -126,9 +194,43 @@ function ppcart_do_terms_consent_content($post_id)
 
 function ppcart_do_express_payment_section($post_id)
 {
-    $express_payment = trim(ppcart_capture_output(function () use ($post_id) {
+    $ppcart_express_buffer_level = ob_get_level();
+    $ppcart_express_buffer_active = true;
+    $ppcart_express_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_express_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_express_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
         do_action('ppcart_express_payment_method_fields', $post_id);
-    }));
+    } catch (Throwable $ppcart_express_buffer_exception) {
+        $ppcart_express_buffer_error = $ppcart_express_buffer_exception;
+    } finally {
+        $ppcart_express_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_express_buffer_active && ob_get_level() > $ppcart_express_buffer_level + 1) {
+            $ppcart_express_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_express_buffer_exception) {
+                $ppcart_express_buffer_error = $ppcart_express_buffer_error ?? $ppcart_express_buffer_exception;
+                if (ob_get_level() >= $ppcart_express_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_express_buffer_active && ob_get_level() === $ppcart_express_buffer_level + 1) {
+            $ppcart_express_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_express_buffer_error) {
+        throw $ppcart_express_buffer_error;
+    }
+    $express_payment = trim($ppcart_express_buffer_output);
 
     if ('' === $express_payment) {
         return;
@@ -164,9 +266,43 @@ function ppcart_render_order_summary_items($post_id, $plan = false)
     ?>
     <div class="order-summary-wrap">
         <?php
-        $ppcart_summary_items = trim(ppcart_capture_output(function () use ($ppcart_product, $post_id, $plan) {
+        $ppcart_summary_items_buffer_level = ob_get_level();
+        $ppcart_summary_items_buffer_active = true;
+        $ppcart_summary_items_buffer_error = null;
+        ob_start(static function ($buffer, $phase) use (&$ppcart_summary_items_buffer_active) {
+            if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+                $ppcart_summary_items_buffer_active = false;
+            }
+            return $buffer;
+        });
+        try {
             do_action('ppcart_order_summary_items', $ppcart_product, $post_id, $plan);
-        }));
+        } catch (Throwable $ppcart_summary_items_buffer_exception) {
+            $ppcart_summary_items_buffer_error = $ppcart_summary_items_buffer_exception;
+        } finally {
+            $ppcart_summary_items_buffer_output = '';
+            // Flush nested buffers into ours; never close a caller's or replacement buffer.
+            while ($ppcart_summary_items_buffer_active && ob_get_level() > $ppcart_summary_items_buffer_level + 1) {
+                $ppcart_summary_items_buffer_nested_level = ob_get_level();
+                try {
+                    if (! ob_end_flush()) {
+                        break;
+                    }
+                } catch (Throwable $ppcart_summary_items_buffer_exception) {
+                    $ppcart_summary_items_buffer_error = $ppcart_summary_items_buffer_error ?? $ppcart_summary_items_buffer_exception;
+                    if (ob_get_level() >= $ppcart_summary_items_buffer_nested_level) {
+                        break;
+                    }
+                }
+            }
+            if ($ppcart_summary_items_buffer_active && ob_get_level() === $ppcart_summary_items_buffer_level + 1) {
+                $ppcart_summary_items_buffer_output = (string) ob_get_clean();
+            }
+        }
+        if (null !== $ppcart_summary_items_buffer_error) {
+            throw $ppcart_summary_items_buffer_error;
+        }
+        $ppcart_summary_items = trim($ppcart_summary_items_buffer_output);
 
         if ('' !== $ppcart_summary_items) {
             echo wp_kses($ppcart_summary_items, ppcart_frontend_allowed_html());
