@@ -26,7 +26,9 @@ class UpsellAcceptTest extends WPTestCase
     protected $tester;
 
     /**
-     * @var UpsellStripeHttpClientStub
+     * Stripe SDK HTTP client stub; records PaymentIntent create requests.
+     *
+     * @var ClientInterface
      */
     private $stripeHttp;
 
@@ -53,7 +55,33 @@ class UpsellAcceptTest extends WPTestCase
         $this->previousStripeSettings = $ppcart_stripe;
         $ppcart_stripe = [ 'sk' => 'sk_test_upsell', 'mode' => 'test' ];
 
-        $this->stripeHttp = new UpsellStripeHttpClientStub();
+        $this->stripeHttp = new class implements ClientInterface {
+            /**
+             * @var array<int, array{params: array<string, mixed>, idempotency_key: string}>
+             */
+            public $paymentIntentRequests = [];
+
+            public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'v1', $maxNetworkRetries = null)
+            {
+                if ('post' !== strtolower($method) || '/v1/payment_intents' !== parse_url($absUrl, PHP_URL_PATH)) {
+                    return [ '{"error":{"message":"Unexpected Stripe request in test"}}', 400, [] ];
+                }
+
+                $idempotencyKey = '';
+                foreach ($headers as $header) {
+                    if (0 === stripos($header, 'Idempotency-Key:')) {
+                        $idempotencyKey = trim(substr($header, strlen('Idempotency-Key:')));
+                    }
+                }
+
+                $this->paymentIntentRequests[] = [
+                    'params'          => $params,
+                    'idempotency_key' => $idempotencyKey,
+                ];
+
+                return [ '{"id":"pi_upsellcharge","object":"payment_intent","status":"succeeded"}', 200, [] ];
+            }
+        };
         ApiRequestor::setHttpClient($this->stripeHttp);
 
         $this->productId = (int) wp_insert_post(
@@ -157,8 +185,9 @@ class UpsellAcceptTest extends WPTestCase
      */
     public function getAjaxDieHandler(): callable
     {
+        // An \Error, not an \Exception, so the handler's Stripe catch block cannot swallow it.
         return static function ($message = '', $title = '', $args = []): void {
-            throw new UpsellAjaxDie('wp_die');
+            throw new \Error('wp_die');
         };
     }
 
@@ -185,52 +214,17 @@ class UpsellAcceptTest extends WPTestCase
         ob_start();
         try {
             do_action('wp_ajax_nopriv_ppcart_process_upsell');
-        } catch (UpsellAjaxDie $exception) {
-            // wp_send_json() ends the request.
+        } catch (\Error $error) {
+            // wp_send_json() ends the request; anything else is a real failure.
+            if ('wp_die' !== $error->getMessage()) {
+                ob_end_clean();
+                throw $error;
+            }
         } finally {
             remove_filter('wp_doing_ajax', '__return_true');
             remove_filter('wp_die_ajax_handler', [ $this, 'getAjaxDieHandler' ]);
         }
 
         return json_decode(trim((string) ob_get_clean()), true);
-    }
-}
-
-/**
- * Not an \Exception, so the handler's Stripe catch block cannot swallow it.
- */
-class UpsellAjaxDie extends \Error
-{
-}
-
-/**
- * Answers the Stripe PaymentIntent create call and records what was sent.
- */
-class UpsellStripeHttpClientStub implements ClientInterface
-{
-    /**
-     * @var array<int, array{params: array<string, mixed>, idempotency_key: string}>
-     */
-    public $paymentIntentRequests = [];
-
-    public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'v1', $maxNetworkRetries = null)
-    {
-        if ('post' !== strtolower($method) || '/v1/payment_intents' !== parse_url($absUrl, PHP_URL_PATH)) {
-            return [ '{"error":{"message":"Unexpected Stripe request in test"}}', 400, [] ];
-        }
-
-        $idempotencyKey = '';
-        foreach ($headers as $header) {
-            if (0 === stripos($header, 'Idempotency-Key:')) {
-                $idempotencyKey = trim(substr($header, strlen('Idempotency-Key:')));
-            }
-        }
-
-        $this->paymentIntentRequests[] = [
-            'params'          => $params,
-            'idempotency_key' => $idempotencyKey,
-        ];
-
-        return [ '{"id":"pi_upsellcharge","object":"payment_intent","status":"succeeded"}', 200, [] ];
     }
 }
