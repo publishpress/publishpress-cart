@@ -87,7 +87,6 @@ function ppcart_get_template($slug, $name = '', $attr = [])
         if ($template) {
             require($template);
         }
-
     } catch (Throwable $ppcart_template_buffer_exception) {
         $ppcart_template_buffer_error = $ppcart_template_buffer_exception;
     } finally {

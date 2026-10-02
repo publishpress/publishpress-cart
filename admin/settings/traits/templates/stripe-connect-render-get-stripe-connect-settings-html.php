@@ -45,7 +45,6 @@ try {
     }
 
     echo '</div>';
-
 } catch (Throwable $ppcart_stripe_settings_buffer_exception) {
     $ppcart_stripe_settings_buffer_error = $ppcart_stripe_settings_buffer_exception;
 } finally {

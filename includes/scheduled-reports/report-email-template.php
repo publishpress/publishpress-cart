@@ -60,7 +60,6 @@ function ppcart_schedule_report_email_html($report)
     </body>
     </html>
     <?php
-
     } catch (Throwable $ppcart_report_email_buffer_exception) {
         $ppcart_report_email_buffer_error = $ppcart_report_email_buffer_exception;
     } finally {

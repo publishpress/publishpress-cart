@@ -71,7 +71,6 @@ class PPCart_Public_Account_Controller
             do_action('ppcart_login_before_' . $template_name);
             require dirname(__DIR__) . '/templates/' . $template_name . '.php';
             do_action('ppcart_login_after_' . $template_name);
-
         } catch (Throwable $ppcart_login_buffer_exception) {
             $ppcart_login_buffer_error = $ppcart_login_buffer_exception;
         } finally {

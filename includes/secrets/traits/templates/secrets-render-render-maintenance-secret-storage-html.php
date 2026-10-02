@@ -167,7 +167,6 @@ try {
     </table>
 </div>
 <?php
-
 } catch (Throwable $ppcart_secret_maintenance_buffer_exception) {
     $ppcart_secret_maintenance_buffer_error = $ppcart_secret_maintenance_buffer_exception;
 } finally {

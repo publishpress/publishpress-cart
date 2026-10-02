@@ -41,4 +41,3 @@ if ('integrations' === $tab_slug) {
     }
 }
 echo '</table>';
-

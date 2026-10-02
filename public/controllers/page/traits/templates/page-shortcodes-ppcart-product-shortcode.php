@@ -87,7 +87,6 @@ ob_start(static function ($buffer, $phase) use (&$ppcart_product_shortcode_buffe
     return $buffer;
 });
 try {
-
     if ($skin) {
         $template = $skin;
     } elseif (!$template) {

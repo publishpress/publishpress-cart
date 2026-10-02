@@ -101,7 +101,6 @@ try {
     </div>
 </div>
 <?php
-
 } catch (Throwable $ppcart_secret_intro_buffer_exception) {
     $ppcart_secret_intro_buffer_error = $ppcart_secret_intro_buffer_exception;
 } finally {

@@ -38,7 +38,6 @@ ob_start(static function ($buffer, $phase) use (&$ppcart_stripe_status_buffer_ac
     return $buffer;
 });
 try {
-
     $allowed_html = PPCart_Admin_Stripe_Webhook_Settings::augment_allowed_html(wp_kses_allowed_html('post'));
 
     echo '<div class="ppcart-stripe-connect__section ppcart-stripe-steps">';
@@ -155,7 +154,6 @@ try {
             echo '</div>';
 
             echo '</div>';
-
         }
     }
 } catch (Throwable $ppcart_stripe_status_buffer_exception) {

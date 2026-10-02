@@ -22,7 +22,6 @@ ob_start(static function ($buffer, $phase) use (&$ppcart_stripe_webhook_buffer_a
     return $buffer;
 });
 try {
-
     echo '<p class="ppcart-step__text">'
         . sprintf(
             /* translators: %s: the Stripe permission name, wrapped in strong tags. */
@@ -87,7 +86,6 @@ try {
         . '</button>';
     echo '</span>';
     echo '</div>';
-
 } catch (Throwable $ppcart_stripe_webhook_buffer_exception) {
     $ppcart_stripe_webhook_buffer_error = $ppcart_stripe_webhook_buffer_exception;
 } finally {

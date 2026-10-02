@@ -72,7 +72,6 @@ ob_start(static function ($buffer, $phase) use (&$ppcart_settings_notices_buffer
     return $buffer;
 });
 try {
-
     if (! ppcart_enabled_processors()) {
         ?>
     <div class="notice notice-error ppcart-settings__notice">
@@ -106,7 +105,6 @@ try {
 
     // Render captured global admin notices and plugin notices inside the settings shell.
     do_action('ppcart_settings_admin_notices');
-
 } catch (Throwable $ppcart_settings_notices_buffer_exception) {
     $ppcart_settings_notices_buffer_error = $ppcart_settings_notices_buffer_exception;
 } finally {

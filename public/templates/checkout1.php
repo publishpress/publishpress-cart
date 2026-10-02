@@ -105,7 +105,7 @@ if (!isset($ppcart_product->show_2_step)) {
             background-color: <?php echo esc_attr($ppcart_product->bump_bg_color); ?>
         }
 
-    <?php endif;
+        <?php endif;
 
         for ($ppcart_bump_index = 0; $ppcart_bump_index < count($ppcart_product->order_bump_options); $ppcart_bump_index++) {
             if (isset($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) && $ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) {
