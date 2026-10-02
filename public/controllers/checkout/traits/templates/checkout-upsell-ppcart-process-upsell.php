@@ -71,7 +71,7 @@ if ($cart_order->pay_method == 'stripe') {
         );
 
         $sub = PPCart_Subscription::from_order($cart_order);
-        $this->store_stripe_owned_record($sub);
+        ppcart_store_stripe_owned_record($sub);
         $cart_order->subscription_id = $sub->id;
 
         $ppcart_debug_logger->log_event(
@@ -111,7 +111,7 @@ if ($cart_order->pay_method == 'stripe') {
                 $sub->sub_status = 'active';
             }
 
-            $this->store_stripe_owned_record($sub);
+            ppcart_store_stripe_owned_record($sub);
             $ppcart_debug_logger->log_event(
                 'checkout.upsell.subscription.synced',
                 "Upsell subscription #{$sub->id} synced from Stripe with status {$sub->status}.",
@@ -126,7 +126,7 @@ if ($cart_order->pay_method == 'stripe') {
             );
 
             $latest_invoice = $this->get_stripe_resource_value($subscription, 'latest_invoice', null);
-            $transaction_id = $this->get_stripe_invoice_transaction_id($latest_invoice);
+            $transaction_id = ppcart_get_stripe_invoice_transaction_id($latest_invoice);
 
             if ($transaction_id) {
                 $cart_order->transaction_id = $transaction_id;
@@ -136,9 +136,8 @@ if ($cart_order->pay_method == 'stripe') {
                 $cart_order->status = 'paid';
                 $cart_order->payment_status = 'paid';
             }
-            $this->store_stripe_owned_record($cart_order);
-            echo esc_html($cart_order->id);
-            exit();
+            ppcart_store_stripe_owned_record($cart_order);
+            wp_send_json((int) $cart_order->id);
         }
     } else {
         $descriptor = get_option('_ppcart_stripe_descriptor', false);
@@ -171,21 +170,11 @@ if ($cart_order->pay_method == 'stripe') {
 
         $ppcart_debug_logger->log_debug('Sending order to Stripe, params: ' . wp_json_encode($args));
 
+        // One charge per parent order and offer: a retry replays the first PaymentIntent instead of charging again.
+        $idempotency_key = 'ppcart-' . $oto_type . '-' . $order_id_post . '-' . (isset($cart_order->us_offer) ? (int) $cart_order->us_offer : 1);
+
         try {
-            $intent = $stripe->paymentIntents->create($args);
-
-            $ppcart_debug_logger->log_debug("Stripe order created", 0);
-
-            if ($intent->status == 'succeeded') {
-                $cart_order->status = 'paid';
-            }
-
-            $cart_order->payment_status = $intent->status;
-            $cart_order->transaction_id = $intent->id;
-            $this->store_stripe_owned_record($cart_order);
-            PPCart_Stripe_Checkout_Customer::remember_order_payment_method($cart_order->id, $paymethod_id);
-            echo esc_html($cart_order->id);
-            exit();
+            $intent = $stripe->paymentIntents->create($args, [ 'idempotency_key' => $idempotency_key ]);
         } catch (Exception $e) {
             $err = $e->getTrace();
             $err = json_decode($err[0]['args'][2])->error;
@@ -204,10 +193,20 @@ if ($cart_order->pay_method == 'stripe') {
                                         ]);
             }
         }
+
+        $ppcart_debug_logger->log_debug("Stripe order created", 0);
+
+        if ($intent->status == 'succeeded') {
+            $cart_order->status = 'paid';
+        }
+
+        $cart_order->payment_status = $intent->status;
+        $cart_order->transaction_id = $intent->id;
+        ppcart_store_stripe_owned_record($cart_order);
+        PPCart_Stripe_Checkout_Customer::remember_order_payment_method($cart_order->id, $paymethod_id);
+        wp_send_json((int) $cart_order->id);
     }
 } else {
-    $this->store_stripe_owned_record($cart_order);
-    echo esc_html($cart_order->id);
+    ppcart_store_stripe_owned_record($cart_order);
+    wp_send_json((int) $cart_order->id);
 }
-
-exit();

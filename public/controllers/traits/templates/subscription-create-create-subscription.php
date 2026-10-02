@@ -231,10 +231,10 @@ $ppcart_debug_logger->log_event(
 
 // save subscription
 $sub = PPCart_Subscription::from_order($ppcart_order);
-$this->store_stripe_owned_record($sub);
+ppcart_store_stripe_owned_record($sub);
 
 $ppcart_order->subscription_id = $sub->id;
-$this->store_stripe_owned_record($ppcart_order);
+ppcart_store_stripe_owned_record($ppcart_order);
 
 // Upsells and downsells charge only this method, never the customer's default.
 PPCart_Stripe_Checkout_Customer::remember_order_payment_method($ppcart_order->id, $paymethod_id);
@@ -282,7 +282,7 @@ if (!$subscription) {
         $sub->sub_status = 'active';
     }
 
-    $this->store_stripe_owned_record($sub);
+    ppcart_store_stripe_owned_record($sub);
 
     if ($sub->id) {
         $ppcart_debug_logger->log_event(
@@ -309,7 +309,7 @@ if (!$subscription) {
     }
 
     $latest_invoice = $this->get_stripe_resource_value($subscription, 'latest_invoice', null);
-    $transaction_id = $this->get_stripe_invoice_transaction_id($latest_invoice);
+    $transaction_id = ppcart_get_stripe_invoice_transaction_id($latest_invoice);
 
     if ($transaction_id) {
         $ppcart_order->transaction_id = $transaction_id;
@@ -323,7 +323,7 @@ if (!$subscription) {
             $ppcart_order->status = 'paid';
             $ppcart_order->payment_status = 'paid';
         }
-        $this->store_stripe_owned_record($ppcart_order);
+        ppcart_store_stripe_owned_record($ppcart_order);
 
         if ($ppcart_order->id) {
             $ppcart_debug_logger->log_event(

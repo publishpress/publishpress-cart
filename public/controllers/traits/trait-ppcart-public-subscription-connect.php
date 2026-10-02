@@ -41,27 +41,6 @@ trait PPCart_Public_Subscription_Connect_Trait
         return is_string($id) ? $id : '';
     }
 
-    private function get_stripe_invoice_transaction_id($invoice)
-    {
-        $charge = $this->get_stripe_resource_value($invoice, 'charge', '');
-        $charge_id = $this->get_stripe_resource_id($charge);
-
-        if ('' !== $charge_id) {
-            return $charge_id;
-        }
-
-        $payment_intent = $this->get_stripe_resource_value($invoice, 'payment_intent', '');
-        $payment_intent_id = $this->get_stripe_resource_id($payment_intent);
-
-        if ('' !== $payment_intent_id) {
-            return $payment_intent_id;
-        }
-
-        $latest_charge = $this->get_stripe_resource_value($payment_intent, 'latest_charge', '');
-
-        return $this->get_stripe_resource_id($latest_charge);
-    }
-
     private function is_connect_destination_configured()
     {
         $connect = $this->get_stripe_connect_config();
@@ -121,18 +100,5 @@ trait PPCart_Public_Subscription_Connect_Trait
         }
 
         return $args;
-    }
-
-    private function store_stripe_owned_record($record)
-    {
-        if (function_exists('ppcart_stripe_sync_context_run') && isset($record->pay_method) && 'stripe' === $record->pay_method) {
-            return ppcart_stripe_sync_context_run(
-                function () use ($record) {
-                    return $record->store();
-                }
-            );
-        }
-
-        return $record->store();
     }
 }

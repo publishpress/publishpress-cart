@@ -5,6 +5,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [1.0.1] - Unreleased
 
+### Fixed
+
+- Accepting a one-click Stripe upsell no longer fails: Free registers the `ppcart_process_upsell` AJAX route on the checkout controller, records the child order, and sends a Stripe idempotency key so a retry cannot charge the customer twice (#893).
+
 ### Security
 
 - Escape URL and label output in `PPCart_Order::receipt_link_html()` to match `invoice_link_html()`.

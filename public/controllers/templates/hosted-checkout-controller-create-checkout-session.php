@@ -103,7 +103,7 @@ if (! $descriptor) {
 $descriptor = preg_replace("/[^0-9a-zA-Z ]/", '', substr($descriptor, 0, 22));
 
 // Persist a pending order that the webhook will finalize.
-$order_id = $this->store_stripe_owned_record($ppcart_order);
+$order_id = ppcart_store_stripe_owned_record($ppcart_order);
 
 if (! $order_id) {
     $ppcart_debug_logger->log_event(

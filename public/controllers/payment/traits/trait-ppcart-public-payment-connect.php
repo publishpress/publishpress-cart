@@ -141,17 +141,4 @@ trait PPCart_Public_Payment_Connect_Trait
 
         return $args;
     }
-
-    private function store_stripe_owned_record($record)
-    {
-        if (function_exists('ppcart_stripe_sync_context_run') && isset($record->pay_method) && 'stripe' === $record->pay_method) {
-            return ppcart_stripe_sync_context_run(
-                function () use ($record) {
-                    return $record->store();
-                }
-            );
-        }
-
-        return $record->store();
-    }
 }

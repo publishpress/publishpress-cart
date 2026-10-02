@@ -65,6 +65,9 @@ class PPCart_Public_Hook_Registrar
         $this->loader->add_action('wp_ajax_ppcart_create_subscription', $plugin_public_subscriptions, 'create_subscription');
         $this->loader->add_action('wp_ajax_nopriv_ppcart_create_subscription', $plugin_public_subscriptions, 'create_subscription');
 
+        $this->loader->add_action('wp_ajax_ppcart_process_upsell', $plugin_public_checkout, 'process_upsell');
+        $this->loader->add_action('wp_ajax_nopriv_ppcart_process_upsell', $plugin_public_checkout, 'process_upsell');
+
         $this->loader->add_action('wp_ajax_ppcart_create_checkout_session', $plugin_public_hosted_checkout, 'create_checkout_session');
         $this->loader->add_action('wp_ajax_nopriv_ppcart_create_checkout_session', $plugin_public_hosted_checkout, 'create_checkout_session');
         $this->loader->add_action('wp_ajax_ppcart_create_setup_intent', $plugin_public_payment, 'create_setup_intent');
