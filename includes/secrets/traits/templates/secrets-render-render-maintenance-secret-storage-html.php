@@ -10,8 +10,17 @@ $nonce        = wp_create_nonce('ppcart_migrate_secrets');
 $toggle_nonce = wp_create_nonce('ppcart_set_encrypt_secrets');
 $migration_notice = self::get_plaintext_migration_notice($migration_status);
 
-ob_start();
-?>
+$ppcart_secret_maintenance_buffer_level = ob_get_level();
+$ppcart_secret_maintenance_buffer_active = true;
+$ppcart_secret_maintenance_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_secret_maintenance_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_secret_maintenance_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
+    ?>
 <div class="ppcart-secrets-maintenance" data-ppcart-secrets-maintenance>
     <table class="form-table" role="presentation">
         <tr>
@@ -53,14 +62,14 @@ ob_start();
                 <?php if ($migration_status['encryption_enabled']) : ?>
                     <p class="description">
                         <?php
-                        echo esc_html(
-                            sprintf(
-                                /* translators: %s: encryption key source label. */
-                                __('Key source: %s', 'publishpress-cart'),
-                                $migration_status['encryption_key_source']
-                            )
-                        );
-                    ?>
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %s: encryption key source label. */
+                                    __('Key source: %s', 'publishpress-cart'),
+                                    $migration_status['encryption_key_source']
+                                )
+                            );
+                        ?>
                     </p>
                     <?php if (! $migration_status['encryption_available']) : ?>
                         <p class="description" style="color:#b32d2e;">
@@ -84,19 +93,19 @@ ob_start();
                     <?php if ((int) $migration_status['encrypted_count'] > 0) : ?>
                         <p class="description">
                             <?php
-                        echo esc_html(
-                            sprintf(
-                                /* translators: %d: number of encrypted credentials. */
-                                _n(
-                                    '%d credential remains encrypted in the database until you re-save it or enable encryption again.',
-                                    '%d credentials remain encrypted in the database until you re-save them or enable encryption again.',
-                                    (int) $migration_status['encrypted_count'],
-                                    'publishpress-cart'
-                                ),
-                                (int) $migration_status['encrypted_count']
-                            )
-                        );
-                        ?>
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %d: number of encrypted credentials. */
+                                    _n(
+                                        '%d credential remains encrypted in the database until you re-save it or enable encryption again.',
+                                        '%d credentials remain encrypted in the database until you re-save them or enable encryption again.',
+                                        (int) $migration_status['encrypted_count'],
+                                        'publishpress-cart'
+                                    ),
+                                    (int) $migration_status['encrypted_count']
+                                )
+                            );
+                            ?>
                         </p>
                     <?php endif; ?>
                     <p class="description">
@@ -106,14 +115,14 @@ ob_start();
                 <?php if ($migration_status['last_migration'] > 0) : ?>
                     <p class="description">
                         <?php
-                        echo esc_html(
-                            sprintf(
-                                /* translators: %s: formatted datetime. */
-                                __('Last migration: %s', 'publishpress-cart'),
-                                wp_date(get_option('date_format') . ' ' . get_option('time_format'), (int) $migration_status['last_migration'])
-                            )
-                        );
-                    ?>
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %s: formatted datetime. */
+                                    __('Last migration: %s', 'publishpress-cart'),
+                                    wp_date(get_option('date_format') . ' ' . get_option('time_format'), (int) $migration_status['last_migration'])
+                                )
+                            );
+                        ?>
                     </p>
                 <?php endif; ?>
             </td>
@@ -158,5 +167,29 @@ ob_start();
     </table>
 </div>
 <?php
-
-return (string) ob_get_clean();
+} catch (Throwable $ppcart_secret_maintenance_buffer_exception) {
+    $ppcart_secret_maintenance_buffer_error = $ppcart_secret_maintenance_buffer_exception;
+} finally {
+    $ppcart_secret_maintenance_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_secret_maintenance_buffer_active && ob_get_level() > $ppcart_secret_maintenance_buffer_level + 1) {
+        $ppcart_secret_maintenance_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_secret_maintenance_buffer_exception) {
+            $ppcart_secret_maintenance_buffer_error = $ppcart_secret_maintenance_buffer_error ?? $ppcart_secret_maintenance_buffer_exception;
+            if (ob_get_level() >= $ppcart_secret_maintenance_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_secret_maintenance_buffer_active && ob_get_level() === $ppcart_secret_maintenance_buffer_level + 1) {
+        $ppcart_secret_maintenance_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_secret_maintenance_buffer_error) {
+    throw $ppcart_secret_maintenance_buffer_error;
+}
+return (string) $ppcart_secret_maintenance_buffer_output;

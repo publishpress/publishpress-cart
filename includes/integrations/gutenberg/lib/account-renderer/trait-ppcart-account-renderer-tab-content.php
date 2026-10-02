@@ -49,9 +49,43 @@ trait PPCart_Account_Renderer_Tab_Content
     {
         $template_output = ppcart_get_template('my-account/tabs/' . $template, '', $attributes);
 
-        ob_start();
-        do_action("ppcart_tab_content_{$tab_id}");
-        $template_output .= ob_get_clean();
+        $ppcart_account_tab_buffer_level = ob_get_level();
+        $ppcart_account_tab_buffer_active = true;
+        $ppcart_account_tab_buffer_error = null;
+        ob_start(static function ($buffer, $phase) use (&$ppcart_account_tab_buffer_active) {
+            if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+                $ppcart_account_tab_buffer_active = false;
+            }
+            return $buffer;
+        });
+        try {
+            do_action("ppcart_tab_content_{$tab_id}");
+        } catch (Throwable $ppcart_account_tab_buffer_exception) {
+            $ppcart_account_tab_buffer_error = $ppcart_account_tab_buffer_exception;
+        } finally {
+            $ppcart_account_tab_buffer_output = '';
+            // Flush nested buffers into ours; never close a caller's or replacement buffer.
+            while ($ppcart_account_tab_buffer_active && ob_get_level() > $ppcart_account_tab_buffer_level + 1) {
+                $ppcart_account_tab_buffer_nested_level = ob_get_level();
+                try {
+                    if (! ob_end_flush()) {
+                        break;
+                    }
+                } catch (Throwable $ppcart_account_tab_buffer_exception) {
+                    $ppcart_account_tab_buffer_error = $ppcart_account_tab_buffer_error ?? $ppcart_account_tab_buffer_exception;
+                    if (ob_get_level() >= $ppcart_account_tab_buffer_nested_level) {
+                        break;
+                    }
+                }
+            }
+            if ($ppcart_account_tab_buffer_active && ob_get_level() === $ppcart_account_tab_buffer_level + 1) {
+                $ppcart_account_tab_buffer_output = (string) ob_get_clean();
+            }
+        }
+        if (null !== $ppcart_account_tab_buffer_error) {
+            throw $ppcart_account_tab_buffer_error;
+        }
+        $template_output .= $ppcart_account_tab_buffer_output;
 
         return $template_output;
     }
@@ -325,8 +359,17 @@ trait PPCart_Account_Renderer_Tab_Content
         $start_label   = esc_html__('Start Date', 'publishpress-cart');
         $next_label    = esc_html__('Next Payment', 'publishpress-cart');
 
-        ob_start();
-        ?>
+        $ppcart_subscription_preview_buffer_level = ob_get_level();
+        $ppcart_subscription_preview_buffer_active = true;
+        $ppcart_subscription_preview_buffer_error = null;
+        ob_start(static function ($buffer, $phase) use (&$ppcart_subscription_preview_buffer_active) {
+            if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+                $ppcart_subscription_preview_buffer_active = false;
+            }
+            return $buffer;
+        });
+        try {
+            ?>
         <div class="ppcart-my-account ppcart-my-subscription-page">
             <div class="back-btn"><a href="#" data-testid="ppcart-account-subscription-back-preview">&larr; <?php echo esc_html($back_label); ?></a></div>
             <div class="ppcart-account-subscription">
@@ -352,14 +395,73 @@ trait PPCart_Account_Renderer_Tab_Content
             </div>
         </div>
         <?php
-        return ob_get_clean();
+        } catch (Throwable $ppcart_subscription_preview_buffer_exception) {
+            $ppcart_subscription_preview_buffer_error = $ppcart_subscription_preview_buffer_exception;
+        } finally {
+            $ppcart_subscription_preview_buffer_output = '';
+            // Flush nested buffers into ours; never close a caller's or replacement buffer.
+            while ($ppcart_subscription_preview_buffer_active && ob_get_level() > $ppcart_subscription_preview_buffer_level + 1) {
+                $ppcart_subscription_preview_buffer_nested_level = ob_get_level();
+                try {
+                    if (! ob_end_flush()) {
+                        break;
+                    }
+                } catch (Throwable $ppcart_subscription_preview_buffer_exception) {
+                    $ppcart_subscription_preview_buffer_error = $ppcart_subscription_preview_buffer_error ?? $ppcart_subscription_preview_buffer_exception;
+                    if (ob_get_level() >= $ppcart_subscription_preview_buffer_nested_level) {
+                        break;
+                    }
+                }
+            }
+            if ($ppcart_subscription_preview_buffer_active && ob_get_level() === $ppcart_subscription_preview_buffer_level + 1) {
+                $ppcart_subscription_preview_buffer_output = (string) ob_get_clean();
+            }
+        }
+        if (null !== $ppcart_subscription_preview_buffer_error) {
+            throw $ppcart_subscription_preview_buffer_error;
+        }
+        return $ppcart_subscription_preview_buffer_output;
     }
 
     public function render_downloads_content()
     {
-        ob_start();
-        do_action('ppcart_tab_content_tab-files');
-        return ob_get_clean();
+        $ppcart_account_downloads_buffer_level = ob_get_level();
+        $ppcart_account_downloads_buffer_active = true;
+        $ppcart_account_downloads_buffer_error = null;
+        ob_start(static function ($buffer, $phase) use (&$ppcart_account_downloads_buffer_active) {
+            if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+                $ppcart_account_downloads_buffer_active = false;
+            }
+            return $buffer;
+        });
+        try {
+            do_action('ppcart_tab_content_tab-files');
+        } catch (Throwable $ppcart_account_downloads_buffer_exception) {
+            $ppcart_account_downloads_buffer_error = $ppcart_account_downloads_buffer_exception;
+        } finally {
+            $ppcart_account_downloads_buffer_output = '';
+            // Flush nested buffers into ours; never close a caller's or replacement buffer.
+            while ($ppcart_account_downloads_buffer_active && ob_get_level() > $ppcart_account_downloads_buffer_level + 1) {
+                $ppcart_account_downloads_buffer_nested_level = ob_get_level();
+                try {
+                    if (! ob_end_flush()) {
+                        break;
+                    }
+                } catch (Throwable $ppcart_account_downloads_buffer_exception) {
+                    $ppcart_account_downloads_buffer_error = $ppcart_account_downloads_buffer_error ?? $ppcart_account_downloads_buffer_exception;
+                    if (ob_get_level() >= $ppcart_account_downloads_buffer_nested_level) {
+                        break;
+                    }
+                }
+            }
+            if ($ppcart_account_downloads_buffer_active && ob_get_level() === $ppcart_account_downloads_buffer_level + 1) {
+                $ppcart_account_downloads_buffer_output = (string) ob_get_clean();
+            }
+        }
+        if (null !== $ppcart_account_downloads_buffer_error) {
+            throw $ppcart_account_downloads_buffer_error;
+        }
+        return $ppcart_account_downloads_buffer_output;
     }
 
     public function wrap_downloads_output($output, $attributes)

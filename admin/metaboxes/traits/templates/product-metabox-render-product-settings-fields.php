@@ -74,8 +74,17 @@ $this->scripts = apply_filters('ppcart_product_field_scripts', $this->scripts, $
 
 if ($this->scripts != '') :
     $ppcart_product_field_scripts = $this->scripts;
-    ob_start();
-    ?>
+    $ppcart_product_fields_buffer_level = ob_get_level();
+    $ppcart_product_fields_buffer_active = true;
+    $ppcart_product_fields_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_product_fields_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_product_fields_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
+        ?>
         jQuery('document').ready(function($){
             $("#repeater_ppcart_product_options [name^=\"prod_on_sale[\"]").each(function(index){
                 if ( ($(this).closest(".ppcart-repeater-content").find("[name^=\"prod_on_sale[\"]").is(':checked')) ) {
@@ -226,7 +235,32 @@ if ($this->scripts != '') :
 
         });
     <?php
-    $product_field_script = trim(ob_get_clean());
+    } catch (Throwable $ppcart_product_fields_buffer_exception) {
+        $ppcart_product_fields_buffer_error = $ppcart_product_fields_buffer_exception;
+    } finally {
+        $ppcart_product_fields_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_product_fields_buffer_active && ob_get_level() > $ppcart_product_fields_buffer_level + 1) {
+            $ppcart_product_fields_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_product_fields_buffer_exception) {
+                $ppcart_product_fields_buffer_error = $ppcart_product_fields_buffer_error ?? $ppcart_product_fields_buffer_exception;
+                if (ob_get_level() >= $ppcart_product_fields_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_product_fields_buffer_active && ob_get_level() === $ppcart_product_fields_buffer_level + 1) {
+            $ppcart_product_fields_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_product_fields_buffer_error) {
+        throw $ppcart_product_fields_buffer_error;
+    }
+    $product_field_script = trim($ppcart_product_fields_buffer_output);
 
     if ('' !== $ppcart_product_field_scripts) {
         $product_field_script = "jQuery(function($){\n" . $ppcart_product_field_scripts . "\n});\n" . $product_field_script;

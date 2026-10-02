@@ -9,8 +9,17 @@ $password_label = esc_html__('Password', 'publishpress-cart');
 $remember_label = esc_html__('Remember Me', 'publishpress-cart');
 $submit_label   = esc_attr__('Log In', 'publishpress-cart');
 
-ob_start();
-?>
+$ppcart_account_login_preview_buffer_level = ob_get_level();
+$ppcart_account_login_preview_buffer_active = true;
+$ppcart_account_login_preview_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_account_login_preview_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_account_login_preview_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
+    ?>
 <div id="ppcart-login" class="ppcart-account-form">
     <form name="loginform" id="ppcart-login-form" action="#" method="post" data-testid="ppcart-account-login-form-preview">
         <p class="login-username">
@@ -30,6 +39,31 @@ ob_start();
     </form>
 </div>
 <?php
-$output = ob_get_clean();
+} catch (Throwable $ppcart_account_login_preview_buffer_exception) {
+    $ppcart_account_login_preview_buffer_error = $ppcart_account_login_preview_buffer_exception;
+} finally {
+    $ppcart_account_login_preview_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_account_login_preview_buffer_active && ob_get_level() > $ppcart_account_login_preview_buffer_level + 1) {
+        $ppcart_account_login_preview_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_account_login_preview_buffer_exception) {
+            $ppcart_account_login_preview_buffer_error = $ppcart_account_login_preview_buffer_error ?? $ppcart_account_login_preview_buffer_exception;
+            if (ob_get_level() >= $ppcart_account_login_preview_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_account_login_preview_buffer_active && ob_get_level() === $ppcart_account_login_preview_buffer_level + 1) {
+        $ppcart_account_login_preview_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_account_login_preview_buffer_error) {
+    throw $ppcart_account_login_preview_buffer_error;
+}
+$output = $ppcart_account_login_preview_buffer_output;
 
 return $renderer->prepend_login_intro($output, $attributes);

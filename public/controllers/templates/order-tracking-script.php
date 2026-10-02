@@ -45,8 +45,17 @@ if ($ppcart_order && $ppcart_order->id) {
     do_action('ppcart_js_purchase_tracking', $ppcart_order);
 }
 
-ob_start();
-?>
+$ppcart_order_tracking_buffer_level = ob_get_level();
+$ppcart_order_tracking_buffer_active = true;
+$ppcart_order_tracking_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_order_tracking_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_order_tracking_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
+    ?>
 jQuery('document').ready(function($){
     if ( typeof fbq !== "undefined") {
 
@@ -143,7 +152,32 @@ jQuery('document').ready(function($){
     <?php endif; ?>
 });
 <?php
-$script = trim(ob_get_clean());
+} catch (Throwable $ppcart_order_tracking_buffer_exception) {
+    $ppcart_order_tracking_buffer_error = $ppcart_order_tracking_buffer_exception;
+} finally {
+    $ppcart_order_tracking_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_order_tracking_buffer_active && ob_get_level() > $ppcart_order_tracking_buffer_level + 1) {
+        $ppcart_order_tracking_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_order_tracking_buffer_exception) {
+            $ppcart_order_tracking_buffer_error = $ppcart_order_tracking_buffer_error ?? $ppcart_order_tracking_buffer_exception;
+            if (ob_get_level() >= $ppcart_order_tracking_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_order_tracking_buffer_active && ob_get_level() === $ppcart_order_tracking_buffer_level + 1) {
+        $ppcart_order_tracking_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_order_tracking_buffer_error) {
+    throw $ppcart_order_tracking_buffer_error;
+}
+$script = trim($ppcart_order_tracking_buffer_output);
 
 if ('' !== $script) {
     wp_add_inline_script('ppcart', $script);

@@ -79,8 +79,17 @@ if (!isset($ppcart_product->show_2_step)) {
         <title><?php echo esc_html(wp_get_document_title()); ?></title>
     <?php endif; ?>
     <?php
-    ob_start();
-?>
+    $ppcart_checkout_css_buffer_level = ob_get_level();
+    $ppcart_checkout_css_buffer_active = true;
+    $ppcart_checkout_css_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_checkout_css_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_checkout_css_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
+    ?>
         .ppcart .ppcart-btn-block,
         .ppcart input[type="button"],
         body.<?php echo esc_attr(function_exists('ppcart_product_singular_body_class') ? ppcart_product_singular_body_class() : 'single-ppcart_product'); ?> .ppcart-page .ppcart-container .ppcart-embed-checkout-form-nav .ppcart-checkout-form-steps .steps.ppcart-current a .step-number {
@@ -88,38 +97,63 @@ if (!isset($ppcart_product->show_2_step)) {
         }
 
         <?php
-    $ppcart_show_bump = isset($ppcart_product->order_bump_options);
-$ppcart_show_bump = apply_filters('ppcart_show_orderbump', $ppcart_show_bump, $ppcart_product->ID);
-if ($ppcart_show_bump || isset($ppcart_product->bump_bg_color)) {
-    if (isset($ppcart_product->bump_bg_color)) :
-        ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-main {
+        $ppcart_show_bump = isset($ppcart_product->order_bump_options);
+    $ppcart_show_bump = apply_filters('ppcart_show_orderbump', $ppcart_show_bump, $ppcart_product->ID);
+    if ($ppcart_show_bump || isset($ppcart_product->bump_bg_color)) {
+        if (isset($ppcart_product->bump_bg_color)) :
+            ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-main {
             background-color: <?php echo esc_attr($ppcart_product->bump_bg_color); ?>
         }
 
-    <?php endif;
+        <?php endif;
 
-    for ($ppcart_bump_index = 0; $ppcart_bump_index < count($ppcart_product->order_bump_options); $ppcart_bump_index++) {
-        if (isset($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) && $ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) {
-            ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-<?php echo esc_attr($ppcart_bump_index); ?>.ppcart-section.orderbump {
+        for ($ppcart_bump_index = 0; $ppcart_bump_index < count($ppcart_product->order_bump_options); $ppcart_bump_index++) {
+            if (isset($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) && $ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) {
+                ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-<?php echo esc_attr($ppcart_bump_index); ?>.ppcart-section.orderbump {
             background-color: <?php echo esc_attr($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']); ?>
         }
 
                 <?php
+            }
         }
     }
-}
-?>.ppcart .ppcart-checkout-form-steps .steps.ppcart-current a .step-heading .step-name {
+    ?>.ppcart .ppcart-checkout-form-steps .steps.ppcart-current a .step-heading .step-name {
             color: <?php echo esc_attr($ppcart_product->button_color); ?>
         }
 
         <?php if (! empty($ppcart_product->header_color)) :
-            ?>.ppcart-hero-banner {
+                ?>.ppcart-hero-banner {
             background-color: <?php echo esc_attr($ppcart_product->header_color); ?>;
         }
 
         <?php endif; ?>
     <?php
-    $ppcart_checkout_css = trim(ob_get_clean());
+    } catch (Throwable $ppcart_checkout_css_buffer_exception) {
+        $ppcart_checkout_css_buffer_error = $ppcart_checkout_css_buffer_exception;
+    } finally {
+        $ppcart_checkout_css_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_checkout_css_buffer_active && ob_get_level() > $ppcart_checkout_css_buffer_level + 1) {
+            $ppcart_checkout_css_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_checkout_css_buffer_exception) {
+                $ppcart_checkout_css_buffer_error = $ppcart_checkout_css_buffer_error ?? $ppcart_checkout_css_buffer_exception;
+                if (ob_get_level() >= $ppcart_checkout_css_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_checkout_css_buffer_active && ob_get_level() === $ppcart_checkout_css_buffer_level + 1) {
+            $ppcart_checkout_css_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_checkout_css_buffer_error) {
+        throw $ppcart_checkout_css_buffer_error;
+    }
+    $ppcart_checkout_css = trim($ppcart_checkout_css_buffer_output);
 
 ppcart_enqueue_checkout_inline_style($ppcart_checkout_css);
 
