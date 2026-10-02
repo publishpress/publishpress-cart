@@ -148,7 +148,7 @@ if ($ppcart_order_post) {
     );
 
     // save order to db
-    $order_post_id = $this->store_stripe_owned_record($cart_order);
+    $order_post_id = ppcart_store_stripe_owned_record($cart_order);
 
     if ($ppcart_temp_order_id) {
         $this->clear_temp_order_meta($ppcart_temp_order_id);

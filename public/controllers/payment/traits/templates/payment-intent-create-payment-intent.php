@@ -232,7 +232,7 @@ if ($create_intent) {
     if ($pe_mount && ! empty($ppcart_stripe['is_payment_element'])) {
         $order_id = '';
     } else {
-        $order_id = $this->store_stripe_owned_record($ppcart_order);
+        $order_id = ppcart_store_stripe_owned_record($ppcart_order);
     }
 
     if ($order_id) {
