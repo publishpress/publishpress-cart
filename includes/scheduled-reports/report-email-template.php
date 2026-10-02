@@ -6,8 +6,8 @@ if (! defined('ABSPATH')) {
 
 function ppcart_schedule_report_email_html($report)
 {
-    ob_start();
-    ?>
+    return ppcart_capture_output(function () use ($report) {
+        ?>
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -52,7 +52,7 @@ function ppcart_schedule_report_email_html($report)
     </html>
     <?php
 
-    return ob_get_clean();
+    });
 }
 
 function ppcart_schedule_report_render_intro($report)

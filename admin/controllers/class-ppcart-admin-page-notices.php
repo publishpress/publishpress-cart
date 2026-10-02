@@ -5,28 +5,20 @@ if (! defined('ABSPATH')) {
 }
 
 /**
- * Buffers WordPress admin notices so settings and customer report pages can print them inside their page layout.
+ * Places WordPress notices inside Cart's settings and customer report layouts.
+ *
+ * WordPress renders notice hooks normally. The page script moves their DOM
+ * nodes into our shell, preserving dismiss buttons and attached event handlers.
+ * No output buffer is held across WordPress hooks.
  *
  * @package PPCart
  * @subpackage PPCart/admin
  */
 class PPCart_Admin_Page_Notices
 {
-    /** @var bool */
-    private $settings_notice_buffer_active = false;
-
-    /** @var int */
-    private $settings_notice_buffer_level = 0;
-
-    /** @var string */
-    private $settings_captured_admin_notices = '';
-
     public function __construct()
     {
-        add_action('network_admin_notices', [$this, 'start_settings_notice_capture'], -999999);
-        add_action('user_admin_notices', [$this, 'start_settings_notice_capture'], -999999);
-        add_action('admin_notices', [$this, 'start_settings_notice_capture'], -999999);
-        add_action('all_admin_notices', [$this, 'finish_settings_notice_capture'], 999999);
+        add_action('admin_enqueue_scripts', [$this, 'start_settings_notice_capture']);
         add_action('ppcart_settings_admin_notices', [$this, 'print_captured_settings_notices'], 5);
         add_action('ppcart_customer_report_admin_notices', [$this, 'print_captured_settings_notices'], 5);
     }
@@ -35,50 +27,36 @@ class PPCart_Admin_Page_Notices
     {
         return PPCart_Admin_Screens::is_settings_screen() || PPCart_Admin_Screens::is_customer_reports_screen();
     }
+
+    /**
+     * Retain the public entry point while moving notices without PHP buffering.
+     */
     public function start_settings_notice_capture()
     {
-        if (! $this->is_custom_notice_shell_page() || $this->settings_notice_buffer_active) {
+        if (! $this->is_custom_notice_shell_page()) {
             return;
         }
 
-        $this->settings_notice_buffer_active = true;
-        $this->settings_notice_buffer_level  = ob_get_level() + 1;
-
-        ob_start();
+        wp_enqueue_script(
+            'ppcart-admin-page-notices',
+            PPCART_BASE_URL . 'admin/js/ppcart-admin-page-notices.js',
+            ['common'],
+            PPCART_VERSION,
+            true
+        );
     }
 
-
+    /**
+     * Compatibility entry point: there is no longer a cross-hook buffer to close.
+     */
     public function finish_settings_notice_capture()
     {
-        if (! $this->settings_notice_buffer_active) {
-            return;
-        }
-
-        $this->settings_notice_buffer_active = false;
-
-        if (ob_get_level() !== $this->settings_notice_buffer_level) {
-            $this->settings_notice_buffer_level = 0;
-            return;
-        }
-
-        $captured_notices = (string) ob_get_clean();
-        $this->settings_notice_buffer_level = 0;
-
-        if ('' !== trim($captured_notices)) {
-            $this->settings_captured_admin_notices .= $captured_notices;
-        }
     }
-
 
     public function print_captured_settings_notices()
     {
-        $this->finish_settings_notice_capture();
-
-        if ('' === trim($this->settings_captured_admin_notices)) {
-            return;
+        if ($this->is_custom_notice_shell_page()) {
+            echo '<div class="ppcart-global-admin-notices"></div>';
         }
-
-        echo wp_kses($this->settings_captured_admin_notices, ppcart_admin_allowed_html());
-        $this->settings_captured_admin_notices = '';
     }
 }

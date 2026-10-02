@@ -49,9 +49,9 @@ trait PPCart_Account_Renderer_Tab_Content
     {
         $template_output = ppcart_get_template('my-account/tabs/' . $template, '', $attributes);
 
-        ob_start();
-        do_action("ppcart_tab_content_{$tab_id}");
-        $template_output .= ob_get_clean();
+        $template_output .= ppcart_capture_output(function () use ($tab_id) {
+            do_action("ppcart_tab_content_{$tab_id}");
+        });
 
         return $template_output;
     }
@@ -325,8 +325,17 @@ trait PPCart_Account_Renderer_Tab_Content
         $start_label   = esc_html__('Start Date', 'publishpress-cart');
         $next_label    = esc_html__('Next Payment', 'publishpress-cart');
 
-        ob_start();
-        ?>
+        return ppcart_capture_output(function () use (
+            $back_label,
+            $product_label,
+            $price_label,
+            $cancel_label,
+            $pause_label,
+            $details_label,
+            $start_label,
+            $next_label
+        ) {
+            ?>
         <div class="ppcart-my-account ppcart-my-subscription-page">
             <div class="back-btn"><a href="#" data-testid="ppcart-account-subscription-back-preview">&larr; <?php echo esc_html($back_label); ?></a></div>
             <div class="ppcart-account-subscription">
@@ -352,14 +361,14 @@ trait PPCart_Account_Renderer_Tab_Content
             </div>
         </div>
         <?php
-        return ob_get_clean();
+        });
     }
 
     public function render_downloads_content()
     {
-        ob_start();
-        do_action('ppcart_tab_content_tab-files');
-        return ob_get_clean();
+        return ppcart_capture_output(function () {
+            do_action('ppcart_tab_content_tab-files');
+        });
     }
 
     public function wrap_downloads_output($output, $attributes)

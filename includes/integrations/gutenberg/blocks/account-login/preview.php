@@ -9,8 +9,8 @@ $password_label = esc_html__('Password', 'publishpress-cart');
 $remember_label = esc_html__('Remember Me', 'publishpress-cart');
 $submit_label   = esc_attr__('Log In', 'publishpress-cart');
 
-ob_start();
-?>
+$output = ppcart_capture_output(function () use ($username_label, $password_label, $remember_label, $submit_label) {
+    ?>
 <div id="ppcart-login" class="ppcart-account-form">
     <form name="loginform" id="ppcart-login-form" action="#" method="post" data-testid="ppcart-account-login-form-preview">
         <p class="login-username">
@@ -30,6 +30,6 @@ ob_start();
     </form>
 </div>
 <?php
-$output = ob_get_clean();
+});
 
 return $renderer->prepend_login_intro($output, $attributes);

@@ -89,6 +89,7 @@ if (PPCart_Studiocart_Conflict::is_active()) {
     return;
 }
 
+require_once plugin_dir_path(__FILE__) . 'includes/helpers/ppcart-output-buffer.php';
 require_once plugin_dir_path(__FILE__) . 'includes/helpers/ppcart-stripe-metadata.php';
 
 /**

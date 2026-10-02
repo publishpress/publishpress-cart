@@ -58,13 +58,12 @@ class PPCart_Public_Account_Controller
             $attr = [];
         }
 
-        ob_start();
-        do_action('ppcart_login_before_' . $template_name);
-        require dirname(__DIR__) . '/templates/' . $template_name . '.php';
-        do_action('ppcart_login_after_' . $template_name);
+        $html = ppcart_capture_output(function () use ($template_name, $attr) {
+            do_action('ppcart_login_before_' . $template_name);
+            require dirname(__DIR__) . '/templates/' . $template_name . '.php';
+            do_action('ppcart_login_after_' . $template_name);
 
-        $html = ob_get_contents();
-        ob_end_clean();
+        });
 
         return $html;
     }

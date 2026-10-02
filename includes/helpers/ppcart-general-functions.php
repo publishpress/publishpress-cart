@@ -5,6 +5,8 @@ if (! defined('ABSPATH')) {
 }
 
 
+require_once __DIR__ . '/ppcart-output-buffer.php';
+
 /**
  * Resolve a theme override for a plugin template relative path.
  *
@@ -68,19 +70,18 @@ function ppcart_get_template_path($slug, $name = '')
 function ppcart_get_template($slug, $name = '', $attr = [])
 {
 
-    ob_start();
-    do_action('ppcart_template_before_' . $slug);
+    $html = ppcart_capture_output(function () use ($slug, $name, $attr) {
+        do_action('ppcart_template_before_' . $slug);
 
-    $template = ppcart_get_template_path($slug, $name);
+        $template = ppcart_get_template_path($slug, $name);
 
-    do_action('ppcart_template_after_' . $slug);
+        do_action('ppcart_template_after_' . $slug);
 
-    if ($template) {
-        require($template);
-    }
+        if ($template) {
+            require($template);
+        }
 
-    $html = ob_get_contents();
-    ob_end_clean();
+    });
     return $html;
 }
 

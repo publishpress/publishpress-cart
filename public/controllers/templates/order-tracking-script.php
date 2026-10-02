@@ -45,8 +45,8 @@ if ($ppcart_order && $ppcart_order->id) {
     do_action('ppcart_js_purchase_tracking', $ppcart_order);
 }
 
-ob_start();
-?>
+$script = trim(ppcart_capture_output(function () use ($ppcart_order, $ppcart_product) {
+    ?>
 jQuery('document').ready(function($){
     if ( typeof fbq !== "undefined") {
 
@@ -143,7 +143,7 @@ jQuery('document').ready(function($){
     <?php endif; ?>
 });
 <?php
-$script = trim(ob_get_clean());
+}));
 
 if ('' !== $script) {
     wp_add_inline_script('ppcart', $script);

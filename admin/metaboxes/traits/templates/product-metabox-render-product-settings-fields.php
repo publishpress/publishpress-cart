@@ -74,8 +74,8 @@ $this->scripts = apply_filters('ppcart_product_field_scripts', $this->scripts, $
 
 if ($this->scripts != '') :
     $ppcart_product_field_scripts = $this->scripts;
-    ob_start();
-    ?>
+    $product_field_script = trim(ppcart_capture_output(function () {
+        ?>
         jQuery('document').ready(function($){
             $("#repeater_ppcart_product_options [name^=\"prod_on_sale[\"]").each(function(index){
                 if ( ($(this).closest(".ppcart-repeater-content").find("[name^=\"prod_on_sale[\"]").is(':checked')) ) {
@@ -226,7 +226,7 @@ if ($this->scripts != '') :
 
         });
     <?php
-    $product_field_script = trim(ob_get_clean());
+    }));
 
     if ('' !== $ppcart_product_field_scripts) {
         $product_field_script = "jQuery(function($){\n" . $ppcart_product_field_scripts . "\n});\n" . $product_field_script;

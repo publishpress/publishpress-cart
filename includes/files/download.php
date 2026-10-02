@@ -48,7 +48,6 @@ if ($download) {
 
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
-        ob_end_clean();
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_readfile -- Streams a verified local download file to the authenticated buyer.
         readfile($file_path);
     } else {

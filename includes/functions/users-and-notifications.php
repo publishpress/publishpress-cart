@@ -379,10 +379,9 @@ function ppcart_notification_send($status, $order_info, $test = false)
 
 function ppcart_get_email_html($atts)
 {
-    ob_start();
-    ppcart_helper()->renderTemplate('email/email-main', $atts);
-    $output_string = ob_get_contents();
-    ob_end_clean();
+    $output_string = ppcart_capture_output(function () use ($atts) {
+        ppcart_helper()->renderTemplate('email/email-main', $atts);
+    });
     return $output_string;
 }
 

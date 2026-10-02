@@ -10,8 +10,8 @@ $nonce        = wp_create_nonce('ppcart_migrate_secrets');
 $toggle_nonce = wp_create_nonce('ppcart_set_encrypt_secrets');
 $migration_notice = self::get_plaintext_migration_notice($migration_status);
 
-ob_start();
-?>
+return (string) ppcart_capture_output(function () use ($migration_status, $toggle_nonce, $migration_notice, $nonce) {
+    ?>
 <div class="ppcart-secrets-maintenance" data-ppcart-secrets-maintenance>
     <table class="form-table" role="presentation">
         <tr>
@@ -53,14 +53,14 @@ ob_start();
                 <?php if ($migration_status['encryption_enabled']) : ?>
                     <p class="description">
                         <?php
-                        echo esc_html(
-                            sprintf(
-                                /* translators: %s: encryption key source label. */
-                                __('Key source: %s', 'publishpress-cart'),
-                                $migration_status['encryption_key_source']
-                            )
-                        );
-                    ?>
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %s: encryption key source label. */
+                                    __('Key source: %s', 'publishpress-cart'),
+                                    $migration_status['encryption_key_source']
+                                )
+                            );
+                        ?>
                     </p>
                     <?php if (! $migration_status['encryption_available']) : ?>
                         <p class="description" style="color:#b32d2e;">
@@ -84,19 +84,19 @@ ob_start();
                     <?php if ((int) $migration_status['encrypted_count'] > 0) : ?>
                         <p class="description">
                             <?php
-                        echo esc_html(
-                            sprintf(
-                                /* translators: %d: number of encrypted credentials. */
-                                _n(
-                                    '%d credential remains encrypted in the database until you re-save it or enable encryption again.',
-                                    '%d credentials remain encrypted in the database until you re-save them or enable encryption again.',
-                                    (int) $migration_status['encrypted_count'],
-                                    'publishpress-cart'
-                                ),
-                                (int) $migration_status['encrypted_count']
-                            )
-                        );
-                        ?>
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %d: number of encrypted credentials. */
+                                    _n(
+                                        '%d credential remains encrypted in the database until you re-save it or enable encryption again.',
+                                        '%d credentials remain encrypted in the database until you re-save them or enable encryption again.',
+                                        (int) $migration_status['encrypted_count'],
+                                        'publishpress-cart'
+                                    ),
+                                    (int) $migration_status['encrypted_count']
+                                )
+                            );
+                            ?>
                         </p>
                     <?php endif; ?>
                     <p class="description">
@@ -106,14 +106,14 @@ ob_start();
                 <?php if ($migration_status['last_migration'] > 0) : ?>
                     <p class="description">
                         <?php
-                        echo esc_html(
-                            sprintf(
-                                /* translators: %s: formatted datetime. */
-                                __('Last migration: %s', 'publishpress-cart'),
-                                wp_date(get_option('date_format') . ' ' . get_option('time_format'), (int) $migration_status['last_migration'])
-                            )
-                        );
-                    ?>
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %s: formatted datetime. */
+                                    __('Last migration: %s', 'publishpress-cart'),
+                                    wp_date(get_option('date_format') . ' ' . get_option('time_format'), (int) $migration_status['last_migration'])
+                                )
+                            );
+                        ?>
                     </p>
                 <?php endif; ?>
             </td>
@@ -159,4 +159,4 @@ ob_start();
 </div>
 <?php
 
-return (string) ob_get_clean();
+});

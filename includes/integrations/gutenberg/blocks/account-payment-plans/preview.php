@@ -16,8 +16,20 @@ $status_lbl  = esc_html__('Status', 'publishpress-cart');
 $next_lbl    = esc_html__('Next Payment', 'publishpress-cart');
 $price_lbl   = esc_html__('Price', 'publishpress-cart');
 
-ob_start();
-?>
+return ppcart_capture_output(function () use (
+    $heading,
+    $product,
+    $status_text,
+    $next,
+    $price,
+    $pay,
+    $manage,
+    $product_lbl,
+    $status_lbl,
+    $next_lbl,
+    $price_lbl
+) {
+    ?>
 <div class="tab-container payment-plans-tab">
     <div id="payment-plans" class="tab-content">
         <div id="plan-all" class="ppcart-account-tab-pane">
@@ -34,4 +46,4 @@ ob_start();
     </div>
 </div>
 <?php
-return ob_get_clean();
+});

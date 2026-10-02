@@ -6,14 +6,14 @@ if (! defined('ABSPATH')) {
 
 $templates = [];
 
-ob_start();
-?>
+$templates['tmpl-ppcart-tax-table-row'] = ppcart_capture_output(function () {
+    ?>
     <tr class="tax-tips" data-tip="<?php
-    printf(
-        /* translators: %s: tax rate ID. */
-        esc_attr__('Tax rate ID: %s', 'publishpress-cart'),
-        '{{ data.tax_rate_id }}'
-    ); ?>" data-id="{{ data.tax_rate_id }}">
+        printf(
+            /* translators: %s: tax rate ID. */
+            esc_attr__('Tax rate ID: %s', 'publishpress-cart'),
+            '{{ data.tax_rate_id }}'
+        ); ?>" data-id="{{ data.tax_rate_id }}">
         <td class="tax-country">
             <input type="text" value="{{ data.tax_rate_country }}" placeholder="*" name="tax_rate_country[{{ data.tax_rate_id }}]" class="wc_input_country_iso" data-attribute="tax_rate_country" style="text-transform:uppercase" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-country" />
         </td>
@@ -43,28 +43,28 @@ ob_start();
         </td>
     </tr>
 <?php
-$templates['tmpl-ppcart-tax-table-row'] = ob_get_clean();
+});
 
-ob_start();
-?>
+$templates['tmpl-ppcart-tax-table-row-empty'] = ppcart_capture_output(function () {
+    ?>
     <tr>
         <th colspan="7" class="ppcart-settings__tax-rates-empty"><?php esc_html_e('No matching tax rates found.', 'publishpress-cart'); ?></th>
     </tr>
 <?php
-$templates['tmpl-ppcart-tax-table-row-empty'] = ob_get_clean();
+});
 
-ob_start();
-?>
+$templates['tmpl-ppcart-tax-table-pagination'] = ppcart_capture_output(function () {
+    ?>
     <div class="tablenav">
         <div class="tablenav-pages">
             <span class="displaying-num">
                 <?php
-                printf(
-                    /* translators: %s: number of items. */
-                    esc_html__('%s items', 'publishpress-cart'),
-                    '{{ data.qty_rates }}'
-                );
-?>
+                    printf(
+                        /* translators: %s: number of items. */
+                        esc_html__('%s items', 'publishpress-cart'),
+                        '{{ data.qty_rates }}'
+                    );
+    ?>
             </span>
             <span class="pagination-links">
 
@@ -80,13 +80,13 @@ ob_start();
                 <span class="paging-input">
                     <label for="current-page-selector" class="screen-reader-text"><?php esc_html_e('Current page', 'publishpress-cart'); ?></label>
                     <?php
-        printf(
-            /* translators: 1: current page, 2: total pages. */
-            esc_html_x('%1$s of %2$s', 'Pagination', 'publishpress-cart'),
-            '<input class="current-page" id="current-page-selector" type="text" name="paged" value="{{ data.current_page }}" size="<# print( data.qty_pages.toString().length ) #>" aria-describedby="table-paging" data-testid="ppcart-admin-tax-rates-page-current">',
-            '<span class="total-pages">{{ data.qty_pages }}</span>'
-        );
-?>
+            printf(
+                /* translators: 1: current page, 2: total pages. */
+                esc_html_x('%1$s of %2$s', 'Pagination', 'publishpress-cart'),
+                '<input class="current-page" id="current-page-selector" type="text" name="paged" value="{{ data.current_page }}" size="<# print( data.qty_pages.toString().length ) #>" aria-describedby="table-paging" data-testid="ppcart-admin-tax-rates-page-current">',
+                '<span class="total-pages">{{ data.qty_pages }}</span>'
+            );
+    ?>
                 </span>
 
                 <a class="tablenav-pages-navspan" data-goto="<# print( Math.min( data.qty_pages, parseInt( data.current_page, 10 ) + 1 ) ) #>" data-testid="ppcart-admin-tax-rates-page-next">
@@ -102,6 +102,6 @@ ob_start();
         </div>
     </div>
 <?php
-$templates['tmpl-ppcart-tax-table-pagination'] = ob_get_clean();
+});
 
 return $templates;

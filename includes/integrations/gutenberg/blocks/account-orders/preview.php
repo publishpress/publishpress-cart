@@ -14,8 +14,8 @@ $date_lbl    = esc_html__('Date', 'publishpress-cart');
 $status_lbl  = esc_html__('Status', 'publishpress-cart');
 $total_lbl   = esc_html__('Total', 'publishpress-cart');
 
-ob_start();
-?>
+return ppcart_capture_output(function () use ($product, $date, $status_text, $total, $view, $product_lbl, $date_lbl, $status_lbl, $total_lbl) {
+    ?>
 <div class="tab-container order-history-tab">
     <div id="order-history" class="tab-content">
         <div class="overflow-x-auto">
@@ -30,4 +30,4 @@ ob_start();
     </div>
 </div>
 <?php
-return ob_get_clean();
+});

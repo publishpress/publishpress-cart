@@ -120,8 +120,30 @@ $panel_id         = 'ppcart-payment-panel-' . sanitize_html_class($payment_key);
                                     <?php
 
 if ($has_panel) {
-    ob_start();
-    ?>
+    $payment_panels_html .= ppcart_capture_output(function () use (
+        $payment_key,
+        $panel_id,
+        $method_logo_url,
+        $method_logo_label,
+        $method_panel_title,
+        $payment_status,
+        $enable_field,
+        $method_title,
+        $render_payment_toggle_control,
+        $method_desc,
+        $stripe_mode_field,
+        $stripe_mode_args,
+        $stripe_mode_id,
+        $paypal_mode_field,
+        $paypal_mode_args,
+        $paypal_mode_id,
+        $panel_fields,
+        $panel_header_option_ids,
+        $paypal_live_fields,
+        $paypal_sandbox_fields,
+        $render_setting_field_row
+    ) {
+        ?>
                                         <aside class="ppcart-settings__payment-panel ppcart-settings__payment-panel--<?php echo esc_attr(sanitize_html_class($payment_key)); ?>"
                                                id="<?php echo esc_attr($panel_id); ?>"
                                                data-pp-payment-detail="<?php echo esc_attr($payment_key); ?>"
@@ -153,11 +175,11 @@ if ($has_panel) {
                                                     <?php if ($enable_field) : ?>
                                                         <div class="ppcart-settings__payment-panel-enable">
                                                             <span><?php
-                                                            echo esc_html(sprintf(
-                                                                /* translators: %s: payment method name. */
-                                                                __('Enable %s', 'publishpress-cart'),
-                                                                $method_title
-                                                            )); ?></span>
+                                                                echo esc_html(sprintf(
+                                                                    /* translators: %s: payment method name. */
+                                                                    __('Enable %s', 'publishpress-cart'),
+                                                                    $method_title
+                                                                )); ?></span>
                                                             <?php $render_payment_toggle_control($enable_field, $payment_key, $method_title, 'panel'); ?>
                                                         </div>
                                                     <?php endif; ?>
@@ -166,10 +188,10 @@ if ($has_panel) {
                                                     <?php endif; ?>
                                                     <?php if ('stripe' === $payment_key && $stripe_mode_field) : ?>
                                                         <?php
-                    $stripe_mode_name  = isset($stripe_mode_args['name']) ? (string) $stripe_mode_args['name'] : $stripe_mode_id;
-                                                        $stripe_mode_value = (string) get_option($stripe_mode_id, 'test');
-                                                        $stripe_mode_value = 'live' === $stripe_mode_value ? 'live' : 'test';
-                                                        ?>
+                        $stripe_mode_name  = isset($stripe_mode_args['name']) ? (string) $stripe_mode_args['name'] : $stripe_mode_id;
+                                                            $stripe_mode_value = (string) get_option($stripe_mode_id, 'test');
+                                                            $stripe_mode_value = 'live' === $stripe_mode_value ? 'live' : 'test';
+                                                            ?>
                                                         <div class="ppcart-settings__payment-mode ppcart-settings__payment-mode--stripe" data-pp-stripe-mode>
                                                             <input type="hidden"
                                                                    id="<?php echo esc_attr($stripe_mode_id); ?>"
@@ -195,10 +217,10 @@ if ($has_panel) {
                                                     <?php endif; ?>
                                                     <?php if ('paypal' === $payment_key && $paypal_mode_field) : ?>
                                                         <?php
-                                                        $paypal_mode_name  = isset($paypal_mode_args['name']) ? (string) $paypal_mode_args['name'] : $paypal_mode_id;
-                                                        $paypal_mode_value = (string) get_option($paypal_mode_id, 'enable');
-                                                        $paypal_mode_value = 'disable' === $paypal_mode_value ? 'disable' : 'enable';
-                                                        ?>
+                                                            $paypal_mode_name  = isset($paypal_mode_args['name']) ? (string) $paypal_mode_args['name'] : $paypal_mode_id;
+                                                            $paypal_mode_value = (string) get_option($paypal_mode_id, 'enable');
+                                                            $paypal_mode_value = 'disable' === $paypal_mode_value ? 'disable' : 'enable';
+                                                            ?>
                                                         <div class="ppcart-settings__payment-mode" data-pp-paypal-mode>
                                                             <input type="hidden"
                                                                    id="<?php echo esc_attr($paypal_mode_id); ?>"
@@ -227,31 +249,31 @@ if ($has_panel) {
                                                 <div class="ppcart-settings__payment-panel-body">
                                                     <table class="form-table" role="presentation">
                                                         <?php
-                                                        foreach ($panel_fields as $field) {
-                                                            $field_args = isset($field['args']) && is_array($field['args']) ? $field['args'] : [];
-                                                            $option_id  = isset($field_args['id']) ? (string) $field_args['id'] : '';
-                                                            $row_attrs  = [];
+                                                            foreach ($panel_fields as $field) {
+                                                                $field_args = isset($field['args']) && is_array($field['args']) ? $field['args'] : [];
+                                                                $option_id  = isset($field_args['id']) ? (string) $field_args['id'] : '';
+                                                                $row_attrs  = [];
 
-                                                            if ($option_id && in_array($option_id, $panel_header_option_ids, true)) {
-                                                                continue;
-                                                            }
-
-                                                            if ('paypal' === $payment_key) {
-                                                                $paypal_live_fields = [ '_ppcart_paypal_email', '_ppcart_paypal_client_id', '_ppcart_paypal_secret', '_ppcart_paypal_pdt_token' ];
-                                                                $paypal_sandbox_fields = [ '_ppcart_paypal_sandbox_email', '_ppcart_paypal_sandbox_client_id', '_ppcart_paypal_sandbox_secret', '_ppcart_paypal_sandbox_pdt_token' ];
-
-                                                                if (in_array($option_id, $paypal_live_fields, true)) {
-                                                                    $row_attrs['class'] = 'ppcart-settings__paypal-mode-field';
-                                                                    $row_attrs['data-pp-paypal-mode-field'] = 'live';
-                                                                } elseif (in_array($option_id, $paypal_sandbox_fields, true)) {
-                                                                    $row_attrs['class'] = 'ppcart-settings__paypal-mode-field';
-                                                                    $row_attrs['data-pp-paypal-mode-field'] = 'sandbox';
+                                                                if ($option_id && in_array($option_id, $panel_header_option_ids, true)) {
+                                                                    continue;
                                                                 }
-                                                            }
 
-                                                            $render_setting_field_row($field, $row_attrs);
-                                                        }
-    ?>
+                                                                if ('paypal' === $payment_key) {
+                                                                    $paypal_live_fields = [ '_ppcart_paypal_email', '_ppcart_paypal_client_id', '_ppcart_paypal_secret', '_ppcart_paypal_pdt_token' ];
+                                                                    $paypal_sandbox_fields = [ '_ppcart_paypal_sandbox_email', '_ppcart_paypal_sandbox_client_id', '_ppcart_paypal_sandbox_secret', '_ppcart_paypal_sandbox_pdt_token' ];
+
+                                                                    if (in_array($option_id, $paypal_live_fields, true)) {
+                                                                        $row_attrs['class'] = 'ppcart-settings__paypal-mode-field';
+                                                                        $row_attrs['data-pp-paypal-mode-field'] = 'live';
+                                                                    } elseif (in_array($option_id, $paypal_sandbox_fields, true)) {
+                                                                        $row_attrs['class'] = 'ppcart-settings__paypal-mode-field';
+                                                                        $row_attrs['data-pp-paypal-mode-field'] = 'sandbox';
+                                                                    }
+                                                                }
+
+                                                                $render_setting_field_row($field, $row_attrs);
+                                                            }
+        ?>
                                                     </table>
                                                 </div>
                                             </div>
@@ -260,17 +282,17 @@ if ($has_panel) {
                                                 <button type="submit" name="submit" class="button button-primary ppcart-settings__save-button" value="<?php esc_attr_e('Save changes', 'publishpress-cart'); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-payment-' . $payment_key . '-save')); ?>">
                                                     <span class="ppcart-settings__save-button-label">
                                                         <?php
-    printf(
-        /* translators: %s is the payment method name. */
-        esc_html__('Save %s', 'publishpress-cart'),
-        esc_html($method_title)
-    );
-    ?>
+        printf(
+            /* translators: %s is the payment method name. */
+            esc_html__('Save %s', 'publishpress-cart'),
+            esc_html($method_title)
+        );
+        ?>
                                                     </span>
                                                     <span class="ppcart-settings__save-button-spinner" aria-hidden="true"></span>
                                                 </button>
                                             </div>
                                         </aside>
                                         <?php
-    $payment_panels_html .= ob_get_clean();
+    });
 }

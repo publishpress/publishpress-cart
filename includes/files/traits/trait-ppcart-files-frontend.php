@@ -139,9 +139,9 @@ trait PPCart_Files_Frontend_Trait
 
     public function file_tab_content()
     {
-        ob_start();
-        $__ppcart_template_result = include __DIR__ . '/templates/files-frontend-file-tab-content.php';
-        $buffered = ob_get_clean();
+        $buffered = ppcart_capture_output(function () use (&$__ppcart_template_result) {
+            $__ppcart_template_result = include __DIR__ . '/templates/files-frontend-file-tab-content.php';
+        });
 
         if (false === $__ppcart_template_result) {
             return false;

@@ -329,8 +329,24 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
                                             </span>
                                         </div>
                                         <?php
-                    ob_start();
-                ?>
+                $integration_panels_html .= ppcart_capture_output(function () use (
+                    $panel_id,
+                    $integration_key,
+                    $logo_url,
+                    $logo_label,
+                    $integration_title,
+                    $description,
+                    $integration_info,
+                    $section,
+                    $tab_slug,
+                    $is_headingless_card,
+                    $section_fields,
+                    $card_toggle_field_ids,
+                    $render_setting_field_row,
+                    $page_slug,
+                    $plugin_name
+                ) {
+                    ?>
                                         <aside class="ppcart-settings__integration-panel"
                                             id="<?php echo esc_attr($panel_id); ?>"
                                             data-pp-integration-detail="<?php echo esc_attr($integration_key); ?>"
@@ -359,71 +375,30 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
                                                     <?php if (! empty($integration_info['learn_more'])) : ?>
                                                         <a href="<?php echo esc_url($integration_info['learn_more']); ?>" target="_blank" rel="noreferrer noopener" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-integration-' . $integration_key . '-learn-more')); ?>">
                                                             <?php
-                                    printf(
-                                        /* translators: %s is the integration name. */
-                                        esc_html__('Learn more about %s', 'publishpress-cart'),
-                                        esc_html($integration_title)
-                                    );
-                                                        ?>
+                                        printf(
+                                            /* translators: %s is the integration name. */
+                                            esc_html__('Learn more about %s', 'publishpress-cart'),
+                                            esc_html($integration_title)
+                                        );
+                                                            ?>
                                                         </a>
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="ppcart-settings__integration-panel-body">
                                                     <h3><?php esc_html_e('Configuration', 'publishpress-cart'); ?></h3>
                                         <?php
+                    require __DIR__ . '/../sections/section-fields.php';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="ppcart-settings__integration-panel-footer">';
+                    echo '<button type="button" class="button button-secondary" data-pp-integration-close data-testid="' . esc_attr(ppcart_testid('ppcart-admin-integration-' . $integration_key . '-cancel')) . '">' . esc_html__('Cancel', 'publishpress-cart') . '</button>';
+                    echo '<button type="button" class="button button-primary ppcart-settings__save-button" data-pp-save data-testid="' . esc_attr(ppcart_testid('ppcart-admin-integration-' . $integration_key . '-save')) . '"><span class="ppcart-settings__save-button-label">' . esc_html__('Save changes', 'publishpress-cart') . '</span><span class="ppcart-settings__save-button-spinner" aria-hidden="true"></span></button>';
+                    echo '</div>';
+                    echo '</aside>';
+                });
             } else {
                 echo '<div class="' . esc_attr(implode(' ', $card_classes)) . '" data-section-id="' . esc_attr($section['id']) . '">';
-            }
-
-            if (! empty($section['title'])) {
-                // Use <h2> as a DIRECT child of the card so the legacy
-                // email-accordion JS (`.email_title_trigger.next('table')`)
-                // continues to find the form-table as its next sibling.
-                if ('integrations' !== $tab_slug && ! $is_headingless_card) {
-                    echo '<h2 class="ppcart-settings__card-title">' . esc_html($section['title']) . '</h2>';
-                }
-            }
-
-            if (! empty($section['callback']) && is_callable($section['callback'])) {
-                call_user_func($section['callback'], $section);
-            }
-
-            echo '<table class="form-table" role="presentation">';
-            if ('integrations' === $tab_slug) {
-                foreach ($section_fields as $field_id => $field) {
-                    if (in_array((string) $field_id, $card_toggle_field_ids, true)) {
-                        $field_args = isset($field['args']) && is_array($field['args']) ? $field['args'] : [];
-                        $field_args['data'] = isset($field_args['data']) && is_array($field_args['data']) ? $field_args['data'] : [];
-                        $field_args['data']['pp-integration-toggle'] = $integration_key;
-                        $field['args'] = $field_args;
-                    }
-
-                    $render_setting_field_row($field);
-                }
-            } else {
-                do_settings_fields($page_slug, $section['id']);
-
-                // Append locked Pro field previews to their target free card.
-                if (function_exists('ppcart_pro_locked_settings_field_sections') && function_exists('ppcart_pro_locked_field_rows_html')) {
-                    $locked_field_sections = ppcart_pro_locked_settings_field_sections();
-                    if (isset($locked_field_sections[$tab_slug]) && $plugin_name . '-' . $locked_field_sections[$tab_slug] === $section['id']) {
-                        echo wp_kses(ppcart_pro_locked_field_rows_html($tab_slug), ppcart_admin_allowed_html());
-                    }
-                }
-            }
-            echo '</table>';
-
-            if ('integrations' === $tab_slug) {
-                echo '</div>';
-                echo '</div>';
-                echo '<div class="ppcart-settings__integration-panel-footer">';
-                echo '<button type="button" class="button button-secondary" data-pp-integration-close data-testid="' . esc_attr(ppcart_testid('ppcart-admin-integration-' . $integration_key . '-cancel')) . '">' . esc_html__('Cancel', 'publishpress-cart') . '</button>';
-                echo '<button type="button" class="button button-primary ppcart-settings__save-button" data-pp-save data-testid="' . esc_attr(ppcart_testid('ppcart-admin-integration-' . $integration_key . '-save')) . '"><span class="ppcart-settings__save-button-label">' . esc_html__('Save changes', 'publishpress-cart') . '</span><span class="ppcart-settings__save-button-spinner" aria-hidden="true"></span></button>';
-                echo '</div>';
-                echo '</aside>';
-                $integration_panel_html = ob_get_clean();
-                $integration_panels_html .= $integration_panel_html;
-            } else {
+                require __DIR__ . '/../sections/section-fields.php';
                 echo '</div>';
             }
         }

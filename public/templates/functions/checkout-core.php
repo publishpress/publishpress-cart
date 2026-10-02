@@ -261,12 +261,14 @@ function ppcart_do_remaining_card_details_fields($post_id, $hide_labels, $plan =
         remove_action('ppcart_card_details_fields', $registered_callback['function'], $callback['priority']);
     }
 
-    ob_start();
-    do_action('ppcart_card_details_fields', $post_id, $hide_labels, $plan);
-    $fields = trim(ob_get_clean());
-
-    foreach ($removed_callbacks as $callback) {
-        add_action('ppcart_card_details_fields', $callback['callback'], $callback['priority'], $callback['accepted_args']);
+    try {
+        $fields = trim(ppcart_capture_output(function () use ($post_id, $hide_labels, $plan) {
+            do_action('ppcart_card_details_fields', $post_id, $hide_labels, $plan);
+        }));
+    } finally {
+        foreach ($removed_callbacks as $callback) {
+            add_action('ppcart_card_details_fields', $callback['callback'], $callback['priority'], $callback['accepted_args']);
+        }
     }
 
     if ('' === $fields) {

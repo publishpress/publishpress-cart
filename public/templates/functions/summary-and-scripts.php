@@ -18,9 +18,9 @@ function ppcart_do_order_summary($post_id, $plan = false)
 
 function ppcart_do_order_summary_section($post_id, $plan = false)
 {
-    ob_start();
-    ppcart_do_order_summary_content($post_id, $plan);
-    $summary = trim(ob_get_clean());
+    $summary = trim(ppcart_capture_output(function () use ($post_id, $plan) {
+        ppcart_do_order_summary_content($post_id, $plan);
+    }));
 
     if ('' === $summary) {
         return;
@@ -40,9 +40,9 @@ function ppcart_do_order_summary_content($post_id, $plan = false)
 
 function ppcart_do_terms_consent_section($post_id)
 {
-    ob_start();
-    ppcart_do_terms_consent_content($post_id);
-    $terms = trim(ob_get_clean());
+    $terms = trim(ppcart_capture_output(function () use ($post_id) {
+        ppcart_do_terms_consent_content($post_id);
+    }));
 
     if ('' === $terms) {
         return;
@@ -126,9 +126,9 @@ function ppcart_do_terms_consent_content($post_id)
 
 function ppcart_do_express_payment_section($post_id)
 {
-    ob_start();
-    do_action('ppcart_express_payment_method_fields', $post_id);
-    $express_payment = trim(ob_get_clean());
+    $express_payment = trim(ppcart_capture_output(function () use ($post_id) {
+        do_action('ppcart_express_payment_method_fields', $post_id);
+    }));
 
     if ('' === $express_payment) {
         return;
@@ -164,9 +164,9 @@ function ppcart_render_order_summary_items($post_id, $plan = false)
     ?>
     <div class="order-summary-wrap">
         <?php
-        ob_start();
-        do_action('ppcart_order_summary_items', $ppcart_product, $post_id, $plan);
-        $ppcart_summary_items = trim(ob_get_clean());
+        $ppcart_summary_items = trim(ppcart_capture_output(function () use ($ppcart_product, $post_id, $plan) {
+            do_action('ppcart_order_summary_items', $ppcart_product, $post_id, $plan);
+        }));
 
         if ('' !== $ppcart_summary_items) {
             echo wp_kses($ppcart_summary_items, ppcart_frontend_allowed_html());

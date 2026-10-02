@@ -14,8 +14,8 @@ $maintenance  = admin_url('admin.php?page=ppcart-settings#maintenance');
 $toggle_nonce = wp_create_nonce('ppcart_set_encrypt_secrets');
 $migration_notice = self::get_plaintext_migration_notice($migration_status);
 
-ob_start();
-?>
+return (string) ppcart_capture_output(function () use ($migration_status, $migration_notice, $toggle_nonce, $maintenance) {
+    ?>
 <div class="ppcart-getting-started__encryption postbox" data-ppcart-secrets-getting-started>
     <div class="ppcart-getting-started__content ppcart-getting-started__content--narrow">
         <h3><?php esc_html_e('Security', 'publishpress-cart'); ?></h3>
@@ -52,15 +52,15 @@ ob_start();
             <?php else : ?>
                 <p class="description">
                     <?php
-                    echo wp_kses(
-                        sprintf(
-                            /* translators: %s: wp-config.php constant snippet. */
-                            __('Add %s to wp-config.php to enable encryption.', 'publishpress-cart'),
-                            self::format_encrypt_secrets_constant_html(true)
-                        ),
-                        ['code' => []]
-                    );
-                ?>
+                        echo wp_kses(
+                            sprintf(
+                                /* translators: %s: wp-config.php constant snippet. */
+                                __('Add %s to wp-config.php to enable encryption.', 'publishpress-cart'),
+                                self::format_encrypt_secrets_constant_html(true)
+                            ),
+                            ['code' => []]
+                        );
+                    ?>
                 </p>
             <?php endif; ?>
         <?php endif; ?>
@@ -72,15 +72,15 @@ ob_start();
         <?php else : ?>
             <p class="description">
                 <?php
-                echo wp_kses(
-                    sprintf(
-                        /* translators: %s: wp-config.php constant snippet. */
-                        __('Optional: lock encryption on in wp-config.php with %s', 'publishpress-cart'),
-                        self::format_encrypt_secrets_constant_html(true)
-                    ),
-                    ['code' => []]
-                );
-            ?>
+                    echo wp_kses(
+                        sprintf(
+                            /* translators: %s: wp-config.php constant snippet. */
+                            __('Optional: lock encryption on in wp-config.php with %s', 'publishpress-cart'),
+                            self::format_encrypt_secrets_constant_html(true)
+                        ),
+                        ['code' => []]
+                    );
+                ?>
             </p>
         <?php endif; ?>
 
@@ -93,4 +93,4 @@ ob_start();
 </div>
 <?php
 
-return (string) ob_get_clean();
+});

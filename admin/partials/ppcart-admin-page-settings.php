@@ -62,10 +62,10 @@ $get_admin_asset_url = static function ($asset_file) use ($admin_assets_url, $ad
     return $asset_url;
 };
 
-ob_start();
+$settings_notice_output = trim(ppcart_capture_output(function () {
 
-if (! ppcart_enabled_processors()) {
-    ?>
+    if (! ppcart_enabled_processors()) {
+        ?>
     <div class="notice notice-error ppcart-settings__notice">
         <p><strong><?php esc_html_e('No payment methods found!', 'publishpress-cart'); ?></strong></p>
         <p>
@@ -74,31 +74,31 @@ if (! ppcart_enabled_processors()) {
         </p>
     </div>
     <?php
-}
+    }
 
-// Surface any pending Stripe / payment notices the legacy template was rendering.
-foreach ([ 'ppcart_stripe_settings_error', 'ppcart_express_payment_settings_error', 'ppcart_customer_portal_settings_error' ] as $transient) {
-    $notice = get_transient($transient);
-    if ($notice) {
-        $notice_type    = is_array($notice) ? ($notice['type'] ?? 'error') : 'error';
-        $notice_message = is_array($notice) ? ($notice['message'] ?? '') : (string) $notice;
-        ?>
+    // Surface any pending Stripe / payment notices the legacy template was rendering.
+    foreach ([ 'ppcart_stripe_settings_error', 'ppcart_express_payment_settings_error', 'ppcart_customer_portal_settings_error' ] as $transient) {
+        $notice = get_transient($transient);
+        if ($notice) {
+            $notice_type    = is_array($notice) ? ($notice['type'] ?? 'error') : 'error';
+            $notice_message = is_array($notice) ? ($notice['message'] ?? '') : (string) $notice;
+            ?>
         <div class="notice notice-<?php echo esc_attr($notice_type); ?> is-dismissible ppcart-settings__notice">
             <p><?php echo esc_html($notice_message); ?></p>
         </div>
         <?php
-        delete_transient($transient);
+            delete_transient($transient);
+        }
     }
-}
 
-// Surface "Settings saved." after redirect from options.php and any other
-// notices registered via add_settings_error().
-settings_errors();
+    // Surface "Settings saved." after redirect from options.php and any other
+    // notices registered via add_settings_error().
+    settings_errors();
 
-// Render captured global admin notices and plugin notices inside the settings shell.
-do_action('ppcart_settings_admin_notices');
+    // Render captured global admin notices and plugin notices inside the settings shell.
+    do_action('ppcart_settings_admin_notices');
 
-$settings_notice_output = trim(ob_get_clean());
+}));
 
 // Setting tabs definition. Keep the same filter for back-compat.
 $default_setting_tabs = [

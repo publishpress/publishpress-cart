@@ -23,9 +23,9 @@ if (! defined('ABSPATH')) {
     </div>
 
     <?php
-    ob_start();
-do_action('ppcart_customer_report_admin_notices');
-$customer_notices = trim((string) ob_get_clean());
+    $customer_notices = trim((string) ppcart_capture_output(function () {
+    do_action('ppcart_customer_report_admin_notices');
+    }));
 if ('' !== $customer_notices) :
     ?>
         <div class="ppcart-customer-notices">

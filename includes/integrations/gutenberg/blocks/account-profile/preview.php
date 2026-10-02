@@ -13,8 +13,8 @@ $edit          = esc_attr__('Edit', 'publishpress-cart');
 $save          = esc_attr__('Save', 'publishpress-cart');
 $cancel        = esc_attr__('Cancel', 'publishpress-cart');
 
-ob_start();
-?>
+return ppcart_capture_output(function () use ($heading, $first_label, $last_label, $email_label, $address_label, $edit, $save, $cancel) {
+    ?>
 <div class="profile-wrapper ppcart">
     <h4><?php echo esc_html($heading); ?></h4>
     <form method="post" id="ppcart-update-profile-form" data-testid="ppcart-account-profile-form-preview">
@@ -32,4 +32,4 @@ ob_start();
     </form>
 </div>
 <?php
-return ob_get_clean();
+});

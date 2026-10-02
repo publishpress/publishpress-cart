@@ -10,8 +10,8 @@ if (get_option('_ppcart_ga_purchase')) {
     $order_data = $order->get_data();
     $order_data = (object) $order_data;
     $ga_type = get_option('_ppcart_ga_type');
-    ob_start();
-    ?>
+    $script = trim(ppcart_capture_output(function () use ($ga_type, $order_data) {
+        ?>
     <?php if (!$ga_type) : ?>
         if ( typeof ga !== "undefined") {
             ga( 'send', 'event', 'ecommerce', 'purchase', '<?php echo esc_js(get_the_title($order_data->product_id)); ?>' );
@@ -63,18 +63,18 @@ if (get_option('_ppcart_ga_purchase')) {
         }
     <?php elseif (in_array($ga_type, ['universal', 'ga4'])) : ?>
         <?php
-        //universal
-        $id_label = 'id';
-        $name_label = 'name';
-        $variant_label = 'variant';
+            //universal
+            $id_label = 'id';
+            $name_label = 'name';
+            $variant_label = 'variant';
 
-        // ga4
-        if ($ga_type == 'ga4') {
-            $id_label = 'item_' . $id_label;
-            $name_label = 'item_' . $name_label;
-            $variant_label = 'item_' . $variant_label;
-        }
-        ?>
+            // ga4
+            if ($ga_type == 'ga4') {
+                $id_label = 'item_' . $id_label;
+                $name_label = 'item_' . $name_label;
+                $variant_label = 'item_' . $variant_label;
+            }
+            ?>
         if ( typeof gtag !== "undefined") {
             gtag("event", "purchase", {
               "transaction_id": '<?php echo esc_js($order_data->id); ?>',                          // Transaction ID. Required.
@@ -235,7 +235,7 @@ if (get_option('_ppcart_ga_purchase')) {
         });
     <?php endif; ?>
 <?php
-    $script = trim(ob_get_clean());
+    }));
 
     if ('' !== $script) {
         wp_add_inline_script('ppcart', $script);

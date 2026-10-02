@@ -8,9 +8,9 @@ function ppcart_order_summary_shortcode()
     global $ppcart_product;
     $prod_id = $ppcart_product->ID;
 
-    ob_start();
-    ppcart_render_order_summary_items($prod_id);
-    return ob_get_clean();
+    return ppcart_capture_output(function () use ($prod_id) {
+        ppcart_render_order_summary_items($prod_id);
+    });
 }
 
 function ppcart_render_site_info()
@@ -22,8 +22,8 @@ function ppcart_render_site_info()
         return '';
     }
 
-    ob_start();
-    ?>
+    return ppcart_capture_output(function () use ($has_site_icon, $site_heading) {
+        ?>
     <div class="image-box-wrapper">
         <?php if ($has_site_icon) : ?>
         <figure class="image-box-img">
@@ -43,7 +43,7 @@ function ppcart_render_site_info()
         <?php endif; ?>
     </div>
     <?php
-    return ob_get_clean();
+    });
 }
 
 function ppcart_order_summary_info($post_id, $plan = false)
@@ -257,10 +257,10 @@ function ppcart_do_coupon_section($post_id)
         return;
     }
 
-    ob_start();
-    do_action('ppcart_coupon_fields', $post_id);
-    do_action('ppcart_coupon_status', $post_id);
-    $coupon = trim(ob_get_clean());
+    $coupon = trim(ppcart_capture_output(function () use ($post_id) {
+        do_action('ppcart_coupon_fields', $post_id);
+        do_action('ppcart_coupon_status', $post_id);
+    }));
 
     if ('' === $coupon) {
         return;

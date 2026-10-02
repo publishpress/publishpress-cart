@@ -22,19 +22,19 @@ if (is_array($notice) && ! empty($notice['message'])) {
     delete_transient('ppcart_stripe_connect_admin_notice');
 }
 
-ob_start();
-echo '<div class="ppcart-stripe-connect">';
-echo wp_kses_post($notice_html);
+return ppcart_capture_output(function () use ($notice_html, $active_mode, $stripe_enabled, $connect_server_url) {
+    echo '<div class="ppcart-stripe-connect">';
+    echo wp_kses_post($notice_html);
 
-foreach ([ 'test', 'live' ] as $stripe_mode) {
-    echo '<div class="ppcart-stripe-connect__mode" data-pp-stripe-connect-mode="' . esc_attr($stripe_mode) . '"' . ($stripe_mode === $active_mode ? '' : ' hidden') . '>';
-    echo wp_kses(
-        $this->get_stripe_connect_mode_status_html($stripe_mode, $stripe_enabled, $connect_server_url),
-        PPCart_Admin_Stripe_Webhook_Settings::augment_allowed_html(wp_kses_allowed_html('post'))
-    );
+    foreach ([ 'test', 'live' ] as $stripe_mode) {
+        echo '<div class="ppcart-stripe-connect__mode" data-pp-stripe-connect-mode="' . esc_attr($stripe_mode) . '"' . ($stripe_mode === $active_mode ? '' : ' hidden') . '>';
+        echo wp_kses(
+            $this->get_stripe_connect_mode_status_html($stripe_mode, $stripe_enabled, $connect_server_url),
+            PPCart_Admin_Stripe_Webhook_Settings::augment_allowed_html(wp_kses_allowed_html('post'))
+        );
+        echo '</div>';
+    }
+
     echo '</div>';
-}
 
-echo '</div>';
-
-return ob_get_clean();
+});

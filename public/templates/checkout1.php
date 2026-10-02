@@ -79,8 +79,8 @@ if (!isset($ppcart_product->show_2_step)) {
         <title><?php echo esc_html(wp_get_document_title()); ?></title>
     <?php endif; ?>
     <?php
-    ob_start();
-?>
+    $ppcart_checkout_css = trim(ppcart_capture_output(function () use ($ppcart_product) {
+    ?>
         .ppcart .ppcart-btn-block,
         .ppcart input[type="button"],
         body.<?php echo esc_attr(function_exists('ppcart_product_singular_body_class') ? ppcart_product_singular_body_class() : 'single-ppcart_product'); ?> .ppcart-page .ppcart-container .ppcart-embed-checkout-form-nav .ppcart-checkout-form-steps .steps.ppcart-current a .step-number {
@@ -88,38 +88,38 @@ if (!isset($ppcart_product->show_2_step)) {
         }
 
         <?php
-    $ppcart_show_bump = isset($ppcart_product->order_bump_options);
-$ppcart_show_bump = apply_filters('ppcart_show_orderbump', $ppcart_show_bump, $ppcart_product->ID);
-if ($ppcart_show_bump || isset($ppcart_product->bump_bg_color)) {
-    if (isset($ppcart_product->bump_bg_color)) :
-        ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-main {
+        $ppcart_show_bump = isset($ppcart_product->order_bump_options);
+    $ppcart_show_bump = apply_filters('ppcart_show_orderbump', $ppcart_show_bump, $ppcart_product->ID);
+    if ($ppcart_show_bump || isset($ppcart_product->bump_bg_color)) {
+        if (isset($ppcart_product->bump_bg_color)) :
+            ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-main {
             background-color: <?php echo esc_attr($ppcart_product->bump_bg_color); ?>
         }
 
     <?php endif;
 
-    for ($ppcart_bump_index = 0; $ppcart_bump_index < count($ppcart_product->order_bump_options); $ppcart_bump_index++) {
-        if (isset($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) && $ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) {
-            ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-<?php echo esc_attr($ppcart_bump_index); ?>.ppcart-section.orderbump {
+        for ($ppcart_bump_index = 0; $ppcart_bump_index < count($ppcart_product->order_bump_options); $ppcart_bump_index++) {
+            if (isset($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) && $ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']) {
+                ?>.ppcart-page .ppcart-container #ppcart-payment-form #ppcart-orderbump-<?php echo esc_attr($ppcart_bump_index); ?>.ppcart-section.orderbump {
             background-color: <?php echo esc_attr($ppcart_product->order_bump_options[$ppcart_bump_index]['bump_bg_color']); ?>
         }
 
                 <?php
+            }
         }
     }
-}
-?>.ppcart .ppcart-checkout-form-steps .steps.ppcart-current a .step-heading .step-name {
+    ?>.ppcart .ppcart-checkout-form-steps .steps.ppcart-current a .step-heading .step-name {
             color: <?php echo esc_attr($ppcart_product->button_color); ?>
         }
 
         <?php if (! empty($ppcart_product->header_color)) :
-            ?>.ppcart-hero-banner {
+                ?>.ppcart-hero-banner {
             background-color: <?php echo esc_attr($ppcart_product->header_color); ?>;
         }
 
         <?php endif; ?>
     <?php
-    $ppcart_checkout_css = trim(ob_get_clean());
+    }));
 
 ppcart_enqueue_checkout_inline_style($ppcart_checkout_css);
 
