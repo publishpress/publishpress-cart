@@ -68,7 +68,7 @@ if (isset($payment_intent['status']) && 'succeeded' === $payment_intent['status'
     $cart_order = new PPCart_Order($order_id);
     $cart_order->status = 'paid';
     $cart_order->payment_status = $payment_intent['status'];
-    $this->store_stripe_owned_record($cart_order);
+    ppcart_store_stripe_owned_record($cart_order);
     $this->clear_temp_order_meta($order_id);
 }
 

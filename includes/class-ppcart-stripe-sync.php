@@ -199,6 +199,26 @@ function ppcart_stripe_sync_context_run($callback)
 }
 
 /**
+ * Store an order or subscription; Stripe-paid records are stored inside the
+ * Stripe sync context so Stripe-owned fields are written.
+ *
+ * @param PPCart_Order|PPCart_Subscription $record Record to store.
+ * @return mixed Result of the record's store().
+ */
+function ppcart_store_stripe_owned_record($record)
+{
+    if (isset($record->pay_method) && 'stripe' === $record->pay_method) {
+        return ppcart_stripe_sync_context_run(
+            function () use ($record) {
+                return $record->store();
+            }
+        );
+    }
+
+    return $record->store();
+}
+
+/**
  * Check whether a field is controlled by Stripe.
  *
  * @param string $field  Meta key or model property name.

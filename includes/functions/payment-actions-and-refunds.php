@@ -150,6 +150,29 @@ function ppcart_get_stripe_resource_id($resource)
     return (string) ppcart_get_stripe_resource_value($resource, 'id', '');
 }
 
+/**
+ * Transaction id for a Stripe invoice: its charge, else its PaymentIntent,
+ * else the PaymentIntent's latest charge.
+ *
+ * @param mixed $invoice Stripe invoice object, array, or id.
+ * @return string
+ */
+function ppcart_get_stripe_invoice_transaction_id($invoice)
+{
+    $charge_id = ppcart_get_stripe_resource_id(ppcart_get_stripe_resource_value($invoice, 'charge', ''));
+    if ('' !== $charge_id) {
+        return $charge_id;
+    }
+
+    $payment_intent = ppcart_get_stripe_resource_value($invoice, 'payment_intent', '');
+    $payment_intent_id = ppcart_get_stripe_resource_id($payment_intent);
+    if ('' !== $payment_intent_id) {
+        return $payment_intent_id;
+    }
+
+    return ppcart_get_stripe_resource_id(ppcart_get_stripe_resource_value($payment_intent, 'latest_charge', ''));
+}
+
 function ppcart_get_subscription_cancel_success_response($refund_error = '')
 {
     $refund_error = trim((string) $refund_error);

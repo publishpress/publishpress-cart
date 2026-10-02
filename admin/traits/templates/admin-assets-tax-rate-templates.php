@@ -6,14 +6,23 @@ if (! defined('ABSPATH')) {
 
 $templates = [];
 
-ob_start();
-?>
+$ppcart_tax_row_buffer_level = ob_get_level();
+$ppcart_tax_row_buffer_active = true;
+$ppcart_tax_row_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_tax_row_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_tax_row_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
+    ?>
     <tr class="tax-tips" data-tip="<?php
-    printf(
-        /* translators: %s: tax rate ID. */
-        esc_attr__('Tax rate ID: %s', 'publishpress-cart'),
-        '{{ data.tax_rate_id }}'
-    ); ?>" data-id="{{ data.tax_rate_id }}">
+        printf(
+            /* translators: %s: tax rate ID. */
+            esc_attr__('Tax rate ID: %s', 'publishpress-cart'),
+            '{{ data.tax_rate_id }}'
+        ); ?>" data-id="{{ data.tax_rate_id }}">
         <td class="tax-country">
             <input type="text" value="{{ data.tax_rate_country }}" placeholder="*" name="tax_rate_country[{{ data.tax_rate_id }}]" class="wc_input_country_iso" data-attribute="tax_rate_country" style="text-transform:uppercase" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-country" />
         </td>
@@ -43,28 +52,96 @@ ob_start();
         </td>
     </tr>
 <?php
-$templates['tmpl-ppcart-tax-table-row'] = ob_get_clean();
+} catch (Throwable $ppcart_tax_row_buffer_exception) {
+    $ppcart_tax_row_buffer_error = $ppcart_tax_row_buffer_exception;
+} finally {
+    $ppcart_tax_row_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_tax_row_buffer_active && ob_get_level() > $ppcart_tax_row_buffer_level + 1) {
+        $ppcart_tax_row_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_tax_row_buffer_exception) {
+            $ppcart_tax_row_buffer_error = $ppcart_tax_row_buffer_error ?? $ppcart_tax_row_buffer_exception;
+            if (ob_get_level() >= $ppcart_tax_row_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_tax_row_buffer_active && ob_get_level() === $ppcart_tax_row_buffer_level + 1) {
+        $ppcart_tax_row_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_tax_row_buffer_error) {
+    throw $ppcart_tax_row_buffer_error;
+}
+$templates['tmpl-ppcart-tax-table-row'] = $ppcart_tax_row_buffer_output;
 
-ob_start();
-?>
+$ppcart_tax_empty_buffer_level = ob_get_level();
+$ppcart_tax_empty_buffer_active = true;
+$ppcart_tax_empty_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_tax_empty_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_tax_empty_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
+    ?>
     <tr>
         <th colspan="7" class="ppcart-settings__tax-rates-empty"><?php esc_html_e('No matching tax rates found.', 'publishpress-cart'); ?></th>
     </tr>
 <?php
-$templates['tmpl-ppcart-tax-table-row-empty'] = ob_get_clean();
+} catch (Throwable $ppcart_tax_empty_buffer_exception) {
+    $ppcart_tax_empty_buffer_error = $ppcart_tax_empty_buffer_exception;
+} finally {
+    $ppcart_tax_empty_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_tax_empty_buffer_active && ob_get_level() > $ppcart_tax_empty_buffer_level + 1) {
+        $ppcart_tax_empty_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_tax_empty_buffer_exception) {
+            $ppcart_tax_empty_buffer_error = $ppcart_tax_empty_buffer_error ?? $ppcart_tax_empty_buffer_exception;
+            if (ob_get_level() >= $ppcart_tax_empty_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_tax_empty_buffer_active && ob_get_level() === $ppcart_tax_empty_buffer_level + 1) {
+        $ppcart_tax_empty_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_tax_empty_buffer_error) {
+    throw $ppcart_tax_empty_buffer_error;
+}
+$templates['tmpl-ppcart-tax-table-row-empty'] = $ppcart_tax_empty_buffer_output;
 
-ob_start();
-?>
+$ppcart_tax_pagination_buffer_level = ob_get_level();
+$ppcart_tax_pagination_buffer_active = true;
+$ppcart_tax_pagination_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_tax_pagination_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_tax_pagination_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
+    ?>
     <div class="tablenav">
         <div class="tablenav-pages">
             <span class="displaying-num">
                 <?php
-                printf(
-                    /* translators: %s: number of items. */
-                    esc_html__('%s items', 'publishpress-cart'),
-                    '{{ data.qty_rates }}'
-                );
-?>
+                    printf(
+                        /* translators: %s: number of items. */
+                        esc_html__('%s items', 'publishpress-cart'),
+                        '{{ data.qty_rates }}'
+                    );
+    ?>
             </span>
             <span class="pagination-links">
 
@@ -80,13 +157,13 @@ ob_start();
                 <span class="paging-input">
                     <label for="current-page-selector" class="screen-reader-text"><?php esc_html_e('Current page', 'publishpress-cart'); ?></label>
                     <?php
-        printf(
-            /* translators: 1: current page, 2: total pages. */
-            esc_html_x('%1$s of %2$s', 'Pagination', 'publishpress-cart'),
-            '<input class="current-page" id="current-page-selector" type="text" name="paged" value="{{ data.current_page }}" size="<# print( data.qty_pages.toString().length ) #>" aria-describedby="table-paging" data-testid="ppcart-admin-tax-rates-page-current">',
-            '<span class="total-pages">{{ data.qty_pages }}</span>'
-        );
-?>
+            printf(
+                /* translators: 1: current page, 2: total pages. */
+                esc_html_x('%1$s of %2$s', 'Pagination', 'publishpress-cart'),
+                '<input class="current-page" id="current-page-selector" type="text" name="paged" value="{{ data.current_page }}" size="<# print( data.qty_pages.toString().length ) #>" aria-describedby="table-paging" data-testid="ppcart-admin-tax-rates-page-current">',
+                '<span class="total-pages">{{ data.qty_pages }}</span>'
+            );
+    ?>
                 </span>
 
                 <a class="tablenav-pages-navspan" data-goto="<# print( Math.min( data.qty_pages, parseInt( data.current_page, 10 ) + 1 ) ) #>" data-testid="ppcart-admin-tax-rates-page-next">
@@ -102,6 +179,31 @@ ob_start();
         </div>
     </div>
 <?php
-$templates['tmpl-ppcart-tax-table-pagination'] = ob_get_clean();
+} catch (Throwable $ppcart_tax_pagination_buffer_exception) {
+    $ppcart_tax_pagination_buffer_error = $ppcart_tax_pagination_buffer_exception;
+} finally {
+    $ppcart_tax_pagination_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_tax_pagination_buffer_active && ob_get_level() > $ppcart_tax_pagination_buffer_level + 1) {
+        $ppcart_tax_pagination_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_tax_pagination_buffer_exception) {
+            $ppcart_tax_pagination_buffer_error = $ppcart_tax_pagination_buffer_error ?? $ppcart_tax_pagination_buffer_exception;
+            if (ob_get_level() >= $ppcart_tax_pagination_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_tax_pagination_buffer_active && ob_get_level() === $ppcart_tax_pagination_buffer_level + 1) {
+        $ppcart_tax_pagination_buffer_output = (string) ob_get_clean();
+    }
+}
+if (null !== $ppcart_tax_pagination_buffer_error) {
+    throw $ppcart_tax_pagination_buffer_error;
+}
+$templates['tmpl-ppcart-tax-table-pagination'] = $ppcart_tax_pagination_buffer_output;
 
 return $templates;

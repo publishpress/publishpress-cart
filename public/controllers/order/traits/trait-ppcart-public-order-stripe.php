@@ -15,19 +15,6 @@ trait PPCart_Public_Order_Stripe_Trait
         return $this->stripe_save_helper;
     }
 
-    private function store_stripe_owned_record($record)
-    {
-        if (function_exists('ppcart_stripe_sync_context_run') && isset($record->pay_method) && 'stripe' === $record->pay_method) {
-            return ppcart_stripe_sync_context_run(
-                function () use ($record) {
-                    return $record->store();
-                }
-            );
-        }
-
-        return $record->store();
-    }
-
     public function update_stripe_order_status()
     {
         $__ppcart_template_result = include __DIR__ . '/templates/order-stripe-update-stripe-order-status.php';

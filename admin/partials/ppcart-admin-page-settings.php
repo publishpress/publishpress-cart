@@ -62,10 +62,18 @@ $get_admin_asset_url = static function ($asset_file) use ($admin_assets_url, $ad
     return $asset_url;
 };
 
-ob_start();
-
-if (! ppcart_enabled_processors()) {
-    ?>
+$ppcart_settings_notices_buffer_level = ob_get_level();
+$ppcart_settings_notices_buffer_active = true;
+$ppcart_settings_notices_buffer_error = null;
+ob_start(static function ($buffer, $phase) use (&$ppcart_settings_notices_buffer_active) {
+    if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+        $ppcart_settings_notices_buffer_active = false;
+    }
+    return $buffer;
+});
+try {
+    if (! ppcart_enabled_processors()) {
+        ?>
     <div class="notice notice-error ppcart-settings__notice">
         <p><strong><?php esc_html_e('No payment methods found!', 'publishpress-cart'); ?></strong></p>
         <p>
@@ -74,31 +82,55 @@ if (! ppcart_enabled_processors()) {
         </p>
     </div>
     <?php
-}
+    }
 
-// Surface any pending Stripe / payment notices the legacy template was rendering.
-foreach ([ 'ppcart_stripe_settings_error', 'ppcart_express_payment_settings_error', 'ppcart_customer_portal_settings_error' ] as $transient) {
-    $notice = get_transient($transient);
-    if ($notice) {
-        $notice_type    = is_array($notice) ? ($notice['type'] ?? 'error') : 'error';
-        $notice_message = is_array($notice) ? ($notice['message'] ?? '') : (string) $notice;
-        ?>
+    // Surface any pending Stripe / payment notices the legacy template was rendering.
+    foreach ([ 'ppcart_stripe_settings_error', 'ppcart_express_payment_settings_error', 'ppcart_customer_portal_settings_error' ] as $transient) {
+        $notice = get_transient($transient);
+        if ($notice) {
+            $notice_type    = is_array($notice) ? ($notice['type'] ?? 'error') : 'error';
+            $notice_message = is_array($notice) ? ($notice['message'] ?? '') : (string) $notice;
+            ?>
         <div class="notice notice-<?php echo esc_attr($notice_type); ?> is-dismissible ppcart-settings__notice">
             <p><?php echo esc_html($notice_message); ?></p>
         </div>
         <?php
-        delete_transient($transient);
+            delete_transient($transient);
+        }
+    }
+
+    // Surface "Settings saved." after redirect from options.php and any other
+    // notices registered via add_settings_error().
+    settings_errors();
+
+    // Render captured global admin notices and plugin notices inside the settings shell.
+    do_action('ppcart_settings_admin_notices');
+} catch (Throwable $ppcart_settings_notices_buffer_exception) {
+    $ppcart_settings_notices_buffer_error = $ppcart_settings_notices_buffer_exception;
+} finally {
+    $ppcart_settings_notices_buffer_output = '';
+    // Flush nested buffers into ours; never close a caller's or replacement buffer.
+    while ($ppcart_settings_notices_buffer_active && ob_get_level() > $ppcart_settings_notices_buffer_level + 1) {
+        $ppcart_settings_notices_buffer_nested_level = ob_get_level();
+        try {
+            if (! ob_end_flush()) {
+                break;
+            }
+        } catch (Throwable $ppcart_settings_notices_buffer_exception) {
+            $ppcart_settings_notices_buffer_error = $ppcart_settings_notices_buffer_error ?? $ppcart_settings_notices_buffer_exception;
+            if (ob_get_level() >= $ppcart_settings_notices_buffer_nested_level) {
+                break;
+            }
+        }
+    }
+    if ($ppcart_settings_notices_buffer_active && ob_get_level() === $ppcart_settings_notices_buffer_level + 1) {
+        $ppcart_settings_notices_buffer_output = (string) ob_get_clean();
     }
 }
-
-// Surface "Settings saved." after redirect from options.php and any other
-// notices registered via add_settings_error().
-settings_errors();
-
-// Render captured global admin notices and plugin notices inside the settings shell.
-do_action('ppcart_settings_admin_notices');
-
-$settings_notice_output = trim(ob_get_clean());
+if (null !== $ppcart_settings_notices_buffer_error) {
+    throw $ppcart_settings_notices_buffer_error;
+}
+$settings_notice_output = trim($ppcart_settings_notices_buffer_output);
 
 // Setting tabs definition. Keep the same filter for back-compat.
 $default_setting_tabs = [

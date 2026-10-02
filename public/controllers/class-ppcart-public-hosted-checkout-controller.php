@@ -62,19 +62,6 @@ class PPCart_Public_Hosted_Checkout_Controller
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
     }
 
-    private function store_stripe_owned_record($record)
-    {
-        if (function_exists('ppcart_stripe_sync_context_run') && isset($record->pay_method) && 'stripe' === $record->pay_method) {
-            return ppcart_stripe_sync_context_run(
-                function () use ($record) {
-                    return $record->store();
-                }
-            );
-        }
-
-        return $record->store();
-    }
-
     /**
      * Reuse only the logged-in user's own stored customer; otherwise create a
      * new one. Never looks customers up by the posted email.

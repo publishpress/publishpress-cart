@@ -6,8 +6,17 @@ if (! defined('ABSPATH')) {
 
 function ppcart_schedule_report_email_html($report)
 {
-    ob_start();
-    ?>
+    $ppcart_report_email_buffer_level = ob_get_level();
+    $ppcart_report_email_buffer_active = true;
+    $ppcart_report_email_buffer_error = null;
+    ob_start(static function ($buffer, $phase) use (&$ppcart_report_email_buffer_active) {
+        if ($phase & PHP_OUTPUT_HANDLER_FINAL) {
+            $ppcart_report_email_buffer_active = false;
+        }
+        return $buffer;
+    });
+    try {
+        ?>
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -51,8 +60,32 @@ function ppcart_schedule_report_email_html($report)
     </body>
     </html>
     <?php
-
-    return ob_get_clean();
+    } catch (Throwable $ppcart_report_email_buffer_exception) {
+        $ppcart_report_email_buffer_error = $ppcart_report_email_buffer_exception;
+    } finally {
+        $ppcart_report_email_buffer_output = '';
+        // Flush nested buffers into ours; never close a caller's or replacement buffer.
+        while ($ppcart_report_email_buffer_active && ob_get_level() > $ppcart_report_email_buffer_level + 1) {
+            $ppcart_report_email_buffer_nested_level = ob_get_level();
+            try {
+                if (! ob_end_flush()) {
+                    break;
+                }
+            } catch (Throwable $ppcart_report_email_buffer_exception) {
+                $ppcart_report_email_buffer_error = $ppcart_report_email_buffer_error ?? $ppcart_report_email_buffer_exception;
+                if (ob_get_level() >= $ppcart_report_email_buffer_nested_level) {
+                    break;
+                }
+            }
+        }
+        if ($ppcart_report_email_buffer_active && ob_get_level() === $ppcart_report_email_buffer_level + 1) {
+            $ppcart_report_email_buffer_output = (string) ob_get_clean();
+        }
+    }
+    if (null !== $ppcart_report_email_buffer_error) {
+        throw $ppcart_report_email_buffer_error;
+    }
+    return $ppcart_report_email_buffer_output;
 }
 
 function ppcart_schedule_report_render_intro($report)
