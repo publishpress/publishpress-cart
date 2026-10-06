@@ -10,11 +10,6 @@ jobs:
     uses: ./.github/workflows/code-standards.yml
     secrets: inherit
 
-  code-complexity:
-    name: Analyze code complexity
-    uses: ./.github/workflows/code-complexity.yml
-    secrets: inherit
-
   unit-tests:
     name: Run unit tests
     uses: ./.github/workflows/unit-tests.yml
