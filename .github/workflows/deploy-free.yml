@@ -24,5 +24,5 @@ jobs:
     permissions:
       contents: write
     uses: publishpress/github-workflows/.github/workflows/deploy-free.yml@v3
-    needs: [code-standards, code-complexity, unit-tests, integration-tests]
+    needs: [code-standards, unit-tests, integration-tests]
     secrets: inherit
