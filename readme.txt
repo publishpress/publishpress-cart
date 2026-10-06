@@ -1,6 +1,8 @@
 === PublishPress Cart - eCommerce for Digital Products ===
 
-Contributors: andergmartins, rizaardiyanto, ojopaul, stevejburge, publishpress
+Author: publishpress
+Author URI: https://publishpress.com
+Contributors: publishpress, andergmartins, rizaardiyanto, ojopaul, stevejburge
 Tags: eCommerce, shopping cart, sales funnel, elementor
 Requires at least: 6.7
 Tested up to: 7.1
