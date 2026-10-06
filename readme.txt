@@ -177,9 +177,3 @@ Contact us via [PublishPress support](https://publishpress.com/publishpress-cart
 == Changelog ==
 
 The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-cart/blob/master/CHANGELOG.md).
-
-= 1.0.0 =
-
-Initial release of **PublishPress Cart**, forked from [Studiocart](https://studiocart.co/) v2.9.0. This version carries forward the Studiocart v2.9.0 feature set under the PublishPress brand, with updated plugin identity, packaging, and ongoing maintenance by PublishPress.
-
-Prior Studiocart release history (v2.9.0 and earlier) is not included here; see the upstream Studiocart project for historical changelog entries.
