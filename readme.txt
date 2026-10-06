@@ -176,9 +176,9 @@ Contact us via [PublishPress support](https://publishpress.com/publishpress-cart
 
 == Changelog ==
 
-= 1.0.0 =
+The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-cart/blob/master/CHANGELOG.md).
 
-* Security: Escape receipt download link HTML helper output (URL and label).
+= 1.0.0 =
 
 Initial release of **PublishPress Cart**, forked from [Studiocart](https://studiocart.co/) v2.9.0. This version carries forward the Studiocart v2.9.0 feature set under the PublishPress brand, with updated plugin identity, packaging, and ongoing maintenance by PublishPress.
 
