@@ -115,10 +115,10 @@ class PPCart_Extension_Page
      */
     private function get_extension_action($product)
     {
-        $action = [
-            'label' => __('Upgrade to Pro', 'publishpress-cart'),
-            'url'   => $product['url'] ?? 'https://publishpress.com/publishpress-cart/',
-            'class' => 'product-card__download',
+        $defaults = [
+            'label'   => __('Upgrade to Pro', 'publishpress-cart'),
+            'url'     => 'https://publishpress.com/links/cart-extensions',
+            'class'   => 'product-card__download',
             'new_tab' => true,
         ];
 
@@ -128,26 +128,13 @@ class PPCart_Extension_Page
          * @param array $action  Action config (label/url/class).
          * @param array $product Extension card data.
          */
-        $action = apply_filters('ppcart_extension_action', $action, $product);
+        $action = apply_filters('ppcart_extension_action', $defaults, $product);
 
         if (! is_array($action)) {
-            return [
-                'label' => __('Upgrade to Pro', 'publishpress-cart'),
-                'url'   => 'https://publishpress.com/publishpress-cart/',
-                'class' => 'product-card__download',
-                'new_tab' => true,
-            ];
+            return $defaults;
         }
 
-        return wp_parse_args(
-            $action,
-            [
-                'label' => __('Upgrade to Pro', 'publishpress-cart'),
-                'url'   => 'https://publishpress.com/publishpress-cart/',
-                'class' => 'product-card__download',
-                'new_tab' => true,
-            ]
-        );
+        return wp_parse_args($action, $defaults);
     }
 
     /**
