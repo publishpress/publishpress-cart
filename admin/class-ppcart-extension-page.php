@@ -122,6 +122,14 @@ class PPCart_Extension_Page
             'new_tab' => true,
         ];
 
+        if (isset($product['url']) && is_string($product['url'])) {
+            $url = trim($product['url']);
+
+            if ('' !== $url) {
+                $defaults['url'] = $url;
+            }
+        }
+
         /**
          * Filters action button config for an extension card.
          *
