@@ -28,7 +28,7 @@ if (! defined('ABSPATH')) {
                                             <p class="product-card__vendor-details">
                                                 <span class="product-card__vendor">
                                                     <span>By </span>
-                                                    <a href="https://publishpress.com/publishpress-cart/" target="_blank" rel="noopener noreferrer">PublishPress Cart</a>
+                                                    <a href="https://publishpress.com/links/cart-extensions" target="_blank" rel="noopener noreferrer">PublishPress Cart</a>
                                                 </span>
                                             </p>
                                         </div>

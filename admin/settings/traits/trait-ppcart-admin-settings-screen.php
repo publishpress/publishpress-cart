@@ -81,7 +81,7 @@ trait PPCart_Admin_Settings_Screen_Trait
                 <nav>
                     <ul>
                         <li>
-                            <a href="https://publishpress.com/publishpress-cart/" target="_blank" rel="noopener noreferrer"
+                            <a href="https://publishpress.com/links/about-cart" target="_blank" rel="noopener noreferrer"
                                title="<?php esc_attr_e('About PublishPress Cart', 'publishpress-cart'); ?>">
                                 <?php esc_html_e('About', 'publishpress-cart'); ?>
                             </a>
