@@ -241,7 +241,7 @@ export const coreAdminTests: AdminTestCase[] = [
   },
   {
     id: "AD-009",
-    title: "Contacts Page",
+    title: "Customers Page",
     startUrl: "{{publishpress_cart_host}}/wp-admin/admin.php?page=ppcart-contacts",
     steps: [
       {
@@ -254,8 +254,8 @@ export const coreAdminTests: AdminTestCase[] = [
       },
       {
         command: "assertTextPresent",
-        target: "body",
-        value: "Contacts",
+        target: ".ppcart-contacts-page h1.wp-heading-inline",
+        value: "Customers",
       }
     ],
   },
