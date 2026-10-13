@@ -348,7 +348,7 @@ if ($export_mode === 'contacts') {
                     } elseif ($subscription_status == 'paused') {
                         $payments_remaining_label = esc_html__('Paused', 'publishpress-cart');
                     } elseif (ppcart_get_post_meta($post->ID, 'sub_installments', true) == '-1') {
-                        $payments_remaining_label = esc_html__('Never expires', 'publishpress-cart');
+                        $payments_remaining_label = esc_html__('Until canceled', 'publishpress-cart');
                     }
 
                     $csv_output_report .= ppcart_csv_row([
