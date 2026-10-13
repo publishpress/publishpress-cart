@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 /**
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
@@ -1214,10 +1214,22 @@ td.column-order .row-actions{
   margin-right: 5%;
 }
 .ppcart-settings-tabs .ppcart-repeaters .repeater-more .button {
-  background: #000;
+  background: #0a47c2;
+  border-color: #0a47c2;
   color: #fff;
   padding: 7px 15px;
   height: auto;
+}
+.ppcart-settings-tabs .ppcart-repeaters .repeater-more .button:hover,
+.ppcart-settings-tabs .ppcart-repeaters .repeater-more .button:active {
+  background: #0838a0;
+  border-color: #0838a0;
+  color: #fff;
+}
+.ppcart-settings-tabs .ppcart-repeaters .repeater-more .button:focus {
+  border-color: #0838a0;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0a47c2;
+  color: #fff;
 }
 
 
