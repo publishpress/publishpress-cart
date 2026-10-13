@@ -10,7 +10,7 @@ if (!testCase) {
   throw new Error('Missing admin test definition: AD-009');
 }
 
-test('AD-009 Contacts Page', { tag: ["@admin","@admin-core"] }, async ({ page }) => {
+test('AD-009 Customers Page', { tag: ["@admin","@admin-core"] }, async ({ page }) => {
   test.skip(!config.hasCredentials(), 'Set WP_TESTS_ADMIN_USER and WP_TESTS_ADMIN_PASSWORD in .env');
   test.setTimeout(90_000);
 
