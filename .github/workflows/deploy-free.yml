@@ -26,3 +26,12 @@ jobs:
     uses: publishpress/github-workflows/.github/workflows/deploy-free.yml@v3
     needs: [code-standards, unit-tests, integration-tests]
     secrets: inherit
+
+  language-packs:
+    name: Publish language packs
+    permissions:
+      contents: write
+    uses: publishpress/github-workflows/.github/workflows/language-pack.yml@v3
+    with:
+      text_domain: publishpress-cart
+    secrets: inherit
