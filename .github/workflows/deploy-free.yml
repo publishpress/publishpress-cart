@@ -31,7 +31,8 @@ jobs:
     name: Publish language packs
     permissions:
       contents: write
-    uses: publishpress/github-workflows/.github/workflows/language-pack.yml@v3
+    needs: [deploy-wp-org]
+    uses: publishpress/github-workflows/.github/workflows/language-pack.yml@cart-594-translations-delivery-system
     with:
       text_domain: publishpress-cart
     secrets: inherit

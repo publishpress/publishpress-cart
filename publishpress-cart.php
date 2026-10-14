@@ -253,6 +253,7 @@ add_filter(
         $packs[] = [
             'domain' => 'publishpress-cart',
             'repository' => 'publishpress-cart',
+            'version' => PPCART_VERSION,
         ];
 
         return $packs;
