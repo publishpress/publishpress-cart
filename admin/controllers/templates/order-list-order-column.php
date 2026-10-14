@@ -28,12 +28,17 @@ switch ($column) {
         echo '<span class="ppcart-status ' . esc_attr($status_class) . '">' . esc_html($status_label) . '</span>';
         break;
     case 'name':
-        if ($order_data['user_account']) {
-            $user_id = $order_data['user_account'] ?>
-            <a href="<?php echo esc_url(get_edit_user_link($user_id)); ?>">
-                <?php echo esc_html($order_data['customer_name']); ?>
-            </a>
-        <?php } else {
+        if (! empty($order_data['email'])) {
+            $customer_url = add_query_arg(
+                [
+                    'page' => PPCart_Admin_Screens::PAGE_CUSTOMER_REPORTS,
+                    'reportstypes' => 'order',
+                    'customerid' => strtolower($order_data['email']),
+                ],
+                admin_url('admin.php')
+            );
+            echo '<a href="' . esc_url($customer_url) . '">' . esc_html($order_data['customer_name']) . '</a>';
+        } else {
             echo esc_html($order_data['customer_name']);
         }
         break;

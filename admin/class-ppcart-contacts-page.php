@@ -77,8 +77,8 @@ class PPCart_Contacts_Page
 
         add_submenu_page(
             PPCart_Admin_Screens::menu_slug(),
-            apply_filters('ppcart-settings-page-title', esc_html__('Contacts', 'publishpress-cart')),
-            apply_filters('ppcart-settings-menu-title', esc_html__('Contacts', 'publishpress-cart')),
+            apply_filters('ppcart-settings-page-title', esc_html__('Customers', 'publishpress-cart')),
+            apply_filters('ppcart-settings-menu-title', esc_html__('Customers', 'publishpress-cart')),
             ppcart_live_cap('manager_option'),
             PPCart_Admin_Screens::PAGE_CONTACTS,
             [ $this, 'render_page_contacts' ]
@@ -159,17 +159,16 @@ class PPCart_Contacts_Page
         <div class="wrap ppcart-contacts-page">
             <div class="ppcart-contacts-header">
                 <div class="ppcart-contacts-title">
-                    <?php /* translators: %s: plugin title. */ ?>
-                    <h1 class="wp-heading-inline"><?php echo esc_html(sprintf(__('%s Contacts', 'publishpress-cart'), apply_filters('ppcart_plugin_title', $this->plugin_title))); ?></h1>
+                    <h1 class="wp-heading-inline"><?php esc_html_e('Customers', 'publishpress-cart'); ?></h1>
                 </div>
                 <a href="<?php echo esc_url(wp_nonce_url(add_query_arg([ 'ppcart-csv-export' => 'contacts', 'type' => 'contact' ], home_url('/')), 'ppcart_csv_export')); ?>" id="customer_csv_export__" class="page-title-action ppcart-contacts-export" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-contacts-export')); ?>">
-                    <?php esc_html_e('Export Contacts', 'publishpress-cart'); ?>
+                    <?php esc_html_e('Export Customers', 'publishpress-cart'); ?>
                 </a>
             </div>
 
-            <div class="ppcart-contact-metrics" aria-label="<?php esc_attr_e('Contact summary', 'publishpress-cart'); ?>">
+            <div class="ppcart-contact-metrics" aria-label="<?php esc_attr_e('Customer summary', 'publishpress-cart'); ?>">
                 <div class="ppcart-contact-metric">
-                    <span><?php esc_html_e('Contacts', 'publishpress-cart'); ?></span>
+                    <span><?php esc_html_e('Customers', 'publishpress-cart'); ?></span>
                     <strong><?php echo esc_html(number_format_i18n($contact_count)); ?></strong>
                 </div>
                 <div class="ppcart-contact-metric">
@@ -222,11 +221,11 @@ class PPCart_Contacts_Page
         </div>
         <?php
         $contacts_table_i18n = [
-            'searchPlaceholder' => __('Search contacts', 'publishpress-cart'),
-            'lengthMenu'        => __('Show _MENU_ contacts', 'publishpress-cart'),
-            'info'              => __('_START_ - _END_ of _TOTAL_ contacts', 'publishpress-cart'),
-            'infoEmpty'         => __('No contacts found', 'publishpress-cart'),
-            'zeroRecords'       => __('No matching contacts found', 'publishpress-cart'),
+            'searchPlaceholder' => __('Search customers', 'publishpress-cart'),
+            'lengthMenu'        => __('Show _MENU_ customers', 'publishpress-cart'),
+            'info'              => __('_START_ - _END_ of _TOTAL_ customers', 'publishpress-cart'),
+            'infoEmpty'         => __('No customers found', 'publishpress-cart'),
+            'zeroRecords'       => __('No matching customers found', 'publishpress-cart'),
         ];
 
         wp_add_inline_script(

@@ -14,7 +14,7 @@ if (! defined('ABSPATH')) {
      */
 function ppcart_pro_upgrade_url($context = '')
 {
-    $url = 'https://publishpress.com/publishpress-cart/';
+    $url = 'https://publishpress.com/links/cart-settings';
 
     /**
      * Filters the Pro upsell/upgrade URL.

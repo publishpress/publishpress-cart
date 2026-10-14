@@ -21,7 +21,7 @@ trait PPCart_Product_Metaboxes_Pay_Plan_Fields_Trait
     private function pay_plan_fields($save = false)
     {
 
-        $installmentsArr = ['-1' => __('Never expires', 'publishpress-cart')];
+        $installmentsArr = ['-1' => __('Until canceled', 'publishpress-cart')];
         for ($i = 2; $i <= 36; $i++) {
             $installmentsArr[$i] =  $i . __(' payments', 'publishpress-cart');
         }

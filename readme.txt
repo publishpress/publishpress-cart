@@ -6,7 +6,7 @@ Contributors: publishpress, andergmartins, rizaardiyanto, ojopaul, stevejburge
 Tags: eCommerce, shopping cart, sales funnel, elementor
 Requires at least: 6.7
 Tested up to: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -176,10 +176,4 @@ Contact us via [PublishPress support](https://publishpress.com/publishpress-cart
 
 == Changelog ==
 
-= 1.0.0 =
-
-* Security: Escape receipt download link HTML helper output (URL and label).
-
-Initial release of **PublishPress Cart**, forked from [Studiocart](https://studiocart.co/) v2.9.0. This version carries forward the Studiocart v2.9.0 feature set under the PublishPress brand, with updated plugin identity, packaging, and ongoing maintenance by PublishPress.
-
-Prior Studiocart release history (v2.9.0 and earlier) is not included here; see the upstream Studiocart project for historical changelog entries.
+The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-cart/blob/master/CHANGELOG.md).
