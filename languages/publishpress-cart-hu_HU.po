@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:30+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -5470,6 +5470,43 @@ msgstr "A Square bővítmény aktiválása nem sikerült."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "A Square bővítmény deaktiválása nem sikerült."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Futtass referral, influencer és affiliate programokat könnyedén. Toborozz "
+"partnereket, testre szabott jutalékterveket készíts, és automatizáld a "
+"kifizetéseket. A megbízható bővítmény a elérés bővítésére, az eladások "
+"növelésére, a márkád fejlesztésére és a ROI maximalizálására."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Kínálj globális és helyi fizetési módokat, és néhány perc alatt "
+"beilleszkedhetsz, a nyelveden történő támogatással."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Fogadj el kifizetéseket a PublishPress Cart boltodban a Razorpay "
+"segítségével. Integráció és online beilleszkedés benne van."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"A kifizetések elfogadása könnyű a Square-rel. Átlátható díjak, gyors "
+"befizetések (1-2 munkanap). Értékesíts online és személyesen, és "
+"szinkronizáld az összes kifizetést, tételt és készletet."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12314,7 +12351,6 @@ msgid "Payment failed for {product_name}"
 msgstr "A(z) {product_name} fizetése meghiúsult"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16261,6 +16297,7 @@ msgstr[0] ""
 "%d hitelesítő még titkosítva marad az adatbázisban, amíg újra nem mented "
 "vagy nem engedélyezed a titkosítást.|%d hitelesítő marad titkosítva az "
 "adatbázisban, amíg újra nem mented őket vagy nem engedélyezed a titkosítást."
+msgstr[1] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16379,6 +16416,7 @@ msgstr[0] ""
 "megismétléshez.|A titkosítás engedélyezve van, de %d mentett hitelesítő még "
 "tiszta szövegben van. Használj Titkosítsd a mentett hitelesítőket a "
 "megismétléshez."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16393,6 +16431,7 @@ msgstr[0] ""
 "Van %d mentett hitelesítőd tiszta szövegben. A titkosítás engedélyezése "
 "automatikusan titkosítja azt.|Van %d mentett hitelesítőd tiszta szövegben. "
 "A titkosítás engedélyezése automatikusan titkosítja őket."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

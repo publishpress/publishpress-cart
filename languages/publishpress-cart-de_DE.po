@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:12+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -5480,6 +5480,44 @@ msgstr "Aktivierung des Square Addons fehlgeschlagen."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Deaktivierung des Square Addons fehlgeschlagen."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Führen Sie mühelos Empfehlungs-, Influencer- und Partnerprogramme durch. "
+"Rekrutieren Sie Partner, passen Sie Provisionspläne an und automatisieren "
+"Sie Auszahlungen. Das vertrauenswürdige Plugin zur Erweiterung der "
+"Reichweite, zur Steigerung des Umsatzes, zum Wachstum Ihrer Marke und zur "
+"Maximierung des ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Bieten Sie globale und lokale Zahlungsmethoden an und lassen Sie sich in "
+"wenigen Minuten einarbeiten, mit Unterstützung in Ihrer Sprache."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Akzeptieren Sie Zahlungen in Ihrem PublishPress Cart-Shop mit Razorpay. "
+"Integration und Online-Onboarding sind inklusive."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Zahlungen zu akzeptieren ist einfach mit Square. Klare Tarife, schnelle "
+"Einzahlungen (1-2 Geschäftstage). Verkaufen Sie online und persönlich und "
+"synchronisieren Sie alle Zahlungen, Artikel und Bestände."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12331,7 +12369,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Zahlung fehlgeschlagen für {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16301,6 +16338,7 @@ msgstr[0] ""
 "erneut speichern oder die Verschlüsselung erneut aktivieren.|%d "
 "Anmeldeinformationen bleiben in der Datenbank verschlüsselt, bis Sie sie "
 "erneut speichern oder die Verschlüsselung erneut aktivieren."
+msgstr[1] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16427,6 +16465,7 @@ msgstr[0] ""
 "aktiviert, aber %d gespeicherte Anmeldeinformationen sind noch im Klartext. "
 "Verwenden Sie Gespeicherte Anmeldeinformationen verschlüsseln, um es erneut "
 "zu versuchen."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16442,6 +16481,7 @@ msgstr[0] ""
 "der Verschlüsselung wird sie automatisch verschlüsseln.|Sie haben %d "
 "gespeicherte Anmeldeinformationen im Klartext. Die Aktivierung der "
 "Verschlüsselung wird sie automatisch verschlüsseln."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

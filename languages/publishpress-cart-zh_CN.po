@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 02:02+0000\n"
+"PO-Revision-Date: 2026-10-14 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: zh_CN\n"
@@ -5256,6 +5256,32 @@ msgstr "Square 附加组件激活失败。"
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Square 附加组件停用失败。"
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr "轻松运行推荐、影响者和联盟计划。招募合作伙伴，自定义佣金计划，并自动化支付。值得信赖的插件，扩展覆盖面、提升销售、发展品牌，并最大化投资回报。"
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr "提供全球和本地支付方式，并在几分钟内完成注册，支持您的语言。"
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr "在您的 PublishPress 购物车商店中使用 Razorpay 接受付款。包括集成和在线注册。"
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr "使用 Square 接受付款非常简单。清晰的费率、快速的存款（1-2 个工作日）。在线和面对面销售，并同步所有付款、商品和库存。"
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12012,7 +12038,6 @@ msgid "Payment failed for {product_name}"
 msgstr "支付失败 {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -15875,7 +15900,7 @@ msgid_plural ""
 msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
-msgstr[0] "%d 个凭据在数据库中保持加密状态，直到您重新保存它或再次启用加密。|%d 个凭据在数据库中保持加密状态，直到您重新保存它们或再次启用加密。"
+msgstr[0] "%d 个凭据在数据库中保持加密状态，直到您重新保存它或再次启用加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -15973,7 +15998,7 @@ msgid_plural ""
 msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
-msgstr[0] "加密已启用，但 %d 个存储凭据仍为明文。使用“加密存储凭据”重试。|加密已启用，但 %d 个存储凭据仍为明文。使用“加密存储凭据”重试。"
+msgstr[0] "加密已启用，但 %d 个存储凭据仍为明文。使用“加密存储凭据”重试。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -15985,7 +16010,7 @@ msgid_plural ""
 msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
-msgstr[0] "您有 %d 个存储凭据为明文。启用加密将自动加密它。|您有 %d 个存储凭据为明文。启用加密将自动加密它们。"
+msgstr[0] "您有 %d 个存储凭据为明文。启用加密将自动加密它。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

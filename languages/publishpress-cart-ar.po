@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:07+0000\n"
+"PO-Revision-Date: 2026-10-14 14:29+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
@@ -5436,6 +5436,39 @@ msgstr "فشل تفعيل إضافة سكوير."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "فشل تعطيل إضافة سكوير."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"قم بتشغيل برامج الإحالة، والمؤثرين، والشركاء بسهولة. قم بتجنيد الشركاء، "
+"وتخصيص خطط العمولة، وأتمتة المدفوعات. الإضافة الموثوقة لتوسيع نطاق الوصول، "
+"وزيادة المبيعات، ونمو علامتك التجارية، وتعظيم العائد على الاستثمار."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr "قدم طرق الدفع العالمية والمحلية واحصل على التفعيل في دقائق، مع الدعم بلغتك."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"استقبل المدفوعات في متجر PublishPress الخاص بك مع Razorpay. يتضمن التكامل "
+"والتفعيل عبر الإنترنت."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"قبول المدفوعات سهل مع Square. أسعار واضحة، وإيداعات سريعة (1-2 أيام عمل). "
+"بيع عبر الإنترنت وفي المتجر، ومزامنة جميع المدفوعات، والعناصر، والمخزون."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12242,7 +12275,6 @@ msgid "Payment failed for {product_name}"
 msgstr "فشل الدفع لـ {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16175,8 +16207,14 @@ msgstr[5] ""
 "enable encryption again."
 msgstr[0] ""
 "%d من بيانات الاعتماد تبقى مشفرة في قاعدة البيانات حتى تقوم بإعادة حفظها أو "
-"تمكين التشفير مرة أخرى.|%d من بيانات الاعتماد تبقى مشفرة في قاعدة البيانات "
-"حتى تقوم بإعادة حفظها أو تمكين التشفير مرة أخرى."
+"تمكين التشفير مرة أخرى."
+msgstr[1] ""
+"%d من بيانات الاعتماد تبقى مشفرة في قاعدة البيانات حتى تقوم بإعادة حفظها أو "
+"تمكين التشفير مرة أخرى."
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16289,9 +16327,14 @@ msgstr[5] ""
 "Encrypt stored credentials to retry."
 msgstr[0] ""
 "تم تمكين التشفير ولكن %d من بيانات الاعتماد المخزنة لا تزال في نص عادي. "
-"استخدم تشفير بيانات الاعتماد المخزنة لإعادة المحاولة.|تم تمكين التشفير ولكن "
-"%d من بيانات الاعتماد المخزنة لا تزال في نص عادي. استخدم تشفير بيانات "
-"الاعتماد المخزنة لإعادة المحاولة."
+"استخدم تشفير بيانات الاعتماد المخزنة لإعادة المحاولة."
+msgstr[1] ""
+"تم تمكين التشفير ولكن %d من بيانات الاعتماد المخزنة لا تزال في نص عادي. "
+"استخدم تشفير بيانات الاعتماد المخزنة لإعادة المحاولة."
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16310,8 +16353,14 @@ msgstr[5] ""
 "encrypt them automatically."
 msgstr[0] ""
 "لديك %d من بيانات الاعتماد المخزنة في نص عادي. ستقوم تمكين التشفير بتشفيرها "
-"تلقائيًا.|لديك %d من بيانات الاعتماد المخزنة في نص عادي. ستقوم تمكين "
-"التشفير بتشفيرها تلقائيًا."
+"تلقائيًا."
+msgstr[1] ""
+"لديك %d من بيانات الاعتماد المخزنة في نص عادي. ستقوم تمكين التشفير بتشفيرها "
+"تلقائيًا."
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

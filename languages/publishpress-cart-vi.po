@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:58+0000\n"
+"PO-Revision-Date: 2026-10-14 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: vi\n"
@@ -5420,6 +5420,43 @@ msgstr "Kích hoạt Addon Square không thành công."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Tắt Addon Square không thành công."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Chạy các chương trình giới thiệu, người ảnh hưởng và liên kết một cách dễ "
+"dàng. Tuyển dụng đối tác, tùy chỉnh kế hoạch hoa hồng và tự động hóa thanh "
+"toán. Plugin đáng tin cậy để mở rộng phạm vi, tăng doanh số, phát triển "
+"thương hiệu của bạn và tối đa hóa ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Cung cấp các phương thức thanh toán toàn cầu và địa phương và được onboard "
+"trong vài phút, với hỗ trợ bằng ngôn ngữ của bạn."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Chấp nhận thanh toán trong cửa hàng PublishPress Cart của bạn với Razorpay. "
+"Tích hợp và onboarding trực tuyến đã bao gồm."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Chấp nhận thanh toán dễ dàng với Square. Mức phí rõ ràng, tiền gửi nhanh "
+"(1-2 ngày làm việc). Bán hàng trực tuyến và trực tiếp, và đồng bộ tất cả "
+"thanh toán, mặt hàng và tồn kho."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12250,7 +12287,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Thanh toán không thành công cho {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16185,8 +16221,7 @@ msgstr[0] ""
 "enable encryption again."
 msgstr[0] ""
 "%d thông tin vẫn được mã hóa trong cơ sở dữ liệu cho đến khi bạn lưu lại "
-"hoặc bật mã hóa lại.|%d thông tin vẫn được mã hóa trong cơ sở dữ liệu cho "
-"đến khi bạn lưu lại hoặc bật mã hóa lại."
+"hoặc bật mã hóa lại."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16294,8 +16329,7 @@ msgstr[0] ""
 "Encrypt stored credentials to retry."
 msgstr[0] ""
 "Mã hóa đã được bật nhưng %d thông tin đã lưu vẫn ở dạng gốc. Sử dụng Mã hóa "
-"thông tin đã lưu để thử lại.|Mã hóa đã được bật nhưng %d thông tin đã lưu "
-"vẫn ở dạng gốc. Sử dụng Mã hóa thông tin đã lưu để thử lại."
+"thông tin đã lưu để thử lại."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16307,9 +16341,7 @@ msgid_plural ""
 msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
-msgstr[0] ""
-"Bạn có %d thông tin đã lưu ở dạng gốc. Bật mã hóa sẽ mã hóa nó tự động.|Bạn "
-"có %d thông tin đã lưu ở dạng gốc. Bật mã hóa sẽ mã hóa chúng tự động."
+msgstr[0] "Bạn có %d thông tin đã lưu ở dạng gốc. Bật mã hóa sẽ mã hóa nó tự động."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

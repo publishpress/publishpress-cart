@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:19+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: fa_IR\n"
@@ -365,7 +365,7 @@ msgstr "همگام‌سازی با Stripe"
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s اشتراک از Stripe همگام‌سازی شد."
-msgstr[1] "%s اشتراک‌ها از Stripe همگام‌سازی شد."
+msgstr[1] ""
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
@@ -373,7 +373,7 @@ msgstr[1] "%s اشتراک‌ها از Stripe همگام‌سازی شد."
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s ناموفق بود؛ برای دلیل به لاگ اشتراکش مراجعه کنید."
-msgstr[1] "%s ناموفق بودند؛ برای دلیل به لاگ‌های اشتراکشان مراجعه کنید."
+msgstr[1] ""
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
@@ -1247,7 +1247,7 @@ msgstr "معلق"
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
 msgstr[0] "در حال انتظار <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "در حال انتظار <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1261,7 +1261,7 @@ msgstr "پرداخت شده"
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
 msgstr[0] "پرداخت شده <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "پرداخت شده <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
@@ -1269,7 +1269,7 @@ msgstr[1] "پرداخت شده <span class=\\\"count\\\">(%s)</span>"
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
 msgstr[0] "بازپرداخت شده <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "بازپرداخت شده <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1282,7 +1282,7 @@ msgstr "ناموفق"
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
 msgstr[0] "ناموفق <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "ناموفق <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1298,7 +1298,7 @@ msgstr "مؤخره"
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
 msgstr[0] "مؤخره <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "مؤخره <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1311,7 +1311,7 @@ msgstr "غیرقابل وصول"
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
 msgstr[0] "غیرقابل جمع‌آوری <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "غیرقابل جمع‌آوری <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1329,7 +1329,7 @@ msgstr "فعال"
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "فعال <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "فعال <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1342,7 +1342,7 @@ msgstr "پرداخت نشده"
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
 msgstr[0] "پرداخت نشده <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "پرداخت نشده <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1358,7 +1358,7 @@ msgstr "متوقف شده"
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
 msgstr[0] "متوقف شده <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "متوقف شده <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
@@ -1366,7 +1366,7 @@ msgstr[1] "متوقف شده <span class=\\\"count\\\">(%s)</span>"
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
 msgstr[0] "لغو شده <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "لغو شده <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1380,7 +1380,7 @@ msgstr "تکمیل شده"
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
 msgstr[0] "کامل شده <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "کامل شده <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1393,7 +1393,7 @@ msgstr "ناقص"
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
 msgstr[0] "ناتمام <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "ناتمام <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1406,7 +1406,7 @@ msgstr "آزمایشی"
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
 msgstr[0] "آزمایشی <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "آزمایشی <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] ""
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -5420,6 +5420,43 @@ msgstr "فعال‌سازی افزونه‌ی اسکوئر با شکست موا�
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "غیرفعال‌سازی افزونه‌ی اسکوئر با شکست مواجه شد."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"برنامه‌های ارجاع، تأثیرگذار و وابسته را بدون زحمت اجرا کنید. شرکا را "
+"استخدام کنید، برنامه‌های کمیسیون را سفارشی کنید و پرداخت‌ها را خودکار کنید. "
+"افزونه‌ای مورد اعتماد برای گسترش دسترسی، افزایش فروش، رشد برند شما و حداکثر "
+"کردن ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"روش‌های پرداخت جهانی و محلی را ارائه دهید و در عرض چند دقیقه با پشتیبانی به "
+"زبان خود onboard شوید."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"پرداخت‌ها را در فروشگاه PublishPress Cart خود با Razorpay بپذیرید. ادغام و "
+"onboard آنلاین شامل می‌شود."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"پذیرفتن پرداخت‌ها با Square آسان است. نرخ‌های شفاف، واریزهای سریع (1-2 روز "
+"کاری). به‌صورت آنلاین و حضوری فروش کنید و تمام پرداخت‌ها، اقلام و موجودی‌ها "
+"را همگام‌سازی کنید."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12245,7 +12282,6 @@ msgid "Payment failed for {product_name}"
 msgstr "پرداخت برای {product_name} ناموفق بود"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16169,9 +16205,7 @@ msgstr[1] ""
 "enable encryption again."
 msgstr[0] ""
 "%d اعتبارنامه در پایگاه داده رمزگذاری شده باقی می‌ماند تا زمانی که آن را "
-"دوباره ذخیره کنید یا رمزنگاری را دوباره فعال کنید.|%d اعتبارنامه در پایگاه "
-"داده رمزگذاری شده باقی می‌ماند تا زمانی که آن‌ها را دوباره ذخیره کنید یا "
-"رمزنگاری را دوباره فعال کنید."
+"دوباره ذخیره کنید یا رمزنگاری را دوباره فعال کنید."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16286,9 +16320,7 @@ msgstr[1] ""
 "Encrypt stored credentials to retry."
 msgstr[0] ""
 "رمزنگاری فعال است اما %d اعتبارنامه ذخیره شده هنوز در متن ساده است. از "
-"گزینه رمزگذاری اعتبارنامه‌های ذخیره شده برای تکرار استفاده کنید.|رمزنگاری "
-"فعال است اما %d اعتبارنامه ذخیره شده هنوز در متن ساده است. از گزینه "
-"رمزگذاری اعتبارنامه‌های ذخیره شده برای تکرار استفاده کنید."
+"گزینه رمزگذاری اعتبارنامه‌های ذخیره شده برای تکرار استفاده کنید."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16303,8 +16335,7 @@ msgstr[1] ""
 "encrypt them automatically."
 msgstr[0] ""
 "شما %d اعتبارنامه ذخیره شده در متن ساده دارید. فعال کردن رمزنگاری آن را "
-"به‌طور خودکار رمزگذاری خواهد کرد.|شما %d اعتبارنامه ذخیره شده در متن ساده "
-"دارید. فعال کردن رمزنگاری آن‌ها را به‌طور خودکار رمزگذاری خواهد کرد."
+"به‌طور خودکار رمزگذاری خواهد کرد."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

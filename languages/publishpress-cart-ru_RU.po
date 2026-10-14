@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:50+0000\n"
+"PO-Revision-Date: 2026-10-14 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
@@ -5484,6 +5484,43 @@ msgstr "Не удалось активировать аддон Square."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Не удалось деактивировать аддон Square."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Запускайте реферальные, влиятельные и партнерские программы без усилий. "
+"Набирайте партнеров, настраивайте планы комиссий и автоматизируйте выплаты. "
+"Доверенное расширение для увеличения охвата, повышения продаж, роста вашего "
+"бренда и максимизации ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Предлагайте глобальные и локальные способы оплаты и подключайтесь за "
+"считанные минуты, с поддержкой на вашем языке."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Принимайте платежи в вашем магазине PublishPress Cart с помощью Razorpay. "
+"Интеграция и онлайн-подключение включены."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Принимать платежи легко с помощью Square. Прозрачные тарифы, быстрые "
+"выплаты (1-2 рабочих дня). Продавайте онлайн и лично, и синхронизируйте все "
+"платежи, товары и запасы."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12322,7 +12359,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Ошибка платежа для {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16261,9 +16297,11 @@ msgstr[2] ""
 "enable encryption again."
 msgstr[0] ""
 "%d учетная запись остается зашифрованной в базе данных, пока вы не "
-"сохраните ее повторно или не включите шифрование снова.|%d учетные записи "
-"остаются зашифрованными в базе данных, пока вы не сохраните их повторно или "
-"не включите шифрование снова."
+"сохраните ее повторно или не включите шифрование снова."
+msgstr[1] ""
+"%d учетные записи остаются зашифрованными в базе данных, пока вы не "
+"сохраните их повторно или не включите шифрование снова."
+msgstr[2] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16380,9 +16418,12 @@ msgstr[2] ""
 msgstr[0] ""
 "Шифрование включено, но %d сохраненная учетная запись все еще в открытом "
 "виде. Используйте Шифровать сохраненные учетные данные, чтобы повторить "
-"попытку.|Шифрование включено, но %d сохраненных учетных данных все еще в "
-"открытом виде. Используйте Шифровать сохраненные учетные данные, чтобы "
-"повторить попытку."
+"попытку."
+msgstr[1] ""
+"Шифрование включено, но %d сохраненных учетных данных все еще в открытом "
+"виде. Используйте Шифровать сохраненные учетные данные, чтобы повторить "
+"попытку."
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16398,8 +16439,11 @@ msgstr[2] ""
 "encrypt them automatically."
 msgstr[0] ""
 "У вас %d сохраненная учетная запись в открытом виде. Включение шифрования "
-"автоматически зашифрует ее.|У вас %d сохраненных учетных данных в открытом "
-"виде. Включение шифрования автоматически зашифрует их."
+"автоматически зашифрует ее."
+msgstr[1] ""
+"У вас %d сохраненных учетных данных в открытом виде. Включение шифрования "
+"автоматически зашифрует их."
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

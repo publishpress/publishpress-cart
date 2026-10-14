@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:48+0000\n"
+"PO-Revision-Date: 2026-10-14 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
@@ -371,6 +371,7 @@ msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s abonament sincronizat din Stripe."
 msgstr[1] "%s abonamente sincronizate din Stripe."
+msgstr[2] ""
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
@@ -379,6 +380,7 @@ msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s a eșuat; vezi jurnalul de abonamente pentru motiv."
 msgstr[1] "%s au eșuat; vezi jurnalele lor de abonamente pentru motiv."
+msgstr[2] ""
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
@@ -1256,6 +1258,7 @@ msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
 msgstr[0] "În așteptare <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "În așteptare <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1270,6 +1273,7 @@ msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
 msgstr[0] "Plătit <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Plătit <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
@@ -1278,6 +1282,7 @@ msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
 msgstr[0] "Returnat <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Returnat <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1291,6 +1296,7 @@ msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
 msgstr[0] "Eșuat <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Eșuat <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1307,6 +1313,7 @@ msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
 msgstr[0] "Expirat <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Expirat <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1320,6 +1327,7 @@ msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
 msgstr[0] "Incolectabil <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Incolectabil <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1338,6 +1346,7 @@ msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "Activ <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Activ <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1351,6 +1360,7 @@ msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
 msgstr[0] "Neplătit <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Neplătit <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1367,6 +1377,7 @@ msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
 msgstr[0] "Pauză <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Pauză <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
@@ -1375,6 +1386,7 @@ msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
 msgstr[0] "Anulat <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Anulat <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1389,6 +1401,7 @@ msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
 msgstr[0] "Finalizat <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Finalizat <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1402,6 +1415,7 @@ msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
 msgstr[0] "Incomplet <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "Incomplet <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1415,6 +1429,7 @@ msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
 msgstr[0] "În perioada de probă <span class=\\\"count\\\">(%s)</span>"
 msgstr[1] "În perioada de probă <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -5464,6 +5479,43 @@ msgstr "Activarea addonului Square a eșuat."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Dezactivarea addonului Square a eșuat."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Rulați programe de recomandare, influenceri și afiliați fără efort. "
+"Recrutați parteneri, personalizați planuri de comision și automatizați "
+"plățile. Pluginul de încredere pentru a extinde acoperirea, a crește "
+"vânzările, a dezvolta marca dvs. și a maximiza ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Oferiți metode de plată globale și locale și fiți integrați în câteva "
+"minute, cu suport în limba dvs."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Acceptați plăți în magazinul dvs. PublishPress Cart cu Razorpay. Integrarea "
+"și integrarea online sunt incluse."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Acceptarea plăților este ușoară cu Square. Tarife clare, depuneri rapide "
+"(1-2 zile lucrătoare). Vindeți online și personal și sincronizați toate "
+"plățile, articolele și inventarul."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12299,7 +12351,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Plata a eșuat pentru {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16254,6 +16305,8 @@ msgstr[0] ""
 "%d acreditiv rămâne criptat în baza de date până când îl salvați din nou "
 "sau activați din nou criptarea.|%d acreditive rămân criptate în baza de "
 "date până când le salvați din nou sau activați din nou criptarea."
+msgstr[1] ""
+msgstr[2] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16366,6 +16419,8 @@ msgstr[0] ""
 "Utilizați Criptați acreditivele stocate pentru a reîncerca.|Criptarea este "
 "activată, dar %d acreditive stocate sunt încă în text simplu. Utilizați "
 "Criptați acreditivele stocate pentru a reîncerca."
+msgstr[1] ""
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16380,6 +16435,8 @@ msgstr[0] ""
 "Aveți %d acreditiv stocat în text simplu. Activarea criptării îl va cripta "
 "automat.|Aveți %d acreditive stocate în text simplu. Activarea criptării le "
 "va cripta automat."
+msgstr[1] ""
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

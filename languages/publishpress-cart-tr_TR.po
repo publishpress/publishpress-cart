@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:56+0000\n"
+"PO-Revision-Date: 2026-10-14 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: tr_TR\n"
@@ -5421,6 +5421,43 @@ msgstr "Square Eklentisi etkinleştirilemedi."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Square Eklentisi devre dışı bırakılamadı."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Yönlendirme, influencer ve bağlı kuruluş programlarını zahmetsizce yürütün. "
+"Ortakları işe alın, komisyon planlarını özelleştirin ve ödemeleri "
+"otomatikleştirin. Erişimi genişletmek, satışları artırmak, markanızı "
+"büyütmek ve ROI'yi maksimize etmek için güvenilir eklenti."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Küresel ve yerel ödeme yöntemleri sunun ve dakikalar içinde kaydolun, "
+"dilinizde destekle."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Razorpay ile PublishPress Sepet mağazanızda ödemeleri kabul edin. "
+"Entegrasyon ve çevrimiçi kayıt dahildir."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Square ile ödemeleri kabul etmek kolaydır. Şeffaf tarifeler, hızlı ödemeler "
+"(1-2 iş günü). Çevrimiçi ve yüz yüze satış yapın ve tüm ödemeleri, ürünleri "
+"ve envanteri senkronize edin."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12247,7 +12284,6 @@ msgid "Payment failed for {product_name}"
 msgstr "{product_name} için ödeme başarısız oldu"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16181,9 +16217,10 @@ msgstr[1] ""
 "enable encryption again."
 msgstr[0] ""
 "%d kimlik bilgisi veritabanında şifreli kalır, yeniden kaydedilene veya "
-"şifreleme tekrar etkinleştirilene kadar.|%d kimlik bilgisi veritabanında "
-"şifreli kalır, yeniden kaydedilene veya şifreleme tekrar etkinleştirilene "
-"kadar."
+"şifreleme tekrar etkinleştirilene kadar."
+msgstr[1] ""
+"%d kimlik bilgisi veritabanında şifreli kalır, yeniden kaydedilene veya "
+"şifreleme tekrar etkinleştirilene kadar."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16297,9 +16334,10 @@ msgstr[1] ""
 "Encrypt stored credentials to retry."
 msgstr[0] ""
 "Şifreleme etkin ancak %d saklanan kimlik bilgisi hala düz metin. Yeniden "
-"denemek için Saklanan kimlik bilgilerini Şifrele'yi kullanın.|Şifreleme "
-"etkin ancak %d saklanan kimlik bilgisi hala düz metin. Yeniden denemek için "
-"Saklanan kimlik bilgilerini Şifrele'yi kullanın."
+"denemek için Saklanan kimlik bilgilerini Şifrele'yi kullanın."
+msgstr[1] ""
+"Şifreleme etkin ancak %d saklanan kimlik bilgisi hala düz metin. Yeniden "
+"denemek için Saklanan kimlik bilgilerini Şifrele'yi kullanın."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16314,8 +16352,10 @@ msgstr[1] ""
 "encrypt them automatically."
 msgstr[0] ""
 "Düz metinde %d saklanan kimliğiniz var. Şifrelemeyi etkinleştirmek otomatik "
-"olarak şifreleyecektir.|Düz metinde %d saklanan kimlik bilgileriniz var. "
-"Şifrelemeyi etkinleştirmek otomatik olarak şifreleyecektir."
+"olarak şifreleyecektir."
+msgstr[1] ""
+"Düz metinde %d saklanan kimlik bilgileriniz var. Şifrelemeyi etkinleştirmek "
+"otomatik olarak şifreleyecektir."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

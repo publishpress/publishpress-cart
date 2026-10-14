@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:54+0000\n"
+"PO-Revision-Date: 2026-10-14 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: th\n"
@@ -5388,6 +5388,43 @@ msgstr "การเปิดใช้งาน Square Addon ล gesล้มเ
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "การปิดการใช้งาน Square Addon ล gesล้มเหลว."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"ดำเนินการโปรแกรมแนะนำ, ผู้มีอิทธิพล, และพันธมิตรอย่างง่ายดาย เชิญชวนคู่ค้า "
+"ปรับแต่งแผนค่าคอมมิชชั่น "
+"และทำให้การจ่ายเงินเป็นอัตโนมัติปลั๊กอินที่เชื่อถือได้เพื่อขยายขอบเขต "
+"เพิ่มยอดขาย เติบโตแบรนด์ของคุณ และเพิ่ม ROI สูงสุด."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"เสนอวิธีการชำระเงินทั่วโลกและในท้องถิ่น และเริ่มต้นใช้งานในไม่กี่นาที "
+"พร้อมการสนับสนุนในภาษาของคุณ."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"รับชำระเงินในร้านค้า PublishPress ของคุณด้วย Razorpay "
+"การรวมและการเริ่มต้นใช้งานออนไลน์รวมอยู่ด้วย."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"การรับชำระเงินทำได้ง่ายด้วย Square อัตราที่ชัดเจน การฝากเงินรวดเร็ว (1-2 "
+"วันทำการ) ขายออนไลน์และแบบตัวต่อตัว และซิงค์การชำระเงิน รายการ "
+"และสินค้าคงคลังทั้งหมด."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12211,7 +12248,6 @@ msgid "Payment failed for {product_name}"
 msgstr "การชำระเงินล้มเหลวสำหรับ {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16131,8 +16167,6 @@ msgstr[0] ""
 msgstr[0] ""
 "%d "
 "ข้อมูลประจำตัวยังคงถูกเข้ารหัสในฐานข้อมูลจนกว่าคุณจะบันทึกใหม่หรือเปิดใช้งาน"
-"การเข้ารหัสอีกครั้ง.|%d "
-"ข้อมูลประจำตัวยังคงถูกเข้ารหัสในฐานข้อมูลจนกว่าคุณจะบันทึกใหม่หรือเปิดใช้งาน"
 "การเข้ารหัสอีกครั้ง."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
@@ -16247,8 +16281,6 @@ msgstr[0] ""
 msgstr[0] ""
 "เปิดใช้งานการเข้ารหัส แต่ %d "
 "ข้อมูลประจำตัวที่เก็บไว้ยังคงเป็นข้อความธรรมชาติ "
-"ใช้เข้ารหัสข้อมูลประจำตัวที่เก็บไว้เพื่อลองใหม่.|เปิดใช้งานการเข้ารหัส แต่ "
-"%d ข้อมูลประจำตัวที่เก็บไว้ยังคงเป็นข้อความธรรมชาติ "
 "ใช้เข้ารหัสข้อมูลประจำตัวที่เก็บไว้เพื่อลองใหม่."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
@@ -16263,8 +16295,6 @@ msgstr[0] ""
 "encrypt them automatically."
 msgstr[0] ""
 "คุณมี %d ข้อมูลประจำตัวที่เก็บไว้ในรูปแบบข้อความธรรมชาติ "
-"การเปิดใช้งานการเข้ารหัสจะทำให้มันถูกเข้ารหัสโดยอัตโนมัติ.|คุณมี %d "
-"ข้อมูลประจำตัวที่เก็บไว้ในรูปแบบข้อความธรรมชาติ "
 "การเปิดใช้งานการเข้ารหัสจะทำให้มันถูกเข้ารหัสโดยอัตโนมัติ."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:09+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: cs_CZ\n"
@@ -5447,6 +5447,43 @@ msgstr "Aktivace Square Addonu se nezdařila."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Deaktivace Square Addonu se nezdařila."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Spusťte referral, influencer a affiliate programy bez námahy. Rekrutujte "
+"partnery, přizpůsobte plány provizí a automatizujte výplaty. Důvěryhodný "
+"plugin pro rozšíření dosahu, zvýšení prodeje, růst vaší značky a "
+"maximalizaci ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Nabídněte globální a místní platební metody a zaregistrujte se za pár "
+"minut, s podporou ve vašem jazyce."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Přijímejte platby ve vašem obchodě PublishPress Cart s Razorpay. Integrace "
+"a online registrace zahrnuta."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Přijímání plateb je snadné se Square. Jasné sazby, rychlé vklady (1-2 "
+"pracovní dny). Prodávejte online a osobně a synchronizujte všechny platby, "
+"položky a inventář."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12273,7 +12310,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Platba se nezdařila pro {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16214,9 +16250,11 @@ msgstr[2] ""
 "enable encryption again."
 msgstr[0] ""
 "%d přihlašovací údaj zůstává šifrovaný v databázi, dokud jej znovu "
-"neuložíte nebo znovu neaktivujete šifrování.|%d přihlašovacích údajů "
-"zůstává šifrovaných v databázi, dokud je znovu neuložíte nebo znovu "
-"neaktivujete šifrování."
+"neuložíte nebo znovu neaktivujete šifrování."
+msgstr[1] ""
+"%d přihlašovacích údajů zůstává šifrovaných v databázi, dokud je znovu "
+"neuložíte nebo znovu neaktivujete šifrování."
+msgstr[2] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16328,9 +16366,11 @@ msgstr[2] ""
 "Encrypt stored credentials to retry."
 msgstr[0] ""
 "Šifrování je povoleno, ale %d uložený přihlašovací údaj je stále v čitelném "
-"textu. Použijte Šifrovat uložené přihlašovací údaje k opakování.|Šifrování "
-"je povoleno, ale %d uložených přihlašovacích údajů je stále v čitelném "
 "textu. Použijte Šifrovat uložené přihlašovací údaje k opakování."
+msgstr[1] ""
+"Šifrování je povoleno, ale %d uložených přihlašovacích údajů je stále v "
+"čitelném textu. Použijte Šifrovat uložené přihlašovací údaje k opakování."
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16346,8 +16386,11 @@ msgstr[2] ""
 "encrypt them automatically."
 msgstr[0] ""
 "Máte %d uložený přihlašovací údaj v čitelném textu. Aktivace šifrování jej "
-"automaticky zašifruje.|Máte %d uložených přihlašovacích údajů v čitelném "
-"textu. Aktivace šifrování je automaticky zašifruje."
+"automaticky zašifruje."
+msgstr[1] ""
+"Máte %d uložených přihlašovacích údajů v čitelném textu. Aktivace šifrování "
+"je automaticky zašifruje."
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

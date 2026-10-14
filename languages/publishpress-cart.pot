@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-13T20:22:49+00:00\n"
+"POT-Creation-Date: 2026-10-14T14:29:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
@@ -5137,6 +5137,22 @@ msgstr ""
 
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
+msgstr ""
+
+#: admin/templates/extensions-list.php:14
+msgid "Run referral, influencer, and affiliate programs effortlessly. Recruit partners, customize commission plans, and automate payouts. The trusted plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+
+#: admin/templates/extensions-list.php:23
+msgid "Offer global and local payment methods and get onboarded in minutes, with support in your language."
+msgstr ""
+
+#: admin/templates/extensions-list.php:32
+msgid "Accept payments in your PublishPress Cart store with Razorpay. Integration and online onboarding included."
+msgstr ""
+
+#: admin/templates/extensions-list.php:41
+msgid "Accepting payments is easy with Square. Clear rates, fast deposits (1-2 business days). Sell online and in person, and sync all payments, items and inventory."
 msgstr ""
 
 #. translators: %1$s is replaced with "string"

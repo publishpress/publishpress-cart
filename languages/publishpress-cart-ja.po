@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:36+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: ja\n"
@@ -5278,6 +5278,36 @@ msgstr "Squareアドオンの有効化に失敗しました。"
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Squareアドオンの無効化に失敗しました。"
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"紹介、インフルエンサー、アフィリエイトプログラムを手間なく実行します。パートナーを募集し、コミッションプランをカスタマイズし、支払いを自動化します。リー"
+"チを拡大し、売上を増やし、ブランドを成長させ、ROIを最大化するための信頼できるプラグインです。"
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr "グローバルおよびローカルの支払い方法を提供し、数分でオンボーディングを完了し、あなたの言語でサポートを受けます。"
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr "Razorpayを使用して、あなたのPublishPress Cartストアで支払いを受け入れます。統合とオンラインオンボーディングが含まれます。"
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Squareを使用すれば、支払いを受け取るのが簡単です。明確な料金、迅速な入金（1-2"
+"営業日）。オンラインおよび対面で販売し、すべての支払い、アイテム、在庫を同期します。"
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -15903,9 +15933,7 @@ msgid_plural ""
 msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
-msgstr[0] ""
-"%d の資格情報がデータベース内で暗号化されたままであり、再保存するか、再度暗号化を有効にするまでそのままです。|%d "
-"の資格情報がデータベース内で暗号化されたままであり、再保存するか、再度暗号化を有効にするまでそのままです。"
+msgstr[0] "%d の資格情報がデータベース内で暗号化されたままであり、再保存するか、再度暗号化を有効にするまでそのままです。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16005,10 +16033,7 @@ msgid_plural ""
 msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
-msgstr[0] ""
-"暗号化は有効になっていますが、%d "
-"の保存された資格情報はまだ平文のままです。保存された資格情報を暗号化して再試行してください。|暗号化は有効になっていますが、%d "
-"の保存された資格情報はまだ平文のままです。保存された資格情報を暗号化して再試行してください。"
+msgstr[0] "暗号化は有効になっていますが、%d の保存された資格情報はまだ平文のままです。保存された資格情報を暗号化して再試行してください。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16020,9 +16045,7 @@ msgid_plural ""
 msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
-msgstr[0] ""
-"平文の資格情報が %d 件あります。暗号化を有効にすると、自動的に暗号化されます。|平文の資格情報が %d "
-"件あります。暗号化を有効にすると、自動的に暗号化されます。"
+msgstr[0] "平文の資格情報が %d 件あります。暗号化を有効にすると、自動的に暗号化されます。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

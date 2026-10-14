@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:32+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -367,7 +367,6 @@ msgstr "Sinkronkan dengan Stripe"
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s langganan disinkronkan dari Stripe."
-msgstr[1] "%s langganan disinkronkan dari Stripe."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
@@ -375,7 +374,6 @@ msgstr[1] "%s langganan disinkronkan dari Stripe."
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s gagal; lihat log langganannya untuk alasan tersebut."
-msgstr[1] "%s gagal; lihat log langganan mereka untuk alasan tersebut."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
@@ -1250,7 +1248,6 @@ msgstr "Tertunda"
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
 msgstr[0] "Menunggu <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Menunggu <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1264,7 +1261,6 @@ msgstr "Dibayar"
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
 msgstr[0] "Dibayar <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Dibayar <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
@@ -1272,7 +1268,6 @@ msgstr[1] "Dibayar <span class=\\\"count\\\">(%s)</span>"
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
 msgstr[0] "Dikembalikan <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Dikembalikan <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1285,7 +1280,6 @@ msgstr "Gagal"
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
 msgstr[0] "Gagal <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Gagal <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1301,7 +1295,6 @@ msgstr "Lewat Jatuh Tempo"
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
 msgstr[0] "Lewat Jatuh Tempo <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Lewat Jatuh Tempo <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1314,7 +1307,6 @@ msgstr "Tidak Dapat Ditarik"
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
 msgstr[0] "Tidak Dapat Ditarik <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Tidak Dapat Ditarik <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1332,7 +1324,6 @@ msgstr "Aktif"
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "Aktif <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Aktif <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1345,7 +1336,6 @@ msgstr "Belum dibayar"
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
 msgstr[0] "Belum Dibayar <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Belum Dibayar <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1361,7 +1351,6 @@ msgstr "Dijeda"
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
 msgstr[0] "Dijeda <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Dijeda <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
@@ -1369,7 +1358,6 @@ msgstr[1] "Dijeda <span class=\\\"count\\\">(%s)</span>"
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
 msgstr[0] "Dibatalkan <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Dibatalkan <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1383,7 +1371,6 @@ msgstr "Selesai"
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
 msgstr[0] "Selesai <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Selesai <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1396,7 +1383,6 @@ msgstr "Tidak lengkap"
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
 msgstr[0] "Tidak Lengkap <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Tidak Lengkap <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1409,7 +1395,6 @@ msgstr "Dalam percobaan"
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
 msgstr[0] "Mencoba <span class=\\\"count\\\">(%s)</span>"
-msgstr[1] "Mencoba <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -5427,6 +5412,43 @@ msgstr "Aktivasi Addon Square gagal."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Deaktivasi Addon Square gagal."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Jalankan program rujukan, influencer, dan afiliasi tanpa usaha. Rekrut "
+"mitra, sesuaikan rencana komisi, dan otomatisasi pembayaran. Plugin "
+"terpercaya untuk memperluas jangkauan, meningkatkan penjualan, "
+"mengembangkan merek Anda, dan memaksimalkan ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Tawarkan metode pembayaran global dan lokal dan bergabung dalam hitungan "
+"menit, dengan dukungan dalam bahasa Anda."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Terima pembayaran di toko PublishPress Cart Anda dengan Razorpay. Integrasi "
+"dan onboarding online termasuk."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Menerima pembayaran itu mudah dengan Square. Tarif yang jelas, setoran "
+"cepat (1-2 hari kerja). Jual secara online dan langsung, dan sinkronkan "
+"semua pembayaran, item, dan inventaris."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12263,7 +12285,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Pembayaran gagal untuk {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"

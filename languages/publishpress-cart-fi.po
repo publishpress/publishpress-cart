@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:21+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -5443,6 +5443,43 @@ msgstr "Square-lisäosan aktivointi epäonnistui."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Square-lisäosan deaktivoiminen epäonnistui."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Suorita suosittelu-, vaikuttaja- ja affiliate-ohjelmia vaivattomasti. "
+"Rekrytoi kumppaneita, mukauta komissiosuunnitelmia ja automatisoi maksut. "
+"Luotettava lisäosa laajentamaan ulottuvuutta, lisäämään myyntiä, "
+"kasvattamaan brändiäsi ja maksimimaan ROI:n."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Tarjoa globaaleja ja paikallisia maksutapoja ja aloita käyttöönottoprosessi "
+"minuuteissa, tukena omalla kielelläsi."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Hyväksy maksut PublishPress-kaupassasi Razorpayn avulla. Integraatio ja "
+"online-käyttöönottoprosessi sisältyvät."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Maksujen hyväksyminen on helppoa Squarella. Selkeät hinnat, nopeat "
+"talletukset (1-2 arkipäivää). Myy verkossa ja paikan päällä, ja synkronoi "
+"kaikki maksut, tuotteet ja varasto."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12266,7 +12303,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Maksu epäonnistui tuotteelle {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16205,6 +16241,7 @@ msgstr[0] ""
 "%d tietoa pysyy salattuna tietokannassa, kunnes tallennat sen uudelleen tai "
 "otat salauksen käyttöön uudelleen.|%d tietoa pysyy salattuna tietokannassa, "
 "kunnes tallennat ne uudelleen tai otat salauksen käyttöön uudelleen."
+msgstr[1] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16317,6 +16354,7 @@ msgstr[0] ""
 "Käytä Salatun tiedon salausta yrittääksesi uudelleen.|Salaus on käytössä, "
 "mutta %d tallennettua tietoa on edelleen selkokielisiä. Käytä Salatun "
 "tiedon salausta yrittääksesi uudelleen."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16331,6 +16369,7 @@ msgstr[0] ""
 "Sinulla on %d tallennettua tietoa selkokielisenä. Salauksen ottaminen "
 "käyttöön salaa sen automaattisesti.|Sinulla on %d tallennettua tietoa "
 "selkokielisenä. Salauksen ottaminen käyttöön salaa ne automaattisesti."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

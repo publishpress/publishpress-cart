@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:42+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "&& (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
@@ -5465,6 +5465,43 @@ msgstr "Aktywacja dodatku Square nie powiodła się."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Dezaktywacja dodatku Square nie powiodła się."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Uruchom programy poleceń, influencerów i afiliacyjne bez wysiłku. Rekrutuj "
+"partnerów, dostosuj plany prowizji i zautomatyzuj wypłaty. Zaufana wtyczka "
+"do rozszerzania zasięgu, zwiększania sprzedaży, rozwijania marki i "
+"maksymalizacji ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Oferuj globalne i lokalne metody płatności i rozpocznij współpracę w kilka "
+"minut, z wsparciem w swoim języku."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Akceptuj płatności w swoim sklepie PublishPress Cart za pomocą Razorpay. "
+"Integracja i onboarding online wliczone w cenę."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Akceptowanie płatności jest łatwe z Square. Jasne stawki, szybkie wpłaty "
+"(1-2 dni robocze). Sprzedawaj online i osobiście, a także synchronizuj "
+"wszystkie płatności, przedmioty i zapasy."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12298,7 +12335,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Płatność nie powiodła się dla {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16243,9 +16279,11 @@ msgstr[2] ""
 "enable encryption again."
 msgstr[0] ""
 "%d dane uwierzytelniające pozostają szyfrowane w bazie danych, dopóki ich "
-"nie zapiszesz ponownie lub nie włączysz szyfrowania.|%d dane "
-"uwierzytelniające pozostają szyfrowane w bazie danych, dopóki ich nie "
-"zapiszesz ponownie lub nie włączysz szyfrowania."
+"nie zapiszesz ponownie lub nie włączysz szyfrowania."
+msgstr[1] ""
+"%d dane uwierzytelniające pozostają szyfrowane w bazie danych, dopóki ich "
+"nie zapiszesz ponownie lub nie włączysz szyfrowania."
+msgstr[2] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16362,9 +16400,12 @@ msgstr[2] ""
 msgstr[0] ""
 "Szyfrowanie jest włączone, ale %d zapisane dane uwierzytelniające są nadal "
 "w formie jawnej. Użyj Szyfruj zapisane dane uwierzytelniające, aby "
-"spróbować ponownie.|Szyfrowanie jest włączone, ale %d zapisanych danych "
-"uwierzytelniających jest nadal w formie jawnej. Użyj Szyfruj zapisane dane "
-"uwierzytelniające, aby spróbować ponownie."
+"spróbować ponownie."
+msgstr[1] ""
+"Szyfrowanie jest włączone, ale %d zapisanych danych uwierzytelniających "
+"jest nadal w formie jawnej. Użyj Szyfruj zapisane dane uwierzytelniające, "
+"aby spróbować ponownie."
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16380,9 +16421,11 @@ msgstr[2] ""
 "encrypt them automatically."
 msgstr[0] ""
 "Masz %d zapisane dane uwierzytelniające w formie jawnej. Włączenie "
-"szyfrowania automatycznie je zaszyfruje.|Masz %d zapisanych danych "
-"uwierzytelniających w formie jawnej. Włączenie szyfrowania automatycznie je "
-"zaszyfruje."
+"szyfrowania automatycznie je zaszyfruje."
+msgstr[1] ""
+"Masz %d zapisanych danych uwierzytelniających w formie jawnej. Włączenie "
+"szyfrowania automatycznie je zaszyfruje."
+msgstr[2] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:34+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: Poedit 3.7\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -5478,6 +5478,43 @@ msgstr "Attivazione dell'add-on Square non riuscita."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Disattivazione dell'add-on Square non riuscita."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Gestisci programmi di referral, influencer e affiliate senza sforzo. "
+"Recluta partner, personalizza i piani di commissione e automatizza i "
+"pagamenti. Il plugin affidabile per espandere la portata, aumentare le "
+"vendite, far crescere il tuo marchio e massimizzare il ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Offri metodi di pagamento globali e locali e inizia in pochi minuti, con "
+"supporto nella tua lingua."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Accetta pagamenti nel tuo negozio PublishPress Cart con Razorpay. "
+"Integrazione e onboarding online inclusi."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Accettare pagamenti è facile con Square. Tariffe chiare, depositi rapidi "
+"(1-2 giorni lavorativi). Vendi online e di persona, e sincronizza tutti i "
+"pagamenti, gli articoli e l'inventario."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -16257,6 +16294,7 @@ msgstr[0] ""
 "%d credenziale rimane crittografata nel database fino a quando non la "
 "ri-salvi o riattivi la crittografia.|%d credenziali rimangono crittografate "
 "nel database fino a quando non le ri-salvi o riattivi la crittografia."
+msgstr[1] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16375,6 +16413,7 @@ msgstr[0] ""
 "semplice. Usa Crittografa credenziali memorizzate per riprovare.|La "
 "crittografia è abilitata ma %d credenziali memorizzate sono ancora in testo "
 "semplice. Usa Crittografa credenziali memorizzate per riprovare."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16389,6 +16428,7 @@ msgstr[0] ""
 "Hai %d credenziale memorizzata in testo semplice. Abilitare la crittografia "
 "la crittograferà automaticamente.|Hai %d credenziali memorizzate in testo "
 "semplice. Abilitare la crittografia le crittograferà automaticamente."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

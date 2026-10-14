@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:40+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -5455,6 +5455,43 @@ msgstr "Activatie van Square Addon is mislukt."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Deactivatie van Square Addon is mislukt."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Voer referral-, influencer- en affiliateprogramma's moeiteloos uit. Werv "
+"partners, pas commissieplannen aan en automatiseer betalingen. De "
+"vertrouwde plugin om bereik uit te breiden, verkopen te verhogen, je merk "
+"te laten groeien en ROI te maximaliseren."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Bied wereldwijde en lokale betalingsmethoden aan en word binnen enkele "
+"minuten geïntroduceerd, met ondersteuning in jouw taal."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Accepteer betalingen in je PublishPress Cart-winkel met Razorpay. "
+"Integratie en online onboarding inbegrepen."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Betalingen accepteren is eenvoudig met Square. Duidelijke tarieven, snelle "
+"stortingen (1-2 werkdagen). Verkoop online en persoonlijk, en synchroniseer "
+"alle betalingen, artikelen en voorraad."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12296,7 +12333,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Betaling mislukt voor {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16248,6 +16284,7 @@ msgstr[0] ""
 "opslaat of versleuteling opnieuw inschakelt.|%d referenties blijven "
 "versleuteld in de database totdat u deze opnieuw opslaat of versleuteling "
 "opnieuw inschakelt."
+msgstr[1] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16367,6 +16404,7 @@ msgstr[0] ""
 "proberen.|Versleuteling is ingeschakeld, maar %d opgeslagen referenties "
 "zijn nog steeds in platte tekst. Gebruik Versleutel opgeslagen referenties "
 "om opnieuw te proberen."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16382,6 +16420,7 @@ msgstr[0] ""
 "versleuteling zal deze automatisch versleutelen.|U heeft %d opgeslagen "
 "referenties in platte tekst. Het inschakelen van versleuteling zal deze "
 "automatisch versleutelen."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:15+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -5479,6 +5479,44 @@ msgstr "Η ενεργοποίηση της προσθήκης Square απέτυ�
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Η απενεργοποίηση της προσθήκης Square απέτυχε."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Τρέξτε προγράμματα παραπομπών, επιρροής και συνεργατών χωρίς κόπο. "
+"Προσκαλέστε συνεργάτες, προσαρμόστε σχέδια προμηθειών και αυτοματοποιήστε "
+"τις πληρωμές. Το αξιόπιστο πρόσθετο για να επεκτείνετε την εμβέλεια, να "
+"αυξήσετε τις πωλήσεις, να αναπτύξετε την επωνυμία σας και να "
+"μεγιστοποιήσετε την απόδοση της επένδυσής σας."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Προσφέρετε παγκόσμιους και τοπικούς τρόπους πληρωμής και εγγραφείτε μέσα σε "
+"λίγα λεπτά, με υποστήριξη στη γλώσσα σας."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Δεχτείτε πληρωμές στο κατάστημα PublishPress Cart σας με το Razorpay. "
+"Περιλαμβάνονται η ενσωμάτωση και η διαδικτυακή εγγραφή."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Η αποδοχή πληρωμών είναι εύκολη με το Square. Διαφανείς τιμές, γρήγορες "
+"καταθέσεις (1-2 εργάσιμες ημέρες). Πουλήστε διαδικτυακά και αυτοπροσώπως, "
+"και συγχρονίστε όλες τις πληρωμές, τα είδη και το απόθεμα."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12334,7 +12372,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Η πληρωμή απέτυχε για το {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16307,6 +16344,7 @@ msgstr[0] ""
 "ξανααποθηκεύσετε ή να ενεργοποιήσετε ξανά την κρυπτογράφηση.|%d "
 "διαπιστευτήρια παραμένουν κρυπτογραφημένα στη βάση δεδομένων μέχρι να τα "
 "ξανααποθηκεύσετε ή να ενεργοποιήσετε ξανά την κρυπτογράφηση."
+msgstr[1] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16429,6 +16467,7 @@ msgstr[0] ""
 "ενεργοποιημένη αλλά %d αποθηκευμένα διαπιστευτήρια είναι ακόμα σε απλό "
 "κείμενο. Χρησιμοποιήστε την κρυπτογράφηση αποθηκευμένων διαπιστευτηρίων για "
 "να δοκιμάσετε ξανά."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16444,6 +16483,7 @@ msgstr[0] ""
 "κρυπτογράφησης θα το κρυπτογραφήσει αυτόματα.|Έχετε %d αποθηκευμένα "
 "διαπιστευτήρια σε απλό κείμενο. Η ενεργοποίηση της κρυπτογράφησης θα τα "
 "κρυπτογραφήσει αυτόματα."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

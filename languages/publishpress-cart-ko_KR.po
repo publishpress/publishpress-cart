@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:38+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: ko_KR\n"
@@ -5284,6 +5284,36 @@ msgstr "Square 애드온 활성화에 실패했습니다."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Square 애드온 비활성화에 실패했습니다."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"추천, 인플루언서 및 제휴 프로그램을 손쉽게 운영하세요. 파트너를 모집하고, 커미션 계획을 맞춤 설정하며, 지급을 자동화하세요. 범위를 "
+"확장하고, 판매를 증가시키며, 브랜드를 성장시키고, ROI를 극대화하기 위한 신뢰할 수 있는 플러그인입니다."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr "전 세계 및 로컬 결제 방법을 제공하고, 귀하의 언어로 지원받으며 몇 분 안에 온보딩하세요."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr "Razorpay를 통해 PublishPress Cart 상점에서 결제를 받으세요. 통합 및 온라인 온보딩이 포함되어 있습니다."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Square를 사용하면 결제가 쉽습니다. 명확한 요금, 빠른 입금(1-2 영업일). 온라인 및 오프라인에서 판매하고, 모든 결제, 항목 "
+"및 재고를 동기화하세요."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12048,7 +12078,6 @@ msgid "Payment failed for {product_name}"
 msgstr "{product_name} 결제 실패"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -15921,10 +15950,7 @@ msgid_plural ""
 msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
-msgstr[0] ""
-"%d개의 자격 증명이 데이터베이스에 암호화된 상태로 남아 있으며, 이를 다시 저장하거나 암호화를 다시 활성화할 때까지 "
-"유지됩니다.|%d개의 자격 증명이 데이터베이스에 암호화된 상태로 남아 있으며, 이를 다시 저장하거나 암호화를 다시 활성화할 때까지 "
-"유지됩니다."
+msgstr[0] "%d개의 자격 증명이 데이터베이스에 암호화된 상태로 남아 있으며, 이를 다시 저장하거나 암호화를 다시 활성화할 때까지 유지됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16024,10 +16050,7 @@ msgid_plural ""
 msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
-msgstr[0] ""
-"암호화가 활성화되었지만 %d개의 저장된 자격 증명이 여전히 일반 텍스트입니다. 저장된 자격 증명 암호화를 사용하여 다시 "
-"시도하십시오.|암호화가 활성화되었지만 %d개의 저장된 자격 증명이 여전히 일반 텍스트입니다. 저장된 자격 증명 암호화를 사용하여 다시 "
-"시도하십시오."
+msgstr[0] "암호화가 활성화되었지만 %d개의 저장된 자격 증명이 여전히 일반 텍스트입니다. 저장된 자격 증명 암호화를 사용하여 다시 시도하십시오."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16039,9 +16062,7 @@ msgid_plural ""
 msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
-msgstr[0] ""
-"일반 텍스트로 %d개의 저장된 자격 증명이 있습니다. 암호화를 활성화하면 자동으로 암호화됩니다.|일반 텍스트로 %d개의 저장된 자격 "
-"증명이 있습니다. 암호화를 활성화하면 자동으로 암호화됩니다."
+msgstr[0] "일반 텍스트로 %d개의 저장된 자격 증명이 있습니다. 암호화를 활성화하면 자동으로 암호화됩니다."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

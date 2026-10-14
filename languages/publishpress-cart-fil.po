@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:23+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
@@ -5500,6 +5500,44 @@ msgstr "Nabigong i-activate ang Square Addon."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Nabigong i-deactivate ang Square Addon."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Patakbuhin ang referral, influencer, at affiliate na mga programa nang "
+"walang kahirap-hirap. Mag-recruit ng mga kasosyo, i-customize ang mga plano "
+"ng komisyon, at i-automate ang mga pagbabayad. Ang mapagkakatiwalaang "
+"plugin upang mapalawak ang abot, mapalakas ang benta, palaguin ang iyong "
+"brand, at ma-maximize ang ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Mag-alok ng mga pandaigdig at lokal na paraan ng pagbabayad at makakuha ng "
+"onboarding sa loob ng ilang minuto, na may suporta sa iyong wika."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Tanggapin ang mga pagbabayad sa iyong PublishPress Cart store gamit ang "
+"Razorpay. Kasama ang integration at online onboarding."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Madali ang pagtanggap ng mga pagbabayad gamit ang Square. Malinaw na mga "
+"rate, mabilis na mga deposito (1-2 araw ng trabaho). Magbenta online at sa "
+"personal, at i-sync ang lahat ng mga pagbabayad, item at imbentaryo."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12350,7 +12388,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Nabigong pagbabayad para sa {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16308,9 +16345,10 @@ msgstr[1] ""
 "enable encryption again."
 msgstr[0] ""
 "%d kredensyal ang nananatiling naka-encrypt sa database hanggang sa muli mo "
-"itong i-save o paganahin ang pag-encrypt muli.|%d mga kredensyal ang "
-"nananatiling naka-encrypt sa database hanggang sa muli mo silang i-save o "
-"paganahin ang pag-encrypt muli."
+"itong i-save o paganahin ang pag-encrypt muli."
+msgstr[1] ""
+"%d mga kredensyal ang nananatiling naka-encrypt sa database hanggang sa "
+"muli mo silang i-save o paganahin ang pag-encrypt muli."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16429,9 +16467,11 @@ msgstr[1] ""
 msgstr[0] ""
 "Pinagana ang pag-encrypt ngunit %d naka-imbak na kredensyal ay nananatiling "
 "sa plaintext. Gamitin ang I-encrypt ang naka-imbak na mga kredensyal upang "
-"subukan muli.|Pinagana ang pag-encrypt ngunit %d naka-imbak na mga "
-"kredensyal ay nananatiling sa plaintext. Gamitin ang I-encrypt ang "
-"naka-imbak na mga kredensyal upang subukan muli."
+"subukan muli."
+msgstr[1] ""
+"Pinagana ang pag-encrypt ngunit %d naka-imbak na mga kredensyal ay "
+"nananatiling sa plaintext. Gamitin ang I-encrypt ang naka-imbak na mga "
+"kredensyal upang subukan muli."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16446,9 +16486,10 @@ msgstr[1] ""
 "encrypt them automatically."
 msgstr[0] ""
 "Mayroon kang %d naka-imbak na kredensyal sa plaintext. Ang pag-enable ng "
-"pag-encrypt ay awtomatikong i-eencrypt ito.|Mayroon kang %d naka-imbak na "
-"mga kredensyal sa plaintext. Ang pag-enable ng pag-encrypt ay awtomatikong "
-"i-eencrypt ang mga ito."
+"pag-encrypt ay awtomatikong i-eencrypt ito."
+msgstr[1] ""
+"Mayroon kang %d naka-imbak na mga kredensyal sa plaintext. Ang pag-enable "
+"ng pag-encrypt ay awtomatikong i-eencrypt ang mga ito."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

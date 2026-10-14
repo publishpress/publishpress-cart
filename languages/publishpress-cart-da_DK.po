@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 01:11+0000\n"
+"PO-Revision-Date: 2026-10-14 14:30+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -5428,6 +5428,43 @@ msgstr "Aktivering af Square Addon mislykkedes."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Deaktivering af Square Addon mislykkedes."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Kør henvisnings-, influencer- og affiliate-programmer uden besvær. "
+"Rekrutter partnere, tilpas kommissionsplaner og automatiser udbetalinger. "
+"Den betroede plugin til at udvide rækkevidden, øge salget, vækste dit brand "
+"og maksimere ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Tilbyd globale og lokale betalingsmetoder og kom i gang på få minutter, med "
+"support på dit sprog."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Accepter betalinger i din PublishPress Cart butik med Razorpay. Integration "
+"og online onboarding inkluderet."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"At acceptere betalinger er nemt med Square. Klare satser, hurtige "
+"indbetalinger (1-2 arbejdsdage). Sælg online og personligt, og synkroniser "
+"alle betalinger, varer og lager."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12253,7 +12290,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Betaling fejlede for {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16192,6 +16228,7 @@ msgstr[0] ""
 "gemmer dem igen eller aktiverer kryptering igen.|%d "
 "legitimationsoplysninger forbliver krypteret i databasen, indtil du gemmer "
 "dem igen eller aktiverer kryptering igen."
+msgstr[1] ""
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16311,6 +16348,7 @@ msgstr[0] ""
 "gentage.|Kryptering er aktiveret, men %d gemte legitimationsoplysninger er "
 "stadig i klartekst. Brug Krypter gemte legitimationsoplysninger for at "
 "gentage."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16326,6 +16364,7 @@ msgstr[0] ""
 "kryptering vil kryptere dem automatisk.|Du har %d gemte "
 "legitimationsoplysninger i klartekst. Aktivering af kryptering vil kryptere "
 "dem automatisk."
+msgstr[1] ""
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-14 02:00+0000\n"
+"PO-Revision-Date: 2026-10-14 14:31+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: yor\n"
@@ -5372,6 +5372,43 @@ msgstr "Square Addon aṣẹ ko ni aṣeyọri."
 #: admin/templates/extension-notice-messages.php:31
 msgid "Square Addon deactivation failed."
 msgstr "Square Addon pa aṣẹ ko ni aṣeyọri."
+
+#: admin/templates/extensions-list.php:14
+msgid ""
+"Run referral, influencer, and affiliate programs effortlessly. Recruit "
+"partners, customize commission plans, and automate payouts. The trusted "
+"plugin to expand reach, boost sales, grow your brand, and maximize ROI."
+msgstr ""
+"Ṣiṣe awọn eto itọkasi, awọn onimọran, ati awọn eto alafaramo laisi wahala. "
+"Pe awọn alabaṣiṣẹpọ, ṣe akanṣe awọn eto komisini, ki o si ṣe awopọ awọn "
+"isanwo. Ẹrọ afikun ti a gbẹkẹle lati fa arọwọto, mu awọn tita pọ, dagbasoke "
+"ami rẹ, ati pọ si ROI."
+
+#: admin/templates/extensions-list.php:23
+msgid ""
+"Offer global and local payment methods and get onboarded in minutes, with "
+"support in your language."
+msgstr ""
+"Pese awọn ọna isanwo agbaye ati agbegbe ki o si forukọsilẹ ni iṣẹju diẹ, "
+"pẹlu atilẹyin ni ede rẹ."
+
+#: admin/templates/extensions-list.php:32
+msgid ""
+"Accept payments in your PublishPress Cart store with Razorpay. Integration "
+"and online onboarding included."
+msgstr ""
+"Gba awọn isanwo ni ile itaja PublishPress Cart rẹ pẹlu Razorpay. Iṣọpọ ati "
+"forukọsilẹ lori ayelujara wa pẹlu."
+
+#: admin/templates/extensions-list.php:41
+msgid ""
+"Accepting payments is easy with Square. Clear rates, fast deposits (1-2 "
+"business days). Sell online and in person, and sync all payments, items and "
+"inventory."
+msgstr ""
+"Gbigba awọn isanwo rọrun pẹlu Square. Awọn oṣuwọn kedere, awọn idogo yiyara "
+"(1-2 ọjọ iṣẹ). Ta lori ayelujara ati ni eniyan, ki o si mu gbogbo awọn "
+"isanwo, awọn nkan ati iṣura pọ."
 
 #: admin/templates/order-admin-save-post-ppcart-order.php:126
 #. translators: %1$s is replaced with "string"
@@ -12186,7 +12223,6 @@ msgid "Payment failed for {product_name}"
 msgstr "Ìsanwó kò ṣaṣeyọrí fún {product_name}"
 
 #: includes/email/ppcart-template-functions/templates.php:304
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -16105,9 +16141,10 @@ msgstr[0] ""
 "enable encryption again."
 msgstr[0] ""
 "%d àkọsílẹ ti wa ni fipamọ́ nínú àkóónú data títí di pé o tún fipamọ́ rẹ̀ "
-"tàbí ki o mu àfihàn ṣiṣẹ́ lẹ́ẹ̀kansi.|%d àkọsílẹ ti wa ni fipamọ́ nínú "
-"àkóónú data títí di pé o tún fipamọ́ wọn tàbí ki o mu àfihàn ṣiṣẹ́ "
-"lẹ́ẹ̀kansi."
+"tàbí ki o mu àfihàn ṣiṣẹ́ lẹ́ẹ̀kansi."
+msgstr[1] ""
+"%d àkọsílẹ ti wa ni fipamọ́ nínú àkóónú data títí di pé o tún fipamọ́ wọn "
+"tàbí ki o mu àfihàn ṣiṣẹ́ lẹ́ẹ̀kansi."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -16215,9 +16252,10 @@ msgstr[0] ""
 "Encrypt stored credentials to retry."
 msgstr[0] ""
 "Àfihàn ti wa ni mu ṣiṣẹ́ ṣugbọn %d àkọsílẹ ti a fipamọ́ ṣi wà nínú ọrọ. Lo "
-"Ṣe àfihàn àkọsílẹ ti a fipamọ́ láti tún ṣe.|Àfihàn ti wa ni mu ṣiṣẹ́ ṣugbọn "
-"%d àkọsílẹ ti a fipamọ́ ṣi wà nínú ọrọ. Lo Ṣe àfihàn àkọsílẹ ti a fipamọ́ "
-"láti tún ṣe."
+"Ṣe àfihàn àkọsílẹ ti a fipamọ́ láti tún ṣe."
+msgstr[1] ""
+"Àfihàn ti wa ni mu ṣiṣẹ́ ṣugbọn %d àkọsílẹ ti a fipamọ́ ṣi wà nínú ọrọ. Lo "
+"Ṣe àfihàn àkọsílẹ ti a fipamọ́ láti tún ṣe."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16231,8 +16269,10 @@ msgstr[0] ""
 "encrypt them automatically."
 msgstr[0] ""
 "O ní %d àkọsílẹ ti a fipamọ́ nínú ọrọ. Mú àfihàn ṣiṣẹ́ yóò ṣe àfihàn rẹ "
-"laifọwọyi.|O ní %d àkọsílẹ ti a fipamọ́ nínú ọrọ. Mú àfihàn ṣiṣẹ́ yóò ṣe "
-"àfihàn wọn laifọwọyi."
+"laifọwọyi."
+msgstr[1] ""
+"O ní %d àkọsílẹ ti a fipamọ́ nínú ọrọ. Mú àfihàn ṣiṣẹ́ yóò ṣe àfihàn wọn "
+"laifọwọyi."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
