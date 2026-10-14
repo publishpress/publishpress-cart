@@ -82,7 +82,7 @@ class PPCart_Version_Notices
         <div class="pp-version-notice-bold-purple">
             <div class="pp-version-notice-bold-purple-message">
                 <?php
-                echo esc_html__(
+                esc_html_e(
                     'You\'re using PublishPress Cart. The Pro version has more features and support.',
                     'publishpress-cart'
                 );

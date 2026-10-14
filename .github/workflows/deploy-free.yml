@@ -26,3 +26,13 @@ jobs:
     uses: publishpress/github-workflows/.github/workflows/deploy-free.yml@v3
     needs: [code-standards, unit-tests, integration-tests]
     secrets: inherit
+
+  language-packs:
+    name: Publish language packs
+    permissions:
+      contents: write
+    needs: [deploy-wp-org]
+    uses: publishpress/github-workflows/.github/workflows/language-pack.yml@cart-594-translations-delivery-system
+    with:
+      text_domain: publishpress-cart
+    secrets: inherit
