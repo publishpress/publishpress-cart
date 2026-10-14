@@ -16,7 +16,7 @@
  * Plugin Name:       PublishPress Cart - eCommerce for Digital Products
  * Plugin URI:        https://publishpress.com/publishpress-cart/
  * Description:       Create order pages and simplified sales flow creation that helps you sell digital products, programs, and services.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            PublishPress
  * Author URI:        https://publishpress.com/
  * License:           GPL-2.0-or-later
@@ -115,7 +115,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/helpers/ppcart-meta.php';
 ppcart_maybe_register_studiocart_constants($ppcart_loaded_companion_packages);
 
 if (! defined('PPCART_VERSION')) {
-    define('PPCART_VERSION', '1.0.0');
+    define('PPCART_VERSION', '1.0.1');
 }
 if (! defined('PPCART_BASE_DIR')) {
     define('PPCART_BASE_DIR', plugin_dir_path(__FILE__));
