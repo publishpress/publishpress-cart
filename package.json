@@ -1,6 +1,6 @@
 {
   "name": "publishpress-cart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PublishPress Cart — WordPress ecommerce plugin",
   "main": "index.js",
   "directories": {
