@@ -10,16 +10,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-13 22:15+0000\n"
+"PO-Revision-Date: 2026-10-14 01:54+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: publishpress-cart.php:16
 #. Plugin Name of the plugin
 msgid "PublishPress Cart - eCommerce for Digital Products"
-msgstr ""
+msgstr "PublishPress Cart - eCommerce สำหรับผลิตภัณฑ์ดิจิทัล"
 
 #: publishpress-cart.php:17
 #. Plugin URI of the plugin
@@ -32,6 +32,8 @@ msgid ""
 "Create order pages and simplified sales flow creation that helps you sell "
 "digital products, programs, and services."
 msgstr ""
+"สร้างหน้าสั่งซื้อและการสร้างกระบวนการขายที่เรียบง่ายซึ่งช่วยให้คุณขายผลิตภัณ"
+"ฑ์ โปรแกรม และบริการดิจิทัล"
 
 #: publishpress-cart.php:20
 #: admin/partials/settings-page/tabs/topbar.php:8
@@ -83,7 +85,7 @@ msgstr "ลูกค้า"
 
 #: admin/class-ppcart-contacts-page.php:165
 msgid "Export Customers"
-msgstr ""
+msgstr "ส่งออกลูกค้า"
 
 #: admin/class-ppcart-contacts-page.php:169
 #: admin/reports/templates/customer-report/page.php:87
@@ -150,7 +152,7 @@ msgid "Name"
 msgstr "ชื่อ"
 
 #: admin/class-ppcart-contacts-page.php:192
-#: admin/reports/templates/customer-report/page.php:93
+#: admin/reports/templates/customer-report/page.php:93, fuzzy
 msgid "LTV"
 msgstr "LTV"
 
@@ -161,23 +163,23 @@ msgstr "วันที่สั่งซื้อครั้งล่าสุ
 
 #: admin/class-ppcart-contacts-page.php:224
 msgid "Search customers"
-msgstr ""
+msgstr "ค้นหาลูกค้า"
 
 #: admin/class-ppcart-contacts-page.php:225
 msgid "Show _MENU_ customers"
-msgstr ""
+msgstr "แสดงลูกค้า _MENU_"
 
 #: admin/class-ppcart-contacts-page.php:226
 msgid "_START_ - _END_ of _TOTAL_ customers"
-msgstr ""
+msgstr "_START_ - _END_ จาก _TOTAL_ ลูกค้า"
 
 #: admin/class-ppcart-contacts-page.php:227
 msgid "No customers found"
-msgstr ""
+msgstr "ไม่พบลูกค้า"
 
 #: admin/class-ppcart-contacts-page.php:228
 msgid "No matching customers found"
-msgstr ""
+msgstr "ไม่พบลูกค้าที่ตรงกัน"
 
 #: admin/class-ppcart-extension-page.php:81
 #: admin/class-ppcart-extension-page.php:82
@@ -216,7 +218,7 @@ msgstr "ข้อมูลลูกค้า & การเรียกเก็
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:49
 msgid "Studiocart custom tracking scripts are not available in PublishPress Cart."
-msgstr ""
+msgstr "สคริปต์ติดตามแบบกำหนดเองของ Studiocart ไม่สามารถใช้ได้ใน PublishPress Cart."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:50
 msgid ""
@@ -224,20 +226,23 @@ msgid ""
 "Leftover tracking code on these products is kept in post meta for reference "
 "and is not executed."
 msgstr ""
+"ถูกแทนที่ด้วย Meta Pixel ที่มีโครงสร้างและเหตุการณ์ Google Analytics "
+"โค้ดติดตามที่เหลืออยู่ในผลิตภัณฑ์เหล่านี้จะถูกเก็บไว้ในโพสต์เมตาเพื่ออ้างอิง"
+"และจะไม่ถูกดำเนินการ."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:51
 msgid "Affected products:"
-msgstr ""
+msgstr "ผลิตภัณฑ์ที่ได้รับผลกระทบ:"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:61
 msgid "Review analytics settings"
-msgstr ""
+msgstr "ตรวจสอบการตั้งค่าเชิงวิเคราะห์"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:62
 #: admin/traits/templates/notices-admin-notices.php:111
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:56
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "ปิดการแจ้งเตือนนี้"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:76
 msgid "Shortcode"
@@ -303,7 +308,7 @@ msgstr "ผลิตภัณฑ์"
 msgid "Invoice Number"
 msgstr "หมายเลขใบแจ้งหนี้"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:115
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:115, fuzzy
 msgid "Sub ID"
 msgstr "Sub ID"
 
@@ -352,27 +357,29 @@ msgstr "อัปเดตสถานะเป็นยกเลิก"
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:176
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
-msgstr ""
+msgstr "ซิงค์กับ Stripe"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:207
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
-msgstr[0] ""
+msgstr[0] "%s การสมัครสมาชิกซิงค์จาก Stripe."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
-msgstr[0] ""
+msgstr[0] "%s ล้มเหลว; ดูบันทึกการสมัครสมาชิกของมันเพื่อตรวจสอบเหตุผล."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
 msgstr ""
+"แต่ละการทำงานซิงค์จำนวนการสมัครสมาชิกที่ จำกัด "
+"เลือกส่วนที่เหลือและทำงานอีกครั้งเพื่อดำเนินการต่อ."
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:44
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:51
@@ -394,11 +401,11 @@ msgstr "ไม่ได้รับอนุญาต."
 #. translators: %s: active payment processors list.
 #, php-format
 msgid "Cart - Test Mode Active (%1$s)"
-msgstr ""
+msgstr "Cart - โหมดทดสอบเปิดใช้งาน (%1$s)"
 
 #: admin/controllers/class-ppcart-admin-test-mode-notice-controller.php:101
 msgid "Open PublishPress Cart payment settings"
-msgstr ""
+msgstr "เปิดการตั้งค่าการชำระเงินของ PublishPress Cart"
 
 #: admin/controllers/order/templates/product-form.php:45
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:37
@@ -600,7 +607,7 @@ msgstr "คำสั่งพ่อแม่"
 
 #: admin/controllers/order/templates/product-form.php:574
 msgid "Child Order"
-msgstr ""
+msgstr "คำสั่งลูก"
 
 #: admin/controllers/order/templates/product-info-metabox.php:48
 msgid "Stripe payment"
@@ -751,7 +758,7 @@ msgid "Guest"
 msgstr "แขก"
 
 #: admin/controllers/order/templates/product-info-metabox.php:210
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170, fuzzy
 msgid "URL"
 msgstr "URL"
 
@@ -914,7 +921,7 @@ msgstr "ข้อผิดพลาด"
 #: admin/traits/templates/integrations-ppcart-mailchimp-groups-tags.php:15
 #: admin/traits/trait-ppcart-admin-integrations.php:132
 msgid "You do not have permission to perform this action."
-msgstr ""
+msgstr "คุณไม่มีสิทธิ์ในการดำเนินการนี้."
 
 #: admin/controllers/order/traits/templates/order-ajax-product-plan-options-html.php:11
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:15
@@ -950,7 +957,7 @@ msgstr "หมายเหตุการสั่งซื้อ"
 #: admin/partials/ppcart-admin-page-settings.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:32
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:16
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22, fuzzy
 msgid "PublishPress Cart"
 msgstr "PublishPress Cart"
 
@@ -1026,6 +1033,8 @@ msgid ""
 "Refresh status and next bill date from Stripe, and import any invoices "
 "missing from the order history"
 msgstr ""
+"รีเฟรชสถานะและวันที่บิลถัดไปจาก Stripe "
+"และนำเข้าบิลที่ขาดหายไปจากประวัติคำสั่งซื้อ"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:147
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:29
@@ -1178,13 +1187,13 @@ msgstr "การสมัครสมาชิกและใบแจ้งห
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:48
 msgid "Subscription synced from Stripe by admin"
-msgstr ""
+msgstr "การสมัครสมาชิกซิงค์จาก Stripe โดยผู้ดูแลระบบ"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:52
 #. translators: %s: error message.
 #, php-format
 msgid "Error syncing subscription from Stripe! Message: %s"
-msgstr ""
+msgstr "เกิดข้อผิดพลาดในการซิงค์การสมัครสมาชิกจาก Stripe! ข้อความ: %s"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:77
 msgid ""
@@ -1233,7 +1242,7 @@ msgstr "รอดำเนินการ"
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "รอดำเนินการ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1246,14 +1255,14 @@ msgstr "ชำระเงินแล้ว"
 #, php-format
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ชำระเงินแล้ว <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
 #, php-format
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "คืนเงินแล้ว <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1265,7 +1274,7 @@ msgstr "ล้มเหลว"
 #, php-format
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ล้มเหลว <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1280,7 +1289,7 @@ msgstr "เกินกำหนด"
 #, php-format
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "เกินกำหนด <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1292,7 +1301,7 @@ msgstr "ไม่สามารถเรียกเก็บเงินได
 #, php-format
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ไม่สามารถเก็บได้ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1309,7 +1318,7 @@ msgstr "ใช้งาน"
 #, php-format
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ใช้งานอยู่ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1321,7 +1330,7 @@ msgstr "ยังไม่ชำระเงิน"
 #, php-format
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ยังไม่ได้ชำระ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1336,14 +1345,14 @@ msgstr "หยุดชั่วคราว"
 #, php-format
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "หยุดชั่วคราว <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
 #, php-format
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ยกเลิก <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1356,7 +1365,7 @@ msgstr "เสร็จสิ้น"
 #, php-format
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "เสร็จสิ้น <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1368,7 +1377,7 @@ msgstr "ไม่สมบูรณ์"
 #, php-format
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ไม่สมบูรณ์ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1380,7 +1389,7 @@ msgstr "ทดลองใช้งาน"
 #, php-format
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "ทดลองใช้ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -1447,7 +1456,7 @@ msgid "Renewals"
 msgstr "การต่ออายุ"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:405
+#: admin/reports/templates/admin-reports-page.php:405, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1511,7 +1520,7 @@ msgstr "การสนับสนุน & เอกสาร"
 #. translators: 1: opening link tag, 2: closing link tag.
 #, php-format
 msgid "Visit our %1$sdocumentation%2$s for help."
-msgstr ""
+msgstr "เยี่ยมชม %1$sเอกสาร%2$s ของเราเพื่อขอความช่วยเหลือ."
 
 #: admin/dashboard/class-ppcart-dashboard-widget.php:36
 #. translators: %s: plugin title.
@@ -1535,7 +1544,7 @@ msgstr "แสดงข้อความ"
 
 #: admin/metaboxes/field-groups/message-fields.php:18
 msgid "Display Page"
-msgstr ""
+msgstr "แสดงหน้า"
 
 #: admin/metaboxes/field-groups/message-fields.php:19
 msgid "Perform Redirect"
@@ -1560,7 +1569,7 @@ msgstr "URL หน้า ขอบคุณ"
 
 #: admin/metaboxes/field-groups/message-fields.php:76
 msgid "Preview & send test email"
-msgstr ""
+msgstr "ดูตัวอย่าง & ส่งอีเมลทดสอบ"
 
 #: admin/metaboxes/field-groups/message-fields.php:84
 msgid "Disable Order Received Confirmation email"
@@ -1651,7 +1660,7 @@ msgstr "อีเมลผู้ส่ง"
 msgid "Reply To"
 msgstr "ตอบกลับไปที่"
 
-#: admin/metaboxes/field-groups/message-fields.php:243
+#: admin/metaboxes/field-groups/message-fields.php:243, fuzzy
 msgid "Bcc"
 msgstr "Bcc"
 
@@ -1668,23 +1677,23 @@ msgstr "หัวข้อ"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:12
 msgid "Checkout starts"
-msgstr ""
+msgstr "เริ่มการชำระเงิน"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:22
 msgid "Checkout ends"
-msgstr ""
+msgstr "สิ้นสุดการชำระเงิน"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:32
 msgid "When checkout ended"
-msgstr ""
+msgstr "เมื่อสิ้นสุดการชำระเงิน"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:45
 msgid "Checkout ended redirect URL"
-msgstr ""
+msgstr "URL เปลี่ยนเส้นทางหลังการชำระเงินสิ้นสุด"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:58
 msgid "Checkout ended message"
-msgstr ""
+msgstr "ข้อความหลังการชำระเงินสิ้นสุด"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:59
 #: public/templates/functions/checkout-core.php:373
@@ -1839,7 +1848,7 @@ msgstr ""
 "`A-z 0-9`, ขีด, &amp; ขีดล่างโดยไม่มีช่องว่างเท่านั้น "
 "ต้องไม่ซ้ำกันสำหรับผลิตภัณฑ์นี้"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:65
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:65, fuzzy
 msgid "URL Slug"
 msgstr "URL Slug"
 
@@ -1887,62 +1896,62 @@ msgstr "ความถี่"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:146
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:178
 msgid "Every"
-msgstr ""
+msgstr "ทุก"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:147
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:179
 msgid "Every 2nd"
-msgstr ""
+msgstr "ทุก 2"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:148
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:180
 msgid "Every 3rd"
-msgstr ""
+msgstr "ทุก 3"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:149
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:181
 msgid "Every 4th"
-msgstr ""
+msgstr "ทุก 4"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:150
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:182
 msgid "Every 5th"
-msgstr ""
+msgstr "ทุก 5"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:151
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:183
 msgid "Every 6th"
-msgstr ""
+msgstr "ทุก 6"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:152
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:184
 msgid "Every 7th"
-msgstr ""
+msgstr "ทุก 7"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:153
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:185
 msgid "Every 8th"
-msgstr ""
+msgstr "ทุก 8"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:154
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:186
 msgid "Every 9th"
-msgstr ""
+msgstr "ทุก 9"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:155
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:187
 msgid "Every 10th"
-msgstr ""
+msgstr "ทุก 10"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:156
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:188
 msgid "Every 11th"
-msgstr ""
+msgstr "ทุก 11"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:157
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:189
 msgid "Every 12th"
-msgstr ""
+msgstr "ทุก 12"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:173
 msgid "Frequency (On Sale)"
@@ -1957,22 +1966,22 @@ msgstr "ช่วงการชำระเงิน"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:210
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:234
 msgid "Day"
-msgstr ""
+msgstr "วัน"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:211
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:235
 msgid "Week"
-msgstr ""
+msgstr "สัปดาห์"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:212
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:236
 msgid "Month"
-msgstr ""
+msgstr "เดือน"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:213
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:237
 msgid "Year"
-msgstr ""
+msgstr "ปี"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:229
 msgid "Pay Interval (On Sale)"
@@ -2039,7 +2048,7 @@ msgstr "ใด ๆ"
 msgid "Method"
 msgstr "วิธีการ"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-01.php:85
+#: admin/metaboxes/traits/templates/integration-fields/fields-01.php:85, fuzzy
 msgid "Webhook URL"
 msgstr "Webhook URL"
 
@@ -2066,6 +2075,8 @@ msgid ""
 "Put each field pair on a separate line and use a colon (\":\") to separate "
 "the field key from the field value. For example: field_key:ppcart_field_id"
 msgstr ""
+"ใส่คู่ฟิลด์แต่ละคู่ในบรรทัดแยกต่างหากและใช้เครื่องหมายทวิภาค (\":\") "
+"เพื่อแยกคีย์ฟิลด์จากค่าฟิลด์ ตัวอย่างเช่น: field_key:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-01.php:163
 #: admin/metaboxes/traits/templates/integration-fields/fields-03.php:86
@@ -2111,6 +2122,9 @@ msgid ""
 "the ActiveCampaign personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"ใส่คู่ฟิลด์แต่ละคู่ในบรรทัดแยกต่างหากและใช้เครื่องหมายทวิภาค (\":\") "
+"เพื่อแยกแท็กการปรับแต่ง ActiveCampaign จากค่าฟิลด์ ตัวอย่างเช่น: "
+"%TAG%:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-02.php:89
 msgid "SendFox List"
@@ -2178,7 +2192,7 @@ msgstr "ส่งการแจ้งเตือนทั่วโลก"
 msgid "Require admin approval"
 msgstr "ต้องการการอนุมัติจากผู้ดูแลระบบ"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:31
+#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:31, fuzzy
 msgid "MailPoet List"
 msgstr "MailPoet List"
 
@@ -2198,7 +2212,7 @@ msgstr "เพิ่มผู้ใช้"
 msgid "Remove user"
 msgstr "ลบผู้ใช้"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:108
+#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:108, fuzzy
 msgid "Membervault Course ID"
 msgstr "Membervault Course ID"
 
@@ -2254,7 +2268,7 @@ msgstr "ข้อเสนอหลัก"
 #. translators: 1: bump number, 2: product title.
 #, php-format
 msgid "Add'l Bump %1$d (%2$s)"
-msgstr ""
+msgstr "เพิ่ม Bump %1$d (%2$s)"
 
 #: admin/metaboxes/traits/templates/product-metabox-plan-options-get-payment-plans.php:28
 msgid "(on sale)"
@@ -2330,7 +2344,7 @@ msgstr "การรวมระบบ"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:16
 msgid "Product notification"
-msgstr ""
+msgstr "การแจ้งเตือนผลิตภัณฑ์"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
@@ -2342,15 +2356,15 @@ msgstr "ตัวอย่างอีเมล"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:23
 msgid "This notification is currently disabled. Preview and test email still work."
-msgstr ""
+msgstr "การแจ้งเตือนนี้ถูกปิดใช้งานในขณะนี้ การพรีวิวและการทดสอบอีเมลยังคงทำงานได้"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:32
 msgid "Send test to"
-msgstr ""
+msgstr "ส่งการทดสอบไปที่"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:34
 msgid "Send test email"
-msgstr ""
+msgstr "ส่งอีเมลทดสอบ"
 
 #: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:12
 msgid "this product"
@@ -2450,7 +2464,7 @@ msgstr "การต่ออายุการสมัครสมาชิก
 #: includes/integrations/templates/cancel-subscription-plan-data.php:10
 #: includes/integrations/templates/cancel-subscription-plan-data.php:22
 msgid "No plans found"
-msgstr ""
+msgstr "ไม่พบแผน"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:29
 #: includes/helpers/pro-locks/product-locks.php:56
@@ -2570,7 +2584,7 @@ msgstr "ภาพพื้นหลังหัวข้อ"
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:24
 #: public/partials/csv-export.php:351
 msgid "Until canceled"
-msgstr ""
+msgstr "จนกว่าจะถูกยกเลิก"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:26
 msgid " payments"
@@ -2859,7 +2873,7 @@ msgstr "ดีบัก"
 
 #: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
-msgstr ""
+msgstr "การบำรุงรักษา"
 
 #: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:101
@@ -2917,6 +2931,8 @@ msgstr "เปิดใช้งานการบันทึกการวิ
 #: admin/partials/settings-page/metadata.php:66
 msgid "Operational tools including security encryption and credential migration."
 msgstr ""
+"เครื่องมือการดำเนินงานรวมถึงการเข้ารหัสความปลอดภัยและการโยกย้ายข้อมูลประจำตั"
+"ว"
 
 #: admin/partials/settings-page/metadata.php:71
 msgid "Configure store options that do not belong in the main setup tabs."
@@ -2939,7 +2955,7 @@ msgid "More"
 msgstr "เพิ่มเติม"
 
 #: admin/partials/settings-page/metadata.php:107
-#: admin/settings/traits/templates/settings-sections-integrations.php:8
+#: admin/settings/traits/templates/settings-sections-integrations.php:8, fuzzy
 msgid "ActiveCampaign"
 msgstr "ActiveCampaign"
 
@@ -2948,7 +2964,7 @@ msgid "Sync customers and purchases to ActiveCampaign."
 msgstr "ซิงค์ลูกค้าและการซื้อไปยัง ActiveCampaign。"
 
 #: admin/partials/settings-page/metadata.php:116
-#: admin/settings/traits/templates/settings-sections-integrations.php:9
+#: admin/settings/traits/templates/settings-sections-integrations.php:9, fuzzy
 msgid "Mailchimp"
 msgstr "Mailchimp"
 
@@ -2956,7 +2972,7 @@ msgstr "Mailchimp"
 msgid "Add customers to Mailchimp audiences and automate emails."
 msgstr "เพิ่มลูกค้าไปยังกลุ่มผู้ฟังของ Mailchimp และทำให้อีเมลอัตโนมัติ。"
 
-#: admin/partials/settings-page/metadata.php:125
+#: admin/partials/settings-page/metadata.php:125, fuzzy
 msgid "Kit"
 msgstr "Kit"
 
@@ -2965,7 +2981,7 @@ msgid "Send customers and purchases to Kit forms and tags."
 msgstr "ส่งลูกค้าและการซื้อไปยังแบบฟอร์มและแท็กของ Kit。"
 
 #: admin/partials/settings-page/metadata.php:134
-#: admin/settings/traits/templates/settings-sections-integrations.php:11
+#: admin/settings/traits/templates/settings-sections-integrations.php:11, fuzzy
 msgid "MemberVault"
 msgstr "MemberVault"
 
@@ -2974,7 +2990,7 @@ msgid "Protect content and manage members with MemberVault."
 msgstr "ปกป้องเนื้อหาและจัดการสมาชิกด้วย MemberVault。"
 
 #: admin/partials/settings-page/metadata.php:143
-#: admin/settings/traits/templates/settings-sections-integrations.php:12
+#: admin/settings/traits/templates/settings-sections-integrations.php:12, fuzzy
 msgid "SendFox"
 msgstr "SendFox"
 
@@ -2991,8 +3007,10 @@ msgid ""
 "Send Cart events to an existing Meta Pixel installation. PublishPress Cart "
 "does not install or connect the pixel script."
 msgstr ""
+"ส่งเหตุการณ์รถเข็นไปยังการติดตั้ง Meta Pixel ที่มีอยู่ PublishPress Cart "
+"ไม่ติดตั้งหรือเชื่อมต่อสคริปต์พิกเซล"
 
-#: admin/partials/settings-page/metadata.php:161
+#: admin/partials/settings-page/metadata.php:161, fuzzy
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
@@ -3002,8 +3020,10 @@ msgid ""
 "installation. PublishPress Cart does not install or connect the analytics "
 "script."
 msgstr ""
+"ส่งเหตุการณ์รถเข็นไปยังการติดตั้ง Google Analytics หรือ Google Tag Manager "
+"ที่มีอยู่ PublishPress Cart ไม่ติดตั้งหรือเชื่อมต่อสคริปต์การวิเคราะห์"
 
-#: admin/partials/settings-page/metadata.php:170
+#: admin/partials/settings-page/metadata.php:170, fuzzy
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
@@ -3011,7 +3031,7 @@ msgstr "Google reCAPTCHA"
 msgid "Protect checkout forms from spam and bot submissions."
 msgstr "ป้องกันแบบฟอร์มการชำระเงินจากสแปมและการส่งข้อมูลจากบอท."
 
-#: admin/partials/settings-page/metadata.php:178
+#: admin/partials/settings-page/metadata.php:178, fuzzy
 msgid "Google reCAPTCHA v2"
 msgstr "Google reCAPTCHA v2"
 
@@ -3019,7 +3039,7 @@ msgstr "Google reCAPTCHA v2"
 msgid "Configure checkbox or invisible reCAPTCHA v2 protection."
 msgstr "กำหนดค่าการป้องกัน reCAPTCHA v2 แบบช่องทำเครื่องหมายหรือไม่มองเห็น."
 
-#: admin/partials/settings-page/metadata.php:187
+#: admin/partials/settings-page/metadata.php:187, fuzzy
 msgid "Google reCAPTCHA v3"
 msgstr "Google reCAPTCHA v3"
 
@@ -3027,7 +3047,7 @@ msgstr "Google reCAPTCHA v3"
 msgid "Configure score-based reCAPTCHA v3 protection."
 msgstr "กำหนดค่าการป้องกัน reCAPTCHA v3 ที่ใช้คะแนน."
 
-#: admin/partials/settings-page/metadata.php:196
+#: admin/partials/settings-page/metadata.php:196, fuzzy
 msgid "Drip"
 msgstr "Drip"
 
@@ -3035,7 +3055,7 @@ msgstr "Drip"
 msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "ซิงค์ลูกค้า, แท็ก และกิจกรรมอีคอมเมิร์ซไปยัง Drip."
 
-#: admin/partials/settings-page/metadata.php:205
+#: admin/partials/settings-page/metadata.php:205, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
@@ -3044,7 +3064,7 @@ msgid "Add customers to MailerLite subscribers and groups."
 msgstr "เพิ่มลูกค้าไปยังสมาชิกและกลุ่มของ MailerLite."
 
 #: admin/partials/settings-page/metadata.php:214
-#: admin/settings/traits/templates/settings-sections-integrations.php:10
+#: admin/settings/traits/templates/settings-sections-integrations.php:10, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
@@ -3052,7 +3072,7 @@ msgstr "MailPoet"
 msgid "Add customers to MailPoet lists."
 msgstr "เพิ่มลูกค้าไปยังรายชื่อ MailPoet."
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:222, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
@@ -3060,7 +3080,7 @@ msgstr "Encharge"
 msgid "Track order events and sync customers to Encharge."
 msgstr "ติดตามเหตุการณ์การสั่งซื้อและซิงค์ลูกค้าไปยัง Encharge."
 
-#: admin/partials/settings-page/metadata.php:232
+#: admin/partials/settings-page/metadata.php:232, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
@@ -3068,7 +3088,7 @@ msgstr "FluentCRM"
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "เพิ่มลูกค้าไปยังรายชื่อและแท็กของ FluentCRM."
 
-#: admin/partials/settings-page/metadata.php:240
+#: admin/partials/settings-page/metadata.php:240, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
@@ -3076,7 +3096,7 @@ msgstr "Academy LMS"
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "ลงทะเบียนหรือลบผู้เรียนจากหลักสูตร Academy LMS."
 
-#: admin/partials/settings-page/metadata.php:248
+#: admin/partials/settings-page/metadata.php:248, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
@@ -3084,7 +3104,7 @@ msgstr "Gurucan"
 msgid "Add or remove customers in Gurucan products."
 msgstr "เพิ่มหรือลบลูกค้าในผลิตภัณฑ์ Gurucan."
 
-#: admin/partials/settings-page/metadata.php:257
+#: admin/partials/settings-page/metadata.php:257, fuzzy
 msgid "Heartbeat"
 msgstr "Heartbeat"
 
@@ -3092,7 +3112,7 @@ msgstr "Heartbeat"
 msgid "Manage community access in Heartbeat."
 msgstr "จัดการการเข้าถึงของชุมชนใน Heartbeat."
 
-#: admin/partials/settings-page/metadata.php:266
+#: admin/partials/settings-page/metadata.php:266, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
@@ -3100,7 +3120,7 @@ msgstr "Kajabi"
 msgid "Enable Kajabi purchase automations."
 msgstr "เปิดใช้งานการซื้ออัตโนมัติของ Kajabi."
 
-#: admin/partials/settings-page/metadata.php:275
+#: admin/partials/settings-page/metadata.php:275, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
@@ -3108,7 +3128,7 @@ msgstr "Teachable"
 msgid "Enroll customers into Teachable schools and products."
 msgstr "ลงทะเบียนลูกค้าเข้าร่วม Teachable โรงเรียนและผลิตภัณฑ์."
 
-#: admin/partials/settings-page/metadata.php:284
+#: admin/partials/settings-page/metadata.php:284, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
@@ -3116,7 +3136,7 @@ msgstr "Upcoach"
 msgid "Grant customers access to Upcoach programs."
 msgstr "มอบการเข้าถึงโปรแกรม Upcoach ให้กับลูกค้า."
 
-#: admin/partials/settings-page/metadata.php:293
+#: admin/partials/settings-page/metadata.php:293, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
@@ -3124,7 +3144,7 @@ msgstr "Tutor LMS"
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "ลงทะเบียนหรือลบผู้เรียนออกจากหลักสูตร Tutor LMS."
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:301, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
@@ -3132,7 +3152,7 @@ msgstr "LearnDash"
 msgid "Grant or revoke LearnDash course access."
 msgstr "มอบหรือยกเลิกการเข้าถึงหลักสูตร LearnDash."
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
@@ -3140,7 +3160,7 @@ msgstr "WP Courseware"
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "จัดการการลงทะเบียน WP Courseware หลังจากการซื้อ."
 
-#: admin/partials/settings-page/metadata.php:317
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
@@ -3148,7 +3168,7 @@ msgstr "MasterStudy LMS"
 msgid "Enroll customers into MasterStudy LMS courses."
 msgstr "ลงทะเบียนลูกค้าเข้าร่วมหลักสูตร MasterStudy LMS."
 
-#: admin/partials/settings-page/metadata.php:325
+#: admin/partials/settings-page/metadata.php:325, fuzzy
 msgid "Groups"
 msgstr "Groups"
 
@@ -3156,7 +3176,7 @@ msgstr "Groups"
 msgid "Add or remove customers from WordPress Groups."
 msgstr "เพิ่มหรือลบลูกค้าออกจากกลุ่ม WordPress."
 
-#: admin/partials/settings-page/metadata.php:333
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
@@ -3164,7 +3184,7 @@ msgstr "MemberPress"
 msgid "Grant customers MemberPress membership access."
 msgstr "มอบการเข้าถึงสมาชิก MemberPress ให้กับลูกค้า."
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
@@ -3172,7 +3192,7 @@ msgstr "ARMember"
 msgid "Grant customers ARMember plan access."
 msgstr "ให้ลูกค้าเข้าถึงแผน ARMember"
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
@@ -3180,7 +3200,7 @@ msgstr "WishList Member"
 msgid "Grant customers WishList Member level access."
 msgstr "ให้ลูกค้าเข้าถึงระดับ WishList Member"
 
-#: admin/partials/settings-page/metadata.php:357
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
@@ -3188,7 +3208,7 @@ msgstr "Restrict Content Pro"
 msgid "Grant customers Restrict Content Pro access."
 msgstr "ให้ลูกค้าเข้าถึง Restrict Content Pro"
 
-#: admin/partials/settings-page/metadata.php:365
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
@@ -3196,7 +3216,7 @@ msgstr "Ultimate Member"
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "ส่งอีเมลต้อนรับ Ultimate Member ให้กับลูกค้าใหม่"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:374, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -3204,7 +3224,7 @@ msgstr "Elementor"
 msgid "Choose Elementor templates for checkout components."
 msgstr "เลือกเทมเพลต Elementor สำหรับส่วนประกอบการชำระเงิน"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:382, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
@@ -3212,7 +3232,7 @@ msgstr "Divi"
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "ใช้แบบฟอร์มสั่งซื้อ PublishPress Cart ภายในเลย์เอาต์ Divi"
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
@@ -3220,7 +3240,7 @@ msgstr "Oxygen Builder"
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "ใช้เงื่อนไข PublishPress Cart ใน Oxygen Builder"
 
-#: admin/partials/settings-page/metadata.php:398
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
@@ -3237,7 +3257,7 @@ msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "เชื่อมต่อผลิตภัณฑ์ PublishPress Cart กับกระบวนการ WooCommerce"
 
 #: admin/partials/settings-page/metadata.php:414
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
@@ -3258,7 +3278,7 @@ msgstr "คืนเงินคำสั่งซื้อ"
 msgid "Refund an existing order as an order automation."
 msgstr "คืนเงินคำสั่งซื้อที่มีอยู่เป็นการทำงานอัตโนมัติของคำสั่งซื้อ."
 
-#: admin/partials/settings-page/metadata.php:442
+#: admin/partials/settings-page/metadata.php:442, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
@@ -3338,7 +3358,7 @@ msgstr "จัดการ"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:53
 #: includes/functions/payment-and-locale-lists.php:35
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:22
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
@@ -3356,7 +3376,7 @@ msgstr "รับบัตรเครดิตและการชำระเ
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
 #: includes/helpers/pro-locks/product-locks.php:45
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
-#: public/paypal/traits/trait-ppcart-paypal-settings.php:88
+#: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
@@ -3450,7 +3470,7 @@ msgid "Test mode"
 msgstr "โหมดทดสอบ"
 
 #: admin/partials/settings-page/render-helpers.php:19
-#: admin/partials/settings-page/sections/payment-method.php:223
+#: admin/partials/settings-page/sections/payment-method.php:223, fuzzy
 msgid "Sandbox"
 msgstr "Sandbox"
 
@@ -3630,7 +3650,7 @@ msgstr "การตั้งค่าการค้นหา"
 
 #: admin/partials/settings-page/tabs/topbar.php:16
 msgid "Search settings..."
-msgstr ""
+msgstr "ค้นหาการตั้งค่า..."
 
 #: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
@@ -3640,7 +3660,7 @@ msgstr "สรุปผลการดำเนินงานสำหรับ
 
 #: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
-msgstr ""
+msgstr "ช่วงวันที่"
 
 #: admin/reports/templates/admin-reports-page.php:83
 msgid "Select date range"
@@ -3648,24 +3668,24 @@ msgstr "เลือกช่วงวันที่"
 
 #: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
-msgstr ""
+msgstr "ค้นหาลูกค้าตามชื่อหรืออีเมล"
 
 #: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
-msgstr ""
+msgstr "ค้นหาตามชื่อหรืออีเมล"
 
 #: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
-msgstr ""
+msgstr "ค้นหาผลิตภัณฑ์"
 
 #: admin/reports/templates/admin-reports-page.php:110
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:97
 msgid "All products"
-msgstr ""
+msgstr "ผลิตภัณฑ์ทั้งหมด"
 
 #: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
-msgstr ""
+msgstr "กรองตามผลิตภัณฑ์หลักของคำสั่งซื้อหรือการสมัครสมาชิก"
 
 #: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
@@ -3674,7 +3694,7 @@ msgstr "ใช้"
 
 #: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
-msgstr ""
+msgstr "ล้างตัวกรอง"
 
 #: admin/reports/templates/admin-reports-page.php:122
 #: admin/reports/templates/customer-reports-page.php:85
@@ -3686,6 +3706,8 @@ msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
 msgstr ""
+"ตัวกรองผลิตภัณฑ์ตรงกับผลิตภัณฑ์หลักในแต่ละคำสั่งซื้อหรือการสมัครสมาชิก "
+"ไม่รวมรายการเพิ่มหรือขายต่อ"
 
 #: admin/reports/templates/admin-reports-page.php:352
 #: includes/order-items/order-details-renderer.php:67
@@ -3728,7 +3750,7 @@ msgstr "มูลค่าลูกค้าในช่วงชีวิต"
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
-msgstr ""
+msgstr "จำนวนเฉลี่ยตลอดเวลาของลูกค้าที่ตรงกัน %s"
 
 #: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
@@ -3755,7 +3777,7 @@ msgstr "ธุรกรรม"
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
-msgstr ""
+msgstr "%1$s ใหม่, %2$s การต่ออายุ"
 
 #: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
@@ -3880,7 +3902,7 @@ msgstr ""
 
 #: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
-msgstr ""
+msgstr "คำสั่งซื้อโดยประเภท"
 
 #: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
@@ -4121,30 +4143,32 @@ msgid ""
 "Stripe needs a temporary restricted key with %s. We use it once, install "
 "the endpoint, and never store it."
 msgstr ""
+"Stripe ต้องการคีย์ที่จำกัดชั่วคราวกับ %s เราใช้มันครั้งเดียว "
+"ติดตั้งจุดสิ้นสุด และไม่เก็บรักษาไว้"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:29
 msgid "Webhook endpoints: Write"
-msgstr ""
+msgstr "Webhook endpoints: เขียน"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:33
 msgid "Temporary Stripe key"
-msgstr ""
+msgstr "คีย์ Stripe ชั่วคราว"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:45
 msgid "Install webhook"
-msgstr ""
+msgstr "ติดตั้ง webhook"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:51
 msgid "Create the key in Stripe"
-msgstr ""
+msgstr "สร้างคีย์ใน Stripe"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:54
 msgid "I want to set it up in Stripe myself"
-msgstr ""
+msgstr "ฉันต้องการตั้งค่ามันใน Stripe ด้วยตัวเอง"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:64
 msgid "Create an endpoint in Stripe with this URL:"
-msgstr ""
+msgstr "สร้างจุดสิ้นสุดใน Stripe ด้วย URL นี้:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:69
 #. translators: %d: number of Stripe events.
@@ -4153,10 +4177,12 @@ msgid ""
 "Select the %d events listed in our documentation, then paste that endpoint "
 "signing secret:"
 msgstr ""
+"เลือก %d เหตุการณ์ที่ระบุในเอกสารของเรา "
+"จากนั้นวางความลับในการลงนามของจุดสิ้นสุดนั้น:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:73
 msgid "Signing secret"
-msgstr ""
+msgstr "ความลับในการลงนาม"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:85
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:13
@@ -4166,51 +4192,59 @@ msgstr "บันทึก"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:23
 msgid "Add a Stripe secret key for this mode first."
-msgstr ""
+msgstr "เพิ่มคีย์ความลับของ Stripe สำหรับโหมดนี้ก่อน"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:37
 #. translators: %s: local webhook URL.
 #, php-format
 msgid "Stripe cannot reach a local address. Forward events with Stripe CLI to %s"
 msgstr ""
+"Stripe ไม่สามารถเข้าถึงที่อยู่ท้องถิ่นได้ ส่งต่อเหตุการณ์ด้วย Stripe CLI "
+"ไปยัง %s"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:90
 msgid "Some events are missing, so parts of your store will not update."
-msgstr ""
+msgstr "บางเหตุการณ์หายไป ดังนั้นบางส่วนของร้านค้าของคุณจะไม่อัปเดต"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:103
 msgid ""
 "This account does not let us re-check the endpoint, so no live status is "
 "shown."
-msgstr ""
+msgstr "บัญชีนี้ไม่อนุญาตให้เราตรวจสอบจุดสิ้นสุดอีกครั้ง ดังนั้นสถานะสดจึงไม่แสดง"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
-msgstr ""
+msgstr "การตรวจสอบ Webhook ล้มเหลว: %s"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:9
 msgid "You are not allowed to configure Stripe webhooks."
-msgstr ""
+msgstr "คุณไม่ได้รับอนุญาตให้กำหนดค่า webhook ของ Stripe"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:34
 msgid ""
 "That key does not look like a Stripe key for the selected mode. Copy a "
 "restricted key that starts with rk_, or a secret key that starts with sk_."
 msgstr ""
+"คีย์นั้นไม่เหมือนกับคีย์ของ Stripe สำหรับโหมดที่เลือก "
+"คัดลอกคีย์ที่จำกัดซึ่งเริ่มต้นด้วย rk_ หรือคีย์ความลับที่เริ่มต้นด้วย sk_"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:44
 msgid ""
 "Webhook is active and the signing secret is saved. The key you pasted was "
 "not stored, so you can delete it in Stripe now."
 msgstr ""
+"Webhook เปิดใช้งานและความลับในการลงนามถูกบันทึก คีย์ที่คุณวางไม่ถูกเก็บไว้ "
+"ดังนั้นคุณสามารถลบมันใน Stripe ได้แล้ว"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:49
 msgid ""
 "Webhook events were updated. The key you pasted was not stored, so you can "
 "delete it in Stripe now."
 msgstr ""
+"เหตุการณ์ Webhook ได้รับการอัปเดต คีย์ที่คุณวางไม่ถูกเก็บไว้ "
+"ดังนั้นคุณสามารถลบมันใน Stripe ได้แล้ว"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:56
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:47
@@ -4219,22 +4253,29 @@ msgid ""
 "secret. Open the endpoint in your Stripe Dashboard, copy the signing "
 "secret, and paste it below."
 msgstr ""
+"จุดสิ้นสุด webhook นั้นมีอยู่แล้ว ดังนั้น Stripe "
+"จึงไม่ส่งคืนความลับในการลงนาม เปิดจุดสิ้นสุดในแดชบอร์ดของคุณใน Stripe "
+"คัดลอกความลับในการลงนามและวางที่ด้านล่าง"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:69
 msgid ""
 "A Stripe signing secret starts with whsec_. Copy it again from the webhook "
 "endpoint in your Stripe Dashboard."
 msgstr ""
+"ความลับในการลงนามของ Stripe เริ่มต้นด้วย whsec_ คัดลอกอีกครั้งจากจุดสิ้นสุด "
+"webhook ในแดชบอร์ดของคุณใน Stripe"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:77
 msgid ""
 "Signing secret saved. Send a test event from Stripe to confirm that your "
 "site accepts it."
 msgstr ""
+"ความลับในการลงนามถูกบันทึก ส่งเหตุการณ์ทดสอบจาก Stripe "
+"เพื่อยืนยันว่าไซต์ของคุณรับมัน"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:83
 msgid "Paste a Stripe key or a signing secret before you save."
-msgstr ""
+msgstr "วางคีย์ Stripe หรือความลับในการลงนามก่อนที่คุณจะบันทึก"
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:30
 msgid ""
@@ -4242,6 +4283,9 @@ msgid ""
 "restricted key with Webhook endpoints: Write, or create the endpoint in "
 "Stripe yourself."
 msgstr ""
+"บัญชีที่เชื่อมต่อนี้ไม่สามารถอัปเดต webhook โดยอัตโนมัติ "
+"วางคีย์ที่จำกัดพร้อมกับ Webhook endpoints: เขียน หรือสร้างจุดสิ้นสุดใน "
+"Stripe ด้วยตัวเอง"
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:41
 msgid "Stripe webhook is configured for the selected mode."
@@ -4340,7 +4384,7 @@ msgstr "แสดงการทำซ้ำแถวสำหรับผลิ
 msgid "Email reports and confirmations to"
 msgstr "ส่งรายงานและการยืนยันไปที่"
 
-#: admin/settings/traits/options/core-settings.php:161
+#: admin/settings/traits/options/core-settings.php:161, fuzzy
 msgid "admin@example.com, another@example.com"
 msgstr "admin@example.com, another@example.com"
 
@@ -4364,7 +4408,7 @@ msgstr "รายสัปดาห์"
 
 #: admin/settings/traits/options/core-settings.php:176
 msgid "Semi monthly"
-msgstr ""
+msgstr "สองครั้งต่อเดือน"
 
 #: admin/settings/traits/options/core-settings.php:178
 msgid "How often summary reports should be emailed."
@@ -4515,10 +4559,12 @@ msgid ""
 "Use date tokens {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S}, "
 "and custom alphanumeric characters. Example: INV-{YYYY}{MM}{DD}."
 msgstr ""
+"ใช้โทเค็นวันที่ {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S} "
+"และอักขระอัลฟา-ตัวเลขที่กำหนดเอง ตัวอย่าง: INV-{YYYY}{MM}{DD}."
 
 #: admin/settings/traits/options/invoice-fields.php:19
 msgid "Learn more"
-msgstr ""
+msgstr "เรียนรู้เพิ่มเติม"
 
 #: admin/settings/traits/options/invoice-fields.php:26
 msgid "Custom Invoice Numbering"
@@ -4556,7 +4602,7 @@ msgstr "รูปแบบใบแจ้งหนี้"
 msgid "Current Invoice Number"
 msgstr "หมายเลขใบแจ้งหนี้ปัจจุบัน"
 
-#: admin/settings/traits/options/payment-fields.php:33
+#: admin/settings/traits/options/payment-fields.php:33, fuzzy
 msgid "API"
 msgstr "API"
 
@@ -4565,10 +4611,12 @@ msgid ""
 "GOING LIVE? Click the \"Update\" button on any subscription products "
 "created on the Test API after switching this setting to Live!"
 msgstr ""
+"กำลังไปสด? คลิกที่ปุ่ม \"อัปเดต\" บนผลิตภัณฑ์การสมัครสมาชิกใด ๆ "
+"ที่สร้างขึ้นใน API ทดสอบหลังจากเปลี่ยนการตั้งค่านี้เป็นสด!"
 
 #: admin/settings/traits/options/payment-fields.php:39
 msgid "More Information"
-msgstr ""
+msgstr "ข้อมูลเพิ่มเติม"
 
 #: admin/settings/traits/options/payment-fields.php:52
 msgid "Connection Status"
@@ -4576,7 +4624,7 @@ msgstr "สถานะการเชื่อมต่อ"
 
 #: admin/settings/traits/options/payment-fields.php:61
 msgid "Checkout experience"
-msgstr ""
+msgstr "ประสบการณ์การชำระเงิน"
 
 #: admin/settings/traits/options/payment-fields.php:70
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:97
@@ -4590,12 +4638,12 @@ msgstr "พอร์ทัลลูกค้า"
 
 #: admin/settings/traits/options/payment-fields.php:91
 msgid "Hosted Checkout"
-msgstr ""
+msgstr "การชำระเงินที่โฮสต์"
 
 #: admin/settings/traits/options/payment-fields.php:101
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:20
 msgid "Payment Element"
-msgstr ""
+msgstr "องค์ประกอบการชำระเงิน"
 
 #: admin/settings/traits/options/payment-fields.php:111
 msgid "Statement Descriptor"
@@ -4623,13 +4671,15 @@ msgstr "ไม่"
 
 #: admin/settings/traits/options/payment-fields.php:158
 msgid "Verify SSL certificates"
-msgstr ""
+msgstr "ตรวจสอบใบรับรอง SSL"
 
 #: admin/settings/traits/options/payment-fields.php:162
 msgid ""
 "Verifies PayPal TLS certificates and hostname matches for server-side "
 "PayPal API requests."
 msgstr ""
+"ตรวจสอบใบรับรอง PayPal TLS และชื่อโฮสต์ที่ตรงกันสำหรับคำขอ PayPal API "
+"ฝั่งเซิร์ฟเวอร์"
 
 #: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
@@ -4643,7 +4693,7 @@ msgstr "รหัสลูกค้า"
 msgid "Secret"
 msgstr "ความลับ"
 
-#: admin/settings/traits/options/payment-fields.php:202
+#: admin/settings/traits/options/payment-fields.php:202, fuzzy
 msgid "PDT Token"
 msgstr "PDT Token"
 
@@ -4659,7 +4709,7 @@ msgstr "รหัสลูกค้า Sandbox"
 msgid "Sandbox Secret"
 msgstr "ความลับ Sandbox"
 
-#: admin/settings/traits/options/payment-fields.php:242
+#: admin/settings/traits/options/payment-fields.php:242, fuzzy
 msgid "Sandbox PDT Token"
 msgstr "Sandbox PDT Token"
 
@@ -4732,19 +4782,19 @@ msgstr "ไม่สามารถสร้างตัวอย่างอี
 
 #: admin/settings/traits/templates/settings-email-preview-product-notification-email.php:35
 msgid "(no subject)"
-msgstr ""
+msgstr "(ไม่มีหัวเรื่อง)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:11
 msgid "(recipient resolved at send time)"
-msgstr ""
+msgstr "(ผู้รับถูกแก้ไขในขณะส่ง)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36
 msgid "From"
-msgstr ""
+msgstr "จาก"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37
 msgid "To"
-msgstr ""
+msgstr "ถึง"
 
 #: admin/settings/traits/templates/settings-email-reset-email-template.php:17
 msgid "You do not have permission to reset this email template."
@@ -4760,31 +4810,31 @@ msgstr "ใช้ค่าเริ่มต้น"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:19
 msgid "You do not have permission to send this test email."
-msgstr ""
+msgstr "คุณไม่มีสิทธิ์ส่งอีเมลทดสอบนี้"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:24
 msgid "Test email could not be sent."
-msgstr ""
+msgstr "ไม่สามารถส่งอีเมลทดสอบได้"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:35
 msgid "Please enter a valid email address to send the test to."
-msgstr ""
+msgstr "กรุณาใส่ที่อยู่อีเมลที่ถูกต้องเพื่อส่งการทดสอบ"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:45
 #. translators: %s: email subject.
 #, php-format
 msgid "[Test] %s"
-msgstr ""
+msgstr "[ทดสอบ] %s"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:54
 #. translators: %s: recipient email address.
 #, php-format
 msgid "Test email sent to %s."
-msgstr ""
+msgstr "ส่งอีเมลทดสอบไปที่ %s"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:59
 msgid "Test email failed to send. Check your email/SMTP settings and try again."
-msgstr ""
+msgstr "การส่งอีเมลทดสอบล้มเหลว ตรวจสอบการตั้งค่าอีเมล/SMTP ของคุณและลองอีกครั้ง"
 
 #: admin/settings/traits/templates/settings-sections-emails.php:9
 msgid "Reports & Notifications"
@@ -4797,11 +4847,11 @@ msgstr "ยืนยันการรับคำสั่งซื้อ"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:13
 msgid "Enable Facebook Ad Events"
-msgstr ""
+msgstr "เปิดใช้งานเหตุการณ์โฆษณา Facebook"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:14
 msgid "Google Analytics Purchase Event Tracking"
-msgstr ""
+msgstr "ติดตามเหตุการณ์การซื้อใน Google Analytics"
 
 #: admin/settings/traits/templates/settings-sections-register.php:14
 msgid "Currency & Pricing"
@@ -4821,63 +4871,72 @@ msgstr "การตั้งค่าอื่น ๆ"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:15
 msgid "Classic card form"
-msgstr ""
+msgstr "ฟอร์มบัตรคลาสสิก"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:16
 msgid "Legacy"
-msgstr ""
+msgstr "รุ่นเก่า"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:17
 msgid ""
 "Single card field on your checkout page. Supports order bumps and one-click "
 "upsells."
 msgstr ""
+"ฟิลด์บัตรเดียวในหน้าชำระเงินของคุณ "
+"รองรับการเพิ่มคำสั่งซื้อและการเพิ่มยอดขายแบบคลิกเดียว"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:21
 msgid "Recommended"
-msgstr ""
+msgstr "แนะนำ"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:22
 msgid ""
 "Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports "
 "order bumps and one-click upsells."
 msgstr ""
+"บัตร, Apple/Google Pay, และลิงก์ฝังอยู่ในหน้าชำระเงินของคุณ "
+"รองรับการเพิ่มคำสั่งซื้อและการเพิ่มยอดขายแบบคลิกเดียว"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:25
 msgid "Stripe-hosted page"
-msgstr ""
+msgstr "หน้าที่โฮสต์โดย Stripe"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:26
 msgid ""
 "Redirects customers to a Stripe-hosted payment page. Most payment methods "
 "available (Klarna, Cash App Pay, and more via your Stripe dashboard)."
 msgstr ""
+"เปลี่ยนเส้นทางลูกค้าไปยังหน้าชำระเงินที่โฮสต์โดย Stripe "
+"วิธีการชำระเงินส่วนใหญ่มีให้ (Klarna, Cash App Pay, และอื่นๆ ผ่านแดชบอร์ด "
+"Stripe ของคุณ)"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:27
 msgid ""
 "Order bumps and one-click upsells/downsells are not available in this mode. "
 "Coupons continue to work."
 msgstr ""
+"การเพิ่มคำสั่งซื้อและการเพิ่มยอดขาย/ลดราคาทำไม่ได้ในโหมดนี้ "
+"คูปองยังคงใช้งานได้"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:31
 msgid "Built into Payment Element"
-msgstr ""
+msgstr "สร้างใน Payment Element"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:32
 msgid "Built into the Stripe-hosted page"
-msgstr ""
+msgstr "สร้างในหน้าที่โฮสต์โดย Stripe"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:23
 msgid "Stripe Connect server URL is not configured."
-msgstr ""
+msgstr "URL เซิร์ฟเวอร์ Stripe Connect ยังไม่ได้กำหนดค่า"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:47
 msgid "Stripe Connect live mode requires HTTPS for the site and return URL."
-msgstr ""
+msgstr "โหมดสดของ Stripe Connect ต้องการ HTTPS สำหรับไซต์และ URL คืน"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:55
 msgid "Unable to generate an encryption key for Stripe Connect."
-msgstr ""
+msgstr "ไม่สามารถสร้างคีย์เข้ารหัสสำหรับ Stripe Connect ได้"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:36
 msgid "Connect server did not return a valid Stripe account ID."
@@ -4889,6 +4948,9 @@ msgid ""
 "failed, abandoned, or restarted connection attempt. Reload this settings "
 "page and start the connection again."
 msgstr ""
+"เซสชัน Stripe Connect นี้ขาดหายไปหรือหมดอายุ "
+"อาจเกิดขึ้นหลังจากการเชื่อมต่อที่ล้มเหลว, ถูกละทิ้ง, หรือเริ่มใหม่ "
+"โหลดหน้านี้อีกครั้งและเริ่มการเชื่อมต่ออีกครั้ง"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:104
 msgid ""
@@ -4896,12 +4958,18 @@ msgid ""
 "trusted certificate, or explicitly enable insecure local credential pickup "
 "for non-live local development."
 msgstr ""
+"การตรวจสอบ SSL ล้มเหลวเมื่อดึงคีย์จากเซิร์ฟเวอร์เชื่อมต่อ "
+"ใช้ใบรับรองที่เชื่อถือได้ "
+"หรือเปิดใช้งานการรับข้อมูลประจำตัวท้องถิ่นที่ไม่ปลอดภัยอย่างชัดเจนสำหรับการพ"
+"ัฒนาท้องถิ่นที่ไม่ใช่สด"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:127
 msgid ""
 "Unable to retrieve Stripe API keys from the Connect server for this "
 "session. Reload this settings page and start the connection again."
 msgstr ""
+"ไม่สามารถดึงคีย์ API ของ Stripe จากเซิร์ฟเวอร์ Connect สำหรับเซสชันนี้ "
+"โหลดหน้านี้อีกครั้งและเริ่มการเชื่อมต่ออีกครั้ง"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:139
 msgid "Stripe account connected successfully."
@@ -4922,33 +4990,37 @@ msgstr "เซิร์ฟเวอร์การเชื่อมต่อย
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:47
 msgid "Set PPCART_STRIPE_CONNECT_SERVER_URL to your PublishPress intermediary URL."
 msgstr ""
+"ตั้งค่า PPCART_STRIPE_CONNECT_SERVER_URL เป็น URL ตัวกลางของ PublishPress "
+"ของคุณ"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:54
 msgid "1. Connect your Stripe account"
-msgstr ""
+msgstr "1. เชื่อมต่อบัญชี Stripe ของคุณ"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:55
 msgid "We sync your API keys automatically, then walk you through the webhook."
-msgstr ""
+msgstr "เราจะซิงค์คีย์ API ของคุณโดยอัตโนมัติ จากนั้นจะพาคุณผ่าน webhook"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:58
 msgid ""
 "Your saved keys are not direct Stripe keys, so reconnect before you "
 "continue."
 msgstr ""
+"คีย์ที่บันทึกของคุณไม่ใช่คีย์ Stripe โดยตรง "
+"ดังนั้นโปรดเชื่อมต่อใหม่ก่อนดำเนินการต่อ"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:64
 msgid "Stripe checkout is disabled. You can still connect now."
-msgstr ""
+msgstr "การชำระเงินผ่าน Stripe ถูกปิดใช้งาน คุณยังสามารถเชื่อมต่อได้ตอนนี้"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
-msgstr ""
+msgstr "2. ติดตั้ง webhook"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:74
 msgid "Available after you connect."
-msgstr ""
+msgstr "พร้อมใช้งานหลังจากที่คุณเชื่อมต่อ"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:89
 msgid "Disconnect"
@@ -4960,7 +5032,7 @@ msgstr "เปิดใน Stripe Dashboard"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:97
 msgid "Stripe is ready"
-msgstr ""
+msgstr "Stripe พร้อมแล้ว"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
@@ -4971,40 +5043,40 @@ msgstr "คีย์ได้ซิงค์แล้ว"
 #. translators: %d: number of Stripe events.
 #, php-format
 msgid "Webhook active with %d events"
-msgstr ""
+msgstr "Webhook ทำงานอยู่กับ %d เหตุการณ์"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
 msgid "1. Stripe account connected"
-msgstr ""
+msgstr "1. บัญชี Stripe เชื่อมต่อแล้ว"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
-msgstr ""
+msgstr "คำสั่งจะไม่เสร็จสมบูรณ์จนกว่าจะเสร็จสิ้น"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
-msgstr ""
+msgstr "ต้องการความสนใจ"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
-msgstr ""
+msgstr "ยังไม่ได้ติดตั้ง"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
-msgstr ""
+msgstr "แก้ไขเหตุการณ์"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-billing-options.php:45
 msgid "Always enabled for PayPal API requests."
-msgstr ""
+msgstr "เปิดใช้งานเสมอสำหรับคำขอ API ของ PayPal"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:32
 msgid "Leave blank to keep current value"
-msgstr ""
+msgstr "ปล่อยว่างไว้เพื่อรักษาค่าปัจจุบัน"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:35
 #: includes/helpers/pro-locks/settings-locks.php:289
 msgid "Configured (value hidden)"
-msgstr ""
+msgstr "กำหนดค่าแล้ว (ค่าไม่แสดง)"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:66
 msgid "Mailchimp API Key"
@@ -5035,12 +5107,16 @@ msgid ""
 "MailPoet is active. Assign lists on each product’s Integrations settings — "
 "no API key is required."
 msgstr ""
+"MailPoet เปิดใช้งานแล้ว กำหนดรายการในการตั้งค่าการรวมของแต่ละผลิตภัณฑ์ — "
+"ไม่ต้องใช้คีย์ API"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
 msgid ""
 "Install and activate the MailPoet plugin to sync customers to lists. No API "
 "key is required."
 msgstr ""
+"ติดตั้งและเปิดใช้งานปลั๊กอิน MailPoet เพื่อซิงค์ลูกค้ากับรายการ "
+"ไม่ต้องใช้คีย์ API"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:150
 msgid "Add Payment Info"
@@ -5048,7 +5124,7 @@ msgstr "เพิ่มข้อมูลการชำระเงิน"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:154
 msgid "Sends an AddPaymentInfo event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "ส่งเหตุการณ์ AddPaymentInfo ไปยังการติดตั้ง Meta Pixel ที่มีอยู่"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
@@ -5056,7 +5132,7 @@ msgstr ""
 msgid ""
 "Requires Meta Pixel or another plugin/theme to load fbq on the checkout "
 "page."
-msgstr ""
+msgstr "ต้องการ Meta Pixel หรือปลั๊กอิน/ธีมอื่นเพื่อติดตั้ง fbq ในหน้าชำระเงิน"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:161
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:185
@@ -5065,7 +5141,7 @@ msgstr "การซื้อเสร็จสมบูรณ์"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:165
 msgid "Sends a Purchase event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "ส่งเหตุการณ์ Purchase ไปยังการติดตั้ง Meta Pixel ที่มีอยู่"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:172
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:196
@@ -5074,13 +5150,15 @@ msgstr "บันทึกข้อมูลลูกค้า"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:176
 msgid "Sends a Lead event when a two-step checkout captures customer details."
-msgstr ""
+msgstr "ส่งเหตุการณ์ Lead เมื่อการชำระเงินแบบสองขั้นตอนจับรายละเอียดลูกค้าได้"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:189
 msgid ""
 "Sends a purchase event to an existing Google Analytics or Data Layer "
 "installation."
 msgstr ""
+"ส่งเหตุการณ์การซื้อไปยังการติดตั้ง Google Analytics หรือ Data Layer "
+"ที่มีอยู่"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
@@ -5088,12 +5166,16 @@ msgid ""
 "Requires Google Analytics, Google Tag Manager, or another plugin/theme to "
 "load ga, gtag, or dataLayer on the checkout page."
 msgstr ""
+"ต้องการ Google Analytics, Google Tag Manager "
+"หรือปลั๊กอิน/ธีมอื่นเพื่อติดตั้ง ga, gtag หรือ dataLayer ในหน้าชำระเงิน"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:200
 msgid ""
 "Sends a generate_lead event when a two-step checkout captures customer "
 "details."
 msgstr ""
+"ส่งเหตุการณ์ generate_lead "
+"เมื่อการชำระเงินแบบสองขั้นตอนจับรายละเอียดลูกค้าได้"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:207
 #: includes/helpers/pro-locks/product-locks.php:80
@@ -5104,17 +5186,17 @@ msgstr "ประเภท"
 msgid ""
 "Choose the event format that matches the analytics script already installed "
 "on this site."
-msgstr ""
+msgstr "เลือกฟอร์แมตเหตุการณ์ที่ตรงกับสคริปต์การวิเคราะห์ที่ติดตั้งไว้แล้วในไซต์นี้"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214, fuzzy
 msgid "analytics.js"
 msgstr "analytics.js"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215, fuzzy
 msgid "Google Analytics 4"
 msgstr "Google Analytics 4"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:216
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:216, fuzzy
 msgid "Universal Analytics"
 msgstr "Universal Analytics"
 
@@ -5199,39 +5281,45 @@ msgstr "ขออภัย คุณไม่มีสิทธิ์เข้�
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
-msgstr ""
+msgstr "ตัวเลือกภาษี"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:82
 msgid "Invoice Options"
-msgstr ""
+msgstr "ตัวเลือกใบแจ้งหนี้"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:77
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "The Stripe Connect server could not preregister this session. Error: %s"
 msgstr ""
+"เซิร์ฟเวอร์ Stripe Connect ไม่สามารถลงทะเบียนล่วงหน้าสำหรับเซสชันนี้ได้ "
+"ข้อผิดพลาด: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:88
 msgid "The Stripe Connect server rejected this preregistration request."
-msgstr ""
+msgstr "เซิร์ฟเวอร์ Stripe Connect ปฏิเสธคำขอลงทะเบียนล่วงหน้านี้"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:109
 msgid "Unable to prepare the Stripe Connect site credential."
-msgstr ""
+msgstr "ไม่สามารถเตรียมข้อมูลรับรองเว็บไซต์ Stripe Connect ได้"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:115
 msgid "Unable to encrypt the Stripe Connect site credential."
-msgstr ""
+msgstr "ไม่สามารถเข้ารหัสข้อมูลรับรองเว็บไซต์ Stripe Connect ได้"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:144
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "Unable to fetch the Stripe Connect preregistration public key. Error: %s"
 msgstr ""
+"ไม่สามารถดึงคีย์สาธารณะการลงทะเบียนล่วงหน้าของ Stripe Connect ได้ "
+"ข้อผิดพลาด: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:154
 msgid "The Stripe Connect preregistration public key is unavailable or invalid."
 msgstr ""
+"คีย์สาธารณะการลงทะเบียนล่วงหน้าของ Stripe Connect "
+"ไม่สามารถใช้งานได้หรือไม่ถูกต้อง"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:225
 msgid "Stripe account disconnected for the selected mode."
@@ -5336,13 +5424,16 @@ msgstr "เกิดข้อผิดพลาด: กรุณาลองอ�
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Migration required"
-msgstr ""
+msgstr "ต้องการการย้ายข้อมูล"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
 msgstr ""
+"คุณมีข้อมูลรับรองที่เก็บไว้ 1 ชุดในรูปแบบข้อความธรรมดา "
+"หลังจากเปิดใช้งานการเข้ารหัส ให้เรียกใช้การย้ายข้อมูลจากการตั้งค่า → "
+"การบำรุงรักษาเพื่อลงรหัส"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 #. translators: %d: number of stored credentials.
@@ -5351,15 +5442,18 @@ msgid ""
 "You have %d stored credentials in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt them."
 msgstr ""
+"คุณมีข้อมูลรับรองที่เก็บไว้ %d ชุดในรูปแบบข้อความธรรมดา "
+"หลังจากเปิดใช้งานการเข้ารหัส ให้เรียกใช้การย้ายข้อมูลจากการตั้งค่า → "
+"การบำรุงรักษาเพื่อลงรหัส"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Encryption updated"
-msgstr ""
+msgstr "การเข้ารหัสอัปเดตแล้ว"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
-msgstr ""
+msgstr "ดำเนินการต่อ"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #: admin/traits/trait-ppcart-admin-integrations.php:149
@@ -5369,19 +5463,19 @@ msgstr "ตกลง"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
-msgstr ""
+msgstr "ไม่สามารถอัปเดตการตั้งค่าการเข้ารหัสความปลอดภัยได้"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:95
 msgid "No matching customers"
-msgstr ""
+msgstr "ไม่มีลูกค้าที่ตรงกัน"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:96
 msgid "No matching products"
-msgstr ""
+msgstr "ไม่มีผลิตภัณฑ์ที่ตรงกัน"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "Searching…"
-msgstr ""
+msgstr "กำลังค้นหา…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:114
 msgid "No matching settings"
@@ -5418,7 +5512,7 @@ msgstr "ปิดตัวอย่าง"
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:153
 msgid "Encrypt stored credentials"
-msgstr ""
+msgstr "เข้ารหัสข้อมูลรับรองที่เก็บไว้"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 #. translators: %d: number of plaintext credentials.
@@ -5427,28 +5521,32 @@ msgid ""
 "Encrypt %d plaintext credential(s) in the database? Take a backup first and "
 "run this during a maintenance window."
 msgstr ""
+"เข้ารหัสข้อมูลรับรองข้อความธรรมดา %d ชุดในฐานข้อมูล? "
+"สำรองข้อมูลก่อนและเรียกใช้ในช่วงเวลาบำรุงรักษา"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
 msgstr ""
+"สแกนข้อมูลรับรองที่เก็บไว้และเข้ารหัสค่าข้อความธรรมดาใด ๆ? "
+"สำรองข้อมูลก่อนและเรียกใช้ในช่วงเวลาบำรุงรักษา"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Generating preview…"
-msgstr ""
+msgstr "กำลังสร้างตัวอย่าง…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Sending test email…"
-msgstr ""
+msgstr "กำลังส่งอีเมลทดสอบ…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:146
 msgid "Test email failed to send. Please refresh the page and try again."
-msgstr ""
+msgstr "ไม่สามารถส่งอีเมลทดสอบได้ กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:147
 msgid "Enter an email address to send the test to."
-msgstr ""
+msgstr "กรุณาใส่อีเมลเพื่อส่งไปยัง"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:23
 #. translators: %s: tax rate ID.
@@ -5543,6 +5641,10 @@ msgid ""
 "data-testid=\"ppcart-admin-notice-integration-settings\">settings page</a> "
 "to check your integration settings.</p>"
 msgstr ""
+"ไม่สามารถเชื่อมต่อกับการรวมที่ระบุด้านล่าง ไปที่ %1$s <a href=\"%2$s\" "
+"rel=\"noreferrer noopener\" "
+"data-testid=\"ppcart-admin-notice-integration-settings\">หน้าการตั้งค่า</a> "
+"เพื่อตรวจสอบการตั้งค่าการรวมของคุณ.</p>"
 
 #: admin/traits/templates/notices-admin-notices.php:70
 msgid ""
@@ -5633,7 +5735,7 @@ msgstr "เปิดบัญชีที่เชื่อมต่อใน St
 msgid "Stripe Connect status check failed."
 msgstr "การตรวจสอบสถานะการเชื่อมต่อของ Stripe ล้มเหลว."
 
-#: admin/traits/trait-ppcart-admin-privacy.php:90
+#: admin/traits/trait-ppcart-admin-privacy.php:90, fuzzy
 msgid "[removed]"
 msgstr "[removed]"
 
@@ -5641,7 +5743,7 @@ msgstr "[removed]"
 #. translators: 1: field label, 2: order ID.
 #, php-format
 msgid "There was a problem removing your %1$s from order #%2$d."
-msgstr ""
+msgstr "มีปัญหาในการลบ %1$s ของคุณจากคำสั่ง #%2$d"
 
 #: admin/traits/trait-ppcart-admin-privacy.php:197
 msgid ""
@@ -5862,16 +5964,19 @@ msgid ""
 "PublishPress Cart and PublishPress Cart Compatibility cannot run while "
 "Studiocart is active. Deactivate Studiocart to start those plugins."
 msgstr ""
+"ปลั๊กอิน PublishPress Cart และความเข้ากันได้ของ PublishPress Cart "
+"ไม่สามารถทำงานได้ในขณะที่ Studiocart ทำงานอยู่ ปิดการใช้งาน Studiocart "
+"เพื่อเริ่มปลั๊กอินเหล่านั้น。"
 
 #: includes/class-ppcart-version-notices.php:85
 msgid ""
 "You're using PublishPress Cart. The Pro version has more features and "
 "support."
-msgstr ""
+msgstr "คุณกำลังใช้ PublishPress Cart รุ่น Pro มีฟีเจอร์และการสนับสนุนมากกว่า。"
 
 #: includes/class-ppcart-version-notices.php:97
 msgid "Dismiss"
-msgstr ""
+msgstr "ปิด"
 
 #: includes/data/states/states-01.php:8
 msgid "Bengo"
@@ -5881,9 +5986,9 @@ msgstr "เบงโก"
 msgid "Benguela"
 msgstr "เบงเกล่า"
 
-#: includes/data/states/states-01.php:10
+#: includes/data/states/states-01.php:10, fuzzy
 msgid "Bi�"
-msgstr ""
+msgstr "Bi�"
 
 #: includes/data/states/states-01.php:11
 msgid "Cabinda"
@@ -5897,9 +6002,9 @@ msgstr "คูเนเน"
 msgid "Huambo"
 msgstr "ฮวัมโบ"
 
-#: includes/data/states/states-01.php:14
+#: includes/data/states/states-01.php:14, fuzzy
 msgid "Hu�la"
-msgstr ""
+msgstr "Hu�la"
 
 #: includes/data/states/states-01.php:15
 msgid "Kuando Kubango"
@@ -5937,9 +6042,9 @@ msgstr "ม็อกซิโก"
 msgid "Namibe"
 msgstr "นามิเบ"
 
-#: includes/data/states/states-01.php:24
+#: includes/data/states/states-01.php:24, fuzzy
 msgid "U�ge"
-msgstr ""
+msgstr "U�ge"
 
 #: includes/data/states/states-01.php:25
 msgid "Zaire"
@@ -5947,7 +6052,7 @@ msgstr "ซาอีร์"
 
 #: includes/data/states/states-01.php:28
 msgid "Ciudad Aut�noma de Buenos Aires"
-msgstr ""
+msgstr "Ciudad Autónoma de Buenos Aires"
 
 #: includes/data/states/states-01.php:29
 msgid "Buenos Aires"
@@ -5966,17 +6071,17 @@ msgid "Chubut"
 msgstr "ชูบุต"
 
 #: includes/data/states/states-01.php:33
-#: includes/data/states/states-01.php:353
+#: includes/data/states/states-01.php:353, fuzzy
 msgid "C�rdoba"
-msgstr ""
+msgstr "C�rdoba"
 
 #: includes/data/states/states-01.php:34
 msgid "Corrientes"
 msgstr "คอรีนเตส"
 
-#: includes/data/states/states-01.php:35
+#: includes/data/states/states-01.php:35, fuzzy
 msgid "Entre R�os"
-msgstr ""
+msgstr "Entre R�os"
 
 #: includes/data/states/states-01.php:36
 msgid "Formosa"
@@ -6004,13 +6109,13 @@ msgstr "เมนโดซา"
 msgid "Misiones"
 msgstr "มิเชียนเนส"
 
-#: includes/data/states/states-01.php:42
+#: includes/data/states/states-01.php:42, fuzzy
 msgid "Neuqu�n"
-msgstr ""
+msgstr "Neuqu�n"
 
 #: includes/data/states/states-01.php:43
 msgid "R�o Negro"
-msgstr ""
+msgstr "Río Negro"
 
 #: includes/data/states/states-01.php:44
 msgid "Salta"
@@ -6041,9 +6146,9 @@ msgstr "ซันติอาโก เดล เอสเตโร"
 msgid "Tierra del Fuego"
 msgstr "เทียร์รา เดล ฟูเอโก"
 
-#: includes/data/states/states-01.php:51
+#: includes/data/states/states-01.php:51, fuzzy
 msgid "Tucum�n"
-msgstr ""
+msgstr "Tucum�n"
 
 #: includes/data/states/states-01.php:55
 msgid "Australian Capital Territory"
@@ -6345,84 +6450,84 @@ msgstr "เบอร์กัส"
 msgid "Dobrich"
 msgstr "โดบริช"
 
-#: includes/data/states/states-01.php:136
+#: includes/data/states/states-01.php:136, fuzzy
 msgid "Gabrovo"
 msgstr "Gabrovo"
 
-#: includes/data/states/states-01.php:137
+#: includes/data/states/states-01.php:137, fuzzy
 msgid "Haskovo"
 msgstr "Haskovo"
 
-#: includes/data/states/states-01.php:138
+#: includes/data/states/states-01.php:138, fuzzy
 msgid "Kardzhali"
 msgstr "Kardzhali"
 
-#: includes/data/states/states-01.php:139
+#: includes/data/states/states-01.php:139, fuzzy
 msgid "Kyustendil"
 msgstr "Kyustendil"
 
-#: includes/data/states/states-01.php:140
+#: includes/data/states/states-01.php:140, fuzzy
 msgid "Lovech"
 msgstr "Lovech"
 
 #: includes/data/states/states-01.php:141
-#: includes/data/states/states-04.php:374
+#: includes/data/states/states-04.php:374, fuzzy
 msgid "Montana"
 msgstr "Montana"
 
-#: includes/data/states/states-01.php:142
+#: includes/data/states/states-01.php:142, fuzzy
 msgid "Pazardzhik"
 msgstr "Pazardzhik"
 
-#: includes/data/states/states-01.php:143
+#: includes/data/states/states-01.php:143, fuzzy
 msgid "Pernik"
 msgstr "Pernik"
 
-#: includes/data/states/states-01.php:144
+#: includes/data/states/states-01.php:144, fuzzy
 msgid "Pleven"
 msgstr "Pleven"
 
-#: includes/data/states/states-01.php:145
+#: includes/data/states/states-01.php:145, fuzzy
 msgid "Plovdiv"
 msgstr "Plovdiv"
 
-#: includes/data/states/states-01.php:146
+#: includes/data/states/states-01.php:146, fuzzy
 msgid "Razgrad"
 msgstr "Razgrad"
 
-#: includes/data/states/states-01.php:147
+#: includes/data/states/states-01.php:147, fuzzy
 msgid "Ruse"
 msgstr "Ruse"
 
-#: includes/data/states/states-01.php:148
+#: includes/data/states/states-01.php:148, fuzzy
 msgid "Shumen"
 msgstr "Shumen"
 
-#: includes/data/states/states-01.php:149
+#: includes/data/states/states-01.php:149, fuzzy
 msgid "Silistra"
 msgstr "Silistra"
 
-#: includes/data/states/states-01.php:150
+#: includes/data/states/states-01.php:150, fuzzy
 msgid "Sliven"
 msgstr "Sliven"
 
-#: includes/data/states/states-01.php:151
+#: includes/data/states/states-01.php:151, fuzzy
 msgid "Smolyan"
 msgstr "Smolyan"
 
-#: includes/data/states/states-01.php:152
+#: includes/data/states/states-01.php:152, fuzzy
 msgid "Sofia"
 msgstr "Sofia"
 
-#: includes/data/states/states-01.php:153
+#: includes/data/states/states-01.php:153, fuzzy
 msgid "Sofia-Grad"
 msgstr "Sofia-Grad"
 
-#: includes/data/states/states-01.php:154
+#: includes/data/states/states-01.php:154, fuzzy
 msgid "Stara Zagora"
 msgstr "Stara Zagora"
 
-#: includes/data/states/states-01.php:155
+#: includes/data/states/states-01.php:155, fuzzy
 msgid "Targovishte"
 msgstr "Targovishte"
 
@@ -6470,9 +6575,9 @@ msgstr "โอรูโร"
 msgid "Pando"
 msgstr "ปันโด"
 
-#: includes/data/states/states-01.php:171
+#: includes/data/states/states-01.php:171, fuzzy
 msgid "Potos�"
-msgstr ""
+msgstr "Potos�"
 
 #: includes/data/states/states-01.php:173
 msgid "Tarija"
@@ -6486,9 +6591,9 @@ msgstr "อากรี"
 msgid "Alagoas"
 msgstr "อาลากัวส์"
 
-#: includes/data/states/states-01.php:178
+#: includes/data/states/states-01.php:178, fuzzy
 msgid "Amap�"
-msgstr ""
+msgstr "Amap�"
 
 #: includes/data/states/states-01.php:179
 #: includes/data/states/states-03.php:222
@@ -6499,25 +6604,25 @@ msgstr "อเมซอนัส"
 msgid "Bahia"
 msgstr "บาเฮีย"
 
-#: includes/data/states/states-01.php:181
+#: includes/data/states/states-01.php:181, fuzzy
 msgid "Cear�"
-msgstr ""
+msgstr "Cear�"
 
 #: includes/data/states/states-01.php:182
 msgid "Distrito Federal"
 msgstr "เขตฟีเดอรัล"
 
-#: includes/data/states/states-01.php:183
+#: includes/data/states/states-01.php:183, fuzzy
 msgid "Esp�rito Santo"
-msgstr ""
+msgstr "Esp�rito Santo"
 
-#: includes/data/states/states-01.php:184
+#: includes/data/states/states-01.php:184, fuzzy
 msgid "Goi�s"
-msgstr ""
+msgstr "Goi�s"
 
-#: includes/data/states/states-01.php:185
+#: includes/data/states/states-01.php:185, fuzzy
 msgid "Maranh�o"
-msgstr ""
+msgstr "Maranh�o"
 
 #: includes/data/states/states-01.php:186
 msgid "Mato Grosso"
@@ -6531,25 +6636,25 @@ msgstr "มาทูกรอสโซดูซูล"
 msgid "Minas Gerais"
 msgstr "มินัสเจอไรส์"
 
-#: includes/data/states/states-01.php:189
+#: includes/data/states/states-01.php:189, fuzzy
 msgid "Par�"
-msgstr ""
+msgstr "Par�"
 
-#: includes/data/states/states-01.php:190
+#: includes/data/states/states-01.php:190, fuzzy
 msgid "Para�ba"
-msgstr ""
+msgstr "Para�ba"
 
-#: includes/data/states/states-01.php:191
+#: includes/data/states/states-01.php:191, fuzzy
 msgid "Paran�"
-msgstr ""
+msgstr "Paran�"
 
 #: includes/data/states/states-01.php:192
 msgid "Pernambuco"
 msgstr "เปอร์นัมบูโก"
 
-#: includes/data/states/states-01.php:193
+#: includes/data/states/states-01.php:193, fuzzy
 msgid "Piau�"
-msgstr ""
+msgstr "Piau�"
 
 #: includes/data/states/states-01.php:194
 msgid "Rio de Janeiro"
@@ -6563,9 +6668,9 @@ msgstr "ริโอกรานเดดูนอร์เต"
 msgid "Rio Grande do Sul"
 msgstr "ริโอกรานเดดูซูล"
 
-#: includes/data/states/states-01.php:197
+#: includes/data/states/states-01.php:197, fuzzy
 msgid "Rond�nia"
-msgstr ""
+msgstr "Rond�nia"
 
 #: includes/data/states/states-01.php:198
 msgid "Roraima"
@@ -6575,9 +6680,9 @@ msgstr "โรไรมา"
 msgid "Santa Catarina"
 msgstr "ซานตากาตารีนา"
 
-#: includes/data/states/states-01.php:200
+#: includes/data/states/states-01.php:200, fuzzy
 msgid "S�o Paulo"
-msgstr ""
+msgstr "S�o Paulo"
 
 #: includes/data/states/states-01.php:201
 msgid "Sergipe"
@@ -6675,9 +6780,9 @@ msgstr "เจนีวา"
 msgid "Glarus"
 msgstr "กลารุส"
 
-#: includes/data/states/states-01.php:229
+#: includes/data/states/states-01.php:229, fuzzy
 msgid "Graub�nden"
-msgstr ""
+msgstr "Graub�nden"
 
 #: includes/data/states/states-01.php:230
 msgid "Jura"
@@ -6687,9 +6792,9 @@ msgstr "จูรา"
 msgid "Luzern"
 msgstr "ลูเซิร์น"
 
-#: includes/data/states/states-01.php:232
+#: includes/data/states/states-01.php:232, fuzzy
 msgid "Neuch�tel"
-msgstr ""
+msgstr "Neuch�tel"
 
 #: includes/data/states/states-01.php:233
 msgid "Nidwalden"
@@ -6739,137 +6844,137 @@ msgstr "โวด"
 msgid "Zug"
 msgstr "ซุก"
 
-#: includes/data/states/states-01.php:245
+#: includes/data/states/states-01.php:245, fuzzy
 msgid "Z�rich"
-msgstr ""
+msgstr "Z�rich"
 
-#: includes/data/states/states-01.php:248
+#: includes/data/states/states-01.php:248, fuzzy
 msgid "Yunnan / ??"
-msgstr ""
+msgstr "Yunnan / ??"
 
-#: includes/data/states/states-01.php:249
+#: includes/data/states/states-01.php:249, fuzzy
 msgid "Beijing / ??"
-msgstr ""
+msgstr "Beijing / ??"
 
-#: includes/data/states/states-01.php:250
+#: includes/data/states/states-01.php:250, fuzzy
 msgid "Tianjin / ??"
-msgstr ""
+msgstr "Tianjin / ??"
 
-#: includes/data/states/states-01.php:251
+#: includes/data/states/states-01.php:251, fuzzy
 msgid "Hebei / ??"
-msgstr ""
+msgstr "Hebei / ??"
 
-#: includes/data/states/states-01.php:252
+#: includes/data/states/states-01.php:252, fuzzy
 msgid "Shanxi / ??"
-msgstr ""
+msgstr "Shanxi / ??"
 
-#: includes/data/states/states-01.php:253
+#: includes/data/states/states-01.php:253, fuzzy
 msgid "Inner Mongolia / ???"
-msgstr ""
+msgstr "Inner Mongolia / ???"
 
-#: includes/data/states/states-01.php:254
+#: includes/data/states/states-01.php:254, fuzzy
 msgid "Liaoning / ??"
-msgstr ""
+msgstr "Liaoning / ??"
 
-#: includes/data/states/states-01.php:255
+#: includes/data/states/states-01.php:255, fuzzy
 msgid "Jilin / ??"
-msgstr ""
+msgstr "Jilin / ??"
 
-#: includes/data/states/states-01.php:256
+#: includes/data/states/states-01.php:256, fuzzy
 msgid "Heilongjiang / ???"
-msgstr ""
+msgstr "Heilongjiang / ???"
 
-#: includes/data/states/states-01.php:257
+#: includes/data/states/states-01.php:257, fuzzy
 msgid "Shanghai / ??"
-msgstr ""
+msgstr "Shanghai / ??"
 
-#: includes/data/states/states-01.php:258
+#: includes/data/states/states-01.php:258, fuzzy
 msgid "Jiangsu / ??"
-msgstr ""
+msgstr "Jiangsu / ??"
 
-#: includes/data/states/states-01.php:259
+#: includes/data/states/states-01.php:259, fuzzy
 msgid "Zhejiang / ??"
-msgstr ""
+msgstr "Zhejiang / ??"
 
-#: includes/data/states/states-01.php:260
+#: includes/data/states/states-01.php:260, fuzzy
 msgid "Anhui / ??"
-msgstr ""
+msgstr "Anhui / ??"
 
 #: includes/data/states/states-01.php:261
 msgid "Fujian / ??"
-msgstr ""
+msgstr "ฟูเจี้ยน"
 
 #: includes/data/states/states-01.php:262
 msgid "Jiangxi / ??"
-msgstr ""
+msgstr "เจียงซี"
 
 #: includes/data/states/states-01.php:263
 msgid "Shandong / ??"
-msgstr ""
+msgstr "ซานตง"
 
 #: includes/data/states/states-01.php:264
 msgid "Henan / ??"
-msgstr ""
+msgstr "เหอหนาน"
 
 #: includes/data/states/states-01.php:265
 msgid "Hubei / ??"
-msgstr ""
+msgstr "หูเป่ย์"
 
 #: includes/data/states/states-01.php:266
 msgid "Hunan / ??"
-msgstr ""
+msgstr "หูหนาน"
 
 #: includes/data/states/states-01.php:267
 msgid "Guangdong / ??"
-msgstr ""
+msgstr "กวางตุ้ง"
 
 #: includes/data/states/states-01.php:268
 msgid "Guangxi Zhuang / ????"
-msgstr ""
+msgstr "กวางสีจ้วง"
 
 #: includes/data/states/states-01.php:269
 msgid "Hainan / ??"
-msgstr ""
+msgstr "ไหหลำ"
 
 #: includes/data/states/states-01.php:270
 msgid "Chongqing / ??"
-msgstr ""
+msgstr "ฉงชิ่ง"
 
 #: includes/data/states/states-01.php:271
 msgid "Sichuan / ??"
-msgstr ""
+msgstr "เสฉวน"
 
 #: includes/data/states/states-01.php:272
 msgid "Guizhou / ??"
-msgstr ""
+msgstr "กุ้ยโจว"
 
 #: includes/data/states/states-01.php:273
 msgid "Shaanxi / ??"
-msgstr ""
+msgstr "ซานซี"
 
 #: includes/data/states/states-01.php:274
 msgid "Gansu / ??"
-msgstr ""
+msgstr "กานซู"
 
 #: includes/data/states/states-01.php:275
 msgid "Qinghai / ??"
-msgstr ""
+msgstr "ชิงไห่"
 
 #: includes/data/states/states-01.php:276
 msgid "Ningxia Hui / ??"
-msgstr ""
+msgstr "หนิงเซีย"
 
 #: includes/data/states/states-01.php:277
 msgid "Macao / ??"
-msgstr ""
+msgstr "มาเก๊า"
 
 #: includes/data/states/states-01.php:278
 msgid "Tibet / ??"
-msgstr ""
+msgstr "ทิเบต"
 
 #: includes/data/states/states-01.php:279
 msgid "Xinjiang / ??"
-msgstr ""
+msgstr "ซินเจียง"
 
 #: includes/data/states/states-01.php:285
 msgid "Adrar"
@@ -6893,7 +6998,7 @@ msgstr "แบตนา"
 
 #: includes/data/states/states-01.php:290
 msgid "B�ja�a"
-msgstr ""
+msgstr "เบจายา"
 
 #: includes/data/states/states-01.php:291
 msgid "Biskra"
@@ -6901,7 +7006,7 @@ msgstr "บิสกรา"
 
 #: includes/data/states/states-01.php:292
 msgid "B�char"
-msgstr ""
+msgstr "เบลชาร์"
 
 #: includes/data/states/states-01.php:293
 msgid "Blida"
@@ -6917,7 +7022,7 @@ msgstr "ทามังเฮสเซต"
 
 #: includes/data/states/states-01.php:296
 msgid "T�bessa"
-msgstr ""
+msgstr "ตาเบสซา"
 
 #: includes/data/states/states-01.php:297
 msgid "Tlemcen"
@@ -6945,11 +7050,11 @@ msgstr "จิจัล"
 
 #: includes/data/states/states-01.php:303
 msgid "S�tif"
-msgstr ""
+msgstr "เซติฟ"
 
 #: includes/data/states/states-01.php:304
 msgid "Sa�da"
-msgstr ""
+msgstr "ซาอิดา"
 
 #: includes/data/states/states-01.php:305
 msgid "Skikda"
@@ -6957,7 +7062,7 @@ msgstr "สกิกดา"
 
 #: includes/data/states/states-01.php:306
 msgid "Sidi Bel Abb�s"
-msgstr ""
+msgstr "ซิดีเบลอับบาส"
 
 #: includes/data/states/states-01.php:307
 msgid "Annaba"
@@ -6973,7 +7078,7 @@ msgstr "คอนสแตนติน"
 
 #: includes/data/states/states-01.php:310
 msgid "M�d�a"
-msgstr ""
+msgstr "มิดิอา"
 
 #: includes/data/states/states-01.php:311
 msgid "Mostaganem"
@@ -6981,7 +7086,7 @@ msgstr "โมสตากาเนม"
 
 #: includes/data/states/states-01.php:312
 msgid "M�Sila"
-msgstr ""
+msgstr "มุสซิลา"
 
 #: includes/data/states/states-01.php:313
 msgid "Mascara"
@@ -7005,11 +7110,11 @@ msgstr "อิลลิซิ"
 
 #: includes/data/states/states-01.php:318
 msgid "Bordj Bou Arr�ridj"
-msgstr ""
+msgstr "บอร์จบูอาร์ริจ"
 
 #: includes/data/states/states-01.php:319
 msgid "Boumerd�s"
-msgstr ""
+msgstr "บูเมอรเดส"
 
 #: includes/data/states/states-01.php:320
 msgid "El Tarf"
@@ -7045,7 +7150,7 @@ msgstr "มิล่า"
 
 #: includes/data/states/states-01.php:328
 msgid "A�n Defla"
-msgstr ""
+msgstr "อาอินเดฟล่า"
 
 #: includes/data/states/states-01.php:329
 msgid "Naama"
@@ -7053,11 +7158,11 @@ msgstr "นามา"
 
 #: includes/data/states/states-01.php:330
 msgid "A�n T�mouchent"
-msgstr ""
+msgstr "อาอินตัมูเชนต์"
 
 #: includes/data/states/states-01.php:331
 msgid "Gharda�a"
-msgstr ""
+msgstr "การ์ดาเนีย"
 
 #: includes/data/states/states-01.php:332
 msgid "Relizane"
@@ -7065,11 +7170,11 @@ msgstr "เรลิซาน"
 
 #: includes/data/states/states-01.php:336
 msgid "A Coru�a"
-msgstr ""
+msgstr "อาคอรุนญ่า"
 
 #: includes/data/states/states-01.php:337
 msgid "Araba/�lava"
-msgstr ""
+msgstr "อาราบา/อาลาวา"
 
 #: includes/data/states/states-01.php:338
 msgid "Albacete"
@@ -7081,7 +7186,7 @@ msgstr "อัลิกันเต"
 
 #: includes/data/states/states-01.php:340
 msgid "Almer�a"
-msgstr ""
+msgstr "อัลเมอเรีย"
 
 #: includes/data/states/states-01.php:341
 msgid "Asturias"
@@ -7089,7 +7194,7 @@ msgstr "อัสตูเรียส"
 
 #: includes/data/states/states-01.php:342
 msgid "�vila"
-msgstr ""
+msgstr "อาวิลา"
 
 #: includes/data/states/states-01.php:343
 msgid "Badajoz"
@@ -7109,11 +7214,11 @@ msgstr "เบอร์กอส์"
 
 #: includes/data/states/states-01.php:347
 msgid "C�ceres"
-msgstr ""
+msgstr "เซเซเรส"
 
 #: includes/data/states/states-01.php:348
 msgid "C�diz"
-msgstr ""
+msgstr "คาดิส"
 
 #: includes/data/states/states-01.php:349
 msgid "Cantabria"
@@ -7121,7 +7226,7 @@ msgstr "กันตาเบรีย"
 
 #: includes/data/states/states-01.php:350
 msgid "Castell�n"
-msgstr ""
+msgstr "คาสตีลลอน"
 
 #: includes/data/states/states-01.php:351
 msgid "Ceuta"
@@ -7161,7 +7266,7 @@ msgstr "อวยสกา"
 
 #: includes/data/states/states-01.php:361
 msgid "Ja�n"
-msgstr ""
+msgstr "ฆาเอน"
 
 #: includes/data/states/states-01.php:363
 msgid "Las Palmas"
@@ -7169,7 +7274,7 @@ msgstr "ลาสปัลมาส"
 
 #: includes/data/states/states-01.php:364
 msgid "Le�n"
-msgstr ""
+msgstr "เลออน"
 
 #: includes/data/states/states-01.php:365
 msgid "Lleida"
@@ -7185,7 +7290,7 @@ msgstr "มาดริด"
 
 #: includes/data/states/states-01.php:368
 msgid "M�laga"
-msgstr ""
+msgstr "มาลากา"
 
 #: includes/data/states/states-01.php:369
 msgid "Melilla"
@@ -7402,11 +7507,11 @@ msgstr "นิวเทอริทอรีส์"
 
 #: includes/data/states/states-02.php:50
 msgid "B�cs-Kiskun"
-msgstr ""
+msgstr "บัคซ-คิสคุน"
 
 #: includes/data/states/states-02.php:51
 msgid "B�k�s"
-msgstr ""
+msgstr "บาคอช"
 
 #: includes/data/states/states-02.php:52
 msgid "Baranya"
@@ -7414,7 +7519,7 @@ msgstr "บารานยา"
 
 #: includes/data/states/states-02.php:53
 msgid "Borsod-Aba�j-Zempl�n"
-msgstr ""
+msgstr "บอร์ซอด-อาบาอิ-เซมปลิน"
 
 #: includes/data/states/states-02.php:54
 msgid "Budapest"
@@ -7422,19 +7527,19 @@ msgstr "บูดาเปสต์"
 
 #: includes/data/states/states-02.php:55
 msgid "Csongr�d"
-msgstr ""
+msgstr "ชงกราด"
 
 #: includes/data/states/states-02.php:56
 msgid "Fej�r"
-msgstr ""
+msgstr "เฟย์เยอร์"
 
 #: includes/data/states/states-02.php:57
 msgid "Gyor-Moson-Sopron"
-msgstr ""
+msgstr "เกียร-มอซอน-โซปรอน"
 
 #: includes/data/states/states-02.php:58
 msgid "Hajd�-Bihar"
-msgstr ""
+msgstr "ฮาจ์ด-บิฮาร์"
 
 #: includes/data/states/states-02.php:59
 msgid "Heves"
@@ -7442,15 +7547,15 @@ msgstr "เฮเวส"
 
 #: includes/data/states/states-02.php:60
 msgid "J�sz-Nagykun-Szolnok"
-msgstr ""
+msgstr "ยาซ-นากิคลุน-ซอลนอก"
 
 #: includes/data/states/states-02.php:61
 msgid "Kom�rom-Esztergom"
-msgstr ""
+msgstr "โคมารอม-เอสเตอรอม"
 
 #: includes/data/states/states-02.php:62
 msgid "N�gr�d"
-msgstr ""
+msgstr "นอกเร็ด"
 
 #: includes/data/states/states-02.php:63
 msgid "Pest"
@@ -7462,7 +7567,7 @@ msgstr "โซโมย"
 
 #: includes/data/states/states-02.php:65
 msgid "Szabolcs-Szatm�r-Bereg"
-msgstr ""
+msgstr "ซาโบลช-ซัทมาร์-เบเรก"
 
 #: includes/data/states/states-02.php:66
 msgid "Tolna"
@@ -7474,7 +7579,7 @@ msgstr "วาส"
 
 #: includes/data/states/states-02.php:68
 msgid "Veszpr�m"
-msgstr ""
+msgstr "เวสปริม"
 
 #: includes/data/states/states-02.php:69
 msgid "Zala"
@@ -7867,127 +7972,127 @@ msgstr "พอนดิเชอรี (ปุดุเชอรี)"
 
 #: includes/data/states/states-02.php:174
 msgid "Khuzestan  (???????)"
-msgstr ""
+msgstr "คูเซสถาน (???????)"
 
 #: includes/data/states/states-02.php:175
 msgid "Tehran  (?????)"
-msgstr ""
+msgstr "เตหราน (?????)"
 
 #: includes/data/states/states-02.php:176
 msgid "Ilaam (?????)"
-msgstr ""
+msgstr "อิลาม (?????)"
 
 #: includes/data/states/states-02.php:177
 msgid "Bushehr (?????)"
-msgstr ""
+msgstr "บุเชเฮอร์ (?????)"
 
 #: includes/data/states/states-02.php:178
 msgid "Ardabil (??????)"
-msgstr ""
+msgstr "อาร์ดาบิล (??????)"
 
 #: includes/data/states/states-02.php:179
 msgid "Isfahan (??????)"
-msgstr ""
+msgstr "อิสฟาฮาน (??????)"
 
 #: includes/data/states/states-02.php:180
 msgid "Yazd (???)"
-msgstr ""
+msgstr "ยาซด์ (???)"
 
 #: includes/data/states/states-02.php:181
 msgid "Kermanshah (????????)"
-msgstr ""
+msgstr "เคอร์มันชาห์ (????????)"
 
 #: includes/data/states/states-02.php:182
 msgid "Kerman (?????)"
-msgstr ""
+msgstr "เคอร์มัน (?????)"
 
 #: includes/data/states/states-02.php:183
 msgid "Hamadan (?????)"
-msgstr ""
+msgstr "ฮามาดาน (?????)"
 
 #: includes/data/states/states-02.php:184
 msgid "Ghazvin (?????)"
-msgstr ""
+msgstr "กัซวิน (?????)"
 
 #: includes/data/states/states-02.php:185
 msgid "Zanjan (?????)"
-msgstr ""
+msgstr "ซันจัน (?????)"
 
 #: includes/data/states/states-02.php:186
 msgid "Luristan (??????)"
-msgstr ""
+msgstr "ลูริสถาน (??????)"
 
 #: includes/data/states/states-02.php:187
 msgid "Alborz (?????)"
-msgstr ""
+msgstr "อัลบอร์ซ (?????)"
 
 #: includes/data/states/states-02.php:188
 msgid "East Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "อัซาร์ไบจานตะวันออก (????????? ????)"
 
 #: includes/data/states/states-02.php:189
 msgid "West Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "อัซาร์ไบจานตะวันตก (????????? ????)"
 
 #: includes/data/states/states-02.php:190
 msgid "Chaharmahal and Bakhtiari (???????? ? ???????)"
-msgstr ""
+msgstr "ชะฮาร์มาฮาลและบักห์ติอารี (???????? ? ???????)"
 
 #: includes/data/states/states-02.php:191
 msgid "South Khorasan (?????? ?????)"
-msgstr ""
+msgstr "คอราซานใต้ (?????? ?????)"
 
 #: includes/data/states/states-02.php:192
 msgid "Razavi Khorasan (?????? ????)"
-msgstr ""
+msgstr "คอราซานเรซาวี (?????? ????)"
 
 #: includes/data/states/states-02.php:193
 msgid "North Khorasan (?????? ?????)"
-msgstr ""
+msgstr "คอราซานเหนือ (?????? ?????)"
 
 #: includes/data/states/states-02.php:194
 msgid "Semnan (?????)"
-msgstr ""
+msgstr "เซมนัน (?????)"
 
 #: includes/data/states/states-02.php:195
 msgid "Fars (????)"
-msgstr ""
+msgstr "ฟาร์ส (????)"
 
 #: includes/data/states/states-02.php:196
 msgid "Qom (??)"
-msgstr ""
+msgstr "กอม (??)"
 
 #: includes/data/states/states-02.php:197
 msgid "Kurdistan / ???????)"
-msgstr ""
+msgstr "เคิร์ดิสถาน / ???????)"
 
 #: includes/data/states/states-02.php:198
 msgid "Kohgiluyeh and BoyerAhmad (????????? ? ????????)"
-msgstr ""
+msgstr "โคห์กิลุเยห์และบอยร์อามาด (????????? ? ????????)"
 
 #: includes/data/states/states-02.php:199
 msgid "Golestan (??????)"
-msgstr ""
+msgstr "โกเลสถาน (??????)"
 
 #: includes/data/states/states-02.php:200
 msgid "Gilan (?????)"
-msgstr ""
+msgstr "กิลาน"
 
 #: includes/data/states/states-02.php:201
 msgid "Mazandaran (????????)"
-msgstr ""
+msgstr "มาซานดารัน"
 
 #: includes/data/states/states-02.php:202
 msgid "Markazi (?????)"
-msgstr ""
+msgstr "มาร์คาซี"
 
 #: includes/data/states/states-02.php:203
 msgid "Hormozgan (???????)"
-msgstr ""
+msgstr "ฮอร์มอซกัน"
 
 #: includes/data/states/states-02.php:204
 msgid "Sistan and Baluchestan (?????? ? ????????)"
-msgstr ""
+msgstr "ซิสถานและบะลูเชสถาน"
 
 #: includes/data/states/states-02.php:208
 msgid "Agrigento"
@@ -8131,7 +8236,7 @@ msgstr "ฟอจจา"
 
 #: includes/data/states/states-02.php:243
 msgid "Forl�-Cesena"
-msgstr ""
+msgstr "ฟอร์ลี-เชเซนา"
 
 #: includes/data/states/states-02.php:244
 msgid "Frosinone"
@@ -8720,7 +8825,7 @@ msgstr "มอมบาซา"
 
 #: includes/data/states/states-02.php:402
 msgid "Murang�a"
-msgstr ""
+msgstr "มูรังกา"
 
 #: includes/data/states/states-02.php:403
 msgid "Nairobi County"
@@ -8929,11 +9034,11 @@ msgstr "ซิโนเอ"
 
 #: includes/data/states/states-03.php:25
 msgid "Chi?inau"
-msgstr ""
+msgstr "ชีซินเนา"
 
 #: includes/data/states/states-03.php:26
 msgid "Bal?i"
-msgstr ""
+msgstr "บัลจิ"
 
 #: includes/data/states/states-03.php:27
 msgid "Anenii Noi"
@@ -8958,15 +9063,15 @@ msgstr "แคนเทมิร์"
 #: includes/data/states/states-03.php:32
 #: includes/data/states/states-03.php:379
 msgid "Calara?i"
-msgstr ""
+msgstr "คาลาราชิ"
 
 #: includes/data/states/states-03.php:33
 msgid "Cau?eni"
-msgstr ""
+msgstr "คาวเจนี"
 
 #: includes/data/states/states-03.php:34
 msgid "Cimi?lia"
-msgstr ""
+msgstr "ซิมิเลีย"
 
 #: includes/data/states/states-03.php:35
 msgid "Criuleni"
@@ -8974,7 +9079,7 @@ msgstr "คริอูลีนี"
 
 #: includes/data/states/states-03.php:36
 msgid "Dondu?eni"
-msgstr ""
+msgstr "ดอนดูเจนี"
 
 #: includes/data/states/states-03.php:37
 msgid "Drochia"
@@ -8982,23 +9087,23 @@ msgstr "โดรเชีย"
 
 #: includes/data/states/states-03.php:38
 msgid "Dubasari"
-msgstr ""
+msgstr "ดูบาซารี"
 
 #: includes/data/states/states-03.php:39
 msgid "Edine?"
-msgstr ""
+msgstr "เอดิเน"
 
 #: includes/data/states/states-03.php:40
 msgid "Fale?ti"
-msgstr ""
+msgstr "ฟาเลติ"
 
 #: includes/data/states/states-03.php:41
 msgid "Flore?ti"
-msgstr ""
+msgstr "ฟลอเรสติ"
 
 #: includes/data/states/states-03.php:42
 msgid "UTA Gagauzia"
-msgstr ""
+msgstr "ยูทีเอ กากาอูเซีย"
 
 #: includes/data/states/states-03.php:43
 msgid "Glodeni"
@@ -9006,7 +9111,7 @@ msgstr "กลอเดนี"
 
 #: includes/data/states/states-03.php:44
 msgid "H�nce?ti"
-msgstr ""
+msgstr "ฮินเซติ"
 
 #: includes/data/states/states-03.php:45
 msgid "Ialoveni"
@@ -9022,7 +9127,7 @@ msgstr "นิสโปเรนี"
 
 #: includes/data/states/states-03.php:48
 msgid "Ocni?a"
-msgstr ""
+msgstr "ออคเนีย"
 
 #: includes/data/states/states-03.php:49
 msgid "Orhei"
@@ -9034,11 +9139,11 @@ msgstr "เรซินา"
 
 #: includes/data/states/states-03.php:51
 msgid "R�?cani"
-msgstr ""
+msgstr "เรคานี"
 
 #: includes/data/states/states-03.php:52
 msgid "S�ngerei"
-msgstr ""
+msgstr "ซังเงอรี"
 
 #: includes/data/states/states-03.php:53
 msgid "Soroca"
@@ -9046,15 +9151,15 @@ msgstr "โซโรคา"
 
 #: includes/data/states/states-03.php:54
 msgid "Stra?eni"
-msgstr ""
+msgstr "สตราเซนิ"
 
 #: includes/data/states/states-03.php:55
 msgid "?oldane?ti"
-msgstr ""
+msgstr "โซลดาเนสติ"
 
 #: includes/data/states/states-03.php:56
 msgid "?tefan Voda"
-msgstr ""
+msgstr "สเตฟาน โวดา"
 
 #: includes/data/states/states-03.php:57
 msgid "Taraclia"
@@ -9062,7 +9167,7 @@ msgstr "ทารัคเลีย"
 
 #: includes/data/states/states-03.php:58
 msgid "Telene?ti"
-msgstr ""
+msgstr "เทเลเนสติ"
 
 #: includes/data/states/states-03.php:59
 msgid "Ungheni"
@@ -9070,7 +9175,7 @@ msgstr "อุงเฮนี"
 
 #: includes/data/states/states-03.php:64
 msgid "Ciudad de M�xico"
-msgstr ""
+msgstr "เมืองเม็กซิโก"
 
 #: includes/data/states/states-03.php:65
 msgid "Jalisco"
@@ -9078,7 +9183,7 @@ msgstr "ฮาลิสโก"
 
 #: includes/data/states/states-03.php:66
 msgid "Nuevo Le�n"
-msgstr ""
+msgstr "นูเอโว เลออน"
 
 #: includes/data/states/states-03.php:67
 msgid "Aguascalientes"
@@ -9130,11 +9235,11 @@ msgstr "ฮิดัลโก"
 
 #: includes/data/states/states-03.php:79
 msgid "Estado de M�xico"
-msgstr ""
+msgstr "รัฐเม็กซิโก"
 
 #: includes/data/states/states-03.php:80
 msgid "Michoac�n"
-msgstr ""
+msgstr "มิโชอาคัน"
 
 #: includes/data/states/states-03.php:81
 msgid "Morelos"
@@ -9154,7 +9259,7 @@ msgstr "ปูเอบลา"
 
 #: includes/data/states/states-03.php:85
 msgid "Quer�taro"
-msgstr ""
+msgstr "เคเรตาโร"
 
 #: includes/data/states/states-03.php:86
 msgid "Quintana Roo"
@@ -9162,7 +9267,7 @@ msgstr "ควินตานา รู"
 
 #: includes/data/states/states-03.php:87
 msgid "San Luis Potos�"
-msgstr ""
+msgstr "ซานหลุยส์โปโตซี่"
 
 #: includes/data/states/states-03.php:88
 msgid "Sinaloa"
@@ -9190,7 +9295,7 @@ msgstr "เวราครูซ"
 
 #: includes/data/states/states-03.php:94
 msgid "Yucat�n"
-msgstr ""
+msgstr "ยุคาทาน"
 
 #: includes/data/states/states-03.php:95
 msgid "Zacatecas"
@@ -9302,7 +9407,7 @@ msgstr "เตเต"
 
 #: includes/data/states/states-03.php:126
 msgid "Zamb�zia"
-msgstr ""
+msgstr "ซัมบีเซีย"
 
 #: includes/data/states/states-03.php:129
 msgid "Erongo"
@@ -9591,7 +9696,7 @@ msgstr "กิซบอร์น"
 
 #: includes/data/states/states-03.php:208
 msgid "Hawke�s Bay"
-msgstr ""
+msgstr "เบย์ฮอว์ค"
 
 #: includes/data/states/states-03.php:209
 msgid "Manawatu-Wanganui"
@@ -9643,7 +9748,7 @@ msgstr "อันคาช"
 
 #: includes/data/states/states-03.php:224
 msgid "Apur�mac"
-msgstr ""
+msgstr "อาปูร์ิมัก"
 
 #: includes/data/states/states-03.php:225
 msgid "Arequipa"
@@ -9667,7 +9772,7 @@ msgstr "ฮวนคาเวลิกา"
 
 #: includes/data/states/states-03.php:230
 msgid "Hu�nuco"
-msgstr ""
+msgstr "ฮวนูโก"
 
 #: includes/data/states/states-03.php:231
 msgid "Ica"
@@ -9675,7 +9780,7 @@ msgstr "อิคา"
 
 #: includes/data/states/states-03.php:232
 msgid "Jun�n"
-msgstr ""
+msgstr "จูนิน"
 
 #: includes/data/states/states-03.php:233
 msgid "La Libertad"
@@ -9715,7 +9820,7 @@ msgstr "ปูโน"
 
 #: includes/data/states/states-03.php:242
 msgid "San Mart�n"
-msgstr ""
+msgstr "ซานมาร์ติน"
 
 #: includes/data/states/states-03.php:243
 msgid "Tacna"
@@ -10087,11 +10192,11 @@ msgstr "ซินด์"
 
 #: includes/data/states/states-03.php:347
 msgid "Asunci�n"
-msgstr ""
+msgstr "อาซุนซิออน"
 
 #: includes/data/states/states-03.php:348
 msgid "Concepci�n"
-msgstr ""
+msgstr "คอนเซปซิออน"
 
 #: includes/data/states/states-03.php:349
 msgid "San Pedro"
@@ -10103,31 +10208,31 @@ msgstr "คอร์ดิเซอรา"
 
 #: includes/data/states/states-03.php:351
 msgid "Guair�"
-msgstr ""
+msgstr "กวาอิรา"
 
 #: includes/data/states/states-03.php:352
 msgid "Caaguaz�"
-msgstr ""
+msgstr "คากัวซู"
 
 #: includes/data/states/states-03.php:353
 msgid "Caazap�"
-msgstr ""
+msgstr "คาซาปา"
 
 #: includes/data/states/states-03.php:354
 msgid "Itap�a"
-msgstr ""
+msgstr "อิตาปา"
 
 #: includes/data/states/states-03.php:356
 msgid "Paraguar�"
-msgstr ""
+msgstr "พารากัวรี"
 
 #: includes/data/states/states-03.php:357
 msgid "Alto Paran�"
-msgstr ""
+msgstr "อัลโต พารานา"
 
 #: includes/data/states/states-03.php:359
 msgid "�eembuc�"
-msgstr ""
+msgstr "เซเอ็มบูคา"
 
 #: includes/data/states/states-03.php:360
 msgid "Amambay"
@@ -10135,7 +10240,7 @@ msgstr "อามัมบาย"
 
 #: includes/data/states/states-03.php:361
 msgid "Canindey�"
-msgstr ""
+msgstr "คานินเดย์"
 
 #: includes/data/states/states-03.php:362
 msgid "Presidente Hayes"
@@ -10147,7 +10252,7 @@ msgstr "อัลโต ปารากวัย"
 
 #: includes/data/states/states-03.php:364
 msgid "Boquer�n"
-msgstr ""
+msgstr "โบเกอรอน"
 
 #: includes/data/states/states-03.php:368
 msgid "Alba"
@@ -10159,11 +10264,11 @@ msgstr "อารัด"
 
 #: includes/data/states/states-03.php:370
 msgid "Arge?"
-msgstr ""
+msgstr "อาร์เก?"
 
 #: includes/data/states/states-03.php:371
 msgid "Bacau"
-msgstr ""
+msgstr "บาคาว"
 
 #: includes/data/states/states-03.php:372
 msgid "Bihor"
@@ -10171,31 +10276,31 @@ msgstr "บิฮอร์"
 
 #: includes/data/states/states-03.php:373
 msgid "Bistri?a-Nasaud"
-msgstr ""
+msgstr "บิสตริซา-นาซอуд"
 
 #: includes/data/states/states-03.php:374
 msgid "Boto?ani"
-msgstr ""
+msgstr "บอทูชานี"
 
 #: includes/data/states/states-03.php:375
 msgid "Braila"
-msgstr ""
+msgstr "บราอิลา"
 
 #: includes/data/states/states-03.php:376
 msgid "Bra?ov"
-msgstr ""
+msgstr "บราโชฟ"
 
 #: includes/data/states/states-03.php:377
 msgid "Bucure?ti"
-msgstr ""
+msgstr "บูคูเรสติ"
 
 #: includes/data/states/states-03.php:378
 msgid "Buzau"
-msgstr ""
+msgstr "บูซอว์"
 
 #: includes/data/states/states-03.php:380
 msgid "Cara?-Severin"
-msgstr ""
+msgstr "คาราช-เซเวอรีน"
 
 #: includes/data/states/states-03.php:381
 msgid "Cluj"
@@ -10203,7 +10308,7 @@ msgstr "คลูจ"
 
 #: includes/data/states/states-03.php:382
 msgid "Constan?a"
-msgstr ""
+msgstr "คอนสตานța"
 
 #: includes/data/states/states-03.php:383
 msgid "Covasna"
@@ -10211,7 +10316,7 @@ msgstr "โควาสนา"
 
 #: includes/data/states/states-03.php:384
 msgid "D�mbovi?a"
-msgstr ""
+msgstr "ดัมโบวิซา"
 
 #: includes/data/states/states-03.php:385
 msgid "Dolj"
@@ -10219,7 +10324,7 @@ msgstr "โดลจ์"
 
 #: includes/data/states/states-03.php:386
 msgid "Gala?i"
-msgstr ""
+msgstr "กาลาติ"
 
 #: includes/data/states/states-03.php:387
 msgid "Giurgiu"
@@ -10239,11 +10344,11 @@ msgstr "ฮูเนโดอารา"
 
 #: includes/data/states/states-03.php:391
 msgid "Ialomi?a"
-msgstr ""
+msgstr "อิอโลมีซา"
 
 #: includes/data/states/states-03.php:392
 msgid "Ia?i"
-msgstr ""
+msgstr "อายซิ"
 
 #: includes/data/states/states-03.php:393
 msgid "Ilfov"
@@ -10251,19 +10356,19 @@ msgstr "อิลฟอฟ"
 
 #: includes/data/states/states-03.php:394
 msgid "Maramure?"
-msgstr ""
+msgstr "มารามูเรช"
 
 #: includes/data/states/states-03.php:395
 msgid "Mehedin?i"
-msgstr ""
+msgstr "เมเฮดินทิ"
 
 #: includes/data/states/states-03.php:396
 msgid "Mure?"
-msgstr ""
+msgstr "มูเรช"
 
 #: includes/data/states/states-03.php:397
 msgid "Neam?"
-msgstr ""
+msgstr "เนียมต์"
 
 #: includes/data/states/states-03.php:398
 msgid "Olt"
@@ -10275,7 +10380,7 @@ msgstr "พราโฮวา"
 
 #: includes/data/states/states-03.php:400
 msgid "Salaj"
-msgstr ""
+msgstr "ซาลาจ"
 
 #: includes/data/states/states-03.php:401
 msgid "Satu Mare"
@@ -10295,7 +10400,7 @@ msgstr "เทเลออร์มาน"
 
 #: includes/data/states/states-03.php:405
 msgid "Timi?"
-msgstr ""
+msgstr "ทิมิช"
 
 #: includes/data/states/states-03.php:406
 msgid "Tulcea"
@@ -10303,7 +10408,7 @@ msgstr "ทุลเชีย"
 
 #: includes/data/states/states-03.php:407
 msgid "V�lcea"
-msgstr ""
+msgstr "วัลเซีย"
 
 #: includes/data/states/states-03.php:408
 msgid "Vaslui"
@@ -10557,7 +10662,7 @@ msgstr "สระบุรี"
 msgid "Satun"
 msgstr "สตูล"
 
-#: includes/data/states/states-04.php:72
+#: includes/data/states/states-04.php:72, fuzzy
 msgid "Sing Buri"
 msgstr "Sing Buri"
 
@@ -10627,7 +10732,7 @@ msgstr "อาดานา"
 
 #: includes/data/states/states-04.php:91
 msgid "Adiyaman"
-msgstr ""
+msgstr "อาดิยามัน"
 
 #: includes/data/states/states-04.php:92
 msgid "Afyon"
@@ -10635,7 +10740,7 @@ msgstr "อัฟยอน"
 
 #: includes/data/states/states-04.php:93
 msgid "Agri"
-msgstr ""
+msgstr "อักรี"
 
 #: includes/data/states/states-04.php:94
 msgid "Amasya"
@@ -10655,11 +10760,11 @@ msgstr "อาร์ตวิน"
 
 #: includes/data/states/states-04.php:98
 msgid "Aydin"
-msgstr ""
+msgstr "อายดิน"
 
 #: includes/data/states/states-04.php:99
 msgid "Balikesir"
-msgstr ""
+msgstr "บาลิเคซิ"
 
 #: includes/data/states/states-04.php:100
 msgid "Bilecik"
@@ -10667,7 +10772,7 @@ msgstr "บิเลจิก"
 
 #: includes/data/states/states-04.php:101
 msgid "Bing�l"
-msgstr ""
+msgstr "บิงกอล"
 
 #: includes/data/states/states-04.php:102
 msgid "Bitlis"
@@ -10687,15 +10792,15 @@ msgstr "บูร์ซา"
 
 #: includes/data/states/states-04.php:106
 msgid "�anakkale"
-msgstr ""
+msgstr "ชานักคาเล"
 
 #: includes/data/states/states-04.php:107
 msgid "�ankiri"
-msgstr ""
+msgstr "ชานคิรี"
 
 #: includes/data/states/states-04.php:108
 msgid "�orum"
-msgstr ""
+msgstr "ชอรัม"
 
 #: includes/data/states/states-04.php:109
 msgid "Denizli"
@@ -10703,7 +10808,7 @@ msgstr "เดนิซลี"
 
 #: includes/data/states/states-04.php:110
 msgid "Diyarbakir"
-msgstr ""
+msgstr "ดียาร์บาครี"
 
 #: includes/data/states/states-04.php:111
 msgid "Edirne"
@@ -10711,7 +10816,7 @@ msgstr "เอดิร์เน"
 
 #: includes/data/states/states-04.php:112
 msgid "Elazig"
-msgstr ""
+msgstr "เอลาซิก"
 
 #: includes/data/states/states-04.php:113
 msgid "Erzincan"
@@ -10723,7 +10828,7 @@ msgstr "เออร์ซูรัม"
 
 #: includes/data/states/states-04.php:115
 msgid "Eskisehir"
-msgstr ""
+msgstr "เอสกิเซเฮียร์"
 
 #: includes/data/states/states-04.php:116
 msgid "Gaziantep"
@@ -10735,7 +10840,7 @@ msgstr "กิเรซุน"
 
 #: includes/data/states/states-04.php:118
 msgid "G�m�shane"
-msgstr ""
+msgstr "กุมุชฮาเน"
 
 #: includes/data/states/states-04.php:119
 msgid "Hakkari"
@@ -10751,15 +10856,15 @@ msgstr "อิสปาร์ตา"
 
 #: includes/data/states/states-04.php:122
 msgid "I�el"
-msgstr ""
+msgstr "อิชเอล"
 
 #: includes/data/states/states-04.php:123
 msgid "Istanbul"
-msgstr ""
+msgstr "อิสตันบูล"
 
 #: includes/data/states/states-04.php:124
 msgid "Izmir"
-msgstr ""
+msgstr "อิซมิร์"
 
 #: includes/data/states/states-04.php:125
 msgid "Kars"
@@ -10769,17 +10874,17 @@ msgstr "คาร์ส"
 msgid "Kastamonu"
 msgstr "คาสตามอนู"
 
-#: includes/data/states/states-04.php:127
+#: includes/data/states/states-04.php:127, fuzzy
 msgid "Kayseri"
 msgstr "Kayseri"
 
 #: includes/data/states/states-04.php:128
 msgid "Kirklareli"
-msgstr ""
+msgstr "คิริคลาเรลี"
 
 #: includes/data/states/states-04.php:129
 msgid "Kirsehir"
-msgstr ""
+msgstr "คิรเซฮีร์"
 
 #: includes/data/states/states-04.php:130
 msgid "Kocaeli"
@@ -10791,7 +10896,7 @@ msgstr "คอนยา"
 
 #: includes/data/states/states-04.php:132
 msgid "K�tahya"
-msgstr ""
+msgstr "คูตาห์ยา"
 
 #: includes/data/states/states-04.php:133
 msgid "Malatya"
@@ -10803,7 +10908,7 @@ msgstr "มานิซา"
 
 #: includes/data/states/states-04.php:135
 msgid "Kahramanmaras"
-msgstr ""
+msgstr "คาห์รามานมารัช"
 
 #: includes/data/states/states-04.php:136
 msgid "Mardin"
@@ -10811,19 +10916,19 @@ msgstr "มาร์ดิน"
 
 #: includes/data/states/states-04.php:137
 msgid "Mugla"
-msgstr ""
+msgstr "มุกลา"
 
 #: includes/data/states/states-04.php:138
 msgid "Mus"
-msgstr ""
+msgstr "มูส"
 
 #: includes/data/states/states-04.php:139
 msgid "Nevsehir"
-msgstr ""
+msgstr "เนฟเซเฮียร์"
 
 #: includes/data/states/states-04.php:140
 msgid "Nigde"
-msgstr ""
+msgstr "นิกเด"
 
 #: includes/data/states/states-04.php:141
 msgid "Ordu"
@@ -10855,7 +10960,7 @@ msgstr "ซิวาส"
 
 #: includes/data/states/states-04.php:148
 msgid "Tekirdag"
-msgstr ""
+msgstr "เทคิร์ดาก"
 
 #: includes/data/states/states-04.php:149
 msgid "Tokat"
@@ -10871,11 +10976,11 @@ msgstr "ตุงเซลี"
 
 #: includes/data/states/states-04.php:152
 msgid "Sanliurfa"
-msgstr ""
+msgstr "ซานลิอูร์ฟา"
 
 #: includes/data/states/states-04.php:153
 msgid "Usak"
-msgstr ""
+msgstr "อูซัก"
 
 #: includes/data/states/states-04.php:154
 msgid "Van"
@@ -10903,7 +11008,7 @@ msgstr "คารามาน"
 
 #: includes/data/states/states-04.php:160
 msgid "Kirikkale"
-msgstr ""
+msgstr "คิริคกาเล"
 
 #: includes/data/states/states-04.php:161
 msgid "Batman"
@@ -10911,11 +11016,11 @@ msgstr "แบตแมน"
 
 #: includes/data/states/states-04.php:162
 msgid "Sirnak"
-msgstr ""
+msgstr "ซิรนัค"
 
 #: includes/data/states/states-04.php:163
 msgid "Bartin"
-msgstr ""
+msgstr "บาร์ติน"
 
 #: includes/data/states/states-04.php:164
 msgid "Ardahan"
@@ -10923,7 +11028,7 @@ msgstr "อาร์ดาฮาน"
 
 #: includes/data/states/states-04.php:165
 msgid "Igdir"
-msgstr ""
+msgstr "อิกดิร"
 
 #: includes/data/states/states-04.php:166
 msgid "Yalova"
@@ -10931,7 +11036,7 @@ msgstr "ยะโคบา"
 
 #: includes/data/states/states-04.php:167
 msgid "Karab�k"
-msgstr ""
+msgstr "คาราบุ๊ก"
 
 #: includes/data/states/states-04.php:168
 msgid "Kilis"
@@ -10943,7 +11048,7 @@ msgstr "ออสมานี"
 
 #: includes/data/states/states-04.php:170
 msgid "D�zce"
-msgstr ""
+msgstr "ดึซเซ"
 
 #: includes/data/states/states-04.php:173
 msgid "Arusha"
@@ -12030,7 +12135,6 @@ msgid "Your {product_name} trial is about to end"
 msgstr "การทดลองใช้ {product_name} ของคุณกำลังจะสิ้นสุด"
 
 #: includes/email/ppcart-template-functions/templates.php:246
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -12179,7 +12283,7 @@ msgstr "คุณไม่ได้รับอนุญาตให้ดาว
 
 #: includes/files/download.php:43
 msgid "Invalid file path."
-msgstr ""
+msgstr "เส้นทางไฟล์ไม่ถูกต้อง."
 
 #: includes/files/download.php:44
 #: includes/files/download.php:65
@@ -12199,7 +12303,7 @@ msgstr "ขออภัย ไฟล์นี้ไม่สามารถใ�
 #. translators: 1: file name, 2: user login.
 #, php-format
 msgid "Access to file \"%1$s\" revoked by %2$s"
-msgstr ""
+msgstr "เข้าถึงไฟล์ \"%1$s\" ถูกเพิกถอนโดย %2$s"
 
 #: includes/files/traits/templates/files-admin-product-form-callback.php:28
 #: includes/files/traits/trait-ppcart-files-settings.php:132
@@ -12387,7 +12491,7 @@ msgstr "อีเมลยืนยันการซื้อถูกส่ง
 
 #: includes/functions/admin-ajax-and-notices.php:389
 msgid "You are not allowed to dismiss this notice."
-msgstr ""
+msgstr "คุณไม่ได้รับอนุญาตให้ปิดประกาศนี้."
 
 #: includes/functions/ajax-and-fields.php:170
 msgid " activecampaign Listed: "
@@ -13102,7 +13206,7 @@ msgstr "การแจ้งเตือนสต็อกต่ำ: %s"
 msgid ""
 "The stock for product \"%1$s\" (ID: %2$d) is running low. Current stock: "
 "%3$d"
-msgstr ""
+msgstr "สต็อกสำหรับผลิตภัณฑ์ \"%1$s\" (ID: %2$d) กำลังจะหมด. สต็อกปัจจุบัน: %3$d"
 
 #: includes/functions/integrations-and-stock.php:220
 #. translators: %s: product name.
@@ -13114,19 +13218,19 @@ msgstr "การแจ้งเตือนสินค้าหมด: %s"
 #. translators: 1: product name, 2: product ID.
 #, php-format
 msgid "The product \"%1$s\" (ID: %2$d) is now out of stock."
-msgstr ""
+msgstr "ผลิตภัณฑ์ \"%1$s\" (ID: %2$d) ขณะนี้หมดสต็อก."
 
 #: includes/functions/mailchimp-api.php:51
 msgid "The Mailchimp API key is invalid."
-msgstr ""
+msgstr "คีย์ API ของ Mailchimp ไม่ถูกต้อง."
 
 #: includes/functions/mailchimp-api.php:83
 msgid "Mailchimp rejected the request."
-msgstr ""
+msgstr "Mailchimp ปฏิเสธคำขอ."
 
 #: includes/functions/mailchimp-api.php:94
 msgid "Mailchimp returned an invalid response."
-msgstr ""
+msgstr "Mailchimp ส่งคืนการตอบสนองที่ไม่ถูกต้อง."
 
 #: includes/functions/merge-tags-and-dates.php:11
 msgid "Site Name"
@@ -13220,7 +13324,7 @@ msgstr "รายการคำสั่งซื้อ"
 
 #: includes/functions/merge-tags-and-dates.php:34
 msgid "Order Details Table"
-msgstr ""
+msgstr "ตารางรายละเอียดการสั่งซื้อ"
 
 #: includes/functions/merge-tags-and-dates.php:35
 msgid "Inline Order List"
@@ -13266,14 +13370,14 @@ msgstr "แทรกแท็กการปรับแต่ง"
 #. translators: 1: refund amount, 2: refund date.
 #, php-format
 msgid "%1$s refunded on %2$s"
-msgstr ""
+msgstr "%1$s คืนเงินเมื่อ %2$s"
 
 #: includes/functions/merge-tags-and-dates.php:199
 #: includes/functions/merge-tags-and-dates.php:201
 #. translators: 1: primary product name, 2: bump product name.
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s, %2$s"
 
 #: includes/functions/merge-tags-and-dates.php:549
 msgid "Invalid Charge ID"
@@ -13376,7 +13480,7 @@ msgstr ""
 
 #: includes/functions/merge-tags-and-dates.php:579
 msgid "Your session has expired. Please try again."
-msgstr ""
+msgstr "เซสชันของคุณหมดอายุแล้ว กรุณาลองอีกครั้ง."
 
 #: includes/functions/merge-tags-and-dates.php:580
 #: includes/functions/merge-tags-and-dates.php:581
@@ -13565,7 +13669,7 @@ msgstr " ID หลักสูตร Membervault: "
 #. translators: %s: Membervault API error message.
 #, php-format
 msgid "Membervault add failed: %s"
-msgstr ""
+msgstr "การเพิ่ม Membervault ล้มเหลว: %s"
 
 #: includes/functions/orders-products-and-formatting.php:147
 msgid "Membervault add failed"
@@ -13685,7 +13789,7 @@ msgstr "หมายเลขเรียกเก็บเงินไม่ถ
 #. translators: %s: Stripe gateway mode (e.g. live or test)
 #, php-format
 msgid "Oops, Stripe %s key missing!"
-msgstr ""
+msgstr "อุ๊ย คีย์ Stripe %s ขาดหายไป!"
 
 #: includes/functions/payment-actions-and-refunds.php:438
 msgid "Payment refunded by"
@@ -13734,11 +13838,11 @@ msgstr "มีคูปอง:"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "(%1$s off for %2$d months)"
-msgstr ""
+msgstr "(%1$s ลดราคาเป็นเวลา %2$d เดือน)"
 
 #: includes/functions/prices-and-marketing.php:273
 msgid "JSON Parse"
-msgstr ""
+msgstr "การแปลง JSON"
 
 #: includes/functions/prices-and-marketing.php:357
 msgid "No Data Found"
@@ -13777,19 +13881,19 @@ msgstr " วัน"
 #. translators: %d: product ID.
 #, php-format
 msgid "Product #%d"
-msgstr ""
+msgstr "ผลิตภัณฑ์ #%d"
 
 #: includes/functions/users-and-notifications.php:159
 #. translators: 1: requested role, 2: role used instead.
 #, php-format
 msgid "User role %1$s is not allowed for customers; %2$s was used instead."
-msgstr ""
+msgstr "บทบาทผู้ใช้ %1$s ไม่อนุญาตสำหรับลูกค้า; ใช้ %2$s แทน."
 
 #: includes/functions/users-and-notifications.php:192
 #. translators: 1: user ID, 2: role name.
 #, php-format
 msgid "Role for User ID: %1$s updated to %2$s"
-msgstr ""
+msgstr "บทบาทสำหรับ ID ผู้ใช้: %1$s อัปเดตเป็น %2$s"
 
 #: includes/functions/users-and-notifications.php:209
 #. translators: %s: user ID.
@@ -13841,11 +13945,11 @@ msgstr "เส้นทางการขายเพิ่ม"
 
 #: includes/helpers/pro-locks/field-and-email-locks.php:235
 msgid "Affiliates"
-msgstr ""
+msgstr "พันธมิตร"
 
-#: includes/helpers/pro-locks/product-locks.php:27
+#: includes/helpers/pro-locks/product-locks.php:27, fuzzy
 msgid "Stripe, PayPal"
-msgstr ""
+msgstr "Stripe, PayPal"
 
 #: includes/helpers/pro-locks/product-locks.php:29
 msgid "Globally Enabled Methods:"
@@ -13940,7 +14044,7 @@ msgstr "รายการเพิ่มเติมแต่ละรายก
 
 #: includes/helpers/pro-locks/product-locks.php:76
 msgid "Enable affiliate sales"
-msgstr ""
+msgstr "เปิดใช้งานการขายพันธมิตร"
 
 #: includes/helpers/pro-locks/product-locks.php:77
 #: public/templates/pdf-invoice/invoice.php:145
@@ -13951,11 +14055,11 @@ msgstr "คำอธิบาย"
 
 #: includes/helpers/pro-locks/product-locks.php:78
 msgid "Name (internal)"
-msgstr ""
+msgstr "ชื่อ (ภายใน)"
 
-#: includes/helpers/pro-locks/settings-locks.php:59
+#: includes/helpers/pro-locks/settings-locks.php:59, fuzzy
 msgid "Pro"
-msgstr ""
+msgstr "Pro"
 
 #: includes/helpers/pro-locks/settings-locks.php:98
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:1132
@@ -13967,35 +14071,35 @@ msgstr "สี่เหลี่ยม"
 msgid ""
 "Accept payments online and in person with Square, syncing items and "
 "inventory."
-msgstr ""
+msgstr "รับชำระเงินออนไลน์และแบบตัวต่อตัวด้วย Square, ซิงค์รายการและสินค้าคงคลัง."
 
-#: includes/helpers/pro-locks/settings-locks.php:104
+#: includes/helpers/pro-locks/settings-locks.php:104, fuzzy
 msgid "Mollie"
-msgstr ""
+msgstr "Mollie"
 
 #: includes/helpers/pro-locks/settings-locks.php:105
 msgid "Offer global and local payment methods with fast, multilingual onboarding."
-msgstr ""
+msgstr "เสนอวิธีการชำระเงินทั่วโลกและในท้องถิ่นด้วยการเริ่มต้นที่รวดเร็วและหลายภาษา."
 
-#: includes/helpers/pro-locks/settings-locks.php:110
+#: includes/helpers/pro-locks/settings-locks.php:110, fuzzy
 msgid "Razorpay"
-msgstr ""
+msgstr "Razorpay"
 
 #: includes/helpers/pro-locks/settings-locks.php:111
 msgid "Accept payments in India and beyond with Razorpay's simple integration."
-msgstr ""
+msgstr "รับชำระเงินในอินเดียและที่อื่น ๆ ด้วยการรวมที่ง่ายของ Razorpay."
 
-#: includes/helpers/pro-locks/settings-locks.php:217
+#: includes/helpers/pro-locks/settings-locks.php:217, fuzzy
 msgid "PRO"
-msgstr ""
+msgstr "PRO"
 
 #: includes/helpers/pro-locks/settings-locks.php:238
 msgid "This is a Pro feature"
-msgstr ""
+msgstr "นี่คือฟีเจอร์ Pro"
 
 #: includes/helpers/pro-locks/settings-locks.php:239
 msgid "This feature is available in the separate PublishPress Cart Pro plugin."
-msgstr ""
+msgstr "ฟีเจอร์นี้มีอยู่ในปลั๊กอิน PublishPress Cart Pro แยกต่างหาก."
 
 #: includes/helpers/pro-locks/settings-locks.php:273
 msgid "URL Coupon Parameter Name"
@@ -14006,6 +14110,8 @@ msgid ""
 "Use something else in place of \"ppcart-coupon\" when creating coupon URLs "
 "(e.g., https://example.com/product/?ppcart-coupon=20off)."
 msgstr ""
+"ใช้สิ่งอื่นแทน \"ppcart-coupon\" เมื่อสร้าง URL คูปอง (เช่น, "
+"https://example.com/product/?ppcart-coupon=20off)."
 
 #: includes/helpers/pro-locks/settings-locks.php:278
 msgid "Disable product template"
@@ -14077,7 +14183,7 @@ msgstr "เอกสาร API"
 msgid "Invoice Date Documentation"
 msgstr "เอกสารวันที่ใบแจ้งหนี้"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:9
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:9, fuzzy
 msgid "User Guide.pdf"
 msgstr "User Guide.pdf"
 
@@ -14086,18 +14192,18 @@ msgstr "User Guide.pdf"
 msgid "Sample Pack.zip"
 msgstr "ผลิตภัณฑ์ตัวอย่าง"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:17
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:17, fuzzy
 msgid "Onboarding Video.mp4"
 msgstr "Onboarding Video.mp4"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:21
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:21, fuzzy
 msgid "Bonus Workbook.docx"
 msgstr "Bonus Workbook.docx"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:7
 #: public/templates/my-account/forms/login-form.php:110
 msgid "Username"
-msgstr ""
+msgstr "ชื่อผู้ใช้"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:8
 #: public/templates/my-account/forms/login-form.php:111
@@ -14107,18 +14213,18 @@ msgstr "รหัสผ่าน"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:9
 #: public/templates/my-account/forms/login-form.php:112
 msgid "Remember Me"
-msgstr ""
+msgstr "จำฉัน"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:10
 #: public/templates/my-account/forms/login-form.php:113
 msgid "Log In"
-msgstr ""
+msgstr "เข้าสู่ระบบ"
 
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:8
 msgid "Jan 1, 2026"
 msgstr "1 ม.ค. 2026"
 
-#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10
+#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10, fuzzy
 msgid "$49.00"
 msgstr "$49.00"
 
@@ -14132,7 +14238,7 @@ msgstr "เลือกแผน"
 msgid "Feb 1, 2026"
 msgstr "1 ก.พ. 2026"
 
-#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11
+#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11, fuzzy
 msgid "$99 x 6"
 msgstr "$99 x 6"
 
@@ -14161,7 +14267,7 @@ msgstr "เดือน"
 
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:38
 msgid "Cancels Feb 1, 2026"
-msgstr ""
+msgstr "ยกเลิก 1 ก.พ. 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-context.php:30
 #, fuzzy
@@ -14225,11 +14331,11 @@ msgstr "รายละเอียด"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:390
 msgid "January 1, 2026"
-msgstr ""
+msgstr "1 มกราคม 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:391
 msgid "February 1, 2026"
-msgstr ""
+msgstr "1 กุมภาพันธ์ 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:472
 #, fuzzy
@@ -14259,7 +14365,7 @@ msgstr "บัตรเครดิต"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:87
 msgid "Single Collection"
-msgstr ""
+msgstr "การเก็บรวบรวมเดี่ยว"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:90
 msgid "Single Product"
@@ -14279,7 +14385,7 @@ msgstr "เลือกแผน"
 
 #: includes/integrations/templates/cancel-subscription-integration-fields.php:57
 msgid "At the end of the current billing period"
-msgstr ""
+msgstr "ที่สิ้นสุดของรอบการเรียกเก็บเงินปัจจุบัน"
 
 #: includes/integrations/templates/cancel-subscription-run.php:33
 #. translators: %s: subscription ID.
@@ -14291,13 +14397,13 @@ msgstr "หมายเลขการสมัครสมาชิก: %s ถ�
 #. translators: 1: subscription ID, 2: error message.
 #, php-format
 msgid "Error canceling subscription ID: %1$s! Message: %2$s"
-msgstr ""
+msgstr "เกิดข้อผิดพลาดในการยกเลิกการสมัครสมาชิก ID: %1$s! ข้อความ: %2$s"
 
 #: includes/integrations/templates/cancel-subscription-run.php:41
 #. translators: 1: product ID, 2: plan ID.
 #, php-format
 msgid "No active subscriptions found for product ID: %1$s and plan ID=%2$s"
-msgstr ""
+msgstr "ไม่พบการสมัครสมาชิกที่ใช้งานสำหรับ ID ผลิตภัณฑ์: %1$s และ ID แผน=%2$s"
 
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:22
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:39
@@ -14416,6 +14522,9 @@ msgid ""
 "the Kit personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"ใส่แต่ละคู่ฟิลด์ในบรรทัดแยกต่างหากและใช้เครื่องหมายจุลภาค (\":\") "
+"เพื่อแยกแท็กการปรับแต่ง Kit ออกจากค่าฟิลด์ ตัวอย่างเช่น: "
+"%TAG%:ppcart_field_id"
 
 #: includes/integrations/templates/ppcart-kit-ppcart-add-remove-convertkit-subscriber.php:59
 msgid "Subscriber added to Kit form."
@@ -14704,7 +14813,7 @@ msgstr "บันทึก"
 msgid "Subscription ID"
 msgstr "รหัสการสมัครสมาชิก"
 
-#: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:20
+#: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:20, fuzzy
 msgid "Product ID"
 msgstr "Product ID"
 
@@ -14855,7 +14964,7 @@ msgstr "%s ค่าธรรมเนียมการสมัคร"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "%1$s off for %2$d months"
-msgstr ""
+msgstr "%1$s ลดราคาเป็นเวลา %2$d เดือน"
 
 #: includes/ppcart-countries.php:17
 msgid "Select a Country"
@@ -15895,102 +16004,108 @@ msgstr "ไม่พบข้อมูลในช่วงเวลานี้
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:33
 msgid "Encryption enabled"
-msgstr ""
+msgstr "เปิดใช้งานการเข้ารหัส"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:38
 msgid "Payment and integration credentials are encrypted at rest."
-msgstr ""
+msgstr "ข้อมูลประจำตัวการชำระเงินและการรวมจะถูกเข้ารหัสเมื่อหยุดนิ่ง."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:40
 msgid "New credentials will be encrypted when saved."
-msgstr ""
+msgstr "ข้อมูลประจำตัวใหม่จะถูกเข้ารหัสเมื่อบันทึก."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:44
 msgid "Encryption disabled"
-msgstr ""
+msgstr "ปิดการเข้ารหัส"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:46
 msgid ""
 "Payment and integration keys are stored in plaintext by default. Enable "
 "encryption to reduce risk if your database is exposed."
 msgstr ""
+"คีย์การชำระเงินและการรวมจะถูกเก็บในรูปแบบข้อความธรรมดาโดยค่าเริ่มต้น "
+"เปิดการเข้ารหัสเพื่อลดความเสี่ยงหากฐานข้อมูลของคุณถูกเปิดเผย."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:58
 msgid "Enable encryption"
-msgstr ""
+msgstr "เปิดใช้งานการเข้ารหัส"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:67
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Add %s to wp-config.php to enable encryption."
-msgstr ""
+msgstr "เพิ่ม %s ไปที่ wp-config.php เพื่อเปิดใช้งานการเข้ารหัส."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:79
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:27
 msgid "Encryption is controlled by PPCART_ENCRYPT_SECRETS in wp-config.php."
-msgstr ""
+msgstr "การเข้ารหัสถูกควบคุมโดย PPCART_ENCRYPT_SECRETS ใน wp-config.php."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:87
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Optional: lock encryption on in wp-config.php with %s"
-msgstr ""
+msgstr "ทางเลือก: ปิดการเข้ารหัสใน wp-config.php ด้วย %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:98
 msgid "Open Security settings"
-msgstr ""
+msgstr "เปิดการตั้งค่าความปลอดภัย"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:27
 msgid "Encryption"
-msgstr ""
+msgstr "การเข้ารหัส"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:31
 msgid ""
 "Controlled by PPCART_ENCRYPT_SECRETS in wp-config.php. The database setting "
 "is ignored."
 msgstr ""
+"ควบคุมโดย PPCART_ENCRYPT_SECRETS ใน wp-config.php "
+"การตั้งค่าฐานข้อมูลจะถูกละเลย."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:44
 msgid "Encrypt payment and integration credentials in the database"
-msgstr ""
+msgstr "เข้ารหัสการชำระเงินและข้อมูลการรวมในฐานข้อมูล"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:48
 msgid "For production sites, you can lock this in wp-config.php instead:"
-msgstr ""
+msgstr "สำหรับเว็บไซต์ผลิต คุณสามารถล็อคสิ่งนี้ใน wp-config.php แทน:"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:52
 msgid ""
 "When that constant is defined, it takes precedence and this checkbox is "
 "ignored."
-msgstr ""
+msgstr "เมื่อกำหนดค่าคงที่นั้นแล้ว จะมีผลบังคับใช้และจะไม่สนใจช่องเลือกนี้"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:68
 #. translators: %s: encryption key source label.
 #, php-format
 msgid "Key source: %s"
-msgstr ""
+msgstr "แหล่งที่มาของกุญแจ: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:76
 msgid ""
 "Encryption cannot run until AUTH_KEY or PPCART_SECRETS_KEY is configured in "
 "wp-config.php."
 msgstr ""
+"ไม่สามารถเข้ารหัสได้จนกว่า AUTH_KEY หรือ PPCART_SECRETS_KEY จะถูกกำหนดใน "
+"wp-config.php"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:83
 msgid "Stored credentials"
-msgstr ""
+msgstr "ข้อมูลประจำตัวที่เก็บไว้"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:86
 #. translators: %d: count
 #, php-format
 msgid "Encrypted: %d"
-msgstr ""
+msgstr "เข้ารหัส: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:87
 #. translators: %d: count
 #, php-format
 msgid "Plaintext: %d"
-msgstr ""
+msgstr "ข้อความธรรมชาติ: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:91
 msgid ""
@@ -15998,6 +16113,10 @@ msgid ""
 "plaintext. Existing encrypted values are not rewritten automatically; Cart "
 "continues to read them normally."
 msgstr ""
+"ในขณะที่การเข้ารหัสถูกปิดใช้งาน "
+"ข้อมูลประจำตัวใหม่และที่อัปเดตจะถูกเก็บในรูปแบบข้อความธรรมชาติ "
+"ค่าที่ถูกเข้ารหัสที่มีอยู่จะไม่ถูกเขียนทับโดยอัตโนมัติ; Cart "
+"จะยังคงอ่านพวกเขาได้ตามปกติ"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:99
 #. translators: %d: number of encrypted credentials.
@@ -16006,65 +16125,81 @@ msgid ""
 "%d credential remains encrypted in the database until you re-save it or "
 "enable encryption again."
 msgid_plural ""
+msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
 msgstr[0] ""
+"%d "
+"ข้อมูลประจำตัวยังคงถูกเข้ารหัสในฐานข้อมูลจนกว่าคุณจะบันทึกใหม่หรือเปิดใช้งาน"
+"การเข้ารหัสอีกครั้ง.|%d "
+"ข้อมูลประจำตัวยังคงถูกเข้ารหัสในฐานข้อมูลจนกว่าคุณจะบันทึกใหม่หรือเปิดใช้งาน"
+"การเข้ารหัสอีกครั้ง."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
 "When you enable encryption, any plaintext credentials are encrypted "
 "automatically."
 msgstr ""
+"เมื่อคุณเปิดใช้งานการเข้ารหัส "
+"ข้อมูลประจำตัวที่เป็นข้อความธรรมชาติจะถูกเข้ารหัสโดยอัตโนมัติ"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:121
 #. translators: %s: formatted datetime.
 #, php-format
 msgid "Last migration: %s"
-msgstr ""
+msgstr "การย้ายข้อมูลครั้งล่าสุด: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:138
 msgid "Enable encryption above or in wp-config.php before running migration."
-msgstr ""
+msgstr "เปิดใช้งานการเข้ารหัสด้านบนหรือใน wp-config.php ก่อนที่จะทำการย้ายข้อมูล"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:156
 msgid ""
 "Rewrites existing plaintext payment and integration credentials in the "
 "database. Run during a maintenance window after taking a backup."
 msgstr ""
+"เขียนทับข้อมูลประจำตัวการชำระเงินและการรวมที่เป็นข้อความธรรมชาติในฐานข้อมูล "
+"รันในช่วงเวลาบำรุงรักษาหลังจากทำการสำรองข้อมูล"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:32
 msgid "PublishPress Cart security"
-msgstr ""
+msgstr "ความปลอดภัยของ PublishPress Cart"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:39
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed)."
 msgstr ""
+"ข้อมูลประจำตัวที่เก็บไว้เข้ารหัส %1$d รายการ (%2$d รายการที่ข้าม, %3$d "
+"รายการที่ล้มเหลว)"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:48
 msgid ""
 "Do not change AUTH_KEY or PPCART_SECRETS_KEY without re-entering payment "
 "and integration keys in Cart settings."
 msgstr ""
+"อย่าเปลี่ยน AUTH_KEY หรือ PPCART_SECRETS_KEY "
+"โดยไม่ต้องป้อนกุญแจการชำระเงินและการรวมใหม่ในการตั้งค่า Cart"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:52
 msgid ""
 "Some credentials could not be encrypted. Re-run migration from Cart → "
 "Settings → Maintenance or re-save keys manually."
 msgstr ""
+"ไม่สามารถเข้ารหัสข้อมูลประจำตัวบางอย่างได้ รันการย้ายข้อมูลใหม่จาก Cart → "
+"การตั้งค่า → การบำรุงรักษาหรือบันทึกกุญแจใหม่ด้วยตนเอง"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:20
 msgid "You do not have permission to change security encryption settings."
-msgstr ""
+msgstr "คุณไม่มีสิทธิ์เปลี่ยนการตั้งค่าการเข้ารหัสความปลอดภัย"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:58
 msgid "Encryption disabled."
-msgstr ""
+msgstr "ปิดการเข้ารหัส"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:74
 msgid "Encryption enabled."
-msgstr ""
+msgstr "เปิดใช้งานการเข้ารหัส"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:91
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
@@ -16073,22 +16208,25 @@ msgid ""
 "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed). Use Encrypt "
 "stored credentials in Maintenance to retry failures."
 msgstr ""
+"ข้อมูลประจำตัวที่เก็บไว้เข้ารหัส %1$d รายการ (%2$d รายการที่ข้าม, %3$d "
+"รายการที่ล้มเหลว) "
+"ใช้เข้ารหัสข้อมูลประจำตัวที่เก็บไว้ในการบำรุงรักษาเพื่อลองใหม่"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:100
 #. translators: 1: migrated count, 2: skipped count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped)."
-msgstr ""
+msgstr "ข้อมูลประจำตัวที่เก็บไว้เข้ารหัส %1$d รายการ (%2$d รายการที่ข้าม)"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:117
 msgid "You do not have permission to encrypt stored credentials."
-msgstr ""
+msgstr "คุณไม่มีสิทธิ์เข้ารหัสข้อมูลประจำตัวที่เก็บไว้"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:132
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Migration complete. Encrypted: %1$d. Skipped: %2$d. Failed: %3$d."
-msgstr ""
+msgstr "การย้ายข้อมูลเสร็จสมบูรณ์ เข้ารหัส: %1$d ข้าม: %2$d ล้มเหลว: %3$d"
 
 #: includes/secrets/traits/trait-ppcart-secrets-crypto.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:511
@@ -16103,9 +16241,15 @@ msgid ""
 "Encryption is enabled but %d stored credential is still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgid_plural ""
+msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgstr[0] ""
+"เปิดใช้งานการเข้ารหัส แต่ %d "
+"ข้อมูลประจำตัวที่เก็บไว้ยังคงเป็นข้อความธรรมชาติ "
+"ใช้เข้ารหัสข้อมูลประจำตัวที่เก็บไว้เพื่อลองใหม่.|เปิดใช้งานการเข้ารหัส แต่ "
+"%d ข้อมูลประจำตัวที่เก็บไว้ยังคงเป็นข้อความธรรมชาติ "
+"ใช้เข้ารหัสข้อมูลประจำตัวที่เก็บไว้เพื่อลองใหม่."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16114,19 +16258,27 @@ msgid ""
 "You have %d stored credential in plaintext. Enabling encryption will "
 "encrypt it automatically."
 msgid_plural ""
+msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
 msgstr[0] ""
+"คุณมี %d ข้อมูลประจำตัวที่เก็บไว้ในรูปแบบข้อความธรรมชาติ "
+"การเปิดใช้งานการเข้ารหัสจะทำให้มันถูกเข้ารหัสโดยอัตโนมัติ.|คุณมี %d "
+"ข้อมูลประจำตัวที่เก็บไว้ในรูปแบบข้อความธรรมชาติ "
+"การเปิดใช้งานการเข้ารหัสจะทำให้มันถูกเข้ารหัสโดยอัตโนมัติ."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
 "Encryption is not enabled. Enable it in Cart → Settings → Maintenance or "
 "add define( 'PPCART_ENCRYPT_SECRETS', true ); to wp-config.php."
 msgstr ""
+"การเข้ารหัสยังไม่ได้เปิดใช้งาน เปิดใช้งานใน Cart → การตั้งค่า → "
+"การบำรุงรักษาหรือเพิ่ม define( 'PPCART_ENCRYPT_SECRETS', true ); ลงใน "
+"wp-config.php"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:122
 msgid "Encryption requires AUTH_KEY or PPCART_SECRETS_KEY in wp-config.php."
-msgstr ""
+msgstr "การเข้ารหัสต้องการ AUTH_KEY หรือ PPCART_SECRETS_KEY ใน wp-config.php"
 
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-resume-subscription.php:19
 msgid "Canceled Stripe subscriptions cannot be resumed locally."
@@ -16147,13 +16299,13 @@ msgstr ""
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
-msgstr ""
+msgstr "ไม่สามารถตรวจสอบการชำระเงินนี้ได้ กรุณาโหลดหน้าใหม่และลองอีกครั้ง"
 
 #: includes/stripe/templates/order-save.php:109
 #. translators: %s: order status.
 #, php-format
 msgid "%s order created."
-msgstr ""
+msgstr "%s การสั่งซื้อถูกสร้างขึ้น"
 
 #: includes/stripe/templates/order-save.php:120
 msgid "Order complete."
@@ -16183,75 +16335,75 @@ msgstr "แท็ก"
 #. translators: %s: singular label.
 #, php-format
 msgid "Add New %s"
-msgstr ""
+msgstr "เพิ่ม %s ใหม่"
 
 #: includes/templates/post-types-register-single-post-type.php:49
 #: includes/templates/post-types-register-single-taxonomy.php:20
 #. translators: %s: singular label.
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "แก้ไข %s"
 
 #: includes/templates/post-types-register-single-post-type.php:54
 #. translators: %s: singular label.
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "ใหม่ %s"
 
 #: includes/templates/post-types-register-single-post-type.php:56
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found"
-msgstr ""
+msgstr "ไม่พบ %s"
 
 #: includes/templates/post-types-register-single-post-type.php:58
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found in Trash"
-msgstr ""
+msgstr "ไม่พบ %s ในถังขยะ"
 
 #: includes/templates/post-types-register-single-post-type.php:60
 #. translators: %s: post type plural label
 #, php-format
 msgid "Parent %s :"
-msgstr ""
+msgstr "พ่อแม่ %s :"
 
 #: includes/templates/post-types-register-single-post-type.php:62
 #: includes/templates/post-types-register-single-taxonomy.php:13
 #. translators: %s: plural label.
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "ค้นหา %s"
 
 #: includes/templates/post-types-register-single-post-type.php:65
 #. translators: %s: singular label.
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "ดู %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:16
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s"
-msgstr ""
+msgstr "พ่อแม่ %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:18
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s:"
-msgstr ""
+msgstr "ผู้ปกครอง %s:"
 
 #: includes/templates/post-types-register-single-taxonomy.php:22
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Update %s"
-msgstr ""
+msgstr "อัปเดต %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:26
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "New %s Name"
-msgstr ""
+msgstr "ชื่อ %s ใหม่"
 
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:37
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:38
@@ -16262,7 +16414,7 @@ msgstr "ได้รับการยอมรับ"
 #. translators: %1$s: previous order status, %2$s: new order status
 #, php-format
 msgid "Order status updated from %1$s to %2$s"
-msgstr ""
+msgstr "สถานะคำสั่งซื้อได้รับการอัปเดตจาก %1$s เป็น %2$s"
 
 #: models/order/traits/templates/order-persistence-store.php:68
 msgid "Creating order."
@@ -16287,11 +16439,11 @@ msgstr "ดาวน์โหลดใบเสร็จ"
 #. translators: %s: subscription status
 #, php-format
 msgid "Subscription status updated to %s"
-msgstr ""
+msgstr "สถานะการสมัครสมาชิกได้รับการอัปเดตเป็น %s"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:37
 msgid "This offer is no longer available."
-msgstr ""
+msgstr "ข้อเสนอนี้ไม่สามารถใช้งานได้อีกต่อไป."
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:168
 #: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:176
@@ -16300,7 +16452,7 @@ msgstr ""
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:152
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:167
 msgid "This checkout could not be started. Please contact the site administrator."
-msgstr ""
+msgstr "ไม่สามารถเริ่มการชำระเงินนี้ได้ โปรดติดต่อผู้ดูแลระบบเว็บไซต์."
 
 #: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:36
 #: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:31
@@ -16391,10 +16543,12 @@ msgid ""
 "The new card was saved, but some of your other subscriptions could not be "
 "updated. Please try again."
 msgstr ""
+"บัตรใหม่ถูกบันทึกไว้ แต่การสมัครสมาชิกอื่น ๆ ของคุณไม่สามารถอัปเดตได้ "
+"โปรดลองอีกครั้ง."
 
 #: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:86
 msgid "The new card was saved, but the payment failed: "
-msgstr ""
+msgstr "บัตรใหม่ถูกบันทึกไว้ แต่การชำระเงินล้มเหลว: "
 
 #: public/controllers/order/traits/trait-ppcart-public-order-cart.php:74
 msgid "Your cart is empty."
@@ -16402,25 +16556,28 @@ msgstr "ตะกร้าของคุณว่างเปล่า."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:201
 msgid "Processing payment…"
-msgstr ""
+msgstr "กำลังประมวลผลการชำระเงิน…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:202
 msgid "Your payment is being confirmed. This page will refresh automatically…"
-msgstr ""
+msgstr "การชำระเงินของคุณกำลังได้รับการยืนยัน หน้านี้จะรีเฟรชโดยอัตโนมัติ…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:218
 msgid "Payment processing"
-msgstr ""
+msgstr "กำลังประมวลผลการชำระเงิน"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:219
 msgid ""
 "We are still confirming your payment. You can leave this page open and "
 "refresh shortly, or check your email for a confirmation."
 msgstr ""
+"เรายังอยู่ระหว่างการยืนยันการชำระเงินของคุณ "
+"คุณสามารถเปิดหน้านี้ทิ้งไว้และรีเฟรชในไม่ช้า "
+"หรือเช็คอีเมลของคุณเพื่อการยืนยัน."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:221
 msgid "View order status"
-msgstr ""
+msgstr "ดูสถานะคำสั่งซื้อ"
 
 #: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Purchase"
@@ -16437,7 +16594,7 @@ msgstr "การเตรียมการชำระเงินไม่ส
 #: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:74
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:117
 msgid "There was an error, please try again."
-msgstr ""
+msgstr "มีข้อผิดพลาดเกิดขึ้น โปรดลองอีกครั้ง."
 
 #: public/controllers/templates/ga-purchase-tracking.php:112
 #: public/controllers/templates/ga-purchase-tracking.php:165
@@ -16448,13 +16605,13 @@ msgstr "ส่วนเสริมแบบกำหนดเอง"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:37
 msgid "Hosted Checkout is not enabled."
-msgstr ""
+msgstr "การชำระเงินแบบ Hosted Checkout ยังไม่ได้เปิดใช้งาน."
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:184
 msgid ""
 "This subscription is not ready for checkout, please contact the site "
 "administrator."
-msgstr ""
+msgstr "การสมัครสมาชิกนี้ยังไม่พร้อมสำหรับการชำระเงิน โปรดติดต่อผู้ดูแลระบบเว็บไซต์."
 
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:37
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:82
@@ -16563,6 +16720,11 @@ msgid ""
 "data-testid=\"ppcart-checkout-stripe-test-card-link\">Find a test card for "
 "another country</a>."
 msgstr ""
+"โหมดทดสอบเปิดใช้งานแล้ว: เพื่อทำการซื้อ (สหรัฐฯ) ทดสอบ ใช้หมายเลขบัตรเครดิต "
+"\"4242424242424242\" กับ CVC ใด ๆ และวันหมดอายุที่ถูกต้อง. <a href=\"%s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\" "
+"data-testid=\"ppcart-checkout-stripe-test-card-link\""
+">ค้นหาบัตรทดสอบสำหรับประเทศอื่น</a>."
 
 #: public/templates/functions/payment-address.php:85
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:104
@@ -16600,11 +16762,11 @@ msgstr "ข้อมูลติดต่อ"
 
 #: public/templates/functions/summary-and-scripts.php:142
 msgid "terms and conditions"
-msgstr ""
+msgstr "เงื่อนไขและข้อกำหนด"
 
 #: public/templates/functions/summary-and-scripts.php:161
 msgid "privacy policy"
-msgstr ""
+msgstr "นโยบายความเป็นส่วนตัว"
 
 #: public/templates/my-account/card-details.php:24
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:92
@@ -16638,7 +16800,7 @@ msgstr "วันหมดอายุ"
 
 #: public/templates/my-account/forms/change-card.php:57
 msgid "Set default for all active subscriptions"
-msgstr ""
+msgstr "ตั้งค่าเริ่มต้นสำหรับการสมัครสมาชิกทั้งหมดที่ใช้งานอยู่"
 
 #: public/templates/my-account/forms/change-card.php:65
 msgid "Pay Now and Save Card"
@@ -16825,7 +16987,7 @@ msgstr "แสดงเมื่อไม่มีการดาวน์โห
 #: includes/integrations/gutenberg/blocks/account-login/block.js:21
 #: includes/integrations/gutenberg/blocks/account-profile/block.js:9
 #: includes/integrations/gutenberg/blocks/_shared/list-controls.js:71
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Style"
 msgstr "Style"
 
@@ -16838,7 +17000,7 @@ msgid "Preset style"
 msgstr "ประธานเฮย์ส"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.js:33
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Card / Minimal / Dashboard / Folder."
 msgstr "Card / Minimal / Dashboard / Folder."
 
@@ -17930,12 +18092,12 @@ msgid "Bold (700)"
 msgstr "ตัวหนา (700)"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:55
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "S"
 msgstr "S"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:56
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "M"
 msgstr "M"
 
@@ -17946,12 +18108,12 @@ msgid "L"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:58
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XL"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:59
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XXL"
 msgstr "XXL"
 
@@ -18183,10 +18345,10 @@ msgstr "ตำแหน่งไอคอน"
 
 #: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
-#, php-format
+#, fuzzy, php-format
 msgctxt "date range"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:162
 #. translators: 1: current page, 2: total pages.
@@ -18202,24 +18364,24 @@ msgstr "จอร์เจีย"
 
 #: includes/functions/merge-tags-and-dates.php:143
 #. translators: 1: product name, 2: plan name.
-#, php-format
+#, fuzzy, php-format
 msgctxt "product and plan"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: public/templates/functions/summary-and-scripts.php:141
 #. translators: %s: terms and conditions link.
 #, php-format
 msgctxt "terms and conditions"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "ฉันได้อ่านและยอมรับ %s"
 
 #: public/templates/functions/summary-and-scripts.php:160
 #. translators: %s: privacy policy link.
 #, php-format
 msgctxt "privacy policy"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "ฉันได้อ่านและยอมรับ %s"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.json
 #, fuzzy

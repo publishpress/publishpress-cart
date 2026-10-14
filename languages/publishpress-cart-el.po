@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-13 22:03+0000\n"
+"PO-Revision-Date: 2026-10-14 01:15+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: publishpress-cart.php:16
 #. Plugin Name of the plugin
 msgid "PublishPress Cart - eCommerce for Digital Products"
-msgstr ""
+msgstr "PublishPress Cart - eCommerce για Ψηφιακά Προϊόντα"
 
 #: publishpress-cart.php:17
 #. Plugin URI of the plugin
@@ -32,6 +32,8 @@ msgid ""
 "Create order pages and simplified sales flow creation that helps you sell "
 "digital products, programs, and services."
 msgstr ""
+"Δημιουργήστε σελίδες παραγγελιών και απλοποιημένη ροή πωλήσεων που σας "
+"βοηθά να πουλήσετε ψηφιακά προϊόντα, προγράμματα και υπηρεσίες."
 
 #: publishpress-cart.php:20
 #: admin/partials/settings-page/tabs/topbar.php:8
@@ -83,7 +85,7 @@ msgstr "Πελάτες"
 
 #: admin/class-ppcart-contacts-page.php:165
 msgid "Export Customers"
-msgstr ""
+msgstr "Εξαγωγή Πελατών"
 
 #: admin/class-ppcart-contacts-page.php:169
 #: admin/reports/templates/customer-report/page.php:87
@@ -137,7 +139,7 @@ msgstr "Ημερομηνία"
 #: public/partials/csv-export.php:161
 #: public/templates/functions/plan-coupon-fields.php:539
 #: public/templates/functions/plan-coupon-fields.php:542
-#: public/templates/my-account/tabs/user-profile.php:27
+#: public/templates/my-account/tabs/user-profile.php:27, fuzzy
 msgid "Email"
 msgstr "Email"
 
@@ -150,7 +152,7 @@ msgid "Name"
 msgstr "Όνομα"
 
 #: admin/class-ppcart-contacts-page.php:192
-#: admin/reports/templates/customer-report/page.php:93
+#: admin/reports/templates/customer-report/page.php:93, fuzzy
 msgid "LTV"
 msgstr "LTV"
 
@@ -161,23 +163,23 @@ msgstr "Ημερομηνία τελευταίας παραγγελίας"
 
 #: admin/class-ppcart-contacts-page.php:224
 msgid "Search customers"
-msgstr ""
+msgstr "Αναζήτηση πελατών"
 
 #: admin/class-ppcart-contacts-page.php:225
 msgid "Show _MENU_ customers"
-msgstr ""
+msgstr "Εμφάνιση _MENU_ πελατών"
 
 #: admin/class-ppcart-contacts-page.php:226
 msgid "_START_ - _END_ of _TOTAL_ customers"
-msgstr ""
+msgstr "_START_ - _END_ από _TOTAL_ πελάτες"
 
 #: admin/class-ppcart-contacts-page.php:227
 msgid "No customers found"
-msgstr ""
+msgstr "Δεν βρέθηκαν πελάτες"
 
 #: admin/class-ppcart-contacts-page.php:228
 msgid "No matching customers found"
-msgstr ""
+msgstr "Δεν βρέθηκαν αντίστοιχοι πελάτες"
 
 #: admin/class-ppcart-extension-page.php:81
 #: admin/class-ppcart-extension-page.php:82
@@ -217,6 +219,8 @@ msgstr "Στοιχεία Πελάτη & Χρέωσης"
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:49
 msgid "Studiocart custom tracking scripts are not available in PublishPress Cart."
 msgstr ""
+"Τα προσαρμοσμένα σενάρια παρακολούθησης Studiocart δεν είναι διαθέσιμα στο "
+"PublishPress Cart."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:50
 msgid ""
@@ -224,20 +228,23 @@ msgid ""
 "Leftover tracking code on these products is kept in post meta for reference "
 "and is not executed."
 msgstr ""
+"Αντικαθίστανται από δομημένα γεγονότα Meta Pixel και Google Analytics. Ο "
+"κωδικός παρακολούθησης που έχει απομείνει σε αυτά τα προϊόντα διατηρείται "
+"στα μεταδεδομένα της ανάρτησης για αναφορά και δεν εκτελείται."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:51
 msgid "Affected products:"
-msgstr ""
+msgstr "Επηρεαζόμενα προϊόντα:"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:61
 msgid "Review analytics settings"
-msgstr ""
+msgstr "Επανεξέταση ρυθμίσεων ανάλυσης"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:62
 #: admin/traits/templates/notices-admin-notices.php:111
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:56
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Αγνοήστε αυτήν την ειδοποίηση"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:76
 msgid "Shortcode"
@@ -352,29 +359,31 @@ msgstr "Ενημέρωση κατάστασης σε ακυρωμένο"
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:176
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
-msgstr ""
+msgstr "Συγχρονίστε με το Stripe"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:207
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s συνδρομή συγχρονίστηκε από το Stripe."
+msgstr[1] "%s συνδρομές συγχρονίστηκαν από το Stripe."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s απέτυχε; δείτε το αρχείο καταγραφής της συνδρομής για τον λόγο."
+msgstr[1] "%s απέτυχαν; δείτε τα αρχεία καταγραφής των συνδρομών τους για τον λόγο."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
 msgstr ""
+"Κάθε εκτέλεση συγχρονίζει έναν περιορισμένο αριθμό συνδρομών. Επιλέξτε τις "
+"υπόλοιπες και εκτελέστε το ξανά για να συνεχίσετε."
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:44
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:51
@@ -396,11 +405,11 @@ msgstr "Μη εξουσιοδοτημένο."
 #. translators: %s: active payment processors list.
 #, php-format
 msgid "Cart - Test Mode Active (%1$s)"
-msgstr ""
+msgstr "Cart - Ενεργοποιημένη Λειτουργία Δοκιμών (%1$s)"
 
 #: admin/controllers/class-ppcart-admin-test-mode-notice-controller.php:101
 msgid "Open PublishPress Cart payment settings"
-msgstr ""
+msgstr "Ανοίξτε τις ρυθμίσεις πληρωμών του PublishPress Cart"
 
 #: admin/controllers/order/templates/product-form.php:45
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:37
@@ -605,7 +614,7 @@ msgstr "Γονική παραγγελία"
 
 #: admin/controllers/order/templates/product-form.php:574
 msgid "Child Order"
-msgstr ""
+msgstr "Παιδική Παραγγελία"
 
 #: admin/controllers/order/templates/product-info-metabox.php:48
 msgid "Stripe payment"
@@ -756,7 +765,7 @@ msgid "Guest"
 msgstr "Επισκέπτης"
 
 #: admin/controllers/order/templates/product-info-metabox.php:210
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170, fuzzy
 msgid "URL"
 msgstr "URL"
 
@@ -919,7 +928,7 @@ msgstr "σφάλμα"
 #: admin/traits/templates/integrations-ppcart-mailchimp-groups-tags.php:15
 #: admin/traits/trait-ppcart-admin-integrations.php:132
 msgid "You do not have permission to perform this action."
-msgstr ""
+msgstr "Δεν έχετε άδεια να εκτελέσετε αυτήν την ενέργεια."
 
 #: admin/controllers/order/traits/templates/order-ajax-product-plan-options-html.php:11
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:15
@@ -955,7 +964,7 @@ msgstr "Σημειώσεις Παραγγελίας"
 #: admin/partials/ppcart-admin-page-settings.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:32
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:16
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22, fuzzy
 msgid "PublishPress Cart"
 msgstr "PublishPress Cart"
 
@@ -1031,6 +1040,8 @@ msgid ""
 "Refresh status and next bill date from Stripe, and import any invoices "
 "missing from the order history"
 msgstr ""
+"Ανανεώστε την κατάσταση και την ημερομηνία επόμενης χρέωσης από το Stripe, "
+"και εισάγετε τυχόν τιμολόγια που λείπουν από την ιστορία παραγγελιών"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:147
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:29
@@ -1187,13 +1198,13 @@ msgstr "Η συνδρομή και τα τιμολόγια συγχρονίστ�
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:48
 msgid "Subscription synced from Stripe by admin"
-msgstr ""
+msgstr "Συνδρομή συγχρονίστηκε από το Stripe από το admin"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:52
 #. translators: %s: error message.
 #, php-format
 msgid "Error syncing subscription from Stripe! Message: %s"
-msgstr ""
+msgstr "Σφάλμα συγχρονισμού συνδρομής από το Stripe! Μήνυμα: %s"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:77
 msgid ""
@@ -1241,8 +1252,8 @@ msgstr "Εκκρεμεί"
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Εκκρεμεί <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Εκκρεμεί <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1255,16 +1266,16 @@ msgstr "Πληρωμένο"
 #, php-format
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Πληρωμένο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Πληρωμένο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
 #, php-format
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επιστροφή χρημάτων <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Επιστροφή χρημάτων <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1276,8 +1287,8 @@ msgstr "Αποτυχία"
 #, php-format
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αποτυχημένο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Αποτυχημένο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1292,8 +1303,8 @@ msgstr "Ληξιπρόθεσμο"
 #, php-format
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ληξιπρόθεσμο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Ληξιπρόθεσμο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1305,8 +1316,8 @@ msgstr "Μη εισπράξιμο"
 #, php-format
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Μη εισπράξιμο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Μη εισπράξιμο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1323,8 +1334,8 @@ msgstr "Ενεργό"
 #, php-format
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ενεργό <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Ενεργό <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1336,8 +1347,8 @@ msgstr "Απλήρωτο"
 #, php-format
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Απλήρωτο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Απλήρωτο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1352,16 +1363,16 @@ msgstr "Παύθηκε"
 #, php-format
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Παυμένο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Παυμένο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
 #, php-format
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ακυρωμένο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Ακυρωμένο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1374,8 +1385,8 @@ msgstr "Ολοκληρωμένο"
 #, php-format
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ολοκληρωμένο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Ολοκληρωμένο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1387,8 +1398,8 @@ msgstr "Μη ολοκληρωμένο"
 #, php-format
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Μη ολοκληρωμένο <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Μη ολοκληρωμένο <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1400,8 +1411,8 @@ msgstr "Δοκιμαστικό"
 #, php-format
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Δοκιμαστική <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "Δοκιμαστική <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -1468,7 +1479,7 @@ msgid "Renewals"
 msgstr "Ανανεώσεις"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:405
+#: admin/reports/templates/admin-reports-page.php:405, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1532,7 +1543,7 @@ msgstr "Υποστήριξη & Τεκμηρίωση"
 #. translators: 1: opening link tag, 2: closing link tag.
 #, php-format
 msgid "Visit our %1$sdocumentation%2$s for help."
-msgstr ""
+msgstr "Επισκεφθείτε τη %1$sτεκμηρίωσή μας%2$s για βοήθεια."
 
 #: admin/dashboard/class-ppcart-dashboard-widget.php:36
 #. translators: %s: plugin title.
@@ -1556,7 +1567,7 @@ msgstr "Μήνυμα Εμφάνισης"
 
 #: admin/metaboxes/field-groups/message-fields.php:18
 msgid "Display Page"
-msgstr ""
+msgstr "Εμφάνιση Σελίδας"
 
 #: admin/metaboxes/field-groups/message-fields.php:19
 msgid "Perform Redirect"
@@ -1581,7 +1592,7 @@ msgstr "URL Σελίδας Ευχαριστίας"
 
 #: admin/metaboxes/field-groups/message-fields.php:76
 msgid "Preview & send test email"
-msgstr ""
+msgstr "Προβολή & αποστολή δοκιμαστικού email"
 
 #: admin/metaboxes/field-groups/message-fields.php:84
 msgid "Disable Order Received Confirmation email"
@@ -1672,7 +1683,7 @@ msgstr "Email Αποστολέα"
 msgid "Reply To"
 msgstr "Απάντηση σε"
 
-#: admin/metaboxes/field-groups/message-fields.php:243
+#: admin/metaboxes/field-groups/message-fields.php:243, fuzzy
 msgid "Bcc"
 msgstr "Bcc"
 
@@ -1689,23 +1700,23 @@ msgstr "Θέμα"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:12
 msgid "Checkout starts"
-msgstr ""
+msgstr "Η διαδικασία ολοκλήρωσης ξεκινά"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:22
 msgid "Checkout ends"
-msgstr ""
+msgstr "Η διαδικασία ολοκλήρωσης τελειώνει"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:32
 msgid "When checkout ended"
-msgstr ""
+msgstr "Όταν η διαδικασία ολοκλήρωσης τελείωσε"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:45
 msgid "Checkout ended redirect URL"
-msgstr ""
+msgstr "URL ανακατεύθυνσης όταν η διαδικασία ολοκλήρωσης τελείωσε"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:58
 msgid "Checkout ended message"
-msgstr ""
+msgstr "Μήνυμα όταν η διαδικασία ολοκλήρωσης τελείωσε"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:59
 #: public/templates/functions/checkout-core.php:373
@@ -1866,7 +1877,7 @@ msgstr ""
 "`A-z 0-9`, παύλες, & υπογράμμιση χωρίς κενά μόνο. Πρέπει να είναι μοναδικό "
 "για αυτό το προϊόν."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:65
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:65, fuzzy
 msgid "URL Slug"
 msgstr "URL Slug"
 
@@ -1916,62 +1927,62 @@ msgstr "Συχνότητα"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:146
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:178
 msgid "Every"
-msgstr ""
+msgstr "Κάθε"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:147
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:179
 msgid "Every 2nd"
-msgstr ""
+msgstr "Κάθε 2ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:148
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:180
 msgid "Every 3rd"
-msgstr ""
+msgstr "Κάθε 3ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:149
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:181
 msgid "Every 4th"
-msgstr ""
+msgstr "Κάθε 4ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:150
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:182
 msgid "Every 5th"
-msgstr ""
+msgstr "Κάθε 5ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:151
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:183
 msgid "Every 6th"
-msgstr ""
+msgstr "Κάθε 6ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:152
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:184
 msgid "Every 7th"
-msgstr ""
+msgstr "Κάθε 7ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:153
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:185
 msgid "Every 8th"
-msgstr ""
+msgstr "Κάθε 8ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:154
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:186
 msgid "Every 9th"
-msgstr ""
+msgstr "Κάθε 9ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:155
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:187
 msgid "Every 10th"
-msgstr ""
+msgstr "Κάθε 10ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:156
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:188
 msgid "Every 11th"
-msgstr ""
+msgstr "Κάθε 11ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:157
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:189
 msgid "Every 12th"
-msgstr ""
+msgstr "Κάθε 12ο"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:173
 msgid "Frequency (On Sale)"
@@ -1986,22 +1997,22 @@ msgstr "Διάστημα Πληρωμής"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:210
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:234
 msgid "Day"
-msgstr ""
+msgstr "Ημέρα"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:211
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:235
 msgid "Week"
-msgstr ""
+msgstr "Εβδομάδα"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:212
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:236
 msgid "Month"
-msgstr ""
+msgstr "Μήνας"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:213
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:237
 msgid "Year"
-msgstr ""
+msgstr "Έτος"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:229
 msgid "Pay Interval (On Sale)"
@@ -2095,6 +2106,9 @@ msgid ""
 "Put each field pair on a separate line and use a colon (\":\") to separate "
 "the field key from the field value. For example: field_key:ppcart_field_id"
 msgstr ""
+"Τοποθετήστε κάθε ζεύγος πεδίων σε ξεχωριστή γραμμή και χρησιμοποιήστε άνω "
+"και κάτω τελεία (\":\") για να χωρίσετε το κλειδί του πεδίου από την τιμή "
+"του πεδίου. Για παράδειγμα: field_key:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-01.php:163
 #: admin/metaboxes/traits/templates/integration-fields/fields-03.php:86
@@ -2140,6 +2154,10 @@ msgid ""
 "the ActiveCampaign personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"Τοποθετήστε κάθε ζεύγος πεδίων σε ξεχωριστή γραμμή και χρησιμοποιήστε άνω "
+"και κάτω τελεία (\":\") για να χωρίσετε την ετικέτα προσωποποίησης "
+"ActiveCampaign από την τιμή του πεδίου. Για παράδειγμα: "
+"%TAG%:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-02.php:89
 msgid "SendFox List"
@@ -2285,7 +2303,7 @@ msgstr "Κύριο Bump"
 #. translators: 1: bump number, 2: product title.
 #, php-format
 msgid "Add'l Bump %1$d (%2$s)"
-msgstr ""
+msgstr "Πρόσθετο Bump %1$d (%2$s)"
 
 #: admin/metaboxes/traits/templates/product-metabox-plan-options-get-payment-plans.php:28
 msgid "(on sale)"
@@ -2361,7 +2379,7 @@ msgstr "Ενσωματώσεις"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:16
 msgid "Product notification"
-msgstr ""
+msgstr "Ειδοποίηση προϊόντος"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
@@ -2374,14 +2392,16 @@ msgstr "Προεπισκόπηση email"
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:23
 msgid "This notification is currently disabled. Preview and test email still work."
 msgstr ""
+"Αυτή η ειδοποίηση είναι αυτή τη στιγμή απενεργοποιημένη. Η προεπισκόπηση "
+"και η δοκιμή του email λειτουργούν κανονικά."
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:32
 msgid "Send test to"
-msgstr ""
+msgstr "Αποστολή δοκιμής σε"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:34
 msgid "Send test email"
-msgstr ""
+msgstr "Αποστολή δοκιμαστικού email"
 
 #: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:12
 msgid "this product"
@@ -2481,7 +2501,7 @@ msgstr "Η ανανέωση συνδρομής απέτυχε"
 #: includes/integrations/templates/cancel-subscription-plan-data.php:10
 #: includes/integrations/templates/cancel-subscription-plan-data.php:22
 msgid "No plans found"
-msgstr ""
+msgstr "Δεν βρέθηκαν σχέδια"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:29
 #: includes/helpers/pro-locks/product-locks.php:56
@@ -2601,7 +2621,7 @@ msgstr "Εικόνα Φόντου Κεφαλίδας"
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:24
 #: public/partials/csv-export.php:351
 msgid "Until canceled"
-msgstr ""
+msgstr "Μέχρι να ακυρωθεί"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:26
 msgid " payments"
@@ -2892,7 +2912,7 @@ msgstr "Αποσφαλμάτωση"
 
 #: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
-msgstr ""
+msgstr "Συντήρηση"
 
 #: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:101
@@ -2962,6 +2982,8 @@ msgstr ""
 #: admin/partials/settings-page/metadata.php:66
 msgid "Operational tools including security encryption and credential migration."
 msgstr ""
+"Λειτουργικά εργαλεία, συμπεριλαμβανομένης της κρυπτογράφησης ασφαλείας και "
+"της μετανάστευσης διαπιστευτηρίων."
 
 #: admin/partials/settings-page/metadata.php:71
 msgid "Configure store options that do not belong in the main setup tabs."
@@ -2988,7 +3010,7 @@ msgid "More"
 msgstr "Περισσότερα"
 
 #: admin/partials/settings-page/metadata.php:107
-#: admin/settings/traits/templates/settings-sections-integrations.php:8
+#: admin/settings/traits/templates/settings-sections-integrations.php:8, fuzzy
 msgid "ActiveCampaign"
 msgstr "ActiveCampaign"
 
@@ -2997,7 +3019,7 @@ msgid "Sync customers and purchases to ActiveCampaign."
 msgstr "Συγχρονίστε πελάτες και αγορές με το ActiveCampaign."
 
 #: admin/partials/settings-page/metadata.php:116
-#: admin/settings/traits/templates/settings-sections-integrations.php:9
+#: admin/settings/traits/templates/settings-sections-integrations.php:9, fuzzy
 msgid "Mailchimp"
 msgstr "Mailchimp"
 
@@ -3005,7 +3027,7 @@ msgstr "Mailchimp"
 msgid "Add customers to Mailchimp audiences and automate emails."
 msgstr "Προσθέστε πελάτες σε κοινότητες Mailchimp και αυτοματοποιήστε τα email."
 
-#: admin/partials/settings-page/metadata.php:125
+#: admin/partials/settings-page/metadata.php:125, fuzzy
 msgid "Kit"
 msgstr "Kit"
 
@@ -3014,7 +3036,7 @@ msgid "Send customers and purchases to Kit forms and tags."
 msgstr "Στείλτε πελάτες και αγορές σε φόρμες και ετικέτες Kit."
 
 #: admin/partials/settings-page/metadata.php:134
-#: admin/settings/traits/templates/settings-sections-integrations.php:11
+#: admin/settings/traits/templates/settings-sections-integrations.php:11, fuzzy
 msgid "MemberVault"
 msgstr "MemberVault"
 
@@ -3023,7 +3045,7 @@ msgid "Protect content and manage members with MemberVault."
 msgstr "Προστατέψτε το περιεχόμενο και διαχειριστείτε τα μέλη με το MemberVault."
 
 #: admin/partials/settings-page/metadata.php:143
-#: admin/settings/traits/templates/settings-sections-integrations.php:12
+#: admin/settings/traits/templates/settings-sections-integrations.php:12, fuzzy
 msgid "SendFox"
 msgstr "SendFox"
 
@@ -3031,7 +3053,7 @@ msgstr "SendFox"
 msgid "Grow your audience and send automated emails with SendFox."
 msgstr "Αυξήστε το κοινό σας και στείλτε αυτοματοποιημένα email με το SendFox."
 
-#: admin/partials/settings-page/metadata.php:152
+#: admin/partials/settings-page/metadata.php:152, fuzzy
 msgid "Facebook Ad Events"
 msgstr "Facebook Ad Events"
 
@@ -3040,8 +3062,10 @@ msgid ""
 "Send Cart events to an existing Meta Pixel installation. PublishPress Cart "
 "does not install or connect the pixel script."
 msgstr ""
+"Αποστολή γεγονότων καλαθιού σε υπάρχουσα εγκατάσταση Meta Pixel. Το "
+"PublishPress Cart δεν εγκαθιστά ούτε συνδέει το σενάριο pixel."
 
-#: admin/partials/settings-page/metadata.php:161
+#: admin/partials/settings-page/metadata.php:161, fuzzy
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
@@ -3051,8 +3075,11 @@ msgid ""
 "installation. PublishPress Cart does not install or connect the analytics "
 "script."
 msgstr ""
+"Αποστολή γεγονότων καλαθιού σε υπάρχουσα εγκατάσταση Google Analytics ή "
+"Google Tag Manager. Το PublishPress Cart δεν εγκαθιστά ούτε συνδέει το "
+"σενάριο αναλύσεων."
 
-#: admin/partials/settings-page/metadata.php:170
+#: admin/partials/settings-page/metadata.php:170, fuzzy
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
@@ -3060,7 +3087,7 @@ msgstr "Google reCAPTCHA"
 msgid "Protect checkout forms from spam and bot submissions."
 msgstr "Προστατέψτε τις φόρμες ολοκλήρωσης αγορών από spam και υποβολές bot."
 
-#: admin/partials/settings-page/metadata.php:178
+#: admin/partials/settings-page/metadata.php:178, fuzzy
 msgid "Google reCAPTCHA v2"
 msgstr "Google reCAPTCHA v2"
 
@@ -3068,7 +3095,7 @@ msgstr "Google reCAPTCHA v2"
 msgid "Configure checkbox or invisible reCAPTCHA v2 protection."
 msgstr "Ρυθμίστε την προστασία reCAPTCHA v2 με checkbox ή αόρατη."
 
-#: admin/partials/settings-page/metadata.php:187
+#: admin/partials/settings-page/metadata.php:187, fuzzy
 msgid "Google reCAPTCHA v3"
 msgstr "Google reCAPTCHA v3"
 
@@ -3076,7 +3103,7 @@ msgstr "Google reCAPTCHA v3"
 msgid "Configure score-based reCAPTCHA v3 protection."
 msgstr "Ρυθμίστε την προστασία reCAPTCHA v3 με βάση το σκορ."
 
-#: admin/partials/settings-page/metadata.php:196
+#: admin/partials/settings-page/metadata.php:196, fuzzy
 msgid "Drip"
 msgstr "Drip"
 
@@ -3086,7 +3113,7 @@ msgstr ""
 "Συγχρονίστε πελάτες, ετικέτες και δραστηριότητα ηλεκτρονικού εμπορίου με το "
 "Drip."
 
-#: admin/partials/settings-page/metadata.php:205
+#: admin/partials/settings-page/metadata.php:205, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
@@ -3095,7 +3122,7 @@ msgid "Add customers to MailerLite subscribers and groups."
 msgstr "Προσθέστε πελάτες στους συνδρομητές και τις ομάδες του MailerLite."
 
 #: admin/partials/settings-page/metadata.php:214
-#: admin/settings/traits/templates/settings-sections-integrations.php:10
+#: admin/settings/traits/templates/settings-sections-integrations.php:10, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
@@ -3103,7 +3130,7 @@ msgstr "MailPoet"
 msgid "Add customers to MailPoet lists."
 msgstr "Προσθέστε πελάτες στις λίστες του MailPoet."
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:222, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
@@ -3111,7 +3138,7 @@ msgstr "Encharge"
 msgid "Track order events and sync customers to Encharge."
 msgstr "Παρακολουθήστε γεγονότα παραγγελιών και συγχρονίστε πελάτες με το Encharge."
 
-#: admin/partials/settings-page/metadata.php:232
+#: admin/partials/settings-page/metadata.php:232, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
@@ -3119,7 +3146,7 @@ msgstr "FluentCRM"
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "Προσθέστε πελάτες στις λίστες και τις ετικέτες του FluentCRM."
 
-#: admin/partials/settings-page/metadata.php:240
+#: admin/partials/settings-page/metadata.php:240, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
@@ -3127,7 +3154,7 @@ msgstr "Academy LMS"
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "Εγγραφείτε ή αφαιρέστε μαθητές από τα μαθήματα του Academy LMS."
 
-#: admin/partials/settings-page/metadata.php:248
+#: admin/partials/settings-page/metadata.php:248, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
@@ -3143,7 +3170,7 @@ msgstr "Καρδιοχτύπηση"
 msgid "Manage community access in Heartbeat."
 msgstr "Διαχείριση της πρόσβασης της κοινότητας στην Καρδιοχτύπηση."
 
-#: admin/partials/settings-page/metadata.php:266
+#: admin/partials/settings-page/metadata.php:266, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
@@ -3151,7 +3178,7 @@ msgstr "Kajabi"
 msgid "Enable Kajabi purchase automations."
 msgstr "Ενεργοποίηση αυτοματισμών αγορών Kajabi."
 
-#: admin/partials/settings-page/metadata.php:275
+#: admin/partials/settings-page/metadata.php:275, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
@@ -3159,7 +3186,7 @@ msgstr "Teachable"
 msgid "Enroll customers into Teachable schools and products."
 msgstr "Εγγραφή πελατών σε σχολεία και προϊόντα Teachable."
 
-#: admin/partials/settings-page/metadata.php:284
+#: admin/partials/settings-page/metadata.php:284, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
@@ -3167,7 +3194,7 @@ msgstr "Upcoach"
 msgid "Grant customers access to Upcoach programs."
 msgstr "Παροχή πρόσβασης στους πελάτες σε προγράμματα Upcoach."
 
-#: admin/partials/settings-page/metadata.php:293
+#: admin/partials/settings-page/metadata.php:293, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
@@ -3175,7 +3202,7 @@ msgstr "Tutor LMS"
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Εγγραφή ή αφαίρεση μαθητών από τα μαθήματα Tutor LMS."
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:301, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
@@ -3183,7 +3210,7 @@ msgstr "LearnDash"
 msgid "Grant or revoke LearnDash course access."
 msgstr "Παροχή ή ανάκληση πρόσβασης σε μαθήματα LearnDash."
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
@@ -3191,7 +3218,7 @@ msgstr "WP Courseware"
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "Διαχείριση εγγραφών WP Courseware μετά την αγορά."
 
-#: admin/partials/settings-page/metadata.php:317
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
@@ -3207,7 +3234,7 @@ msgstr "Ομάδες"
 msgid "Add or remove customers from WordPress Groups."
 msgstr "Προσθήκη ή αφαίρεση πελατών από Ομάδες WordPress."
 
-#: admin/partials/settings-page/metadata.php:333
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
@@ -3215,7 +3242,7 @@ msgstr "MemberPress"
 msgid "Grant customers MemberPress membership access."
 msgstr "Παροχή πρόσβασης σε μέλη MemberPress στους πελάτες."
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
@@ -3223,7 +3250,7 @@ msgstr "ARMember"
 msgid "Grant customers ARMember plan access."
 msgstr "Δώστε στους πελάτες πρόσβαση στο σχέδιο ARMember."
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
@@ -3231,7 +3258,7 @@ msgstr "WishList Member"
 msgid "Grant customers WishList Member level access."
 msgstr "Δώστε στους πελάτες πρόσβαση στο επίπεδο WishList Member."
 
-#: admin/partials/settings-page/metadata.php:357
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
@@ -3239,7 +3266,7 @@ msgstr "Restrict Content Pro"
 msgid "Grant customers Restrict Content Pro access."
 msgstr "Δώστε στους πελάτες πρόσβαση στο Restrict Content Pro."
 
-#: admin/partials/settings-page/metadata.php:365
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
@@ -3247,7 +3274,7 @@ msgstr "Ultimate Member"
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "Στείλτε email καλωσορίσματος Ultimate Member σε νέους πελάτες."
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:374, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -3255,7 +3282,7 @@ msgstr "Elementor"
 msgid "Choose Elementor templates for checkout components."
 msgstr "Επιλέξτε πρότυπα Elementor για τα στοιχεία του ταμείου."
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:382, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
@@ -3265,7 +3292,7 @@ msgstr ""
 "Χρησιμοποιήστε τις φόρμες παραγγελίας PublishPress Cart μέσα σε διάταξεις "
 "Divi."
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
@@ -3273,7 +3300,7 @@ msgstr "Oxygen Builder"
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Χρησιμοποιήστε τις συνθήκες PublishPress Cart στον Oxygen Builder."
 
-#: admin/partials/settings-page/metadata.php:398
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
@@ -3290,7 +3317,7 @@ msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "Συνδέστε τα προϊόντα PublishPress Cart με τις ροές WooCommerce."
 
 #: admin/partials/settings-page/metadata.php:414
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
@@ -3311,7 +3338,7 @@ msgstr "Επιστροφή Παραγγελίας"
 msgid "Refund an existing order as an order automation."
 msgstr "Επιστροφή μιας υπάρχουσας παραγγελίας ως αυτοματοποίηση παραγγελιών."
 
-#: admin/partials/settings-page/metadata.php:442
+#: admin/partials/settings-page/metadata.php:442, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
@@ -3323,7 +3350,7 @@ msgstr "Αποστολή δεδομένων παραγγελίας σε μια �
 msgid "All"
 msgstr "Όλα"
 
-#: admin/partials/settings-page/metadata.php:451
+#: admin/partials/settings-page/metadata.php:451, fuzzy
 msgid "Email Marketing"
 msgstr "Email Marketing"
 
@@ -3393,7 +3420,7 @@ msgstr "Διαχείριση"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:53
 #: includes/functions/payment-and-locale-lists.php:35
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:22
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
@@ -3411,7 +3438,7 @@ msgstr "Αποδοχή πιστωτικών καρτών και άλλων πλ�
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
 #: includes/helpers/pro-locks/product-locks.php:45
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
-#: public/paypal/traits/trait-ppcart-paypal-settings.php:88
+#: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
@@ -3505,7 +3532,7 @@ msgid "Test mode"
 msgstr "Λειτουργία δοκιμής"
 
 #: admin/partials/settings-page/render-helpers.php:19
-#: admin/partials/settings-page/sections/payment-method.php:223
+#: admin/partials/settings-page/sections/payment-method.php:223, fuzzy
 msgid "Sandbox"
 msgstr "Sandbox"
 
@@ -3685,7 +3712,7 @@ msgstr "Ρυθμίσεις αναζήτησης"
 
 #: admin/partials/settings-page/tabs/topbar.php:16
 msgid "Search settings..."
-msgstr ""
+msgstr "Ρυθμίσεις αναζήτησης..."
 
 #: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
@@ -3695,7 +3722,7 @@ msgstr "Περίληψη απόδοσης για %s"
 
 #: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
-msgstr ""
+msgstr "Χρονικό διάστημα"
 
 #: admin/reports/templates/admin-reports-page.php:83
 msgid "Select date range"
@@ -3703,24 +3730,24 @@ msgstr "Επιλέξτε χρονική περίοδο"
 
 #: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
-msgstr ""
+msgstr "Αναζήτηση πελατών κατά όνομα ή email"
 
 #: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
-msgstr ""
+msgstr "Αναζήτηση κατά όνομα ή email"
 
 #: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
-msgstr ""
+msgstr "Αναζήτηση προϊόντων"
 
 #: admin/reports/templates/admin-reports-page.php:110
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:97
 msgid "All products"
-msgstr ""
+msgstr "Όλα τα προϊόντα"
 
 #: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
-msgstr ""
+msgstr "Φίλτρα κατά της παραγγελίας ή του κύριου προϊόντος της συνδρομής"
 
 #: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
@@ -3729,7 +3756,7 @@ msgstr "Εφαρμογή"
 
 #: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
-msgstr ""
+msgstr "Καθαρισμός φίλτρων"
 
 #: admin/reports/templates/admin-reports-page.php:122
 #: admin/reports/templates/customer-reports-page.php:85
@@ -3741,6 +3768,8 @@ msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
 msgstr ""
+"Το φίλτρο προϊόντος αντιστοιχεί στο κύριο προϊόν κάθε παραγγελίας ή "
+"συνδρομής, όχι σε προϊόντα bump ή upsell."
 
 #: admin/reports/templates/admin-reports-page.php:352
 #: includes/order-items/order-details-renderer.php:67
@@ -3783,7 +3812,7 @@ msgstr "Αξία Πελάτη Διαχρονικά"
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
-msgstr ""
+msgstr "Μέσος όρος όλων των εποχών σε %s αντιστοιχούντες πελάτες"
 
 #: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
@@ -3810,7 +3839,7 @@ msgstr "Συναλλαγές"
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
-msgstr ""
+msgstr "%1$s νέα, %2$s ανανεώσεις"
 
 #: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
@@ -3935,7 +3964,7 @@ msgstr ""
 
 #: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
-msgstr ""
+msgstr "Παραγγελίες κατά Τύπο"
 
 #: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
@@ -4178,30 +4207,33 @@ msgid ""
 "Stripe needs a temporary restricted key with %s. We use it once, install "
 "the endpoint, and never store it."
 msgstr ""
+"Η Stripe χρειάζεται ένα προσωρινό περιορισμένο κλειδί με %s. Το "
+"χρησιμοποιούμε μία φορά, εγκαθιστούμε το endpoint και ποτέ δεν το "
+"αποθηκεύουμε."
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:29
 msgid "Webhook endpoints: Write"
-msgstr ""
+msgstr "Webhook endpoints: Γράψτε"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:33
 msgid "Temporary Stripe key"
-msgstr ""
+msgstr "Προσωρινό κλειδί Stripe"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:45
 msgid "Install webhook"
-msgstr ""
+msgstr "Εγκατάσταση webhook"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:51
 msgid "Create the key in Stripe"
-msgstr ""
+msgstr "Δημιουργήστε το κλειδί στο Stripe"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:54
 msgid "I want to set it up in Stripe myself"
-msgstr ""
+msgstr "Θέλω να το ρυθμίσω μόνος μου στο Stripe"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:64
 msgid "Create an endpoint in Stripe with this URL:"
-msgstr ""
+msgstr "Δημιουργήστε ένα endpoint στο Stripe με αυτή τη διεύθυνση URL:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:69
 #. translators: %d: number of Stripe events.
@@ -4210,10 +4242,12 @@ msgid ""
 "Select the %d events listed in our documentation, then paste that endpoint "
 "signing secret:"
 msgstr ""
+"Επιλέξτε τα %d γεγονότα που αναφέρονται στην τεκμηρίωσή μας, στη συνέχεια "
+"επικολλήστε αυτό το μυστικό υπογραφής endpoint:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:73
 msgid "Signing secret"
-msgstr ""
+msgstr "Μυστικό υπογραφής"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:85
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:13
@@ -4223,51 +4257,65 @@ msgstr "Αποθήκευση"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:23
 msgid "Add a Stripe secret key for this mode first."
-msgstr ""
+msgstr "Πρώτα προσθέστε ένα μυστικό κλειδί Stripe για αυτή τη λειτουργία."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:37
 #. translators: %s: local webhook URL.
 #, php-format
 msgid "Stripe cannot reach a local address. Forward events with Stripe CLI to %s"
 msgstr ""
+"Η Stripe δεν μπορεί να φτάσει μια τοπική διεύθυνση. Προωθήστε τα γεγονότα "
+"με το Stripe CLI στο %s"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:90
 msgid "Some events are missing, so parts of your store will not update."
 msgstr ""
+"Ορισμένα γεγονότα λείπουν, επομένως ορισμένα μέρη του καταστήματός σας δεν "
+"θα ενημερωθούν."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:103
 msgid ""
 "This account does not let us re-check the endpoint, so no live status is "
 "shown."
 msgstr ""
+"Αυτός ο λογαριασμός δεν μας επιτρέπει να ελέγξουμε ξανά το endpoint, οπότε "
+"δεν εμφανίζεται καμία ζωντανή κατάσταση."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
-msgstr ""
+msgstr "Η επιβεβαίωση του webhook απέτυχε: %s"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:9
 msgid "You are not allowed to configure Stripe webhooks."
-msgstr ""
+msgstr "Δεν έχετε άδεια να ρυθμίσετε webhooks Stripe."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:34
 msgid ""
 "That key does not look like a Stripe key for the selected mode. Copy a "
 "restricted key that starts with rk_, or a secret key that starts with sk_."
 msgstr ""
+"Αυτό το κλειδί δεν φαίνεται να είναι κλειδί Stripe για την επιλεγμένη "
+"λειτουργία. Αντιγράψτε ένα περιορισμένο κλειδί που αρχίζει με rk_, ή ένα "
+"μυστικό κλειδί που αρχίζει με sk_."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:44
 msgid ""
 "Webhook is active and the signing secret is saved. The key you pasted was "
 "not stored, so you can delete it in Stripe now."
 msgstr ""
+"Το webhook είναι ενεργό και το μυστικό υπογραφής έχει αποθηκευτεί. Το "
+"κλειδί που επικολλήσατε δεν αποθηκεύτηκε, οπότε μπορείτε να το διαγράψετε "
+"στο Stripe τώρα."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:49
 msgid ""
 "Webhook events were updated. The key you pasted was not stored, so you can "
 "delete it in Stripe now."
 msgstr ""
+"Τα γεγονότα webhook ενημερώθηκαν. Το κλειδί που επικολλήσατε δεν "
+"αποθηκεύτηκε, οπότε μπορείτε να το διαγράψετε στο Stripe τώρα."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:56
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:47
@@ -4276,22 +4324,29 @@ msgid ""
 "secret. Open the endpoint in your Stripe Dashboard, copy the signing "
 "secret, and paste it below."
 msgstr ""
+"Αυτό το endpoint webhook υπήρχε ήδη, οπότε η Stripe δεν επέστρεψε ένα "
+"μυστικό υπογραφής. Ανοίξτε το endpoint στον πίνακα ελέγχου Stripe, "
+"αντιγράψτε το μυστικό υπογραφής και επικολλήστε το παρακάτω."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:69
 msgid ""
 "A Stripe signing secret starts with whsec_. Copy it again from the webhook "
 "endpoint in your Stripe Dashboard."
 msgstr ""
+"Ένα μυστικό υπογραφής Stripe αρχίζει με whsec_. Αντιγράψτε το ξανά από το "
+"endpoint webhook στον πίνακα ελέγχου Stripe."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:77
 msgid ""
 "Signing secret saved. Send a test event from Stripe to confirm that your "
 "site accepts it."
 msgstr ""
+"Το μυστικό υπογραφής αποθηκεύτηκε. Στείλτε ένα δοκιμαστικό γεγονός από τη "
+"Stripe για να επιβεβαιώσετε ότι ο ιστότοπός σας το αποδέχεται."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:83
 msgid "Paste a Stripe key or a signing secret before you save."
-msgstr ""
+msgstr "Επικολλήστε ένα κλειδί Stripe ή ένα μυστικό υπογραφής πριν το αποθηκεύσετε."
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:30
 msgid ""
@@ -4299,6 +4354,9 @@ msgid ""
 "restricted key with Webhook endpoints: Write, or create the endpoint in "
 "Stripe yourself."
 msgstr ""
+"Αυτός ο συνδεδεμένος λογαριασμός δεν μπορεί να ενημερώσει τα webhooks "
+"αυτόματα. Επικολλήστε ένα περιορισμένο κλειδί με Webhook endpoints: Γράψτε, "
+"ή δημιουργήστε το endpoint στο Stripe μόνοι σας."
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:41
 msgid "Stripe webhook is configured for the selected mode."
@@ -4401,7 +4459,7 @@ msgstr "Εμφάνιση της ενέργειας αντιγραφής σειρ
 msgid "Email reports and confirmations to"
 msgstr "Αναφέρετε τα email και τις επιβεβαιώσεις σε"
 
-#: admin/settings/traits/options/core-settings.php:161
+#: admin/settings/traits/options/core-settings.php:161, fuzzy
 msgid "admin@example.com, another@example.com"
 msgstr "admin@example.com, another@example.com"
 
@@ -4427,7 +4485,7 @@ msgstr "Εβδομαδιαία"
 
 #: admin/settings/traits/options/core-settings.php:176
 msgid "Semi monthly"
-msgstr ""
+msgstr "Ημιμηνιαίως"
 
 #: admin/settings/traits/options/core-settings.php:178
 msgid "How often summary reports should be emailed."
@@ -4578,10 +4636,13 @@ msgid ""
 "Use date tokens {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S}, "
 "and custom alphanumeric characters. Example: INV-{YYYY}{MM}{DD}."
 msgstr ""
+"Χρησιμοποιήστε τους κωδικούς ημερομηνίας {D}, {DD}, {M}, {MM}, {YY}, "
+"{YYYY}, {H}, {HH}, {N}, {S} και προσαρμοσμένους αλφαριθμητικούς χαρακτήρες. "
+"Παράδειγμα: INV-{YYYY}{MM}{DD}."
 
 #: admin/settings/traits/options/invoice-fields.php:19
 msgid "Learn more"
-msgstr ""
+msgstr "Μάθετε περισσότερα"
 
 #: admin/settings/traits/options/invoice-fields.php:26
 msgid "Custom Invoice Numbering"
@@ -4619,7 +4680,7 @@ msgstr "Μορφή Τιμολογίου"
 msgid "Current Invoice Number"
 msgstr "Τρέχων Αριθμός Τιμολογίου"
 
-#: admin/settings/traits/options/payment-fields.php:33
+#: admin/settings/traits/options/payment-fields.php:33, fuzzy
 msgid "API"
 msgstr "API"
 
@@ -4628,10 +4689,13 @@ msgid ""
 "GOING LIVE? Click the \"Update\" button on any subscription products "
 "created on the Test API after switching this setting to Live!"
 msgstr ""
+"ΠΡΟΕΤΟΙΜΑΣΤΕ ΝΑ ΖΗΣΕΤΕ; Κάντε κλικ στο κουμπί \"Ενημέρωση\" σε οποιαδήποτε "
+"προϊόντα συνδρομής δημιουργήθηκαν στο Test API αφού αλλάξετε αυτή τη "
+"ρύθμιση σε Live!"
 
 #: admin/settings/traits/options/payment-fields.php:39
 msgid "More Information"
-msgstr ""
+msgstr "Περισσότερες Πληροφορίες"
 
 #: admin/settings/traits/options/payment-fields.php:52
 msgid "Connection Status"
@@ -4639,7 +4703,7 @@ msgstr "Κατάσταση Σύνδεσης"
 
 #: admin/settings/traits/options/payment-fields.php:61
 msgid "Checkout experience"
-msgstr ""
+msgstr "Εμπειρία Checkout"
 
 #: admin/settings/traits/options/payment-fields.php:70
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:97
@@ -4653,12 +4717,12 @@ msgstr "Πύλη Πελάτη"
 
 #: admin/settings/traits/options/payment-fields.php:91
 msgid "Hosted Checkout"
-msgstr ""
+msgstr "Φιλοξενούμενος Checkout"
 
 #: admin/settings/traits/options/payment-fields.php:101
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:20
 msgid "Payment Element"
-msgstr ""
+msgstr "Στοιχείο Πληρωμής"
 
 #: admin/settings/traits/options/payment-fields.php:111
 msgid "Statement Descriptor"
@@ -4686,19 +4750,21 @@ msgstr "Όχι"
 
 #: admin/settings/traits/options/payment-fields.php:158
 msgid "Verify SSL certificates"
-msgstr ""
+msgstr "Επαλήθευση πιστοποιητικών SSL"
 
 #: admin/settings/traits/options/payment-fields.php:162
 msgid ""
 "Verifies PayPal TLS certificates and hostname matches for server-side "
 "PayPal API requests."
 msgstr ""
+"Επαληθεύει τα πιστοποιητικά TLS PayPal και την αντιστοιχία ονόματος τομέα "
+"για αιτήματα PayPal API από την πλευρά του διακομιστή."
 
 #: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
 msgstr "Email PayPal"
 
-#: admin/settings/traits/options/payment-fields.php:182
+#: admin/settings/traits/options/payment-fields.php:182, fuzzy
 msgid "Client ID"
 msgstr "Client ID"
 
@@ -4706,7 +4772,7 @@ msgstr "Client ID"
 msgid "Secret"
 msgstr "Μυστικό"
 
-#: admin/settings/traits/options/payment-fields.php:202
+#: admin/settings/traits/options/payment-fields.php:202, fuzzy
 msgid "PDT Token"
 msgstr "PDT Token"
 
@@ -4795,19 +4861,19 @@ msgstr "Η προεπισκόπηση email δεν μπόρεσε να παρα�
 
 #: admin/settings/traits/templates/settings-email-preview-product-notification-email.php:35
 msgid "(no subject)"
-msgstr ""
+msgstr "(χωρίς θέμα)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:11
 msgid "(recipient resolved at send time)"
-msgstr ""
+msgstr "(ο παραλήπτης επιλύθηκε κατά την αποστολή)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36
 msgid "From"
-msgstr ""
+msgstr "Από"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37
 msgid "To"
-msgstr ""
+msgstr "Προς"
 
 #: admin/settings/traits/templates/settings-email-reset-email-template.php:17
 msgid "You do not have permission to reset this email template."
@@ -4823,31 +4889,33 @@ msgstr "Χρησιμοποιώντας προεπιλογή"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:19
 msgid "You do not have permission to send this test email."
-msgstr ""
+msgstr "Δεν έχετε άδεια να στείλετε αυτό το δοκιμαστικό email."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:24
 msgid "Test email could not be sent."
-msgstr ""
+msgstr "Το δοκιμαστικό email δεν μπόρεσε να σταλεί."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:35
 msgid "Please enter a valid email address to send the test to."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση email για να στείλετε το δοκιμαστικό."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:45
 #. translators: %s: email subject.
 #, php-format
 msgid "[Test] %s"
-msgstr ""
+msgstr "[Δοκιμή] %s"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:54
 #. translators: %s: recipient email address.
 #, php-format
 msgid "Test email sent to %s."
-msgstr ""
+msgstr "Το δοκιμαστικό email στάλθηκε στο %s."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:59
 msgid "Test email failed to send. Check your email/SMTP settings and try again."
 msgstr ""
+"Η αποστολή του δοκιμαστικού email απέτυχε. Ελέγξτε τις ρυθμίσεις email/SMTP "
+"σας και δοκιμάστε ξανά."
 
 #: admin/settings/traits/templates/settings-sections-emails.php:9
 msgid "Reports & Notifications"
@@ -4860,11 +4928,11 @@ msgstr "Επιβεβαίωση Παραλαβής Παραγγελίας"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:13
 msgid "Enable Facebook Ad Events"
-msgstr ""
+msgstr "Ενεργοποίηση Εκδηλώσεων Διαφημίσεων Facebook"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:14
 msgid "Google Analytics Purchase Event Tracking"
-msgstr ""
+msgstr "Παρακολούθηση Εκδηλώσεων Αγορών Google Analytics"
 
 #: admin/settings/traits/templates/settings-sections-register.php:14
 msgid "Currency & Pricing"
@@ -4884,63 +4952,74 @@ msgstr "Άλλες Ρυθμίσεις"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:15
 msgid "Classic card form"
-msgstr ""
+msgstr "Κλασική φόρμα κάρτας"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:16
 msgid "Legacy"
-msgstr ""
+msgstr "Κληρονομημένο"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:17
 msgid ""
 "Single card field on your checkout page. Supports order bumps and one-click "
 "upsells."
 msgstr ""
+"Μοναδικό πεδίο κάρτας στη σελίδα ολοκλήρωσης παραγγελίας σας. Υποστηρίζει "
+"παραγγελίες bump και upsells με ένα κλικ."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:21
 msgid "Recommended"
-msgstr ""
+msgstr "Συνιστώμενο"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:22
 msgid ""
 "Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports "
 "order bumps and one-click upsells."
 msgstr ""
+"Κάρτες, Apple/Google Pay και σύνδεσμος ενσωματωμένος στη σελίδα ολοκλήρωσης "
+"παραγγελίας σας. Υποστηρίζει παραγγελίες bump και upsells με ένα κλικ."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:25
 msgid "Stripe-hosted page"
-msgstr ""
+msgstr "Σελίδα φιλοξενούμενη από το Stripe"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:26
 msgid ""
 "Redirects customers to a Stripe-hosted payment page. Most payment methods "
 "available (Klarna, Cash App Pay, and more via your Stripe dashboard)."
 msgstr ""
+"Ανακατευθύνει τους πελάτες σε μια σελίδα πληρωμής φιλοξενούμενη από το "
+"Stripe. Διαθέσιμες οι περισσότερες μέθοδοι πληρωμής (Klarna, Cash App Pay "
+"και περισσότερα μέσω του πίνακα ελέγχου σας στο Stripe)."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:27
 msgid ""
 "Order bumps and one-click upsells/downsells are not available in this mode. "
 "Coupons continue to work."
 msgstr ""
+"Οι παραγγελίες bump και τα upsells/downsells με ένα κλικ δεν είναι "
+"διαθέσιμα σε αυτή τη λειτουργία. Οι κουπόνες συνεχίζουν να λειτουργούν."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:31
 msgid "Built into Payment Element"
-msgstr ""
+msgstr "Ενσωματωμένο στο στοιχείο πληρωμής"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:32
 msgid "Built into the Stripe-hosted page"
-msgstr ""
+msgstr "Ενσωματωμένο στη σελίδα φιλοξενούμενη από το Stripe"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:23
 msgid "Stripe Connect server URL is not configured."
-msgstr ""
+msgstr "Η διεύθυνση URL διακομιστή Stripe Connect δεν έχει ρυθμιστεί."
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:47
 msgid "Stripe Connect live mode requires HTTPS for the site and return URL."
 msgstr ""
+"Η ζωντανή λειτουργία του Stripe Connect απαιτεί HTTPS για τον ιστότοπο και "
+"τη διεύθυνση επιστροφής URL."
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:55
 msgid "Unable to generate an encryption key for Stripe Connect."
-msgstr ""
+msgstr "Αδύνατη η δημιουργία κλειδιού κρυπτογράφησης για το Stripe Connect."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:36
 msgid "Connect server did not return a valid Stripe account ID."
@@ -4952,6 +5031,9 @@ msgid ""
 "failed, abandoned, or restarted connection attempt. Reload this settings "
 "page and start the connection again."
 msgstr ""
+"Αυτή η συνεδρία Stripe Connect λείπει ή έχει λήξει. Αυτό μπορεί να συμβεί "
+"μετά από αποτυχημένη, εγκαταλειμμένη ή επανεκκινημένη απόπειρα σύνδεσης. "
+"Επαναφορτώστε αυτή τη σελίδα ρυθμίσεων και ξεκινήστε ξανά τη σύνδεση."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:104
 msgid ""
@@ -4959,12 +5041,18 @@ msgid ""
 "trusted certificate, or explicitly enable insecure local credential pickup "
 "for non-live local development."
 msgstr ""
+"Η επαλήθευση SSL απέτυχε κατά την ανάκτηση κλειδιών από τον διακομιστή "
+"σύνδεσης. Χρησιμοποιήστε ένα αξιόπιστο πιστοποιητικό ή ενεργοποιήστε ρητά "
+"την ανασφαλή τοπική παραλαβή διαπιστευτηρίων για μη ζωντανή τοπική ανάπτυξη."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:127
 msgid ""
 "Unable to retrieve Stripe API keys from the Connect server for this "
 "session. Reload this settings page and start the connection again."
 msgstr ""
+"Αδύνατη η ανάκτηση κλειδιών API του Stripe από τον διακομιστή Connect για "
+"αυτή τη συνεδρία. Επαναφορτώστε αυτή τη σελίδα ρυθμίσεων και ξεκινήστε ξανά "
+"τη σύνδεση."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:139
 msgid "Stripe account connected successfully."
@@ -4985,33 +5073,41 @@ msgstr "Ο διακομιστής σύνδεσης δεν έχει ρυθμισ�
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:47
 msgid "Set PPCART_STRIPE_CONNECT_SERVER_URL to your PublishPress intermediary URL."
 msgstr ""
+"Ρυθμίστε το PPCART_STRIPE_CONNECT_SERVER_URL στη μεσολαβητική διεύθυνση URL "
+"PublishPress σας."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:54
 msgid "1. Connect your Stripe account"
-msgstr ""
+msgstr "1. Συνδέστε τον λογαριασμό σας στο Stripe"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:55
 msgid "We sync your API keys automatically, then walk you through the webhook."
 msgstr ""
+"Συγχρονίζουμε αυτόματα τα κλειδιά API σας και στη συνέχεια σας καθοδηγούμε "
+"μέσω του webhook."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:58
 msgid ""
 "Your saved keys are not direct Stripe keys, so reconnect before you "
 "continue."
 msgstr ""
+"Τα αποθηκευμένα κλειδιά σας δεν είναι άμεσα κλειδιά του Stripe, οπότε "
+"επανασυνδεθείτε πριν συνεχίσετε."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:64
 msgid "Stripe checkout is disabled. You can still connect now."
 msgstr ""
+"Η ολοκλήρωση πληρωμής του Stripe είναι απενεργοποιημένη. Μπορείτε να "
+"συνδεθείτε τώρα."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
-msgstr ""
+msgstr "2. Εγκαταστήστε το webhook"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:74
 msgid "Available after you connect."
-msgstr ""
+msgstr "Διαθέσιμο μετά τη σύνδεση."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:89
 msgid "Disconnect"
@@ -5023,7 +5119,7 @@ msgstr "Άνοιγμα στο Dashboard του Stripe"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:97
 msgid "Stripe is ready"
-msgstr ""
+msgstr "Το Stripe είναι έτοιμο"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
@@ -5034,40 +5130,40 @@ msgstr "Τα keys συγχρονίστηκαν"
 #. translators: %d: number of Stripe events.
 #, php-format
 msgid "Webhook active with %d events"
-msgstr ""
+msgstr "Το webhook είναι ενεργό με %d εκδηλώσεις"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
 msgid "1. Stripe account connected"
-msgstr ""
+msgstr "1. Ο λογαριασμός Stripe συνδέθηκε"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
-msgstr ""
+msgstr "Οι παραγγελίες δεν θα ολοκληρωθούν μέχρι να γίνει αυτό."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
-msgstr ""
+msgstr "Χρειάζεται προσοχή"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
-msgstr ""
+msgstr "Δεν έχει εγκατασταθεί"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
-msgstr ""
+msgstr "Διορθώστε τα γεγονότα"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-billing-options.php:45
 msgid "Always enabled for PayPal API requests."
-msgstr ""
+msgstr "Πάντα ενεργοποιημένο για αιτήματα PayPal API."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:32
 msgid "Leave blank to keep current value"
-msgstr ""
+msgstr "Αφήστε κενό για να διατηρήσετε την τρέχουσα τιμή"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:35
 #: includes/helpers/pro-locks/settings-locks.php:289
 msgid "Configured (value hidden)"
-msgstr ""
+msgstr "Διαμορφωμένο (η τιμή είναι κρυφή)"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:66
 msgid "Mailchimp API Key"
@@ -5098,12 +5194,16 @@ msgid ""
 "MailPoet is active. Assign lists on each product’s Integrations settings — "
 "no API key is required."
 msgstr ""
+"Το MailPoet είναι ενεργό. Αναθέστε λίστες στις ρυθμίσεις ενσωμάτωσης κάθε "
+"προϊόντος — δεν απαιτείται κλειδί API."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
 msgid ""
 "Install and activate the MailPoet plugin to sync customers to lists. No API "
 "key is required."
 msgstr ""
+"Εγκαταστήστε και ενεργοποιήστε το πρόσθετο MailPoet για να συγχρονίσετε "
+"τους πελάτες με τις λίστες. Δεν απαιτείται κλειδί API."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:150
 msgid "Add Payment Info"
@@ -5111,7 +5211,7 @@ msgstr "Προσθήκη Πληροφοριών Πληρωμής"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:154
 msgid "Sends an AddPaymentInfo event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "Στέλνει ένα γεγονός AddPaymentInfo σε μια υπάρχουσα εγκατάσταση Meta Pixel."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
@@ -5120,6 +5220,8 @@ msgid ""
 "Requires Meta Pixel or another plugin/theme to load fbq on the checkout "
 "page."
 msgstr ""
+"Απαιτείται Meta Pixel ή άλλο πρόσθετο/θέμα για να φορτώσει το fbq στη "
+"σελίδα πληρωμής."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:161
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:185
@@ -5128,7 +5230,7 @@ msgstr "Αγορά Ολοκληρώθηκε"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:165
 msgid "Sends a Purchase event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "Στέλνει ένα γεγονός αγοράς σε μια υπάρχουσα εγκατάσταση Meta Pixel."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:172
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:196
@@ -5138,12 +5240,16 @@ msgstr "Ηγετικός Πελάτης Καταγεγραμμένος"
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:176
 msgid "Sends a Lead event when a two-step checkout captures customer details."
 msgstr ""
+"Στέλνει ένα γεγονός Lead όταν μια διαδικασία πληρωμής δύο βημάτων "
+"καταγράφει λεπτομέρειες πελάτη."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:189
 msgid ""
 "Sends a purchase event to an existing Google Analytics or Data Layer "
 "installation."
 msgstr ""
+"Στέλνει ένα γεγονός αγοράς σε μια υπάρχουσα εγκατάσταση Google Analytics ή "
+"Data Layer."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
@@ -5151,12 +5257,16 @@ msgid ""
 "Requires Google Analytics, Google Tag Manager, or another plugin/theme to "
 "load ga, gtag, or dataLayer on the checkout page."
 msgstr ""
+"Απαιτείται Google Analytics, Google Tag Manager ή άλλο πρόσθετο/θέμα για να "
+"φορτώσει ga, gtag ή dataLayer στη σελίδα πληρωμής."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:200
 msgid ""
 "Sends a generate_lead event when a two-step checkout captures customer "
 "details."
 msgstr ""
+"Στέλνει ένα γεγονός generate_lead όταν μια διαδικασία πληρωμής δύο βημάτων "
+"καταγράφει λεπτομέρειες πελάτη."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:207
 #: includes/helpers/pro-locks/product-locks.php:80
@@ -5168,16 +5278,18 @@ msgid ""
 "Choose the event format that matches the analytics script already installed "
 "on this site."
 msgstr ""
+"Επιλέξτε τη μορφή γεγονότος που αντιστοιχεί στο σενάριο ανάλυσης που είναι "
+"ήδη εγκατεστημένο σε αυτή την ιστοσελίδα."
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214, fuzzy
 msgid "analytics.js"
 msgstr "analytics.js"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215, fuzzy
 msgid "Google Analytics 4"
 msgstr "Google Analytics 4"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:216
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:216, fuzzy
 msgid "Universal Analytics"
 msgstr "Universal Analytics"
 
@@ -5262,39 +5374,43 @@ msgstr "Λυπάμαι, δεν έχετε άδεια πρόσβασης σε α�
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
-msgstr ""
+msgstr "Επιλογές Φόρου"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:82
 msgid "Invoice Options"
-msgstr ""
+msgstr "Επιλογές Τιμολογίου"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:77
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "The Stripe Connect server could not preregister this session. Error: %s"
 msgstr ""
+"Ο διακομιστής Stripe Connect δεν μπόρεσε να προεγγράψει αυτή τη συνεδρία. "
+"Σφάλμα: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:88
 msgid "The Stripe Connect server rejected this preregistration request."
-msgstr ""
+msgstr "Ο διακομιστής Stripe Connect απέρριψε αυτή την αίτηση προεγγραφής."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:109
 msgid "Unable to prepare the Stripe Connect site credential."
-msgstr ""
+msgstr "Αδύνατη η προετοιμασία των διαπιστευτηρίων ιστότοπου Stripe Connect."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:115
 msgid "Unable to encrypt the Stripe Connect site credential."
-msgstr ""
+msgstr "Αδύνατη η κρυπτογράφηση των διαπιστευτηρίων ιστότοπου Stripe Connect."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:144
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "Unable to fetch the Stripe Connect preregistration public key. Error: %s"
-msgstr ""
+msgstr "Αδύνατη η λήψη του δημόσιου κλειδιού προεγγραφής Stripe Connect. Σφάλμα: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:154
 msgid "The Stripe Connect preregistration public key is unavailable or invalid."
 msgstr ""
+"Το δημόσιο κλειδί προεγγραφής Stripe Connect δεν είναι διαθέσιμο ή είναι μη "
+"έγκυρο."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:225
 msgid "Stripe account disconnected for the selected mode."
@@ -5399,13 +5515,16 @@ msgstr "Σφάλμα: Παρακαλώ δοκιμάστε ξανά."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Migration required"
-msgstr ""
+msgstr "Απαιτείται μετανάστευση"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
 msgstr ""
+"Έχετε 1 αποθηκευμένο διαcredential σε καθαρό κείμενο. Μετά την ενεργοποίηση "
+"της κρυπτογράφησης, εκτελέστε τη μετανάστευση από Ρυθμίσεις → Συντήρηση για "
+"να το κρυπτογραφήσετε."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 #. translators: %d: number of stored credentials.
@@ -5414,15 +5533,18 @@ msgid ""
 "You have %d stored credentials in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt them."
 msgstr ""
+"Έχετε %d αποθηκευμένα διαπιστευτήρια σε καθαρό κείμενο. Μετά την "
+"ενεργοποίηση της κρυπτογράφησης, εκτελέστε τη μετανάστευση από Ρυθμίσεις → "
+"Συντήρηση για να τα κρυπτογραφήσετε."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Encryption updated"
-msgstr ""
+msgstr "Η κρυπτογράφηση ενημερώθηκε"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
-msgstr ""
+msgstr "Συνέχεια"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #: admin/traits/trait-ppcart-admin-integrations.php:149
@@ -5432,19 +5554,19 @@ msgstr "Εντάξει"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
-msgstr ""
+msgstr "Αδύνατη η ενημέρωση της ρύθμισης κρυπτογράφησης ασφάλειας."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:95
 msgid "No matching customers"
-msgstr ""
+msgstr "Δεν υπάρχουν ταιριαστοί πελάτες"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:96
 msgid "No matching products"
-msgstr ""
+msgstr "Δεν υπάρχουν ταιριαστά προϊόντα"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "Searching…"
-msgstr ""
+msgstr "Αναζήτηση…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:114
 msgid "No matching settings"
@@ -5485,7 +5607,7 @@ msgstr "Κλείσιμο προεπισκόπησης"
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:153
 msgid "Encrypt stored credentials"
-msgstr ""
+msgstr "Κρυπτογράφηση αποθηκευμένων διαπιστευτηρίων"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 #. translators: %d: number of plaintext credentials.
@@ -5494,28 +5616,36 @@ msgid ""
 "Encrypt %d plaintext credential(s) in the database? Take a backup first and "
 "run this during a maintenance window."
 msgstr ""
+"Θα κρυπτογραφήσετε %d διαπιστευτήριο(α) σε καθαρό κείμενο στη βάση "
+"δεδομένων; Κάντε πρώτα ένα αντίγραφο ασφαλείας και εκτελέστε αυτό κατά τη "
+"διάρκεια ενός παραθύρου συντήρησης."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
 msgstr ""
+"Σάρωση αποθηκευμένων διαπιστευτηρίων και κρυπτογράφηση οποιασδήποτε τιμής "
+"σε καθαρό κείμενο; Κάντε πρώτα ένα αντίγραφο ασφαλείας και εκτελέστε αυτό "
+"κατά τη διάρκεια ενός παραθύρου συντήρησης."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Generating preview…"
-msgstr ""
+msgstr "Δημιουργία προεπισκόπησης…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Sending test email…"
-msgstr ""
+msgstr "Αποστολή δοκιμαστικού email…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:146
 msgid "Test email failed to send. Please refresh the page and try again."
 msgstr ""
+"Η αποστολή του δοκιμαστικού email απέτυχε. Παρακαλώ ανανεώστε τη σελίδα και "
+"δοκιμάστε ξανά."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:147
 msgid "Enter an email address to send the test to."
-msgstr ""
+msgstr "Εισάγετε μια διεύθυνση email για να στείλετε τη δοκιμή."
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:23
 #. translators: %s: tax rate ID.
@@ -5610,6 +5740,10 @@ msgid ""
 "data-testid=\"ppcart-admin-notice-integration-settings\">settings page</a> "
 "to check your integration settings.</p>"
 msgstr ""
+"Αδύνατη η σύνδεση με την ενσωμάτωση(ες) που αναφέρονται παρακάτω. Μεταβείτε "
+"στη %1$s <a href=\"%2$s\" rel=\"noreferrer noopener\" "
+"data-testid=\"ppcart-admin-notice-integration-settings\">σελίδα "
+"ρυθμίσεων</a> για να ελέγξετε τις ρυθμίσεις σας για την ενσωμάτωση.</p>"
 
 #: admin/traits/templates/notices-admin-notices.php:70
 msgid ""
@@ -5711,7 +5845,7 @@ msgstr "[καταργήθηκε]"
 #. translators: 1: field label, 2: order ID.
 #, php-format
 msgid "There was a problem removing your %1$s from order #%2$d."
-msgstr ""
+msgstr "Υπήρξε πρόβλημα κατά την αφαίρεση του %1$s από την παραγγελία #%2$d."
 
 #: admin/traits/trait-ppcart-admin-privacy.php:197
 msgid ""
@@ -5945,16 +6079,21 @@ msgid ""
 "PublishPress Cart and PublishPress Cart Compatibility cannot run while "
 "Studiocart is active. Deactivate Studiocart to start those plugins."
 msgstr ""
+"Η PublishPress Cart και η συμβατότητα PublishPress Cart δεν μπορούν να "
+"εκτελούνται ενώ το Studiocart είναι ενεργό. Απενεργοποιήστε το Studiocart "
+"για να ξεκινήσετε αυτά τα πρόσθετα."
 
 #: includes/class-ppcart-version-notices.php:85
 msgid ""
 "You're using PublishPress Cart. The Pro version has more features and "
 "support."
 msgstr ""
+"Χρησιμοποιείτε την PublishPress Cart. Η Pro έκδοση έχει περισσότερες "
+"δυνατότητες και υποστήριξη."
 
 #: includes/class-ppcart-version-notices.php:97
 msgid "Dismiss"
-msgstr ""
+msgstr "Απόρριψη"
 
 #: includes/data/states/states-01.php:8
 msgid "Bengo"
@@ -5964,9 +6103,9 @@ msgstr "Μπέγκο"
 msgid "Benguela"
 msgstr "Μπενγκουέλα"
 
-#: includes/data/states/states-01.php:10
+#: includes/data/states/states-01.php:10, fuzzy
 msgid "Bi�"
-msgstr ""
+msgstr "Bi�"
 
 #: includes/data/states/states-01.php:11
 msgid "Cabinda"
@@ -5980,9 +6119,9 @@ msgstr "Κουνένι"
 msgid "Huambo"
 msgstr "Χουάμπο"
 
-#: includes/data/states/states-01.php:14
+#: includes/data/states/states-01.php:14, fuzzy
 msgid "Hu�la"
-msgstr ""
+msgstr "Hu�la"
 
 #: includes/data/states/states-01.php:15
 msgid "Kuando Kubango"
@@ -6020,17 +6159,17 @@ msgstr "Μοξίκο"
 msgid "Namibe"
 msgstr "Ναμίμπε"
 
-#: includes/data/states/states-01.php:24
+#: includes/data/states/states-01.php:24, fuzzy
 msgid "U�ge"
-msgstr ""
+msgstr "U�ge"
 
 #: includes/data/states/states-01.php:25
 msgid "Zaire"
 msgstr "Ζαΐρ"
 
-#: includes/data/states/states-01.php:28
+#: includes/data/states/states-01.php:28, fuzzy
 msgid "Ciudad Aut�noma de Buenos Aires"
-msgstr ""
+msgstr "Ciudad Aut�noma de Buenos Aires"
 
 #: includes/data/states/states-01.php:29
 msgid "Buenos Aires"
@@ -6049,17 +6188,17 @@ msgid "Chubut"
 msgstr "Τσουμπούτ"
 
 #: includes/data/states/states-01.php:33
-#: includes/data/states/states-01.php:353
+#: includes/data/states/states-01.php:353, fuzzy
 msgid "C�rdoba"
-msgstr ""
+msgstr "C�rdoba"
 
 #: includes/data/states/states-01.php:34
 msgid "Corrientes"
 msgstr "Κοριέντες"
 
-#: includes/data/states/states-01.php:35
+#: includes/data/states/states-01.php:35, fuzzy
 msgid "Entre R�os"
-msgstr ""
+msgstr "Entre R�os"
 
 #: includes/data/states/states-01.php:36
 msgid "Formosa"
@@ -6087,13 +6226,13 @@ msgstr "Μεντόσα"
 msgid "Misiones"
 msgstr "Μισιόνες"
 
-#: includes/data/states/states-01.php:42
+#: includes/data/states/states-01.php:42, fuzzy
 msgid "Neuqu�n"
-msgstr ""
+msgstr "Neuqu�n"
 
 #: includes/data/states/states-01.php:43
 msgid "R�o Negro"
-msgstr ""
+msgstr "Río Negro"
 
 #: includes/data/states/states-01.php:44
 msgid "Salta"
@@ -6124,9 +6263,9 @@ msgstr "Σαντιάγο ντελ Εστέρο"
 msgid "Tierra del Fuego"
 msgstr "Γη του Πυρός"
 
-#: includes/data/states/states-01.php:51
+#: includes/data/states/states-01.php:51, fuzzy
 msgid "Tucum�n"
-msgstr ""
+msgstr "Tucum�n"
 
 #: includes/data/states/states-01.php:55
 msgid "Australian Capital Territory"
@@ -6553,9 +6692,9 @@ msgstr "Ορουρό"
 msgid "Pando"
 msgstr "Πάντο"
 
-#: includes/data/states/states-01.php:171
+#: includes/data/states/states-01.php:171, fuzzy
 msgid "Potos�"
-msgstr ""
+msgstr "Potos�"
 
 #: includes/data/states/states-01.php:173
 msgid "Tarija"
@@ -6569,9 +6708,9 @@ msgstr "Άκρε"
 msgid "Alagoas"
 msgstr "Αλαγκόας"
 
-#: includes/data/states/states-01.php:178
+#: includes/data/states/states-01.php:178, fuzzy
 msgid "Amap�"
-msgstr ""
+msgstr "Amap�"
 
 #: includes/data/states/states-01.php:179
 #: includes/data/states/states-03.php:222
@@ -6582,25 +6721,25 @@ msgstr "Αμαζονίας"
 msgid "Bahia"
 msgstr "Μπαΐα"
 
-#: includes/data/states/states-01.php:181
+#: includes/data/states/states-01.php:181, fuzzy
 msgid "Cear�"
-msgstr ""
+msgstr "Cear�"
 
 #: includes/data/states/states-01.php:182
 msgid "Distrito Federal"
 msgstr "Ομοσπονδιακή Περιφέρεια"
 
-#: includes/data/states/states-01.php:183
+#: includes/data/states/states-01.php:183, fuzzy
 msgid "Esp�rito Santo"
-msgstr ""
+msgstr "Esp�rito Santo"
 
-#: includes/data/states/states-01.php:184
+#: includes/data/states/states-01.php:184, fuzzy
 msgid "Goi�s"
-msgstr ""
+msgstr "Goi�s"
 
-#: includes/data/states/states-01.php:185
+#: includes/data/states/states-01.php:185, fuzzy
 msgid "Maranh�o"
-msgstr ""
+msgstr "Maranh�o"
 
 #: includes/data/states/states-01.php:186
 msgid "Mato Grosso"
@@ -6614,25 +6753,25 @@ msgstr "Μάτο Γκρόσο ντο Σουλ"
 msgid "Minas Gerais"
 msgstr "Μίνας Ζεράις"
 
-#: includes/data/states/states-01.php:189
+#: includes/data/states/states-01.php:189, fuzzy
 msgid "Par�"
-msgstr ""
+msgstr "Par�"
 
-#: includes/data/states/states-01.php:190
+#: includes/data/states/states-01.php:190, fuzzy
 msgid "Para�ba"
-msgstr ""
+msgstr "Para�ba"
 
-#: includes/data/states/states-01.php:191
+#: includes/data/states/states-01.php:191, fuzzy
 msgid "Paran�"
-msgstr ""
+msgstr "Paran�"
 
 #: includes/data/states/states-01.php:192
 msgid "Pernambuco"
 msgstr "Περναμπούκο"
 
-#: includes/data/states/states-01.php:193
+#: includes/data/states/states-01.php:193, fuzzy
 msgid "Piau�"
-msgstr ""
+msgstr "Piau�"
 
 #: includes/data/states/states-01.php:194
 msgid "Rio de Janeiro"
@@ -6646,9 +6785,9 @@ msgstr "Ρίο Γκράντε ντο Νόρτε"
 msgid "Rio Grande do Sul"
 msgstr "Ρίο Γκράντε ντο Σουλ"
 
-#: includes/data/states/states-01.php:197
+#: includes/data/states/states-01.php:197, fuzzy
 msgid "Rond�nia"
-msgstr ""
+msgstr "Rond�nia"
 
 #: includes/data/states/states-01.php:198
 msgid "Roraima"
@@ -6658,9 +6797,9 @@ msgstr "Ροράιμα"
 msgid "Santa Catarina"
 msgstr "Σάντα Καταρίνα"
 
-#: includes/data/states/states-01.php:200
+#: includes/data/states/states-01.php:200, fuzzy
 msgid "S�o Paulo"
-msgstr ""
+msgstr "S�o Paulo"
 
 #: includes/data/states/states-01.php:201
 msgid "Sergipe"
@@ -6758,9 +6897,9 @@ msgstr "Γενεύη"
 msgid "Glarus"
 msgstr "Γκλάρος"
 
-#: includes/data/states/states-01.php:229
+#: includes/data/states/states-01.php:229, fuzzy
 msgid "Graub�nden"
-msgstr ""
+msgstr "Graub�nden"
 
 #: includes/data/states/states-01.php:230
 msgid "Jura"
@@ -6770,9 +6909,9 @@ msgstr "Γιούρα"
 msgid "Luzern"
 msgstr "Λουκέρνη"
 
-#: includes/data/states/states-01.php:232
+#: includes/data/states/states-01.php:232, fuzzy
 msgid "Neuch�tel"
-msgstr ""
+msgstr "Neuch�tel"
 
 #: includes/data/states/states-01.php:233
 msgid "Nidwalden"
@@ -6822,137 +6961,137 @@ msgstr "Βω"
 msgid "Zug"
 msgstr "Ζυγ"
 
-#: includes/data/states/states-01.php:245
+#: includes/data/states/states-01.php:245, fuzzy
 msgid "Z�rich"
-msgstr ""
+msgstr "Z�rich"
 
-#: includes/data/states/states-01.php:248
+#: includes/data/states/states-01.php:248, fuzzy
 msgid "Yunnan / ??"
-msgstr ""
+msgstr "Yunnan / ??"
 
-#: includes/data/states/states-01.php:249
+#: includes/data/states/states-01.php:249, fuzzy
 msgid "Beijing / ??"
-msgstr ""
+msgstr "Beijing / ??"
 
-#: includes/data/states/states-01.php:250
+#: includes/data/states/states-01.php:250, fuzzy
 msgid "Tianjin / ??"
-msgstr ""
+msgstr "Tianjin / ??"
 
-#: includes/data/states/states-01.php:251
+#: includes/data/states/states-01.php:251, fuzzy
 msgid "Hebei / ??"
-msgstr ""
+msgstr "Hebei / ??"
 
-#: includes/data/states/states-01.php:252
+#: includes/data/states/states-01.php:252, fuzzy
 msgid "Shanxi / ??"
-msgstr ""
+msgstr "Shanxi / ??"
 
-#: includes/data/states/states-01.php:253
+#: includes/data/states/states-01.php:253, fuzzy
 msgid "Inner Mongolia / ???"
-msgstr ""
+msgstr "Inner Mongolia / ???"
 
-#: includes/data/states/states-01.php:254
+#: includes/data/states/states-01.php:254, fuzzy
 msgid "Liaoning / ??"
-msgstr ""
+msgstr "Liaoning / ??"
 
-#: includes/data/states/states-01.php:255
+#: includes/data/states/states-01.php:255, fuzzy
 msgid "Jilin / ??"
-msgstr ""
+msgstr "Jilin / ??"
 
-#: includes/data/states/states-01.php:256
+#: includes/data/states/states-01.php:256, fuzzy
 msgid "Heilongjiang / ???"
-msgstr ""
+msgstr "Heilongjiang / ???"
 
-#: includes/data/states/states-01.php:257
+#: includes/data/states/states-01.php:257, fuzzy
 msgid "Shanghai / ??"
-msgstr ""
+msgstr "Shanghai / ??"
 
-#: includes/data/states/states-01.php:258
+#: includes/data/states/states-01.php:258, fuzzy
 msgid "Jiangsu / ??"
-msgstr ""
+msgstr "Jiangsu / ??"
 
-#: includes/data/states/states-01.php:259
+#: includes/data/states/states-01.php:259, fuzzy
 msgid "Zhejiang / ??"
-msgstr ""
+msgstr "Zhejiang / ??"
 
-#: includes/data/states/states-01.php:260
+#: includes/data/states/states-01.php:260, fuzzy
 msgid "Anhui / ??"
-msgstr ""
+msgstr "Anhui / ??"
 
 #: includes/data/states/states-01.php:261
 msgid "Fujian / ??"
-msgstr ""
+msgstr "Φουτζιάν"
 
 #: includes/data/states/states-01.php:262
 msgid "Jiangxi / ??"
-msgstr ""
+msgstr "Τζιανγκσί"
 
 #: includes/data/states/states-01.php:263
 msgid "Shandong / ??"
-msgstr ""
+msgstr "Σαντόνγκ"
 
 #: includes/data/states/states-01.php:264
 msgid "Henan / ??"
-msgstr ""
+msgstr "Χενάν"
 
 #: includes/data/states/states-01.php:265
 msgid "Hubei / ??"
-msgstr ""
+msgstr "Χουμπέι"
 
 #: includes/data/states/states-01.php:266
 msgid "Hunan / ??"
-msgstr ""
+msgstr "Χουνάν"
 
 #: includes/data/states/states-01.php:267
 msgid "Guangdong / ??"
-msgstr ""
+msgstr "Γκουανγκντόνγκ"
 
 #: includes/data/states/states-01.php:268
 msgid "Guangxi Zhuang / ????"
-msgstr ""
+msgstr "Γκουανγκσί Ζουάνγκ"
 
 #: includes/data/states/states-01.php:269
 msgid "Hainan / ??"
-msgstr ""
+msgstr "Χαϊνάν"
 
 #: includes/data/states/states-01.php:270
 msgid "Chongqing / ??"
-msgstr ""
+msgstr "Τσονγκκίνγκ"
 
 #: includes/data/states/states-01.php:271
 msgid "Sichuan / ??"
-msgstr ""
+msgstr "Σιτσουάν"
 
 #: includes/data/states/states-01.php:272
 msgid "Guizhou / ??"
-msgstr ""
+msgstr "Γκουιζόου"
 
 #: includes/data/states/states-01.php:273
 msgid "Shaanxi / ??"
-msgstr ""
+msgstr "Σανξί"
 
 #: includes/data/states/states-01.php:274
 msgid "Gansu / ??"
-msgstr ""
+msgstr "Γκανσού"
 
 #: includes/data/states/states-01.php:275
 msgid "Qinghai / ??"
-msgstr ""
+msgstr "Τσινγκχάι"
 
 #: includes/data/states/states-01.php:276
 msgid "Ningxia Hui / ??"
-msgstr ""
+msgstr "Νινγκσιά Χουΐ"
 
 #: includes/data/states/states-01.php:277
 msgid "Macao / ??"
-msgstr ""
+msgstr "Μακάο"
 
 #: includes/data/states/states-01.php:278
 msgid "Tibet / ??"
-msgstr ""
+msgstr "Θιβέτ"
 
 #: includes/data/states/states-01.php:279
 msgid "Xinjiang / ??"
-msgstr ""
+msgstr "Σιντζιάνγκ"
 
 #: includes/data/states/states-01.php:285
 msgid "Adrar"
@@ -6976,7 +7115,7 @@ msgstr "Μπάτνα"
 
 #: includes/data/states/states-01.php:290
 msgid "B�ja�a"
-msgstr ""
+msgstr "Μπίντζα"
 
 #: includes/data/states/states-01.php:291
 msgid "Biskra"
@@ -6984,7 +7123,7 @@ msgstr "Μπισκρά"
 
 #: includes/data/states/states-01.php:292
 msgid "B�char"
-msgstr ""
+msgstr "Μπιντζάρ"
 
 #: includes/data/states/states-01.php:293
 msgid "Blida"
@@ -7000,7 +7139,7 @@ msgstr "Ταμανγκάσετ"
 
 #: includes/data/states/states-01.php:296
 msgid "T�bessa"
-msgstr ""
+msgstr "Τεμπέσα"
 
 #: includes/data/states/states-01.php:297
 msgid "Tlemcen"
@@ -7028,11 +7167,11 @@ msgstr "Τζιτζέλ"
 
 #: includes/data/states/states-01.php:303
 msgid "S�tif"
-msgstr ""
+msgstr "Σίτιφ"
 
 #: includes/data/states/states-01.php:304
 msgid "Sa�da"
-msgstr ""
+msgstr "Σαΐντα"
 
 #: includes/data/states/states-01.php:305
 msgid "Skikda"
@@ -7040,7 +7179,7 @@ msgstr "Σκίκντα"
 
 #: includes/data/states/states-01.php:306
 msgid "Sidi Bel Abb�s"
-msgstr ""
+msgstr "Σίδι Μπελ Αμπάς"
 
 #: includes/data/states/states-01.php:307
 msgid "Annaba"
@@ -7056,7 +7195,7 @@ msgstr "Κωνσταντίνη"
 
 #: includes/data/states/states-01.php:310
 msgid "M�d�a"
-msgstr ""
+msgstr "Μέντια"
 
 #: includes/data/states/states-01.php:311
 msgid "Mostaganem"
@@ -7064,7 +7203,7 @@ msgstr "Μοσταγκανέμ"
 
 #: includes/data/states/states-01.php:312
 msgid "M�Sila"
-msgstr ""
+msgstr "Μάσιλα"
 
 #: includes/data/states/states-01.php:313
 msgid "Mascara"
@@ -7088,11 +7227,11 @@ msgstr "Ιλλίζι"
 
 #: includes/data/states/states-01.php:318
 msgid "Bordj Bou Arr�ridj"
-msgstr ""
+msgstr "Μπορτζ Μπου Αρρίτζ"
 
 #: includes/data/states/states-01.php:319
 msgid "Boumerd�s"
-msgstr ""
+msgstr "Μπουμερντές"
 
 #: includes/data/states/states-01.php:320
 msgid "El Tarf"
@@ -7128,7 +7267,7 @@ msgstr "Μίλα"
 
 #: includes/data/states/states-01.php:328
 msgid "A�n Defla"
-msgstr ""
+msgstr "Αΐν Ντεφλά"
 
 #: includes/data/states/states-01.php:329
 msgid "Naama"
@@ -7136,11 +7275,11 @@ msgstr "Νάμα"
 
 #: includes/data/states/states-01.php:330
 msgid "A�n T�mouchent"
-msgstr ""
+msgstr "Αΐν Τεμούχεντ"
 
 #: includes/data/states/states-01.php:331
 msgid "Gharda�a"
-msgstr ""
+msgstr "Γκαρντάγια"
 
 #: includes/data/states/states-01.php:332
 msgid "Relizane"
@@ -7148,11 +7287,11 @@ msgstr "Ρελιζάν"
 
 #: includes/data/states/states-01.php:336
 msgid "A Coru�a"
-msgstr ""
+msgstr "Α Κορούνια"
 
 #: includes/data/states/states-01.php:337
 msgid "Araba/�lava"
-msgstr ""
+msgstr "Αραμπα/Ελάβα"
 
 #: includes/data/states/states-01.php:338
 msgid "Albacete"
@@ -7164,7 +7303,7 @@ msgstr "Αλικάντε"
 
 #: includes/data/states/states-01.php:340
 msgid "Almer�a"
-msgstr ""
+msgstr "Αλμερία"
 
 #: includes/data/states/states-01.php:341
 msgid "Asturias"
@@ -7172,7 +7311,7 @@ msgstr "Αστούριες"
 
 #: includes/data/states/states-01.php:342
 msgid "�vila"
-msgstr ""
+msgstr "Αβίλα"
 
 #: includes/data/states/states-01.php:343
 msgid "Badajoz"
@@ -7192,11 +7331,11 @@ msgstr "Μπούργκος"
 
 #: includes/data/states/states-01.php:347
 msgid "C�ceres"
-msgstr ""
+msgstr "Κάθερες"
 
 #: includes/data/states/states-01.php:348
 msgid "C�diz"
-msgstr ""
+msgstr "Κάδιξ"
 
 #: includes/data/states/states-01.php:349
 msgid "Cantabria"
@@ -7204,7 +7343,7 @@ msgstr "Κανταβρία"
 
 #: includes/data/states/states-01.php:350
 msgid "Castell�n"
-msgstr ""
+msgstr "Καταλόνια"
 
 #: includes/data/states/states-01.php:351
 msgid "Ceuta"
@@ -7244,7 +7383,7 @@ msgstr "Ουέσκα"
 
 #: includes/data/states/states-01.php:361
 msgid "Ja�n"
-msgstr ""
+msgstr "Χαέν"
 
 #: includes/data/states/states-01.php:363
 msgid "Las Palmas"
@@ -7252,7 +7391,7 @@ msgstr "Λας Πάλμας"
 
 #: includes/data/states/states-01.php:364
 msgid "Le�n"
-msgstr ""
+msgstr "Λεόν"
 
 #: includes/data/states/states-01.php:365
 msgid "Lleida"
@@ -7268,7 +7407,7 @@ msgstr "Μαδρίτη"
 
 #: includes/data/states/states-01.php:368
 msgid "M�laga"
-msgstr ""
+msgstr "Μάλαγα"
 
 #: includes/data/states/states-01.php:369
 msgid "Melilla"
@@ -7485,11 +7624,11 @@ msgstr "Νέες Εδάφες"
 
 #: includes/data/states/states-02.php:50
 msgid "B�cs-Kiskun"
-msgstr ""
+msgstr "Μπάτσ-Κίσκουν"
 
 #: includes/data/states/states-02.php:51
 msgid "B�k�s"
-msgstr ""
+msgstr "Μπέκας"
 
 #: includes/data/states/states-02.php:52
 msgid "Baranya"
@@ -7497,7 +7636,7 @@ msgstr "Μπαρανιά"
 
 #: includes/data/states/states-02.php:53
 msgid "Borsod-Aba�j-Zempl�n"
-msgstr ""
+msgstr "Μπορσοδ-Αμπαϊ-Ζεμπλίν"
 
 #: includes/data/states/states-02.php:54
 msgid "Budapest"
@@ -7505,19 +7644,19 @@ msgstr "Βουδαπέστη"
 
 #: includes/data/states/states-02.php:55
 msgid "Csongr�d"
-msgstr ""
+msgstr "Τσονγκράντ"
 
 #: includes/data/states/states-02.php:56
 msgid "Fej�r"
-msgstr ""
+msgstr "Φεγιέρ"
 
 #: includes/data/states/states-02.php:57
 msgid "Gyor-Moson-Sopron"
-msgstr ""
+msgstr "Γκιόρ-Μόσον-Σόπρον"
 
 #: includes/data/states/states-02.php:58
 msgid "Hajd�-Bihar"
-msgstr ""
+msgstr "Χάιντ-Μπίχαρ"
 
 #: includes/data/states/states-02.php:59
 msgid "Heves"
@@ -7525,15 +7664,15 @@ msgstr "Χέβεσ"
 
 #: includes/data/states/states-02.php:60
 msgid "J�sz-Nagykun-Szolnok"
-msgstr ""
+msgstr "Γιάσι-Νάγκικουν-Σολνόκ"
 
 #: includes/data/states/states-02.php:61
 msgid "Kom�rom-Esztergom"
-msgstr ""
+msgstr "Κομόρομ-Εστεργκόμ"
 
 #: includes/data/states/states-02.php:62
 msgid "N�gr�d"
-msgstr ""
+msgstr "Νάγκραντ"
 
 #: includes/data/states/states-02.php:63
 msgid "Pest"
@@ -7545,7 +7684,7 @@ msgstr "Σομόγκι"
 
 #: includes/data/states/states-02.php:65
 msgid "Szabolcs-Szatm�r-Bereg"
-msgstr ""
+msgstr "Σαμπολτς-Σατμάρ-Μπέρεγκ"
 
 #: includes/data/states/states-02.php:66
 msgid "Tolna"
@@ -7557,7 +7696,7 @@ msgstr "Βάς"
 
 #: includes/data/states/states-02.php:68
 msgid "Veszpr�m"
-msgstr ""
+msgstr "Βεσπρέμ"
 
 #: includes/data/states/states-02.php:69
 msgid "Zala"
@@ -7795,11 +7934,11 @@ msgstr "Γουότερφορντ"
 msgid "Westmeath"
 msgstr "Γουέστμιθ"
 
-#: includes/data/states/states-02.php:132
+#: includes/data/states/states-02.php:132, fuzzy
 msgid "Wexford"
 msgstr "Wexford"
 
-#: includes/data/states/states-02.php:133
+#: includes/data/states/states-02.php:133, fuzzy
 msgid "Wicklow"
 msgstr "Wicklow"
 
@@ -7950,127 +8089,127 @@ msgstr "Ποντισερί (Πουντουτσέρι)"
 
 #: includes/data/states/states-02.php:174
 msgid "Khuzestan  (???????)"
-msgstr ""
+msgstr "Χουζεστάν  (???????)"
 
 #: includes/data/states/states-02.php:175
 msgid "Tehran  (?????)"
-msgstr ""
+msgstr "Τεχεράνη  (?????)"
 
 #: includes/data/states/states-02.php:176
 msgid "Ilaam (?????)"
-msgstr ""
+msgstr "Ιλάμ (?????)"
 
 #: includes/data/states/states-02.php:177
 msgid "Bushehr (?????)"
-msgstr ""
+msgstr "Μπουσέρ (?????)"
 
 #: includes/data/states/states-02.php:178
 msgid "Ardabil (??????)"
-msgstr ""
+msgstr "Αρνταμπίλ (??????)"
 
 #: includes/data/states/states-02.php:179
 msgid "Isfahan (??????)"
-msgstr ""
+msgstr "Ισφαχάν (??????)"
 
 #: includes/data/states/states-02.php:180
 msgid "Yazd (???)"
-msgstr ""
+msgstr "Γιάζντ (???)"
 
 #: includes/data/states/states-02.php:181
 msgid "Kermanshah (????????)"
-msgstr ""
+msgstr "Κερμανσάχ (????????)"
 
 #: includes/data/states/states-02.php:182
 msgid "Kerman (?????)"
-msgstr ""
+msgstr "Κερμάν (?????)"
 
 #: includes/data/states/states-02.php:183
 msgid "Hamadan (?????)"
-msgstr ""
+msgstr "Χαμαντάν (?????)"
 
 #: includes/data/states/states-02.php:184
 msgid "Ghazvin (?????)"
-msgstr ""
+msgstr "Γκαζβίν (?????)"
 
 #: includes/data/states/states-02.php:185
 msgid "Zanjan (?????)"
-msgstr ""
+msgstr "Ζαντζάν (?????)"
 
 #: includes/data/states/states-02.php:186
 msgid "Luristan (??????)"
-msgstr ""
+msgstr "Λουριστάν (??????)"
 
 #: includes/data/states/states-02.php:187
 msgid "Alborz (?????)"
-msgstr ""
+msgstr "Αλμπορζ (?????)"
 
 #: includes/data/states/states-02.php:188
 msgid "East Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "Ανατολικός Αζερμπαϊτζάν (????????? ????)"
 
 #: includes/data/states/states-02.php:189
 msgid "West Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "Δυτικός Αζερμπαϊτζάν (????????? ????)"
 
 #: includes/data/states/states-02.php:190
 msgid "Chaharmahal and Bakhtiari (???????? ? ???????)"
-msgstr ""
+msgstr "Χαχαρμαχάλ και Μπαχτιάρ (???????? ? ???????)"
 
 #: includes/data/states/states-02.php:191
 msgid "South Khorasan (?????? ?????)"
-msgstr ""
+msgstr "Νότιος Χορασάν (?????? ?????)"
 
 #: includes/data/states/states-02.php:192
 msgid "Razavi Khorasan (?????? ????)"
-msgstr ""
+msgstr "Ραζαβί Χορασάν (?????? ????)"
 
 #: includes/data/states/states-02.php:193
 msgid "North Khorasan (?????? ?????)"
-msgstr ""
+msgstr "Βόρειος Χορασάν (?????? ?????)"
 
 #: includes/data/states/states-02.php:194
 msgid "Semnan (?????)"
-msgstr ""
+msgstr "Σεμνάν (?????)"
 
 #: includes/data/states/states-02.php:195
 msgid "Fars (????)"
-msgstr ""
+msgstr "Φαρς (????)"
 
 #: includes/data/states/states-02.php:196
 msgid "Qom (??)"
-msgstr ""
+msgstr "Κομ (??)"
 
 #: includes/data/states/states-02.php:197
 msgid "Kurdistan / ???????)"
-msgstr ""
+msgstr "Κουρδιστάν / ???????)"
 
 #: includes/data/states/states-02.php:198
 msgid "Kohgiluyeh and BoyerAhmad (????????? ? ????????)"
-msgstr ""
+msgstr "Κογκιλουγιέχ και ΜπογιερΑχμαντ (????????? ? ????????)"
 
 #: includes/data/states/states-02.php:199
 msgid "Golestan (??????)"
-msgstr ""
+msgstr "Γκολεστάν (??????)"
 
 #: includes/data/states/states-02.php:200
 msgid "Gilan (?????)"
-msgstr ""
+msgstr "Γκιλάν (?????)"
 
 #: includes/data/states/states-02.php:201
 msgid "Mazandaran (????????)"
-msgstr ""
+msgstr "Μαζαντάραν (????????)"
 
 #: includes/data/states/states-02.php:202
 msgid "Markazi (?????)"
-msgstr ""
+msgstr "Μαρκάζι (?????)"
 
 #: includes/data/states/states-02.php:203
 msgid "Hormozgan (???????)"
-msgstr ""
+msgstr "Χορμοζγκάν (???????)"
 
 #: includes/data/states/states-02.php:204
 msgid "Sistan and Baluchestan (?????? ? ????????)"
-msgstr ""
+msgstr "Σιστάν και Μπαλουτσέσταν (?????? ? ????????)"
 
 #: includes/data/states/states-02.php:208
 msgid "Agrigento"
@@ -8214,7 +8353,7 @@ msgstr "Φότζια"
 
 #: includes/data/states/states-02.php:243
 msgid "Forl�-Cesena"
-msgstr ""
+msgstr "Φόρλι-Τσεζένα"
 
 #: includes/data/states/states-02.php:244
 msgid "Frosinone"
@@ -8803,7 +8942,7 @@ msgstr "Μομπάσα"
 
 #: includes/data/states/states-02.php:402
 msgid "Murang�a"
-msgstr ""
+msgstr "Μουράνγκα"
 
 #: includes/data/states/states-02.php:403
 msgid "Nairobi County"
@@ -9012,11 +9151,11 @@ msgstr "Σίνοε"
 
 #: includes/data/states/states-03.php:25
 msgid "Chi?inau"
-msgstr ""
+msgstr "Κισινάου"
 
 #: includes/data/states/states-03.php:26
 msgid "Bal?i"
-msgstr ""
+msgstr "Μπαλτσί"
 
 #: includes/data/states/states-03.php:27
 msgid "Anenii Noi"
@@ -9041,15 +9180,15 @@ msgstr "Καντεμίρ"
 #: includes/data/states/states-03.php:32
 #: includes/data/states/states-03.php:379
 msgid "Calara?i"
-msgstr ""
+msgstr "Καλαράι"
 
 #: includes/data/states/states-03.php:33
 msgid "Cau?eni"
-msgstr ""
+msgstr "Κάουσένι"
 
 #: includes/data/states/states-03.php:34
 msgid "Cimi?lia"
-msgstr ""
+msgstr "Τσιμιλίγια"
 
 #: includes/data/states/states-03.php:35
 msgid "Criuleni"
@@ -9057,7 +9196,7 @@ msgstr "Κριουλένι"
 
 #: includes/data/states/states-03.php:36
 msgid "Dondu?eni"
-msgstr ""
+msgstr "Ντοντουσένι"
 
 #: includes/data/states/states-03.php:37
 msgid "Drochia"
@@ -9065,23 +9204,23 @@ msgstr "Ντρόχια"
 
 #: includes/data/states/states-03.php:38
 msgid "Dubasari"
-msgstr ""
+msgstr "Ντουμπασάρι"
 
 #: includes/data/states/states-03.php:39
 msgid "Edine?"
-msgstr ""
+msgstr "Εντίνε;"
 
 #: includes/data/states/states-03.php:40
 msgid "Fale?ti"
-msgstr ""
+msgstr "Φαλέστι"
 
 #: includes/data/states/states-03.php:41
 msgid "Flore?ti"
-msgstr ""
+msgstr "Φλορέστι"
 
 #: includes/data/states/states-03.php:42
 msgid "UTA Gagauzia"
-msgstr ""
+msgstr "ΟΥΤΑ Γκαγκαουζία"
 
 #: includes/data/states/states-03.php:43
 msgid "Glodeni"
@@ -9089,7 +9228,7 @@ msgstr "Γκλοντένι"
 
 #: includes/data/states/states-03.php:44
 msgid "H�nce?ti"
-msgstr ""
+msgstr "Χίντσεστι"
 
 #: includes/data/states/states-03.php:45
 msgid "Ialoveni"
@@ -9105,7 +9244,7 @@ msgstr "Νισπορένι"
 
 #: includes/data/states/states-03.php:48
 msgid "Ocni?a"
-msgstr ""
+msgstr "Οκνίτσα"
 
 #: includes/data/states/states-03.php:49
 msgid "Orhei"
@@ -9117,11 +9256,11 @@ msgstr "Ρεζίνα"
 
 #: includes/data/states/states-03.php:51
 msgid "R�?cani"
-msgstr ""
+msgstr "Ρέτσιάνι"
 
 #: includes/data/states/states-03.php:52
 msgid "S�ngerei"
-msgstr ""
+msgstr "Σανγκέρει"
 
 #: includes/data/states/states-03.php:53
 msgid "Soroca"
@@ -9129,15 +9268,15 @@ msgstr "Σορόκα"
 
 #: includes/data/states/states-03.php:54
 msgid "Stra?eni"
-msgstr ""
+msgstr "Στρασένι"
 
 #: includes/data/states/states-03.php:55
 msgid "?oldane?ti"
-msgstr ""
+msgstr "Χολντανέστι"
 
 #: includes/data/states/states-03.php:56
 msgid "?tefan Voda"
-msgstr ""
+msgstr "Στέφαν Βόδα"
 
 #: includes/data/states/states-03.php:57
 msgid "Taraclia"
@@ -9145,7 +9284,7 @@ msgstr "Ταρακλία"
 
 #: includes/data/states/states-03.php:58
 msgid "Telene?ti"
-msgstr ""
+msgstr "Τελένεστι"
 
 #: includes/data/states/states-03.php:59
 msgid "Ungheni"
@@ -9153,7 +9292,7 @@ msgstr "Ουγγένι"
 
 #: includes/data/states/states-03.php:64
 msgid "Ciudad de M�xico"
-msgstr ""
+msgstr "Πόλη του Μεξικού"
 
 #: includes/data/states/states-03.php:65
 msgid "Jalisco"
@@ -9161,7 +9300,7 @@ msgstr "Χαλίσκο"
 
 #: includes/data/states/states-03.php:66
 msgid "Nuevo Le�n"
-msgstr ""
+msgstr "Νουέβο Λεόν"
 
 #: includes/data/states/states-03.php:67
 msgid "Aguascalientes"
@@ -9213,11 +9352,11 @@ msgstr "Ιδαλγό"
 
 #: includes/data/states/states-03.php:79
 msgid "Estado de M�xico"
-msgstr ""
+msgstr "Κράτος του Μεξικού"
 
 #: includes/data/states/states-03.php:80
 msgid "Michoac�n"
-msgstr ""
+msgstr "Μιτσουακάν"
 
 #: includes/data/states/states-03.php:81
 msgid "Morelos"
@@ -9237,7 +9376,7 @@ msgstr "Πουέμπλα"
 
 #: includes/data/states/states-03.php:85
 msgid "Quer�taro"
-msgstr ""
+msgstr "Κερετάρο"
 
 #: includes/data/states/states-03.php:86
 msgid "Quintana Roo"
@@ -9245,7 +9384,7 @@ msgstr "Κιντάνα Ρόο"
 
 #: includes/data/states/states-03.php:87
 msgid "San Luis Potos�"
-msgstr ""
+msgstr "Σαν Λουίς Ποτόσι"
 
 #: includes/data/states/states-03.php:88
 msgid "Sinaloa"
@@ -9273,7 +9412,7 @@ msgstr "Βερακρούζ"
 
 #: includes/data/states/states-03.php:94
 msgid "Yucat�n"
-msgstr ""
+msgstr "Γιουκατάν"
 
 #: includes/data/states/states-03.php:95
 msgid "Zacatecas"
@@ -9385,7 +9524,7 @@ msgstr "Τέτε"
 
 #: includes/data/states/states-03.php:126
 msgid "Zamb�zia"
-msgstr ""
+msgstr "Ζαμπέζια"
 
 #: includes/data/states/states-03.php:129
 msgid "Erongo"
@@ -9674,7 +9813,7 @@ msgstr "Γκίζμπορν"
 
 #: includes/data/states/states-03.php:208
 msgid "Hawke�s Bay"
-msgstr ""
+msgstr "Κόλπος Χόουκ"
 
 #: includes/data/states/states-03.php:209
 msgid "Manawatu-Wanganui"
@@ -9726,7 +9865,7 @@ msgstr "Άνκας"
 
 #: includes/data/states/states-03.php:224
 msgid "Apur�mac"
-msgstr ""
+msgstr "Απουρίμακ"
 
 #: includes/data/states/states-03.php:225
 msgid "Arequipa"
@@ -9750,7 +9889,7 @@ msgstr "Ουανκαβελίκα"
 
 #: includes/data/states/states-03.php:230
 msgid "Hu�nuco"
-msgstr ""
+msgstr "Χουάνο"
 
 #: includes/data/states/states-03.php:231
 msgid "Ica"
@@ -9758,7 +9897,7 @@ msgstr "Ίκα"
 
 #: includes/data/states/states-03.php:232
 msgid "Jun�n"
-msgstr ""
+msgstr "Χουνίν"
 
 #: includes/data/states/states-03.php:233
 msgid "La Libertad"
@@ -9798,7 +9937,7 @@ msgstr "Πούνο"
 
 #: includes/data/states/states-03.php:242
 msgid "San Mart�n"
-msgstr ""
+msgstr "Σαν Μαρτίν"
 
 #: includes/data/states/states-03.php:243
 msgid "Tacna"
@@ -10170,11 +10309,11 @@ msgstr "Σιντ"
 
 #: includes/data/states/states-03.php:347
 msgid "Asunci�n"
-msgstr ""
+msgstr "Ασουνσιόν"
 
 #: includes/data/states/states-03.php:348
 msgid "Concepci�n"
-msgstr ""
+msgstr "Κονσεψιόν"
 
 #: includes/data/states/states-03.php:349
 msgid "San Pedro"
@@ -10186,31 +10325,31 @@ msgstr "Κορδιγέλα"
 
 #: includes/data/states/states-03.php:351
 msgid "Guair�"
-msgstr ""
+msgstr "Γκουαϊρά"
 
 #: includes/data/states/states-03.php:352
 msgid "Caaguaz�"
-msgstr ""
+msgstr "Κααγκουάζ"
 
 #: includes/data/states/states-03.php:353
 msgid "Caazap�"
-msgstr ""
+msgstr "Κααζαπά"
 
 #: includes/data/states/states-03.php:354
 msgid "Itap�a"
-msgstr ""
+msgstr "Ιταπία"
 
 #: includes/data/states/states-03.php:356
 msgid "Paraguar�"
-msgstr ""
+msgstr "Παραγουάη"
 
 #: includes/data/states/states-03.php:357
 msgid "Alto Paran�"
-msgstr ""
+msgstr "Άλτο Παρανά"
 
 #: includes/data/states/states-03.php:359
 msgid "�eembuc�"
-msgstr ""
+msgstr "Ζεεμπουκού"
 
 #: includes/data/states/states-03.php:360
 msgid "Amambay"
@@ -10218,7 +10357,7 @@ msgstr "Αμανμπάι"
 
 #: includes/data/states/states-03.php:361
 msgid "Canindey�"
-msgstr ""
+msgstr "Κανιντέγιο"
 
 #: includes/data/states/states-03.php:362
 msgid "Presidente Hayes"
@@ -10230,7 +10369,7 @@ msgstr "Άλτο Παραγουάη"
 
 #: includes/data/states/states-03.php:364
 msgid "Boquer�n"
-msgstr ""
+msgstr "Μποκερόν"
 
 #: includes/data/states/states-03.php:368
 msgid "Alba"
@@ -10242,11 +10381,11 @@ msgstr "Αράντ"
 
 #: includes/data/states/states-03.php:370
 msgid "Arge?"
-msgstr ""
+msgstr "Άρτζες"
 
 #: includes/data/states/states-03.php:371
 msgid "Bacau"
-msgstr ""
+msgstr "Μπακάου"
 
 #: includes/data/states/states-03.php:372
 msgid "Bihor"
@@ -10254,31 +10393,31 @@ msgstr "Μπίχορ"
 
 #: includes/data/states/states-03.php:373
 msgid "Bistri?a-Nasaud"
-msgstr ""
+msgstr "Μπιστρίτσα-Νάσαουντ"
 
 #: includes/data/states/states-03.php:374
 msgid "Boto?ani"
-msgstr ""
+msgstr "Μποτοσάνι"
 
 #: includes/data/states/states-03.php:375
 msgid "Braila"
-msgstr ""
+msgstr "Μπράιλα"
 
 #: includes/data/states/states-03.php:376
 msgid "Bra?ov"
-msgstr ""
+msgstr "Μπράιλα"
 
 #: includes/data/states/states-03.php:377
 msgid "Bucure?ti"
-msgstr ""
+msgstr "Βουκουρέστι"
 
 #: includes/data/states/states-03.php:378
 msgid "Buzau"
-msgstr ""
+msgstr "Μπουζάου"
 
 #: includes/data/states/states-03.php:380
 msgid "Cara?-Severin"
-msgstr ""
+msgstr "Κάρα-Σεβερίν"
 
 #: includes/data/states/states-03.php:381
 msgid "Cluj"
@@ -10286,7 +10425,7 @@ msgstr "Κλουζ"
 
 #: includes/data/states/states-03.php:382
 msgid "Constan?a"
-msgstr ""
+msgstr "Κωνστάντσα"
 
 #: includes/data/states/states-03.php:383
 msgid "Covasna"
@@ -10294,7 +10433,7 @@ msgstr "Κοβασνά"
 
 #: includes/data/states/states-03.php:384
 msgid "D�mbovi?a"
-msgstr ""
+msgstr "Δάμποβιτσα"
 
 #: includes/data/states/states-03.php:385
 msgid "Dolj"
@@ -10302,7 +10441,7 @@ msgstr "Ντόλτζ"
 
 #: includes/data/states/states-03.php:386
 msgid "Gala?i"
-msgstr ""
+msgstr "Γαλάτσι"
 
 #: includes/data/states/states-03.php:387
 msgid "Giurgiu"
@@ -10322,11 +10461,11 @@ msgstr "Χουνεντόαρα"
 
 #: includes/data/states/states-03.php:391
 msgid "Ialomi?a"
-msgstr ""
+msgstr "ΙΑλομίτσα"
 
 #: includes/data/states/states-03.php:392
 msgid "Ia?i"
-msgstr ""
+msgstr "Ιάσι"
 
 #: includes/data/states/states-03.php:393
 msgid "Ilfov"
@@ -10334,19 +10473,19 @@ msgstr "Ιλφόβ"
 
 #: includes/data/states/states-03.php:394
 msgid "Maramure?"
-msgstr ""
+msgstr "Μαραμούρες"
 
 #: includes/data/states/states-03.php:395
 msgid "Mehedin?i"
-msgstr ""
+msgstr "Μεχεδίνι"
 
 #: includes/data/states/states-03.php:396
 msgid "Mure?"
-msgstr ""
+msgstr "Μουρέș"
 
 #: includes/data/states/states-03.php:397
 msgid "Neam?"
-msgstr ""
+msgstr "Νεάμț"
 
 #: includes/data/states/states-03.php:398
 msgid "Olt"
@@ -10358,7 +10497,7 @@ msgstr "Πραχόβα"
 
 #: includes/data/states/states-03.php:400
 msgid "Salaj"
-msgstr ""
+msgstr "Σαλάι"
 
 #: includes/data/states/states-03.php:401
 msgid "Satu Mare"
@@ -10378,7 +10517,7 @@ msgstr "Τελεόρμαν"
 
 #: includes/data/states/states-03.php:405
 msgid "Timi?"
-msgstr ""
+msgstr "Τιμισοάρα"
 
 #: includes/data/states/states-03.php:406
 msgid "Tulcea"
@@ -10386,7 +10525,7 @@ msgstr "Τούλτσεα"
 
 #: includes/data/states/states-03.php:407
 msgid "V�lcea"
-msgstr ""
+msgstr "Βάλτσεα"
 
 #: includes/data/states/states-03.php:408
 msgid "Vaslui"
@@ -10710,7 +10849,7 @@ msgstr "Αντάνα"
 
 #: includes/data/states/states-04.php:91
 msgid "Adiyaman"
-msgstr ""
+msgstr "Αντιγιαμάν"
 
 #: includes/data/states/states-04.php:92
 msgid "Afyon"
@@ -10718,7 +10857,7 @@ msgstr "Αφιον"
 
 #: includes/data/states/states-04.php:93
 msgid "Agri"
-msgstr ""
+msgstr "Άγκρι"
 
 #: includes/data/states/states-04.php:94
 msgid "Amasya"
@@ -10738,11 +10877,11 @@ msgstr "Άρτβιν"
 
 #: includes/data/states/states-04.php:98
 msgid "Aydin"
-msgstr ""
+msgstr "Αϊδίν"
 
 #: includes/data/states/states-04.php:99
 msgid "Balikesir"
-msgstr ""
+msgstr "Μπαλικεσίρ"
 
 #: includes/data/states/states-04.php:100
 msgid "Bilecik"
@@ -10750,7 +10889,7 @@ msgstr "Μπιλέτσικ"
 
 #: includes/data/states/states-04.php:101
 msgid "Bing�l"
-msgstr ""
+msgstr "Μπίνγκιολ"
 
 #: includes/data/states/states-04.php:102
 msgid "Bitlis"
@@ -10770,15 +10909,15 @@ msgstr "Βούρσα"
 
 #: includes/data/states/states-04.php:106
 msgid "�anakkale"
-msgstr ""
+msgstr "Τσανάκκαλε"
 
 #: includes/data/states/states-04.php:107
 msgid "�ankiri"
-msgstr ""
+msgstr "Τσανκίρι"
 
 #: includes/data/states/states-04.php:108
 msgid "�orum"
-msgstr ""
+msgstr "Τζορούμ"
 
 #: includes/data/states/states-04.php:109
 msgid "Denizli"
@@ -10786,7 +10925,7 @@ msgstr "Δηναζλί"
 
 #: includes/data/states/states-04.php:110
 msgid "Diyarbakir"
-msgstr ""
+msgstr "Ντιγιάρμπακιρ"
 
 #: includes/data/states/states-04.php:111
 msgid "Edirne"
@@ -10794,7 +10933,7 @@ msgstr "Αδριανούπολη"
 
 #: includes/data/states/states-04.php:112
 msgid "Elazig"
-msgstr ""
+msgstr "Ελαζίγκ"
 
 #: includes/data/states/states-04.php:113
 msgid "Erzincan"
@@ -10806,7 +10945,7 @@ msgstr "Ερζουρούμ"
 
 #: includes/data/states/states-04.php:115
 msgid "Eskisehir"
-msgstr ""
+msgstr "Εσκίσεχιρ"
 
 #: includes/data/states/states-04.php:116
 msgid "Gaziantep"
@@ -10818,7 +10957,7 @@ msgstr "Γκιρεσούν"
 
 #: includes/data/states/states-04.php:118
 msgid "G�m�shane"
-msgstr ""
+msgstr "Γκιουμισχάνε"
 
 #: includes/data/states/states-04.php:119
 msgid "Hakkari"
@@ -10834,15 +10973,15 @@ msgstr "Ισπάρτα"
 
 #: includes/data/states/states-04.php:122
 msgid "I�el"
-msgstr ""
+msgstr "Ιτζέλ"
 
 #: includes/data/states/states-04.php:123
 msgid "Istanbul"
-msgstr ""
+msgstr "Κωνσταντινούπολη"
 
 #: includes/data/states/states-04.php:124
 msgid "Izmir"
-msgstr ""
+msgstr "Σμύρνη"
 
 #: includes/data/states/states-04.php:125
 msgid "Kars"
@@ -10858,11 +10997,11 @@ msgstr "Καϊσέρι"
 
 #: includes/data/states/states-04.php:128
 msgid "Kirklareli"
-msgstr ""
+msgstr "Κιρκλάρελι"
 
 #: includes/data/states/states-04.php:129
 msgid "Kirsehir"
-msgstr ""
+msgstr "Κιρσεχίρ"
 
 #: includes/data/states/states-04.php:130
 msgid "Kocaeli"
@@ -10874,7 +11013,7 @@ msgstr "Κόνια"
 
 #: includes/data/states/states-04.php:132
 msgid "K�tahya"
-msgstr ""
+msgstr "Κιουτάχεια"
 
 #: includes/data/states/states-04.php:133
 msgid "Malatya"
@@ -10886,7 +11025,7 @@ msgstr "Μανίσα"
 
 #: includes/data/states/states-04.php:135
 msgid "Kahramanmaras"
-msgstr ""
+msgstr "Καχραμάνμαρας"
 
 #: includes/data/states/states-04.php:136
 msgid "Mardin"
@@ -10894,19 +11033,19 @@ msgstr "Μαρντίν"
 
 #: includes/data/states/states-04.php:137
 msgid "Mugla"
-msgstr ""
+msgstr "Μούγλα"
 
 #: includes/data/states/states-04.php:138
 msgid "Mus"
-msgstr ""
+msgstr "Μους"
 
 #: includes/data/states/states-04.php:139
 msgid "Nevsehir"
-msgstr ""
+msgstr "Νεβσεχίρ"
 
 #: includes/data/states/states-04.php:140
 msgid "Nigde"
-msgstr ""
+msgstr "Νίγδε"
 
 #: includes/data/states/states-04.php:141
 msgid "Ordu"
@@ -10938,7 +11077,7 @@ msgstr "Σίβας"
 
 #: includes/data/states/states-04.php:148
 msgid "Tekirdag"
-msgstr ""
+msgstr "Τεκίρνταγ"
 
 #: includes/data/states/states-04.php:149
 msgid "Tokat"
@@ -10954,11 +11093,11 @@ msgstr "Τουντζελί"
 
 #: includes/data/states/states-04.php:152
 msgid "Sanliurfa"
-msgstr ""
+msgstr "Σανλιούρφα"
 
 #: includes/data/states/states-04.php:153
 msgid "Usak"
-msgstr ""
+msgstr "ΟΥσάκ"
 
 #: includes/data/states/states-04.php:154
 msgid "Van"
@@ -10986,7 +11125,7 @@ msgstr "Καράμαν"
 
 #: includes/data/states/states-04.php:160
 msgid "Kirikkale"
-msgstr ""
+msgstr "Κιρκκαλέ"
 
 #: includes/data/states/states-04.php:161
 msgid "Batman"
@@ -10994,11 +11133,11 @@ msgstr "Μπάτμαν"
 
 #: includes/data/states/states-04.php:162
 msgid "Sirnak"
-msgstr ""
+msgstr "Σιρνάκ"
 
 #: includes/data/states/states-04.php:163
 msgid "Bartin"
-msgstr ""
+msgstr "Μπαρτίν"
 
 #: includes/data/states/states-04.php:164
 msgid "Ardahan"
@@ -11006,7 +11145,7 @@ msgstr "Αρντάχαν"
 
 #: includes/data/states/states-04.php:165
 msgid "Igdir"
-msgstr ""
+msgstr "Ιγδίνρ"
 
 #: includes/data/states/states-04.php:166
 msgid "Yalova"
@@ -11014,7 +11153,7 @@ msgstr "Γιαλόβα"
 
 #: includes/data/states/states-04.php:167
 msgid "Karab�k"
-msgstr ""
+msgstr "Καραμπουκ"
 
 #: includes/data/states/states-04.php:168
 msgid "Kilis"
@@ -11026,7 +11165,7 @@ msgstr "Οσμάνιε"
 
 #: includes/data/states/states-04.php:170
 msgid "D�zce"
-msgstr ""
+msgstr "Δούζτσε"
 
 #: includes/data/states/states-04.php:173
 msgid "Arusha"
@@ -12117,7 +12256,6 @@ msgid "Your {product_name} trial is about to end"
 msgstr "Η δοκιμή σας για το {product_name} πλησιάζει στο τέλος της"
 
 #: includes/email/ppcart-template-functions/templates.php:246
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -12268,7 +12406,7 @@ msgstr "Δεν έχετε εξουσιοδότηση για να κατεβάσ�
 
 #: includes/files/download.php:43
 msgid "Invalid file path."
-msgstr ""
+msgstr "Μη έγκυρη διαδρομή αρχείου."
 
 #: includes/files/download.php:44
 #: includes/files/download.php:65
@@ -12288,7 +12426,7 @@ msgstr "Λυπάμαι, αυτό το αρχείο δεν είναι πλέον 
 #. translators: 1: file name, 2: user login.
 #, php-format
 msgid "Access to file \"%1$s\" revoked by %2$s"
-msgstr ""
+msgstr "Η πρόσβαση στο αρχείο \"%1$s\" ανακλήθηκε από το %2$s"
 
 #: includes/files/traits/templates/files-admin-product-form-callback.php:28
 #: includes/files/traits/trait-ppcart-files-settings.php:132
@@ -12478,7 +12616,7 @@ msgstr "Το email επιβεβαίωσης αγοράς έχει ξαναστα
 
 #: includes/functions/admin-ajax-and-notices.php:389
 msgid "You are not allowed to dismiss this notice."
-msgstr ""
+msgstr "Δεν επιτρέπεται να απορρίψετε αυτή την ειδοποίηση."
 
 #: includes/functions/ajax-and-fields.php:170
 msgid " activecampaign Listed: "
@@ -12613,7 +12751,7 @@ msgstr "Βραζιλιάνικο ρεάλ"
 msgid "Bahamian dollar"
 msgstr "Μπαχαμιανό δολάριο"
 
-#: includes/functions/currency-data/currencies.php:32
+#: includes/functions/currency-data/currencies.php:32, fuzzy
 msgid "Bitcoin"
 msgstr "Bitcoin"
 
@@ -13194,6 +13332,8 @@ msgid ""
 "The stock for product \"%1$s\" (ID: %2$d) is running low. Current stock: "
 "%3$d"
 msgstr ""
+"Το απόθεμα για το προϊόν \"%1$s\" (ID: %2$d) είναι χαμηλό. Τρέχον απόθεμα: "
+"%3$d"
 
 #: includes/functions/integrations-and-stock.php:220
 #. translators: %s: product name.
@@ -13205,19 +13345,19 @@ msgstr "Ειδοποίηση εκτός αποθέματος: %s"
 #. translators: 1: product name, 2: product ID.
 #, php-format
 msgid "The product \"%1$s\" (ID: %2$d) is now out of stock."
-msgstr ""
+msgstr "Το προϊόν \"%1$s\" (ID: %2$d) είναι τώρα εξαντλημένο."
 
 #: includes/functions/mailchimp-api.php:51
 msgid "The Mailchimp API key is invalid."
-msgstr ""
+msgstr "Το κλειδί API του Mailchimp είναι μη έγκυρο."
 
 #: includes/functions/mailchimp-api.php:83
 msgid "Mailchimp rejected the request."
-msgstr ""
+msgstr "Το Mailchimp απέρριψε το αίτημα."
 
 #: includes/functions/mailchimp-api.php:94
 msgid "Mailchimp returned an invalid response."
-msgstr ""
+msgstr "Το Mailchimp επέστρεψε μια μη έγκυρη απάντηση."
 
 #: includes/functions/merge-tags-and-dates.php:11
 msgid "Site Name"
@@ -13311,7 +13451,7 @@ msgstr "Λίστα Παραγγελιών"
 
 #: includes/functions/merge-tags-and-dates.php:34
 msgid "Order Details Table"
-msgstr ""
+msgstr "Πίνακας Λεπτομερειών Παραγγελίας"
 
 #: includes/functions/merge-tags-and-dates.php:35
 msgid "Inline Order List"
@@ -13357,14 +13497,14 @@ msgstr "Εισαγωγή Ετικέτας Προσωποποίησης"
 #. translators: 1: refund amount, 2: refund date.
 #, php-format
 msgid "%1$s refunded on %2$s"
-msgstr ""
+msgstr "%1$s επιστράφηκε στις %2$s"
 
 #: includes/functions/merge-tags-and-dates.php:199
 #: includes/functions/merge-tags-and-dates.php:201
 #. translators: 1: primary product name, 2: bump product name.
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s, %2$s"
 
 #: includes/functions/merge-tags-and-dates.php:549
 msgid "Invalid Charge ID"
@@ -13475,7 +13615,7 @@ msgstr ""
 
 #: includes/functions/merge-tags-and-dates.php:579
 msgid "Your session has expired. Please try again."
-msgstr ""
+msgstr "Η συνεδρία σας έχει λήξει. Παρακαλώ δοκιμάστε ξανά."
 
 #: includes/functions/merge-tags-and-dates.php:580
 #: includes/functions/merge-tags-and-dates.php:581
@@ -13670,7 +13810,7 @@ msgstr " Αναγνωριστικό μαθήματος Membervault: "
 #. translators: %s: Membervault API error message.
 #, php-format
 msgid "Membervault add failed: %s"
-msgstr ""
+msgstr "Η προσθήκη στο Membervault απέτυχε: %s"
 
 #: includes/functions/orders-products-and-formatting.php:147
 msgid "Membervault add failed"
@@ -13793,7 +13933,7 @@ msgstr "ΜΗ ΕΓΚΥΡΟΣ ΚΩΔΙΚΟΣ ΧΡΕΩΣΗΣ"
 #. translators: %s: Stripe gateway mode (e.g. live or test)
 #, php-format
 msgid "Oops, Stripe %s key missing!"
-msgstr ""
+msgstr "Ωχ, λείπει το κλειδί Stripe %s!"
 
 #: includes/functions/payment-actions-and-refunds.php:438
 msgid "Payment refunded by"
@@ -13842,11 +13982,11 @@ msgstr "Με κουπόνι:"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "(%1$s off for %2$d months)"
-msgstr ""
+msgstr "(%1$s έκπτωση για %2$d μήνες)"
 
 #: includes/functions/prices-and-marketing.php:273
 msgid "JSON Parse"
-msgstr ""
+msgstr "Ανάλυση JSON"
 
 #: includes/functions/prices-and-marketing.php:357
 msgid "No Data Found"
@@ -13885,19 +14025,21 @@ msgstr " ημέρα"
 #. translators: %d: product ID.
 #, php-format
 msgid "Product #%d"
-msgstr ""
+msgstr "Προϊόν #%d"
 
 #: includes/functions/users-and-notifications.php:159
 #. translators: 1: requested role, 2: role used instead.
 #, php-format
 msgid "User role %1$s is not allowed for customers; %2$s was used instead."
 msgstr ""
+"Ο ρόλος χρήστη %1$s δεν επιτρέπεται για τους πελάτες; Χρησιμοποιήθηκε το "
+"%2$s αντί αυτού."
 
 #: includes/functions/users-and-notifications.php:192
 #. translators: 1: user ID, 2: role name.
 #, php-format
 msgid "Role for User ID: %1$s updated to %2$s"
-msgstr ""
+msgstr "Ο ρόλος για τον ID χρήστη: %1$s ενημερώθηκε σε %2$s"
 
 #: includes/functions/users-and-notifications.php:209
 #. translators: %s: user ID.
@@ -13949,11 +14091,11 @@ msgstr "Διαδρομή Προσφοράς"
 
 #: includes/helpers/pro-locks/field-and-email-locks.php:235
 msgid "Affiliates"
-msgstr ""
+msgstr "Συνεργάτες"
 
-#: includes/helpers/pro-locks/product-locks.php:27
+#: includes/helpers/pro-locks/product-locks.php:27, fuzzy
 msgid "Stripe, PayPal"
-msgstr ""
+msgstr "Stripe, PayPal"
 
 #: includes/helpers/pro-locks/product-locks.php:29
 msgid "Globally Enabled Methods:"
@@ -14048,7 +14190,7 @@ msgstr "Κάθε επιπλέον αντικείμενο (Διεθν.)"
 
 #: includes/helpers/pro-locks/product-locks.php:76
 msgid "Enable affiliate sales"
-msgstr ""
+msgstr "Ενεργοποίηση πωλήσεων μέσω συνεργατών"
 
 #: includes/helpers/pro-locks/product-locks.php:77
 #: public/templates/pdf-invoice/invoice.php:145
@@ -14059,11 +14201,11 @@ msgstr "Περιγραφή"
 
 #: includes/helpers/pro-locks/product-locks.php:78
 msgid "Name (internal)"
-msgstr ""
+msgstr "Όνομα (εσωτερικό)"
 
-#: includes/helpers/pro-locks/settings-locks.php:59
+#: includes/helpers/pro-locks/settings-locks.php:59, fuzzy
 msgid "Pro"
-msgstr ""
+msgstr "Pro"
 
 #: includes/helpers/pro-locks/settings-locks.php:98
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:1132
@@ -14076,34 +14218,42 @@ msgid ""
 "Accept payments online and in person with Square, syncing items and "
 "inventory."
 msgstr ""
+"Αποδεχτείτε πληρωμές online και αυτοπροσώπως με το Square, συγχρονίζοντας "
+"αντικείμενα και απόθεμα."
 
-#: includes/helpers/pro-locks/settings-locks.php:104
+#: includes/helpers/pro-locks/settings-locks.php:104, fuzzy
 msgid "Mollie"
-msgstr ""
+msgstr "Mollie"
 
 #: includes/helpers/pro-locks/settings-locks.php:105
 msgid "Offer global and local payment methods with fast, multilingual onboarding."
 msgstr ""
+"Προσφέρετε παγκόσμιες και τοπικές μεθόδους πληρωμής με γρήγορη, πολύγλωσση "
+"ενσωμάτωση."
 
-#: includes/helpers/pro-locks/settings-locks.php:110
+#: includes/helpers/pro-locks/settings-locks.php:110, fuzzy
 msgid "Razorpay"
-msgstr ""
+msgstr "Razorpay"
 
 #: includes/helpers/pro-locks/settings-locks.php:111
 msgid "Accept payments in India and beyond with Razorpay's simple integration."
 msgstr ""
+"Αποδεχτείτε πληρωμές στην Ινδία και πέρα από αυτήν με την απλή ενσωμάτωση "
+"του Razorpay."
 
-#: includes/helpers/pro-locks/settings-locks.php:217
+#: includes/helpers/pro-locks/settings-locks.php:217, fuzzy
 msgid "PRO"
-msgstr ""
+msgstr "PRO"
 
 #: includes/helpers/pro-locks/settings-locks.php:238
 msgid "This is a Pro feature"
-msgstr ""
+msgstr "Αυτή είναι μια δυνατότητα Pro"
 
 #: includes/helpers/pro-locks/settings-locks.php:239
 msgid "This feature is available in the separate PublishPress Cart Pro plugin."
 msgstr ""
+"Αυτή η δυνατότητα είναι διαθέσιμη στο ξεχωριστό πρόσθετο PublishPress Cart "
+"Pro."
 
 #: includes/helpers/pro-locks/settings-locks.php:273
 msgid "URL Coupon Parameter Name"
@@ -14114,6 +14264,8 @@ msgid ""
 "Use something else in place of \"ppcart-coupon\" when creating coupon URLs "
 "(e.g., https://example.com/product/?ppcart-coupon=20off)."
 msgstr ""
+"Χρησιμοποιήστε κάτι άλλο αντί για \"ppcart-coupon\" κατά τη δημιουργία URL "
+"κουπονιών (π.χ., https://example.com/product/?ppcart-coupon=20off)."
 
 #: includes/helpers/pro-locks/settings-locks.php:278
 msgid "Disable product template"
@@ -14187,7 +14339,7 @@ msgstr "Τεκμηρίωση API"
 msgid "Invoice Date Documentation"
 msgstr "Τεκμηρίωση Ημερομηνίας Τιμολογίου"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:9
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:9, fuzzy
 msgid "User Guide.pdf"
 msgstr "User Guide.pdf"
 
@@ -14196,18 +14348,18 @@ msgstr "User Guide.pdf"
 msgid "Sample Pack.zip"
 msgstr "Δείγμα Προϊόντος"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:17
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:17, fuzzy
 msgid "Onboarding Video.mp4"
 msgstr "Onboarding Video.mp4"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:21
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:21, fuzzy
 msgid "Bonus Workbook.docx"
 msgstr "Bonus Workbook.docx"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:7
 #: public/templates/my-account/forms/login-form.php:110
 msgid "Username"
-msgstr ""
+msgstr "Όνομα χρήστη"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:8
 #: public/templates/my-account/forms/login-form.php:111
@@ -14217,18 +14369,18 @@ msgstr "Κωδικός πρόσβασης"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:9
 #: public/templates/my-account/forms/login-form.php:112
 msgid "Remember Me"
-msgstr ""
+msgstr "Θυμήσου με"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:10
 #: public/templates/my-account/forms/login-form.php:113
 msgid "Log In"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:8
 msgid "Jan 1, 2026"
 msgstr "1 Ιαν 2026"
 
-#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10
+#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10, fuzzy
 msgid "$49.00"
 msgstr "$49.00"
 
@@ -14242,7 +14394,7 @@ msgstr "Επιλέξτε Σχέδιο"
 msgid "Feb 1, 2026"
 msgstr "1 Φεβ 2026"
 
-#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11
+#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11, fuzzy
 msgid "$99 x 6"
 msgstr "$99 x 6"
 
@@ -14271,7 +14423,7 @@ msgstr "μήνας"
 
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:38
 msgid "Cancels Feb 1, 2026"
-msgstr ""
+msgstr "Ακυρώνει 1 Φεβρουαρίου 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-context.php:30
 #, fuzzy
@@ -14335,11 +14487,11 @@ msgstr "Λεπτομέρειες"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:390
 msgid "January 1, 2026"
-msgstr ""
+msgstr "1 Ιανουαρίου 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:391
 msgid "February 1, 2026"
-msgstr ""
+msgstr "1 Φεβρουαρίου 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:472
 #, fuzzy
@@ -14369,7 +14521,7 @@ msgstr "Πιστωτική Κάρτα"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:87
 msgid "Single Collection"
-msgstr ""
+msgstr "Μοναδική Συλλογή"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:90
 msgid "Single Product"
@@ -14390,7 +14542,7 @@ msgstr "Επιλέξτε Σχέδιο"
 
 #: includes/integrations/templates/cancel-subscription-integration-fields.php:57
 msgid "At the end of the current billing period"
-msgstr ""
+msgstr "Στο τέλος της τρέχουσας περιόδου χρέωσης"
 
 #: includes/integrations/templates/cancel-subscription-run.php:33
 #. translators: %s: subscription ID.
@@ -14402,13 +14554,15 @@ msgstr "Η συνδρομή ID: %s έχει ακυρωθεί"
 #. translators: 1: subscription ID, 2: error message.
 #, php-format
 msgid "Error canceling subscription ID: %1$s! Message: %2$s"
-msgstr ""
+msgstr "Σφάλμα ακύρωσης συνδρομής ID: %1$s! Μήνυμα: %2$s"
 
 #: includes/integrations/templates/cancel-subscription-run.php:41
 #. translators: 1: product ID, 2: plan ID.
 #, php-format
 msgid "No active subscriptions found for product ID: %1$s and plan ID=%2$s"
 msgstr ""
+"Δεν βρέθηκαν ενεργές συνδρομές για το ID προϊόντος: %1$s και το ID "
+"πλάνου=%2$s"
 
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:22
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:39
@@ -14477,7 +14631,7 @@ msgstr "0.0 (Μη Συνιστώμενο)"
 msgid "0.1 (Bots)"
 msgstr "0.1 (Ρομπότ)"
 
-#: includes/integrations/templates/ppcart-googlerecaptcha-service-settings.php:81
+#: includes/integrations/templates/ppcart-googlerecaptcha-service-settings.php:81, fuzzy
 msgid "0.2 (Spam)"
 msgstr "0.2 (Spam)"
 
@@ -14527,6 +14681,9 @@ msgid ""
 "the Kit personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"Βάλτε κάθε ζευγάρι πεδίων σε ξεχωριστή γραμμή και χρησιμοποιήστε δύο σημεία "
+"(\":\") για να χωρίσετε την ετικέτα προσωποποίησης του Kit από την τιμή "
+"πεδίου. Για παράδειγμα: %TAG%:ppcart_field_id"
 
 #: includes/integrations/templates/ppcart-kit-ppcart-add-remove-convertkit-subscriber.php:59
 msgid "Subscriber added to Kit form."
@@ -14973,7 +15130,7 @@ msgstr "%s τέλος εγγραφής"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "%1$s off for %2$d months"
-msgstr ""
+msgstr "%1$s έκπτωση για %2$d μήνες"
 
 #: includes/ppcart-countries.php:17
 msgid "Select a Country"
@@ -16013,102 +16170,117 @@ msgstr "Δεν βρέθηκε τίποτα για αυτή την χρονική
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:33
 msgid "Encryption enabled"
-msgstr ""
+msgstr "Ενεργοποιημένη κρυπτογράφηση"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:38
 msgid "Payment and integration credentials are encrypted at rest."
 msgstr ""
+"Οι πιστοποιήσεις πληρωμών και ενσωμάτωσης είναι κρυπτογραφημένες κατά την "
+"αποθήκευση."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:40
 msgid "New credentials will be encrypted when saved."
-msgstr ""
+msgstr "Οι νέες πιστοποιήσεις θα κρυπτογραφηθούν όταν αποθηκευτούν."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:44
 msgid "Encryption disabled"
-msgstr ""
+msgstr "Απενεργοποιημένη κρυπτογράφηση"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:46
 msgid ""
 "Payment and integration keys are stored in plaintext by default. Enable "
 "encryption to reduce risk if your database is exposed."
 msgstr ""
+"Οι κλειδιά πληρωμών και ενσωμάτωσης αποθηκεύονται σε απλό κείμενο από "
+"προεπιλογή. Ενεργοποιήστε την κρυπτογράφηση για να μειώσετε τον κίνδυνο αν "
+"η βάση δεδομένων σας είναι εκτεθειμένη."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:58
 msgid "Enable encryption"
-msgstr ""
+msgstr "Ενεργοποίηση κρυπτογράφησης"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:67
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Add %s to wp-config.php to enable encryption."
-msgstr ""
+msgstr "Προσθέστε %s στο wp-config.php για να ενεργοποιήσετε την κρυπτογράφηση."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:79
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:27
 msgid "Encryption is controlled by PPCART_ENCRYPT_SECRETS in wp-config.php."
-msgstr ""
+msgstr "Η κρυπτογράφηση ελέγχεται από το PPCART_ENCRYPT_SECRETS στο wp-config.php."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:87
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Optional: lock encryption on in wp-config.php with %s"
-msgstr ""
+msgstr "Προαιρετικά: κλειδώστε την κρυπτογράφηση στο wp-config.php με το %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:98
 msgid "Open Security settings"
-msgstr ""
+msgstr "Ανοίξτε τις ρυθμίσεις ασφαλείας"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:27
 msgid "Encryption"
-msgstr ""
+msgstr "Κρυπτογράφηση"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:31
 msgid ""
 "Controlled by PPCART_ENCRYPT_SECRETS in wp-config.php. The database setting "
 "is ignored."
 msgstr ""
+"Ελέγχεται από το PPCART_ENCRYPT_SECRETS στο wp-config.php. Η ρύθμιση της "
+"βάσης δεδομένων αγνοείται."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:44
 msgid "Encrypt payment and integration credentials in the database"
 msgstr ""
+"Κρυπτογράφηση των στοιχείων πληρωμής και των διαπιστευτηρίων ενσωμάτωσης "
+"στη βάση δεδομένων"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:48
 msgid "For production sites, you can lock this in wp-config.php instead:"
 msgstr ""
+"Για ιστότοπους παραγωγής, μπορείτε να το κλειδώσετε αυτό στο wp-config.php "
+"αντί:"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:52
 msgid ""
 "When that constant is defined, it takes precedence and this checkbox is "
 "ignored."
 msgstr ""
+"Όταν οριστεί αυτή η σταθερά, έχει προτεραιότητα και αυτό το πλαίσιο ελέγχου "
+"αγνοείται."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:68
 #. translators: %s: encryption key source label.
 #, php-format
 msgid "Key source: %s"
-msgstr ""
+msgstr "Πηγή κλειδιού: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:76
 msgid ""
 "Encryption cannot run until AUTH_KEY or PPCART_SECRETS_KEY is configured in "
 "wp-config.php."
 msgstr ""
+"Η κρυπτογράφηση δεν μπορεί να εκτελεστεί μέχρι να ρυθμιστεί το AUTH_KEY ή "
+"το PPCART_SECRETS_KEY στο wp-config.php."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:83
 msgid "Stored credentials"
-msgstr ""
+msgstr "Αποθηκευμένα διαπιστευτήρια"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:86
 #. translators: %d: count
 #, php-format
 msgid "Encrypted: %d"
-msgstr ""
+msgstr "Κρυπτογραφημένα: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:87
 #. translators: %d: count
 #, php-format
 msgid "Plaintext: %d"
-msgstr ""
+msgstr "Απλό κείμενο: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:91
 msgid ""
@@ -16116,6 +16288,10 @@ msgid ""
 "plaintext. Existing encrypted values are not rewritten automatically; Cart "
 "continues to read them normally."
 msgstr ""
+"Ενώ η κρυπτογράφηση είναι απενεργοποιημένη, τα νέα και ενημερωμένα "
+"διαπιστευτήρια αποθηκεύονται σε απλό κείμενο. Οι υπάρχουσες "
+"κρυπτογραφημένες τιμές δεν ξαναγράφονται αυτόματα; το Καλάθι συνεχίζει να "
+"τις διαβάζει κανονικά."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:99
 #. translators: %d: number of encrypted credentials.
@@ -16127,63 +16303,80 @@ msgid_plural ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
 msgstr[0] ""
-msgstr[1] ""
+"%d διαπιστευτήριο παραμένει κρυπτογραφημένο στη βάση δεδομένων μέχρι να το "
+"ξανααποθηκεύσετε ή να ενεργοποιήσετε ξανά την κρυπτογράφηση.|%d "
+"διαπιστευτήρια παραμένουν κρυπτογραφημένα στη βάση δεδομένων μέχρι να τα "
+"ξανααποθηκεύσετε ή να ενεργοποιήσετε ξανά την κρυπτογράφηση."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
 "When you enable encryption, any plaintext credentials are encrypted "
 "automatically."
 msgstr ""
+"Όταν ενεργοποιήσετε την κρυπτογράφηση, οποιαδήποτε διαπιστευτήρια σε απλό "
+"κείμενο κρυπτογραφούνται αυτόματα."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:121
 #. translators: %s: formatted datetime.
 #, php-format
 msgid "Last migration: %s"
-msgstr ""
+msgstr "Τελευταία μετανάστευση: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:138
 msgid "Enable encryption above or in wp-config.php before running migration."
 msgstr ""
+"Ενεργοποιήστε την κρυπτογράφηση παραπάνω ή στο wp-config.php πριν "
+"εκτελέσετε τη μετανάστευση."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:156
 msgid ""
 "Rewrites existing plaintext payment and integration credentials in the "
 "database. Run during a maintenance window after taking a backup."
 msgstr ""
+"Ξαναγράφει τα υπάρχοντα διαπιστευτήρια πληρωμής και ενσωμάτωσης σε απλό "
+"κείμενο στη βάση δεδομένων. Εκτελέστε κατά τη διάρκεια ενός παραθύρου "
+"συντήρησης μετά τη λήψη αντιγράφου ασφαλείας."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:32
 msgid "PublishPress Cart security"
-msgstr ""
+msgstr "Ασφάλεια του PublishPress Cart"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:39
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed)."
 msgstr ""
+"Κρυπτογραφημένα %1$d αποθηκευμένα διαπιστευτήρια (%2$d παραλειπόμενα, %3$d "
+"απέτυχαν)."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:48
 msgid ""
 "Do not change AUTH_KEY or PPCART_SECRETS_KEY without re-entering payment "
 "and integration keys in Cart settings."
 msgstr ""
+"Μην αλλάξετε το AUTH_KEY ή το PPCART_SECRETS_KEY χωρίς να ξαναεισάγετε τα "
+"κλειδιά πληρωμής και ενσωμάτωσης στις ρυθμίσεις του Καλαθιού."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:52
 msgid ""
 "Some credentials could not be encrypted. Re-run migration from Cart → "
 "Settings → Maintenance or re-save keys manually."
 msgstr ""
+"Ορισμένα διαπιστευτήρια δεν μπόρεσαν να κρυπτογραφηθούν. Ξαναεκτελέστε τη "
+"μετανάστευση από Καλάθι → Ρυθμίσεις → Συντήρηση ή ξανααποθηκεύστε τα "
+"κλειδιά χειροκίνητα."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:20
 msgid "You do not have permission to change security encryption settings."
-msgstr ""
+msgstr "Δεν έχετε άδεια να αλλάξετε τις ρυθμίσεις κρυπτογράφησης ασφάλειας."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:58
 msgid "Encryption disabled."
-msgstr ""
+msgstr "Η κρυπτογράφηση έχει απενεργοποιηθεί."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:74
 msgid "Encryption enabled."
-msgstr ""
+msgstr "Η κρυπτογράφηση έχει ενεργοποιηθεί."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:91
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
@@ -16192,22 +16385,27 @@ msgid ""
 "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed). Use Encrypt "
 "stored credentials in Maintenance to retry failures."
 msgstr ""
+"Κρυπτογραφημένα %1$d αποθηκευμένα διαπιστευτήρια (%2$d παραλειπόμενα, %3$d "
+"απέτυχαν). Χρησιμοποιήστε την κρυπτογράφηση αποθηκευμένων διαπιστευτηρίων "
+"στη Συντήρηση για να δοκιμάσετε ξανά τις αποτυχίες."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:100
 #. translators: 1: migrated count, 2: skipped count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped)."
-msgstr ""
+msgstr "Κρυπτογραφημένα %1$d αποθηκευμένα διαπιστευτήρια (%2$d παραλειπόμενα)."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:117
 msgid "You do not have permission to encrypt stored credentials."
-msgstr ""
+msgstr "Δεν έχετε άδεια να κρυπτογραφήσετε τα αποθηκευμένα διαπιστευτήρια."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:132
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Migration complete. Encrypted: %1$d. Skipped: %2$d. Failed: %3$d."
 msgstr ""
+"Η μετανάστευση ολοκληρώθηκε. Κρυπτογραφημένα: %1$d. Παραλειπόμενα: %2$d. "
+"Απέτυχαν: %3$d."
 
 #: includes/secrets/traits/trait-ppcart-secrets-crypto.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:511
@@ -16225,7 +16423,12 @@ msgid_plural ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgstr[0] ""
-msgstr[1] ""
+"Η κρυπτογράφηση είναι ενεργοποιημένη αλλά %d αποθηκευμένο διαπιστευτήριο "
+"είναι ακόμα σε απλό κείμενο. Χρησιμοποιήστε την κρυπτογράφηση αποθηκευμένων "
+"διαπιστευτηρίων για να δοκιμάσετε ξανά.|Η κρυπτογράφηση είναι "
+"ενεργοποιημένη αλλά %d αποθηκευμένα διαπιστευτήρια είναι ακόμα σε απλό "
+"κείμενο. Χρησιμοποιήστε την κρυπτογράφηση αποθηκευμένων διαπιστευτηρίων για "
+"να δοκιμάσετε ξανά."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16237,17 +16440,23 @@ msgid_plural ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
 msgstr[0] ""
-msgstr[1] ""
+"Έχετε %d αποθηκευμένο διαπιστευτήριο σε απλό κείμενο. Η ενεργοποίηση της "
+"κρυπτογράφησης θα το κρυπτογραφήσει αυτόματα.|Έχετε %d αποθηκευμένα "
+"διαπιστευτήρια σε απλό κείμενο. Η ενεργοποίηση της κρυπτογράφησης θα τα "
+"κρυπτογραφήσει αυτόματα."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
 "Encryption is not enabled. Enable it in Cart → Settings → Maintenance or "
 "add define( 'PPCART_ENCRYPT_SECRETS', true ); to wp-config.php."
 msgstr ""
+"Η κρυπτογράφηση δεν είναι ενεργοποιημένη. Ενεργοποιήστε την στο Καλάθι → "
+"Ρυθμίσεις → Συντήρηση ή προσθέστε define( 'PPCART_ENCRYPT_SECRETS', true ); "
+"στο wp-config.php."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:122
 msgid "Encryption requires AUTH_KEY or PPCART_SECRETS_KEY in wp-config.php."
-msgstr ""
+msgstr "Η κρυπτογράφηση απαιτεί AUTH_KEY ή PPCART_SECRETS_KEY στο wp-config.php."
 
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-resume-subscription.php:19
 msgid "Canceled Stripe subscriptions cannot be resumed locally."
@@ -16267,12 +16476,14 @@ msgstr "Η συνδρομή Stripe δεν είναι συνδεδεμένη με
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
 msgstr ""
+"Αυτή η πληρωμή δεν μπόρεσε να επαληθευτεί. Παρακαλώ ανανεώστε τη σελίδα και "
+"δοκιμάστε ξανά."
 
 #: includes/stripe/templates/order-save.php:109
 #. translators: %s: order status.
 #, php-format
 msgid "%s order created."
-msgstr ""
+msgstr "%s παραγγελία δημιουργήθηκε."
 
 #: includes/stripe/templates/order-save.php:120
 msgid "Order complete."
@@ -16302,75 +16513,75 @@ msgstr "Ετικέτα"
 #. translators: %s: singular label.
 #, php-format
 msgid "Add New %s"
-msgstr ""
+msgstr "Προσθήκη Νέου %s"
 
 #: includes/templates/post-types-register-single-post-type.php:49
 #: includes/templates/post-types-register-single-taxonomy.php:20
 #. translators: %s: singular label.
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Επεξεργασία %s"
 
 #: includes/templates/post-types-register-single-post-type.php:54
 #. translators: %s: singular label.
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "Νέο %s"
 
 #: includes/templates/post-types-register-single-post-type.php:56
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found"
-msgstr ""
+msgstr "Δεν βρέθηκαν %s"
 
 #: includes/templates/post-types-register-single-post-type.php:58
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found in Trash"
-msgstr ""
+msgstr "Δεν βρέθηκαν %s στην Ανακύκλωση"
 
 #: includes/templates/post-types-register-single-post-type.php:60
 #. translators: %s: post type plural label
 #, php-format
 msgid "Parent %s :"
-msgstr ""
+msgstr "Γονέας %s :"
 
 #: includes/templates/post-types-register-single-post-type.php:62
 #: includes/templates/post-types-register-single-taxonomy.php:13
 #. translators: %s: plural label.
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "Αναζήτηση %s"
 
 #: includes/templates/post-types-register-single-post-type.php:65
 #. translators: %s: singular label.
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "Προβολή %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:16
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s"
-msgstr ""
+msgstr "Γονέας %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:18
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s:"
-msgstr ""
+msgstr "Γονέας %s:"
 
 #: includes/templates/post-types-register-single-taxonomy.php:22
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Update %s"
-msgstr ""
+msgstr "Ενημέρωση %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:26
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "New %s Name"
-msgstr ""
+msgstr "Νέο Όνομα %s"
 
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:37
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:38
@@ -16381,7 +16592,7 @@ msgstr "εγκεκριμένο"
 #. translators: %1$s: previous order status, %2$s: new order status
 #, php-format
 msgid "Order status updated from %1$s to %2$s"
-msgstr ""
+msgstr "Η κατάσταση της παραγγελίας ενημερώθηκε από %1$s σε %2$s"
 
 #: models/order/traits/templates/order-persistence-store.php:68
 msgid "Creating order."
@@ -16406,11 +16617,11 @@ msgstr "Λήψη Απόδειξης"
 #. translators: %s: subscription status
 #, php-format
 msgid "Subscription status updated to %s"
-msgstr ""
+msgstr "Η κατάσταση συνδρομής ενημερώθηκε σε %s"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:37
 msgid "This offer is no longer available."
-msgstr ""
+msgstr "Αυτή η προσφορά δεν είναι πλέον διαθέσιμη."
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:168
 #: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:176
@@ -16420,6 +16631,8 @@ msgstr ""
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:167
 msgid "This checkout could not be started. Please contact the site administrator."
 msgstr ""
+"Αυτή η ολοκλήρωση δεν μπόρεσε να ξεκινήσει. Παρακαλώ επικοινωνήστε με τον "
+"διαχειριστή της ιστοσελίδας."
 
 #: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:36
 #: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:31
@@ -16514,10 +16727,12 @@ msgid ""
 "The new card was saved, but some of your other subscriptions could not be "
 "updated. Please try again."
 msgstr ""
+"Η νέα κάρτα αποθηκεύτηκε, αλλά ορισμένες από τις άλλες συνδρομές σας δεν "
+"μπόρεσαν να ενημερωθούν. Παρακαλώ δοκιμάστε ξανά."
 
 #: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:86
 msgid "The new card was saved, but the payment failed: "
-msgstr ""
+msgstr "Η νέα κάρτα αποθηκεύτηκε, αλλά η πληρωμή απέτυχε: "
 
 #: public/controllers/order/traits/trait-ppcart-public-order-cart.php:74
 msgid "Your cart is empty."
@@ -16525,25 +16740,28 @@ msgstr "Το καλάθι σας είναι άδειο."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:201
 msgid "Processing payment…"
-msgstr ""
+msgstr "Επεξεργασία πληρωμής…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:202
 msgid "Your payment is being confirmed. This page will refresh automatically…"
-msgstr ""
+msgstr "Η πληρωμή σας επιβεβαιώνεται. Αυτή η σελίδα θα ανανεωθεί αυτόματα…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:218
 msgid "Payment processing"
-msgstr ""
+msgstr "Επεξεργασία πληρωμής"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:219
 msgid ""
 "We are still confirming your payment. You can leave this page open and "
 "refresh shortly, or check your email for a confirmation."
 msgstr ""
+"Ακόμα επιβεβαιώνουμε την πληρωμή σας. Μπορείτε να αφήσετε αυτή τη σελίδα "
+"ανοιχτή και να ανανεώσετε σύντομα, ή να ελέγξετε το email σας για μια "
+"επιβεβαίωση."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:221
 msgid "View order status"
-msgstr ""
+msgstr "Δείτε την κατάσταση της παραγγελίας"
 
 #: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Purchase"
@@ -16560,7 +16778,7 @@ msgstr "Η προετοιμασία πληρωμής δεν είναι διαθ�
 #: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:74
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:117
 msgid "There was an error, please try again."
-msgstr ""
+msgstr "Υπήρξε σφάλμα, παρακαλώ δοκιμάστε ξανά."
 
 #: public/controllers/templates/ga-purchase-tracking.php:112
 #: public/controllers/templates/ga-purchase-tracking.php:165
@@ -16571,13 +16789,15 @@ msgstr "Προσαρμοσμένο πρόσθετο"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:37
 msgid "Hosted Checkout is not enabled."
-msgstr ""
+msgstr "Η φιλοξενούμενη ολοκλήρωση δεν είναι ενεργοποιημένη."
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:184
 msgid ""
 "This subscription is not ready for checkout, please contact the site "
 "administrator."
 msgstr ""
+"Αυτή η συνδρομή δεν είναι έτοιμη για ολοκλήρωση, παρακαλώ επικοινωνήστε με "
+"τον διαχειριστή της ιστοσελίδας."
 
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:37
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:82
@@ -16593,7 +16813,7 @@ msgstr "Δεν έχετε άδεια πρόσβασης σε αυτή τη συ�
 msgid "My Account"
 msgstr "Ο Λογαριασμός Μου"
 
-#: public/partials/csv-export.php:157
+#: public/partials/csv-export.php:157, fuzzy
 msgid "ID"
 msgstr "ID"
 
@@ -16686,6 +16906,12 @@ msgid ""
 "data-testid=\"ppcart-checkout-stripe-test-card-link\">Find a test card for "
 "another country</a>."
 msgstr ""
+"ΕΝΕΡΓΟΠΟΙΗΘΗΚΕ Η ΛΕΙΤΟΥΡΓΙΑ ΔΟΚΙΜΗΣ: Για να κάνετε μια δοκιμαστική (ΗΠΑ) "
+"αγορά, χρησιμοποιήστε τον αριθμό πιστωτικής κάρτας \"4242424242424242\" με "
+"οποιοδήποτε CVC και μια έγκυρη ημερομηνία λήξης. <a href=\"%s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\" "
+"data-testid=\"ppcart-checkout-stripe-test-card-link\">Βρείτε μια κάρτα "
+"δοκιμής για άλλη χώρα</a>."
 
 #: public/templates/functions/payment-address.php:85
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:104
@@ -16723,11 +16949,11 @@ msgstr "Πληροφορίες Επικοινωνίας"
 
 #: public/templates/functions/summary-and-scripts.php:142
 msgid "terms and conditions"
-msgstr ""
+msgstr "όροι και προϋποθέσεις"
 
 #: public/templates/functions/summary-and-scripts.php:161
 msgid "privacy policy"
-msgstr ""
+msgstr "πολιτική απορρήτου"
 
 #: public/templates/my-account/card-details.php:24
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:92
@@ -16761,7 +16987,7 @@ msgstr "Ημερομηνία λήξης"
 
 #: public/templates/my-account/forms/change-card.php:57
 msgid "Set default for all active subscriptions"
-msgstr ""
+msgstr "Ορισμός προεπιλογής για όλες τις ενεργές συνδρομές"
 
 #: public/templates/my-account/forms/change-card.php:65
 msgid "Pay Now and Save Card"
@@ -16948,7 +17174,7 @@ msgstr "Εμφανίζεται όταν δεν υπάρχουν διαθέσιμ
 #: includes/integrations/gutenberg/blocks/account-login/block.js:21
 #: includes/integrations/gutenberg/blocks/account-profile/block.js:9
 #: includes/integrations/gutenberg/blocks/_shared/list-controls.js:71
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Style"
 msgstr "Style"
 
@@ -16961,7 +17187,7 @@ msgid "Preset style"
 msgstr "Πρόεδρος Χάιες"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.js:33
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Card / Minimal / Dashboard / Folder."
 msgstr "Card / Minimal / Dashboard / Folder."
 
@@ -18047,22 +18273,22 @@ msgid "Medium (500)"
 msgstr "Μεσαίο"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:50
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Semibold (600)"
 msgstr "Semibold (600)"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:51
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Bold (700)"
 msgstr "Bold (700)"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:55
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "S"
 msgstr "S"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:56
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "M"
 msgstr "M"
 
@@ -18073,12 +18299,12 @@ msgid "L"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:58
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XL"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:59
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XXL"
 msgstr "XXL"
 
@@ -18310,10 +18536,10 @@ msgstr "Θέση Εικονιδίου"
 
 #: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
-#, php-format
+#, fuzzy, php-format
 msgctxt "date range"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:162
 #. translators: 1: current page, 2: total pages.
@@ -18329,24 +18555,24 @@ msgstr "Γεωργία"
 
 #: includes/functions/merge-tags-and-dates.php:143
 #. translators: 1: product name, 2: plan name.
-#, php-format
+#, fuzzy, php-format
 msgctxt "product and plan"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: public/templates/functions/summary-and-scripts.php:141
 #. translators: %s: terms and conditions link.
 #, php-format
 msgctxt "terms and conditions"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "Έχω διαβάσει και αποδέχομαι τους %s"
 
 #: public/templates/functions/summary-and-scripts.php:160
 #. translators: %s: privacy policy link.
 #, php-format
 msgctxt "privacy policy"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "Έχω διαβάσει και αποδέχομαι την %s"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.json
 #, fuzzy

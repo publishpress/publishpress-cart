@@ -10,16 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-13 22:09+0000\n"
+"PO-Revision-Date: 2026-10-14 01:36+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "Language: ja\n"
 
 #: publishpress-cart.php:16
 #. Plugin Name of the plugin
 msgid "PublishPress Cart - eCommerce for Digital Products"
-msgstr ""
+msgstr "PublishPress Cart - デジタル商品のためのeCommerce"
 
 #: publishpress-cart.php:17
 #. Plugin URI of the plugin
@@ -31,7 +30,7 @@ msgstr "https://publishpress.com/publishpress-cart/"
 msgid ""
 "Create order pages and simplified sales flow creation that helps you sell "
 "digital products, programs, and services."
-msgstr ""
+msgstr "デジタル商品、プログラム、サービスを販売するのに役立つ注文ページと簡素化された販売フローの作成。"
 
 #: publishpress-cart.php:20
 #: admin/partials/settings-page/tabs/topbar.php:8
@@ -82,7 +81,7 @@ msgstr "顧客"
 
 #: admin/class-ppcart-contacts-page.php:165
 msgid "Export Customers"
-msgstr ""
+msgstr "顧客をエクスポート"
 
 #: admin/class-ppcart-contacts-page.php:169
 #: admin/reports/templates/customer-report/page.php:87
@@ -149,7 +148,7 @@ msgid "Name"
 msgstr "名前"
 
 #: admin/class-ppcart-contacts-page.php:192
-#: admin/reports/templates/customer-report/page.php:93
+#: admin/reports/templates/customer-report/page.php:93, fuzzy
 msgid "LTV"
 msgstr "LTV"
 
@@ -160,23 +159,23 @@ msgstr "最終注文日"
 
 #: admin/class-ppcart-contacts-page.php:224
 msgid "Search customers"
-msgstr ""
+msgstr "顧客を検索"
 
 #: admin/class-ppcart-contacts-page.php:225
 msgid "Show _MENU_ customers"
-msgstr ""
+msgstr "_MENU_ 顧客を表示"
 
 #: admin/class-ppcart-contacts-page.php:226
 msgid "_START_ - _END_ of _TOTAL_ customers"
-msgstr ""
+msgstr "_START_ - _END_ の _TOTAL_ 顧客"
 
 #: admin/class-ppcart-contacts-page.php:227
 msgid "No customers found"
-msgstr ""
+msgstr "顧客が見つかりませんでした"
 
 #: admin/class-ppcart-contacts-page.php:228
 msgid "No matching customers found"
-msgstr ""
+msgstr "一致する顧客が見つかりませんでした"
 
 #: admin/class-ppcart-extension-page.php:81
 #: admin/class-ppcart-extension-page.php:82
@@ -215,7 +214,7 @@ msgstr "顧客＆請求情報"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:49
 msgid "Studiocart custom tracking scripts are not available in PublishPress Cart."
-msgstr ""
+msgstr "StudiocartのカスタムトラッキングスクリプトはPublishPress Cartでは利用できません。"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:50
 msgid ""
@@ -223,20 +222,22 @@ msgid ""
 "Leftover tracking code on these products is kept in post meta for reference "
 "and is not executed."
 msgstr ""
+"これらは構造化されたMeta PixelおよびGoogle "
+"Analyticsイベントに置き換えられます。これらの製品に残ったトラッキングコードは、参照のために投稿メタに保持され、実行されません。"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:51
 msgid "Affected products:"
-msgstr ""
+msgstr "影響を受けた製品："
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:61
 msgid "Review analytics settings"
-msgstr ""
+msgstr "分析設定を確認"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:62
 #: admin/traits/templates/notices-admin-notices.php:111
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:56
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "この通知を閉じる"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:76
 msgid "Shortcode"
@@ -351,27 +352,27 @@ msgstr "ステータスをキャンセルに更新"
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:176
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
-msgstr ""
+msgstr "Stripeと同期"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:207
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
-msgstr[0] ""
+msgstr[0] "%s 件のサブスクリプションがStripeから同期されました。"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
-msgstr[0] ""
+msgstr[0] "%s 件のサブスクリプションが失敗しました; 理由についてはそのサブスクリプションログを確認してください。"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
-msgstr ""
+msgstr "各実行は、限られた数のサブスクリプションを同期します。残りを選択し、再度実行して続行してください。"
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:44
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:51
@@ -393,11 +394,11 @@ msgstr "未認証です。"
 #. translators: %s: active payment processors list.
 #, php-format
 msgid "Cart - Test Mode Active (%1$s)"
-msgstr ""
+msgstr "カート - テストモードがアクティブ (%1$s)"
 
 #: admin/controllers/class-ppcart-admin-test-mode-notice-controller.php:101
 msgid "Open PublishPress Cart payment settings"
-msgstr ""
+msgstr "PublishPress Cartの支払い設定を開く"
 
 #: admin/controllers/order/templates/product-form.php:45
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:37
@@ -599,14 +600,14 @@ msgstr "親注文"
 
 #: admin/controllers/order/templates/product-form.php:574
 msgid "Child Order"
-msgstr ""
+msgstr "子注文"
 
 #: admin/controllers/order/templates/product-info-metabox.php:48
 msgid "Stripe payment"
 msgstr "Stripe 支払い"
 
 #: admin/controllers/order/templates/product-info-metabox.php:51
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:32
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:32, fuzzy
 msgid "Stripe ID:"
 msgstr "Stripe ID:"
 
@@ -615,7 +616,7 @@ msgid "PayPal payment"
 msgstr "PayPal 支払い"
 
 #: admin/controllers/order/templates/product-info-metabox.php:58
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:39
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:39, fuzzy
 msgid "PayPal ID:"
 msgstr "PayPal ID:"
 
@@ -750,7 +751,7 @@ msgid "Guest"
 msgstr "ゲスト"
 
 #: admin/controllers/order/templates/product-info-metabox.php:210
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170, fuzzy
 msgid "URL"
 msgstr "URL"
 
@@ -913,7 +914,7 @@ msgstr "エラー"
 #: admin/traits/templates/integrations-ppcart-mailchimp-groups-tags.php:15
 #: admin/traits/trait-ppcart-admin-integrations.php:132
 msgid "You do not have permission to perform this action."
-msgstr ""
+msgstr "このアクションを実行する権限がありません。"
 
 #: admin/controllers/order/traits/templates/order-ajax-product-plan-options-html.php:11
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:15
@@ -1024,7 +1025,7 @@ msgstr "キャンセル保留中"
 msgid ""
 "Refresh status and next bill date from Stripe, and import any invoices "
 "missing from the order history"
-msgstr ""
+msgstr "Stripeからのステータスと次の請求日を更新し、注文履歴から欠落している請求書をインポートします"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:147
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:29
@@ -1177,13 +1178,13 @@ msgstr "定期購読と請求書は正常に同期されました。"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:48
 msgid "Subscription synced from Stripe by admin"
-msgstr ""
+msgstr "管理者によってStripeから同期されたサブスクリプション"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:52
 #. translators: %s: error message.
 #, php-format
 msgid "Error syncing subscription from Stripe! Message: %s"
-msgstr ""
+msgstr "Stripeからのサブスクリプションの同期中にエラーが発生しました！ メッセージ: %s"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:77
 msgid ""
@@ -1227,7 +1228,7 @@ msgstr "保留中"
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "保留中 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1240,14 +1241,14 @@ msgstr "支払い済み"
 #, php-format
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "支払い済み <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
 #, php-format
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "返金済み <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1259,7 +1260,7 @@ msgstr "失敗"
 #, php-format
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "失敗 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1274,7 +1275,7 @@ msgstr "期限切れ"
 #, php-format
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "期限切れ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1286,7 +1287,7 @@ msgstr "回収不能"
 #, php-format
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "回収不能 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1303,7 +1304,7 @@ msgstr "アクティブ"
 #, php-format
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "アクティブ <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1315,7 +1316,7 @@ msgstr "未払い"
 #, php-format
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "未払い <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1330,14 +1331,14 @@ msgstr "一時停止"
 #, php-format
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "一時停止中 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
 #, php-format
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "キャンセル済み <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1350,7 +1351,7 @@ msgstr "完了"
 #, php-format
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "完了 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1362,7 +1363,7 @@ msgstr "未完了"
 #, php-format
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "未完了 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1374,7 +1375,7 @@ msgstr "トライアル中"
 #, php-format
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "トライアル中 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -1505,7 +1506,7 @@ msgstr "サポートとドキュメント"
 #. translators: 1: opening link tag, 2: closing link tag.
 #, php-format
 msgid "Visit our %1$sdocumentation%2$s for help."
-msgstr ""
+msgstr "ヘルプについては、%1$sドキュメント%2$sをご覧ください。"
 
 #: admin/dashboard/class-ppcart-dashboard-widget.php:36
 #. translators: %s: plugin title.
@@ -1529,7 +1530,7 @@ msgstr "メッセージを表示"
 
 #: admin/metaboxes/field-groups/message-fields.php:18
 msgid "Display Page"
-msgstr ""
+msgstr "ページを表示"
 
 #: admin/metaboxes/field-groups/message-fields.php:19
 msgid "Perform Redirect"
@@ -1554,7 +1555,7 @@ msgstr "感謝のページのURL"
 
 #: admin/metaboxes/field-groups/message-fields.php:76
 msgid "Preview & send test email"
-msgstr ""
+msgstr "プレビューとテストメールを送信"
 
 #: admin/metaboxes/field-groups/message-fields.php:84
 msgid "Disable Order Received Confirmation email"
@@ -1645,7 +1646,7 @@ msgstr "送信者メール"
 msgid "Reply To"
 msgstr "返信先"
 
-#: admin/metaboxes/field-groups/message-fields.php:243
+#: admin/metaboxes/field-groups/message-fields.php:243, fuzzy
 msgid "Bcc"
 msgstr "Bcc"
 
@@ -1662,23 +1663,23 @@ msgstr "件名"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:12
 msgid "Checkout starts"
-msgstr ""
+msgstr "チェックアウト開始"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:22
 msgid "Checkout ends"
-msgstr ""
+msgstr "チェックアウト終了"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:32
 msgid "When checkout ended"
-msgstr ""
+msgstr "チェックアウトが終了したとき"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:45
 msgid "Checkout ended redirect URL"
-msgstr ""
+msgstr "チェックアウト終了リダイレクトURL"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:58
 msgid "Checkout ended message"
-msgstr ""
+msgstr "チェックアウト終了メッセージ"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:59
 #: public/templates/functions/checkout-core.php:373
@@ -1879,62 +1880,62 @@ msgstr "頻度"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:146
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:178
 msgid "Every"
-msgstr ""
+msgstr "毎"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:147
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:179
 msgid "Every 2nd"
-msgstr ""
+msgstr "毎第2"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:148
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:180
 msgid "Every 3rd"
-msgstr ""
+msgstr "毎第3"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:149
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:181
 msgid "Every 4th"
-msgstr ""
+msgstr "毎第4"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:150
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:182
 msgid "Every 5th"
-msgstr ""
+msgstr "毎第5"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:151
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:183
 msgid "Every 6th"
-msgstr ""
+msgstr "毎第6"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:152
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:184
 msgid "Every 7th"
-msgstr ""
+msgstr "毎第7"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:153
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:185
 msgid "Every 8th"
-msgstr ""
+msgstr "毎第8"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:154
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:186
 msgid "Every 9th"
-msgstr ""
+msgstr "毎第9"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:155
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:187
 msgid "Every 10th"
-msgstr ""
+msgstr "毎第10"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:156
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:188
 msgid "Every 11th"
-msgstr ""
+msgstr "毎第11"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:157
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:189
 msgid "Every 12th"
-msgstr ""
+msgstr "毎第12"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:173
 msgid "Frequency (On Sale)"
@@ -1949,22 +1950,22 @@ msgstr "支払い間隔"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:210
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:234
 msgid "Day"
-msgstr ""
+msgstr "日"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:211
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:235
 msgid "Week"
-msgstr ""
+msgstr "週"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:212
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:236
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:213
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:237
 msgid "Year"
-msgstr ""
+msgstr "年"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:229
 msgid "Pay Interval (On Sale)"
@@ -2030,7 +2031,7 @@ msgstr "任意"
 msgid "Method"
 msgstr "方法"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-01.php:85
+#: admin/metaboxes/traits/templates/integration-fields/fields-01.php:85, fuzzy
 msgid "Webhook URL"
 msgstr "Webhook URL"
 
@@ -2057,6 +2058,8 @@ msgid ""
 "Put each field pair on a separate line and use a colon (\":\") to separate "
 "the field key from the field value. For example: field_key:ppcart_field_id"
 msgstr ""
+"各フィールドペアを別の行に配置し、フィールドキーとフィールド値をコロン（\":\"）で区切ってください。例えば：field_key:ppcart_"
+"field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-01.php:163
 #: admin/metaboxes/traits/templates/integration-fields/fields-03.php:86
@@ -2102,6 +2105,8 @@ msgid ""
 "the ActiveCampaign personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"各フィールドペアを別の行に配置し、ActiveCampaignパーソナライゼーショントークンとフィールド値をコロン（\":\""
+"）で区切ってください。例えば：%TAG%:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-02.php:89
 msgid "SendFox List"
@@ -2243,7 +2248,7 @@ msgstr "メインバンプ"
 #. translators: 1: bump number, 2: product title.
 #, php-format
 msgid "Add'l Bump %1$d (%2$s)"
-msgstr ""
+msgstr "追加バンプ %1$d (%2$s)"
 
 #: admin/metaboxes/traits/templates/product-metabox-plan-options-get-payment-plans.php:28
 msgid "(on sale)"
@@ -2319,7 +2324,7 @@ msgstr "統合"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:16
 msgid "Product notification"
-msgstr ""
+msgstr "商品通知"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
@@ -2331,15 +2336,15 @@ msgstr "メールプレビュー"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:23
 msgid "This notification is currently disabled. Preview and test email still work."
-msgstr ""
+msgstr "この通知は現在無効です。プレビューとテストメールは引き続き機能します。"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:32
 msgid "Send test to"
-msgstr ""
+msgstr "テストを送信先"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:34
 msgid "Send test email"
-msgstr ""
+msgstr "テストメールを送信"
 
 #: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:12
 msgid "this product"
@@ -2439,7 +2444,7 @@ msgstr "サブスクリプション更新に失敗しました"
 #: includes/integrations/templates/cancel-subscription-plan-data.php:10
 #: includes/integrations/templates/cancel-subscription-plan-data.php:22
 msgid "No plans found"
-msgstr ""
+msgstr "プランが見つかりませんでした"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:29
 #: includes/helpers/pro-locks/product-locks.php:56
@@ -2555,7 +2560,7 @@ msgstr "ヘッダー背景画像"
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:24
 #: public/partials/csv-export.php:351
 msgid "Until canceled"
-msgstr ""
+msgstr "キャンセルされるまで"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:26
 msgid " payments"
@@ -2842,7 +2847,7 @@ msgstr "デバッグ"
 
 #: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
-msgstr ""
+msgstr "メンテナンス"
 
 #: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:101
@@ -2899,7 +2904,7 @@ msgstr "診断ログを有効にし、デバッグログツールにアクセス
 
 #: admin/partials/settings-page/metadata.php:66
 msgid "Operational tools including security encryption and credential migration."
-msgstr ""
+msgstr "セキュリティ暗号化や資格情報移行を含む運用ツール。"
 
 #: admin/partials/settings-page/metadata.php:71
 msgid "Configure store options that do not belong in the main setup tabs."
@@ -2922,7 +2927,7 @@ msgid "More"
 msgstr "もっと見る"
 
 #: admin/partials/settings-page/metadata.php:107
-#: admin/settings/traits/templates/settings-sections-integrations.php:8
+#: admin/settings/traits/templates/settings-sections-integrations.php:8, fuzzy
 msgid "ActiveCampaign"
 msgstr "ActiveCampaign"
 
@@ -2931,7 +2936,7 @@ msgid "Sync customers and purchases to ActiveCampaign."
 msgstr "顧客と購入をActiveCampaignに同期します。"
 
 #: admin/partials/settings-page/metadata.php:116
-#: admin/settings/traits/templates/settings-sections-integrations.php:9
+#: admin/settings/traits/templates/settings-sections-integrations.php:9, fuzzy
 msgid "Mailchimp"
 msgstr "Mailchimp"
 
@@ -2948,7 +2953,7 @@ msgid "Send customers and purchases to Kit forms and tags."
 msgstr "顧客と購入をキットのフォームとタグに送信します。"
 
 #: admin/partials/settings-page/metadata.php:134
-#: admin/settings/traits/templates/settings-sections-integrations.php:11
+#: admin/settings/traits/templates/settings-sections-integrations.php:11, fuzzy
 msgid "MemberVault"
 msgstr "MemberVault"
 
@@ -2957,7 +2962,7 @@ msgid "Protect content and manage members with MemberVault."
 msgstr "MemberVaultを使用してコンテンツを保護し、メンバーを管理します。"
 
 #: admin/partials/settings-page/metadata.php:143
-#: admin/settings/traits/templates/settings-sections-integrations.php:12
+#: admin/settings/traits/templates/settings-sections-integrations.php:12, fuzzy
 msgid "SendFox"
 msgstr "SendFox"
 
@@ -2974,6 +2979,8 @@ msgid ""
 "Send Cart events to an existing Meta Pixel installation. PublishPress Cart "
 "does not install or connect the pixel script."
 msgstr ""
+"既存のMeta Pixelインストールにカートイベントを送信します。PublishPress "
+"Cartはピクセルスクリプトをインストールまたは接続しません。"
 
 #: admin/partials/settings-page/metadata.php:161
 msgid "Google Analytics"
@@ -2985,8 +2992,10 @@ msgid ""
 "installation. PublishPress Cart does not install or connect the analytics "
 "script."
 msgstr ""
+"既存のGoogle AnalyticsまたはGoogle Tag Managerインストールにカートイベントを送信します。PublishPress "
+"Cartは分析スクリプトをインストールまたは接続しません。"
 
-#: admin/partials/settings-page/metadata.php:170
+#: admin/partials/settings-page/metadata.php:170, fuzzy
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
@@ -2994,7 +3003,7 @@ msgstr "Google reCAPTCHA"
 msgid "Protect checkout forms from spam and bot submissions."
 msgstr "スパムやボットの送信からチェックアウトフォームを保護します。"
 
-#: admin/partials/settings-page/metadata.php:178
+#: admin/partials/settings-page/metadata.php:178, fuzzy
 msgid "Google reCAPTCHA v2"
 msgstr "Google reCAPTCHA v2"
 
@@ -3002,7 +3011,7 @@ msgstr "Google reCAPTCHA v2"
 msgid "Configure checkbox or invisible reCAPTCHA v2 protection."
 msgstr "チェックボックスまたは非表示の reCAPTCHA v2 保護を設定します。"
 
-#: admin/partials/settings-page/metadata.php:187
+#: admin/partials/settings-page/metadata.php:187, fuzzy
 msgid "Google reCAPTCHA v3"
 msgstr "Google reCAPTCHA v3"
 
@@ -3010,7 +3019,7 @@ msgstr "Google reCAPTCHA v3"
 msgid "Configure score-based reCAPTCHA v3 protection."
 msgstr "スコアベースの reCAPTCHA v3 保護を設定します。"
 
-#: admin/partials/settings-page/metadata.php:196
+#: admin/partials/settings-page/metadata.php:196, fuzzy
 msgid "Drip"
 msgstr "Drip"
 
@@ -3018,7 +3027,7 @@ msgstr "Drip"
 msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "顧客、タグ、eコマース活動を Drip に同期します。"
 
-#: admin/partials/settings-page/metadata.php:205
+#: admin/partials/settings-page/metadata.php:205, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
@@ -3027,7 +3036,7 @@ msgid "Add customers to MailerLite subscribers and groups."
 msgstr "顧客を MailerLite の購読者およびグループに追加します。"
 
 #: admin/partials/settings-page/metadata.php:214
-#: admin/settings/traits/templates/settings-sections-integrations.php:10
+#: admin/settings/traits/templates/settings-sections-integrations.php:10, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
@@ -3035,7 +3044,7 @@ msgstr "MailPoet"
 msgid "Add customers to MailPoet lists."
 msgstr "顧客を MailPoet のリストに追加します。"
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:222, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
@@ -3043,7 +3052,7 @@ msgstr "Encharge"
 msgid "Track order events and sync customers to Encharge."
 msgstr "注文イベントを追跡し、顧客を Encharge に同期します。"
 
-#: admin/partials/settings-page/metadata.php:232
+#: admin/partials/settings-page/metadata.php:232, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
@@ -3051,7 +3060,7 @@ msgstr "FluentCRM"
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "顧客を FluentCRM のリストとタグに追加します。"
 
-#: admin/partials/settings-page/metadata.php:240
+#: admin/partials/settings-page/metadata.php:240, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
@@ -3059,7 +3068,7 @@ msgstr "Academy LMS"
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "アカデミーLMSコースに学生を登録または削除します。"
 
-#: admin/partials/settings-page/metadata.php:248
+#: admin/partials/settings-page/metadata.php:248, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
@@ -3067,7 +3076,7 @@ msgstr "Gurucan"
 msgid "Add or remove customers in Gurucan products."
 msgstr "Gurucan製品に顧客を追加または削除します。"
 
-#: admin/partials/settings-page/metadata.php:257
+#: admin/partials/settings-page/metadata.php:257, fuzzy
 msgid "Heartbeat"
 msgstr "Heartbeat"
 
@@ -3075,7 +3084,7 @@ msgstr "Heartbeat"
 msgid "Manage community access in Heartbeat."
 msgstr "Heartbeatのコミュニティアクセスを管理します。"
 
-#: admin/partials/settings-page/metadata.php:266
+#: admin/partials/settings-page/metadata.php:266, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
@@ -3083,7 +3092,7 @@ msgstr "Kajabi"
 msgid "Enable Kajabi purchase automations."
 msgstr "Kajabiの購入自動化を有効にします。"
 
-#: admin/partials/settings-page/metadata.php:275
+#: admin/partials/settings-page/metadata.php:275, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
@@ -3091,7 +3100,7 @@ msgstr "Teachable"
 msgid "Enroll customers into Teachable schools and products."
 msgstr "Teachableの学校や製品に顧客を登録します。"
 
-#: admin/partials/settings-page/metadata.php:284
+#: admin/partials/settings-page/metadata.php:284, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
@@ -3099,7 +3108,7 @@ msgstr "Upcoach"
 msgid "Grant customers access to Upcoach programs."
 msgstr "Upcoachプログラムへの顧客アクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:293
+#: admin/partials/settings-page/metadata.php:293, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
@@ -3107,7 +3116,7 @@ msgstr "Tutor LMS"
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Tutor LMSコースに学生を登録または削除します。"
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:301, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
@@ -3115,7 +3124,7 @@ msgstr "LearnDash"
 msgid "Grant or revoke LearnDash course access."
 msgstr "LearnDashコースへのアクセスを付与または取り消します。"
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
@@ -3123,7 +3132,7 @@ msgstr "WP Courseware"
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "購入後のWP Coursewareの登録を管理します。"
 
-#: admin/partials/settings-page/metadata.php:317
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
@@ -3139,7 +3148,7 @@ msgstr "グループ"
 msgid "Add or remove customers from WordPress Groups."
 msgstr "WordPressグループから顧客を追加または削除します。"
 
-#: admin/partials/settings-page/metadata.php:333
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
@@ -3147,7 +3156,7 @@ msgstr "MemberPress"
 msgid "Grant customers MemberPress membership access."
 msgstr "顧客にMemberPressメンバーシップアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
@@ -3155,7 +3164,7 @@ msgstr "ARMember"
 msgid "Grant customers ARMember plan access."
 msgstr "顧客にARMemberプランアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
@@ -3163,7 +3172,7 @@ msgstr "WishList Member"
 msgid "Grant customers WishList Member level access."
 msgstr "顧客にWishList Memberレベルアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:357
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
@@ -3171,7 +3180,7 @@ msgstr "Restrict Content Pro"
 msgid "Grant customers Restrict Content Pro access."
 msgstr "顧客にRestrict Content Proアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:365
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
@@ -3179,7 +3188,7 @@ msgstr "Ultimate Member"
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "新しい顧客にUltimate Memberの歓迎メールを送信します。"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:374, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -3187,7 +3196,7 @@ msgstr "Elementor"
 msgid "Choose Elementor templates for checkout components."
 msgstr "チェックアウトコンポーネントのためにElementorテンプレートを選択します。"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:382, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
@@ -3195,7 +3204,7 @@ msgstr "Divi"
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "Diviレイアウト内でPublishPress Cart注文フォームを使用します。"
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
@@ -3203,7 +3212,7 @@ msgstr "Oxygen Builder"
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Oxygen BuilderでPublishPress Cart条件を使用します。"
 
-#: admin/partials/settings-page/metadata.php:398
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
@@ -3241,7 +3250,7 @@ msgstr "注文を返金する"
 msgid "Refund an existing order as an order automation."
 msgstr "既存の注文を注文の自動化として返金します。"
 
-#: admin/partials/settings-page/metadata.php:442
+#: admin/partials/settings-page/metadata.php:442, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
@@ -3321,7 +3330,7 @@ msgstr "管理"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:53
 #: includes/functions/payment-and-locale-lists.php:35
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:22
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
@@ -3339,7 +3348,7 @@ msgstr "Stripeを介してクレジットカードやその他の支払いを安
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
 #: includes/helpers/pro-locks/product-locks.php:45
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
-#: public/paypal/traits/trait-ppcart-paypal-settings.php:88
+#: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
@@ -3611,7 +3620,7 @@ msgstr "検索設定"
 
 #: admin/partials/settings-page/tabs/topbar.php:16
 msgid "Search settings..."
-msgstr ""
+msgstr "検索設定..."
 
 #: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
@@ -3621,7 +3630,7 @@ msgstr "のパフォーマンスサマリー %s"
 
 #: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
-msgstr ""
+msgstr "日付範囲"
 
 #: admin/reports/templates/admin-reports-page.php:83
 msgid "Select date range"
@@ -3629,24 +3638,24 @@ msgstr "日付範囲を選択"
 
 #: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
-msgstr ""
+msgstr "名前またはメールで顧客を検索"
 
 #: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
-msgstr ""
+msgstr "名前またはメールで検索"
 
 #: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
-msgstr ""
+msgstr "商品を検索"
 
 #: admin/reports/templates/admin-reports-page.php:110
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:97
 msgid "All products"
-msgstr ""
+msgstr "すべての商品"
 
 #: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
-msgstr ""
+msgstr "注文またはサブスクリプションの主要製品によるフィルタ"
 
 #: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
@@ -3655,7 +3664,7 @@ msgstr "適用"
 
 #: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
-msgstr ""
+msgstr "フィルタをクリア"
 
 #: admin/reports/templates/admin-reports-page.php:122
 #: admin/reports/templates/customer-reports-page.php:85
@@ -3666,7 +3675,7 @@ msgstr "注文をエクスポート"
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
-msgstr ""
+msgstr "製品フィルタは、各注文またはサブスクリプションの主要製品に一致し、バンプやアップセルのラインアイテムには一致しません。"
 
 #: admin/reports/templates/admin-reports-page.php:352
 #: includes/order-items/order-details-renderer.php:67
@@ -3709,7 +3718,7 @@ msgstr "顧客生涯価値"
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
-msgstr ""
+msgstr "すべての時間の平均：%sの一致する顧客"
 
 #: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
@@ -3736,7 +3745,7 @@ msgstr "取引"
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
-msgstr ""
+msgstr "%1$s 新規, %2$s 更新"
 
 #: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
@@ -3855,7 +3864,7 @@ msgstr "チェックアウト活動が記録された後、ここに支払いト
 
 #: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
-msgstr ""
+msgstr "注文タイプ別"
 
 #: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
@@ -4085,31 +4094,31 @@ msgstr "不明な製品"
 msgid ""
 "Stripe needs a temporary restricted key with %s. We use it once, install "
 "the endpoint, and never store it."
-msgstr ""
+msgstr "Stripeには、一時的な制限されたキーが必要です：%s。1回使用し、エンドポイントをインストールし、決して保存しません。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:29
 msgid "Webhook endpoints: Write"
-msgstr ""
+msgstr "Webhookエンドポイント：書き込み"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:33
 msgid "Temporary Stripe key"
-msgstr ""
+msgstr "一時的なStripeキー"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:45
 msgid "Install webhook"
-msgstr ""
+msgstr "Webhookをインストール"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:51
 msgid "Create the key in Stripe"
-msgstr ""
+msgstr "Stripeでキーを作成"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:54
 msgid "I want to set it up in Stripe myself"
-msgstr ""
+msgstr "自分でStripeに設定したい"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:64
 msgid "Create an endpoint in Stripe with this URL:"
-msgstr ""
+msgstr "このURLでStripeにエンドポイントを作成："
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:69
 #. translators: %d: number of Stripe events.
@@ -4117,11 +4126,11 @@ msgstr ""
 msgid ""
 "Select the %d events listed in our documentation, then paste that endpoint "
 "signing secret:"
-msgstr ""
+msgstr "ドキュメントに記載されている%dのイベントを選択し、そのエンドポイント署名シークレットを貼り付けてください："
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:73
 msgid "Signing secret"
-msgstr ""
+msgstr "署名シークレット"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:85
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:13
@@ -4131,51 +4140,51 @@ msgstr "保存"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:23
 msgid "Add a Stripe secret key for this mode first."
-msgstr ""
+msgstr "このモードのために先にStripeのシークレットキーを追加してください。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:37
 #. translators: %s: local webhook URL.
 #, php-format
 msgid "Stripe cannot reach a local address. Forward events with Stripe CLI to %s"
-msgstr ""
+msgstr "Stripeはローカルアドレスにアクセスできません。Stripe CLIでイベントを%sに転送します"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:90
 msgid "Some events are missing, so parts of your store will not update."
-msgstr ""
+msgstr "いくつかのイベントが欠落しているため、店舗の一部が更新されません。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:103
 msgid ""
 "This account does not let us re-check the endpoint, so no live status is "
 "shown."
-msgstr ""
+msgstr "このアカウントではエンドポイントを再確認することができないため、ライブステータスは表示されません。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
-msgstr ""
+msgstr "Webhookチェックに失敗しました：%s"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:9
 msgid "You are not allowed to configure Stripe webhooks."
-msgstr ""
+msgstr "StripeのWebhookを構成することは許可されていません。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:34
 msgid ""
 "That key does not look like a Stripe key for the selected mode. Copy a "
 "restricted key that starts with rk_, or a secret key that starts with sk_."
-msgstr ""
+msgstr "そのキーは、選択したモードのStripeキーには見えません。rk_で始まる制限されたキーまたはsk_で始まるシークレットキーをコピーしてください。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:44
 msgid ""
 "Webhook is active and the signing secret is saved. The key you pasted was "
 "not stored, so you can delete it in Stripe now."
-msgstr ""
+msgstr "Webhookはアクティブで、署名シークレットが保存されました。貼り付けたキーは保存されなかったので、今Stripeで削除できます。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:49
 msgid ""
 "Webhook events were updated. The key you pasted was not stored, so you can "
 "delete it in Stripe now."
-msgstr ""
+msgstr "Webhookイベントが更新されました。貼り付けたキーは保存されなかったので、今Stripeで削除できます。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:56
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:47
@@ -4184,22 +4193,24 @@ msgid ""
 "secret. Open the endpoint in your Stripe Dashboard, copy the signing "
 "secret, and paste it below."
 msgstr ""
+"そのWebhookエンドポイントはすでに存在しているため、Stripeは署名シークレットを返しませんでした。Stripeダッシュボードでエンドポイントを"
+"開き、署名シークレットをコピーして、以下に貼り付けてください。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:69
 msgid ""
 "A Stripe signing secret starts with whsec_. Copy it again from the webhook "
 "endpoint in your Stripe Dashboard."
-msgstr ""
+msgstr "Stripeの署名シークレットはwhsec_で始まります。StripeダッシュボードのWebhookエンドポイントから再度コピーしてください。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:77
 msgid ""
 "Signing secret saved. Send a test event from Stripe to confirm that your "
 "site accepts it."
-msgstr ""
+msgstr "署名シークレットが保存されました。Stripeからテストイベントを送信して、サイトがそれを受け入れることを確認してください。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:83
 msgid "Paste a Stripe key or a signing secret before you save."
-msgstr ""
+msgstr "保存する前にStripeキーまたは署名シークレットを貼り付けてください。"
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:30
 msgid ""
@@ -4207,6 +4218,8 @@ msgid ""
 "restricted key with Webhook endpoints: Write, or create the endpoint in "
 "Stripe yourself."
 msgstr ""
+"この接続されたアカウントはWebhookを自動的に更新することができません。Webhookエンドポイント：書き込みの制限されたキーを貼り付けるか、自分で"
+"Stripeにエンドポイントを作成してください。"
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:41
 msgid "Stripe webhook is configured for the selected mode."
@@ -4303,7 +4316,7 @@ msgstr "wp-adminの製品に対して重複行アクションを表示します�
 msgid "Email reports and confirmations to"
 msgstr "レポートと確認をメールで送信"
 
-#: admin/settings/traits/options/core-settings.php:161
+#: admin/settings/traits/options/core-settings.php:161, fuzzy
 msgid "admin@example.com, another@example.com"
 msgstr "admin@example.com, another@example.com"
 
@@ -4327,7 +4340,7 @@ msgstr "週次"
 
 #: admin/settings/traits/options/core-settings.php:176
 msgid "Semi monthly"
-msgstr ""
+msgstr "半月ごと"
 
 #: admin/settings/traits/options/core-settings.php:178
 msgid "How often summary reports should be emailed."
@@ -4472,10 +4485,12 @@ msgid ""
 "Use date tokens {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S}, "
 "and custom alphanumeric characters. Example: INV-{YYYY}{MM}{DD}."
 msgstr ""
+"日付トークン{D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, "
+"{S}とカスタム英数字を使用してください。例：INV-{YYYY}{MM}{DD}。"
 
 #: admin/settings/traits/options/invoice-fields.php:19
 msgid "Learn more"
-msgstr ""
+msgstr "詳細を学ぶ"
 
 #: admin/settings/traits/options/invoice-fields.php:26
 msgid "Custom Invoice Numbering"
@@ -4513,7 +4528,7 @@ msgstr "請求書の形式"
 msgid "Current Invoice Number"
 msgstr "現在の請求書番号"
 
-#: admin/settings/traits/options/payment-fields.php:33
+#: admin/settings/traits/options/payment-fields.php:33, fuzzy
 msgid "API"
 msgstr "API"
 
@@ -4521,11 +4536,11 @@ msgstr "API"
 msgid ""
 "GOING LIVE? Click the \"Update\" button on any subscription products "
 "created on the Test API after switching this setting to Live!"
-msgstr ""
+msgstr "ライブに移行しますか？この設定をライブに切り替えた後、テストAPIで作成されたサブスクリプション製品の「更新」ボタンをクリックしてください！"
 
 #: admin/settings/traits/options/payment-fields.php:39
 msgid "More Information"
-msgstr ""
+msgstr "詳細情報"
 
 #: admin/settings/traits/options/payment-fields.php:52
 msgid "Connection Status"
@@ -4533,7 +4548,7 @@ msgstr "接続ステータス"
 
 #: admin/settings/traits/options/payment-fields.php:61
 msgid "Checkout experience"
-msgstr ""
+msgstr "チェックアウト体験"
 
 #: admin/settings/traits/options/payment-fields.php:70
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:97
@@ -4547,12 +4562,12 @@ msgstr "顧客ポータル"
 
 #: admin/settings/traits/options/payment-fields.php:91
 msgid "Hosted Checkout"
-msgstr ""
+msgstr "ホスティングされたチェックアウト"
 
 #: admin/settings/traits/options/payment-fields.php:101
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:20
 msgid "Payment Element"
-msgstr ""
+msgstr "支払い要素"
 
 #: admin/settings/traits/options/payment-fields.php:111
 msgid "Statement Descriptor"
@@ -4580,13 +4595,13 @@ msgstr "いいえ"
 
 #: admin/settings/traits/options/payment-fields.php:158
 msgid "Verify SSL certificates"
-msgstr ""
+msgstr "SSL証明書を確認"
 
 #: admin/settings/traits/options/payment-fields.php:162
 msgid ""
 "Verifies PayPal TLS certificates and hostname matches for server-side "
 "PayPal API requests."
-msgstr ""
+msgstr "サーバー側のPayPal APIリクエスト用にPayPal TLS証明書とホスト名の一致を確認します。"
 
 #: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
@@ -4689,19 +4704,19 @@ msgstr "メールプレビューを生成できませんでした。"
 
 #: admin/settings/traits/templates/settings-email-preview-product-notification-email.php:35
 msgid "(no subject)"
-msgstr ""
+msgstr "(件名なし)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:11
 msgid "(recipient resolved at send time)"
-msgstr ""
+msgstr "(送信時に受取人が解決されます)"
 
-#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36
+#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36, fuzzy
 msgid "From"
-msgstr ""
+msgstr "From"
 
-#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37
+#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37, fuzzy
 msgid "To"
-msgstr ""
+msgstr "To"
 
 #: admin/settings/traits/templates/settings-email-reset-email-template.php:17
 msgid "You do not have permission to reset this email template."
@@ -4717,31 +4732,31 @@ msgstr "デフォルトを使用しています"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:19
 msgid "You do not have permission to send this test email."
-msgstr ""
+msgstr "このテストメールを送信する権限がありません。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:24
 msgid "Test email could not be sent."
-msgstr ""
+msgstr "テストメールを送信できませんでした。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:35
 msgid "Please enter a valid email address to send the test to."
-msgstr ""
+msgstr "テストを送信するための有効なメールアドレスを入力してください。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:45
 #. translators: %s: email subject.
 #, php-format
 msgid "[Test] %s"
-msgstr ""
+msgstr "[テスト] %s"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:54
 #. translators: %s: recipient email address.
 #, php-format
 msgid "Test email sent to %s."
-msgstr ""
+msgstr "テストメールが %s に送信されました。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:59
 msgid "Test email failed to send. Check your email/SMTP settings and try again."
-msgstr ""
+msgstr "テストメールの送信に失敗しました。メール/SMTP設定を確認し、再試行してください。"
 
 #: admin/settings/traits/templates/settings-sections-emails.php:9
 msgid "Reports & Notifications"
@@ -4754,11 +4769,11 @@ msgstr "注文受領確認"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:13
 msgid "Enable Facebook Ad Events"
-msgstr ""
+msgstr "Facebook広告イベントを有効にする"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:14
 msgid "Google Analytics Purchase Event Tracking"
-msgstr ""
+msgstr "Google Analytics購入イベントトラッキング"
 
 #: admin/settings/traits/templates/settings-sections-register.php:14
 msgid "Currency & Pricing"
@@ -4778,63 +4793,65 @@ msgstr "その他の設定"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:15
 msgid "Classic card form"
-msgstr ""
+msgstr "クラシックカードフォーム"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:16
 msgid "Legacy"
-msgstr ""
+msgstr "レガシー"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:17
 msgid ""
 "Single card field on your checkout page. Supports order bumps and one-click "
 "upsells."
-msgstr ""
+msgstr "チェックアウトページに単一カードフィールドがあります。注文バンプとワンクリックアップセルをサポートしています。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:21
 msgid "Recommended"
-msgstr ""
+msgstr "推奨"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:22
 msgid ""
 "Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports "
 "order bumps and one-click upsells."
-msgstr ""
+msgstr "カード、Apple/Google Pay、およびチェックアウトページに埋め込まれたリンク。注文バンプとワンクリックアップセルをサポートしています。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:25
 msgid "Stripe-hosted page"
-msgstr ""
+msgstr "Stripeホストのページ"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:26
 msgid ""
 "Redirects customers to a Stripe-hosted payment page. Most payment methods "
 "available (Klarna, Cash App Pay, and more via your Stripe dashboard)."
 msgstr ""
+"顧客をStripeホストの支払いページにリダイレクトします。ほとんどの支払い方法が利用可能です（Klarna、Cash App "
+"Payなど、Stripeダッシュボード経由）。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:27
 msgid ""
 "Order bumps and one-click upsells/downsells are not available in this mode. "
 "Coupons continue to work."
-msgstr ""
+msgstr "このモードでは、注文バンプとワンクリックアップセル/ダウンセルは利用できません。クーポンは引き続き機能します。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:31
 msgid "Built into Payment Element"
-msgstr ""
+msgstr "決済要素に組み込まれています"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:32
 msgid "Built into the Stripe-hosted page"
-msgstr ""
+msgstr "Stripeホストのページに組み込まれています"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:23
 msgid "Stripe Connect server URL is not configured."
-msgstr ""
+msgstr "Stripe ConnectサーバーURLが構成されていません。"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:47
 msgid "Stripe Connect live mode requires HTTPS for the site and return URL."
-msgstr ""
+msgstr "Stripe Connectのライブモードは、サイトと戻りURLにHTTPSが必要です。"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:55
 msgid "Unable to generate an encryption key for Stripe Connect."
-msgstr ""
+msgstr "Stripe Connectの暗号化キーを生成できません。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:36
 msgid "Connect server did not return a valid Stripe account ID."
@@ -4846,6 +4863,9 @@ msgid ""
 "failed, abandoned, or restarted connection attempt. Reload this settings "
 "page and start the connection again."
 msgstr ""
+"このStripe "
+"Connectセッションは欠落しているか、期限切れです。失敗、放棄、または再起動された接続試行後に発生する可能性があります。この設定ページを再読み込みし"
+"、再度接続を開始してください。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:104
 msgid ""
@@ -4853,12 +4873,14 @@ msgid ""
 "trusted certificate, or explicitly enable insecure local credential pickup "
 "for non-live local development."
 msgstr ""
+"接続サーバーからキーを取得する際にSSL検証に失敗しました。信頼できる証明書を使用するか、非ライブローカル開発のために不正なローカル資格情報の取得を明示"
+"的に有効にしてください。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:127
 msgid ""
 "Unable to retrieve Stripe API keys from the Connect server for this "
 "session. Reload this settings page and start the connection again."
-msgstr ""
+msgstr "このセッションのConnectサーバーからStripe APIキーを取得できませんでした。この設定ページを再読み込みし、再度接続を開始してください。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:139
 msgid "Stripe account connected successfully."
@@ -4878,34 +4900,34 @@ msgstr "接続サーバーが構成されていません"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:47
 msgid "Set PPCART_STRIPE_CONNECT_SERVER_URL to your PublishPress intermediary URL."
-msgstr ""
+msgstr "PPCART_STRIPE_CONNECT_SERVER_URLをあなたのPublishPress中間URLに設定してください。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:54
 msgid "1. Connect your Stripe account"
-msgstr ""
+msgstr "1. Stripeアカウントを接続する"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:55
 msgid "We sync your API keys automatically, then walk you through the webhook."
-msgstr ""
+msgstr "APIキーを自動的に同期し、その後Webhookの設定を案内します。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:58
 msgid ""
 "Your saved keys are not direct Stripe keys, so reconnect before you "
 "continue."
-msgstr ""
+msgstr "保存されたキーは直接のStripeキーではないため、続行する前に再接続してください。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:64
 msgid "Stripe checkout is disabled. You can still connect now."
-msgstr ""
+msgstr "Stripeチェックアウトは無効です。今すぐ接続することはできます。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
-msgstr ""
+msgstr "2. Webhookをインストールする"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:74
 msgid "Available after you connect."
-msgstr ""
+msgstr "接続後に利用可能です。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:89
 msgid "Disconnect"
@@ -4917,7 +4939,7 @@ msgstr "Stripeダッシュボードで開く"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:97
 msgid "Stripe is ready"
-msgstr ""
+msgstr "Stripeは準備ができています"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
@@ -4928,46 +4950,46 @@ msgstr "キーが同期されました"
 #. translators: %d: number of Stripe events.
 #, php-format
 msgid "Webhook active with %d events"
-msgstr ""
+msgstr "Webhookが%dイベントでアクティブです"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
 msgid "1. Stripe account connected"
-msgstr ""
+msgstr "1. Stripeアカウントが接続されました"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
-msgstr ""
+msgstr "これが完了するまで、注文は完了しません。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
-msgstr ""
+msgstr "注意が必要です"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
-msgstr ""
+msgstr "インストールされていません"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
-msgstr ""
+msgstr "イベントを修正する"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-billing-options.php:45
 msgid "Always enabled for PayPal API requests."
-msgstr ""
+msgstr "PayPal APIリクエストのために常に有効です。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:32
 msgid "Leave blank to keep current value"
-msgstr ""
+msgstr "現在の値を保持するには空白のままにしてください"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:35
 #: includes/helpers/pro-locks/settings-locks.php:289
 msgid "Configured (value hidden)"
-msgstr ""
+msgstr "設定済み（値は非表示）"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:66
 msgid "Mailchimp API Key"
 msgstr "Mailchimp APIキー"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:78
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:78, fuzzy
 msgid "ActiveCampaign URL"
 msgstr "ActiveCampaign URL"
 
@@ -4975,7 +4997,7 @@ msgstr "ActiveCampaign URL"
 msgid "ActiveCampaign Secret Key"
 msgstr "ActiveCampaign シークレットキー"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:100
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:100, fuzzy
 msgid "MemberVault URL"
 msgstr "MemberVault URL"
 
@@ -4991,13 +5013,13 @@ msgstr "SendFox APIキー"
 msgid ""
 "MailPoet is active. Assign lists on each product’s Integrations settings — "
 "no API key is required."
-msgstr ""
+msgstr "MailPoetがアクティブです。各製品の統合設定でリストを割り当てます - APIキーは必要ありません。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
 msgid ""
 "Install and activate the MailPoet plugin to sync customers to lists. No API "
 "key is required."
-msgstr ""
+msgstr "MailPoetプラグインをインストールしてアクティブにし、顧客をリストに同期します。APIキーは必要ありません。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:150
 msgid "Add Payment Info"
@@ -5005,7 +5027,7 @@ msgstr "支払い情報を追加"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:154
 msgid "Sends an AddPaymentInfo event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "既存のMeta PixelインストールにAddPaymentInfoイベントを送信します。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
@@ -5013,7 +5035,7 @@ msgstr ""
 msgid ""
 "Requires Meta Pixel or another plugin/theme to load fbq on the checkout "
 "page."
-msgstr ""
+msgstr "チェックアウトページでfbqをロードするには、Meta Pixelまたは別のプラグイン/テーマが必要です。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:161
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:185
@@ -5022,7 +5044,7 @@ msgstr "購入完了"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:165
 msgid "Sends a Purchase event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "既存のMeta PixelインストールにPurchaseイベントを送信します。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:172
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:196
@@ -5031,13 +5053,13 @@ msgstr "リードがキャプチャされました"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:176
 msgid "Sends a Lead event when a two-step checkout captures customer details."
-msgstr ""
+msgstr "二段階チェックアウトで顧客の詳細を取得したときにLeadイベントを送信します。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:189
 msgid ""
 "Sends a purchase event to an existing Google Analytics or Data Layer "
 "installation."
-msgstr ""
+msgstr "既存のGoogle Analyticsまたはデータレイヤーインストールに購入イベントを送信します。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
@@ -5045,12 +5067,14 @@ msgid ""
 "Requires Google Analytics, Google Tag Manager, or another plugin/theme to "
 "load ga, gtag, or dataLayer on the checkout page."
 msgstr ""
+"チェックアウトページでga、gtag、またはdataLayerをロードするには、Google Analytics、Google Tag "
+"Manager、または別のプラグイン/テーマが必要です。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:200
 msgid ""
 "Sends a generate_lead event when a two-step checkout captures customer "
 "details."
-msgstr ""
+msgstr "二段階チェックアウトで顧客の詳細を取得したときにgenerate_leadイベントを送信します。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:207
 #: includes/helpers/pro-locks/product-locks.php:80
@@ -5061,13 +5085,13 @@ msgstr "タイプ"
 msgid ""
 "Choose the event format that matches the analytics script already installed "
 "on this site."
-msgstr ""
+msgstr "このサイトに既にインストールされている分析スクリプトに一致するイベント形式を選択してください。"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214, fuzzy
 msgid "analytics.js"
 msgstr "analytics.js"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215, fuzzy
 msgid "Google Analytics 4"
 msgstr "Google Analytics 4"
 
@@ -5153,39 +5177,39 @@ msgstr "申し訳ありませんが、このページにアクセスすること
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
-msgstr ""
+msgstr "税オプション"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:82
 msgid "Invoice Options"
-msgstr ""
+msgstr "請求書オプション"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:77
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "The Stripe Connect server could not preregister this session. Error: %s"
-msgstr ""
+msgstr "Stripe Connectサーバーはこのセッションを事前登録できませんでした。エラー: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:88
 msgid "The Stripe Connect server rejected this preregistration request."
-msgstr ""
+msgstr "Stripe Connectサーバーはこの事前登録リクエストを拒否しました。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:109
 msgid "Unable to prepare the Stripe Connect site credential."
-msgstr ""
+msgstr "Stripe Connectサイトの資格情報を準備できませんでした。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:115
 msgid "Unable to encrypt the Stripe Connect site credential."
-msgstr ""
+msgstr "Stripe Connectサイトの資格情報を暗号化できませんでした。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:144
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "Unable to fetch the Stripe Connect preregistration public key. Error: %s"
-msgstr ""
+msgstr "Stripe Connectの事前登録公開鍵を取得できませんでした。エラー: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:154
 msgid "The Stripe Connect preregistration public key is unavailable or invalid."
-msgstr ""
+msgstr "Stripe Connectの事前登録公開鍵は利用できないか無効です。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:225
 msgid "Stripe account disconnected for the selected mode."
@@ -5290,13 +5314,13 @@ msgstr "エラー：もう一度お試しください。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Migration required"
-msgstr ""
+msgstr "移行が必要です"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
-msgstr ""
+msgstr "プレーンテキストで1つのストレージ資格情報があります。暗号化を有効にした後、設定 → メンテナンスから移行を実行して暗号化してください。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 #. translators: %d: number of stored credentials.
@@ -5304,38 +5328,38 @@ msgstr ""
 msgid ""
 "You have %d stored credentials in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt them."
-msgstr ""
+msgstr "プレーンテキストで%dのストレージ資格情報があります。暗号化を有効にした後、設定 → メンテナンスから移行を実行して暗号化してください。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Encryption updated"
-msgstr ""
+msgstr "暗号化が更新されました"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
-msgstr ""
+msgstr "続行"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:68
-#: admin/traits/trait-ppcart-admin-integrations.php:149
+#: admin/traits/trait-ppcart-admin-integrations.php:149, fuzzy
 msgid "OK"
 msgstr "OK"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
-msgstr ""
+msgstr "セキュリティ暗号化設定を更新できませんでした。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:95
 msgid "No matching customers"
-msgstr ""
+msgstr "一致する顧客はありません"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:96
 msgid "No matching products"
-msgstr ""
+msgstr "一致する製品はありません"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "Searching…"
-msgstr ""
+msgstr "検索中…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:114
 msgid "No matching settings"
@@ -5372,7 +5396,7 @@ msgstr "プレビューを閉じる"
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:153
 msgid "Encrypt stored credentials"
-msgstr ""
+msgstr "ストレージ資格情報を暗号化"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 #. translators: %d: number of plaintext credentials.
@@ -5380,29 +5404,29 @@ msgstr ""
 msgid ""
 "Encrypt %d plaintext credential(s) in the database? Take a backup first and "
 "run this during a maintenance window."
-msgstr ""
+msgstr "データベース内の%dのプレーンテキスト資格情報を暗号化しますか？まずバックアップを取り、メンテナンスウィンドウ中にこれを実行してください。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
-msgstr ""
+msgstr "ストレージ資格情報をスキャンし、プレーンテキスト値を暗号化しますか？まずバックアップを取り、メンテナンスウィンドウ中にこれを実行してください。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Generating preview…"
-msgstr ""
+msgstr "プレビューを生成中…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Sending test email…"
-msgstr ""
+msgstr "テストメールを送信中…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:146
 msgid "Test email failed to send. Please refresh the page and try again."
-msgstr ""
+msgstr "テストメールの送信に失敗しました。ページを更新してもう一度お試しください。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:147
 msgid "Enter an email address to send the test to."
-msgstr ""
+msgstr "テストを送信するためのメールアドレスを入力してください。"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:23
 #. translators: %s: tax rate ID.
@@ -5497,6 +5521,9 @@ msgid ""
 "data-testid=\"ppcart-admin-notice-integration-settings\">settings page</a> "
 "to check your integration settings.</p>"
 msgstr ""
+"以下にリストされている統合に接続できませんでした。%1$s <a href=\"%2$s\" rel=\"noreferrer noopener\" "
+"data-testid=\"ppcart-admin-notice-integration-settings\">設定ページ</"
+"a>に移動して、統合設定を確認してください。</p>"
 
 #: admin/traits/templates/notices-admin-notices.php:70
 msgid ""
@@ -5577,7 +5604,7 @@ msgstr "Stripeで接続されたアカウントを開く"
 msgid "Stripe Connect status check failed."
 msgstr "Stripe Connectのステータスチェックに失敗しました。"
 
-#: admin/traits/trait-ppcart-admin-privacy.php:90
+#: admin/traits/trait-ppcart-admin-privacy.php:90, fuzzy
 msgid "[removed]"
 msgstr "[removed]"
 
@@ -5585,7 +5612,7 @@ msgstr "[removed]"
 #. translators: 1: field label, 2: order ID.
 #, php-format
 msgid "There was a problem removing your %1$s from order #%2$d."
-msgstr ""
+msgstr "注文 #%2$d から %1$s を削除する際に問題が発生しました。"
 
 #: admin/traits/trait-ppcart-admin-privacy.php:197
 msgid ""
@@ -5779,16 +5806,18 @@ msgid ""
 "PublishPress Cart and PublishPress Cart Compatibility cannot run while "
 "Studiocart is active. Deactivate Studiocart to start those plugins."
 msgstr ""
+"PublishPress カートと PublishPress カートの互換性は、Studiocart "
+"がアクティブな間は動作しません。これらのプラグインを開始するには、Studiocart を無効にしてください。"
 
 #: includes/class-ppcart-version-notices.php:85
 msgid ""
 "You're using PublishPress Cart. The Pro version has more features and "
 "support."
-msgstr ""
+msgstr "あなたは PublishPress カートを使用しています。プロ版には、より多くの機能とサポートがあります。"
 
 #: includes/class-ppcart-version-notices.php:97
 msgid "Dismiss"
-msgstr ""
+msgstr "閉じる"
 
 #: includes/data/states/states-01.php:8
 msgid "Bengo"
@@ -5798,9 +5827,9 @@ msgstr "ベントゴ"
 msgid "Benguela"
 msgstr "ベンゲラ"
 
-#: includes/data/states/states-01.php:10
+#: includes/data/states/states-01.php:10, fuzzy
 msgid "Bi�"
-msgstr ""
+msgstr "Bi�"
 
 #: includes/data/states/states-01.php:11
 msgid "Cabinda"
@@ -5814,9 +5843,9 @@ msgstr "クネネ"
 msgid "Huambo"
 msgstr "ワンボ"
 
-#: includes/data/states/states-01.php:14
+#: includes/data/states/states-01.php:14, fuzzy
 msgid "Hu�la"
-msgstr ""
+msgstr "Hu�la"
 
 #: includes/data/states/states-01.php:15
 msgid "Kuando Kubango"
@@ -5854,9 +5883,9 @@ msgstr "モキシコ"
 msgid "Namibe"
 msgstr "ナミベ"
 
-#: includes/data/states/states-01.php:24
+#: includes/data/states/states-01.php:24, fuzzy
 msgid "U�ge"
-msgstr ""
+msgstr "U�ge"
 
 #: includes/data/states/states-01.php:25
 msgid "Zaire"
@@ -5864,7 +5893,7 @@ msgstr "ザイール"
 
 #: includes/data/states/states-01.php:28
 msgid "Ciudad Aut�noma de Buenos Aires"
-msgstr ""
+msgstr "ブエノスアイレス自治市"
 
 #: includes/data/states/states-01.php:29
 msgid "Buenos Aires"
@@ -5885,7 +5914,7 @@ msgstr "チュブト"
 #: includes/data/states/states-01.php:33
 #: includes/data/states/states-01.php:353
 msgid "C�rdoba"
-msgstr ""
+msgstr "コルドバ"
 
 #: includes/data/states/states-01.php:34
 msgid "Corrientes"
@@ -5893,7 +5922,7 @@ msgstr "コリエンテス"
 
 #: includes/data/states/states-01.php:35
 msgid "Entre R�os"
-msgstr ""
+msgstr "エントレリオス"
 
 #: includes/data/states/states-01.php:36
 msgid "Formosa"
@@ -5923,11 +5952,11 @@ msgstr "ミシオネス"
 
 #: includes/data/states/states-01.php:42
 msgid "Neuqu�n"
-msgstr ""
+msgstr "ニュクエン"
 
 #: includes/data/states/states-01.php:43
 msgid "R�o Negro"
-msgstr ""
+msgstr "リオネグロ"
 
 #: includes/data/states/states-01.php:44
 msgid "Salta"
@@ -5960,7 +5989,7 @@ msgstr "ティエラ・デル・フエゴ"
 
 #: includes/data/states/states-01.php:51
 msgid "Tucum�n"
-msgstr ""
+msgstr "トクマン"
 
 #: includes/data/states/states-01.php:55
 msgid "Australian Capital Territory"
@@ -6389,7 +6418,7 @@ msgstr "パンド"
 
 #: includes/data/states/states-01.php:171
 msgid "Potos�"
-msgstr ""
+msgstr "ポトシ"
 
 #: includes/data/states/states-01.php:173
 msgid "Tarija"
@@ -6405,7 +6434,7 @@ msgstr "アラゴアス"
 
 #: includes/data/states/states-01.php:178
 msgid "Amap�"
-msgstr ""
+msgstr "アマパー"
 
 #: includes/data/states/states-01.php:179
 #: includes/data/states/states-03.php:222
@@ -6418,7 +6447,7 @@ msgstr "バイーア"
 
 #: includes/data/states/states-01.php:181
 msgid "Cear�"
-msgstr ""
+msgstr "セアラー"
 
 #: includes/data/states/states-01.php:182
 msgid "Distrito Federal"
@@ -6426,15 +6455,15 @@ msgstr "連邦直轄地"
 
 #: includes/data/states/states-01.php:183
 msgid "Esp�rito Santo"
-msgstr ""
+msgstr "エスピリトサント"
 
 #: includes/data/states/states-01.php:184
 msgid "Goi�s"
-msgstr ""
+msgstr "ゴイアス"
 
 #: includes/data/states/states-01.php:185
 msgid "Maranh�o"
-msgstr ""
+msgstr "マラニョン"
 
 #: includes/data/states/states-01.php:186
 msgid "Mato Grosso"
@@ -6450,15 +6479,15 @@ msgstr "ミナスジェライス"
 
 #: includes/data/states/states-01.php:189
 msgid "Par�"
-msgstr ""
+msgstr "パラ"
 
 #: includes/data/states/states-01.php:190
 msgid "Para�ba"
-msgstr ""
+msgstr "パライバ"
 
 #: includes/data/states/states-01.php:191
 msgid "Paran�"
-msgstr ""
+msgstr "パラナ"
 
 #: includes/data/states/states-01.php:192
 msgid "Pernambuco"
@@ -6466,7 +6495,7 @@ msgstr "ペルナンブコ"
 
 #: includes/data/states/states-01.php:193
 msgid "Piau�"
-msgstr ""
+msgstr "ピアウイ"
 
 #: includes/data/states/states-01.php:194
 msgid "Rio de Janeiro"
@@ -6482,7 +6511,7 @@ msgstr "リオグランデドスル"
 
 #: includes/data/states/states-01.php:197
 msgid "Rond�nia"
-msgstr ""
+msgstr "ロンドニア"
 
 #: includes/data/states/states-01.php:198
 msgid "Roraima"
@@ -6494,7 +6523,7 @@ msgstr "サンタカタリーナ"
 
 #: includes/data/states/states-01.php:200
 msgid "S�o Paulo"
-msgstr ""
+msgstr "サンパウロ"
 
 #: includes/data/states/states-01.php:201
 msgid "Sergipe"
@@ -6594,7 +6623,7 @@ msgstr "グラールス"
 
 #: includes/data/states/states-01.php:229
 msgid "Graub�nden"
-msgstr ""
+msgstr "グラウビュンデン"
 
 #: includes/data/states/states-01.php:230
 msgid "Jura"
@@ -6606,7 +6635,7 @@ msgstr "ルツェルン"
 
 #: includes/data/states/states-01.php:232
 msgid "Neuch�tel"
-msgstr ""
+msgstr "ノイシャテル"
 
 #: includes/data/states/states-01.php:233
 msgid "Nidwalden"
@@ -6658,135 +6687,135 @@ msgstr "ツーク"
 
 #: includes/data/states/states-01.php:245
 msgid "Z�rich"
-msgstr ""
+msgstr "チューリッヒ"
 
 #: includes/data/states/states-01.php:248
 msgid "Yunnan / ??"
-msgstr ""
+msgstr "雲南 / ??"
 
 #: includes/data/states/states-01.php:249
 msgid "Beijing / ??"
-msgstr ""
+msgstr "北京 / ??"
 
 #: includes/data/states/states-01.php:250
 msgid "Tianjin / ??"
-msgstr ""
+msgstr "天津 / ??"
 
 #: includes/data/states/states-01.php:251
 msgid "Hebei / ??"
-msgstr ""
+msgstr "河北 / ??"
 
 #: includes/data/states/states-01.php:252
 msgid "Shanxi / ??"
-msgstr ""
+msgstr "山西 / ??"
 
 #: includes/data/states/states-01.php:253
 msgid "Inner Mongolia / ???"
-msgstr ""
+msgstr "内モンゴル / ???"
 
 #: includes/data/states/states-01.php:254
 msgid "Liaoning / ??"
-msgstr ""
+msgstr "遼寧 / ??"
 
 #: includes/data/states/states-01.php:255
 msgid "Jilin / ??"
-msgstr ""
+msgstr "吉林 / ??"
 
 #: includes/data/states/states-01.php:256
 msgid "Heilongjiang / ???"
-msgstr ""
+msgstr "黒竜江 / ???"
 
 #: includes/data/states/states-01.php:257
 msgid "Shanghai / ??"
-msgstr ""
+msgstr "上海 / ??"
 
 #: includes/data/states/states-01.php:258
 msgid "Jiangsu / ??"
-msgstr ""
+msgstr "江蘇 / ??"
 
 #: includes/data/states/states-01.php:259
 msgid "Zhejiang / ??"
-msgstr ""
+msgstr "浙江 / ??"
 
 #: includes/data/states/states-01.php:260
 msgid "Anhui / ??"
-msgstr ""
+msgstr "安徽 / ??"
 
 #: includes/data/states/states-01.php:261
 msgid "Fujian / ??"
-msgstr ""
+msgstr "福建 / ??"
 
 #: includes/data/states/states-01.php:262
 msgid "Jiangxi / ??"
-msgstr ""
+msgstr "江西 / ??"
 
 #: includes/data/states/states-01.php:263
 msgid "Shandong / ??"
-msgstr ""
+msgstr "山東 / ??"
 
 #: includes/data/states/states-01.php:264
 msgid "Henan / ??"
-msgstr ""
+msgstr "河南 / ??"
 
 #: includes/data/states/states-01.php:265
 msgid "Hubei / ??"
-msgstr ""
+msgstr "湖北 / ??"
 
 #: includes/data/states/states-01.php:266
 msgid "Hunan / ??"
-msgstr ""
+msgstr "湖南 / ??"
 
 #: includes/data/states/states-01.php:267
 msgid "Guangdong / ??"
-msgstr ""
+msgstr "広東 / ??"
 
 #: includes/data/states/states-01.php:268
 msgid "Guangxi Zhuang / ????"
-msgstr ""
+msgstr "広西チワン族 / ????"
 
 #: includes/data/states/states-01.php:269
 msgid "Hainan / ??"
-msgstr ""
+msgstr "海南 / ??"
 
 #: includes/data/states/states-01.php:270
 msgid "Chongqing / ??"
-msgstr ""
+msgstr "重慶 / ??"
 
 #: includes/data/states/states-01.php:271
 msgid "Sichuan / ??"
-msgstr ""
+msgstr "四川 / ??"
 
 #: includes/data/states/states-01.php:272
 msgid "Guizhou / ??"
-msgstr ""
+msgstr "貴州 / ??"
 
 #: includes/data/states/states-01.php:273
 msgid "Shaanxi / ??"
-msgstr ""
+msgstr "陝西 / ??"
 
 #: includes/data/states/states-01.php:274
 msgid "Gansu / ??"
-msgstr ""
+msgstr "甘粛 / ??"
 
 #: includes/data/states/states-01.php:275
 msgid "Qinghai / ??"
-msgstr ""
+msgstr "青海 / ??"
 
 #: includes/data/states/states-01.php:276
 msgid "Ningxia Hui / ??"
-msgstr ""
+msgstr "寧夏回族 / ??"
 
 #: includes/data/states/states-01.php:277
 msgid "Macao / ??"
-msgstr ""
+msgstr "マカオ / ??"
 
 #: includes/data/states/states-01.php:278
 msgid "Tibet / ??"
-msgstr ""
+msgstr "チベット / ??"
 
 #: includes/data/states/states-01.php:279
 msgid "Xinjiang / ??"
-msgstr ""
+msgstr "新疆 / ??"
 
 #: includes/data/states/states-01.php:285
 msgid "Adrar"
@@ -6810,7 +6839,7 @@ msgstr "バトナ"
 
 #: includes/data/states/states-01.php:290
 msgid "B�ja�a"
-msgstr ""
+msgstr "ブージャイア"
 
 #: includes/data/states/states-01.php:291
 msgid "Biskra"
@@ -6818,7 +6847,7 @@ msgstr "ビスカラ"
 
 #: includes/data/states/states-01.php:292
 msgid "B�char"
-msgstr ""
+msgstr "ブーシャル"
 
 #: includes/data/states/states-01.php:293
 msgid "Blida"
@@ -6834,7 +6863,7 @@ msgstr "タマンガセット"
 
 #: includes/data/states/states-01.php:296
 msgid "T�bessa"
-msgstr ""
+msgstr "タベッサ"
 
 #: includes/data/states/states-01.php:297
 msgid "Tlemcen"
@@ -6862,11 +6891,11 @@ msgstr "ジジェル"
 
 #: includes/data/states/states-01.php:303
 msgid "S�tif"
-msgstr ""
+msgstr "セティフ"
 
 #: includes/data/states/states-01.php:304
 msgid "Sa�da"
-msgstr ""
+msgstr "サヘラ"
 
 #: includes/data/states/states-01.php:305
 msgid "Skikda"
@@ -6874,7 +6903,7 @@ msgstr "スキクダ"
 
 #: includes/data/states/states-01.php:306
 msgid "Sidi Bel Abb�s"
-msgstr ""
+msgstr "シディ・ベル・アッバス"
 
 #: includes/data/states/states-01.php:307
 msgid "Annaba"
@@ -6890,7 +6919,7 @@ msgstr "コンスタンティン"
 
 #: includes/data/states/states-01.php:310
 msgid "M�d�a"
-msgstr ""
+msgstr "メディア"
 
 #: includes/data/states/states-01.php:311
 msgid "Mostaganem"
@@ -6898,7 +6927,7 @@ msgstr "モスタガネム"
 
 #: includes/data/states/states-01.php:312
 msgid "M�Sila"
-msgstr ""
+msgstr "ムスィラ"
 
 #: includes/data/states/states-01.php:313
 msgid "Mascara"
@@ -6922,11 +6951,11 @@ msgstr "イリジ"
 
 #: includes/data/states/states-01.php:318
 msgid "Bordj Bou Arr�ridj"
-msgstr ""
+msgstr "ボルジュ・ブー・アリリッジ"
 
 #: includes/data/states/states-01.php:319
 msgid "Boumerd�s"
-msgstr ""
+msgstr "ブーメルデス"
 
 #: includes/data/states/states-01.php:320
 msgid "El Tarf"
@@ -6962,7 +6991,7 @@ msgstr "ミラ"
 
 #: includes/data/states/states-01.php:328
 msgid "A�n Defla"
-msgstr ""
+msgstr "アイン・デフラ"
 
 #: includes/data/states/states-01.php:329
 msgid "Naama"
@@ -6970,11 +6999,11 @@ msgstr "ナアマ"
 
 #: includes/data/states/states-01.php:330
 msgid "A�n T�mouchent"
-msgstr ""
+msgstr "アイン・タムシェント"
 
 #: includes/data/states/states-01.php:331
 msgid "Gharda�a"
-msgstr ""
+msgstr "ガルダイア"
 
 #: includes/data/states/states-01.php:332
 msgid "Relizane"
@@ -6982,11 +7011,11 @@ msgstr "レリザン"
 
 #: includes/data/states/states-01.php:336
 msgid "A Coru�a"
-msgstr ""
+msgstr "ア・コルーニャ"
 
 #: includes/data/states/states-01.php:337
 msgid "Araba/�lava"
-msgstr ""
+msgstr "アラバ/アラバ"
 
 #: includes/data/states/states-01.php:338
 msgid "Albacete"
@@ -6998,7 +7027,7 @@ msgstr "アリカンテ"
 
 #: includes/data/states/states-01.php:340
 msgid "Almer�a"
-msgstr ""
+msgstr "アルメリア"
 
 #: includes/data/states/states-01.php:341
 msgid "Asturias"
@@ -7006,7 +7035,7 @@ msgstr "アストゥリアス"
 
 #: includes/data/states/states-01.php:342
 msgid "�vila"
-msgstr ""
+msgstr "アビラ"
 
 #: includes/data/states/states-01.php:343
 msgid "Badajoz"
@@ -7026,11 +7055,11 @@ msgstr "ブルゴス"
 
 #: includes/data/states/states-01.php:347
 msgid "C�ceres"
-msgstr ""
+msgstr "カセレス"
 
 #: includes/data/states/states-01.php:348
 msgid "C�diz"
-msgstr ""
+msgstr "カディス"
 
 #: includes/data/states/states-01.php:349
 msgid "Cantabria"
@@ -7038,7 +7067,7 @@ msgstr "カンタブリア"
 
 #: includes/data/states/states-01.php:350
 msgid "Castell�n"
-msgstr ""
+msgstr "カステリョン"
 
 #: includes/data/states/states-01.php:351
 msgid "Ceuta"
@@ -7078,7 +7107,7 @@ msgstr "ウエスカ"
 
 #: includes/data/states/states-01.php:361
 msgid "Ja�n"
-msgstr ""
+msgstr "ハエン"
 
 #: includes/data/states/states-01.php:363
 msgid "Las Palmas"
@@ -7086,7 +7115,7 @@ msgstr "ラス・パルマス"
 
 #: includes/data/states/states-01.php:364
 msgid "Le�n"
-msgstr ""
+msgstr "レオン"
 
 #: includes/data/states/states-01.php:365
 msgid "Lleida"
@@ -7102,7 +7131,7 @@ msgstr "マドリード"
 
 #: includes/data/states/states-01.php:368
 msgid "M�laga"
-msgstr ""
+msgstr "マラガ"
 
 #: includes/data/states/states-01.php:369
 msgid "Melilla"
@@ -7319,11 +7348,11 @@ msgstr "新界"
 
 #: includes/data/states/states-02.php:50
 msgid "B�cs-Kiskun"
-msgstr ""
+msgstr "バーチ・キシュクン"
 
 #: includes/data/states/states-02.php:51
 msgid "B�k�s"
-msgstr ""
+msgstr "バケーシュ"
 
 #: includes/data/states/states-02.php:52
 msgid "Baranya"
@@ -7331,7 +7360,7 @@ msgstr "バラーニャ"
 
 #: includes/data/states/states-02.php:53
 msgid "Borsod-Aba�j-Zempl�n"
-msgstr ""
+msgstr "ボルソド・アバウイ・ゼンプレン"
 
 #: includes/data/states/states-02.php:54
 msgid "Budapest"
@@ -7339,19 +7368,19 @@ msgstr "ブダペスト"
 
 #: includes/data/states/states-02.php:55
 msgid "Csongr�d"
-msgstr ""
+msgstr "チョングラード"
 
 #: includes/data/states/states-02.php:56
 msgid "Fej�r"
-msgstr ""
+msgstr "フェイエール"
 
 #: includes/data/states/states-02.php:57
 msgid "Gyor-Moson-Sopron"
-msgstr ""
+msgstr "ギョール-モソン-ショプロン"
 
 #: includes/data/states/states-02.php:58
 msgid "Hajd�-Bihar"
-msgstr ""
+msgstr "ハイダ-ビハール"
 
 #: includes/data/states/states-02.php:59
 msgid "Heves"
@@ -7359,15 +7388,15 @@ msgstr "ヘーヴェス"
 
 #: includes/data/states/states-02.php:60
 msgid "J�sz-Nagykun-Szolnok"
-msgstr ""
+msgstr "ヤース-ナイグクン-ソルノク"
 
 #: includes/data/states/states-02.php:61
 msgid "Kom�rom-Esztergom"
-msgstr ""
+msgstr "コモーロム-エステルゴム"
 
 #: includes/data/states/states-02.php:62
 msgid "N�gr�d"
-msgstr ""
+msgstr "ナグラード"
 
 #: includes/data/states/states-02.php:63
 msgid "Pest"
@@ -7379,7 +7408,7 @@ msgstr "ショモギ"
 
 #: includes/data/states/states-02.php:65
 msgid "Szabolcs-Szatm�r-Bereg"
-msgstr ""
+msgstr "サボルチ-サトマール-ベレグ"
 
 #: includes/data/states/states-02.php:66
 msgid "Tolna"
@@ -7391,7 +7420,7 @@ msgstr "ヴァシュ"
 
 #: includes/data/states/states-02.php:68
 msgid "Veszpr�m"
-msgstr ""
+msgstr "ヴェシュプレーム"
 
 #: includes/data/states/states-02.php:69
 msgid "Zala"
@@ -7784,127 +7813,127 @@ msgstr "ポンディシェリ（プドゥチェリ）"
 
 #: includes/data/states/states-02.php:174
 msgid "Khuzestan  (???????)"
-msgstr ""
+msgstr "ホズェスタン（???????)"
 
 #: includes/data/states/states-02.php:175
 msgid "Tehran  (?????)"
-msgstr ""
+msgstr "テヘラン（?????）"
 
 #: includes/data/states/states-02.php:176
 msgid "Ilaam (?????)"
-msgstr ""
+msgstr "イーラム（?????）"
 
 #: includes/data/states/states-02.php:177
 msgid "Bushehr (?????)"
-msgstr ""
+msgstr "ブーシェフル（?????）"
 
 #: includes/data/states/states-02.php:178
 msgid "Ardabil (??????)"
-msgstr ""
+msgstr "アルダビル（??????）"
 
 #: includes/data/states/states-02.php:179
 msgid "Isfahan (??????)"
-msgstr ""
+msgstr "イスファハン（??????）"
 
 #: includes/data/states/states-02.php:180
 msgid "Yazd (???)"
-msgstr ""
+msgstr "ヤズド（???）"
 
 #: includes/data/states/states-02.php:181
 msgid "Kermanshah (????????)"
-msgstr ""
+msgstr "ケルマンシャー（????????）"
 
 #: includes/data/states/states-02.php:182
 msgid "Kerman (?????)"
-msgstr ""
+msgstr "ケルマン（?????）"
 
 #: includes/data/states/states-02.php:183
 msgid "Hamadan (?????)"
-msgstr ""
+msgstr "ハマダン（?????）"
 
 #: includes/data/states/states-02.php:184
 msgid "Ghazvin (?????)"
-msgstr ""
+msgstr "ガズヴィン（?????）"
 
 #: includes/data/states/states-02.php:185
 msgid "Zanjan (?????)"
-msgstr ""
+msgstr "ザンジャン（?????）"
 
 #: includes/data/states/states-02.php:186
 msgid "Luristan (??????)"
-msgstr ""
+msgstr "ルリスタン（??????）"
 
 #: includes/data/states/states-02.php:187
 msgid "Alborz (?????)"
-msgstr ""
+msgstr "アルボルズ（?????）"
 
 #: includes/data/states/states-02.php:188
 msgid "East Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "東アザルバイジャン（????????? ????）"
 
 #: includes/data/states/states-02.php:189
 msgid "West Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "西アザルバイジャン（????????? ????）"
 
 #: includes/data/states/states-02.php:190
 msgid "Chaharmahal and Bakhtiari (???????? ? ???????)"
-msgstr ""
+msgstr "チャハールマハールとバフティアリ（???????? ? ???????）"
 
 #: includes/data/states/states-02.php:191
 msgid "South Khorasan (?????? ?????)"
-msgstr ""
+msgstr "南ホラサーン（?????? ?????）"
 
 #: includes/data/states/states-02.php:192
 msgid "Razavi Khorasan (?????? ????)"
-msgstr ""
+msgstr "ラザビー・ホラサーン（?????? ????）"
 
 #: includes/data/states/states-02.php:193
 msgid "North Khorasan (?????? ?????)"
-msgstr ""
+msgstr "北ホラサーン（?????? ?????）"
 
 #: includes/data/states/states-02.php:194
 msgid "Semnan (?????)"
-msgstr ""
+msgstr "セムナン（?????）"
 
 #: includes/data/states/states-02.php:195
 msgid "Fars (????)"
-msgstr ""
+msgstr "ファールス（????）"
 
 #: includes/data/states/states-02.php:196
 msgid "Qom (??)"
-msgstr ""
+msgstr "クム（??）"
 
 #: includes/data/states/states-02.php:197
 msgid "Kurdistan / ???????)"
-msgstr ""
+msgstr "クルディスタン（????????）"
 
 #: includes/data/states/states-02.php:198
 msgid "Kohgiluyeh and BoyerAhmad (????????? ? ????????)"
-msgstr ""
+msgstr "コフギルーヤとボイヤーアハマド（????????? ? ????????）"
 
 #: includes/data/states/states-02.php:199
 msgid "Golestan (??????)"
-msgstr ""
+msgstr "ゴレスタン（??????）"
 
 #: includes/data/states/states-02.php:200
 msgid "Gilan (?????)"
-msgstr ""
+msgstr "ギラン (?????)"
 
 #: includes/data/states/states-02.php:201
 msgid "Mazandaran (????????)"
-msgstr ""
+msgstr "マザンダラン (????????)"
 
 #: includes/data/states/states-02.php:202
 msgid "Markazi (?????)"
-msgstr ""
+msgstr "マルカジ (?????)"
 
 #: includes/data/states/states-02.php:203
 msgid "Hormozgan (???????)"
-msgstr ""
+msgstr "ホルモズガン (???????)"
 
 #: includes/data/states/states-02.php:204
 msgid "Sistan and Baluchestan (?????? ? ????????)"
-msgstr ""
+msgstr "シスタン・バルーチスタン (?????? ? ????????)"
 
 #: includes/data/states/states-02.php:208
 msgid "Agrigento"
@@ -8048,7 +8077,7 @@ msgstr "フォッジャ"
 
 #: includes/data/states/states-02.php:243
 msgid "Forl�-Cesena"
-msgstr ""
+msgstr "フォルリ・チェゼーナ"
 
 #: includes/data/states/states-02.php:244
 msgid "Frosinone"
@@ -8637,7 +8666,7 @@ msgstr "モンバサ"
 
 #: includes/data/states/states-02.php:402
 msgid "Murang�a"
-msgstr ""
+msgstr "ムランガ"
 
 #: includes/data/states/states-02.php:403
 msgid "Nairobi County"
@@ -8846,11 +8875,11 @@ msgstr "シノエ"
 
 #: includes/data/states/states-03.php:25
 msgid "Chi?inau"
-msgstr ""
+msgstr "キシナウ"
 
 #: includes/data/states/states-03.php:26
 msgid "Bal?i"
-msgstr ""
+msgstr "バルチ"
 
 #: includes/data/states/states-03.php:27
 msgid "Anenii Noi"
@@ -8875,15 +8904,15 @@ msgstr "カンテミール"
 #: includes/data/states/states-03.php:32
 #: includes/data/states/states-03.php:379
 msgid "Calara?i"
-msgstr ""
+msgstr "カララシュ"
 
 #: includes/data/states/states-03.php:33
 msgid "Cau?eni"
-msgstr ""
+msgstr "カウジェニ"
 
 #: includes/data/states/states-03.php:34
 msgid "Cimi?lia"
-msgstr ""
+msgstr "チミシュリア"
 
 #: includes/data/states/states-03.php:35
 msgid "Criuleni"
@@ -8891,7 +8920,7 @@ msgstr "クリウレン"
 
 #: includes/data/states/states-03.php:36
 msgid "Dondu?eni"
-msgstr ""
+msgstr "ドンドゥジェニ"
 
 #: includes/data/states/states-03.php:37
 msgid "Drochia"
@@ -8899,23 +8928,23 @@ msgstr "ドロキア"
 
 #: includes/data/states/states-03.php:38
 msgid "Dubasari"
-msgstr ""
+msgstr "ドゥバサリ"
 
 #: includes/data/states/states-03.php:39
 msgid "Edine?"
-msgstr ""
+msgstr "エディネツ"
 
 #: includes/data/states/states-03.php:40
 msgid "Fale?ti"
-msgstr ""
+msgstr "ファレシュティ"
 
 #: includes/data/states/states-03.php:41
 msgid "Flore?ti"
-msgstr ""
+msgstr "フロレシュティ"
 
 #: includes/data/states/states-03.php:42
 msgid "UTA Gagauzia"
-msgstr ""
+msgstr "ウタ・ガガウジア"
 
 #: includes/data/states/states-03.php:43
 msgid "Glodeni"
@@ -8923,7 +8952,7 @@ msgstr "グロデニ"
 
 #: includes/data/states/states-03.php:44
 msgid "H�nce?ti"
-msgstr ""
+msgstr "ハンチェシュティ"
 
 #: includes/data/states/states-03.php:45
 msgid "Ialoveni"
@@ -8939,7 +8968,7 @@ msgstr "ニスポレニ"
 
 #: includes/data/states/states-03.php:48
 msgid "Ocni?a"
-msgstr ""
+msgstr "オクニツァ"
 
 #: includes/data/states/states-03.php:49
 msgid "Orhei"
@@ -8951,11 +8980,11 @@ msgstr "レジーナ"
 
 #: includes/data/states/states-03.php:51
 msgid "R�?cani"
-msgstr ""
+msgstr "ルチャニ"
 
 #: includes/data/states/states-03.php:52
 msgid "S�ngerei"
-msgstr ""
+msgstr "サンゲレイ"
 
 #: includes/data/states/states-03.php:53
 msgid "Soroca"
@@ -8963,15 +8992,15 @@ msgstr "ソロカ"
 
 #: includes/data/states/states-03.php:54
 msgid "Stra?eni"
-msgstr ""
+msgstr "ストラジェニ"
 
 #: includes/data/states/states-03.php:55
 msgid "?oldane?ti"
-msgstr ""
+msgstr "ホルダネシュティ"
 
 #: includes/data/states/states-03.php:56
 msgid "?tefan Voda"
-msgstr ""
+msgstr "シュテファン・ヴォダ"
 
 #: includes/data/states/states-03.php:57
 msgid "Taraclia"
@@ -8979,7 +9008,7 @@ msgstr "タラクリア"
 
 #: includes/data/states/states-03.php:58
 msgid "Telene?ti"
-msgstr ""
+msgstr "テレネシュティ"
 
 #: includes/data/states/states-03.php:59
 msgid "Ungheni"
@@ -8987,7 +9016,7 @@ msgstr "ウンゲニ"
 
 #: includes/data/states/states-03.php:64
 msgid "Ciudad de M�xico"
-msgstr ""
+msgstr "メキシコシティ"
 
 #: includes/data/states/states-03.php:65
 msgid "Jalisco"
@@ -8995,7 +9024,7 @@ msgstr "ハリスコ"
 
 #: includes/data/states/states-03.php:66
 msgid "Nuevo Le�n"
-msgstr ""
+msgstr "ニューレオン"
 
 #: includes/data/states/states-03.php:67
 msgid "Aguascalientes"
@@ -9047,11 +9076,11 @@ msgstr "イダルゴ"
 
 #: includes/data/states/states-03.php:79
 msgid "Estado de M�xico"
-msgstr ""
+msgstr "メキシコ州"
 
 #: includes/data/states/states-03.php:80
 msgid "Michoac�n"
-msgstr ""
+msgstr "ミチョアカン"
 
 #: includes/data/states/states-03.php:81
 msgid "Morelos"
@@ -9071,7 +9100,7 @@ msgstr "プエブラ"
 
 #: includes/data/states/states-03.php:85
 msgid "Quer�taro"
-msgstr ""
+msgstr "ケレタロ"
 
 #: includes/data/states/states-03.php:86
 msgid "Quintana Roo"
@@ -9079,7 +9108,7 @@ msgstr "キンタナロー"
 
 #: includes/data/states/states-03.php:87
 msgid "San Luis Potos�"
-msgstr ""
+msgstr "サン・ルイス・ポトシ"
 
 #: includes/data/states/states-03.php:88
 msgid "Sinaloa"
@@ -9107,7 +9136,7 @@ msgstr "ベラクルス"
 
 #: includes/data/states/states-03.php:94
 msgid "Yucat�n"
-msgstr ""
+msgstr "ユカタン"
 
 #: includes/data/states/states-03.php:95
 msgid "Zacatecas"
@@ -9219,7 +9248,7 @@ msgstr "テテ"
 
 #: includes/data/states/states-03.php:126
 msgid "Zamb�zia"
-msgstr ""
+msgstr "ザンビジア"
 
 #: includes/data/states/states-03.php:129
 msgid "Erongo"
@@ -9508,7 +9537,7 @@ msgstr "ギズボーン"
 
 #: includes/data/states/states-03.php:208
 msgid "Hawke�s Bay"
-msgstr ""
+msgstr "ホークスベイ"
 
 #: includes/data/states/states-03.php:209
 msgid "Manawatu-Wanganui"
@@ -9560,7 +9589,7 @@ msgstr "アンカシュ"
 
 #: includes/data/states/states-03.php:224
 msgid "Apur�mac"
-msgstr ""
+msgstr "アプルマック"
 
 #: includes/data/states/states-03.php:225
 msgid "Arequipa"
@@ -9584,7 +9613,7 @@ msgstr "ワンカベリカ"
 
 #: includes/data/states/states-03.php:230
 msgid "Hu�nuco"
-msgstr ""
+msgstr "フヌコ"
 
 #: includes/data/states/states-03.php:231
 msgid "Ica"
@@ -9592,7 +9621,7 @@ msgstr "イカ"
 
 #: includes/data/states/states-03.php:232
 msgid "Jun�n"
-msgstr ""
+msgstr "フニン"
 
 #: includes/data/states/states-03.php:233
 msgid "La Libertad"
@@ -9632,7 +9661,7 @@ msgstr "プーノ"
 
 #: includes/data/states/states-03.php:242
 msgid "San Mart�n"
-msgstr ""
+msgstr "サン・マルティン"
 
 #: includes/data/states/states-03.php:243
 msgid "Tacna"
@@ -9982,7 +10011,7 @@ msgstr "アザード・カシミール"
 msgid "Balochistan"
 msgstr "バローチスタン"
 
-#: includes/data/states/states-03.php:337
+#: includes/data/states/states-03.php:337, fuzzy
 msgid "FATA"
 msgstr "FATA"
 
@@ -10004,11 +10033,11 @@ msgstr "シンド"
 
 #: includes/data/states/states-03.php:347
 msgid "Asunci�n"
-msgstr ""
+msgstr "アスンシオン"
 
 #: includes/data/states/states-03.php:348
 msgid "Concepci�n"
-msgstr ""
+msgstr "コンセプシオン"
 
 #: includes/data/states/states-03.php:349
 msgid "San Pedro"
@@ -10020,31 +10049,31 @@ msgstr "コルディジェラ"
 
 #: includes/data/states/states-03.php:351
 msgid "Guair�"
-msgstr ""
+msgstr "グアイラ"
 
 #: includes/data/states/states-03.php:352
 msgid "Caaguaz�"
-msgstr ""
+msgstr "カアグアズ"
 
 #: includes/data/states/states-03.php:353
 msgid "Caazap�"
-msgstr ""
+msgstr "カアザパ"
 
 #: includes/data/states/states-03.php:354
 msgid "Itap�a"
-msgstr ""
+msgstr "イタプア"
 
 #: includes/data/states/states-03.php:356
 msgid "Paraguar�"
-msgstr ""
+msgstr "パラグアイ"
 
 #: includes/data/states/states-03.php:357
 msgid "Alto Paran�"
-msgstr ""
+msgstr "アルト・パラナ"
 
 #: includes/data/states/states-03.php:359
 msgid "�eembuc�"
-msgstr ""
+msgstr "エンブク"
 
 #: includes/data/states/states-03.php:360
 msgid "Amambay"
@@ -10052,7 +10081,7 @@ msgstr "アマンバイ"
 
 #: includes/data/states/states-03.php:361
 msgid "Canindey�"
-msgstr ""
+msgstr "カニンデイ"
 
 #: includes/data/states/states-03.php:362
 msgid "Presidente Hayes"
@@ -10064,7 +10093,7 @@ msgstr "アルト・パラグアイ"
 
 #: includes/data/states/states-03.php:364
 msgid "Boquer�n"
-msgstr ""
+msgstr "ボケロン"
 
 #: includes/data/states/states-03.php:368
 msgid "Alba"
@@ -10076,11 +10105,11 @@ msgstr "アラド"
 
 #: includes/data/states/states-03.php:370
 msgid "Arge?"
-msgstr ""
+msgstr "アルジェ？"
 
 #: includes/data/states/states-03.php:371
 msgid "Bacau"
-msgstr ""
+msgstr "バカウ"
 
 #: includes/data/states/states-03.php:372
 msgid "Bihor"
@@ -10088,31 +10117,31 @@ msgstr "ビホール"
 
 #: includes/data/states/states-03.php:373
 msgid "Bistri?a-Nasaud"
-msgstr ""
+msgstr "ビストリツァ・ナサウド"
 
 #: includes/data/states/states-03.php:374
 msgid "Boto?ani"
-msgstr ""
+msgstr "ボトシャニ"
 
 #: includes/data/states/states-03.php:375
 msgid "Braila"
-msgstr ""
+msgstr "ブライラ"
 
 #: includes/data/states/states-03.php:376
 msgid "Bra?ov"
-msgstr ""
+msgstr "ブラショブ"
 
 #: includes/data/states/states-03.php:377
 msgid "Bucure?ti"
-msgstr ""
+msgstr "ブカレスト"
 
 #: includes/data/states/states-03.php:378
 msgid "Buzau"
-msgstr ""
+msgstr "ブザウ"
 
 #: includes/data/states/states-03.php:380
 msgid "Cara?-Severin"
-msgstr ""
+msgstr "カラシュ・セヴェリン"
 
 #: includes/data/states/states-03.php:381
 msgid "Cluj"
@@ -10120,7 +10149,7 @@ msgstr "クルジュ"
 
 #: includes/data/states/states-03.php:382
 msgid "Constan?a"
-msgstr ""
+msgstr "コンスタンツァ"
 
 #: includes/data/states/states-03.php:383
 msgid "Covasna"
@@ -10128,7 +10157,7 @@ msgstr "コヴァスナ"
 
 #: includes/data/states/states-03.php:384
 msgid "D�mbovi?a"
-msgstr ""
+msgstr "ダンボビツァ"
 
 #: includes/data/states/states-03.php:385
 msgid "Dolj"
@@ -10136,7 +10165,7 @@ msgstr "ドルジュ"
 
 #: includes/data/states/states-03.php:386
 msgid "Gala?i"
-msgstr ""
+msgstr "ガラツィ"
 
 #: includes/data/states/states-03.php:387
 msgid "Giurgiu"
@@ -10156,11 +10185,11 @@ msgstr "フネドアラ"
 
 #: includes/data/states/states-03.php:391
 msgid "Ialomi?a"
-msgstr ""
+msgstr "イアロミツァ"
 
 #: includes/data/states/states-03.php:392
 msgid "Ia?i"
-msgstr ""
+msgstr "イアシ"
 
 #: includes/data/states/states-03.php:393
 msgid "Ilfov"
@@ -10168,19 +10197,19 @@ msgstr "イルフォヴ"
 
 #: includes/data/states/states-03.php:394
 msgid "Maramure?"
-msgstr ""
+msgstr "マラモレシュ"
 
 #: includes/data/states/states-03.php:395
 msgid "Mehedin?i"
-msgstr ""
+msgstr "メヘディンツィ"
 
 #: includes/data/states/states-03.php:396
 msgid "Mure?"
-msgstr ""
+msgstr "ムレシュ"
 
 #: includes/data/states/states-03.php:397
 msgid "Neam?"
-msgstr ""
+msgstr "ニアムツ"
 
 #: includes/data/states/states-03.php:398
 msgid "Olt"
@@ -10192,7 +10221,7 @@ msgstr "プラホヴァ"
 
 #: includes/data/states/states-03.php:400
 msgid "Salaj"
-msgstr ""
+msgstr "サラージュ"
 
 #: includes/data/states/states-03.php:401
 msgid "Satu Mare"
@@ -10212,7 +10241,7 @@ msgstr "テレオルマン"
 
 #: includes/data/states/states-03.php:405
 msgid "Timi?"
-msgstr ""
+msgstr "ティミシュ"
 
 #: includes/data/states/states-03.php:406
 msgid "Tulcea"
@@ -10220,7 +10249,7 @@ msgstr "トゥルチャ"
 
 #: includes/data/states/states-03.php:407
 msgid "V�lcea"
-msgstr ""
+msgstr "ヴルチェア"
 
 #: includes/data/states/states-03.php:408
 msgid "Vaslui"
@@ -10544,7 +10573,7 @@ msgstr "アダナ"
 
 #: includes/data/states/states-04.php:91
 msgid "Adiyaman"
-msgstr ""
+msgstr "アディヤマン"
 
 #: includes/data/states/states-04.php:92
 msgid "Afyon"
@@ -10552,7 +10581,7 @@ msgstr "アフヨン"
 
 #: includes/data/states/states-04.php:93
 msgid "Agri"
-msgstr ""
+msgstr "アグリ"
 
 #: includes/data/states/states-04.php:94
 msgid "Amasya"
@@ -10572,11 +10601,11 @@ msgstr "アートヴィン"
 
 #: includes/data/states/states-04.php:98
 msgid "Aydin"
-msgstr ""
+msgstr "アイディン"
 
 #: includes/data/states/states-04.php:99
 msgid "Balikesir"
-msgstr ""
+msgstr "バリケシル"
 
 #: includes/data/states/states-04.php:100
 msgid "Bilecik"
@@ -10584,7 +10613,7 @@ msgstr "ビレジク"
 
 #: includes/data/states/states-04.php:101
 msgid "Bing�l"
-msgstr ""
+msgstr "ビンギョル"
 
 #: includes/data/states/states-04.php:102
 msgid "Bitlis"
@@ -10604,15 +10633,15 @@ msgstr "ブルサ"
 
 #: includes/data/states/states-04.php:106
 msgid "�anakkale"
-msgstr ""
+msgstr "チャナッカレ"
 
 #: includes/data/states/states-04.php:107
 msgid "�ankiri"
-msgstr ""
+msgstr "チャンクリ"
 
 #: includes/data/states/states-04.php:108
 msgid "�orum"
-msgstr ""
+msgstr "チョルム"
 
 #: includes/data/states/states-04.php:109
 msgid "Denizli"
@@ -10620,7 +10649,7 @@ msgstr "デニズリ"
 
 #: includes/data/states/states-04.php:110
 msgid "Diyarbakir"
-msgstr ""
+msgstr "ディヤルバクル"
 
 #: includes/data/states/states-04.php:111
 msgid "Edirne"
@@ -10628,7 +10657,7 @@ msgstr "エディルネ"
 
 #: includes/data/states/states-04.php:112
 msgid "Elazig"
-msgstr ""
+msgstr "エラズイグ"
 
 #: includes/data/states/states-04.php:113
 msgid "Erzincan"
@@ -10640,7 +10669,7 @@ msgstr "エルズルム"
 
 #: includes/data/states/states-04.php:115
 msgid "Eskisehir"
-msgstr ""
+msgstr "エスキシェヒル"
 
 #: includes/data/states/states-04.php:116
 msgid "Gaziantep"
@@ -10652,7 +10681,7 @@ msgstr "ギレシン"
 
 #: includes/data/states/states-04.php:118
 msgid "G�m�shane"
-msgstr ""
+msgstr "ギュムシュハネ"
 
 #: includes/data/states/states-04.php:119
 msgid "Hakkari"
@@ -10668,15 +10697,15 @@ msgstr "イスタンブール"
 
 #: includes/data/states/states-04.php:122
 msgid "I�el"
-msgstr ""
+msgstr "イジェル"
 
 #: includes/data/states/states-04.php:123
 msgid "Istanbul"
-msgstr ""
+msgstr "イスタンブール"
 
 #: includes/data/states/states-04.php:124
 msgid "Izmir"
-msgstr ""
+msgstr "イズミル"
 
 #: includes/data/states/states-04.php:125
 msgid "Kars"
@@ -10692,11 +10721,11 @@ msgstr "ケイセリ"
 
 #: includes/data/states/states-04.php:128
 msgid "Kirklareli"
-msgstr ""
+msgstr "キルクラレリ"
 
 #: includes/data/states/states-04.php:129
 msgid "Kirsehir"
-msgstr ""
+msgstr "キルシェヒル"
 
 #: includes/data/states/states-04.php:130
 msgid "Kocaeli"
@@ -10708,7 +10737,7 @@ msgstr "コニャ"
 
 #: includes/data/states/states-04.php:132
 msgid "K�tahya"
-msgstr ""
+msgstr "クターヤ"
 
 #: includes/data/states/states-04.php:133
 msgid "Malatya"
@@ -10720,7 +10749,7 @@ msgstr "マニサ"
 
 #: includes/data/states/states-04.php:135
 msgid "Kahramanmaras"
-msgstr ""
+msgstr "カフラマンマラシュ"
 
 #: includes/data/states/states-04.php:136
 msgid "Mardin"
@@ -10728,19 +10757,19 @@ msgstr "マルディン"
 
 #: includes/data/states/states-04.php:137
 msgid "Mugla"
-msgstr ""
+msgstr "ムグラ"
 
 #: includes/data/states/states-04.php:138
 msgid "Mus"
-msgstr ""
+msgstr "ムス"
 
 #: includes/data/states/states-04.php:139
 msgid "Nevsehir"
-msgstr ""
+msgstr "ネヴシェヒル"
 
 #: includes/data/states/states-04.php:140
 msgid "Nigde"
-msgstr ""
+msgstr "ニグデ"
 
 #: includes/data/states/states-04.php:141
 msgid "Ordu"
@@ -10772,7 +10801,7 @@ msgstr "シワス"
 
 #: includes/data/states/states-04.php:148
 msgid "Tekirdag"
-msgstr ""
+msgstr "テキルダーグ"
 
 #: includes/data/states/states-04.php:149
 msgid "Tokat"
@@ -10788,11 +10817,11 @@ msgstr "トゥンジェリ"
 
 #: includes/data/states/states-04.php:152
 msgid "Sanliurfa"
-msgstr ""
+msgstr "シャーンルウルファ"
 
 #: includes/data/states/states-04.php:153
 msgid "Usak"
-msgstr ""
+msgstr "ウシャク"
 
 #: includes/data/states/states-04.php:154
 msgid "Van"
@@ -10820,7 +10849,7 @@ msgstr "カラマン"
 
 #: includes/data/states/states-04.php:160
 msgid "Kirikkale"
-msgstr ""
+msgstr "キリッカレ"
 
 #: includes/data/states/states-04.php:161
 msgid "Batman"
@@ -10828,11 +10857,11 @@ msgstr "バットマン"
 
 #: includes/data/states/states-04.php:162
 msgid "Sirnak"
-msgstr ""
+msgstr "シルナク"
 
 #: includes/data/states/states-04.php:163
 msgid "Bartin"
-msgstr ""
+msgstr "バルティン"
 
 #: includes/data/states/states-04.php:164
 msgid "Ardahan"
@@ -10840,7 +10869,7 @@ msgstr "アルダハン"
 
 #: includes/data/states/states-04.php:165
 msgid "Igdir"
-msgstr ""
+msgstr "イグディル"
 
 #: includes/data/states/states-04.php:166
 msgid "Yalova"
@@ -10848,7 +10877,7 @@ msgstr "ヤロバ"
 
 #: includes/data/states/states-04.php:167
 msgid "Karab�k"
-msgstr ""
+msgstr "カラビュック"
 
 #: includes/data/states/states-04.php:168
 msgid "Kilis"
@@ -10860,7 +10889,7 @@ msgstr "オスマニエ"
 
 #: includes/data/states/states-04.php:170
 msgid "D�zce"
-msgstr ""
+msgstr "ダズジェ"
 
 #: includes/data/states/states-04.php:173
 msgid "Arusha"
@@ -12084,7 +12113,7 @@ msgstr "このファイルをダウンロードする権限がありません。
 
 #: includes/files/download.php:43
 msgid "Invalid file path."
-msgstr ""
+msgstr "無効なファイルパス。"
 
 #: includes/files/download.php:44
 #: includes/files/download.php:65
@@ -12104,7 +12133,7 @@ msgstr "申し訳ありませんが、このファイルはもはや利用でき
 #. translators: 1: file name, 2: user login.
 #, php-format
 msgid "Access to file \"%1$s\" revoked by %2$s"
-msgstr ""
+msgstr "ファイル \"%1$s\" へのアクセスが %2$s によって取り消されました"
 
 #: includes/files/traits/templates/files-admin-product-form-callback.php:28
 #: includes/files/traits/trait-ppcart-files-settings.php:132
@@ -12282,7 +12311,7 @@ msgstr "%sによって再送信された購入確認メール"
 
 #: includes/functions/admin-ajax-and-notices.php:389
 msgid "You are not allowed to dismiss this notice."
-msgstr ""
+msgstr "この通知を閉じることは許可されていません。"
 
 #: includes/functions/ajax-and-fields.php:170
 msgid " activecampaign Listed: "
@@ -12997,7 +13026,7 @@ msgstr "在庫警告: %s"
 msgid ""
 "The stock for product \"%1$s\" (ID: %2$d) is running low. Current stock: "
 "%3$d"
-msgstr ""
+msgstr "製品 \"%1$s\" (ID: %2$d) の在庫が少なくなっています。現在の在庫: %3$d"
 
 #: includes/functions/integrations-and-stock.php:220
 #. translators: %s: product name.
@@ -13009,19 +13038,19 @@ msgstr "在庫切れアラート: %s"
 #. translators: 1: product name, 2: product ID.
 #, php-format
 msgid "The product \"%1$s\" (ID: %2$d) is now out of stock."
-msgstr ""
+msgstr "製品 \"%1$s\" (ID: %2$d) は現在在庫切れです。"
 
 #: includes/functions/mailchimp-api.php:51
 msgid "The Mailchimp API key is invalid."
-msgstr ""
+msgstr "MailchimpのAPIキーは無効です。"
 
 #: includes/functions/mailchimp-api.php:83
 msgid "Mailchimp rejected the request."
-msgstr ""
+msgstr "Mailchimpがリクエストを拒否しました。"
 
 #: includes/functions/mailchimp-api.php:94
 msgid "Mailchimp returned an invalid response."
-msgstr ""
+msgstr "Mailchimpが無効な応答を返しました。"
 
 #: includes/functions/merge-tags-and-dates.php:11
 msgid "Site Name"
@@ -13115,7 +13144,7 @@ msgstr "注文リスト"
 
 #: includes/functions/merge-tags-and-dates.php:34
 msgid "Order Details Table"
-msgstr ""
+msgstr "注文詳細テーブル"
 
 #: includes/functions/merge-tags-and-dates.php:35
 msgid "Inline Order List"
@@ -13161,14 +13190,14 @@ msgstr "パーソナライズタグを挿入"
 #. translators: 1: refund amount, 2: refund date.
 #, php-format
 msgid "%1$s refunded on %2$s"
-msgstr ""
+msgstr "%1$s が %2$s に返金されました"
 
 #: includes/functions/merge-tags-and-dates.php:199
 #: includes/functions/merge-tags-and-dates.php:201
 #. translators: 1: primary product name, 2: bump product name.
 #, php-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s、%2$s"
 
 #: includes/functions/merge-tags-and-dates.php:549
 msgid "Invalid Charge ID"
@@ -13265,7 +13294,7 @@ msgstr "リセットメールの送信に失敗しました。後でもう一度
 
 #: includes/functions/merge-tags-and-dates.php:579
 msgid "Your session has expired. Please try again."
-msgstr ""
+msgstr "セッションが期限切れです。もう一度お試しください。"
 
 #: includes/functions/merge-tags-and-dates.php:580
 #: includes/functions/merge-tags-and-dates.php:581
@@ -13449,7 +13478,7 @@ msgstr " Membervault コースID: "
 #. translators: %s: Membervault API error message.
 #, php-format
 msgid "Membervault add failed: %s"
-msgstr ""
+msgstr "Membervaultの追加に失敗しました: %s"
 
 #: includes/functions/orders-products-and-formatting.php:147
 msgid "Membervault add failed"
@@ -13560,7 +13589,7 @@ msgstr "無効なチャージID"
 #. translators: %s: Stripe gateway mode (e.g. live or test)
 #, php-format
 msgid "Oops, Stripe %s key missing!"
-msgstr ""
+msgstr "おっと、Stripe %s キーが不足しています!"
 
 #: includes/functions/payment-actions-and-refunds.php:438
 msgid "Payment refunded by"
@@ -13609,11 +13638,11 @@ msgstr "クーポン:"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "(%1$s off for %2$d months)"
-msgstr ""
+msgstr "(%1$s 割引で %2$d ヶ月)"
 
 #: includes/functions/prices-and-marketing.php:273
 msgid "JSON Parse"
-msgstr ""
+msgstr "JSONパース"
 
 #: includes/functions/prices-and-marketing.php:357
 msgid "No Data Found"
@@ -13652,19 +13681,19 @@ msgstr "日"
 #. translators: %d: product ID.
 #, php-format
 msgid "Product #%d"
-msgstr ""
+msgstr "製品 #%d"
 
 #: includes/functions/users-and-notifications.php:159
 #. translators: 1: requested role, 2: role used instead.
 #, php-format
 msgid "User role %1$s is not allowed for customers; %2$s was used instead."
-msgstr ""
+msgstr "ユーザー役割 %1$s は顧客には許可されていません; %2$s が代わりに使用されました。"
 
 #: includes/functions/users-and-notifications.php:192
 #. translators: 1: user ID, 2: role name.
 #, php-format
 msgid "Role for User ID: %1$s updated to %2$s"
-msgstr ""
+msgstr "ユーザーID: %1$s の役割が %2$s に更新されました。"
 
 #: includes/functions/users-and-notifications.php:209
 #. translators: %s: user ID.
@@ -13715,11 +13744,11 @@ msgstr "アップセルパス"
 
 #: includes/helpers/pro-locks/field-and-email-locks.php:235
 msgid "Affiliates"
-msgstr ""
+msgstr "アフィリエイト"
 
 #: includes/helpers/pro-locks/product-locks.php:27
 msgid "Stripe, PayPal"
-msgstr ""
+msgstr "Stripe、PayPal"
 
 #: includes/helpers/pro-locks/product-locks.php:29
 msgid "Globally Enabled Methods:"
@@ -13814,7 +13843,7 @@ msgstr "追加アイテムごと（国際）"
 
 #: includes/helpers/pro-locks/product-locks.php:76
 msgid "Enable affiliate sales"
-msgstr ""
+msgstr "アフィリエイト販売を有効にする"
 
 #: includes/helpers/pro-locks/product-locks.php:77
 #: public/templates/pdf-invoice/invoice.php:145
@@ -13825,15 +13854,15 @@ msgstr "説明"
 
 #: includes/helpers/pro-locks/product-locks.php:78
 msgid "Name (internal)"
-msgstr ""
+msgstr "名前（内部）"
 
 #: includes/helpers/pro-locks/settings-locks.php:59
 msgid "Pro"
-msgstr ""
+msgstr "プロ"
 
 #: includes/helpers/pro-locks/settings-locks.php:98
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:1132
-#: includes/integrations/gutenberg/build/order-form.js:3
+#: includes/integrations/gutenberg/build/order-form.js:3, fuzzy
 msgid "Square"
 msgstr "Square"
 
@@ -13841,35 +13870,35 @@ msgstr "Square"
 msgid ""
 "Accept payments online and in person with Square, syncing items and "
 "inventory."
-msgstr ""
+msgstr "Squareを使用して、オンラインおよび対面での支払いを受け付け、アイテムと在庫を同期します。"
 
-#: includes/helpers/pro-locks/settings-locks.php:104
+#: includes/helpers/pro-locks/settings-locks.php:104, fuzzy
 msgid "Mollie"
-msgstr ""
+msgstr "Mollie"
 
 #: includes/helpers/pro-locks/settings-locks.php:105
 msgid "Offer global and local payment methods with fast, multilingual onboarding."
-msgstr ""
+msgstr "迅速で多言語のオンボーディングを提供するグローバルおよびローカルの支払い方法。"
 
-#: includes/helpers/pro-locks/settings-locks.php:110
+#: includes/helpers/pro-locks/settings-locks.php:110, fuzzy
 msgid "Razorpay"
-msgstr ""
+msgstr "Razorpay"
 
 #: includes/helpers/pro-locks/settings-locks.php:111
 msgid "Accept payments in India and beyond with Razorpay's simple integration."
-msgstr ""
+msgstr "Razorpayのシンプルな統合でインドおよびそれ以外で支払いを受け入れます。"
 
 #: includes/helpers/pro-locks/settings-locks.php:217
 msgid "PRO"
-msgstr ""
+msgstr "プロ"
 
 #: includes/helpers/pro-locks/settings-locks.php:238
 msgid "This is a Pro feature"
-msgstr ""
+msgstr "これはプロ機能です"
 
 #: includes/helpers/pro-locks/settings-locks.php:239
 msgid "This feature is available in the separate PublishPress Cart Pro plugin."
-msgstr ""
+msgstr "この機能は別のPublishPress Cart Proプラグインで利用可能です。"
 
 #: includes/helpers/pro-locks/settings-locks.php:273
 msgid "URL Coupon Parameter Name"
@@ -13880,6 +13909,8 @@ msgid ""
 "Use something else in place of \"ppcart-coupon\" when creating coupon URLs "
 "(e.g., https://example.com/product/?ppcart-coupon=20off)."
 msgstr ""
+"クーポンURLを作成する際には「ppcart-coupon」の代わりに他のものを使用してください（例: "
+"https://example.com/product/?ppcart-coupon=20off）。"
 
 #: includes/helpers/pro-locks/settings-locks.php:278
 msgid "Disable product template"
@@ -13970,7 +14001,7 @@ msgstr "ボーナスワークブック.docx"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:7
 #: public/templates/my-account/forms/login-form.php:110
 msgid "Username"
-msgstr ""
+msgstr "ユーザー名"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:8
 #: public/templates/my-account/forms/login-form.php:111
@@ -13980,18 +14011,18 @@ msgstr "パスワード"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:9
 #: public/templates/my-account/forms/login-form.php:112
 msgid "Remember Me"
-msgstr ""
+msgstr "ログイン情報を記憶する"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:10
 #: public/templates/my-account/forms/login-form.php:113
 msgid "Log In"
-msgstr ""
+msgstr "ログイン"
 
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:8
 msgid "Jan 1, 2026"
 msgstr "2026年1月1日"
 
-#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10
+#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10, fuzzy
 msgid "$49.00"
 msgstr "$49.00"
 
@@ -14004,7 +14035,7 @@ msgstr "サンプルプラン"
 msgid "Feb 1, 2026"
 msgstr "2026年2月1日"
 
-#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11
+#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11, fuzzy
 msgid "$99 x 6"
 msgstr "$99 x 6"
 
@@ -14031,7 +14062,7 @@ msgstr "$19/月"
 
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:38
 msgid "Cancels Feb 1, 2026"
-msgstr ""
+msgstr "2026年2月1日にキャンセル"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-context.php:30
 msgid "Invalid account detail request."
@@ -14089,11 +14120,11 @@ msgstr "詳細"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:390
 msgid "January 1, 2026"
-msgstr ""
+msgstr "2026年1月1日"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:391
 msgid "February 1, 2026"
-msgstr ""
+msgstr "2026年2月1日"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:472
 msgid "No downloads available yet."
@@ -14122,7 +14153,7 @@ msgstr "クレジットカード"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:87
 msgid "Single Collection"
-msgstr ""
+msgstr "シングルコレクション"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:90
 msgid "Single Product"
@@ -14140,7 +14171,7 @@ msgstr "プランを選択"
 
 #: includes/integrations/templates/cancel-subscription-integration-fields.php:57
 msgid "At the end of the current billing period"
-msgstr ""
+msgstr "現在の請求期間の終了時"
 
 #: includes/integrations/templates/cancel-subscription-run.php:33
 #. translators: %s: subscription ID.
@@ -14152,13 +14183,13 @@ msgstr "サブスクリプションID: %sはキャンセルされました"
 #. translators: 1: subscription ID, 2: error message.
 #, php-format
 msgid "Error canceling subscription ID: %1$s! Message: %2$s"
-msgstr ""
+msgstr "サブスクリプションID: %1$s のキャンセル中にエラーが発生しました！メッセージ: %2$s"
 
 #: includes/integrations/templates/cancel-subscription-run.php:41
 #. translators: 1: product ID, 2: plan ID.
 #, php-format
 msgid "No active subscriptions found for product ID: %1$s and plan ID=%2$s"
-msgstr ""
+msgstr "製品ID: %1$s およびプランID=%2$s に対するアクティブなサブスクリプションが見つかりませんでした。"
 
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:22
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:39
@@ -14277,6 +14308,8 @@ msgid ""
 "the Kit personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"各フィールドペアを別の行に配置し、フィールド値からKitパーソナライズタグを区切るためにコロン（「:」）を使用してください。例: "
+"%TAG%:ppcart_field_id"
 
 #: includes/integrations/templates/ppcart-kit-ppcart-add-remove-convertkit-subscriber.php:59
 msgid "Subscriber added to Kit form."
@@ -14714,7 +14747,7 @@ msgstr "%s サインアップ料金"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "%1$s off for %2$d months"
-msgstr ""
+msgstr "%1$s 割引で %2$d ヶ月"
 
 #: includes/ppcart-countries.php:17
 msgid "Select a Country"
@@ -15754,102 +15787,102 @@ msgstr "この期間に見つかりませんでした"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:33
 msgid "Encryption enabled"
-msgstr ""
+msgstr "暗号化が有効"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:38
 msgid "Payment and integration credentials are encrypted at rest."
-msgstr ""
+msgstr "支払いおよび統合資格情報は、静止状態で暗号化されています。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:40
 msgid "New credentials will be encrypted when saved."
-msgstr ""
+msgstr "新しい資格情報は保存時に暗号化されます。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:44
 msgid "Encryption disabled"
-msgstr ""
+msgstr "暗号化が無効"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:46
 msgid ""
 "Payment and integration keys are stored in plaintext by default. Enable "
 "encryption to reduce risk if your database is exposed."
-msgstr ""
+msgstr "支払いおよび統合キーはデフォルトでプレーンテキストで保存されます。データベースが公開されている場合は、リスクを減らすために暗号化を有効にしてください。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:58
 msgid "Enable encryption"
-msgstr ""
+msgstr "暗号化を有効にする"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:67
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Add %s to wp-config.php to enable encryption."
-msgstr ""
+msgstr "%s を wp-config.php に追加して暗号化を有効にします。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:79
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:27
 msgid "Encryption is controlled by PPCART_ENCRYPT_SECRETS in wp-config.php."
-msgstr ""
+msgstr "暗号化は wp-config.php の PPCART_ENCRYPT_SECRETS によって制御されます。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:87
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Optional: lock encryption on in wp-config.php with %s"
-msgstr ""
+msgstr "オプション: %s で wp-config.php に暗号化をロックします。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:98
 msgid "Open Security settings"
-msgstr ""
+msgstr "セキュリティ設定を開く"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:27
 msgid "Encryption"
-msgstr ""
+msgstr "暗号化"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:31
 msgid ""
 "Controlled by PPCART_ENCRYPT_SECRETS in wp-config.php. The database setting "
 "is ignored."
-msgstr ""
+msgstr "wp-config.php の PPCART_ENCRYPT_SECRETS によって制御されます。データベース設定は無視されます。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:44
 msgid "Encrypt payment and integration credentials in the database"
-msgstr ""
+msgstr "データベース内の支払いおよび統合資格情報を暗号化します"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:48
 msgid "For production sites, you can lock this in wp-config.php instead:"
-msgstr ""
+msgstr "本番サイトでは、wp-config.php でこれをロックできます:"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:52
 msgid ""
 "When that constant is defined, it takes precedence and this checkbox is "
 "ignored."
-msgstr ""
+msgstr "その定数が定義されている場合、優先され、このチェックボックスは無視されます。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:68
 #. translators: %s: encryption key source label.
 #, php-format
 msgid "Key source: %s"
-msgstr ""
+msgstr "キーソース: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:76
 msgid ""
 "Encryption cannot run until AUTH_KEY or PPCART_SECRETS_KEY is configured in "
 "wp-config.php."
-msgstr ""
+msgstr "AUTH_KEY または PPCART_SECRETS_KEY が wp-config.php に設定されるまで、暗号化は実行できません。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:83
 msgid "Stored credentials"
-msgstr ""
+msgstr "保存された資格情報"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:86
 #. translators: %d: count
 #, php-format
 msgid "Encrypted: %d"
-msgstr ""
+msgstr "暗号化済み: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:87
 #. translators: %d: count
 #, php-format
 msgid "Plaintext: %d"
-msgstr ""
+msgstr "平文: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:91
 msgid ""
@@ -15857,6 +15890,8 @@ msgid ""
 "plaintext. Existing encrypted values are not rewritten automatically; Cart "
 "continues to read them normally."
 msgstr ""
+"暗号化が無効になっている間、新しいおよび更新された資格情報は平文で保存されます。既存の暗号化された値は自動的に書き換えられず、カートはそれらを通常通り読"
+"み取ります。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:99
 #. translators: %d: number of encrypted credentials.
@@ -15865,65 +15900,68 @@ msgid ""
 "%d credential remains encrypted in the database until you re-save it or "
 "enable encryption again."
 msgid_plural ""
+msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
 msgstr[0] ""
+"%d の資格情報がデータベース内で暗号化されたままであり、再保存するか、再度暗号化を有効にするまでそのままです。|%d "
+"の資格情報がデータベース内で暗号化されたままであり、再保存するか、再度暗号化を有効にするまでそのままです。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
 "When you enable encryption, any plaintext credentials are encrypted "
 "automatically."
-msgstr ""
+msgstr "暗号化を有効にすると、平文の資格情報は自動的に暗号化されます。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:121
 #. translators: %s: formatted datetime.
 #, php-format
 msgid "Last migration: %s"
-msgstr ""
+msgstr "最後の移行: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:138
 msgid "Enable encryption above or in wp-config.php before running migration."
-msgstr ""
+msgstr "移行を実行する前に、上記または wp-config.php で暗号化を有効にしてください。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:156
 msgid ""
 "Rewrites existing plaintext payment and integration credentials in the "
 "database. Run during a maintenance window after taking a backup."
-msgstr ""
+msgstr "データベース内の既存の平文の支払いおよび統合資格情報を上書きします。バックアップを取った後、メンテナンスウィンドウ中に実行してください。"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:32
 msgid "PublishPress Cart security"
-msgstr ""
+msgstr "PublishPress カートのセキュリティ"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:39
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed)."
-msgstr ""
+msgstr "暗号化された %1$d の保存された資格情報 (%2$d スキップ、%3$d 失敗)。"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:48
 msgid ""
 "Do not change AUTH_KEY or PPCART_SECRETS_KEY without re-entering payment "
 "and integration keys in Cart settings."
-msgstr ""
+msgstr "カート設定で支払いおよび統合キーを再入力せずに、AUTH_KEY または PPCART_SECRETS_KEY を変更しないでください。"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:52
 msgid ""
 "Some credentials could not be encrypted. Re-run migration from Cart → "
 "Settings → Maintenance or re-save keys manually."
-msgstr ""
+msgstr "一部の資格情報は暗号化できませんでした。カート → 設定 → メンテナンスから移行を再実行するか、キーを手動で再保存してください。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:20
 msgid "You do not have permission to change security encryption settings."
-msgstr ""
+msgstr "セキュリティ暗号化設定を変更する権限がありません。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:58
 msgid "Encryption disabled."
-msgstr ""
+msgstr "暗号化は無効になっています。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:74
 msgid "Encryption enabled."
-msgstr ""
+msgstr "暗号化は有効になっています。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:91
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
@@ -15932,22 +15970,24 @@ msgid ""
 "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed). Use Encrypt "
 "stored credentials in Maintenance to retry failures."
 msgstr ""
+"暗号化された %1$d の保存された資格情報 (%2$d スキップ、%3$d "
+"失敗)。メンテナンスで保存された資格情報を暗号化して、失敗を再試行してください。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:100
 #. translators: 1: migrated count, 2: skipped count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped)."
-msgstr ""
+msgstr "暗号化された %1$d の保存された資格情報 (%2$d スキップ)。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:117
 msgid "You do not have permission to encrypt stored credentials."
-msgstr ""
+msgstr "保存された資格情報を暗号化する権限がありません。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:132
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Migration complete. Encrypted: %1$d. Skipped: %2$d. Failed: %3$d."
-msgstr ""
+msgstr "移行完了。暗号化された件数: %1$d。スキップされた件数: %2$d。失敗件数: %3$d。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-crypto.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:511
@@ -15962,9 +16002,13 @@ msgid ""
 "Encryption is enabled but %d stored credential is still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgid_plural ""
+msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgstr[0] ""
+"暗号化は有効になっていますが、%d "
+"の保存された資格情報はまだ平文のままです。保存された資格情報を暗号化して再試行してください。|暗号化は有効になっていますが、%d "
+"の保存された資格情報はまだ平文のままです。保存された資格情報を暗号化して再試行してください。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -15973,19 +16017,24 @@ msgid ""
 "You have %d stored credential in plaintext. Enabling encryption will "
 "encrypt it automatically."
 msgid_plural ""
+msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
 msgstr[0] ""
+"平文の資格情報が %d 件あります。暗号化を有効にすると、自動的に暗号化されます。|平文の資格情報が %d "
+"件あります。暗号化を有効にすると、自動的に暗号化されます。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
 "Encryption is not enabled. Enable it in Cart → Settings → Maintenance or "
 "add define( 'PPCART_ENCRYPT_SECRETS', true ); to wp-config.php."
 msgstr ""
+"暗号化は有効になっていません。カート → 設定 → メンテナンスで有効にするか、wp-config.php に define( "
+"'PPCART_ENCRYPT_SECRETS', true ); を追加してください。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:122
 msgid "Encryption requires AUTH_KEY or PPCART_SECRETS_KEY in wp-config.php."
-msgstr ""
+msgstr "暗号化には wp-config.php に AUTH_KEY または PPCART_SECRETS_KEY が必要です。"
 
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-resume-subscription.php:19
 msgid "Canceled Stripe subscriptions cannot be resumed locally."
@@ -16004,13 +16053,13 @@ msgstr "Stripeサブスクリプションは、PublishPress Cartサブスクリ�
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
-msgstr ""
+msgstr "この支払いは確認できませんでした。ページを再読み込みして再試行してください。"
 
 #: includes/stripe/templates/order-save.php:109
 #. translators: %s: order status.
 #, php-format
 msgid "%s order created."
-msgstr ""
+msgstr "%s 注文が作成されました。"
 
 #: includes/stripe/templates/order-save.php:120
 msgid "Order complete."
@@ -16040,75 +16089,75 @@ msgstr "タグ"
 #. translators: %s: singular label.
 #, php-format
 msgid "Add New %s"
-msgstr ""
+msgstr "新しい %s を追加"
 
 #: includes/templates/post-types-register-single-post-type.php:49
 #: includes/templates/post-types-register-single-taxonomy.php:20
 #. translators: %s: singular label.
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "%s を編集"
 
 #: includes/templates/post-types-register-single-post-type.php:54
 #. translators: %s: singular label.
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "新しい %s"
 
 #: includes/templates/post-types-register-single-post-type.php:56
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found"
-msgstr ""
+msgstr "%s が見つかりません"
 
 #: includes/templates/post-types-register-single-post-type.php:58
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found in Trash"
-msgstr ""
+msgstr "ゴミ箱内に %s は見つかりません"
 
 #: includes/templates/post-types-register-single-post-type.php:60
 #. translators: %s: post type plural label
 #, php-format
 msgid "Parent %s :"
-msgstr ""
+msgstr "親 %s :"
 
 #: includes/templates/post-types-register-single-post-type.php:62
 #: includes/templates/post-types-register-single-taxonomy.php:13
 #. translators: %s: plural label.
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "%s を検索"
 
 #: includes/templates/post-types-register-single-post-type.php:65
 #. translators: %s: singular label.
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "%s を表示"
 
 #: includes/templates/post-types-register-single-taxonomy.php:16
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s"
-msgstr ""
+msgstr "親 %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:18
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s:"
-msgstr ""
+msgstr "親 %s:"
 
 #: includes/templates/post-types-register-single-taxonomy.php:22
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Update %s"
-msgstr ""
+msgstr "%sを更新"
 
 #: includes/templates/post-types-register-single-taxonomy.php:26
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "New %s Name"
-msgstr ""
+msgstr "新しい%s名"
 
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:37
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:38
@@ -16119,7 +16168,7 @@ msgstr "受け入れられました"
 #. translators: %1$s: previous order status, %2$s: new order status
 #, php-format
 msgid "Order status updated from %1$s to %2$s"
-msgstr ""
+msgstr "注文状況が%1$sから%2$sに更新されました"
 
 #: models/order/traits/templates/order-persistence-store.php:68
 msgid "Creating order."
@@ -16144,11 +16193,11 @@ msgstr "領収書をダウンロード"
 #. translators: %s: subscription status
 #, php-format
 msgid "Subscription status updated to %s"
-msgstr ""
+msgstr "%sにサブスクリプション状況が更新されました"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:37
 msgid "This offer is no longer available."
-msgstr ""
+msgstr "このオファーはもう利用できません。"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:168
 #: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:176
@@ -16157,7 +16206,7 @@ msgstr ""
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:152
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:167
 msgid "This checkout could not be started. Please contact the site administrator."
-msgstr ""
+msgstr "このチェックアウトを開始できませんでした。サイト管理者にお問い合わせください。"
 
 #: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:36
 #: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:31
@@ -16241,11 +16290,11 @@ msgstr "新しいカードを保存できませんでした。支払い詳細を
 msgid ""
 "The new card was saved, but some of your other subscriptions could not be "
 "updated. Please try again."
-msgstr ""
+msgstr "新しいカードは保存されましたが、他のいくつかのサブスクリプションは更新できませんでした。もう一度お試しください。"
 
 #: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:86
 msgid "The new card was saved, but the payment failed: "
-msgstr ""
+msgstr "新しいカードは保存されましたが、支払いに失敗しました："
 
 #: public/controllers/order/traits/trait-ppcart-public-order-cart.php:74
 msgid "Your cart is empty."
@@ -16253,25 +16302,25 @@ msgstr "カートは空です。"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:201
 msgid "Processing payment…"
-msgstr ""
+msgstr "支払い処理中…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:202
 msgid "Your payment is being confirmed. This page will refresh automatically…"
-msgstr ""
+msgstr "お支払いを確認中です。このページは自動的に更新されます…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:218
 msgid "Payment processing"
-msgstr ""
+msgstr "支払い処理中"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:219
 msgid ""
 "We are still confirming your payment. You can leave this page open and "
 "refresh shortly, or check your email for a confirmation."
-msgstr ""
+msgstr "お支払いを確認中です。このページを開いたままにして短時間で更新するか、確認メールをチェックしてください。"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:221
 msgid "View order status"
-msgstr ""
+msgstr "注文状況を表示"
 
 #: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Purchase"
@@ -16288,7 +16337,7 @@ msgstr "このチェックアウトに対する支払い準備は利用できま
 #: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:74
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:117
 msgid "There was an error, please try again."
-msgstr ""
+msgstr "エラーが発生しました。もう一度お試しください。"
 
 #: public/controllers/templates/ga-purchase-tracking.php:112
 #: public/controllers/templates/ga-purchase-tracking.php:165
@@ -16299,13 +16348,13 @@ msgstr "カスタムアドオン"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:37
 msgid "Hosted Checkout is not enabled."
-msgstr ""
+msgstr "ホスティングチェックアウトは有効になっていません。"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:184
 msgid ""
 "This subscription is not ready for checkout, please contact the site "
 "administrator."
-msgstr ""
+msgstr "このサブスクリプションはチェックアウトの準備ができていません。サイト管理者にお問い合わせください。"
 
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:37
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:82
@@ -16321,7 +16370,7 @@ msgstr "このサブスクリプションにアクセスする権限がありま
 msgid "My Account"
 msgstr "マイアカウント"
 
-#: public/partials/csv-export.php:157
+#: public/partials/csv-export.php:157, fuzzy
 msgid "ID"
 msgstr "ID"
 
@@ -16414,6 +16463,10 @@ msgid ""
 "data-testid=\"ppcart-checkout-stripe-test-card-link\">Find a test card for "
 "another country</a>."
 msgstr ""
+"テストモードが有効です：テスト（米国）購入を行うには、クレジットカード番号「4242424242424242"
+"」をCVCと有効な有効期限で使用してください。<a href=\"%s\" target=\"_blank\" rel=\"noopener "
+"noreferrer\" "
+"data-testid=\"ppcart-checkout-stripe-test-card-link\">他の国のテストカードを見つける</a>。"
 
 #: public/templates/functions/payment-address.php:85
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:104
@@ -16449,11 +16502,11 @@ msgstr "連絡先情報"
 
 #: public/templates/functions/summary-and-scripts.php:142
 msgid "terms and conditions"
-msgstr ""
+msgstr "利用規約"
 
 #: public/templates/functions/summary-and-scripts.php:161
 msgid "privacy policy"
-msgstr ""
+msgstr "プライバシーポリシー"
 
 #: public/templates/my-account/card-details.php:24
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:92
@@ -16487,7 +16540,7 @@ msgstr "有効期限"
 
 #: public/templates/my-account/forms/change-card.php:57
 msgid "Set default for all active subscriptions"
-msgstr ""
+msgstr "すべてのアクティブなサブスクリプションにデフォルトを設定"
 
 #: public/templates/my-account/forms/change-card.php:65
 msgid "Pay Now and Save Card"
@@ -17613,7 +17666,7 @@ msgid "Corners"
 msgstr "コーナー"
 
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:1133
-#: includes/integrations/gutenberg/build/order-form.js:3
+#: includes/integrations/gutenberg/build/order-form.js:3, fuzzy
 msgid "Rounded"
 msgstr "Rounded"
 
@@ -17697,27 +17750,27 @@ msgid "Bold (700)"
 msgstr "ボールド (700)"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:55
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "S"
 msgstr "S"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:56
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "M"
 msgstr "M"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:57
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "L"
 msgstr "L"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:58
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XL"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:59
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XXL"
 msgstr "XXL"
 
@@ -17933,10 +17986,10 @@ msgstr "アイコンのみ"
 
 #: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
-#, php-format
+#, fuzzy, php-format
 msgctxt "date range"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:162
 #. translators: 1: current page, 2: total pages.
@@ -17952,24 +18005,24 @@ msgstr "ジョージア"
 
 #: includes/functions/merge-tags-and-dates.php:143
 #. translators: 1: product name, 2: plan name.
-#, php-format
+#, fuzzy, php-format
 msgctxt "product and plan"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: public/templates/functions/summary-and-scripts.php:141
 #. translators: %s: terms and conditions link.
 #, php-format
 msgctxt "terms and conditions"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "%sを読み、同意しました。"
 
 #: public/templates/functions/summary-and-scripts.php:160
 #. translators: %s: privacy policy link.
 #, php-format
 msgctxt "privacy policy"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "%sを読み、同意しました。"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.json
 msgctxt "block title"

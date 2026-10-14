@@ -10,18 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-13 22:09+0000\n"
+"PO-Revision-Date: 2026-10-14 01:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 ? 0 : (n == 2 ? 1 : ((n > 10 && n "
 "% 10 == 0) ? 2 : 3)));\n"
 "% 10 == 0) ? 2: 3)));\n"
-"Language: he-IL\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 ? 0 : (n == 2 ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3)));\n"
 
 #: publishpress-cart.php:16
 #. Plugin Name of the plugin
 msgid "PublishPress Cart - eCommerce for Digital Products"
-msgstr ""
+msgstr "PublishPress Cart - מסחר אלקטרוני עבור מוצרים דיגיטליים"
 
 #: publishpress-cart.php:17
 #. Plugin URI of the plugin
@@ -34,6 +34,8 @@ msgid ""
 "Create order pages and simplified sales flow creation that helps you sell "
 "digital products, programs, and services."
 msgstr ""
+"צור דפי הזמנה וזרימת מכירה פשוטה שעוזרת לך למכור מוצרים דיגיטליים, תוכניות "
+"ושירותים."
 
 #: publishpress-cart.php:20
 #: admin/partials/settings-page/tabs/topbar.php:8
@@ -85,7 +87,7 @@ msgstr "לקוחות"
 
 #: admin/class-ppcart-contacts-page.php:165
 msgid "Export Customers"
-msgstr ""
+msgstr "ייצוא לקוחות"
 
 #: admin/class-ppcart-contacts-page.php:169
 #: admin/reports/templates/customer-report/page.php:87
@@ -152,7 +154,7 @@ msgid "Name"
 msgstr "שם"
 
 #: admin/class-ppcart-contacts-page.php:192
-#: admin/reports/templates/customer-report/page.php:93
+#: admin/reports/templates/customer-report/page.php:93, fuzzy
 msgid "LTV"
 msgstr "LTV"
 
@@ -163,23 +165,23 @@ msgstr "תאריך ההזמנה האחרונה"
 
 #: admin/class-ppcart-contacts-page.php:224
 msgid "Search customers"
-msgstr ""
+msgstr "חפש לקוחות"
 
 #: admin/class-ppcart-contacts-page.php:225
 msgid "Show _MENU_ customers"
-msgstr ""
+msgstr "הצג _MENU_ לקוחות"
 
 #: admin/class-ppcart-contacts-page.php:226
 msgid "_START_ - _END_ of _TOTAL_ customers"
-msgstr ""
+msgstr "_START_ - _END_ מתוך _TOTAL_ לקוחות"
 
 #: admin/class-ppcart-contacts-page.php:227
 msgid "No customers found"
-msgstr ""
+msgstr "לא נמצאו לקוחות"
 
 #: admin/class-ppcart-contacts-page.php:228
 msgid "No matching customers found"
-msgstr ""
+msgstr "לא נמצאו לקוחות תואמים"
 
 #: admin/class-ppcart-extension-page.php:81
 #: admin/class-ppcart-extension-page.php:82
@@ -218,7 +220,7 @@ msgstr "פרטי לקוח וחשבונית"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:49
 msgid "Studiocart custom tracking scripts are not available in PublishPress Cart."
-msgstr ""
+msgstr "סקריפטי מעקב מותאמים אישית של Studiocart אינם זמינים ב-PublishPress Cart."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:50
 msgid ""
@@ -226,20 +228,22 @@ msgid ""
 "Leftover tracking code on these products is kept in post meta for reference "
 "and is not executed."
 msgstr ""
+"הם מוחלפים על ידי אירועי Meta Pixel ו-Google Analytics מסודרים. קוד המעקב "
+"שנותר על מוצרים אלה נשמר במטה הפוסט לצורך התייחסות ואינו מתבצע."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:51
 msgid "Affected products:"
-msgstr ""
+msgstr "מוצרים מושפעים:"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:61
 msgid "Review analytics settings"
-msgstr ""
+msgstr "סקור הגדרות אנליטיקה"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:62
 #: admin/traits/templates/notices-admin-notices.php:111
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:56
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "דחה הודעה זו"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:76
 msgid "Shortcode"
@@ -354,29 +358,33 @@ msgstr "עדכן מצב לְמבוטל"
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:176
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
-msgstr ""
+msgstr "סנכרן עם Stripe"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:207
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s מנויים סונכרנו מ-Stripe."
+msgstr[1] "%s מנויים סונכרנו מ-Stripe."
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s נכשל; ראה את יומן המנוי שלו עבור הסיבה."
+msgstr[1] "%s נכשלו; ראה את יומני המנוי שלהם עבור הסיבה."
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
-msgstr ""
+msgstr "כל ריצה מסנכרנת מספר מוגבל של מנויים. בחר את השאר ורץ שוב כדי להמשיך."
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:44
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:51
@@ -398,11 +406,11 @@ msgstr "אין הרשאה."
 #. translators: %s: active payment processors list.
 #, php-format
 msgid "Cart - Test Mode Active (%1$s)"
-msgstr ""
+msgstr "Cart - מצב בדיקה פעיל (%1$s)"
 
 #: admin/controllers/class-ppcart-admin-test-mode-notice-controller.php:101
 msgid "Open PublishPress Cart payment settings"
-msgstr ""
+msgstr "פתח את הגדרות התשלום של PublishPress Cart"
 
 #: admin/controllers/order/templates/product-form.php:45
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:37
@@ -505,6 +513,8 @@ msgid "%s refund"
 msgid_plural "%s refunds"
 msgstr[0] "%s החזר"
 msgstr[1] "%s החזרים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/order/templates/product-form.php:310
 msgid "Total refunded:"
@@ -605,7 +615,7 @@ msgstr "הזמנה אם"
 
 #: admin/controllers/order/templates/product-form.php:574
 msgid "Child Order"
-msgstr ""
+msgstr "הזמנה לילד"
 
 #: admin/controllers/order/templates/product-info-metabox.php:48
 msgid "Stripe payment"
@@ -919,7 +929,7 @@ msgstr "שגיאה"
 #: admin/traits/templates/integrations-ppcart-mailchimp-groups-tags.php:15
 #: admin/traits/trait-ppcart-admin-integrations.php:132
 msgid "You do not have permission to perform this action."
-msgstr ""
+msgstr "אין לך הרשאה לבצע פעולה זו."
 
 #: admin/controllers/order/traits/templates/order-ajax-product-plan-options-html.php:11
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:15
@@ -955,7 +965,7 @@ msgstr "הערות הזמנה"
 #: admin/partials/ppcart-admin-page-settings.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:32
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:16
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22, fuzzy
 msgid "PublishPress Cart"
 msgstr "PublishPress Cart"
 
@@ -1031,6 +1041,8 @@ msgid ""
 "Refresh status and next bill date from Stripe, and import any invoices "
 "missing from the order history"
 msgstr ""
+"רענן מצב ותאריך החיוב הבא מ-Stripe, וייבא כל חשבונית חסרה מההיסטוריה של "
+"ההזמנות"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:147
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:29
@@ -1183,13 +1195,13 @@ msgstr "המנוי והחשבוניות סונכרנו בהצלחה."
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:48
 msgid "Subscription synced from Stripe by admin"
-msgstr ""
+msgstr "מנוי סונכרן מ-Stripe על ידי admin"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:52
 #. translators: %s: error message.
 #, php-format
 msgid "Error syncing subscription from Stripe! Message: %s"
-msgstr ""
+msgstr "שגיאה בסנכרון מנוי מ-Stripe! הודעה: %s"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:77
 msgid ""
@@ -1235,8 +1247,10 @@ msgstr "ממתין"
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ממתין <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "ממתין <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1249,16 +1263,20 @@ msgstr "שולם"
 #, php-format
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "שולם <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "שולם <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
 #, php-format
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "הוחזר <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "הוחזר <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1270,8 +1288,10 @@ msgstr "נכשל"
 #, php-format
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "נכשל <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "נכשל <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1286,8 +1306,10 @@ msgstr "עבר תאריך"
 #, php-format
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "עבר תאריך <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "עבר תאריך <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1299,8 +1321,10 @@ msgstr "לא ניתן לגבות"
 #, php-format
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "לא ניתן לגבות <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "לא ניתן לגבות <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1317,8 +1341,10 @@ msgstr "פעיל"
 #, php-format
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "פעיל <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "פעיל <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1330,8 +1356,10 @@ msgstr "לא שולם"
 #, php-format
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "לא שולם <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "לא שולם <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1346,16 +1374,20 @@ msgstr "מושעה"
 #, php-format
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "מושהה <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "מושהה <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
 #, php-format
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "מבוטל <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "מבוטל <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1368,8 +1400,10 @@ msgstr "הושלם"
 #, php-format
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "הושלם <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "הושלם <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1381,8 +1415,10 @@ msgstr "לא הושלם"
 #, php-format
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "לא הושלם <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "לא הושלם <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1394,8 +1430,10 @@ msgstr "ניסיון"
 #, php-format
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ניסיון <span class=\\\"count\\\">(%s)</span>"
+msgstr[1] "ניסיון <span class=\\\"count\\\">(%s)</span>"
+msgstr[2] ""
+msgstr[3] ""
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -1462,7 +1500,7 @@ msgid "Renewals"
 msgstr "חידושים"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:405
+#: admin/reports/templates/admin-reports-page.php:405, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1526,7 +1564,7 @@ msgstr "תמיכה ודוקומנטציה"
 #. translators: 1: opening link tag, 2: closing link tag.
 #, php-format
 msgid "Visit our %1$sdocumentation%2$s for help."
-msgstr ""
+msgstr "בקר ב-%1$sתיעוד שלנו%2$s לעזרה."
 
 #: admin/dashboard/class-ppcart-dashboard-widget.php:36
 #. translators: %s: plugin title.
@@ -1550,7 +1588,7 @@ msgstr "הצג הודעה"
 
 #: admin/metaboxes/field-groups/message-fields.php:18
 msgid "Display Page"
-msgstr ""
+msgstr "הצג עמוד"
 
 #: admin/metaboxes/field-groups/message-fields.php:19
 msgid "Perform Redirect"
@@ -1575,7 +1613,7 @@ msgstr "כתובת URL של דף תודה"
 
 #: admin/metaboxes/field-groups/message-fields.php:76
 msgid "Preview & send test email"
-msgstr ""
+msgstr "תצוגה מקדימה & שלח דוא\"ל בדיקה"
 
 #: admin/metaboxes/field-groups/message-fields.php:84
 msgid "Disable Order Received Confirmation email"
@@ -1666,7 +1704,7 @@ msgstr "דוא\"ל שולח"
 msgid "Reply To"
 msgstr "תגובה ל"
 
-#: admin/metaboxes/field-groups/message-fields.php:243
+#: admin/metaboxes/field-groups/message-fields.php:243, fuzzy
 msgid "Bcc"
 msgstr "Bcc"
 
@@ -1683,23 +1721,23 @@ msgstr "נושא"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:12
 msgid "Checkout starts"
-msgstr ""
+msgstr "תהליך התשלום מתחיל"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:22
 msgid "Checkout ends"
-msgstr ""
+msgstr "תהליך התשלום מסתיים"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:32
 msgid "When checkout ended"
-msgstr ""
+msgstr "כאשר תהליך התשלום הסתיים"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:45
 msgid "Checkout ended redirect URL"
-msgstr ""
+msgstr "כתובת ה-URL של הפנייה לאחר סיום תהליך התשלום"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:58
 msgid "Checkout ended message"
-msgstr ""
+msgstr "הודעת סיום תהליך התשלום"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:59
 #: public/templates/functions/checkout-core.php:373
@@ -1902,62 +1940,62 @@ msgstr "תדירות"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:146
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:178
 msgid "Every"
-msgstr ""
+msgstr "כל"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:147
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:179
 msgid "Every 2nd"
-msgstr ""
+msgstr "כל 2"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:148
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:180
 msgid "Every 3rd"
-msgstr ""
+msgstr "כל 3"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:149
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:181
 msgid "Every 4th"
-msgstr ""
+msgstr "כל 4"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:150
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:182
 msgid "Every 5th"
-msgstr ""
+msgstr "כל 5"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:151
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:183
 msgid "Every 6th"
-msgstr ""
+msgstr "כל 6"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:152
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:184
 msgid "Every 7th"
-msgstr ""
+msgstr "כל 7"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:153
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:185
 msgid "Every 8th"
-msgstr ""
+msgstr "כל 8"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:154
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:186
 msgid "Every 9th"
-msgstr ""
+msgstr "כל 9"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:155
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:187
 msgid "Every 10th"
-msgstr ""
+msgstr "כל 10"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:156
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:188
 msgid "Every 11th"
-msgstr ""
+msgstr "כל 11"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:157
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:189
 msgid "Every 12th"
-msgstr ""
+msgstr "כל 12"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:173
 msgid "Frequency (On Sale)"
@@ -1972,22 +2010,22 @@ msgstr "פרק זמן לתשלום"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:210
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:234
 msgid "Day"
-msgstr ""
+msgstr "יום"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:211
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:235
 msgid "Week"
-msgstr ""
+msgstr "שבוע"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:212
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:236
 msgid "Month"
-msgstr ""
+msgstr "חודש"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:213
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:237
 msgid "Year"
-msgstr ""
+msgstr "שנה"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:229
 msgid "Pay Interval (On Sale)"
@@ -2080,6 +2118,8 @@ msgid ""
 "Put each field pair on a separate line and use a colon (\":\") to separate "
 "the field key from the field value. For example: field_key:ppcart_field_id"
 msgstr ""
+"שימו כל זוג שדות על שורה נפרדת והשתמשו בנקודתיים (\":\") כדי להפריד בין שם "
+"השדה לערכו. לדוגמה: field_key:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-01.php:163
 #: admin/metaboxes/traits/templates/integration-fields/fields-03.php:86
@@ -2125,6 +2165,8 @@ msgid ""
 "the ActiveCampaign personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"שימו כל זוג שדות על שורה נפרדת והשתמשו בנקודתיים (\":\") כדי להפריד בין תג "
+"ההתאמה האישית של ActiveCampaign לערך השדה. לדוגמה: %TAG%:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-02.php:89
 msgid "SendFox List"
@@ -2268,7 +2310,7 @@ msgstr "הגבהה עיקרית"
 #. translators: 1: bump number, 2: product title.
 #, php-format
 msgid "Add'l Bump %1$d (%2$s)"
-msgstr ""
+msgstr "בום נוסף %1$d (%2$s)"
 
 #: admin/metaboxes/traits/templates/product-metabox-plan-options-get-payment-plans.php:28
 msgid "(on sale)"
@@ -2344,7 +2386,7 @@ msgstr "אינטגרציות"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:16
 msgid "Product notification"
-msgstr ""
+msgstr "הודעת מוצר"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
@@ -2356,15 +2398,15 @@ msgstr "תצוגה מקדימה של דוא\"ל"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:23
 msgid "This notification is currently disabled. Preview and test email still work."
-msgstr ""
+msgstr "ההודעה הזו מושבתת כרגע. תצוגה מקדימה ובדיקת אימייל עדיין פועלות."
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:32
 msgid "Send test to"
-msgstr ""
+msgstr "שלח בדיקה ל"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:34
 msgid "Send test email"
-msgstr ""
+msgstr "שלח אימייל בדיקה"
 
 #: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:12
 msgid "this product"
@@ -2464,7 +2506,7 @@ msgstr "חידוש מנוי נכשל"
 #: includes/integrations/templates/cancel-subscription-plan-data.php:10
 #: includes/integrations/templates/cancel-subscription-plan-data.php:22
 msgid "No plans found"
-msgstr ""
+msgstr "לא נמצאו תכניות"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:29
 #: includes/helpers/pro-locks/product-locks.php:56
@@ -2582,7 +2624,7 @@ msgstr "תמונת רקע כותרת"
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:24
 #: public/partials/csv-export.php:351
 msgid "Until canceled"
-msgstr ""
+msgstr "עד לביטול"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:26
 msgid " payments"
@@ -2869,7 +2911,7 @@ msgstr "ניפוי באגים"
 
 #: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
-msgstr ""
+msgstr "תחזוקה"
 
 #: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:101
@@ -2926,7 +2968,7 @@ msgstr "אפשר רישום אבחוני וגישה לכלים לרישום די
 
 #: admin/partials/settings-page/metadata.php:66
 msgid "Operational tools including security encryption and credential migration."
-msgstr ""
+msgstr "כלים תפעוליים כולל הצפנת אבטחה והעברת credentials."
 
 #: admin/partials/settings-page/metadata.php:71
 msgid "Configure store options that do not belong in the main setup tabs."
@@ -2949,7 +2991,7 @@ msgid "More"
 msgstr "עוד"
 
 #: admin/partials/settings-page/metadata.php:107
-#: admin/settings/traits/templates/settings-sections-integrations.php:8
+#: admin/settings/traits/templates/settings-sections-integrations.php:8, fuzzy
 msgid "ActiveCampaign"
 msgstr "ActiveCampaign"
 
@@ -2958,7 +3000,7 @@ msgid "Sync customers and purchases to ActiveCampaign."
 msgstr "סנכרן לקוחות ורכישות ל-ActiveCampaign."
 
 #: admin/partials/settings-page/metadata.php:116
-#: admin/settings/traits/templates/settings-sections-integrations.php:9
+#: admin/settings/traits/templates/settings-sections-integrations.php:9, fuzzy
 msgid "Mailchimp"
 msgstr "Mailchimp"
 
@@ -2966,7 +3008,7 @@ msgstr "Mailchimp"
 msgid "Add customers to Mailchimp audiences and automate emails."
 msgstr "הוסף לקוחות לקבוצות Mailchimp ואוטומט את המיילים."
 
-#: admin/partials/settings-page/metadata.php:125
+#: admin/partials/settings-page/metadata.php:125, fuzzy
 msgid "Kit"
 msgstr "Kit"
 
@@ -2975,7 +3017,7 @@ msgid "Send customers and purchases to Kit forms and tags."
 msgstr "שלח לקוחות ורכישות לטפסים ותגים של Kit."
 
 #: admin/partials/settings-page/metadata.php:134
-#: admin/settings/traits/templates/settings-sections-integrations.php:11
+#: admin/settings/traits/templates/settings-sections-integrations.php:11, fuzzy
 msgid "MemberVault"
 msgstr "MemberVault"
 
@@ -2984,7 +3026,7 @@ msgid "Protect content and manage members with MemberVault."
 msgstr "הגן על תוכן ונהל חברים עם MemberVault."
 
 #: admin/partials/settings-page/metadata.php:143
-#: admin/settings/traits/templates/settings-sections-integrations.php:12
+#: admin/settings/traits/templates/settings-sections-integrations.php:12, fuzzy
 msgid "SendFox"
 msgstr "SendFox"
 
@@ -3001,8 +3043,10 @@ msgid ""
 "Send Cart events to an existing Meta Pixel installation. PublishPress Cart "
 "does not install or connect the pixel script."
 msgstr ""
+"שולחים אירועי עגלת קניות להתקנה קיימת של Meta Pixel. PublishPress Cart לא "
+"מתקינה או מחברת את סקריפט הפיקסל."
 
-#: admin/partials/settings-page/metadata.php:161
+#: admin/partials/settings-page/metadata.php:161, fuzzy
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
@@ -3012,8 +3056,10 @@ msgid ""
 "installation. PublishPress Cart does not install or connect the analytics "
 "script."
 msgstr ""
+"שולחים אירועי עגלת קניות להתקנה קיימת של Google Analytics או Google Tag "
+"Manager. PublishPress Cart לא מתקינה או מחברת את סקריפט האנליטיקס."
 
-#: admin/partials/settings-page/metadata.php:170
+#: admin/partials/settings-page/metadata.php:170, fuzzy
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
@@ -3021,7 +3067,7 @@ msgstr "Google reCAPTCHA"
 msgid "Protect checkout forms from spam and bot submissions."
 msgstr "הגן על טפסי תשלום מפני ספאם והגשות של בוטים."
 
-#: admin/partials/settings-page/metadata.php:178
+#: admin/partials/settings-page/metadata.php:178, fuzzy
 msgid "Google reCAPTCHA v2"
 msgstr "Google reCAPTCHA v2"
 
@@ -3029,7 +3075,7 @@ msgstr "Google reCAPTCHA v2"
 msgid "Configure checkbox or invisible reCAPTCHA v2 protection."
 msgstr "הגדר הגנת reCAPTCHA v2 עם תיבת סימון או בלתי נראית."
 
-#: admin/partials/settings-page/metadata.php:187
+#: admin/partials/settings-page/metadata.php:187, fuzzy
 msgid "Google reCAPTCHA v3"
 msgstr "Google reCAPTCHA v3"
 
@@ -3037,7 +3083,7 @@ msgstr "Google reCAPTCHA v3"
 msgid "Configure score-based reCAPTCHA v3 protection."
 msgstr "הגדר הגנת reCAPTCHA v3 מבוססת ניקוד."
 
-#: admin/partials/settings-page/metadata.php:196
+#: admin/partials/settings-page/metadata.php:196, fuzzy
 msgid "Drip"
 msgstr "Drip"
 
@@ -3045,7 +3091,7 @@ msgstr "Drip"
 msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "סנכרן לקוחות, תגים ופעילות מסחר אלקטרוני ל-Drip."
 
-#: admin/partials/settings-page/metadata.php:205
+#: admin/partials/settings-page/metadata.php:205, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
@@ -3054,7 +3100,7 @@ msgid "Add customers to MailerLite subscribers and groups."
 msgstr "הוסף לקוחות למנויים ולקבוצות של MailerLite."
 
 #: admin/partials/settings-page/metadata.php:214
-#: admin/settings/traits/templates/settings-sections-integrations.php:10
+#: admin/settings/traits/templates/settings-sections-integrations.php:10, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
@@ -3062,7 +3108,7 @@ msgstr "MailPoet"
 msgid "Add customers to MailPoet lists."
 msgstr "הוסף לקוחות לרשימות של MailPoet."
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:222, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
@@ -3070,7 +3116,7 @@ msgstr "Encharge"
 msgid "Track order events and sync customers to Encharge."
 msgstr "עקוב אחר אירועי הזמנות וסנכרן לקוחות ל-Encharge."
 
-#: admin/partials/settings-page/metadata.php:232
+#: admin/partials/settings-page/metadata.php:232, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
@@ -3078,7 +3124,7 @@ msgstr "FluentCRM"
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "הוסף לקוחות לרשימות ותגים של FluentCRM."
 
-#: admin/partials/settings-page/metadata.php:240
+#: admin/partials/settings-page/metadata.php:240, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
@@ -3086,7 +3132,7 @@ msgstr "Academy LMS"
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "הירשם או הסר תלמידים מקורסי Academy LMS."
 
-#: admin/partials/settings-page/metadata.php:248
+#: admin/partials/settings-page/metadata.php:248, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
@@ -3102,7 +3148,7 @@ msgstr "דופק"
 msgid "Manage community access in Heartbeat."
 msgstr "נהל גישה לקהילה בדופק."
 
-#: admin/partials/settings-page/metadata.php:266
+#: admin/partials/settings-page/metadata.php:266, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
@@ -3110,7 +3156,7 @@ msgstr "Kajabi"
 msgid "Enable Kajabi purchase automations."
 msgstr "אפשר אוטומציות רכישה של Kajabi."
 
-#: admin/partials/settings-page/metadata.php:275
+#: admin/partials/settings-page/metadata.php:275, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
@@ -3118,7 +3164,7 @@ msgstr "Teachable"
 msgid "Enroll customers into Teachable schools and products."
 msgstr "רשום לקוחות לבתי ספר ומוצרים של Teachable."
 
-#: admin/partials/settings-page/metadata.php:284
+#: admin/partials/settings-page/metadata.php:284, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
@@ -3126,7 +3172,7 @@ msgstr "Upcoach"
 msgid "Grant customers access to Upcoach programs."
 msgstr "אפשר ללקוחות גישה לתוכניות של Upcoach."
 
-#: admin/partials/settings-page/metadata.php:293
+#: admin/partials/settings-page/metadata.php:293, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
@@ -3134,7 +3180,7 @@ msgstr "Tutor LMS"
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "רשום או הסר תלמידים מקורסים של Tutor LMS."
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:301, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
@@ -3142,7 +3188,7 @@ msgstr "LearnDash"
 msgid "Grant or revoke LearnDash course access."
 msgstr "הענק או שלול גישה לקורסים של LearnDash."
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
@@ -3150,7 +3196,7 @@ msgstr "WP Courseware"
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "נהל רישומים של WP Courseware לאחר רכישה."
 
-#: admin/partials/settings-page/metadata.php:317
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
@@ -3166,7 +3212,7 @@ msgstr "קבוצות"
 msgid "Add or remove customers from WordPress Groups."
 msgstr "הוסף או הסר לקוחות מקבוצות WordPress."
 
-#: admin/partials/settings-page/metadata.php:333
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
@@ -3174,7 +3220,7 @@ msgstr "MemberPress"
 msgid "Grant customers MemberPress membership access."
 msgstr "הענק ללקוחות גישה לחברות בMemberPress."
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
@@ -3182,7 +3228,7 @@ msgstr "ARMember"
 msgid "Grant customers ARMember plan access."
 msgstr "תן ללקוחות גישה לתוכנית ARMember."
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
@@ -3190,7 +3236,7 @@ msgstr "WishList Member"
 msgid "Grant customers WishList Member level access."
 msgstr "תן ללקוחות גישה לרמת WishList Member."
 
-#: admin/partials/settings-page/metadata.php:357
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
@@ -3198,7 +3244,7 @@ msgstr "Restrict Content Pro"
 msgid "Grant customers Restrict Content Pro access."
 msgstr "תן ללקוחות גישה ל-Restrict Content Pro."
 
-#: admin/partials/settings-page/metadata.php:365
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
@@ -3206,7 +3252,7 @@ msgstr "Ultimate Member"
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "שלח מיילי ברוכים הבאים של Ultimate Member ללקוחות חדשים."
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:374, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -3214,7 +3260,7 @@ msgstr "Elementor"
 msgid "Choose Elementor templates for checkout components."
 msgstr "בחר תבניות Elementor עבור רכיבי תשלום."
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:382, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
@@ -3222,7 +3268,7 @@ msgstr "Divi"
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "השתמש בטפסי הזמנה של PublishPress Cart בתוך תבניות Divi."
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
@@ -3230,7 +3276,7 @@ msgstr "Oxygen Builder"
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "השתמש בתנאים של PublishPress Cart ב-Oxygen Builder."
 
-#: admin/partials/settings-page/metadata.php:398
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
@@ -3247,7 +3293,7 @@ msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "חבר את המוצרים של PublishPress Cart עם זרימות של WooCommerce."
 
 #: admin/partials/settings-page/metadata.php:414
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
@@ -3268,7 +3314,7 @@ msgstr "החזר הזמנה"
 msgid "Refund an existing order as an order automation."
 msgstr "החזר הזמנה קיימת כאוטומציה של הזמנה."
 
-#: admin/partials/settings-page/metadata.php:442
+#: admin/partials/settings-page/metadata.php:442, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
@@ -3348,7 +3394,7 @@ msgstr "נהל"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:53
 #: includes/functions/payment-and-locale-lists.php:35
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:22
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
@@ -3366,7 +3412,7 @@ msgstr "קבל כרטיסי אשראי ותשלומים אחרים בצורה מ
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
 #: includes/helpers/pro-locks/product-locks.php:45
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
-#: public/paypal/traits/trait-ppcart-paypal-settings.php:88
+#: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
@@ -3458,7 +3504,7 @@ msgid "Test mode"
 msgstr "מצב בדיקה"
 
 #: admin/partials/settings-page/render-helpers.php:19
-#: admin/partials/settings-page/sections/payment-method.php:223
+#: admin/partials/settings-page/sections/payment-method.php:223, fuzzy
 msgid "Sandbox"
 msgstr "Sandbox"
 
@@ -3638,7 +3684,7 @@ msgstr "הגדרות חיפוש"
 
 #: admin/partials/settings-page/tabs/topbar.php:16
 msgid "Search settings..."
-msgstr ""
+msgstr "חיפוש הגדרות..."
 
 #: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
@@ -3648,7 +3694,7 @@ msgstr "סיכום ביצועים עבור %s"
 
 #: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
-msgstr ""
+msgstr "טווח תאריכים"
 
 #: admin/reports/templates/admin-reports-page.php:83
 msgid "Select date range"
@@ -3656,24 +3702,24 @@ msgstr "בחר טווח תאריכים"
 
 #: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
-msgstr ""
+msgstr "חיפוש לקוחות לפי שם או אימייל"
 
 #: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
-msgstr ""
+msgstr "חיפוש לפי שם או אימייל"
 
 #: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
-msgstr ""
+msgstr "חיפוש מוצרים"
 
 #: admin/reports/templates/admin-reports-page.php:110
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:97
 msgid "All products"
-msgstr ""
+msgstr "כל המוצרים"
 
 #: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
-msgstr ""
+msgstr "מסננים לפי המוצר הראשי של ההזמנה או המנוי"
 
 #: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
@@ -3682,7 +3728,7 @@ msgstr "החל"
 
 #: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
-msgstr ""
+msgstr "נקה מסננים"
 
 #: admin/reports/templates/admin-reports-page.php:122
 #: admin/reports/templates/customer-reports-page.php:85
@@ -3694,6 +3740,8 @@ msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
 msgstr ""
+"מסנן המוצר תואם את המוצר הראשי בכל הזמנה או מנוי, לא פריטי בונוס או מכירה "
+"נוספת."
 
 #: admin/reports/templates/admin-reports-page.php:352
 #: includes/order-items/order-details-renderer.php:67
@@ -3736,7 +3784,7 @@ msgstr "ערך חיי לקוחות"
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
-msgstr ""
+msgstr "ממוצע כל הזמנים על פני %s לקוחות תואמים"
 
 #: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
@@ -3763,7 +3811,7 @@ msgstr "עסקאות"
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
-msgstr ""
+msgstr "%1$s חדשים, %2$s חידושים"
 
 #: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
@@ -3884,7 +3932,7 @@ msgstr "עסקאות בתשלום יקובצו לפי שער כאן לאחר ש�
 
 #: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
-msgstr ""
+msgstr "הזמנות לפי סוג"
 
 #: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
@@ -4117,30 +4165,32 @@ msgid ""
 "Stripe needs a temporary restricted key with %s. We use it once, install "
 "the endpoint, and never store it."
 msgstr ""
+"Stripe זקוק למפתח זמני מוגבל עם %s. אנו משתמשים בו פעם אחת, מתקינים את "
+"הנקודת קצה, ולא שומרים אותו."
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:29
 msgid "Webhook endpoints: Write"
-msgstr ""
+msgstr "נקודות קצה של Webhook: כתיבה"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:33
 msgid "Temporary Stripe key"
-msgstr ""
+msgstr "מפתח Stripe זמני"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:45
 msgid "Install webhook"
-msgstr ""
+msgstr "התקן Webhook"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:51
 msgid "Create the key in Stripe"
-msgstr ""
+msgstr "צור את המפתח ב-Stripe"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:54
 msgid "I want to set it up in Stripe myself"
-msgstr ""
+msgstr "אני רוצה להגדיר את זה ב-Stripe בעצמי"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:64
 msgid "Create an endpoint in Stripe with this URL:"
-msgstr ""
+msgstr "צור נקודת קצה ב-Stripe עם ה-URL הזה:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:69
 #. translators: %d: number of Stripe events.
@@ -4149,10 +4199,12 @@ msgid ""
 "Select the %d events listed in our documentation, then paste that endpoint "
 "signing secret:"
 msgstr ""
+"בחר את %d האירועים המפורטים בתיעוד שלנו, ואז הדבק את סוד החתימה של הנקודת "
+"קצה:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:73
 msgid "Signing secret"
-msgstr ""
+msgstr "סוד חתימה"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:85
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:13
@@ -4162,51 +4214,57 @@ msgstr "שמור"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:23
 msgid "Add a Stripe secret key for this mode first."
-msgstr ""
+msgstr "הוסף מפתח סודי של Stripe למצב הזה קודם."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:37
 #. translators: %s: local webhook URL.
 #, php-format
 msgid "Stripe cannot reach a local address. Forward events with Stripe CLI to %s"
-msgstr ""
+msgstr "Stripe לא יכול להגיע לכתובת מקומית. העבר אירועים עם Stripe CLI ל-%s"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:90
 msgid "Some events are missing, so parts of your store will not update."
-msgstr ""
+msgstr "חלק מהאירועים חסרים, לכן חלקים מהחנות שלך לא יתעדכנו."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:103
 msgid ""
 "This account does not let us re-check the endpoint, so no live status is "
 "shown."
-msgstr ""
+msgstr "החשבון הזה לא מאפשר לנו לבדוק שוב את הנקודת קצה, לכן לא מוצגת מצב חי."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
-msgstr ""
+msgstr "בדיקת Webhook נכשלה: %s"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:9
 msgid "You are not allowed to configure Stripe webhooks."
-msgstr ""
+msgstr "אינך מורשה להגדיר Webhooks ב-Stripe."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:34
 msgid ""
 "That key does not look like a Stripe key for the selected mode. Copy a "
 "restricted key that starts with rk_, or a secret key that starts with sk_."
 msgstr ""
+"המפתח הזה לא נראה כמו מפתח של Stripe עבור המצב הנבחר. העתק מפתח מוגבל "
+"שמתחיל ב-rk_, או מפתח סודי שמתחיל ב-sk_."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:44
 msgid ""
 "Webhook is active and the signing secret is saved. The key you pasted was "
 "not stored, so you can delete it in Stripe now."
 msgstr ""
+"ה-WebHook פעיל וסוד החתימה נשמר. המפתח שהדבקת לא נשמר, כך שאתה יכול למחוק "
+"אותו ב-Stripe עכשיו."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:49
 msgid ""
 "Webhook events were updated. The key you pasted was not stored, so you can "
 "delete it in Stripe now."
 msgstr ""
+"אירועי Webhook עודכנו. המפתח שהדבקת לא נשמר, כך שאתה יכול למחוק אותו "
+"ב-Stripe עכשיו."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:56
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:47
@@ -4215,22 +4273,26 @@ msgid ""
 "secret. Open the endpoint in your Stripe Dashboard, copy the signing "
 "secret, and paste it below."
 msgstr ""
+"נקודת הקצה של ה-WebHook כבר קיימת, כך ש-Stripe לא החזיר סוד חתימה. פתח את "
+"הנקודת קצה בלוח הבקרה של Stripe שלך, העתק את סוד החתימה, והדבק אותו למטה."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:69
 msgid ""
 "A Stripe signing secret starts with whsec_. Copy it again from the webhook "
 "endpoint in your Stripe Dashboard."
 msgstr ""
+"סוד חתימה של Stripe מתחיל ב-whsec_. העתק אותו שוב מנקודת הקצה של ה-WebHook "
+"בלוח הבקרה של Stripe שלך."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:77
 msgid ""
 "Signing secret saved. Send a test event from Stripe to confirm that your "
 "site accepts it."
-msgstr ""
+msgstr "סוד חתימה נשמר. שלח אירוע בדיקה מ-Stripe כדי לאשר שהאתר שלך מקבל אותו."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:83
 msgid "Paste a Stripe key or a signing secret before you save."
-msgstr ""
+msgstr "הדבק מפתח של Stripe או סוד חתימה לפני שתשמור."
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:30
 msgid ""
@@ -4238,6 +4300,8 @@ msgid ""
 "restricted key with Webhook endpoints: Write, or create the endpoint in "
 "Stripe yourself."
 msgstr ""
+"החשבונית המחוברת הזו לא יכולה לעדכן Webhooks באופן אוטומטי. הדבק מפתח מוגבל "
+"עם נקודות קצה של Webhook: כתיבה, או צור את הנקודת קצה ב-Stripe בעצמך."
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:41
 msgid "Stripe webhook is configured for the selected mode."
@@ -4334,7 +4398,7 @@ msgstr "הצג את פעולת השכפול עבור מוצרים ב-wp-admin."
 msgid "Email reports and confirmations to"
 msgstr "שלח דוחות ואישורים ל"
 
-#: admin/settings/traits/options/core-settings.php:161
+#: admin/settings/traits/options/core-settings.php:161, fuzzy
 msgid "admin@example.com, another@example.com"
 msgstr "admin@example.com, another@example.com"
 
@@ -4358,7 +4422,7 @@ msgstr "שבועי"
 
 #: admin/settings/traits/options/core-settings.php:176
 msgid "Semi monthly"
-msgstr ""
+msgstr "חצי חודשי"
 
 #: admin/settings/traits/options/core-settings.php:178
 msgid "How often summary reports should be emailed."
@@ -4509,10 +4573,12 @@ msgid ""
 "Use date tokens {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S}, "
 "and custom alphanumeric characters. Example: INV-{YYYY}{MM}{DD}."
 msgstr ""
+"השתמש בטוקנים תאריך {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, "
+"{S}, ודמויות אלפאנומריות מותאמות אישית. דוגמה: INV-{YYYY}{MM}{DD}."
 
 #: admin/settings/traits/options/invoice-fields.php:19
 msgid "Learn more"
-msgstr ""
+msgstr "למד עוד"
 
 #: admin/settings/traits/options/invoice-fields.php:26
 msgid "Custom Invoice Numbering"
@@ -4550,7 +4616,7 @@ msgstr "פורמט חשבונית"
 msgid "Current Invoice Number"
 msgstr "מספר חשבונית נוכחי"
 
-#: admin/settings/traits/options/payment-fields.php:33
+#: admin/settings/traits/options/payment-fields.php:33, fuzzy
 msgid "API"
 msgstr "API"
 
@@ -4559,10 +4625,12 @@ msgid ""
 "GOING LIVE? Click the \"Update\" button on any subscription products "
 "created on the Test API after switching this setting to Live!"
 msgstr ""
+"עושים לייב? לחץ על כפתור \"עדכון\" על כל מוצרי המנוי שנוצרו ב-API הבדיקה "
+"לאחר שינוי הגדרה זו ללייב!"
 
 #: admin/settings/traits/options/payment-fields.php:39
 msgid "More Information"
-msgstr ""
+msgstr "מידע נוסף"
 
 #: admin/settings/traits/options/payment-fields.php:52
 msgid "Connection Status"
@@ -4570,7 +4638,7 @@ msgstr "סטטוס חיבור"
 
 #: admin/settings/traits/options/payment-fields.php:61
 msgid "Checkout experience"
-msgstr ""
+msgstr "חוויית תשלום"
 
 #: admin/settings/traits/options/payment-fields.php:70
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:97
@@ -4584,12 +4652,12 @@ msgstr "פורטל לקוחות"
 
 #: admin/settings/traits/options/payment-fields.php:91
 msgid "Hosted Checkout"
-msgstr ""
+msgstr "תשלום מארח"
 
 #: admin/settings/traits/options/payment-fields.php:101
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:20
 msgid "Payment Element"
-msgstr ""
+msgstr "אלמנט תשלום"
 
 #: admin/settings/traits/options/payment-fields.php:111
 msgid "Statement Descriptor"
@@ -4617,13 +4685,13 @@ msgstr "לא"
 
 #: admin/settings/traits/options/payment-fields.php:158
 msgid "Verify SSL certificates"
-msgstr ""
+msgstr "אמת את אישורי SSL"
 
 #: admin/settings/traits/options/payment-fields.php:162
 msgid ""
 "Verifies PayPal TLS certificates and hostname matches for server-side "
 "PayPal API requests."
-msgstr ""
+msgstr "מאמת את אישורי PayPal TLS והתאמת שם המחשב עבור בקשות API של PayPal בצד השרת."
 
 #: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
@@ -4726,19 +4794,19 @@ msgstr "לא ניתן ליצור תצוגה מקדימה של האימייל."
 
 #: admin/settings/traits/templates/settings-email-preview-product-notification-email.php:35
 msgid "(no subject)"
-msgstr ""
+msgstr "(אין נושא)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:11
 msgid "(recipient resolved at send time)"
-msgstr ""
+msgstr "(נמען נפתר בזמן שליחה)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36
 msgid "From"
-msgstr ""
+msgstr "מאת"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37
 msgid "To"
-msgstr ""
+msgstr "אל"
 
 #: admin/settings/traits/templates/settings-email-reset-email-template.php:17
 msgid "You do not have permission to reset this email template."
@@ -4754,31 +4822,31 @@ msgstr "שימוש בברירת מחדל"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:19
 msgid "You do not have permission to send this test email."
-msgstr ""
+msgstr "אין לך הרשאה לשלוח דוא\"ל בדיקה זה."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:24
 msgid "Test email could not be sent."
-msgstr ""
+msgstr "לא ניתן היה לשלוח את דוא\"ל הבדיקה."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:35
 msgid "Please enter a valid email address to send the test to."
-msgstr ""
+msgstr "אנא הזן כתובת דוא\"ל תקפה לשליחה של דוא\"ל הבדיקה."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:45
 #. translators: %s: email subject.
 #, php-format
 msgid "[Test] %s"
-msgstr ""
+msgstr "[בדיקה] %s"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:54
 #. translators: %s: recipient email address.
 #, php-format
 msgid "Test email sent to %s."
-msgstr ""
+msgstr "דוא\"ל בדיקה נשלח ל-%s."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:59
 msgid "Test email failed to send. Check your email/SMTP settings and try again."
-msgstr ""
+msgstr "שליחת דוא\"ל הבדיקה נכשלה. בדוק את הגדרות הדוא\"ל/SMTP שלך ונסה שוב."
 
 #: admin/settings/traits/templates/settings-sections-emails.php:9
 msgid "Reports & Notifications"
@@ -4791,11 +4859,11 @@ msgstr "אישור קבלת הזמנה"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:13
 msgid "Enable Facebook Ad Events"
-msgstr ""
+msgstr "הפעלת אירועי פרסום בפייסבוק"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:14
 msgid "Google Analytics Purchase Event Tracking"
-msgstr ""
+msgstr "מעקב אחרי אירוע רכישה של Google Analytics"
 
 #: admin/settings/traits/templates/settings-sections-register.php:14
 msgid "Currency & Pricing"
@@ -4815,63 +4883,71 @@ msgstr "הגדרות נוספות"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:15
 msgid "Classic card form"
-msgstr ""
+msgstr "טופס כרטיס קלאסי"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:16
 msgid "Legacy"
-msgstr ""
+msgstr "ישן"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:17
 msgid ""
 "Single card field on your checkout page. Supports order bumps and one-click "
 "upsells."
 msgstr ""
+"שדה כרטיס יחיד בדף התשלום שלך. תומך בהזמנות נוספות ובמכירות מהירות בלחיצה "
+"אחת."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:21
 msgid "Recommended"
-msgstr ""
+msgstr "מומלץ"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:22
 msgid ""
 "Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports "
 "order bumps and one-click upsells."
 msgstr ""
+"כרטיסים, Apple/Google Pay, וקישור מוטבע בדף התשלום שלך. תומך בהזמנות נוספות "
+"ובמכירות מהירות בלחיצה אחת."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:25
 msgid "Stripe-hosted page"
-msgstr ""
+msgstr "דף המחשב של Stripe"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:26
 msgid ""
 "Redirects customers to a Stripe-hosted payment page. Most payment methods "
 "available (Klarna, Cash App Pay, and more via your Stripe dashboard)."
 msgstr ""
+"מעביר לקוחות לדף תשלום המנוהל על ידי Stripe. רוב שיטות התשלום זמינות "
+"(Klarna, Cash App Pay, ועוד דרך לוח המחוונים של Stripe שלך)."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:27
 msgid ""
 "Order bumps and one-click upsells/downsells are not available in this mode. "
 "Coupons continue to work."
 msgstr ""
+"הזמנות נוספות ומכירות מהירות בלחיצה אחת אינן זמינות במצב זה. קופונים "
+"ממשיכים לעבוד."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:31
 msgid "Built into Payment Element"
-msgstr ""
+msgstr "בנוי לתוך רכיב התשלום"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:32
 msgid "Built into the Stripe-hosted page"
-msgstr ""
+msgstr "בנוי לתוך הדף המנוהל על ידי Stripe"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:23
 msgid "Stripe Connect server URL is not configured."
-msgstr ""
+msgstr "כתובת ה-URL של שרת Stripe Connect לא הוגדרה."
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:47
 msgid "Stripe Connect live mode requires HTTPS for the site and return URL."
-msgstr ""
+msgstr "מצב חי של Stripe Connect דורש HTTPS לאתר ולכתובת ה-URL להחזיר."
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:55
 msgid "Unable to generate an encryption key for Stripe Connect."
-msgstr ""
+msgstr "לא ניתן לייצר מפתח הצפנה עבור Stripe Connect."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:36
 msgid "Connect server did not return a valid Stripe account ID."
@@ -4883,6 +4959,8 @@ msgid ""
 "failed, abandoned, or restarted connection attempt. Reload this settings "
 "page and start the connection again."
 msgstr ""
+"מושב זה של Stripe Connect חסר או פג. זה יכול לקרות לאחר ניסיון חיבור שנכשל, "
+"ננטש או מחדש. רענן את דף ההגדרות הזה והתחל את החיבור שוב."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:104
 msgid ""
@@ -4890,12 +4968,16 @@ msgid ""
 "trusted certificate, or explicitly enable insecure local credential pickup "
 "for non-live local development."
 msgstr ""
+"אימות SSL נכשל בעת שליפת מפתחות משרת החיבור. השתמש בתעודה מהימנה, או הפעל "
+"במפורש את איסוף האישורים המקומיים הלא מאובטחים לפיתוח מקומי שאינו חי."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:127
 msgid ""
 "Unable to retrieve Stripe API keys from the Connect server for this "
 "session. Reload this settings page and start the connection again."
 msgstr ""
+"לא ניתן לשלוף את מפתחות ה-API של Stripe משרת החיבור עבור מושב זה. רענן את "
+"דף ההגדרות הזה והתחל את החיבור שוב."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:139
 msgid "Stripe account connected successfully."
@@ -4916,33 +4998,35 @@ msgstr "שרת ההתחברות לא מוגדר"
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:47
 msgid "Set PPCART_STRIPE_CONNECT_SERVER_URL to your PublishPress intermediary URL."
 msgstr ""
+"הגדר PPCART_STRIPE_CONNECT_SERVER_URL לכתובת ה-URL הביניים שלך "
+"ב-PublishPress."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:54
 msgid "1. Connect your Stripe account"
-msgstr ""
+msgstr "1. חבר את חשבון ה-Stripe שלך"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:55
 msgid "We sync your API keys automatically, then walk you through the webhook."
-msgstr ""
+msgstr "נחבר את מפתחות ה-API שלך באופן אוטומטי, ואז נדריך אותך דרך ה-webhook."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:58
 msgid ""
 "Your saved keys are not direct Stripe keys, so reconnect before you "
 "continue."
-msgstr ""
+msgstr "המפתחות ששמרת אינם מפתחות ישירים של Stripe, לכן התחבר שוב לפני שתמשיך."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:64
 msgid "Stripe checkout is disabled. You can still connect now."
-msgstr ""
+msgstr "תהליך התשלום של Stripe מושבת. אתה עדיין יכול להתחבר עכשיו."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
-msgstr ""
+msgstr "2. התקן את ה-webhook"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:74
 msgid "Available after you connect."
-msgstr ""
+msgstr "זמין לאחר שתחבר."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:89
 msgid "Disconnect"
@@ -4954,7 +5038,7 @@ msgstr "פתח בלוח המחוונים של Stripe"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:97
 msgid "Stripe is ready"
-msgstr ""
+msgstr "Stripe מוכן"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
@@ -4965,40 +5049,40 @@ msgstr "המפתחות סונכרנו"
 #. translators: %d: number of Stripe events.
 #, php-format
 msgid "Webhook active with %d events"
-msgstr ""
+msgstr "Webhook פעיל עם %d אירועים"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
 msgid "1. Stripe account connected"
-msgstr ""
+msgstr "1. חשבון Stripe מחובר"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
-msgstr ""
+msgstr "הזמנות לא יושלמו עד שזה יושלם."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
-msgstr ""
+msgstr "זקוק לתשומת לב"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
-msgstr ""
+msgstr "לא מותקן"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
-msgstr ""
+msgstr "תיקון האירועים"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-billing-options.php:45
 msgid "Always enabled for PayPal API requests."
-msgstr ""
+msgstr "מופעל תמיד עבור בקשות API של PayPal."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:32
 msgid "Leave blank to keep current value"
-msgstr ""
+msgstr "השאר ריק כדי לשמור על הערך הנוכחי"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:35
 #: includes/helpers/pro-locks/settings-locks.php:289
 msgid "Configured (value hidden)"
-msgstr ""
+msgstr "מוגדר (ערך מוסתר)"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:66
 msgid "Mailchimp API Key"
@@ -5029,12 +5113,14 @@ msgid ""
 "MailPoet is active. Assign lists on each product’s Integrations settings — "
 "no API key is required."
 msgstr ""
+"MailPoet פעיל. הקצה רשימות בהגדרות האינטגרציות של כל מוצר — אין צורך במפתח "
+"API."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
 msgid ""
 "Install and activate the MailPoet plugin to sync customers to lists. No API "
 "key is required."
-msgstr ""
+msgstr "התקן והפעל את תוסף MailPoet כדי לסנכרן לקוחות לרשימות. אין צורך במפתח API."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:150
 msgid "Add Payment Info"
@@ -5042,7 +5128,7 @@ msgstr "הוסף מידע תשלום"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:154
 msgid "Sends an AddPaymentInfo event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "שולח אירוע AddPaymentInfo להתקנת Meta Pixel קיימת."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
@@ -5050,7 +5136,7 @@ msgstr ""
 msgid ""
 "Requires Meta Pixel or another plugin/theme to load fbq on the checkout "
 "page."
-msgstr ""
+msgstr "דורש Meta Pixel או תוסף/נושא אחר כדי לטעון fbq בדף הקופה."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:161
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:185
@@ -5059,7 +5145,7 @@ msgstr "רכישה הושלמה"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:165
 msgid "Sends a Purchase event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "שולח אירוע רכישה להתקנת Meta Pixel קיימת."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:172
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:196
@@ -5068,13 +5154,13 @@ msgstr "ליד נתפס"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:176
 msgid "Sends a Lead event when a two-step checkout captures customer details."
-msgstr ""
+msgstr "שולח אירוע Lead כאשר קופה דו-שלבית לוכדת פרטי לקוח."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:189
 msgid ""
 "Sends a purchase event to an existing Google Analytics or Data Layer "
 "installation."
-msgstr ""
+msgstr "שולח אירוע רכישה להתקנת Google Analytics או Data Layer קיימת."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
@@ -5082,12 +5168,14 @@ msgid ""
 "Requires Google Analytics, Google Tag Manager, or another plugin/theme to "
 "load ga, gtag, or dataLayer on the checkout page."
 msgstr ""
+"דורש Google Analytics, Google Tag Manager, או תוסף/נושא אחר כדי לטעון ga, "
+"gtag, או dataLayer בדף הקופה."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:200
 msgid ""
 "Sends a generate_lead event when a two-step checkout captures customer "
 "details."
-msgstr ""
+msgstr "שולח אירוע generate_lead כאשר קופה דו-שלבית לוכדת פרטי לקוח."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:207
 #: includes/helpers/pro-locks/product-locks.php:80
@@ -5098,13 +5186,13 @@ msgstr "סוג"
 msgid ""
 "Choose the event format that matches the analytics script already installed "
 "on this site."
-msgstr ""
+msgstr "בחר את פורמט האירוע שמתאים לסקריפט הניתוחים שכבר מותקן באתר זה."
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214, fuzzy
 msgid "analytics.js"
 msgstr "analytics.js"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215, fuzzy
 msgid "Google Analytics 4"
 msgstr "Google Analytics 4"
 
@@ -5192,39 +5280,41 @@ msgstr "מצטער, אין לך הרשאה לגשת לדף זה."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
-msgstr ""
+msgstr "אפשרויות מיסוי"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:82
 msgid "Invoice Options"
-msgstr ""
+msgstr "אפשרויות חשבונית"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:77
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "The Stripe Connect server could not preregister this session. Error: %s"
-msgstr ""
+msgstr "שרת Stripe Connect לא הצליח להירשם מראש את הפגישה הזו. שגיאה: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:88
 msgid "The Stripe Connect server rejected this preregistration request."
-msgstr ""
+msgstr "שרת Stripe Connect דחה את בקשת ההירשמות המוקדמת הזו."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:109
 msgid "Unable to prepare the Stripe Connect site credential."
-msgstr ""
+msgstr "לא ניתן להכין את תעודת האתר של Stripe Connect."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:115
 msgid "Unable to encrypt the Stripe Connect site credential."
-msgstr ""
+msgstr "לא ניתן להצפין את תעודת האתר של Stripe Connect."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:144
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "Unable to fetch the Stripe Connect preregistration public key. Error: %s"
 msgstr ""
+"לא ניתן להשיג את המפתח הציבורי להירשמות המוקדמות של Stripe Connect. שגיאה: "
+"%s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:154
 msgid "The Stripe Connect preregistration public key is unavailable or invalid."
-msgstr ""
+msgstr "המפתח הציבורי להירשמות המוקדמות של Stripe Connect אינו זמין או אינו תקף."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:225
 msgid "Stripe account disconnected for the selected mode."
@@ -5329,13 +5419,15 @@ msgstr "שגיאה: אנא נסה שוב."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Migration required"
-msgstr ""
+msgstr "דרושה הגירה"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
 msgstr ""
+"יש לך 1 תעודה מאוחסנת בטקסט רגיל. לאחר הפעלת ההצפנה, הרץ הגירה מ הגדרות → "
+"תחזוקה כדי להצפין אותה."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 #. translators: %d: number of stored credentials.
@@ -5344,15 +5436,17 @@ msgid ""
 "You have %d stored credentials in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt them."
 msgstr ""
+"יש לך %d תעודות מאוחסנות בטקסט רגיל. לאחר הפעלת ההצפנה, הרץ הגירה מ הגדרות "
+"→ תחזוקה כדי להצפין אותן."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Encryption updated"
-msgstr ""
+msgstr "ההצפנה עודכנה"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
-msgstr ""
+msgstr "להמשיך"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #: admin/traits/trait-ppcart-admin-integrations.php:149
@@ -5362,19 +5456,19 @@ msgstr "אוקי"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
-msgstr ""
+msgstr "לא ניתן לעדכן את הגדרת ההצפנה של האבטחה."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:95
 msgid "No matching customers"
-msgstr ""
+msgstr "אין לקוחות תואמים"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:96
 msgid "No matching products"
-msgstr ""
+msgstr "אין מוצרים תואמים"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "Searching…"
-msgstr ""
+msgstr "מחפש…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:114
 msgid "No matching settings"
@@ -5411,7 +5505,7 @@ msgstr "סגור תצוגה מקדימה"
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:153
 msgid "Encrypt stored credentials"
-msgstr ""
+msgstr "הצפן תעודות מאוחסנות"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 #. translators: %d: number of plaintext credentials.
@@ -5420,28 +5514,32 @@ msgid ""
 "Encrypt %d plaintext credential(s) in the database? Take a backup first and "
 "run this during a maintenance window."
 msgstr ""
+"האם להצפין %d תעודות בטקסט רגיל במסד הנתונים? קח גיבוי קודם והרץ את זה "
+"במהלך חלון תחזוקה."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
 msgstr ""
+"לסרוק תעודות מאוחסנות ולהצפין כל ערך בטקסט רגיל? קח גיבוי קודם והרץ את זה "
+"במהלך חלון תחזוקה."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Generating preview…"
-msgstr ""
+msgstr "מייצר תצוגה מקדימה…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Sending test email…"
-msgstr ""
+msgstr "שולח אימייל ניסי…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:146
 msgid "Test email failed to send. Please refresh the page and try again."
-msgstr ""
+msgstr "שליחת האימייל הניסי נכשלה. אנא רענן את הדף ונסה שוב."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:147
 msgid "Enter an email address to send the test to."
-msgstr ""
+msgstr "הזן כתובת אימייל לשלוח אליה את הניסיון."
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:23
 #. translators: %s: tax rate ID.
@@ -5536,6 +5634,10 @@ msgid ""
 "data-testid=\"ppcart-admin-notice-integration-settings\">settings page</a> "
 "to check your integration settings.</p>"
 msgstr ""
+"לא ניתן להתחבר לאינטגרציה(ות) המפורטות למטה. עבור ל- %1$s <a href=\"%2$s\" "
+"rel=\"noreferrer noopener\" "
+"data-testid=\"ppcart-admin-notice-integration-settings\">דף ההגדרות</a> כדי "
+"לבדוק את הגדרות האינטגרציה שלך.</p>"
 
 #: admin/traits/templates/notices-admin-notices.php:70
 msgid ""
@@ -5628,7 +5730,7 @@ msgstr "[נמחק]"
 #. translators: 1: field label, 2: order ID.
 #, php-format
 msgid "There was a problem removing your %1$s from order #%2$d."
-msgstr ""
+msgstr "הייתה בעיה בהסרת ה-%1$s שלך מההזמנה #%2$d."
 
 #: admin/traits/trait-ppcart-admin-privacy.php:197
 msgid ""
@@ -5838,16 +5940,18 @@ msgid ""
 "PublishPress Cart and PublishPress Cart Compatibility cannot run while "
 "Studiocart is active. Deactivate Studiocart to start those plugins."
 msgstr ""
+"תוסף PublishPress Cart ותואם PublishPress Cart לא יכולים לפעול כשסטודיו "
+"קארט פעיל. השבת את סטודיו קארט כדי להתחיל את התוספים הללו."
 
 #: includes/class-ppcart-version-notices.php:85
 msgid ""
 "You're using PublishPress Cart. The Pro version has more features and "
 "support."
-msgstr ""
+msgstr "אתה משתמש בתוסף PublishPress Cart. הגרסה המקצועית כוללת יותר תכונות ותמיכה."
 
 #: includes/class-ppcart-version-notices.php:97
 msgid "Dismiss"
-msgstr ""
+msgstr "בטל"
 
 #: includes/data/states/states-01.php:8
 msgid "Bengo"
@@ -5859,7 +5963,7 @@ msgstr "בנגולה"
 
 #: includes/data/states/states-01.php:10
 msgid "Bi�"
-msgstr ""
+msgstr "בי�"
 
 #: includes/data/states/states-01.php:11
 msgid "Cabinda"
@@ -5875,7 +5979,7 @@ msgstr "ואמבו"
 
 #: includes/data/states/states-01.php:14
 msgid "Hu�la"
-msgstr ""
+msgstr "הו�לה"
 
 #: includes/data/states/states-01.php:15
 msgid "Kuando Kubango"
@@ -5915,7 +6019,7 @@ msgstr "נמיבה"
 
 #: includes/data/states/states-01.php:24
 msgid "U�ge"
-msgstr ""
+msgstr "או�גה"
 
 #: includes/data/states/states-01.php:25
 msgid "Zaire"
@@ -5923,7 +6027,7 @@ msgstr "זאיר"
 
 #: includes/data/states/states-01.php:28
 msgid "Ciudad Aut�noma de Buenos Aires"
-msgstr ""
+msgstr "עיר אוטונומית של בואנוס איירס"
 
 #: includes/data/states/states-01.php:29
 msgid "Buenos Aires"
@@ -5944,7 +6048,7 @@ msgstr "צ'ובוט"
 #: includes/data/states/states-01.php:33
 #: includes/data/states/states-01.php:353
 msgid "C�rdoba"
-msgstr ""
+msgstr "ק�ורדובה"
 
 #: includes/data/states/states-01.php:34
 msgid "Corrientes"
@@ -5952,7 +6056,7 @@ msgstr "קורנטס"
 
 #: includes/data/states/states-01.php:35
 msgid "Entre R�os"
-msgstr ""
+msgstr "אנת�ר ריוס"
 
 #: includes/data/states/states-01.php:36
 msgid "Formosa"
@@ -5982,11 +6086,11 @@ msgstr "מיסיונס"
 
 #: includes/data/states/states-01.php:42
 msgid "Neuqu�n"
-msgstr ""
+msgstr "נואקו�ן"
 
 #: includes/data/states/states-01.php:43
 msgid "R�o Negro"
-msgstr ""
+msgstr "ריו נגרו"
 
 #: includes/data/states/states-01.php:44
 msgid "Salta"
@@ -6019,7 +6123,7 @@ msgstr "טיירה דל פואגו"
 
 #: includes/data/states/states-01.php:51
 msgid "Tucum�n"
-msgstr ""
+msgstr "טוקומאן"
 
 #: includes/data/states/states-01.php:55
 msgid "Australian Capital Territory"
@@ -6448,7 +6552,7 @@ msgstr "פנדה"
 
 #: includes/data/states/states-01.php:171
 msgid "Potos�"
-msgstr ""
+msgstr "פוטוס�י"
 
 #: includes/data/states/states-01.php:173
 msgid "Tarija"
@@ -6464,7 +6568,7 @@ msgstr "אלגואס"
 
 #: includes/data/states/states-01.php:178
 msgid "Amap�"
-msgstr ""
+msgstr "אמאפ�ה"
 
 #: includes/data/states/states-01.php:179
 #: includes/data/states/states-03.php:222
@@ -6477,7 +6581,7 @@ msgstr "באהיה"
 
 #: includes/data/states/states-01.php:181
 msgid "Cear�"
-msgstr ""
+msgstr "סיארה"
 
 #: includes/data/states/states-01.php:182
 msgid "Distrito Federal"
@@ -6485,15 +6589,15 @@ msgstr "מחוז פדרלי"
 
 #: includes/data/states/states-01.php:183
 msgid "Esp�rito Santo"
-msgstr ""
+msgstr "אֵשְׁפָּרִיטו סַנְטו"
 
 #: includes/data/states/states-01.php:184
 msgid "Goi�s"
-msgstr ""
+msgstr "גּוּיָס"
 
 #: includes/data/states/states-01.php:185
 msgid "Maranh�o"
-msgstr ""
+msgstr "מָרָנְיָאו"
 
 #: includes/data/states/states-01.php:186
 msgid "Mato Grosso"
@@ -6509,15 +6613,15 @@ msgstr "מינאס ז'ראיס"
 
 #: includes/data/states/states-01.php:189
 msgid "Par�"
-msgstr ""
+msgstr "פָּארָה"
 
 #: includes/data/states/states-01.php:190
 msgid "Para�ba"
-msgstr ""
+msgstr "פָּארָאִיבָה"
 
 #: includes/data/states/states-01.php:191
 msgid "Paran�"
-msgstr ""
+msgstr "פָּארָנָה"
 
 #: includes/data/states/states-01.php:192
 msgid "Pernambuco"
@@ -6525,7 +6629,7 @@ msgstr "פרנמבוקו"
 
 #: includes/data/states/states-01.php:193
 msgid "Piau�"
-msgstr ""
+msgstr "פִּיָאוּי"
 
 #: includes/data/states/states-01.php:194
 msgid "Rio de Janeiro"
@@ -6541,7 +6645,7 @@ msgstr "ריו גרנדה דו סול"
 
 #: includes/data/states/states-01.php:197
 msgid "Rond�nia"
-msgstr ""
+msgstr "רונדוניה"
 
 #: includes/data/states/states-01.php:198
 msgid "Roraima"
@@ -6553,7 +6657,7 @@ msgstr "סנטה קטרינה"
 
 #: includes/data/states/states-01.php:200
 msgid "S�o Paulo"
-msgstr ""
+msgstr "סָאוֹ פָּאוּלו"
 
 #: includes/data/states/states-01.php:201
 msgid "Sergipe"
@@ -6653,7 +6757,7 @@ msgstr "גלרוס"
 
 #: includes/data/states/states-01.php:229
 msgid "Graub�nden"
-msgstr ""
+msgstr "גְּרוֹבֶּנְדֶן"
 
 #: includes/data/states/states-01.php:230
 msgid "Jura"
@@ -6665,7 +6769,7 @@ msgstr "לוצרן"
 
 #: includes/data/states/states-01.php:232
 msgid "Neuch�tel"
-msgstr ""
+msgstr "נֶאוּשַׁטֵל"
 
 #: includes/data/states/states-01.php:233
 msgid "Nidwalden"
@@ -6717,135 +6821,135 @@ msgstr "צוג"
 
 #: includes/data/states/states-01.php:245
 msgid "Z�rich"
-msgstr ""
+msgstr "צִירִיךְ"
 
 #: includes/data/states/states-01.php:248
 msgid "Yunnan / ??"
-msgstr ""
+msgstr "יונאן / ??"
 
 #: includes/data/states/states-01.php:249
 msgid "Beijing / ??"
-msgstr ""
+msgstr "בייג'ינג / ??"
 
 #: includes/data/states/states-01.php:250
 msgid "Tianjin / ??"
-msgstr ""
+msgstr "טיאנג'ין / ??"
 
 #: includes/data/states/states-01.php:251
 msgid "Hebei / ??"
-msgstr ""
+msgstr "הביי / ??"
 
 #: includes/data/states/states-01.php:252
 msgid "Shanxi / ??"
-msgstr ""
+msgstr "שאנשי / ??"
 
 #: includes/data/states/states-01.php:253
 msgid "Inner Mongolia / ???"
-msgstr ""
+msgstr "מונגוליה הפנימית / ???"
 
 #: includes/data/states/states-01.php:254
 msgid "Liaoning / ??"
-msgstr ""
+msgstr "ליאונינג / ??"
 
 #: includes/data/states/states-01.php:255
 msgid "Jilin / ??"
-msgstr ""
+msgstr "ג'ילין / ??"
 
 #: includes/data/states/states-01.php:256
 msgid "Heilongjiang / ???"
-msgstr ""
+msgstr "היילונגג'יאנג / ???"
 
 #: includes/data/states/states-01.php:257
 msgid "Shanghai / ??"
-msgstr ""
+msgstr "שנחאי / ??"
 
 #: includes/data/states/states-01.php:258
 msgid "Jiangsu / ??"
-msgstr ""
+msgstr "ג'יאנגסו / ??"
 
 #: includes/data/states/states-01.php:259
 msgid "Zhejiang / ??"
-msgstr ""
+msgstr "ג'ג'יאנג / ??"
 
 #: includes/data/states/states-01.php:260
 msgid "Anhui / ??"
-msgstr ""
+msgstr "אנהוי / ??"
 
 #: includes/data/states/states-01.php:261
 msgid "Fujian / ??"
-msgstr ""
+msgstr "פוג'יאן / ??"
 
 #: includes/data/states/states-01.php:262
 msgid "Jiangxi / ??"
-msgstr ""
+msgstr "ג'יאנגסי / ??"
 
 #: includes/data/states/states-01.php:263
 msgid "Shandong / ??"
-msgstr ""
+msgstr "שאנדונג / ??"
 
 #: includes/data/states/states-01.php:264
 msgid "Henan / ??"
-msgstr ""
+msgstr "הנאן / ??"
 
 #: includes/data/states/states-01.php:265
 msgid "Hubei / ??"
-msgstr ""
+msgstr "הוביי / ??"
 
 #: includes/data/states/states-01.php:266
 msgid "Hunan / ??"
-msgstr ""
+msgstr "הונאן / ??"
 
 #: includes/data/states/states-01.php:267
 msgid "Guangdong / ??"
-msgstr ""
+msgstr "גואנגדונג / ??"
 
 #: includes/data/states/states-01.php:268
 msgid "Guangxi Zhuang / ????"
-msgstr ""
+msgstr "גואנגשי זואנג / ????"
 
 #: includes/data/states/states-01.php:269
 msgid "Hainan / ??"
-msgstr ""
+msgstr "היינאן / ??"
 
 #: includes/data/states/states-01.php:270
 msgid "Chongqing / ??"
-msgstr ""
+msgstr "צ'ונגצ'ינג / ??"
 
 #: includes/data/states/states-01.php:271
 msgid "Sichuan / ??"
-msgstr ""
+msgstr "סצ'ואן / ??"
 
 #: includes/data/states/states-01.php:272
 msgid "Guizhou / ??"
-msgstr ""
+msgstr "גואיז'ואו / ??"
 
 #: includes/data/states/states-01.php:273
 msgid "Shaanxi / ??"
-msgstr ""
+msgstr "שאןשי / ??"
 
 #: includes/data/states/states-01.php:274
 msgid "Gansu / ??"
-msgstr ""
+msgstr "גנסו / ??"
 
 #: includes/data/states/states-01.php:275
 msgid "Qinghai / ??"
-msgstr ""
+msgstr "צ'ינגהאי / ??"
 
 #: includes/data/states/states-01.php:276
 msgid "Ningxia Hui / ??"
-msgstr ""
+msgstr "נינגשיה הוי / ??"
 
 #: includes/data/states/states-01.php:277
 msgid "Macao / ??"
-msgstr ""
+msgstr "מקאו / ??"
 
 #: includes/data/states/states-01.php:278
 msgid "Tibet / ??"
-msgstr ""
+msgstr "טיבט / ??"
 
 #: includes/data/states/states-01.php:279
 msgid "Xinjiang / ??"
-msgstr ""
+msgstr "שינג'יאנג / ??"
 
 #: includes/data/states/states-01.php:285
 msgid "Adrar"
@@ -6869,7 +6973,7 @@ msgstr "בתנא"
 
 #: includes/data/states/states-01.php:290
 msgid "B�ja�a"
-msgstr ""
+msgstr "בּג'איה"
 
 #: includes/data/states/states-01.php:291
 msgid "Biskra"
@@ -6877,7 +6981,7 @@ msgstr "ביסקרה"
 
 #: includes/data/states/states-01.php:292
 msgid "B�char"
-msgstr ""
+msgstr "בּשאר"
 
 #: includes/data/states/states-01.php:293
 msgid "Blida"
@@ -6893,7 +6997,7 @@ msgstr "תמנגסאת"
 
 #: includes/data/states/states-01.php:296
 msgid "T�bessa"
-msgstr ""
+msgstr "טבסה"
 
 #: includes/data/states/states-01.php:297
 msgid "Tlemcen"
@@ -6921,11 +7025,11 @@ msgstr "ג'יג'ל"
 
 #: includes/data/states/states-01.php:303
 msgid "S�tif"
-msgstr ""
+msgstr "סטיף"
 
 #: includes/data/states/states-01.php:304
 msgid "Sa�da"
-msgstr ""
+msgstr "סעידה"
 
 #: includes/data/states/states-01.php:305
 msgid "Skikda"
@@ -6933,7 +7037,7 @@ msgstr "סקיקדה"
 
 #: includes/data/states/states-01.php:306
 msgid "Sidi Bel Abb�s"
-msgstr ""
+msgstr "סידי בל אבס"
 
 #: includes/data/states/states-01.php:307
 msgid "Annaba"
@@ -6949,7 +7053,7 @@ msgstr "קונסטנטין"
 
 #: includes/data/states/states-01.php:310
 msgid "M�d�a"
-msgstr ""
+msgstr "מאדיה"
 
 #: includes/data/states/states-01.php:311
 msgid "Mostaganem"
@@ -6957,7 +7061,7 @@ msgstr "מוסטגאנם"
 
 #: includes/data/states/states-01.php:312
 msgid "M�Sila"
-msgstr ""
+msgstr "מסילה"
 
 #: includes/data/states/states-01.php:313
 msgid "Mascara"
@@ -6981,11 +7085,11 @@ msgstr "איליזי"
 
 #: includes/data/states/states-01.php:318
 msgid "Bordj Bou Arr�ridj"
-msgstr ""
+msgstr "בורג' בוא ערידג' "
 
 #: includes/data/states/states-01.php:319
 msgid "Boumerd�s"
-msgstr ""
+msgstr "בומרדס"
 
 #: includes/data/states/states-01.php:320
 msgid "El Tarf"
@@ -7021,7 +7125,7 @@ msgstr "מילה"
 
 #: includes/data/states/states-01.php:328
 msgid "A�n Defla"
-msgstr ""
+msgstr "עין דפלה"
 
 #: includes/data/states/states-01.php:329
 msgid "Naama"
@@ -7029,11 +7133,11 @@ msgstr "נאמה"
 
 #: includes/data/states/states-01.php:330
 msgid "A�n T�mouchent"
-msgstr ""
+msgstr "עין תמשנט"
 
 #: includes/data/states/states-01.php:331
 msgid "Gharda�a"
-msgstr ""
+msgstr "ג'רדיה"
 
 #: includes/data/states/states-01.php:332
 msgid "Relizane"
@@ -7041,11 +7145,11 @@ msgstr "רליזן"
 
 #: includes/data/states/states-01.php:336
 msgid "A Coru�a"
-msgstr ""
+msgstr "א קורוניה"
 
 #: includes/data/states/states-01.php:337
 msgid "Araba/�lava"
-msgstr ""
+msgstr "ארבה/אלבה"
 
 #: includes/data/states/states-01.php:338
 msgid "Albacete"
@@ -7057,7 +7161,7 @@ msgstr "אליקנטה"
 
 #: includes/data/states/states-01.php:340
 msgid "Almer�a"
-msgstr ""
+msgstr "אלמריה"
 
 #: includes/data/states/states-01.php:341
 msgid "Asturias"
@@ -7065,7 +7169,7 @@ msgstr "אסטוריאס"
 
 #: includes/data/states/states-01.php:342
 msgid "�vila"
-msgstr ""
+msgstr "אוולה"
 
 #: includes/data/states/states-01.php:343
 msgid "Badajoz"
@@ -7085,11 +7189,11 @@ msgstr "בורגוס"
 
 #: includes/data/states/states-01.php:347
 msgid "C�ceres"
-msgstr ""
+msgstr "קאצ'רס"
 
 #: includes/data/states/states-01.php:348
 msgid "C�diz"
-msgstr ""
+msgstr "קאדיז"
 
 #: includes/data/states/states-01.php:349
 msgid "Cantabria"
@@ -7097,7 +7201,7 @@ msgstr "קנטבריה"
 
 #: includes/data/states/states-01.php:350
 msgid "Castell�n"
-msgstr ""
+msgstr "קאסטלון"
 
 #: includes/data/states/states-01.php:351
 msgid "Ceuta"
@@ -7137,7 +7241,7 @@ msgstr "ואסקה"
 
 #: includes/data/states/states-01.php:361
 msgid "Ja�n"
-msgstr ""
+msgstr "חא'ן"
 
 #: includes/data/states/states-01.php:363
 msgid "Las Palmas"
@@ -7145,7 +7249,7 @@ msgstr "לס פלאמס"
 
 #: includes/data/states/states-01.php:364
 msgid "Le�n"
-msgstr ""
+msgstr "לאון"
 
 #: includes/data/states/states-01.php:365
 msgid "Lleida"
@@ -7161,7 +7265,7 @@ msgstr "מדריד"
 
 #: includes/data/states/states-01.php:368
 msgid "M�laga"
-msgstr ""
+msgstr "מלגה"
 
 #: includes/data/states/states-01.php:369
 msgid "Melilla"
@@ -7378,11 +7482,11 @@ msgstr "הטריטוריות החדשות"
 
 #: includes/data/states/states-02.php:50
 msgid "B�cs-Kiskun"
-msgstr ""
+msgstr "באץ'-קישקון"
 
 #: includes/data/states/states-02.php:51
 msgid "B�k�s"
-msgstr ""
+msgstr "באקוש"
 
 #: includes/data/states/states-02.php:52
 msgid "Baranya"
@@ -7390,7 +7494,7 @@ msgstr "ברניה"
 
 #: includes/data/states/states-02.php:53
 msgid "Borsod-Aba�j-Zempl�n"
-msgstr ""
+msgstr "בורסוד-אבוי-זמפלן"
 
 #: includes/data/states/states-02.php:54
 msgid "Budapest"
@@ -7398,19 +7502,19 @@ msgstr "בודפשט"
 
 #: includes/data/states/states-02.php:55
 msgid "Csongr�d"
-msgstr ""
+msgstr "צונגראד"
 
 #: includes/data/states/states-02.php:56
 msgid "Fej�r"
-msgstr ""
+msgstr "פייג'ר"
 
 #: includes/data/states/states-02.php:57
 msgid "Gyor-Moson-Sopron"
-msgstr ""
+msgstr "גיור-מושון-שופרון"
 
 #: includes/data/states/states-02.php:58
 msgid "Hajd�-Bihar"
-msgstr ""
+msgstr "חייד-ביהר"
 
 #: includes/data/states/states-02.php:59
 msgid "Heves"
@@ -7418,15 +7522,15 @@ msgstr "הבס"
 
 #: includes/data/states/states-02.php:60
 msgid "J�sz-Nagykun-Szolnok"
-msgstr ""
+msgstr "יאש-נאג'קון-סולנוק"
 
 #: includes/data/states/states-02.php:61
 msgid "Kom�rom-Esztergom"
-msgstr ""
+msgstr "קומארום-אסטרגום"
 
 #: includes/data/states/states-02.php:62
 msgid "N�gr�d"
-msgstr ""
+msgstr "נאגרד"
 
 #: includes/data/states/states-02.php:63
 msgid "Pest"
@@ -7438,7 +7542,7 @@ msgstr "שומוגי"
 
 #: includes/data/states/states-02.php:65
 msgid "Szabolcs-Szatm�r-Bereg"
-msgstr ""
+msgstr "סבולצ'-סאטמר-ברג"
 
 #: includes/data/states/states-02.php:66
 msgid "Tolna"
@@ -7450,7 +7554,7 @@ msgstr "וואס"
 
 #: includes/data/states/states-02.php:68
 msgid "Veszpr�m"
-msgstr ""
+msgstr "וויספרם"
 
 #: includes/data/states/states-02.php:69
 msgid "Zala"
@@ -7843,127 +7947,127 @@ msgstr "פונדיצ'רי (פודוצ'רי)"
 
 #: includes/data/states/states-02.php:174
 msgid "Khuzestan  (???????)"
-msgstr ""
+msgstr "חוזסטן (???????)"
 
 #: includes/data/states/states-02.php:175
 msgid "Tehran  (?????)"
-msgstr ""
+msgstr "טהראן (?????)"
 
 #: includes/data/states/states-02.php:176
 msgid "Ilaam (?????)"
-msgstr ""
+msgstr "אילאם (?????)"
 
 #: includes/data/states/states-02.php:177
 msgid "Bushehr (?????)"
-msgstr ""
+msgstr "בושהר (?????)"
 
 #: includes/data/states/states-02.php:178
 msgid "Ardabil (??????)"
-msgstr ""
+msgstr "ארדביל (??????)"
 
 #: includes/data/states/states-02.php:179
 msgid "Isfahan (??????)"
-msgstr ""
+msgstr "איספהן (??????)"
 
 #: includes/data/states/states-02.php:180
 msgid "Yazd (???)"
-msgstr ""
+msgstr "יזד (???)"
 
 #: includes/data/states/states-02.php:181
 msgid "Kermanshah (????????)"
-msgstr ""
+msgstr "קרמן-שאה (????????)"
 
 #: includes/data/states/states-02.php:182
 msgid "Kerman (?????)"
-msgstr ""
+msgstr "קרמן (?????)"
 
 #: includes/data/states/states-02.php:183
 msgid "Hamadan (?????)"
-msgstr ""
+msgstr "המדאן (?????)"
 
 #: includes/data/states/states-02.php:184
 msgid "Ghazvin (?????)"
-msgstr ""
+msgstr "גזווין (?????)"
 
 #: includes/data/states/states-02.php:185
 msgid "Zanjan (?????)"
-msgstr ""
+msgstr "זנג'אן (?????)"
 
 #: includes/data/states/states-02.php:186
 msgid "Luristan (??????)"
-msgstr ""
+msgstr "לוריסטן (??????)"
 
 #: includes/data/states/states-02.php:187
 msgid "Alborz (?????)"
-msgstr ""
+msgstr "אלבורז (?????)"
 
 #: includes/data/states/states-02.php:188
 msgid "East Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "מזרח אזרבייג'ן (????????? ????)"
 
 #: includes/data/states/states-02.php:189
 msgid "West Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "מערב אזרבייג'ן (????????? ????)"
 
 #: includes/data/states/states-02.php:190
 msgid "Chaharmahal and Bakhtiari (???????? ? ???????)"
-msgstr ""
+msgstr "צ'הרמהאל ובחתיארי (???????? ? ???????)"
 
 #: includes/data/states/states-02.php:191
 msgid "South Khorasan (?????? ?????)"
-msgstr ""
+msgstr "דרום חוראסאן (?????? ?????)"
 
 #: includes/data/states/states-02.php:192
 msgid "Razavi Khorasan (?????? ????)"
-msgstr ""
+msgstr "ראזאבי חוראסאן (?????? ????)"
 
 #: includes/data/states/states-02.php:193
 msgid "North Khorasan (?????? ?????)"
-msgstr ""
+msgstr "צפון חוראסאן (?????? ?????)"
 
 #: includes/data/states/states-02.php:194
 msgid "Semnan (?????)"
-msgstr ""
+msgstr "סמנאן (?????)"
 
 #: includes/data/states/states-02.php:195
 msgid "Fars (????)"
-msgstr ""
+msgstr "פרס (????)"
 
 #: includes/data/states/states-02.php:196
 msgid "Qom (??)"
-msgstr ""
+msgstr "קום (??)"
 
 #: includes/data/states/states-02.php:197
 msgid "Kurdistan / ???????)"
-msgstr ""
+msgstr "כורדיסטאן / ???????)"
 
 #: includes/data/states/states-02.php:198
 msgid "Kohgiluyeh and BoyerAhmad (????????? ? ????????)"
-msgstr ""
+msgstr "קוהגילויה ובויאר-אחמד (????????? ? ????????)"
 
 #: includes/data/states/states-02.php:199
 msgid "Golestan (??????)"
-msgstr ""
+msgstr "גולסטאן (??????)"
 
 #: includes/data/states/states-02.php:200
 msgid "Gilan (?????)"
-msgstr ""
+msgstr "גילן (?????)"
 
 #: includes/data/states/states-02.php:201
 msgid "Mazandaran (????????)"
-msgstr ""
+msgstr "מאזנדראן (????????)"
 
 #: includes/data/states/states-02.php:202
 msgid "Markazi (?????)"
-msgstr ""
+msgstr "מרכזי (?????)"
 
 #: includes/data/states/states-02.php:203
 msgid "Hormozgan (???????)"
-msgstr ""
+msgstr "הורמוזגן (???????)"
 
 #: includes/data/states/states-02.php:204
 msgid "Sistan and Baluchestan (?????? ? ????????)"
-msgstr ""
+msgstr "סיסטאן ובלאצ'סטן (?????? ? ????????)"
 
 #: includes/data/states/states-02.php:208
 msgid "Agrigento"
@@ -8107,7 +8211,7 @@ msgstr "פוג'יה"
 
 #: includes/data/states/states-02.php:243
 msgid "Forl�-Cesena"
-msgstr ""
+msgstr "פורלי-צ'זנה"
 
 #: includes/data/states/states-02.php:244
 msgid "Frosinone"
@@ -8696,7 +8800,7 @@ msgstr "מומבסה"
 
 #: includes/data/states/states-02.php:402
 msgid "Murang�a"
-msgstr ""
+msgstr "מורנג'ה"
 
 #: includes/data/states/states-02.php:403
 msgid "Nairobi County"
@@ -8905,11 +9009,11 @@ msgstr "סינו"
 
 #: includes/data/states/states-03.php:25
 msgid "Chi?inau"
-msgstr ""
+msgstr "צ'ישינאו"
 
 #: includes/data/states/states-03.php:26
 msgid "Bal?i"
-msgstr ""
+msgstr "באלצי"
 
 #: includes/data/states/states-03.php:27
 msgid "Anenii Noi"
@@ -8934,15 +9038,15 @@ msgstr "קנטמיר"
 #: includes/data/states/states-03.php:32
 #: includes/data/states/states-03.php:379
 msgid "Calara?i"
-msgstr ""
+msgstr "קלאראשי"
 
 #: includes/data/states/states-03.php:33
 msgid "Cau?eni"
-msgstr ""
+msgstr "קאוּצ'ני"
 
 #: includes/data/states/states-03.php:34
 msgid "Cimi?lia"
-msgstr ""
+msgstr "צ'ימישליה"
 
 #: includes/data/states/states-03.php:35
 msgid "Criuleni"
@@ -8950,7 +9054,7 @@ msgstr "קריולני"
 
 #: includes/data/states/states-03.php:36
 msgid "Dondu?eni"
-msgstr ""
+msgstr "דונדושני"
 
 #: includes/data/states/states-03.php:37
 msgid "Drochia"
@@ -8958,23 +9062,23 @@ msgstr "דרוצ'יה"
 
 #: includes/data/states/states-03.php:38
 msgid "Dubasari"
-msgstr ""
+msgstr "דובאסרי"
 
 #: includes/data/states/states-03.php:39
 msgid "Edine?"
-msgstr ""
+msgstr "אדינץ'"
 
 #: includes/data/states/states-03.php:40
 msgid "Fale?ti"
-msgstr ""
+msgstr "פאלשטי"
 
 #: includes/data/states/states-03.php:41
 msgid "Flore?ti"
-msgstr ""
+msgstr "פלורשטי"
 
 #: includes/data/states/states-03.php:42
 msgid "UTA Gagauzia"
-msgstr ""
+msgstr "אוטה גגוזיה"
 
 #: includes/data/states/states-03.php:43
 msgid "Glodeni"
@@ -8982,7 +9086,7 @@ msgstr "גלודני"
 
 #: includes/data/states/states-03.php:44
 msgid "H�nce?ti"
-msgstr ""
+msgstr "הנצה'טי"
 
 #: includes/data/states/states-03.php:45
 msgid "Ialoveni"
@@ -8998,7 +9102,7 @@ msgstr "ניספורני"
 
 #: includes/data/states/states-03.php:48
 msgid "Ocni?a"
-msgstr ""
+msgstr "אוקניצה"
 
 #: includes/data/states/states-03.php:49
 msgid "Orhei"
@@ -9010,11 +9114,11 @@ msgstr "רזינה"
 
 #: includes/data/states/states-03.php:51
 msgid "R�?cani"
-msgstr ""
+msgstr "רָצ'אני"
 
 #: includes/data/states/states-03.php:52
 msgid "S�ngerei"
-msgstr ""
+msgstr "סינג'רי"
 
 #: includes/data/states/states-03.php:53
 msgid "Soroca"
@@ -9022,15 +9126,15 @@ msgstr "סורוקה"
 
 #: includes/data/states/states-03.php:54
 msgid "Stra?eni"
-msgstr ""
+msgstr "סטרה'ני"
 
 #: includes/data/states/states-03.php:55
 msgid "?oldane?ti"
-msgstr ""
+msgstr "שולדנשטי"
 
 #: includes/data/states/states-03.php:56
 msgid "?tefan Voda"
-msgstr ""
+msgstr "שטפן וודה"
 
 #: includes/data/states/states-03.php:57
 msgid "Taraclia"
@@ -9038,7 +9142,7 @@ msgstr "טארקליה"
 
 #: includes/data/states/states-03.php:58
 msgid "Telene?ti"
-msgstr ""
+msgstr "טלנשטי"
 
 #: includes/data/states/states-03.php:59
 msgid "Ungheni"
@@ -9046,7 +9150,7 @@ msgstr "אונגheni"
 
 #: includes/data/states/states-03.php:64
 msgid "Ciudad de M�xico"
-msgstr ""
+msgstr "סיאודד דה מקסיקו"
 
 #: includes/data/states/states-03.php:65
 msgid "Jalisco"
@@ -9054,7 +9158,7 @@ msgstr "חאליסקו"
 
 #: includes/data/states/states-03.php:66
 msgid "Nuevo Le�n"
-msgstr ""
+msgstr "נואבו לאון"
 
 #: includes/data/states/states-03.php:67
 msgid "Aguascalientes"
@@ -9106,11 +9210,11 @@ msgstr "אידלגו"
 
 #: includes/data/states/states-03.php:79
 msgid "Estado de M�xico"
-msgstr ""
+msgstr "מדינת מקסיקו"
 
 #: includes/data/states/states-03.php:80
 msgid "Michoac�n"
-msgstr ""
+msgstr "מיצ'ואקן"
 
 #: includes/data/states/states-03.php:81
 msgid "Morelos"
@@ -9130,7 +9234,7 @@ msgstr "פואבלה"
 
 #: includes/data/states/states-03.php:85
 msgid "Quer�taro"
-msgstr ""
+msgstr "קוארטרו"
 
 #: includes/data/states/states-03.php:86
 msgid "Quintana Roo"
@@ -9138,7 +9242,7 @@ msgstr "קינטנה רו"
 
 #: includes/data/states/states-03.php:87
 msgid "San Luis Potos�"
-msgstr ""
+msgstr "סן לואיס פוטוסי"
 
 #: includes/data/states/states-03.php:88
 msgid "Sinaloa"
@@ -9166,7 +9270,7 @@ msgstr "ורקה קרוז"
 
 #: includes/data/states/states-03.php:94
 msgid "Yucat�n"
-msgstr ""
+msgstr "יוקטן"
 
 #: includes/data/states/states-03.php:95
 msgid "Zacatecas"
@@ -9278,7 +9382,7 @@ msgstr "טטה"
 
 #: includes/data/states/states-03.php:126
 msgid "Zamb�zia"
-msgstr ""
+msgstr "זמבזיה"
 
 #: includes/data/states/states-03.php:129
 msgid "Erongo"
@@ -9567,7 +9671,7 @@ msgstr "גיסבורן"
 
 #: includes/data/states/states-03.php:208
 msgid "Hawke�s Bay"
-msgstr ""
+msgstr "מפרץ הוק'ס"
 
 #: includes/data/states/states-03.php:209
 msgid "Manawatu-Wanganui"
@@ -9619,7 +9723,7 @@ msgstr "אנקש"
 
 #: includes/data/states/states-03.php:224
 msgid "Apur�mac"
-msgstr ""
+msgstr "אפורימק"
 
 #: includes/data/states/states-03.php:225
 msgid "Arequipa"
@@ -9643,7 +9747,7 @@ msgstr "הואנקביליקה"
 
 #: includes/data/states/states-03.php:230
 msgid "Hu�nuco"
-msgstr ""
+msgstr "הואנוקו"
 
 #: includes/data/states/states-03.php:231
 msgid "Ica"
@@ -9651,7 +9755,7 @@ msgstr "יקה"
 
 #: includes/data/states/states-03.php:232
 msgid "Jun�n"
-msgstr ""
+msgstr "חונין"
 
 #: includes/data/states/states-03.php:233
 msgid "La Libertad"
@@ -9691,7 +9795,7 @@ msgstr "פונו"
 
 #: includes/data/states/states-03.php:242
 msgid "San Mart�n"
-msgstr ""
+msgstr "סן מרטין"
 
 #: includes/data/states/states-03.php:243
 msgid "Tacna"
@@ -10063,11 +10167,11 @@ msgstr "סינד"
 
 #: includes/data/states/states-03.php:347
 msgid "Asunci�n"
-msgstr ""
+msgstr "אסונסיון"
 
 #: includes/data/states/states-03.php:348
 msgid "Concepci�n"
-msgstr ""
+msgstr "קונספסיון"
 
 #: includes/data/states/states-03.php:349
 msgid "San Pedro"
@@ -10079,31 +10183,31 @@ msgstr "קורדילרה"
 
 #: includes/data/states/states-03.php:351
 msgid "Guair�"
-msgstr ""
+msgstr "גוואיר�"
 
 #: includes/data/states/states-03.php:352
 msgid "Caaguaz�"
-msgstr ""
+msgstr "קאאגואז�"
 
 #: includes/data/states/states-03.php:353
 msgid "Caazap�"
-msgstr ""
+msgstr "קאאזפה"
 
 #: includes/data/states/states-03.php:354
 msgid "Itap�a"
-msgstr ""
+msgstr "איטפ�ה"
 
 #: includes/data/states/states-03.php:356
 msgid "Paraguar�"
-msgstr ""
+msgstr "פאראגוואר�"
 
 #: includes/data/states/states-03.php:357
 msgid "Alto Paran�"
-msgstr ""
+msgstr "אלטו פארנ�"
 
 #: includes/data/states/states-03.php:359
 msgid "�eembuc�"
-msgstr ""
+msgstr "ז'מבוק�"
 
 #: includes/data/states/states-03.php:360
 msgid "Amambay"
@@ -10111,7 +10215,7 @@ msgstr "אמאמבאי"
 
 #: includes/data/states/states-03.php:361
 msgid "Canindey�"
-msgstr ""
+msgstr "קנינדי�"
 
 #: includes/data/states/states-03.php:362
 msgid "Presidente Hayes"
@@ -10123,7 +10227,7 @@ msgstr "אלטו פרגוואי"
 
 #: includes/data/states/states-03.php:364
 msgid "Boquer�n"
-msgstr ""
+msgstr "בוקרן"
 
 #: includes/data/states/states-03.php:368
 msgid "Alba"
@@ -10135,11 +10239,11 @@ msgstr "ערד"
 
 #: includes/data/states/states-03.php:370
 msgid "Arge?"
-msgstr ""
+msgstr "ארגה?"
 
 #: includes/data/states/states-03.php:371
 msgid "Bacau"
-msgstr ""
+msgstr "בקאוא"
 
 #: includes/data/states/states-03.php:372
 msgid "Bihor"
@@ -10147,31 +10251,31 @@ msgstr "ביהור"
 
 #: includes/data/states/states-03.php:373
 msgid "Bistri?a-Nasaud"
-msgstr ""
+msgstr "ביסטריצה-נשאוד"
 
 #: includes/data/states/states-03.php:374
 msgid "Boto?ani"
-msgstr ""
+msgstr "בוטושאני"
 
 #: includes/data/states/states-03.php:375
 msgid "Braila"
-msgstr ""
+msgstr "בראילה"
 
 #: includes/data/states/states-03.php:376
 msgid "Bra?ov"
-msgstr ""
+msgstr "ברשוב"
 
 #: includes/data/states/states-03.php:377
 msgid "Bucure?ti"
-msgstr ""
+msgstr "בוקרשט"
 
 #: includes/data/states/states-03.php:378
 msgid "Buzau"
-msgstr ""
+msgstr "בוזאו"
 
 #: includes/data/states/states-03.php:380
 msgid "Cara?-Severin"
-msgstr ""
+msgstr "קאראש-סברין"
 
 #: includes/data/states/states-03.php:381
 msgid "Cluj"
@@ -10179,7 +10283,7 @@ msgstr "קלוז'"
 
 #: includes/data/states/states-03.php:382
 msgid "Constan?a"
-msgstr ""
+msgstr "קונסטנצה"
 
 #: includes/data/states/states-03.php:383
 msgid "Covasna"
@@ -10187,7 +10291,7 @@ msgstr "קובאסנה"
 
 #: includes/data/states/states-03.php:384
 msgid "D�mbovi?a"
-msgstr ""
+msgstr "דאמוביצה"
 
 #: includes/data/states/states-03.php:385
 msgid "Dolj"
@@ -10195,7 +10299,7 @@ msgstr "דולג' "
 
 #: includes/data/states/states-03.php:386
 msgid "Gala?i"
-msgstr ""
+msgstr "גלאץ'י"
 
 #: includes/data/states/states-03.php:387
 msgid "Giurgiu"
@@ -10215,11 +10319,11 @@ msgstr "הונדווארה"
 
 #: includes/data/states/states-03.php:391
 msgid "Ialomi?a"
-msgstr ""
+msgstr "יאלוומיצה"
 
 #: includes/data/states/states-03.php:392
 msgid "Ia?i"
-msgstr ""
+msgstr "יאשי"
 
 #: includes/data/states/states-03.php:393
 msgid "Ilfov"
@@ -10227,19 +10331,19 @@ msgstr "אילפוב"
 
 #: includes/data/states/states-03.php:394
 msgid "Maramure?"
-msgstr ""
+msgstr "מרמורש"
 
 #: includes/data/states/states-03.php:395
 msgid "Mehedin?i"
-msgstr ""
+msgstr "מהדין"
 
 #: includes/data/states/states-03.php:396
 msgid "Mure?"
-msgstr ""
+msgstr "מורש"
 
 #: includes/data/states/states-03.php:397
 msgid "Neam?"
-msgstr ""
+msgstr "ניאם?"
 
 #: includes/data/states/states-03.php:398
 msgid "Olt"
@@ -10251,7 +10355,7 @@ msgstr "פרחובה"
 
 #: includes/data/states/states-03.php:400
 msgid "Salaj"
-msgstr ""
+msgstr "סלאג'"
 
 #: includes/data/states/states-03.php:401
 msgid "Satu Mare"
@@ -10271,7 +10375,7 @@ msgstr "טליאורמן"
 
 #: includes/data/states/states-03.php:405
 msgid "Timi?"
-msgstr ""
+msgstr "טימיש"
 
 #: includes/data/states/states-03.php:406
 msgid "Tulcea"
@@ -10279,7 +10383,7 @@ msgstr "טולצ'ה"
 
 #: includes/data/states/states-03.php:407
 msgid "V�lcea"
-msgstr ""
+msgstr "וולצ'ה"
 
 #: includes/data/states/states-03.php:408
 msgid "Vaslui"
@@ -10603,7 +10707,7 @@ msgstr "אדנה"
 
 #: includes/data/states/states-04.php:91
 msgid "Adiyaman"
-msgstr ""
+msgstr "אדיאמאנ"
 
 #: includes/data/states/states-04.php:92
 msgid "Afyon"
@@ -10611,7 +10715,7 @@ msgstr "אפיון"
 
 #: includes/data/states/states-04.php:93
 msgid "Agri"
-msgstr ""
+msgstr "אג'רי"
 
 #: includes/data/states/states-04.php:94
 msgid "Amasya"
@@ -10631,11 +10735,11 @@ msgstr "ארטווין"
 
 #: includes/data/states/states-04.php:98
 msgid "Aydin"
-msgstr ""
+msgstr "איידין"
 
 #: includes/data/states/states-04.php:99
 msgid "Balikesir"
-msgstr ""
+msgstr "בליקסיר"
 
 #: includes/data/states/states-04.php:100
 msgid "Bilecik"
@@ -10643,7 +10747,7 @@ msgstr "בילג'יק"
 
 #: includes/data/states/states-04.php:101
 msgid "Bing�l"
-msgstr ""
+msgstr "בינגול"
 
 #: includes/data/states/states-04.php:102
 msgid "Bitlis"
@@ -10663,15 +10767,15 @@ msgstr "בורסה"
 
 #: includes/data/states/states-04.php:106
 msgid "�anakkale"
-msgstr ""
+msgstr "צ'אנאקלה"
 
 #: includes/data/states/states-04.php:107
 msgid "�ankiri"
-msgstr ""
+msgstr "שנקירי"
 
 #: includes/data/states/states-04.php:108
 msgid "�orum"
-msgstr ""
+msgstr "צ'ורום"
 
 #: includes/data/states/states-04.php:109
 msgid "Denizli"
@@ -10679,7 +10783,7 @@ msgstr "דניזלי"
 
 #: includes/data/states/states-04.php:110
 msgid "Diyarbakir"
-msgstr ""
+msgstr "דיארבקיר"
 
 #: includes/data/states/states-04.php:111
 msgid "Edirne"
@@ -10687,7 +10791,7 @@ msgstr "אדרנה"
 
 #: includes/data/states/states-04.php:112
 msgid "Elazig"
-msgstr ""
+msgstr "אלאזיג"
 
 #: includes/data/states/states-04.php:113
 msgid "Erzincan"
@@ -10699,7 +10803,7 @@ msgstr "ארזורום"
 
 #: includes/data/states/states-04.php:115
 msgid "Eskisehir"
-msgstr ""
+msgstr "אסקישehir"
 
 #: includes/data/states/states-04.php:116
 msgid "Gaziantep"
@@ -10711,7 +10815,7 @@ msgstr "גירסון"
 
 #: includes/data/states/states-04.php:118
 msgid "G�m�shane"
-msgstr ""
+msgstr "גומשנה"
 
 #: includes/data/states/states-04.php:119
 msgid "Hakkari"
@@ -10727,15 +10831,15 @@ msgstr "יספארטה"
 
 #: includes/data/states/states-04.php:122
 msgid "I�el"
-msgstr ""
+msgstr "איג'ל"
 
 #: includes/data/states/states-04.php:123
 msgid "Istanbul"
-msgstr ""
+msgstr "איסטנבול"
 
 #: includes/data/states/states-04.php:124
 msgid "Izmir"
-msgstr ""
+msgstr "איזמיר"
 
 #: includes/data/states/states-04.php:125
 msgid "Kars"
@@ -10751,11 +10855,11 @@ msgstr "קאיסרי"
 
 #: includes/data/states/states-04.php:128
 msgid "Kirklareli"
-msgstr ""
+msgstr "קירקלרלי"
 
 #: includes/data/states/states-04.php:129
 msgid "Kirsehir"
-msgstr ""
+msgstr "קירשיהיר"
 
 #: includes/data/states/states-04.php:130
 msgid "Kocaeli"
@@ -10767,7 +10871,7 @@ msgstr "קוניה"
 
 #: includes/data/states/states-04.php:132
 msgid "K�tahya"
-msgstr ""
+msgstr "קטהיה"
 
 #: includes/data/states/states-04.php:133
 msgid "Malatya"
@@ -10779,7 +10883,7 @@ msgstr "מניסה"
 
 #: includes/data/states/states-04.php:135
 msgid "Kahramanmaras"
-msgstr ""
+msgstr "קهرמנמרש"
 
 #: includes/data/states/states-04.php:136
 msgid "Mardin"
@@ -10787,19 +10891,19 @@ msgstr "מרדין"
 
 #: includes/data/states/states-04.php:137
 msgid "Mugla"
-msgstr ""
+msgstr "מוקלה"
 
 #: includes/data/states/states-04.php:138
 msgid "Mus"
-msgstr ""
+msgstr "מוס"
 
 #: includes/data/states/states-04.php:139
 msgid "Nevsehir"
-msgstr ""
+msgstr "נבשהיר"
 
 #: includes/data/states/states-04.php:140
 msgid "Nigde"
-msgstr ""
+msgstr "ניגדה"
 
 #: includes/data/states/states-04.php:141
 msgid "Ordu"
@@ -10831,7 +10935,7 @@ msgstr "סיבס"
 
 #: includes/data/states/states-04.php:148
 msgid "Tekirdag"
-msgstr ""
+msgstr "טקירדאג"
 
 #: includes/data/states/states-04.php:149
 msgid "Tokat"
@@ -10847,11 +10951,11 @@ msgstr "טונצ'לי"
 
 #: includes/data/states/states-04.php:152
 msgid "Sanliurfa"
-msgstr ""
+msgstr "שנליאורפה"
 
 #: includes/data/states/states-04.php:153
 msgid "Usak"
-msgstr ""
+msgstr "אוסאק"
 
 #: includes/data/states/states-04.php:154
 msgid "Van"
@@ -10879,7 +10983,7 @@ msgstr "קרמאן"
 
 #: includes/data/states/states-04.php:160
 msgid "Kirikkale"
-msgstr ""
+msgstr "קיריקלה"
 
 #: includes/data/states/states-04.php:161
 msgid "Batman"
@@ -10887,11 +10991,11 @@ msgstr "באטמן"
 
 #: includes/data/states/states-04.php:162
 msgid "Sirnak"
-msgstr ""
+msgstr "שירנאק"
 
 #: includes/data/states/states-04.php:163
 msgid "Bartin"
-msgstr ""
+msgstr "ברטין"
 
 #: includes/data/states/states-04.php:164
 msgid "Ardahan"
@@ -10899,7 +11003,7 @@ msgstr "ארדחאן"
 
 #: includes/data/states/states-04.php:165
 msgid "Igdir"
-msgstr ""
+msgstr "איגדיר"
 
 #: includes/data/states/states-04.php:166
 msgid "Yalova"
@@ -10907,7 +11011,7 @@ msgstr "יאלובה"
 
 #: includes/data/states/states-04.php:167
 msgid "Karab�k"
-msgstr ""
+msgstr "קאראבוק"
 
 #: includes/data/states/states-04.php:168
 msgid "Kilis"
@@ -10919,7 +11023,7 @@ msgstr "אוסמניא"
 
 #: includes/data/states/states-04.php:170
 msgid "D�zce"
-msgstr ""
+msgstr "דוזג'ה"
 
 #: includes/data/states/states-04.php:173
 msgid "Arusha"
@@ -12005,7 +12109,6 @@ msgid "Your {product_name} trial is about to end"
 msgstr "ניסוי ה-{product_name} שלך עומד להסתיים"
 
 #: includes/email/ppcart-template-functions/templates.php:246
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -12148,7 +12251,7 @@ msgstr "אין לך הרשאה להוריד את הקובץ הזה."
 
 #: includes/files/download.php:43
 msgid "Invalid file path."
-msgstr ""
+msgstr "נתיב קובץ לא חוקי."
 
 #: includes/files/download.php:44
 #: includes/files/download.php:65
@@ -12168,7 +12271,7 @@ msgstr "מצטער, הקובץ הזה כבר אינו זמין."
 #. translators: 1: file name, 2: user login.
 #, php-format
 msgid "Access to file \"%1$s\" revoked by %2$s"
-msgstr ""
+msgstr "גישה לקובץ \"%1$s\" בוטלה על ידי %2$s"
 
 #: includes/files/traits/templates/files-admin-product-form-callback.php:28
 #: includes/files/traits/trait-ppcart-files-settings.php:132
@@ -12346,7 +12449,7 @@ msgstr "אימייל אישור רכישה נשלח מחדש על ידי %s"
 
 #: includes/functions/admin-ajax-and-notices.php:389
 msgid "You are not allowed to dismiss this notice."
-msgstr ""
+msgstr "אינך מורשה לדחות הודעה זו."
 
 #: includes/functions/ajax-and-fields.php:170
 msgid " activecampaign Listed: "
@@ -13061,7 +13164,7 @@ msgstr "התראה על מלאי נמוך: %s"
 msgid ""
 "The stock for product \"%1$s\" (ID: %2$d) is running low. Current stock: "
 "%3$d"
-msgstr ""
+msgstr "המלאי עבור המוצר \"%1$s\" (ID: %2$d) נמוך. מלאי נוכחי: %3$d"
 
 #: includes/functions/integrations-and-stock.php:220
 #. translators: %s: product name.
@@ -13073,19 +13176,19 @@ msgstr "התראה על חוסר במלאי: %s"
 #. translators: 1: product name, 2: product ID.
 #, php-format
 msgid "The product \"%1$s\" (ID: %2$d) is now out of stock."
-msgstr ""
+msgstr "המוצר \"%1$s\" (ID: %2$d) אזל מהמלאי."
 
 #: includes/functions/mailchimp-api.php:51
 msgid "The Mailchimp API key is invalid."
-msgstr ""
+msgstr "מפתח ה-API של Mailchimp לא חוקי."
 
 #: includes/functions/mailchimp-api.php:83
 msgid "Mailchimp rejected the request."
-msgstr ""
+msgstr "Mailchimp דחה את הבקשה."
 
 #: includes/functions/mailchimp-api.php:94
 msgid "Mailchimp returned an invalid response."
-msgstr ""
+msgstr "Mailchimp החזירה תגובה לא חוקית."
 
 #: includes/functions/merge-tags-and-dates.php:11
 msgid "Site Name"
@@ -13179,7 +13282,7 @@ msgstr "רשימת הזמנות"
 
 #: includes/functions/merge-tags-and-dates.php:34
 msgid "Order Details Table"
-msgstr ""
+msgstr "טבלת פרטי הזמנה"
 
 #: includes/functions/merge-tags-and-dates.php:35
 msgid "Inline Order List"
@@ -13225,14 +13328,14 @@ msgstr "הכנס תג התאמה אישית"
 #. translators: 1: refund amount, 2: refund date.
 #, php-format
 msgid "%1$s refunded on %2$s"
-msgstr ""
+msgstr "%1$s הוחזר ב-%2$s"
 
 #: includes/functions/merge-tags-and-dates.php:199
 #: includes/functions/merge-tags-and-dates.php:201
 #. translators: 1: primary product name, 2: bump product name.
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s, %2$s"
 
 #: includes/functions/merge-tags-and-dates.php:549
 msgid "Invalid Charge ID"
@@ -13329,7 +13432,7 @@ msgstr "שליחת הודעת דוא\"ל לאיפוס נכשלה. אנא נסה 
 
 #: includes/functions/merge-tags-and-dates.php:579
 msgid "Your session has expired. Please try again."
-msgstr ""
+msgstr "הישיבה שלך פגה. אנא נסה שוב."
 
 #: includes/functions/merge-tags-and-dates.php:580
 #: includes/functions/merge-tags-and-dates.php:581
@@ -13517,7 +13620,7 @@ msgstr "מזהה קורס Membervault: "
 #. translators: %s: Membervault API error message.
 #, php-format
 msgid "Membervault add failed: %s"
-msgstr ""
+msgstr "הוספת Membervault נכשלה: %s"
 
 #: includes/functions/orders-products-and-formatting.php:147
 msgid "Membervault add failed"
@@ -13632,7 +13735,7 @@ msgstr "מספר זיהוי חיוב לא חוקי"
 #. translators: %s: Stripe gateway mode (e.g. live or test)
 #, php-format
 msgid "Oops, Stripe %s key missing!"
-msgstr ""
+msgstr "אופס, מפתח Stripe %s חסר!"
 
 #: includes/functions/payment-actions-and-refunds.php:438
 msgid "Payment refunded by"
@@ -13681,11 +13784,11 @@ msgstr "עם קופון:"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "(%1$s off for %2$d months)"
-msgstr ""
+msgstr "(%1$s הנחה עבור %2$d חודשים)"
 
 #: includes/functions/prices-and-marketing.php:273
 msgid "JSON Parse"
-msgstr ""
+msgstr "פענוח JSON"
 
 #: includes/functions/prices-and-marketing.php:357
 msgid "No Data Found"
@@ -13724,19 +13827,19 @@ msgstr " יום"
 #. translators: %d: product ID.
 #, php-format
 msgid "Product #%d"
-msgstr ""
+msgstr "מוצר #%d"
 
 #: includes/functions/users-and-notifications.php:159
 #. translators: 1: requested role, 2: role used instead.
 #, php-format
 msgid "User role %1$s is not allowed for customers; %2$s was used instead."
-msgstr ""
+msgstr "תפקיד המשתמש %1$s אינו מותר ללקוחות; %2$s שימש במקום זאת."
 
 #: includes/functions/users-and-notifications.php:192
 #. translators: 1: user ID, 2: role name.
 #, php-format
 msgid "Role for User ID: %1$s updated to %2$s"
-msgstr ""
+msgstr "התפקיד למזהה המשתמש: %1$s עודכן ל-%2$s"
 
 #: includes/functions/users-and-notifications.php:209
 #. translators: %s: user ID.
@@ -13788,11 +13891,11 @@ msgstr "שביל מכירה נוספת"
 
 #: includes/helpers/pro-locks/field-and-email-locks.php:235
 msgid "Affiliates"
-msgstr ""
+msgstr "שותפים"
 
-#: includes/helpers/pro-locks/product-locks.php:27
+#: includes/helpers/pro-locks/product-locks.php:27, fuzzy
 msgid "Stripe, PayPal"
-msgstr ""
+msgstr "Stripe, PayPal"
 
 #: includes/helpers/pro-locks/product-locks.php:29
 msgid "Globally Enabled Methods:"
@@ -13887,7 +13990,7 @@ msgstr "כל פריט נוסף (בינלאומי)"
 
 #: includes/helpers/pro-locks/product-locks.php:76
 msgid "Enable affiliate sales"
-msgstr ""
+msgstr "אפשר מכירות שותפים"
 
 #: includes/helpers/pro-locks/product-locks.php:77
 #: public/templates/pdf-invoice/invoice.php:145
@@ -13898,11 +14001,11 @@ msgstr "תיאור"
 
 #: includes/helpers/pro-locks/product-locks.php:78
 msgid "Name (internal)"
-msgstr ""
+msgstr "שם (פנימי)"
 
 #: includes/helpers/pro-locks/settings-locks.php:59
 msgid "Pro"
-msgstr ""
+msgstr "פרו"
 
 #: includes/helpers/pro-locks/settings-locks.php:98
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:1132
@@ -13914,35 +14017,35 @@ msgstr "מרובע"
 msgid ""
 "Accept payments online and in person with Square, syncing items and "
 "inventory."
-msgstr ""
+msgstr "קבל תשלומים אונליין ובאופן אישי עם Square, סינכרון פריטים ומלאי."
 
-#: includes/helpers/pro-locks/settings-locks.php:104
+#: includes/helpers/pro-locks/settings-locks.php:104, fuzzy
 msgid "Mollie"
-msgstr ""
+msgstr "Mollie"
 
 #: includes/helpers/pro-locks/settings-locks.php:105
 msgid "Offer global and local payment methods with fast, multilingual onboarding."
-msgstr ""
+msgstr "הצע שיטות תשלום גלובליות ומקומיות עם קליטה מהירה, רב-לשונית."
 
-#: includes/helpers/pro-locks/settings-locks.php:110
+#: includes/helpers/pro-locks/settings-locks.php:110, fuzzy
 msgid "Razorpay"
-msgstr ""
+msgstr "Razorpay"
 
 #: includes/helpers/pro-locks/settings-locks.php:111
 msgid "Accept payments in India and beyond with Razorpay's simple integration."
-msgstr ""
+msgstr "קבל תשלומים בהודו ומעבר לכך עם האינטגרציה הפשוטה של Razorpay."
 
-#: includes/helpers/pro-locks/settings-locks.php:217
+#: includes/helpers/pro-locks/settings-locks.php:217, fuzzy
 msgid "PRO"
-msgstr ""
+msgstr "PRO"
 
 #: includes/helpers/pro-locks/settings-locks.php:238
 msgid "This is a Pro feature"
-msgstr ""
+msgstr "זהו תכונת פרו"
 
 #: includes/helpers/pro-locks/settings-locks.php:239
 msgid "This feature is available in the separate PublishPress Cart Pro plugin."
-msgstr ""
+msgstr "תכונה זו זמינה בתוסף הנפרד PublishPress Cart Pro."
 
 #: includes/helpers/pro-locks/settings-locks.php:273
 msgid "URL Coupon Parameter Name"
@@ -13953,6 +14056,8 @@ msgid ""
 "Use something else in place of \"ppcart-coupon\" when creating coupon URLs "
 "(e.g., https://example.com/product/?ppcart-coupon=20off)."
 msgstr ""
+"השתמש במשהו אחר במקום \"ppcart-coupon\" בעת יצירת כתובות URL לקופונים "
+"(למשל, https://example.com/product/?ppcart-coupon=20off)."
 
 #: includes/helpers/pro-locks/settings-locks.php:278
 msgid "Disable product template"
@@ -14044,7 +14149,7 @@ msgstr "חוברת תרגולים.docx"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:7
 #: public/templates/my-account/forms/login-form.php:110
 msgid "Username"
-msgstr ""
+msgstr "שם משתמש"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:8
 #: public/templates/my-account/forms/login-form.php:111
@@ -14054,18 +14159,18 @@ msgstr "סיסמה"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:9
 #: public/templates/my-account/forms/login-form.php:112
 msgid "Remember Me"
-msgstr ""
+msgstr "זכור אותי"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:10
 #: public/templates/my-account/forms/login-form.php:113
 msgid "Log In"
-msgstr ""
+msgstr "התחבר"
 
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:8
 msgid "Jan 1, 2026"
 msgstr "1 בינואר 2026"
 
-#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10
+#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10, fuzzy
 msgid "$49.00"
 msgstr "$49.00"
 
@@ -14079,7 +14184,7 @@ msgstr "בחר תכנית"
 msgid "Feb 1, 2026"
 msgstr "1 בפברואר 2026"
 
-#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11
+#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11, fuzzy
 msgid "$99 x 6"
 msgstr "$99 x 6"
 
@@ -14108,7 +14213,7 @@ msgstr "חודש"
 
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:38
 msgid "Cancels Feb 1, 2026"
-msgstr ""
+msgstr "מבוטל ב-1 בפברואר 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-context.php:30
 #, fuzzy
@@ -14172,11 +14277,11 @@ msgstr "פרטים"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:390
 msgid "January 1, 2026"
-msgstr ""
+msgstr "1 בינואר 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:391
 msgid "February 1, 2026"
-msgstr ""
+msgstr "1 בפברואר 2026"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:472
 #, fuzzy
@@ -14206,7 +14311,7 @@ msgstr "כרטיס אשראי"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:87
 msgid "Single Collection"
-msgstr ""
+msgstr "אוסף יחיד"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:90
 msgid "Single Product"
@@ -14226,7 +14331,7 @@ msgstr "בחר תכנית"
 
 #: includes/integrations/templates/cancel-subscription-integration-fields.php:57
 msgid "At the end of the current billing period"
-msgstr ""
+msgstr "בתום תקופת החיוב הנוכחית"
 
 #: includes/integrations/templates/cancel-subscription-run.php:33
 #. translators: %s: subscription ID.
@@ -14238,13 +14343,13 @@ msgstr "מספר זיהוי המנוי: %s בוטל"
 #. translators: 1: subscription ID, 2: error message.
 #, php-format
 msgid "Error canceling subscription ID: %1$s! Message: %2$s"
-msgstr ""
+msgstr "שגיאה בביטול המנוי עם מזהה: %1$s! הודעה: %2$s"
 
 #: includes/integrations/templates/cancel-subscription-run.php:41
 #. translators: 1: product ID, 2: plan ID.
 #, php-format
 msgid "No active subscriptions found for product ID: %1$s and plan ID=%2$s"
-msgstr ""
+msgstr "לא נמצאו מנויים פעילים עבור מזהה המוצר: %1$s ומזהה התוכנית=%2$s"
 
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:22
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:39
@@ -14363,6 +14468,8 @@ msgid ""
 "the Kit personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"שים כל זוג שדות בשורה נפרדת והשתמש בנקודתיים (\":\") כדי להפריד בין תג "
+"ההתאמה של Kit לערך השדה. לדוגמה: %TAG%:ppcart_field_id"
 
 #: includes/integrations/templates/ppcart-kit-ppcart-add-remove-convertkit-subscriber.php:59
 msgid "Subscriber added to Kit form."
@@ -14500,6 +14607,8 @@ msgid "%s event"
 msgid_plural "%s events"
 msgstr[0] "%s אירוע"
 msgstr[1] "%s אירועים"
+msgstr[2] ""
+msgstr[3] ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-grouped-split-view.php:82
 msgid "Select a debug event to view its details."
@@ -14536,6 +14645,8 @@ msgid "%s group"
 msgid_plural "%s groups"
 msgstr[0] "%s קבוצה"
 msgstr[1] "%s קבוצות"
+msgstr[2] ""
+msgstr[3] ""
 
 #: includes/logging/traits/templates/debug-log-viewer-page-render-log-page.php:115
 msgid "Debug log view"
@@ -14756,6 +14867,8 @@ msgid "%s result"
 msgid_plural "%s results"
 msgstr[0] "%s תוצאה"
 msgstr[1] "%s תוצאות"
+msgstr[2] ""
+msgstr[3] ""
 
 #: includes/logging/traits/templates/stripe-webhook-logger-admin-render-log-page.php:88
 msgid "Search Stripe webhook log"
@@ -14803,7 +14916,7 @@ msgstr "%s דמי רישום"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "%1$s off for %2$d months"
-msgstr ""
+msgstr "%1$s הנחה עבור %2$d חודשים"
 
 #: includes/ppcart-countries.php:17
 msgid "Select a Country"
@@ -15843,102 +15956,108 @@ msgstr "לא נמצאו תוצאות עבור תקופת הזמן הזו"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:33
 msgid "Encryption enabled"
-msgstr ""
+msgstr "הצפנה מופעלת"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:38
 msgid "Payment and integration credentials are encrypted at rest."
-msgstr ""
+msgstr "אישורי תשלום ואינטגרציה מוצפנים במנוחה."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:40
 msgid "New credentials will be encrypted when saved."
-msgstr ""
+msgstr "אישורים חדשים יועברו להצפנה כאשר יישמרו."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:44
 msgid "Encryption disabled"
-msgstr ""
+msgstr "הצפנה מושבתת"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:46
 msgid ""
 "Payment and integration keys are stored in plaintext by default. Enable "
 "encryption to reduce risk if your database is exposed."
 msgstr ""
+"מפתחות תשלום ואינטגרציה נשמרים בטקסט רגיל כברירת מחדל. הפעל הצפנה כדי "
+"להפחית סיכון אם מסד הנתונים שלך חשוף."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:58
 msgid "Enable encryption"
-msgstr ""
+msgstr "אפשר הצפנה"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:67
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Add %s to wp-config.php to enable encryption."
-msgstr ""
+msgstr "הוסף %s ל-wp-config.php כדי לאפשר הצפנה."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:79
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:27
 msgid "Encryption is controlled by PPCART_ENCRYPT_SECRETS in wp-config.php."
-msgstr ""
+msgstr "ההצפנה נשלטת על ידי PPCART_ENCRYPT_SECRETS ב-wp-config.php."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:87
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Optional: lock encryption on in wp-config.php with %s"
-msgstr ""
+msgstr "אופציונלי: נעל הצפנה ב-wp-config.php עם %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:98
 msgid "Open Security settings"
-msgstr ""
+msgstr "פתח את הגדרות האבטחה"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:27
 msgid "Encryption"
-msgstr ""
+msgstr "הצפנה"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:31
 msgid ""
 "Controlled by PPCART_ENCRYPT_SECRETS in wp-config.php. The database setting "
 "is ignored."
 msgstr ""
+"נשלט על ידי PPCART_ENCRYPT_SECRETS ב-wp-config.php. הגדרת מסד הנתונים "
+"מתעלמת."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:44
 msgid "Encrypt payment and integration credentials in the database"
-msgstr ""
+msgstr "הצפנת תשלום ופרטי אינטגרציה במסד הנתונים"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:48
 msgid "For production sites, you can lock this in wp-config.php instead:"
-msgstr ""
+msgstr "לאתרים בייצור, אתה יכול לנעול את זה ב wp-config.php במקום:"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:52
 msgid ""
 "When that constant is defined, it takes precedence and this checkbox is "
 "ignored."
-msgstr ""
+msgstr "כאשר הקבוע הזה מוגדר, הוא מקבל עדיפות ותיבת סימון זו מתעלמת."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:68
 #. translators: %s: encryption key source label.
 #, php-format
 msgid "Key source: %s"
-msgstr ""
+msgstr "מקור מפתח: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:76
 msgid ""
 "Encryption cannot run until AUTH_KEY or PPCART_SECRETS_KEY is configured in "
 "wp-config.php."
 msgstr ""
+"ההצפנה לא יכולה לפעול עד ש AUTH_KEY או PPCART_SECRETS_KEY מוגדרים ב "
+"wp-config.php."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:83
 msgid "Stored credentials"
-msgstr ""
+msgstr "פרטי ההזדהות המאוחסנים"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:86
 #. translators: %d: count
 #, php-format
 msgid "Encrypted: %d"
-msgstr ""
+msgstr "מוצפן: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:87
 #. translators: %d: count
 #, php-format
 msgid "Plaintext: %d"
-msgstr ""
+msgstr "טקסט ברור: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:91
 msgid ""
@@ -15946,6 +16065,9 @@ msgid ""
 "plaintext. Existing encrypted values are not rewritten automatically; Cart "
 "continues to read them normally."
 msgstr ""
+"כאשר ההצפנה מושבתת, פרטי ההזדהות החדשים והמעודכנים מאוחסנים בטקסט ברור. "
+"ערכים מוצפנים קיימים לא נכתבים מחדש אוטומטית; הקניות ממשיכות לקרוא אותם "
+"כרגיל."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:99
 #. translators: %d: number of encrypted credentials.
@@ -15954,66 +16076,78 @@ msgid ""
 "%d credential remains encrypted in the database until you re-save it or "
 "enable encryption again."
 msgid_plural ""
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
 msgstr[0] ""
-msgstr[1] ""
+"%d פרטי הזדהות נשארים מוצפנים במסד הנתונים עד שתחליף אותם או תפעיל את "
+"ההצפנה שוב.|%d פרטי הזדהות נשארים מוצפנים במסד הנתונים עד שתחליף אותם או "
+"תפעיל את ההצפנה שוב."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
 "When you enable encryption, any plaintext credentials are encrypted "
 "automatically."
-msgstr ""
+msgstr "כאשר אתה מאפשר הצפנה, כל פרטי ההזדהות בטקסט ברור מוצפנים אוטומטית."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:121
 #. translators: %s: formatted datetime.
 #, php-format
 msgid "Last migration: %s"
-msgstr ""
+msgstr "ההגירה האחרונה: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:138
 msgid "Enable encryption above or in wp-config.php before running migration."
-msgstr ""
+msgstr "אפשר הצפנה למעלה או ב wp-config.php לפני הרצת ההגירה."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:156
 msgid ""
 "Rewrites existing plaintext payment and integration credentials in the "
 "database. Run during a maintenance window after taking a backup."
 msgstr ""
+"מחליף את פרטי התשלום והאינטגרציה הקיימים בטקסט ברור במסד הנתונים. הרץ במהלך "
+"חלון תחזוקה לאחר שגיבית."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:32
 msgid "PublishPress Cart security"
-msgstr ""
+msgstr "אבטחת PublishPress Cart"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:39
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed)."
-msgstr ""
+msgstr "מוצפן %1$d פרטי הזדהות מאוחסנים (%2$d הושמטו, %3$d נכשלים)."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:48
 msgid ""
 "Do not change AUTH_KEY or PPCART_SECRETS_KEY without re-entering payment "
 "and integration keys in Cart settings."
 msgstr ""
+"אל תשנה את AUTH_KEY או PPCART_SECRETS_KEY מבלי להכניס מחדש את מפתחות התשלום "
+"והאינטגרציה בהגדרות הקניות."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:52
 msgid ""
 "Some credentials could not be encrypted. Re-run migration from Cart → "
 "Settings → Maintenance or re-save keys manually."
 msgstr ""
+"חלק מפרטי ההזדהות לא הצליחו להיות מוצפנים. הרץ מחדש את ההגירה מ Cart → "
+"הגדרות → תחזוקה או החלף מפתחות ידנית."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:20
 msgid "You do not have permission to change security encryption settings."
-msgstr ""
+msgstr "אין לך הרשאה לשנות את הגדרות הצפנת האבטחה."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:58
 msgid "Encryption disabled."
-msgstr ""
+msgstr "ההצפנה מושבתת."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:74
 msgid "Encryption enabled."
-msgstr ""
+msgstr "ההצפנה מופעלת."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:91
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
@@ -16022,22 +16156,24 @@ msgid ""
 "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed). Use Encrypt "
 "stored credentials in Maintenance to retry failures."
 msgstr ""
+"מוצפן %1$d פרטי הזדהות מאוחסנים (%2$d הושמטו, %3$d נכשלים). השתמש בהצפנת "
+"פרטי ההזדהות המאוחסנים בתחזוקה כדי לנסות שוב את הכישלונות."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:100
 #. translators: 1: migrated count, 2: skipped count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped)."
-msgstr ""
+msgstr "מוצפן %1$d פרטי הזדהות מאוחסנים (%2$d הושמטו)."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:117
 msgid "You do not have permission to encrypt stored credentials."
-msgstr ""
+msgstr "אין לך הרשאה להצפין פרטי הזדהות מאוחסנים."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:132
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Migration complete. Encrypted: %1$d. Skipped: %2$d. Failed: %3$d."
-msgstr ""
+msgstr "ההגירה הושלמה. מוצפן: %1$d. הושמטו: %2$d. נכשלים: %3$d."
 
 #: includes/secrets/traits/trait-ppcart-secrets-crypto.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:511
@@ -16052,10 +16188,16 @@ msgid ""
 "Encryption is enabled but %d stored credential is still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgid_plural ""
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgstr[0] ""
-msgstr[1] ""
+"ההצפנה מופעלת אבל %d פרטי הזדהות מאוחסנים עדיין בטקסט ברור. השתמש בהצפנת "
+"פרטי ההזדהות המאוחסנים לנסות שוב.|ההצפנה מופעלת אבל %d פרטי הזדהות מאוחסנים "
+"עדיין בטקסט ברור. השתמש בהצפנת פרטי ההזדהות המאוחסנים לנסות שוב."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -16064,20 +16206,28 @@ msgid ""
 "You have %d stored credential in plaintext. Enabling encryption will "
 "encrypt it automatically."
 msgid_plural ""
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
 msgstr[0] ""
-msgstr[1] ""
+"יש לך %d פרטי הזדהות מאוחסנים בטקסט ברור. הפעלת ההצפנה תצפין את זה "
+"אוטומטית.|יש לך %d פרטי הזדהות מאוחסנים בטקסט ברור. הפעלת ההצפנה תצפין אותם "
+"אוטומטית."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
 "Encryption is not enabled. Enable it in Cart → Settings → Maintenance or "
 "add define( 'PPCART_ENCRYPT_SECRETS', true ); to wp-config.php."
 msgstr ""
+"ההצפנה לא מופעלת. הפעל אותה ב Cart → הגדרות → תחזוקה או הוסף define( "
+"'PPCART_ENCRYPT_SECRETS', true ); ל wp-config.php."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:122
 msgid "Encryption requires AUTH_KEY or PPCART_SECRETS_KEY in wp-config.php."
-msgstr ""
+msgstr "ההצפנה דורשת AUTH_KEY או PPCART_SECRETS_KEY ב wp-config.php."
 
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-resume-subscription.php:19
 msgid "Canceled Stripe subscriptions cannot be resumed locally."
@@ -16096,13 +16246,13 @@ msgstr "המנוי של Stripe אינו מקושר למנוי של PublishPress 
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
-msgstr ""
+msgstr "לא ניתן לאמת את התשלום הזה. אנא רענן את הדף ונסה שוב."
 
 #: includes/stripe/templates/order-save.php:109
 #. translators: %s: order status.
 #, php-format
 msgid "%s order created."
-msgstr ""
+msgstr "%s הזמנה נוצרה."
 
 #: includes/stripe/templates/order-save.php:120
 msgid "Order complete."
@@ -16132,75 +16282,75 @@ msgstr "תג"
 #. translators: %s: singular label.
 #, php-format
 msgid "Add New %s"
-msgstr ""
+msgstr "הוסף חדש %s"
 
 #: includes/templates/post-types-register-single-post-type.php:49
 #: includes/templates/post-types-register-single-taxonomy.php:20
 #. translators: %s: singular label.
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "ערוך %s"
 
 #: includes/templates/post-types-register-single-post-type.php:54
 #. translators: %s: singular label.
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "חדש %s"
 
 #: includes/templates/post-types-register-single-post-type.php:56
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found"
-msgstr ""
+msgstr "לא נמצאו %s"
 
 #: includes/templates/post-types-register-single-post-type.php:58
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found in Trash"
-msgstr ""
+msgstr "לא נמצאו %s בפח"
 
 #: includes/templates/post-types-register-single-post-type.php:60
 #. translators: %s: post type plural label
 #, php-format
 msgid "Parent %s :"
-msgstr ""
+msgstr "הורה %s :"
 
 #: includes/templates/post-types-register-single-post-type.php:62
 #: includes/templates/post-types-register-single-taxonomy.php:13
 #. translators: %s: plural label.
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "חפש %s"
 
 #: includes/templates/post-types-register-single-post-type.php:65
 #. translators: %s: singular label.
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "צפה ב %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:16
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s"
-msgstr ""
+msgstr "הורה %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:18
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s:"
-msgstr ""
+msgstr "הורה %s:"
 
 #: includes/templates/post-types-register-single-taxonomy.php:22
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Update %s"
-msgstr ""
+msgstr "עדכן %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:26
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "New %s Name"
-msgstr ""
+msgstr "שם %s חדש"
 
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:37
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:38
@@ -16211,7 +16361,7 @@ msgstr "מאושר"
 #. translators: %1$s: previous order status, %2$s: new order status
 #, php-format
 msgid "Order status updated from %1$s to %2$s"
-msgstr ""
+msgstr "סטטוס ההזמנה עודכן מ-%1$s ל-%2$s"
 
 #: models/order/traits/templates/order-persistence-store.php:68
 msgid "Creating order."
@@ -16236,11 +16386,11 @@ msgstr "הורד קבלה"
 #. translators: %s: subscription status
 #, php-format
 msgid "Subscription status updated to %s"
-msgstr ""
+msgstr "סטטוס המנוי עודכן ל-%s"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:37
 msgid "This offer is no longer available."
-msgstr ""
+msgstr "ההצעה הזו אינה זמינה יותר."
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:168
 #: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:176
@@ -16249,7 +16399,7 @@ msgstr ""
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:152
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:167
 msgid "This checkout could not be started. Please contact the site administrator."
-msgstr ""
+msgstr "לא ניתן היה להתחיל את התהליך. אנא פנה למנהל האתר."
 
 #: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:36
 #: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:31
@@ -16335,11 +16485,11 @@ msgstr "לא ניתן לשמור את הכרטיס החדש. אנא בדוק א�
 msgid ""
 "The new card was saved, but some of your other subscriptions could not be "
 "updated. Please try again."
-msgstr ""
+msgstr "הכרטיס החדש נשמר, אך חלק מהמנויים האחרים שלך לא ניתן היה לעדכן. אנא נסה שוב."
 
 #: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:86
 msgid "The new card was saved, but the payment failed: "
-msgstr ""
+msgstr "הכרטיס החדש נשמר, אך התשלום נכשל: "
 
 #: public/controllers/order/traits/trait-ppcart-public-order-cart.php:74
 msgid "Your cart is empty."
@@ -16347,25 +16497,27 @@ msgstr "העגלה שלך ריקה."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:201
 msgid "Processing payment…"
-msgstr ""
+msgstr "מעבד תשלום…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:202
 msgid "Your payment is being confirmed. This page will refresh automatically…"
-msgstr ""
+msgstr "התשלום שלך מאושר. הדף הזה יתעדכן אוטומטית…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:218
 msgid "Payment processing"
-msgstr ""
+msgstr "עיבוד תשלום"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:219
 msgid ""
 "We are still confirming your payment. You can leave this page open and "
 "refresh shortly, or check your email for a confirmation."
 msgstr ""
+"אנו עדיין מאשרים את התשלום שלך. תוכל להשאיר את הדף הזה פתוח ולעדכן בקרוב, "
+"או לבדוק את האימייל שלך לקבלת אישור."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:221
 msgid "View order status"
-msgstr ""
+msgstr "צפה בסטטוס ההזמנה"
 
 #: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Purchase"
@@ -16382,7 +16534,7 @@ msgstr "הכנת תשלום אינה זמינה עבור צ'ק-אאוט זה."
 #: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:74
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:117
 msgid "There was an error, please try again."
-msgstr ""
+msgstr "חלה שגיאה, אנא נסה שוב."
 
 #: public/controllers/templates/ga-purchase-tracking.php:112
 #: public/controllers/templates/ga-purchase-tracking.php:165
@@ -16393,13 +16545,13 @@ msgstr "תוסף מותאם אישית"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:37
 msgid "Hosted Checkout is not enabled."
-msgstr ""
+msgstr "תשלום מאוחסן אינו מופעל."
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:184
 msgid ""
 "This subscription is not ready for checkout, please contact the site "
 "administrator."
-msgstr ""
+msgstr "המנוי הזה אינו מוכן לתהליך, אנא פנה למנהל האתר."
 
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:37
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:82
@@ -16508,6 +16660,11 @@ msgid ""
 "data-testid=\"ppcart-checkout-stripe-test-card-link\">Find a test card for "
 "another country</a>."
 msgstr ""
+"מצב בדיקה מופעל: כדי לבצע רכישה ניסיונית (ארה\"ב), השתמש במספר כרטיס אשראי "
+"\"4242424242424242\" עם כל CVC ותאריך תפוגה תקף. <a href=\"%s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\" "
+"data-testid=\"ppcart-checkout-stripe-test-card-link\">מצא כרטיס בדיקה "
+"למדינה אחרת</a>."
 
 #: public/templates/functions/payment-address.php:85
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:104
@@ -16543,11 +16700,11 @@ msgstr "מידע ליצירת קשר"
 
 #: public/templates/functions/summary-and-scripts.php:142
 msgid "terms and conditions"
-msgstr ""
+msgstr "תנאים והתניות"
 
 #: public/templates/functions/summary-and-scripts.php:161
 msgid "privacy policy"
-msgstr ""
+msgstr "מדיניות פרטיות"
 
 #: public/templates/my-account/card-details.php:24
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:92
@@ -16581,7 +16738,7 @@ msgstr "תאריך תפוגה"
 
 #: public/templates/my-account/forms/change-card.php:57
 msgid "Set default for all active subscriptions"
-msgstr ""
+msgstr "קבע ברירת מחדל לכל המנויים הפעילים"
 
 #: public/templates/my-account/forms/change-card.php:65
 msgid "Pay Now and Save Card"
@@ -17873,12 +18030,12 @@ msgid "Bold (700)"
 msgstr "מודגש (700)"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:55
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "S"
 msgstr "S"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:56
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "M"
 msgstr "M"
 
@@ -17889,12 +18046,12 @@ msgid "L"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:58
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XL"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:59
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XXL"
 msgstr "XXL"
 
@@ -18126,10 +18283,10 @@ msgstr "מיקום אייקון"
 
 #: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
-#, php-format
+#, fuzzy, php-format
 msgctxt "date range"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:162
 #. translators: 1: current page, 2: total pages.
@@ -18145,24 +18302,24 @@ msgstr "ג'ורג'יה"
 
 #: includes/functions/merge-tags-and-dates.php:143
 #. translators: 1: product name, 2: plan name.
-#, php-format
+#, fuzzy, php-format
 msgctxt "product and plan"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: public/templates/functions/summary-and-scripts.php:141
 #. translators: %s: terms and conditions link.
 #, php-format
 msgctxt "terms and conditions"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "קראתי ואני מקבל את %s"
 
 #: public/templates/functions/summary-and-scripts.php:160
 #. translators: %s: privacy policy link.
 #, php-format
 msgctxt "privacy policy"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "קראתי ואני מקבל את %s"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.json
 #, fuzzy

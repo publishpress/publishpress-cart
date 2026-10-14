@@ -10,16 +10,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-13 22:09+0000\n"
+"PO-Revision-Date: 2026-10-14 01:38+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
+"Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: ko-KR\n"
 
 #: publishpress-cart.php:16
 #. Plugin Name of the plugin
 msgid "PublishPress Cart - eCommerce for Digital Products"
-msgstr ""
+msgstr "PublishPress Cart - 디지털 제품을 위한 전자상거래"
 
 #: publishpress-cart.php:17
 #. Plugin URI of the plugin
@@ -31,7 +31,7 @@ msgstr "https://publishpress.com/publishpress-cart/"
 msgid ""
 "Create order pages and simplified sales flow creation that helps you sell "
 "digital products, programs, and services."
-msgstr ""
+msgstr "디지털 제품, 프로그램 및 서비스를 판매하는 데 도움이 되는 주문 페이지 및 간소화된 판매 흐름 생성을 만듭니다."
 
 #: publishpress-cart.php:20
 #: admin/partials/settings-page/tabs/topbar.php:8
@@ -83,7 +83,7 @@ msgstr "고객"
 
 #: admin/class-ppcart-contacts-page.php:165
 msgid "Export Customers"
-msgstr ""
+msgstr "고객 내보내기"
 
 #: admin/class-ppcart-contacts-page.php:169
 #: admin/reports/templates/customer-report/page.php:87
@@ -150,7 +150,7 @@ msgid "Name"
 msgstr "이름"
 
 #: admin/class-ppcart-contacts-page.php:192
-#: admin/reports/templates/customer-report/page.php:93
+#: admin/reports/templates/customer-report/page.php:93, fuzzy
 msgid "LTV"
 msgstr "LTV"
 
@@ -161,23 +161,23 @@ msgstr "마지막 주문 날짜"
 
 #: admin/class-ppcart-contacts-page.php:224
 msgid "Search customers"
-msgstr ""
+msgstr "고객 검색"
 
 #: admin/class-ppcart-contacts-page.php:225
 msgid "Show _MENU_ customers"
-msgstr ""
+msgstr "고객 _MENU_ 표시"
 
 #: admin/class-ppcart-contacts-page.php:226
 msgid "_START_ - _END_ of _TOTAL_ customers"
-msgstr ""
+msgstr "_START_ - _END_ / _TOTAL_ 고객"
 
 #: admin/class-ppcart-contacts-page.php:227
 msgid "No customers found"
-msgstr ""
+msgstr "고객을 찾을 수 없습니다"
 
 #: admin/class-ppcart-contacts-page.php:228
 msgid "No matching customers found"
-msgstr ""
+msgstr "일치하는 고객을 찾을 수 없습니다"
 
 #: admin/class-ppcart-extension-page.php:81
 #: admin/class-ppcart-extension-page.php:82
@@ -216,7 +216,7 @@ msgstr "고객 및 청구 세부정보"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:49
 msgid "Studiocart custom tracking scripts are not available in PublishPress Cart."
-msgstr ""
+msgstr "Studiocart 사용자 정의 추적 스크립트는 PublishPress Cart에서 사용할 수 없습니다."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:50
 msgid ""
@@ -224,20 +224,22 @@ msgid ""
 "Leftover tracking code on these products is kept in post meta for reference "
 "and is not executed."
 msgstr ""
+"이들은 구조화된 메타 픽셀 및 Google Analytics 이벤트로 대체됩니다. 이러한 제품에 남아 있는 추적 코드는 참조를 위해 "
+"게시물 메타에 유지되며 실행되지 않습니다."
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:51
 msgid "Affected products:"
-msgstr ""
+msgstr "영향을 받은 제품:"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:61
 msgid "Review analytics settings"
-msgstr ""
+msgstr "분석 설정 검토"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:62
 #: admin/traits/templates/notices-admin-notices.php:111
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:56
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "이 알림 해제"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:76
 msgid "Shortcode"
@@ -352,27 +354,27 @@ msgstr "상태를 취소로 업데이트"
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:176
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
-msgstr ""
+msgstr "Stripe와 동기화"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:207
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
-msgstr[0] ""
+msgstr[0] "%s 구독이 Stripe에서 동기화되었습니다."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
-msgstr[0] ""
+msgstr[0] "%s 실패; 이유는 해당 구독 로그를 확인하세요."
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
-msgstr ""
+msgstr "각 실행은 제한된 수의 구독을 동기화합니다. 나머지를 선택하고 다시 실행하여 계속하십시오."
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:44
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:51
@@ -394,11 +396,11 @@ msgstr "권한이 없습니다."
 #. translators: %s: active payment processors list.
 #, php-format
 msgid "Cart - Test Mode Active (%1$s)"
-msgstr ""
+msgstr "장바구니 - 테스트 모드 활성화 (%1$s)"
 
 #: admin/controllers/class-ppcart-admin-test-mode-notice-controller.php:101
 msgid "Open PublishPress Cart payment settings"
-msgstr ""
+msgstr "PublishPress Cart 결제 설정 열기"
 
 #: admin/controllers/order/templates/product-form.php:45
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:37
@@ -600,14 +602,14 @@ msgstr "상위 주문"
 
 #: admin/controllers/order/templates/product-form.php:574
 msgid "Child Order"
-msgstr ""
+msgstr "자식 주문"
 
 #: admin/controllers/order/templates/product-info-metabox.php:48
 msgid "Stripe payment"
 msgstr "Stripe 결제"
 
 #: admin/controllers/order/templates/product-info-metabox.php:51
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:32
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:32, fuzzy
 msgid "Stripe ID:"
 msgstr "Stripe ID:"
 
@@ -616,7 +618,7 @@ msgid "PayPal payment"
 msgstr "PayPal 결제"
 
 #: admin/controllers/order/templates/product-info-metabox.php:58
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:39
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:39, fuzzy
 msgid "PayPal ID:"
 msgstr "PayPal ID:"
 
@@ -751,7 +753,7 @@ msgid "Guest"
 msgstr "손님"
 
 #: admin/controllers/order/templates/product-info-metabox.php:210
-#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170
+#: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:170, fuzzy
 msgid "URL"
 msgstr "URL"
 
@@ -914,7 +916,7 @@ msgstr "오류"
 #: admin/traits/templates/integrations-ppcart-mailchimp-groups-tags.php:15
 #: admin/traits/trait-ppcart-admin-integrations.php:132
 msgid "You do not have permission to perform this action."
-msgstr ""
+msgstr "이 작업을 수행할 권한이 없습니다."
 
 #: admin/controllers/order/traits/templates/order-ajax-product-plan-options-html.php:11
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:15
@@ -950,7 +952,7 @@ msgstr "주문 메모"
 #: admin/partials/ppcart-admin-page-settings.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:32
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:16
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22, fuzzy
 msgid "PublishPress Cart"
 msgstr "PublishPress Cart"
 
@@ -1025,7 +1027,7 @@ msgstr "취소 대기 중"
 msgid ""
 "Refresh status and next bill date from Stripe, and import any invoices "
 "missing from the order history"
-msgstr ""
+msgstr "Stripe에서 상태와 다음 청구 날짜를 새로 고치고 주문 기록에서 누락된 모든 송장을 가져옵니다"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:147
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:29
@@ -1178,13 +1180,13 @@ msgstr "구독 및 송장이 성공적으로 동기화되었습니다."
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:48
 msgid "Subscription synced from Stripe by admin"
-msgstr ""
+msgstr "관리자에 의해 Stripe에서 동기화된 구독"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:52
 #. translators: %s: error message.
 #, php-format
 msgid "Error syncing subscription from Stripe! Message: %s"
-msgstr ""
+msgstr "Stripe에서 구독 동기화 오류! 메시지: %s"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:77
 msgid ""
@@ -1228,7 +1230,7 @@ msgstr "보류 중"
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "보류 중 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1241,14 +1243,14 @@ msgstr "결제 완료"
 #, php-format
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "지급됨 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
 #, php-format
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "환불됨 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1260,7 +1262,7 @@ msgstr "실패"
 #, php-format
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "실패 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1275,7 +1277,7 @@ msgstr "연체"
 #, php-format
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "기한 초과 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1287,7 +1289,7 @@ msgstr "징수 불가"
 #, php-format
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "회수 불가 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1304,7 +1306,7 @@ msgstr "활성"
 #, php-format
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "활성 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1316,7 +1318,7 @@ msgstr "미지급"
 #, php-format
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "미지급 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1331,14 +1333,14 @@ msgstr "일시 중지됨"
 #, php-format
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "일시 중지 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
 #, php-format
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "취소됨 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1351,7 +1353,7 @@ msgstr "완료됨"
 #, php-format
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "완료됨 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1363,7 +1365,7 @@ msgstr "미완료"
 #, php-format
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "미완료 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1375,7 +1377,7 @@ msgstr "체험 중"
 #, php-format
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "시험 중 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -1442,7 +1444,7 @@ msgid "Renewals"
 msgstr "갱신"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:405
+#: admin/reports/templates/admin-reports-page.php:405, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1506,7 +1508,7 @@ msgstr "지원 및 문서"
 #. translators: 1: opening link tag, 2: closing link tag.
 #, php-format
 msgid "Visit our %1$sdocumentation%2$s for help."
-msgstr ""
+msgstr "도움이 필요하면 %1$s문서%2$s를 방문하십시오."
 
 #: admin/dashboard/class-ppcart-dashboard-widget.php:36
 #. translators: %s: plugin title.
@@ -1530,7 +1532,7 @@ msgstr "메시지 표시"
 
 #: admin/metaboxes/field-groups/message-fields.php:18
 msgid "Display Page"
-msgstr ""
+msgstr "페이지 표시"
 
 #: admin/metaboxes/field-groups/message-fields.php:19
 msgid "Perform Redirect"
@@ -1555,7 +1557,7 @@ msgstr "감사 페이지 URL"
 
 #: admin/metaboxes/field-groups/message-fields.php:76
 msgid "Preview & send test email"
-msgstr ""
+msgstr "미리보기 및 테스트 이메일 보내기"
 
 #: admin/metaboxes/field-groups/message-fields.php:84
 msgid "Disable Order Received Confirmation email"
@@ -1663,23 +1665,23 @@ msgstr "제목"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:12
 msgid "Checkout starts"
-msgstr ""
+msgstr "체크아웃 시작"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:22
 msgid "Checkout ends"
-msgstr ""
+msgstr "체크아웃 종료"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:32
 msgid "When checkout ended"
-msgstr ""
+msgstr "체크아웃이 종료되었을 때"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:45
 msgid "Checkout ended redirect URL"
-msgstr ""
+msgstr "체크아웃 종료 리디렉션 URL"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:58
 msgid "Checkout ended message"
-msgstr ""
+msgstr "체크아웃 종료 메시지"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:59
 #: public/templates/functions/checkout-core.php:373
@@ -1880,62 +1882,62 @@ msgstr "주기"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:146
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:178
 msgid "Every"
-msgstr ""
+msgstr "매번"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:147
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:179
 msgid "Every 2nd"
-msgstr ""
+msgstr "매 2번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:148
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:180
 msgid "Every 3rd"
-msgstr ""
+msgstr "매 3번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:149
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:181
 msgid "Every 4th"
-msgstr ""
+msgstr "매 4번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:150
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:182
 msgid "Every 5th"
-msgstr ""
+msgstr "매 5번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:151
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:183
 msgid "Every 6th"
-msgstr ""
+msgstr "매 6번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:152
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:184
 msgid "Every 7th"
-msgstr ""
+msgstr "매 7번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:153
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:185
 msgid "Every 8th"
-msgstr ""
+msgstr "매 8번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:154
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:186
 msgid "Every 9th"
-msgstr ""
+msgstr "매 9번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:155
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:187
 msgid "Every 10th"
-msgstr ""
+msgstr "매 10번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:156
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:188
 msgid "Every 11th"
-msgstr ""
+msgstr "매 11번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:157
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:189
 msgid "Every 12th"
-msgstr ""
+msgstr "매 12번째"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:173
 msgid "Frequency (On Sale)"
@@ -1950,22 +1952,22 @@ msgstr "결제 간격"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:210
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:234
 msgid "Day"
-msgstr ""
+msgstr "일"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:211
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:235
 msgid "Week"
-msgstr ""
+msgstr "주"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:212
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:236
 msgid "Month"
-msgstr ""
+msgstr "월"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:213
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:237
 msgid "Year"
-msgstr ""
+msgstr "년"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:229
 msgid "Pay Interval (On Sale)"
@@ -2058,6 +2060,8 @@ msgid ""
 "Put each field pair on a separate line and use a colon (\":\") to separate "
 "the field key from the field value. For example: field_key:ppcart_field_id"
 msgstr ""
+"각 필드 쌍을 별도의 줄에 배치하고 필드 키와 필드 값 사이에 콜론(\":\")을 사용하세요. 예: "
+"field_key:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-01.php:163
 #: admin/metaboxes/traits/templates/integration-fields/fields-03.php:86
@@ -2103,6 +2107,8 @@ msgid ""
 "the ActiveCampaign personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"각 필드 쌍을 별도의 줄에 배치하고 ActiveCampaign 개인화 태그와 필드 값 사이에 콜론(\":\")을 사용하세요. 예: "
+"%TAG%:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-02.php:89
 msgid "SendFox List"
@@ -2141,11 +2147,11 @@ msgid "Remove from Level"
 msgstr "레벨 제거"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-02.php:172
-#: admin/metaboxes/traits/templates/integration-fields/fields-02.php:191
+#: admin/metaboxes/traits/templates/integration-fields/fields-02.php:191, fuzzy
 msgid "Membership Level"
 msgstr "Membership Level"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-02.php:210
+#: admin/metaboxes/traits/templates/integration-fields/fields-02.php:210, fuzzy
 msgid "Member Status"
 msgstr "Member Status"
 
@@ -2170,7 +2176,7 @@ msgstr "전역 알림 전송"
 msgid "Require admin approval"
 msgstr "관리자 승인 필요"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:31
+#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:31, fuzzy
 msgid "MailPoet List"
 msgstr "MailPoet List"
 
@@ -2190,7 +2196,7 @@ msgstr "사용자 추가"
 msgid "Remove user"
 msgstr "사용자 제거"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:108
+#: admin/metaboxes/traits/templates/integration-fields/fields-03.php:108, fuzzy
 msgid "Membervault Course ID"
 msgstr "Membervault Course ID"
 
@@ -2244,7 +2250,7 @@ msgstr "주요 번들"
 #. translators: 1: bump number, 2: product title.
 #, php-format
 msgid "Add'l Bump %1$d (%2$s)"
-msgstr ""
+msgstr "추가 Bump %1$d (%2$s)"
 
 #: admin/metaboxes/traits/templates/product-metabox-plan-options-get-payment-plans.php:28
 msgid "(on sale)"
@@ -2320,7 +2326,7 @@ msgstr "통합"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:16
 msgid "Product notification"
-msgstr ""
+msgstr "상품 알림"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
@@ -2332,15 +2338,15 @@ msgstr "이메일 미리보기"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:23
 msgid "This notification is currently disabled. Preview and test email still work."
-msgstr ""
+msgstr "현재 이 알림은 비활성화되어 있습니다. 미리보기 및 테스트 이메일은 여전히 작동합니다."
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:32
 msgid "Send test to"
-msgstr ""
+msgstr "테스트 전송 대상"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:34
 msgid "Send test email"
-msgstr ""
+msgstr "테스트 이메일 전송"
 
 #: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:12
 msgid "this product"
@@ -2440,7 +2446,7 @@ msgstr "구독 갱신 실패"
 #: includes/integrations/templates/cancel-subscription-plan-data.php:10
 #: includes/integrations/templates/cancel-subscription-plan-data.php:22
 msgid "No plans found"
-msgstr ""
+msgstr "계획이 없습니다"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:29
 #: includes/helpers/pro-locks/product-locks.php:56
@@ -2556,7 +2562,7 @@ msgstr "헤더 배경 이미지"
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:24
 #: public/partials/csv-export.php:351
 msgid "Until canceled"
-msgstr ""
+msgstr "취소될 때까지"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:26
 msgid " payments"
@@ -2843,7 +2849,7 @@ msgstr "디버그"
 
 #: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
-msgstr ""
+msgstr "유지보수"
 
 #: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:101
@@ -2900,7 +2906,7 @@ msgstr "진단 로깅을 활성화하고 디버그 로그 도구에 접근합니
 
 #: admin/partials/settings-page/metadata.php:66
 msgid "Operational tools including security encryption and credential migration."
-msgstr ""
+msgstr "보안 암호화 및 자격 증명 마이그레이션을 포함한 운영 도구."
 
 #: admin/partials/settings-page/metadata.php:71
 msgid "Configure store options that do not belong in the main setup tabs."
@@ -2975,6 +2981,8 @@ msgid ""
 "Send Cart events to an existing Meta Pixel installation. PublishPress Cart "
 "does not install or connect the pixel script."
 msgstr ""
+"기존 Meta Pixel 설치에 장바구니 이벤트를 전송합니다. PublishPress Cart는 픽셀 스크립트를 설치하거나 연결하지 "
+"않습니다."
 
 #: admin/partials/settings-page/metadata.php:161
 msgid "Google Analytics"
@@ -2986,6 +2994,8 @@ msgid ""
 "installation. PublishPress Cart does not install or connect the analytics "
 "script."
 msgstr ""
+"기존 Google Analytics 또는 Google Tag Manager 설치에 장바구니 이벤트를 전송합니다. PublishPress "
+"Cart는 분석 스크립트를 설치하거나 연결하지 않습니다."
 
 #: admin/partials/settings-page/metadata.php:170
 msgid "Google reCAPTCHA"
@@ -3076,7 +3086,7 @@ msgstr "하트비트"
 msgid "Manage community access in Heartbeat."
 msgstr "하트비트에서 커뮤니티 접근을 관리합니다."
 
-#: admin/partials/settings-page/metadata.php:266
+#: admin/partials/settings-page/metadata.php:266, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
@@ -3084,7 +3094,7 @@ msgstr "Kajabi"
 msgid "Enable Kajabi purchase automations."
 msgstr "Kajabi 구매 자동화를 활성화합니다."
 
-#: admin/partials/settings-page/metadata.php:275
+#: admin/partials/settings-page/metadata.php:275, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
@@ -3092,7 +3102,7 @@ msgstr "Teachable"
 msgid "Enroll customers into Teachable schools and products."
 msgstr "고객을 Teachable 학교와 제품에 등록합니다."
 
-#: admin/partials/settings-page/metadata.php:284
+#: admin/partials/settings-page/metadata.php:284, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
@@ -3100,7 +3110,7 @@ msgstr "Upcoach"
 msgid "Grant customers access to Upcoach programs."
 msgstr "고객에게 Upcoach 프로그램 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:293
+#: admin/partials/settings-page/metadata.php:293, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
@@ -3108,7 +3118,7 @@ msgstr "Tutor LMS"
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Tutor LMS 과정에서 학생을 등록하거나 제거합니다."
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:301, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
@@ -3116,7 +3126,7 @@ msgstr "LearnDash"
 msgid "Grant or revoke LearnDash course access."
 msgstr "LearnDash 과정 접근을 허용하거나 철회합니다."
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
@@ -3124,7 +3134,7 @@ msgstr "WP Courseware"
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "구매 후 WP Courseware 등록을 관리합니다."
 
-#: admin/partials/settings-page/metadata.php:317
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
@@ -3140,7 +3150,7 @@ msgstr "그룹"
 msgid "Add or remove customers from WordPress Groups."
 msgstr "WordPress 그룹에서 고객을 추가하거나 제거합니다."
 
-#: admin/partials/settings-page/metadata.php:333
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
@@ -3148,7 +3158,7 @@ msgstr "MemberPress"
 msgid "Grant customers MemberPress membership access."
 msgstr "고객에게 MemberPress 회원 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
@@ -3156,7 +3166,7 @@ msgstr "ARMember"
 msgid "Grant customers ARMember plan access."
 msgstr "고객에게 ARMember 플랜 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
@@ -3164,7 +3174,7 @@ msgstr "WishList Member"
 msgid "Grant customers WishList Member level access."
 msgstr "고객에게 WishList Member 레벨 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:357
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
@@ -3172,7 +3182,7 @@ msgstr "Restrict Content Pro"
 msgid "Grant customers Restrict Content Pro access."
 msgstr "고객에게 Restrict Content Pro 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:365
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
@@ -3180,7 +3190,7 @@ msgstr "Ultimate Member"
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "새 고객에게 Ultimate Member 환영 이메일을 보냅니다."
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:374, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -3188,7 +3198,7 @@ msgstr "Elementor"
 msgid "Choose Elementor templates for checkout components."
 msgstr "체크아웃 구성 요소를 위한 Elementor 템플릿을 선택합니다."
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:382, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
@@ -3196,7 +3206,7 @@ msgstr "Divi"
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "Divi 레이아웃 내에서 PublishPress Cart 주문 양식을 사용합니다."
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
@@ -3204,7 +3214,7 @@ msgstr "Oxygen Builder"
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Oxygen Builder에서 PublishPress Cart 조건을 사용합니다."
 
-#: admin/partials/settings-page/metadata.php:398
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
@@ -3221,7 +3231,7 @@ msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "WooCommerce 흐름과 PublishPress Cart 제품을 연결합니다."
 
 #: admin/partials/settings-page/metadata.php:414
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
@@ -3322,7 +3332,7 @@ msgstr "관리"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:53
 #: includes/functions/payment-and-locale-lists.php:35
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:22
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
@@ -3340,7 +3350,7 @@ msgstr "스트라이프를 통해 신용 카드 및 기타 결제를 안전하�
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
 #: includes/helpers/pro-locks/product-locks.php:45
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
-#: public/paypal/traits/trait-ppcart-paypal-settings.php:88
+#: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
@@ -3612,7 +3622,7 @@ msgstr "검색 설정"
 
 #: admin/partials/settings-page/tabs/topbar.php:16
 msgid "Search settings..."
-msgstr ""
+msgstr "설정 검색..."
 
 #: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
@@ -3622,7 +3632,7 @@ msgstr "%s에 대한 성과 요약"
 
 #: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
-msgstr ""
+msgstr "날짜 범위"
 
 #: admin/reports/templates/admin-reports-page.php:83
 msgid "Select date range"
@@ -3630,24 +3640,24 @@ msgstr "날짜 범위 선택"
 
 #: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
-msgstr ""
+msgstr "이름 또는 이메일로 고객 검색"
 
 #: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
-msgstr ""
+msgstr "이름 또는 이메일로 검색"
 
 #: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
-msgstr ""
+msgstr "상품 검색"
 
 #: admin/reports/templates/admin-reports-page.php:110
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:97
 msgid "All products"
-msgstr ""
+msgstr "모든 상품"
 
 #: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
-msgstr ""
+msgstr "주문 또는 구독의 기본 제품으로 필터링"
 
 #: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
@@ -3656,7 +3666,7 @@ msgstr "적용"
 
 #: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
-msgstr ""
+msgstr "필터 지우기"
 
 #: admin/reports/templates/admin-reports-page.php:122
 #: admin/reports/templates/customer-reports-page.php:85
@@ -3667,7 +3677,7 @@ msgstr "주문 내보내기"
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
-msgstr ""
+msgstr "제품 필터는 각 주문 또는 구독의 기본 제품과 일치하며, 범프 또는 업셀 항목과는 일치하지 않습니다."
 
 #: admin/reports/templates/admin-reports-page.php:352
 #: includes/order-items/order-details-renderer.php:67
@@ -3710,7 +3720,7 @@ msgstr "고객 평생 가치"
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
-msgstr ""
+msgstr "모든 시간 동안 %s명의 일치하는 고객에 대한 평균"
 
 #: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
@@ -3737,7 +3747,7 @@ msgstr "거래"
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
-msgstr ""
+msgstr "%1$s 신규, %2$s 갱신"
 
 #: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
@@ -3856,7 +3866,7 @@ msgstr "체크아웃 활동이 기록된 후, 유료 거래가 여기에 게이�
 
 #: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
-msgstr ""
+msgstr "주문 유형별"
 
 #: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
@@ -4086,31 +4096,31 @@ msgstr "알 수 없는 제품"
 msgid ""
 "Stripe needs a temporary restricted key with %s. We use it once, install "
 "the endpoint, and never store it."
-msgstr ""
+msgstr "Stripe는 %s와 함께 임시 제한 키가 필요합니다. 우리는 그것을 한 번 사용하고, 엔드포인트를 설치하며, 절대 저장하지 않습니다."
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:29
 msgid "Webhook endpoints: Write"
-msgstr ""
+msgstr "웹훅 엔드포인트: 쓰기"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:33
 msgid "Temporary Stripe key"
-msgstr ""
+msgstr "임시 Stripe 키"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:45
 msgid "Install webhook"
-msgstr ""
+msgstr "웹훅 설치"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:51
 msgid "Create the key in Stripe"
-msgstr ""
+msgstr "Stripe에서 키 생성"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:54
 msgid "I want to set it up in Stripe myself"
-msgstr ""
+msgstr "Stripe에서 직접 설정하고 싶습니다"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:64
 msgid "Create an endpoint in Stripe with this URL:"
-msgstr ""
+msgstr "이 URL로 Stripe에 엔드포인트 생성:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:69
 #. translators: %d: number of Stripe events.
@@ -4118,11 +4128,11 @@ msgstr ""
 msgid ""
 "Select the %d events listed in our documentation, then paste that endpoint "
 "signing secret:"
-msgstr ""
+msgstr "문서에 나열된 %d 이벤트를 선택한 다음, 해당 엔드포인트 서명 비밀을 붙여넣으세요:"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:73
 msgid "Signing secret"
-msgstr ""
+msgstr "서명 비밀"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:85
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:13
@@ -4132,51 +4142,53 @@ msgstr "저장"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:23
 msgid "Add a Stripe secret key for this mode first."
-msgstr ""
+msgstr "먼저 이 모드에 대한 Stripe 비밀 키를 추가하세요."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:37
 #. translators: %s: local webhook URL.
 #, php-format
 msgid "Stripe cannot reach a local address. Forward events with Stripe CLI to %s"
-msgstr ""
+msgstr "Stripe는 로컬 주소에 접근할 수 없습니다. Stripe CLI를 사용하여 %s로 이벤트를 전달하세요"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:90
 msgid "Some events are missing, so parts of your store will not update."
-msgstr ""
+msgstr "일부 이벤트가 누락되어 있으므로 상점의 일부가 업데이트되지 않습니다."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:103
 msgid ""
 "This account does not let us re-check the endpoint, so no live status is "
 "shown."
-msgstr ""
+msgstr "이 계정은 엔드포인트를 재확인할 수 없으므로 실시간 상태가 표시되지 않습니다."
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
-msgstr ""
+msgstr "웹훅 확인 실패: %s"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:9
 msgid "You are not allowed to configure Stripe webhooks."
-msgstr ""
+msgstr "Stripe 웹훅을 구성할 수 없습니다."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:34
 msgid ""
 "That key does not look like a Stripe key for the selected mode. Copy a "
 "restricted key that starts with rk_, or a secret key that starts with sk_."
 msgstr ""
+"해당 키는 선택한 모드에 대한 Stripe 키처럼 보이지 않습니다. rk_로 시작하는 제한 키 또는 sk_로 시작하는 비밀 키를 "
+"복사하세요."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:44
 msgid ""
 "Webhook is active and the signing secret is saved. The key you pasted was "
 "not stored, so you can delete it in Stripe now."
-msgstr ""
+msgstr "웹훅이 활성화되었고 서명 비밀이 저장되었습니다. 붙여넣은 키는 저장되지 않았으므로 지금 Stripe에서 삭제할 수 있습니다."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:49
 msgid ""
 "Webhook events were updated. The key you pasted was not stored, so you can "
 "delete it in Stripe now."
-msgstr ""
+msgstr "웹훅 이벤트가 업데이트되었습니다. 붙여넣은 키는 저장되지 않았으므로 지금 Stripe에서 삭제할 수 있습니다."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:56
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:47
@@ -4185,22 +4197,24 @@ msgid ""
 "secret. Open the endpoint in your Stripe Dashboard, copy the signing "
 "secret, and paste it below."
 msgstr ""
+"해당 웹훅 엔드포인트는 이미 존재하므로 Stripe는 서명 비밀을 반환하지 않았습니다. Stripe 대시보드에서 엔드포인트를 열고 서명 "
+"비밀을 복사한 다음 아래에 붙여넣으세요."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:69
 msgid ""
 "A Stripe signing secret starts with whsec_. Copy it again from the webhook "
 "endpoint in your Stripe Dashboard."
-msgstr ""
+msgstr "Stripe 서명 비밀은 whsec_로 시작합니다. Stripe 대시보드의 웹훅 엔드포인트에서 다시 복사하세요."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:77
 msgid ""
 "Signing secret saved. Send a test event from Stripe to confirm that your "
 "site accepts it."
-msgstr ""
+msgstr "서명 비밀이 저장되었습니다. Stripe에서 테스트 이벤트를 보내어 귀하의 사이트가 이를 수락하는지 확인하세요."
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:83
 msgid "Paste a Stripe key or a signing secret before you save."
-msgstr ""
+msgstr "저장하기 전에 Stripe 키 또는 서명 비밀을 붙여넣으세요."
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:30
 msgid ""
@@ -4208,6 +4222,8 @@ msgid ""
 "restricted key with Webhook endpoints: Write, or create the endpoint in "
 "Stripe yourself."
 msgstr ""
+"이 연결된 계정은 웹훅을 자동으로 업데이트할 수 없습니다. 웹훅 엔드포인트: 쓰기가 있는 제한 키를 붙여넣거나 직접 Stripe에서 "
+"엔드포인트를 생성하세요."
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:41
 msgid "Stripe webhook is configured for the selected mode."
@@ -4303,7 +4319,7 @@ msgstr "wp-admin에서 제품에 대한 중복 행 작업을 표시합니다."
 msgid "Email reports and confirmations to"
 msgstr "보고서 및 확인 이메일 보내기"
 
-#: admin/settings/traits/options/core-settings.php:161
+#: admin/settings/traits/options/core-settings.php:161, fuzzy
 msgid "admin@example.com, another@example.com"
 msgstr "admin@example.com, another@example.com"
 
@@ -4327,7 +4343,7 @@ msgstr "주간"
 
 #: admin/settings/traits/options/core-settings.php:176
 msgid "Semi monthly"
-msgstr ""
+msgstr "반월"
 
 #: admin/settings/traits/options/core-settings.php:178
 msgid "How often summary reports should be emailed."
@@ -4472,10 +4488,12 @@ msgid ""
 "Use date tokens {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S}, "
 "and custom alphanumeric characters. Example: INV-{YYYY}{MM}{DD}."
 msgstr ""
+"날짜 토큰 {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S} 및 사용자 정의 영숫자 "
+"문자를 사용하세요. 예: INV-{YYYY}{MM}{DD}."
 
 #: admin/settings/traits/options/invoice-fields.php:19
 msgid "Learn more"
-msgstr ""
+msgstr "자세히 알아보기"
 
 #: admin/settings/traits/options/invoice-fields.php:26
 msgid "Custom Invoice Numbering"
@@ -4513,7 +4531,7 @@ msgstr "청구서 형식"
 msgid "Current Invoice Number"
 msgstr "현재 청구서 번호"
 
-#: admin/settings/traits/options/payment-fields.php:33
+#: admin/settings/traits/options/payment-fields.php:33, fuzzy
 msgid "API"
 msgstr "API"
 
@@ -4522,10 +4540,12 @@ msgid ""
 "GOING LIVE? Click the \"Update\" button on any subscription products "
 "created on the Test API after switching this setting to Live!"
 msgstr ""
+"라이브로 전환 중인가요? 이 설정을 라이브로 전환한 후 Test API에서 생성된 모든 구독 제품에 대해 \"업데이트\" 버튼을 "
+"클릭하세요!"
 
 #: admin/settings/traits/options/payment-fields.php:39
 msgid "More Information"
-msgstr ""
+msgstr "추가 정보"
 
 #: admin/settings/traits/options/payment-fields.php:52
 msgid "Connection Status"
@@ -4533,7 +4553,7 @@ msgstr "연결 상태"
 
 #: admin/settings/traits/options/payment-fields.php:61
 msgid "Checkout experience"
-msgstr ""
+msgstr "결제 경험"
 
 #: admin/settings/traits/options/payment-fields.php:70
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:97
@@ -4547,12 +4567,12 @@ msgstr "고객 포털"
 
 #: admin/settings/traits/options/payment-fields.php:91
 msgid "Hosted Checkout"
-msgstr ""
+msgstr "호스팅된 체크아웃"
 
 #: admin/settings/traits/options/payment-fields.php:101
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:20
 msgid "Payment Element"
-msgstr ""
+msgstr "결제 요소"
 
 #: admin/settings/traits/options/payment-fields.php:111
 msgid "Statement Descriptor"
@@ -4580,13 +4600,13 @@ msgstr "아니요"
 
 #: admin/settings/traits/options/payment-fields.php:158
 msgid "Verify SSL certificates"
-msgstr ""
+msgstr "SSL 인증서 확인"
 
 #: admin/settings/traits/options/payment-fields.php:162
 msgid ""
 "Verifies PayPal TLS certificates and hostname matches for server-side "
 "PayPal API requests."
-msgstr ""
+msgstr "PayPal TLS 인증서 및 서버측 PayPal API 요청을 위한 호스트 이름 일치를 확인합니다."
 
 #: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
@@ -4689,19 +4709,19 @@ msgstr "이메일 미리 보기를 생성할 수 없습니다."
 
 #: admin/settings/traits/templates/settings-email-preview-product-notification-email.php:35
 msgid "(no subject)"
-msgstr ""
+msgstr "(제목 없음)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:11
 msgid "(recipient resolved at send time)"
-msgstr ""
+msgstr "(발송 시 수신자 확인됨)"
 
-#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36
+#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36, fuzzy
 msgid "From"
-msgstr ""
+msgstr "From"
 
-#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37
+#: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37, fuzzy
 msgid "To"
-msgstr ""
+msgstr "To"
 
 #: admin/settings/traits/templates/settings-email-reset-email-template.php:17
 msgid "You do not have permission to reset this email template."
@@ -4717,31 +4737,31 @@ msgstr "기본값 사용"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:19
 msgid "You do not have permission to send this test email."
-msgstr ""
+msgstr "이 테스트 이메일을 보낼 권한이 없습니다."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:24
 msgid "Test email could not be sent."
-msgstr ""
+msgstr "테스트 이메일을 보낼 수 없었습니다."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:35
 msgid "Please enter a valid email address to send the test to."
-msgstr ""
+msgstr "테스트를 보낼 유효한 이메일 주소를 입력하세요."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:45
 #. translators: %s: email subject.
 #, php-format
 msgid "[Test] %s"
-msgstr ""
+msgstr "[테스트] %s"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:54
 #. translators: %s: recipient email address.
 #, php-format
 msgid "Test email sent to %s."
-msgstr ""
+msgstr "테스트 이메일이 %s로 전송되었습니다."
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:59
 msgid "Test email failed to send. Check your email/SMTP settings and try again."
-msgstr ""
+msgstr "테스트 이메일 전송에 실패했습니다. 이메일/SMTP 설정을 확인하고 다시 시도하세요."
 
 #: admin/settings/traits/templates/settings-sections-emails.php:9
 msgid "Reports & Notifications"
@@ -4754,11 +4774,11 @@ msgstr "주문 수령 확인"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:13
 msgid "Enable Facebook Ad Events"
-msgstr ""
+msgstr "Facebook 광고 이벤트 활성화"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:14
 msgid "Google Analytics Purchase Event Tracking"
-msgstr ""
+msgstr "Google Analytics 구매 이벤트 추적"
 
 #: admin/settings/traits/templates/settings-sections-register.php:14
 msgid "Currency & Pricing"
@@ -4778,63 +4798,65 @@ msgstr "기타 설정"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:15
 msgid "Classic card form"
-msgstr ""
+msgstr "클래식 카드 양식"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:16
 msgid "Legacy"
-msgstr ""
+msgstr "레거시"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:17
 msgid ""
 "Single card field on your checkout page. Supports order bumps and one-click "
 "upsells."
-msgstr ""
+msgstr "체크아웃 페이지에 단일 카드 필드. 주문 추가 및 원클릭 업셀을 지원합니다."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:21
 msgid "Recommended"
-msgstr ""
+msgstr "추천"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:22
 msgid ""
 "Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports "
 "order bumps and one-click upsells."
-msgstr ""
+msgstr "체크아웃 페이지에 카드, Apple/Google Pay 및 링크가 포함되어 있습니다. 주문 추가 및 원클릭 업셀을 지원합니다."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:25
 msgid "Stripe-hosted page"
-msgstr ""
+msgstr "Stripe 호스팅 페이지"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:26
 msgid ""
 "Redirects customers to a Stripe-hosted payment page. Most payment methods "
 "available (Klarna, Cash App Pay, and more via your Stripe dashboard)."
 msgstr ""
+"고객을 Stripe 호스팅 결제 페이지로 리디렉션합니다. 대부분의 결제 방법 사용 가능 (Klarna, Cash App Pay 등 "
+"Stripe 대시보드를 통해)."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:27
 msgid ""
 "Order bumps and one-click upsells/downsells are not available in this mode. "
 "Coupons continue to work."
-msgstr ""
+msgstr "이 모드에서는 주문 추가 및 원클릭 업셀/다운셀이 사용 불가능합니다. 쿠폰은 계속 작동합니다."
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:31
 msgid "Built into Payment Element"
-msgstr ""
+msgstr "결제 요소에 내장됨"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:32
 msgid "Built into the Stripe-hosted page"
-msgstr ""
+msgstr "Stripe 호스팅 페이지에 내장됨"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:23
 msgid "Stripe Connect server URL is not configured."
-msgstr ""
+msgstr "Stripe Connect 서버 URL이 구성되지 않았습니다."
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:47
 msgid "Stripe Connect live mode requires HTTPS for the site and return URL."
-msgstr ""
+msgstr "Stripe Connect 라이브 모드는 사이트와 반환 URL에 HTTPS가 필요합니다."
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:55
 msgid "Unable to generate an encryption key for Stripe Connect."
-msgstr ""
+msgstr "Stripe Connect에 대한 암호화 키를 생성할 수 없습니다."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:36
 msgid "Connect server did not return a valid Stripe account ID."
@@ -4846,6 +4868,8 @@ msgid ""
 "failed, abandoned, or restarted connection attempt. Reload this settings "
 "page and start the connection again."
 msgstr ""
+"이 Stripe Connect 세션이 누락되었거나 만료되었습니다. 이는 실패한 연결 시도, 포기된 연결 또는 재시작된 연결 시도가 있을 "
+"때 발생할 수 있습니다. 이 설정 페이지를 새로 고치고 다시 연결을 시작하세요."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:104
 msgid ""
@@ -4853,12 +4877,16 @@ msgid ""
 "trusted certificate, or explicitly enable insecure local credential pickup "
 "for non-live local development."
 msgstr ""
+"연결 서버에서 키를 검색하는 동안 SSL 검증에 실패했습니다. 신뢰할 수 있는 인증서를 사용하거나 비라이브 로컬 개발을 위해 불안전한 "
+"로컬 자격 증명 수집을 명시적으로 활성화하세요."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:127
 msgid ""
 "Unable to retrieve Stripe API keys from the Connect server for this "
 "session. Reload this settings page and start the connection again."
 msgstr ""
+"이 세션에 대한 Connect 서버에서 Stripe API 키를 검색할 수 없습니다. 이 설정 페이지를 새로 고치고 다시 연결을 "
+"시작하세요."
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:139
 msgid "Stripe account connected successfully."
@@ -4878,34 +4906,34 @@ msgstr "연결 서버가 구성되지 않음"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:47
 msgid "Set PPCART_STRIPE_CONNECT_SERVER_URL to your PublishPress intermediary URL."
-msgstr ""
+msgstr "PPCART_STRIPE_CONNECT_SERVER_URL을 PublishPress 중간 URL로 설정하세요."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:54
 msgid "1. Connect your Stripe account"
-msgstr ""
+msgstr "1. Stripe 계정을 연결하세요"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:55
 msgid "We sync your API keys automatically, then walk you through the webhook."
-msgstr ""
+msgstr "API 키를 자동으로 동기화한 후 웹후크를 설정하는 방법을 안내합니다."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:58
 msgid ""
 "Your saved keys are not direct Stripe keys, so reconnect before you "
 "continue."
-msgstr ""
+msgstr "저장된 키는 직접적인 Stripe 키가 아니므로 계속하기 전에 다시 연결하세요."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:64
 msgid "Stripe checkout is disabled. You can still connect now."
-msgstr ""
+msgstr "Stripe 체크아웃이 비활성화되었습니다. 지금도 연결할 수 있습니다."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
-msgstr ""
+msgstr "2. 웹후크 설치"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:74
 msgid "Available after you connect."
-msgstr ""
+msgstr "연결 후 사용할 수 있습니다."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:89
 msgid "Disconnect"
@@ -4917,7 +4945,7 @@ msgstr "Stripe 대시보드에서 열기"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:97
 msgid "Stripe is ready"
-msgstr ""
+msgstr "Stripe 준비 완료"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
@@ -4928,46 +4956,46 @@ msgstr "키가 동기화됨"
 #. translators: %d: number of Stripe events.
 #, php-format
 msgid "Webhook active with %d events"
-msgstr ""
+msgstr "웹후크가 %d 이벤트로 활성화됨"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
 msgid "1. Stripe account connected"
-msgstr ""
+msgstr "1. Stripe 계정 연결됨"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
-msgstr ""
+msgstr "이 작업이 완료될 때까지 주문이 완료되지 않습니다."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
-msgstr ""
+msgstr "주의 필요"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
-msgstr ""
+msgstr "설치되지 않음"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
-msgstr ""
+msgstr "이벤트 수정"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-billing-options.php:45
 msgid "Always enabled for PayPal API requests."
-msgstr ""
+msgstr "PayPal API 요청에 항상 활성화됩니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:32
 msgid "Leave blank to keep current value"
-msgstr ""
+msgstr "현재 값을 유지하려면 비워 두십시오"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:35
 #: includes/helpers/pro-locks/settings-locks.php:289
 msgid "Configured (value hidden)"
-msgstr ""
+msgstr "구성됨 (값 숨김)"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:66
 msgid "Mailchimp API Key"
 msgstr "Mailchimp API 키"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:78
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:78, fuzzy
 msgid "ActiveCampaign URL"
 msgstr "ActiveCampaign URL"
 
@@ -4975,7 +5003,7 @@ msgstr "ActiveCampaign URL"
 msgid "ActiveCampaign Secret Key"
 msgstr "ActiveCampaign 비밀 키"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:100
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:100, fuzzy
 msgid "MemberVault URL"
 msgstr "MemberVault URL"
 
@@ -4991,13 +5019,13 @@ msgstr "SendFox API 키"
 msgid ""
 "MailPoet is active. Assign lists on each product’s Integrations settings — "
 "no API key is required."
-msgstr ""
+msgstr "MailPoet가 활성화되었습니다. 각 제품의 통합 설정에서 목록을 할당하십시오. API 키는 필요하지 않습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
 msgid ""
 "Install and activate the MailPoet plugin to sync customers to lists. No API "
 "key is required."
-msgstr ""
+msgstr "MailPoet 플러그인을 설치하고 활성화하여 고객을 목록에 동기화합니다. API 키는 필요하지 않습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:150
 msgid "Add Payment Info"
@@ -5005,7 +5033,7 @@ msgstr "결제 정보 추가"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:154
 msgid "Sends an AddPaymentInfo event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "기존 Meta Pixel 설치에 AddPaymentInfo 이벤트를 전송합니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
@@ -5013,7 +5041,7 @@ msgstr ""
 msgid ""
 "Requires Meta Pixel or another plugin/theme to load fbq on the checkout "
 "page."
-msgstr ""
+msgstr "결제 페이지에서 fbq를 로드하려면 Meta Pixel 또는 다른 플러그인/테마가 필요합니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:161
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:185
@@ -5022,7 +5050,7 @@ msgstr "구매 완료"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:165
 msgid "Sends a Purchase event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "기존 Meta Pixel 설치에 Purchase 이벤트를 전송합니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:172
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:196
@@ -5031,13 +5059,13 @@ msgstr "리드 캡처됨"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:176
 msgid "Sends a Lead event when a two-step checkout captures customer details."
-msgstr ""
+msgstr "2단계 체크아웃이 고객 세부 정보를 캡처할 때 Lead 이벤트를 전송합니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:189
 msgid ""
 "Sends a purchase event to an existing Google Analytics or Data Layer "
 "installation."
-msgstr ""
+msgstr "기존 Google Analytics 또는 Data Layer 설치에 구매 이벤트를 전송합니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
@@ -5045,12 +5073,14 @@ msgid ""
 "Requires Google Analytics, Google Tag Manager, or another plugin/theme to "
 "load ga, gtag, or dataLayer on the checkout page."
 msgstr ""
+"결제 페이지에서 ga, gtag 또는 dataLayer를 로드하려면 Google Analytics, Google Tag Manager "
+"또는 다른 플러그인/테마가 필요합니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:200
 msgid ""
 "Sends a generate_lead event when a two-step checkout captures customer "
 "details."
-msgstr ""
+msgstr "2단계 체크아웃이 고객 세부 정보를 캡처할 때 generate_lead 이벤트를 전송합니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:207
 #: includes/helpers/pro-locks/product-locks.php:80
@@ -5061,13 +5091,13 @@ msgstr "유형"
 msgid ""
 "Choose the event format that matches the analytics script already installed "
 "on this site."
-msgstr ""
+msgstr "이 사이트에 이미 설치된 분석 스크립트와 일치하는 이벤트 형식을 선택하십시오."
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214, fuzzy
 msgid "analytics.js"
 msgstr "analytics.js"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215, fuzzy
 msgid "Google Analytics 4"
 msgstr "Google Analytics 4"
 
@@ -5153,39 +5183,39 @@ msgstr "죄송합니다. 이 페이지에 접근할 수 없습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
-msgstr ""
+msgstr "세금 옵션"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:82
 msgid "Invoice Options"
-msgstr ""
+msgstr "청구서 옵션"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:77
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "The Stripe Connect server could not preregister this session. Error: %s"
-msgstr ""
+msgstr "Stripe Connect 서버가 이 세션을 사전 등록할 수 없었습니다. 오류: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:88
 msgid "The Stripe Connect server rejected this preregistration request."
-msgstr ""
+msgstr "Stripe Connect 서버가 이 사전 등록 요청을 거부했습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:109
 msgid "Unable to prepare the Stripe Connect site credential."
-msgstr ""
+msgstr "Stripe Connect 사이트 자격 증명을 준비할 수 없습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:115
 msgid "Unable to encrypt the Stripe Connect site credential."
-msgstr ""
+msgstr "Stripe Connect 사이트 자격 증명을 암호화할 수 없습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:144
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "Unable to fetch the Stripe Connect preregistration public key. Error: %s"
-msgstr ""
+msgstr "Stripe Connect 사전 등록 공개 키를 가져올 수 없습니다. 오류: %s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:154
 msgid "The Stripe Connect preregistration public key is unavailable or invalid."
-msgstr ""
+msgstr "Stripe Connect 사전 등록 공개 키를 사용할 수 없거나 유효하지 않습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:225
 msgid "Stripe account disconnected for the selected mode."
@@ -5290,13 +5320,13 @@ msgstr "오류: 다시 시도해 주십시오."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Migration required"
-msgstr ""
+msgstr "마이그레이션 필요"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
-msgstr ""
+msgstr "평문으로 저장된 자격 증명이 1개 있습니다. 암호화를 활성화한 후 설정 → 유지 관리에서 마이그레이션을 실행하여 암호화하십시오."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 #. translators: %d: number of stored credentials.
@@ -5304,16 +5334,16 @@ msgstr ""
 msgid ""
 "You have %d stored credentials in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt them."
-msgstr ""
+msgstr "평문으로 저장된 자격 증명이 %d개 있습니다. 암호화를 활성화한 후 설정 → 유지 관리에서 마이그레이션을 실행하여 암호화하십시오."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Encryption updated"
-msgstr ""
+msgstr "암호화 업데이트됨"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
-msgstr ""
+msgstr "계속"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #: admin/traits/trait-ppcart-admin-integrations.php:149
@@ -5323,19 +5353,19 @@ msgstr "확인"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
-msgstr ""
+msgstr "보안 암호화 설정을 업데이트할 수 없습니다."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:95
 msgid "No matching customers"
-msgstr ""
+msgstr "일치하는 고객 없음"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:96
 msgid "No matching products"
-msgstr ""
+msgstr "일치하는 제품 없음"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "Searching…"
-msgstr ""
+msgstr "검색 중…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:114
 msgid "No matching settings"
@@ -5372,7 +5402,7 @@ msgstr "미리보기 닫기"
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:153
 msgid "Encrypt stored credentials"
-msgstr ""
+msgstr "저장된 자격 증명 암호화"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 #. translators: %d: number of plaintext credentials.
@@ -5380,29 +5410,29 @@ msgstr ""
 msgid ""
 "Encrypt %d plaintext credential(s) in the database? Take a backup first and "
 "run this during a maintenance window."
-msgstr ""
+msgstr "데이터베이스에서 %d개의 평문 자격 증명을 암호화하시겠습니까? 먼저 백업을 하고 유지 관리 기간 동안 실행하십시오."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
-msgstr ""
+msgstr "저장된 자격 증명을 스캔하고 평문 값을 암호화하시겠습니까? 먼저 백업을 하고 유지 관리 기간 동안 실행하십시오."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Generating preview…"
-msgstr ""
+msgstr "미리보기 생성 중…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Sending test email…"
-msgstr ""
+msgstr "테스트 이메일 전송 중…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:146
 msgid "Test email failed to send. Please refresh the page and try again."
-msgstr ""
+msgstr "테스트 이메일을 전송하지 못했습니다. 페이지를 새로 고치고 다시 시도하십시오."
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:147
 msgid "Enter an email address to send the test to."
-msgstr ""
+msgstr "테스트를 보낼 이메일 주소를 입력하십시오."
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:23
 #. translators: %s: tax rate ID.
@@ -5497,6 +5527,9 @@ msgid ""
 "data-testid=\"ppcart-admin-notice-integration-settings\">settings page</a> "
 "to check your integration settings.</p>"
 msgstr ""
+"아래 나열된 통합에 연결할 수 없습니다. %1$s <a href=\"%2$s\" rel=\"noreferrer noopener\" "
+"data-testid=\"ppcart-admin-notice-integration-settings\">설정 페이지</a>로 가서 통합 "
+"설정을 확인하십시오.</p>"
 
 #: admin/traits/templates/notices-admin-notices.php:70
 msgid ""
@@ -5585,7 +5618,7 @@ msgstr "[제거됨]"
 #. translators: 1: field label, 2: order ID.
 #, php-format
 msgid "There was a problem removing your %1$s from order #%2$d."
-msgstr ""
+msgstr "주문 #%2$d에서 %1$s를 제거하는 데 문제가 발생했습니다."
 
 #: admin/traits/trait-ppcart-admin-privacy.php:197
 msgid ""
@@ -5779,16 +5812,18 @@ msgid ""
 "PublishPress Cart and PublishPress Cart Compatibility cannot run while "
 "Studiocart is active. Deactivate Studiocart to start those plugins."
 msgstr ""
+"PublishPress Cart와 PublishPress Cart Compatibility는 Studiocart가 활성화되어 있는 동안 "
+"실행할 수 없습니다. 해당 플러그인을 시작하려면 Studiocart를 비활성화하십시오."
 
 #: includes/class-ppcart-version-notices.php:85
 msgid ""
 "You're using PublishPress Cart. The Pro version has more features and "
 "support."
-msgstr ""
+msgstr "당신은 PublishPress Cart를 사용하고 있습니다. Pro 버전은 더 많은 기능과 지원을 제공합니다."
 
 #: includes/class-ppcart-version-notices.php:97
 msgid "Dismiss"
-msgstr ""
+msgstr "거부"
 
 #: includes/data/states/states-01.php:8
 msgid "Bengo"
@@ -5798,9 +5833,9 @@ msgstr "벤고"
 msgid "Benguela"
 msgstr "벤구엘라"
 
-#: includes/data/states/states-01.php:10
+#: includes/data/states/states-01.php:10, fuzzy
 msgid "Bi�"
-msgstr ""
+msgstr "Bi�"
 
 #: includes/data/states/states-01.php:11
 msgid "Cabinda"
@@ -5814,9 +5849,9 @@ msgstr "쿠넨"
 msgid "Huambo"
 msgstr "우암보"
 
-#: includes/data/states/states-01.php:14
+#: includes/data/states/states-01.php:14, fuzzy
 msgid "Hu�la"
-msgstr ""
+msgstr "Hu�la"
 
 #: includes/data/states/states-01.php:15
 msgid "Kuando Kubango"
@@ -5854,9 +5889,9 @@ msgstr "모시코"
 msgid "Namibe"
 msgstr "나미베"
 
-#: includes/data/states/states-01.php:24
+#: includes/data/states/states-01.php:24, fuzzy
 msgid "U�ge"
-msgstr ""
+msgstr "U�ge"
 
 #: includes/data/states/states-01.php:25
 msgid "Zaire"
@@ -5864,7 +5899,7 @@ msgstr "자이르"
 
 #: includes/data/states/states-01.php:28
 msgid "Ciudad Aut�noma de Buenos Aires"
-msgstr ""
+msgstr "부에노스아이레스 자치시"
 
 #: includes/data/states/states-01.php:29
 msgid "Buenos Aires"
@@ -5885,7 +5920,7 @@ msgstr "추부트"
 #: includes/data/states/states-01.php:33
 #: includes/data/states/states-01.php:353
 msgid "C�rdoba"
-msgstr ""
+msgstr "코르도바"
 
 #: includes/data/states/states-01.php:34
 msgid "Corrientes"
@@ -5893,7 +5928,7 @@ msgstr "코렌테스"
 
 #: includes/data/states/states-01.php:35
 msgid "Entre R�os"
-msgstr ""
+msgstr "엔트레리오스"
 
 #: includes/data/states/states-01.php:36
 msgid "Formosa"
@@ -5923,11 +5958,11 @@ msgstr "미시오네스"
 
 #: includes/data/states/states-01.php:42
 msgid "Neuqu�n"
-msgstr ""
+msgstr "네우켄"
 
 #: includes/data/states/states-01.php:43
 msgid "R�o Negro"
-msgstr ""
+msgstr "리오 네그로"
 
 #: includes/data/states/states-01.php:44
 msgid "Salta"
@@ -5960,7 +5995,7 @@ msgstr "티에라 델 푸에고"
 
 #: includes/data/states/states-01.php:51
 msgid "Tucum�n"
-msgstr ""
+msgstr "투쿠만"
 
 #: includes/data/states/states-01.php:55
 msgid "Australian Capital Territory"
@@ -6389,7 +6424,7 @@ msgstr "판도"
 
 #: includes/data/states/states-01.php:171
 msgid "Potos�"
-msgstr ""
+msgstr "포토시"
 
 #: includes/data/states/states-01.php:173
 msgid "Tarija"
@@ -6405,7 +6440,7 @@ msgstr "알라고아스"
 
 #: includes/data/states/states-01.php:178
 msgid "Amap�"
-msgstr ""
+msgstr "아마파"
 
 #: includes/data/states/states-01.php:179
 #: includes/data/states/states-03.php:222
@@ -6418,7 +6453,7 @@ msgstr "바이아"
 
 #: includes/data/states/states-01.php:181
 msgid "Cear�"
-msgstr ""
+msgstr "세아라"
 
 #: includes/data/states/states-01.php:182
 msgid "Distrito Federal"
@@ -6426,15 +6461,15 @@ msgstr "연방구역"
 
 #: includes/data/states/states-01.php:183
 msgid "Esp�rito Santo"
-msgstr ""
+msgstr "에스피리투상투"
 
 #: includes/data/states/states-01.php:184
 msgid "Goi�s"
-msgstr ""
+msgstr "고이아스"
 
 #: includes/data/states/states-01.php:185
 msgid "Maranh�o"
-msgstr ""
+msgstr "마라냥"
 
 #: includes/data/states/states-01.php:186
 msgid "Mato Grosso"
@@ -6450,15 +6485,15 @@ msgstr "미나스 제라이스"
 
 #: includes/data/states/states-01.php:189
 msgid "Par�"
-msgstr ""
+msgstr "파라"
 
 #: includes/data/states/states-01.php:190
 msgid "Para�ba"
-msgstr ""
+msgstr "파라바"
 
 #: includes/data/states/states-01.php:191
 msgid "Paran�"
-msgstr ""
+msgstr "파라나"
 
 #: includes/data/states/states-01.php:192
 msgid "Pernambuco"
@@ -6466,7 +6501,7 @@ msgstr "페르남부쿠"
 
 #: includes/data/states/states-01.php:193
 msgid "Piau�"
-msgstr ""
+msgstr "피아우이"
 
 #: includes/data/states/states-01.php:194
 msgid "Rio de Janeiro"
@@ -6482,7 +6517,7 @@ msgstr "리우 그란지 두 술"
 
 #: includes/data/states/states-01.php:197
 msgid "Rond�nia"
-msgstr ""
+msgstr "론돈이아"
 
 #: includes/data/states/states-01.php:198
 msgid "Roraima"
@@ -6494,7 +6529,7 @@ msgstr "산타 카타리나"
 
 #: includes/data/states/states-01.php:200
 msgid "S�o Paulo"
-msgstr ""
+msgstr "상파울루"
 
 #: includes/data/states/states-01.php:201
 msgid "Sergipe"
@@ -6594,7 +6629,7 @@ msgstr "글라루스"
 
 #: includes/data/states/states-01.php:229
 msgid "Graub�nden"
-msgstr ""
+msgstr "그라우둔덴"
 
 #: includes/data/states/states-01.php:230
 msgid "Jura"
@@ -6606,7 +6641,7 @@ msgstr "루체른"
 
 #: includes/data/states/states-01.php:232
 msgid "Neuch�tel"
-msgstr ""
+msgstr "뇌샤텔"
 
 #: includes/data/states/states-01.php:233
 msgid "Nidwalden"
@@ -6658,135 +6693,135 @@ msgstr "주그"
 
 #: includes/data/states/states-01.php:245
 msgid "Z�rich"
-msgstr ""
+msgstr "취리히"
 
 #: includes/data/states/states-01.php:248
 msgid "Yunnan / ??"
-msgstr ""
+msgstr "윈난 / ??"
 
 #: includes/data/states/states-01.php:249
 msgid "Beijing / ??"
-msgstr ""
+msgstr "베이징 / ??"
 
 #: includes/data/states/states-01.php:250
 msgid "Tianjin / ??"
-msgstr ""
+msgstr "톈진 / ??"
 
 #: includes/data/states/states-01.php:251
 msgid "Hebei / ??"
-msgstr ""
+msgstr "허베이 / ??"
 
 #: includes/data/states/states-01.php:252
 msgid "Shanxi / ??"
-msgstr ""
+msgstr "산시 / ??"
 
 #: includes/data/states/states-01.php:253
 msgid "Inner Mongolia / ???"
-msgstr ""
+msgstr "내몽골 / ???"
 
 #: includes/data/states/states-01.php:254
 msgid "Liaoning / ??"
-msgstr ""
+msgstr "랴오닝 / ??"
 
 #: includes/data/states/states-01.php:255
 msgid "Jilin / ??"
-msgstr ""
+msgstr "길린 / ??"
 
 #: includes/data/states/states-01.php:256
 msgid "Heilongjiang / ???"
-msgstr ""
+msgstr "헤이룽장 / ???"
 
 #: includes/data/states/states-01.php:257
 msgid "Shanghai / ??"
-msgstr ""
+msgstr "상하이 / ??"
 
 #: includes/data/states/states-01.php:258
 msgid "Jiangsu / ??"
-msgstr ""
+msgstr "장쑤 / ??"
 
 #: includes/data/states/states-01.php:259
 msgid "Zhejiang / ??"
-msgstr ""
+msgstr "저장 / ??"
 
 #: includes/data/states/states-01.php:260
 msgid "Anhui / ??"
-msgstr ""
+msgstr "안후이 / ??"
 
 #: includes/data/states/states-01.php:261
 msgid "Fujian / ??"
-msgstr ""
+msgstr "푸젠 / ??"
 
 #: includes/data/states/states-01.php:262
 msgid "Jiangxi / ??"
-msgstr ""
+msgstr "장시 / ??"
 
 #: includes/data/states/states-01.php:263
 msgid "Shandong / ??"
-msgstr ""
+msgstr "산둥 / ??"
 
 #: includes/data/states/states-01.php:264
 msgid "Henan / ??"
-msgstr ""
+msgstr "허난 / ??"
 
 #: includes/data/states/states-01.php:265
 msgid "Hubei / ??"
-msgstr ""
+msgstr "후베이 / ??"
 
 #: includes/data/states/states-01.php:266
 msgid "Hunan / ??"
-msgstr ""
+msgstr "후난 / ??"
 
 #: includes/data/states/states-01.php:267
 msgid "Guangdong / ??"
-msgstr ""
+msgstr "광동 / ??"
 
 #: includes/data/states/states-01.php:268
 msgid "Guangxi Zhuang / ????"
-msgstr ""
+msgstr "광시 좡 / ????"
 
 #: includes/data/states/states-01.php:269
 msgid "Hainan / ??"
-msgstr ""
+msgstr "하이난 / ??"
 
 #: includes/data/states/states-01.php:270
 msgid "Chongqing / ??"
-msgstr ""
+msgstr "충칭 / ??"
 
 #: includes/data/states/states-01.php:271
 msgid "Sichuan / ??"
-msgstr ""
+msgstr "쓰촨 / ??"
 
 #: includes/data/states/states-01.php:272
 msgid "Guizhou / ??"
-msgstr ""
+msgstr "귀주 / ??"
 
 #: includes/data/states/states-01.php:273
 msgid "Shaanxi / ??"
-msgstr ""
+msgstr "산시 / ??"
 
 #: includes/data/states/states-01.php:274
 msgid "Gansu / ??"
-msgstr ""
+msgstr "간쑤 / ??"
 
 #: includes/data/states/states-01.php:275
 msgid "Qinghai / ??"
-msgstr ""
+msgstr "칭하이 / ??"
 
 #: includes/data/states/states-01.php:276
 msgid "Ningxia Hui / ??"
-msgstr ""
+msgstr "닝샤 후이 / ??"
 
 #: includes/data/states/states-01.php:277
 msgid "Macao / ??"
-msgstr ""
+msgstr "마카오 / ??"
 
 #: includes/data/states/states-01.php:278
 msgid "Tibet / ??"
-msgstr ""
+msgstr "티베트 / ??"
 
 #: includes/data/states/states-01.php:279
 msgid "Xinjiang / ??"
-msgstr ""
+msgstr "신장 / ??"
 
 #: includes/data/states/states-01.php:285
 msgid "Adrar"
@@ -6810,7 +6845,7 @@ msgstr "바트나"
 
 #: includes/data/states/states-01.php:290
 msgid "B�ja�a"
-msgstr ""
+msgstr "Béjaïa"
 
 #: includes/data/states/states-01.php:291
 msgid "Biskra"
@@ -6818,7 +6853,7 @@ msgstr "비스크라"
 
 #: includes/data/states/states-01.php:292
 msgid "B�char"
-msgstr ""
+msgstr "Béchar"
 
 #: includes/data/states/states-01.php:293
 msgid "Blida"
@@ -6834,7 +6869,7 @@ msgstr "타망하셋"
 
 #: includes/data/states/states-01.php:296
 msgid "T�bessa"
-msgstr ""
+msgstr "Tébessa"
 
 #: includes/data/states/states-01.php:297
 msgid "Tlemcen"
@@ -6862,11 +6897,11 @@ msgstr "지젤"
 
 #: includes/data/states/states-01.php:303
 msgid "S�tif"
-msgstr ""
+msgstr "Sétif"
 
 #: includes/data/states/states-01.php:304
 msgid "Sa�da"
-msgstr ""
+msgstr "Saïda"
 
 #: includes/data/states/states-01.php:305
 msgid "Skikda"
@@ -6874,7 +6909,7 @@ msgstr "스키크다"
 
 #: includes/data/states/states-01.php:306
 msgid "Sidi Bel Abb�s"
-msgstr ""
+msgstr "Sidi Bel Abbès"
 
 #: includes/data/states/states-01.php:307
 msgid "Annaba"
@@ -6890,7 +6925,7 @@ msgstr "콘스탄틴"
 
 #: includes/data/states/states-01.php:310
 msgid "M�d�a"
-msgstr ""
+msgstr "Médéa"
 
 #: includes/data/states/states-01.php:311
 msgid "Mostaganem"
@@ -6898,7 +6933,7 @@ msgstr "모스타가넘"
 
 #: includes/data/states/states-01.php:312
 msgid "M�Sila"
-msgstr ""
+msgstr "M'Sila"
 
 #: includes/data/states/states-01.php:313
 msgid "Mascara"
@@ -6922,11 +6957,11 @@ msgstr "일리지"
 
 #: includes/data/states/states-01.php:318
 msgid "Bordj Bou Arr�ridj"
-msgstr ""
+msgstr "Bordj Bou Arréridj"
 
 #: includes/data/states/states-01.php:319
 msgid "Boumerd�s"
-msgstr ""
+msgstr "Boumerdès"
 
 #: includes/data/states/states-01.php:320
 msgid "El Tarf"
@@ -6962,7 +6997,7 @@ msgstr "밀라"
 
 #: includes/data/states/states-01.php:328
 msgid "A�n Defla"
-msgstr ""
+msgstr "Aïn Defla"
 
 #: includes/data/states/states-01.php:329
 msgid "Naama"
@@ -6970,11 +7005,11 @@ msgstr "나아마"
 
 #: includes/data/states/states-01.php:330
 msgid "A�n T�mouchent"
-msgstr ""
+msgstr "Aïn Témouchent"
 
 #: includes/data/states/states-01.php:331
 msgid "Gharda�a"
-msgstr ""
+msgstr "Ghardaïa"
 
 #: includes/data/states/states-01.php:332
 msgid "Relizane"
@@ -6982,11 +7017,11 @@ msgstr "렐리잔"
 
 #: includes/data/states/states-01.php:336
 msgid "A Coru�a"
-msgstr ""
+msgstr "A Coruña"
 
 #: includes/data/states/states-01.php:337
 msgid "Araba/�lava"
-msgstr ""
+msgstr "Álava"
 
 #: includes/data/states/states-01.php:338
 msgid "Albacete"
@@ -6998,7 +7033,7 @@ msgstr "알리칸테"
 
 #: includes/data/states/states-01.php:340
 msgid "Almer�a"
-msgstr ""
+msgstr "Almería"
 
 #: includes/data/states/states-01.php:341
 msgid "Asturias"
@@ -7006,7 +7041,7 @@ msgstr "아스투리아스"
 
 #: includes/data/states/states-01.php:342
 msgid "�vila"
-msgstr ""
+msgstr "Ávila"
 
 #: includes/data/states/states-01.php:343
 msgid "Badajoz"
@@ -7026,11 +7061,11 @@ msgstr "부르고스"
 
 #: includes/data/states/states-01.php:347
 msgid "C�ceres"
-msgstr ""
+msgstr "Cáceres"
 
 #: includes/data/states/states-01.php:348
 msgid "C�diz"
-msgstr ""
+msgstr "Cádiz"
 
 #: includes/data/states/states-01.php:349
 msgid "Cantabria"
@@ -7038,7 +7073,7 @@ msgstr "칸타브리아"
 
 #: includes/data/states/states-01.php:350
 msgid "Castell�n"
-msgstr ""
+msgstr "Castellón"
 
 #: includes/data/states/states-01.php:351
 msgid "Ceuta"
@@ -7078,7 +7113,7 @@ msgstr "우에스카"
 
 #: includes/data/states/states-01.php:361
 msgid "Ja�n"
-msgstr ""
+msgstr "Jaén"
 
 #: includes/data/states/states-01.php:363
 msgid "Las Palmas"
@@ -7086,7 +7121,7 @@ msgstr "라스팔마스"
 
 #: includes/data/states/states-01.php:364
 msgid "Le�n"
-msgstr ""
+msgstr "레온"
 
 #: includes/data/states/states-01.php:365
 msgid "Lleida"
@@ -7102,7 +7137,7 @@ msgstr "마드리드"
 
 #: includes/data/states/states-01.php:368
 msgid "M�laga"
-msgstr ""
+msgstr "말라가"
 
 #: includes/data/states/states-01.php:369
 msgid "Melilla"
@@ -7319,11 +7354,11 @@ msgstr "신 territories"
 
 #: includes/data/states/states-02.php:50
 msgid "B�cs-Kiskun"
-msgstr ""
+msgstr "바츠-키슈쿤"
 
 #: includes/data/states/states-02.php:51
 msgid "B�k�s"
-msgstr ""
+msgstr "바케시"
 
 #: includes/data/states/states-02.php:52
 msgid "Baranya"
@@ -7331,7 +7366,7 @@ msgstr "바라냐"
 
 #: includes/data/states/states-02.php:53
 msgid "Borsod-Aba�j-Zempl�n"
-msgstr ""
+msgstr "보르소드-아바이-젬플렌"
 
 #: includes/data/states/states-02.php:54
 msgid "Budapest"
@@ -7339,19 +7374,19 @@ msgstr "부다페스트"
 
 #: includes/data/states/states-02.php:55
 msgid "Csongr�d"
-msgstr ""
+msgstr "촌그라드"
 
 #: includes/data/states/states-02.php:56
 msgid "Fej�r"
-msgstr ""
+msgstr "페예르"
 
 #: includes/data/states/states-02.php:57
 msgid "Gyor-Moson-Sopron"
-msgstr ""
+msgstr "외르-모손-소프론"
 
 #: includes/data/states/states-02.php:58
 msgid "Hajd�-Bihar"
-msgstr ""
+msgstr "하이드-비하르"
 
 #: includes/data/states/states-02.php:59
 msgid "Heves"
@@ -7359,15 +7394,15 @@ msgstr "헤베스"
 
 #: includes/data/states/states-02.php:60
 msgid "J�sz-Nagykun-Szolnok"
-msgstr ""
+msgstr "야즈-나이쿤-졸노크"
 
 #: includes/data/states/states-02.php:61
 msgid "Kom�rom-Esztergom"
-msgstr ""
+msgstr "코모롬-에스테르곰"
 
 #: includes/data/states/states-02.php:62
 msgid "N�gr�d"
-msgstr ""
+msgstr "노그라드"
 
 #: includes/data/states/states-02.php:63
 msgid "Pest"
@@ -7379,7 +7414,7 @@ msgstr "소모지"
 
 #: includes/data/states/states-02.php:65
 msgid "Szabolcs-Szatm�r-Bereg"
-msgstr ""
+msgstr "사보르치-사트마르-베레그"
 
 #: includes/data/states/states-02.php:66
 msgid "Tolna"
@@ -7391,7 +7426,7 @@ msgstr "바스"
 
 #: includes/data/states/states-02.php:68
 msgid "Veszpr�m"
-msgstr ""
+msgstr "베스프렘"
 
 #: includes/data/states/states-02.php:69
 msgid "Zala"
@@ -7784,127 +7819,127 @@ msgstr "폰디셰리 (푸두체리)"
 
 #: includes/data/states/states-02.php:174
 msgid "Khuzestan  (???????)"
-msgstr ""
+msgstr "후제스탄 (???????)"
 
 #: includes/data/states/states-02.php:175
 msgid "Tehran  (?????)"
-msgstr ""
+msgstr "테헤란 (?????)"
 
 #: includes/data/states/states-02.php:176
 msgid "Ilaam (?????)"
-msgstr ""
+msgstr "일람 (?????)"
 
 #: includes/data/states/states-02.php:177
 msgid "Bushehr (?????)"
-msgstr ""
+msgstr "부셰르 (?????)"
 
 #: includes/data/states/states-02.php:178
 msgid "Ardabil (??????)"
-msgstr ""
+msgstr "아르다빌 (??????)"
 
 #: includes/data/states/states-02.php:179
 msgid "Isfahan (??????)"
-msgstr ""
+msgstr "이스파한 (??????)"
 
 #: includes/data/states/states-02.php:180
 msgid "Yazd (???)"
-msgstr ""
+msgstr "야즈드 (???)"
 
 #: includes/data/states/states-02.php:181
 msgid "Kermanshah (????????)"
-msgstr ""
+msgstr "케르만샤 (????????)"
 
 #: includes/data/states/states-02.php:182
 msgid "Kerman (?????)"
-msgstr ""
+msgstr "케르만 (?????)"
 
 #: includes/data/states/states-02.php:183
 msgid "Hamadan (?????)"
-msgstr ""
+msgstr "하마단 (?????)"
 
 #: includes/data/states/states-02.php:184
 msgid "Ghazvin (?????)"
-msgstr ""
+msgstr "가즈빈 (?????)"
 
 #: includes/data/states/states-02.php:185
 msgid "Zanjan (?????)"
-msgstr ""
+msgstr "잔잔 (?????)"
 
 #: includes/data/states/states-02.php:186
 msgid "Luristan (??????)"
-msgstr ""
+msgstr "루리스탄 (??????)"
 
 #: includes/data/states/states-02.php:187
 msgid "Alborz (?????)"
-msgstr ""
+msgstr "알보르즈 (?????)"
 
 #: includes/data/states/states-02.php:188
 msgid "East Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "동부 아자르바이잔 (????????? ????)"
 
 #: includes/data/states/states-02.php:189
 msgid "West Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "서부 아자르바이잔 (????????? ????)"
 
 #: includes/data/states/states-02.php:190
 msgid "Chaharmahal and Bakhtiari (???????? ? ???????)"
-msgstr ""
+msgstr "차하르마할과 바흐티아리 (???????? ? ???????)"
 
 #: includes/data/states/states-02.php:191
 msgid "South Khorasan (?????? ?????)"
-msgstr ""
+msgstr "남부 호라산 (?????? ?????)"
 
 #: includes/data/states/states-02.php:192
 msgid "Razavi Khorasan (?????? ????)"
-msgstr ""
+msgstr "라자비 호라산 (?????? ????)"
 
 #: includes/data/states/states-02.php:193
 msgid "North Khorasan (?????? ?????)"
-msgstr ""
+msgstr "북부 호라산 (?????? ?????)"
 
 #: includes/data/states/states-02.php:194
 msgid "Semnan (?????)"
-msgstr ""
+msgstr "세만 (?????)"
 
 #: includes/data/states/states-02.php:195
 msgid "Fars (????)"
-msgstr ""
+msgstr "파르스 (????)"
 
 #: includes/data/states/states-02.php:196
 msgid "Qom (??)"
-msgstr ""
+msgstr "콤 (??)"
 
 #: includes/data/states/states-02.php:197
 msgid "Kurdistan / ???????)"
-msgstr ""
+msgstr "쿠르디스탄 / ???????)"
 
 #: includes/data/states/states-02.php:198
 msgid "Kohgiluyeh and BoyerAhmad (????????? ? ????????)"
-msgstr ""
+msgstr "코흐길루예 및 보예르 아흐마드 (????????? ? ????????)"
 
 #: includes/data/states/states-02.php:199
 msgid "Golestan (??????)"
-msgstr ""
+msgstr "골레스탄 (??????)"
 
 #: includes/data/states/states-02.php:200
 msgid "Gilan (?????)"
-msgstr ""
+msgstr "길란 (?????)"
 
 #: includes/data/states/states-02.php:201
 msgid "Mazandaran (????????)"
-msgstr ""
+msgstr "마잔다란 (????????)"
 
 #: includes/data/states/states-02.php:202
 msgid "Markazi (?????)"
-msgstr ""
+msgstr "마르카지 (?????)"
 
 #: includes/data/states/states-02.php:203
 msgid "Hormozgan (???????)"
-msgstr ""
+msgstr "호르모즈간 (???????)"
 
 #: includes/data/states/states-02.php:204
 msgid "Sistan and Baluchestan (?????? ? ????????)"
-msgstr ""
+msgstr "시스탄과 발루체스탄 (?????? ? ????????)"
 
 #: includes/data/states/states-02.php:208
 msgid "Agrigento"
@@ -8048,7 +8083,7 @@ msgstr "포지아"
 
 #: includes/data/states/states-02.php:243
 msgid "Forl�-Cesena"
-msgstr ""
+msgstr "포르리-체세나"
 
 #: includes/data/states/states-02.php:244
 msgid "Frosinone"
@@ -8637,7 +8672,7 @@ msgstr "맘바사"
 
 #: includes/data/states/states-02.php:402
 msgid "Murang�a"
-msgstr ""
+msgstr "무랑가"
 
 #: includes/data/states/states-02.php:403
 msgid "Nairobi County"
@@ -8846,11 +8881,11 @@ msgstr "시노에"
 
 #: includes/data/states/states-03.php:25
 msgid "Chi?inau"
-msgstr ""
+msgstr "키시나우"
 
 #: includes/data/states/states-03.php:26
 msgid "Bal?i"
-msgstr ""
+msgstr "발치"
 
 #: includes/data/states/states-03.php:27
 msgid "Anenii Noi"
@@ -8875,15 +8910,15 @@ msgstr "칸템미르"
 #: includes/data/states/states-03.php:32
 #: includes/data/states/states-03.php:379
 msgid "Calara?i"
-msgstr ""
+msgstr "칼라라이"
 
 #: includes/data/states/states-03.php:33
 msgid "Cau?eni"
-msgstr ""
+msgstr "카우제니"
 
 #: includes/data/states/states-03.php:34
 msgid "Cimi?lia"
-msgstr ""
+msgstr "치미슬리아"
 
 #: includes/data/states/states-03.php:35
 msgid "Criuleni"
@@ -8891,7 +8926,7 @@ msgstr "크리울레니"
 
 #: includes/data/states/states-03.php:36
 msgid "Dondu?eni"
-msgstr ""
+msgstr "돈두제니"
 
 #: includes/data/states/states-03.php:37
 msgid "Drochia"
@@ -8899,23 +8934,23 @@ msgstr "드로치아"
 
 #: includes/data/states/states-03.php:38
 msgid "Dubasari"
-msgstr ""
+msgstr "두바사리"
 
 #: includes/data/states/states-03.php:39
 msgid "Edine?"
-msgstr ""
+msgstr "에디네츠"
 
 #: includes/data/states/states-03.php:40
 msgid "Fale?ti"
-msgstr ""
+msgstr "팔레슈티"
 
 #: includes/data/states/states-03.php:41
 msgid "Flore?ti"
-msgstr ""
+msgstr "플로레슈티"
 
 #: includes/data/states/states-03.php:42
 msgid "UTA Gagauzia"
-msgstr ""
+msgstr "우타 가가우지아"
 
 #: includes/data/states/states-03.php:43
 msgid "Glodeni"
@@ -8923,7 +8958,7 @@ msgstr "글로덴이"
 
 #: includes/data/states/states-03.php:44
 msgid "H�nce?ti"
-msgstr ""
+msgstr "훈체티"
 
 #: includes/data/states/states-03.php:45
 msgid "Ialoveni"
@@ -8939,7 +8974,7 @@ msgstr "니스포레니"
 
 #: includes/data/states/states-03.php:48
 msgid "Ocni?a"
-msgstr ""
+msgstr "옥니차"
 
 #: includes/data/states/states-03.php:49
 msgid "Orhei"
@@ -8951,11 +8986,11 @@ msgstr "레지나"
 
 #: includes/data/states/states-03.php:51
 msgid "R�?cani"
-msgstr ""
+msgstr "르크라니"
 
 #: includes/data/states/states-03.php:52
 msgid "S�ngerei"
-msgstr ""
+msgstr "상게레이"
 
 #: includes/data/states/states-03.php:53
 msgid "Soroca"
@@ -8963,15 +8998,15 @@ msgstr "소로카"
 
 #: includes/data/states/states-03.php:54
 msgid "Stra?eni"
-msgstr ""
+msgstr "스트라제니"
 
 #: includes/data/states/states-03.php:55
 msgid "?oldane?ti"
-msgstr ""
+msgstr "졸다네츠티"
 
 #: includes/data/states/states-03.php:56
 msgid "?tefan Voda"
-msgstr ""
+msgstr "슈테판 보다"
 
 #: includes/data/states/states-03.php:57
 msgid "Taraclia"
@@ -8979,7 +9014,7 @@ msgstr "타라클리아"
 
 #: includes/data/states/states-03.php:58
 msgid "Telene?ti"
-msgstr ""
+msgstr "텔레네츠티"
 
 #: includes/data/states/states-03.php:59
 msgid "Ungheni"
@@ -8987,7 +9022,7 @@ msgstr "운흐넨이"
 
 #: includes/data/states/states-03.php:64
 msgid "Ciudad de M�xico"
-msgstr ""
+msgstr "멕시코 시티"
 
 #: includes/data/states/states-03.php:65
 msgid "Jalisco"
@@ -8995,7 +9030,7 @@ msgstr "할리스코"
 
 #: includes/data/states/states-03.php:66
 msgid "Nuevo Le�n"
-msgstr ""
+msgstr "누에보 레온"
 
 #: includes/data/states/states-03.php:67
 msgid "Aguascalientes"
@@ -9047,11 +9082,11 @@ msgstr "이달고"
 
 #: includes/data/states/states-03.php:79
 msgid "Estado de M�xico"
-msgstr ""
+msgstr "메히코 주"
 
 #: includes/data/states/states-03.php:80
 msgid "Michoac�n"
-msgstr ""
+msgstr "미초아칸"
 
 #: includes/data/states/states-03.php:81
 msgid "Morelos"
@@ -9071,7 +9106,7 @@ msgstr "푸에블라"
 
 #: includes/data/states/states-03.php:85
 msgid "Quer�taro"
-msgstr ""
+msgstr "케레타로"
 
 #: includes/data/states/states-03.php:86
 msgid "Quintana Roo"
@@ -9079,7 +9114,7 @@ msgstr "킨타나로오"
 
 #: includes/data/states/states-03.php:87
 msgid "San Luis Potos�"
-msgstr ""
+msgstr "산 루이스 포토시"
 
 #: includes/data/states/states-03.php:88
 msgid "Sinaloa"
@@ -9107,7 +9142,7 @@ msgstr "베라크루스"
 
 #: includes/data/states/states-03.php:94
 msgid "Yucat�n"
-msgstr ""
+msgstr "유카탄"
 
 #: includes/data/states/states-03.php:95
 msgid "Zacatecas"
@@ -9219,7 +9254,7 @@ msgstr "테테"
 
 #: includes/data/states/states-03.php:126
 msgid "Zamb�zia"
-msgstr ""
+msgstr "잠비지아"
 
 #: includes/data/states/states-03.php:129
 msgid "Erongo"
@@ -9508,7 +9543,7 @@ msgstr "기스본"
 
 #: includes/data/states/states-03.php:208
 msgid "Hawke�s Bay"
-msgstr ""
+msgstr "호크스 베이"
 
 #: includes/data/states/states-03.php:209
 msgid "Manawatu-Wanganui"
@@ -9560,7 +9595,7 @@ msgstr "안카시"
 
 #: includes/data/states/states-03.php:224
 msgid "Apur�mac"
-msgstr ""
+msgstr "아푸리막"
 
 #: includes/data/states/states-03.php:225
 msgid "Arequipa"
@@ -9584,7 +9619,7 @@ msgstr "완카벨리카"
 
 #: includes/data/states/states-03.php:230
 msgid "Hu�nuco"
-msgstr ""
+msgstr "후누코"
 
 #: includes/data/states/states-03.php:231
 msgid "Ica"
@@ -9592,7 +9627,7 @@ msgstr "이카"
 
 #: includes/data/states/states-03.php:232
 msgid "Jun�n"
-msgstr ""
+msgstr "후닌"
 
 #: includes/data/states/states-03.php:233
 msgid "La Libertad"
@@ -9632,7 +9667,7 @@ msgstr "푸노"
 
 #: includes/data/states/states-03.php:242
 msgid "San Mart�n"
-msgstr ""
+msgstr "산 마르틴"
 
 #: includes/data/states/states-03.php:243
 msgid "Tacna"
@@ -9982,7 +10017,7 @@ msgstr "아자드 카슈미르"
 msgid "Balochistan"
 msgstr "발로치스탄"
 
-#: includes/data/states/states-03.php:337
+#: includes/data/states/states-03.php:337, fuzzy
 msgid "FATA"
 msgstr "FATA"
 
@@ -10004,11 +10039,11 @@ msgstr "신드"
 
 #: includes/data/states/states-03.php:347
 msgid "Asunci�n"
-msgstr ""
+msgstr "아순시온"
 
 #: includes/data/states/states-03.php:348
 msgid "Concepci�n"
-msgstr ""
+msgstr "콘셉시온"
 
 #: includes/data/states/states-03.php:349
 msgid "San Pedro"
@@ -10020,31 +10055,31 @@ msgstr "코르디예라"
 
 #: includes/data/states/states-03.php:351
 msgid "Guair�"
-msgstr ""
+msgstr "과이라"
 
 #: includes/data/states/states-03.php:352
 msgid "Caaguaz�"
-msgstr ""
+msgstr "카아구아즈"
 
 #: includes/data/states/states-03.php:353
 msgid "Caazap�"
-msgstr ""
+msgstr "카아자파"
 
 #: includes/data/states/states-03.php:354
 msgid "Itap�a"
-msgstr ""
+msgstr "이타파"
 
 #: includes/data/states/states-03.php:356
 msgid "Paraguar�"
-msgstr ""
+msgstr "파라과이"
 
 #: includes/data/states/states-03.php:357
 msgid "Alto Paran�"
-msgstr ""
+msgstr "알토 파라나"
 
 #: includes/data/states/states-03.php:359
 msgid "�eembuc�"
-msgstr ""
+msgstr "에엠부쿠"
 
 #: includes/data/states/states-03.php:360
 msgid "Amambay"
@@ -10052,7 +10087,7 @@ msgstr "아만바이"
 
 #: includes/data/states/states-03.php:361
 msgid "Canindey�"
-msgstr ""
+msgstr "카닌데이"
 
 #: includes/data/states/states-03.php:362
 msgid "Presidente Hayes"
@@ -10064,7 +10099,7 @@ msgstr "알토 파라과이"
 
 #: includes/data/states/states-03.php:364
 msgid "Boquer�n"
-msgstr ""
+msgstr "보케론"
 
 #: includes/data/states/states-03.php:368
 msgid "Alba"
@@ -10076,11 +10111,11 @@ msgstr "아라드"
 
 #: includes/data/states/states-03.php:370
 msgid "Arge?"
-msgstr ""
+msgstr "아르제?"
 
 #: includes/data/states/states-03.php:371
 msgid "Bacau"
-msgstr ""
+msgstr "바카우"
 
 #: includes/data/states/states-03.php:372
 msgid "Bihor"
@@ -10088,31 +10123,31 @@ msgstr "비호르"
 
 #: includes/data/states/states-03.php:373
 msgid "Bistri?a-Nasaud"
-msgstr ""
+msgstr "비스트리차-나사우드"
 
 #: includes/data/states/states-03.php:374
 msgid "Boto?ani"
-msgstr ""
+msgstr "보토샤니"
 
 #: includes/data/states/states-03.php:375
 msgid "Braila"
-msgstr ""
+msgstr "브라이라"
 
 #: includes/data/states/states-03.php:376
 msgid "Bra?ov"
-msgstr ""
+msgstr "브라쇼브"
 
 #: includes/data/states/states-03.php:377
 msgid "Bucure?ti"
-msgstr ""
+msgstr "부쿠레슈티"
 
 #: includes/data/states/states-03.php:378
 msgid "Buzau"
-msgstr ""
+msgstr "부자우"
 
 #: includes/data/states/states-03.php:380
 msgid "Cara?-Severin"
-msgstr ""
+msgstr "카라슈-세베린"
 
 #: includes/data/states/states-03.php:381
 msgid "Cluj"
@@ -10120,7 +10155,7 @@ msgstr "클루지"
 
 #: includes/data/states/states-03.php:382
 msgid "Constan?a"
-msgstr ""
+msgstr "콘스탄차"
 
 #: includes/data/states/states-03.php:383
 msgid "Covasna"
@@ -10128,7 +10163,7 @@ msgstr "코바스나"
 
 #: includes/data/states/states-03.php:384
 msgid "D�mbovi?a"
-msgstr ""
+msgstr "덤보비차"
 
 #: includes/data/states/states-03.php:385
 msgid "Dolj"
@@ -10136,7 +10171,7 @@ msgstr "돌j"
 
 #: includes/data/states/states-03.php:386
 msgid "Gala?i"
-msgstr ""
+msgstr "갈라치"
 
 #: includes/data/states/states-03.php:387
 msgid "Giurgiu"
@@ -10156,11 +10191,11 @@ msgstr "후네도아라"
 
 #: includes/data/states/states-03.php:391
 msgid "Ialomi?a"
-msgstr ""
+msgstr "이알로미차"
 
 #: includes/data/states/states-03.php:392
 msgid "Ia?i"
-msgstr ""
+msgstr "이아시"
 
 #: includes/data/states/states-03.php:393
 msgid "Ilfov"
@@ -10168,19 +10203,19 @@ msgstr "일포프"
 
 #: includes/data/states/states-03.php:394
 msgid "Maramure?"
-msgstr ""
+msgstr "마라무레시"
 
 #: includes/data/states/states-03.php:395
 msgid "Mehedin?i"
-msgstr ""
+msgstr "메헤딘치"
 
 #: includes/data/states/states-03.php:396
 msgid "Mure?"
-msgstr ""
+msgstr "무레시"
 
 #: includes/data/states/states-03.php:397
 msgid "Neam?"
-msgstr ""
+msgstr "네암츠"
 
 #: includes/data/states/states-03.php:398
 msgid "Olt"
@@ -10192,7 +10227,7 @@ msgstr "프라호바"
 
 #: includes/data/states/states-03.php:400
 msgid "Salaj"
-msgstr ""
+msgstr "살라지"
 
 #: includes/data/states/states-03.php:401
 msgid "Satu Mare"
@@ -10212,7 +10247,7 @@ msgstr "텔레오르만"
 
 #: includes/data/states/states-03.php:405
 msgid "Timi?"
-msgstr ""
+msgstr "티미시"
 
 #: includes/data/states/states-03.php:406
 msgid "Tulcea"
@@ -10220,7 +10255,7 @@ msgstr "툴체아"
 
 #: includes/data/states/states-03.php:407
 msgid "V�lcea"
-msgstr ""
+msgstr "벌체"
 
 #: includes/data/states/states-03.php:408
 msgid "Vaslui"
@@ -10544,7 +10579,7 @@ msgstr "아다나"
 
 #: includes/data/states/states-04.php:91
 msgid "Adiyaman"
-msgstr ""
+msgstr "아디야만"
 
 #: includes/data/states/states-04.php:92
 msgid "Afyon"
@@ -10552,7 +10587,7 @@ msgstr "아프욘"
 
 #: includes/data/states/states-04.php:93
 msgid "Agri"
-msgstr ""
+msgstr "아그리"
 
 #: includes/data/states/states-04.php:94
 msgid "Amasya"
@@ -10572,11 +10607,11 @@ msgstr "아르트빈"
 
 #: includes/data/states/states-04.php:98
 msgid "Aydin"
-msgstr ""
+msgstr "아이다인"
 
 #: includes/data/states/states-04.php:99
 msgid "Balikesir"
-msgstr ""
+msgstr "발리케시르"
 
 #: includes/data/states/states-04.php:100
 msgid "Bilecik"
@@ -10584,7 +10619,7 @@ msgstr "빌레직"
 
 #: includes/data/states/states-04.php:101
 msgid "Bing�l"
-msgstr ""
+msgstr "빙골"
 
 #: includes/data/states/states-04.php:102
 msgid "Bitlis"
@@ -10604,15 +10639,15 @@ msgstr "부르사"
 
 #: includes/data/states/states-04.php:106
 msgid "�anakkale"
-msgstr ""
+msgstr "차나칼레"
 
 #: includes/data/states/states-04.php:107
 msgid "�ankiri"
-msgstr ""
+msgstr "샹키리"
 
 #: includes/data/states/states-04.php:108
 msgid "�orum"
-msgstr ""
+msgstr "조룸"
 
 #: includes/data/states/states-04.php:109
 msgid "Denizli"
@@ -10620,7 +10655,7 @@ msgstr "데니즐리"
 
 #: includes/data/states/states-04.php:110
 msgid "Diyarbakir"
-msgstr ""
+msgstr "디야르바키르"
 
 #: includes/data/states/states-04.php:111
 msgid "Edirne"
@@ -10628,7 +10663,7 @@ msgstr "에디르네"
 
 #: includes/data/states/states-04.php:112
 msgid "Elazig"
-msgstr ""
+msgstr "엘라지그"
 
 #: includes/data/states/states-04.php:113
 msgid "Erzincan"
@@ -10640,7 +10675,7 @@ msgstr "에르주룸"
 
 #: includes/data/states/states-04.php:115
 msgid "Eskisehir"
-msgstr ""
+msgstr "에스키셰히르"
 
 #: includes/data/states/states-04.php:116
 msgid "Gaziantep"
@@ -10652,7 +10687,7 @@ msgstr "기레순"
 
 #: includes/data/states/states-04.php:118
 msgid "G�m�shane"
-msgstr ""
+msgstr "금쉬하네"
 
 #: includes/data/states/states-04.php:119
 msgid "Hakkari"
@@ -10668,15 +10703,15 @@ msgstr "이스파르타"
 
 #: includes/data/states/states-04.php:122
 msgid "I�el"
-msgstr ""
+msgstr "이젤"
 
 #: includes/data/states/states-04.php:123
 msgid "Istanbul"
-msgstr ""
+msgstr "이스탄불"
 
 #: includes/data/states/states-04.php:124
 msgid "Izmir"
-msgstr ""
+msgstr "이스미르"
 
 #: includes/data/states/states-04.php:125
 msgid "Kars"
@@ -10692,11 +10727,11 @@ msgstr "카이세리"
 
 #: includes/data/states/states-04.php:128
 msgid "Kirklareli"
-msgstr ""
+msgstr "키르클라레리"
 
 #: includes/data/states/states-04.php:129
 msgid "Kirsehir"
-msgstr ""
+msgstr "키르셰히르"
 
 #: includes/data/states/states-04.php:130
 msgid "Kocaeli"
@@ -10708,7 +10743,7 @@ msgstr "코니아"
 
 #: includes/data/states/states-04.php:132
 msgid "K�tahya"
-msgstr ""
+msgstr "쿠타흐야"
 
 #: includes/data/states/states-04.php:133
 msgid "Malatya"
@@ -10720,7 +10755,7 @@ msgstr "마니사"
 
 #: includes/data/states/states-04.php:135
 msgid "Kahramanmaras"
-msgstr ""
+msgstr "카흐라만마라스"
 
 #: includes/data/states/states-04.php:136
 msgid "Mardin"
@@ -10728,19 +10763,19 @@ msgstr "마르딘"
 
 #: includes/data/states/states-04.php:137
 msgid "Mugla"
-msgstr ""
+msgstr "무글라"
 
 #: includes/data/states/states-04.php:138
 msgid "Mus"
-msgstr ""
+msgstr "무스"
 
 #: includes/data/states/states-04.php:139
 msgid "Nevsehir"
-msgstr ""
+msgstr "네브셰히르"
 
 #: includes/data/states/states-04.php:140
 msgid "Nigde"
-msgstr ""
+msgstr "니그데"
 
 #: includes/data/states/states-04.php:141
 msgid "Ordu"
@@ -10772,7 +10807,7 @@ msgstr "시바스"
 
 #: includes/data/states/states-04.php:148
 msgid "Tekirdag"
-msgstr ""
+msgstr "테키르다그"
 
 #: includes/data/states/states-04.php:149
 msgid "Tokat"
@@ -10788,11 +10823,11 @@ msgstr "툰제리"
 
 #: includes/data/states/states-04.php:152
 msgid "Sanliurfa"
-msgstr ""
+msgstr "샨르우르파"
 
 #: includes/data/states/states-04.php:153
 msgid "Usak"
-msgstr ""
+msgstr "우삭"
 
 #: includes/data/states/states-04.php:154
 msgid "Van"
@@ -10820,7 +10855,7 @@ msgstr "카라만"
 
 #: includes/data/states/states-04.php:160
 msgid "Kirikkale"
-msgstr ""
+msgstr "키리카레"
 
 #: includes/data/states/states-04.php:161
 msgid "Batman"
@@ -10828,11 +10863,11 @@ msgstr "바트만"
 
 #: includes/data/states/states-04.php:162
 msgid "Sirnak"
-msgstr ""
+msgstr "시르낙"
 
 #: includes/data/states/states-04.php:163
 msgid "Bartin"
-msgstr ""
+msgstr "바르틴"
 
 #: includes/data/states/states-04.php:164
 msgid "Ardahan"
@@ -10840,7 +10875,7 @@ msgstr "아르다한"
 
 #: includes/data/states/states-04.php:165
 msgid "Igdir"
-msgstr ""
+msgstr "이그디르"
 
 #: includes/data/states/states-04.php:166
 msgid "Yalova"
@@ -10848,7 +10883,7 @@ msgstr "얄로바"
 
 #: includes/data/states/states-04.php:167
 msgid "Karab�k"
-msgstr ""
+msgstr "카라부크"
 
 #: includes/data/states/states-04.php:168
 msgid "Kilis"
@@ -10860,7 +10895,7 @@ msgstr "오스마니예"
 
 #: includes/data/states/states-04.php:170
 msgid "D�zce"
-msgstr ""
+msgstr "뒤체"
 
 #: includes/data/states/states-04.php:173
 msgid "Arusha"
@@ -11943,7 +11978,6 @@ msgid "Your {product_name} trial is about to end"
 msgstr "귀하의 {product_name} 체험이 곧 종료됩니다"
 
 #: includes/email/ppcart-template-functions/templates.php:246
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -12085,7 +12119,7 @@ msgstr "이 파일을 다운로드할 권한이 없습니다."
 
 #: includes/files/download.php:43
 msgid "Invalid file path."
-msgstr ""
+msgstr "잘못된 파일 경로입니다."
 
 #: includes/files/download.php:44
 #: includes/files/download.php:65
@@ -12105,7 +12139,7 @@ msgstr "죄송합니다. 이 파일은 더 이상 사용할 수 없습니다."
 #. translators: 1: file name, 2: user login.
 #, php-format
 msgid "Access to file \"%1$s\" revoked by %2$s"
-msgstr ""
+msgstr "파일 \"%1$s\"에 대한 접근이 %2$s에 의해 철회되었습니다."
 
 #: includes/files/traits/templates/files-admin-product-form-callback.php:28
 #: includes/files/traits/trait-ppcart-files-settings.php:132
@@ -12283,7 +12317,7 @@ msgstr "구매 확인 이메일이 %s에 의해 재전송되었습니다."
 
 #: includes/functions/admin-ajax-and-notices.php:389
 msgid "You are not allowed to dismiss this notice."
-msgstr ""
+msgstr "이 공지를 해제할 수 없습니다."
 
 #: includes/functions/ajax-and-fields.php:170
 msgid " activecampaign Listed: "
@@ -12998,7 +13032,7 @@ msgstr "재고 부족 알림: %s"
 msgid ""
 "The stock for product \"%1$s\" (ID: %2$d) is running low. Current stock: "
 "%3$d"
-msgstr ""
+msgstr "제품 \"%1$s\" (ID: %2$d)의 재고가 부족합니다. 현재 재고: %3$d"
 
 #: includes/functions/integrations-and-stock.php:220
 #. translators: %s: product name.
@@ -13010,19 +13044,19 @@ msgstr "재고 없음 알림: %s"
 #. translators: 1: product name, 2: product ID.
 #, php-format
 msgid "The product \"%1$s\" (ID: %2$d) is now out of stock."
-msgstr ""
+msgstr "제품 \"%1$s\" (ID: %2$d)이(가) 품절되었습니다."
 
 #: includes/functions/mailchimp-api.php:51
 msgid "The Mailchimp API key is invalid."
-msgstr ""
+msgstr "메일침프 API 키가 유효하지 않습니다."
 
 #: includes/functions/mailchimp-api.php:83
 msgid "Mailchimp rejected the request."
-msgstr ""
+msgstr "메일침프가 요청을 거부했습니다."
 
 #: includes/functions/mailchimp-api.php:94
 msgid "Mailchimp returned an invalid response."
-msgstr ""
+msgstr "메일침프가 유효하지 않은 응답을 반환했습니다."
 
 #: includes/functions/merge-tags-and-dates.php:11
 msgid "Site Name"
@@ -13116,7 +13150,7 @@ msgstr "주문 목록"
 
 #: includes/functions/merge-tags-and-dates.php:34
 msgid "Order Details Table"
-msgstr ""
+msgstr "주문 세부 정보 표"
 
 #: includes/functions/merge-tags-and-dates.php:35
 msgid "Inline Order List"
@@ -13162,14 +13196,14 @@ msgstr "개인화 태그 삽입"
 #. translators: 1: refund amount, 2: refund date.
 #, php-format
 msgid "%1$s refunded on %2$s"
-msgstr ""
+msgstr "%1$s이(가) %2$s에 환불되었습니다."
 
 #: includes/functions/merge-tags-and-dates.php:199
 #: includes/functions/merge-tags-and-dates.php:201
 #. translators: 1: primary product name, 2: bump product name.
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s, %2$s"
 
 #: includes/functions/merge-tags-and-dates.php:549
 msgid "Invalid Charge ID"
@@ -13266,7 +13300,7 @@ msgstr "재설정 이메일 전송에 실패했습니다. 나중에 다시 시�
 
 #: includes/functions/merge-tags-and-dates.php:579
 msgid "Your session has expired. Please try again."
-msgstr ""
+msgstr "세션이 만료되었습니다. 다시 시도해 주세요."
 
 #: includes/functions/merge-tags-and-dates.php:580
 #: includes/functions/merge-tags-and-dates.php:581
@@ -13450,7 +13484,7 @@ msgstr "Membervault 과정 ID: "
 #. translators: %s: Membervault API error message.
 #, php-format
 msgid "Membervault add failed: %s"
-msgstr ""
+msgstr "Membervault 추가 실패: %s"
 
 #: includes/functions/orders-products-and-formatting.php:147
 msgid "Membervault add failed"
@@ -13561,7 +13595,7 @@ msgstr "잘못된 청구 ID"
 #. translators: %s: Stripe gateway mode (e.g. live or test)
 #, php-format
 msgid "Oops, Stripe %s key missing!"
-msgstr ""
+msgstr "오류, Stripe %s 키가 누락되었습니다!"
 
 #: includes/functions/payment-actions-and-refunds.php:438
 msgid "Payment refunded by"
@@ -13610,11 +13644,11 @@ msgstr "쿠폰 사용:"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "(%1$s off for %2$d months)"
-msgstr ""
+msgstr "(%1$s 할인, %2$d 개월 동안)"
 
 #: includes/functions/prices-and-marketing.php:273
 msgid "JSON Parse"
-msgstr ""
+msgstr "JSON 파싱"
 
 #: includes/functions/prices-and-marketing.php:357
 msgid "No Data Found"
@@ -13653,19 +13687,19 @@ msgstr " 일"
 #. translators: %d: product ID.
 #, php-format
 msgid "Product #%d"
-msgstr ""
+msgstr "제품 #%d"
 
 #: includes/functions/users-and-notifications.php:159
 #. translators: 1: requested role, 2: role used instead.
 #, php-format
 msgid "User role %1$s is not allowed for customers; %2$s was used instead."
-msgstr ""
+msgstr "고객에게는 사용자 역할 %1$s가 허용되지 않습니다; 대신 %2$s가 사용되었습니다."
 
 #: includes/functions/users-and-notifications.php:192
 #. translators: 1: user ID, 2: role name.
 #, php-format
 msgid "Role for User ID: %1$s updated to %2$s"
-msgstr ""
+msgstr "사용자 ID: %1$s의 역할이 %2$s로 업데이트되었습니다."
 
 #: includes/functions/users-and-notifications.php:209
 #. translators: %s: user ID.
@@ -13717,11 +13751,11 @@ msgstr "업셀 경로"
 
 #: includes/helpers/pro-locks/field-and-email-locks.php:235
 msgid "Affiliates"
-msgstr ""
+msgstr "제휴사"
 
-#: includes/helpers/pro-locks/product-locks.php:27
+#: includes/helpers/pro-locks/product-locks.php:27, fuzzy
 msgid "Stripe, PayPal"
-msgstr ""
+msgstr "Stripe, PayPal"
 
 #: includes/helpers/pro-locks/product-locks.php:29
 msgid "Globally Enabled Methods:"
@@ -13816,7 +13850,7 @@ msgstr "추가 항목마다 (국제)"
 
 #: includes/helpers/pro-locks/product-locks.php:76
 msgid "Enable affiliate sales"
-msgstr ""
+msgstr "제휴 판매 활성화"
 
 #: includes/helpers/pro-locks/product-locks.php:77
 #: public/templates/pdf-invoice/invoice.php:145
@@ -13827,11 +13861,11 @@ msgstr "설명"
 
 #: includes/helpers/pro-locks/product-locks.php:78
 msgid "Name (internal)"
-msgstr ""
+msgstr "이름 (내부)"
 
 #: includes/helpers/pro-locks/settings-locks.php:59
 msgid "Pro"
-msgstr ""
+msgstr "프로"
 
 #: includes/helpers/pro-locks/settings-locks.php:98
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:1132
@@ -13843,35 +13877,35 @@ msgstr "정사각형"
 msgid ""
 "Accept payments online and in person with Square, syncing items and "
 "inventory."
-msgstr ""
+msgstr "Square를 사용하여 온라인 및 오프라인에서 결제를 수락하고, 항목 및 재고를 동기화합니다."
 
-#: includes/helpers/pro-locks/settings-locks.php:104
+#: includes/helpers/pro-locks/settings-locks.php:104, fuzzy
 msgid "Mollie"
-msgstr ""
+msgstr "Mollie"
 
 #: includes/helpers/pro-locks/settings-locks.php:105
 msgid "Offer global and local payment methods with fast, multilingual onboarding."
-msgstr ""
+msgstr "빠르고 다국어 지원 온보딩을 통해 글로벌 및 로컬 결제 방법을 제공합니다."
 
-#: includes/helpers/pro-locks/settings-locks.php:110
+#: includes/helpers/pro-locks/settings-locks.php:110, fuzzy
 msgid "Razorpay"
-msgstr ""
+msgstr "Razorpay"
 
 #: includes/helpers/pro-locks/settings-locks.php:111
 msgid "Accept payments in India and beyond with Razorpay's simple integration."
-msgstr ""
+msgstr "Razorpay의 간단한 통합으로 인도 및 그 외 지역에서 결제를 수락합니다."
 
 #: includes/helpers/pro-locks/settings-locks.php:217
 msgid "PRO"
-msgstr ""
+msgstr "프로"
 
 #: includes/helpers/pro-locks/settings-locks.php:238
 msgid "This is a Pro feature"
-msgstr ""
+msgstr "이것은 프로 기능입니다"
 
 #: includes/helpers/pro-locks/settings-locks.php:239
 msgid "This feature is available in the separate PublishPress Cart Pro plugin."
-msgstr ""
+msgstr "이 기능은 별도의 PublishPress Cart Pro 플러그인에서 사용할 수 있습니다."
 
 #: includes/helpers/pro-locks/settings-locks.php:273
 msgid "URL Coupon Parameter Name"
@@ -13882,6 +13916,8 @@ msgid ""
 "Use something else in place of \"ppcart-coupon\" when creating coupon URLs "
 "(e.g., https://example.com/product/?ppcart-coupon=20off)."
 msgstr ""
+"쿠폰 URL을 만들 때 \"ppcart-coupon\" 대신 다른 것을 사용하세요 (예: "
+"https://example.com/product/?ppcart-coupon=20off)."
 
 #: includes/helpers/pro-locks/settings-locks.php:278
 msgid "Disable product template"
@@ -13953,7 +13989,7 @@ msgstr "API 문서"
 msgid "Invoice Date Documentation"
 msgstr "청구서 날짜 문서"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:9
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:9, fuzzy
 msgid "User Guide.pdf"
 msgstr "User Guide.pdf"
 
@@ -13962,18 +13998,18 @@ msgstr "User Guide.pdf"
 msgid "Sample Pack.zip"
 msgstr "샘플 제품"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:17
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:17, fuzzy
 msgid "Onboarding Video.mp4"
 msgstr "Onboarding Video.mp4"
 
-#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:21
+#: includes/integrations/gutenberg/blocks/account-downloads/preview.php:21, fuzzy
 msgid "Bonus Workbook.docx"
 msgstr "Bonus Workbook.docx"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:7
 #: public/templates/my-account/forms/login-form.php:110
 msgid "Username"
-msgstr ""
+msgstr "사용자 이름"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:8
 #: public/templates/my-account/forms/login-form.php:111
@@ -13983,18 +14019,18 @@ msgstr "비밀번호"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:9
 #: public/templates/my-account/forms/login-form.php:112
 msgid "Remember Me"
-msgstr ""
+msgstr "로그인 상태 유지"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:10
 #: public/templates/my-account/forms/login-form.php:113
 msgid "Log In"
-msgstr ""
+msgstr "로그인"
 
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:8
 msgid "Jan 1, 2026"
 msgstr "2026년 1월 1일"
 
-#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10
+#: includes/integrations/gutenberg/blocks/account-orders/preview.php:10, fuzzy
 msgid "$49.00"
 msgstr "$49.00"
 
@@ -14008,7 +14044,7 @@ msgstr "계획 선택"
 msgid "Feb 1, 2026"
 msgstr "2026년 2월 1일"
 
-#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11
+#: includes/integrations/gutenberg/blocks/account-payment-plans/preview.php:11, fuzzy
 msgid "$99 x 6"
 msgstr "$99 x 6"
 
@@ -14037,7 +14073,7 @@ msgstr "월"
 
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:38
 msgid "Cancels Feb 1, 2026"
-msgstr ""
+msgstr "2026년 2월 1일에 취소됩니다"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-context.php:30
 #, fuzzy
@@ -14101,11 +14137,11 @@ msgstr "세부 사항"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:390
 msgid "January 1, 2026"
-msgstr ""
+msgstr "2026년 1월 1일"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:391
 msgid "February 1, 2026"
-msgstr ""
+msgstr "2026년 2월 1일"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:472
 #, fuzzy
@@ -14135,7 +14171,7 @@ msgstr "신용 카드"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:87
 msgid "Single Collection"
-msgstr ""
+msgstr "단일 컬렉션"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:90
 msgid "Single Product"
@@ -14153,7 +14189,7 @@ msgstr "계획 선택"
 
 #: includes/integrations/templates/cancel-subscription-integration-fields.php:57
 msgid "At the end of the current billing period"
-msgstr ""
+msgstr "현재 청구 주기가 끝날 때까지"
 
 #: includes/integrations/templates/cancel-subscription-run.php:33
 #. translators: %s: subscription ID.
@@ -14165,13 +14201,13 @@ msgstr "구독 ID: %s가 취소되었습니다."
 #. translators: 1: subscription ID, 2: error message.
 #, php-format
 msgid "Error canceling subscription ID: %1$s! Message: %2$s"
-msgstr ""
+msgstr "구독 ID: %1$s를 취소하는 중 오류 발생! 메시지: %2$s"
 
 #: includes/integrations/templates/cancel-subscription-run.php:41
 #. translators: 1: product ID, 2: plan ID.
 #, php-format
 msgid "No active subscriptions found for product ID: %1$s and plan ID=%2$s"
-msgstr ""
+msgstr "제품 ID: %1$s 및 계획 ID=%2$s에 대한 활성 구독을 찾을 수 없습니다"
 
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:22
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:39
@@ -14290,6 +14326,8 @@ msgid ""
 "the Kit personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"각 필드 쌍을 별도의 줄에 두고, 키트 개인화 태그와 필드 값을 구분하기 위해 콜론 (\":\")을 사용하세요. 예: "
+"%TAG%:ppcart_field_id"
 
 #: includes/integrations/templates/ppcart-kit-ppcart-add-remove-convertkit-subscriber.php:59
 msgid "Subscriber added to Kit form."
@@ -14727,7 +14765,7 @@ msgstr "%s 가입비"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "%1$s off for %2$d months"
-msgstr ""
+msgstr "%1$s 할인, %2$d개월 동안"
 
 #: includes/ppcart-countries.php:17
 msgid "Select a Country"
@@ -15767,102 +15805,102 @@ msgstr "이 기간 동안 찾은 것이 없습니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:33
 msgid "Encryption enabled"
-msgstr ""
+msgstr "암호화 활성화됨"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:38
 msgid "Payment and integration credentials are encrypted at rest."
-msgstr ""
+msgstr "결제 및 통합 자격 증명이 정지 상태에서 암호화됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:40
 msgid "New credentials will be encrypted when saved."
-msgstr ""
+msgstr "새 자격 증명은 저장 시 암호화됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:44
 msgid "Encryption disabled"
-msgstr ""
+msgstr "암호화 비활성화됨"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:46
 msgid ""
 "Payment and integration keys are stored in plaintext by default. Enable "
 "encryption to reduce risk if your database is exposed."
-msgstr ""
+msgstr "결제 및 통합 키는 기본적으로 일반 텍스트로 저장됩니다. 데이터베이스가 노출될 경우 위험을 줄이기 위해 암호화를 활성화하세요."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:58
 msgid "Enable encryption"
-msgstr ""
+msgstr "암호화 활성화"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:67
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Add %s to wp-config.php to enable encryption."
-msgstr ""
+msgstr "암호화를 활성화하려면 %s를 wp-config.php에 추가하세요."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:79
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:27
 msgid "Encryption is controlled by PPCART_ENCRYPT_SECRETS in wp-config.php."
-msgstr ""
+msgstr "암호화는 wp-config.php의 PPCART_ENCRYPT_SECRETS에 의해 제어됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:87
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Optional: lock encryption on in wp-config.php with %s"
-msgstr ""
+msgstr "선택 사항: %s로 wp-config.php에서 암호화를 잠금 해제하세요."
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:98
 msgid "Open Security settings"
-msgstr ""
+msgstr "보안 설정 열기"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:27
 msgid "Encryption"
-msgstr ""
+msgstr "암호화"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:31
 msgid ""
 "Controlled by PPCART_ENCRYPT_SECRETS in wp-config.php. The database setting "
 "is ignored."
-msgstr ""
+msgstr "wp-config.php의 PPCART_ENCRYPT_SECRETS에 의해 제어됩니다. 데이터베이스 설정은 무시됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:44
 msgid "Encrypt payment and integration credentials in the database"
-msgstr ""
+msgstr "데이터베이스에서 결제 및 통합 자격 증명을 암호화합니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:48
 msgid "For production sites, you can lock this in wp-config.php instead:"
-msgstr ""
+msgstr "운영 사이트의 경우 wp-config.php에서 이것을 잠글 수 있습니다:"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:52
 msgid ""
 "When that constant is defined, it takes precedence and this checkbox is "
 "ignored."
-msgstr ""
+msgstr "그 상수가 정의되면 우선권을 가지며 이 체크박스는 무시됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:68
 #. translators: %s: encryption key source label.
 #, php-format
 msgid "Key source: %s"
-msgstr ""
+msgstr "키 소스: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:76
 msgid ""
 "Encryption cannot run until AUTH_KEY or PPCART_SECRETS_KEY is configured in "
 "wp-config.php."
-msgstr ""
+msgstr "AUTH_KEY 또는 PPCART_SECRETS_KEY가 wp-config.php에 설정될 때까지 암호화가 실행될 수 없습니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:83
 msgid "Stored credentials"
-msgstr ""
+msgstr "저장된 자격 증명"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:86
 #. translators: %d: count
 #, php-format
 msgid "Encrypted: %d"
-msgstr ""
+msgstr "암호화됨: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:87
 #. translators: %d: count
 #, php-format
 msgid "Plaintext: %d"
-msgstr ""
+msgstr "일반 텍스트: %d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:91
 msgid ""
@@ -15870,6 +15908,8 @@ msgid ""
 "plaintext. Existing encrypted values are not rewritten automatically; Cart "
 "continues to read them normally."
 msgstr ""
+"암호화가 비활성화된 동안 새로운 및 업데이트된 자격 증명은 일반 텍스트로 저장됩니다. 기존의 암호화된 값은 자동으로 다시 쓰이지 않으며 "
+"카트는 이를 정상적으로 읽습니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:99
 #. translators: %d: number of encrypted credentials.
@@ -15878,65 +15918,69 @@ msgid ""
 "%d credential remains encrypted in the database until you re-save it or "
 "enable encryption again."
 msgid_plural ""
+msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
 msgstr[0] ""
+"%d개의 자격 증명이 데이터베이스에 암호화된 상태로 남아 있으며, 이를 다시 저장하거나 암호화를 다시 활성화할 때까지 "
+"유지됩니다.|%d개의 자격 증명이 데이터베이스에 암호화된 상태로 남아 있으며, 이를 다시 저장하거나 암호화를 다시 활성화할 때까지 "
+"유지됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
 "When you enable encryption, any plaintext credentials are encrypted "
 "automatically."
-msgstr ""
+msgstr "암호화를 활성화하면 모든 일반 텍스트 자격 증명이 자동으로 암호화됩니다."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:121
 #. translators: %s: formatted datetime.
 #, php-format
 msgid "Last migration: %s"
-msgstr ""
+msgstr "마지막 마이그레이션: %s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:138
 msgid "Enable encryption above or in wp-config.php before running migration."
-msgstr ""
+msgstr "마이그레이션을 실행하기 전에 위 또는 wp-config.php에서 암호화를 활성화하십시오."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:156
 msgid ""
 "Rewrites existing plaintext payment and integration credentials in the "
 "database. Run during a maintenance window after taking a backup."
-msgstr ""
+msgstr "데이터베이스의 기존 일반 텍스트 결제 및 통합 자격 증명을 다시 작성합니다. 백업 후 유지 관리 창에서 실행하십시오."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:32
 msgid "PublishPress Cart security"
-msgstr ""
+msgstr "PublishPress 카트 보안"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:39
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed)."
-msgstr ""
+msgstr "암호화된 %1$d개의 저장된 자격 증명 (%2$d 건 건너뜀, %3$d 건 실패)."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:48
 msgid ""
 "Do not change AUTH_KEY or PPCART_SECRETS_KEY without re-entering payment "
 "and integration keys in Cart settings."
-msgstr ""
+msgstr "결제 및 통합 키를 카트 설정에 다시 입력하지 않고 AUTH_KEY 또는 PPCART_SECRETS_KEY를 변경하지 마십시오."
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:52
 msgid ""
 "Some credentials could not be encrypted. Re-run migration from Cart → "
 "Settings → Maintenance or re-save keys manually."
-msgstr ""
+msgstr "일부 자격 증명을 암호화할 수 없습니다. 카트 → 설정 → 유지 관리에서 마이그레이션을 다시 실행하거나 키를 수동으로 다시 저장하십시오."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:20
 msgid "You do not have permission to change security encryption settings."
-msgstr ""
+msgstr "보안 암호화 설정을 변경할 권한이 없습니다."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:58
 msgid "Encryption disabled."
-msgstr ""
+msgstr "암호화 비활성화됨."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:74
 msgid "Encryption enabled."
-msgstr ""
+msgstr "암호화 활성화됨."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:91
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
@@ -15945,22 +15989,24 @@ msgid ""
 "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed). Use Encrypt "
 "stored credentials in Maintenance to retry failures."
 msgstr ""
+"암호화된 %1$d개의 저장된 자격 증명 (%2$d 건 건너뜀, %3$d 건 실패). 실패를 다시 시도하려면 유지 관리에서 저장된 자격 "
+"증명 암호화 사용하십시오."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:100
 #. translators: 1: migrated count, 2: skipped count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped)."
-msgstr ""
+msgstr "암호화된 %1$d개의 저장된 자격 증명 (%2$d 건 건너뜀)."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:117
 msgid "You do not have permission to encrypt stored credentials."
-msgstr ""
+msgstr "저장된 자격 증명을 암호화할 권한이 없습니다."
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:132
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Migration complete. Encrypted: %1$d. Skipped: %2$d. Failed: %3$d."
-msgstr ""
+msgstr "마이그레이션 완료. 암호화됨: %1$d. 건너뜀: %2$d. 실패: %3$d."
 
 #: includes/secrets/traits/trait-ppcart-secrets-crypto.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:511
@@ -15975,9 +16021,13 @@ msgid ""
 "Encryption is enabled but %d stored credential is still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgid_plural ""
+msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgstr[0] ""
+"암호화가 활성화되었지만 %d개의 저장된 자격 증명이 여전히 일반 텍스트입니다. 저장된 자격 증명 암호화를 사용하여 다시 "
+"시도하십시오.|암호화가 활성화되었지만 %d개의 저장된 자격 증명이 여전히 일반 텍스트입니다. 저장된 자격 증명 암호화를 사용하여 다시 "
+"시도하십시오."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -15986,19 +16036,24 @@ msgid ""
 "You have %d stored credential in plaintext. Enabling encryption will "
 "encrypt it automatically."
 msgid_plural ""
+msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
 msgstr[0] ""
+"일반 텍스트로 %d개의 저장된 자격 증명이 있습니다. 암호화를 활성화하면 자동으로 암호화됩니다.|일반 텍스트로 %d개의 저장된 자격 "
+"증명이 있습니다. 암호화를 활성화하면 자동으로 암호화됩니다."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
 "Encryption is not enabled. Enable it in Cart → Settings → Maintenance or "
 "add define( 'PPCART_ENCRYPT_SECRETS', true ); to wp-config.php."
 msgstr ""
+"암호화가 활성화되지 않았습니다. 카트 → 설정 → 유지 관리에서 활성화하거나 wp-config.php에 define( "
+"'PPCART_ENCRYPT_SECRETS', true );를 추가하십시오."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:122
 msgid "Encryption requires AUTH_KEY or PPCART_SECRETS_KEY in wp-config.php."
-msgstr ""
+msgstr "암호화하려면 wp-config.php에 AUTH_KEY 또는 PPCART_SECRETS_KEY가 필요합니다."
 
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-resume-subscription.php:19
 msgid "Canceled Stripe subscriptions cannot be resumed locally."
@@ -16017,13 +16072,13 @@ msgstr "Stripe 구독이 PublishPress 장바구니 구독에 연결되어 있지
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
-msgstr ""
+msgstr "이 결제를 확인할 수 없습니다. 페이지를 새로 고치고 다시 시도하십시오."
 
 #: includes/stripe/templates/order-save.php:109
 #. translators: %s: order status.
 #, php-format
 msgid "%s order created."
-msgstr ""
+msgstr "%s 주문이 생성되었습니다."
 
 #: includes/stripe/templates/order-save.php:120
 msgid "Order complete."
@@ -16053,75 +16108,75 @@ msgstr "태그"
 #. translators: %s: singular label.
 #, php-format
 msgid "Add New %s"
-msgstr ""
+msgstr "새 %s 추가"
 
 #: includes/templates/post-types-register-single-post-type.php:49
 #: includes/templates/post-types-register-single-taxonomy.php:20
 #. translators: %s: singular label.
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "%s 편집"
 
 #: includes/templates/post-types-register-single-post-type.php:54
 #. translators: %s: singular label.
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "새 %s"
 
 #: includes/templates/post-types-register-single-post-type.php:56
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found"
-msgstr ""
+msgstr "검색된 %s 없음"
 
 #: includes/templates/post-types-register-single-post-type.php:58
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found in Trash"
-msgstr ""
+msgstr "휴지통에서 %s 검색된 항목 없음"
 
 #: includes/templates/post-types-register-single-post-type.php:60
 #. translators: %s: post type plural label
 #, php-format
 msgid "Parent %s :"
-msgstr ""
+msgstr "부모 %s :"
 
 #: includes/templates/post-types-register-single-post-type.php:62
 #: includes/templates/post-types-register-single-taxonomy.php:13
 #. translators: %s: plural label.
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "%s 검색"
 
 #: includes/templates/post-types-register-single-post-type.php:65
 #. translators: %s: singular label.
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "%s 보기"
 
 #: includes/templates/post-types-register-single-taxonomy.php:16
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s"
-msgstr ""
+msgstr "부모 %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:18
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s:"
-msgstr ""
+msgstr "부모 %s:"
 
 #: includes/templates/post-types-register-single-taxonomy.php:22
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Update %s"
-msgstr ""
+msgstr "%s 업데이트"
 
 #: includes/templates/post-types-register-single-taxonomy.php:26
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "New %s Name"
-msgstr ""
+msgstr "새 %s 이름"
 
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:37
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:38
@@ -16132,7 +16187,7 @@ msgstr "수락됨"
 #. translators: %1$s: previous order status, %2$s: new order status
 #, php-format
 msgid "Order status updated from %1$s to %2$s"
-msgstr ""
+msgstr "주문 상태가 %1$s에서 %2$s로 업데이트되었습니다"
 
 #: models/order/traits/templates/order-persistence-store.php:68
 msgid "Creating order."
@@ -16157,11 +16212,11 @@ msgstr "영수증 다운로드"
 #. translators: %s: subscription status
 #, php-format
 msgid "Subscription status updated to %s"
-msgstr ""
+msgstr "구독 상태가 %s로 업데이트되었습니다"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:37
 msgid "This offer is no longer available."
-msgstr ""
+msgstr "이 제안은 더 이상 유효하지 않습니다."
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:168
 #: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:176
@@ -16170,7 +16225,7 @@ msgstr ""
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:152
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:167
 msgid "This checkout could not be started. Please contact the site administrator."
-msgstr ""
+msgstr "이 체크아웃을 시작할 수 없습니다. 사이트 관리자에게 문의하십시오."
 
 #: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:36
 #: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:31
@@ -16256,11 +16311,11 @@ msgstr "새 카드를 저장할 수 없습니다. 결제 세부 정보를 확인
 msgid ""
 "The new card was saved, but some of your other subscriptions could not be "
 "updated. Please try again."
-msgstr ""
+msgstr "새 카드가 저장되었지만 다른 일부 구독은 업데이트할 수 없었습니다. 다시 시도해 주십시오."
 
 #: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:86
 msgid "The new card was saved, but the payment failed: "
-msgstr ""
+msgstr "새 카드가 저장되었지만 결제에 실패했습니다: "
 
 #: public/controllers/order/traits/trait-ppcart-public-order-cart.php:74
 msgid "Your cart is empty."
@@ -16268,25 +16323,25 @@ msgstr "장바구니가 비어 있습니다."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:201
 msgid "Processing payment…"
-msgstr ""
+msgstr "결제 처리 중…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:202
 msgid "Your payment is being confirmed. This page will refresh automatically…"
-msgstr ""
+msgstr "귀하의 결제가 확인되고 있습니다. 이 페이지는 자동으로 새로 고쳐질 것입니다…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:218
 msgid "Payment processing"
-msgstr ""
+msgstr "결제 처리 중"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:219
 msgid ""
 "We are still confirming your payment. You can leave this page open and "
 "refresh shortly, or check your email for a confirmation."
-msgstr ""
+msgstr "아직 귀하의 결제를 확인하고 있습니다. 이 페이지를 열어 두고 잠시 후 새로 고치거나 확인을 위해 이메일을 확인할 수 있습니다."
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:221
 msgid "View order status"
-msgstr ""
+msgstr "주문 상태 보기"
 
 #: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Purchase"
@@ -16303,7 +16358,7 @@ msgstr "이 체크아웃에 대한 결제 준비가 불가능합니다."
 #: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:74
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:117
 msgid "There was an error, please try again."
-msgstr ""
+msgstr "오류가 발생했습니다. 다시 시도해 주십시오."
 
 #: public/controllers/templates/ga-purchase-tracking.php:112
 #: public/controllers/templates/ga-purchase-tracking.php:165
@@ -16314,13 +16369,13 @@ msgstr "맞춤 추가 기능"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:37
 msgid "Hosted Checkout is not enabled."
-msgstr ""
+msgstr "호스팅된 체크아웃이 활성화되어 있지 않습니다."
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:184
 msgid ""
 "This subscription is not ready for checkout, please contact the site "
 "administrator."
-msgstr ""
+msgstr "이 구독은 체크아웃 준비가 되어 있지 않습니다. 사이트 관리자에게 문의하십시오."
 
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:37
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:82
@@ -16429,6 +16484,10 @@ msgid ""
 "data-testid=\"ppcart-checkout-stripe-test-card-link\">Find a test card for "
 "another country</a>."
 msgstr ""
+"테스트 모드 활성화: 테스트(미국) 구매를 하려면 신용 카드 번호 \"4242424242424242\"와 유효한 만료일 및 아무 "
+"CVC를 사용하십시오. <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\" "
+"data-testid=\"ppcart-checkout-stripe-test-card-link\">다른 국가의 테스트 카드를 "
+"찾으십시오</a>."
 
 #: public/templates/functions/payment-address.php:85
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:104
@@ -16464,11 +16523,11 @@ msgstr "연락처 정보"
 
 #: public/templates/functions/summary-and-scripts.php:142
 msgid "terms and conditions"
-msgstr ""
+msgstr "이용 약관"
 
 #: public/templates/functions/summary-and-scripts.php:161
 msgid "privacy policy"
-msgstr ""
+msgstr "개인정보 처리방침"
 
 #: public/templates/my-account/card-details.php:24
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:92
@@ -16502,7 +16561,7 @@ msgstr "만료 날짜"
 
 #: public/templates/my-account/forms/change-card.php:57
 msgid "Set default for all active subscriptions"
-msgstr ""
+msgstr "모든 활성 구독의 기본값 설정"
 
 #: public/templates/my-account/forms/change-card.php:65
 msgid "Pay Now and Save Card"
@@ -16687,7 +16746,7 @@ msgstr "다운로드 가능한 항목이 없을 때 표시됩니다."
 #: includes/integrations/gutenberg/blocks/account-login/block.js:21
 #: includes/integrations/gutenberg/blocks/account-profile/block.js:9
 #: includes/integrations/gutenberg/blocks/_shared/list-controls.js:71
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Style"
 msgstr "Style"
 
@@ -16700,7 +16759,7 @@ msgid "Preset style"
 msgstr "프레시덴테 하예스"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.js:33
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Card / Minimal / Dashboard / Folder."
 msgstr "Card / Minimal / Dashboard / Folder."
 
@@ -17763,7 +17822,7 @@ msgid "Underline"
 msgstr "스털링 파운드"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:35
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "Pills"
 msgstr "Pills"
 
@@ -17790,12 +17849,12 @@ msgid "Bold (700)"
 msgstr "볼드 (700)"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:55
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "S"
 msgstr "S"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:56
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "M"
 msgstr "M"
 
@@ -17806,12 +17865,12 @@ msgid "L"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:58
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XL"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:59
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XXL"
 msgstr "XXL"
 
@@ -18043,10 +18102,10 @@ msgstr "아이콘 위치"
 
 #: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
-#, php-format
+#, fuzzy, php-format
 msgctxt "date range"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:162
 #. translators: 1: current page, 2: total pages.
@@ -18062,24 +18121,24 @@ msgstr "조지아"
 
 #: includes/functions/merge-tags-and-dates.php:143
 #. translators: 1: product name, 2: plan name.
-#, php-format
+#, fuzzy, php-format
 msgctxt "product and plan"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: public/templates/functions/summary-and-scripts.php:141
 #. translators: %s: terms and conditions link.
 #, php-format
 msgctxt "terms and conditions"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "저는 %s를 읽었고 동의합니다"
 
 #: public/templates/functions/summary-and-scripts.php:160
 #. translators: %s: privacy policy link.
 #, php-format
 msgctxt "privacy policy"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "저는 %s를 읽었고 동의합니다"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.json
 #, fuzzy

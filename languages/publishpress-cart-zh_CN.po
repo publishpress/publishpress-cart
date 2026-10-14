@@ -10,16 +10,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-04T16:10:21+00:00\n"
-"PO-Revision-Date: 2026-10-13 22:22+0000\n"
+"PO-Revision-Date: 2026-10-14 02:02+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: zh-CN\n"
 
 #: publishpress-cart.php:16
 #. Plugin Name of the plugin
 msgid "PublishPress Cart - eCommerce for Digital Products"
-msgstr ""
+msgstr "PublishPress 购物车 - 数字产品电子商务"
 
 #: publishpress-cart.php:17
 #. Plugin URI of the plugin
@@ -31,7 +31,7 @@ msgstr "https://publishpress.com/publishpress-cart/"
 msgid ""
 "Create order pages and simplified sales flow creation that helps you sell "
 "digital products, programs, and services."
-msgstr ""
+msgstr "创建订单页面和简化的销售流程，帮助您销售数字产品、程序和服务。"
 
 #: publishpress-cart.php:20
 #: admin/partials/settings-page/tabs/topbar.php:8
@@ -83,7 +83,7 @@ msgstr "客户"
 
 #: admin/class-ppcart-contacts-page.php:165
 msgid "Export Customers"
-msgstr ""
+msgstr "导出客户"
 
 #: admin/class-ppcart-contacts-page.php:169
 #: admin/reports/templates/customer-report/page.php:87
@@ -150,7 +150,7 @@ msgid "Name"
 msgstr "名称"
 
 #: admin/class-ppcart-contacts-page.php:192
-#: admin/reports/templates/customer-report/page.php:93
+#: admin/reports/templates/customer-report/page.php:93, fuzzy
 msgid "LTV"
 msgstr "LTV"
 
@@ -161,23 +161,23 @@ msgstr "最后订单日期"
 
 #: admin/class-ppcart-contacts-page.php:224
 msgid "Search customers"
-msgstr ""
+msgstr "搜索客户"
 
 #: admin/class-ppcart-contacts-page.php:225
 msgid "Show _MENU_ customers"
-msgstr ""
+msgstr "显示 _MENU_ 个客户"
 
 #: admin/class-ppcart-contacts-page.php:226
 msgid "_START_ - _END_ of _TOTAL_ customers"
-msgstr ""
+msgstr "_START_ - _END_ 的 _TOTAL_ 个客户"
 
 #: admin/class-ppcart-contacts-page.php:227
 msgid "No customers found"
-msgstr ""
+msgstr "未找到客户"
 
 #: admin/class-ppcart-contacts-page.php:228
 msgid "No matching customers found"
-msgstr ""
+msgstr "未找到匹配的客户"
 
 #: admin/class-ppcart-extension-page.php:81
 #: admin/class-ppcart-extension-page.php:82
@@ -216,28 +216,28 @@ msgstr "客户和账单详情"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:49
 msgid "Studiocart custom tracking scripts are not available in PublishPress Cart."
-msgstr ""
+msgstr "Studiocart 自定义跟踪脚本在 PublishPress 购物车中不可用。"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:50
 msgid ""
 "They are replaced by structured Meta Pixel and Google Analytics events. "
 "Leftover tracking code on these products is kept in post meta for reference "
 "and is not executed."
-msgstr ""
+msgstr "它们被结构化的 Meta Pixel 和 Google Analytics 事件所替代。剩余的跟踪代码保留在这些产品的文章元数据中供参考，但不会执行。"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:51
 msgid "Affected products:"
-msgstr ""
+msgstr "受影响的产品："
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:61
 msgid "Review analytics settings"
-msgstr ""
+msgstr "查看分析设置"
 
 #: admin/controllers/class-ppcart-admin-legacy-tracking-notice-controller.php:62
 #: admin/traits/templates/notices-admin-notices.php:111
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:56
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "忽略此通知"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:76
 msgid "Shortcode"
@@ -352,27 +352,27 @@ msgstr "更新状态为已取消"
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:176
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
-msgstr ""
+msgstr "与 Stripe 同步"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:207
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
-msgstr[0] ""
+msgstr[0] "%s 份订阅已从 Stripe 同步。"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:219
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
-msgstr[0] ""
+msgstr[0] "%s 份失败；请查看其订阅日志了解原因。"
 
 #: admin/controllers/class-ppcart-admin-order-list-controller.php:229
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
-msgstr ""
+msgstr "每次运行同步的订阅数量有限。选择其余的并再次运行以继续。"
 
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:44
 #: admin/controllers/class-ppcart-admin-order-refund-controller.php:51
@@ -394,11 +394,11 @@ msgstr "未授权。"
 #. translators: %s: active payment processors list.
 #, php-format
 msgid "Cart - Test Mode Active (%1$s)"
-msgstr ""
+msgstr "购物车 - 测试模式已启用 (%1$s)"
 
 #: admin/controllers/class-ppcart-admin-test-mode-notice-controller.php:101
 msgid "Open PublishPress Cart payment settings"
-msgstr ""
+msgstr "打开 PublishPress 购物车支付设置"
 
 #: admin/controllers/order/templates/product-form.php:45
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:37
@@ -600,7 +600,7 @@ msgstr "父订单"
 
 #: admin/controllers/order/templates/product-form.php:574
 msgid "Child Order"
-msgstr ""
+msgstr "子订单"
 
 #: admin/controllers/order/templates/product-info-metabox.php:48
 msgid "Stripe payment"
@@ -914,7 +914,7 @@ msgstr "错误"
 #: admin/traits/templates/integrations-ppcart-mailchimp-groups-tags.php:15
 #: admin/traits/trait-ppcart-admin-integrations.php:132
 msgid "You do not have permission to perform this action."
-msgstr ""
+msgstr "您没有执行此操作的权限。"
 
 #: admin/controllers/order/traits/templates/order-ajax-product-plan-options-html.php:11
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:15
@@ -950,7 +950,7 @@ msgstr "订单备注"
 #: admin/partials/ppcart-admin-page-settings.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:32
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:16
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:22, fuzzy
 msgid "PublishPress Cart"
 msgstr "PublishPress Cart"
 
@@ -1025,7 +1025,7 @@ msgstr "取消待处理"
 msgid ""
 "Refresh status and next bill date from Stripe, and import any invoices "
 "missing from the order history"
-msgstr ""
+msgstr "从 Stripe 刷新状态和下一个账单日期，并导入订单历史中缺失的任何发票"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:147
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:29
@@ -1178,13 +1178,13 @@ msgstr "订阅和发票已成功同步。"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:48
 msgid "Subscription synced from Stripe by admin"
-msgstr ""
+msgstr "由管理员从 Stripe 同步的订阅"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:52
 #. translators: %s: error message.
 #, php-format
 msgid "Error syncing subscription from Stripe! Message: %s"
-msgstr ""
+msgstr "从 Stripe 同步订阅时出错！消息：%s"
 
 #: admin/controllers/templates/order-list-bulk-action-handler.php:77
 msgid ""
@@ -1228,7 +1228,7 @@ msgstr "待处理"
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "待处理 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:20
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:158
@@ -1241,14 +1241,14 @@ msgstr "已付款"
 #, php-format
 msgid "Paid <span class=\"count\">(%s)</span>"
 msgid_plural "Paid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "已支付 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:38
 #. translators: %s: number of posts.
 #, php-format
 msgid "Refunded <span class=\"count\">(%s)</span>"
 msgid_plural "Refunded <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "已退款 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:42
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:160
@@ -1260,7 +1260,7 @@ msgstr "失败"
 #, php-format
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "失败 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:53
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:26
@@ -1275,7 +1275,7 @@ msgstr "逾期"
 #, php-format
 msgid "Past Due <span class=\"count\">(%s)</span>"
 msgid_plural "Past Due <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "逾期 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:64
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:162
@@ -1287,7 +1287,7 @@ msgstr "不可收回"
 #, php-format
 msgid "Uncollectible <span class=\"count\">(%s)</span>"
 msgid_plural "Uncollectible <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "无法收回 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
@@ -1304,7 +1304,7 @@ msgstr "活动"
 #, php-format
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "活动 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:86
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:27
@@ -1316,7 +1316,7 @@ msgstr "未付款"
 #, php-format
 msgid "Unpaid <span class=\"count\">(%s)</span>"
 msgid_plural "Unpaid <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "未付款 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
@@ -1331,14 +1331,14 @@ msgstr "已暂停"
 #, php-format
 msgid "Paused <span class=\"count\">(%s)</span>"
 msgid_plural "Paused <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "暂停 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:115
 #. translators: %s: number of posts.
 #, php-format
 msgid "Canceled <span class=\"count\">(%s)</span>"
 msgid_plural "Canceled <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "已取消 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:119
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:159
@@ -1351,7 +1351,7 @@ msgstr "已完成"
 #, php-format
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "已完成 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:130
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:23
@@ -1363,7 +1363,7 @@ msgstr "未完成"
 #, php-format
 msgid "Incomplete <span class=\"count\">(%s)</span>"
 msgid_plural "Incomplete <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "未完成 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:141
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:24
@@ -1375,7 +1375,7 @@ msgstr "试用中"
 #, php-format
 msgid "Trialing <span class=\"count\">(%s)</span>"
 msgid_plural "Trialing <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "试用中 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:33
 msgid "Orders this month"
@@ -1506,7 +1506,7 @@ msgstr "支持与文档"
 #. translators: 1: opening link tag, 2: closing link tag.
 #, php-format
 msgid "Visit our %1$sdocumentation%2$s for help."
-msgstr ""
+msgstr "访问我们的 %1$s文档%2$s 获取帮助。"
 
 #: admin/dashboard/class-ppcart-dashboard-widget.php:36
 #. translators: %s: plugin title.
@@ -1530,7 +1530,7 @@ msgstr "显示消息"
 
 #: admin/metaboxes/field-groups/message-fields.php:18
 msgid "Display Page"
-msgstr ""
+msgstr "显示页面"
 
 #: admin/metaboxes/field-groups/message-fields.php:19
 msgid "Perform Redirect"
@@ -1555,7 +1555,7 @@ msgstr "感谢页面 URL"
 
 #: admin/metaboxes/field-groups/message-fields.php:76
 msgid "Preview & send test email"
-msgstr ""
+msgstr "预览和发送测试电子邮件"
 
 #: admin/metaboxes/field-groups/message-fields.php:84
 msgid "Disable Order Received Confirmation email"
@@ -1663,23 +1663,23 @@ msgstr "主题"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:12
 msgid "Checkout starts"
-msgstr ""
+msgstr "结账开始"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:22
 msgid "Checkout ends"
-msgstr ""
+msgstr "结账结束"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:32
 msgid "When checkout ended"
-msgstr ""
+msgstr "当结账结束时"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:45
 msgid "Checkout ended redirect URL"
-msgstr ""
+msgstr "结账结束重定向 URL"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:58
 msgid "Checkout ended message"
-msgstr ""
+msgstr "结账结束消息"
 
 #: admin/metaboxes/field-groups/sales-cart-window-fields.php:59
 #: public/templates/functions/checkout-core.php:373
@@ -1880,62 +1880,62 @@ msgstr "频率"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:146
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:178
 msgid "Every"
-msgstr ""
+msgstr "每个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:147
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:179
 msgid "Every 2nd"
-msgstr ""
+msgstr "每第二个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:148
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:180
 msgid "Every 3rd"
-msgstr ""
+msgstr "每第三个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:149
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:181
 msgid "Every 4th"
-msgstr ""
+msgstr "每第四个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:150
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:182
 msgid "Every 5th"
-msgstr ""
+msgstr "每第五个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:151
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:183
 msgid "Every 6th"
-msgstr ""
+msgstr "每第六个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:152
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:184
 msgid "Every 7th"
-msgstr ""
+msgstr "每第七个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:153
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:185
 msgid "Every 8th"
-msgstr ""
+msgstr "每第八个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:154
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:186
 msgid "Every 9th"
-msgstr ""
+msgstr "每第九个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:155
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:187
 msgid "Every 10th"
-msgstr ""
+msgstr "每第十个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:156
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:188
 msgid "Every 11th"
-msgstr ""
+msgstr "每第十一"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:157
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:189
 msgid "Every 12th"
-msgstr ""
+msgstr "每第十二个"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:173
 msgid "Frequency (On Sale)"
@@ -1950,22 +1950,22 @@ msgstr "支付间隔"
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:210
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:234
 msgid "Day"
-msgstr ""
+msgstr "天"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:211
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:235
 msgid "Week"
-msgstr ""
+msgstr "周"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:212
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:236
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:213
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:237
 msgid "Year"
-msgstr ""
+msgstr "年"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:229
 msgid "Pay Interval (On Sale)"
@@ -2029,7 +2029,7 @@ msgstr "任何"
 msgid "Method"
 msgstr "方法"
 
-#: admin/metaboxes/traits/templates/integration-fields/fields-01.php:85
+#: admin/metaboxes/traits/templates/integration-fields/fields-01.php:85, fuzzy
 msgid "Webhook URL"
 msgstr "Webhook URL"
 
@@ -2055,7 +2055,7 @@ msgstr "字段映射"
 msgid ""
 "Put each field pair on a separate line and use a colon (\":\") to separate "
 "the field key from the field value. For example: field_key:ppcart_field_id"
-msgstr ""
+msgstr "将每对字段放在单独的行上，并使用冒号（\":\"）将字段键与字段值分隔开。例如：field_key:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-01.php:163
 #: admin/metaboxes/traits/templates/integration-fields/fields-03.php:86
@@ -2101,6 +2101,8 @@ msgid ""
 "the ActiveCampaign personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
 msgstr ""
+"将每对字段放在单独的行上，并使用冒号（\":\"）将 ActiveCampaign "
+"个性化标签与字段值分隔开。例如：%TAG%:ppcart_field_id"
 
 #: admin/metaboxes/traits/templates/integration-fields/fields-02.php:89
 msgid "SendFox List"
@@ -2242,7 +2244,7 @@ msgstr "主要加价"
 #. translators: 1: bump number, 2: product title.
 #, php-format
 msgid "Add'l Bump %1$d (%2$s)"
-msgstr ""
+msgstr "附加增量 %1$d (%2$s)"
 
 #: admin/metaboxes/traits/templates/product-metabox-plan-options-get-payment-plans.php:28
 msgid "(on sale)"
@@ -2318,7 +2320,7 @@ msgstr "集成"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:16
 msgid "Product notification"
-msgstr ""
+msgstr "产品通知"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
@@ -2330,15 +2332,15 @@ msgstr "电子邮件预览"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:23
 msgid "This notification is currently disabled. Preview and test email still work."
-msgstr ""
+msgstr "此通知目前已禁用。预览和测试电子邮件仍然有效。"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:32
 msgid "Send test to"
-msgstr ""
+msgstr "发送测试到"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:34
 msgid "Send test email"
-msgstr ""
+msgstr "发送测试电子邮件"
 
 #: admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php:12
 msgid "this product"
@@ -2438,7 +2440,7 @@ msgstr "订阅续费失败"
 #: includes/integrations/templates/cancel-subscription-plan-data.php:10
 #: includes/integrations/templates/cancel-subscription-plan-data.php:22
 msgid "No plans found"
-msgstr ""
+msgstr "未找到计划"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:29
 #: includes/helpers/pro-locks/product-locks.php:56
@@ -2554,7 +2556,7 @@ msgstr "头部背景图片"
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:24
 #: public/partials/csv-export.php:351
 msgid "Until canceled"
-msgstr ""
+msgstr "直到取消"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:26
 msgid " payments"
@@ -2841,7 +2843,7 @@ msgstr "调试"
 
 #: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
-msgstr ""
+msgstr "维护"
 
 #: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:101
@@ -2898,7 +2900,7 @@ msgstr "启用诊断日志记录并访问调试日志工具。"
 
 #: admin/partials/settings-page/metadata.php:66
 msgid "Operational tools including security encryption and credential migration."
-msgstr ""
+msgstr "包括安全加密和凭证迁移的操作工具。"
 
 #: admin/partials/settings-page/metadata.php:71
 msgid "Configure store options that do not belong in the main setup tabs."
@@ -2921,7 +2923,7 @@ msgid "More"
 msgstr "更多"
 
 #: admin/partials/settings-page/metadata.php:107
-#: admin/settings/traits/templates/settings-sections-integrations.php:8
+#: admin/settings/traits/templates/settings-sections-integrations.php:8, fuzzy
 msgid "ActiveCampaign"
 msgstr "ActiveCampaign"
 
@@ -2930,7 +2932,7 @@ msgid "Sync customers and purchases to ActiveCampaign."
 msgstr "将客户和购买同步到 ActiveCampaign。"
 
 #: admin/partials/settings-page/metadata.php:116
-#: admin/settings/traits/templates/settings-sections-integrations.php:9
+#: admin/settings/traits/templates/settings-sections-integrations.php:9, fuzzy
 msgid "Mailchimp"
 msgstr "Mailchimp"
 
@@ -2938,7 +2940,7 @@ msgstr "Mailchimp"
 msgid "Add customers to Mailchimp audiences and automate emails."
 msgstr "将客户添加到 Mailchimp 受众并自动化电子邮件。"
 
-#: admin/partials/settings-page/metadata.php:125
+#: admin/partials/settings-page/metadata.php:125, fuzzy
 msgid "Kit"
 msgstr "Kit"
 
@@ -2947,7 +2949,7 @@ msgid "Send customers and purchases to Kit forms and tags."
 msgstr "将客户和购买发送到 Kit 表单和标签。"
 
 #: admin/partials/settings-page/metadata.php:134
-#: admin/settings/traits/templates/settings-sections-integrations.php:11
+#: admin/settings/traits/templates/settings-sections-integrations.php:11, fuzzy
 msgid "MemberVault"
 msgstr "MemberVault"
 
@@ -2956,7 +2958,7 @@ msgid "Protect content and manage members with MemberVault."
 msgstr "使用 MemberVault 保护内容和管理成员。"
 
 #: admin/partials/settings-page/metadata.php:143
-#: admin/settings/traits/templates/settings-sections-integrations.php:12
+#: admin/settings/traits/templates/settings-sections-integrations.php:12, fuzzy
 msgid "SendFox"
 msgstr "SendFox"
 
@@ -2972,9 +2974,9 @@ msgstr "Facebook 广告事件"
 msgid ""
 "Send Cart events to an existing Meta Pixel installation. PublishPress Cart "
 "does not install or connect the pixel script."
-msgstr ""
+msgstr "将购物车事件发送到现有的 Meta Pixel 安装。PublishPress Cart 不会安装或连接像素脚本。"
 
-#: admin/partials/settings-page/metadata.php:161
+#: admin/partials/settings-page/metadata.php:161, fuzzy
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
@@ -2984,6 +2986,8 @@ msgid ""
 "installation. PublishPress Cart does not install or connect the analytics "
 "script."
 msgstr ""
+"将购物车事件发送到现有的 Google Analytics 或 Google Tag Manager 安装。PublishPress Cart "
+"不会安装或连接分析脚本。"
 
 #: admin/partials/settings-page/metadata.php:170
 msgid "Google reCAPTCHA"
@@ -3009,7 +3013,7 @@ msgstr "谷歌 reCAPTCHA v3"
 msgid "Configure score-based reCAPTCHA v3 protection."
 msgstr "配置基于评分的 reCAPTCHA v3 保护。"
 
-#: admin/partials/settings-page/metadata.php:196
+#: admin/partials/settings-page/metadata.php:196, fuzzy
 msgid "Drip"
 msgstr "Drip"
 
@@ -3017,7 +3021,7 @@ msgstr "Drip"
 msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "将客户、标签和电子商务活动同步到 Drip。"
 
-#: admin/partials/settings-page/metadata.php:205
+#: admin/partials/settings-page/metadata.php:205, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
@@ -3026,7 +3030,7 @@ msgid "Add customers to MailerLite subscribers and groups."
 msgstr "将客户添加到 MailerLite 订阅者和组中。"
 
 #: admin/partials/settings-page/metadata.php:214
-#: admin/settings/traits/templates/settings-sections-integrations.php:10
+#: admin/settings/traits/templates/settings-sections-integrations.php:10, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
@@ -3034,7 +3038,7 @@ msgstr "MailPoet"
 msgid "Add customers to MailPoet lists."
 msgstr "将客户添加到 MailPoet 列表中。"
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:222, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
@@ -3042,7 +3046,7 @@ msgstr "Encharge"
 msgid "Track order events and sync customers to Encharge."
 msgstr "跟踪订单事件并将客户同步到 Encharge。"
 
-#: admin/partials/settings-page/metadata.php:232
+#: admin/partials/settings-page/metadata.php:232, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
@@ -3050,7 +3054,7 @@ msgstr "FluentCRM"
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "将客户添加到 FluentCRM 列表和标签中。"
 
-#: admin/partials/settings-page/metadata.php:240
+#: admin/partials/settings-page/metadata.php:240, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
@@ -3058,7 +3062,7 @@ msgstr "Academy LMS"
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "将学生注册或移除出 Academy LMS 课程。"
 
-#: admin/partials/settings-page/metadata.php:248
+#: admin/partials/settings-page/metadata.php:248, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
@@ -3074,7 +3078,7 @@ msgstr "心跳"
 msgid "Manage community access in Heartbeat."
 msgstr "管理心跳中的社区访问。"
 
-#: admin/partials/settings-page/metadata.php:266
+#: admin/partials/settings-page/metadata.php:266, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
@@ -3082,7 +3086,7 @@ msgstr "Kajabi"
 msgid "Enable Kajabi purchase automations."
 msgstr "启用Kajabi购买自动化。"
 
-#: admin/partials/settings-page/metadata.php:275
+#: admin/partials/settings-page/metadata.php:275, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
@@ -3090,7 +3094,7 @@ msgstr "Teachable"
 msgid "Enroll customers into Teachable schools and products."
 msgstr "将客户注册到Teachable学校和产品中。"
 
-#: admin/partials/settings-page/metadata.php:284
+#: admin/partials/settings-page/metadata.php:284, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
@@ -3098,7 +3102,7 @@ msgstr "Upcoach"
 msgid "Grant customers access to Upcoach programs."
 msgstr "授予客户访问Upcoach程序的权限。"
 
-#: admin/partials/settings-page/metadata.php:293
+#: admin/partials/settings-page/metadata.php:293, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
@@ -3106,7 +3110,7 @@ msgstr "Tutor LMS"
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "注册或移除Tutor LMS课程中的学生。"
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:301, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
@@ -3114,7 +3118,7 @@ msgstr "LearnDash"
 msgid "Grant or revoke LearnDash course access."
 msgstr "授予或撤销对LearnDash课程的访问权限。"
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
@@ -3122,7 +3126,7 @@ msgstr "WP Courseware"
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "在购买后管理WP Courseware的注册。"
 
-#: admin/partials/settings-page/metadata.php:317
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
@@ -3138,7 +3142,7 @@ msgstr "小组"
 msgid "Add or remove customers from WordPress Groups."
 msgstr "将客户添加到或从WordPress小组中移除。"
 
-#: admin/partials/settings-page/metadata.php:333
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
@@ -3146,7 +3150,7 @@ msgstr "MemberPress"
 msgid "Grant customers MemberPress membership access."
 msgstr "授予客户MemberPress会员访问权限。"
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
@@ -3154,7 +3158,7 @@ msgstr "ARMember"
 msgid "Grant customers ARMember plan access."
 msgstr "授予客户 ARMember 计划访问权限。"
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
@@ -3162,7 +3166,7 @@ msgstr "WishList Member"
 msgid "Grant customers WishList Member level access."
 msgstr "授予客户 WishList Member 等级访问权限。"
 
-#: admin/partials/settings-page/metadata.php:357
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
@@ -3170,7 +3174,7 @@ msgstr "Restrict Content Pro"
 msgid "Grant customers Restrict Content Pro access."
 msgstr "授予客户 Restrict Content Pro 访问权限。"
 
-#: admin/partials/settings-page/metadata.php:365
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
@@ -3178,7 +3182,7 @@ msgstr "Ultimate Member"
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "为新客户发送 Ultimate Member 欢迎邮件。"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:374, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -3186,7 +3190,7 @@ msgstr "Elementor"
 msgid "Choose Elementor templates for checkout components."
 msgstr "选择 Elementor 模板用于结账组件。"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:382, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
@@ -3194,7 +3198,7 @@ msgstr "Divi"
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "在 Divi 布局中使用 PublishPress 购物车订单表单。"
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
@@ -3202,7 +3206,7 @@ msgstr "Oxygen Builder"
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "在 Oxygen Builder 中使用 PublishPress 购物车条件。"
 
-#: admin/partials/settings-page/metadata.php:398
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
@@ -3219,7 +3223,7 @@ msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "将 PublishPress 购物车产品与 WooCommerce 流程连接。"
 
 #: admin/partials/settings-page/metadata.php:414
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
@@ -3240,7 +3244,7 @@ msgstr "退款订单"
 msgid "Refund an existing order as an order automation."
 msgstr "作为订单自动化退款现有订单。"
 
-#: admin/partials/settings-page/metadata.php:442
+#: admin/partials/settings-page/metadata.php:442, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
@@ -3320,7 +3324,7 @@ msgstr "管理"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:53
 #: includes/functions/payment-and-locale-lists.php:35
 #: includes/logging/traits/templates/debug-log-viewer-render-details-panel.php:22
-#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15
+#: includes/logging/traits/templates/stripe-webhook-logger-admin-render-details-panel.php:15, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
@@ -3338,7 +3342,7 @@ msgstr "通过 Stripe 安全接受信用卡和其他支付。"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
 #: includes/helpers/pro-locks/product-locks.php:45
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
-#: public/paypal/traits/trait-ppcart-paypal-settings.php:88
+#: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
@@ -3610,7 +3614,7 @@ msgstr "搜索设置"
 
 #: admin/partials/settings-page/tabs/topbar.php:16
 msgid "Search settings..."
-msgstr ""
+msgstr "搜索设置..."
 
 #: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
@@ -3620,7 +3624,7 @@ msgstr "关于 %s 的性能总结"
 
 #: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
-msgstr ""
+msgstr "日期范围"
 
 #: admin/reports/templates/admin-reports-page.php:83
 msgid "Select date range"
@@ -3628,24 +3632,24 @@ msgstr "选择日期范围"
 
 #: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
-msgstr ""
+msgstr "按名称或电子邮件搜索客户"
 
 #: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
-msgstr ""
+msgstr "按名称或电子邮件搜索"
 
 #: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
-msgstr ""
+msgstr "搜索产品"
 
 #: admin/reports/templates/admin-reports-page.php:110
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:97
 msgid "All products"
-msgstr ""
+msgstr "所有产品"
 
 #: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
-msgstr ""
+msgstr "按订单或订阅的主要产品筛选"
 
 #: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
@@ -3654,7 +3658,7 @@ msgstr "应用"
 
 #: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
-msgstr ""
+msgstr "清除筛选器"
 
 #: admin/reports/templates/admin-reports-page.php:122
 #: admin/reports/templates/customer-reports-page.php:85
@@ -3665,7 +3669,7 @@ msgstr "导出订单"
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
-msgstr ""
+msgstr "产品筛选器与每个订单或订阅的主要产品匹配，而不是 bump 或 upsell 行项目。"
 
 #: admin/reports/templates/admin-reports-page.php:352
 #: includes/order-items/order-details-renderer.php:67
@@ -3708,7 +3712,7 @@ msgstr "客户生命周期价值"
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
-msgstr ""
+msgstr "所有时间内 %s 个匹配客户的平均值"
 
 #: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
@@ -3735,7 +3739,7 @@ msgstr "交易"
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
-msgstr ""
+msgstr "%1$s 新订单，%2$s 次续订"
 
 #: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
@@ -3854,7 +3858,7 @@ msgstr "记录结账活动后，付费交易将按网关在这里进行分组。
 
 #: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
-msgstr ""
+msgstr "按类型分类的订单"
 
 #: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
@@ -4084,31 +4088,31 @@ msgstr "未知产品"
 msgid ""
 "Stripe needs a temporary restricted key with %s. We use it once, install "
 "the endpoint, and never store it."
-msgstr ""
+msgstr "Stripe 需要一个临时受限密钥，包含 %s。我们使用一次，安装端点，然后不再存储。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:29
 msgid "Webhook endpoints: Write"
-msgstr ""
+msgstr "Webhook 端点：写入"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:33
 msgid "Temporary Stripe key"
-msgstr ""
+msgstr "临时 Stripe 密钥"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:45
 msgid "Install webhook"
-msgstr ""
+msgstr "安装 webhook"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:51
 msgid "Create the key in Stripe"
-msgstr ""
+msgstr "在 Stripe 中创建密钥"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:54
 msgid "I want to set it up in Stripe myself"
-msgstr ""
+msgstr "我想在 Stripe 中自己设置"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:64
 msgid "Create an endpoint in Stripe with this URL:"
-msgstr ""
+msgstr "使用以下 URL 在 Stripe 中创建端点："
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:69
 #. translators: %d: number of Stripe events.
@@ -4116,11 +4120,11 @@ msgstr ""
 msgid ""
 "Select the %d events listed in our documentation, then paste that endpoint "
 "signing secret:"
-msgstr ""
+msgstr "选择我们文档中列出的 %d 个事件，然后粘贴该端点签名密钥："
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:73
 msgid "Signing secret"
-msgstr ""
+msgstr "签名密钥"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:85
 #: includes/integrations/gutenberg/blocks/account-profile/preview.php:13
@@ -4130,51 +4134,51 @@ msgstr "保存"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:23
 msgid "Add a Stripe secret key for this mode first."
-msgstr ""
+msgstr "请先为此模式添加一个 Stripe 秘密密钥。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:37
 #. translators: %s: local webhook URL.
 #, php-format
 msgid "Stripe cannot reach a local address. Forward events with Stripe CLI to %s"
-msgstr ""
+msgstr "Stripe 无法访问本地地址。通过 Stripe CLI 将事件转发到 %s"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:90
 msgid "Some events are missing, so parts of your store will not update."
-msgstr ""
+msgstr "一些事件缺失，因此您的商店的部分内容将无法更新。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:103
 msgid ""
 "This account does not let us re-check the endpoint, so no live status is "
 "shown."
-msgstr ""
+msgstr "该帐户不允许我们重新检查端点，因此不显示实时状态。"
 
 #: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
-msgstr ""
+msgstr "Webhook 检查失败：%s"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:9
 msgid "You are not allowed to configure Stripe webhooks."
-msgstr ""
+msgstr "您不允许配置 Stripe webhooks。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:34
 msgid ""
 "That key does not look like a Stripe key for the selected mode. Copy a "
 "restricted key that starts with rk_, or a secret key that starts with sk_."
-msgstr ""
+msgstr "该密钥看起来不像所选模式的 Stripe 密钥。复制一个以 rk_ 开头的受限密钥，或一个以 sk_ 开头的秘密密钥。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:44
 msgid ""
 "Webhook is active and the signing secret is saved. The key you pasted was "
 "not stored, so you can delete it in Stripe now."
-msgstr ""
+msgstr "Webhook 已激活，签名密钥已保存。您粘贴的密钥未被存储，因此您现在可以在 Stripe 中删除它。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:49
 msgid ""
 "Webhook events were updated. The key you pasted was not stored, so you can "
 "delete it in Stripe now."
-msgstr ""
+msgstr "Webhook 事件已更新。您粘贴的密钥未被存储，因此您现在可以在 Stripe 中删除它。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:56
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:47
@@ -4182,30 +4186,30 @@ msgid ""
 "That webhook endpoint already existed, so Stripe did not return a signing "
 "secret. Open the endpoint in your Stripe Dashboard, copy the signing "
 "secret, and paste it below."
-msgstr ""
+msgstr "该 webhook 端点已经存在，因此 Stripe 没有返回签名密钥。请在您的 Stripe 控制面板中打开该端点，复制签名密钥，然后粘贴到下面。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:69
 msgid ""
 "A Stripe signing secret starts with whsec_. Copy it again from the webhook "
 "endpoint in your Stripe Dashboard."
-msgstr ""
+msgstr "Stripe 签名密钥以 whsec_ 开头。请再次从您的 Stripe 控制面板中的 webhook 端点复制它。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:77
 msgid ""
 "Signing secret saved. Send a test event from Stripe to confirm that your "
 "site accepts it."
-msgstr ""
+msgstr "签名密钥已保存。请从 Stripe 发送测试事件以确认您的网站可以接受它。"
 
 #: admin/settings/templates/stripe-webhook-settings-handle-manual-webhook-setup.php:83
 msgid "Paste a Stripe key or a signing secret before you save."
-msgstr ""
+msgstr "在保存之前，请粘贴一个 Stripe 密钥或签名密钥。"
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:30
 msgid ""
 "This connected account cannot update webhooks automatically. Paste a "
 "restricted key with Webhook endpoints: Write, or create the endpoint in "
 "Stripe yourself."
-msgstr ""
+msgstr "该连接帐户无法自动更新 webhooks。请粘贴一个带有 Webhook 端点：写入的受限密钥，或自己在 Stripe 中创建端点。"
 
 #: admin/settings/templates/stripe-webhook-settings-maybe-handle-stripe-webhook-setup.php:41
 msgid "Stripe webhook is configured for the selected mode."
@@ -4299,7 +4303,7 @@ msgstr "在 wp-admin 中显示产品的重复行操作。"
 msgid "Email reports and confirmations to"
 msgstr "将报告和确认邮件发送至"
 
-#: admin/settings/traits/options/core-settings.php:161
+#: admin/settings/traits/options/core-settings.php:161, fuzzy
 msgid "admin@example.com, another@example.com"
 msgstr "admin@example.com, another@example.com"
 
@@ -4323,7 +4327,7 @@ msgstr "每周"
 
 #: admin/settings/traits/options/core-settings.php:176
 msgid "Semi monthly"
-msgstr ""
+msgstr "半月"
 
 #: admin/settings/traits/options/core-settings.php:178
 msgid "How often summary reports should be emailed."
@@ -4468,10 +4472,12 @@ msgid ""
 "Use date tokens {D}, {DD}, {M}, {MM}, {YY}, {YYYY}, {H}, {HH}, {N}, {S}, "
 "and custom alphanumeric characters. Example: INV-{YYYY}{MM}{DD}."
 msgstr ""
+"使用日期标记 {D}、{DD}、{M}、{MM}、{YY}、{YYYY}、{H}、{HH}、{N}、{S} "
+"和自定义字母数字字符。示例：INV-{YYYY}{MM}{DD}。"
 
 #: admin/settings/traits/options/invoice-fields.php:19
 msgid "Learn more"
-msgstr ""
+msgstr "了解更多"
 
 #: admin/settings/traits/options/invoice-fields.php:26
 msgid "Custom Invoice Numbering"
@@ -4509,7 +4515,7 @@ msgstr "发票格式"
 msgid "Current Invoice Number"
 msgstr "当前发票编号"
 
-#: admin/settings/traits/options/payment-fields.php:33
+#: admin/settings/traits/options/payment-fields.php:33, fuzzy
 msgid "API"
 msgstr "API"
 
@@ -4517,11 +4523,11 @@ msgstr "API"
 msgid ""
 "GOING LIVE? Click the \"Update\" button on any subscription products "
 "created on the Test API after switching this setting to Live!"
-msgstr ""
+msgstr "即将上线？在将此设置切换为“实时”后，请点击任何在测试 API 上创建的订阅产品的“更新”按钮！"
 
 #: admin/settings/traits/options/payment-fields.php:39
 msgid "More Information"
-msgstr ""
+msgstr "更多信息"
 
 #: admin/settings/traits/options/payment-fields.php:52
 msgid "Connection Status"
@@ -4529,7 +4535,7 @@ msgstr "连接状态"
 
 #: admin/settings/traits/options/payment-fields.php:61
 msgid "Checkout experience"
-msgstr ""
+msgstr "结账体验"
 
 #: admin/settings/traits/options/payment-fields.php:70
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:97
@@ -4543,12 +4549,12 @@ msgstr "客户门户"
 
 #: admin/settings/traits/options/payment-fields.php:91
 msgid "Hosted Checkout"
-msgstr ""
+msgstr "托管结账"
 
 #: admin/settings/traits/options/payment-fields.php:101
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:20
 msgid "Payment Element"
-msgstr ""
+msgstr "支付元素"
 
 #: admin/settings/traits/options/payment-fields.php:111
 msgid "Statement Descriptor"
@@ -4576,13 +4582,13 @@ msgstr "否"
 
 #: admin/settings/traits/options/payment-fields.php:158
 msgid "Verify SSL certificates"
-msgstr ""
+msgstr "验证 SSL 证书"
 
 #: admin/settings/traits/options/payment-fields.php:162
 msgid ""
 "Verifies PayPal TLS certificates and hostname matches for server-side "
 "PayPal API requests."
-msgstr ""
+msgstr "验证 PayPal TLS 证书和主机名是否与服务器端 PayPal API 请求匹配。"
 
 #: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
@@ -4685,19 +4691,19 @@ msgstr "电子邮件预览无法生成。"
 
 #: admin/settings/traits/templates/settings-email-preview-product-notification-email.php:35
 msgid "(no subject)"
-msgstr ""
+msgstr "(无主题)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:11
 msgid "(recipient resolved at send time)"
-msgstr ""
+msgstr "(收件人在发送时解析)"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:36
 msgid "From"
-msgstr ""
+msgstr "来自"
 
 #: admin/settings/traits/templates/settings-email-render-notification-inbox-preview.php:37
 msgid "To"
-msgstr ""
+msgstr "发送至"
 
 #: admin/settings/traits/templates/settings-email-reset-email-template.php:17
 msgid "You do not have permission to reset this email template."
@@ -4713,31 +4719,31 @@ msgstr "使用默认设置"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:19
 msgid "You do not have permission to send this test email."
-msgstr ""
+msgstr "您没有权限发送此测试电子邮件。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:24
 msgid "Test email could not be sent."
-msgstr ""
+msgstr "测试电子邮件无法发送。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:35
 msgid "Please enter a valid email address to send the test to."
-msgstr ""
+msgstr "请输入有效的电子邮件地址以发送测试。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:45
 #. translators: %s: email subject.
 #, php-format
 msgid "[Test] %s"
-msgstr ""
+msgstr "[测试] %s"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:54
 #. translators: %s: recipient email address.
 #, php-format
 msgid "Test email sent to %s."
-msgstr ""
+msgstr "测试电子邮件已发送至 %s。"
 
 #: admin/settings/traits/templates/settings-email-send-product-notification-test.php:59
 msgid "Test email failed to send. Check your email/SMTP settings and try again."
-msgstr ""
+msgstr "测试电子邮件发送失败。请检查您的电子邮件/SMTP设置并重试。"
 
 #: admin/settings/traits/templates/settings-sections-emails.php:9
 msgid "Reports & Notifications"
@@ -4750,11 +4756,11 @@ msgstr "订单接收确认"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:13
 msgid "Enable Facebook Ad Events"
-msgstr ""
+msgstr "启用 Facebook 广告事件"
 
 #: admin/settings/traits/templates/settings-sections-integrations.php:14
 msgid "Google Analytics Purchase Event Tracking"
-msgstr ""
+msgstr "Google Analytics 购买事件跟踪"
 
 #: admin/settings/traits/templates/settings-sections-register.php:14
 msgid "Currency & Pricing"
@@ -4774,63 +4780,63 @@ msgstr "其他设置"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:15
 msgid "Classic card form"
-msgstr ""
+msgstr "经典卡片表单"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:16
 msgid "Legacy"
-msgstr ""
+msgstr "遗留"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:17
 msgid ""
 "Single card field on your checkout page. Supports order bumps and one-click "
 "upsells."
-msgstr ""
+msgstr "您结账页面上的单一卡片字段。支持订单提升和一键增销。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:21
 msgid "Recommended"
-msgstr ""
+msgstr "推荐"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:22
 msgid ""
 "Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports "
 "order bumps and one-click upsells."
-msgstr ""
+msgstr "卡片、Apple/Google Pay 和嵌入在您的结账页面中的链接。支持订单提升和一键增销。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:25
 msgid "Stripe-hosted page"
-msgstr ""
+msgstr "Stripe 托管页面"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:26
 msgid ""
 "Redirects customers to a Stripe-hosted payment page. Most payment methods "
 "available (Klarna, Cash App Pay, and more via your Stripe dashboard)."
-msgstr ""
+msgstr "将客户重定向到 Stripe 托管的支付页面。大多数支付方式可用（Klarna、Cash App Pay 以及更多通过您的 Stripe 仪表板）。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:27
 msgid ""
 "Order bumps and one-click upsells/downsells are not available in this mode. "
 "Coupons continue to work."
-msgstr ""
+msgstr "在此模式下，订单提升和一键增销/降价不可用。优惠券继续有效。"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:31
 msgid "Built into Payment Element"
-msgstr ""
+msgstr "内置于支付元素中"
 
 #: admin/settings/traits/templates/settings-text-fields-field-stripe-checkout-experience.php:32
 msgid "Built into the Stripe-hosted page"
-msgstr ""
+msgstr "内置于 Stripe 托管页面中"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:23
 msgid "Stripe Connect server URL is not configured."
-msgstr ""
+msgstr "Stripe Connect 服务器 URL 未配置。"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:47
 msgid "Stripe Connect live mode requires HTTPS for the site and return URL."
-msgstr ""
+msgstr "Stripe Connect 实时模式要求网站和返回 URL 使用 HTTPS。"
 
 #: admin/settings/traits/templates/stripe-connect-flow-maybe-handle-stripe-connect-start.php:55
 msgid "Unable to generate an encryption key for Stripe Connect."
-msgstr ""
+msgstr "无法为 Stripe Connect 生成加密密钥。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:36
 msgid "Connect server did not return a valid Stripe account ID."
@@ -4841,20 +4847,20 @@ msgid ""
 "This Stripe Connect session is missing or expired. This can happen after a "
 "failed, abandoned, or restarted connection attempt. Reload this settings "
 "page and start the connection again."
-msgstr ""
+msgstr "此 Stripe Connect 会话缺失或已过期。这可能发生在连接尝试失败、被放弃或重新启动后。重新加载此设置页面并重新开始连接。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:104
 msgid ""
 "SSL verification failed when retrieving keys from the connect server. Use a "
 "trusted certificate, or explicitly enable insecure local credential pickup "
 "for non-live local development."
-msgstr ""
+msgstr "从连接服务器检索密钥时 SSL 验证失败。使用可信证书，或显式启用不安全的本地凭据获取以进行非实时本地开发。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:127
 msgid ""
 "Unable to retrieve Stripe API keys from the Connect server for this "
 "session. Reload this settings page and start the connection again."
-msgstr ""
+msgstr "无法为此会话从 Connect 服务器检索 Stripe API 密钥。重新加载此设置页面并重新开始连接。"
 
 #: admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php:139
 msgid "Stripe account connected successfully."
@@ -4874,34 +4880,34 @@ msgstr "连接服务器未配置"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:47
 msgid "Set PPCART_STRIPE_CONNECT_SERVER_URL to your PublishPress intermediary URL."
-msgstr ""
+msgstr "将 PPCART_STRIPE_CONNECT_SERVER_URL 设置为您的 PublishPress 中介 URL。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:54
 msgid "1. Connect your Stripe account"
-msgstr ""
+msgstr "1. 连接您的 Stripe 帐户"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:55
 msgid "We sync your API keys automatically, then walk you through the webhook."
-msgstr ""
+msgstr "我们会自动同步您的 API 密钥，然后引导您完成 webhook。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:58
 msgid ""
 "Your saved keys are not direct Stripe keys, so reconnect before you "
 "continue."
-msgstr ""
+msgstr "您保存的密钥不是直接的 Stripe 密钥，因此在继续之前请重新连接。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:64
 msgid "Stripe checkout is disabled. You can still connect now."
-msgstr ""
+msgstr "Stripe 结账已禁用。您现在仍然可以连接。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
-msgstr ""
+msgstr "2. 安装 webhook"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:74
 msgid "Available after you connect."
-msgstr ""
+msgstr "在您连接后可用。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:89
 msgid "Disconnect"
@@ -4913,7 +4919,7 @@ msgstr "在 Stripe Dashboard 中打开"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:97
 msgid "Stripe is ready"
-msgstr ""
+msgstr "Stripe 已准备好"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
@@ -4924,46 +4930,46 @@ msgstr "密钥已同步"
 #. translators: %d: number of Stripe events.
 #, php-format
 msgid "Webhook active with %d events"
-msgstr ""
+msgstr "Webhook 活动，%d 个事件"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
 msgid "1. Stripe account connected"
-msgstr ""
+msgstr "1. Stripe 帐户已连接"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
-msgstr ""
+msgstr "在完成此操作之前，订单将无法完成。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
-msgstr ""
+msgstr "需要注意"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
-msgstr ""
+msgstr "未安装"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
-msgstr ""
+msgstr "修复事件"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-billing-options.php:45
 msgid "Always enabled for PayPal API requests."
-msgstr ""
+msgstr "始终为 PayPal API 请求启用。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:32
 msgid "Leave blank to keep current value"
-msgstr ""
+msgstr "留空以保持当前值"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-input-fields.php:35
 #: includes/helpers/pro-locks/settings-locks.php:289
 msgid "Configured (value hidden)"
-msgstr ""
+msgstr "已配置（值隐藏）"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:66
 msgid "Mailchimp API Key"
 msgstr "Mailchimp API 密钥"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:78
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:78, fuzzy
 msgid "ActiveCampaign URL"
 msgstr "ActiveCampaign URL"
 
@@ -4971,7 +4977,7 @@ msgstr "ActiveCampaign URL"
 msgid "ActiveCampaign Secret Key"
 msgstr "ActiveCampaign 秘密密钥"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:100
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:100, fuzzy
 msgid "MemberVault URL"
 msgstr "MemberVault URL"
 
@@ -4987,13 +4993,13 @@ msgstr "SendFox API 密钥"
 msgid ""
 "MailPoet is active. Assign lists on each product’s Integrations settings — "
 "no API key is required."
-msgstr ""
+msgstr "MailPoet 已激活。在每个产品的集成设置中分配列表——无需 API 密钥。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:142
 msgid ""
 "Install and activate the MailPoet plugin to sync customers to lists. No API "
 "key is required."
-msgstr ""
+msgstr "安装并激活 MailPoet 插件以将客户同步到列表。无需 API 密钥。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:150
 msgid "Add Payment Info"
@@ -5001,7 +5007,7 @@ msgstr "添加支付信息"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:154
 msgid "Sends an AddPaymentInfo event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "向现有的 Meta Pixel 安装发送 AddPaymentInfo 事件。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:155
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:166
@@ -5009,7 +5015,7 @@ msgstr ""
 msgid ""
 "Requires Meta Pixel or another plugin/theme to load fbq on the checkout "
 "page."
-msgstr ""
+msgstr "需要 Meta Pixel 或其他插件/主题在结账页面加载 fbq。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:161
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:185
@@ -5018,7 +5024,7 @@ msgstr "购买完成"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:165
 msgid "Sends a Purchase event to an existing Meta Pixel installation."
-msgstr ""
+msgstr "向现有的 Meta Pixel 安装发送 Purchase 事件。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:172
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:196
@@ -5027,26 +5033,26 @@ msgstr "捕获的潜在客户"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:176
 msgid "Sends a Lead event when a two-step checkout captures customer details."
-msgstr ""
+msgstr "当两步结账捕获客户详细信息时，发送 Lead 事件。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:189
 msgid ""
 "Sends a purchase event to an existing Google Analytics or Data Layer "
 "installation."
-msgstr ""
+msgstr "向现有的 Google Analytics 或数据层安装发送购买事件。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:190
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:201
 msgid ""
 "Requires Google Analytics, Google Tag Manager, or another plugin/theme to "
 "load ga, gtag, or dataLayer on the checkout page."
-msgstr ""
+msgstr "需要 Google Analytics、Google Tag Manager 或其他插件/主题在结账页面加载 ga、gtag 或 dataLayer。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:200
 msgid ""
 "Sends a generate_lead event when a two-step checkout captures customer "
 "details."
-msgstr ""
+msgstr "当两步结账捕获客户详细信息时，发送 generate_lead 事件。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:207
 #: includes/helpers/pro-locks/product-locks.php:80
@@ -5057,13 +5063,13 @@ msgstr "类型"
 msgid ""
 "Choose the event format that matches the analytics script already installed "
 "on this site."
-msgstr ""
+msgstr "选择与此站点上已安装的分析脚本匹配的事件格式。"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:214, fuzzy
 msgid "analytics.js"
 msgstr "analytics.js"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215
+#: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:215, fuzzy
 msgid "Google Analytics 4"
 msgstr "Google Analytics 4"
 
@@ -5149,39 +5155,39 @@ msgstr "抱歉，您无权访问此页面。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
-msgstr ""
+msgstr "税务选项"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:82
 msgid "Invoice Options"
-msgstr ""
+msgstr "发票选项"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:77
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "The Stripe Connect server could not preregister this session. Error: %s"
-msgstr ""
+msgstr "Stripe Connect 服务器无法预注册此会话。错误：%s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:88
 msgid "The Stripe Connect server rejected this preregistration request."
-msgstr ""
+msgstr "Stripe Connect 服务器拒绝了此预注册请求。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:109
 msgid "Unable to prepare the Stripe Connect site credential."
-msgstr ""
+msgstr "无法准备 Stripe Connect 网站凭据。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:115
 msgid "Unable to encrypt the Stripe Connect site credential."
-msgstr ""
+msgstr "无法加密 Stripe Connect 网站凭据。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:144
 #. translators: %s: HTTP error message.
 #, php-format
 msgid "Unable to fetch the Stripe Connect preregistration public key. Error: %s"
-msgstr ""
+msgstr "无法获取 Stripe Connect 预注册公钥。错误：%s"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:154
 msgid "The Stripe Connect preregistration public key is unavailable or invalid."
-msgstr ""
+msgstr "Stripe Connect 预注册公钥不可用或无效。"
 
 #: admin/settings/traits/trait-ppcart-admin-stripe-connect-flow.php:225
 msgid "Stripe account disconnected for the selected mode."
@@ -5286,13 +5292,13 @@ msgstr "错误：请再试一次。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Migration required"
-msgstr ""
+msgstr "需要迁移"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
-msgstr ""
+msgstr "您有 1 个以明文存储的凭据。在启用加密后，从“设置”→“维护”运行迁移以加密它。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 #. translators: %d: number of stored credentials.
@@ -5300,16 +5306,16 @@ msgstr ""
 msgid ""
 "You have %d stored credentials in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt them."
-msgstr ""
+msgstr "您有 %d 个以明文存储的凭据。在启用加密后，从“设置”→“维护”运行迁移以加密它们。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Encryption updated"
-msgstr ""
+msgstr "加密已更新"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
-msgstr ""
+msgstr "继续"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #: admin/traits/trait-ppcart-admin-integrations.php:149
@@ -5319,19 +5325,19 @@ msgstr "确定"
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
-msgstr ""
+msgstr "无法更新安全加密设置。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:95
 msgid "No matching customers"
-msgstr ""
+msgstr "没有匹配的客户"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:96
 msgid "No matching products"
-msgstr ""
+msgstr "没有匹配的产品"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "Searching…"
-msgstr ""
+msgstr "搜索中…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:114
 msgid "No matching settings"
@@ -5368,7 +5374,7 @@ msgstr "关闭预览"
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:153
 msgid "Encrypt stored credentials"
-msgstr ""
+msgstr "加密存储的凭据"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 #. translators: %d: number of plaintext credentials.
@@ -5376,29 +5382,29 @@ msgstr ""
 msgid ""
 "Encrypt %d plaintext credential(s) in the database? Take a backup first and "
 "run this during a maintenance window."
-msgstr ""
+msgstr "加密数据库中 %d 个明文凭据？请先备份，并在维护窗口期间运行此操作。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
-msgstr ""
+msgstr "扫描存储的凭据并加密任何明文值？请先备份，并在维护窗口期间运行此操作。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Generating preview…"
-msgstr ""
+msgstr "生成预览中…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Sending test email…"
-msgstr ""
+msgstr "发送测试电子邮件中…"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:146
 msgid "Test email failed to send. Please refresh the page and try again."
-msgstr ""
+msgstr "测试电子邮件发送失败。请刷新页面并重试。"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:147
 msgid "Enter an email address to send the test to."
-msgstr ""
+msgstr "输入一个电子邮件地址以发送测试。"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:23
 #. translators: %s: tax rate ID.
@@ -5493,6 +5499,8 @@ msgid ""
 "data-testid=\"ppcart-admin-notice-integration-settings\">settings page</a> "
 "to check your integration settings.</p>"
 msgstr ""
+"无法连接到以下列出的集成。请访问 %1$s <a href=\"%2$s\" rel=\"noreferrer noopener\" "
+"data-testid=\"ppcart-admin-notice-integration-settings\">设置页面</a> 检查您的集成设置。"
 
 #: admin/traits/templates/notices-admin-notices.php:70
 msgid ""
@@ -5579,7 +5587,7 @@ msgstr "[已移除]"
 #. translators: 1: field label, 2: order ID.
 #, php-format
 msgid "There was a problem removing your %1$s from order #%2$d."
-msgstr ""
+msgstr "在订单 #%2$d 中移除您的 %1$s 时出现问题。"
 
 #: admin/traits/trait-ppcart-admin-privacy.php:197
 msgid ""
@@ -5769,16 +5777,18 @@ msgid ""
 "PublishPress Cart and PublishPress Cart Compatibility cannot run while "
 "Studiocart is active. Deactivate Studiocart to start those plugins."
 msgstr ""
+"PublishPress Cart 和 PublishPress Cart 兼容性无法在 Studiocart 活动时运行。请停用 "
+"Studiocart 以启动这些插件。"
 
 #: includes/class-ppcart-version-notices.php:85
 msgid ""
 "You're using PublishPress Cart. The Pro version has more features and "
 "support."
-msgstr ""
+msgstr "您正在使用 PublishPress Cart。专业版具有更多功能和支持。"
 
 #: includes/class-ppcart-version-notices.php:97
 msgid "Dismiss"
-msgstr ""
+msgstr "忽略"
 
 #: includes/data/states/states-01.php:8
 msgid "Bengo"
@@ -5788,9 +5798,9 @@ msgstr "本戈"
 msgid "Benguela"
 msgstr "本格拉"
 
-#: includes/data/states/states-01.php:10
+#: includes/data/states/states-01.php:10, fuzzy
 msgid "Bi�"
-msgstr ""
+msgstr "Bi�"
 
 #: includes/data/states/states-01.php:11
 msgid "Cabinda"
@@ -5804,9 +5814,9 @@ msgstr "库内内"
 msgid "Huambo"
 msgstr "万博"
 
-#: includes/data/states/states-01.php:14
+#: includes/data/states/states-01.php:14, fuzzy
 msgid "Hu�la"
-msgstr ""
+msgstr "Hu�la"
 
 #: includes/data/states/states-01.php:15
 msgid "Kuando Kubango"
@@ -5844,9 +5854,9 @@ msgstr "莫西克"
 msgid "Namibe"
 msgstr "纳米贝"
 
-#: includes/data/states/states-01.php:24
+#: includes/data/states/states-01.php:24, fuzzy
 msgid "U�ge"
-msgstr ""
+msgstr "U�ge"
 
 #: includes/data/states/states-01.php:25
 msgid "Zaire"
@@ -5854,7 +5864,7 @@ msgstr "扎伊尔"
 
 #: includes/data/states/states-01.php:28
 msgid "Ciudad Aut�noma de Buenos Aires"
-msgstr ""
+msgstr "布宜诺斯艾利斯自治市"
 
 #: includes/data/states/states-01.php:29
 msgid "Buenos Aires"
@@ -5875,7 +5885,7 @@ msgstr "丘布特"
 #: includes/data/states/states-01.php:33
 #: includes/data/states/states-01.php:353
 msgid "C�rdoba"
-msgstr ""
+msgstr "科尔多瓦"
 
 #: includes/data/states/states-01.php:34
 msgid "Corrientes"
@@ -5883,7 +5893,7 @@ msgstr "科连特斯"
 
 #: includes/data/states/states-01.php:35
 msgid "Entre R�os"
-msgstr ""
+msgstr "恩特雷里奥斯"
 
 #: includes/data/states/states-01.php:36
 msgid "Formosa"
@@ -5913,11 +5923,11 @@ msgstr "米西奥内斯"
 
 #: includes/data/states/states-01.php:42
 msgid "Neuqu�n"
-msgstr ""
+msgstr "内乌肯"
 
 #: includes/data/states/states-01.php:43
 msgid "R�o Negro"
-msgstr ""
+msgstr "黑河"
 
 #: includes/data/states/states-01.php:44
 msgid "Salta"
@@ -5950,7 +5960,7 @@ msgstr "火地岛"
 
 #: includes/data/states/states-01.php:51
 msgid "Tucum�n"
-msgstr ""
+msgstr "图库曼"
 
 #: includes/data/states/states-01.php:55
 msgid "Australian Capital Territory"
@@ -6379,7 +6389,7 @@ msgstr "潘多"
 
 #: includes/data/states/states-01.php:171
 msgid "Potos�"
-msgstr ""
+msgstr "波托西"
 
 #: includes/data/states/states-01.php:173
 msgid "Tarija"
@@ -6395,7 +6405,7 @@ msgstr "阿拉戈斯"
 
 #: includes/data/states/states-01.php:178
 msgid "Amap�"
-msgstr ""
+msgstr "阿马帕"
 
 #: includes/data/states/states-01.php:179
 #: includes/data/states/states-03.php:222
@@ -6408,7 +6418,7 @@ msgstr "巴伊亚"
 
 #: includes/data/states/states-01.php:181
 msgid "Cear�"
-msgstr ""
+msgstr "塞阿拉"
 
 #: includes/data/states/states-01.php:182
 msgid "Distrito Federal"
@@ -6416,15 +6426,15 @@ msgstr "联邦区"
 
 #: includes/data/states/states-01.php:183
 msgid "Esp�rito Santo"
-msgstr ""
+msgstr "圣埃斯皮里图"
 
 #: includes/data/states/states-01.php:184
 msgid "Goi�s"
-msgstr ""
+msgstr "戈亚斯"
 
 #: includes/data/states/states-01.php:185
 msgid "Maranh�o"
-msgstr ""
+msgstr "马拉尼昂"
 
 #: includes/data/states/states-01.php:186
 msgid "Mato Grosso"
@@ -6440,15 +6450,15 @@ msgstr "米纳斯吉拉斯"
 
 #: includes/data/states/states-01.php:189
 msgid "Par�"
-msgstr ""
+msgstr "帕拉"
 
 #: includes/data/states/states-01.php:190
 msgid "Para�ba"
-msgstr ""
+msgstr "巴拉那"
 
 #: includes/data/states/states-01.php:191
 msgid "Paran�"
-msgstr ""
+msgstr "帕拉那州"
 
 #: includes/data/states/states-01.php:192
 msgid "Pernambuco"
@@ -6456,7 +6466,7 @@ msgstr "伯南布哥"
 
 #: includes/data/states/states-01.php:193
 msgid "Piau�"
-msgstr ""
+msgstr "皮奥伊"
 
 #: includes/data/states/states-01.php:194
 msgid "Rio de Janeiro"
@@ -6472,7 +6482,7 @@ msgstr "南里奥格兰德"
 
 #: includes/data/states/states-01.php:197
 msgid "Rond�nia"
-msgstr ""
+msgstr "隆多尼亚"
 
 #: includes/data/states/states-01.php:198
 msgid "Roraima"
@@ -6484,7 +6494,7 @@ msgstr "圣卡塔琳娜"
 
 #: includes/data/states/states-01.php:200
 msgid "S�o Paulo"
-msgstr ""
+msgstr "圣保罗"
 
 #: includes/data/states/states-01.php:201
 msgid "Sergipe"
@@ -6584,7 +6594,7 @@ msgstr "格拉鲁斯"
 
 #: includes/data/states/states-01.php:229
 msgid "Graub�nden"
-msgstr ""
+msgstr "格劳宾登"
 
 #: includes/data/states/states-01.php:230
 msgid "Jura"
@@ -6596,7 +6606,7 @@ msgstr "卢塞恩"
 
 #: includes/data/states/states-01.php:232
 msgid "Neuch�tel"
-msgstr ""
+msgstr "诺沙泰尔"
 
 #: includes/data/states/states-01.php:233
 msgid "Nidwalden"
@@ -6648,135 +6658,135 @@ msgstr "楚格"
 
 #: includes/data/states/states-01.php:245
 msgid "Z�rich"
-msgstr ""
+msgstr "苏黎世"
 
 #: includes/data/states/states-01.php:248
 msgid "Yunnan / ??"
-msgstr ""
+msgstr "云南 / ??"
 
 #: includes/data/states/states-01.php:249
 msgid "Beijing / ??"
-msgstr ""
+msgstr "北京 / ??"
 
 #: includes/data/states/states-01.php:250
 msgid "Tianjin / ??"
-msgstr ""
+msgstr "天津 / ??"
 
 #: includes/data/states/states-01.php:251
 msgid "Hebei / ??"
-msgstr ""
+msgstr "河北 / ??"
 
 #: includes/data/states/states-01.php:252
 msgid "Shanxi / ??"
-msgstr ""
+msgstr "山西 / ??"
 
 #: includes/data/states/states-01.php:253
 msgid "Inner Mongolia / ???"
-msgstr ""
+msgstr "内蒙古 / ???"
 
 #: includes/data/states/states-01.php:254
 msgid "Liaoning / ??"
-msgstr ""
+msgstr "辽宁 / ??"
 
 #: includes/data/states/states-01.php:255
 msgid "Jilin / ??"
-msgstr ""
+msgstr "吉林 / ??"
 
 #: includes/data/states/states-01.php:256
 msgid "Heilongjiang / ???"
-msgstr ""
+msgstr "黑龙江 / ???"
 
 #: includes/data/states/states-01.php:257
 msgid "Shanghai / ??"
-msgstr ""
+msgstr "上海 / ??"
 
 #: includes/data/states/states-01.php:258
 msgid "Jiangsu / ??"
-msgstr ""
+msgstr "江苏 / ??"
 
 #: includes/data/states/states-01.php:259
 msgid "Zhejiang / ??"
-msgstr ""
+msgstr "浙江 / ??"
 
 #: includes/data/states/states-01.php:260
 msgid "Anhui / ??"
-msgstr ""
+msgstr "安徽 / ??"
 
 #: includes/data/states/states-01.php:261
 msgid "Fujian / ??"
-msgstr ""
+msgstr "福建 / ??"
 
 #: includes/data/states/states-01.php:262
 msgid "Jiangxi / ??"
-msgstr ""
+msgstr "江西 / ??"
 
 #: includes/data/states/states-01.php:263
 msgid "Shandong / ??"
-msgstr ""
+msgstr "山东 / ??"
 
 #: includes/data/states/states-01.php:264
 msgid "Henan / ??"
-msgstr ""
+msgstr "河南 / ??"
 
 #: includes/data/states/states-01.php:265
 msgid "Hubei / ??"
-msgstr ""
+msgstr "湖北 / ??"
 
 #: includes/data/states/states-01.php:266
 msgid "Hunan / ??"
-msgstr ""
+msgstr "湖南 / ??"
 
 #: includes/data/states/states-01.php:267
 msgid "Guangdong / ??"
-msgstr ""
+msgstr "广东 / ??"
 
 #: includes/data/states/states-01.php:268
 msgid "Guangxi Zhuang / ????"
-msgstr ""
+msgstr "广西壮族 / ????"
 
 #: includes/data/states/states-01.php:269
 msgid "Hainan / ??"
-msgstr ""
+msgstr "海南 / ??"
 
 #: includes/data/states/states-01.php:270
 msgid "Chongqing / ??"
-msgstr ""
+msgstr "重庆 / ??"
 
 #: includes/data/states/states-01.php:271
 msgid "Sichuan / ??"
-msgstr ""
+msgstr "四川 / ??"
 
 #: includes/data/states/states-01.php:272
 msgid "Guizhou / ??"
-msgstr ""
+msgstr "贵州 / ??"
 
 #: includes/data/states/states-01.php:273
 msgid "Shaanxi / ??"
-msgstr ""
+msgstr "陕西 / ??"
 
 #: includes/data/states/states-01.php:274
 msgid "Gansu / ??"
-msgstr ""
+msgstr "甘肃 / ??"
 
 #: includes/data/states/states-01.php:275
 msgid "Qinghai / ??"
-msgstr ""
+msgstr "青海 / ??"
 
 #: includes/data/states/states-01.php:276
 msgid "Ningxia Hui / ??"
-msgstr ""
+msgstr "宁夏回族 / ??"
 
 #: includes/data/states/states-01.php:277
 msgid "Macao / ??"
-msgstr ""
+msgstr "澳门 / ??"
 
 #: includes/data/states/states-01.php:278
 msgid "Tibet / ??"
-msgstr ""
+msgstr "西藏 / ??"
 
 #: includes/data/states/states-01.php:279
 msgid "Xinjiang / ??"
-msgstr ""
+msgstr "新疆 / ??"
 
 #: includes/data/states/states-01.php:285
 msgid "Adrar"
@@ -6800,7 +6810,7 @@ msgstr "巴特纳"
 
 #: includes/data/states/states-01.php:290
 msgid "B�ja�a"
-msgstr ""
+msgstr "Béjaïa"
 
 #: includes/data/states/states-01.php:291
 msgid "Biskra"
@@ -6808,7 +6818,7 @@ msgstr "比斯克拉"
 
 #: includes/data/states/states-01.php:292
 msgid "B�char"
-msgstr ""
+msgstr "Béchar"
 
 #: includes/data/states/states-01.php:293
 msgid "Blida"
@@ -6824,7 +6834,7 @@ msgstr "塔曼拉塞特"
 
 #: includes/data/states/states-01.php:296
 msgid "T�bessa"
-msgstr ""
+msgstr "Tébessa"
 
 #: includes/data/states/states-01.php:297
 msgid "Tlemcen"
@@ -6852,11 +6862,11 @@ msgstr "吉杰尔"
 
 #: includes/data/states/states-01.php:303
 msgid "S�tif"
-msgstr ""
+msgstr "Sétif"
 
 #: includes/data/states/states-01.php:304
 msgid "Sa�da"
-msgstr ""
+msgstr "Saïda"
 
 #: includes/data/states/states-01.php:305
 msgid "Skikda"
@@ -6864,7 +6874,7 @@ msgstr "斯基克达"
 
 #: includes/data/states/states-01.php:306
 msgid "Sidi Bel Abb�s"
-msgstr ""
+msgstr "Sidi Bel Abbès"
 
 #: includes/data/states/states-01.php:307
 msgid "Annaba"
@@ -6880,7 +6890,7 @@ msgstr "康斯坦丁"
 
 #: includes/data/states/states-01.php:310
 msgid "M�d�a"
-msgstr ""
+msgstr "Médéa"
 
 #: includes/data/states/states-01.php:311
 msgid "Mostaganem"
@@ -6888,7 +6898,7 @@ msgstr "穆斯塔干姆"
 
 #: includes/data/states/states-01.php:312
 msgid "M�Sila"
-msgstr ""
+msgstr "M'Sila"
 
 #: includes/data/states/states-01.php:313
 msgid "Mascara"
@@ -6912,11 +6922,11 @@ msgstr "伊利济"
 
 #: includes/data/states/states-01.php:318
 msgid "Bordj Bou Arr�ridj"
-msgstr ""
+msgstr "Bordj Bou Arréridj"
 
 #: includes/data/states/states-01.php:319
 msgid "Boumerd�s"
-msgstr ""
+msgstr "Boumerdès"
 
 #: includes/data/states/states-01.php:320
 msgid "El Tarf"
@@ -6952,7 +6962,7 @@ msgstr "米拉"
 
 #: includes/data/states/states-01.php:328
 msgid "A�n Defla"
-msgstr ""
+msgstr "Aïn Defla"
 
 #: includes/data/states/states-01.php:329
 msgid "Naama"
@@ -6960,11 +6970,11 @@ msgstr "纳阿马"
 
 #: includes/data/states/states-01.php:330
 msgid "A�n T�mouchent"
-msgstr ""
+msgstr "Aïn Témouchent"
 
 #: includes/data/states/states-01.php:331
 msgid "Gharda�a"
-msgstr ""
+msgstr "Ghardaïa"
 
 #: includes/data/states/states-01.php:332
 msgid "Relizane"
@@ -6972,11 +6982,11 @@ msgstr "雷利赞"
 
 #: includes/data/states/states-01.php:336
 msgid "A Coru�a"
-msgstr ""
+msgstr "A Coruña"
 
 #: includes/data/states/states-01.php:337
 msgid "Araba/�lava"
-msgstr ""
+msgstr "Álava"
 
 #: includes/data/states/states-01.php:338
 msgid "Albacete"
@@ -6988,7 +6998,7 @@ msgstr "阿利坎特"
 
 #: includes/data/states/states-01.php:340
 msgid "Almer�a"
-msgstr ""
+msgstr "Almería"
 
 #: includes/data/states/states-01.php:341
 msgid "Asturias"
@@ -6996,7 +7006,7 @@ msgstr "阿斯图里亚斯"
 
 #: includes/data/states/states-01.php:342
 msgid "�vila"
-msgstr ""
+msgstr "Ávila"
 
 #: includes/data/states/states-01.php:343
 msgid "Badajoz"
@@ -7016,11 +7026,11 @@ msgstr "布尔戈斯"
 
 #: includes/data/states/states-01.php:347
 msgid "C�ceres"
-msgstr ""
+msgstr "Cáceres"
 
 #: includes/data/states/states-01.php:348
 msgid "C�diz"
-msgstr ""
+msgstr "Cádiz"
 
 #: includes/data/states/states-01.php:349
 msgid "Cantabria"
@@ -7028,7 +7038,7 @@ msgstr "坎塔布里亚"
 
 #: includes/data/states/states-01.php:350
 msgid "Castell�n"
-msgstr ""
+msgstr "Castellón"
 
 #: includes/data/states/states-01.php:351
 msgid "Ceuta"
@@ -7068,7 +7078,7 @@ msgstr "韦斯卡"
 
 #: includes/data/states/states-01.php:361
 msgid "Ja�n"
-msgstr ""
+msgstr "Jaén"
 
 #: includes/data/states/states-01.php:363
 msgid "Las Palmas"
@@ -7076,7 +7086,7 @@ msgstr "拉斯帕尔马斯"
 
 #: includes/data/states/states-01.php:364
 msgid "Le�n"
-msgstr ""
+msgstr "莱昂"
 
 #: includes/data/states/states-01.php:365
 msgid "Lleida"
@@ -7092,7 +7102,7 @@ msgstr "马德里"
 
 #: includes/data/states/states-01.php:368
 msgid "M�laga"
-msgstr ""
+msgstr "马拉加"
 
 #: includes/data/states/states-01.php:369
 msgid "Melilla"
@@ -7309,11 +7319,11 @@ msgstr "新界"
 
 #: includes/data/states/states-02.php:50
 msgid "B�cs-Kiskun"
-msgstr ""
+msgstr "巴奇-基什库恩"
 
 #: includes/data/states/states-02.php:51
 msgid "B�k�s"
-msgstr ""
+msgstr "巴克什"
 
 #: includes/data/states/states-02.php:52
 msgid "Baranya"
@@ -7321,7 +7331,7 @@ msgstr "巴拉尼亚"
 
 #: includes/data/states/states-02.php:53
 msgid "Borsod-Aba�j-Zempl�n"
-msgstr ""
+msgstr "博尔索德-阿巴乌伊-泽姆普伦"
 
 #: includes/data/states/states-02.php:54
 msgid "Budapest"
@@ -7329,19 +7339,19 @@ msgstr "布达佩斯"
 
 #: includes/data/states/states-02.php:55
 msgid "Csongr�d"
-msgstr ""
+msgstr "恰尔戈德"
 
 #: includes/data/states/states-02.php:56
 msgid "Fej�r"
-msgstr ""
+msgstr "费耶尔"
 
 #: includes/data/states/states-02.php:57
 msgid "Gyor-Moson-Sopron"
-msgstr ""
+msgstr "厄尔-莫索-绍普龙"
 
 #: includes/data/states/states-02.php:58
 msgid "Hajd�-Bihar"
-msgstr ""
+msgstr "哈伊杜-比哈尔"
 
 #: includes/data/states/states-02.php:59
 msgid "Heves"
@@ -7349,15 +7359,15 @@ msgstr "赫维什"
 
 #: includes/data/states/states-02.php:60
 msgid "J�sz-Nagykun-Szolnok"
-msgstr ""
+msgstr "雅兹-纳吉昆-索尔诺克"
 
 #: includes/data/states/states-02.php:61
 msgid "Kom�rom-Esztergom"
-msgstr ""
+msgstr "科莫罗姆-埃斯特戈姆"
 
 #: includes/data/states/states-02.php:62
 msgid "N�gr�d"
-msgstr ""
+msgstr "诺格拉德"
 
 #: includes/data/states/states-02.php:63
 msgid "Pest"
@@ -7369,7 +7379,7 @@ msgstr "索莫吉"
 
 #: includes/data/states/states-02.php:65
 msgid "Szabolcs-Szatm�r-Bereg"
-msgstr ""
+msgstr "萨博尔奇-萨特玛尔-贝雷格"
 
 #: includes/data/states/states-02.php:66
 msgid "Tolna"
@@ -7381,7 +7391,7 @@ msgstr "瓦什"
 
 #: includes/data/states/states-02.php:68
 msgid "Veszpr�m"
-msgstr ""
+msgstr "韦斯普雷姆"
 
 #: includes/data/states/states-02.php:69
 msgid "Zala"
@@ -7774,127 +7784,127 @@ msgstr "本地治里（普杜切里）"
 
 #: includes/data/states/states-02.php:174
 msgid "Khuzestan  (???????)"
-msgstr ""
+msgstr "胡泽斯坦  (???????)"
 
 #: includes/data/states/states-02.php:175
 msgid "Tehran  (?????)"
-msgstr ""
+msgstr "德黑兰  (?????)"
 
 #: includes/data/states/states-02.php:176
 msgid "Ilaam (?????)"
-msgstr ""
+msgstr "伊拉姆 (?????)"
 
 #: includes/data/states/states-02.php:177
 msgid "Bushehr (?????)"
-msgstr ""
+msgstr "布什赫尔 (?????)"
 
 #: includes/data/states/states-02.php:178
 msgid "Ardabil (??????)"
-msgstr ""
+msgstr "阿尔达比尔 (??????)"
 
 #: includes/data/states/states-02.php:179
 msgid "Isfahan (??????)"
-msgstr ""
+msgstr "伊斯法罕 (??????)"
 
 #: includes/data/states/states-02.php:180
 msgid "Yazd (???)"
-msgstr ""
+msgstr "亚兹德 (???)"
 
 #: includes/data/states/states-02.php:181
 msgid "Kermanshah (????????)"
-msgstr ""
+msgstr "克尔曼沙赫 (????????)"
 
 #: includes/data/states/states-02.php:182
 msgid "Kerman (?????)"
-msgstr ""
+msgstr "克尔曼 (?????)"
 
 #: includes/data/states/states-02.php:183
 msgid "Hamadan (?????)"
-msgstr ""
+msgstr "哈马丹 (?????)"
 
 #: includes/data/states/states-02.php:184
 msgid "Ghazvin (?????)"
-msgstr ""
+msgstr "加兹温 (?????)"
 
 #: includes/data/states/states-02.php:185
 msgid "Zanjan (?????)"
-msgstr ""
+msgstr "赞贾恩 (?????)"
 
 #: includes/data/states/states-02.php:186
 msgid "Luristan (??????)"
-msgstr ""
+msgstr "洛里斯坦 (??????)"
 
 #: includes/data/states/states-02.php:187
 msgid "Alborz (?????)"
-msgstr ""
+msgstr "阿尔博尔兹 (?????)"
 
 #: includes/data/states/states-02.php:188
 msgid "East Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "东阿塞拜疆 (????????? ????)"
 
 #: includes/data/states/states-02.php:189
 msgid "West Azarbaijan (????????? ????)"
-msgstr ""
+msgstr "西阿塞拜疆 (????????? ????)"
 
 #: includes/data/states/states-02.php:190
 msgid "Chaharmahal and Bakhtiari (???????? ? ???????)"
-msgstr ""
+msgstr "恰哈尔马哈尔与巴赫提亚里 (???????? ? ???????)"
 
 #: includes/data/states/states-02.php:191
 msgid "South Khorasan (?????? ?????)"
-msgstr ""
+msgstr "南霍拉桑 (?????? ?????)"
 
 #: includes/data/states/states-02.php:192
 msgid "Razavi Khorasan (?????? ????)"
-msgstr ""
+msgstr "拉扎维霍拉桑 (?????? ????)"
 
 #: includes/data/states/states-02.php:193
 msgid "North Khorasan (?????? ?????)"
-msgstr ""
+msgstr "北霍拉桑 (?????? ?????)"
 
 #: includes/data/states/states-02.php:194
 msgid "Semnan (?????)"
-msgstr ""
+msgstr "塞门南 (?????)"
 
 #: includes/data/states/states-02.php:195
 msgid "Fars (????)"
-msgstr ""
+msgstr "法尔斯 (????)"
 
 #: includes/data/states/states-02.php:196
 msgid "Qom (??)"
-msgstr ""
+msgstr "库姆 (??)"
 
 #: includes/data/states/states-02.php:197
 msgid "Kurdistan / ???????)"
-msgstr ""
+msgstr "库尔德斯坦 / ???????)"
 
 #: includes/data/states/states-02.php:198
 msgid "Kohgiluyeh and BoyerAhmad (????????? ? ????????)"
-msgstr ""
+msgstr "科赫基卢耶与博耶尔阿哈迈德 (????????? ? ????????)"
 
 #: includes/data/states/states-02.php:199
 msgid "Golestan (??????)"
-msgstr ""
+msgstr "戈勒斯坦 (??????)"
 
 #: includes/data/states/states-02.php:200
 msgid "Gilan (?????)"
-msgstr ""
+msgstr "基兰"
 
 #: includes/data/states/states-02.php:201
 msgid "Mazandaran (????????)"
-msgstr ""
+msgstr "马赞达兰"
 
 #: includes/data/states/states-02.php:202
 msgid "Markazi (?????)"
-msgstr ""
+msgstr "马克齐"
 
 #: includes/data/states/states-02.php:203
 msgid "Hormozgan (???????)"
-msgstr ""
+msgstr "霍尔莫兹甘"
 
 #: includes/data/states/states-02.php:204
 msgid "Sistan and Baluchestan (?????? ? ????????)"
-msgstr ""
+msgstr "西斯坦和俾路支省"
 
 #: includes/data/states/states-02.php:208
 msgid "Agrigento"
@@ -8038,7 +8048,7 @@ msgstr "福贾"
 
 #: includes/data/states/states-02.php:243
 msgid "Forl�-Cesena"
-msgstr ""
+msgstr "福尔利-切塞纳"
 
 #: includes/data/states/states-02.php:244
 msgid "Frosinone"
@@ -8627,7 +8637,7 @@ msgstr "蒙巴萨"
 
 #: includes/data/states/states-02.php:402
 msgid "Murang�a"
-msgstr ""
+msgstr "穆兰加"
 
 #: includes/data/states/states-02.php:403
 msgid "Nairobi County"
@@ -8836,11 +8846,11 @@ msgstr "西诺埃"
 
 #: includes/data/states/states-03.php:25
 msgid "Chi?inau"
-msgstr ""
+msgstr "基希讷乌"
 
 #: includes/data/states/states-03.php:26
 msgid "Bal?i"
-msgstr ""
+msgstr "巴尔蒂"
 
 #: includes/data/states/states-03.php:27
 msgid "Anenii Noi"
@@ -8865,15 +8875,15 @@ msgstr "坎特米尔"
 #: includes/data/states/states-03.php:32
 #: includes/data/states/states-03.php:379
 msgid "Calara?i"
-msgstr ""
+msgstr "卡拉拉伊"
 
 #: includes/data/states/states-03.php:33
 msgid "Cau?eni"
-msgstr ""
+msgstr "考谢尼"
 
 #: includes/data/states/states-03.php:34
 msgid "Cimi?lia"
-msgstr ""
+msgstr "基米利亚"
 
 #: includes/data/states/states-03.php:35
 msgid "Criuleni"
@@ -8881,7 +8891,7 @@ msgstr "克里乌伦"
 
 #: includes/data/states/states-03.php:36
 msgid "Dondu?eni"
-msgstr ""
+msgstr "东杜谢尼"
 
 #: includes/data/states/states-03.php:37
 msgid "Drochia"
@@ -8889,23 +8899,23 @@ msgstr "德罗基亚"
 
 #: includes/data/states/states-03.php:38
 msgid "Dubasari"
-msgstr ""
+msgstr "杜巴萨里"
 
 #: includes/data/states/states-03.php:39
 msgid "Edine?"
-msgstr ""
+msgstr "埃迪内"
 
 #: includes/data/states/states-03.php:40
 msgid "Fale?ti"
-msgstr ""
+msgstr "法莱什蒂"
 
 #: includes/data/states/states-03.php:41
 msgid "Flore?ti"
-msgstr ""
+msgstr "弗洛雷什蒂"
 
 #: includes/data/states/states-03.php:42
 msgid "UTA Gagauzia"
-msgstr ""
+msgstr "UTA 加告兹亚"
 
 #: includes/data/states/states-03.php:43
 msgid "Glodeni"
@@ -8913,7 +8923,7 @@ msgstr "格洛登"
 
 #: includes/data/states/states-03.php:44
 msgid "H�nce?ti"
-msgstr ""
+msgstr "亨采什蒂"
 
 #: includes/data/states/states-03.php:45
 msgid "Ialoveni"
@@ -8929,7 +8939,7 @@ msgstr "尼斯波伦"
 
 #: includes/data/states/states-03.php:48
 msgid "Ocni?a"
-msgstr ""
+msgstr "奥克尼察"
 
 #: includes/data/states/states-03.php:49
 msgid "Orhei"
@@ -8941,11 +8951,11 @@ msgstr "雷济纳"
 
 #: includes/data/states/states-03.php:51
 msgid "R�?cani"
-msgstr ""
+msgstr "鲁兹卡尼"
 
 #: includes/data/states/states-03.php:52
 msgid "S�ngerei"
-msgstr ""
+msgstr "辛杰雷伊"
 
 #: includes/data/states/states-03.php:53
 msgid "Soroca"
@@ -8953,15 +8963,15 @@ msgstr "索罗卡"
 
 #: includes/data/states/states-03.php:54
 msgid "Stra?eni"
-msgstr ""
+msgstr "斯特拉谢尼"
 
 #: includes/data/states/states-03.php:55
 msgid "?oldane?ti"
-msgstr ""
+msgstr "佐尔丹什蒂"
 
 #: includes/data/states/states-03.php:56
 msgid "?tefan Voda"
-msgstr ""
+msgstr "斯特凡·沃达"
 
 #: includes/data/states/states-03.php:57
 msgid "Taraclia"
@@ -8969,7 +8979,7 @@ msgstr "塔拉克利亚"
 
 #: includes/data/states/states-03.php:58
 msgid "Telene?ti"
-msgstr ""
+msgstr "特莱内什蒂"
 
 #: includes/data/states/states-03.php:59
 msgid "Ungheni"
@@ -8977,7 +8987,7 @@ msgstr "乌恩赫尼"
 
 #: includes/data/states/states-03.php:64
 msgid "Ciudad de M�xico"
-msgstr ""
+msgstr "墨西哥城"
 
 #: includes/data/states/states-03.php:65
 msgid "Jalisco"
@@ -8985,7 +8995,7 @@ msgstr "哈利斯科"
 
 #: includes/data/states/states-03.php:66
 msgid "Nuevo Le�n"
-msgstr ""
+msgstr "新莱昂"
 
 #: includes/data/states/states-03.php:67
 msgid "Aguascalientes"
@@ -9037,11 +9047,11 @@ msgstr "伊达尔戈"
 
 #: includes/data/states/states-03.php:79
 msgid "Estado de M�xico"
-msgstr ""
+msgstr "墨西哥州"
 
 #: includes/data/states/states-03.php:80
 msgid "Michoac�n"
-msgstr ""
+msgstr "米却肯"
 
 #: includes/data/states/states-03.php:81
 msgid "Morelos"
@@ -9061,7 +9071,7 @@ msgstr "普埃布拉"
 
 #: includes/data/states/states-03.php:85
 msgid "Quer�taro"
-msgstr ""
+msgstr "克雷塔罗"
 
 #: includes/data/states/states-03.php:86
 msgid "Quintana Roo"
@@ -9069,7 +9079,7 @@ msgstr "金塔纳罗奥"
 
 #: includes/data/states/states-03.php:87
 msgid "San Luis Potos�"
-msgstr ""
+msgstr "圣路易斯·波托西"
 
 #: includes/data/states/states-03.php:88
 msgid "Sinaloa"
@@ -9097,7 +9107,7 @@ msgstr "韦拉克鲁斯"
 
 #: includes/data/states/states-03.php:94
 msgid "Yucat�n"
-msgstr ""
+msgstr "尤卡坦"
 
 #: includes/data/states/states-03.php:95
 msgid "Zacatecas"
@@ -9209,7 +9219,7 @@ msgstr "特特"
 
 #: includes/data/states/states-03.php:126
 msgid "Zamb�zia"
-msgstr ""
+msgstr "赞比济亚"
 
 #: includes/data/states/states-03.php:129
 msgid "Erongo"
@@ -9498,7 +9508,7 @@ msgstr "吉斯本"
 
 #: includes/data/states/states-03.php:208
 msgid "Hawke�s Bay"
-msgstr ""
+msgstr "霍克湾"
 
 #: includes/data/states/states-03.php:209
 msgid "Manawatu-Wanganui"
@@ -9550,7 +9560,7 @@ msgstr "安卡什"
 
 #: includes/data/states/states-03.php:224
 msgid "Apur�mac"
-msgstr ""
+msgstr "阿普里马克"
 
 #: includes/data/states/states-03.php:225
 msgid "Arequipa"
@@ -9574,7 +9584,7 @@ msgstr "万卡维利卡"
 
 #: includes/data/states/states-03.php:230
 msgid "Hu�nuco"
-msgstr ""
+msgstr "乌阿努科"
 
 #: includes/data/states/states-03.php:231
 msgid "Ica"
@@ -9582,7 +9592,7 @@ msgstr "伊卡"
 
 #: includes/data/states/states-03.php:232
 msgid "Jun�n"
-msgstr ""
+msgstr "胡宁"
 
 #: includes/data/states/states-03.php:233
 msgid "La Libertad"
@@ -9622,7 +9632,7 @@ msgstr "普诺"
 
 #: includes/data/states/states-03.php:242
 msgid "San Mart�n"
-msgstr ""
+msgstr "圣马丁"
 
 #: includes/data/states/states-03.php:243
 msgid "Tacna"
@@ -9972,7 +9982,7 @@ msgstr "阿扎德克什米尔"
 msgid "Balochistan"
 msgstr "俾路支省"
 
-#: includes/data/states/states-03.php:337
+#: includes/data/states/states-03.php:337, fuzzy
 msgid "FATA"
 msgstr "FATA"
 
@@ -9994,11 +10004,11 @@ msgstr "信德"
 
 #: includes/data/states/states-03.php:347
 msgid "Asunci�n"
-msgstr ""
+msgstr "亚松森"
 
 #: includes/data/states/states-03.php:348
 msgid "Concepci�n"
-msgstr ""
+msgstr "孔塞普西翁"
 
 #: includes/data/states/states-03.php:349
 msgid "San Pedro"
@@ -10010,31 +10020,31 @@ msgstr "科尔迪耶拉"
 
 #: includes/data/states/states-03.php:351
 msgid "Guair�"
-msgstr ""
+msgstr "瓜伊雷"
 
 #: includes/data/states/states-03.php:352
 msgid "Caaguaz�"
-msgstr ""
+msgstr "卡阿瓜斯"
 
 #: includes/data/states/states-03.php:353
 msgid "Caazap�"
-msgstr ""
+msgstr "卡阿萨帕"
 
 #: includes/data/states/states-03.php:354
 msgid "Itap�a"
-msgstr ""
+msgstr "伊塔普阿"
 
 #: includes/data/states/states-03.php:356
 msgid "Paraguar�"
-msgstr ""
+msgstr "帕拉瓜瑞"
 
 #: includes/data/states/states-03.php:357
 msgid "Alto Paran�"
-msgstr ""
+msgstr "阿尔托·巴拉那"
 
 #: includes/data/states/states-03.php:359
 msgid "�eembuc�"
-msgstr ""
+msgstr "埃门布库"
 
 #: includes/data/states/states-03.php:360
 msgid "Amambay"
@@ -10042,7 +10052,7 @@ msgstr "阿曼巴伊"
 
 #: includes/data/states/states-03.php:361
 msgid "Canindey�"
-msgstr ""
+msgstr "卡宁德伊"
 
 #: includes/data/states/states-03.php:362
 msgid "Presidente Hayes"
@@ -10054,7 +10064,7 @@ msgstr "阿尔托巴拉圭"
 
 #: includes/data/states/states-03.php:364
 msgid "Boquer�n"
-msgstr ""
+msgstr "博克伦"
 
 #: includes/data/states/states-03.php:368
 msgid "Alba"
@@ -10066,11 +10076,11 @@ msgstr "阿拉德"
 
 #: includes/data/states/states-03.php:370
 msgid "Arge?"
-msgstr ""
+msgstr "阿尔杰?"
 
 #: includes/data/states/states-03.php:371
 msgid "Bacau"
-msgstr ""
+msgstr "巴卡乌"
 
 #: includes/data/states/states-03.php:372
 msgid "Bihor"
@@ -10078,31 +10088,31 @@ msgstr "比霍尔"
 
 #: includes/data/states/states-03.php:373
 msgid "Bistri?a-Nasaud"
-msgstr ""
+msgstr "比斯特里察-纳萨乌德"
 
 #: includes/data/states/states-03.php:374
 msgid "Boto?ani"
-msgstr ""
+msgstr "博托沙尼"
 
 #: includes/data/states/states-03.php:375
 msgid "Braila"
-msgstr ""
+msgstr "布拉伊拉"
 
 #: includes/data/states/states-03.php:376
 msgid "Bra?ov"
-msgstr ""
+msgstr "布拉索夫"
 
 #: includes/data/states/states-03.php:377
 msgid "Bucure?ti"
-msgstr ""
+msgstr "布加勒斯特"
 
 #: includes/data/states/states-03.php:378
 msgid "Buzau"
-msgstr ""
+msgstr "布扎乌"
 
 #: includes/data/states/states-03.php:380
 msgid "Cara?-Severin"
-msgstr ""
+msgstr "卡拉什-塞韦林"
 
 #: includes/data/states/states-03.php:381
 msgid "Cluj"
@@ -10110,7 +10120,7 @@ msgstr "克卢日"
 
 #: includes/data/states/states-03.php:382
 msgid "Constan?a"
-msgstr ""
+msgstr "康斯坦察"
 
 #: includes/data/states/states-03.php:383
 msgid "Covasna"
@@ -10118,7 +10128,7 @@ msgstr "科瓦斯纳"
 
 #: includes/data/states/states-03.php:384
 msgid "D�mbovi?a"
-msgstr ""
+msgstr "唐博维察"
 
 #: includes/data/states/states-03.php:385
 msgid "Dolj"
@@ -10126,7 +10136,7 @@ msgstr "多尔日"
 
 #: includes/data/states/states-03.php:386
 msgid "Gala?i"
-msgstr ""
+msgstr "加拉茨"
 
 #: includes/data/states/states-03.php:387
 msgid "Giurgiu"
@@ -10146,11 +10156,11 @@ msgstr "胡内多阿拉"
 
 #: includes/data/states/states-03.php:391
 msgid "Ialomi?a"
-msgstr ""
+msgstr "亚洛米察"
 
 #: includes/data/states/states-03.php:392
 msgid "Ia?i"
-msgstr ""
+msgstr "雅西"
 
 #: includes/data/states/states-03.php:393
 msgid "Ilfov"
@@ -10158,19 +10168,19 @@ msgstr "伊尔福夫"
 
 #: includes/data/states/states-03.php:394
 msgid "Maramure?"
-msgstr ""
+msgstr "马拉穆列什"
 
 #: includes/data/states/states-03.php:395
 msgid "Mehedin?i"
-msgstr ""
+msgstr "梅赫丁齐"
 
 #: includes/data/states/states-03.php:396
 msgid "Mure?"
-msgstr ""
+msgstr "穆雷什"
 
 #: includes/data/states/states-03.php:397
 msgid "Neam?"
-msgstr ""
+msgstr "尼亚姆茨"
 
 #: includes/data/states/states-03.php:398
 msgid "Olt"
@@ -10182,7 +10192,7 @@ msgstr "普拉霍瓦"
 
 #: includes/data/states/states-03.php:400
 msgid "Salaj"
-msgstr ""
+msgstr "萨拉日"
 
 #: includes/data/states/states-03.php:401
 msgid "Satu Mare"
@@ -10202,7 +10212,7 @@ msgstr "特雷奥尔曼"
 
 #: includes/data/states/states-03.php:405
 msgid "Timi?"
-msgstr ""
+msgstr "蒂米什"
 
 #: includes/data/states/states-03.php:406
 msgid "Tulcea"
@@ -10210,7 +10220,7 @@ msgstr "图尔恰"
 
 #: includes/data/states/states-03.php:407
 msgid "V�lcea"
-msgstr ""
+msgstr "沃尔恰"
 
 #: includes/data/states/states-03.php:408
 msgid "Vaslui"
@@ -10312,7 +10322,7 @@ msgstr "罗艾"
 msgid "Lopburi"
 msgstr "洛布里"
 
-#: includes/data/states/states-04.php:34
+#: includes/data/states/states-04.php:34, fuzzy
 msgid "Mae Hong Son"
 msgstr "Mae Hong Son"
 
@@ -10496,7 +10506,7 @@ msgstr "素林"
 msgid "Tak"
 msgstr "打克"
 
-#: includes/data/states/states-04.php:80
+#: includes/data/states/states-04.php:80, fuzzy
 msgid "Trang"
 msgstr "Trang"
 
@@ -10534,7 +10544,7 @@ msgstr "阿达纳"
 
 #: includes/data/states/states-04.php:91
 msgid "Adiyaman"
-msgstr ""
+msgstr "阿迪亚曼"
 
 #: includes/data/states/states-04.php:92
 msgid "Afyon"
@@ -10542,7 +10552,7 @@ msgstr "阿菲永"
 
 #: includes/data/states/states-04.php:93
 msgid "Agri"
-msgstr ""
+msgstr "阿格里"
 
 #: includes/data/states/states-04.php:94
 msgid "Amasya"
@@ -10562,11 +10572,11 @@ msgstr "阿尔特温"
 
 #: includes/data/states/states-04.php:98
 msgid "Aydin"
-msgstr ""
+msgstr "艾丁"
 
 #: includes/data/states/states-04.php:99
 msgid "Balikesir"
-msgstr ""
+msgstr "巴力克埃尔"
 
 #: includes/data/states/states-04.php:100
 msgid "Bilecik"
@@ -10574,7 +10584,7 @@ msgstr "比莱吉克"
 
 #: includes/data/states/states-04.php:101
 msgid "Bing�l"
-msgstr ""
+msgstr "宾吉尔"
 
 #: includes/data/states/states-04.php:102
 msgid "Bitlis"
@@ -10594,15 +10604,15 @@ msgstr "布尔萨"
 
 #: includes/data/states/states-04.php:106
 msgid "�anakkale"
-msgstr ""
+msgstr "恰纳卡莱"
 
 #: includes/data/states/states-04.php:107
 msgid "�ankiri"
-msgstr ""
+msgstr "詹基里"
 
 #: includes/data/states/states-04.php:108
 msgid "�orum"
-msgstr ""
+msgstr "乔鲁姆"
 
 #: includes/data/states/states-04.php:109
 msgid "Denizli"
@@ -10610,7 +10620,7 @@ msgstr "德尼兹利"
 
 #: includes/data/states/states-04.php:110
 msgid "Diyarbakir"
-msgstr ""
+msgstr "迪亚巴基尔"
 
 #: includes/data/states/states-04.php:111
 msgid "Edirne"
@@ -10618,7 +10628,7 @@ msgstr "埃德尔内"
 
 #: includes/data/states/states-04.php:112
 msgid "Elazig"
-msgstr ""
+msgstr "埃拉祖格"
 
 #: includes/data/states/states-04.php:113
 msgid "Erzincan"
@@ -10630,7 +10640,7 @@ msgstr "埃尔祖鲁姆"
 
 #: includes/data/states/states-04.php:115
 msgid "Eskisehir"
-msgstr ""
+msgstr "埃斯基谢希尔"
 
 #: includes/data/states/states-04.php:116
 msgid "Gaziantep"
@@ -10642,7 +10652,7 @@ msgstr "基雷松"
 
 #: includes/data/states/states-04.php:118
 msgid "G�m�shane"
-msgstr ""
+msgstr "居姆什哈内"
 
 #: includes/data/states/states-04.php:119
 msgid "Hakkari"
@@ -10658,15 +10668,15 @@ msgstr "伊斯帕尔塔"
 
 #: includes/data/states/states-04.php:122
 msgid "I�el"
-msgstr ""
+msgstr "伊尔"
 
 #: includes/data/states/states-04.php:123
 msgid "Istanbul"
-msgstr ""
+msgstr "伊斯坦布尔"
 
 #: includes/data/states/states-04.php:124
 msgid "Izmir"
-msgstr ""
+msgstr "伊兹密尔"
 
 #: includes/data/states/states-04.php:125
 msgid "Kars"
@@ -10682,11 +10692,11 @@ msgstr "凯塞里"
 
 #: includes/data/states/states-04.php:128
 msgid "Kirklareli"
-msgstr ""
+msgstr "基尔克拉雷利"
 
 #: includes/data/states/states-04.php:129
 msgid "Kirsehir"
-msgstr ""
+msgstr "基尔谢希尔"
 
 #: includes/data/states/states-04.php:130
 msgid "Kocaeli"
@@ -10698,7 +10708,7 @@ msgstr "孔亚"
 
 #: includes/data/states/states-04.php:132
 msgid "K�tahya"
-msgstr ""
+msgstr "库塔希亚"
 
 #: includes/data/states/states-04.php:133
 msgid "Malatya"
@@ -10710,7 +10720,7 @@ msgstr "马尼萨"
 
 #: includes/data/states/states-04.php:135
 msgid "Kahramanmaras"
-msgstr ""
+msgstr "卡赫拉曼马拉什"
 
 #: includes/data/states/states-04.php:136
 msgid "Mardin"
@@ -10718,19 +10728,19 @@ msgstr "马尔丁"
 
 #: includes/data/states/states-04.php:137
 msgid "Mugla"
-msgstr ""
+msgstr "穆拉"
 
 #: includes/data/states/states-04.php:138
 msgid "Mus"
-msgstr ""
+msgstr "穆斯"
 
 #: includes/data/states/states-04.php:139
 msgid "Nevsehir"
-msgstr ""
+msgstr "内夫谢希尔"
 
 #: includes/data/states/states-04.php:140
 msgid "Nigde"
-msgstr ""
+msgstr "尼德"
 
 #: includes/data/states/states-04.php:141
 msgid "Ordu"
@@ -10762,7 +10772,7 @@ msgstr "西瓦斯"
 
 #: includes/data/states/states-04.php:148
 msgid "Tekirdag"
-msgstr ""
+msgstr "泰基尔达"
 
 #: includes/data/states/states-04.php:149
 msgid "Tokat"
@@ -10778,11 +10788,11 @@ msgstr "东杰利"
 
 #: includes/data/states/states-04.php:152
 msgid "Sanliurfa"
-msgstr ""
+msgstr "尚利乌尔法"
 
 #: includes/data/states/states-04.php:153
 msgid "Usak"
-msgstr ""
+msgstr "乌萨克"
 
 #: includes/data/states/states-04.php:154
 msgid "Van"
@@ -10810,7 +10820,7 @@ msgstr "卡拉曼"
 
 #: includes/data/states/states-04.php:160
 msgid "Kirikkale"
-msgstr ""
+msgstr "基里卡莱"
 
 #: includes/data/states/states-04.php:161
 msgid "Batman"
@@ -10818,11 +10828,11 @@ msgstr "巴特曼"
 
 #: includes/data/states/states-04.php:162
 msgid "Sirnak"
-msgstr ""
+msgstr "希尔纳克"
 
 #: includes/data/states/states-04.php:163
 msgid "Bartin"
-msgstr ""
+msgstr "巴尔丁"
 
 #: includes/data/states/states-04.php:164
 msgid "Ardahan"
@@ -10830,7 +10840,7 @@ msgstr "阿尔达汉"
 
 #: includes/data/states/states-04.php:165
 msgid "Igdir"
-msgstr ""
+msgstr "伊德尔"
 
 #: includes/data/states/states-04.php:166
 msgid "Yalova"
@@ -10838,7 +10848,7 @@ msgstr "亚洛瓦"
 
 #: includes/data/states/states-04.php:167
 msgid "Karab�k"
-msgstr ""
+msgstr "卡拉布克"
 
 #: includes/data/states/states-04.php:168
 msgid "Kilis"
@@ -10850,7 +10860,7 @@ msgstr "奥斯曼尼耶"
 
 #: includes/data/states/states-04.php:170
 msgid "D�zce"
-msgstr ""
+msgstr "杜兹杰"
 
 #: includes/data/states/states-04.php:173
 msgid "Arusha"
@@ -11932,7 +11942,6 @@ msgid "Your {product_name} trial is about to end"
 msgstr "您的 {product_name} 试用即将结束"
 
 #: includes/email/ppcart-template-functions/templates.php:246
-#, fuzzy
 msgid ""
 "Hi {customer_firstname},\n"
 "\n"
@@ -12073,7 +12082,7 @@ msgstr "您没有权限下载此文件。"
 
 #: includes/files/download.php:43
 msgid "Invalid file path."
-msgstr ""
+msgstr "无效的文件路径。"
 
 #: includes/files/download.php:44
 #: includes/files/download.php:65
@@ -12093,7 +12102,7 @@ msgstr "抱歉，此文件不再可用。"
 #. translators: 1: file name, 2: user login.
 #, php-format
 msgid "Access to file \"%1$s\" revoked by %2$s"
-msgstr ""
+msgstr "对文件 \"%1$s\" 的访问已被 %2$s 撤销"
 
 #: includes/files/traits/templates/files-admin-product-form-callback.php:28
 #: includes/files/traits/trait-ppcart-files-settings.php:132
@@ -12267,7 +12276,7 @@ msgstr "购买确认邮件由 %s 重新发送"
 
 #: includes/functions/admin-ajax-and-notices.php:389
 msgid "You are not allowed to dismiss this notice."
-msgstr ""
+msgstr "您不允许关闭此通知。"
 
 #: includes/functions/ajax-and-fields.php:170
 msgid " activecampaign Listed: "
@@ -12982,7 +12991,7 @@ msgstr "库存警报：%s"
 msgid ""
 "The stock for product \"%1$s\" (ID: %2$d) is running low. Current stock: "
 "%3$d"
-msgstr ""
+msgstr "产品 \"%1$s\"（ID: %2$d）的库存不足。当前库存: %3$d"
 
 #: includes/functions/integrations-and-stock.php:220
 #. translators: %s: product name.
@@ -12994,19 +13003,19 @@ msgstr "缺货警报：%s"
 #. translators: 1: product name, 2: product ID.
 #, php-format
 msgid "The product \"%1$s\" (ID: %2$d) is now out of stock."
-msgstr ""
+msgstr "产品 \"%1$s\"（ID: %2$d）现已缺货。"
 
 #: includes/functions/mailchimp-api.php:51
 msgid "The Mailchimp API key is invalid."
-msgstr ""
+msgstr "Mailchimp API 密钥无效。"
 
 #: includes/functions/mailchimp-api.php:83
 msgid "Mailchimp rejected the request."
-msgstr ""
+msgstr "Mailchimp 拒绝了请求。"
 
 #: includes/functions/mailchimp-api.php:94
 msgid "Mailchimp returned an invalid response."
-msgstr ""
+msgstr "Mailchimp 返回了无效的响应。"
 
 #: includes/functions/merge-tags-and-dates.php:11
 msgid "Site Name"
@@ -13100,7 +13109,7 @@ msgstr "订单列表"
 
 #: includes/functions/merge-tags-and-dates.php:34
 msgid "Order Details Table"
-msgstr ""
+msgstr "订单详情表"
 
 #: includes/functions/merge-tags-and-dates.php:35
 msgid "Inline Order List"
@@ -13146,14 +13155,14 @@ msgstr "插入个性化标签"
 #. translators: 1: refund amount, 2: refund date.
 #, php-format
 msgid "%1$s refunded on %2$s"
-msgstr ""
+msgstr "%1$s 于 %2$s 退款"
 
 #: includes/functions/merge-tags-and-dates.php:199
 #: includes/functions/merge-tags-and-dates.php:201
 #. translators: 1: primary product name, 2: bump product name.
 #, php-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s，%2$s"
 
 #: includes/functions/merge-tags-and-dates.php:549
 msgid "Invalid Charge ID"
@@ -13250,7 +13259,7 @@ msgstr "发送重置电子邮件失败。请稍后再试或联系支持。"
 
 #: includes/functions/merge-tags-and-dates.php:579
 msgid "Your session has expired. Please try again."
-msgstr ""
+msgstr "您的会话已过期。请再试一次。"
 
 #: includes/functions/merge-tags-and-dates.php:580
 #: includes/functions/merge-tags-and-dates.php:581
@@ -13434,7 +13443,7 @@ msgstr " Membervault 课程 ID："
 #. translators: %s: Membervault API error message.
 #, php-format
 msgid "Membervault add failed: %s"
-msgstr ""
+msgstr "Membervault 添加失败: %s"
 
 #: includes/functions/orders-products-and-formatting.php:147
 msgid "Membervault add failed"
@@ -13543,7 +13552,7 @@ msgstr "无效的收费 ID"
 #. translators: %s: Stripe gateway mode (e.g. live or test)
 #, php-format
 msgid "Oops, Stripe %s key missing!"
-msgstr ""
+msgstr "哎呀，Stripe %s 密钥缺失！"
 
 #: includes/functions/payment-actions-and-refunds.php:438
 msgid "Payment refunded by"
@@ -13592,11 +13601,11 @@ msgstr "使用优惠券："
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "(%1$s off for %2$d months)"
-msgstr ""
+msgstr "(%1$s 省 %2$d 个月)"
 
 #: includes/functions/prices-and-marketing.php:273
 msgid "JSON Parse"
-msgstr ""
+msgstr "JSON 解析"
 
 #: includes/functions/prices-and-marketing.php:357
 msgid "No Data Found"
@@ -13635,19 +13644,19 @@ msgstr " 天"
 #. translators: %d: product ID.
 #, php-format
 msgid "Product #%d"
-msgstr ""
+msgstr "产品 #%d"
 
 #: includes/functions/users-and-notifications.php:159
 #. translators: 1: requested role, 2: role used instead.
 #, php-format
 msgid "User role %1$s is not allowed for customers; %2$s was used instead."
-msgstr ""
+msgstr "用户角色 %1$s 不允许用于客户；使用了 %2$s 作为替代。"
 
 #: includes/functions/users-and-notifications.php:192
 #. translators: 1: user ID, 2: role name.
 #, php-format
 msgid "Role for User ID: %1$s updated to %2$s"
-msgstr ""
+msgstr "用户 ID: %1$s 的角色已更新为 %2$s"
 
 #: includes/functions/users-and-notifications.php:209
 #. translators: %s: user ID.
@@ -13699,11 +13708,11 @@ msgstr "追加销售路径"
 
 #: includes/helpers/pro-locks/field-and-email-locks.php:235
 msgid "Affiliates"
-msgstr ""
+msgstr "Affiliate"
 
 #: includes/helpers/pro-locks/product-locks.php:27
 msgid "Stripe, PayPal"
-msgstr ""
+msgstr "Stripe，PayPal"
 
 #: includes/helpers/pro-locks/product-locks.php:29
 msgid "Globally Enabled Methods:"
@@ -13798,7 +13807,7 @@ msgstr "每个额外商品（国际）"
 
 #: includes/helpers/pro-locks/product-locks.php:76
 msgid "Enable affiliate sales"
-msgstr ""
+msgstr "启用联盟销售"
 
 #: includes/helpers/pro-locks/product-locks.php:77
 #: public/templates/pdf-invoice/invoice.php:145
@@ -13809,11 +13818,11 @@ msgstr "描述"
 
 #: includes/helpers/pro-locks/product-locks.php:78
 msgid "Name (internal)"
-msgstr ""
+msgstr "名称（内部）"
 
 #: includes/helpers/pro-locks/settings-locks.php:59
 msgid "Pro"
-msgstr ""
+msgstr "专业版"
 
 #: includes/helpers/pro-locks/settings-locks.php:98
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:1132
@@ -13825,35 +13834,35 @@ msgstr "方形"
 msgid ""
 "Accept payments online and in person with Square, syncing items and "
 "inventory."
-msgstr ""
+msgstr "通过 Square 在线和面对面接受付款，实时同步商品和库存。"
 
-#: includes/helpers/pro-locks/settings-locks.php:104
+#: includes/helpers/pro-locks/settings-locks.php:104, fuzzy
 msgid "Mollie"
-msgstr ""
+msgstr "Mollie"
 
 #: includes/helpers/pro-locks/settings-locks.php:105
 msgid "Offer global and local payment methods with fast, multilingual onboarding."
-msgstr ""
+msgstr "提供快速的多语言全球和本地支付方式。"
 
-#: includes/helpers/pro-locks/settings-locks.php:110
+#: includes/helpers/pro-locks/settings-locks.php:110, fuzzy
 msgid "Razorpay"
-msgstr ""
+msgstr "Razorpay"
 
 #: includes/helpers/pro-locks/settings-locks.php:111
 msgid "Accept payments in India and beyond with Razorpay's simple integration."
-msgstr ""
+msgstr "通过 Razorpay 的简单集成在印度及其他地区接受付款。"
 
 #: includes/helpers/pro-locks/settings-locks.php:217
 msgid "PRO"
-msgstr ""
+msgstr "专业版"
 
 #: includes/helpers/pro-locks/settings-locks.php:238
 msgid "This is a Pro feature"
-msgstr ""
+msgstr "这是一个专业功能"
 
 #: includes/helpers/pro-locks/settings-locks.php:239
 msgid "This feature is available in the separate PublishPress Cart Pro plugin."
-msgstr ""
+msgstr "此功能在单独的 PublishPress Cart Pro 插件中可用。"
 
 #: includes/helpers/pro-locks/settings-locks.php:273
 msgid "URL Coupon Parameter Name"
@@ -13864,6 +13873,9 @@ msgid ""
 "Use something else in place of \"ppcart-coupon\" when creating coupon URLs "
 "(e.g., https://example.com/product/?ppcart-coupon=20off)."
 msgstr ""
+"创建优惠券 URL "
+"时，请使用其他内容替代“ppcart-coupon”（例如：https://example.com/product/?ppcart-coupon=20"
+"off）。"
 
 #: includes/helpers/pro-locks/settings-locks.php:278
 msgid "Disable product template"
@@ -13955,7 +13967,7 @@ msgstr "奖金工作簿.docx"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:7
 #: public/templates/my-account/forms/login-form.php:110
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:8
 #: public/templates/my-account/forms/login-form.php:111
@@ -13965,12 +13977,12 @@ msgstr "密码"
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:9
 #: public/templates/my-account/forms/login-form.php:112
 msgid "Remember Me"
-msgstr ""
+msgstr "记住我"
 
 #: includes/integrations/gutenberg/blocks/account-login/preview.php:10
 #: public/templates/my-account/forms/login-form.php:113
 msgid "Log In"
-msgstr ""
+msgstr "登录"
 
 #: includes/integrations/gutenberg/blocks/account-orders/preview.php:8
 msgid "Jan 1, 2026"
@@ -14019,7 +14031,7 @@ msgstr "月"
 
 #: includes/integrations/gutenberg/blocks/account-subscriptions/preview.php:38
 msgid "Cancels Feb 1, 2026"
-msgstr ""
+msgstr "于 2026 年 2 月 1 日取消"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-context.php:30
 #, fuzzy
@@ -14083,11 +14095,11 @@ msgstr "详情"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:390
 msgid "January 1, 2026"
-msgstr ""
+msgstr "2026 年 1 月 1 日"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:391
 msgid "February 1, 2026"
-msgstr ""
+msgstr "2026 年 2 月 1 日"
 
 #: includes/integrations/gutenberg/lib/account-renderer/trait-ppcart-account-renderer-tab-content.php:472
 #, fuzzy
@@ -14117,7 +14129,7 @@ msgstr "信用卡"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:87
 msgid "Single Collection"
-msgstr ""
+msgstr "单一集合"
 
 #: includes/integrations/gutenberg/templates/class-ppcart-product-template.php:90
 msgid "Single Product"
@@ -14135,7 +14147,7 @@ msgstr "选择计划"
 
 #: includes/integrations/templates/cancel-subscription-integration-fields.php:57
 msgid "At the end of the current billing period"
-msgstr ""
+msgstr "在当前计费周期结束时"
 
 #: includes/integrations/templates/cancel-subscription-run.php:33
 #. translators: %s: subscription ID.
@@ -14147,13 +14159,13 @@ msgstr "订阅 ID：%s 已被取消"
 #. translators: 1: subscription ID, 2: error message.
 #, php-format
 msgid "Error canceling subscription ID: %1$s! Message: %2$s"
-msgstr ""
+msgstr "取消订阅 ID: %1$s 时出错！消息：%2$s"
 
 #: includes/integrations/templates/cancel-subscription-run.php:41
 #. translators: 1: product ID, 2: plan ID.
 #, php-format
 msgid "No active subscriptions found for product ID: %1$s and plan ID=%2$s"
-msgstr ""
+msgstr "未找到产品 ID: %1$s 和计划 ID=%2$s 的有效订阅"
 
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:22
 #: includes/integrations/templates/ppcart-googlerecaptcha-google-recaptcha-validation.php:39
@@ -14271,7 +14283,7 @@ msgid ""
 "Put each field pair on a separate line and use a colon (\":\") to separate "
 "the Kit personalization tag from the field value. For example: "
 "%TAG%:ppcart_field_id"
-msgstr ""
+msgstr "将每个字段对放在单独的行上，并使用冒号（“:”）将 Kit 个性化标签与字段值分开。例如：%TAG%:ppcart_field_id"
 
 #: includes/integrations/templates/ppcart-kit-ppcart-add-remove-convertkit-subscriber.php:59
 msgid "Subscriber added to Kit form."
@@ -14709,7 +14721,7 @@ msgstr "%s 注册费"
 #. translators: 1: discount amount, 2: number of months.
 #, php-format
 msgid "%1$s off for %2$d months"
-msgstr ""
+msgstr "%1$s 折扣，持续 %2$d 个月"
 
 #: includes/ppcart-countries.php:17
 msgid "Select a Country"
@@ -15749,109 +15761,109 @@ msgstr "此时间段未找到任何内容"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:33
 msgid "Encryption enabled"
-msgstr ""
+msgstr "启用加密"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:38
 msgid "Payment and integration credentials are encrypted at rest."
-msgstr ""
+msgstr "支付和集成凭据在休息时被加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:40
 msgid "New credentials will be encrypted when saved."
-msgstr ""
+msgstr "新凭据在保存时将被加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:44
 msgid "Encryption disabled"
-msgstr ""
+msgstr "禁用加密"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:46
 msgid ""
 "Payment and integration keys are stored in plaintext by default. Enable "
 "encryption to reduce risk if your database is exposed."
-msgstr ""
+msgstr "支付和集成密钥默认以明文形式存储。如果您的数据库暴露，启用加密以降低风险。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:58
 msgid "Enable encryption"
-msgstr ""
+msgstr "启用加密"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:67
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Add %s to wp-config.php to enable encryption."
-msgstr ""
+msgstr "将 %s 添加到 wp-config.php 以启用加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:79
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:27
 msgid "Encryption is controlled by PPCART_ENCRYPT_SECRETS in wp-config.php."
-msgstr ""
+msgstr "加密由 wp-config.php 中的 PPCART_ENCRYPT_SECRETS 控制。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:87
 #. translators: %s: wp-config.php constant snippet.
 #, php-format
 msgid "Optional: lock encryption on in wp-config.php with %s"
-msgstr ""
+msgstr "可选：使用 %s 在 wp-config.php 中锁定加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:98
 msgid "Open Security settings"
-msgstr ""
+msgstr "打开安全设置"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:27
 msgid "Encryption"
-msgstr ""
+msgstr "加密"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:31
 msgid ""
 "Controlled by PPCART_ENCRYPT_SECRETS in wp-config.php. The database setting "
 "is ignored."
-msgstr ""
+msgstr "由 wp-config.php 中的 PPCART_ENCRYPT_SECRETS 控制。数据库设置将被忽略。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:44
 msgid "Encrypt payment and integration credentials in the database"
-msgstr ""
+msgstr "在数据库中加密支付和集成凭据"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:48
 msgid "For production sites, you can lock this in wp-config.php instead:"
-msgstr ""
+msgstr "对于生产网站，您可以在 wp-config.php 中锁定此项："
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:52
 msgid ""
 "When that constant is defined, it takes precedence and this checkbox is "
 "ignored."
-msgstr ""
+msgstr "当该常量被定义时，它具有优先权，并且此复选框将被忽略。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:68
 #. translators: %s: encryption key source label.
 #, php-format
 msgid "Key source: %s"
-msgstr ""
+msgstr "密钥来源：%s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:76
 msgid ""
 "Encryption cannot run until AUTH_KEY or PPCART_SECRETS_KEY is configured in "
 "wp-config.php."
-msgstr ""
+msgstr "在 wp-config.php 中配置 AUTH_KEY 或 PPCART_SECRETS_KEY 之前，无法运行加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:83
 msgid "Stored credentials"
-msgstr ""
+msgstr "存储的凭据"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:86
 #. translators: %d: count
 #, php-format
 msgid "Encrypted: %d"
-msgstr ""
+msgstr "已加密：%d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:87
 #. translators: %d: count
 #, php-format
 msgid "Plaintext: %d"
-msgstr ""
+msgstr "明文：%d"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:91
 msgid ""
 "While encryption is disabled, new and updated credentials are stored in "
 "plaintext. Existing encrypted values are not rewritten automatically; Cart "
 "continues to read them normally."
-msgstr ""
+msgstr "在加密被禁用时，新创建和更新的凭据以明文存储。现有的加密值不会自动重写；购物车将继续正常读取它们。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:99
 #. translators: %d: number of encrypted credentials.
@@ -15860,65 +15872,66 @@ msgid ""
 "%d credential remains encrypted in the database until you re-save it or "
 "enable encryption again."
 msgid_plural ""
+msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
-msgstr[0] ""
+msgstr[0] "%d 个凭据在数据库中保持加密状态，直到您重新保存它或再次启用加密。|%d 个凭据在数据库中保持加密状态，直到您重新保存它们或再次启用加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
 "When you enable encryption, any plaintext credentials are encrypted "
 "automatically."
-msgstr ""
+msgstr "当您启用加密时，任何明文凭据将自动加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:121
 #. translators: %s: formatted datetime.
 #, php-format
 msgid "Last migration: %s"
-msgstr ""
+msgstr "最后迁移：%s"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:138
 msgid "Enable encryption above or in wp-config.php before running migration."
-msgstr ""
+msgstr "在运行迁移之前，请在上述或 wp-config.php 中启用加密。"
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:156
 msgid ""
 "Rewrites existing plaintext payment and integration credentials in the "
 "database. Run during a maintenance window after taking a backup."
-msgstr ""
+msgstr "重写数据库中现有的明文支付和集成凭据。在进行备份后，在维护窗口期间运行。"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:32
 msgid "PublishPress Cart security"
-msgstr ""
+msgstr "PublishPress 购物车安全性"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:39
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed)."
-msgstr ""
+msgstr "已加密 %1$d 个存储凭据（%2$d 被跳过，%3$d 失败）。"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:48
 msgid ""
 "Do not change AUTH_KEY or PPCART_SECRETS_KEY without re-entering payment "
 "and integration keys in Cart settings."
-msgstr ""
+msgstr "在购物车设置中未重新输入支付和集成密钥时，请不要更改 AUTH_KEY 或 PPCART_SECRETS_KEY。"
 
 #: includes/secrets/traits/templates/secrets-render-render-migration-admin-notice.php:52
 msgid ""
 "Some credentials could not be encrypted. Re-run migration from Cart → "
 "Settings → Maintenance or re-save keys manually."
-msgstr ""
+msgstr "某些凭据无法加密。请从购物车 → 设置 → 维护重新运行迁移或手动重新保存密钥。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:20
 msgid "You do not have permission to change security encryption settings."
-msgstr ""
+msgstr "您没有权限更改安全加密设置。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:58
 msgid "Encryption disabled."
-msgstr ""
+msgstr "加密已禁用。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:74
 msgid "Encryption enabled."
-msgstr ""
+msgstr "加密已启用。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:91
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
@@ -15926,23 +15939,23 @@ msgstr ""
 msgid ""
 "Encrypted %1$d stored credentials (%2$d skipped, %3$d failed). Use Encrypt "
 "stored credentials in Maintenance to retry failures."
-msgstr ""
+msgstr "已加密 %1$d 个存储凭据（%2$d 被跳过，%3$d 失败）。在维护中使用“加密存储凭据”以重试失败。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:100
 #. translators: 1: migrated count, 2: skipped count.
 #, php-format
 msgid "Encrypted %1$d stored credentials (%2$d skipped)."
-msgstr ""
+msgstr "已加密 %1$d 个存储凭据（%2$d 被跳过）。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:117
 msgid "You do not have permission to encrypt stored credentials."
-msgstr ""
+msgstr "您没有权限加密存储凭据。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:132
 #. translators: 1: migrated count, 2: skipped count, 3: failed count.
 #, php-format
 msgid "Migration complete. Encrypted: %1$d. Skipped: %2$d. Failed: %3$d."
-msgstr ""
+msgstr "迁移完成。已加密：%1$d。跳过：%2$d。失败：%3$d。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-crypto.php:129
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:511
@@ -15957,9 +15970,10 @@ msgid ""
 "Encryption is enabled but %d stored credential is still in plaintext. Use "
 "Encrypt stored credentials to retry."
 msgid_plural ""
+msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
-msgstr[0] ""
+msgstr[0] "加密已启用，但 %d 个存储凭据仍为明文。使用“加密存储凭据”重试。|加密已启用，但 %d 个存储凭据仍为明文。使用“加密存储凭据”重试。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -15968,19 +15982,22 @@ msgid ""
 "You have %d stored credential in plaintext. Enabling encryption will "
 "encrypt it automatically."
 msgid_plural ""
+msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
-msgstr[0] ""
+msgstr[0] "您有 %d 个存储凭据为明文。启用加密将自动加密它。|您有 %d 个存储凭据为明文。启用加密将自动加密它们。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
 "Encryption is not enabled. Enable it in Cart → Settings → Maintenance or "
 "add define( 'PPCART_ENCRYPT_SECRETS', true ); to wp-config.php."
 msgstr ""
+"加密未启用。请在购物车 → 设置 → 维护中启用，或在 wp-config.php 中添加 define( "
+"'PPCART_ENCRYPT_SECRETS', true );。"
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:122
 msgid "Encryption requires AUTH_KEY or PPCART_SECRETS_KEY in wp-config.php."
-msgstr ""
+msgstr "加密需要在 wp-config.php 中配置 AUTH_KEY 或 PPCART_SECRETS_KEY。"
 
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-resume-subscription.php:19
 msgid "Canceled Stripe subscriptions cannot be resumed locally."
@@ -15999,13 +16016,13 @@ msgstr "Stripe 订阅未链接到 PublishPress Cart 订阅。"
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
-msgstr ""
+msgstr "此支付无法被验证。请重新加载页面并重试。"
 
 #: includes/stripe/templates/order-save.php:109
 #. translators: %s: order status.
 #, php-format
 msgid "%s order created."
-msgstr ""
+msgstr "%s 订单已创建。"
 
 #: includes/stripe/templates/order-save.php:120
 msgid "Order complete."
@@ -16035,75 +16052,75 @@ msgstr "标签"
 #. translators: %s: singular label.
 #, php-format
 msgid "Add New %s"
-msgstr ""
+msgstr "添加新 %s"
 
 #: includes/templates/post-types-register-single-post-type.php:49
 #: includes/templates/post-types-register-single-taxonomy.php:20
 #. translators: %s: singular label.
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "编辑 %s"
 
 #: includes/templates/post-types-register-single-post-type.php:54
 #. translators: %s: singular label.
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "新建 %s"
 
 #: includes/templates/post-types-register-single-post-type.php:56
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found"
-msgstr ""
+msgstr "未找到 %s"
 
 #: includes/templates/post-types-register-single-post-type.php:58
 #. translators: %s: post type plural label
 #, php-format
 msgid "No %s Found in Trash"
-msgstr ""
+msgstr "垃圾箱中未找到 %s"
 
 #: includes/templates/post-types-register-single-post-type.php:60
 #. translators: %s: post type plural label
 #, php-format
 msgid "Parent %s :"
-msgstr ""
+msgstr "父级 %s："
 
 #: includes/templates/post-types-register-single-post-type.php:62
 #: includes/templates/post-types-register-single-taxonomy.php:13
 #. translators: %s: plural label.
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "搜索 %s"
 
 #: includes/templates/post-types-register-single-post-type.php:65
 #. translators: %s: singular label.
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "查看 %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:16
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s"
-msgstr ""
+msgstr "父级 %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:18
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Parent %s:"
-msgstr ""
+msgstr "父级 %s:"
 
 #: includes/templates/post-types-register-single-taxonomy.php:22
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "Update %s"
-msgstr ""
+msgstr "更新 %s"
 
 #: includes/templates/post-types-register-single-taxonomy.php:26
 #. translators: %s: taxonomy singular label
 #, php-format
 msgid "New %s Name"
-msgstr ""
+msgstr "新 %s 名称"
 
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:37
 #: models/order/traits/templates/order-checkout-input-setup-atts-from-post.php:38
@@ -16114,7 +16131,7 @@ msgstr "已接受"
 #. translators: %1$s: previous order status, %2$s: new order status
 #, php-format
 msgid "Order status updated from %1$s to %2$s"
-msgstr ""
+msgstr "订单状态已从 %1$s 更新为 %2$s"
 
 #: models/order/traits/templates/order-persistence-store.php:68
 msgid "Creating order."
@@ -16139,11 +16156,11 @@ msgstr "下载收据"
 #. translators: %s: subscription status
 #, php-format
 msgid "Subscription status updated to %s"
-msgstr ""
+msgstr "订阅状态已更新为 %s"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:37
 msgid "This offer is no longer available."
-msgstr ""
+msgstr "该优惠不再可用。"
 
 #: public/controllers/checkout/traits/templates/checkout-upsell-ppcart-process-upsell.php:168
 #: public/controllers/payment/traits/templates/payment-intent-create-payment-intent.php:176
@@ -16152,7 +16169,7 @@ msgstr ""
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:152
 #: public/controllers/traits/templates/subscription-create-create-stripe-subscription.php:167
 msgid "This checkout could not be started. Please contact the site administrator."
-msgstr ""
+msgstr "无法开始此结账。请联系网站管理员。"
 
 #: public/controllers/checkout/traits/templates/checkout-validation-check-purchase-limit.php:36
 #: public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php:31
@@ -16238,11 +16255,11 @@ msgstr "无法保存新卡片。请检查您的付款信息并再试一次。"
 msgid ""
 "The new card was saved, but some of your other subscriptions could not be "
 "updated. Please try again."
-msgstr ""
+msgstr "新卡已保存，但您的其他一些订阅无法更新。请再试一次。"
 
 #: public/controllers/order/traits/templates/order-stripe-ppcart-update-stripe-card.php:86
 msgid "The new card was saved, but the payment failed: "
-msgstr ""
+msgstr "新卡已保存，但付款失败："
 
 #: public/controllers/order/traits/trait-ppcart-public-order-cart.php:74
 msgid "Your cart is empty."
@@ -16250,25 +16267,25 @@ msgstr "您的购物车是空的。"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:201
 msgid "Processing payment…"
-msgstr ""
+msgstr "正在处理付款…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:202
 msgid "Your payment is being confirmed. This page will refresh automatically…"
-msgstr ""
+msgstr "您的付款正在确认中。此页面将自动刷新…"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:218
 msgid "Payment processing"
-msgstr ""
+msgstr "付款处理中"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:219
 msgid ""
 "We are still confirming your payment. You can leave this page open and "
 "refresh shortly, or check your email for a confirmation."
-msgstr ""
+msgstr "我们仍在确认您的付款。您可以保持此页面打开并稍后刷新，或检查您的电子邮件以获取确认。"
 
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:221
 msgid "View order status"
-msgstr ""
+msgstr "查看订单状态"
 
 #: public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php:42
 msgid "Purchase"
@@ -16285,7 +16302,7 @@ msgstr "此结账不支持支付准备。"
 #: public/controllers/payment/traits/templates/payment-setup-intent-create-setup-intent.php:74
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:117
 msgid "There was an error, please try again."
-msgstr ""
+msgstr "发生错误，请再试一次。"
 
 #: public/controllers/templates/ga-purchase-tracking.php:112
 #: public/controllers/templates/ga-purchase-tracking.php:165
@@ -16296,13 +16313,13 @@ msgstr "自定义附加组件"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:37
 msgid "Hosted Checkout is not enabled."
-msgstr ""
+msgstr "托管结账未启用。"
 
 #: public/controllers/templates/hosted-checkout-controller-create-checkout-session.php:184
 msgid ""
 "This subscription is not ready for checkout, please contact the site "
 "administrator."
-msgstr ""
+msgstr "此订阅尚未准备好结账，请联系网站管理员。"
 
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:37
 #: public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php:82
@@ -16318,7 +16335,7 @@ msgstr "您没有权限访问此订阅。"
 msgid "My Account"
 msgstr "我的账户"
 
-#: public/partials/csv-export.php:157
+#: public/partials/csv-export.php:157, fuzzy
 msgid "ID"
 msgstr "ID"
 
@@ -16411,6 +16428,9 @@ msgid ""
 "data-testid=\"ppcart-checkout-stripe-test-card-link\">Find a test card for "
 "another country</a>."
 msgstr ""
+"测试模式已启用：要进行测试（美国）购买，请使用信用卡号码“4242424242424242”和任何CVC及有效的到期日期。<a href=\"%s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\" "
+"data-testid=\"ppcart-checkout-stripe-test-card-link\">查找其他国家的测试卡</a>。"
 
 #: public/templates/functions/payment-address.php:85
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:104
@@ -16446,11 +16466,11 @@ msgstr "联系信息"
 
 #: public/templates/functions/summary-and-scripts.php:142
 msgid "terms and conditions"
-msgstr ""
+msgstr "条款和条件"
 
 #: public/templates/functions/summary-and-scripts.php:161
 msgid "privacy policy"
-msgstr ""
+msgstr "隐私政策"
 
 #: public/templates/my-account/card-details.php:24
 #: includes/integrations/gutenberg/blocks/checkout-form/order-form.js:92
@@ -16484,7 +16504,7 @@ msgstr "到期日期"
 
 #: public/templates/my-account/forms/change-card.php:57
 msgid "Set default for all active subscriptions"
-msgstr ""
+msgstr "为所有活动订阅设置默认值"
 
 #: public/templates/my-account/forms/change-card.php:65
 msgid "Pay Now and Save Card"
@@ -17772,12 +17792,12 @@ msgid "Bold (700)"
 msgstr "粗体 (700)"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:55
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "S"
 msgstr "S"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:56
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "M"
 msgstr "M"
 
@@ -17788,12 +17808,12 @@ msgid "L"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:58
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XL"
 msgstr "XL"
 
 #: includes/integrations/gutenberg/blocks/_shared/options.js:59
-#: includes/integrations/gutenberg/build/account-blocks.js:1
+#: includes/integrations/gutenberg/build/account-blocks.js:1, fuzzy
 msgid "XXL"
 msgstr "XXL"
 
@@ -18025,10 +18045,10 @@ msgstr "图标位置"
 
 #: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
-#, php-format
+#, fuzzy, php-format
 msgctxt "date range"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:162
 #. translators: 1: current page, 2: total pages.
@@ -18044,24 +18064,24 @@ msgstr "乔治亚"
 
 #: includes/functions/merge-tags-and-dates.php:143
 #. translators: 1: product name, 2: plan name.
-#, php-format
+#, fuzzy, php-format
 msgctxt "product and plan"
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 #: public/templates/functions/summary-and-scripts.php:141
 #. translators: %s: terms and conditions link.
 #, php-format
 msgctxt "terms and conditions"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "我已阅读并接受 %s"
 
 #: public/templates/functions/summary-and-scripts.php:160
 #. translators: %s: privacy policy link.
 #, php-format
 msgctxt "privacy policy"
 msgid "I have read and I accept the %s"
-msgstr ""
+msgstr "我已阅读并接受 %s"
 
 #: includes/integrations/gutenberg/blocks/account-downloads/block.json
 #, fuzzy
