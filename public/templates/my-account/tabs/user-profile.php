@@ -86,7 +86,7 @@ $address = ppcart_get_user_address($ppcart_current_user->ID);
         <div class="form-btn">
             <div id="ppcart-profile-alert"></div>
             <input type="button" class="ppcart-account-action-button" value="<?php esc_attr_e('Edit', 'publishpress-cart'); ?>" id="ppcart-edit-profile" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-profile-edit')); ?>"/>
-            <span id="ppcart-loader"><img src="<?php echo esc_url(PPCART_BASE_URL . 'public/images/spinner.gif'); ?>"></span>
+            <span id="ppcart-loader"><img src="<?php echo esc_url(PPCART_BASE_URL . 'public/images/spinner.gif'); ?>" alt=""></span>
             <div class="btn-right">
                 <input type="button" class="ppcart-account-action-button btn-save" value="<?php esc_attr_e('Save', 'publishpress-cart'); ?>" id="ppcart-update-profile" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-profile-save')); ?>"/>
                 <input type="button" class="ppcart-account-action-button btn-cancel" value="<?php esc_attr_e('Cancel', 'publishpress-cart'); ?>" id="ppcart-edit-profile-cancel" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-profile-cancel')); ?>"/>
