@@ -47,23 +47,24 @@ function ppcart_pro_locked_control_html($field)
 {
     $type        = $field['type'] ?? 'text';
     $placeholder = isset($field['placeholder']) ? (string) $field['placeholder'] : '';
+    $label       = esc_attr((string) ($field['label'] ?? $placeholder));
 
     switch ($type) {
         case 'toggle':
             return '<span class="ppcart-settings__pro-toggle" aria-hidden="true"></span>';
         case 'textarea':
-            return '<div class="textarea-wrap"><textarea class="large-text" rows="4" disabled></textarea></div>';
+            return '<div class="textarea-wrap"><textarea class="large-text" rows="4" aria-label="' . $label . '" disabled></textarea></div>';
         case 'select':
             $select_label = '' !== $placeholder ? $placeholder : __('-- select --', 'publishpress-cart');
-            return '<select disabled><option>' . esc_html($select_label) . '</option></select>';
+            return '<select aria-label="' . $label . '" disabled><option>' . esc_html($select_label) . '</option></select>';
         case 'image':
             return '<div class="ppcart-settings__pro-field-image">' .
-                    '<input type="text" disabled />' .
+                    '<input type="text" aria-label="' . $label . '" disabled />' .
                     '<button type="button" class="button" disabled>' . esc_html__('Set Image', 'publishpress-cart') . '</button>' .
                 '</div>';
         case 'text':
         default:
-            return '<div class="input-group field-text"><input type="text" placeholder="' . esc_attr($placeholder) . '" disabled /></div>';
+            return '<div class="input-group field-text"><input type="text" aria-label="' . $label . '" placeholder="' . esc_attr($placeholder) . '" disabled /></div>';
     }
 }
 
