@@ -10,7 +10,7 @@ $show_back_link = ! isset($attr['showBackLink']) || (bool) $attr['showBackLink']
 <div class="ppcart-my-account ppcart-my-subscription-page">
     <?php if ($show_back_link && ($account_page_id = get_option('_ppcart_myaccount_page_id'))) : ?>
     <div class="back-btn">
-        <a href="<?php echo esc_url(get_permalink($account_page_id)); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-order-back')); ?>"><img src="<?php echo esc_url(PPCART_BASE_URL . 'public/images/arrow-back.svg'); ?>" alt="Icon" /> <?php esc_html_e('Back', 'publishpress-cart'); ?></a>
+        <a href="<?php echo esc_url(get_permalink($account_page_id)); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-order-back')); ?>"><img src="<?php echo esc_url(PPCART_BASE_URL . 'public/images/arrow-back.svg'); ?>" alt="" /> <?php esc_html_e('Back', 'publishpress-cart'); ?></a>
     </div>
     <?php endif; ?>
     <div class="ppcart-account-subscription">
