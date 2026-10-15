@@ -147,7 +147,7 @@ class PPCart_Price_Format
             $values[] = $id_key;
             $values = array_merge($values, array_keys($batch));
 
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration update on plugin-owned tables.
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- SQL contains only fixed fragments and generated placeholders; values and identifiers are prepared below.
             $wpdb->query($wpdb->prepare($sql, $values));
         }
     }
