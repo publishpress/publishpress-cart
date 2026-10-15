@@ -6,24 +6,13 @@ if (! defined('ABSPATH')) {
 
 
 $lists = [];
-$activecampaign = $this->activecampaign_authentication();
-if ($activecampaign) {
-    $response = wp_safe_remote_get($activecampaign['url'] . '/api/3/lists?limit=100', [
-        'headers' => [
-            'Api-Token' => $activecampaign['key'],
-        ],
-        'timeout' => 3,
-    ]);
-    if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-        $body = json_decode(wp_remote_retrieve_body($response), true);
-        if (isset($body['lists']) && !empty($body['lists'])) {
-            foreach ($body['lists'] as $value) {
-                $list_id = $value['id'];
-                $name = $value['name'];
-                if (!empty($list_id)) {
-                    $lists['list-' . $list_id] = $name;
-                }
-            }
+$body = $this->activecampaign_cached_get('/api/3/lists?limit=100', $renew);
+if (! empty($body['lists'])) {
+    foreach ($body['lists'] as $value) {
+        $list_id = $value['id'];
+        $name = $value['name'];
+        if (! empty($list_id)) {
+            $lists['list-' . $list_id] = $name;
         }
     }
 }

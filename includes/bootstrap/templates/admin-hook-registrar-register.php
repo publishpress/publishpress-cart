@@ -101,11 +101,15 @@ $this->loader->add_action('add_option__ppcart_mailchimp_api', $plugin_admin, 'ge
 $this->loader->add_action('add_option__ppcart_mailchimp_api', $plugin_admin, 'get_mailchimp_tags', 10);
 $this->loader->add_action('add_option__ppcart_activecampaign_secret_key', $plugin_admin, 'get_activecampaign_lists', 10);
 $this->loader->add_action('add_option__ppcart_activecampaign_secret_key', $plugin_admin, 'get_activecampaign_tags', 10);
+$this->loader->add_action('add_option__ppcart_activecampaign_url', $plugin_admin, 'get_activecampaign_lists', 10);
+$this->loader->add_action('add_option__ppcart_activecampaign_url', $plugin_admin, 'get_activecampaign_tags', 10);
 
 $this->loader->add_action('update_option__ppcart_mailchimp_api', $plugin_admin, 'get_mailchimp_groups', 10);
 $this->loader->add_action('update_option__ppcart_mailchimp_api', $plugin_admin, 'get_mailchimp_tags', 10);
 $this->loader->add_action('update_option__ppcart_activecampaign_secret_key', $plugin_admin, 'get_activecampaign_lists', 10);
 $this->loader->add_action('update_option__ppcart_activecampaign_secret_key', $plugin_admin, 'get_activecampaign_tags', 10);
+$this->loader->add_action('update_option__ppcart_activecampaign_url', $plugin_admin, 'get_activecampaign_lists', 10);
+$this->loader->add_action('update_option__ppcart_activecampaign_url', $plugin_admin, 'get_activecampaign_tags', 10);
 
 $this->loader->add_action('add_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
 $this->loader->add_action('update_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
