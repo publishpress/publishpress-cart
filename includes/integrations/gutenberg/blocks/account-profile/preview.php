@@ -12,6 +12,7 @@ $address_label = esc_html__('Address', 'publishpress-cart');
 $edit          = esc_attr__('Edit', 'publishpress-cart');
 $save          = esc_attr__('Save', 'publishpress-cart');
 $cancel        = esc_attr__('Cancel', 'publishpress-cart');
+$preview_id    = wp_unique_id('ppcart-preview-profile-');
 
 $ppcart_account_profile_preview_buffer_level = ob_get_level();
 $ppcart_account_profile_preview_buffer_active = true;
@@ -27,10 +28,10 @@ try {
 <div class="profile-wrapper ppcart">
     <h4><?php echo esc_html($heading); ?></h4>
     <form method="post" id="ppcart-update-profile-form" data-testid="ppcart-account-profile-form-preview">
-        <div class="ppcart-form-group form-field"><label><?php echo esc_html($first_label); ?>: </label><input type="text" value="Jane" disabled data-testid="ppcart-account-profile-first-name-preview" /></div>
-        <div class="ppcart-form-group form-field"><label><?php echo esc_html($last_label); ?>: </label><input type="text" value="Customer" disabled data-testid="ppcart-account-profile-last-name-preview" /></div>
-        <div class="ppcart-form-group form-field"><label><?php echo esc_html($email_label); ?>: </label><input type="text" value="jane@example.com" disabled data-testid="ppcart-account-profile-email-preview" /></div>
-        <div class="ppcart-form-group form-field"><label><?php echo esc_html($address_label); ?>: </label><input type="text" value="123 Example Street" disabled data-testid="ppcart-account-profile-address-preview" /></div>
+        <div class="ppcart-form-group form-field"><label for="<?php echo esc_attr($preview_id . '-first-name'); ?>"><?php echo esc_html($first_label); ?>: </label><input type="text" id="<?php echo esc_attr($preview_id . '-first-name'); ?>" value="Jane" disabled data-testid="ppcart-account-profile-first-name-preview" /></div>
+        <div class="ppcart-form-group form-field"><label for="<?php echo esc_attr($preview_id . '-last-name'); ?>"><?php echo esc_html($last_label); ?>: </label><input type="text" id="<?php echo esc_attr($preview_id . '-last-name'); ?>" value="Customer" disabled data-testid="ppcart-account-profile-last-name-preview" /></div>
+        <div class="ppcart-form-group form-field"><label for="<?php echo esc_attr($preview_id . '-email'); ?>"><?php echo esc_html($email_label); ?>: </label><input type="text" id="<?php echo esc_attr($preview_id . '-email'); ?>" value="jane@example.com" disabled data-testid="ppcart-account-profile-email-preview" /></div>
+        <div class="ppcart-form-group form-field"><label for="<?php echo esc_attr($preview_id . '-address'); ?>"><?php echo esc_html($address_label); ?>: </label><input type="text" id="<?php echo esc_attr($preview_id . '-address'); ?>" value="123 Example Street" disabled data-testid="ppcart-account-profile-address-preview" /></div>
         <div class="form-btn">
             <input type="button" class="ppcart-account-action-button" value="<?php echo esc_attr($edit); ?>" id="ppcart-edit-profile" data-testid="ppcart-account-profile-edit-preview" />
             <div class="btn-right">
