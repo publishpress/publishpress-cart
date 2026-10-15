@@ -59,6 +59,7 @@ if (isset($_POST['remaining']) && is_array($_POST['remaining'])) {
     }
 }
 
+$updates = [];
 foreach ($files as $download) {
     $changes = [];
 
@@ -77,9 +78,42 @@ foreach ($files as $download) {
     }
 
     if (!empty($changes)) {
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Updates download counters/expiry for a single download row.
-        $wpdb->update(self::live_table(), $changes, [ 'download_id' => $download->download_id ], [ '%s', '%s' ], [ '%d' ]);
+        $updates[(int) $download->download_id] = $changes;
     }
+}
+
+foreach (array_chunk($updates, 200, true) as $batch) {
+    $set_clauses = [];
+    $values = [self::live_table()];
+    foreach (['download_expires', 'downloads_remaining'] as $column) {
+        $column_updates = [];
+        foreach ($batch as $download_id => $changes) {
+            if (array_key_exists($column, $changes)) {
+                $column_updates[$download_id] = $changes[$column];
+            }
+        }
+        if (! $column_updates) {
+            continue;
+        }
+
+        $clause = '%i = CASE %i';
+        $values[] = $column;
+        $values[] = 'download_id';
+        foreach ($column_updates as $download_id => $value) {
+            $clause .= ' WHEN %d THEN ' . (null === $value ? 'NULL' : '%s');
+            $values[] = $download_id;
+            if (null !== $value) {
+                $values[] = $value;
+            }
+        }
+        $set_clauses[] = $clause . ' ELSE %i END';
+        $values[] = $column;
+    }
+
+    $sql = 'UPDATE %i SET ' . implode(', ', $set_clauses) . ' WHERE download_id IN (' . implode(',', array_fill(0, count($batch), '%d')) . ')';
+    $values = array_merge($values, array_keys($batch));
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Batches selected order download edits in the plugin-owned table.
+    $wpdb->query($wpdb->prepare($sql, $values));
 }
 
 add_action('save_post_' . $post->post_type, [$this,'update_order_downloads'], 99, 2);
