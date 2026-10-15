@@ -85,7 +85,10 @@ if ($right_currency) {
 }
 ?>
     <?php if ($atts['class'] == 'datepicker') : ?>
-        <a href="#" class="clear-date" data-testid="<?php echo esc_attr($clear_testid); ?>"><svg width="16px" enable-background="new 0 0 24 24" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path fill="#b1b1b1" d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M16.9,15.5l-1.4,1.4L12,13.4l-3.5,3.5   l-1.4-1.4l3.5-3.5L7.1,8.5l1.4-1.4l3.5,3.5l3.5-3.5l1.4,1.4L13.4,12L16.9,15.5z"/></g></svg></a>
+        <a href="#" class="clear-date" aria-label="<?php
+            /* translators: %s: date field label. */
+            echo esc_attr(sprintf(__('Clear %s', 'publishpress-cart'), $atts['label']));
+        ?>" data-testid="<?php echo esc_attr($clear_testid); ?>"><svg aria-hidden="true" width="16px" enable-background="new 0 0 24 24" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path fill="#b1b1b1" d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M16.9,15.5l-1.4,1.4L12,13.4l-3.5,3.5   l-1.4-1.4l3.5-3.5L7.1,8.5l1.4-1.4l3.5,3.5l3.5-3.5l1.4,1.4L13.4,12L16.9,15.5z"/></g></svg></a>
     <?php endif; ?>
 
 <?php if (empty($atts['label']) && ! empty($atts['description'])) :?>

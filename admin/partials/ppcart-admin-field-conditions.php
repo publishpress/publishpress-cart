@@ -95,7 +95,7 @@ $setatts['class'] = 'condition';
             }
         } // $fieldset foreach
 
-        ?><a class="remove-condition" href="#" data-testid="<?php echo esc_attr(ppcart_testid($condition_testid . '-remove-' . $k2)); ?>">&times;</a>
+        ?><a class="remove-condition" href="#" aria-label="<?php esc_attr_e('Remove condition', 'publishpress-cart'); ?>" data-testid="<?php echo esc_attr(ppcart_testid($condition_testid . '-remove-' . $k2)); ?>">&times;</a>
                 </div>
             </div>
         </li><!-- .condition --><?php
