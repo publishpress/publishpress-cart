@@ -66,19 +66,31 @@ class PPCart_Price_Format
             $wpdb->prepare('SELECT order_item_id,total_amount,tax_amount from %i', $table_name),
             ARRAY_A
         );
-        if (!empty($result)) {
-            foreach ($result as $item_amount) {
-                $amount = $this->check_price_format($item_amount['total_amount']);
-                if ($amount && $amount != $item_amount['total_amount']) {
-                    $updated = $wpdb->update($table_name, ['total_amount' => $amount], ['order_item_id' => $item_amount['order_item_id']]); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration update on plugin-owned table.
-                }
+        $total_changes = [];
+        $tax_changes = [];
+        foreach ((array) $result as $item_amount) {
+            $amount = $this->check_price_format($item_amount['total_amount']);
+            if ($amount && $amount != $item_amount['total_amount']) {
+                $total_changes[(int) $item_amount['order_item_id']] = $amount;
+            }
 
-                $amount = $this->check_price_format($item_amount['tax_amount']);
-                if ($amount && $amount != $item_amount['tax_amount']) {
-                    $updated = $wpdb->update($table_name, ['tax_amount' => $amount], ['order_item_id' => $item_amount['order_item_id']]); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration update on plugin-owned table.
-                }
+            $amount = $this->check_price_format($item_amount['tax_amount']);
+            if ($amount && $amount != $item_amount['tax_amount']) {
+                $tax_changes[(int) $item_amount['order_item_id']] = $amount;
+            }
+
+            if (count($total_changes) >= 200) {
+                $this->update_amounts_in_batches($table_name, 'order_item_id', 'total_amount', $total_changes);
+                $total_changes = [];
+            }
+            if (count($tax_changes) >= 200) {
+                $this->update_amounts_in_batches($table_name, 'order_item_id', 'tax_amount', $tax_changes);
+                $tax_changes = [];
             }
         }
+
+        $this->update_amounts_in_batches($table_name, 'order_item_id', 'total_amount', $total_changes);
+        $this->update_amounts_in_batches($table_name, 'order_item_id', 'tax_amount', $tax_changes);
     }
 
     public function update_order_itemmeta_amount()
@@ -94,13 +106,49 @@ class PPCart_Price_Format
             ),
             ARRAY_A
         );
-        if (!empty($result)) {
-            foreach ($result as $item_meta) {
-                $amount = $this->check_price_format($item_meta['meta_value']);
-                if ($amount && $amount != $item_meta['meta_value']) {
-                    $updated = $wpdb->update($table_name, ['meta_value' => $amount], ['meta_id' => $item_meta['meta_id']]); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- One-off migration update on plugin-owned item meta table.
-                }
+        $changes = [];
+        foreach ((array) $result as $item_meta) {
+            $amount = $this->check_price_format($item_meta['meta_value']);
+            if ($amount && $amount != $item_meta['meta_value']) {
+                $changes[(int) $item_meta['meta_id']] = $amount;
             }
+            if (count($changes) >= 200) {
+                $this->update_amounts_in_batches($table_name, 'meta_id', 'meta_value', $changes);
+                $changes = [];
+            }
+        }
+
+        $this->update_amounts_in_batches($table_name, 'meta_id', 'meta_value', $changes);
+    }
+
+    /**
+     * Apply distinct normalized amounts with bounded, prepared CASE updates.
+     *
+     * @param string $table  Plugin-owned table name.
+     * @param string $id_key Primary key column.
+     * @param string $column Amount column.
+     * @param array  $changes ID-to-amount map.
+     */
+    private function update_amounts_in_batches($table, $id_key, $column, $changes)
+    {
+        global $wpdb;
+
+        foreach (array_chunk($changes, 200, true) as $batch) {
+            $sql = 'UPDATE %i SET %i = CASE %i';
+            $values = [$table, $column, $id_key];
+            foreach ($batch as $id => $amount) {
+                $sql .= ' WHEN %d THEN %s';
+                $values[] = $id;
+                $values[] = $amount;
+            }
+
+            $sql .= ' ELSE %i END WHERE %i IN (' . implode(',', array_fill(0, count($batch), '%d')) . ')';
+            $values[] = $column;
+            $values[] = $id_key;
+            $values = array_merge($values, array_keys($batch));
+
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-off migration update on plugin-owned tables.
+            $wpdb->query($wpdb->prepare($sql, $values));
         }
     }
 
