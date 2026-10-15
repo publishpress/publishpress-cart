@@ -128,10 +128,10 @@ Shared helpers are under `includes/integrations/gutenberg/blocks/_shared/`.
 * Montserrat by The Montserrat Project Authors, SIL Open Font License 1.1. License: `public/fonts/OFL.txt`. https://github.com/JulietaUla/Montserrat
 * balloon.css 1.2.0 by Claudio Holanda, MIT. License: `admin/assets/libs/balloon.LICENSE.txt`. https://github.com/kazzkiq/balloon.css
 * flatpickr 4.6.13, MIT. License: `admin/assets/libs/flatpickr.js`. https://github.com/flatpickr/flatpickr
-* DataTables 3.0.4 by SpryMedia Ltd, MIT. License: `admin/js/jquery.dataTables.js`, `admin/css/jquery.dataTables.css`. https://datatables.net/license
+* DataTables 3.0.4 by SpryMedia Ltd, MIT. License: `admin/js/jquery.dataTables.min.js`, `admin/css/jquery.dataTables.css`. https://datatables.net/license
 * jquery.daterangepicker by Chunlong Liu, MIT. License: `admin/js/ppcart-daterangepicker.js`, `admin/css/ppcart-daterangepicker.css`. https://github.com/longbill/jquery-date-range-picker
 * Selectize 0.15.2, Apache License 2.0. JavaScript: `admin/js/selectize.js`, `public/js/selectize.js`. Minified theme CSS: `admin/css/selectize.default.css`, `public/css/selectize.default.css`. https://github.com/selectize/selectize.js
-* Font Awesome Free 7.3.1 by Fonticons, Inc. Icons: CC BY 4.0; fonts: SIL Open Font License 1.1; code: MIT. License: `includes/assets/font-awesome-all.js`, `includes/assets/font-awesome-all.min.js`, `includes/assets/font-awesome-svg-with-js.css`, `includes/assets/font-awesome-svg-with-js.min.css`. https://fontawesome.com/license/free
+* Font Awesome Free 7.3.1 by Fonticons, Inc. Icons: CC BY 4.0; fonts: SIL Open Font License 1.1; code: MIT. License: `includes/assets/font-awesome-all.min.js`, `includes/assets/font-awesome-svg-with-js.css`, `includes/assets/font-awesome-svg-with-js.min.css`. https://fontawesome.com/license/free
 * Stripe PHP SDK 20.3.1, MIT. License: `lib/vendor/publishpress/stripe-php/lib/stripe/stripe-php/LICENSE`. https://github.com/stripe/stripe-php
 * Dompdf 3.1.6 (publishpress/dompdf-dompdf 3.1.6.2), LGPL-2.1-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/dompdf/LICENSE.LGPL`. https://github.com/dompdf/dompdf
 * php-font-lib, LGPL-2.1-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/php-font-lib/LICENSE`. https://github.com/dompdf/php-font-lib

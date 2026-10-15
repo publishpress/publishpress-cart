@@ -28,11 +28,13 @@ $ppcart_is_admin_screen = true;
 wp_enqueue_script('ppcart-selectize', PPCART_BASE_URL . 'admin/js/selectize.js', [], $this->version, false);
 wp_enqueue_script('ppcart-flatpickr', PPCART_BASE_URL . 'admin/assets/libs/flatpickr.min.js', [ 'jquery', 'jquery-ui-datepicker', 'jquery-ui-slider' ], $this->version, false);
 wp_enqueue_script('ppcart-font-awesome-all', PPCART_BASE_URL . 'includes/assets/font-awesome-all.min.js', [], $this->version, true);
+wp_script_add_data('ppcart-font-awesome-all', 'strategy', 'defer');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_script('ppcart', PPCART_BASE_URL . 'admin/js/ppcart-admin.js', [ 'jquery', 'wp-color-picker', 'jquery-ui-dialog' ], $this->version, false);
 wp_enqueue_script('moment');
 wp_enqueue_script('ppcart-daterangepicker', PPCART_BASE_URL . 'admin/js/ppcart-daterangepicker.min.js', [ 'jquery', 'jquery-ui-datepicker', 'jquery-ui-slider', 'moment' ], $this->version, false);
 wp_enqueue_script('ppcart-datatables', PPCART_BASE_URL . 'admin/js/jquery.dataTables.min.js', [ 'jquery' ], $this->version, true);
+wp_script_add_data('ppcart-datatables', 'strategy', 'defer');
 
 wp_localize_script(
     'ppcart',
