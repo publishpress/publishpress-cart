@@ -790,6 +790,10 @@ td.column-order .row-actions{
   outline: 0 !important;
   transition: all 0.2s linear;
 }
+.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav a:focus-visible {
+  outline: 2px solid #0479a6 !important;
+  outline-offset: 2px;
+}
 .ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav.active a {
   border-color: #eeeeee;
   color: #000;

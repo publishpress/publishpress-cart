@@ -1888,6 +1888,10 @@ body.ppcart-checkout-1 .ppcart-container {
   margin-bottom: -1px;
   outline: none;
 }
+.ppcart-my-account .ppcart-nav-tabs li a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 .ppcart-my-account .ppcart-nav-tabs li a.active {
   border-color: inherit;
   color: #000;
