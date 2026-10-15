@@ -200,12 +200,12 @@ if (0 === $render_count) {
         $didscripts = true;
     } // for
 
-?><div class="repeater-more">
+?><li class="repeater-more">
         <span class="status"></span>
         <a class="button add-repeater" href="#" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-add')); ?>"><?php
 
         echo esc_html(apply_filters('ppcart-repeater-more-link-label', $setatts['label-add']));
 
 ?></a>
-    </div><!-- .repeater-more -->
+    </li><!-- .repeater-more -->
 </ul><!-- repeater -->

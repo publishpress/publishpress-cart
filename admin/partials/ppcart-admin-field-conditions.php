@@ -101,10 +101,10 @@ $setatts['class'] = 'condition';
         </li><!-- .condition --><?php
     } // for
 
-?><div class="condition-more">
+?><li class="condition-more">
         <span class="status"></span>
         <a class="button add-condition" href="#" data-testid="<?php echo esc_attr(ppcart_testid($condition_testid . '-add')); ?>"><?php esc_html_e('+ Add another condition', 'publishpress-cart') ; ?></a>
-    </div><!-- .repeater-more -->
+    </li><!-- .condition-more -->
 </ul><!-- repeater -->
 
 <?php

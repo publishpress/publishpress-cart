@@ -30,11 +30,12 @@ $field_id = ! empty($atts['html_id']) ? $atts['html_id'] : ((isset($atts['rid'])
 $testid_source = ! empty($field_id) ? $field_id : ($atts['name'] ?? '');
 $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
 $data_attrs = isset($atts['data']) && is_array($atts['data']) ? $atts['data'] : [];
+$label_id = wp_unique_id('ppcart-checkbox-label-');
 ?>
-<span class="ppcart-label"><?php echo esc_html($atts['label']); ?></span>
+<span class="ppcart-label" id="<?php echo esc_attr($label_id); ?>"><?php echo esc_html($atts['label']); ?></span>
 <div class="checkbox-wrap">
     <span class="ckbx-style">
-        <input aria-role="checkbox"
+        <input aria-labelledby="<?php echo esc_attr($label_id); ?>"
             <?php checked(1, $atts['value'], true); ?>
             class="<?php echo esc_attr($atts['class']); ?>"
             id="<?php echo esc_attr($field_id); ?>"
