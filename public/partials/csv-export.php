@@ -53,7 +53,7 @@ if ($export_mode === 'contacts') {
     // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- One-time export.
     $get_user = $wpdb->get_results(
         $wpdb->prepare(
-            "SELECT {$wpdb->posts}.ID, {$wpdb->postmeta}.meta_value
+            "SELECT {$wpdb->posts}.ID, {$wpdb->posts}.post_date, {$wpdb->postmeta}.meta_value
             FROM {$wpdb->posts}
             INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id )
             WHERE {$wpdb->postmeta}.meta_key = %s
@@ -68,34 +68,26 @@ if ($export_mode === 'contacts') {
         )
     );
 
-    $get_users = array_count_values(array_map('strtolower', array_column($get_user, 'meta_value')));
+    $get_users = [];
+    $latest_orders = [];
+    foreach ($get_user as $order_row) {
+        $email = strtolower((string) $order_row->meta_value);
+        $get_users[$email] = ($get_users[$email] ?? 0) + 1;
+        if (! isset($latest_orders[$email])) {
+            $latest_orders[$email] = $order_row;
+        }
+    }
+    update_meta_cache('post', array_map('intval', array_column($latest_orders, 'ID')));
 
     foreach ($get_users as $key => $value) {
-        $get_date = $wpdb->get_row(
-            $wpdb->prepare(
-                "SELECT {$wpdb->posts}.ID, {$wpdb->posts}.post_date
-                FROM {$wpdb->posts}
-                INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id )
-                WHERE {$wpdb->postmeta}.meta_key = %s
-                    AND {$wpdb->postmeta}.meta_value = %s
-                    AND {$wpdb->posts}.post_type IN (" . implode(',', array_fill(0, count($order_types), '%s')) . ")
-                    AND {$wpdb->posts}.post_status NOT IN (%s, %s)
-                ORDER BY {$wpdb->posts}.post_date DESC
-                LIMIT 1",
-                array_merge(
-                    [ppcart_meta_key('email'), $key],
-                    $order_types,
-                    ['trash', 'auto-draft']
-                )
-            )
-        );
+        $latest_order = $latest_orders[$key];
 
         $csv_output_report .= ppcart_csv_row([
-            ppcart_get_post_meta($get_date->ID, 'firstname', true),
-            ppcart_get_post_meta($get_date->ID, 'lastname', true),
-            ppcart_get_post_meta($get_date->ID, 'email', true),
+            ppcart_get_post_meta($latest_order->ID, 'firstname', true),
+            ppcart_get_post_meta($latest_order->ID, 'lastname', true),
+            ppcart_get_post_meta($latest_order->ID, 'email', true),
             $value,
-            get_the_time('M j Y', $get_date->ID),
+            mysql2date('M j Y', $latest_order->post_date),
         ]);
     }
     // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
