@@ -10,21 +10,33 @@
     var stripe = '';
     var buttonElem = document.getElementById("ppcart_update_card_button");
 
-    jQuery('#ppcart-update-card-open').click(function (e) {
+    var updateCardTrigger = jQuery('#ppcart-update-card-open');
+    var updateCardModal = jQuery('.update-card-modal');
+
+    updateCardTrigger.click(function (e) {
 
         e.preventDefault();
         stripe = Stripe(ppcart_stripe_key[0]);
         if(jQuery("#ppcart-update-card-form").length) {
             cardNumber = ppcartStripe.mountStripeCard();
         }
-        jQuery('.update-card-modal').addClass('opened');
+        updateCardModal.addClass('opened').attr('aria-hidden', 'false');
+        updateCardModal.find('.closemodal').trigger('focus');
 
 
     });
 
-    jQuery('.closemodal').click(function (e) {
+    updateCardModal.find('.closemodal').click(function (e) {
         e.preventDefault();
-        jQuery('.update-card-modal').removeClass('opened');
+        updateCardModal.removeClass('opened').attr('aria-hidden', 'true');
+        updateCardTrigger.trigger('focus');
+    });
+
+    updateCardModal.on('keydown', function (e) {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            updateCardModal.find('.closemodal').trigger('click');
+        }
     });
 
 
