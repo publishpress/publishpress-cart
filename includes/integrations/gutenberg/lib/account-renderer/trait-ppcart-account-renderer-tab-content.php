@@ -371,7 +371,7 @@ trait PPCart_Account_Renderer_Tab_Content
         try {
             ?>
         <div class="ppcart-my-account ppcart-my-subscription-page">
-            <div class="back-btn"><a href="#" data-testid="ppcart-account-subscription-back-preview">&larr; <?php echo esc_html($back_label); ?></a></div>
+            <div class="back-btn"><a data-testid="ppcart-account-subscription-back-preview">&larr; <?php echo esc_html($back_label); ?></a></div>
             <div class="ppcart-account-subscription">
                 <div id="subscription-all" class="ppcart-content-inner">
                     <div class="ppcart-subscription-wrap">
@@ -379,8 +379,8 @@ trait PPCart_Account_Renderer_Tab_Content
                         <div class="ppcart-order-premium">
                             <div class="ppcart-premium-info"><?php echo esc_html($price_label); ?></div>
                             <div class="ppcart-premium-addon">
-                                <a href="#" class="ppcart-cancel-sub" data-testid="ppcart-account-subscription-cancel-preview"><?php echo esc_html($cancel_label); ?></a>
-                                <a href="#" class="ppcart-pause-restart-sub" data-testid="ppcart-account-subscription-pause-preview"><?php echo esc_html($pause_label); ?></a>
+                                <a class="ppcart-cancel-sub" data-testid="ppcart-account-subscription-cancel-preview"><?php echo esc_html($cancel_label); ?></a>
+                                <a class="ppcart-pause-restart-sub" data-testid="ppcart-account-subscription-pause-preview"><?php echo esc_html($pause_label); ?></a>
                             </div>
                         </div>
                     </div>
