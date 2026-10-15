@@ -112,7 +112,7 @@ foreach (array_chunk($updates, 200, true) as $batch) {
 
     $sql = 'UPDATE %i SET ' . implode(', ', $set_clauses) . ' WHERE download_id IN (' . implode(',', array_fill(0, count($batch), '%d')) . ')';
     $values = array_merge($values, array_keys($batch));
-    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Batches selected order download edits in the plugin-owned table.
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- SQL contains fixed column names and generated placeholders; all row values are prepared below.
     $wpdb->query($wpdb->prepare($sql, $values));
 }
 
