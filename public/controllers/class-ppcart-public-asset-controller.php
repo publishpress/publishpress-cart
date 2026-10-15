@@ -171,6 +171,7 @@ class PPCart_Public_Asset_Controller
         wp_enqueue_style('ppcart-selectize-default', $public_base . 'css/selectize.default.css', [], $this->version, 'all');
         wp_enqueue_style('ppcart-font-awesome-svg-with-js', PPCART_BASE_URL . 'includes/assets/font-awesome-svg-with-js.min.css', [], $this->version, 'all');
         wp_enqueue_script('ppcart-font-awesome-all', PPCART_BASE_URL . 'includes/assets/font-awesome-all.min.js', [], $this->version, true);
+        wp_script_add_data('ppcart-font-awesome-all', 'strategy', 'defer');
         wp_enqueue_script('ppcart-script-selectize', $public_base . 'js/selectize.js', [ 'jquery' ], $this->version, true);
     }
 

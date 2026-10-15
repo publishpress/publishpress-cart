@@ -47,6 +47,8 @@
 /dist export-ignore
 /docs export-ignore
 /includes/assets/font-awesome export-ignore
+/includes/assets/font-awesome-all.js export-ignore
+/admin/js/jquery.dataTables.js export-ignore
 /vendor export-ignore
 /version.txt export-ignore
 bin export-ignore

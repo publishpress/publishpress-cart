@@ -36,6 +36,7 @@
 /tests
 /tests-old
 admin/scss
+admin/js/jquery.dataTables.js
 AGENTS.md
 bin
 codeception.dist.yml
@@ -44,6 +45,7 @@ composer.json
 composer.lock
 CONTEXT.md
 Gruntfile.js
+includes/assets/font-awesome-all.js
 includes/integrations/gutenberg/playwright.config.js
 includes/integrations/gutenberg/tests/
 jsconfig.json
