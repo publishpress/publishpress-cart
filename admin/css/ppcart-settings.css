@@ -342,13 +342,9 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     outline: none;
 }
 
-.ppcart-settings__nav-item:focus-visible:not(.is-active) {
-    outline: 2px solid rgba(10, 71, 194, .35);
+.ppcart-settings__nav-item:focus-visible {
+    outline: 2px solid #0a47c2;
     outline-offset: -2px;
-}
-
-.ppcart-settings__nav-item.is-active:focus-visible {
-    outline: none;
 }
 
 .ppcart-settings__nav-item:hover {
