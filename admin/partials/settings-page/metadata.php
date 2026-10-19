@@ -201,6 +201,15 @@ $integration_meta = [
         'learn_more'  => 'https://www.drip.com/',
         'configured_options' => [ '_ppcart_drip_id', '_ppcart_drip_api_key' ],
     ],
+    'flodesk'        => [
+        'title'       => __('Flodesk', 'publishpress-cart'),
+        'description' => __('Add customers to Flodesk segments.', 'publishpress-cart'),
+        'category'    => 'email-marketing',
+        'logo_label'  => 'FD',
+        'logo_file'   => 'integration-logos/flodesk.svg',
+        'learn_more'  => 'https://flodesk.com/',
+        'configured_options' => [ '_ppcart_flodesk_api_key' ],
+    ],
     'mailerlite'     => [
         'title'       => __('MailerLite', 'publishpress-cart'),
         'description' => __('Add customers to MailerLite subscribers and groups.', 'publishpress-cart'),
