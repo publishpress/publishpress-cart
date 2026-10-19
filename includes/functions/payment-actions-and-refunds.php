@@ -23,7 +23,10 @@ function ppcart_validate_payment_key()
             } else {
                 $stripe = ppcart_stripe_client($ppcart_stripe['sk']);
                 try {
-                    $stripe->webhookEndpoints->all(['limit' => 1]);
+                    // Connect OAuth tokens cannot read webhook endpoints, so
+                    // probing those reported a false error for every
+                    // connected store. Balance works for both key types.
+                    $stripe->balance->retrieve();
                 } catch (\Exception $e) {
                     $message = (string) $e->getMessage();
 
