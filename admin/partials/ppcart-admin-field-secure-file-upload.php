@@ -37,5 +37,5 @@ if (! empty($atts['label'])) {
     value="<?php echo esc_attr($atts['value']); ?>" />
 <a href="#" class="button ppcart-upload-file" style="margin:0 5px" data-testid="<?php echo esc_attr($secure_upload_testid); ?>"><?php echo esc_html($atts['label-upload']); ?></a>
 <a href="#" class="button upload-file" data-testid="<?php echo esc_attr($media_upload_testid); ?>"><?php esc_html_e('Media Library', 'publishpress-cart'); ?></a>
-<input type="file" name="async-upload" class="ppcart-upload-file-field image-file hide" accept="*" data-testid="<?php echo esc_attr($file_testid); ?>">
+<input type="file" name="async-upload" class="ppcart-upload-file-field image-file hide" accept="*" aria-label="<?php echo esc_attr($atts['label-upload']); ?>" data-testid="<?php echo esc_attr($file_testid); ?>">
 </div>

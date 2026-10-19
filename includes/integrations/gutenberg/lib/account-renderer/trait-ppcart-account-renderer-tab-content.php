@@ -333,7 +333,7 @@ trait PPCart_Account_Renderer_Tab_Content
         $output         = '<div class="ppcart-my-account ppcart-my-subscription-page">';
 
         if ($show_back_link) {
-            $output .= '<div class="back-btn"><a href="#" data-testid="ppcart-account-order-back-preview"><img src="' . esc_url(PPCART_BASE_URL . 'public/images/arrow-back.svg') . '" alt="Icon" /> ' . esc_html__('Back', 'publishpress-cart') . '</a></div>';
+            $output .= '<div class="back-btn"><a data-testid="ppcart-account-order-back-preview"><img src="' . esc_url(PPCART_BASE_URL . 'public/images/arrow-back.svg') . '" alt="" /> ' . esc_html__('Back', 'publishpress-cart') . '</a></div>';
         }
 
         $output .= '<div class="ppcart-account-subscription">';
@@ -342,7 +342,7 @@ trait PPCart_Account_Renderer_Tab_Content
         $output .= '<div class="item">' . esc_html__('Sample Product', 'publishpress-cart') . '<br><small>' . esc_html__('One-time purchase', 'publishpress-cart') . '</small></div><div class="order-total">$50.00</div>';
         $output .= '<div class="item"><strong>' . esc_html__('Total', 'publishpress-cart') . '</strong></div><div class="order-total"><strong>$50.00</strong></div>';
         $output .= '</div></div>';
-        $output .= '<table class="ppcart-subscription-table" border="0"><tr><td><h3 class="ppcart-account-title">' . esc_html__('Address', 'publishpress-cart') . '</h3>Sample Customer<br>123 Example Street<br>Springfield, USA</td><td width="200"><h3 class="ppcart-account-title">' . esc_html__('Invoice', 'publishpress-cart') . '</h3><a href="#" data-testid="ppcart-account-order-invoice-preview">' . esc_html__('Download Invoice', 'publishpress-cart') . '</a></td></tr></table>';
+        $output .= '<table class="ppcart-subscription-table" border="0"><tr><td><h3 class="ppcart-account-title">' . esc_html__('Address', 'publishpress-cart') . '</h3>Sample Customer<br>123 Example Street<br>Springfield, USA</td><td width="200"><h3 class="ppcart-account-title">' . esc_html__('Invoice', 'publishpress-cart') . '</h3><a data-testid="ppcart-account-order-invoice-preview">' . esc_html__('Download Invoice', 'publishpress-cart') . '</a></td></tr></table>';
         $output .= '</div></div>';
 
         return $output;
@@ -371,7 +371,7 @@ trait PPCart_Account_Renderer_Tab_Content
         try {
             ?>
         <div class="ppcart-my-account ppcart-my-subscription-page">
-            <div class="back-btn"><a href="#" data-testid="ppcart-account-subscription-back-preview">&larr; <?php echo esc_html($back_label); ?></a></div>
+            <div class="back-btn"><a data-testid="ppcart-account-subscription-back-preview">&larr; <?php echo esc_html($back_label); ?></a></div>
             <div class="ppcart-account-subscription">
                 <div id="subscription-all" class="ppcart-content-inner">
                     <div class="ppcart-subscription-wrap">
@@ -379,8 +379,8 @@ trait PPCart_Account_Renderer_Tab_Content
                         <div class="ppcart-order-premium">
                             <div class="ppcart-premium-info"><?php echo esc_html($price_label); ?></div>
                             <div class="ppcart-premium-addon">
-                                <a href="#" class="ppcart-cancel-sub" data-testid="ppcart-account-subscription-cancel-preview"><?php echo esc_html($cancel_label); ?></a>
-                                <a href="#" class="ppcart-pause-restart-sub" data-testid="ppcart-account-subscription-pause-preview"><?php echo esc_html($pause_label); ?></a>
+                                <a class="ppcart-cancel-sub" data-testid="ppcart-account-subscription-cancel-preview"><?php echo esc_html($cancel_label); ?></a>
+                                <a class="ppcart-pause-restart-sub" data-testid="ppcart-account-subscription-pause-preview"><?php echo esc_html($pause_label); ?></a>
                             </div>
                         </div>
                     </div>
