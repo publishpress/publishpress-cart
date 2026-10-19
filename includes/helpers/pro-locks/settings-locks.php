@@ -145,6 +145,7 @@ function ppcart_pro_locked_integration_keys()
         // Email marketing.
         'convertkit',
         'drip',
+        'flodesk',
         'mailerlite',
         'mailpoet',
         'encharge',
