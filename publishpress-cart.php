@@ -197,10 +197,38 @@ register_deactivation_hook(PPCART_BASE_FILE, 'ppcart_deactivate');
  * First-time Activate-while-Studiocart-is-on never reached ppcart_activate()
  * because that hook is registered after the conflict return above. Run it once
  * Studiocart is gone so tax table, caps, API key, and rewrite flush still happen.
+ * Wait for init: the activator needs classes and helpers loaded further down
+ * this file, and calling it here fatals before the caps are added.
  */
-if (PPCart_Studiocart_Conflict::consume_pending_activation()) {
-    ppcart_activate();
+add_action(
+    'init',
+    function () {
+        if (PPCart_Studiocart_Conflict::consume_pending_activation()) {
+            ppcart_activate();
+        }
+    },
+    20
+);
+
+/**
+ * Re-add Cart capabilities when the administrator role lost them, for example
+ * after a deferred activation that failed. Without them the Cart menu shows
+ * only Settings.
+ */
+if (! function_exists('ppcart_maybe_repair_capabilities')) {
+    function ppcart_maybe_repair_capabilities()
+    {
+        $role = get_role('administrator');
+        if (! $role || $role->has_cap(ppcart_live_cap('manager_option'))) {
+            return;
+        }
+
+        require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-activator.php';
+        PPCart_Activator::add_cap();
+    }
 }
+
+add_action('admin_init', 'ppcart_maybe_repair_capabilities');
 
 add_action(
     'upgrader_process_complete',
