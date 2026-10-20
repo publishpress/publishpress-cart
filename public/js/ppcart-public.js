@@ -182,9 +182,11 @@
         }
 
         function getCheckoutAmount(form) {
-            var amount = parseFloat($('[name="ppcart_amount"]', form).val());
+            var rawAmount = $('[name="ppcart_amount"]', form).val();
+            var amount = parseFloat(rawAmount);
 
-            if (isNaN(amount) || amount <= 0) {
+            // An explicit 0 (e.g. after a 100% coupon) is a real total, not "unset".
+            if (rawAmount === undefined || rawAmount === '' || isNaN(amount) || amount < 0) {
                 amount = parseFloat($('input[name="ppcart_product_option"]:checked', form).data('price'));
             }
 
