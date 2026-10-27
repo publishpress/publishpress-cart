@@ -125,6 +125,7 @@ class PPCart_Dependency_Loader
         require_once $base_path . 'public/controllers/class-ppcart-public-order-controller.php';
         require_once $base_path . 'public/controllers/class-ppcart-public-checkout-controller.php';
         require_once $base_path . 'public/controllers/class-ppcart-public-page-controller.php';
+        require_once $base_path . 'public/controllers/class-ppcart-public-embed-controller.php';
         require_once $base_path . 'public/class-ppcart-public.php';
         $ppcart_public = new PPCart_Public($cart->get_plugin_name(), $cart->get_version(), $cart->get_prefix());
 

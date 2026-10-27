@@ -28,8 +28,14 @@ class PPCart_Public_Hook_Registrar
         $plugin_public_order = new PPCart_Public_Order_Controller();
         $plugin_public_checkout = new PPCart_Public_Checkout_Controller();
         $plugin_public_page = new PPCart_Public_Page_Controller($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
+        $plugin_public_embed = new PPCart_Public_Embed_Controller();
 
         $this->loader->add_filter('single_template', $plugin_public_page, 'product_template');
+        $this->loader->add_filter('template_include', $plugin_public_embed, 'template_include', 999);
+        $this->loader->add_action('template_redirect', $plugin_public_embed, 'send_frame_headers', 1);
+        $this->loader->add_filter('show_admin_bar', $plugin_public_embed, 'show_admin_bar', 999);
+        $this->loader->add_action('wp_enqueue_scripts', $plugin_public_embed, 'enqueue_assets', 20);
+        $this->loader->add_filter('body_class', $plugin_public_embed, 'body_class');
         $this->loader->add_filter('wp', $plugin_public_page, 'email_preview_template');
         $this->loader->add_filter('admin_init', $plugin_public_page, 'email_preview_template');
         $this->loader->add_filter('query_vars', $plugin_public_page, 'query_vars');
