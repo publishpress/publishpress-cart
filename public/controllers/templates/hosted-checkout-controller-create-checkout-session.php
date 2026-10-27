@@ -141,7 +141,8 @@ if ('' !== $return_url && ! preg_match('#^https?://#i', $return_url)) {
     }
     $return_url = $origin . '/' . ltrim($return_url, '/');
 }
-$return_url = remove_query_arg([ 'ppcart_session', 'ppcart_hosted', 'ppcart_retry' ], $return_url);
+// Stripe returns to the top window, so the embed flag must not come back with it.
+$return_url = remove_query_arg([ 'ppcart_session', 'ppcart_hosted', 'ppcart_retry', 'ppcart-embed' ], $return_url);
 
 $success_url = add_query_arg(
     [
