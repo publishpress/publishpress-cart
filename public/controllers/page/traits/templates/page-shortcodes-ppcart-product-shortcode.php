@@ -29,7 +29,7 @@ if (false !== $ppcart_order_get && null !== $ppcart_order_get) {
 
     $closed_msg = ppcart_get_post_meta($atts['id'], 'confirmation_message', true);
     $closed_msg = (!$closed_msg) ? __("Thank you. We've received your order.", "publishpress-cart") : $closed_msg;
-    $msg = '<p data-testid="' . esc_attr(ppcart_testid('ppcart-order-confirmation-message')) . '">' . wp_kses_post(wp_specialchars_decode($closed_msg, 'ENT_QUOTES')) . '</p>';
+    $msg = '<p class="ppcart-order-confirmation-message" data-testid="' . esc_attr(ppcart_testid('ppcart-order-confirmation-message')) . '">' . wp_kses_post(wp_specialchars_decode($closed_msg, 'ENT_QUOTES')) . '</p>';
     return $msg . do_shortcode('[ppcart_receipt]');
 }
 
