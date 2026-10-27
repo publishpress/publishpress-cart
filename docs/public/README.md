@@ -19,6 +19,7 @@ User-facing guides for site owners and store administrators.
 ## Products
 
 - [Embed an order form anywhere](products/embed-order-form.md) — place a checkout form on any page
+- [Embed your checkout on another website](products/embed-checkout-other-website.md) shows the checkout inline or in a popup on Showit, Squarespace, Webflow, or any HTML page.
 - [Form skin types](products/form-skin-types.md) — default, two-step, opt-in, and split-in layouts (with screenshots)
 
 ## Subscriptions
