@@ -121,6 +121,10 @@
             setHeight(record, data.height);
         } else if (data.type === 'resize') {
             setHeight(record, data.height);
+        } else if (data.type === 'escape') {
+            if (popup && popup.record === record) {
+                close();
+            }
         } else if (data.type === 'navigate' && typeof data.url === 'string' && isHttpUrl(data.url)) {
             window.location.assign(data.url);
         }
