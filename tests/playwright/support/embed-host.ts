@@ -69,9 +69,7 @@ export async function frameHeights(iframe: Locator): Promise<FrameHeights> {
 
 /**
  * Waits until two samples in a row agree, the iframe is as tall as its document
- * (within 4px), and `accept` holds, then returns the heights. The iframe must be
- * on screen: Chrome pauses rendering of an off-screen cross-origin frame, so its
- * height catches up only when it scrolls into view.
+ * (within 4px), and `accept` holds, then returns the heights.
  */
 export async function expectFrameFitsContent(
   iframe: Locator,

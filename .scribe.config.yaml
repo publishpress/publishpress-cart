@@ -239,7 +239,7 @@ modules:
   - id: embedded-checkout
     name: Embedded checkout
     suites: [unit, integration, regression]
-    test_range: UT-370–UT-373, IT-394–IT-402, RT-110–RT-120
+    test_range: UT-370–UT-373, IT-394–IT-402, RT-110–RT-121
     features: [embedded-checkout, checkout-display]
     notes: Appearance model, frame headers, the embed shell template, the frame navigation rule, the Embed tab save path, and the buyer flows across origins in a browser.
 
