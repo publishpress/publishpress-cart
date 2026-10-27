@@ -1,11 +1,11 @@
-import { expect, type Page } from '@playwright/test';
+import { expect, type Frame, type Page } from '@playwright/test';
 
 import { RegressionConfig } from './regression-config';
 
 const ORDER_CONFIRMATION = "Thank you. We've received your order.";
 
 export async function fillCheckoutContact(
-  page: Page,
+  page: Page | Frame,
   config: RegressionConfig,
   testKey: string,
 ): Promise<void> {
@@ -449,7 +449,7 @@ export async function assertManualTaxApplied(page: Page, expectedTotal = 10.85):
   await expect(totalLocator).toContainText(String(expectedTotal));
 }
 
-export async function acceptTermsIfPresent(page: Page): Promise<void> {
+export async function acceptTermsIfPresent(page: Page | Frame): Promise<void> {
   const checkbox = page.locator('#ppcart_accept_terms');
 
   if (await checkbox.count() === 0 || !(await checkbox.isVisible().catch(() => false))) {
@@ -460,15 +460,9 @@ export async function acceptTermsIfPresent(page: Page): Promise<void> {
     return;
   }
 
-  await page.evaluate(() => {
-    const checkbox = document.querySelector<HTMLInputElement>('#ppcart_accept_terms');
-
-    if (!checkbox) {
-      return;
-    }
-
-    checkbox.checked = true;
-    checkbox.dispatchEvent(new Event('input', { bubbles: true }));
-    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+  await checkbox.evaluate((input: HTMLInputElement) => {
+    input.checked = true;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
   });
 }

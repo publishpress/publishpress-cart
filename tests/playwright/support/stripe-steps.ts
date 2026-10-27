@@ -1,4 +1,4 @@
-import { type Page } from '@playwright/test';
+import { type Frame, type Page } from '@playwright/test';
 
 import { RegressionConfig } from './regression-config';
 
@@ -6,7 +6,7 @@ const STRIPE_CARD_IFRAME = 'iframe[src*="elements-inner-card"], iframe[src*="ele
 const STRIPE_MOCK_ROOT = '[data-testid="ppcart-regression-stripe-mock"]';
 
 export async function fillCard(
-  page: Page,
+  page: Page | Frame,
   config: RegressionConfig,
   options?: { cardNumber?: string },
 ): Promise<void> {
@@ -28,7 +28,7 @@ export async function fillCard(
   await fillPostalIfPresent(frame, config.var('postal'));
 }
 
-async function fillMockCard(page: Page, config: RegressionConfig, cardNumber: string): Promise<void> {
+async function fillMockCard(page: Page | Frame, config: RegressionConfig, cardNumber: string): Promise<void> {
   const root = page.locator(STRIPE_MOCK_ROOT).first();
   const realIframe = page.locator(STRIPE_CARD_IFRAME).first();
 
@@ -61,7 +61,7 @@ async function fillMockCard(page: Page, config: RegressionConfig, cardNumber: st
   }
 }
 
-async function typeLocalInput(page: Page, testId: string, value: string): Promise<void> {
+async function typeLocalInput(page: Page | Frame, testId: string, value: string): Promise<void> {
   const input = page.getByTestId(testId);
 
   await input.waitFor({ state: 'visible', timeout: 10_000 });
