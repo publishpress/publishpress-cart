@@ -23,14 +23,18 @@ $integration_fields = array_merge(
 $this->integrations = [
     [
         'type'  => 'html',
-        'value' => '<a href="#" class="button ppcart-renew-lists" style="margin-left: 10px;">' . __('Renew mailing lists', 'publishpress-cart') . '</a> <span class="renew-status"></span>
-                        <div id="rid_ppcart_break" class="ppcart-field ppcart-row"><p style="display: block; margin: 5px 0 0;padding: 0 0 5px;border-bottom: 1px solid #d5d5d5;flex-basis: 100%;"></p></div>
-                        ',
+        'value' => '<div class="ppcart-integrations-intro"><p>'
+            . esc_html__('Use integrations to add customers to mailing lists or run actions in connected services when an order or subscription event occurs. Connect your services in Cart settings, then choose a service and trigger below.', 'publishpress-cart')
+            . '</p><p><a href="#" class="button ppcart-renew-lists">'
+            . esc_html__('Refresh mailing lists', 'publishpress-cart')
+            . '</a> <span class="renew-status"></span></p><p class="description">'
+            . esc_html__('Refresh the available mailing lists, groups, and tags from your connected services after creating or changing them in those services.', 'publishpress-cart')
+            . '</p></div>',
     ],
     [
         'class'        => 'ppcart-repeater',
         'id'            => '_ppcart_integrations',
-        'label-add'    => __('+ Add New', 'publishpress-cart'),
+        'label-add'    => __('+ Add Integration', 'publishpress-cart'),
         'label-edit'   => __('Edit Integration', 'publishpress-cart'),
         'label-header' => __('Integration', 'publishpress-cart'),
         'label-remove' => __('Remove Integration', 'publishpress-cart'),

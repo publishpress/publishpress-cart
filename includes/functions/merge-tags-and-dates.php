@@ -562,7 +562,7 @@ function ppcart_translate_js($js_script = '')
             'sub_cancel_scheduled' => __("This subscription has been scheduled to cancel at the end of the current billing period.", "publishpress-cart"),
             'sub_cancel_refund_failed' => __("This subscription has been canceled, but the refund could not be created.", "publishpress-cart"),
             'something_went_wrong' => __("Something went wrong. Please try again.", "publishpress-cart"),
-            'list_renewed'   => __("All lists successfully renewed", "publishpress-cart"),
+            'list_renewed'   => __("Mailing lists refreshed.", "publishpress-cart"),
             'missing_required'   => __("Required fields missing", "publishpress-cart"),
             ];
         foreach ($return_data as $k => $v) {
