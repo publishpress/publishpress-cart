@@ -134,6 +134,32 @@ function ppcart_pro_locked_product_field_rows_html($tab_id, $with_lock = true)
 
 
 /**
+ * Explain a product feature in both its locked preview and its active tab.
+ *
+ * @since 1.1.0
+ * @param string $tab_id Product tab ID.
+ * @return string
+ */
+function ppcart_product_tab_description($tab_id)
+{
+    $aliases = [
+        'ppcart_pro_coupons' => 'coupons',
+        'ppcart_pro_order_bumps' => 'orderbump',
+        'ppcart_pro_upsell_path' => 'upsellPath',
+        'ppcart_pro_affiliates' => 'affiliate',
+    ];
+    $tab_id = $aliases[$tab_id] ?? $tab_id;
+    $descriptions = [
+        'coupons' => __('Offer customers discounts on this product using coupon codes. Set the discount amount or percentage and choose when each coupon can be used.', 'publishpress-cart'),
+        'orderbump' => __('Offer an extra product on the checkout form. Customers can add it to their order before completing payment.', 'publishpress-cart'),
+        'upsellPath' => __('Offer additional products after checkout. Select an upsell path to choose which offers customers see and what happens when they accept or decline.', 'publishpress-cart'),
+        'affiliate' => __('Let affiliates earn commissions for referring customers to this product. Choose whether affiliate sales are enabled and set the commission rules.', 'publishpress-cart'),
+    ];
+
+    return $descriptions[$tab_id] ?? '';
+}
+
+/**
      * Full locked content for a Pro-only product metabox tab: a "Pro feature"
      * banner followed by the tab's disabled fields.
      *
@@ -143,10 +169,16 @@ function ppcart_pro_locked_product_field_rows_html($tab_id, $with_lock = true)
      */
 function ppcart_pro_render_locked_product_tab($tab_id)
 {
+    $overlay_args = [ 'context' => 'product-' . $tab_id ];
+    $description = ppcart_product_tab_description($tab_id);
+    if ('' !== $description) {
+        $overlay_args['text'] = $description;
+    }
+
     // Show the (disabled) fields blurred behind a single centred "Pro" overlay,
     // mirroring the locked Tax tab on the settings screen.
     return '<div class="ppcart-settings__pro-tab-lock">' .
-            ppcart_pro_panel_lock_overlay([ 'context' => 'product-' . $tab_id ]) .
+            ppcart_pro_panel_lock_overlay($overlay_args) .
             '<div class="ppcart-settings__pro-tab-lock-content">' .
                 ppcart_pro_locked_product_field_rows_html($tab_id, false) .
             '</div>' .
