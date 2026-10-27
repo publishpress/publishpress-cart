@@ -42,6 +42,12 @@ final class PPCart_Regression_Fixtures {
 			$paths[ self::env_key_for_url( $env_key ) ] = $page['path'];
 		}
 
+		foreach ( self::product_definitions() as $key => $definition ) {
+			if ( ! empty( $definition['url_key'] ) && ! empty( $products[ $key ] ) ) {
+				$paths[ self::env_key_for_url( $definition['url_key'] ) ] = self::permalink_path( $products[ $key ], '/' );
+			}
+		}
+
 		foreach ( $smoke['paths'] as $env_key => $path ) {
 			$paths[ self::env_key_for_url( $env_key ) ] = $path;
 		}
@@ -185,11 +191,17 @@ final class PPCart_Regression_Fixtures {
 		$pages = [];
 
 		foreach ( self::page_definitions() as $env_key => $definition ) {
-			$product_key = $definition['product_key'];
-			$product_id  = $products[ $product_key ] ?? 0;
+			if ( isset( $definition['content'] ) ) {
+				$content = $definition['content'];
+			} else {
+				$product_key = $definition['product_key'];
+				$product_id  = $products[ $product_key ] ?? 0;
 
-			if ( $product_id <= 0 ) {
-				throw new RuntimeException( sprintf( 'Missing regression product: %s', $product_key ) );
+				if ( $product_id <= 0 ) {
+					throw new RuntimeException( sprintf( 'Missing regression product: %s', $product_key ) );
+				}
+
+				$content = sprintf( '[ppcart_form id="%d"]', $product_id );
 			}
 
 			$page_id = wp_insert_post(
@@ -198,7 +210,7 @@ final class PPCart_Regression_Fixtures {
 					'post_status'  => 'publish',
 					'post_title'   => $definition['title'],
 					'post_name'    => $definition['slug'],
-					'post_content' => sprintf( '[ppcart_form id="%d"]', $product_id ),
+					'post_content' => $content,
 				],
 				true
 			);
@@ -207,23 +219,27 @@ final class PPCart_Regression_Fixtures {
 				throw new RuntimeException( $page_id->get_error_message() );
 			}
 
-			$permalink = get_permalink( $page_id );
-			$path      = $permalink ? (string) wp_parse_url( $permalink, PHP_URL_PATH ) : '/' . $definition['slug'] . '/';
-			$query     = $permalink ? (string) wp_parse_url( $permalink, PHP_URL_QUERY ) : '';
-
-			if ( '' !== $query ) {
-				$path .= '?' . $query;
-			}
-
 			$pages[ $env_key ] = [
 				'id'    => (int) $page_id,
 				'slug'  => $definition['slug'],
-				'path'  => $path ?: '/' . $definition['slug'] . '/',
+				'path'  => self::permalink_path( (int) $page_id, '/' . $definition['slug'] . '/' ),
 				'title' => $definition['title'],
 			];
 		}
 
 		return $pages;
+	}
+
+	private static function permalink_path( int $post_id, string $fallback ): string {
+		$permalink = get_permalink( $post_id );
+		$path      = $permalink ? (string) wp_parse_url( $permalink, PHP_URL_PATH ) : '';
+		$query     = $permalink ? (string) wp_parse_url( $permalink, PHP_URL_QUERY ) : '';
+
+		if ( '' !== $query ) {
+			$path .= '?' . $query;
+		}
+
+		return '' !== $path ? $path : $fallback;
 	}
 
 	/**
@@ -255,6 +271,10 @@ final class PPCart_Regression_Fixtures {
 
 		if ( isset( $definition['disable_paypal'] ) ) {
 			ppcart_fixtures_update_post_meta( $product_id, 'disable_paypal', $definition['disable_paypal'] ? '1' : '' );
+		}
+
+		foreach ( $definition['meta'] ?? [] as $meta_key => $meta_value ) {
+			ppcart_fixtures_update_post_meta( $product_id, $meta_key, $meta_value );
 		}
 
 		ppcart_fixtures_update_post_meta( $product_id, '_ppcart_pay_options', $definition['pay_options'] );
@@ -633,7 +653,67 @@ final class PPCart_Regression_Fixtures {
 					),
 				],
 			],
+			'embed_free' => [
+				'title'       => 'PublishPress Cart Regression - Embed Free',
+				'url_key'     => 'url_embed_product_free',
+				'pay_options' => [ self::free_plan( $plan_defaults, 'reg_embed_free' ) ],
+			],
+			'embed_stripe' => [
+				'title'          => 'PublishPress Cart Regression - Embed One Time Stripe',
+				'url_key'        => 'url_embed_product_stripe',
+				'disable_paypal' => true,
+				'pay_options'    => [
+					array_merge(
+						$plan_defaults,
+						[
+							'option_id'      => 'reg_embed_stripe_10',
+							'option_name'    => 'One payment of $10',
+							'price'          => '10',
+							'stripe_plan_id' => 'reg_embed_stripe_10',
+						]
+					),
+				],
+			],
+			'embed_redirect' => [
+				'title'       => 'PublishPress Cart Regression - Embed Redirect',
+				'url_key'     => 'url_embed_product_redirect',
+				'meta'        => [
+					'confirmation' => 'redirect',
+					'redirect'     => 'https://thanks.merchant.example/thank-you/',
+				],
+				'pay_options' => [ self::free_plan( $plan_defaults, 'reg_embed_redirect' ) ],
+			],
+			'embed_styled' => [
+				'title'       => 'PublishPress Cart Regression - Embed Styled',
+				'url_key'     => 'url_embed_product_styled',
+				'meta'        => [
+					'embed_accent'      => '#ff5a1f',
+					'embed_text'        => '#112233',
+					'embed_background'  => '#fffbe6',
+					'embed_font_family' => 'Georgia, serif',
+					'embed_radius'      => '12',
+					'embed_button_text' => 'Get the course',
+				],
+				'pay_options' => [ self::free_plan( $plan_defaults, 'reg_embed_styled' ) ],
+			],
 		];
+	}
+
+	/**
+	 * @param array<string, string> $plan_defaults
+	 * @return array<string, string>
+	 */
+	private static function free_plan( array $plan_defaults, string $option_id ): array {
+		return array_merge(
+			$plan_defaults,
+			[
+				'option_id'      => $option_id,
+				'option_name'    => 'Free access',
+				'product_type'   => 'free',
+				'price'          => '0',
+				'stripe_plan_id' => $option_id,
+			]
+		);
 	}
 
 	/**
@@ -695,6 +775,11 @@ final class PPCart_Regression_Fixtures {
 				'slug'         => 'regression-free',
 				'title'        => 'PublishPress Cart Regression - Free Product',
 				'product_key'  => 'product_free',
+			],
+			'url_embed_plain_page'                  => [
+				'slug'    => 'regression-embed-plain',
+				'title'   => 'PublishPress Cart Regression - Embed Plain Page',
+				'content' => '<p>A page without checkout content.</p>',
 			],
 		];
 	}
