@@ -89,10 +89,11 @@
         }
 
         heightQueued = true;
-        window.requestAnimationFrame(function () {
+        // Chrome pauses animation frames and ResizeObserver in an off-screen cross-origin frame; timers keep running.
+        window.setTimeout(function () {
             heightQueued = false;
             post({ type: 'resize', id: frameId, height: height() }, hostOrigin);
-        });
+        }, 16);
     }
 
     function hello() {
@@ -132,6 +133,15 @@
         if (document.body) {
             observer.observe(document.body);
         }
+    }
+
+    if (typeof window.MutationObserver === 'function') {
+        new window.MutationObserver(sendHeight).observe(document.documentElement, {
+            attributes: true,
+            childList: true,
+            characterData: true,
+            subtree: true
+        });
     }
 
     window.ppcartNavigate = function (url) {

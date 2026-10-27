@@ -56,7 +56,7 @@ All messages go through `postMessage`. Frame messages carry `source: 'ppcart-emb
 |-----------|---------|---------------|-----------|
 | Frame to host | `{type: 'hello', height}` | `*` | The frame document is ready. It carries no private data. |
 | Host to frame | `{type: 'init', id}` | The origin of the iframe `src` | The loader gets `hello`, and on each iframe `load` event. |
-| Frame to host | `{type: 'resize', id, height}` | The recorded host origin | After `init`, when a `ResizeObserver` fires, at most once per animation frame. |
+| Frame to host | `{type: 'resize', id, height}` | The recorded host origin | After `init`, when a `ResizeObserver` or `MutationObserver` fires, at most once per 16ms. |
 | Frame to host | `{type: 'navigate', id, url}` | The recorded host origin | `ppcartNavigate()` gets a URL on another origin. |
 | Frame to host | `{type: 'escape', id}` | The recorded host origin | The buyer presses Esc inside the frame. |
 
@@ -72,10 +72,10 @@ The height is `Math.ceil(document.documentElement.getBoundingClientRect().height
 grow but never shrink.
 
 Chrome pauses rendering of an off-screen cross-origin frame, and with it
-`ResizeObserver` and `requestAnimationFrame`. An inline frame below the fold
-therefore keeps its old height until it scrolls into view, and then reports the
-new height. RT-119 measured a frame that stayed at 797px with 986px of content
-until it scrolled into view.
+`ResizeObserver` and `requestAnimationFrame`. So the bridge sends heights from a
+16ms timer and also listens with a `MutationObserver`, which both keep running.
+Without them, an inline frame below the fold kept its first height (797px for
+678px of content) until it scrolled into view. RT-121 covers this.
 
 ## Navigation contract
 
