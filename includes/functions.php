@@ -853,3 +853,4 @@ require_once __DIR__ . '/functions/admin-conditional-logic.php';
 require_once __DIR__ . '/functions/report-filters.php';
 require_once __DIR__ . '/functions/report-queries.php';
 require_once __DIR__ . '/functions/request-sanitization.php';
+require_once __DIR__ . '/embed/ppcart-embed-functions.php';

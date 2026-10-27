@@ -234,6 +234,13 @@ modules:
     features: [order-management, secure-downloads]
     notes: Owner, access-token, and capability proofs for public order and download pages.
 
+  - id: embedded-checkout
+    name: Embedded checkout
+    suites: [unit, integration]
+    test_range: UT-370–UT-373, IT-394–IT-398
+    features: [checkout-display]
+    notes: Appearance model, frame headers, the embed shell template, and the frame navigation rule.
+
   - id: checkout-display
     name: Checkout rendering and display
     suites: [regression, unit, integration]
