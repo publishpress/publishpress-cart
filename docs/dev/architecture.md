@@ -53,6 +53,7 @@ There is **no** first-party `api/` REST directory.
 | `includes/integrations/gutenberg/` | Checkout and account blocks |
 | `public/class-ppcart-public.php` | Storefront coordinator (hooks, order-status integrations) |
 | `public/controllers/` | Checkout, account, assets, payment, orders, hosted checkout |
+| `includes/embed/`, `public/js/ppcart-embed*.js`, `public/templates/embed/` | Embedded checkout on other websites: loader, frame shell, frame bridge ([embed-checkout.md](embed-checkout.md)) |
 | `public/class-ppcart-paypal.php` + `public/paypal/` | PayPal checkout (direct cURL) |
 | `public/webhooks/` | `stripe.php`, `paypal.php` — keep thin |
 | `public/templates/` | Storefront PHP templates |

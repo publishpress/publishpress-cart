@@ -7,6 +7,7 @@ Internal documentation for developers and maintainers. Not shipped to end users.
 | Doc | Purpose |
 |-----|---------|
 | [architecture.md](architecture.md) | How the plugin is organized and maintainability strategy |
+| [embed-checkout.md](embed-checkout.md) | Embedded checkout: request flow, frame shell, message protocol, `ppcartNavigate`, hooks, meta keys, tests |
 | [../adr/overview.md](../adr/overview.md) | Architecture Decision Records (unique `ADR-NNNN`) |
 | [pro-plugin-extraction.md](pro-plugin-extraction.md) | Free/Pro architecture split — hooks, module moves, phases |
 | [prefix-standardization.md](prefix-standardization.md) | Official #629 prefix map, Free leftover tracker, leftover→canonical by kind, leftover families **43–82** done except slice **18**, open follow-ups |
