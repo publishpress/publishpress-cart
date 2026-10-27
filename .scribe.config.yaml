@@ -103,8 +103,8 @@ modules:
   - id: admin-workflows
     name: Admin create-and-verify workflows
     suites: [admin]
-    test_range: AD-201–AD-211
-    features: [payment-plans, store-settings]
+    test_range: AD-201–AD-212
+    features: [payment-plans, store-settings, checkout-display]
     notes: Multi-step flows that create a record and then verify it persisted.
 
   - id: stripe-sync

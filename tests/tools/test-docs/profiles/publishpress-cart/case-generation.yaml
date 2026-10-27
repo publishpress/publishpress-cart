@@ -115,6 +115,8 @@ suites:
         values: [subscriptions]
       - ranges: ['208-209']
         values: [store-settings]
+      - ranges: ['212-212']
+        values: [checkout-display]
     derived_features:
       - when: 'payment.?plan'
         add: [payment-plans]
