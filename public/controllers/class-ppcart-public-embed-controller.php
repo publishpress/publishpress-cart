@@ -14,6 +14,12 @@ class PPCart_Public_Embed_Controller
 {
     const SHELL_TEMPLATE = 'public/templates/embed/checkout.php';
 
+    /**
+     * Style handle of the merchant's web font. WordPress prints it as
+     * `<link id="ppcart-embed-font-css">`, which the admin live preview swaps.
+     */
+    const FONT_HANDLE = 'ppcart-embed-font';
+
     const SKINS = [
         'standard' => 'normal',
         '2-step'   => '2-step',
@@ -81,7 +87,7 @@ class PPCart_Public_Embed_Controller
 
         if ('' !== $appearance['font_url']) {
             // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- A third-party font stylesheet chosen by the merchant.
-            wp_enqueue_style('ppcart-embed-font', $appearance['font_url'], [], null);
+            wp_enqueue_style(self::FONT_HANDLE, $appearance['font_url'], [], null);
         }
 
         wp_enqueue_script('ppcart-embed-frame', PPCART_BASE_URL . 'public/js/ppcart-embed-frame.js', [ 'ppcart' ], PPCART_VERSION, true);
