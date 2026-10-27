@@ -7746,6 +7746,16 @@
             "notes": "Review before documenting as public API."
         },
         {
+            "name": "wp_redirect",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/bootstrap/class-ppcart-public-hook-registrar.php",
+            "recommended_hook": "wp_redirect",
+            "notes": "Review before documenting as public API."
+        },
+        {
             "name": "wp_title",
             "type": "filter",
             "operation": "add_filter",

@@ -19,9 +19,10 @@ The admin side is `admin/class-ppcart-admin-embed-tab.php`, `admin/partials/ppca
 
 1. The host page loads the loader. For each `[data-ppcart-checkout="<product URL>"]`, the loader inserts an iframe. The iframe `src` is the product URL with `ppcart-embed=1`. The iframe has `title="Checkout"`, `allow="payment *"`, and a start height of 480px.
 2. For a popup, the loader listens for clicks on `[data-ppcart-popup]` and on links whose `href` contains `ppcart-embed=popup`. A click opens a dialog and creates the iframe. Closing the dialog removes the iframe.
-3. WordPress receives the frame request. `ppcart_is_embed_request()` is true for a singular front-end request with a non-empty `ppcart-embed` query arg, when `ppcart_embed_allows_post()` allows the queried post.
+3. WordPress receives the frame request. `ppcart_is_embed_request()` is true for a singular front-end request with a non-empty `ppcart-embed` query arg, when `ppcart_embed_allows_post()` allows the queried post: a product, a page with `[ppcart_form]`, `[ppcart_receipt]` or the checkout form block, or any page opened with `ppcart-order` and a valid order access token (a confirmation page the merchant picked).
 4. `PPCart_Public_Embed_Controller` handles the request. `includes/bootstrap/class-ppcart-public-hook-registrar.php` registers its hooks:
-   - `template_redirect` at priority 1 calls `send_frame_headers()`. It removes `X-Frame-Options` and sends `Content-Security-Policy: frame-ancestors <sources>`.
+   - `template_redirect` at priority 1 calls `send_frame_headers()`. It removes `X-Frame-Options`, keeps each Content-Security-Policy the site already sent without its `frame-ancestors` directive, and adds `Content-Security-Policy: frame-ancestors <sources>`.
+   - `wp_redirect` at priority 999 calls `bounce_external_redirect()`. On an embed request, a redirect to another origin becomes a 200 bounce page (`ppcart_embed_bounce_page()`) that loads the frame bridge and calls `ppcartNavigate()`, so the top window opens the target. A 302 would load that site inside the frame. This covers a closed cart with a redirect URL and a subscription whose confirmation redirects.
    - `template_include` at priority 999 returns the shell template.
    - `show_admin_bar` at priority 999 returns false.
    - `wp_enqueue_scripts` at priority 20 fires `ppcart_enqueue_frontend_assets`, enqueues `ppcart-embed.css` with the appearance CSS variables, the web font stylesheet, and `ppcart-embed-frame.js`.
@@ -88,7 +89,7 @@ it with this rule:
 |-----|--------|
 | Same origin as the frame | Navigate the frame. Add `ppcart-embed=1` when it is missing. |
 | Another origin, after the handshake | Send `navigate` to the loader. The top window goes to the URL. |
-| Another origin, before the handshake | Try `window.top.location.href`. If the browser blocks that, navigate the frame. |
+| Another origin, before the handshake | Wait for the loader's `init` (it comes on load), then send `navigate`. After 3 seconds without it, try `window.top.location.href`, and if the browser blocks that, navigate the frame. |
 | Not `http:` or `https:` | Do nothing. |
 
 `window.PPCartEmbedFrame.route(url, frameOrigin)` is the pure form of the rule.
@@ -174,12 +175,13 @@ For a user who can edit the product, the query arg `ppcart-embed-layout=standard
 | Suite | IDs | File |
 |-------|-----|------|
 | Unit | UT-370 to UT-372 | `tests/codeception/Unit/Embed/EmbedAppearanceTest.php` |
-| Unit | UT-373 | `tests/codeception/Unit/Embed/EmbedFrameHeadersTest.php` |
-| Integration | IT-394 to IT-399 | `tests/codeception/Integration/Embed/EmbedCheckoutTest.php` |
+| Unit | UT-373, UT-374 | `tests/codeception/Unit/Embed/EmbedFrameHeadersTest.php` |
+| Unit | UT-375, UT-376 | `tests/codeception/Unit/Embed/EmbedRedirectBounceTest.php` |
+| Integration | IT-394 to IT-399, IT-403 | `tests/codeception/Integration/Embed/EmbedCheckoutTest.php` |
 | Integration | IT-400 to IT-402 | `tests/codeception/Integration/Embed/EmbedTabSaveTest.php` |
 | Harness | none | `tests/playwright/unit/embed-frame-route.spec.ts` (the `route()` rule) |
 | Admin | AD-212 | `tests/playwright/admin/ad212-product-embed-tab-previews-and-saves-accent.spec.ts` |
-| Regression | RT-110 to RT-120 | `tests/playwright/regression/rt110-*.spec.ts` to `rt120-*.spec.ts` |
+| Regression | RT-110 to RT-122 | `tests/playwright/regression/rt110-*.spec.ts` to `rt122-*.spec.ts` |
 
 The regression specs cover these buyer flows:
 
@@ -196,6 +198,8 @@ The regression specs cover these buyer flows:
 | RT-118 | On a 375 x 812 viewport, the popup fills the screen and the inline form has no horizontal overflow. |
 | RT-119 | Two inline embeds on one page render and size independently. |
 | RT-120 | The flag on a page without checkout content keeps the theme template and the framing headers. |
+| RT-121 | An inline embed below the fold fits its content before it is scrolled into view. |
+| RT-122 | A server redirect to another site from an embed (a closed cart) navigates the top window. |
 
 The regression specs serve the host page from `https://merchant.example` with
 `page.route()` (`tests/playwright/support/embed-host.ts`). The page loads the

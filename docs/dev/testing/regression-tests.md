@@ -244,6 +244,7 @@ Populated automatically by `composer test:regression:setup`:
 | `URL_EMBED_PRODUCT_STRIPE` | One-time Stripe product permalink for the embed specs |
 | `URL_EMBED_PRODUCT_REDIRECT` | Free product permalink that redirects to an external thank-you page |
 | `URL_EMBED_PRODUCT_STYLED` | Free product permalink with a saved embed appearance |
+| `URL_EMBED_PRODUCT_CLOSED` | Closed-cart product permalink that redirects to an external page |
 | `URL_EMBED_PLAIN_PAGE` | Page without checkout content, for the embed flag check |
 
 ### Test data

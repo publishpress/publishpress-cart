@@ -53,4 +53,22 @@ class EmbedFrameHeadersTest extends Unit
             ppcart_embed_frame_header_lines([])
         );
     }
+
+    /**
+     * @test-id UT-374
+     */
+    public function test_UT_374_frame_header_lines_keep_other_policies_without_their_frame_ancestors(): void
+    {
+        $this->assertSame(
+            [
+                "Content-Security-Policy: script-src 'self'; object-src 'none'",
+                'Content-Security-Policy: upgrade-insecure-requests',
+                'Content-Security-Policy: frame-ancestors *',
+            ],
+            ppcart_embed_frame_header_lines(
+                [ '*' ],
+                [ "script-src 'self'; frame-ancestors 'self'; object-src 'none'", "FRAME-ANCESTORS 'none'", 'upgrade-insecure-requests;' ]
+            )
+        );
+    }
 }

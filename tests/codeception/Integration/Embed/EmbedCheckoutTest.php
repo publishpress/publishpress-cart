@@ -149,6 +149,34 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('public/js/ppcart-embed-frame.js', $html);
     }
 
+    public function test_IT_403_a_confirmation_page_opened_with_a_valid_order_token_renders_inside_the_shell(): void
+    {
+        $this->temporaryPageId = (int) wp_insert_post([
+            'post_type'    => 'page',
+            'post_status'  => 'publish',
+            'post_title'   => 'Embed confirmation page',
+            'post_content' => '<p>Thanks for buying!</p>',
+        ]);
+        $orderId = (int) wp_insert_post([
+            'post_type'   => ppcart_live_post_type('order'),
+            'post_status' => 'publish',
+            'post_title'  => 'Embed order',
+        ]);
+        $token = \PPCart_Order::ensure_invoice_access_token($orderId);
+        $page  = get_permalink($this->temporaryPageId);
+
+        $this->go_to(add_query_arg([ 'ppcart-order' => $orderId, 'token' => 'wrong-token', 'ppcart-embed' => '1' ], $page));
+        $this->assertFalse(ppcart_is_embed_request());
+
+        $html = $this->renderShell(add_query_arg([ 'ppcart-order' => $orderId, 'token' => $token, 'ppcart-embed' => '1' ], $page));
+
+        wp_delete_post($orderId, true);
+
+        $this->assertStringContainsString('Thanks for buying!', $html);
+        $this->assertMatchesRegularExpression('/<body class="[^"]*\bppcart-embed\b[^"]*"/', $html);
+        $this->assertStringContainsString('public/js/ppcart-embed-frame.js', $html);
+    }
+
     public function test_IT_398_frame_header_lines_come_from_the_frame_ancestors_filter(): void
     {
         $controller = new \PPCart_Public_Embed_Controller();

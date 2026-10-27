@@ -782,6 +782,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `wp_mail` | Filter | `add_filter` | Internal | unclassified | `includes/email/ppcart-template-functions/options-and-hooks.php` | wp_mail |
 | `wp_privacy_personal_data_erasers` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | wp_privacy_personal_data_erasers |
 | `wp_privacy_personal_data_exporters` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | wp_privacy_personal_data_exporters |
+| `wp_redirect` | Filter | `add_filter` | Internal | unclassified | `includes/bootstrap/class-ppcart-public-hook-registrar.php` | wp_redirect |
 | `wp_title` | Filter | `add_filter` | Internal | unclassified | `includes/bootstrap/class-ppcart-public-hook-registrar.php` | wp_title |
 | `{$action}` | Action | `do_action` | Internal | dynamic | `includes/functions/integrations-and-stock.php` | {$action} |
 | `{$hook[...]}]` | Action | `add_action` | Internal | dynamic | `includes/class-ppcart-loader.php` | {$hook[...]}] |
