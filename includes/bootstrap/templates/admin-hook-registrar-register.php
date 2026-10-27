@@ -15,6 +15,7 @@ $plugin_admin_test_mode_notice = new PPCart_Admin_Test_Mode_Notice_Controller($t
 $plugin_admin_page_notices = new PPCart_Admin_Page_Notices();
 $plugin_admin_legacy_tracking_notice = new PPCart_Admin_Legacy_Tracking_Notice_Controller();
 $ppcart_product_fields = new PPCart_Product_Metaboxes($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
+$plugin_admin_embed_tab = new PPCart_Admin_Embed_Tab();
 $order_fields = new PPCart_Order_Metaboxes($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
 $order_admin = new PPCart_Order_Admin($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
 $plugin_settings = new PPCart_Admin_Settings($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
@@ -56,6 +57,11 @@ $ppcart_subscription_types = function_exists('ppcart_query_post_types') ? ppcart
 foreach ($ppcart_product_types as $ppcart_product_type) {
     $this->loader->add_action('save_post_' . $ppcart_product_type, $ppcart_product_fields, 'validate_meta', 10, 2);
 }
+
+// Product Embed tab
+$this->loader->add_filter('ppcart_product_setting_tabs', $plugin_admin_embed_tab, 'register_tab');
+$this->loader->add_filter('ppcart_product_field_groups', $plugin_admin_embed_tab, 'register_group');
+$this->loader->add_filter('ppcart_product_setting_tab_embed_fields', $plugin_admin_embed_tab, 'fields');
 
 // Order Metaboxes
 $this->loader->add_action('admin_init', $order_fields, 'add_metaboxes', 99);

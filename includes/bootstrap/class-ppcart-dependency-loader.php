@@ -87,6 +87,7 @@ class PPCart_Dependency_Loader
          */
         require_once $base_path . 'admin/metaboxes/class-ppcart-product-metabox-option-sources.php';
         require_once $base_path . 'admin/class-ppcart-product-metaboxes.php';
+        require_once $base_path . 'admin/class-ppcart-admin-embed-tab.php';
 
         /**
          * The class responsible for defining all admin order fields.

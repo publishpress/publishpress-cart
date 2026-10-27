@@ -24,6 +24,8 @@ $default_atts = [  'type' => 'text',
                      'note' =>  ''];
 $atts = wp_parse_args($atts, $default_atts);
 $field_dom_id = ppcart_admin_field_dom_id($atts);
+$datalist = (! empty($atts['datalist']) && is_array($atts['datalist'])) ? $atts['datalist'] : [];
+$datalist_id = $field_dom_id . '-options';
 $testid_source = ! empty($atts['id']) ? $atts['id'] : ($atts['name'] ?? '');
 $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
 $clear_testid = ppcart_testid('ppcart-admin-field-' . $testid_source . '-clear-date');
@@ -70,6 +72,15 @@ if (! empty($atts['description'])) {
     <?php if (isset($atts['step'])) :
         ?>step="<?php echo esc_attr($atts['step']); ?>"<?php
     endif; ?>
+    <?php if (isset($atts['min'])) :
+        ?>min="<?php echo esc_attr($atts['min']); ?>"<?php
+    endif; ?>
+    <?php if (isset($atts['max'])) :
+        ?>max="<?php echo esc_attr($atts['max']); ?>"<?php
+    endif; ?>
+    <?php if ([] !== $datalist) :
+        ?>list="<?php echo esc_attr($datalist_id); ?>"<?php
+    endif; ?>
     autocomplete="off" autocorrect="off" autocapitalize="none"
     <?php if (isset($atts['readonly'])) :
         ?>readonly <?php
@@ -79,6 +90,13 @@ if (! empty($atts['description'])) {
     endif; ?>
     value="<?php echo esc_attr($atts['value']); ?>"
     data-lpignore="true" />
+    <?php if ([] !== $datalist) : ?>
+        <datalist id="<?php echo esc_attr($datalist_id); ?>">
+            <?php foreach ($datalist as $datalist_option) : ?>
+                <option value="<?php echo esc_attr($datalist_option); ?>"></option>
+            <?php endforeach; ?>
+        </datalist>
+    <?php endif; ?>
     <?php
 if ($right_currency) {
     echo '<span class="input-append">' . esc_html($ppcart_currency_symbol) . '</span>';
