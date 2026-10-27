@@ -78,7 +78,7 @@ endif;
         <ul>
             <li>
                 <strong><?php esc_html_e('Showit:', 'publishpress-cart'); ?></strong>
-                <?php esc_html_e('Add an Embed Code element and paste the Inline checkout code. Then set the type of that section to "Grow with Content", so the page grows with the form. You can also paste the Popup button code, or set the link of a Showit button to the Popup link on a page that has the loader script.', 'publishpress-cart'); ?>
+                <?php esc_html_e('Add an Embed Code element and paste the Inline checkout code. Then set the type of that section to "Grow with Content", so the page grows with the form, and keep the element as wide as the section on desktop and on mobile. You can also paste the Popup button code, or set the link of a Showit button to the Popup link on a page that has the loader script.', 'publishpress-cart'); ?>
             </li>
             <li>
                 <strong><?php esc_html_e('Other site builders:', 'publishpress-cart'); ?></strong>
