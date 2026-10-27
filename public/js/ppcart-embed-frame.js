@@ -3,7 +3,7 @@
  * page loader (public/js/ppcart-embed.js) creates: it answers the loader's
  * handshake, reports its height, and applies one navigation rule to script
  * navigations (window.ppcartNavigate) and form posts. See the message protocol
- * in docs: frame -> host {hello, resize, navigate}, host -> frame {init}.
+ * frame -> host {hello, resize, navigate, escape}, host -> frame {init}.
  */
 (function (window, document) {
     'use strict';
@@ -118,6 +118,13 @@
     }
 
     window.addEventListener('load', sendHeight);
+
+    // Key events inside the frame never reach the host page, so a popup could not close with Esc while the buyer types.
+    document.addEventListener('keydown', function (event) {
+        if (hostOrigin !== null && (event.key === 'Escape' || event.key === 'Esc')) {
+            post({ type: 'escape', id: frameId }, hostOrigin);
+        }
+    });
 
     if (typeof window.ResizeObserver === 'function') {
         var observer = new window.ResizeObserver(sendHeight);
