@@ -42,24 +42,63 @@ class PPCart_Public_Embed_Controller
             return;
         }
 
-        header_remove('X-Frame-Options');
-
-        foreach ($this->frame_header_lines() as $line) {
-            header($line);
-        }
+        $this->replace_frame_headers();
     }
 
     /**
+     * An embed request answers a redirect to another site with a page that asks
+     * the host to open it in the top window. A 302 would load that site inside
+     * the frame (a subscription's external thank-you page, a closed cart's redirect).
+     *
+     * @param string $location Redirect target.
+     * @return string
+     */
+    public function bounce_external_redirect($location)
+    {
+        if ('' === ppcart_embed_request_mode() || headers_sent() || ! ppcart_embed_redirect_leaves_site($location, home_url())) {
+            return $location;
+        }
+
+        nocache_headers();
+        status_header(200);
+        header('Content-Type: text/html; charset=' . get_option('blog_charset'));
+        $this->replace_frame_headers();
+
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- ppcart_embed_bounce_page() escapes the URL for HTML and for the script.
+        echo ppcart_embed_bounce_page($location, PPCART_BASE_URL . 'public/js/ppcart-embed-frame.js?ver=' . PPCART_VERSION);
+        exit;
+    }
+
+    /**
+     * @param array<int, string> $existing_policies Values of the CSP headers already set for this response.
      * @return array<int, string>
      */
-    public function frame_header_lines()
+    public function frame_header_lines($existing_policies = [])
     {
         /**
          * Sources allowed to frame the embedded checkout (CSP `frame-ancestors`).
          *
          * @param array<int, string> $sources Defaults to every origin.
          */
-        return ppcart_embed_frame_header_lines(apply_filters('ppcart_embed_frame_ancestors', [ '*' ]));
+        return ppcart_embed_frame_header_lines(apply_filters('ppcart_embed_frame_ancestors', [ '*' ]), $existing_policies);
+    }
+
+    private function replace_frame_headers()
+    {
+        $existing = [];
+
+        foreach (headers_list() as $header) {
+            if (0 === stripos($header, 'Content-Security-Policy:')) {
+                $existing[] = trim(substr($header, strlen('Content-Security-Policy:')));
+            }
+        }
+
+        header_remove('X-Frame-Options');
+        header_remove('Content-Security-Policy');
+
+        foreach ($this->frame_header_lines($existing) as $line) {
+            header($line, false);
+        }
     }
 
     public function show_admin_bar($show)

@@ -55,6 +55,7 @@
     var hostOrigin = null;
     var frameId = null;
     var heightQueued = false;
+    var pendingTopUrl = null;
 
     function resolve(url) {
         try {
@@ -110,6 +111,11 @@
         hostOrigin = event.origin;
         frameId = data.id;
         sendHeight();
+
+        if (pendingTopUrl !== null) {
+            post({ type: 'navigate', id: frameId, url: pendingTopUrl }, hostOrigin);
+            pendingTopUrl = null;
+        }
     });
 
     if (document.readyState === 'loading') {
@@ -161,15 +167,31 @@
             return;
         }
 
+        if (window.parent !== window) {
+            // A new frame document (such as a redirect bounce) has not heard the loader's init yet; it comes on load.
+            pendingTopUrl = decision.url;
+            window.setTimeout(function () {
+                if (pendingTopUrl !== null) {
+                    leave(pendingTopUrl);
+                    pendingTopUrl = null;
+                }
+            }, 3000);
+            return;
+        }
+
+        leave(decision.url);
+    };
+
+    function leave(url) {
         try {
-            window.top.location.href = decision.url;
+            window.top.location.href = url;
             return;
         } catch (error) {
             // A cross-origin top window that forbids navigation: fall through to the frame.
         }
 
-        window.location.assign(decision.url);
-    };
+        window.location.assign(url);
+    }
 
     // Checkout forms carry an input named "action", so form.action is that input, not the URL: read the attribute.
     function applyFormRule(form) {

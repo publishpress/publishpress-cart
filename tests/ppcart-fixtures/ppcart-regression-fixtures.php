@@ -683,6 +683,16 @@ final class PPCart_Regression_Fixtures {
 				],
 				'pay_options' => [ self::free_plan( $plan_defaults, 'reg_embed_redirect' ) ],
 			],
+			'embed_closed' => [
+				'title'       => 'PublishPress Cart Regression - Embed Closed Cart',
+				'url_key'     => 'url_embed_product_closed',
+				'meta'        => [
+					'checkout_ends'           => '2020-01-01 00:00',
+					'checkout_ended_action'   => 'redirect',
+					'checkout_ended_redirect' => 'https://thanks.merchant.example/closed/',
+				],
+				'pay_options' => [ self::free_plan( $plan_defaults, 'reg_embed_closed' ) ],
+			],
 			'embed_styled' => [
 				'title'       => 'PublishPress Cart Regression - Embed Styled',
 				'url_key'     => 'url_embed_product_styled',

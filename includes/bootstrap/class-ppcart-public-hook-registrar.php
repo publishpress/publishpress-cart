@@ -33,6 +33,7 @@ class PPCart_Public_Hook_Registrar
         $this->loader->add_filter('single_template', $plugin_public_page, 'product_template');
         $this->loader->add_filter('template_include', $plugin_public_embed, 'template_include', 999);
         $this->loader->add_action('template_redirect', $plugin_public_embed, 'send_frame_headers', 1);
+        $this->loader->add_filter('wp_redirect', $plugin_public_embed, 'bounce_external_redirect', 999);
         $this->loader->add_filter('show_admin_bar', $plugin_public_embed, 'show_admin_bar', 999);
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public_embed, 'enqueue_assets', 20);
         $this->loader->add_filter('body_class', $plugin_public_embed, 'body_class');
