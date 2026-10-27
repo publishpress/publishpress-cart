@@ -50,6 +50,10 @@ foreach ($product_setting_tabs as $tab_id => $label) {
             echo wp_kses(ppcart_pro_render_locked_product_tab($tab_id), ppcart_admin_allowed_html());
         }
     } else {
+        $description = function_exists('ppcart_product_tab_description') ? ppcart_product_tab_description($tab_id) : '';
+        if ('' !== $description) {
+            echo '<p class="ppcart-product-tab-description">' . esc_html($description) . '</p>';
+        }
         $fields = $this->$tab_id ?? [];
         $fields = $this->filter_product_setting_tab_fields($tab_id, $fields, 'render');
         $this->metabox_fields($fields);
