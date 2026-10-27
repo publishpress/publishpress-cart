@@ -24,6 +24,22 @@ class PPCart_Embed_Appearance
 
     const BUTTON_TEXT_MAX = 60;
 
+    /*
+     * Validation patterns without delimiters, so the admin live preview can build the
+     * same JavaScript RegExp and preview an invalid value as the default.
+     */
+    const COLOR_PATTERN = '^#[0-9a-fA-F]{6}$';
+
+    const FONT_FAMILY_PATTERN = '^[A-Za-z0-9 ,\'"-]{1,' . self::FONT_FAMILY_MAX . '}$';
+
+    const FONT_URL_FORBIDDEN_PATTERN = '[\s\'"<>]';
+
+    const RADIUS_PATTERN = '^[0-9]{1,2}$';
+
+    const CLASS_PREFIX = 'ppcart-embed--';
+
+    const VARIABLE_PREFIX = '--ppcart-embed-';
+
     /**
      * Keys that become a body class and a CSS variable, with the suffix both share.
      */
@@ -34,6 +50,27 @@ class PPCart_Embed_Appearance
         'font_family' => 'font',
         'radius'      => 'radius',
     ];
+
+    /**
+     * The body class and CSS variable of each styled key. body_classes(), css_variables()
+     * and the admin live preview all read this map.
+     *
+     * @return array<string, array{class: string, variable: string, unit: string}>
+     */
+    public static function style_map()
+    {
+        $map = [];
+
+        foreach (self::STYLE_SUFFIXES as $key => $suffix) {
+            $map[ $key ] = [
+                'class'    => self::CLASS_PREFIX . $suffix,
+                'variable' => self::VARIABLE_PREFIX . $suffix,
+                'unit'     => 'radius' === $key ? 'px' : '',
+            ];
+        }
+
+        return $map;
+    }
 
     /**
      * @param mixed $raw Short keys to raw values. Unknown keys are dropped. Never throws.
@@ -59,14 +96,14 @@ class PPCart_Embed_Appearance
     {
         $classes = [];
 
-        foreach (self::STYLE_SUFFIXES as $key => $suffix) {
+        foreach (self::style_map() as $key => $style) {
             if (self::is_set($appearance, $key)) {
-                $classes[] = 'ppcart-embed--' . $suffix;
+                $classes[] = $style['class'];
             }
         }
 
         if (isset($appearance['layout']) && '2-step' === $appearance['layout']) {
-            $classes[] = 'ppcart-embed--layout-2-step';
+            $classes[] = self::CLASS_PREFIX . 'layout-2-step';
         }
 
         return $classes;
@@ -80,13 +117,13 @@ class PPCart_Embed_Appearance
     {
         $css = '';
 
-        foreach (self::STYLE_SUFFIXES as $key => $suffix) {
+        foreach (self::style_map() as $key => $style) {
             if (! self::is_set($appearance, $key)) {
                 continue;
             }
 
-            $value = 'radius' === $key ? (int) $appearance[ $key ] . 'px' : $appearance[ $key ];
-            $css  .= '--ppcart-embed-' . $suffix . ':' . $value . ';';
+            $value = '' === $style['unit'] ? $appearance[ $key ] : (int) $appearance[ $key ] . $style['unit'];
+            $css  .= $style['variable'] . ':' . $value . ';';
         }
 
         return $css;
@@ -116,16 +153,16 @@ class PPCart_Embed_Appearance
             case 'accent':
             case 'text':
             case 'background':
-                return preg_match('/^#[0-9a-fA-F]{6}$/', $value) ? strtolower($value) : '';
+                return preg_match('/' . self::COLOR_PATTERN . '/', $value) ? strtolower($value) : '';
 
             case 'font_family':
-                return preg_match('/^[A-Za-z0-9 ,\'"-]{1,' . self::FONT_FAMILY_MAX . '}$/', $value) ? $value : '';
+                return preg_match('/' . self::FONT_FAMILY_PATTERN . '/', $value) ? $value : '';
 
             case 'font_url':
                 return self::sanitize_font_url($value);
 
             case 'radius':
-                return preg_match('/^[0-9]{1,2}$/', $value) && (int) $value <= self::RADIUS_MAX ? (int) $value : '';
+                return preg_match('/' . self::RADIUS_PATTERN . '/', $value) && (int) $value <= self::RADIUS_MAX ? (int) $value : '';
 
             case 'button_text':
                 $value = trim(strip_tags($value));
@@ -138,7 +175,7 @@ class PPCart_Embed_Appearance
 
     private static function sanitize_font_url($value)
     {
-        if (0 !== strpos($value, 'https://') || preg_match('/[\s\'"<>]/', $value)) {
+        if (0 !== strpos($value, 'https://') || preg_match('/' . self::FONT_URL_FORBIDDEN_PATTERN . '/', $value)) {
             return '';
         }
 
