@@ -28,7 +28,7 @@ if (function_exists('ppcart_pro_locked_product_tabs')) {
         $insert_after = [
             'access' => [ 'ppcart_pro_payment_methods' ],
             'fields' => [ 'ppcart_pro_coupons', 'ppcart_pro_order_bumps', 'ppcart_pro_upsell_path' ],
-            'files'  => [ 'ppcart_pro_shipping', 'ppcart_pro_affiliates' ],
+            'files'  => [ 'ppcart_pro_affiliates' ],
         ];
 
         $merged = [];

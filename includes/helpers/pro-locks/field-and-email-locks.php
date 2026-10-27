@@ -231,7 +231,6 @@ function ppcart_pro_locked_product_tabs()
             'ppcart_pro_coupons'         => __('Coupons', 'publishpress-cart'),
             'ppcart_pro_order_bumps'     => __('Order Bumps', 'publishpress-cart'),
             'ppcart_pro_upsell_path'     => __('Upsell Path', 'publishpress-cart'),
-            'ppcart_pro_shipping'        => __('Shipping', 'publishpress-cart'),
             'ppcart_pro_affiliates'      => __('Affiliates', 'publishpress-cart'),
         ]
     );

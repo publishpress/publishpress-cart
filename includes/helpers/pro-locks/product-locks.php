@@ -64,14 +64,6 @@ function ppcart_pro_locked_product_fields($tab_id)
         'ppcart_pro_upsell_path'     => [
             [ 'label' => __('Select Path', 'publishpress-cart'), 'type' => 'select' ],
         ],
-        'ppcart_pro_shipping'        => [
-            [ 'label' => __('Enable shipping', 'publishpress-cart'), 'type' => 'toggle' ],
-            [ 'label' => __('Single item', 'publishpress-cart'), 'type' => 'text' ],
-            [ 'label' => __('Single Item (Intl.)', 'publishpress-cart'), 'type' => 'text' ],
-            [ 'label' => __('Each additional item', 'publishpress-cart'), 'type' => 'text' ],
-            [ 'label' => __('Each additional item (Intl.)', 'publishpress-cart'), 'type' => 'text' ],
-            [ 'label' => __('Taxable', 'publishpress-cart'), 'type' => 'toggle' ],
-        ],
         'ppcart_pro_affiliates'      => [
             [ 'label' => __('Enable affiliate sales', 'publishpress-cart'), 'type' => 'toggle' ],
             [ 'label' => __('Description', 'publishpress-cart'), 'type' => 'textarea' ],
