@@ -92,7 +92,7 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('id="ppcart_card_button"', $html);
     }
 
-    public function test_IT_396_an_editor_previews_a_layout_before_saving_it_and_a_visitor_cannot(): void
+    public function test_IT_399_an_editor_previews_a_layout_before_saving_it_and_a_visitor_cannot(): void
     {
         update_post_meta($this->temporaryProductId, '_ppcart_embed_layout', '2-step');
         add_filter('ppcart_checkout_template_path', [ $this, 'captureSkin' ], 10, 2);
@@ -112,16 +112,35 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         $this->assertStringNotContainsString('ppcart-embed--layout-2-step', $editorHtml);
     }
 
-    public function test_IT_397_a_non_product_page_renders_its_content_inside_the_shell(): void
+    public function test_IT_397_only_pages_with_checkout_content_render_inside_the_shell(): void
     {
+        $controller = new \PPCart_Public_Embed_Controller();
+        $fallback   = '/tmp/theme-single.php';
+
         $this->temporaryPageId = (int) wp_insert_post([
             'post_type'    => 'page',
             'post_status'  => 'publish',
-            'post_title'   => 'Embed thank you page',
-            'post_content' => '<p>Thank you, your embedded order is complete.</p>',
+            'post_title'   => 'Embed account page',
+            'post_content' => '<p>Your account.</p>',
+        ]);
+        $plainUrl = add_query_arg('ppcart-embed', '1', get_permalink($this->temporaryPageId));
+
+        $this->go_to($plainUrl);
+        $this->assertFalse(ppcart_is_embed_request());
+        $this->assertSame($fallback, $controller->template_include($fallback));
+
+        add_filter('ppcart_embed_allows_post', '__return_true');
+        $this->go_to($plainUrl);
+        $this->assertTrue(ppcart_is_embed_request());
+        $this->assertStringEndsWith('public/templates/embed/checkout.php', $controller->template_include($fallback));
+        remove_filter('ppcart_embed_allows_post', '__return_true');
+
+        wp_update_post([
+            'ID'           => $this->temporaryPageId,
+            'post_content' => '<p>Thank you, your embedded order is complete.</p>[ppcart_receipt]',
         ]);
 
-        $html = $this->renderShell(add_query_arg('ppcart-embed', '1', get_permalink($this->temporaryPageId)));
+        $html = $this->renderShell($plainUrl);
 
         $this->assertStringContainsString('Thank you, your embedded order is complete.', $html);
         $this->assertStringContainsString('<main class="ppcart-embed__main">', $html);
