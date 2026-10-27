@@ -50,7 +50,7 @@ $fields = [
             'value'         => '',
             'selections'    => [
                 '' => 'One-time Payment',
-                'recurring' => 'Recurring Payments',
+                'recurring' => __('Recurring Payments (Subscriptions)', 'publishpress-cart'),
                 'pwyw'      => 'Pay What You Want',
                 'free'      => 'Free',
             ],
