@@ -11,9 +11,11 @@ plugin:
 catalog:
   cases: docs/testing/cases
   # Test files that intentionally have no catalog case, because they cover the
-  # test harness rather than the product.
+  # test harness rather than the product, or a pure function with no suite root
+  # (the harness-chromium project in tests/playwright/unit has no ID prefix).
   ignore_tests:
     - tests/playwright/unit/admin-executor.spec.ts
+    - tests/playwright/unit/embed-frame-route.spec.ts
 
 modules:
   - id: checkout-stripe
