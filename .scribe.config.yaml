@@ -239,9 +239,9 @@ modules:
   - id: embedded-checkout
     name: Embedded checkout
     suites: [unit, integration]
-    test_range: UT-370–UT-373, IT-394–IT-398
+    test_range: UT-370–UT-373, IT-394–IT-402
     features: [checkout-display]
-    notes: Appearance model, frame headers, the embed shell template, and the frame navigation rule.
+    notes: Appearance model, frame headers, the embed shell template, the frame navigation rule, and the Embed tab save path.
 
   - id: checkout-display
     name: Checkout rendering and display
