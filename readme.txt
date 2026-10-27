@@ -37,7 +37,7 @@ Choose which mailing list or tag to add a buyer to on a per-product basis when a
 How to Use PublishPress Cart
 [youtube https://www.youtube.com/watch?v=uLDxhqXMhLY]
 
-**Want product updates and support resources?** Visit [PublishPress Cart](https://publishpress.com/publishpress-cart/).
+**Want product updates and support resources?** Visit [PublishPress Cart](https://publishpress.com/cart/).
 
 == External services ==
 
@@ -155,16 +155,16 @@ Shared helpers are under `includes/integrations/gutenberg/blocks/_shared/`.
 == Frequently Asked Questions ==
 
 = What payment processors can I use with PublishPress Cart? =
-PublishPress Cart supports Stripe and PayPal. [PublishPress Cart Pro](https://publishpress.com/publishpress-cart/) is a separate plugin with additional payment gateway options.
+PublishPress Cart supports Stripe and PayPal. [PublishPress Cart Pro](https://publishpress.com/cart/) is a separate plugin with additional payment gateway options.
 
 = Does PublishPress Cart work in my language? =
 PublishPress Cart can be translated with WordPress translation files or a translation plugin such as [Loco Translate](https://wordpress.org/plugins/loco-translate/).
 
 = What integrations are available? =
-PublishPress Cart works with ActiveCampaign, Mailchimp, MemberVault, SendFox, MailPoet, Facebook Ads events, and Google Analytics. [PublishPress Cart Pro](https://publishpress.com/publishpress-cart/) is a separate plugin with additional integrations.
+PublishPress Cart works with ActiveCampaign, Mailchimp, MemberVault, SendFox, MailPoet, Facebook Ads events, and Google Analytics. [PublishPress Cart Pro](https://publishpress.com/cart/) is a separate plugin with additional integrations.
 
 = I have a question not listed here. =
-Contact us via [PublishPress support](https://publishpress.com/publishpress-cart/).
+Contact us via [PublishPress support](https://publishpress.com/cart/).
 
 == Screenshots ==
 
