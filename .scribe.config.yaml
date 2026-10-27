@@ -238,10 +238,10 @@ modules:
 
   - id: embedded-checkout
     name: Embedded checkout
-    suites: [unit, integration]
-    test_range: UT-370–UT-373, IT-394–IT-402
-    features: [checkout-display]
-    notes: Appearance model, frame headers, the embed shell template, the frame navigation rule, and the Embed tab save path.
+    suites: [unit, integration, regression]
+    test_range: UT-370–UT-373, IT-394–IT-402, RT-110–RT-120
+    features: [embedded-checkout, checkout-display]
+    notes: Appearance model, frame headers, the embed shell template, the frame navigation rule, the Embed tab save path, and the buyer flows across origins in a browser.
 
   - id: checkout-display
     name: Checkout rendering and display
@@ -253,7 +253,7 @@ modules:
   - id: developer-hooks
     name: Developer hooks
     suites: [regression]
-    test_range: RT-109–RT-111
+    test_range: RT-109
     features: [developer-hooks]
     notes: Public action and filter hooks third-party code listens on.
 
@@ -319,6 +319,19 @@ features:
     status: active
     description: Read/write REST access to customers, orders, and products for external integrations.
     edition: pro
+  embedded-checkout:
+    name: Embedded checkout on other websites
+    status: active
+    description: Inline or popup checkout on a site outside WordPress, such as Showit or Squarespace, from a snippet on the product Embed tab.
+    edition: both
+    source_areas:
+      - public/js/ppcart-embed.js
+      - public/js/ppcart-embed-frame.js
+      - public/controllers/class-ppcart-public-embed-controller.php
+      - public/templates/embed/
+      - public/css/ppcart-embed.css
+      - includes/embed/
+      - admin/class-ppcart-admin-embed-tab.php
   gutenberg-blocks:
     name: Gutenberg checkout & customer account
     status: active
