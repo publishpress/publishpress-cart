@@ -82,11 +82,41 @@ function ppcart_embed_request_mode()
 
 /**
  * Whether the current request is an embedded checkout: a singular front-end request
- * with a non-empty `ppcart-embed` query arg.
+ * for a post the embed may frame, with a non-empty `ppcart-embed` query arg.
  *
  * @return bool
  */
 function ppcart_is_embed_request()
 {
-    return ! is_admin() && is_singular() && '' !== ppcart_embed_request_mode();
+    if (is_admin() || ! is_singular() || '' === ppcart_embed_request_mode()) {
+        return false;
+    }
+
+    $post = get_queried_object();
+
+    return $post instanceof WP_Post && ppcart_embed_allows_post($post);
+}
+
+/**
+ * Posts the embed may frame: products, and pages that show a checkout or a receipt.
+ * Any other page keeps the site's own framing policy, so the flag cannot lift
+ * X-Frame-Options from, for example, an account page.
+ *
+ * @param WP_Post $post Queried post.
+ * @return bool
+ */
+function ppcart_embed_allows_post($post)
+{
+    $allowed = ppcart_is_product_post_type($post->post_type)
+        || has_shortcode($post->post_content, 'ppcart_form')
+        || has_shortcode($post->post_content, 'ppcart_receipt')
+        || has_block('publishpress-cart/checkout-form', $post);
+
+    /**
+     * Whether the embedded checkout may frame this post, for example an upsell page.
+     *
+     * @param bool    $allowed Products and pages with a checkout or a receipt.
+     * @param WP_Post $post    Queried post.
+     */
+    return (bool) apply_filters('ppcart_embed_allows_post', $allowed, $post);
 }
