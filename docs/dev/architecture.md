@@ -53,6 +53,7 @@ There is **no** first-party `api/` REST directory.
 | `includes/integrations/gutenberg/` | Checkout and account blocks |
 | `public/class-ppcart-public.php` | Storefront coordinator (hooks, order-status integrations) |
 | `public/controllers/` | Checkout, account, assets, payment, orders, hosted checkout |
+| `includes/embed/`, `public/js/ppcart-embed*.js`, `public/templates/embed/` | Embedded checkout on other websites: loader, frame shell, frame bridge ([embed-checkout.md](embed-checkout.md)) |
 | `public/class-ppcart-paypal.php` + `public/paypal/` | PayPal checkout. Redirect flow (Payments Standard, IPN, PDT) in the traits. On-page flow (JavaScript SDK popup + REST) in `class-ppcart-paypal-onpage.php`, `class-ppcart-paypal-sync.php`, `class-ppcart-paypal-refund-sync.php`, `class-ppcart-paypal-rest-client.php`, `class-ppcart-paypal-billing-shape.php`, `class-ppcart-paypal-plans.php`, `class-ppcart-paypal-record-lock.php`, `class-ppcart-paypal-webhook.php` |
 | `public/webhooks/` | `stripe.php`, `paypal.php` (IPN), `paypal-rest.php` (REST webhook) — keep thin |
 | `public/templates/` | Storefront PHP templates |
