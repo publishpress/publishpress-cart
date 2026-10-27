@@ -62,6 +62,8 @@ foreach ($ppcart_product_types as $ppcart_product_type) {
 $this->loader->add_filter('ppcart_product_setting_tabs', $plugin_admin_embed_tab, 'register_tab');
 $this->loader->add_filter('ppcart_product_field_groups', $plugin_admin_embed_tab, 'register_group');
 $this->loader->add_filter('ppcart_product_setting_tab_embed_fields', $plugin_admin_embed_tab, 'fields');
+$this->loader->add_action('ppcart_product_settings_panel_after_fields', $plugin_admin_embed_tab, 'render_panel', 10, 2);
+$this->loader->add_action('admin_enqueue_scripts', $plugin_admin_embed_tab, 'enqueue_assets');
 
 // Order Metaboxes
 $this->loader->add_action('admin_init', $order_fields, 'add_metaboxes', 99);
