@@ -90,9 +90,14 @@ trait PPCart_Files_Settings_Trait
     {
         return [
             [
+                'id' => 'ppcart_files_intro',
+                'type' => 'html',
+                'value' => '<p>' . esc_html__('Add downloadable files for this product. Files are optional. To add a file, enter both a File URL and a File Name. Leave both fields blank if this product has no downloads.', 'publishpress-cart') . '</p>',
+            ],
+            [
                 'class'         => 'ppcart-repeater',
                 'id'            => '_ppcart_files',
-                'label-add'     => __('+ Add New', 'publishpress-cart'),
+                'label-add'     => __('+ Add File', 'publishpress-cart'),
                 'label-edit'    => __('Edit File', 'publishpress-cart'),
                 'label-header'  => __('File', 'publishpress-cart'),
                 'label-remove'  => __('Remove File', 'publishpress-cart'),

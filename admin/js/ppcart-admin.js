@@ -629,13 +629,19 @@ jQuery(document).ready(function($){
         jQuery(this).toggleClass('active');
         jQuery(this).next('table').slideToggle('slow');
     });
-    // Keep the first payment plan ready to edit on both new and existing products.
+    // Keep the first payment plan and file ready to edit on new and existing products.
     var $firstPaymentPlanEditButton = $( '#repeater_ppcart_pay_options > .ppcart-repeater:not(.hidden)' )
         .first()
         .children( '.handle' )
         .children( '.ppcart-btn-edit' );
 
-    $( '.ppcart-repeaters .ppcart-btn-edit' ).not( $firstPaymentPlanEditButton ).click();
+    var $firstFileEditButton = $( '#repeater_ppcart_files > .ppcart-repeater:not(.hidden)' )
+        .first()
+        .children( '.handle' )
+        .children( '.ppcart-btn-edit' );
+
+    $( '.ppcart-repeaters .ppcart-btn-edit' )
+        .not( $firstPaymentPlanEditButton.add( $firstFileEditButton ) ).click();
 
     $('.ppcart-color-field').wpColorPicker();
     flatpickr('.datepicker', {enableTime: true,dateFormat: "Y-m-d h:i K",allowInput: true});
@@ -696,6 +702,13 @@ jQuery(document).ready(function($){
 
         var errors = false;
         $('.ppcart-settings-tabs .required:visible').each(function(){
+            var $fileRow = $(this).closest('#repeater_ppcart_files > .ppcart-repeater');
+            if ($fileRow.length &&
+                !String($fileRow.find('.file_url').val() || '').trim() &&
+                !String($fileRow.find('.file_name').val() || '').trim()) {
+                $fileRow.find('.required').removeClass('error');
+                return;
+            }
             if($(this).hasClass("plugin-remove_button") && $(this).prev("select").val().length == 0){
                 $(this).addClass('error');
                 errors = true;
