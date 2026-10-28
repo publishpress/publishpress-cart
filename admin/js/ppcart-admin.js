@@ -697,11 +697,10 @@ jQuery(document).ready(function($){
         $(this).closest('.wrap-field, .ppcart-field.ppcart-row ').find('label').first().append('<span class="req" aria-hidden="true">*</span>')
     });
 
-    // The product metabox has its own tabs and required-field check (ppcart-product-metabox.js).
-    // Other screens that reuse this tab markup keep the old behavior.
-    var $legacyTabs = $('.ppcart-settings-tabs').filter(function(){
-        return !$(this).closest('#ppcart-product-settings').length;
-    });
+    // The redesigned product metabox (.ppcart-ui) has its own tabs and required-field check
+    // (ppcart-product-metabox.js). Screens that still print the old tab markup, such as the
+    // Pro upsell and upgrade path editors, keep the old behavior.
+    var $legacyTabs = $('.ppcart-settings-tabs').not('.ppcart-ui');
 
     $legacyTabs.find('.ppcart-tab').eq(0).css({'display':'flex',opacity: 1});
     $legacyTabs.find('.ppcart-tab-nav a').click(function(){

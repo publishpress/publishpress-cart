@@ -18,7 +18,7 @@
     }
 
     function getRoot() {
-        return $( '#ppcart-product-settings .ppcart-settings-tabs' ).first();
+        return $( '#ppcart-product-settings .ppcart-settings-tabs.ppcart-ui' ).first();
     }
 
     function postId() {
@@ -658,6 +658,29 @@
         updatePlanSummaries( $root );
     }
 
+    // A titled section hides when conditional logic hides every row in it, so no empty card shows.
+    function updateTabSections( $root ) {
+        $root.find( '.ppcart-right-col section.ppcart-section' ).each( function() {
+            var shown = $( this ).children( '.ppcart-section__body' ).children( '.ppcart-row, .ppcart-repeaters' ).filter( function() {
+                return this.style.display !== 'none' && ! this.classList.contains( 'hide' );
+            } ).length;
+
+            $( this ).toggleClass( 'is-empty', 0 === shown );
+        } );
+    }
+
+    function bindTabSections( $root ) {
+        // Conditional logic runs on the same change event, so check after it.
+        $root.on( 'change', ':input', function() {
+            window.setTimeout( function() {
+                updateTabSections( $root );
+            }, 0 );
+        } );
+        window.setTimeout( function() {
+            updateTabSections( $root );
+        }, 0 );
+    }
+
     /* Repeater rows added or removed --------------------------------------- */
 
     function watchRepeaters( $root ) {
@@ -697,6 +720,7 @@
         bindTabs( $root );
         enhanceSegmented( $root );
         bindPlans( $root );
+        bindTabSections( $root );
         watchRepeaters( $root );
         bindRequiredCheck( $root );
     } );

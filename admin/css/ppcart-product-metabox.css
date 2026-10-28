@@ -442,6 +442,7 @@
   padding-top: 0;
 }
 
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section.is-empty,
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section.is-empty,
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-off .ppcart-repeater-section--sale {
   display: none;

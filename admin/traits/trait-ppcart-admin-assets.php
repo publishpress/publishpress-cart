@@ -104,8 +104,15 @@ trait PPCart_Admin_Assets_Trait
         }
 
         $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+        if (! $screen || 'post' !== $screen->base) {
+            return false;
+        }
 
-        return $screen && 'post' === $screen->base && function_exists('ppcart_is_product_post_type') && ppcart_is_product_post_type($screen->post_type);
+        // Other post types can show the product metabox too (Pro collections use this filter).
+        $metabox_post_types = (array) apply_filters('ppcart_product_metabox_post_type', ppcart_live_post_type('product'));
+
+        return in_array($screen->post_type, $metabox_post_types, true)
+            || (function_exists('ppcart_is_product_post_type') && ppcart_is_product_post_type($screen->post_type));
     }
 
     /**
