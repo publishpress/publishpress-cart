@@ -103,6 +103,47 @@ class ProductMetaboxLayoutTest extends WPTestCase
     /**
      * @test-id IT-394
      */
+    public function test_IT_394_tooltip_details_show_in_a_question_mark_inside_the_label(): void
+    {
+        $html = $this->renderFields([
+            [
+                'type'        => 'text',
+                'id'          => '_ppcart_checkout_starts',
+                'label'       => 'Checkout starts',
+                'description' => 'Leave empty to open now.',
+                'tooltip'     => 'Uses the site time zone.',
+                'value'       => '',
+                'class'       => '',
+                'class_size'  => '',
+            ],
+            [
+                'type'        => 'checkbox',
+                'id'          => '_ppcart_manage_stock',
+                'label'       => 'Limit product sales',
+                'description' => '',
+                'tooltip'     => 'Checkout closes at "0" & stays closed.',
+                'value'       => '',
+                'class'       => '',
+                'class_size'  => '',
+            ],
+        ]);
+
+        $this->assertMatchesRegularExpression(
+            '/<label for="_ppcart_checkout_starts">Checkout starts<span class="ppcart-tooltip" tabindex="0" aria-label="Uses the site time zone\." [^>]*>\?<\/span><\/label>/',
+            $html
+        );
+        $this->assertStringContainsString('id="_ppcart_checkout_starts-help">Leave empty to open now.</p>', $html);
+        $this->assertMatchesRegularExpression(
+            '/<label class="ppcart-label" for="_ppcart_manage_stock">Limit product sales<span class="ppcart-tooltip" tabindex="0" aria-label="Checkout closes at &quot;0&quot; &amp; stays closed\."/',
+            $html
+        );
+        $this->assertStringNotContainsString('_ppcart_manage_stock-help', $html);
+        $this->assertSame(2, substr_count($html, 'class="ppcart-tooltip"'));
+    }
+
+    /**
+     * @test-id IT-394
+     */
     public function test_IT_394_empty_repeater_shows_an_empty_state_instead_of_a_starter_row(): void
     {
         $html = $this->renderFields([

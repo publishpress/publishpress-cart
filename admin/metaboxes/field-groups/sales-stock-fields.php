@@ -7,7 +7,7 @@ if (! defined('ABSPATH')) {
 return [
     [
         'class'     => 'widefat',
-        'description'   => __('Sell a limited number. Checkout closes when the amount remaining reaches zero.', 'publishpress-cart'),
+        'description'   => __('Sell a limited number.', 'publishpress-cart'),
         'id'            => '_ppcart_manage_stock',
         'label'     => __('Limit product sales', 'publishpress-cart'),
         'placeholder'   => '',
@@ -17,7 +17,8 @@ return [
     ],
     [
         'class'     => 'widefat required',
-        'description'   => __('Total available # of this product. Once this reaches 0, the cart will close.', 'publishpress-cart'),
+        'description'   => '',
+        'tooltip'       => __('Checkout closes when this reaches 0.', 'publishpress-cart'),
         'id'            => '_ppcart_limit',
         'label'     => __('Amount Remaining', 'publishpress-cart'),
         'placeholder'   => '',

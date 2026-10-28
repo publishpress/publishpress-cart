@@ -9,7 +9,8 @@ $fields = [
         'text' => [
             'class'         => 'ppcart-unique required',
             'id'            => 'option_id',
-            'description'   => __('Unique ID used in links, shortcodes, and plan rules. Changing it can break existing links.', 'publishpress-cart'),
+            'description'   => '',
+            'tooltip'       => __('Used in links, shortcodes and plan rules. If you change it, existing links can break.', 'publishpress-cart'),
             'label'         => __('Plan ID', 'publishpress-cart'),
             'type'          => 'text',
             'value'         => '',
@@ -61,7 +62,8 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => __('`A-z 0-9`, dashes, &amp; underscores without spaces only. Must be unique for this product.', 'publishpress-cart'),
+            'description'   => '',
+            'tooltip'       => __('Letters, numbers, dashes and underscores only. Must be unique for this product.', 'publishpress-cart'),
             'id'            => 'url_slug',
             'label'         => __('URL Slug', 'publishpress-cart'),
             'placeholder'   => '',
@@ -73,7 +75,7 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat name repeater-title',
-            'description'       => __("A description of this payment plan option that's displayed on the order form.", 'publishpress-cart'),
+            'description'       => __('Plan name on the checkout form.', 'publishpress-cart'),
             'id'            => 'option_name',
             'label'         => __('Checkout label', 'publishpress-cart'),
             'placeholder'   => __('e.g. One payment of $100', 'publishpress-cart'),
@@ -85,7 +87,7 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => __('Shown on the checkout form while the sale is on.', 'publishpress-cart'),
+            'description'   => __('Plan name on the checkout form during a sale.', 'publishpress-cart'),
             'id'            => 'sale_option_name',
             'label'         => __('Sale checkout label', 'publishpress-cart'),
             'placeholder'   => 'e.g. One payment of $50 (that\'s 50% off!)',
@@ -249,7 +251,8 @@ $fields = [
     [
         'select' => [
             'class'         => '',
-            'description'   => __('Stop billing after this many payments, or bill until the subscription is canceled.', 'publishpress-cart'),
+            'description'   => '',
+            'tooltip'       => __('Billing stops after this many payments. Otherwise it continues until the subscription is canceled.', 'publishpress-cart'),
             'id'            => 'installments',
             'label'         => __('Number of Payments', 'publishpress-cart'),
             'placeholder'   => '',
@@ -287,7 +290,7 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => __('Shown beside this plan at checkout in place of a price. Customers type their own amount.', 'publishpress-cart'),
+            'description'   => __('Shown in place of the price at checkout.', 'publishpress-cart'),
             'id'            => 'name_your_own_price_text',
             'label'         => __('Name Your Price Label', 'publishpress-cart'),
             'placeholder'   => __('Name Your Price', 'publishpress-cart'),
@@ -305,7 +308,8 @@ $fields = [
     [
         'checkbox' => [
             'class'         => '',
-            'description'   => __('Let customers choose their own recurring amount, at or above the plan price.', 'publishpress-cart'),
+            'description'   => __('Customers choose their own recurring amount.', 'publishpress-cart'),
+            'tooltip'       => __('The amount must be at or above the plan price.', 'publishpress-cart'),
             'id'            => 'recurring_pwyw',
             'label'         => __('Enable Pay What You Want', 'publishpress-cart'),
             'placeholder'   => '',

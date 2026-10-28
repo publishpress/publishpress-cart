@@ -32,7 +32,7 @@ $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
 $data_attrs = isset($atts['data']) && is_array($atts['data']) ? $atts['data'] : [];
 $help_id = ! empty($atts['description']) ? $field_id . '-help' : '';
 ?>
-<label class="ppcart-label" for="<?php echo esc_attr($field_id); ?>"><?php echo esc_html($atts['label']); ?></label>
+<label class="ppcart-label" for="<?php echo esc_attr($field_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label>
 <div class="checkbox-wrap">
     <span class="ckbx-style">
         <input

@@ -37,7 +37,7 @@ if ($replace && strpos($atts['class'], '{val}') !== false) {
 }
 
 if (! empty($atts['label'])) {
-    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?></label><?php
+    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
 }
 echo '<div class="input-group field-select" style="flex-grow: 1;">';
 if ($atts['id'] == 'converkit_tags' || $atts['id'] == 'mail_groups' || $atts['id'] == 'mail_tags') {

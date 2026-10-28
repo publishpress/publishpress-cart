@@ -8,7 +8,8 @@ if (! defined('ABSPATH')) {
 return [
     [
         'class_size'    => '',
-        'description'   => __("Add an opt-in checkbox that a customer must check before their information can be added to a mailing list.", 'publishpress-cart'),
+        'description'   => __('Add an opt-in checkbox at checkout.', 'publishpress-cart'),
+        'tooltip'       => __('Customers join a mailing list only if they tick it.', 'publishpress-cart'),
         'id'            => '_ppcart_show_optin_cb',
         'label'         => __('Enable Opt-in Checkbox', 'publishpress-cart'),
         'placeholder'   => '',
@@ -18,7 +19,7 @@ return [
     [
         'class_size'    => 'one-half first',
         'class'         => 'widefat',
-        'description'   => __('Label shown next to the opt-in checkbox at checkout.', 'publishpress-cart'),
+        'description'   => __('Text beside the opt-in checkbox.', 'publishpress-cart'),
         'id'            => '_ppcart_optin_checkbox_text',
         'label'         => __('Opt-in Checkbox Label', 'publishpress-cart'),
         'placeholder'   => '',
@@ -33,7 +34,7 @@ return [
     ],
     [
         'class_size'    => 'one-half ',
-        'description'   => __('Customers must tick the opt-in checkbox before they can place the order.', 'publishpress-cart'),
+        'description'   => __('Customers must tick it to place the order.', 'publishpress-cart'),
         'id'            => '_ppcart_optin_required',
         'label'         => __('Make Opt-in Checkbox Required', 'publishpress-cart'),
         'placeholder'   => '',

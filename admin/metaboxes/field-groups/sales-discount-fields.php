@@ -17,7 +17,7 @@ return [
     ],
     'Schedule Sale?' => [
         'class'     => 'widefat',
-        'description'   => __('Use the sale prices only between the start and end dates you set.', 'publishpress-cart'),
+        'description'   => __('Use the sale price only between two dates.', 'publishpress-cart'),
         'id'            => '_ppcart_schedule_sale',
         'label'     => __('Schedule Sale?', 'publishpress-cart'),
         'placeholder'   => '',
@@ -59,7 +59,7 @@ return [
     ],
     [
         'class'     => 'widefat',
-        'description'   => __('During a sale, show the regular price crossed out next to the sale price.', 'publishpress-cart'),
+        'description'   => __('Show the regular price crossed out during a sale.', 'publishpress-cart'),
         'id'            => '_ppcart_show_full_price',
         'label'     => __('Show original price', 'publishpress-cart'),
         'placeholder'   => '',

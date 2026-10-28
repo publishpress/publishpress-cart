@@ -23,7 +23,7 @@ $remove_testid = ppcart_testid('ppcart-admin-field-' . $testid_source . '-remove
 $help_id = ! empty($atts['description']) ? $field_dom_id . '-help' : '';
 
 if (! empty($atts['label'])) {
-    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?> </label><?php
+    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
 }
 
 ?><div class="input-group field-upload">

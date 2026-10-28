@@ -261,6 +261,21 @@
   width: 100%;
 }
 
+/* Help goes on its own line under the control, never squeezed beside it. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .input-group {
+  flex-wrap: wrap;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .input-group > .description {
+  flex-basis: 100%;
+}
+
+/* ppcart-admin.css sizes the Plan ID label for the old row layout, with !important. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridoption_id > label {
+  flex-basis: auto !important;
+  min-width: 0 !important;
+}
+
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row#rid_ppcart_checkout_ended_message label,
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row#rid_ppcart_confirmation_message label {
   margin-top: 0;

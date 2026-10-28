@@ -23,7 +23,8 @@ trait PPCart_Product_Metaboxes_General_Fields_Trait
         $this->general = [
             [
                 'class'       => 'widefat',
-                'description' => __('Name customers see on the product page, orders, emails, and Stripe payments.', 'publishpress-cart'),
+                'description' => '',
+                'tooltip' => __('Shown on the product page, orders, emails and Stripe payments.', 'publishpress-cart'),
                 'id'            => '_ppcart_product_name',
                 'label'           => __('Public Product Name', 'publishpress-cart'),
                 'placeholder' => __('Leave empty to use the main product title', 'publishpress-cart'),
@@ -31,7 +32,7 @@ trait PPCart_Product_Metaboxes_General_Fields_Trait
             ],
             [
                 'class'           => 'widefat',
-                'description' => __('Hide the product name in the header at the top of the product page.', 'publishpress-cart'),
+                'description' => __('Hide the name in the product page header.', 'publishpress-cart'),
                 'id'            => '_ppcart_hide_title',
                 'label'           => __('Hide Page Title', 'publishpress-cart'),
                 'placeholder' => '',
@@ -41,7 +42,7 @@ trait PPCart_Product_Metaboxes_General_Fields_Trait
             ],
             [
                 'class'       => 'ppcart-color-field',
-                'description' => __('Background color for the header at the top of the product page.', 'publishpress-cart'),
+                'description' => '',
                 'id'            => '_ppcart_header_color',
                 'label'       => __('Header Background Color', 'publishpress-cart'),
                 'placeholder' => '',
@@ -50,7 +51,7 @@ trait PPCart_Product_Metaboxes_General_Fields_Trait
             ],
             [
                 'class'       => 'widefat media-picker',
-                'description' => __('Background image for the header at the top of the product page.', 'publishpress-cart'),
+                'description' => '',
                 'id'            => '_ppcart_header_image',
                 'label'       => __('Header Background Image', 'publishpress-cart'),
                 'label-remove'        => __('Remove Image', 'publishpress-cart'),

@@ -66,7 +66,7 @@ trait PPCart_Product_Metaboxes_Bump_Fields_Trait
             ]],
             ['select' => [
                 'class'         => 'widefat update-plan ob-{val}',
-                'description'   => __('Select an existing payment plan for this product. One-time charges only.', 'publishpress-cart'),
+                'description'   => __('One-time plans only.', 'publishpress-cart'),
                 'id'            => 'ob_plan',
                 'label'         => __('Payment Plan ID', 'publishpress-cart'),
                 'placeholder'   => '',
@@ -163,7 +163,8 @@ trait PPCart_Product_Metaboxes_Bump_Fields_Trait
         $fields[1]['fields'][] = [
             'checkbox' => [
                 'class'     => '',
-                'description'   => __('Only run this integration for customers who opt-in (Opt-In Checkbox field must be turned on.)', 'publishpress-cart'),
+                'description'   => __('Run only for customers who opt in.', 'publishpress-cart'),
+                'tooltip'       => __('Turn on Enable Opt-in Checkbox first.', 'publishpress-cart'),
                 'id'            => 'require_optin',
                 'label'     => __('Require consent', 'publishpress-cart'),
                 'placeholder'   => '',

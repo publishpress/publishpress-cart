@@ -694,7 +694,15 @@ jQuery(document).ready(function($){
     });
 
     $('.ppcart-settings-tabs .required').each(function(){
-        $(this).closest('.wrap-field, .ppcart-field.ppcart-row ').find('label').first().append('<span class="req" aria-hidden="true">*</span>')
+        var $label = $(this).closest('.wrap-field, .ppcart-field.ppcart-row ').find('label').first();
+        var star = '<span class="req" aria-hidden="true">*</span>';
+
+        // Keep the "*" next to the label text, before any "?" tooltip.
+        if ($label.children('.ppcart-tooltip').length) {
+            $label.children('.ppcart-tooltip').first().before(star);
+        } else {
+            $label.append(star);
+        }
     });
 
     // The redesigned product metabox (.ppcart-ui) has its own tabs and required-field check

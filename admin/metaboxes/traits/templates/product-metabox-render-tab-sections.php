@@ -29,12 +29,12 @@ $default_sections = [
     'pricing' => [
         'plans' => [
             'title'       => __('Payment plans', 'publishpress-cart'),
-            'description' => __('Each plan is one way to pay for this product. Customers choose a plan on the checkout form.', 'publishpress-cart'),
+            'description' => __('Customers choose one of these plans at checkout.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_pay_options', '_ppcart_hide_plans', '_ppcart_plan_heading' ],
         ],
         'sale' => [
             'title'       => __('Sale', 'publishpress-cart'),
-            'description' => __('Put every payment plan on sale now, or between two dates. Set the sale price in each plan above.', 'publishpress-cart'),
+            'description' => __('Set the sale price in each plan above.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_on_sale', '_ppcart_schedule_sale', '_ppcart_sale_start', '_ppcart_sale_end', '_ppcart_show_full_price' ],
         ],
     ],
@@ -72,7 +72,7 @@ $default_sections = [
     'notifications' => [
         'defaults' => [
             'title'       => __('Default emails', 'publishpress-cart'),
-            'description' => __('These emails use the templates in Cart settings. Turn one off for this product only.', 'publishpress-cart'),
+            'description' => __('Turn off an email for this product only.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_disable_pending_email', '_ppcart_disable_welcome_email', '_ppcart_disable_purchase_email' ],
         ],
         'custom' => [

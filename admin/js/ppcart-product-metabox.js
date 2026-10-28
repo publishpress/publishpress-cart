@@ -180,7 +180,7 @@
         var $label = $row.find( 'label' ).first().clone();
         var text;
 
-        $label.find( '.req, .screen-reader-text' ).remove();
+        $label.find( '.req, .screen-reader-text, .ppcart-tooltip' ).remove();
         text = $.trim( $label.text() ) || $( el ).attr( 'aria-label' ) || $( el ).attr( 'placeholder' ) || t( 'field', 'Field' );
 
         return text;
@@ -510,7 +510,12 @@
             $inputs.not( '.required' ).removeAttr( 'aria-required' );
 
             if ( required && ! $label.children( '.req' ).length ) {
-                $label.append( '<span class="req" aria-hidden="true">*</span>' );
+                // Keep the "*" next to the label text, before any "?" tooltip.
+                if ( $label.children( '.ppcart-tooltip' ).length ) {
+                    $label.children( '.ppcart-tooltip' ).before( '<span class="req" aria-hidden="true">*</span>' );
+                } else {
+                    $label.append( '<span class="req" aria-hidden="true">*</span>' );
+                }
             } else if ( ! required ) {
                 $label.children( '.req' ).remove();
             }
@@ -681,6 +686,16 @@
         }, 0 );
     }
 
+    /* Field tooltips -------------------------------------------------------- */
+
+    // The "?" sits inside the field label. A click on it must not toggle a
+    // switch or focus the input; hover and keyboard focus show the text.
+    function bindTooltips( $root ) {
+        $root.on( 'click', 'label .ppcart-tooltip', function( event ) {
+            event.preventDefault();
+        } );
+    }
+
     /* Repeater rows added or removed --------------------------------------- */
 
     function watchRepeaters( $root ) {
@@ -721,6 +736,7 @@
         enhanceSegmented( $root );
         bindPlans( $root );
         bindTabSections( $root );
+        bindTooltips( $root );
         watchRepeaters( $root );
         bindRequiredCheck( $root );
     } );

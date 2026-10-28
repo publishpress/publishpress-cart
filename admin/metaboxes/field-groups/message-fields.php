@@ -7,7 +7,7 @@ if (! defined('ABSPATH')) {
 $this->confirmation = [
     [
         'class'         => '',
-        'description'   => __('What customers see after a successful payment: a message, a page, or a redirect.', 'publishpress-cart'),
+        'description'   => __('What customers see after they pay.', 'publishpress-cart'),
         'id'            => '_ppcart_confirmation',
         'label'         => __('Confirmation Type', 'publishpress-cart'),
         'placeholder'   => '',
@@ -23,7 +23,8 @@ $this->confirmation = [
     [
         'class'         => 'widefat',
         'id'            => '_ppcart_confirmation_message',
-        'description'   => __('Shown above the order receipt after payment. Line breaks are kept.', 'publishpress-cart'),
+        'description'   => __('Shown above the order receipt.', 'publishpress-cart'),
+        'tooltip'       => __('Line breaks are kept.', 'publishpress-cart'),
         'label'         => __('Message', 'publishpress-cart'),
         'type'          => 'textarea',
         'rows'          => 4,
@@ -39,7 +40,8 @@ $this->confirmation = [
     ],
     [
         'class'         => '',
-        'description'   => __('Send customers to this page after payment. Add [ppcart_receipt] to the page to show their order.', 'publishpress-cart'),
+        'description'   => __('Customers go to this page after they pay.', 'publishpress-cart'),
+        'tooltip'       => __('Add [ppcart_receipt] to the page to show the order details.', 'publishpress-cart'),
         'id'            => '_ppcart_confirmation_page',
         'label'         => __('Select Page', 'publishpress-cart'),
         'placeholder'   => '',
@@ -56,7 +58,8 @@ $this->confirmation = [
     ],
     [
         'class'     => 'widefat',
-        'description'   => __('Send customers to this URL after payment. Tags like {customer_email} are filled in.', 'publishpress-cart'),
+        'description'   => __('Customers go to this URL after they pay.', 'publishpress-cart'),
+        'tooltip'       => __('You can use tags such as {customer_email} in the URL.', 'publishpress-cart'),
         'id'            => '_ppcart_redirect',
         'label'     => __('Thank You Page URL', 'publishpress-cart'),
         'placeholder'   => '',

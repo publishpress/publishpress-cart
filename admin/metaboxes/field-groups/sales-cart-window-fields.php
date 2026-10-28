@@ -7,7 +7,8 @@ if (! defined('ABSPATH')) {
 return [
     [
         'class'     => 'datepicker',
-        'description'   => __('Checkout opens at this date and time, in the site time zone. Leave empty to open now.', 'publishpress-cart'),
+        'description'   => __('Leave empty to open now.', 'publishpress-cart'),
+        'tooltip'       => __('Uses the site time zone.', 'publishpress-cart'),
         'id'            => '_ppcart_checkout_starts',
         'label'     => __('Checkout starts', 'publishpress-cart'),
         'placeholder'   => '',
@@ -17,7 +18,8 @@ return [
     ],
     [
         'class'     => 'datepicker',
-        'description'   => __('Checkout closes at this date and time, in the site time zone. Leave empty to keep it open.', 'publishpress-cart'),
+        'description'   => __('Leave empty to keep it open.', 'publishpress-cart'),
+        'tooltip'       => __('Uses the site time zone.', 'publishpress-cart'),
         'id'            => '_ppcart_checkout_ends',
         'label'     => __('Checkout ends', 'publishpress-cart'),
         'placeholder'   => '',
@@ -27,7 +29,8 @@ return [
     ],
     [
         'class'         => '',
-        'description'   => __('What customers see when checkout is closed: before it opens, after it ends, or when sold out.', 'publishpress-cart'),
+        'description'   => __('What customers see while checkout is closed.', 'publishpress-cart'),
+        'tooltip'       => __('Checkout is closed before it opens, after it ends and when stock is sold out.', 'publishpress-cart'),
         'id'            => '_ppcart_checkout_ended_action',
         'label'         => __('When checkout ended', 'publishpress-cart'),
         'placeholder'   => '',
@@ -53,7 +56,7 @@ return [
         ],
     ],
     [
-        'description'   => __('Shown in place of the checkout form while checkout is closed.', 'publishpress-cart'),
+        'description'   => __('Shown in place of the checkout form.', 'publishpress-cart'),
         'id'            => '_ppcart_checkout_ended_message',
         'label'         => __('Checkout ended message', 'publishpress-cart'),
         'value'         => __('Sorry, this product is no longer for sale.', 'publishpress-cart'),

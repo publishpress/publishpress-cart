@@ -122,7 +122,7 @@ return [
     [
         'select' => [
             'class'         => 'ppcart-selectize multiple required',
-            'description'   => __('Only users with one of the selected roles will be updated.', 'publishpress-cart'),
+            'description'   => __('Only users with these roles are updated.', 'publishpress-cart'),
             'id'            => 'previous_user_role',
             'label'         => __('Previous User Role(s)', 'publishpress-cart'),
             'placeholder'   => '',

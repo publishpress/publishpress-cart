@@ -65,6 +65,43 @@
   max-width: 600px;
 }
 
+/* "?" beside a label. Hover or focus shows the details (balloon.css). */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tooltip {
+  align-items: center;
+  background: var(--ppcart-border);
+  border-radius: 999px;
+  color: var(--ppcart-text-muted);
+  cursor: help;
+  display: inline-flex;
+  flex: none;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  height: 16px;
+  justify-content: center;
+  line-height: 1;
+  margin: 0 0 0 6px;
+  vertical-align: 1px;
+  width: 16px;
+}
+
+/* ppcart-admin.css removes the gap for the old label layout. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > label:first-child .ppcart-tooltip {
+  flex: none;
+  margin: 0 0 0 6px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tooltip:hover,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tooltip:focus {
+  background: var(--ppcart-border-strong);
+  color: var(--ppcart-text);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tooltip::after {
+  line-height: 1.5;
+  text-align: left;
+}
+
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-field-error {
   align-items: center;
   color: var(--ppcart-danger);

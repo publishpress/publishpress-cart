@@ -7,7 +7,8 @@ if (! defined('ABSPATH')) {
 return [
     'Hide Plans Section' => [
         'class'         => 'widefat',
-        'description'   => __('Hide the plan list at checkout. The first visible plan is selected automatically.', 'publishpress-cart'),
+        'description'   => __('Hide the plan list at checkout.', 'publishpress-cart'),
+        'tooltip'       => __('The first visible plan is selected for the customer.', 'publishpress-cart'),
         'id'            => '_ppcart_hide_plans',
         'label'         => __('Hide Plans Section', 'publishpress-cart'),
         'placeholder'   => '',
@@ -17,7 +18,7 @@ return [
     ],
     'Section Heading' => [
         'class'     => 'widefat',
-        'description'   => __('Heading shown above the plan list on the checkout form.', 'publishpress-cart'),
+        'description'   => __('Shown above the plan list at checkout.', 'publishpress-cart'),
         'id'            => '_ppcart_plan_heading',
         'label'     => __('Section Heading', 'publishpress-cart'),
         'placeholder'   => '',

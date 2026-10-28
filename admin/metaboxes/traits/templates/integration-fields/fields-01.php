@@ -40,7 +40,8 @@ return [
     [
         'select' => [
             'class'         => 'ppcart-selectize multiple',
-            'description'   => __('Run only if the order contains a specific payment plan (or purchase type) for this product. Leave blank to run this integration on any order for this product.', 'publishpress-cart'),
+            'description'   => __('Leave empty to run for every plan.', 'publishpress-cart'),
+            'tooltip'       => __('Run only when the order uses this payment plan or purchase type.', 'publishpress-cart'),
             'id'            => 'int_plan',
             'label'         => __('Restrict by payment plan / purchase type', 'publishpress-cart'),
             'placeholder'   => __('Any', 'publishpress-cart'),
