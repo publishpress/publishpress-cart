@@ -124,6 +124,8 @@ if ($this->scripts != '') :
                 var $inputs = $(saleFields).find('input, select');
                 // Plan sale sections hide by CSS; disabled inputs keep sale values out of the save.
                 $('#ppcart-product-settings .ppcart-settings-tabs').toggleClass('ppcart-sale-off', !onSale);
+                // "On sale now" overrides the schedule, so CSS hides the schedule while it is on.
+                $('#ppcart-product-settings .ppcart-settings-tabs').toggleClass('ppcart-sale-now', $('#_ppcart_on_sale').is(':checked'));
                 if (onSale) {
                     $inputs.removeAttr('disabled');
                     $('.ridsale_option_name, .ridsale_price').find('input').addClass('required');

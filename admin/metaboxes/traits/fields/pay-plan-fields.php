@@ -120,6 +120,7 @@ $fields = [
         'text' => [
             'class'         => 'widefat',
             'description'   => '',
+            'tooltip'       => __('Used while the sale is on. Turn the sale on in the Sale card below the plans.', 'publishpress-cart'),
             'id'            => 'sale_price',
             'label'         => __('Sale Price', 'publishpress-cart'),
             'placeholder'   => '',

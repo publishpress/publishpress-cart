@@ -13,29 +13,66 @@
  * A section gets a card and a title only when it has two or more fields.
  */
 
+/* ppcart-admin.css clips the rounded corners with overflow: hidden, which makes
+ * the box a scroll container and stops the sticky tab list. clip does not. */
+#ppcart-product-settings.postbox {
+  overflow: clip;
+}
+
 #ppcart-product-settings .inside {
   background: #fafbfd;
+  /* The layout follows the metabox width, not the screen width: the editor
+   * sidebar and the meta box panel make the metabox much narrower. */
+  container: ppcart-box / inline-size;
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs {
   background: var(--ppcart-surface-alt);
   display: flex;
   min-height: 420px;
+  position: relative;
 }
 
 /* Tab list ------------------------------------------------------------ */
 
+/* The sidebar color fills the full height, because the tab list itself is
+ * only as tall as its tabs. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs::before {
+  background: var(--ppcart-sidebar-bg);
+  border-right: 1px solid var(--ppcart-sidebar-border);
+  bottom: 0;
+  box-sizing: border-box;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 212px;
+}
+
+/* The tab list stays in view while a long tab scrolls. ppcart-product-metabox.js
+ * sets the max height to the visible height, so a tall list scrolls on its own. */
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col {
+  align-self: flex-start;
   background: var(--ppcart-sidebar-bg);
   border-right: 1px solid var(--ppcart-sidebar-border);
   box-sizing: border-box;
   flex: 0 0 212px;
+  max-height: var(--ppcart-tabs-max-height, none);
   min-width: 212px;
-  padding: 16px 12px;
+  overflow-y: auto;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* In the classic editor the page scrolls, under the admin bar. */
+body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col {
+  top: var(--wp-admin--admin-bar--height, 32px);
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group + .ppcart-tab-nav-group {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group__label {
@@ -66,8 +103,8 @@
   font-weight: 500;
   gap: 8px;
   line-height: 1.3;
-  min-height: 40px;
-  padding: 8px 12px;
+  min-height: 36px;
+  padding: 7px 12px;
   position: relative;
   text-decoration: none;
   transition: background-color 0.1s ease;
@@ -463,6 +500,16 @@
   display: none;
 }
 
+/* Sale fields that sit beside the regular ones. Conditional logic sets an inline
+ * display on them, so these need !important to stay hidden. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-off .ppcart-repeater .ridsale_price,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-off .ppcart-repeater .ridsale_option_name,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-now #rid_ppcart_schedule_sale,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-now #rid_ppcart_sale_start,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-now #rid_ppcart_sale_end {
+  display: none !important;
+}
+
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__title {
   color: var(--ppcart-text-muted);
   font-size: 11px;
@@ -518,6 +565,73 @@
   display: none !important;
 }
 
+/* Integrations: "Refresh mailing lists" shows once an integration exists. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-integrations-refresh p {
+  margin: 12px 0 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section--list:has(.ppcart-repeater-empty:not([hidden])) .ppcart-integrations-refresh {
+  display: none;
+}
+
+/* Email notification rows. The rules above give every field display:flex, so
+ * repeat the "Advanced sender settings" hide/show from ppcart-admin.css. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .ppcart-product-notification-advanced-field {
+  display: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater.ppcart-product-notification-advanced-open .wrap-fields .ppcart-product-notification-advanced-field {
+  display: flex;
+}
+
+/* The fields stack in a column here, so the old 560px flex-basis became a height. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridmessage .ppcart-editor-field {
+  flex: none;
+  max-width: 560px;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridnotification_sender_summary,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridnotification_preview {
+  margin-left: 0;
+  max-width: 560px;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .ridnotification_preview {
+  align-items: flex-start;
+}
+
+/* Condition rows (confirmations and emails): one condition per line. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridconditions {
+  margin-left: 0;
+  max-width: none;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .wrap-field {
+  flex: 1 1 160px;
+  margin: 0;
+  width: auto;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .condition-type,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .remove-condition {
+  flex: none;
+  margin: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .condition-type {
+  border-radius: var(--ppcart-radius-sm);
+}
+
 /* Toggle rows: switch, label beside it, help under the label. ----------
  * These come after the repeater rules, which put labels above fields. */
 
@@ -564,6 +678,12 @@
  * Fields inside repeater cards keep their labels above. */
 
 @container ppcart-panel (min-width: 820px) {
+  /* Checkout label and sale checkout label sit side by side. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridoption_name,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridsale_option_name {
+    grid-column: span 2;
+  }
+
   /* Cards fill the panel, as on the Settings screen. Controls keep their own caps. */
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col > .ppcart-tab.active,
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-metabox-notice.notice {
@@ -595,6 +715,8 @@
 
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section--plain > .ppcart-field.ppcart-row:first-child,
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__body > .ppcart-field.ppcart-row:first-child,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section--plain > .ppcart-field.ppcart-row.hide:first-child + .ppcart-field.ppcart-row,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__body > .ppcart-field.ppcart-row.hide:first-child + .ppcart-field.ppcart-row,
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__description + .ppcart-field.ppcart-row,
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__description + .ppcart-repeaters {
     border-top: 0;
@@ -749,11 +871,15 @@
   box-shadow: 0 0 0 1px #fff, 0 0 0 3px #1f2430;
 }
 
-/* Narrow screens (WP admin mobile breakpoint) ---------------------------- */
+/* Narrow metabox: the tab list becomes a row above the panel. --------------- */
 
-@media (max-width: 782px) {
+@container ppcart-box (max-width: 720px) {
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs {
     display: block;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs::before {
+    display: none;
   }
 
   #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col {
@@ -762,9 +888,12 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 4px;
+    max-height: none;
     min-width: 0;
     overflow-x: auto;
+    overflow-y: hidden;
     padding: 8px;
+    position: static;
     width: 100%;
   }
 

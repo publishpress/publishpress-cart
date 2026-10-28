@@ -240,6 +240,59 @@ class ProductMetaboxLayoutTest extends WPTestCase
     /**
      * @test-id IT-394
      */
+    public function test_IT_394_hidden_marker_field_does_not_make_a_card(): void
+    {
+        $field = static function (string $id, string $type, string $size = ''): array {
+            return [ 'type' => $type, 'id' => $id, 'label' => $id, 'value' => '', 'class' => '', 'class_size' => $size, 'description' => '' ];
+        };
+
+        ob_start();
+        $this->invoke('render_product_tab_sections', 'confirmation', [
+            $field('_ppcart_confirmation', 'text'),
+            $field('_ppcart_confirmation_message', 'text', 'hide'),
+        ]);
+        $html = (string) ob_get_clean();
+
+        $this->assertStringContainsString('ppcart-section--plain ppcart-section--confirmation', $html);
+        $this->assertStringNotContainsString('<section class="ppcart-section', $html);
+    }
+
+    /**
+     * @test-id IT-394
+     */
+    public function test_IT_394_availability_groups_limits_window_and_closed_checkout(): void
+    {
+        $field = static function (string $id, string $type): array {
+            return [ 'type' => $type, 'id' => $id, 'label' => $id, 'value' => '', 'class' => '', 'class_size' => '', 'description' => '' ];
+        };
+
+        ob_start();
+        $this->invoke('render_product_tab_sections', 'access', [
+            $field('_ppcart_manage_stock', 'checkbox'),
+            $field('_ppcart_limit', 'number'),
+            $field('_ppcart_customer_purchase_limit', 'checkbox'),
+            $field('_ppcart_checkout_starts', 'text'),
+            $field('_ppcart_checkout_ends', 'text'),
+            $field('_ppcart_checkout_ended_action', 'text'),
+            $field('_ppcart_checkout_ended_message', 'text'),
+        ]);
+        $html = (string) ob_get_clean();
+
+        $limits = strpos($html, '>Sales limits</h4>');
+        $window = strpos($html, '>Checkout window</h4>');
+        $closed = strpos($html, '>When checkout is closed</h4>');
+
+        $this->assertNotFalse($limits);
+        $this->assertNotFalse($window);
+        $this->assertNotFalse($closed);
+        $this->assertLessThan($window, strpos($html, 'id="rid_ppcart_customer_purchase_limit"'));
+        $this->assertGreaterThan($closed, strpos($html, 'id="rid_ppcart_checkout_ended_action"'));
+        $this->assertLessThan($closed, strpos($html, 'id="rid_ppcart_checkout_ends"'));
+    }
+
+    /**
+     * @test-id IT-394
+     */
     public function test_IT_394_pricing_tab_shows_payment_plans_before_the_sale(): void
     {
         $field = static function (string $id, string $type): array {

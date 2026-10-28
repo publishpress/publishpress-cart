@@ -45,6 +45,27 @@
         }
     }
 
+    // In a narrow metabox the tab list is one scrolling row. Scroll it, and only
+    // it, so the active tab is in view.
+    function revealTab( $tab ) {
+        var strip = $tab.closest( '.ppcart-left-col' )[ 0 ];
+        var stripBox;
+        var tabBox;
+
+        if ( ! strip || strip.scrollWidth <= strip.clientWidth ) {
+            return;
+        }
+
+        stripBox = strip.getBoundingClientRect();
+        tabBox = $tab[ 0 ].getBoundingClientRect();
+
+        if ( tabBox.left < stripBox.left ) {
+            strip.scrollLeft -= stripBox.left - tabBox.left + 8;
+        } else if ( tabBox.right > stripBox.right ) {
+            strip.scrollLeft += tabBox.right - stripBox.right + 8;
+        }
+    }
+
     function selectTab( $root, $tab, focus ) {
         var panel;
 
@@ -62,6 +83,7 @@
 
         $tab.attr( { 'aria-selected': 'true', tabindex: '0' } ).parent().addClass( 'active' );
         $( panel ).addClass( 'active' );
+        revealTab( $tab );
 
         if ( focus ) {
             $tab.trigger( 'focus' );
@@ -686,6 +708,54 @@
         }, 0 );
     }
 
+    /* Tab list height ------------------------------------------------------- */
+
+    function scrollParent( el ) {
+        var node = el.parentElement;
+        var overflow;
+
+        while ( node && node !== document.body ) {
+            overflow = window.getComputedStyle( node ).overflowY;
+            if ( 'auto' === overflow || 'scroll' === overflow ) {
+                return node;
+            }
+            node = node.parentElement;
+        }
+
+        return null;
+    }
+
+    // The tab list is sticky. Cap it at the visible height of what scrolls (the
+    // block editor's meta box panel, or the window), so all tabs stay reachable.
+    function fitTabList( $root ) {
+        var root = $root[ 0 ];
+        var list = $root.find( '.ppcart-left-col' ).first()[ 0 ];
+        var observed = null;
+
+        // The block editor moves meta boxes into its panel after page load, so
+        // look for the scrolling parent each time.
+        function update() {
+            var scroller = scrollParent( root );
+            var visible = scroller ? scroller.clientHeight : window.innerHeight;
+            var top = parseFloat( window.getComputedStyle( list ).top ) || 0;
+
+            root.style.setProperty( '--ppcart-tabs-max-height', Math.max( 200, visible - top ) + 'px' );
+
+            if ( scroller && scroller !== observed && window.ResizeObserver ) {
+                observed = scroller;
+                new window.ResizeObserver( update ).observe( scroller );
+            }
+        }
+
+        if ( ! list ) {
+            return;
+        }
+
+        update();
+        $( window ).on( 'load resize', update );
+        $( document ).on( 'ppcart:product-tab-shown', update );
+    }
+
     /* Field tooltips -------------------------------------------------------- */
 
     // The "?" sits inside the field label. A click on it must not toggle a
@@ -733,6 +803,7 @@
         }
 
         bindTabs( $root );
+        fitTabList( $root );
         enhanceSegmented( $root );
         bindPlans( $root );
         bindTabSections( $root );

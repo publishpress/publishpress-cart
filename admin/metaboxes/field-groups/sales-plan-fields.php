@@ -52,16 +52,20 @@ return [
         'sections'      => apply_filters(
             'ppcart_pay_plan_field_sections',
             [
+                // The sale price sits next to the price, and the sale label next to the label.
                 'main' => [
-                    'fields' => [ 'product_type', 'price', 'name_your_own_price_text', 'recurring_pwyw', 'name_your_own_price_text_recurring', 'option_name' ],
+                    'fields' => [ 'product_type', 'price', 'sale_price', 'name_your_own_price_text', 'recurring_pwyw', 'name_your_own_price_text_recurring' ],
                 ],
                 'billing' => [
                     'title'  => __('Billing', 'publishpress-cart'),
                     'fields' => [ 'frequency', 'interval', 'installments' ],
                 ],
                 'sale' => [
-                    'title'  => __('Sale price', 'publishpress-cart'),
-                    'fields' => [ 'sale_price', 'sale_frequency', 'sale_interval', 'sale_installments', 'sale_sign_up_fee', 'sale_option_name' ],
+                    'title'  => __('Sale billing', 'publishpress-cart'),
+                    'fields' => [ 'sale_frequency', 'sale_interval', 'sale_installments', 'sale_sign_up_fee' ],
+                ],
+                'labels' => [
+                    'fields' => [ 'option_name', 'sale_option_name' ],
                 ],
                 'advanced' => [
                     'title'  => __('Advanced', 'publishpress-cart'),

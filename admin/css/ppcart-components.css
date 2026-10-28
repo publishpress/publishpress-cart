@@ -326,24 +326,28 @@
   opacity: 0.5;
 }
 
-/* "Hide field" and payment-method switches store the opposite value: on = unchecked. */
+/* "Hide field", payment-method and default-email switches store the opposite value: on = unchecked. */
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style label::before,
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style label::before {
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style label::before,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section--defaults .ckbx-style label::before {
   background: var(--ppcart-primary);
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style label::after,
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style label::after {
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style label::after,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section--defaults .ckbx-style label::after {
   left: 21px;
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style input[type=checkbox]:checked + label::before,
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style input[type=checkbox]:checked + label::before {
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style input[type=checkbox]:checked + label::before,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section--defaults .ckbx-style input[type=checkbox]:checked + label::before {
   background: var(--ppcart-toggle-off);
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style input[type=checkbox]:checked + label::after,
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style input[type=checkbox]:checked + label::after {
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style input[type=checkbox]:checked + label::after,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section--defaults .ckbx-style input[type=checkbox]:checked + label::after {
   left: 3px;
 }
 

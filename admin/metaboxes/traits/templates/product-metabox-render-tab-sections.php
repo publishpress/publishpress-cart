@@ -39,18 +39,20 @@ $default_sections = [
         ],
     ],
     'access' => [
-        'stock' => [
-            'title'  => __('Stock', 'publishpress-cart'),
-            'fields' => [ '_ppcart_manage_stock', '_ppcart_limit' ],
-        ],
-        'customer' => [
-            'title'  => __('Limit per customer', 'publishpress-cart'),
-            'fields' => [ '_ppcart_customer_purchase_limit', '_ppcart_customer_limit', '_ppcart_customer_limit_message' ],
+        'limits' => [
+            'title'  => __('Sales limits', 'publishpress-cart'),
+            'fields' => [ '_ppcart_manage_stock', '_ppcart_limit', '_ppcart_customer_purchase_limit', '_ppcart_customer_limit', '_ppcart_customer_limit_message' ],
         ],
         'window' => [
             'title'       => __('Checkout window', 'publishpress-cart'),
             'description' => __('Open and close the checkout form on set dates.', 'publishpress-cart'),
-            'fields'      => [ '_ppcart_checkout_starts', '_ppcart_checkout_ends', '_ppcart_checkout_ended_action', '_ppcart_checkout_ended_redirect', '_ppcart_checkout_ended_message' ],
+            'fields'      => [ '_ppcart_checkout_starts', '_ppcart_checkout_ends' ],
+        ],
+        // Applies to the window above and to the sales limits.
+        'closed' => [
+            'title'       => __('When checkout is closed', 'publishpress-cart'),
+            'description' => __('Before it opens, after it ends, or when stock runs out.', 'publishpress-cart'),
+            'fields'      => [ '_ppcart_checkout_ended_action', '_ppcart_checkout_ended_redirect', '_ppcart_checkout_ended_message' ],
         ],
     ],
     'fields' => [
@@ -69,10 +71,21 @@ $default_sections = [
             'fields' => [ '_ppcart_confirmation', '_ppcart_confirmation_message', '_ppcart_confirmation_page', '_ppcart_redirect' ],
         ],
     ],
+    // The list first; the opt-in checkbox matters only for mailing-list integrations.
+    'integrations' => [
+        'list' => [
+            'fields' => [ '_ppcart_integrations' ],
+        ],
+        'optin' => [
+            'title'       => __('Opt-in checkbox', 'publishpress-cart'),
+            'description' => __('Ask for consent before customers join a mailing list.', 'publishpress-cart'),
+            'fields'      => [ '_ppcart_show_optin_cb', '_ppcart_optin_checkbox_text', '_ppcart_optin_required' ],
+        ],
+    ],
     'notifications' => [
         'defaults' => [
             'title'       => __('Default emails', 'publishpress-cart'),
-            'description' => __('Turn off an email for this product only.', 'publishpress-cart'),
+            'description' => __('Turn an email off to skip it for this product only.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_disable_pending_email', '_ppcart_disable_welcome_email', '_ppcart_disable_purchase_email' ],
         ],
         'custom' => [
@@ -107,7 +120,8 @@ foreach (ppcart_admin_group_fields_by_section($field_ids, $sections) as $section
     $visible_fields = array_filter(
         $section_items,
         static function ($field) {
-            return ! in_array($field['type'] ?? '', [ 'hidden', 'html' ], true);
+            return ! in_array($field['type'] ?? '', [ 'hidden', 'html' ], true)
+                && 'hide' !== ($field['class_size'] ?? '');
         }
     );
     if (count($visible_fields) < 2) {

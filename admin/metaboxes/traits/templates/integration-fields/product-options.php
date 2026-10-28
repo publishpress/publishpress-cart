@@ -47,13 +47,10 @@ return [
             ],
         ],
     ],
+    // Empty: the tab intro already says this. The item stays so code that edits
+    // this list by position still finds the fields where it expects them.
     [
         'type'          => 'html',
-        'value'         => '<div id="rid_ppcart_twostep_heading" class="ppcart-field ppcart-row"><p style="display: block; margin: 20px 0 0;padding: 0 0 5px;border-bottom: 1px solid #d5d5d5;flex-basis: 100%;">' . sprintf(
-            /* translators: %s: product name. */
-            __('Integrations for %s – integrations added here will apply to this product only!', 'publishpress-cart'),
-            $name
-        ) . '</p></div>
-    ',
+        'value'         => '',
     ],
 ];
