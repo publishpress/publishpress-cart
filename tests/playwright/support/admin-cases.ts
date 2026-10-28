@@ -1353,6 +1353,82 @@ export const workflowsAdminTests: AdminTestCase[] = [
         target: productHideTitleFieldTarget,
       }
     ],
+  },
+  {
+    id: "AD-212",
+    title: "Product Embed Tab Previews And Saves The Accent Color",
+    startUrl: "{{publishpress_cart_host}}/wp-admin/post-new.php?post_type={{admin_product_post_type}}",
+    steps: [
+      {
+        command: "assertElementPresent",
+        target: productTypeBody,
+      },
+      {
+        command: "assign",
+        target: productEditorTitleTarget,
+        value: "{{admin_workflow_meta_product_title}} Embed",
+      },
+      {
+        command: "click",
+        target: "[data-testid=\"ppcart-admin-product-tab-embed\"]",
+      },
+      {
+        command: "assertTextPresent",
+        target: "[data-testid=\"ppcart-admin-embed-unpublished\"]",
+        value: "Publish this product to get the embed code.",
+      },
+      {
+        command: "click",
+        target: productEditorPublishTarget,
+      },
+      {
+        command: "click",
+        target: productEditorPublishConfirmTarget,
+        optional: true,
+      },
+      {
+        command: "assertTextPresent",
+        target: "body",
+        value: "published",
+      },
+      {
+        command: "click",
+        target: "[data-testid=\"ppcart-admin-product-tab-embed\"]",
+      },
+      {
+        command: "assertElementPresent",
+        target: "[data-testid=\"ppcart-admin-embed-preview\"]",
+      },
+      {
+        command: "assertTextPresent",
+        target: "[data-ppcart-embed-code=\"inline\"]",
+        value: "data-ppcart-checkout=",
+      },
+      {
+        command: "assertTextPresent",
+        target: "[data-ppcart-embed-code=\"popup\"]",
+        value: "data-ppcart-popup=",
+      },
+      {
+        command: "assertTextPresent",
+        target: "[data-ppcart-embed-code=\"link\"]",
+        value: "ppcart-embed=popup",
+      },
+      {
+        command: "click",
+        target: "#rid_ppcart_embed_accent .wp-color-result",
+      },
+      {
+        command: "assign",
+        target: "#_ppcart_embed_accent",
+        value: "#ff5a1f",
+      },
+      {
+        command: "assertTextPresent",
+        target: "[data-ppcart-embed-code=\"popup\"]",
+        value: "background:#ff5a1f",
+      }
+    ],
   }
 ];
 

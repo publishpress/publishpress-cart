@@ -11,9 +11,11 @@ plugin:
 catalog:
   cases: docs/testing/cases
   # Test files that intentionally have no catalog case, because they cover the
-  # test harness rather than the product.
+  # test harness rather than the product, or a pure function with no suite root
+  # (the harness-chromium project in tests/playwright/unit has no ID prefix).
   ignore_tests:
     - tests/playwright/unit/admin-executor.spec.ts
+    - tests/playwright/unit/embed-frame-route.spec.ts
 
 modules:
   - id: checkout-stripe
@@ -101,8 +103,8 @@ modules:
   - id: admin-workflows
     name: Admin create-and-verify workflows
     suites: [admin]
-    test_range: AD-201–AD-211
-    features: [payment-plans, store-settings]
+    test_range: AD-201–AD-212
+    features: [payment-plans, store-settings, checkout-display]
     notes: Multi-step flows that create a record and then verify it persisted.
 
   - id: stripe-sync
@@ -234,6 +236,13 @@ modules:
     features: [order-management, secure-downloads]
     notes: Owner, access-token, and capability proofs for public order and download pages.
 
+  - id: embedded-checkout
+    name: Embedded checkout
+    suites: [unit, integration, regression]
+    test_range: UT-370–UT-376, IT-394–IT-403, RT-110–RT-122
+    features: [embedded-checkout, checkout-display]
+    notes: Appearance model, frame headers, the embed shell template, the frame navigation rule, the Embed tab save path, and the buyer flows across origins in a browser.
+
   - id: checkout-display
     name: Checkout rendering and display
     suites: [regression, unit, integration]
@@ -244,7 +253,7 @@ modules:
   - id: developer-hooks
     name: Developer hooks
     suites: [regression]
-    test_range: RT-109–RT-111
+    test_range: RT-109
     features: [developer-hooks]
     notes: Public action and filter hooks third-party code listens on.
 
@@ -310,6 +319,19 @@ features:
     status: active
     description: Read/write REST access to customers, orders, and products for external integrations.
     edition: pro
+  embedded-checkout:
+    name: Embedded checkout on other websites
+    status: active
+    description: Inline or popup checkout on a site outside WordPress, such as Showit or Squarespace, from a snippet on the product Embed tab.
+    edition: both
+    source_areas:
+      - public/js/ppcart-embed.js
+      - public/js/ppcart-embed-frame.js
+      - public/controllers/class-ppcart-public-embed-controller.php
+      - public/templates/embed/
+      - public/css/ppcart-embed.css
+      - includes/embed/
+      - admin/class-ppcart-admin-embed-tab.php
   gutenberg-blocks:
     name: Gutenberg checkout & customer account
     status: active

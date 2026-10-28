@@ -20,12 +20,16 @@ const chromiumExecutableCandidates = [
   '/usr/bin/chromium-browser',
 ].filter(Boolean) as string[];
 const chromiumExecutablePath = chromiumExecutableCandidates.find((path) => existsSync(path));
-const chromiumArgs = process.env.PLAYWRIGHT_MAP_LOCALHOST_TO_HOST_DOCKER_INTERNAL === '1'
-  ? ['--host-resolver-rules=MAP localhost host.docker.internal']
-  : [];
+const chromiumArgs = [
+  // Embed specs frame this loopback site from a fake public origin, which Local Network Access blocks; real hosts are public.
+  '--disable-features=LocalNetworkAccessChecks',
+  ...(process.env.PLAYWRIGHT_MAP_LOCALHOST_TO_HOST_DOCKER_INTERNAL === '1'
+    ? ['--host-resolver-rules=MAP localhost host.docker.internal']
+    : []),
+];
 const chromiumLaunchOptions = {
   ...(chromiumExecutablePath ? { executablePath: chromiumExecutablePath } : {}),
-  ...(chromiumArgs.length > 0 ? { args: chromiumArgs } : {}),
+  args: chromiumArgs,
 };
 const mockedGatewaysEnabled = ['1', 'true', 'yes', 'on'].includes(
   (process.env.REGRESSION_MOCKED_GATEWAYS ?? '0').toLowerCase(),
@@ -34,10 +38,9 @@ const mockedGatewayHeaders = mockedGatewaysEnabled
   ? { extraHTTPHeaders: { 'X-PPCART-Regression-Mocked': '1' } }
   : {};
 
-const hasChromiumLaunchOptions = Object.keys(chromiumLaunchOptions).length > 0;
 const chromiumUse = {
   ...devices['Desktop Chrome'],
-  ...(hasChromiumLaunchOptions ? { launchOptions: chromiumLaunchOptions } : {}),
+  launchOptions: chromiumLaunchOptions,
   ...mockedGatewayHeaders,
 };
 

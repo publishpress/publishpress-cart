@@ -62,6 +62,15 @@ foreach ($product_setting_tabs as $tab_id => $label) {
         if ('general' === $tab_id && function_exists('ppcart_pro_locked_product_field_rows_html')) {
             echo wp_kses(ppcart_pro_locked_product_field_rows_html('general'), ppcart_admin_allowed_html());
         }
+
+        /**
+         * Display-only UI after a product tab's fields, such as a preview. It is not a
+         * field, so nothing printed here is saved with the product.
+         *
+         * @param string  $tab_id Product settings tab ID.
+         * @param WP_Post $post   Product being edited.
+         */
+        do_action('ppcart_product_settings_panel_after_fields', $tab_id, $post);
     }
 
     echo '</div>';

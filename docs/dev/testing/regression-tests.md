@@ -240,6 +240,12 @@ Populated automatically by `composer test:regression:setup`:
 | `URL_SUBS_PAYPAL_WITH_SALE_PRICE` | Subscription PayPal sale checkout path |
 | `URL_CUSTOM_PRICE_PAYPAL` | Custom-price PayPal checkout path |
 | `URL_PRODUCT_FREE` | Free product checkout path |
+| `URL_EMBED_PRODUCT_FREE` | Free product permalink for the embed specs |
+| `URL_EMBED_PRODUCT_STRIPE` | One-time Stripe product permalink for the embed specs |
+| `URL_EMBED_PRODUCT_REDIRECT` | Free product permalink that redirects to an external thank-you page |
+| `URL_EMBED_PRODUCT_STYLED` | Free product permalink with a saved embed appearance |
+| `URL_EMBED_PRODUCT_CLOSED` | Closed-cart product permalink that redirects to an external page |
+| `URL_EMBED_PLAIN_PAGE` | Page without checkout content, for the embed flag check |
 
 ### Test data
 
@@ -262,6 +268,7 @@ Populated automatically by `composer test:regression:setup`:
 | `@stripe` | RT-001 – RT-009 |
 | `@paypal` | RT-010 – RT-018 |
 | `@free` | RT-019 |
+| `@embed` | RT-110 to RT-120. See [embed-checkout.md](../embed-checkout.md). |
 
 ## Native Playwright coverage
 The native RT-001–RT-019 Playwright specs remain hand-maintained because their

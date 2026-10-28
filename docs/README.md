@@ -24,6 +24,7 @@ code area — they are not the same as features.
 | order-bumps-upsells | Order bumps & upsells | pro | Products (Upsell Paths) |
 | secure-downloads | Secure download delivery | both | Products |
 | checkout-display | Checkout display & embedding | both | Products, Templates, Getting Started |
+| embedded-checkout | Embedded checkout on other websites | both | None (new in Cart) |
 | gutenberg-blocks | Gutenberg checkout & customer account | both | Templates |
 | quantity-pricing | Quantity and bulk pricing | pro | Products |
 | product-collections | Product collections & bundles | pro | Products |
