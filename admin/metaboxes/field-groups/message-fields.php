@@ -126,6 +126,11 @@ $this->notifications = [
         'type'          => 'repeater',
         'value'         => '',
         'class_size'    => '',
+        'empty_state'   => [
+            'icon'  => 'dashicons-email-alt',
+            'title' => __('No custom notifications yet', 'publishpress-cart'),
+            'text'  => __('Add one to email you, your team, or the customer when this product sells.', 'publishpress-cart'),
+        ],
         'fields'        => [
             [
                 'text' => [

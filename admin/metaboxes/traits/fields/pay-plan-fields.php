@@ -9,7 +9,7 @@ $fields = [
         'text' => [
             'class'         => 'ppcart-unique required',
             'id'            => 'option_id',
-            'label'         => __('Plan ID: ', 'publishpress-cart'),
+            'label'         => __('Plan ID', 'publishpress-cart'),
             'type'          => 'text',
             'value'         => '',
             'class_size'    => 'one-half first',
@@ -41,7 +41,7 @@ $fields = [
     ],
     [
         'select' => [
-            'class'         => '',
+            'class'         => 'ppcart-segmented',
             'description'   => '',
             'id'            => 'product_type',
             'label'         => __('Price Type', 'publishpress-cart'),
@@ -49,10 +49,10 @@ $fields = [
             'type'          => 'select',
             'value'         => '',
             'selections'    => [
-                '' => 'One-time Payment',
-                'recurring' => __('Recurring Payments (Subscriptions)', 'publishpress-cart'),
-                'pwyw'      => 'Pay What You Want',
-                'free'      => 'Free',
+                ''          => __('One-time', 'publishpress-cart'),
+                'recurring' => __('Subscription', 'publishpress-cart'),
+                'pwyw'      => __('Pay what you want', 'publishpress-cart'),
+                'free'      => __('Free', 'publishpress-cart'),
             ],
             'class_size' => 'one-half first',
         ],
@@ -74,7 +74,7 @@ $fields = [
             'class'         => 'widefat name repeater-title',
             'description'       => __("A description of this payment plan option that's displayed on the order form.", 'publishpress-cart'),
             'id'            => 'option_name',
-            'label'         => __('Option Label', 'publishpress-cart'),
+            'label'         => __('Checkout label', 'publishpress-cart'),
             'placeholder'   => __('e.g. One payment of $100', 'publishpress-cart'),
             'type'          => 'text',
             'value'         => '',
@@ -84,9 +84,9 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => 'A description of this payment plan when on sale',
+            'description'   => __('Shown on the checkout form while the sale is on.', 'publishpress-cart'),
             'id'            => 'sale_option_name',
-            'label'         => __('Sale Option Label', 'publishpress-cart'),
+            'label'         => __('Sale checkout label', 'publishpress-cart'),
             'placeholder'   => 'e.g. One payment of $50 (that\'s 50% off!)',
             'type'          => 'text',
             'value'         => '',

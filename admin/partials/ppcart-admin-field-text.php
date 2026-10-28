@@ -27,22 +27,14 @@ $field_dom_id = ppcart_admin_field_dom_id($atts);
 $testid_source = ! empty($atts['id']) ? $atts['id'] : ($atts['name'] ?? '');
 $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
 $clear_testid = ppcart_testid('ppcart-admin-field-' . $testid_source . '-clear-date');
+$help_id = ! empty($atts['description']) ? $field_dom_id . '-help' : '';
 $right_currency = ($atts['type'] == 'price' && in_array(get_option('_ppcart_currency_position'), ['right', 'right-space'])) ? true : false;
 if ($right_currency) {
     $atts['class'] .= ' right-currency';
 }
 
 if (! empty($atts['label'])) {
-    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?>
-
-<?php
-
-if (! empty($atts['description'])) {
-    ?><i class="ppcart-tooltip" data-balloon-length="medium" aria-label="<?php echo esc_attr($atts['description']); ?>" data-balloon-pos="up" tabindex="0">?</i>
-<?php
-} ?>
-
-</label><?php
+    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?></label><?php
 }
 
 ?><div class="input-group field-<?php echo esc_attr($atts['type']); ?>">
@@ -66,6 +58,9 @@ if (! empty($atts['description'])) {
     placeholder="<?php echo esc_attr($atts['placeholder']); ?>"
     type="<?php echo esc_attr($atts['type']); ?>"
     data-testid="<?php echo esc_attr($testid); ?>"
+    <?php if ('' !== $help_id) :
+        ?>aria-describedby="<?php echo esc_attr($help_id); ?>"<?php
+    endif; ?>
     autocomplete="new-password" autocorrect="off" autocapitalize="none"
     <?php if (isset($atts['step'])) :
         ?>step="<?php echo esc_attr($atts['step']); ?>"<?php
@@ -88,8 +83,8 @@ if ($right_currency) {
         <a href="#" class="clear-date" data-testid="<?php echo esc_attr($clear_testid); ?>"><svg width="16px" enable-background="new 0 0 24 24" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path fill="#b1b1b1" d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M16.9,15.5l-1.4,1.4L12,13.4l-3.5,3.5   l-1.4-1.4l3.5-3.5L7.1,8.5l1.4-1.4l3.5,3.5l3.5-3.5l1.4,1.4L13.4,12L16.9,15.5z"/></g></svg></a>
     <?php endif; ?>
 
-<?php if (empty($atts['label']) && ! empty($atts['description'])) :?>
-    <p class="description"><?php echo wp_kses_post(wp_specialchars_decode($atts['description'], ENT_QUOTES)); ?></p>
+<?php if ('' !== $help_id) :?>
+    <p class="description ppcart-field-help" id="<?php echo esc_attr($help_id); ?>"><?php echo wp_kses_post(wp_specialchars_decode($atts['description'], ENT_QUOTES)); ?></p>
 <?php endif; ?>
 
 <?php if (! empty($atts['note'])) :?>

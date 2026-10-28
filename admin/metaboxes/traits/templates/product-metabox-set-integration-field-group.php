@@ -42,6 +42,11 @@ $this->integrations = [
         'type'         => 'repeater',
         'value'        => '',
         'class_size'   => '',
+        'empty_state'  => [
+            'icon'  => 'dashicons-admin-plugins',
+            'title' => __('No integrations yet', 'publishpress-cart'),
+            'text'  => __('Add one to send customers to a mailing list or another service when they buy.', 'publishpress-cart'),
+        ],
         'fields'       => $integration_fields,
     ],
 ];

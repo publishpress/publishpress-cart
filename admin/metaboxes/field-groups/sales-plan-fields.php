@@ -42,6 +42,28 @@ return [
         'type'          => 'repeater',
         'value'         => '',
         'class_size'    => '',
+        'summary'       => true,
+        'sections'      => apply_filters(
+            'ppcart_pay_plan_field_sections',
+            [
+                'main' => [
+                    'fields' => [ 'product_type', 'price', 'name_your_own_price_text', 'recurring_pwyw', 'name_your_own_price_text_recurring', 'option_name' ],
+                ],
+                'billing' => [
+                    'title'  => __('Billing', 'publishpress-cart'),
+                    'fields' => [ 'frequency', 'interval', 'installments' ],
+                ],
+                'sale' => [
+                    'title'  => __('Sale price', 'publishpress-cart'),
+                    'fields' => [ 'sale_price', 'sale_frequency', 'sale_interval', 'sale_installments', 'sale_sign_up_fee', 'sale_option_name' ],
+                ],
+                'advanced' => [
+                    'title'  => __('Advanced', 'publishpress-cart'),
+                    'type'   => 'details',
+                    'fields' => [ 'option_id', 'url_slug', 'is_hidden', 'stripe_plan_id', 'sale_stripe_plan_id' ],
+                ],
+            ]
+        ),
         'fields'        => $this->pay_plan_fields($save),
     ],
 ];

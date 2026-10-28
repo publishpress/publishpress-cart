@@ -1,0 +1,577 @@
+/**
+ * Field components in the Cart Settings look: inputs, selects, toggles,
+ * buttons, chips, notices and empty states.
+ *
+ * The values match admin/css/ppcart-settings.css, so the product metabox and
+ * the Settings screen look the same. Rules are scoped to the product metabox
+ * (.ppcart-ui on its tab container). The ID and the doubled class win over
+ * the older metabox rules in ppcart-admin.css.
+ */
+
+#ppcart-product-settings .ppcart-ui {
+  --ppcart-surface: #ffffff;
+  --ppcart-surface-alt: #fafbfd;
+  --ppcart-surface-muted: #f8fafc;
+  --ppcart-border: #e3e5ea;
+  --ppcart-border-strong: #d4d7de;
+  --ppcart-card-border: rgba(226, 232, 240, 0.82);
+  --ppcart-text: #1a1d24;
+  --ppcart-text-muted: #5b6473;
+  --ppcart-text-soft: #7a8493;
+  --ppcart-primary: #0a47c2;
+  --ppcart-primary-hover: #0838a0;
+  --ppcart-primary-soft: #e8efff;
+  --ppcart-focus-ring: 0 0 0 3px rgba(10, 71, 194, 0.12);
+  --ppcart-section-header: #655997;
+  --ppcart-sidebar-primary: #3858e9;
+  --ppcart-sidebar-bg: #f8fafc;
+  --ppcart-sidebar-border: #e2e8f0;
+  --ppcart-success-soft: #e3f7ec;
+  --ppcart-success-text: #116243;
+  --ppcart-danger: #c5292a;
+  --ppcart-danger-ring: 0 0 0 3px rgba(197, 41, 42, 0.12);
+  /* Darker than the Settings toggle (#cbd2dd) so the off state has 3:1 contrast. */
+  --ppcart-toggle-off: #7d8796;
+  --ppcart-radius-sm: 6px;
+  --ppcart-radius: 8px;
+  --ppcart-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  color: var(--ppcart-text);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+/* Labels, help and errors ---------------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col label,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-label {
+  color: var(--ppcart-text);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .req {
+  color: var(--ppcart-danger);
+  margin-left: 3px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .description,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-field-help {
+  color: var(--ppcart-text-muted);
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.5;
+  margin: 6px 0 0;
+  max-width: 600px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-field-error {
+  align-items: center;
+  color: var(--ppcart-danger);
+  display: flex;
+  flex-basis: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 6px;
+  margin: 6px 0 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-field-error::before {
+  content: "\f534";
+  font: normal 16px/1 dashicons;
+}
+
+/* Text inputs, selects and textareas ------------------------------------ */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=text]:not(.ppcart-color-field):not(.wp-color-picker),
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=number],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=email],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=url],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=password],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=date],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=datetime-local],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col select,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col textarea {
+  background-color: var(--ppcart-surface);
+  border: 1px solid var(--ppcart-border-strong);
+  border-radius: var(--ppcart-radius-sm);
+  box-shadow: none;
+  box-sizing: border-box;
+  color: var(--ppcart-text);
+  font-size: 13.5px;
+  height: auto;
+  line-height: 1.4;
+  max-width: 100%;
+  min-height: 38px;
+  padding: 8px 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input::placeholder,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col textarea::placeholder {
+  color: var(--ppcart-text-soft);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=text]:not(.ppcart-color-field):not(.wp-color-picker):focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=number]:focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=email]:focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=url]:focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=password]:focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=date]:focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[type=datetime-local]:focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col select:focus,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col textarea:focus {
+  border-color: var(--ppcart-primary);
+  box-shadow: var(--ppcart-focus-ring);
+  outline: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input.error,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col select.error,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col textarea.error,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .selectize-control.error .selectize-input {
+  border-color: var(--ppcart-danger) !important;
+  box-shadow: var(--ppcart-danger-ring);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input:disabled,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col input[readonly],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col select:disabled,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col textarea:disabled {
+  background-color: var(--ppcart-surface-muted);
+  border-color: var(--ppcart-border);
+  color: var(--ppcart-text-soft);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+/* The chevron sits in its own box at the right, as on the Settings screen. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col select:not([multiple]) {
+  -webkit-appearance: none;
+  appearance: none;
+  background:
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%2336475f' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 12px center / 16px 16px no-repeat,
+    linear-gradient(to left, #f8fafc 0, #f8fafc 40px, #e3e5ea 40px, #e3e5ea 41px, #fff 41px);
+  cursor: pointer;
+  padding-right: 52px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col select:not([multiple]):focus {
+  background:
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%230a47c2' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 12px center / 16px 16px no-repeat,
+    linear-gradient(to left, #eef4ff 0, #eef4ff 40px, rgba(10, 71, 194, 0.32) 40px, rgba(10, 71, 194, 0.32) 41px, #fff 41px);
+}
+
+/* Price fields: the currency symbol sits in a box inside the field. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .input-group .input-prepend,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .input-group .input-append {
+  align-items: center;
+  background: var(--ppcart-surface-muted);
+  color: var(--ppcart-text-muted);
+  display: flex;
+  font-size: 13.5px;
+  /* Input height minus its borders; help or error text below must not stretch the box. */
+  height: 36px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  top: 1px;
+  width: 38px;
+  z-index: 1;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .input-group .input-prepend {
+  border-radius: 5px 0 0 5px;
+  border-right: 1px solid var(--ppcart-border);
+  left: 1px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .input-group .input-append {
+  border-left: 1px solid var(--ppcart-border);
+  border-radius: 0 5px 5px 0;
+  left: auto;
+  margin: 0;
+  right: 1px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .input-group.field-price input[type=text] {
+  padding-left: 50px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .input-group.field-price input[type=text].right-currency {
+  padding-left: 12px;
+  padding-right: 50px;
+}
+
+/* Toggle switch: restyles the existing .ckbx-style markup. --------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style {
+  display: inline-flex;
+  flex: 0 0 40px;
+  font-size: inherit;
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+  width: 40px;
+}
+
+/* The real checkbox covers the switch, so it takes clicks and keyboard focus. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style input[type=checkbox] {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style label {
+  display: block;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 40px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style label::before {
+  background: var(--ppcart-toggle-off);
+  border-radius: 999px;
+  bottom: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  content: "";
+  left: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: background 0.18s ease;
+  width: auto;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style label::after {
+  animation: none;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.28);
+  content: "";
+  height: 16px;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  transition: left 0.18s ease;
+  width: 16px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style input[type=checkbox]:checked + label::before {
+  background: var(--ppcart-primary);
+  box-shadow: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style input[type=checkbox]:checked + label::after {
+  animation: none;
+  left: 21px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style input[type=checkbox]:focus-visible + label::before {
+  box-shadow: 0 0 0 3px rgba(10, 71, 194, 0.3);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style input[type=checkbox]:disabled + label {
+  opacity: 0.5;
+}
+
+/* "Hide field" and payment-method switches store the opposite value: on = unchecked. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style label::before,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style label::before {
+  background: var(--ppcart-primary);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style label::after,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style label::after {
+  left: 21px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style input[type=checkbox]:checked + label::before,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style input[type=checkbox]:checked + label::before {
+  background: var(--ppcart-toggle-off);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs [id^=rid_ppcart_hide_field_] .ckbx-style input[type=checkbox]:checked + label::after,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #ppcart-tab-payments .ckbx-style input[type=checkbox]:checked + label::after {
+  left: 3px;
+}
+
+/* Segmented control (price type) ---------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented {
+  background: #f1f5f9;
+  border: 0;
+  border-radius: var(--ppcart-radius);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: 100%;
+  overflow: visible;
+  padding: 3px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-segmented__option {
+  display: flex;
+  flex: 0 0 auto;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented__option + .ppcart-segmented__option {
+  border-left: 0;
+}
+
+/* The real radio covers its option, so it takes clicks and keyboard focus. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented__input {
+  cursor: pointer;
+  height: 100%;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented__option span {
+  align-items: center;
+  border-radius: var(--ppcart-radius-sm);
+  color: var(--ppcart-text-muted);
+  display: flex;
+  flex: 1 1 auto;
+  font-size: 13.5px;
+  min-height: 32px;
+  padding: 0 14px;
+  white-space: nowrap;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented__option:hover span {
+  background: transparent;
+  color: var(--ppcart-text);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented__input:checked + span {
+  background: var(--ppcart-surface);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  color: var(--ppcart-primary);
+  font-weight: 600;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented__input:focus-visible + span {
+  box-shadow: 0 0 0 2px var(--ppcart-primary);
+}
+
+/* Buttons --------------------------------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .button:not(.wp-color-result):not(.ppcart-pro-preview__cta) {
+  align-items: center;
+  background: var(--ppcart-surface);
+  border: 1px solid var(--ppcart-border-strong);
+  border-radius: var(--ppcart-radius-sm);
+  box-shadow: none;
+  color: var(--ppcart-text);
+  display: inline-flex;
+  font-size: 13.5px;
+  font-weight: 600;
+  gap: 6px;
+  line-height: 1.2;
+  min-height: 38px;
+  padding: 0 16px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .button:not(.wp-color-result):not(.ppcart-pro-preview__cta):hover {
+  background: var(--ppcart-surface-muted);
+  border-color: #c3c8d2;
+  color: var(--ppcart-text);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .button:not(.wp-color-result):not(.ppcart-pro-preview__cta):focus {
+  border-color: var(--ppcart-primary);
+  box-shadow: var(--ppcart-focus-ring);
+  outline: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .button-primary:not(.ppcart-pro-preview__cta) {
+  background: var(--ppcart-primary);
+  border-color: var(--ppcart-primary);
+  color: #fff;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .button-primary:not(.ppcart-pro-preview__cta):hover {
+  background: var(--ppcart-primary-hover);
+  border-color: var(--ppcart-primary-hover);
+  color: #fff;
+}
+
+/* Color picker (WordPress iris) ---------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .wp-picker-container .wp-color-result.button {
+  border: 1px solid var(--ppcart-border-strong);
+  border-radius: var(--ppcart-radius-sm);
+  box-shadow: none;
+  margin: 0;
+  min-height: 38px;
+  padding: 0 0 0 38px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .wp-picker-container .wp-color-result-text {
+  background: var(--ppcart-surface);
+  border-left: 1px solid var(--ppcart-border-strong);
+  border-radius: 0 5px 5px 0;
+  color: var(--ppcart-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 36px;
+  padding: 0 12px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .wp-picker-container .wp-color-result:focus {
+  border-color: var(--ppcart-primary);
+  box-shadow: var(--ppcart-focus-ring);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .wp-picker-container input.wp-color-picker {
+  border: 1px solid var(--ppcart-border-strong);
+  border-radius: var(--ppcart-radius-sm);
+  min-height: 38px;
+  width: 7rem;
+}
+
+/* Multi-select and searchable select (selectize) ------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.single,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.multi {
+  display: block;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control .selectize-input {
+  border: 1px solid var(--ppcart-border-strong);
+  border-radius: var(--ppcart-radius-sm);
+  box-shadow: none;
+  color: var(--ppcart-text);
+  font-size: 13.5px;
+  line-height: 1.4;
+  min-height: 38px;
+  padding: 7px 12px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control .selectize-input.focus {
+  border-color: var(--ppcart-primary);
+  box-shadow: var(--ppcart-focus-ring);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.multi .selectize-input > div,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.multi .selectize-input [data-value],
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.multi .selectize-input [data-value].active {
+  background: var(--ppcart-primary-soft);
+  border: 0;
+  border-radius: 999px;
+  color: var(--ppcart-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  text-shadow: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.multi .selectize-input [data-value] .remove {
+  border-left-color: rgba(10, 71, 194, 0.2);
+  color: var(--ppcart-primary);
+}
+
+/* Chips and badges ------------------------------------------------------ */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-chip {
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 999px;
+  color: var(--ppcart-text-muted);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  height: 22px;
+  line-height: 1;
+  padding: 0 10px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-chip--sale {
+  background: var(--ppcart-success-soft);
+  color: var(--ppcart-success-text);
+}
+
+/* Notice ---------------------------------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-metabox-notice.notice {
+  background: var(--ppcart-surface);
+  border: 1px solid #f1c9c9;
+  border-left: 4px solid var(--ppcart-danger);
+  border-radius: var(--ppcart-radius);
+  box-shadow: var(--ppcart-shadow-sm);
+  box-sizing: border-box;
+  display: block;
+  margin: 0 0 24px;
+  max-width: 760px;
+  padding: 12px 16px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-metabox-notice p {
+  font-size: 13.5px;
+  margin: 0 0 6px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-metabox-notice a {
+  color: var(--ppcart-primary);
+}
+
+/* Empty state ----------------------------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty {
+  align-items: center;
+  background: var(--ppcart-surface-alt);
+  border: 1px dashed var(--ppcart-border-strong);
+  border-radius: var(--ppcart-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 28px 16px;
+  text-align: center;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty[hidden] {
+  display: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty__icon {
+  color: var(--ppcart-text-muted);
+  font-size: 26px;
+  height: 26px;
+  width: 26px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty__title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 4px 0 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty__text {
+  color: var(--ppcart-text-muted);
+  margin: 0;
+  max-width: 46ch;
+}

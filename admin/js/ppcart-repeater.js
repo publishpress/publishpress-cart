@@ -813,13 +813,15 @@
         $list.find('.ppcart-repeater:visible').each(function (idx) {
             var $inp = $(this).find(':input');
             $inp.each(function () {
-                if (!this.name) {
+                // Inputs with a form attribute are UI helpers (for example the price type buttons), not saved fields.
+                if (!this.name || this.hasAttribute('form')) {
                     return;
                 }
 
 				// console.log(this.name);
                 var name = updateIndex(this.name, idx);
-                this.name = name; 
+                var oldId = this.id;
+                this.name = name;
 
                 if ($(this).closest('.wp-editor-wrap').length) {
                     return;
@@ -827,6 +829,9 @@
 
                 this.id = name;
                 $(this).next('label').attr('for',name);
+                $(this).closest('.wrap-field').find('label.ppcart-label').filter(function () {
+                    return this.htmlFor === oldId;
+                }).attr('for', name);
             });
         });
     }

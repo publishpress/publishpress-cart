@@ -28,13 +28,30 @@ if (isset($repeater) && is_array($repeater) && isset($setatts['id'])) {
     $repeater = apply_filters('ppcart_repeater_saved_rows', $repeater, $setatts['id']);
 }
 
-// Render a visible starter row when no repeater items exist yet.
+// Render a visible starter row when no repeater items exist yet, unless the
+// repeater shows an empty state instead.
+$empty_state  = (! empty($setatts['empty_state']) && is_array($setatts['empty_state'])) ? $setatts['empty_state'] : [];
 $render_count = (int) $count;
-if (0 === $render_count) {
+$is_starter   = false;
+if (0 === $render_count && [] === $empty_state) {
     $render_count = 1;
+    $is_starter   = true;
 }
 
-?><ul id="<?php echo esc_attr($repeater_id); ?>" class="ppcart-repeaters" data-testid="<?php echo esc_attr($repeater_testid); ?>"><?php
+// Optional render-time sections: field id => section, so the field arrays keep their order.
+$repeater_sections = (! empty($setatts['sections']) && is_array($setatts['sections'])) ? $setatts['sections'] : [];
+
+?><ul id="<?php echo esc_attr($repeater_id); ?>" class="ppcart-repeaters<?php echo [] !== $repeater_sections ? ' ppcart-repeaters--sections' : ''; ?>" data-testid="<?php echo esc_attr($repeater_testid); ?>"><?php
+
+if ([] !== $empty_state) {
+    ?><li class="ppcart-repeater-empty"<?php echo 0 === (int) $count ? '' : ' hidden'; ?>>
+        <span class="ppcart-repeater-empty__icon dashicons <?php echo esc_attr($empty_state['icon'] ?? 'dashicons-plus-alt2'); ?>" aria-hidden="true"></span>
+        <p class="ppcart-repeater-empty__title"><?php echo esc_html($empty_state['title'] ?? ''); ?></p>
+        <?php if (! empty($empty_state['text'])) : ?>
+            <p class="ppcart-repeater-empty__text"><?php echo esc_html($empty_state['text']); ?></p>
+        <?php endif; ?>
+    </li><?php
+}
 
     for ($i = 0; $i <= $render_count; $i++) {
         $k = $i;
@@ -49,6 +66,9 @@ if (0 === $render_count) {
 
         $row_testid_suffix = null === $k ? 'template' : (string) $k;
         $row_class = $setatts['class'];
+        if ($is_starter && null !== $k) {
+            $row_class .= ' is-starter';
+        }
         $row_entry = (isset($repeater[$i]) && is_array($repeater[$i])) ? $repeater[$i] : [];
         if (function_exists('ppcart_repeater_entry_is_enabled') && ! ppcart_repeater_entry_is_enabled($row_entry)) {
             $row_class .= ' is-disabled';
@@ -122,13 +142,16 @@ if (0 === $render_count) {
         ?><li class="<?php echo esc_attr($row_class); ?>" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-row-' . $row_testid_suffix)); ?>">
             <div class="handle">
                 <span class="title-repeater" data-label="<?php echo esc_attr($setatts['label-header']); ?>"><?php echo esc_html($setatts['label-header']); ?></span>
+                <?php if (! empty($setatts['summary'])) : ?>
+                    <span class="ppcart-repeater-summary"></span>
+                <?php endif; ?>
                 <?php if (! empty($header_toggle_fields)) : ?>
                     <span class="ppcart-repeater-disabled-badge"><?php esc_html_e('Disabled', 'publishpress-cart'); ?></span>
                     <?php foreach ($header_toggle_fields as $prepared) :
                         $field_type = $prepared['field_type'];
                         $atts = $prepared['atts'];
                         ?>
-                    <div class="rid<?php echo esc_attr($atts['id']); ?> wrap-field ppcart-repeater-enable <?php echo esc_attr($atts['class_size']); ?>">
+                    <div class="rid<?php echo esc_attr($atts['id']); ?> wrap-field ppcart-repeater-enable ppcart-field--<?php echo esc_attr(sanitize_html_class((string) ($atts['type'] ?? $field_type))); ?> <?php echo esc_attr($atts['class_size']); ?>">
                         <?php
                         if (file_exists(plugin_dir_path(__FILE__) . 'ppcart-admin-field-' . $field_type . '.php')) {
                             include(plugin_dir_path(__FILE__) . 'ppcart-admin-field-' . $field_type . '.php');
@@ -147,11 +170,31 @@ if (0 === $render_count) {
             <div class="ppcart-repeater-content">
                 <div class="wrap-fields"> <?php
 
-        foreach ($body_fields as $prepared) {
+        $body_groups = [ '' => $body_fields ];
+        if ([] !== $repeater_sections) {
+            $body_groups = ppcart_admin_repeater_group_fields($body_fields, $repeater_sections);
+        }
+
+        foreach ($body_groups as $section_id => $group_fields) {
+            $section = ('' !== $section_id) ? $repeater_sections[ $section_id ] : [];
+            $section_type = ('details' === ($section['type'] ?? '')) ? 'details' : 'div';
+            $section_class = 'ppcart-repeater-section ppcart-repeater-section--' . sanitize_html_class((string) $section_id);
+
+            if ('' !== $section_id && 'details' === $section_type) {
+                ?><details class="<?php echo esc_attr($section_class); ?>"><summary class="ppcart-repeater-section__title"><?php echo esc_html($section['title'] ?? ''); ?></summary><div class="ppcart-repeater-section__fields"><?php
+            } elseif ('' !== $section_id) {
+                ?><div class="<?php echo esc_attr($section_class); ?>"><?php
+                if (! empty($section['title'])) {
+                    ?><p class="ppcart-repeater-section__title"><?php echo esc_html($section['title']); ?></p><?php
+                }
+                ?><div class="ppcart-repeater-section__fields"><?php
+            }
+
+        foreach ($group_fields as $prepared) {
             $field_type = $prepared['field_type'];
             $atts = $prepared['atts'];
 
-            ?><div class="rid<?php echo esc_attr($atts['id']); ?> wrap-field <?php echo esc_attr($atts['class_size']); ?>"><?php
+            ?><div class="rid<?php echo esc_attr($atts['id']); ?> wrap-field ppcart-field--<?php echo esc_attr(sanitize_html_class((string) ($atts['type'] ?? $field_type))); ?> <?php echo esc_attr($atts['class_size']); ?>"><?php
 
             if ('html' === $field_type) {
                 $allowed_html = wp_kses_allowed_html('post');
@@ -183,6 +226,11 @@ if (0 === $render_count) {
                 );
             }
         } // $fieldset foreach
+
+            if ('' !== $section_id) {
+                echo 'details' === $section_type ? '</div></details>' : '</div></div>';
+            }
+        } // $body_groups foreach
 
         ?></div>
                 <div>
