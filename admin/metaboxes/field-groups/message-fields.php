@@ -7,7 +7,7 @@ if (! defined('ABSPATH')) {
 $this->confirmation = [
     [
         'class'         => '',
-        'description'   => '',
+        'description'   => __('What customers see after a successful payment: a message, a page, or a redirect.', 'publishpress-cart'),
         'id'            => '_ppcart_confirmation',
         'label'         => __('Confirmation Type', 'publishpress-cart'),
         'placeholder'   => '',
@@ -21,9 +21,12 @@ $this->confirmation = [
         'class_size' => '',
     ],
     [
+        'class'         => 'widefat',
         'id'            => '_ppcart_confirmation_message',
+        'description'   => __('Shown above the order receipt after payment. Line breaks are kept.', 'publishpress-cart'),
         'label'         => __('Message', 'publishpress-cart'),
-        'type'          => 'text',
+        'type'          => 'textarea',
+        'rows'          => 4,
         'value'         => __('Thank you. We\'ve received your order.', 'publishpress-cart'),
         'class_size'        => '',
         'conditional_logic' => [
@@ -36,7 +39,7 @@ $this->confirmation = [
     ],
     [
         'class'         => '',
-        'description'   => '',
+        'description'   => __('Send customers to this page after payment. Add [ppcart_receipt] to the page to show their order.', 'publishpress-cart'),
         'id'            => '_ppcart_confirmation_page',
         'label'         => __('Select Page', 'publishpress-cart'),
         'placeholder'   => '',
@@ -53,7 +56,7 @@ $this->confirmation = [
     ],
     [
         'class'     => 'widefat',
-        'description'   => '',
+        'description'   => __('Send customers to this URL after payment. Tags like {customer_email} are filled in.', 'publishpress-cart'),
         'id'            => '_ppcart_redirect',
         'label'     => __('Thank You Page URL', 'publishpress-cart'),
         'placeholder'   => '',
@@ -118,7 +121,7 @@ $this->notifications = [
     [
         'class'         => 'ppcart-repeater',
         'id'            => '_ppcart_notifications',
-        'label-add'     => __('+ Add New', 'publishpress-cart'),
+        'label-add'     => __('+ Add Notification', 'publishpress-cart'),
         'label-edit'    => __('Edit Notification', 'publishpress-cart'),
         'label-header'  => __('Notification', 'publishpress-cart'),
         'label-remove'  => __('Remove Notification', 'publishpress-cart'),

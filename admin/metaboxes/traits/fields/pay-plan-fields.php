@@ -9,6 +9,7 @@ $fields = [
         'text' => [
             'class'         => 'ppcart-unique required',
             'id'            => 'option_id',
+            'description'   => __('Unique ID used in links, shortcodes, and plan rules. Changing it can break existing links.', 'publishpress-cart'),
             'label'         => __('Plan ID', 'publishpress-cart'),
             'type'          => 'text',
             'value'         => '',
@@ -248,7 +249,7 @@ $fields = [
     [
         'select' => [
             'class'         => '',
-            'description'   => '',
+            'description'   => __('Stop billing after this many payments, or bill until the subscription is canceled.', 'publishpress-cart'),
             'id'            => 'installments',
             'label'         => __('Number of Payments', 'publishpress-cart'),
             'placeholder'   => '',
@@ -286,7 +287,7 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => '',
+            'description'   => __('Shown beside this plan at checkout in place of a price. Customers type their own amount.', 'publishpress-cart'),
             'id'            => 'name_your_own_price_text',
             'label'         => __('Name Your Price Label', 'publishpress-cart'),
             'placeholder'   => __('Name Your Price', 'publishpress-cart'),
@@ -304,7 +305,7 @@ $fields = [
     [
         'checkbox' => [
             'class'         => '',
-            'description'   => '',
+            'description'   => __('Let customers choose their own recurring amount, at or above the plan price.', 'publishpress-cart'),
             'id'            => 'recurring_pwyw',
             'label'         => __('Enable Pay What You Want', 'publishpress-cart'),
             'placeholder'   => '',

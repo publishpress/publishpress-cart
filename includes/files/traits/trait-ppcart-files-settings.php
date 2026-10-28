@@ -92,7 +92,7 @@ trait PPCart_Files_Settings_Trait
             [
                 'id' => 'ppcart_files_intro',
                 'type' => 'html',
-                'value' => '<p>' . esc_html__('Add downloadable files for this product. Files are optional. To add a file, enter both a File URL and a File Name. Leave both fields blank if this product has no downloads.', 'publishpress-cart') . '</p>',
+                'value' => '<p>' . esc_html__('Add files that customers can download after they buy. Files are optional. Each file needs a File URL and a File Name.', 'publishpress-cart') . '</p>',
             ],
             [
                 'class'         => 'ppcart-repeater',
@@ -105,6 +105,11 @@ trait PPCart_Files_Settings_Trait
                 'type'          => 'repeater',
                 'value'         => '',
                 'class_size'    => '',
+                'empty_state'   => [
+                    'icon'  => 'dashicons-download',
+                    'title' => __('No files yet', 'publishpress-cart'),
+                    'text'  => __('Add a file to give customers a download link after they buy.', 'publishpress-cart'),
+                ],
                 'fields'        => [
                     [
                         'text' => [
@@ -121,6 +126,7 @@ trait PPCart_Files_Settings_Trait
                         'file-upload' => [
                             'class'         => 'select file_url required',
                             'id'            => 'file_url',
+                            'description'   => __('Upload the file to sell. Customers download it through a private link after they buy.', 'publishpress-cart'),
                             'label'         => __('File URL', 'publishpress-cart'),
                             'placeholder'   => '',
                             'type'          => 'file-upload',
@@ -134,6 +140,7 @@ trait PPCart_Files_Settings_Trait
                     'text' => [
                         'class'         => 'select file_name required repeater-title',
                         'id'            => 'file_name',
+                        'description'   => __('Name customers see for this file in their downloads list.', 'publishpress-cart'),
                         'label'         => __('File Name', 'publishpress-cart'),
                         'placeholder'   => '',
                         'type'          => 'text',
@@ -162,7 +169,7 @@ trait PPCart_Files_Settings_Trait
                     [
                         'text' => [
                             'class'     => 'widefat',
-                            'description'   => '',
+                            'description'   => __('How many times a customer can download this file for each order. Leave empty for no limit.', 'publishpress-cart'),
                             'id'            => 'file_limit',
                             'label'     => __('Download limit', 'publishpress-cart'),
                             'placeholder'   => '&infin;',

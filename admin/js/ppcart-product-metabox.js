@@ -118,6 +118,10 @@
         if ( ! $initial.length && stored ) {
             $initial = getTabs( $root ).filter( '[aria-controls="' + stored.replace( /"/g, '' ) + '"]' );
         }
+        // A new product needs a price before anything else.
+        if ( ! $initial.length && window.location.pathname.indexOf( 'post-new.php' ) !== -1 ) {
+            $initial = getTabs( $root ).filter( '[aria-controls="ppcart-tab-pricing"]' );
+        }
         if ( $initial.length ) {
             selectTab( $root, $initial, false );
         }

@@ -25,16 +25,17 @@ $default_sections = [
             'fields'      => [ '_ppcart_hide_title', '_ppcart_header_color', '_ppcart_header_image' ],
         ],
     ],
+    // Payment plans come first: the price is the first thing to set on a product.
     'pricing' => [
-        'sale' => [
-            'title'       => __('Sale', 'publishpress-cart'),
-            'description' => __('Put every payment plan on sale now, or between two dates. Set the sale price in each plan below.', 'publishpress-cart'),
-            'fields'      => [ '_ppcart_on_sale', '_ppcart_schedule_sale', '_ppcart_sale_start', '_ppcart_sale_end', '_ppcart_show_full_price' ],
-        ],
         'plans' => [
             'title'       => __('Payment plans', 'publishpress-cart'),
             'description' => __('Each plan is one way to pay for this product. Customers choose a plan on the checkout form.', 'publishpress-cart'),
-            'fields'      => [ '_ppcart_hide_plans', '_ppcart_plan_heading', '_ppcart_pay_options' ],
+            'fields'      => [ '_ppcart_pay_options', '_ppcart_hide_plans', '_ppcart_plan_heading' ],
+        ],
+        'sale' => [
+            'title'       => __('Sale', 'publishpress-cart'),
+            'description' => __('Put every payment plan on sale now, or between two dates. Set the sale price in each plan above.', 'publishpress-cart'),
+            'fields'      => [ '_ppcart_on_sale', '_ppcart_schedule_sale', '_ppcart_sale_start', '_ppcart_sale_end', '_ppcart_show_full_price' ],
         ],
     ],
     'access' => [

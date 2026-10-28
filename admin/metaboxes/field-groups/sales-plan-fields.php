@@ -7,7 +7,7 @@ if (! defined('ABSPATH')) {
 return [
     'Hide Plans Section' => [
         'class'         => 'widefat',
-        'description'   => '',
+        'description'   => __('Hide the plan list at checkout. The first visible plan is selected automatically.', 'publishpress-cart'),
         'id'            => '_ppcart_hide_plans',
         'label'         => __('Hide Plans Section', 'publishpress-cart'),
         'placeholder'   => '',
@@ -17,7 +17,7 @@ return [
     ],
     'Section Heading' => [
         'class'     => 'widefat',
-        'description'   => '',
+        'description'   => __('Heading shown above the plan list on the checkout form.', 'publishpress-cart'),
         'id'            => '_ppcart_plan_heading',
         'label'     => __('Section Heading', 'publishpress-cart'),
         'placeholder'   => '',
@@ -34,7 +34,7 @@ return [
     'Payment Plan' => [
         'class'         => 'ppcart-repeater',
         'id'            => '_ppcart_pay_options',
-        'label-add'     => __('+ Add New', 'publishpress-cart'),
+        'label-add'     => __('+ Add Payment Plan', 'publishpress-cart'),
         'label-edit'    => __('Edit Payment Plan', 'publishpress-cart'),
         'label-header'  => __('Payment Plan', 'publishpress-cart'),
         'label-remove'  => __('Remove Payment Plan', 'publishpress-cart'),
@@ -43,6 +43,11 @@ return [
         'value'         => '',
         'class_size'    => '',
         'summary'       => true,
+        'empty_state'   => [
+            'icon'  => 'dashicons-money-alt',
+            'title' => __('No payment plans yet', 'publishpress-cart'),
+            'text'  => __('Add a plan to set the price customers pay for this product.', 'publishpress-cart'),
+        ],
         'sections'      => apply_filters(
             'ppcart_pay_plan_field_sections',
             [

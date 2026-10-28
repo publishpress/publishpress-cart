@@ -199,6 +199,28 @@ class ProductMetaboxLayoutTest extends WPTestCase
     /**
      * @test-id IT-394
      */
+    public function test_IT_394_pricing_tab_shows_payment_plans_before_the_sale(): void
+    {
+        $field = static function (string $id, string $type): array {
+            return [ 'type' => $type, 'id' => $id, 'label' => $id, 'value' => '', 'class' => '', 'class_size' => '', 'description' => '' ];
+        };
+
+        ob_start();
+        $this->invoke('render_product_tab_sections', 'pricing', [
+            $field('_ppcart_on_sale', 'checkbox'),
+            $field('_ppcart_schedule_sale', 'checkbox'),
+            $field('_ppcart_hide_plans', 'checkbox'),
+            $field('_ppcart_plan_heading', 'text'),
+        ]);
+        $html = (string) ob_get_clean();
+
+        $this->assertNotFalse(strpos($html, '>Sale</h4>'));
+        $this->assertLessThan(strpos($html, '>Sale</h4>'), strpos($html, '>Payment plans</h4>'));
+    }
+
+    /**
+     * @test-id IT-394
+     */
     public function test_IT_394_tab_without_a_group_joins_the_group_of_the_tab_before_it(): void
     {
         $groups = $this->invoke('get_product_setting_tab_groups', [

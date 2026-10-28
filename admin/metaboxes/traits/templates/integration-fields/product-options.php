@@ -18,7 +18,7 @@ return [
     [
         'class_size'    => 'one-half first',
         'class'         => 'widefat',
-        'description'   => '',
+        'description'   => __('Label shown next to the opt-in checkbox at checkout.', 'publishpress-cart'),
         'id'            => '_ppcart_optin_checkbox_text',
         'label'         => __('Opt-in Checkbox Label', 'publishpress-cart'),
         'placeholder'   => '',
@@ -33,7 +33,7 @@ return [
     ],
     [
         'class_size'    => 'one-half ',
-        'description'   => '',
+        'description'   => __('Customers must tick the opt-in checkbox before they can place the order.', 'publishpress-cart'),
         'id'            => '_ppcart_optin_required',
         'label'         => __('Make Opt-in Checkbox Required', 'publishpress-cart'),
         'placeholder'   => '',
