@@ -1,170 +1,161 @@
 === PublishPress Cart - eCommerce for Digital Products ===
-
-Author: publishpress
-Author URI: https://publishpress.com
 Contributors: publishpress, andergmartins, rizaardiyanto, ojopaul, stevejburge
-Tags: eCommerce, shopping cart, sales funnel, elementor
+Tags: ecommerce, shopping cart, sales funnel, digital products, elementor
 Requires at least: 6.7
 Tested up to: 7.1
-Stable tag: 1.0.1
 Requires PHP: 7.4
-License: GPL-2.0-or-later
+Stable tag: 1.0.1
+License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create order and thank you pages for digital products, programs, and services.
+Sell digital products, courses, and services from WordPress. Checkout pages, payment plans, subscriptions, and Stripe and PayPal payments.
 
 == Description ==
 
-PublishPress Cart helps you sell digital products, programs, events, or services from your WordPress website. It provides checkout pages, payment settings, customer account pages, order records, and integration settings for common payment and marketing workflows.
+**PublishPress Cart turns your WordPress site into a complete checkout for digital products, online courses, coaching, memberships, events, and services.**
 
-### Features ###
+Most eCommerce plugins are built for physical stores, with shipping fields, product catalogs, and long checkouts that get in the way when you are selling a course or a coaching package. PublishPress Cart is built for creators, coaches, and small businesses who sell their knowledge and time. Create a product, add a checkout form to any page, and start taking payments with Stripe and PayPal.
 
-* **Thank You Pages and Redirects:**
-Display a custom thank you page or redirect customers to another website after they complete their purchase.
+Everything stays inside WordPress: your products, checkout pages, orders, subscriptions, customers, and reports. There is no separate storefront to manage, no hosted cart platform, and no monthly fee to PublishPress for selling.
 
-* **Embed an order form anywhere:**
-Use the included shortcode to turn any page on your website into a checkout page.
+= What you can sell =
 
-* **Product launch settings:**
-Schedule cart open dates, manually turn a checkout page on or off, close a checkout after a configured number of sales, and redirect closed-cart visitors to a selected page.
+* **Digital downloads** such as ebooks, templates, workbooks, software, and audio files.
+* **Online courses and programs**, with customers sent to your course platform automatically.
+* **Coaching and consulting packages**, paid in full, in installments, or as a monthly retainer.
+* **Memberships and subscriptions** with free trials, sign-up fees, and recurring billing.
+* **Events, workshops, and services**, with sales limits for capped seats.
 
-* **One-time payments, installment plans and subscriptions:**
-Set up multiple payment options for a product so customers can choose from the payment plans you configure.
+= Checkout pages that match your site =
 
-* **Mailing list integrations:**
-Choose which mailing list or tag to add a buyer to on a per-product basis when a supported marketing service is configured.
+A PublishPress Cart checkout is a regular part of your WordPress site, so it uses your theme, your fonts, and your design.
 
-How to Use PublishPress Cart
-[youtube https://www.youtube.com/watch?v=uLDxhqXMhLY]
+* **Checkout block.** Add the Checkout block to any page or post. Choose the product, pick the payment plan that is selected by default, rename the form's headings and labels, and set wide or full-width alignment.
+* **Product page template.** Every product gets its own checkout page. On block themes, edit the product template once in the Site Editor and the change applies to every product.
+* **Shortcodes and page builders.** Use a shortcode anywhere, or build checkouts with Elementor, Divi, or Oxygen.
+* **Two Stripe checkout styles.** Keep buyers on your site with Stripe's embedded payment form, or send them to Stripe-hosted checkout to offer methods such as Klarna and Cash App Pay.
+* **Marketing consent.** Add an optional or required opt-in checkbox with your own wording.
+* **Spam protection.** Protect every checkout form with Google reCAPTCHA.
 
-**Want product updates and support resources?** Visit [PublishPress Cart](https://publishpress.com/publishpress-cart/).
+= Flexible pricing and payment plans =
 
-== External services ==
+Give each product as many payment plans as you need, and let buyers choose the option that works for them.
 
-PublishPress Cart can connect to third-party services when you enable and configure the related feature. These connections are optional unless you choose the related payment gateway, spam-protection feature, analytics feature, or marketing integration.
+* **One-time payments** for straightforward purchases.
+* **Installment plans** that charge a set number of payments and then stop.
+* **Recurring subscriptions** billed daily, weekly, monthly, or yearly until canceled.
+* **Free trials** in days before the first subscription payment.
+* **Sign-up fees** charged up front on recurring plans.
+* **Pay what you want** pricing that lets buyers set their own amount.
+* **Free products** for lead magnets and opt-in offers.
+* **Sales.** Put a product on sale now, or schedule a sale with start and end dates, and show the original price next to the sale price.
+* **Hidden plans.** Keep a plan off your checkout forms without deleting it.
 
-= Stripe =
+= Product launches and limited offers =
 
-Stripe is used to process card payments when Stripe is enabled. During checkout, PublishPress Cart sends order, customer, amount, currency, and payment metadata needed to create and confirm Stripe payments. Stripe may return payment, charge, refund, subscription, and webhook event data to the site. When a Stripe publishable key is saved, checkout and product pages also load Stripe.js from https://js.stripe.com/v3/.
+* **Scheduled cart opening.** Open and close a checkout on set dates, or switch it on and off by hand.
+* **Sales limits.** Close a product automatically after a set number of sales, and limit how many times each customer can buy.
+* **Closed-cart redirects.** Send visitors to a waitlist or sales page when the cart is closed.
+* **Stock alerts.** Get an email when a limited product is running low or sold out.
 
-Service: Stripe, Inc. Terms: https://stripe.com/legal. Privacy: https://stripe.com/privacy.
+= Delivery after purchase =
 
-= Stripe Connect (PublishPress) =
+* **Thank you pages.** Send buyers to a custom thank you page or to any URL.
+* **Secure file delivery.** Attach files to a product, limit the number of downloads, restrict files to specific payment plans, and choose whether to force a download or redirect to the file.
+* **Customer account area.** Build a "My Account" page with blocks for orders, subscriptions, payment plans, downloads, profile, and login.
+* **Customizable emails.** Edit the order received, purchase confirmation, welcome, renewal, and cancellation emails, using personalization tags for names, order details, and links. Add extra notifications per product, for example to alert a coach when a new client books.
 
-The optional Stripe Connect button uses a PublishPress connection service at https://publishpress.com to complete Stripe OAuth. When you start Connect from plugin settings, the plugin sends the site URL, return URL, connection state, and an encrypted site credential needed to finish account linking. PublishPress returns Stripe account identifiers used to process payments. This happens only when you choose Connect Stripe.
+= Orders, subscriptions, and customers =
 
-When Stripe Connect is used without PublishPress Cart Pro, Stripe applies a 2% application fee on those connected payments. That fee is not applied when PublishPress Cart Pro is active.
+* **Orders.** See every order with its customer, products, amount, and status. Open an order to edit billing details, resend the confirmation email, or download an invoice or receipt as a PDF.
+* **Refunds.** Issue full or partial refunds from the order screen.
+* **Subscriptions.** Pause, resume, or cancel any subscription, either immediately or at the end of the billing period, with or without a refund.
+* **Customers.** View each buyer's order history and lifetime value, and export your customer list.
+* **Reports.** Track revenue and sales in WordPress, and have sales reports emailed to you on a schedule.
 
-Service: PublishPress LLC. Terms: https://publishpress.com/terms-of-service/. Privacy: https://publishpress.com/privacy-policy/.
+= Automations and integrations =
 
-= PayPal =
+Each product can run its own automations. Choose what triggers them, such as a purchase, a refund, a new subscription, a renewal, a failed payment, a pause, or a cancellation, and limit them to specific payment plans.
 
-PayPal is used to process PayPal payments and subscriptions when PayPal is enabled. During checkout and subscription management, PublishPress Cart sends order, customer, amount, currency, subscription, and transaction data needed to create, verify, refund, pause, resume, or cancel PayPal transactions.
+* **Email marketing.** Add or tag buyers in ActiveCampaign, Mailchimp, or SendFox.
+* **Courses.** Give buyers access to MemberVault products.
+* **WordPress user accounts.** Create a WordPress user with the role you choose when someone buys.
+* **WooCommerce.** Keep PublishPress Cart's checkout and copy each order into WooCommerce, matched to your WooCommerce products and set to the order status you choose.
+* **Order actions.** Automatically refund another order or cancel another subscription, which is useful for upgrades and replacements.
+* **Webhooks.** Send order details to any URL with a GET or POST request, so you can connect almost any other service.
+* **Tracking.** Send purchase and lead events to Google Analytics and Facebook Ads, and add your own tracking code to each product.
 
-Service: PayPal, Inc. Terms: https://www.paypal.com/legalhub/useragreement-full. Privacy: https://www.paypal.com/privacy.
+[Read how integrations work](https://publishpress.com/knowledge-base/integrations-overview/).
 
-= Google reCAPTCHA =
+= PublishPress Cart Pro =
 
-Google reCAPTCHA is used to help validate checkout form submissions when reCAPTCHA is enabled. PublishPress Cart sends the reCAPTCHA response token and the visitor IP address to Google for verification. When a reCAPTCHA site key is saved, checkout forms also load https://www.google.com/recaptcha/api.js from Google.
+[PublishPress Cart Pro](https://publishpress.com/cart/) adds the tools that increase the value of each sale:
 
-Service: Google LLC. Terms: https://policies.google.com/terms. Privacy: https://policies.google.com/privacy.
+* **Order bumps.** Offer a related product at checkout that buyers add with one click.
+* **One-click upsells and downsells.** Build post-purchase funnels of up to five offers that charge the saved card with a single click.
+* **Coupons.** Create percentage or fixed discounts, coupon links, expiry dates, redemption limits, and bulk CSV imports.
+* **Collections.** Sell several products together as one bundle.
+* **Upgrade paths.** Let subscribers switch plans from their account page.
+* **Shipping, tax, and VAT** settings.
+* **Affiliate sales.**
+* **More payment gateways**, including Mollie, Razorpay, and Square.
+* **More integrations**, including Kit, Drip, MailerLite, MailPoet, FluentCRM, Encharge, LearnDash, Tutor LMS, WP Courseware, MasterStudy LMS, Academy LMS, Kajabi, Teachable, MemberPress, WishList Member, Restrict Content Pro, Ultimate Member, ARMember, and Groups.
+* **Trial ending and upcoming renewal reminder emails.**
+* **Invoice customization and white labeling.**
+* **Priority support.**
 
-= SendFox =
+See [the full Free vs Pro comparison](https://publishpress.com/knowledge-base/difference-between-cart-free-and-pro/).
 
-SendFox is used to add buyers to configured mailing lists when the SendFox integration is enabled. PublishPress Cart sends subscriber and order-related data required by the configured integration, such as email address, name, and selected list information.
+= Documentation and support =
 
-Service: SendFox / Sumo Group, Inc. Terms: https://sendfox.com/tos. Privacy: https://sendfox.com/privacy.
+* [Getting started with PublishPress Cart](https://publishpress.com/knowledge-base/getting-started-with-publishpress-cart/)
+* [Creating a product](https://publishpress.com/knowledge-base/creating-product/)
+* [Product configuration](https://publishpress.com/knowledge-base/product-configuration/)
+* [Customizing the checkout form](https://publishpress.com/knowledge-base/customize-checkout-form/)
+* [PublishPress support](https://publishpress.com/publishpress-support/)
 
-= ActiveCampaign =
-
-ActiveCampaign is used to sync buyers to configured lists and tags when the ActiveCampaign integration is enabled. PublishPress Cart sends subscriber and order-related data required by the configured integration, such as email address, name, and selected list or tag information.
-
-Service: ActiveCampaign, LLC. Terms: https://www.activecampaign.com/legal/terms-of-service. Privacy: https://www.activecampaign.com/legal/privacy-policy.
-
-= Mailchimp =
-
-Mailchimp is used to sync buyers to configured audiences, groups, or tags when the Mailchimp integration is enabled. PublishPress Cart sends subscriber and order-related data required by the configured integration, such as email address, name, audience, group, and tag information.
-
-Service: The Rocket Science Group LLC d/b/a Mailchimp. Terms: https://mailchimp.com/legal/terms/. Privacy: https://www.intuit.com/privacy/statement/.
-
-= Kit =
-
-Kit is used to sync buyers to configured forms and tags when the Kit integration is enabled. PublishPress Cart sends subscriber and order-related data required by the configured integration, such as email address, name, selected form, selected tag, and mapped custom field information.
-
-Service: ConvertKit LLC d/b/a Kit. Terms: https://kit.com/terms. Privacy: https://kit.com/privacy.
-
-= MemberVault =
-
-MemberVault is used to grant buyer access to configured products when the MemberVault integration is enabled. PublishPress Cart sends customer and product access data required by the configured integration, such as email address, name, and selected MemberVault product information.
-
-Service: MemberVault. Terms: https://membervault.co/terms. Privacy: https://membervault.co/privacy.
-
-= Google Analytics and Facebook Ads =
-
-When analytics or ads tracking integrations are enabled, PublishPress Cart can output the tracking data needed for purchase and lead events, such as order amount, currency, product information, and transaction identifiers. These services are only used when you configure the related tracking IDs or settings.
-
-Google terms: https://policies.google.com/terms. Google privacy: https://policies.google.com/privacy.
-Meta terms: https://www.facebook.com/legal/terms. Meta privacy: https://www.facebook.com/privacy/policy/.
-
-== Development and source code ==
-
-Human-readable Gutenberg sources ship in this plugin. The files in `includes/integrations/gutenberg/build/` are minified with npm and `@wordpress/scripts` 35.0.0, which runs webpack.
-
-To rebuild them, use Node.js 20.19 or newer on the 20 line, or Node.js 22.13 or newer. From the plugin directory:
-
-1. `npm install @wordpress/scripts@35.0.0`
-2. `npx wp-scripts build includes/integrations/gutenberg/blocks/checkout-form/order-form.js includes/integrations/gutenberg/blocks/account-page-builder/account-blocks.js includes/integrations/gutenberg/blocks/account-page-builder/account-page-view.js --output-path=includes/integrations/gutenberg/build`
-
-A development checkout that includes `package.json` can run `npm install` and then `npm run build:gutenberg` for the same output. `npm run start:gutenberg` rebuilds those files while you edit.
-
-* `includes/integrations/gutenberg/blocks/checkout-form/order-form.js` builds `includes/integrations/gutenberg/build/order-form.js`.
-* `includes/integrations/gutenberg/blocks/account-page-builder/account-blocks.js` builds `includes/integrations/gutenberg/build/account-blocks.js`.
-* `includes/integrations/gutenberg/blocks/account-page-builder/account-page-view.js` builds `includes/integrations/gutenberg/build/account-page-view.js`.
-
-Shared helpers are under `includes/integrations/gutenberg/blocks/_shared/`.
-
-== Third-party assets ==
-
-* Montserrat by The Montserrat Project Authors, SIL Open Font License 1.1. License: `public/fonts/OFL.txt`. https://github.com/JulietaUla/Montserrat
-* balloon.css 1.2.0 by Claudio Holanda, MIT. License: `admin/assets/libs/balloon.LICENSE.txt`. https://github.com/kazzkiq/balloon.css
-* flatpickr 4.6.13, MIT. License: `admin/assets/libs/flatpickr.js`. https://github.com/flatpickr/flatpickr
-* DataTables 3.0.4 by SpryMedia Ltd, MIT. License: `admin/js/jquery.dataTables.js`, `admin/css/jquery.dataTables.css`. https://datatables.net/license
-* jquery.daterangepicker by Chunlong Liu, MIT. License: `admin/js/ppcart-daterangepicker.js`, `admin/css/ppcart-daterangepicker.css`. https://github.com/longbill/jquery-date-range-picker
-* Selectize 0.15.2, Apache License 2.0. JavaScript: `admin/js/selectize.js`, `public/js/selectize.js`. Minified theme CSS: `admin/css/selectize.default.css`, `public/css/selectize.default.css`. https://github.com/selectize/selectize.js
-* Font Awesome Free 7.3.1 by Fonticons, Inc. Icons: CC BY 4.0; fonts: SIL Open Font License 1.1; code: MIT. License: `includes/assets/font-awesome-all.js`, `includes/assets/font-awesome-all.min.js`, `includes/assets/font-awesome-svg-with-js.css`, `includes/assets/font-awesome-svg-with-js.min.css`. https://fontawesome.com/license/free
-* Stripe PHP SDK 20.3.1, MIT. License: `lib/vendor/publishpress/stripe-php/lib/stripe/stripe-php/LICENSE`. https://github.com/stripe/stripe-php
-* Dompdf 3.1.6 (publishpress/dompdf-dompdf 3.1.6.2), LGPL-2.1-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/dompdf/LICENSE.LGPL`. https://github.com/dompdf/dompdf
-* php-font-lib, LGPL-2.1-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/php-font-lib/LICENSE`. https://github.com/dompdf/php-font-lib
-* php-svg-lib, LGPL-3.0-or-later. License: `lib/vendor/publishpress/dompdf-dompdf/lib/dompdf/php-svg-lib/LICENSE`. https://github.com/dompdf/php-svg-lib
-* Masterminds HTML5, MIT. License: `lib/vendor/publishpress/dompdf-dompdf/lib/masterminds/html5/LICENSE.txt`. https://github.com/Masterminds/html5-php
-* sabberworm/php-css-parser, MIT. License: `lib/vendor/publishpress/dompdf-dompdf/lib/sabberworm/php-css-parser/LICENSE`. https://github.com/sabberworm/PHP-CSS-Parser
-* Pimple 3.5.0 (publishpress/pimple-pimple 3.5.0.11), MIT. License: `lib/vendor/publishpress/pimple-pimple/lib/pimple/pimple/LICENSE`. https://github.com/silexphp/Pimple
-* psr/container 2.0.2 (publishpress/psr-container 2.0.2.1), MIT. License: `lib/vendor/publishpress/psr-container/LICENSE`. https://github.com/php-fig/container
-* PublishPress Bundled Translations 1.0.3, GPL-3.0-or-later. License: `lib/vendor/publishpress/bundled-translations/LICENSE`. https://github.com/publishpress/library-bundled-translations
-* PublishPress Instance Protection 2.1.0, GPL-3.0-or-later. License: `lib/vendor/publishpress/instance-protection/LICENSE`. https://github.com/publishpress/library-instance-protection
-* PublishPress WordPress Reviews 1.2.2, GPL-3.0-or-later. License: `lib/vendor/publishpress/wordpress-reviews/LICENSE`. https://github.com/publishpress/library-wordpress-reviews
-* PublishPress WordPress Version Notices 2.2.1, GPL-3.0-or-later. License: `lib/vendor/publishpress/wordpress-version-notices/LICENSE`. https://github.com/publishpress/library-wordpress-version-notices
-* Composer autoloader (Composer), MIT. License: `lib/vendor/composer/LICENSE`. https://getcomposer.org/
+PublishPress Cart is based on Studiocart 2.9.0 and is maintained by PublishPress.
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the Plugins screen in WordPress.
-3. Use the Settings -> PublishPress Cart screen to configure the plugin.
+1. Go to Plugins > Add New in your WordPress admin and search for "PublishPress Cart", or upload the plugin files to `/wp-content/plugins/`.
+2. Activate the plugin.
+3. Open the **PublishPress Cart** menu in your WordPress admin to connect a payment gateway and create your first product.
 
 == Frequently Asked Questions ==
 
-= What payment processors can I use with PublishPress Cart? =
-PublishPress Cart supports Stripe and PayPal. [PublishPress Cart Pro](https://publishpress.com/publishpress-cart/) is a separate plugin with additional payment gateway options.
+= Who is PublishPress Cart for? =
 
-= Does PublishPress Cart work in my language? =
-PublishPress Cart can be translated with WordPress translation files or a translation plugin such as [Loco Translate](https://wordpress.org/plugins/loco-translate/).
+Course creators, coaches, consultants, membership sites, event organizers, and anyone selling digital products or services from WordPress. If you sell physical products that need shipping and a catalog, a full store plugin may suit you better.
 
-= What integrations are available? =
-PublishPress Cart works with ActiveCampaign, Mailchimp, MemberVault, SendFox, MailPoet, Facebook Ads events, and Google Analytics. [PublishPress Cart Pro](https://publishpress.com/publishpress-cart/) is a separate plugin with additional integrations.
+= Do I need WooCommerce? =
 
-= I have a question not listed here. =
-Contact us via [PublishPress support](https://publishpress.com/publishpress-cart/).
+No. PublishPress Cart is a standalone checkout and does not need WooCommerce or any other eCommerce plugin. If you already run WooCommerce, you can still connect it with the WooCommerce integration.
+
+= Which payment processors can I use? =
+
+Stripe and PayPal. With Stripe you can use the embedded card form or Stripe-hosted checkout, which supports extra methods such as Klarna and Cash App Pay. [PublishPress Cart Pro](https://publishpress.com/cart/) adds Mollie, Razorpay, and Square.
+
+= Can I sell subscriptions and payment plans? =
+
+Yes. Each product can have several plans: one-time payments, installment plans, recurring subscriptions, free trials, sign-up fees, pay what you want, and free.
+
+= Can customers manage their own subscriptions? =
+
+Yes. Add the account page blocks to a page and customers can see their orders, downloads, subscriptions, and payment plans in one place.
+
+= Which integrations are included? =
+
+The free plugin includes ActiveCampaign, Mailchimp, SendFox, MemberVault, WooCommerce, WordPress user creation, webhooks, Google Analytics, and Facebook Ads events. Pro adds Kit, MailPoet, LearnDash, Tutor LMS, MemberPress, and many more. See the [Free vs Pro comparison](https://publishpress.com/knowledge-base/difference-between-cart-free-and-pro/).
+
+= Can I use my page builder? =
+
+Yes. Use the Checkout block in the block editor, a shortcode in any builder, or the Elementor, Divi, and Oxygen integrations.
+
+= Is there a fee on Stripe payments? =
+
+When you connect Stripe with the optional Connect Stripe button and PublishPress Cart Pro is not active, Stripe applies a 2% application fee to those payments. The fee is not applied when Pro is active.
+
 
 == Screenshots ==
 
@@ -174,6 +165,17 @@ Contact us via [PublishPress support](https://publishpress.com/publishpress-cart
 4. Configure payment options including one-time payments, installment plans, and subscriptions.
 5. Configure what happens after an order is placed.
 
+
 == Changelog ==
 
-The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-cart/blob/master/CHANGELOG.md).
+= 1.0.1 - 14 Oct 2026 =
+
+* Update: Rename Contacts to Customers and link order customer names to customer reports.
+* Update: Match product editor buttons to the blue Settings buttons.
+* Update: Use traceable PublishPress links for settings and extension upgrade prompts.
+* Update: Rename the unlimited subscription option from "Never expires" to "Until canceled".
+* Update: Replace WordPress.org banners with PublishPress Cart branding.
+
+= 1.0.0 - 21 Sep 2026 =
+
+* Initial release of PublishPress Cart, based on Studiocart 2.9.0, with updated plugin identity, packaging, and ongoing maintenance by PublishPress.
