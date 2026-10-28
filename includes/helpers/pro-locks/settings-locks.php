@@ -202,6 +202,7 @@ function ppcart_pro_locked_tabs()
         [
             'tax'         => 'blur',
             'white_label' => 'fields',
+            'affiliate'   => 'fields',
         ]
     );
 }
@@ -298,6 +299,14 @@ function ppcart_pro_locked_fields($context)
                 'label' => __('Invoice Footer', 'publishpress-cart'),
                 'type'  => 'text',
             ],
+        ],
+        'affiliate' => [
+            [ 'label' => __('Enable affiliate sales for all products', 'publishpress-cart'), 'type' => 'toggle' ],
+            [ 'label' => __('Automatic Affiliate User Roles', 'publishpress-cart'), 'type' => 'select' ],
+            [ 'label' => __('Affiliate Manager Email', 'publishpress-cart'), 'type' => 'text' ],
+            [ 'label' => __('Tracking URL Param Name', 'publishpress-cart'), 'type' => 'text' ],
+            [ 'label' => __('Affiliate Dashboard Page', 'publishpress-cart'), 'type' => 'select' ],
+            [ 'label' => __('Cookie length in days', 'publishpress-cart'), 'type' => 'text' ],
         ],
         'white_label' => [
             [ 'label' => __('Enable White Label', 'publishpress-cart'), 'type' => 'toggle' ],

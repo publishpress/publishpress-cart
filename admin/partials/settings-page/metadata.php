@@ -50,6 +50,11 @@ $tab_meta = [
         'group'       => 'comms',
         'description' => __('Connect your store with marketing, analytics and automation tools.', 'publishpress-cart'),
     ],
+    'affiliate'       => [
+        'icon'        => 'affiliate',
+        'group'       => 'comms',
+        'description' => __('Run a referral program with affiliate tracking, commissions, and payouts.', 'publishpress-cart'),
+    ],
     'reports'         => [
         'icon'        => 'report',
         'group'       => 'comms',
@@ -79,6 +84,7 @@ $tab_meta = [
 
 // These SVGs are literal plugin-owned strings; keep this array unfiltered.
 $icon_svgs = [
+    'affiliate' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M12 8v4M5 16v-4h14v4"/></svg>',
     'shop'    => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 5 4h14l2 5"/><path d="M3 9v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M3 9h18"/><path d="M9 13h6"/></svg>',
     'pages'   => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v14H6a2 2 0 0 1-2-2.5Z"/><path d="M8 7h8"/><path d="M8 11h6"/></svg>',
     'brand'   => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg>',

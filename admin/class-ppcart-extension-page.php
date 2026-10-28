@@ -71,21 +71,64 @@ class PPCart_Extension_Page
     }
 
     /**
-     * This function introduces the plugin options into a top-level
-     * 'CreativCart' menu.
+     * Register Settings previews and redirects for the removed Extensions page.
      */
     public function setup_plugin_options_menu()
     {
-        add_submenu_page(
-            PPCart_Admin_Screens::menu_slug(),
-            apply_filters('ppcart-settings-page-title', esc_html__('Extensions', 'publishpress-cart')),
-            apply_filters('ppcart-settings-menu-title', esc_html__('Extensions', 'publishpress-cart')),
-            ppcart_live_cap('manager_option'),
-            PPCart_Admin_Screens::PAGE_EXTENSIONS,
-            [ $this, 'render_page_contacts' ]
-        );
+        add_filter('ppcart_setting_tabs', [ $this, 'add_affiliate_settings_preview_tab' ]);
+        add_filter('ppcart_custom_option_list', [ $this, 'add_affiliate_settings_preview_fields' ]);
+        add_action('admin_init', [ $this, 'redirect_extensions_page' ]);
+        add_action('ppcart_settings_admin_notices', [ $this, 'render_extension_notice' ]);
 
         add_action('admin_notices', [ $this, 'render_extension_notice' ]);
+    }
+
+    /**
+     * Show the Affiliate promotion in Settings when Pro is unavailable.
+     *
+     * @since 1.1.0
+     * @param array $tabs Settings tabs.
+     * @return array
+     */
+    public function add_affiliate_settings_preview_tab($tabs)
+    {
+        if (ppcart_pro_is_locked()) {
+            $tabs['affiliate'] = __('Affiliate', 'publishpress-cart');
+        }
+        return $tabs;
+    }
+
+    /**
+     * Explain the affiliate program in its existing Settings location.
+     *
+     * @since 1.1.0
+     * @param array $options Existing settings fields.
+     * @return array
+     */
+    public function add_affiliate_settings_preview_fields($options)
+    {
+        if (! ppcart_pro_is_locked()) {
+            return $options;
+        }
+        $options['affiliate-setting'] = [];
+        return $options;
+    }
+
+    /**
+     * Send bookmarks for the removed Extensions page to its new home.
+     *
+     * @since 1.1.0
+     * @return void
+     */
+    public function redirect_extensions_page()
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only routing for a removed admin page.
+        $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+        if (PPCart_Admin_Screens::PAGE_EXTENSIONS !== $page || ! current_user_can(ppcart_live_cap('manager_option'))) {
+            return;
+        }
+        wp_safe_redirect(add_query_arg('page', PPCart_Admin_Screens::PAGE_SETTINGS, admin_url('admin.php')) . '#payment_methods');
+        exit;
     }
 
     /**
@@ -159,7 +202,11 @@ class PPCart_Extension_Page
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin notice routing.
         $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
 
-        if (PPCart_Admin_Screens::PAGE_EXTENSIONS !== $page) {
+        if (! in_array($page, [PPCart_Admin_Screens::PAGE_EXTENSIONS, PPCart_Admin_Screens::PAGE_SETTINGS], true)) {
+            return;
+        }
+
+        if (PPCart_Admin_Screens::PAGE_SETTINGS === $page && 'admin_notices' === current_filter()) {
             return;
         }
 
