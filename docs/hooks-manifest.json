@@ -961,6 +961,16 @@
             "operation": "add_action",
             "classification": "external",
             "status": "wordpress_core",
+            "file": "includes/integrations/Permissions.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "plugins_loaded",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
             "file": "includes/integrations/templates/ppcart-googlerecaptcha---construct.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
@@ -3331,6 +3341,16 @@
             "operation": "add_filter",
             "classification": "public",
             "status": "canonical",
+            "file": "includes/integrations/Permissions.php",
+            "recommended_hook": "ppcart_integration_fields",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integration_fields",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
             "file": "includes/integrations/templates/ppcart-kit-init.php",
             "recommended_hook": "ppcart_integration_fields",
             "notes": "Canonical hook prefix."
@@ -3392,6 +3412,16 @@
             "classification": "public",
             "status": "canonical",
             "file": "includes/integrations/CancelSubscription.php",
+            "recommended_hook": "ppcart_integrations",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integrations",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/Permissions.php",
             "recommended_hook": "ppcart_integrations",
             "notes": "Canonical hook prefix."
         },
@@ -5333,6 +5363,16 @@
             "status": "canonical",
             "file": "admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php",
             "recommended_hook": "ppcart_product_{$tab_id}_fields",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_publishpress_permissions_integrations",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/Permissions.php",
+            "recommended_hook": "ppcart_publishpress_permissions_integrations",
             "notes": "Canonical hook prefix."
         },
         {
