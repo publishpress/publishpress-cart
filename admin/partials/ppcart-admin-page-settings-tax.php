@@ -19,13 +19,13 @@ if (! defined('ABSPATH')) {
         <table class="widefat ppcart_tax_rate_table">
             <thead>
                 <tr>
-                    <th><a href="https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes" target="_blank" rel="noreferrer noopener" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-tax-rates-country-code-help')); ?>"><?php esc_html_e('Country code', 'publishpress-cart'); ?></a></th>
-                    <th><?php esc_html_e('State code', 'publishpress-cart'); ?></th>
-                    <th><?php esc_html_e('Postcode', 'publishpress-cart'); ?></th>
-                    <th><?php esc_html_e('City', 'publishpress-cart'); ?></th>
-                    <th><?php esc_html_e('Rate %', 'publishpress-cart'); ?></th>
-                    <th><?php esc_html_e('Tax Title', 'publishpress-cart'); ?></th>
-                    <th><?php esc_html_e('Priority', 'publishpress-cart'); ?></th>
+                    <th scope="col"><a href="https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes" target="_blank" rel="noreferrer noopener" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-tax-rates-country-code-help')); ?>"><?php esc_html_e('Country code', 'publishpress-cart'); ?></a></th>
+                    <th scope="col"><?php esc_html_e('State code', 'publishpress-cart'); ?></th>
+                    <th scope="col"><?php esc_html_e('Postcode', 'publishpress-cart'); ?></th>
+                    <th scope="col"><?php esc_html_e('City', 'publishpress-cart'); ?></th>
+                    <th scope="col"><?php esc_html_e('Rate %', 'publishpress-cart'); ?></th>
+                    <th scope="col"><?php esc_html_e('Tax Title', 'publishpress-cart'); ?></th>
+                    <th scope="col"><?php esc_html_e('Priority', 'publishpress-cart'); ?></th>
                 </tr>
             </thead>
             <tfoot>
