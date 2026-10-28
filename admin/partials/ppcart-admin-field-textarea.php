@@ -8,7 +8,7 @@ if (! defined('ABSPATH')) {
 /**
  * Provides the markup for any textarea field
  *
- * @link https://publishpress.com/publishpress-cart/
+ * @link https://publishpress.com/cart/
  * @since 1.0.0
  *
  * @package PublishPress_Cart

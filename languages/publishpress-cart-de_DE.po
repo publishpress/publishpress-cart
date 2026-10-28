@@ -23,8 +23,8 @@ msgstr "PublishPress Cart - eCommerce für digitale Produkte"
 
 #: publishpress-cart.php:17
 #. Plugin URI of the plugin
-msgid "https://publishpress.com/publishpress-cart/"
-msgstr "https://publishpress.com/publishpress-cart/"
+msgid "https://publishpress.com/cart/"
+msgstr "https://publishpress.com/cart/"
 
 #: publishpress-cart.php:18
 #. Description of the plugin
@@ -46,7 +46,7 @@ msgstr "PublishPress"
 #. Author URI of the plugin
 #, fuzzy
 msgid "https://publishpress.com/"
-msgstr "https://publishpress.com/publishpress-cart/"
+msgstr "https://publishpress.com/cart/"
 
 #: admin/class-ppcart-admin-reports.php:89
 #: admin/class-ppcart-admin-reports.php:90

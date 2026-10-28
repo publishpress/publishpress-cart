@@ -331,7 +331,7 @@ function ppcart_register_email_template_option_filters()
 
 function ppcart_email_personalize_replacements($replacements, $order_info)
 {
-    $replacements['PublishPress Cart'] = '<a href="https://publishpress.com/publishpress-cart/" target="_blank" rel="noreferrer noopener">PublishPress Cart</a>';
+    $replacements['PublishPress Cart'] = '<a href="https://publishpress.com/cart/" target="_blank" rel="noreferrer noopener">PublishPress Cart</a>';
 
     if (isset($order_info['quantity'])) {
         $replacements['quantity'] = $order_info['quantity'];

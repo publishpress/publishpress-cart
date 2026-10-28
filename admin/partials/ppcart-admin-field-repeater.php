@@ -13,7 +13,7 @@ if (! defined('ABSPATH')) {
  *
  * $fields['file-type']['all-the-field-attributes'] = 'Data for the attribute';
  *
- * @link https://publishpress.com/publishpress-cart/
+ * @link https://publishpress.com/cart/
  * @since 1.0.0
  *
  * @package PublishPress_Cart

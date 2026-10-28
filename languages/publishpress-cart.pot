@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: publishpress-cart.php:17
-msgid "https://publishpress.com/publishpress-cart/"
+msgid "https://publishpress.com/cart/"
 msgstr ""
 
 #. Description of the plugin

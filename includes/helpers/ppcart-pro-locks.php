@@ -8,7 +8,7 @@
  * and rows), and a blur/overlay for whole locked tabs. Shared visual primitives
  * live in admin/css/ppcart-pro-locks.css (loaded on every plugin screen).
  *
- * @link https://publishpress.com/publishpress-cart/
+ * @link https://publishpress.com/cart/
  * @since 1.0.0
  *
  * @package PPCart
