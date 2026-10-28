@@ -288,22 +288,20 @@ export const coreAdminTests: AdminTestCase[] = [
   },
   {
     id: "AD-011",
-    title: "Extensions Page",
+    title: "Extensions Redirect to Settings",
     startUrl: "{{publishpress_cart_host}}/wp-admin/admin.php?page=ppcart-extensions",
     steps: [
       {
         command: "assertElementPresent",
-        target: ".cart-extensions-wrap",
+        target: "[data-pp-tab=\"payment_methods\"]",
+      },
+      {
+        command: "click",
+        target: "[data-pp-tab-target=\"affiliate\"]",
       },
       {
         command: "assertElementPresent",
-        target: "[id^=\"product-\"]",
-        optional: true,
-      },
-      {
-        command: "assertTextPresent",
-        target: "body",
-        value: "Extensions",
+        target: "[data-pp-tab=\"affiliate\"]",
       }
     ],
   },
