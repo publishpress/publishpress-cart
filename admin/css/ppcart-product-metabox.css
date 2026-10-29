@@ -72,18 +72,30 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group + .ppcart-tab-nav-group {
-  margin-top: 12px;
+  margin-top: 18px;
 }
 
+/* A group name is a divider, not a tab: dark bold capitals, then a rule to the
+ * edge of the list. */
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group__label {
-  color: var(--ppcart-text-muted);
+  align-items: center;
+  color: var(--ppcart-text);
+  display: flex;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.08em;
   line-height: 1.6;
   margin: 0 0 6px;
-  padding: 0 12px;
+  padding: 0 0 0 12px;
   text-transform: uppercase;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group__label::after {
+  background: var(--ppcart-border-strong);
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav + .ppcart-tab-nav {
