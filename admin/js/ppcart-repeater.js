@@ -729,8 +729,11 @@
 
 	$(function(){
 
-		$( 'select.repeater-title' ).each(function(){
-			syncRepeaterTitle( $(this) );
+		// Saved rows take their title from the title field. An empty text field keeps the title the server printed.
+		$( '.repeater-title' ).each(function(){
+			if ( $(this).is( 'select' ) || String( $(this).val() || '' ).trim() !== '' ) {
+				syncRepeaterTitle( $(this) );
+			}
 		});
 
 		$( document ).on( 'keyup change', 'input.repeater-title, textarea.repeater-title', function(){
