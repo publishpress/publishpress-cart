@@ -92,19 +92,24 @@ trait PPCart_Files_Settings_Trait
             [
                 'id' => 'ppcart_files_intro',
                 'type' => 'html',
-                'value' => '<p>' . esc_html__('Add downloadable files for this product. Files are optional. To add a file, enter both a File URL and a File Name. Leave both fields blank if this product has no downloads.', 'publishpress-cart') . '</p>',
+                'value' => '<p>' . esc_html__('Customers can download these files after they buy.', 'publishpress-cart') . '</p>',
             ],
             [
                 'class'         => 'ppcart-repeater',
                 'id'            => '_ppcart_files',
-                'label-add'     => __('+ Add File', 'publishpress-cart'),
-                'label-edit'    => __('Edit File', 'publishpress-cart'),
+                'label-add'     => __('+ Add file', 'publishpress-cart'),
+                'label-edit'    => __('Edit file', 'publishpress-cart'),
                 'label-header'  => __('File', 'publishpress-cart'),
-                'label-remove'  => __('Remove File', 'publishpress-cart'),
+                'label-remove'  => __('Remove file', 'publishpress-cart'),
                 'title-field'   => 'name',
                 'type'          => 'repeater',
                 'value'         => '',
                 'class_size'    => '',
+                'empty_state'   => [
+                    'icon'  => 'dashicons-download',
+                    'title' => __('No files yet', 'publishpress-cart'),
+                    'text'  => __('Add a file to give customers a download link after they buy.', 'publishpress-cart'),
+                ],
                 'fields'        => [
                     [
                         'text' => [
@@ -121,6 +126,8 @@ trait PPCart_Files_Settings_Trait
                         'file-upload' => [
                             'class'         => 'select file_url required',
                             'id'            => 'file_url',
+                            'description'   => __('Customers download it after they buy.', 'publishpress-cart'),
+                            'tooltip'       => __('Downloads use a private link.', 'publishpress-cart'),
                             'label'         => __('File URL', 'publishpress-cart'),
                             'placeholder'   => '',
                             'type'          => 'file-upload',
@@ -128,13 +135,14 @@ trait PPCart_Files_Settings_Trait
                             'value'         => '',
                             'class_size'    => '',
                             'label-remove'      => __('Clear', 'publishpress-cart'),
-                            'label-upload'      => __('Upload File', 'publishpress-cart'),
+                            'label-upload'      => __('Upload file', 'publishpress-cart'),
                     ]],
                     [
                     'text' => [
                         'class'         => 'select file_name required repeater-title',
                         'id'            => 'file_name',
-                        'label'         => __('File Name', 'publishpress-cart'),
+                        'description'   => __('Shown in the customer\'s downloads list.', 'publishpress-cart'),
+                        'label'         => __('File name', 'publishpress-cart'),
                         'placeholder'   => '',
                         'type'          => 'text',
                         'value'         => '',
@@ -143,7 +151,8 @@ trait PPCart_Files_Settings_Trait
                     [
                         'select' => [
                             'class'         => 'ppcart-selectize multiple',
-                            'description'   => __('Give access only if the order is for a specific payment plan (or purchase type) for this product. Leave blank to give access any time this product is ordered.', 'publishpress-cart'),
+                            'description'   => __('Leave empty to give access for every plan.', 'publishpress-cart'),
+                            'tooltip'       => __('Give access only when the order uses this payment plan or purchase type.', 'publishpress-cart'),
                             'id'            => 'file_plan',
                             'label'         => __('Restrict by payment plan / purchase type', 'publishpress-cart'),
                             'placeholder'   => __('Any', 'publishpress-cart'),
@@ -162,7 +171,7 @@ trait PPCart_Files_Settings_Trait
                     [
                         'text' => [
                             'class'     => 'widefat',
-                            'description'   => '',
+                            'description'   => __('Downloads per order. Leave empty for no limit.', 'publishpress-cart'),
                             'id'            => 'file_limit',
                             'label'     => __('Download limit', 'publishpress-cart'),
                             'placeholder'   => '&infin;',

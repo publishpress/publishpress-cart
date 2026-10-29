@@ -61,6 +61,31 @@ trait PPCart_Product_Metaboxes_Render_Trait
     }
 
     /**
+         * Sorts the product settings tabs into labelled nav groups.
+         *
+         * @param array<string,string> $product_setting_tabs Tab id => label.
+         * @return array<string,array{label:string,tabs:array<string,string>}>
+         */
+    private function get_product_setting_tab_groups($product_setting_tabs)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/product-metabox-render-get-product-setting-tab-groups.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
+         * Renders a tab's fields, split into titled sections when the tab has a section map.
+         *
+         * @param string $tab_id Product settings tab ID.
+         * @param array  $fields Tab fields.
+         * @return void
+         */
+    private function render_product_tab_sections($tab_id, $fields)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/product-metabox-render-tab-sections.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
          * Returns the ordered product setting field groups for rendering or saving.
          *
          * @param string $context Current field use context.

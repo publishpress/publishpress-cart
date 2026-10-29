@@ -5,17 +5,15 @@ if (! defined('ABSPATH')) {
 }
 
 
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only context check for current admin post.
-if (!isset($_GET['post'])) {
-    return;
-}
-
+// New products list the paths too, so no check for $_GET['post'] here.
 $options = ['' => __('-- Select Upsell Path --', 'publishpress-cart')];
 
 // The Query
 $args = [
     'post_type' => function_exists('ppcart_query_pro_post_types') ? ppcart_query_pro_post_types('us_path') : [ 'ppcart_us_path' ],
     'post_status' => 'publish',
+    // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- The select must list every upsell path.
+    'posts_per_page' => -1,
 ];
 $the_query = new WP_Query($args);
 

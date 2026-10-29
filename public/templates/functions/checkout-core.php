@@ -382,7 +382,8 @@ function ppcart_do_confirmation_message()
     $closed_msg = $ppcart_product->confirmation_message ?? '';
     $closed_msg = $closed_msg ? $closed_msg : __("Thank you. We've received your order.", "publishpress-cart");
     echo '<h4 style="margin:0 0 20px" data-testid="' . esc_attr(ppcart_data_testid_attribute('ppcart-order-confirmation-message')) . '">';
-    echo wp_kses_post(wp_specialchars_decode($closed_msg, 'ENT_QUOTES'));
+    // The message is a textarea, so keep its line breaks.
+    echo wp_kses_post(nl2br(wp_specialchars_decode($closed_msg, 'ENT_QUOTES')));
     echo '</h4>';
 }
 

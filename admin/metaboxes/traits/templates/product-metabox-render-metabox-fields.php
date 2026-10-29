@@ -48,7 +48,7 @@ foreach ($fields as $atts) {
             apply_filters('ppcart-field-' . $atts['id'], $atts);
             $atts['name'] = $atts['id'];
 
-            ?><div id="rid<?php echo esc_attr($atts['id']); ?>" class="ppcart-field ppcart-row <?php echo esc_attr($atts['class_size']); ?>"><?php
+            ?><div id="rid<?php echo esc_attr($atts['id']); ?>" class="ppcart-field ppcart-row ppcart-field--<?php echo esc_attr(sanitize_html_class((string) $atts['type'])); ?> <?php echo esc_attr($atts['class_size']); ?>"><?php
             if (file_exists((defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR . 'admin/partials/' : dirname(__DIR__, 2) . '/partials/') . '' . 'ppcart-admin-field-' . $atts['type'] . '.php')) {
                 include((defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR . 'admin/partials/' : dirname(__DIR__, 2) . '/partials/') . '' . 'ppcart-admin-field-' . $atts['type'] . '.php');
             } else {

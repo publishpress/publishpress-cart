@@ -611,7 +611,12 @@
     function bindNotificationPreviewEditors() {}
     
     function initializeSelect2(selectElementObj) {
-        selectElementObj.selectize({plugins: ['remove_button'],allowEmptyOption: true,items:['']});
+        selectElementObj.each(function() {
+            // Keep the options the template row marks as selected, such as a new row's default.
+            var items = $(this).find('option[selected]').map(function() { return this.value; }).get();
+
+            $(this).selectize({plugins: ['remove_button'],allowEmptyOption: true,items: items.length ? items : ['']});
+        });
     }
 
 	/**
@@ -710,68 +715,33 @@
     });
 
 	/**
-	 * Changes the title of the repeater header as you type
+	 * Changes the title of the repeater header as you type.
+	 * An empty field (or a select left on its placeholder) puts back the default title.
 	 */
-	$( '.repeater-title' ).each(function(){
+	function syncRepeaterTitle( $field ) {
+		var repeater_title = $field.closest( '.ppcart-repeater' ).find( '.title-repeater' ).first();
+		var fieldval = $field.is( 'select' )
+			? ( $field.val() ? $field.find( 'option:selected' ).text() : '' )
+			: String( $field.val() || '' );
 
-			var repeater = $(this).parents( '.ppcart-repeater' );
-			var fieldval = $(this).val();
-            var repeater_title = repeater.find( '.title-repeater' );
+		repeater_title.text( fieldval.trim().length > 0 ? fieldval : repeater_title.data( 'label' ) );
+	}
 
-			if ( fieldval.length > 0 ) {
+	$(function(){
 
-				repeater_title.text( fieldval );
-
+		// Saved rows take their title from the title field. An empty text field keeps the title the server printed.
+		$( '.repeater-title' ).each(function(){
+			if ( $(this).is( 'select' ) || String( $(this).val() || '' ).trim() !== '' ) {
+				syncRepeaterTitle( $(this) );
 			}
-	});
-    $(function(){
-
-		$( '.repeater-title' ).on( 'keyup', function(){
-
-			var repeater = $(this).parents( '.ppcart-repeater' );
-			var fieldval = $(this).val();
-            var repeater_title = repeater.find( '.title-repeater' );
-
-			if ( fieldval.length > 0 ) {
-
-				repeater_title.text( fieldval );
-
-			} else {
-
-				repeater_title.text( repeater_title.data('title') );
-
-			}
-
 		});
 
-		$( 'select.repeater-title' ).each(function(){
-
-			var repeater = $(this).parents( '.ppcart-repeater' );
-			var fieldval = $(this).find('option:selected').text();
-            var repeater_title = repeater.find( '.title-repeater' );
-
-			if ( fieldval.length > 0 ) {
-				repeater_title.text( fieldval );
-			}
-
+		$( document ).on( 'keyup change', 'input.repeater-title, textarea.repeater-title', function(){
+			syncRepeaterTitle( $(this) );
 		});
 
-		$( 'select.repeater-title' ).on( 'change', function(){
-
-			var repeater = $(this).parents( '.ppcart-repeater' );
-			var fieldval = $(this).find('option:selected').text();
-            var repeater_title = repeater.find( '.title-repeater' );
-
-			if ( fieldval.length > 0 ) {
-
-				repeater_title.text( fieldval );
-
-			} else {
-
-				repeater_title.text( repeater_title.data('title') );
-
-			}
-
+		$( document ).on( 'change', 'select.repeater-title', function(){
+			syncRepeaterTitle( $(this) );
 		});
 
 	});
@@ -813,13 +783,15 @@
         $list.find('.ppcart-repeater:visible').each(function (idx) {
             var $inp = $(this).find(':input');
             $inp.each(function () {
-                if (!this.name) {
+                // Inputs with a form attribute are UI helpers (for example the price type buttons), not saved fields.
+                if (!this.name || this.hasAttribute('form')) {
                     return;
                 }
 
 				// console.log(this.name);
                 var name = updateIndex(this.name, idx);
-                this.name = name; 
+                var oldId = this.id;
+                this.name = name;
 
                 if ($(this).closest('.wp-editor-wrap').length) {
                     return;
@@ -827,6 +799,9 @@
 
                 this.id = name;
                 $(this).next('label').attr('for',name);
+                $(this).closest('.wrap-field').find('label.ppcart-label').filter(function () {
+                    return this.htmlFor === oldId;
+                }).attr('for', name);
             });
         });
     }

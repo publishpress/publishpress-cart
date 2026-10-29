@@ -9,7 +9,9 @@ $fields = [
         'text' => [
             'class'         => 'ppcart-unique required',
             'id'            => 'option_id',
-            'label'         => __('Plan ID: ', 'publishpress-cart'),
+            'description'   => '',
+            'tooltip'       => __('Used in links, shortcodes and plan rules. If you change it, existing links can break.', 'publishpress-cart'),
+            'label'         => __('Plan ID', 'publishpress-cart'),
             'type'          => 'text',
             'value'         => '',
             'class_size'    => 'one-half first',
@@ -41,18 +43,18 @@ $fields = [
     ],
     [
         'select' => [
-            'class'         => '',
+            'class'         => 'ppcart-segmented',
             'description'   => '',
             'id'            => 'product_type',
-            'label'         => __('Price Type', 'publishpress-cart'),
+            'label'         => __('Price type', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
             'selections'    => [
-                '' => 'One-time Payment',
-                'recurring' => __('Recurring Payments (Subscriptions)', 'publishpress-cart'),
-                'pwyw'      => 'Pay What You Want',
-                'free'      => 'Free',
+                ''          => __('One-time', 'publishpress-cart'),
+                'recurring' => __('Subscription', 'publishpress-cart'),
+                'pwyw'      => __('Pay what you want', 'publishpress-cart'),
+                'free'      => __('Free', 'publishpress-cart'),
             ],
             'class_size' => 'one-half first',
         ],
@@ -60,9 +62,10 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => __('`A-z 0-9`, dashes, &amp; underscores without spaces only. Must be unique for this product.', 'publishpress-cart'),
+            'description'   => '',
+            'tooltip'       => __('Letters, numbers, dashes and underscores only. Must be unique for this product.', 'publishpress-cart'),
             'id'            => 'url_slug',
-            'label'         => __('URL Slug', 'publishpress-cart'),
+            'label'         => __('URL slug', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'text',
             'value'         => '',
@@ -72,9 +75,9 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat name repeater-title',
-            'description'       => __("A description of this payment plan option that's displayed on the order form.", 'publishpress-cart'),
+            'description'       => __('Plan name on the checkout form.', 'publishpress-cart'),
             'id'            => 'option_name',
-            'label'         => __('Option Label', 'publishpress-cart'),
+            'label'         => __('Checkout label', 'publishpress-cart'),
             'placeholder'   => __('e.g. One payment of $100', 'publishpress-cart'),
             'type'          => 'text',
             'value'         => '',
@@ -84,13 +87,21 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => 'A description of this payment plan when on sale',
+            'description'   => __('Plan name on the checkout form during a sale.', 'publishpress-cart'),
             'id'            => 'sale_option_name',
-            'label'         => __('Sale Option Label', 'publishpress-cart'),
-            'placeholder'   => 'e.g. One payment of $50 (that\'s 50% off!)',
+            'label'         => __('Sale checkout label', 'publishpress-cart'),
+            'placeholder'   => __('e.g. One payment of $50 (that\'s 50% off!)', 'publishpress-cart'),
             'type'          => 'text',
             'value'         => '',
             'class_size'    => 'one-half',
+            // A free plan has no sale, so it needs no sale label.
+            'conditional_logic' => [
+                [
+                    'field' => 'product_type',
+                    'value' => 'free',
+                    'compare' => '!=',
+                ],
+            ],
         ],
     ],
     [
@@ -117,8 +128,9 @@ $fields = [
         'text' => [
             'class'         => 'widefat',
             'description'   => '',
+            'tooltip'       => __('Used while the sale is on. Turn the sale on in the Sale card below the plans.', 'publishpress-cart'),
             'id'            => 'sale_price',
-            'label'         => __('Sale Price', 'publishpress-cart'),
+            'label'         => __('Sale price', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'price',
             'value'         => '',
@@ -170,7 +182,7 @@ $fields = [
             'class'         => '',
             'description'   => '',
             'id'            => 'sale_frequency',
-            'label'         => __('Frequency (On Sale)', 'publishpress-cart'),
+            'label'         => __('Sale frequency', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -202,7 +214,7 @@ $fields = [
             'class'         => '',
             'description'   => '',
             'id'            => 'interval',
-            'label'         => __('Pay Interval', 'publishpress-cart'),
+            'label'         => __('Pay interval', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -226,7 +238,7 @@ $fields = [
             'class'         => '',
             'description'   => '',
             'id'            => 'sale_interval',
-            'label'         => __('Pay Interval (On Sale)', 'publishpress-cart'),
+            'label'         => __('Sale pay interval', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -249,8 +261,9 @@ $fields = [
         'select' => [
             'class'         => '',
             'description'   => '',
+            'tooltip'       => __('Billing stops after this many payments. Otherwise it continues until the subscription is canceled.', 'publishpress-cart'),
             'id'            => 'installments',
-            'label'         => __('Number of Payments', 'publishpress-cart'),
+            'label'         => __('Number of payments', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -269,7 +282,7 @@ $fields = [
             'class'         => '',
             'description'   => '',
             'id'            => 'sale_installments',
-            'label'         => __('Number of Payments (On Sale)', 'publishpress-cart'),
+            'label'         => __('Sale number of payments', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -286,12 +299,12 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => '',
+            'description'   => __('Shown in place of the price at checkout.', 'publishpress-cart'),
             'id'            => 'name_your_own_price_text',
-            'label'         => __('Name Your Price Label', 'publishpress-cart'),
-            'placeholder'   => __('Name Your Price', 'publishpress-cart'),
+            'label'         => __('Name your price label', 'publishpress-cart'),
+            'placeholder'   => __('Name your price', 'publishpress-cart'),
             'type'          => 'text',
-            'value'         => __('Name Your Price, normally $5.00', 'publishpress-cart'),
+            'value'         => __('Name your price', 'publishpress-cart'),
             'class_size'    => '',
             'conditional_logic' => [
                 [
@@ -304,9 +317,10 @@ $fields = [
     [
         'checkbox' => [
             'class'         => '',
-            'description'   => '',
+            'description'   => __('Customers choose their own recurring amount.', 'publishpress-cart'),
+            'tooltip'       => __('The amount must be at or above the plan price.', 'publishpress-cart'),
             'id'            => 'recurring_pwyw',
-            'label'         => __('Enable Pay What You Want', 'publishpress-cart'),
+            'label'         => __('Pay what you want', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'checkbox',
             'value'         => '',
@@ -324,12 +338,22 @@ $fields = [
             'class'         => 'widefat',
             'description'   => '',
             'id'            => 'name_your_own_price_text_recurring',
-            'label'         => __('Name Your Price Label', 'publishpress-cart'),
-            'placeholder'   => __('Name Your Price', 'publishpress-cart'),
+            'label'         => __('Name your price label', 'publishpress-cart'),
+            'placeholder'   => __('Name your price', 'publishpress-cart'),
             'type'          => 'text',
-            'value'         => __('Name Your Price, normally $5.00', 'publishpress-cart'),
+            'value'         => __('Name your price', 'publishpress-cart'),
             'class_size'    => 'one-half',
-            'conditional_logic' => '',
+            // Each plan row follows its own price type and switch.
+            'conditional_logic' => [
+                [
+                    'field' => 'product_type',
+                    'value' => 'recurring',
+                ],
+                [
+                    'field' => 'recurring_pwyw',
+                    'value' => true,
+                ],
+            ],
         ],
     ],
 ];

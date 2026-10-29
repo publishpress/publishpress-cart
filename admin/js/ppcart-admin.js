@@ -694,14 +694,28 @@ jQuery(document).ready(function($){
     });
 
     $('.ppcart-settings-tabs .required').each(function(){
-        $(this).closest('.wrap-field, .ppcart-field.ppcart-row ').find('label').append('<span class="req">*</span>')
+        var $label = $(this).closest('.wrap-field, .ppcart-field.ppcart-row ').find('label').first();
+        var star = '<span class="req" aria-hidden="true">*</span>';
+
+        // Keep the "*" next to the label text, before any "?" tooltip.
+        if ($label.children('.ppcart-tooltip').length) {
+            $label.children('.ppcart-tooltip').first().before(star);
+        } else {
+            $label.append(star);
+        }
     });
 
-    $('.ppcart-tab').eq(0).css({'display':'flex',opacity: 1});
-    $('.ppcart-tab-nav a').click(function(){
+    // The redesigned product metabox (.ppcart-ui) has its own tabs and required-field check
+    // (ppcart-product-metabox.js). Screens that still print the old tab markup, such as the
+    // Pro upsell and upgrade path editors, keep the old behavior.
+    var $legacyTabs = $('.ppcart-settings-tabs').not('.ppcart-ui');
 
+    $legacyTabs.find('.ppcart-tab').eq(0).css({'display':'flex',opacity: 1});
+    $legacyTabs.find('.ppcart-tab-nav a').click(function(){
+
+        var $container = $(this).closest('.ppcart-settings-tabs');
         var errors = false;
-        $('.ppcart-settings-tabs .required:visible').each(function(){
+        $container.find('.required:visible').each(function(){
             var $fileRow = $(this).closest('#repeater_ppcart_files > .ppcart-repeater');
             if ($fileRow.length &&
                 !String($fileRow.find('.file_url').val() || '').trim() &&
@@ -723,8 +737,8 @@ jQuery(document).ready(function($){
             return false;
         }
 
-        $('.ppcart-tab-nav, .ppcart-tab').removeClass('active');
-        $('.ppcart-tab').hide();
+        $container.find('.ppcart-tab-nav, .ppcart-tab').removeClass('active');
+        $container.find('.ppcart-tab').hide();
         $(this).parent().addClass('active');
         $($(this).attr('href')).css({opacity: 0, display: "flex"}).animate({opacity: 1}, 400);
         return false;

@@ -35,9 +35,12 @@ class ProductIntegrationHeadingEscapeTest extends WPTestCase
     }
 
     /**
+     * The tab no longer prints the product title in a heading. Keep the
+     * GHSA-w7xm-9m54-hrqv guard: no HTML item in the tab may print the raw title.
+     *
      * @test-id IT-389
      */
-    public function test_IT_389_integration_heading_escapes_product_title(): void
+    public function test_IT_389_integration_fields_never_print_the_raw_product_title(): void
     {
         $this->previousGet = $_GET;
 
@@ -68,28 +71,23 @@ class ProductIntegrationHeadingEscapeTest extends WPTestCase
 
         $this->assertIsArray($integrations);
 
-        $headingField = null;
-        foreach ($integrations as $field) {
-            if (! is_array($field) || ($field['type'] ?? '') !== 'html') {
-                continue;
+        $htmlFields = array_values(array_filter(
+            $integrations,
+            static function ($field) {
+                return is_array($field) && ($field['type'] ?? '') === 'html';
             }
-            if (strpos((string) ($field['value'] ?? ''), 'rid_ppcart_twostep_heading') !== false) {
-                $headingField = $field;
-                break;
-            }
-        }
+        ));
 
-        $this->assertIsArray($headingField);
+        $this->assertNotEmpty($htmlFields);
 
         $renderFields = new ReflectionMethod(PPCart_Product_Metaboxes::class, 'metabox_fields');
         $renderFields->setAccessible(true);
 
         ob_start();
-        $renderFields->invoke($metaboxes, [ $headingField ]);
+        $renderFields->invoke($metaboxes, $htmlFields);
         $html = (string) ob_get_clean();
 
-        $this->assertStringContainsString('rid_ppcart_twostep_heading', $html);
-        $this->assertStringContainsString('&lt;a href=&quot;https://evil.example&quot;&gt;phish&lt;/a&gt;', $html);
+        $this->assertStringContainsString('ppcart-renew-lists', $html);
         $this->assertStringNotContainsString('<a href="https://evil.example">', $html);
     }
 }

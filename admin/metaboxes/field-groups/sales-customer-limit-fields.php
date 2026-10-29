@@ -7,7 +7,8 @@ if (! defined('ABSPATH')) {
 return [
     [
         'class'     => 'widefat',
-        'description'   => '',
+        'description'   => __('Limit how many times one customer can buy this.', 'publishpress-cart'),
+        'tooltip'       => __('Customers are matched by account or email.', 'publishpress-cart'),
         'id'            => '_ppcart_customer_purchase_limit',
         'label'     => __('Limit sales per customer', 'publishpress-cart'),
         'placeholder'   => '',
@@ -17,9 +18,9 @@ return [
     ],
     [
         'class'     => 'widefat',
-        'description'   => __('Enter the maximum amount of times a single customer can purchase this product.', 'publishpress-cart'),
+        'description'   => '',
         'id'            => '_ppcart_customer_limit',
-        'label'     => __('Customer purchase limit', 'publishpress-cart'),
+        'label'     => __('Purchases per customer', 'publishpress-cart'),
         'placeholder'   => '',
         'type'      => 'number',
         'value'     => '1',
@@ -33,7 +34,7 @@ return [
     ],
     [
         'class'     => 'widefat',
-        'description'   => '',
+        'description'   => __('Shown at checkout when a customer reaches the limit.', 'publishpress-cart'),
         'id'            => '_ppcart_customer_limit_message',
         'label'     => __('Limit reached message', 'publishpress-cart'),
         'placeholder'   => '',

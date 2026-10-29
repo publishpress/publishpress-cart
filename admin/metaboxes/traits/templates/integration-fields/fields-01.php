@@ -21,11 +21,14 @@ return [
     [
         'select' => [
             'class'         => 'ppcart-selectize multiple',
+            'description'   => __('The integration runs only on these events.', 'publishpress-cart'),
             'id'            => 'service_trigger',
             'label'         => __('Trigger', 'publishpress-cart'),
-            'placeholder'   => '',
+            'placeholder'   => __('Choose events', 'publishpress-cart'),
             'type'          => 'select',
             'value'         => '',
+            // Not "required": the repeater save counts rows by the last required field, so a row without a trigger would drop the rows after it.
+            'new_row_value' => 'purchased',
             'class_size'    => 'one-half first',
             'selections'    => ($save) ? '' : $this->option_sources->get_trigger_option(),
             'conditional_logic' =>  [
@@ -40,7 +43,8 @@ return [
     [
         'select' => [
             'class'         => 'ppcart-selectize multiple',
-            'description'   => __('Run only if the order contains a specific payment plan (or purchase type) for this product. Leave blank to run this integration on any order for this product.', 'publishpress-cart'),
+            'description'   => __('Leave empty to run for every plan.', 'publishpress-cart'),
+            'tooltip'       => __('Run only when the order uses this payment plan or purchase type.', 'publishpress-cart'),
             'id'            => 'int_plan',
             'label'         => __('Restrict by payment plan / purchase type', 'publishpress-cart'),
             'placeholder'   => __('Any', 'publishpress-cart'),
@@ -141,7 +145,7 @@ return [
         'textarea' => [
             'class'         => 'field_map',
             'id'            => 'field_map',
-            'label'         => __('Field Map', 'publishpress-cart'),
+            'label'         => __('Field map', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'textarea',
             'note'   => __('Put each field pair on a separate line and use a colon (":") to separate the field key from the field value. For example: field_key:ppcart_field_id', 'publishpress-cart'),
@@ -182,7 +186,7 @@ return [
         'select' => [
             'class'         => 'mail_chimp_list_name',
             'id'            => 'mail_list',
-            'label'         => __('Mailchimp List', 'publishpress-cart'),
+            'label'         => __('Mailchimp list', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -201,7 +205,7 @@ return [
         'select' => [
             'class'         => 'mail_chimp_list_tags',
             'id'            => 'mail_tags',
-            'label'         => __('Mailchimp Tags', 'publishpress-cart'),
+            'label'         => __('Mailchimp tags', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -225,7 +229,7 @@ return [
         'select' => [
             'class'         => 'mail_chimp_list_groups',
             'id'            => 'mail_groups',
-            'label'         => __('Mailchimp Groups', 'publishpress-cart'),
+            'label'         => __('Mailchimp groups', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',

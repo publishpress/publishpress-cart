@@ -1,0 +1,991 @@
+/**
+ * Product settings metabox layout in the Cart Settings look: tab list,
+ * panels, section cards, field rows and repeater cards.
+ *
+ * Field components (inputs, toggles, buttons) and the color tokens are in
+ * ppcart-components.css. Both files use the #ppcart-product-settings
+ * .ppcart-ui.ppcart-settings-tabs prefix, so they win over the older rules
+ * in ppcart-admin.css.
+ *
+ * Layout rules: labels go above controls, one column, at most 760px wide.
+ * When the panel is wide, labels move to the left of the controls and the
+ * cards fill the panel, as on the Cart Settings screen.
+ * A section gets a card and a title only when it has two or more fields.
+ */
+
+/* ppcart-admin.css clips the rounded corners with overflow: hidden, which makes
+ * the box a scroll container and stops the sticky tab list. clip does not. */
+#ppcart-product-settings.postbox {
+  overflow: clip;
+}
+
+#ppcart-product-settings .inside {
+  background: #fafbfd;
+  /* The layout follows the metabox width, not the screen width: the editor
+   * sidebar and the meta box panel make the metabox much narrower. */
+  container: ppcart-box / inline-size;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs {
+  background: var(--ppcart-surface-alt);
+  display: flex;
+  min-height: 420px;
+  position: relative;
+}
+
+/* Tab list ------------------------------------------------------------ */
+
+/* The sidebar color fills the full height, because the tab list itself is
+ * only as tall as its tabs. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs::before {
+  background: var(--ppcart-sidebar-bg);
+  border-right: 1px solid var(--ppcart-sidebar-border);
+  bottom: 0;
+  box-sizing: border-box;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 212px;
+}
+
+/* The tab list stays in view while a long tab scrolls. ppcart-product-metabox.js
+ * sets the max height to the visible height, so a tall list scrolls on its own. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col {
+  align-self: flex-start;
+  background: var(--ppcart-sidebar-bg);
+  border-right: 1px solid var(--ppcart-sidebar-border);
+  box-sizing: border-box;
+  flex: 0 0 212px;
+  max-height: var(--ppcart-tabs-max-height, none);
+  min-width: 212px;
+  overflow-y: auto;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* In the classic editor the page scrolls, under the admin bar. */
+body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col {
+  top: var(--wp-admin--admin-bar--height, 32px);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group + .ppcart-tab-nav-group {
+  margin-top: 18px;
+}
+
+/* A group name is a divider, not a tab: dark bold capitals, then a rule to the
+ * edge of the list. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group__label {
+  align-items: center;
+  color: var(--ppcart-text);
+  display: flex;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  margin: 0 0 6px;
+  padding: 0 0 0 12px;
+  text-transform: uppercase;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group__label::after {
+  background: var(--ppcart-border-strong);
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav + .ppcart-tab-nav {
+  margin-top: 2px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav a {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--ppcart-radius);
+  box-shadow: none;
+  box-sizing: border-box;
+  color: var(--ppcart-text);
+  display: flex;
+  font-size: 13.5px;
+  font-weight: 500;
+  gap: 8px;
+  line-height: 1.3;
+  min-height: 36px;
+  padding: 7px 12px;
+  position: relative;
+  text-decoration: none;
+  transition: background-color 0.1s ease;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav a:hover {
+  background: #f1f5f9;
+  color: var(--ppcart-text);
+}
+
+/* A mouse click leaves focus on the link; show the ring for keyboard focus only. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav a:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav a:focus-visible {
+  box-shadow: 0 0 0 2px var(--ppcart-sidebar-primary) !important;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav.active a {
+  background: var(--ppcart-surface);
+  border-color: var(--ppcart-sidebar-border);
+  color: var(--ppcart-sidebar-primary);
+  font-weight: 600;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav.active a::before {
+  background: var(--ppcart-sidebar-primary);
+  border-radius: 2px;
+  bottom: 8px;
+  content: "";
+  left: -1px;
+  position: absolute;
+  top: 8px;
+  width: 3px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav__label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav .ppcart-settings__nav-pro-badge {
+  margin-left: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav__count {
+  align-items: center;
+  background: var(--ppcart-danger);
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 600;
+  height: 20px;
+  justify-content: center;
+  min-width: 20px;
+  padding: 0 6px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav__count[hidden] {
+  display: none;
+}
+
+/* Panels -------------------------------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col {
+  background: var(--ppcart-surface-alt);
+  box-sizing: border-box;
+  container: ppcart-panel / inline-size;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 28px 32px 40px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col > .ppcart-tab {
+  display: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col > .ppcart-tab.active {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 24px;
+  max-width: 760px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col > .ppcart-tab:focus {
+  outline: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col > .ppcart-tab:focus-visible {
+  border-radius: var(--ppcart-radius);
+  box-shadow: 0 0 0 2px var(--ppcart-primary);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-product-tab-description {
+  color: var(--ppcart-text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-metabox-notice[hidden] {
+  display: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-metabox-notice ul {
+  list-style: disc;
+  margin: 0 0 0 20px;
+}
+
+/* Sections: a white card with a dark title, as on the Settings screen. ---- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section {
+  border: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section:not(.ppcart-section--plain) {
+  background: var(--ppcart-surface);
+  border: 1px solid var(--ppcart-card-border);
+  border-radius: var(--ppcart-radius);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  gap: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section__header {
+  background: var(--ppcart-surface);
+  border-bottom: 1px solid var(--ppcart-border);
+  border-radius: 7px 7px 0 0;
+  padding: 16px 24px 14px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section__title {
+  color: var(--ppcart-text);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 24px 24px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section__description {
+  color: var(--ppcart-text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* The section title replaces this old heading row. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs #rid_ppcart_notification_heading {
+  display: none;
+}
+
+/* Field rows: the label goes above the control. ------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-field.ppcart-row {
+  border: 0;
+  box-sizing: border-box;
+  display: block;
+  flex-basis: auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > label:first-child,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > .label:first-child,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > .ppcart-label:first-child {
+  display: block;
+  flex-basis: auto;
+  margin: 0 0 6px;
+  min-width: 0;
+  padding: 0;
+  width: auto;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row .input-group {
+  width: 100%;
+}
+
+/* Help goes on its own line under the control, never squeezed beside it. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .input-group {
+  flex-wrap: wrap;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .input-group > .description {
+  flex-basis: 100%;
+}
+
+/* ppcart-admin.css sizes the Plan ID label for the old row layout, with !important. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridoption_id > label {
+  flex-basis: auto !important;
+  min-width: 0 !important;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row#rid_ppcart_checkout_ended_message label,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row#rid_ppcart_confirmation_message label {
+  margin-top: 0;
+}
+
+/* Short values get a short control. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-field--number .input-group,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-field--price .input-group,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row .input-group:has(> input.datepicker) {
+  max-width: 240px;
+}
+
+/* Repeaters: one card per row. ----------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeaters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* A row header is a gray bar with a strong border, so it stands out from the
+ * white card around it. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater {
+  background: var(--ppcart-surface);
+  border: 1px solid var(--ppcart-border-strong);
+  border-radius: var(--ppcart-radius);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  margin: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .handle {
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 7px 7px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 52px;
+  padding: 10px 56px 10px 14px;
+  position: relative;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .handle.closed {
+  border-radius: 7px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .handle:hover {
+  background: #e8edf3;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .handle .title-repeater {
+  color: var(--ppcart-text);
+  flex: 0 1 auto;
+  font-size: 14.5px;
+  font-weight: 600;
+  min-width: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .title-repeater::before {
+  color: var(--ppcart-text-muted);
+  margin-right: 8px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-summary {
+  align-items: center;
+  color: #3f4855;
+  display: inline-flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  font-size: 13px;
+  gap: 8px;
+  min-width: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ppcart-btn-edit {
+  align-items: center;
+  border-radius: var(--ppcart-radius-sm);
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ppcart-btn-edit:hover {
+  background: var(--ppcart-surface);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ppcart-btn-edit:focus {
+  box-shadow: var(--ppcart-focus-ring);
+  outline: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .toggle-arrow {
+  color: #36475f;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ppcart-repeater-content {
+  background: var(--ppcart-surface);
+  border-radius: 0 0 7px 7px;
+  border-top: 1px solid var(--ppcart-border-strong);
+  padding: 20px 24px 16px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 24px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeaters--sections .ppcart-repeater .wrap-fields {
+  display: block;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .wrap-field {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .wrap-field.one-half {
+  width: calc(50% - 12px);
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .wrap-field.one-half.first {
+  margin-right: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .wrap-field > label,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .wrap-field > .label,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .wrap-field > .ppcart-label {
+  flex-basis: auto;
+  font-size: 13.5px;
+  margin: 0 0 6px;
+  min-width: 0;
+  padding: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ppcart-repeater-content > .wrap-fields + div {
+  border-top: 1px solid var(--ppcart-border);
+  margin-top: 20px;
+  padding-top: 12px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .link-remove {
+  align-items: center;
+  color: var(--ppcart-danger);
+  display: inline-flex;
+  font-weight: 600;
+  min-height: 32px;
+  text-decoration: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .link-remove:hover {
+  color: #a21f20;
+  text-decoration: underline;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeaters .repeater-more {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+}
+
+/* Payment plan sections inside a plan card. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section {
+  border-top: 1px solid var(--ppcart-border);
+  margin: 20px 0 0;
+  padding-top: 16px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section--main {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section.is-empty,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section.is-empty,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-off .ppcart-repeater-section--sale {
+  display: none;
+}
+
+/* Sale fields that sit beside the regular ones. Conditional logic sets an inline
+ * display on them, so these need !important to stay hidden. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-off .ppcart-repeater .ridsale_price,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-off .ppcart-repeater .ridsale_option_name,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-now #rid_ppcart_schedule_sale,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-now #rid_ppcart_sale_start,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs.ppcart-sale-now #rid_ppcart_sale_end {
+  display: none !important;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__title {
+  color: var(--ppcart-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs summary.ppcart-repeater-section__title {
+  color: var(--ppcart-primary);
+  cursor: pointer;
+  font-size: 13.5px;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 2px 0;
+  text-transform: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs summary.ppcart-repeater-section__title:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--ppcart-primary);
+  outline-offset: 2px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs details[open] > summary.ppcart-repeater-section__title {
+  margin-bottom: 16px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields {
+  display: grid;
+  gap: 20px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+
+/* Grid cells set the width, so "one-half" fields fill their cell. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .ppcart-repeater-section__fields > .wrap-field {
+  margin: 0;
+  width: auto;
+}
+
+/* Fields that read better on a full row. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridproduct_type,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridoption_name,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridsale_option_name,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridname_your_own_price_text,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridname_your_own_price_text_recurring,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ppcart-field--checkbox {
+  grid-column: 1 / -1;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented-source {
+  display: none !important;
+}
+
+/* Integrations: "Refresh mailing lists" shows once an integration exists. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-integrations-refresh p {
+  margin: 12px 0 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section--list:has(.ppcart-repeater-empty:not([hidden])) .ppcart-integrations-refresh {
+  display: none;
+}
+
+/* Email notification rows. The rules above give every field display:flex, so
+ * repeat the "Advanced sender settings" hide/show from ppcart-admin.css. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .ppcart-product-notification-advanced-field {
+  display: none;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater.ppcart-product-notification-advanced-open .wrap-fields .ppcart-product-notification-advanced-field {
+  display: flex;
+}
+
+/* The fields stack in a column here, so the old 560px flex-basis became a height. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridmessage .ppcart-editor-field {
+  flex: none;
+  max-width: 560px;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridnotification_sender_summary,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridnotification_preview {
+  margin-left: 0;
+  max-width: 560px;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .ridnotification_preview {
+  align-items: flex-start;
+}
+
+/* Condition rows (confirmations and emails): one condition per line. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ridconditions {
+  margin-left: 0;
+  max-width: none;
+  width: 100%;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .wrap-field {
+  flex: 1 1 160px;
+  margin: 0;
+  width: auto;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .condition-type,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .remove-condition {
+  flex: none;
+  margin: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .conditions .wrap-fields .condition-type {
+  border-radius: var(--ppcart-radius-sm);
+}
+
+/* Toggle rows: switch, label beside it, help under the label. ----------
+ * These come after the repeater rules, which put labels above fields. */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row.ppcart-field--checkbox,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .wrap-fields .wrap-field.ppcart-field--checkbox {
+  align-items: center;
+  column-gap: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row.ppcart-field--checkbox > .ppcart-label:first-child,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .wrap-fields .wrap-field.ppcart-field--checkbox > .ppcart-label {
+  cursor: pointer;
+  flex: 1 1 0;
+  margin: 0;
+  min-width: 0;
+  order: 2;
+  padding: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-field--checkbox > .checkbox-wrap {
+  display: contents;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-field--checkbox .ckbx-style {
+  order: 1;
+}
+
+/* Full width forces the help onto its own line under the label. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-field--checkbox > .checkbox-wrap > .description {
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  margin: 4px 0 0;
+  max-width: none;
+  order: 3;
+  padding-left: 52px;
+}
+
+/* Wide panel: label on the left, control on the right. -----------------
+ * The query reads the panel width, not the window width, because the block
+ * editor sidebar and the Classic Editor columns change the metabox width.
+ * Fields inside repeater cards keep their labels above. */
+
+@container ppcart-panel (min-width: 820px) {
+  /* Checkout label and sale checkout label sit side by side. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridoption_name,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields > .ridsale_option_name {
+    grid-column: span 2;
+  }
+
+  /* Cards fill the panel, as on the Settings screen. Controls keep their own caps. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col > .ppcart-tab.active,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-metabox-notice.notice {
+    max-width: none;
+  }
+
+  /* A plain section of rows gets a card without a title, so its labels line up with the cards below. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section--plain:not(:has(> .ppcart-repeaters)) {
+    background: var(--ppcart-surface);
+    border: 1px solid var(--ppcart-card-border);
+    border-radius: var(--ppcart-radius);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+    gap: 16px;
+    padding: 16px 24px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section__body {
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  /* A line splits the rows, as on the Settings screen. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section--plain > .ppcart-field.ppcart-row,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__body > .ppcart-field.ppcart-row,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__body > .ppcart-repeaters {
+    border-top: 1px solid var(--ppcart-border);
+    padding-top: 16px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section--plain > .ppcart-field.ppcart-row:first-child,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__body > .ppcart-field.ppcart-row:first-child,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section--plain > .ppcart-field.ppcart-row.hide:first-child + .ppcart-field.ppcart-row,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__body > .ppcart-field.ppcart-row.hide:first-child + .ppcart-field.ppcart-row,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__description + .ppcart-field.ppcart-row,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-section__description + .ppcart-repeaters {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-field.ppcart-row:has(> label:first-child, > .ppcart-label:first-child) {
+    align-items: start;
+    column-gap: 24px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+  /* 9px of space puts the label text level with the text in a 38px control. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > label:first-child,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > .ppcart-label:first-child {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    padding-top: 9px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-field.ppcart-row > :not(:first-child) {
+    grid-column: 2;
+  }
+
+  /* :where() keeps these below the short-control rule above. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > :where(.input-group),
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeaters--sections .ppcart-repeater-section__fields :where(.wrap-field > .input-group) {
+    max-width: 560px;
+  }
+
+  /* Toggle rows: the switch goes in the control column, with the help beside it. */
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row.ppcart-field--checkbox > .ppcart-label:first-child {
+    flex: none;
+    order: 0;
+    padding-top: 1px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row.ppcart-field--checkbox > .checkbox-wrap {
+    align-items: flex-start;
+    display: flex;
+    gap: 12px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row.ppcart-field--checkbox > .checkbox-wrap > .description {
+    flex: 1 1 auto;
+    margin: 1px 0 0;
+    max-width: 560px;
+    padding-left: 0;
+  }
+}
+
+/* Pro previews -------------------------------------------------------- */
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview {
+  background: var(--ppcart-surface);
+  border: 1px solid var(--ppcart-card-border);
+  border-radius: var(--ppcart-radius);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  box-sizing: border-box;
+  padding: 20px 24px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__header {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__icon {
+  align-items: center;
+  background: #fff5e0;
+  border-radius: 50%;
+  color: #8a5a00;
+  display: flex;
+  flex: 0 0 36px;
+  font-size: 18px;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__title {
+  align-items: center;
+  display: flex;
+  font-size: 15px;
+  font-weight: 600;
+  gap: 8px;
+  margin: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__title .ppcart-settings__nav-pro-badge {
+  margin-left: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__text {
+  color: var(--ppcart-text-muted);
+  margin: 4px 0 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list-label {
+  font-weight: 600;
+  margin: 16px 0 8px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list {
+  display: grid;
+  gap: 6px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list li {
+  margin: 0;
+  padding-left: 22px;
+  position: relative;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list li::before {
+  color: var(--ppcart-primary);
+  content: "\f147";
+  font: normal 18px/1 dashicons;
+  left: 0;
+  position: absolute;
+  top: 1px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta {
+  align-items: center;
+  background: #fdb324;
+  border: 1px solid #fdb324;
+  border-radius: var(--ppcart-radius-sm);
+  box-shadow: none;
+  color: #1f2430;
+  display: inline-flex;
+  font-weight: 600;
+  min-height: 38px;
+  padding: 0 16px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta:hover,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta:focus {
+  background: #f0a500;
+  border-color: #f0a500;
+  color: #1f2430;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta:focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #1f2430;
+}
+
+/* Narrow metabox: the tab list becomes a row above the panel. --------------- */
+
+@container ppcart-box (max-width: 720px) {
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs {
+    display: block;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs::before {
+    display: none;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col {
+    border-bottom: 1px solid var(--ppcart-sidebar-border);
+    border-right: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    max-height: none;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px;
+    position: static;
+    width: 100%;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group__tabs {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 4px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group + .ppcart-tab-nav-group,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav + .ppcart-tab-nav {
+    margin-top: 0;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tab-nav-group__label {
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav a {
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav.active a::before {
+    bottom: -1px;
+    height: 3px;
+    left: 8px;
+    right: 8px;
+    top: auto;
+    width: auto;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col {
+    padding: 16px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section__header,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-section__body,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .ppcart-repeater-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater .wrap-fields .wrap-field.one-half {
+    width: 100%;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-section__fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-segmented__option span {
+    justify-content: center;
+    min-height: 44px;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-left-col .ppcart-tab-nav a,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style label::before,
+  #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ckbx-style label::after {
+    transition: none;
+  }
+}

@@ -440,6 +440,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_order_updated` | Action | `do_action` | Public | canonical | `models/order/traits/trait-ppcart-order-persistence.php` | ppcart_order_updated |
 | `ppcart_orderform_before_payment_plans` | Action | `do_action` | Public | canonical | `public/templates/functions/plan-coupon-fields.php` | ppcart_orderform_before_payment_plans |
 | `ppcart_page_metabox` | Action | `do_action` | Public | canonical | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | ppcart_page_metabox |
+| `ppcart_pay_plan_field_sections` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/field-groups/sales-plan-fields.php` | ppcart_pay_plan_field_sections |
 | `ppcart_pay_plan_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php` | ppcart_pay_plan_fields |
 | `ppcart_pay_plan_recurring_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php` | ppcart_pay_plan_recurring_fields |
 | `ppcart_payment_confirmation` | Action | `add_action` | Public | canonical | `public/templates/checkout1.php` | ppcart_payment_confirmation |
@@ -537,9 +538,11 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_product_save_stripe_meta` | Action | `do_action` | Public | canonical | `admin/templates/product-admin-save-stripe-objects.php` | ppcart_product_save_stripe_meta |
 | `ppcart_product_setting_tab_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | ppcart_product_setting_tab_fields |
 | `ppcart_product_setting_tab_files_fields` | Filter | `add_filter` | Public | canonical | `includes/files/class-ppcart-files.php` | ppcart_product_setting_tab_files_fields |
+| `ppcart_product_setting_tab_groups` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tab-groups.php` | ppcart_product_setting_tab_groups |
 | `ppcart_product_setting_tab_{$tab_id}_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | ppcart_product_setting_tab_{$tab_id}_fields |
 | `ppcart_product_setting_tabs` | Filter | `add_filter` | Public | canonical | `includes/files/class-ppcart-files.php` | ppcart_product_setting_tabs |
 | `ppcart_product_setting_tabs` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php` | ppcart_product_setting_tabs |
+| `ppcart_product_tab_sections` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-render-tab-sections.php` | ppcart_product_tab_sections |
 | `ppcart_product_{$tab_id}_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | ppcart_product_{$tab_id}_fields |
 | `ppcart_ransaction_id` | Filter | `apply_filters` | Public | canonical | `includes/functions/orders-products-and-formatting.php` | ppcart_ransaction_id |
 | `ppcart_receipt_after_order_details` | Action | `add_action` | Public | canonical | `includes/files/class-ppcart-files.php` | ppcart_receipt_after_order_details |
