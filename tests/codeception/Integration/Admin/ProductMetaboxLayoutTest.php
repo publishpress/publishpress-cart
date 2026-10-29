@@ -32,6 +32,22 @@ class ProductMetaboxLayoutTest extends WPTestCase
         return (string) ob_get_clean();
     }
 
+    private function renderFieldsWithMeta(array $fields, array $meta): string
+    {
+        $metaboxes = new PPCart_Product_Metaboxes('ppcart', '1.0', 'ppcart_');
+        $property = new \ReflectionProperty(PPCart_Product_Metaboxes::class, 'meta');
+        $property->setAccessible(true);
+        $property->setValue($metaboxes, $meta);
+
+        $render = new ReflectionMethod(PPCart_Product_Metaboxes::class, 'metabox_fields');
+        $render->setAccessible(true);
+
+        ob_start();
+        $render->invoke($metaboxes, $fields);
+
+        return (string) ob_get_clean();
+    }
+
     private function repeater(array $extra = []): array
     {
         return array_merge(
@@ -87,7 +103,7 @@ class ProductMetaboxLayoutTest extends WPTestCase
             [
                 'type'        => 'text',
                 'id'          => '_ppcart_button_text',
-                'label'       => 'Submit Button Text',
+                'label'       => 'Submit button text',
                 'description' => 'Text on the order button.',
                 'value'       => '',
                 'class'       => '',
@@ -166,6 +182,45 @@ class ProductMetaboxLayoutTest extends WPTestCase
 
         $this->assertStringNotContainsString('ppcart-repeater-empty', $html);
         $this->assertStringContainsString('<li class="ppcart-repeater is-starter"', $html);
+    }
+
+    /**
+     * @test-id IT-394
+     */
+    public function test_IT_394_untitled_repeater_row_shows_the_default_title(): void
+    {
+        $rows = [
+            [ 'notification_name' => 'Welcome' ],
+            [ 'notification_name' => '' ],
+        ];
+        $html = $this->renderFieldsWithMeta([ $this->repeater() ], [ '_ppcart_notifications' => [ serialize($rows) ] ]);
+
+        preg_match_all('/<span class="title-repeater" data-label="([^"]*)">([^<]*)<\/span>/', $html, $titles);
+
+        // Two saved rows, then the template row for new rows.
+        $this->assertSame([ 'Welcome', 'Notification', 'Notification' ], $titles[2]);
+        $this->assertSame([ 'Notification', 'Notification', 'Notification' ], $titles[1]);
+    }
+
+    /**
+     * @test-id IT-394
+     */
+    public function test_IT_394_new_row_value_sets_only_rows_the_user_adds(): void
+    {
+        $repeater = $this->repeater([
+            'fields' => [
+                [ 'text' => [ 'class' => 'widefat required', 'id' => 'notification_name', 'label' => 'Name', 'type' => 'text', 'value' => '' ] ],
+                [ 'checkbox' => [ 'class' => '', 'id' => 'order_bump', 'label' => 'Enable', 'type' => 'checkbox', 'value' => '', 'new_row_value' => 1 ] ],
+            ],
+        ]);
+        $rows = [ [ 'notification_name' => 'Saved while off' ] ];
+        $html = $this->renderFieldsWithMeta([ $repeater ], [ '_ppcart_notifications' => [ serialize($rows) ] ]);
+
+        preg_match_all('/<input\s+(checked=\'checked\')?[^>]*name="_ppcart_notifications\[order_bump\]\[([^\]]*)\]"/', $html, $inputs);
+
+        // The saved row lacks the key, so it stays off. The template row for new rows starts on.
+        $this->assertSame([ '0', '' ], $inputs[2]);
+        $this->assertSame([ '', "checked='checked'" ], $inputs[1]);
     }
 
     /**

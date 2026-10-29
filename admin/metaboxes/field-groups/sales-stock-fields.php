@@ -20,7 +20,7 @@ return [
         'description'   => '',
         'tooltip'       => __('Checkout closes when this reaches 0.', 'publishpress-cart'),
         'id'            => '_ppcart_limit',
-        'label'     => __('Amount Remaining', 'publishpress-cart'),
+        'label'     => __('Amount remaining', 'publishpress-cart'),
         'placeholder'   => '',
         'type'      => 'number',
         'value'     => '',

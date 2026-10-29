@@ -21,10 +21,10 @@ $this->integrations = [
     [
         'class'        => 'ppcart-repeater',
         'id'            => '_ppcart_integrations',
-        'label-add'    => __('+ Add Integration', 'publishpress-cart'),
-        'label-edit'   => __('Edit Integration', 'publishpress-cart'),
+        'label-add'    => __('+ Add integration', 'publishpress-cart'),
+        'label-edit'   => __('Edit integration', 'publishpress-cart'),
         'label-header' => __('Integration', 'publishpress-cart'),
-        'label-remove' => __('Remove Integration', 'publishpress-cart'),
+        'label-remove' => __('Remove integration', 'publishpress-cart'),
         'title-field'  => 'name',
         'type'         => 'repeater',
         'value'        => '',

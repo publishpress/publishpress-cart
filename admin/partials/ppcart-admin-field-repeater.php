@@ -53,6 +53,10 @@ if ([] !== $empty_state) {
     </li><?php
 }
 
+    // Each row starts from the default title, so an untitled row (or the template) never shows the title of the row before it.
+    $default_title = (string) ($setatts['label-header'] ?? '');
+    $title_field   = (string) ($setatts['title-field'] ?? '');
+
     for ($i = 0; $i <= $render_count; $i++) {
         $k = $i;
         if ($i === $render_count) {
@@ -60,9 +64,7 @@ if ([] !== $empty_state) {
             $k = null;
         }
 
-        if (! empty($repeater[$i][$setatts['title-field']])) {
-            $setatts['label-header'] = $repeater[$i][$setatts['title-field']];
-        }
+        $row_title = ('' !== $title_field && ! empty($repeater[$i][$title_field])) ? (string) $repeater[$i][$title_field] : $default_title;
 
         $row_testid_suffix = null === $k ? 'template' : (string) $k;
         $row_class = $setatts['class'];
@@ -94,6 +96,11 @@ if ([] !== $empty_state) {
                     if ($atts['id'] ==  'ob_product' || $atts['id'] ==  'prod_product') {
                         $prod_id = $atts['value'];
                     }
+                }
+
+                // Rows the user adds can start from another value than saved rows that lack the key.
+                if (null === $k && array_key_exists('new_row_value', $atts)) {
+                    $atts['value'] = $atts['new_row_value'];
                 }
 
                 if (isset($setting_field) && $setting_field) {
@@ -141,7 +148,7 @@ if ([] !== $empty_state) {
 
         ?><li class="<?php echo esc_attr($row_class); ?>" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-row-' . $row_testid_suffix)); ?>">
             <div class="handle">
-                <span class="title-repeater" data-label="<?php echo esc_attr($setatts['label-header']); ?>"><?php echo esc_html($setatts['label-header']); ?></span>
+                <span class="title-repeater" data-label="<?php echo esc_attr($default_title); ?>"><?php echo esc_html($row_title); ?></span>
                 <?php if (! empty($setatts['summary'])) : ?>
                     <span class="ppcart-repeater-summary"></span>
                 <?php endif; ?>

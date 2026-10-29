@@ -239,20 +239,6 @@ if ($this->scripts != '') :
                 }
             });
 
-            // recurring_pwyw
-            if (($('#product_type').length && $('#product_type').val() === 'recurring' || $('[name="_ppcart_pay_options[product_type][0]"]').val() === 'recurring') && $('#_ppcart_pay_options\\[recurring_pwyw\\]\\[0\\]').is(':checked')) {
-                $('.ridname_your_own_price_text_recurring').css({ opacity: 0, display: "flex" }).animate({ opacity: 1 }, 400);
-            } else {
-                $('.ridname_your_own_price_text_recurring').hide();
-            }
-            $(document).on('change', '#product_type, [name="_ppcart_pay_options[product_type][0]"], #_ppcart_pay_options\\[recurring_pwyw\\]\\[0\\]', function() {
-                if (($('#product_type').length && $('#product_type').val() === 'recurring' || $('[name="_ppcart_pay_options[product_type][0]"]').val() === 'recurring') && $('#_ppcart_pay_options\\[recurring_pwyw\\]\\[0\\]').is(':checked')) {
-                    $('.ridname_your_own_price_text_recurring').css({ opacity: 0, display: "flex" }).animate({ opacity: 1 }, 400);
-                } else {
-                    $('.ridname_your_own_price_text_recurring').hide();
-                }
-            });
-
         });
     <?php
     } catch (Throwable $ppcart_product_fields_buffer_exception) {

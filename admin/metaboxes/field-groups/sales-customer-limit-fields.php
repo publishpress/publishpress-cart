@@ -20,7 +20,7 @@ return [
         'class'     => 'widefat',
         'description'   => '',
         'id'            => '_ppcart_customer_limit',
-        'label'     => __('Customer purchase limit', 'publishpress-cart'),
+        'label'     => __('Purchases per customer', 'publishpress-cart'),
         'placeholder'   => '',
         'type'      => 'number',
         'value'     => '1',
