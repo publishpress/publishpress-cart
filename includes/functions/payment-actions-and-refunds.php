@@ -21,18 +21,35 @@ function ppcart_validate_payment_key()
             } elseif ($credentials_status['requires_reconnect']) {
                 $action_needed['stripe'] = __('Stripe is using legacy credentials that are not stored as direct Stripe keys. Use Connect with Stripe to sync keys before removing payment decryptor support.', 'publishpress-cart');
             } else {
-                $stripe = ppcart_stripe_client($ppcart_stripe['sk']);
-                try {
-                    // Connect OAuth tokens cannot read webhook endpoints, so
-                    // probing those reported a false error for every
-                    // connected store. Balance works for both key types.
-                    $stripe->balance->retrieve();
-                } catch (\Exception $e) {
-                    $message = (string) $e->getMessage();
+                // This runs on every Cart admin screen. Cache the result so a
+                // slow or unreachable Stripe API (30s connect timeout) does
+                // not block each page load until the host times it out.
+                $cache_key = 'ppcart_stripe_key_check_' . md5($ppcart_stripe['mode'] . '|' . $ppcart_stripe['sk']);
+                $cached = get_transient($cache_key);
 
-                    if ('' !== $message) {
-                        $action_needed['stripe'] = $message; //add custom message
+                if (is_array($cached) && array_key_exists('message', $cached)) {
+                    $message = (string) $cached['message'];
+                } else {
+                    $message = '';
+                    $stripe = ppcart_stripe_client($ppcart_stripe['sk']);
+                    try {
+                        // Connect OAuth tokens cannot read webhook endpoints, so
+                        // probing those reported a false error for every
+                        // connected store. Balance works for both key types.
+                        $stripe->balance->retrieve();
+                    } catch (\Exception $e) {
+                        $message = (string) $e->getMessage();
                     }
+
+                    set_transient(
+                        $cache_key,
+                        [ 'message' => $message ],
+                        '' === $message ? 12 * HOUR_IN_SECONDS : 15 * MINUTE_IN_SECONDS
+                    );
+                }
+
+                if ('' !== $message) {
+                    $action_needed['stripe'] = $message; //add custom message
                 }
             }
         }
