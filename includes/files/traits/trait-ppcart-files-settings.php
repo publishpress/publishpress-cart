@@ -1,8 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 /**
  * Settings fields and permalink flush for product file downloads.
@@ -38,18 +36,19 @@ trait PPCart_Files_Settings_Trait
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Upload context is validated by the media workflow; this only adjusts upload path.
         $upload_type = isset($_POST['type']) ? sanitize_text_field(wp_unslash($_POST['type'])) : '';
-        if ('ppcart_upload' === $upload_type) {
-            if (empty($pathdata['subdir'])) {
-                $pathdata['path']   = $pathdata['path'] . '/ppcart-uploads';
-                $pathdata['url']    = $pathdata['url'] . '/ppcart-uploads';
-                $pathdata['subdir'] = '/ppcart-uploads';
-            } else {
-                $new_subdir = '/ppcart-uploads' . $pathdata['subdir'];
-                $pathdata['path']   = str_replace($pathdata['subdir'], $new_subdir, $pathdata['path']);
-                $pathdata['url']    = str_replace($pathdata['subdir'], $new_subdir, $pathdata['url']);
-                $pathdata['subdir'] = str_replace($pathdata['subdir'], $new_subdir, $pathdata['subdir']);
+        return 'ppcart_upload' === $upload_type ? $this->secure_upload_dir($pathdata) : $pathdata;
             }
+
+    /** @since 1.1.0 @param array $pathdata Native upload directory. @return array */
+    public function secure_upload_dir($pathdata)
+    {
+        $subdir = $pathdata['subdir'] ?? '';
+        if (0 !== strpos(trailingslashit($subdir), '/ppcart-uploads/')) {
+            $subdir = '/ppcart-uploads' . $subdir;
         }
+        $pathdata['path'] = $pathdata['basedir'] . $subdir;
+        $pathdata['url'] = $pathdata['baseurl'] . $subdir;
+        $pathdata['subdir'] = $subdir;
         return $pathdata;
     }
 

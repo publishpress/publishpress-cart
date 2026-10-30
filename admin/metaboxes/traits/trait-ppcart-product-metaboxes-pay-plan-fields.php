@@ -13,6 +13,17 @@ if (! defined('ABSPATH')) {
 trait PPCart_Product_Metaboxes_Pay_Plan_Fields_Trait
 {
     /**
+     * Return the native payment-plan controls including their selectable choices.
+     *
+     * @since 1.1.0
+     * @return array
+     */
+    public function get_payment_plan_field_definitions()
+    {
+        return $this->pay_plan_fields(false);
+    }
+
+    /**
      * Payment-plan repeater field schema for the product metabox.
      *
      * @param bool $save Unused; kept for the metabox save/render call signature.

@@ -18,6 +18,8 @@ $ppcart_product_fields = new PPCart_Product_Metaboxes($this->cart->get_plugin_na
 $order_fields = new PPCart_Order_Metaboxes($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
 $order_admin = new PPCart_Order_Admin($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
 $plugin_settings = new PPCart_Admin_Settings($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
+require_once dirname(__DIR__, 2) . '/mcp/bootstrap.php';
+ppcart_mcp_boot($plugin_settings, $ppcart_product_fields);
 $plugin_reports = new PPCart_Admin_Reports($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
 $plugin_contacts_page =  new PPCart_Contacts_Page($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
 $plugin_customer =  new PPCart_Customer_Reports($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());

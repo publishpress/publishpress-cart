@@ -73,7 +73,9 @@ class EmailBodySanitizeCallbackTest extends Unit
      */
     public function test_UT_222_email_body_settings_register_ppcart_kses_email_html(): void
     {
+        require_once PPCART_PLUGIN_ROOT . 'admin/settings/traits/trait-ppcart-admin-settings-fields.php';
         $registrar = new class {
+            use \PPCart_Admin_Settings_Fields_Trait;
             /**
              * @var string
              */
@@ -106,13 +108,6 @@ class EmailBodySanitizeCallbackTest extends Unit
                 );
             }
 
-            /**
-             * @return mixed
-             */
-            public function register_fields()
-            {
-                return include PPCART_PLUGIN_ROOT . 'admin/settings/traits/templates/settings-fields-register-fields.php';
-            }
         };
 
         $registrar->register_fields();

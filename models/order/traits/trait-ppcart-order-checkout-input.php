@@ -6,6 +6,8 @@ if (! defined('ABSPATH')) {
 
 trait PPCart_Order_Checkout_Input
 {
+    private $explicit_checkout_data = null;
+
     /**
      * Read the checkout payload, keeping only the fields declared for this form.
      *
@@ -16,7 +18,24 @@ trait PPCart_Order_Checkout_Input
      */
     private function get_posted_data()
     {
-        return ppcart_parse_checkout_request();
+        return null !== $this->explicit_checkout_data ? $this->explicit_checkout_data : ppcart_parse_checkout_request();
+    }
+
+    /**
+     * Run native order construction with an explicit payload, without changing request globals.
+     *
+     * @param array $data Native checkout field names.
+     * @return void
+     */
+    public function load_from_data(array $data)
+    {
+        $previous = $this->explicit_checkout_data;
+        $this->explicit_checkout_data = ppcart_parse_checkout_request($data);
+        try {
+            $this->load_from_post();
+        } finally {
+            $this->explicit_checkout_data = $previous;
+        }
     }
 
     public function setup_atts_from_post()

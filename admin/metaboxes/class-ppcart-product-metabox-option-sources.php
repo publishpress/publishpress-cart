@@ -43,9 +43,7 @@ class PPCart_Product_Metabox_Option_Sources
     public function get_user_roles()
     {
         if (!function_exists('get_editable_roles')) {
-            echo 'nope';
-            die();
-            return;
+            require_once ABSPATH . 'wp-admin/includes/user.php';
         }
         $options = [];
         foreach (get_editable_roles() as $role_name => $role_info) {
