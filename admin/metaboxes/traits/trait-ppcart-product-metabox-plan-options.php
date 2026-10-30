@@ -74,7 +74,7 @@ trait PPCart_Product_Metabox_Plan_Options_Trait
         }
     }
 
-    public static function get_payment_plans($plansOnly = false)
+    public static function get_payment_plans($plansOnly = false, $post_id = 0)
     {
         $__ppcart_template_result = include __DIR__ . '/templates/product-metabox-plan-options-get-payment-plans.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;

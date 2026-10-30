@@ -1,5 +1,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
+[1.1.0] - [Unreleased]
+
+- Added : Permission-checked MCP category/tag deletion, manual order administration, synthetic test emails, Stripe record synchronization and declared checkout-field mappings.
+- Added : MCP actions for store settings, products, payment plans, product categories and tags, purchase notifications, secure downloads, integration rules, feature discovery, reports, refunds and subscription transitions with native permissions.
+
 [1.0.1] - 14 Oct, 2026
 
 - Update : Rename Contacts to Customers and link order customer names to customer reports, #569

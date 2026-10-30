@@ -8,7 +8,7 @@ if (! defined('ABSPATH')) {
 $payment_element = (bool) get_option('_ppcart_stripe_payment_element_enable', '1');
 $hosted_checkout = (bool) get_option('_ppcart_stripe_hosted_checkout_enable');
 // Hosted wins when both are stored, mirroring ppcart_setup_stripe().
-$selected = $hosted_checkout ? 'hosted' : ($payment_element ? 'element' : 'classic');
+$selected = ppcart_get_stripe_checkout_experience();
 
 $options = [
     'classic' => [

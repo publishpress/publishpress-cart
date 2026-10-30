@@ -353,10 +353,27 @@ function ppcart_resend_purchase_confirmation_email_ajax()
 
     // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Order ID is consumed only after ppcart_verify_nonce() succeeds above.
     $order_id = isset($_POST['order_id']) ? absint(wp_unslash($_POST['order_id'])) : 0;
-    $order_info = ppcart_setup_order($order_id);
+    $result = ppcart_resend_purchase_confirmation($order_id);
+    if (is_wp_error($result)) {
+        wp_send_json_error($result->get_error_message());
+    }
+
+    wp_send_json_success('Purchase confirmation email resent successfully.');
+}
+
+/** @since 1.1.0 @param int $order_id Order. @return true|WP_Error */
+function ppcart_resend_purchase_confirmation($order_id)
+{
+    if ((! current_user_can('manage_options') && ! ppcart_user_can('manage_orders'))
+        || ! ppcart_is_order_post_type(get_post_type($order_id))
+        || ! current_user_can('read_post', $order_id) || ! current_user_can('edit_post', $order_id)
+        || 'paid' !== ppcart_get_post_meta($order_id, 'status', true)) {
+        return new WP_Error('ppcart_forbidden', __('You cannot resend this order confirmation.', 'publishpress-cart'));
+    }
+    $order_info = (new PPCart_Order($order_id))->get_data();
 
     if (!$order_info) {
-        wp_send_json_error('Invalid order ID.');
+        return new WP_Error('ppcart_invalid_order', __('Invalid order ID.', 'publishpress-cart'));
     }
 
     // Convert to array if it's an object
@@ -365,7 +382,9 @@ function ppcart_resend_purchase_confirmation_email_ajax()
     }
 
     // Trigger email sending
-    ppcart_notification_send('paid', $order_info);
+    if (! ppcart_notification_send('paid', $order_info)) {
+        return new WP_Error('ppcart_mail_unconfirmed', __('Confirmation delivery could not be confirmed. Check delivery before retrying.', 'publishpress-cart'));
+    }
 
     // Add a new log entry
     $current_user = wp_get_current_user();
@@ -373,8 +392,9 @@ function ppcart_resend_purchase_confirmation_email_ajax()
     $log_entry = sprintf(__('Purchase confirmation email resent by %s', 'publishpress-cart'), $current_user->user_login);
     ppcart_log_entry($order_id, $log_entry);
 
-    wp_send_json_success('Purchase confirmation email resent successfully.');
+    return true;
 }
+
 add_action('wp_ajax_ppcart_resend_purchase_confirmation_email', 'ppcart_resend_purchase_confirmation_email_ajax');
 
 add_action('wp_ajax_ppcart_dismissed_notice_handler', 'ppcart_ajax_notice_handler');

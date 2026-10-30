@@ -45,6 +45,15 @@ class PPCart_Files
      */
     private static $table_name = 'ppcart_downloads';
 
+    /** @var PPCart_Files|null Active native file controller. */
+    private static $active_handler;
+
+    /** @since 1.1.0 @return PPCart_Files|null */
+    public static function get_active_handler()
+    {
+        return self::$active_handler;
+    }
+
     /**
      * The downloads page slug.
      *
@@ -115,6 +124,7 @@ class PPCart_Files
 
     public function initialize()
     {
+        self::$active_handler = $this;
         add_action('ppcart_activate', [$this, 'setup_download_table']);
         add_action('ppcart_activate', [$this, 'setup_directory']);
         add_action('ppcart_upgrade', [$this, 'setup_download_table']);

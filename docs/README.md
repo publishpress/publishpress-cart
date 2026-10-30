@@ -38,6 +38,10 @@ code area — they are not the same as features.
 | developer-hooks | Developer hooks and filters | both | Developers |
 | developer-rest-api | Developer REST API | pro | Developers |
 
+## MCP integration
+
+See [MCP integration](dev/mcp-integration.md) for supported actions, value formats and permissions.
+
 ## Testing
 
 Catalog conventions and suite runbooks live under

@@ -133,7 +133,9 @@ function ppcart_add_remove_activecampaign_subscriber($order_id, $service_id, $ac
         foreach ($custom as $k => $v) {
             $field_id_parts = explode(',', $k, 2);
             $field_id = trim($field_id_parts[0]);
-            if ($v && is_array($values) && isset($values[$v])) {
+            if (0 === strpos((string) $v, 'custom.')) {
+                $field_values[] = ['field' => $field_id, 'value' => ppcart_integration_custom_value($v, $order_id)];
+            } elseif ($v && is_array($values) && isset($values[$v])) {
                 $field_values[] = ['field' => $field_id, 'value' => $values[$v]['value']];
             } elseif ($v && isset($info[$v])) {
                 $field_values[] = ['field' => $field_id, 'value' => $info[$v]];
