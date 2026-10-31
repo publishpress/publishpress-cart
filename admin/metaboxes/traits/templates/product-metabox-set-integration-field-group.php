@@ -46,7 +46,7 @@ $this->integrations = [
     ],
 ];
 
-$this->integrations = apply_filters('ppcart_integration_fields', $this->integrations, $save);
+$this->integrations = apply_filters('ppcart_integration_fields', $this->integrations, $save, $product_id ?? 0);
 if (! is_array($this->integrations)) {
     $this->integrations = [];
 }

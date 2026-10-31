@@ -6,14 +6,14 @@ if (! defined('ABSPATH')) {
 
 
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only context check for current admin post.
-if (!isset($_GET['post'])) {
+if (! $post_id && ! isset($_GET['post'])) {
     return;
 }
 
 $integrations = ['' => __('Any', 'publishpress-cart')];
 
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only context value from current admin post.
-$current_post_id = isset($_GET['post']) ? absint(wp_unslash($_GET['post'])) : 0;
+$current_post_id = $post_id ?: (isset($_GET['post']) ? absint(wp_unslash($_GET['post'])) : 0);
 
 $items = ppcart_get_post_meta($current_post_id, 'pay_options', true);
 if (is_array($items)) {
