@@ -63,6 +63,30 @@ class PlansTest extends McpTestCase
         $this->assertSame('99', ppcart_get_post_meta($id, 'pay_options', true)[0]['price']);
     }
 
+    public function test_plan_values_follow_native_local_field_sanitization(): void
+    {
+        $id = self::factory()->post->create(['post_type' => ppcart_live_post_type('product'), 'post_author' => get_current_user_id()]);
+        $before = $this->execute('get-payment-plans', ['id' => $id]);
+        $this->assertNotWPError($before);
+        $fields = $GLOBALS['ppcart_product_fields'];
+        $row = ['option_id' => 'native', 'option_name' => " <b>Reader's plan</b>\n ", 'price' => '12.50', 'sale_price' => '0', 'sale_option_name' => '<i></i>'];
+        $patch = ['id' => $id, 'revision' => $before['revision'], 'plans' => [(object) $row], 'dry_run' => true];
+        $preview = $this->execute('set-payment-plans', $patch);
+        $this->assertNotWPError($preview);
+        $this->assertSame('', ppcart_get_post_meta($id, 'pay_options', true));
+        add_filter('ppcart_process_stripe_products', '__return_false');
+        try {
+            $patch['dry_run'] = false;
+            $this->assertNotWPError($this->execute('set-payment-plans', $patch));
+        } finally {
+            remove_filter('ppcart_process_stripe_products', '__return_false');
+        }
+        $saved = ppcart_get_post_meta($id, 'pay_options', true)[0];
+        foreach (['option_name' => 'text', 'sale_option_name' => 'text', 'price' => 'price', 'sale_price' => 'price'] as $key => $type) {
+            $this->assertSame($fields->sanitize_local_field($type, $row[$key]), $saved[$key]);
+        }
+    }
+
     public function test_invalid_plan_list_is_fully_prevalidated(): void
     {
         $id = self::factory()->post->create(['post_type' => ppcart_live_post_type('product'), 'post_author' => get_current_user_id()]);

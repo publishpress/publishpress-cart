@@ -180,11 +180,8 @@ class PPCart_Mcp_Plans
                 if ('price' === $type && ! preg_match('/^\d+(?:[.,]\d{1,8})?$/D', $value)) {
                     return PPCart_Mcp_Input::error();
                 }
-                $sanitizer = new PPCart_Sanitize();
-                $sanitizer->set_type($type);
-                $sanitizer->set_data(is_int($value) ? (string) $value : $value);
-                $plan[$key] = $sanitizer->clean();
-                if (! is_scalar($plan[$key])) {
+                $plan[$key] = $this->products->sanitize_local_field($type, is_int($value) ? (string) $value : $value);
+                if (null !== $plan[$key] && ! is_scalar($plan[$key])) {
                     return PPCart_Mcp_Input::error();
                 }
             }
