@@ -94,7 +94,10 @@ a, button {
   top: 40%;
 }
 .ppcart-my-account .ppcart-btn-close {
+  background: transparent;
+  border: 0;
   color: #000;
+  cursor: pointer;
   font-size: 20px;
   text-decoration: none !important;
   padding: 10px;
@@ -105,6 +108,10 @@ a, button {
 }
 .ppcart-my-account .ppcart-btn-close:hover {
   color: #919191;
+}
+.ppcart-my-account .ppcart-btn-close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 .ppcart-my-account .modal:before,
 .ppcart-my-account .ppcart-modal:before {
@@ -576,6 +583,7 @@ body.ppcart-checkout-1 .ppcart-container {
 
 #ppcart-form-container .ppcart-checkout-form-steps {
   display: flex;
+  list-style: none;
   margin: 0 0 20px;
   padding: 0;
 }
@@ -1315,6 +1323,7 @@ body.ppcart-checkout-1 .ppcart-container {
 }
 .ppcart .pay-info label,
 .ppcart .card-details label,
+.ppcart .card-details .ppcart-card-element-label,
 .ppcart .address-info label,
 .ppcart .pwyw-input label {
   font-size: 12px;
@@ -1887,6 +1896,10 @@ body.ppcart-checkout-1 .ppcart-container {
   line-height: 1;
   margin-bottom: -1px;
   outline: none;
+}
+.ppcart-my-account .ppcart-nav-tabs li a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 .ppcart-my-account .ppcart-nav-tabs li a.active {
   border-color: inherit;

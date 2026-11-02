@@ -83,19 +83,19 @@ trait PPCart_Admin_Settings_Screen_Trait
                         <li>
                             <a href="https://publishpress.com/links/about-cart" target="_blank" rel="noopener noreferrer"
                                title="<?php esc_attr_e('About PublishPress Cart', 'publishpress-cart'); ?>">
-                                <?php esc_html_e('About', 'publishpress-cart'); ?>
+                                <?php esc_html_e('About PublishPress Cart', 'publishpress-cart'); ?>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo esc_url(PPCART_DOCS_URL); ?>" target="_blank" rel="noopener noreferrer"
                                title="<?php esc_attr_e('PublishPress Cart Documentation', 'publishpress-cart'); ?>">
-                                <?php esc_html_e('Documentation', 'publishpress-cart'); ?>
+                                <?php esc_html_e('PublishPress Cart Documentation', 'publishpress-cart'); ?>
                             </a>
                         </li>
                         <li>
                             <a href="https://publishpress.com/publishpress-support/" target="_blank" rel="noopener noreferrer"
                                title="<?php esc_attr_e('Contact the PublishPress team', 'publishpress-cart'); ?>">
-                                <?php esc_html_e('Contact', 'publishpress-cart'); ?>
+                                <?php esc_html_e('Contact PublishPress', 'publishpress-cart'); ?>
                             </a>
                         </li>
                     </ul>

@@ -254,7 +254,7 @@ function ppcart_db_update_manually_notice()
             echo wp_kses(
                 sprintf(
                     /* translators: %s: manual update URL. */
-                    __('<b>PublishPress Cart Data Updater</b> - The database update is taking longer than expected. Click <a href="%s">here</a> to run it manually.', 'publishpress-cart'),
+                    __('<b>PublishPress Cart Data Updater</b> - The database update is taking longer than expected. <a href="%s">Run the data update manually</a>.', 'publishpress-cart'),
                     esc_url($url)
                 ),
                 [
