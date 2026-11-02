@@ -152,8 +152,6 @@ $this->maybe_do_order_complete($order_post_id, $order_info, $order_status);
  * @param array  $order_info    Order data.
  */
 do_action('ppcart_after_order_created', $order_post_id, $order_status, $order_info);
-
-// 1.0.x fired this hook with a typo in its name. Keep it for existing listeners.
 do_action_deprecated('ppcart_fter_order_created', [$order_post_id, $order_status, $order_info], '1.1.0', 'ppcart_after_order_created');
 
 return $order_post_id;

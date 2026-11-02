@@ -115,8 +115,6 @@ trait PPCart_Stripe_Subscription_Save_Trait
 
         /** This action is documented in includes/stripe/templates/order-save.php */
         do_action('ppcart_after_order_created', $post_id, $status, $order);
-
-        // 1.0.x fired this hook with a typo in its name. Keep it for existing listeners.
         do_action_deprecated('ppcart_fter_order_created', [$post_id, $status, $order], '1.1.0', 'ppcart_after_order_created');
 
         return $post_id;

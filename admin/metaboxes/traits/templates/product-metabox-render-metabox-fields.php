@@ -49,7 +49,6 @@ foreach ($fields as $atts) {
              * @param string $path        Path of the metabox templates folder.
              */
             do_action('ppcart_default_fields_html', $atts, $this->meta, $this->plugin_name, plugin_dir_path(__FILE__));
-            // 1.0.x used this hook name with a typo. Keep it for existing listeners.
             do_action_deprecated('ppcart_defualt_fields_html', [$atts, $this->meta, $this->plugin_name, plugin_dir_path(__FILE__)], '1.1.0', 'ppcart_default_fields_html');
         } else {
             if ($atts['type'] == 'checkbox') {

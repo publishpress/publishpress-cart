@@ -109,9 +109,6 @@ function ppcart_trigger_integrations($status, $order_info)
             case 'renewal':
                 $action = 'ppcart_renewal_payment';
                 break;
-            // Only a renewal has a failed or uncollectible action. The event type is
-            // checked inside the case: a case expression is compared loosely with
-            // $status, so 'failed' && ... matched any status.
             case 'failed':
                 $action = ($event_type == 'renewal') ? 'ppcart_renewal_failed' : false;
                 break;
