@@ -92,7 +92,7 @@ function ppcart_personalize($str, $order_info, $filter = false, $include_order_d
         'customer_name' => $order_info['firstname'] . ' ' . $order_info['lastname'],
         'site_name' => get_bloginfo('name'),
 
-        'publishpress_cart' => '<a href="' . esc_url('https://publishpress.com/publishpress-cart/') . '" target="_blank" rel="noreferrer noopener">' . esc_html('PublishPress Cart') . '</a>',
+        'publishpress_cart' => '<a href="' . esc_url('https://publishpress.com/cart/') . '" target="_blank" rel="noreferrer noopener">' . esc_html('PublishPress Cart') . '</a>',
     ];
 
     $customer_fields = ['customer_phone','customer_firstname','customer_lastname','customer_email','customer_address1','customer_address2','customer_city','customer_state','customer_zip','customer_country'];

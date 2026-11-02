@@ -407,6 +407,26 @@ function ppcart_admin_field_dom_id($atts)
 }
 
 /**
+ * Print the "?" tooltip inside an admin field label.
+ *
+ * 'description' is the one short help line under the control. 'tooltip' holds
+ * the details that do not fit in that line.
+ *
+ * @param array $atts Field attributes.
+ * @return void
+ */
+function ppcart_admin_field_tooltip($atts)
+{
+    if (empty($atts['tooltip'])) {
+        return;
+    }
+
+    $text = wp_strip_all_tags(wp_specialchars_decode((string) $atts['tooltip'], ENT_QUOTES));
+
+    ?><span class="ppcart-tooltip" tabindex="0" aria-label="<?php echo esc_attr($text); ?>" data-balloon-pos="up" data-balloon-length="large">?</span><?php
+}
+
+/**
  * Set a unique DOM id for a field inside a repeater row.
  *
  * @param array  $atts            Field attributes (passed by reference).
