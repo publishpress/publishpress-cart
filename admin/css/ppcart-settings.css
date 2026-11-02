@@ -469,12 +469,37 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     margin: 0 0 24px;
 }
 
+/* The settings page is white, so each notice type gets a tinted background
+ * and border. The left border keeps the WordPress color for its type. */
 .ppcart-settings__notice-stack .notice {
     margin: 0;
     border-radius: var(--ppcart-radius);
     box-shadow: var(--ppcart-shadow-sm);
-    background: var(--ppcart-surface);
+    background: var(--ppcart-primary-soft);
+    border-color: #c5d5f7;
+    border-left-color: #72aee6;
+    color: var(--ppcart-text);
     padding: 12px 16px;
+}
+
+.ppcart-settings__notice-stack .notice-success,
+.ppcart-settings__notice-stack .updated {
+    background: var(--ppcart-success-soft);
+    border-color: #b3e2c6;
+    border-left-color: #00a32a;
+}
+
+.ppcart-settings__notice-stack .notice-warning {
+    background: var(--ppcart-warning-soft);
+    border-color: #f0d9a8;
+    border-left-color: #dba617;
+}
+
+.ppcart-settings__notice-stack .notice-error,
+.ppcart-settings__notice-stack .error {
+    background: #fcf0f1;
+    border-color: #f1c6c7;
+    border-left-color: #d63638;
 }
 
 .ppcart-settings__notice-stack .notice p {

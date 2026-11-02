@@ -146,3 +146,5 @@ wp_localize_script('ppcart-repeater', 'ppcartNotificationI18n', [
     'testFailed'     => __('Test email failed to send. Please refresh the page and try again.', 'publishpress-cart'),
     'testNeedEmail'  => __('Enter an email address to send the test to.', 'publishpress-cart'),
 ]);
+
+$this->enqueue_product_metabox_assets($hook_suffix);
