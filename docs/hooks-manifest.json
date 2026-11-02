@@ -4326,6 +4326,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_pay_plan_field_sections",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/field-groups/sales-plan-fields.php",
+            "recommended_hook": "ppcart_pay_plan_field_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_pay_plan_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -5296,6 +5306,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_setting_tab_groups",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tab-groups.php",
+            "recommended_hook": "ppcart_product_setting_tab_groups",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_setting_tab_{$tab_id}_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -5323,6 +5343,16 @@
             "status": "canonical",
             "file": "admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php",
             "recommended_hook": "ppcart_product_setting_tabs",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_product_tab_sections",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-tab-sections.php",
+            "recommended_hook": "ppcart_product_tab_sections",
             "notes": "Canonical hook prefix."
         },
         {

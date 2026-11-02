@@ -29,14 +29,9 @@ $atts = wp_parse_args($atts, $default_atts);
 $field_dom_id = ppcart_admin_field_dom_id($atts);
 $testid_source = ! empty($atts['id']) ? $atts['id'] : ($atts['name'] ?? '');
 $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
+$help_id = ! empty($atts['description']) ? $field_dom_id . '-help' : '';
 if (! empty($atts['label'])) {
-    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?>
-    <?php
-    if (! empty($atts['description'])) {
-        ?><i class="ppcart-tooltip" data-balloon-length="medium" aria-label="<?php echo esc_attr($atts['description']); ?>" data-balloon-pos="up" tabindex="0">?</i>
-    <?php
-    } ?>
-    </label><?php
+    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
 }
 
 ?><div class="input-group field-<?php echo esc_attr($atts['type']); ?>"><div class="textarea-wrap"><textarea
@@ -46,14 +41,17 @@ if (! empty($atts['label'])) {
     name="<?php echo esc_attr($atts['name']); ?>"
     placeholder="<?php echo esc_attr($atts['placeholder']); ?>"
     data-testid="<?php echo esc_attr($testid); ?>"
+    <?php if ('' !== $help_id) :
+        ?>aria-describedby="<?php echo esc_attr($help_id); ?>"<?php
+    endif; ?>
     rows="<?php echo esc_attr($atts['rows']); ?>"><?php
 
     echo esc_html($atts['value']);
 
 ?></textarea>
 
-<?php if (empty($atts['label']) && ! empty($atts['description'])) :?>
-    <p class="description"><?php echo wp_kses_post(wp_specialchars_decode($atts['description'], ENT_QUOTES)); ?></p>
+<?php if ('' !== $help_id) :?>
+    <p class="description ppcart-field-help" id="<?php echo esc_attr($help_id); ?>"><?php echo wp_kses_post(wp_specialchars_decode($atts['description'], ENT_QUOTES)); ?></p>
 <?php endif; ?>
 
 <?php if (! empty($atts['note'])) :?>

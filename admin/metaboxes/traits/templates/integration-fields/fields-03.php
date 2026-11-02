@@ -28,7 +28,7 @@ return [
         'select' => [
             'class'         => 'mailpoet_list_name',
             'id'            => 'mailpoet_list',
-            'label'         => __('MailPoet List', 'publishpress-cart'),
+            'label'         => __('MailPoet list', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -105,7 +105,7 @@ return [
             'class'         => 'widefat',
             'description'   => '',
             'id'            => 'member_vault_course_id',
-            'label'         => __('Membervault Course ID', 'publishpress-cart'),
+            'label'         => __('MemberVault course ID', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'text',
             'value'         => '',
@@ -122,9 +122,9 @@ return [
     [
         'select' => [
             'class'         => 'ppcart-selectize multiple required',
-            'description'   => __('Only users with one of the selected roles will be updated.', 'publishpress-cart'),
+            'description'   => __('Only users with these roles are updated.', 'publishpress-cart'),
             'id'            => 'previous_user_role',
-            'label'         => __('Previous User Role(s)', 'publishpress-cart'),
+            'label'         => __('Previous user roles', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -143,7 +143,7 @@ return [
         'select' => [
             'class'         => '',
             'id'            => 'user_role',
-            'label'         => __('New User Role', 'publishpress-cart'),
+            'label'         => __('New user role', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => 'subscriber',

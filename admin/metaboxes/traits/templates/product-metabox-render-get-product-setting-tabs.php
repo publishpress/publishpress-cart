@@ -7,11 +7,11 @@ if (! defined('ABSPATH')) {
 
 $default_product_setting_tabs = [
     'general'        => __('General', 'publishpress-cart'),
-    'pricing'        => __('Payment Plans', 'publishpress-cart'),
-    'access'         => __('Purchase Restrictions', 'publishpress-cart'),
-    'fields'         => __('Form Fields & Settings', 'publishpress-cart'),
+    'pricing'        => __('Pricing', 'publishpress-cart'),
+    'access'         => __('Availability', 'publishpress-cart'),
+    'fields'         => __('Checkout form', 'publishpress-cart'),
     'confirmation'   => __('Confirmation', 'publishpress-cart'),
-    'notifications'  => __('Notifications', 'publishpress-cart'),
+    'notifications'  => __('Emails', 'publishpress-cart'),
     'integrations'   => __('Integrations', 'publishpress-cart'),
 ];
 
