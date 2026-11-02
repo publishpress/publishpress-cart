@@ -1,6 +1,6 @@
 # PublishPress Cart Hook Manifest
 
-Generated on 2026-10-28 from a static PHP token audit of `publishpress-cart`.
+Generated on 2026-11-02 from a static PHP token audit of `publishpress-cart`.
 
 ## Prefix Policy
 
@@ -10,6 +10,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 
 | Hook | Type | Operation | Classification | Status | File | Recommendation |
 | --- | --- | --- | --- | --- | --- | --- |
+| `add_meta_boxes` | Action | `add_action` | Internal | unclassified | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | add_meta_boxes |
 | `add_option__ppcart_activecampaign_secret_key` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | add_option__ppcart_activecampaign_secret_key |
 | `add_option__ppcart_converkit_api` | Action | `add_action` | Internal | unclassified | `includes/integrations/templates/ppcart-kit-init.php` | add_option__ppcart_converkit_api |
 | `add_option__ppcart_mailchimp_api` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | add_option__ppcart_mailchimp_api |
@@ -519,6 +520,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_product_metabox_post_type` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-save-validate-meta.php` | ppcart_product_metabox_post_type |
 | `ppcart_product_metabox_post_type` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | ppcart_product_metabox_post_type |
 | `ppcart_product_metabox_post_type` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-save.php` | ppcart_product_metabox_post_type |
+| `ppcart_product_metabox_post_type` | Filter | `apply_filters` | Public | canonical | `admin/traits/trait-ppcart-admin-assets.php` | ppcart_product_metabox_post_type |
 | `ppcart_product_page_redirect` | Action | `do_action` | Public | canonical | `public/controllers/page/traits/templates/page-routing-ppcart-redirect.php` | ppcart_product_page_redirect |
 | `ppcart_product_payments_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-sales-fields.php` | ppcart_product_payments_fields |
 | `ppcart_product_paypal_enabled` | Filter | `apply_filters` | Public | canonical | `public/paypal/traits/trait-ppcart-paypal-settings.php` | ppcart_product_paypal_enabled |
@@ -555,6 +557,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_register_pro_hooks` | Action | `do_action` | Public | canonical | `includes/class-ppcart.php` | ppcart_register_pro_hooks |
 | `ppcart_register_public_ajax_handlers` | Action | `do_action` | Public | canonical | `includes/bootstrap/class-ppcart-public-hook-registrar.php` | ppcart_register_public_ajax_handlers |
 | `ppcart_register_sections` | Action | `do_action` | Public | canonical | `admin/settings/traits/templates/settings-sections-register.php` | ppcart_register_sections |
+| `ppcart_related_product_post_types` | Filter | `apply_filters` | Public | canonical | `admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php` | ppcart_related_product_post_types |
 | `ppcart_renew_integrations_lists` | Action | `add_action` | Public | canonical | `includes/integrations/templates/ppcart-kit-init.php` | ppcart_renew_integrations_lists |
 | `ppcart_renew_integrations_lists` | Action | `do_action` | Public | canonical | `admin/traits/trait-ppcart-admin-integrations.php` | ppcart_renew_integrations_lists |
 | `ppcart_renewal_failed` | Action | `add_action` | Public | canonical | `public/class-ppcart-public.php` | ppcart_renewal_failed |
