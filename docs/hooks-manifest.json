@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-10-28",
+    "generated_at": "2026-11-02",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -25,6 +25,16 @@
         ]
     },
     "hooks": [
+        {
+            "name": "add_meta_boxes",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "add_meta_boxes",
+            "notes": "Review before documenting as public API."
+        },
         {
             "name": "add_option__ppcart_activecampaign_secret_key",
             "type": "action",
@@ -5116,6 +5126,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_metabox_post_type",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/traits/trait-ppcart-admin-assets.php",
+            "recommended_hook": "ppcart_product_metabox_post_type",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_page_redirect",
             "type": "action",
             "operation": "do_action",
@@ -5473,6 +5493,16 @@
             "status": "canonical",
             "file": "admin/settings/traits/templates/settings-sections-register.php",
             "recommended_hook": "ppcart_register_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_related_product_post_types",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "ppcart_related_product_post_types",
             "notes": "Canonical hook prefix."
         },
         {
