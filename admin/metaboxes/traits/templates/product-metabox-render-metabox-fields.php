@@ -37,7 +37,19 @@ foreach ($fields as $atts) {
 
                 include((defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR . 'admin/partials/' : dirname(__DIR__, 2) . '/partials/') . '' . 'ppcart-admin-field-default-fields.php');
             }
-            apply_filters('ppcart_defualt_fields_html', $atts, $this->meta, $this->plugin_name, plugin_dir_path(__FILE__));
+            /**
+             * Fires after the default checkout fields render in the product box.
+             *
+             * Replaces the StudioCart hook sc_defualt_fields_html. 1.0.x ran it as a
+             * filter, but nothing used the return value.
+             *
+             * @param array  $atts        Field settings.
+             * @param array  $meta        Product meta.
+             * @param string $plugin_name Plugin name.
+             * @param string $path        Path of the metabox templates folder.
+             */
+            do_action('ppcart_default_fields_html', $atts, $this->meta, $this->plugin_name, plugin_dir_path(__FILE__));
+            do_action_deprecated('ppcart_defualt_fields_html', [$atts, $this->meta, $this->plugin_name, plugin_dir_path(__FILE__)], '1.1.0', 'ppcart_default_fields_html');
         } else {
             if ($atts['type'] == 'checkbox') {
                 $atts['value'] = isset($this->meta[$atts['id']][0]);
