@@ -763,6 +763,19 @@ jQuery(document).ready(function($){
         sortField: 'text'
     });
 
+    // An icon select shows each Font Awesome icon beside its name. The value is
+    // the icon file name, such as "address-book.svg"; the storefront shows it as a solid icon.
+    function iconSelectHtml(data, escape, className) {
+        var icon = null;
+        if (data.value && 'none' !== data.value && window.FontAwesome && window.FontAwesome.icon) {
+            icon = window.FontAwesome.icon({prefix: 'fas', iconName: String(data.value).replace(/\.svg$/, '')});
+        }
+        return '<div class="' + className + ' ppcart-icon-option">'
+            + '<span class="ppcart-icon-option__icon" aria-hidden="true">' + (icon ? icon.html.join('') : '') + '</span>'
+            + '<span class="ppcart-icon-option__name">' + escape(data.text) + '</span>'
+            + '</div>';
+    }
+
     $('.ppcart-selectize').each(function(){
         $(this).find('option[value=""]').remove();
         var hidden = $(this).closest('.ppcart-repeater.hidden');
@@ -770,6 +783,15 @@ jQuery(document).ready(function($){
             var def = $(this).data('placeholder');
             if($(this).hasClass('multiple')) {
                 $(this).selectize({plugins: ['remove_button'],allowEmptyOption: true, placeholder: def});
+            } else if($(this).hasClass('ppcart-icon-select')) {
+                $(this).selectize({
+                    allowEmptyOption: true,
+                    placeholder: def,
+                    render: {
+                        option: function(data, escape) { return iconSelectHtml(data, escape, 'option'); },
+                        item: function(data, escape) { return iconSelectHtml(data, escape, 'item'); }
+                    }
+                });
             } else {
                 $(this).selectize({allowEmptyOption: true, placeholder: def});
             }

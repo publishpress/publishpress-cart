@@ -535,6 +535,24 @@
   color: var(--ppcart-primary);
 }
 
+/* Icon select: each option and the chosen item show the icon before its name. */
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-icon-option {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-icon-option__icon {
+  display: inline-flex;
+  flex: 0 0 18px;
+  font-size: 16px;
+  justify-content: center;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-icon-option__icon:empty {
+  visibility: hidden;
+}
+
 /* Chips and badges ------------------------------------------------------ */
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-chip {
@@ -581,10 +599,12 @@
 
 /* Empty state ----------------------------------------------------------- */
 
+/* A light tint of the section bar purple sets an empty list apart from the
+ * gray admin background. */
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty {
   align-items: center;
-  background: var(--ppcart-surface-alt);
-  border: 1px dashed var(--ppcart-border-strong);
+  background: #f5f3fb;
+  border: 1px dashed #b8afd8;
   border-radius: var(--ppcart-radius);
   display: flex;
   flex-direction: column;
@@ -599,10 +619,15 @@
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty__icon {
-  color: var(--ppcart-text-muted);
-  font-size: 26px;
-  height: 26px;
-  width: 26px;
+  align-items: center;
+  background: #e8e4f5;
+  border-radius: 50%;
+  color: var(--ppcart-section-header);
+  display: flex;
+  font-size: 22px;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-repeater-empty__title {
