@@ -137,12 +137,13 @@ Overrides (not the mechanical rule):
 
 | Legacy | Canonical |
 |--------|-----------|
-| `studiocart_checkout_complete` | `ppcart_after_order_paid` |
 | `before_sc_order_refund` | `ppcart_before_order_refund` |
 | `studiocart_page_metabox` | `ppcart_page_metabox` |
 | `ncs-cart-currencies` | `ppcart_currencies` |
 | `ncs-cart-currency-symbols` | `ppcart_currency_symbols` |
 | `ncs-cart-zero-decimal-currency` | `ppcart_zero_decimal_currency` |
+| `sc_checkout_form_validation_messafes` | `ppcart_checkout_form_validation_messages` |
+| `sc_defualt_fields_html` | `ppcart_default_fields_html` |
 
 Cron leftovers follow the same mechanical rule (`ncs_email_schedule_hook` →
 `ppcart_email_schedule_hook`, `studiocart_daily_events` →
@@ -425,12 +426,13 @@ not the shortcode tag).
 
 | Leftover | Canonical |
 |----------|-----------|
-| `studiocart_checkout_complete` | `ppcart_after_order_paid` |
 | `before_sc_order_refund` | `ppcart_before_order_refund` |
 | `studiocart_page_metabox` | `ppcart_page_metabox` |
 | `ncs-cart-currencies` | `ppcart_currencies` |
 | `ncs-cart-currency-symbols` | `ppcart_currency_symbols` |
 | `ncs-cart-zero-decimal-currency` | `ppcart_zero_decimal_currency` |
+| `sc_checkout_form_validation_messafes` | `ppcart_checkout_form_validation_messages` |
+| `sc_defualt_fields_html` | `ppcart_default_fields_html` |
 | `sc-cart-cpt-options` | `ppcart_cpt_options` |
 | `sc-cart-taxonomy-options` | `ppcart_taxonomy_options` |
 | `ppcart_sc_subscription_integrations` | `ppcart_ppcart_subscription_integrations` |
@@ -495,8 +497,9 @@ not the shortcode tag).
 | `sc_after_buy_button` | `ppcart_after_buy_button` | action |
 | `sc_after_downloads_attached_to_order` | `ppcart_after_downloads_attached_to_order` | action |
 | `sc_after_load_from_post` | `ppcart_after_load_from_post` | action |
+| `studiocart_after_order_created` | `ppcart_after_order_created` | action |
 | `sc_after_order_load_from_post` | `ppcart_after_order_load_from_post` | filter |
-| `studiocart_checkout_complete` / `sc_after_order_paid` | `ppcart_after_order_paid` | action |
+| `sc_after_order_paid` | `ppcart_after_order_paid` | action |
 | `sc_after_payment_info` | `ppcart_after_payment_info` | action |
 | `sc_after_product_list` | `ppcart_after_product_list` | action |
 | `sc_after_product_setup` | `ppcart_after_product_setup` | action |
@@ -543,7 +546,7 @@ not the shortcode tag).
 | `sc_checkout_arranged_core_card_details_callbacks` | `ppcart_checkout_arranged_core_card_details_callbacks` | filter |
 | `sc_checkout_block_arrangement` | `ppcart_checkout_block_arrangement` | filter |
 | `sc_checkout_block_sections` | `ppcart_checkout_block_sections` | filter |
-| `sc_checkout_complete` | `ppcart_checkout_complete` | action/filter |
+| `studiocart_checkout_complete` / `sc_checkout_complete` | `ppcart_checkout_complete` | action/filter |
 | `sc_checkout_coupon` | `ppcart_checkout_coupon` | filter |
 | `sc_checkout_form` | `ppcart_checkout_form` | action |
 | `sc_checkout_form_close` | `ppcart_checkout_form_close` | action |
@@ -552,7 +555,7 @@ not the shortcode tag).
 | `sc_checkout_form_pay_options` | `ppcart_checkout_form_pay_options` | filter |
 | `sc_checkout_form_price_checked` | `ppcart_checkout_form_price_checked` | filter |
 | `sc_checkout_form_scripts` | `ppcart_checkout_form_scripts` | action |
-| `sc_checkout_form_validation_messafes` | `ppcart_checkout_form_validation_messafes` | filter |
+| `sc_checkout_form_validation_messafes` | `ppcart_checkout_form_validation_messages` | filter |
 | `sc_checkout_page_error` | `ppcart_checkout_page_error` | filter |
 | `sc_checkout_page_heading` | `ppcart_checkout_page_heading` | action |
 | `sc_checkout_page_privacy_text` | `ppcart_checkout_page_privacy_text` | filter |
@@ -581,9 +584,9 @@ not the shortcode tag).
 | `studiocart_daily_events` / `sc_daily_events` | `ppcart_daily_events` | action |
 | `sc_default_field_settings_attributes` | `ppcart_default_field_settings_attributes` | filter |
 | `sc_default_fields` | `ppcart_default_fields` | filter |
+| `sc_defualt_fields_html` | `ppcart_default_fields_html` | action |
 | `sc_default_fields_ids` | `ppcart_default_fields_ids` | filter |
 | `sc_default_{$field[...]}]_field_settings_attributes` | `ppcart_default_{$field[...]}]_field_settings_attributes` | filter |
-| `sc_defualt_fields_html` | `ppcart_defualt_fields_html` | filter |
 | `sc_download` | `ppcart_download` | filter |
 | `sc_download_allowed_redirect_hosts` | `ppcart_download_allowed_redirect_hosts` | filter |
 | `sc_download_allowed_roots` | `ppcart_download_allowed_roots` | filter |
@@ -607,7 +610,6 @@ not the shortcode tag).
 | `sc_format_subscription_order_detail` | `ppcart_format_subscription_order_detail` | filter |
 | `sc_frontend_assets_needed` | `ppcart_frontend_assets_needed` | filter |
 | `sc_frontend_message_{$k}` | `ppcart_frontend_message_{$k}` | filter |
-| `sc_fter_order_created` | `ppcart_fter_order_created` | action |
 | `sc_gateway_webhook` | `ppcart_gateway_webhook` | action |
 | `sc_get_sub_args` | `ppcart_get_sub_args` | filter |
 | `sc_host_purchase_url` | `ppcart_host_purchase_url` | filter |
@@ -721,7 +723,6 @@ not the shortcode tag).
 | `sc_product_setting_tab_{$tab_id}_fields` | `ppcart_product_setting_tab_{$tab_id}_fields` | filter |
 | `sc_product_setting_tabs` | `ppcart_product_setting_tabs` | filter |
 | `sc_product_{$tab_id}_fields` | `ppcart_product_{$tab_id}_fields` | filter |
-| `sc_ransaction_id` | `ppcart_ransaction_id` | filter |
 | `sc_receipt_after_order_details` | `ppcart_receipt_after_order_details` | action |
 | `sc_register_importers` | `ppcart_register_importers` | action |
 | `sc_register_pro_hooks` | `ppcart_register_pro_hooks` | action |
@@ -791,6 +792,7 @@ not the shortcode tag).
 | `sc_template_after_{$slug}` | `ppcart_template_after_{$slug}` | action |
 | `sc_template_before_{$slug}` | `ppcart_template_before_{$slug}` | action |
 | `sc_theme_template_path` | `ppcart_theme_template_path` | filter |
+| `studiocart_transaction_id` | `ppcart_transaction_id` | filter |
 | `sc_trigger_order_integrations` | `ppcart_trigger_order_integrations` | filter |
 | `sc_trigger_subscription_integrations` | `ppcart_trigger_subscription_integrations` | filter |
 | `sc_update_stripe_invoice_during_checkout` | `ppcart_update_stripe_invoice_during_checkout` | filter |
