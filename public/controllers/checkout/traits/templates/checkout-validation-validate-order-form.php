@@ -154,7 +154,16 @@ if (isset($posted_values['email'])) {
     }
 }
 
-$messages = apply_filters('ppcart_checkout_form_validation_messafes', $messages);
+/**
+ * Filters the checkout form validation messages.
+ *
+ * Replaces the StudioCart filter sc_checkout_form_validation_messafes.
+ *
+ * @param string[] $messages Validation messages.
+ */
+$messages = apply_filters('ppcart_checkout_form_validation_messages', $messages);
+// 1.0.x used this filter name with a typo. Keep it for existing listeners.
+$messages = apply_filters_deprecated('ppcart_checkout_form_validation_messafes', [$messages], '1.1.0', 'ppcart_checkout_form_validation_messages');
 
 if (!empty($messages)) {
     $ppcart_debug_logger->log_event(
