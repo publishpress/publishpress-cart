@@ -36,6 +36,32 @@
         if (e.key === 'Escape') {
             e.preventDefault();
             updateCardModal.find('.closemodal').trigger('click');
+            return;
+        }
+
+        // The dialog is aria-modal, so Tab must not reach the page behind it.
+        // The Stripe card fields are iframes between the first and last controls.
+        if (e.key !== 'Tab') {
+            return;
+        }
+
+        var focusable = updateCardModal
+            .find('a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')
+            .filter(':visible');
+
+        if (!focusable.length) {
+            return;
+        }
+
+        var first = focusable.get(0);
+        var last = focusable.get(focusable.length - 1);
+
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
         }
     });
 
