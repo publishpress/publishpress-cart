@@ -602,7 +602,9 @@ function ppcart_enqueue_or_print_inline_style($handle, $css, $fallback_handle = 
     wp_enqueue_style($fallback_handle);
     wp_add_inline_style($fallback_handle, $css);
 
-    if (did_action('wp_print_styles') || did_action('admin_print_styles')) {
+    // Late styles (e.g. from a shortcode) print in the footer via print_late_styles().
+    // Echoing them here lands inside shortcode output, where kses strips the <style> tag.
+    if (did_action('wp_footer') || did_action('admin_footer')) {
         wp_print_styles([ $fallback_handle ]);
     }
 }
