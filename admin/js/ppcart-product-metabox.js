@@ -12,6 +12,7 @@
     var problems = [];
     var checking = false;
     var editorNoticeShown = false;
+    var editorSaveLocked = false;
 
     function t( key, fallback ) {
         return typeof i18n[ key ] === 'string' ? i18n[ key ] : fallback;
@@ -391,7 +392,30 @@
         );
     }
 
+    function syncEditorSaveLock() {
+        var editor;
+        var shouldLock = problems.length > 0;
+
+        if ( ! document.body.classList.contains( 'block-editor-page' ) || ! window.wp || ! wp.data || ! wp.data.dispatch ) {
+            return;
+        }
+
+        editor = wp.data.dispatch( 'core/editor' );
+        if ( ! editor || typeof editor.lockPostSaving !== 'function' || typeof editor.unlockPostSaving !== 'function' || shouldLock === editorSaveLocked ) {
+            return;
+        }
+
+        // Set our state before dispatching: store subscribers run synchronously.
+        editorSaveLocked = shouldLock;
+        if ( shouldLock ) {
+            editor.lockPostSaving( NOTICE_ID );
+        } else {
+            editor.unlockPostSaving( NOTICE_ID );
+        }
+    }
+
     function render( $root ) {
+        syncEditorSaveLock();
         renderTabCounts( $root );
         renderNotice( $root );
         syncEditorNotice( $root );
@@ -431,27 +455,16 @@
         return problems;
     }
 
-    function clearFixedField( $root, el ) {
-        var before = problems.length;
-
-        problems = problems.filter( function( problem ) {
-            var target = problem.el;
-            var fixed = ( target === el || $( target ).prev( 'select, input' )[ 0 ] === el ) && ! isEmpty( target );
-
-            if ( fixed ) {
-                clearError( target );
-            }
-
-            return ! fixed;
-        } );
-
-        if ( problems.length !== before ) {
-            render( $root );
-        }
-    }
-
     function bindRequiredCheck( $root ) {
         var wasSaving = false;
+        var checkTimer;
+
+        function scheduleCheck() {
+            window.clearTimeout( checkTimer );
+            checkTimer = window.setTimeout( function() {
+                checkRequired( $root );
+            }, 0 );
+        }
 
         syncRequiredMarks( $root );
         $( '#_ppcart_on_sale, #_ppcart_schedule_sale' ).on( 'change', function() {
@@ -463,9 +476,8 @@
             if ( e.originalEvent ) {
                 $( this ).closest( '.ppcart-repeater.is-starter' ).removeClass( 'is-starter' );
             }
-            if ( problems.length ) {
-                clearFixedField( $root, this );
-            }
+            // Conditional field visibility updates in other change handlers first.
+            scheduleCheck();
         } );
 
         if ( window.wp && wp.data && wp.data.subscribe && wp.data.select ) {
@@ -499,12 +511,28 @@
             } );
         }
 
-        $( '#post' ).on( 'submit', function() {
-            checkRequired( $root );
+        $( '#post' ).on( 'submit', function( event ) {
+            if ( checkRequired( $root ).length ) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                revealField( $root, problems[ 0 ] );
+                return false;
+            }
         } );
 
-        // On an existing product, show what is still missing from the last save.
-        // The load event can fire before this ready callback, so check readyState first.
+        // Adding or deleting a row can change validity without an input event.
+        if ( window.MutationObserver ) {
+            $root.find( 'ul.ppcart-repeaters' ).each( function() {
+                new window.MutationObserver( scheduleCheck ).observe( this, { childList: true } );
+            } );
+        }
+
+        // Establish the block editor lock as soon as ready handlers finish.
+        if ( document.body.classList.contains( 'block-editor-page' ) ) {
+            scheduleCheck();
+        }
+
+        // Recheck existing products after all conditional fields have initialized.
         if ( window.location.pathname.indexOf( 'post-new.php' ) === -1 ) {
             var checkAfterLoad = function() {
                 window.setTimeout( function() {
