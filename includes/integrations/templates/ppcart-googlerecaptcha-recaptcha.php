@@ -13,11 +13,15 @@ $response = ppcart_safe_remote_post(
     $url,
     [
         'body'    => $postvars,
-        'timeout' => 3,
+        'timeout' => 10,
     ]
 );
 
 if (is_wp_error($response)) {
+    global $ppcart_debug_logger;
+    if (is_object($ppcart_debug_logger) && method_exists($ppcart_debug_logger, 'log_debug')) {
+        $ppcart_debug_logger->log_debug('reCAPTCHA siteverify request failed: ' . $response->get_error_message(), 4);
+    }
     return [ 'error-codes' => [ 'bad-request' ] ];
 }
 
