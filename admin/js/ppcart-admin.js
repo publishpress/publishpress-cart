@@ -714,7 +714,7 @@ jQuery(document).ready(function($){
     $legacyTabs.find('.ppcart-tab-nav a').click(function(){
 
         var $container = $(this).closest('.ppcart-settings-tabs');
-        var errors = false;
+        var missingFields = [];
         $container.find('.required:visible').each(function(){
             var $fileRow = $(this).closest('#repeater_ppcart_files > .ppcart-repeater');
             if ($fileRow.length &&
@@ -723,17 +723,29 @@ jQuery(document).ready(function($){
                 $fileRow.find('.required').removeClass('error');
                 return;
             }
+            var invalid = false;
             if($(this).hasClass("plugin-remove_button") && $(this).prev("select").val().length == 0){
                 $(this).addClass('error');
-                errors = true;
+                invalid = true;
             }else if ($(this).val() == '' && !$(this).hasClass("plugin-remove_button")) {
                 $(this).addClass('error');
-                errors = true;
+                invalid = true;
+            }
+            if (invalid) {
+                var $label = $(this).closest('.wrap-field, .ppcart-field').find('label').first().clone();
+                $label.find('.req, .screen-reader-text, .ppcart-tooltip').remove();
+                var label = $.trim($label.text()) || $(this).attr('aria-label') || $(this).attr('placeholder') || $(this).attr('name');
+                var row = $.trim($(this).closest('.ppcart-repeater').children('.handle').find('.title-repeater').text());
+                var description = row ? row + ': ' + label : label;
+                if (missingFields.indexOf(description) === -1) {
+                    missingFields.push(description);
+                }
             }
         });
 
-        if (errors) {
-            alert('Required fields missing');
+        if (missingFields.length) {
+            var heading = window.ppcart_admin_i18n && window.ppcart_admin_i18n.required_fields_missing || 'Required fields missing:';
+            alert(heading + '\n\n' + missingFields.join('\n'));
             return false;
         }
 
