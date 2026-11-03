@@ -178,4 +178,82 @@ class HeaderBackgroundColorTest extends Unit
 
         $this->assertSame([['ppcart', $css]], $inline);
     }
+
+    /**
+     * @test-id UT-371
+     */
+    public function test_UT_371_late_css_waits_for_footer_instead_of_printing_inline(): void
+    {
+        $inline  = [];
+        $printed = [];
+
+        WordPressStubContext::set(
+            'did_action',
+            static function ($hook) {
+                return in_array($hook, ['wp_enqueue_scripts', 'wp_print_styles'], true) ? 1 : 0;
+            }
+        );
+        WordPressStubContext::set(
+            'wp_style_is',
+            static function ($handle, $list = 'enqueued') {
+                return 'ppcart' === $handle;
+            }
+        );
+        WordPressStubContext::set('wp_register_style', static function () { return true; });
+        WordPressStubContext::set('wp_enqueue_style', static function () { return true; });
+        WordPressStubContext::set(
+            'wp_add_inline_style',
+            static function ($handle, $css) use (&$inline) {
+                $inline[] = [$handle, $css];
+
+                return true;
+            }
+        );
+        WordPressStubContext::set(
+            'wp_print_styles',
+            static function ($handles = false) use (&$printed) {
+                $printed[] = $handles;
+            }
+        );
+
+        $css = '.ppcart button{background-color:#000000}';
+        ppcart_enqueue_or_print_inline_style('ppcart', $css, 'ppcart-checkout-inline');
+
+        $this->assertSame([['ppcart-checkout-inline', $css]], $inline);
+        $this->assertSame([], $printed);
+    }
+
+    /**
+     * @test-id UT-372
+     */
+    public function test_UT_372_late_css_prints_immediately_after_footer(): void
+    {
+        $printed = [];
+
+        WordPressStubContext::set(
+            'did_action',
+            static function ($hook) {
+                return in_array($hook, ['wp_enqueue_scripts', 'wp_print_styles', 'wp_footer'], true) ? 1 : 0;
+            }
+        );
+        WordPressStubContext::set(
+            'wp_style_is',
+            static function ($handle, $list = 'enqueued') {
+                return 'ppcart' === $handle;
+            }
+        );
+        WordPressStubContext::set('wp_register_style', static function () { return true; });
+        WordPressStubContext::set('wp_enqueue_style', static function () { return true; });
+        WordPressStubContext::set('wp_add_inline_style', static function () { return true; });
+        WordPressStubContext::set(
+            'wp_print_styles',
+            static function ($handles = false) use (&$printed) {
+                $printed[] = $handles;
+            }
+        );
+
+        ppcart_enqueue_or_print_inline_style('ppcart', '.x{color:red}', 'ppcart-checkout-inline');
+
+        $this->assertSame([['ppcart-checkout-inline']], $printed);
+    }
 }
