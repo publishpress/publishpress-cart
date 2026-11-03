@@ -49,6 +49,7 @@ wp_localize_script(
 
 wp_localize_script('ppcart', 'ppcart_translate_backend', ppcart_translate_js('ppcart-admin.js'));
 wp_localize_script('ppcart', 'ppcart_admin_i18n', [
+    'required_fields_missing' => __('Required fields missing:', 'publishpress-cart'),
     'payment_label_cashondelivery' => __('Cash on Delivery', 'publishpress-cart'),
     'payment_label_stripe' => __('Stripe', 'publishpress-cart'),
     'payment_label_paypal' => __('PayPal', 'publishpress-cart'),

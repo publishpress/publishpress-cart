@@ -355,6 +355,7 @@
 
     function syncEditorNotice( $root ) {
         var notices;
+        var details;
 
         if ( ! document.body.classList.contains( 'block-editor-page' ) || ! window.wp || ! wp.data || ! wp.data.dispatch ) {
             return;
@@ -373,10 +374,15 @@
             return;
         }
 
+        details = problems.slice( 0, MAX_LISTED ).map( problemLabel );
+        if ( problems.length > MAX_LISTED ) {
+            details.push( t( 'more', 'and %d more' ).replace( '%d', problems.length - MAX_LISTED ) );
+        }
+
         editorNoticeShown = true;
         notices.createNotice(
             'warning',
-            t( 'editorNotice', 'Product settings: some required fields are empty.' ),
+            t( 'editorNotice', 'Product settings: some required fields are empty.' ) + ' ' + details.join( '; ' ),
             {
                 id: NOTICE_ID,
                 isDismissible: true,
