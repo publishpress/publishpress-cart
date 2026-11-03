@@ -36,7 +36,8 @@ trait PPCart_Product_Metaboxes_Pay_Plan_Fields_Trait
             [
                 'checkbox' => [
                     'class'     => '',
-                    'description'   => __("Hide from checkout forms. At least one visible payment plan is required.", 'publishpress-cart'),
+                    'description'   => __('Hide this plan on checkout forms.', 'publishpress-cart'),
+                    'tooltip'       => __('At least one plan must stay visible.', 'publishpress-cart'),
                     'id'            => 'is_hidden',
                     'label'     => __('Hidden', 'publishpress-cart'),
                     'placeholder'   => '',

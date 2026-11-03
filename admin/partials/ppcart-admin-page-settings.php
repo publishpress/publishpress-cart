@@ -6,7 +6,7 @@
  * Renders a redesigned shell (top bar + sidebar + cards) around the existing
  * WordPress Settings API output and existing canonical settings filters.
  *
- * @link https://publishpress.com/publishpress-cart/
+ * @link https://publishpress.com/cart/
  * @since 1.0.0
  *
  * @package PublishPress_Cart

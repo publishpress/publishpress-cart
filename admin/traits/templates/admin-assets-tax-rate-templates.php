@@ -24,31 +24,31 @@ try {
             '{{ data.tax_rate_id }}'
         ); ?>" data-id="{{ data.tax_rate_id }}">
         <td class="tax-country">
-            <input type="text" value="{{ data.tax_rate_country }}" placeholder="*" name="tax_rate_country[{{ data.tax_rate_id }}]" class="wc_input_country_iso" data-attribute="tax_rate_country" style="text-transform:uppercase" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-country" />
+            <input type="text" value="{{ data.tax_rate_country }}" placeholder="*" name="tax_rate_country[{{ data.tax_rate_id }}]" class="wc_input_country_iso" data-attribute="tax_rate_country" aria-label="<?php esc_attr_e('Country code', 'publishpress-cart'); ?>" style="text-transform:uppercase" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-country" />
         </td>
 
         <td class="tax-state">
-            <input type="text" value="{{ data.tax_rate_state }}" placeholder="*" name="tax_rate_state[{{ data.tax_rate_id }}]" data-attribute="tax_rate_state" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-state" />
+            <input type="text" value="{{ data.tax_rate_state }}" placeholder="*" name="tax_rate_state[{{ data.tax_rate_id }}]" data-attribute="tax_rate_state" aria-label="<?php esc_attr_e('State code', 'publishpress-cart'); ?>" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-state" />
         </td>
 
         <td class="tax-postcode">
-            <input type="text" value="{{ data.tax_rate_postcode }}" placeholder="*" data-name="tax_rate_postcode[{{ data.tax_rate_id }}]" data-attribute="tax_rate_postcode" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-postcode" />
+            <input type="text" value="{{ data.tax_rate_postcode }}" placeholder="*" data-name="tax_rate_postcode[{{ data.tax_rate_id }}]" data-attribute="tax_rate_postcode" aria-label="<?php esc_attr_e('Postcode', 'publishpress-cart'); ?>" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-postcode" />
         </td>
 
         <td class="tax-city">
-            <input type="text" value="{{ data.tax_rate_city }}" placeholder="*" data-name="tax_rate_city[{{ data.tax_rate_id }}]" data-attribute="tax_rate_city" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-city" />
+            <input type="text" value="{{ data.tax_rate_city }}" placeholder="*" data-name="tax_rate_city[{{ data.tax_rate_id }}]" data-attribute="tax_rate_city" aria-label="<?php esc_attr_e('City', 'publishpress-cart'); ?>" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-city" />
         </td>
 
         <td class="tax-rate">
-            <input type="text" value="{{ data.tax_rate }}" placeholder="0" name="tax_rate[{{ data.tax_rate_id }}]" data-attribute="tax_rate" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-rate" />
+            <input type="text" value="{{ data.tax_rate }}" placeholder="0" name="tax_rate[{{ data.tax_rate_id }}]" data-attribute="tax_rate" aria-label="<?php esc_attr_e('Rate %', 'publishpress-cart'); ?>" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-rate" />
         </td>
 
         <td class="tax-title">
-            <input type="text" value="{{ data.tax_rate_title }}" name="tax_rate_title[{{ data.tax_rate_id }}]" data-attribute="tax_rate_title" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-title" />
+            <input type="text" value="{{ data.tax_rate_title }}" name="tax_rate_title[{{ data.tax_rate_id }}]" data-attribute="tax_rate_title" aria-label="<?php esc_attr_e('Tax Title', 'publishpress-cart'); ?>" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-title" />
         </td>
 
         <td class="priority">
-            <input type="number" step="1" min="1" value="{{ data.tax_rate_priority }}" name="tax_rate_priority[{{ data.tax_rate_id }}]" data-attribute="tax_rate_priority" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-priority" />
+            <input type="number" step="1" min="1" value="{{ data.tax_rate_priority }}" name="tax_rate_priority[{{ data.tax_rate_id }}]" data-attribute="tax_rate_priority" aria-label="<?php esc_attr_e('Priority', 'publishpress-cart'); ?>" data-testid="ppcart-admin-tax-rate-{{ data.tax_rate_id }}-priority" />
         </td>
     </tr>
 <?php

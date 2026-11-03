@@ -2084,6 +2084,11 @@ body.ppcart-checkout-1 {
                 outline: none;
             }
 
+            a:focus-visible {
+                outline: 2px solid currentColor;
+                outline-offset: 2px;
+            }
+
             a.active {
                 border-color: inherit;
             }

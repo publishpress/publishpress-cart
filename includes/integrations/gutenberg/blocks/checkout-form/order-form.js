@@ -757,12 +757,21 @@ function handlePreviewClick( event ) {
 	form.classList.toggle( 'step-2', isStepTwo );
 
 	steps.forEach( ( item ) => {
-		item.classList.toggle(
-			'ppcart-current',
-			isStepTwo
-				? item.classList.contains( 'step-two' )
-				: item.classList.contains( 'step-one' )
-		);
+		const isCurrent = isStepTwo
+			? item.classList.contains( 'step-two' )
+			: item.classList.contains( 'step-one' );
+		const link = item.querySelector( 'a' );
+
+		item.classList.toggle( 'ppcart-current', isCurrent );
+
+		// Match the storefront script, so the preview announces the visible step.
+		if ( link ) {
+			if ( isCurrent ) {
+				link.setAttribute( 'aria-current', 'step' );
+			} else {
+				link.removeAttribute( 'aria-current' );
+			}
+		}
 	} );
 }
 

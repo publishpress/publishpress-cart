@@ -73,6 +73,14 @@ class PPCart_Admin_Order_List_Controller
 
     public function set_custom_edit_product_columns($columns)
     {
+        $product_columns = [
+            'ppcart_price' => __('Price', 'publishpress-cart'),
+            'ppcart_payment_type' => __('Payment Type', 'publishpress-cart'),
+        ];
+        $title_position = array_search('title', array_keys($columns), true);
+        $position = false === $title_position ? count($columns) : $title_position + 1;
+        $columns = array_slice($columns, 0, $position, true)
+            + $product_columns + array_slice($columns, $position, null, true);
         $columns['shortcode'] = __('Shortcode', 'publishpress-cart');
 
         return $columns;
@@ -81,10 +89,79 @@ class PPCart_Admin_Order_List_Controller
     public function custom_product_column($column, $post_id)
     {
         switch ($column) {
+            case 'ppcart_price':
+            case 'ppcart_payment_type':
+                $labels = $this->get_product_plan_column_labels($post_id);
+                echo implode('<br>', array_map('esc_html', $labels[$column]));
+                break;
             case 'shortcode':
                 echo '<code>[ppcart_form id="' . esc_attr($post_id) . '"]</code>';
                 break;
         }
+    }
+
+    /**
+     * Hide secondary product columns until a user selects them in Screen Options.
+     *
+     * @since 1.1.0
+     * @param array $hidden Default hidden columns.
+     * @param WP_Screen $screen Current admin screen.
+     * @return array
+     */
+    public function default_hidden_product_columns($hidden, $screen)
+    {
+        if ('edit' !== $screen->base || ! ppcart_is_product_post_type($screen->post_type)) {
+            return $hidden;
+        }
+
+        return array_values(array_unique(array_merge($hidden, [
+            'taxonomy-' . ppcart_live_taxonomy('product_cat'),
+            'taxonomy-' . ppcart_live_taxonomy('product_tag'),
+            'date',
+        ])));
+    }
+
+    /**
+     * Build readable prices and payment types for every saved payment plan.
+     *
+     * @since 1.1.0
+     * @param int $post_id Product ID.
+     * @return array
+     */
+    private function get_product_plan_column_labels($post_id)
+    {
+        $plans = ppcart_get_post_meta($post_id, 'pay_options', true);
+        $prices = [];
+        $types = [];
+        $type_labels = [
+            '' => __('One-time Payment', 'publishpress-cart'),
+            'recurring' => __('Recurring Payments (Subscriptions)', 'publishpress-cart'),
+            'pwyw' => __('Pay What You Want', 'publishpress-cart'),
+            'free' => __('Free', 'publishpress-cart'),
+        ];
+
+        foreach (is_array($plans) ? $plans : [] as $plan) {
+            if (! is_array($plan)) {
+                continue;
+            }
+            $type = $plan['product_type'] ?? '';
+            $types[] = $type_labels[$type] ?? __('Unknown', 'publishpress-cart');
+            $price = '—';
+            if ('free' === $type) {
+                $price = $type_labels['free'];
+            } elseif ('pwyw' === $type || ('recurring' === $type && ! empty($plan['recurring_pwyw']))) {
+                $price = $type_labels['pwyw'];
+            } elseif (isset($plan['price']) && is_numeric($plan['price'])) {
+                $price = ppcart_format_price($plan['price'], false);
+            }
+            $name = $plan['option_name'] ?? '';
+            $prices[] = '' !== $name ? $name . ': ' . $price : $price;
+        }
+
+        return [
+            'ppcart_price' => $prices ?: ['—'],
+            'ppcart_payment_type' => array_values(array_unique($types)) ?: ['—'],
+        ];
     }
 
     public function set_custom_edit_order_columns($columns)

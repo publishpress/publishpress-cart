@@ -119,6 +119,7 @@ foreach ($ppcart_product_types as $ppcart_product_type) {
     $this->loader->add_filter('manage_' . $ppcart_product_type . '_posts_columns', $plugin_admin_order_list, 'set_custom_edit_product_columns');
     $this->loader->add_action('manage_' . $ppcart_product_type . '_posts_custom_column', $plugin_admin_order_list, 'custom_product_column', 10, 2);
 }
+$this->loader->add_filter('default_hidden_columns', $plugin_admin_order_list, 'default_hidden_product_columns', 10, 2);
 $this->loader->add_filter('post_row_actions', $plugin_admin, 'add_product_duplicate_row_action', 10, 2);
 $this->loader->add_filter('page_row_actions', $plugin_admin, 'add_product_duplicate_row_action', 10, 2);
 $this->loader->add_action('admin_action_ppcart_duplicate_product', $plugin_admin, 'handle_product_duplicate_action');

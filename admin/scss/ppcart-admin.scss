@@ -885,6 +885,11 @@ td.column-order .row-actions {
 				box-shadow: 0 0 !important;
 				outline: 0 !important;
 				transition: all 0.2s linear;
+
+                &:focus-visible {
+                    outline: 2px solid #0479a6 !important;
+                    outline-offset: 2px;
+                }
 			}
 
 			&.active a {

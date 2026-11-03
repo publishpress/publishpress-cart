@@ -1327,6 +1327,11 @@ body.post-type-ppcart_product .wp-list-table .column-shortcode code{
   padding-right: 24px;
 }
 
+.ppcart-contacts-page .dt-container .dt-length select {
+  min-width: 0;
+  padding-inline: 4px 24px;
+}
+
 .ppcart-contacts-page .dataTables_wrapper .dataTables_filter input:focus,
 .ppcart-contacts-page .dataTables_wrapper .dataTables_length select:focus {
   border-color: var(--pp-co-primary);
