@@ -138,6 +138,11 @@ if (PPCart_Admin_Screens::is_settings_screen($hook_suffix)) {
 wp_enqueue_media();
 wp_enqueue_editor();
 wp_enqueue_script('ppcart-uploader', PPCART_BASE_URL . 'admin/js/ppcart-file-uploader.js', [ 'jquery' ], $this->version, true);
+wp_localize_script('ppcart-uploader', 'ppcartUploaderI18n', [
+    'uploading' => __('Uploading file…', 'publishpress-cart'),
+    'uploaded' => __('File uploaded successfully.', 'publishpress-cart'),
+    'failed' => __('Upload failed. Please try again.', 'publishpress-cart'),
+]);
 wp_enqueue_script('ppcart-repeater', PPCART_BASE_URL . 'admin/js/ppcart-repeater.js', [ 'jquery', 'editor', 'quicktags', 'jquery-ui-sortable' ], $this->version, true);
 
 wp_localize_script('ppcart-repeater', 'ppcartNotificationI18n', [
