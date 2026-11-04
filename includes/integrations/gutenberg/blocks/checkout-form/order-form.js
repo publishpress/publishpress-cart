@@ -91,7 +91,7 @@ const arrangementSections = {
 	contact_info: __( 'Contact Info', 'publishpress-cart' ),
 	payment_method: __( 'Payment Method', 'publishpress-cart' ),
 	payment_details: __( 'Payment Details', 'publishpress-cart' ),
-	order_bumps: __( 'Order Bumps', 'publishpress-cart' ),
+	order_bumps: __( 'Offers during checkout', 'publishpress-cart' ),
 	order_summary: __( 'Order Summary', 'publishpress-cart' ),
 	terms_consent: __( 'Terms & Consent', 'publishpress-cart' ),
 	express_payment: __( 'Express Payment', 'publishpress-cart' ),

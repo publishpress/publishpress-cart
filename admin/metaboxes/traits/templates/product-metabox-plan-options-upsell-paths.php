@@ -6,7 +6,7 @@ if (! defined('ABSPATH')) {
 
 
 // New products list the paths too, so no check for $_GET['post'] here.
-$options = ['' => __('-- Select Upsell Path --', 'publishpress-cart')];
+$options = ['' => __('-- Select offers after checkout --', 'publishpress-cart')];
 
 // The Query
 $args = [
