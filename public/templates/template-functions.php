@@ -13,7 +13,7 @@ global $ppcart_product, $post;
      */
 function ppcart_enqueue_checkout_inline_style($css)
 {
-    ppcart_enqueue_or_print_inline_style('ppcart', $css, 'ppcart-checkout-inline');
+    ppcart_enqueue_or_print_inline_style('ppcart', $css, 'ppcart-checkout-inline', true);
 }
 
 
