@@ -86,13 +86,15 @@ trait PPCart_Admin_Order_Metabox_Trait
 
         // Match the published products offered by wp_dropdown_pages(). Keep an
         // existing link editable even when its product is no longer published.
-        if (! $has_product && ! get_posts([
-            'post_type'      => ppcart_query_post_types('product'),
-            'post_status'    => 'publish',
-            'posts_per_page' => 1,
-            'fields'         => 'ids',
-            'no_found_rows'  => true,
-        ])) {
+        if (
+            ! $has_product && ! get_posts([
+                'post_type'      => ppcart_query_post_types('product'),
+                'post_status'    => 'publish',
+                'posts_per_page' => 1,
+                'fields'         => 'ids',
+                'no_found_rows'  => true,
+            ])
+        ) {
             return;
         }
 
