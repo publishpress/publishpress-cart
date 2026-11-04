@@ -110,6 +110,7 @@ $this->loader->add_action('update_option__ppcart_activecampaign_secret_key', $pl
 $this->loader->add_action('add_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
 $this->loader->add_action('update_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
 
+$this->loader->add_action('init', $plugin_admin_order, 'register_related_product_meta');
 $this->loader->add_action('admin_init', $plugin_admin_order, 'add_metaboxes', 99);
 $this->loader->add_action('edit_form_after_editor', $plugin_admin_order, 'product_info_callback');
 $this->loader->add_action('edit_form_advanced', $plugin_admin_order, 'product_form_callback');
