@@ -178,4 +178,54 @@ class HeaderBackgroundColorTest extends Unit
 
         $this->assertSame([['ppcart', $css]], $inline);
     }
+
+    public function testLateCheckoutStylesWaitForFooterOutsideCapturedHtml(): void
+    {
+        $queued = [];
+        $inline = [];
+        $printed = [];
+        WordPressStubContext::set('did_action', static function ($hook) {
+            return in_array($hook, ['wp_enqueue_scripts', 'wp_print_styles'], true) ? 1 : 0;
+        });
+        WordPressStubContext::set('wp_style_is', static function ($handle, $list) {
+            return 'ppcart' === $handle;
+        });
+        WordPressStubContext::set('wp_register_style', static function () { return true; });
+        WordPressStubContext::set('wp_enqueue_style', static function () { return true; });
+        WordPressStubContext::set('wp_add_inline_style', static function ($handle, $css) use (&$inline) {
+            $inline[] = [$handle, $css];
+            return true;
+        });
+        WordPressStubContext::set('wp_print_styles', static function ($handles) use (&$printed) {
+            $printed[] = $handles;
+            echo '<style>.ppcart button{background:#123456}</style>';
+        });
+        WordPressStubContext::set('add_action', static function ($hook, $callback, $priority) use (&$queued) {
+            $queued[$hook] = $callback;
+            return true;
+        });
+
+        ob_start();
+        try {
+            ppcart_enqueue_or_print_inline_style('ppcart', '.ppcart button{background:#123456}', 'ppcart-checkout-inline', true);
+            $output = ob_get_contents();
+        } finally {
+            ob_end_clean();
+        }
+        $this->assertSame('', $output);
+        $this->assertSame([], $printed);
+        $this->assertSame([['ppcart-checkout-inline', '.ppcart button{background:#123456}']], $inline);
+        $this->assertArrayHasKey('wp_footer', $queued);
+        $this->assertArrayHasKey('admin_footer', $queued);
+        ob_start();
+        try {
+            $queued['wp_footer']();
+            $footer_output = ob_get_contents();
+        } finally {
+            ob_end_clean();
+        }
+        $this->assertStringContainsString('<style>', $footer_output);
+        $this->assertSame([['ppcart-checkout-inline']], $printed);
+    }
+
 }
