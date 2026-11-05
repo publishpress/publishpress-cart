@@ -5916,6 +5916,26 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_show_admin_branding",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/partials/settings-page/tabs/topbar.php",
+            "recommended_hook": "ppcart_show_admin_branding",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_show_admin_branding",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
+            "recommended_hook": "ppcart_show_admin_branding",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_show_optin_checkbox_services",
             "type": "filter",
             "operation": "add_filter",

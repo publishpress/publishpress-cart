@@ -599,6 +599,8 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_setup_product_post_type` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_setup_product_post_type |
 | `ppcart_setup_product_upsell_path` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_setup_product_upsell_path |
 | `ppcart_should_send_product_notification` | Filter | `apply_filters` | Public | canonical | `includes/functions/users-and-notifications.php` | ppcart_should_send_product_notification |
+| `ppcart_show_admin_branding` | Filter | `apply_filters` | Public | canonical | `admin/partials/settings-page/tabs/topbar.php` | ppcart_show_admin_branding |
+| `ppcart_show_admin_branding` | Filter | `apply_filters` | Public | canonical | `admin/settings/traits/trait-ppcart-admin-settings-screen.php` | ppcart_show_admin_branding |
 | `ppcart_show_optin_checkbox_services` | Filter | `add_filter` | Public | canonical | `includes/integrations/templates/ppcart-kit-init.php` | ppcart_show_optin_checkbox_services |
 | `ppcart_show_optin_checkbox_services` | Filter | `apply_filters` | Public | canonical | `includes/functions/integrations-and-stock.php` | ppcart_show_optin_checkbox_services |
 | `ppcart_show_orderbump` | Filter | `apply_filters` | Public | canonical | `public/templates/checkout-shortcode.php` | ppcart_show_orderbump |
