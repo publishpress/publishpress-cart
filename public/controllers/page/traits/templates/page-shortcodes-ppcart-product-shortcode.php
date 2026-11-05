@@ -167,4 +167,9 @@ if (null !== $ppcart_product_shortcode_buffer_error) {
 }
 $output_string = $ppcart_product_shortcode_buffer_output;
 
-return $output_string;
+if ('' === trim($output_string)) {
+    return '';
+}
+
+// Keep the checkout container inside the theme's content-width wrapper.
+return '<div class="ppcart-checkout-embed">' . $output_string . '</div>';
