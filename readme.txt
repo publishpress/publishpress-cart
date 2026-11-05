@@ -120,6 +120,14 @@ PublishPress Cart is based on Studiocart 2.9.0 and is maintained by PublishPress
 
 PublishPress Cart can connect to third-party services when you enable and configure the related feature. These connections are optional unless you choose the related payment gateway, spam-protection feature, analytics feature, or marketing integration.
 
+= Meta Pixel =
+
+If you enter a Meta Pixel ID in the Facebook Ad Events integration, Cart loads Meta Pixel from https://connect.facebook.net on checkout and paid order confirmation pages. Meta receives PageView events and any Cart events you enable, which can include the product ID, price, currency, and an order event ID. Meta Pixel may collect browser and device data and use cookies. A Meta account and a Pixel ID are required for this optional setup. If your site already loads Meta Pixel, Cart can send enabled events to that installation.
+
+Service: https://www.facebook.com/business/tools/meta-pixel
+Terms: https://www.facebook.com/legal/technology_terms
+Privacy: https://www.facebook.com/privacy/policy/
+
 = Stripe =
 
 Stripe is used to process card payments when Stripe is enabled. During checkout, PublishPress Cart sends order, customer, amount, currency, and payment metadata needed to create and confirm Stripe payments. Stripe may return payment, charge, refund, subscription, and webhook event data to the site. When a Stripe publishable key is saved, checkout and product pages also load Stripe.js from https://js.stripe.com/v3/.
