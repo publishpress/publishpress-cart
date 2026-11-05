@@ -34,7 +34,7 @@ $default_sections = [
         ],
         'sale' => [
             'title'       => __('Sale', 'publishpress-cart'),
-            'description' => __('Set the sale price in each plan above.', 'publishpress-cart'),
+            'description' => __('Enter a sale price in each payment plan you want to discount.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_on_sale', '_ppcart_schedule_sale', '_ppcart_sale_start', '_ppcart_sale_end', '_ppcart_show_full_price' ],
         ],
     ],
