@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-subscriptions",
 	"version": "1.0.0",
-	"title": "Account Subscriptions",
+	"title": "Cart Account Subscriptions",
 	"category": "widgets",
 	"icon": "update",
 	"description": "Display the customer subscriptions account section.",

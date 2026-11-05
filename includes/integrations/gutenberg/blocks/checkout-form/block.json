@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/checkout-form",
 	"version": "1.0.0",
-	"title": "Checkout",
+	"title": "Cart Checkout",
 	"category": "widgets",
 	"icon": "cart",
 	"description": "Display a checkout form.",

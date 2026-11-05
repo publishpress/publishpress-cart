@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-downloads",
 	"version": "1.0.0",
-	"title": "Account Downloads",
+	"title": "Cart Account Downloads",
 	"category": "widgets",
 	"icon": "download",
 	"description": "Display the customer downloads account section when downloads are available.",

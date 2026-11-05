@@ -30,7 +30,7 @@ const restBase = config.restBase || '/publishpress-cart/v1';
 const productPostTypes = Array.isArray( config.productPostTypes ) && config.productPostTypes.length
 	? config.productPostTypes.map( ( postType ) => String( postType ) )
 	: [ 'ppcart_product' ];
-const blockTitle = __( 'Checkout', 'publishpress-cart' );
+const blockTitle = __( 'Cart Checkout', 'publishpress-cart' );
 const siteTitle = config.siteTitle || __( 'Site title', 'publishpress-cart' );
 
 function normalizeProductId( value ) {
