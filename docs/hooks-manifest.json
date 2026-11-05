@@ -566,6 +566,16 @@
             "notes": "Review before documenting as public API."
         },
         {
+            "name": "elementor/widgets/register",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/integrations/gutenberg/index.php",
+            "recommended_hook": "elementor/widgets/register",
+            "notes": "Review before documenting as public API."
+        },
+        {
             "name": "enqueue_block_editor_assets",
             "type": "action",
             "operation": "add_action",
@@ -672,6 +682,16 @@
             "classification": "external",
             "status": "wordpress_core",
             "file": "includes/functions/prices-and-marketing.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "init",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "includes/integrations/gutenberg/index.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
         },
@@ -3082,6 +3102,16 @@
             "classification": "public",
             "status": "canonical",
             "file": "public/controllers/class-ppcart-public-asset-controller.php",
+            "recommended_hook": "ppcart_enqueue_frontend_assets",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_enqueue_frontend_assets",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/layout/class-ppcart-layout-embeds.php",
             "recommended_hook": "ppcart_enqueue_frontend_assets",
             "notes": "Canonical hook prefix."
         },

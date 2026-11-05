@@ -64,6 +64,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `edit_form_after_editor` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | edit_form_after_editor |
 | `edit_user_profile` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | edit_user_profile |
 | `edit_user_profile_update` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | edit_user_profile_update |
+| `elementor/widgets/register` | Action | `add_action` | Internal | unclassified | `includes/integrations/gutenberg/index.php` | elementor/widgets/register |
 | `enqueue_block_editor_assets` | Action | `add_action` | Internal | unclassified | `includes/integrations/gutenberg/lib/class-ppcart-gutenberg-bootstrap.php` | enqueue_block_editor_assets |
 | `handle_bulk_actions-edit-{$ppcart_order_type}` | Filter | `add_filter` | Internal | dynamic | `includes/bootstrap/templates/admin-hook-registrar-register.php` | handle_bulk_actions-edit-{$ppcart_order_type} |
 | `handle_bulk_actions-edit-{$ppcart_subscription_type}` | Filter | `add_filter` | Internal | dynamic | `includes/bootstrap/templates/admin-hook-registrar-register.php` | handle_bulk_actions-edit-{$ppcart_subscription_type} |
@@ -75,6 +76,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `init` | Action | `add_action` | External | wordpress_core | `includes/email/ppcart-template-functions/options-and-hooks.php` |  |
 | `init` | Action | `add_action` | External | wordpress_core | `includes/files/class-ppcart-files.php` |  |
 | `init` | Action | `add_action` | External | wordpress_core | `includes/functions/prices-and-marketing.php` |  |
+| `init` | Action | `add_action` | External | wordpress_core | `includes/integrations/gutenberg/index.php` |  |
 | `init` | Action | `add_action` | External | wordpress_core | `includes/integrations/gutenberg/lib/class-ppcart-gutenberg-bootstrap.php` |  |
 | `init` | Action | `add_action` | External | wordpress_core | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` |  |
 | `init` | Action | `add_action` | External | wordpress_core | `includes/logging/class-ppcart-stripe-webhook-logger.php` |  |
@@ -316,6 +318,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_enabled_processors` | Filter | `apply_filters` | Public | canonical | `includes/functions/payment-and-locale-lists.php` | ppcart_enabled_processors |
 | `ppcart_enqueue_admin_tax_settings` | Action | `do_action` | Public | canonical | `admin/traits/templates/admin-assets-enqueue-scripts.php` | ppcart_enqueue_admin_tax_settings |
 | `ppcart_enqueue_frontend_assets` | Action | `add_action` | Public | canonical | `public/controllers/class-ppcart-public-asset-controller.php` | ppcart_enqueue_frontend_assets |
+| `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `includes/integrations/layout/class-ppcart-layout-embeds.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `public/controllers/traits/trait-ppcart-public-account-shortcodes.php` | ppcart_enqueue_frontend_assets |
