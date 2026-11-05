@@ -157,12 +157,12 @@ $integration_meta = [
     ],
     'fbads'          => [
         'title'       => __('Facebook Ad Events', 'publishpress-cart'),
-        'description' => __('Send Cart events to an existing Meta Pixel installation. PublishPress Cart does not install or connect the pixel script.', 'publishpress-cart'),
+        'description' => __('Send Cart events to an existing Meta Pixel or enter a Pixel ID to load it on checkout and paid confirmation pages.', 'publishpress-cart'),
         'category'    => 'ads',
         'logo_label'  => 'f',
         'logo_file'   => 'integration-logos/facebook-ad-events.svg',
         'learn_more'  => 'https://www.facebook.com/business/tools/meta-pixel',
-        'enable_options' => [ '_ppcart_fb_add_payment_info', '_ppcart_fb_purchase', '_ppcart_fb_lead' ],
+        'enable_options' => [ '_ppcart_fb_initiate_checkout', '_ppcart_fb_add_payment_info', '_ppcart_fb_purchase', '_ppcart_fb_lead' ],
     ],
     'ga'             => [
         'title'       => __('Google Analytics', 'publishpress-cart'),
