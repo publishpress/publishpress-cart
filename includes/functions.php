@@ -858,6 +858,7 @@ require_once __DIR__ . '/functions/checkout-completion.php';
 require_once __DIR__ . '/functions/merge-tags-and-dates.php';
 require_once __DIR__ . '/functions/payment-and-locale-lists.php';
 require_once __DIR__ . '/helpers/ppcart-stripe-client.php';
+require_once __DIR__ . '/helpers/ppcart-stripe-checkout-rate-limit.php';
 require_once __DIR__ . '/functions/payment-actions-and-refunds.php';
 require_once __DIR__ . '/functions/admin-ajax-and-notices.php';
 require_once __DIR__ . '/functions/admin-conditional-logic.php';

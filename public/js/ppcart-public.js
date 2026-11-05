@@ -50,6 +50,7 @@
             return {
                 error: parsed.data.error,
                 fields: parsed.data.fields,
+                code: parsed.data.code,
             };
         }
 
@@ -2475,6 +2476,13 @@
                     return;
                 }
 
+                var $mount = $(mountSelector);
+                $mount.siblings('.ppcart-checkout-rate-limit-message').remove();
+                if (response && response.code === 'ppcart_checkout_rate_limited') {
+                    $('<div class="ppcart-checkout-rate-limit-message" role="alert"></div>')
+                        .text(response.error).insertAfter($mount);
+                    return;
+                }
                 if (!response || 'undefined' !== typeof response.error || 'undefined' === typeof response.clientSecret) {
                     return;
                 }
