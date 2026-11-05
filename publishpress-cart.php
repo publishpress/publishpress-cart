@@ -169,10 +169,15 @@ if (! defined('PPCART_DOCS_URL')) {
  * This action is documented in includes/class-ppcart-activator.php
  */
 if (! function_exists('ppcart_activate')) {
-    function ppcart_activate()
+    function ppcart_activate($network_wide = null)
     {
         require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-activator.php';
+
         PPCart_Activator::activate();
+
+        if (null !== $network_wide && is_admin()) {
+            PPCart_Welcome::queue_redirect($network_wide);
+        }
     }
 }
 
@@ -207,17 +212,14 @@ if (! function_exists('ppcart_upgrade')) {
     }
 }
 
+if (is_admin()) {
+    require_once __DIR__ . '/admin/class-ppcart-welcome.php';
+    add_action('admin_init', [PPCart_Welcome::class, 'maybe_redirect']);
+    add_action('admin_menu', [PPCart_Welcome::class, 'register_page'], 20);
+}
+
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');
 register_deactivation_hook(PPCART_BASE_FILE, 'ppcart_deactivate');
-
-/**
- * First-time Activate-while-Studiocart-is-on never reached ppcart_activate()
- * because that hook is registered after the conflict return above. Run it once
- * Studiocart is gone so tax table, caps, API key, and rewrite flush still happen.
- */
-if (PPCart_Studiocart_Conflict::consume_pending_activation()) {
-    ppcart_activate();
-}
 
 add_action(
     'upgrader_process_complete',
@@ -346,5 +348,11 @@ function ppcart_helper()
 
 if (! did_action('ppcart_loaded')) {
     ppcart_run();
+
+    // Retry deferred activation only after Cart has loaded its dependencies.
+    if (PPCart_Studiocart_Conflict::consume_pending_activation()) {
+        ppcart_activate();
+    }
+
     do_action('ppcart_loaded');
 }
