@@ -77,6 +77,8 @@ $this->loader->add_action('admin_menu', $plugin_reports, 'setup_plugin_options_m
 $this->loader->add_action('admin_menu', $plugin_customer, 'setup_plugin_options_menu');
 $this->loader->add_action('admin_menu', $plugin_contacts_page, 'setup_plugin_options_menu');
 $this->loader->add_action('admin_menu', $plugin_extensions_page, 'setup_plugin_options_menu');
+require_once PPCART_BASE_DIR . 'admin/class-ppcart-pro-menu-previews.php';
+$this->loader->add_action('admin_menu', new PPCart_Pro_Menu_Previews(), 'register_pages', 20);
 
 
 // Register Importer

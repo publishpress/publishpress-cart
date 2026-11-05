@@ -90,6 +90,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `init` | Action | `add_action` | External | wordpress_core | `public/controllers/class-ppcart-public-payment-controller.php` |  |
 | `init` | Filter | `add_filter` | External | wordpress_core | `includes/bootstrap/class-ppcart-public-hook-registrar.php` |  |
 | `load-edit.php` | Action | `add_action` | External | wordpress_core | `includes/bootstrap/templates/admin-hook-registrar-register.php` |  |
+| `load-{$hook}` | Action | `add_action` | External | wordpress_core | `admin/class-ppcart-pro-menu-previews.php` |  |
 | `load-{$hook}` | Action | `add_action` | External | wordpress_core | `admin/class-ppcart-welcome.php` |  |
 | `login_form_bottom` | Action | `add_action` | Internal | unclassified | `public/controllers/class-ppcart-public-account-controller.php` | login_form_bottom |
 | `login_form_lostpassword` | Action | `add_action` | Internal | unclassified | `public/controllers/class-ppcart-public-account-controller.php` | login_form_lostpassword |
