@@ -104,6 +104,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `plugins_loaded` | Action | `add_action` | External | wordpress_core | `includes/class-ppcart-version-notices.php` |  |
 | `plugins_loaded` | Action | `add_action` | External | wordpress_core | `includes/integrations/CancelSubscription.php` |  |
 | `plugins_loaded` | Action | `add_action` | External | wordpress_core | `includes/integrations/Kit.php` |  |
+| `plugins_loaded` | Action | `add_action` | External | wordpress_core | `includes/integrations/Permissions.php` |  |
 | `plugins_loaded` | Action | `add_action` | External | wordpress_core | `includes/integrations/templates/ppcart-googlerecaptcha---construct.php` |  |
 | `plugins_loaded` | Action | `add_action` | External | wordpress_core | `includes/secrets/traits/trait-ppcart-secrets-config.php` |  |
 | `plugins_loaded` | Action | `add_action` | External | wordpress_core | `publishpress-cart.php` |  |
@@ -345,6 +346,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_host_purchase_url` | Filter | `apply_filters` | Public | canonical | `public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php` | ppcart_host_purchase_url |
 | `ppcart_integration_fields` | Filter | `add_filter` | Public | canonical | `admin/class-ppcart-product-metaboxes.php` | ppcart_integration_fields |
 | `ppcart_integration_fields` | Filter | `add_filter` | Public | canonical | `includes/integrations/CancelSubscription.php` | ppcart_integration_fields |
+| `ppcart_integration_fields` | Filter | `add_filter` | Public | canonical | `includes/integrations/Permissions.php` | ppcart_integration_fields |
 | `ppcart_integration_fields` | Filter | `add_filter` | Public | canonical | `includes/integrations/templates/ppcart-kit-init.php` | ppcart_integration_fields |
 | `ppcart_integration_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-set-integration-field-group.php` | ppcart_integration_fields |
 | `ppcart_integration_plan_targets` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-plan-options-get-payment-plans.php` | ppcart_integration_plan_targets |
@@ -352,6 +354,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_integration_trigger_options` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metabox-plan-options.php` | ppcart_integration_trigger_options |
 | `ppcart_integration_validation_error` | Filter | `apply_filters` | Public | canonical | `includes/functions/payment-actions-and-refunds.php` | ppcart_integration_validation_error |
 | `ppcart_integrations` | Filter | `add_filter` | Public | canonical | `includes/integrations/CancelSubscription.php` | ppcart_integrations |
+| `ppcart_integrations` | Filter | `add_filter` | Public | canonical | `includes/integrations/Permissions.php` | ppcart_integrations |
 | `ppcart_integrations` | Filter | `add_filter` | Public | canonical | `includes/integrations/templates/ppcart-kit-init.php` | ppcart_integrations |
 | `ppcart_integrations` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-plan-options-get-ppcart-service-type.php` | ppcart_integrations |
 | `ppcart_integrations_option_list` | Filter | `add_filter` | Public | canonical | `includes/integrations/templates/ppcart-googlerecaptcha---construct.php` | ppcart_integrations_option_list |
