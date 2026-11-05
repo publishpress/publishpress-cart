@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-02",
+    "generated_at": "2026-11-05",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -182,6 +182,16 @@
             "classification": "internal",
             "status": "unclassified",
             "file": "admin/settings/class-ppcart-admin-stripe-webhook-settings.php",
+            "recommended_hook": "admin_footer",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "admin_footer",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/functions.php",
             "recommended_hook": "admin_footer",
             "notes": "Review before documenting as public API."
         },
@@ -403,6 +413,16 @@
             "status": "unclassified",
             "file": "admin/settings/class-ppcart-admin-stripe-webhook-settings.php",
             "recommended_hook": "admin_post_ppcart_stripe_webhook_manual_setup",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "all_plugins",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "publishpress-cart.php",
+            "recommended_hook": "all_plugins",
             "notes": "Review before documenting as public API."
         },
         {
@@ -5996,6 +6016,26 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_stripe_checkout_rate_limit",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/helpers/ppcart-stripe-checkout-rate-limit.php",
+            "recommended_hook": "ppcart_stripe_checkout_rate_limit",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_stripe_checkout_rate_limit_mode",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/helpers/ppcart-stripe-checkout-rate-limit.php",
+            "recommended_hook": "ppcart_stripe_checkout_rate_limit_mode",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_stripe_checkout_session_args",
             "type": "filter",
             "operation": "apply_filters",
@@ -7697,6 +7737,16 @@
         },
         {
             "name": "wp_enqueue_scripts",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "includes/functions.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "wp_footer",
             "type": "action",
             "operation": "add_action",
             "classification": "external",

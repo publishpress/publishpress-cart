@@ -36,6 +36,23 @@ if (defined('PPCART_FREE_LOADED')) {
 
 define('PPCART_FREE_LOADED', true);
 
+if (is_admin()) {
+    add_filter('all_plugins', static function ($plugins) {
+        global $pagenow;
+
+        if ('plugins.php' !== $pagenow) {
+            return $plugins;
+        }
+
+        $plugin_file = plugin_basename(__FILE__);
+        if (isset($plugins[$plugin_file]['Name'])) {
+            $plugins[$plugin_file]['Name'] = 'PublishPress Cart Free';
+        }
+
+        return $plugins;
+    });
+}
+
 const PPCART_MINIMUM_PHP_VERSION = '7.4';
 const PPCART_MINIMUM_WP_VERSION = '6.7';
 
