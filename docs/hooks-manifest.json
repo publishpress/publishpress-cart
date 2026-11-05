@@ -831,6 +831,16 @@
             "operation": "add_action",
             "classification": "external",
             "status": "wordpress_core",
+            "file": "admin/class-ppcart-pro-menu-previews.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "load-{$hook}",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
             "file": "admin/class-ppcart-welcome.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
