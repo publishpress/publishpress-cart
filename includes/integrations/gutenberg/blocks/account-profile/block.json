@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-profile",
 	"version": "1.0.0",
-	"title": "Account Profile",
+	"title": "Cart Account Profile",
 	"category": "widgets",
 	"icon": "admin-users",
 	"description": "Display the customer profile account section.",
