@@ -211,6 +211,16 @@
             "operation": "add_action",
             "classification": "internal",
             "status": "unclassified",
+            "file": "admin/class-ppcart-welcome.php",
+            "recommended_hook": "admin_head",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "admin_head",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
             "file": "admin/controllers/class-ppcart-admin-test-mode-notice-controller.php",
             "recommended_hook": "admin_head",
             "notes": "Review before documenting as public API."
@@ -317,6 +327,16 @@
         },
         {
             "name": "admin_init",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "publishpress-cart.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "admin_init",
             "type": "filter",
             "operation": "add_filter",
             "classification": "external",
@@ -332,6 +352,16 @@
             "classification": "external",
             "status": "wordpress_core",
             "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "admin_menu",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "publishpress-cart.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
         },
@@ -792,6 +822,16 @@
             "classification": "external",
             "status": "wordpress_core",
             "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "load-{$hook}",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "admin/class-ppcart-welcome.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
         },
@@ -4821,6 +4861,16 @@
             "operation": "apply_filters",
             "classification": "public",
             "status": "canonical",
+            "file": "admin/class-ppcart-welcome.php",
+            "recommended_hook": "ppcart_plugin_title",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_plugin_title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
             "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
             "recommended_hook": "ppcart_plugin_title",
             "notes": "Canonical hook prefix."
@@ -5913,6 +5963,16 @@
             "status": "canonical",
             "file": "includes/functions/users-and-notifications.php",
             "recommended_hook": "ppcart_should_send_product_notification",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_show_admin_branding",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/class-ppcart-welcome.php",
+            "recommended_hook": "ppcart_show_admin_branding",
             "notes": "Canonical hook prefix."
         },
         {
@@ -8024,6 +8084,14 @@
             "classification": "internal",
             "status": "dynamic",
             "recommended_pattern": "handle_bulk_actions-edit-{$ppcart_subscription_type}"
+        },
+        {
+            "pattern": "load-{$hook}",
+            "operation": "add_action",
+            "file": "admin/class-ppcart-welcome.php",
+            "classification": "external",
+            "status": "wordpress_core",
+            "recommended_pattern": null
         },
         {
             "pattern": "manage_edit-{$ppcart_order_type}_sortable_columns",
