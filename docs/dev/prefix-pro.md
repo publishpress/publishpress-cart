@@ -463,6 +463,20 @@ to `.ppcart_page_*` / `.toplevel_page_ppcart`.
 
 ### Extension hooks Pro listens to or fires
 
+### Typo hook names (Free #1019)
+
+Free 1.1.0 fires the corrected names. The 1.0.x typo names still fire as deprecated
+hooks for one or more releases. Pro must listen to the corrected names only.
+
+| Corrected name (Pro must use) | Deprecated 1.0.x name |
+|-------------------------------|-----------------------|
+| `ppcart_after_order_created` | `ppcart_fter_order_created` |
+| `ppcart_transaction_id` | `ppcart_ransaction_id` |
+| `ppcart_checkout_form_validation_messages` | `ppcart_checkout_form_validation_messafes` |
+| `ppcart_default_fields_html` (now an action) | `ppcart_defualt_fields_html` |
+
+Pro's affiliate admin listens to `ppcart_default_fields_html`.
+
 ### Checkout completion access (Free #676)
 
 Pro funnel step URLs that hit `?ppcart-order=&step=` must append

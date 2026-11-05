@@ -832,6 +832,8 @@
 
             $('#ppcart-payment-form', '#'+form_wrapper).toggleClass('step-1 step-2');
             $('.ppcart-checkout-form-steps .steps', '#'+form_wrapper).toggleClass('ppcart-current');
+            $('.ppcart-checkout-form-steps .steps a', '#'+form_wrapper).removeAttr('aria-current');
+            $('.ppcart-checkout-form-steps .steps.ppcart-current a', '#'+form_wrapper).attr('aria-current', 'step');
             return false;
 
         });
@@ -1045,6 +1047,8 @@
                 }
                 $('#ppcart-payment-form', '#'+form_wrapper).toggleClass('step-1 step-2');
                 $('.ppcart-checkout-form-steps .steps', '#'+form_wrapper).toggleClass('ppcart-current');
+                $('.ppcart-checkout-form-steps .steps a', '#'+form_wrapper).removeAttr('aria-current');
+                $('.ppcart-checkout-form-steps .steps.ppcart-current a', '#'+form_wrapper).attr('aria-current', 'step');
             }
         });
 

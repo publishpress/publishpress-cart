@@ -15,15 +15,15 @@ trait PPCart_Product_Metabox_Plan_Options_Trait
     public function get_trigger_option()
     {
         $options = [
-            'purchased'  => __('Product Purchased', 'publishpress-cart'),
-            'refunded'   => __('Product Refunded', 'publishpress-cart'),
-            'pending'    => __('COD Order Created', 'publishpress-cart'),
-            'active'     => __('Subscription Active', 'publishpress-cart'),
-            'completed'  => __('Installment Plan Completed', 'publishpress-cart'),
-            'canceled'   => __('Subscription Canceled', 'publishpress-cart'),
-            'paused'     => __('Subscription Paused', 'publishpress-cart'),
-            'renewal' => __('Subscription Renewal Charged', 'publishpress-cart'),
-            'failed' => __('Subscription Renewal Failed', 'publishpress-cart'),
+            'purchased'  => __('Product purchased', 'publishpress-cart'),
+            'refunded'   => __('Product refunded', 'publishpress-cart'),
+            'pending'    => __('COD order created', 'publishpress-cart'),
+            'active'     => __('Subscription active', 'publishpress-cart'),
+            'completed'  => __('Installment plan completed', 'publishpress-cart'),
+            'canceled'   => __('Subscription canceled', 'publishpress-cart'),
+            'paused'     => __('Subscription paused', 'publishpress-cart'),
+            'renewal' => __('Subscription renewal charged', 'publishpress-cart'),
+            'failed' => __('Subscription renewal failed', 'publishpress-cart'),
         ];
 
         return apply_filters('ppcart_integration_trigger_options', $options);

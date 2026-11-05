@@ -141,6 +141,17 @@ if ($order_info['user_account'] && $ppcart_current_user = get_user_by('id', $ord
 do_action('ppcart_order_store_pro_metadata', $order_post_id, $order_info);
 
 $this->maybe_do_order_complete($order_post_id, $order_info, $order_status);
-do_action('ppcart_fter_order_created', $order_post_id, $order_status, $order_info);
+
+/**
+ * Fires after Cart saves a new order.
+ *
+ * Replaces the StudioCart hook studiocart_after_order_created.
+ *
+ * @param int    $order_post_id Order post ID.
+ * @param string $order_status  Order status.
+ * @param array  $order_info    Order data.
+ */
+do_action('ppcart_after_order_created', $order_post_id, $order_status, $order_info);
+do_action_deprecated('ppcart_fter_order_created', [$order_post_id, $order_status, $order_info], '1.1.0', 'ppcart_after_order_created');
 
 return $order_post_id;

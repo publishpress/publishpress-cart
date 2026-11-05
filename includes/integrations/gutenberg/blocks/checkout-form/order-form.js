@@ -91,7 +91,7 @@ const arrangementSections = {
 	contact_info: __( 'Contact Info', 'publishpress-cart' ),
 	payment_method: __( 'Payment Method', 'publishpress-cart' ),
 	payment_details: __( 'Payment Details', 'publishpress-cart' ),
-	order_bumps: __( 'Order Bumps', 'publishpress-cart' ),
+	order_bumps: __( 'Offers during checkout', 'publishpress-cart' ),
 	order_summary: __( 'Order Summary', 'publishpress-cart' ),
 	terms_consent: __( 'Terms & Consent', 'publishpress-cart' ),
 	express_payment: __( 'Express Payment', 'publishpress-cart' ),
@@ -757,12 +757,21 @@ function handlePreviewClick( event ) {
 	form.classList.toggle( 'step-2', isStepTwo );
 
 	steps.forEach( ( item ) => {
-		item.classList.toggle(
-			'ppcart-current',
-			isStepTwo
-				? item.classList.contains( 'step-two' )
-				: item.classList.contains( 'step-one' )
-		);
+		const isCurrent = isStepTwo
+			? item.classList.contains( 'step-two' )
+			: item.classList.contains( 'step-one' );
+		const link = item.querySelector( 'a' );
+
+		item.classList.toggle( 'ppcart-current', isCurrent );
+
+		// Match the storefront script, so the preview announces the visible step.
+		if ( link ) {
+			if ( isCurrent ) {
+				link.setAttribute( 'aria-current', 'step' );
+			} else {
+				link.removeAttribute( 'aria-current' );
+			}
+		}
 	} );
 }
 

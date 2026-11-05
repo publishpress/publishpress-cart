@@ -25,25 +25,38 @@ $product_setting_tabs = $this->get_product_setting_tabs();
 
 $pro_tabs = function_exists('ppcart_pro_locked_product_tabs') ? ppcart_pro_locked_product_tabs() : [];
 
-echo '<div class="ppcart-settings-tabs">';
+echo '<div class="ppcart-settings-tabs ppcart-ui">';
 
 wp_nonce_field($this->plugin_name, 'ppcart_fields_nonce');
 
+$first_tab_id = (string) array_key_first($product_setting_tabs);
+
 echo '<div class="ppcart-left-col">';
-$i = 0;
-foreach ($product_setting_tabs as $tab_id => $label) {
-    $active = ($i == 0) ? 'active' : '';
-    $badge  = (isset($pro_tabs[$tab_id]) && function_exists('ppcart_pro_nav_badge')) ? ppcart_pro_nav_badge() : '';
-    echo '<div class="ppcart-tab-nav ' . esc_attr($active) . '"><a href="#ppcart-tab-' . esc_attr($tab_id) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-product-tab-' . $tab_id)) . '">' . esc_html($label) . wp_kses_post($badge) . '</a></div>';
-    $i++;
+foreach ($this->get_product_setting_tab_groups($product_setting_tabs) as $group_id => $group) {
+    $group_label_id = 'ppcart-tab-group-' . sanitize_html_class((string) $group_id);
+    echo '<div class="ppcart-tab-nav-group">';
+    if ('' !== $group['label']) {
+        echo '<p class="ppcart-tab-nav-group__label" id="' . esc_attr($group_label_id) . '">' . esc_html($group['label']) . '</p>';
+    }
+    echo '<div class="ppcart-tab-nav-group__tabs" role="tablist" aria-orientation="vertical"' . ('' !== $group['label'] ? ' aria-labelledby="' . esc_attr($group_label_id) . '"' : '') . '>';
+    foreach ($group['tabs'] as $tab_id => $label) {
+        $is_active = ((string) $tab_id === $first_tab_id);
+        $badge     = (isset($pro_tabs[$tab_id]) && function_exists('ppcart_pro_nav_badge')) ? ppcart_pro_nav_badge() : '';
+        echo '<div class="ppcart-tab-nav' . ($is_active ? ' active' : '') . (isset($pro_tabs[$tab_id]) ? ' ppcart-tab-nav--pro' : '') . '" role="presentation">';
+        echo '<a href="#ppcart-tab-' . esc_attr($tab_id) . '" id="ppcart-tab-link-' . esc_attr($tab_id) . '" role="tab" aria-controls="ppcart-tab-' . esc_attr($tab_id) . '" aria-selected="' . ($is_active ? 'true' : 'false') . '" tabindex="' . ($is_active ? '0' : '-1') . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-product-tab-' . $tab_id)) . '">';
+        echo '<span class="ppcart-tab-nav__label">' . esc_html($label) . '</span>' . wp_kses_post($badge);
+        echo '<span class="ppcart-tab-nav__count" hidden></span>';
+        echo '</a></div>';
+    }
+    echo '</div></div>';
 }
 echo '</div>';
 
 echo '<div class="ppcart-right-col">';
-$i = 0;
+echo '<div class="ppcart-metabox-notice notice notice-error inline" role="alert" hidden></div>';
 foreach ($product_setting_tabs as $tab_id => $label) {
-    $active = ($i == 0) ? 'active' : '';
-    echo '<div id="ppcart-tab-' . esc_attr($tab_id) . '" class="ppcart-tab ' . esc_attr($active) . '">';
+    $is_active = ((string) $tab_id === $first_tab_id);
+    echo '<div id="ppcart-tab-' . esc_attr($tab_id) . '" class="ppcart-tab' . ($is_active ? ' active' : '') . '" role="tabpanel" aria-labelledby="ppcart-tab-link-' . esc_attr($tab_id) . '" tabindex="0">';
 
     if (isset($pro_tabs[$tab_id])) {
         if (function_exists('ppcart_pro_render_locked_product_tab')) {
@@ -56,17 +69,16 @@ foreach ($product_setting_tabs as $tab_id => $label) {
         }
         $fields = $this->$tab_id ?? [];
         $fields = $this->filter_product_setting_tab_fields($tab_id, $fields, 'render');
-        $this->metabox_fields($fields);
+        $this->render_product_tab_sections($tab_id, $fields);
 
-        // Append the extra Pro-only fields to the free General tab.
-        if ('general' === $tab_id && function_exists('ppcart_pro_locked_product_field_rows_html')) {
-            echo wp_kses(ppcart_pro_locked_product_field_rows_html('general'), ppcart_admin_allowed_html());
+        // Show the extra Pro-only General options as one preview card.
+        if ('general' === $tab_id && function_exists('ppcart_pro_locked_product_more_card_html')) {
+            echo wp_kses(ppcart_pro_locked_product_more_card_html('general'), ppcart_admin_allowed_html());
         }
     }
 
     echo '</div>';
-    $i++;
-};
+}
 echo '</div>
 </div>';
 
@@ -110,12 +122,16 @@ if ($this->scripts != '') :
             var toggleSaleFields = function() {
                 var onSale = $('#_ppcart_on_sale').is(':checked') || $('#_ppcart_schedule_sale').is(':checked');
                 var $inputs = $(saleFields).find('input, select');
+                // Plan sale sections hide by CSS; disabled inputs keep sale values out of the save.
+                $('#ppcart-product-settings .ppcart-settings-tabs').toggleClass('ppcart-sale-off', !onSale);
+                // "On sale now" overrides the schedule, so CSS hides the schedule while it is on.
+                $('#ppcart-product-settings .ppcart-settings-tabs').toggleClass('ppcart-sale-now', $('#_ppcart_on_sale').is(':checked'));
                 if (onSale) {
-                    $inputs.removeAttr('disabled').removeAttr('style');
+                    $inputs.removeAttr('disabled');
                     $('.ridsale_option_name, .ridsale_price').find('input').addClass('required');
                     $('#rid_ppcart_show_full_price').show();
                 } else {
-                    $inputs.attr('disabled', '').css({background: '#f0eeee', opacity: '0.6'}).removeClass('required error');
+                    $inputs.attr('disabled', '').removeClass('required error');
                     $('#rid_ppcart_show_full_price').hide();
                 }
             };
@@ -220,20 +236,6 @@ if ($this->scripts != '') :
                     $('#repeater_ppcart_address_fields, #rid_ppcart_address_fields').fadeIn(400);
                 } else {
                     $('#repeater_ppcart_address_fields, #rid_ppcart_address_fields').hide();
-                }
-            });
-
-            // recurring_pwyw
-            if (($('#product_type').length && $('#product_type').val() === 'recurring' || $('[name="_ppcart_pay_options[product_type][0]"]').val() === 'recurring') && $('#_ppcart_pay_options\\[recurring_pwyw\\]\\[0\\]').is(':checked')) {
-                $('.ridname_your_own_price_text_recurring').css({ opacity: 0, display: "flex" }).animate({ opacity: 1 }, 400);
-            } else {
-                $('.ridname_your_own_price_text_recurring').hide();
-            }
-            $(document).on('change', '#product_type, [name="_ppcart_pay_options[product_type][0]"], #_ppcart_pay_options\\[recurring_pwyw\\]\\[0\\]', function() {
-                if (($('#product_type').length && $('#product_type').val() === 'recurring' || $('[name="_ppcart_pay_options[product_type][0]"]').val() === 'recurring') && $('#_ppcart_pay_options\\[recurring_pwyw\\]\\[0\\]').is(':checked')) {
-                    $('.ridname_your_own_price_text_recurring').css({ opacity: 0, display: "flex" }).animate({ opacity: 1 }, 400);
-                } else {
-                    $('.ridname_your_own_price_text_recurring').hide();
                 }
             });
 

@@ -5,11 +5,7 @@ if (! defined('ABSPATH')) {
 }
 
 
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only context check for current admin post.
-if (!isset($_GET['post'])) {
-    return;
-}
-
+// New products need the same published-product options as existing products.
 global $ppcart_public;
 remove_filter('the_title', [$ppcart_public, 'public_product_name']);
 

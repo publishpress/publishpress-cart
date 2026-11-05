@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-10-28",
+    "generated_at": "2026-11-02",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -25,6 +25,16 @@
         ]
     },
     "hooks": [
+        {
+            "name": "add_meta_boxes",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "add_meta_boxes",
+            "notes": "Review before documenting as public API."
+        },
         {
             "name": "add_option__ppcart_activecampaign_secret_key",
             "type": "action",
@@ -1526,6 +1536,26 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_after_order_created",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/stripe/templates/order-save.php",
+            "recommended_hook": "ppcart_after_order_created",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_after_order_created",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/stripe/traits/trait-ppcart-stripe-subscription-save.php",
+            "recommended_hook": "ppcart_after_order_created",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_after_order_load_from_post",
             "type": "filter",
             "operation": "apply_filters",
@@ -2358,11 +2388,21 @@
         {
             "name": "ppcart_checkout_form_validation_messafes",
             "type": "filter",
+            "operation": "apply_filters_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
+            "file": "public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php",
+            "recommended_hook": "ppcart_checkout_form_validation_messafes",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_checkout_form_validation_messages",
+            "type": "filter",
             "operation": "apply_filters",
             "classification": "public",
             "status": "canonical",
             "file": "public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php",
-            "recommended_hook": "ppcart_checkout_form_validation_messafes",
+            "recommended_hook": "ppcart_checkout_form_validation_messages",
             "notes": "Canonical hook prefix."
         },
         {
@@ -2796,6 +2836,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_default_fields_html",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
+            "recommended_hook": "ppcart_default_fields_html",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_default_fields_ids",
             "type": "filter",
             "operation": "apply_filters",
@@ -2817,10 +2867,10 @@
         },
         {
             "name": "ppcart_defualt_fields_html",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
+            "type": "action",
+            "operation": "do_action_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
             "recommended_hook": "ppcart_defualt_fields_html",
             "notes": "Canonical hook prefix."
@@ -3218,9 +3268,9 @@
         {
             "name": "ppcart_fter_order_created",
             "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
+            "operation": "do_action_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "includes/stripe/templates/order-save.php",
             "recommended_hook": "ppcart_fter_order_created",
             "notes": "Canonical hook prefix."
@@ -3228,9 +3278,9 @@
         {
             "name": "ppcart_fter_order_created",
             "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
+            "operation": "do_action_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "includes/stripe/traits/trait-ppcart-stripe-subscription-save.php",
             "recommended_hook": "ppcart_fter_order_created",
             "notes": "Canonical hook prefix."
@@ -4356,6 +4406,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_pay_plan_field_sections",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/field-groups/sales-plan-fields.php",
+            "recommended_hook": "ppcart_pay_plan_field_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_pay_plan_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -5136,6 +5196,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_metabox_post_type",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/traits/trait-ppcart-admin-assets.php",
+            "recommended_hook": "ppcart_product_metabox_post_type",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_page_redirect",
             "type": "action",
             "operation": "do_action",
@@ -5326,6 +5396,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_setting_tab_groups",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tab-groups.php",
+            "recommended_hook": "ppcart_product_setting_tab_groups",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_setting_tab_{$tab_id}_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -5356,6 +5436,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_tab_sections",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-tab-sections.php",
+            "recommended_hook": "ppcart_product_tab_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_{$tab_id}_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -5378,9 +5468,9 @@
         {
             "name": "ppcart_ransaction_id",
             "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
+            "operation": "apply_filters_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "includes/functions/orders-products-and-formatting.php",
             "recommended_hook": "ppcart_ransaction_id",
             "notes": "Canonical hook prefix."
@@ -5483,6 +5573,16 @@
             "status": "canonical",
             "file": "admin/settings/traits/templates/settings-sections-register.php",
             "recommended_hook": "ppcart_register_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_related_product_post_types",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "ppcart_related_product_post_types",
             "notes": "Canonical hook prefix."
         },
         {
@@ -6303,6 +6403,16 @@
             "status": "canonical",
             "file": "includes/helpers/ppcart-general-functions.php",
             "recommended_hook": "ppcart_theme_template_path",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_transaction_id",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/orders-products-and-formatting.php",
+            "recommended_hook": "ppcart_transaction_id",
             "notes": "Canonical hook prefix."
         },
         {
