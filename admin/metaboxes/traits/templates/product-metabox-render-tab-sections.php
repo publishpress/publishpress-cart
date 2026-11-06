@@ -21,7 +21,7 @@ $default_sections = [
         ],
         'header' => [
             'title'       => __('Page header', 'publishpress-cart'),
-            'description' => __('Change how the top of the product page looks.', 'publishpress-cart'),
+            'description' => __('Customize the header on the default Cart product page. For the split layout, set a featured image on the product to change the background. Edit custom block templates in the Site Editor.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_hide_title', '_ppcart_header_color', '_ppcart_header_image' ],
         ],
     ],

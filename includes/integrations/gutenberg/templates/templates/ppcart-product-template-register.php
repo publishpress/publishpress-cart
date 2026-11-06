@@ -31,9 +31,20 @@ foreach ($post_types as $product_post_type) {
         [
             'title'       => self::get_template_title($product_post_type),
             'description' => esc_html__('Controls PublishPress Cart product pages. Edit this template to move product content and the checkout form.', 'publishpress-cart'),
-            'content'     => self::get_template_content(),
+            'content'     => require __DIR__ . '/product-template-simple-content.php',
             'post_types'  => [ $product_post_type ],
             'plugin'      => self::PLUGIN_SLUG,
         ]
     );
 }
+
+register_block_template(
+    self::PLUGIN_SLUG . '//cart-checkout-split',
+    [
+        'title'       => __('Cart Checkout: Split layout', 'publishpress-cart'),
+        'description' => __('Displays the product and checkout side by side. Set a featured image on the product to customize the background.', 'publishpress-cart'),
+        'content'     => self::get_template_content(),
+        'post_types'  => $post_types,
+        'plugin'      => self::PLUGIN_SLUG,
+    ]
+);
