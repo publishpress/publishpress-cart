@@ -1,6 +1,6 @@
 # PublishPress Cart Hook Manifest
 
-Generated on 2026-11-05 from a static PHP token audit of `publishpress-cart`.
+Generated on 2026-11-06 from a static PHP token audit of `publishpress-cart`.
 
 ## Prefix Policy
 
@@ -711,6 +711,8 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `publishpress-cart_wp_reviews_allow_display_notice` | Filter | `add_filter` | Internal | unclassified | `includes/class-ppcart-reviews.php` | publishpress-cart_wp_reviews_allow_display_notice |
 | `query_vars` | Filter | `add_filter` | Internal | unclassified | `includes/bootstrap/class-ppcart-public-hook-registrar.php` | query_vars |
 | `render_block_core/cover` | Filter | `add_filter` | Internal | unclassified | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` | render_block_core/cover |
+| `render_block_core/group` | Filter | `add_filter` | Internal | unclassified | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` | render_block_core/group |
+| `render_block_core/post-title` | Filter | `add_filter` | Internal | unclassified | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` | render_block_core/post-title |
 | `rest_api_init` | Action | `add_action` | Internal | unclassified | `includes/integrations/gutenberg/lib/class-ppcart-gutenberg-bootstrap.php` | rest_api_init |
 | `restrict_manage_posts` | Action | `add_action` | External | wordpress_core | `admin/class-ppcart-admin-filters.php` |  |
 | `retrieve_password_message` | Filter | `add_filter` | Internal | unclassified | `public/controllers/class-ppcart-public-account-controller.php` | retrieve_password_message |

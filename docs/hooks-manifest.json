@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-05",
+    "generated_at": "2026-11-06",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -7033,6 +7033,26 @@
             "status": "unclassified",
             "file": "includes/integrations/gutenberg/templates/class-ppcart-product-template.php",
             "recommended_hook": "render_block_core/cover",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "render_block_core/group",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/integrations/gutenberg/templates/class-ppcart-product-template.php",
+            "recommended_hook": "render_block_core/group",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "render_block_core/post-title",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/integrations/gutenberg/templates/class-ppcart-product-template.php",
+            "recommended_hook": "render_block_core/post-title",
             "notes": "Review before documenting as public API."
         },
         {
