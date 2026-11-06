@@ -38,8 +38,13 @@ foreach ($post_types as $product_post_type) {
     );
 }
 
+$split_template_name = self::PLUGIN_SLUG . '//cart-checkout-split';
+if (class_exists('WP_Block_Templates_Registry') && WP_Block_Templates_Registry::get_instance()->is_registered($split_template_name)) {
+    return;
+}
+
 register_block_template(
-    self::PLUGIN_SLUG . '//cart-checkout-split',
+    $split_template_name,
     [
         'title'       => __('Cart Checkout: Split layout', 'publishpress-cart'),
         'description' => __('Displays the product and checkout side by side. Set a featured image on the product to customize the background.', 'publishpress-cart'),
