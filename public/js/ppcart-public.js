@@ -2431,7 +2431,38 @@
             });
         }
 
-        function mountPaymentElement(form) {
+        // The mount request runs the reCAPTCHA v3 check server-side, so fetch a
+        // fresh token first. grecaptcha loads async: wait for it (up to ~10s).
+        function mountPaymentElement(form, attempt) {
+            form = form.charAt(0) === '#' ? form : '#' + form;
+            var $token = $('.ppcart-grtoken', form);
+
+            if ($token.length === 0) {
+                mountPaymentElementNow(form);
+                return;
+            }
+
+            if (typeof grecaptcha === 'undefined' || typeof grecaptcha.ready !== 'function') {
+                attempt = attempt || 0;
+                if (attempt < 40) {
+                    setTimeout(function() { mountPaymentElement(form, attempt + 1); }, 250);
+                } else {
+                    mountPaymentElementNow(form);
+                }
+                return;
+            }
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute($token.attr('data-sitekey'), { action: 'submit' }).then(function(token) {
+                    $token.val(token);
+                    mountPaymentElementNow(form);
+                }, function() {
+                    mountPaymentElementNow(form);
+                });
+            });
+        }
+
+        function mountPaymentElementNow(form) {
             form = form.charAt(0) === '#' ? form : '#' + form;
             var formId = form.replace('#', '');
             var state = getCheckoutIntentState(formId);
