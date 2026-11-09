@@ -27,29 +27,7 @@ foreach ($fields as $section => $sfields) {
             $this->plugin_name . '-' . $effective_section,
             $v['settings']
         );
-        $sanitize_callbacks = [
-            'checkbox' => [$this, 'sanitize_checkbox'],
-            'editor'   => 'wp_kses_post',
-            'textarea' => 'wp_kses_post',
-            'url'      => 'esc_url_raw',
-            'email'    => 'sanitize_email',
-            'number'   => 'absint',
-            'password' => 'sanitize_text_field',
-            'text'     => 'sanitize_text_field',
-            'select'   => 'sanitize_text_field',
-        ];
-        $option_id = $v['settings']['id'];
-        $callback = $sanitize_callbacks[$v['type']] ?? 'sanitize_text_field';
-        if ('password' === $v['type'] || ! empty($v['settings']['secret'])) {
-            $callback = static function ($val) use ($option_id) {
-                return class_exists('PPCart_Secrets')
-                    ? PPCart_Secrets::sanitize_secret_field($val, $option_id)
-                    : sanitize_text_field((string) $val);
-            };
-        }
-        if (! empty($v['settings']['email_template_field']) && 'body' === $v['settings']['email_template_field'] && function_exists('ppcart_kses_email_html')) {
-            $callback = 'ppcart_kses_email_html';
-        }
+        $callback = $this->get_field_sanitizer($v);
         if (empty($v['settings']['skip_register'])) {
             register_setting(
                 $this->plugin_name . '-settings',

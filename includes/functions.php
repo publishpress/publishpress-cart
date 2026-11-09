@@ -5,6 +5,9 @@ if (! defined('ABSPATH')) {
 }
 
 
+require_once __DIR__ . '/helpers/ppcart-checkout-field-controls.php';
+require_once __DIR__ . '/helpers/ppcart-integration-custom-field.php';
+
 /*
 * global functions
 */

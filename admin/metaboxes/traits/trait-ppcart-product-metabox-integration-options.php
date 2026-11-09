@@ -9,11 +9,6 @@ trait PPCart_Product_Metabox_Integration_Options_Trait
     public function get_rcp_levels()
     {
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only context check for current admin post.
-        if (!isset($_GET['post'])) {
-            return;
-        }
-
         if (function_exists('rcp_get_membership_levels')) {
             $options = ['' => __('-- Select Membership Level --', 'publishpress-cart')];
 

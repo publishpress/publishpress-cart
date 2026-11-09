@@ -294,6 +294,7 @@ function ppcart_new_user_notification($user, $order_id, $test = false)
 function ppcart_notification_send($status, $order_info, $test = false)
 {
 
+    $sent = false;
     switch ($status) {
         case 'paid':
             $type = 'confirmation';
@@ -356,7 +357,7 @@ function ppcart_notification_send($status, $order_info, $test = false)
 
         if (!$test) {
             // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail -- Transactional order/subscription notification email.
-            wp_mail($to, $subject, $body, $headers, $attachments);
+            $sent = wp_mail($to, $subject, $body, $headers, $attachments);
         } else {
             /* translators: %s: email subject. */
             $subject = sprintf(__('Test: %s', 'publishpress-cart'), $subject);
@@ -370,11 +371,13 @@ function ppcart_notification_send($status, $order_info, $test = false)
             // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail -- Transactional admin notification email.
             $res = wp_mail($to, $subject, $body, $headers, $attachments);
 
+            $sent = $sent && $res;
             if ($test) {
                 return $res;
             }
         }
     }
+    return $sent;
 }
 
 function ppcart_get_email_html($atts)

@@ -106,6 +106,6 @@ foreach ($objects[ $pay_options_key ] as $key => $option) {
     }
 }
 
-ppcart_update_post_meta($post_id, $pay_options_key, $objects[ $pay_options_key ]);
+$this->persist_objects($post_id, $pay_options_key, $objects[ $pay_options_key ]);
 
 do_action('ppcart_product_save_stripe_meta', $post_id, $objects, $this->stripe, $ppcart_currency);

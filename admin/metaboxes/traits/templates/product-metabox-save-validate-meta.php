@@ -200,46 +200,11 @@ foreach ($metas as $meta) {
 
         $stripe_objects[$name] = $new_value;
     } elseif ('html' !== $field_type) {
-        $posted_value = null;
-        if (isset($_POST[$name]) && is_scalar($_POST[$name])) {
-            switch ($field_type) {
-                case 'email':
-                    $posted_value = sanitize_email(wp_unslash($_POST[$name]));
-                    break;
-
-                case 'file':
-                    $posted_value = sanitize_file_name(wp_unslash($_POST[$name]));
-                    break;
-
-                case 'file-upload':
-                case 'secure-file-upload':
-                case 'url':
-                    $posted_value = esc_url_raw(wp_unslash($_POST[$name]));
-                    break;
-
-                case 'textarea':
-                    $posted_value = sanitize_textarea_field(wp_unslash($_POST[$name]));
-                    break;
-
-                case 'editor':
-                case 'email_editor':
-                    $posted_value = wp_kses_post(wp_unslash($_POST[$name]));
-                    break;
-
-                default:
-                    $posted_value = sanitize_text_field(wp_unslash($_POST[$name]));
-                    break;
-            }
-        }
-        if (null === $posted_value || ('' === $posted_value && '0' !== $posted_value)) {
+        $posted_value = isset($_POST[$name]) && is_scalar($_POST[$name]) ? wp_unslash($_POST[$name]) : null;
+        $new_value = $this->sanitize_local_field($field_type, $posted_value);
+        if (null === $new_value || '' === $new_value) {
             ppcart_delete_post_meta($post_id, $name);
             continue;
-        }
-
-        if ('0' === $posted_value) {
-            $new_value = 0;
-        } else {
-            $new_value = $this->sanitizer($field_type, $posted_value);
         }
     }
 
