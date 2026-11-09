@@ -25,7 +25,17 @@ class PPCart_Dashboard_Widget
         $this->data     = new PPCart_Dashboard_Data();
         $this->renderer = new PPCart_Dashboard_Renderer();
 
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_styles']);
         add_action('wp_dashboard_setup', [$this, 'register']);
+    }
+
+    public function enqueue_styles($hook_suffix)
+    {
+        if ('index.php' !== $hook_suffix) {
+            return;
+        }
+
+        wp_enqueue_style('ppcart-dashboard-widget', plugins_url('../css/ppcart-dashboard-widget.css', __FILE__), [], PPCART_VERSION);
     }
 
     public function register()
