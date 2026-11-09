@@ -254,7 +254,7 @@ function ppcart_db_update_manually_notice()
             echo wp_kses(
                 sprintf(
                     /* translators: %s: manual update URL. */
-                    __('<b>PublishPress Cart Data Updater</b> - The database update is taking longer than expected. Click <a href="%s">here</a> to run it manually.', 'publishpress-cart'),
+                    __('<b>PublishPress Cart Data Updater</b> - The database update is taking longer than expected. <a href="%s">Run the data update manually</a>.', 'publishpress-cart'),
                     esc_url($url)
                 ),
                 [
@@ -364,10 +364,12 @@ function ppcart_resend_purchase_confirmation_email_ajax()
 /** @since 1.1.0 @param int $order_id Order. @return true|WP_Error */
 function ppcart_resend_purchase_confirmation($order_id)
 {
-    if ((! current_user_can('manage_options') && ! ppcart_user_can('manage_orders'))
+    if (
+        (! current_user_can('manage_options') && ! ppcart_user_can('manage_orders'))
         || ! ppcart_is_order_post_type(get_post_type($order_id))
         || ! current_user_can('read_post', $order_id) || ! current_user_can('edit_post', $order_id)
-        || 'paid' !== ppcart_get_post_meta($order_id, 'status', true)) {
+        || 'paid' !== ppcart_get_post_meta($order_id, 'status', true)
+    ) {
         return new WP_Error('ppcart_forbidden', __('You cannot resend this order confirmation.', 'publishpress-cart'));
     }
     $order_info = (new PPCart_Order($order_id))->get_data();

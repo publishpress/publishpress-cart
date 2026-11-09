@@ -570,8 +570,9 @@ function ppcart_log_viewer_allowed_html()
  * @param string $handle          Preferred style handle.
  * @param string $css             CSS to add.
  * @param string $fallback_handle Fallback handle used for late rendering.
+ * @param bool   $defer_print     Print late styles in the footer, outside captured HTML.
  */
-function ppcart_enqueue_or_print_inline_style($handle, $css, $fallback_handle = 'ppcart-inline-style')
+function ppcart_enqueue_or_print_inline_style($handle, $css, $fallback_handle = 'ppcart-inline-style', $defer_print = false)
 {
     $css = trim((string) $css);
 
@@ -584,8 +585,8 @@ function ppcart_enqueue_or_print_inline_style($handle, $css, $fallback_handle = 
     // fallback handle *before* ppcart-public.css and lose to equal-specificity
     // rules such as `.ppcart-hero-banner { background: #234854 }`.
     if (! did_action('wp_enqueue_scripts') && ! did_action('admin_enqueue_scripts')) {
-        $callback = static function () use ($handle, $css, $fallback_handle) {
-            ppcart_enqueue_or_print_inline_style($handle, $css, $fallback_handle);
+        $callback = static function () use ($handle, $css, $fallback_handle, $defer_print) {
+            ppcart_enqueue_or_print_inline_style($handle, $css, $fallback_handle, $defer_print);
         };
         add_action('wp_enqueue_scripts', $callback, 20);
         add_action('admin_enqueue_scripts', $callback, 20);
@@ -606,7 +607,17 @@ function ppcart_enqueue_or_print_inline_style($handle, $css, $fallback_handle = 
     wp_add_inline_style($fallback_handle, $css);
 
     if (did_action('wp_print_styles') || did_action('admin_print_styles')) {
-        wp_print_styles([ $fallback_handle ]);
+        if ($defer_print) {
+            // Shortcode HTML is sanitized after rendering; style tags must not
+            // be captured there or their CSS becomes visible checkout text.
+            $print_styles = static function () use ($fallback_handle) {
+                wp_print_styles([ $fallback_handle ]);
+            };
+            add_action('wp_footer', $print_styles, 20);
+            add_action('admin_footer', $print_styles, 20);
+        } else {
+            wp_print_styles([ $fallback_handle ]);
+        }
     }
 }
 
@@ -850,9 +861,11 @@ require_once __DIR__ . '/functions/checkout-completion.php';
 require_once __DIR__ . '/functions/merge-tags-and-dates.php';
 require_once __DIR__ . '/functions/payment-and-locale-lists.php';
 require_once __DIR__ . '/helpers/ppcart-stripe-client.php';
+require_once __DIR__ . '/helpers/ppcart-stripe-checkout-rate-limit.php';
 require_once __DIR__ . '/functions/payment-actions-and-refunds.php';
 require_once __DIR__ . '/functions/admin-ajax-and-notices.php';
 require_once __DIR__ . '/functions/admin-conditional-logic.php';
+require_once __DIR__ . '/functions/admin-field-sections.php';
 require_once __DIR__ . '/functions/report-filters.php';
 require_once __DIR__ . '/functions/report-queries.php';
 require_once __DIR__ . '/functions/request-sanitization.php';

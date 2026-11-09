@@ -30,7 +30,7 @@ if (! empty($atts['label'])) {
 
         echo esc_html($atts['label']);
 
-    ?>:
+    ?>
 
     <?php if (! empty($atts['description'])) : ?>
     <i class="ppcart-tooltip" data-balloon-length="medium" aria-label="<?php echo esc_attr(wp_specialchars_decode($atts['description'], ENT_QUOTES)); ?>" data-balloon-pos="up" tabindex="0">?</i>

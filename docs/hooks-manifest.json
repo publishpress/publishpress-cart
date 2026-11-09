@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-10-28",
+    "generated_at": "2026-11-06",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -25,6 +25,16 @@
         ]
     },
     "hooks": [
+        {
+            "name": "add_meta_boxes",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "add_meta_boxes",
+            "notes": "Review before documenting as public API."
+        },
         {
             "name": "add_option__ppcart_activecampaign_secret_key",
             "type": "action",
@@ -176,12 +186,32 @@
             "notes": "Review before documenting as public API."
         },
         {
+            "name": "admin_footer",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/functions.php",
+            "recommended_hook": "admin_footer",
+            "notes": "Review before documenting as public API."
+        },
+        {
             "name": "admin_head",
             "type": "action",
             "operation": "add_action",
             "classification": "internal",
             "status": "unclassified",
             "file": "admin/class-ppcart-customer-reports.php",
+            "recommended_hook": "admin_head",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "admin_head",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "admin/class-ppcart-welcome.php",
             "recommended_hook": "admin_head",
             "notes": "Review before documenting as public API."
         },
@@ -297,6 +327,16 @@
         },
         {
             "name": "admin_init",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "publishpress-cart.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "admin_init",
             "type": "filter",
             "operation": "add_filter",
             "classification": "external",
@@ -312,6 +352,16 @@
             "classification": "external",
             "status": "wordpress_core",
             "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "admin_menu",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "publishpress-cart.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
         },
@@ -393,6 +443,16 @@
             "status": "unclassified",
             "file": "admin/settings/class-ppcart-admin-stripe-webhook-settings.php",
             "recommended_hook": "admin_post_ppcart_stripe_webhook_manual_setup",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "all_plugins",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "publishpress-cart.php",
+            "recommended_hook": "all_plugins",
             "notes": "Review before documenting as public API."
         },
         {
@@ -536,6 +596,16 @@
             "notes": "Review before documenting as public API."
         },
         {
+            "name": "elementor/widgets/register",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/integrations/gutenberg/index.php",
+            "recommended_hook": "elementor/widgets/register",
+            "notes": "Review before documenting as public API."
+        },
+        {
             "name": "enqueue_block_editor_assets",
             "type": "action",
             "operation": "add_action",
@@ -651,6 +721,16 @@
             "operation": "add_action",
             "classification": "external",
             "status": "wordpress_core",
+            "file": "includes/integrations/gutenberg/index.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "init",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
             "file": "includes/integrations/gutenberg/lib/class-ppcart-gutenberg-bootstrap.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
@@ -742,6 +822,26 @@
             "classification": "external",
             "status": "wordpress_core",
             "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "load-{$hook}",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "admin/class-ppcart-pro-menu-previews.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "load-{$hook}",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "admin/class-ppcart-welcome.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
         },
@@ -952,6 +1052,16 @@
             "classification": "external",
             "status": "wordpress_core",
             "file": "includes/integrations/Kit.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "plugins_loaded",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "includes/integrations/Permissions.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
         },
@@ -1513,6 +1623,26 @@
             "status": "canonical",
             "file": "models/order/traits/templates/order-checkout-input-load-from-post.php",
             "recommended_hook": "ppcart_after_load_from_post",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_after_order_created",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/stripe/templates/order-save.php",
+            "recommended_hook": "ppcart_after_order_created",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_after_order_created",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/stripe/traits/trait-ppcart-stripe-subscription-save.php",
+            "recommended_hook": "ppcart_after_order_created",
             "notes": "Canonical hook prefix."
         },
         {
@@ -2348,11 +2478,21 @@
         {
             "name": "ppcart_checkout_form_validation_messafes",
             "type": "filter",
+            "operation": "apply_filters_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
+            "file": "public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php",
+            "recommended_hook": "ppcart_checkout_form_validation_messafes",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_checkout_form_validation_messages",
+            "type": "filter",
             "operation": "apply_filters",
             "classification": "public",
             "status": "canonical",
             "file": "public/controllers/checkout/traits/templates/checkout-validation-validate-order-form.php",
-            "recommended_hook": "ppcart_checkout_form_validation_messafes",
+            "recommended_hook": "ppcart_checkout_form_validation_messages",
             "notes": "Canonical hook prefix."
         },
         {
@@ -2786,6 +2926,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_default_fields_html",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
+            "recommended_hook": "ppcart_default_fields_html",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_default_fields_ids",
             "type": "filter",
             "operation": "apply_filters",
@@ -2807,10 +2957,10 @@
         },
         {
             "name": "ppcart_defualt_fields_html",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
+            "type": "action",
+            "operation": "do_action_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "admin/metaboxes/traits/templates/product-metabox-render-metabox-fields.php",
             "recommended_hook": "ppcart_defualt_fields_html",
             "notes": "Canonical hook prefix."
@@ -3002,6 +3152,16 @@
             "classification": "public",
             "status": "canonical",
             "file": "public/controllers/class-ppcart-public-asset-controller.php",
+            "recommended_hook": "ppcart_enqueue_frontend_assets",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_enqueue_frontend_assets",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/layout/class-ppcart-layout-embeds.php",
             "recommended_hook": "ppcart_enqueue_frontend_assets",
             "notes": "Canonical hook prefix."
         },
@@ -3208,9 +3368,9 @@
         {
             "name": "ppcart_fter_order_created",
             "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
+            "operation": "do_action_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "includes/stripe/templates/order-save.php",
             "recommended_hook": "ppcart_fter_order_created",
             "notes": "Canonical hook prefix."
@@ -3218,9 +3378,9 @@
         {
             "name": "ppcart_fter_order_created",
             "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
+            "operation": "do_action_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "includes/stripe/traits/trait-ppcart-stripe-subscription-save.php",
             "recommended_hook": "ppcart_fter_order_created",
             "notes": "Canonical hook prefix."
@@ -3331,6 +3491,16 @@
             "operation": "add_filter",
             "classification": "public",
             "status": "canonical",
+            "file": "includes/integrations/Permissions.php",
+            "recommended_hook": "ppcart_integration_fields",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integration_fields",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
             "file": "includes/integrations/templates/ppcart-kit-init.php",
             "recommended_hook": "ppcart_integration_fields",
             "notes": "Canonical hook prefix."
@@ -3392,6 +3562,16 @@
             "classification": "public",
             "status": "canonical",
             "file": "includes/integrations/CancelSubscription.php",
+            "recommended_hook": "ppcart_integrations",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_integrations",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/integrations/Permissions.php",
             "recommended_hook": "ppcart_integrations",
             "notes": "Canonical hook prefix."
         },
@@ -4326,6 +4506,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_pay_plan_field_sections",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/field-groups/sales-plan-fields.php",
+            "recommended_hook": "ppcart_pay_plan_field_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_pay_plan_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -4673,6 +4863,16 @@
             "status": "canonical",
             "file": "includes/functions/merge-tags-and-dates.php",
             "recommended_hook": "ppcart_plan_text_with_a",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_plugin_title",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/class-ppcart-welcome.php",
+            "recommended_hook": "ppcart_plugin_title",
             "notes": "Canonical hook prefix."
         },
         {
@@ -5106,6 +5306,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_metabox_post_type",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/traits/trait-ppcart-admin-assets.php",
+            "recommended_hook": "ppcart_product_metabox_post_type",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_page_redirect",
             "type": "action",
             "operation": "do_action",
@@ -5296,6 +5506,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_setting_tab_groups",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tab-groups.php",
+            "recommended_hook": "ppcart_product_setting_tab_groups",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_setting_tab_{$tab_id}_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -5326,6 +5546,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_product_tab_sections",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/metaboxes/traits/templates/product-metabox-render-tab-sections.php",
+            "recommended_hook": "ppcart_product_tab_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_product_{$tab_id}_fields",
             "type": "filter",
             "operation": "apply_filters",
@@ -5336,11 +5566,21 @@
             "notes": "Canonical hook prefix."
         },
         {
-            "name": "ppcart_ransaction_id",
-            "type": "filter",
-            "operation": "apply_filters",
+            "name": "ppcart_publishpress_permissions_integrations",
+            "type": "action",
+            "operation": "add_action",
             "classification": "public",
             "status": "canonical",
+            "file": "includes/integrations/Permissions.php",
+            "recommended_hook": "ppcart_publishpress_permissions_integrations",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_ransaction_id",
+            "type": "filter",
+            "operation": "apply_filters_deprecated",
+            "classification": "deprecated",
+            "status": "deprecated",
             "file": "includes/functions/orders-products-and-formatting.php",
             "recommended_hook": "ppcart_ransaction_id",
             "notes": "Canonical hook prefix."
@@ -5443,6 +5683,16 @@
             "status": "canonical",
             "file": "admin/settings/traits/templates/settings-sections-register.php",
             "recommended_hook": "ppcart_register_sections",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_related_product_post_types",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/controllers/order/traits/trait-ppcart-admin-order-metabox.php",
+            "recommended_hook": "ppcart_related_product_post_types",
             "notes": "Canonical hook prefix."
         },
         {
@@ -5726,6 +5976,36 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_show_admin_branding",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/class-ppcart-welcome.php",
+            "recommended_hook": "ppcart_show_admin_branding",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_show_admin_branding",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/partials/settings-page/tabs/topbar.php",
+            "recommended_hook": "ppcart_show_admin_branding",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_show_admin_branding",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "admin/settings/traits/trait-ppcart-admin-settings-screen.php",
+            "recommended_hook": "ppcart_show_admin_branding",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_show_optin_checkbox_services",
             "type": "filter",
             "operation": "add_filter",
@@ -5853,6 +6133,26 @@
             "status": "canonical",
             "file": "public/templates/functions/summary-and-scripts.php",
             "recommended_hook": "ppcart_step_1_button_subtext",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_stripe_checkout_rate_limit",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/helpers/ppcart-stripe-checkout-rate-limit.php",
+            "recommended_hook": "ppcart_stripe_checkout_rate_limit",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_stripe_checkout_rate_limit_mode",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/helpers/ppcart-stripe-checkout-rate-limit.php",
+            "recommended_hook": "ppcart_stripe_checkout_rate_limit_mode",
             "notes": "Canonical hook prefix."
         },
         {
@@ -6263,6 +6563,16 @@
             "status": "canonical",
             "file": "includes/helpers/ppcart-general-functions.php",
             "recommended_hook": "ppcart_theme_template_path",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_transaction_id",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/orders-products-and-formatting.php",
+            "recommended_hook": "ppcart_transaction_id",
             "notes": "Canonical hook prefix."
         },
         {
@@ -6723,6 +7033,26 @@
             "status": "unclassified",
             "file": "includes/integrations/gutenberg/templates/class-ppcart-product-template.php",
             "recommended_hook": "render_block_core/cover",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "render_block_core/group",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/integrations/gutenberg/templates/class-ppcart-product-template.php",
+            "recommended_hook": "render_block_core/group",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "render_block_core/post-title",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/integrations/gutenberg/templates/class-ppcart-product-template.php",
+            "recommended_hook": "render_block_core/post-title",
             "notes": "Review before documenting as public API."
         },
         {
@@ -7561,6 +7891,16 @@
             "operation": "add_action",
             "classification": "external",
             "status": "wordpress_core",
+            "file": "includes/functions.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
+        },
+        {
+            "name": "wp_footer",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
             "file": "includes/integrations/templates/ppcart-googlerecaptcha-gen-recaptcha-html.php",
             "recommended_hook": null,
             "notes": "WordPress core hook."
@@ -7774,6 +8114,14 @@
             "classification": "internal",
             "status": "dynamic",
             "recommended_pattern": "handle_bulk_actions-edit-{$ppcart_subscription_type}"
+        },
+        {
+            "pattern": "load-{$hook}",
+            "operation": "add_action",
+            "file": "admin/class-ppcart-welcome.php",
+            "classification": "external",
+            "status": "wordpress_core",
+            "recommended_pattern": null
         },
         {
             "pattern": "manage_edit-{$ppcart_order_type}_sortable_columns",

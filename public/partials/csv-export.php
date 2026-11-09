@@ -147,7 +147,7 @@ if ($export_mode === 'contacts') {
             esc_html__('Amount Paid', 'publishpress-cart'),
             esc_html__('Product Name', 'publishpress-cart'),
             esc_html__('Payment Plan', 'publishpress-cart'),
-            esc_html__('Order Bumps', 'publishpress-cart'),
+            esc_html__('Offers during checkout', 'publishpress-cart'),
             esc_html__('Status', 'publishpress-cart'),
             esc_html__('Coupon', 'publishpress-cart'),
             esc_html__('Purchase URL', 'publishpress-cart'),

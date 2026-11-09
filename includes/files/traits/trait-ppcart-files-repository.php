@@ -48,8 +48,10 @@ trait PPCart_Files_Repository_Trait
      */
     public function update_download_access($order_id, $download_id, array $changes, array $expected = [])
     {
-        if (! current_user_can('edit_post', $order_id) || ! $changes
-            || array_diff(array_keys($changes), ['downloads_remaining', 'download_expires'])) {
+        if (
+            ! current_user_can('edit_post', $order_id) || ! $changes
+            || array_diff(array_keys($changes), ['downloads_remaining', 'download_expires'])
+        ) {
             return false;
         }
         global $wpdb;

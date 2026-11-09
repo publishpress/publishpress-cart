@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-orders",
 	"version": "1.0.0",
-	"title": "Account Orders",
+	"title": "Cart Account Orders",
 	"category": "widgets",
 	"icon": "list-view",
 	"description": "Display the customer order history account section.",

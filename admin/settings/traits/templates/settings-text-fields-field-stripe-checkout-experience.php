@@ -14,17 +14,17 @@ $options = [
     'classic' => [
         'label'       => esc_html__('Classic card form', 'publishpress-cart'),
         'badge'       => esc_html__('Legacy', 'publishpress-cart'),
-        'description' => esc_html__('Single card field on your checkout page. Supports order bumps and one-click upsells.', 'publishpress-cart'),
+        'description' => esc_html__('Single card field on your checkout page. Supports offers during checkout and one-click upsells.', 'publishpress-cart'),
     ],
     'element' => [
         'label'       => esc_html__('Payment Element', 'publishpress-cart'),
         'badge'       => esc_html__('Recommended', 'publishpress-cart'),
-        'description' => esc_html__('Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports order bumps and one-click upsells.', 'publishpress-cart'),
+        'description' => esc_html__('Cards, Apple/Google Pay, and Link embedded in your checkout page. Supports offers during checkout and one-click upsells.', 'publishpress-cart'),
     ],
     'hosted'  => [
         'label'       => esc_html__('Stripe-hosted page', 'publishpress-cart'),
         'description' => esc_html__('Redirects customers to a Stripe-hosted payment page. Most payment methods available (Klarna, Cash App Pay, and more via your Stripe dashboard).', 'publishpress-cart'),
-        'warning'     => esc_html__('Order bumps and one-click upsells/downsells are not available in this mode. Coupons continue to work.', 'publishpress-cart'),
+        'warning'     => esc_html__('Offers during checkout and one-click upsells/downsells are not available in this mode. Coupons continue to work.', 'publishpress-cart'),
     ],
 ];
 

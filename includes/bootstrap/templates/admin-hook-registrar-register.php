@@ -79,6 +79,8 @@ $this->loader->add_action('admin_menu', $plugin_reports, 'setup_plugin_options_m
 $this->loader->add_action('admin_menu', $plugin_customer, 'setup_plugin_options_menu');
 $this->loader->add_action('admin_menu', $plugin_contacts_page, 'setup_plugin_options_menu');
 $this->loader->add_action('admin_menu', $plugin_extensions_page, 'setup_plugin_options_menu');
+require_once PPCART_BASE_DIR . 'admin/class-ppcart-pro-menu-previews.php';
+$this->loader->add_action('admin_menu', new PPCart_Pro_Menu_Previews(), 'register_pages', 20);
 
 
 // Register Importer
@@ -112,6 +114,7 @@ $this->loader->add_action('update_option__ppcart_activecampaign_secret_key', $pl
 $this->loader->add_action('add_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
 $this->loader->add_action('update_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
 
+$this->loader->add_action('init', $plugin_admin_order, 'register_related_product_meta');
 $this->loader->add_action('admin_init', $plugin_admin_order, 'add_metaboxes', 99);
 $this->loader->add_action('edit_form_after_editor', $plugin_admin_order, 'product_info_callback');
 $this->loader->add_action('edit_form_advanced', $plugin_admin_order, 'product_form_callback');

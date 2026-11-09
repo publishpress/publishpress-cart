@@ -38,6 +38,8 @@ class ControlCoverageTest extends McpTestCase
         $read = $this->execute('get-settings', []);
         $covered = (array) $read['settings'];
         $native_only = [
+            // Newly introduced Meta Pixel setup controls require native admin configuration.
+            '_ppcart_fb_pixel_id', '_ppcart_fb_initiate_checkout',
             '_ppcart_api_key', '_ppcart_paypal_ssl_verify', '_ppcart_paypal_email', '_ppcart_paypal_client_id',
             '_ppcart_paypal_sandbox_email', '_ppcart_paypal_sandbox_client_id',
             '_ppcart_squarepay_sandbox_location_id', '_ppcart_squarepay_production_location_id',

@@ -8,9 +8,10 @@ if (! defined('ABSPATH')) {
 return [
     [
         'class_size'    => '',
-        'description'   => __("Add an opt-in checkbox that a customer must check before their information can be added to a mailing list.", 'publishpress-cart'),
+        'description'   => __('Add an opt-in checkbox at checkout.', 'publishpress-cart'),
+        'tooltip'       => __('Customers join a mailing list only if they tick it.', 'publishpress-cart'),
         'id'            => '_ppcart_show_optin_cb',
-        'label'         => __('Enable Opt-in Checkbox', 'publishpress-cart'),
+        'label'         => __('Show opt-in checkbox', 'publishpress-cart'),
         'placeholder'   => '',
         'type'          => 'checkbox',
         'value'         => '',
@@ -18,9 +19,9 @@ return [
     [
         'class_size'    => 'one-half first',
         'class'         => 'widefat',
-        'description'   => '',
+        'description'   => __('Text beside the opt-in checkbox.', 'publishpress-cart'),
         'id'            => '_ppcart_optin_checkbox_text',
-        'label'         => __('Opt-in Checkbox Label', 'publishpress-cart'),
+        'label'         => __('Opt-in checkbox label', 'publishpress-cart'),
         'placeholder'   => '',
         'type'          => 'text',
         'value'         => __('Sign me up for the newsletter', 'publishpress-cart'),
@@ -33,9 +34,9 @@ return [
     ],
     [
         'class_size'    => 'one-half ',
-        'description'   => '',
+        'description'   => __('Customers must tick it to place the order.', 'publishpress-cart'),
         'id'            => '_ppcart_optin_required',
-        'label'         => __('Make Opt-in Checkbox Required', 'publishpress-cart'),
+        'label'         => __('Make opt-in checkbox required', 'publishpress-cart'),
         'placeholder'   => '',
         'type'          => 'checkbox',
         'value'         => '',
@@ -46,13 +47,10 @@ return [
             ],
         ],
     ],
+    // Empty: the tab intro already says this. The item stays so code that edits
+    // this list by position still finds the fields where it expects them.
     [
         'type'          => 'html',
-        'value'         => '<div id="rid_ppcart_twostep_heading" class="ppcart-field ppcart-row"><p style="display: block; margin: 20px 0 0;padding: 0 0 5px;border-bottom: 1px solid #d5d5d5;flex-basis: 100%;">' . sprintf(
-            /* translators: %s: product name. */
-            __('Integrations for %s – integrations added here will apply to this product only!', 'publishpress-cart'),
-            $name
-        ) . '</p></div>
-    ',
+        'value'         => '',
     ],
 ];

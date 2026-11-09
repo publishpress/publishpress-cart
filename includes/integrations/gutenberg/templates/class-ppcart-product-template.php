@@ -17,6 +17,8 @@ class PPCart_Product_Template
     public function __construct()
     {
         add_action('init', [ $this, 'register' ], 1000);
+        add_filter('render_block_core/group', [$this, 'render_product_header'], 10, 2);
+        add_filter('render_block_core/post-title', [$this, 'render_product_header'], 10, 2);
         add_filter('render_block_core/cover', [ $this, 'render_cover_fallback_image' ], 10, 2);
     }
 
@@ -45,6 +47,46 @@ class PPCart_Product_Template
     {
         $__ppcart_template_result = include __DIR__ . '/templates/product-template-render-cover-fallback-image.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    public function render_product_header($content, $block)
+    {
+        $class = $block['attrs']['className'] ?? '';
+        if (! in_array($class, ['ppcart-product-header', 'ppcart-product-header-title'], true)) {
+            return $content;
+        }
+
+        $id = get_queried_object_id();
+        if (! $id || ! is_singular(self::get_product_post_types())) {
+            return $content;
+        }
+
+        if ('ppcart-product-header-title' === $class) {
+            return ppcart_get_post_meta($id, 'hide_title', true) ? '' : $content;
+        }
+
+        $color = sanitize_hex_color(ppcart_get_post_meta($id, 'header_color', true));
+        $image = esc_url_raw((string) ppcart_get_post_meta($id, 'header_image', true));
+        if (! $color && ! $image) {
+            return $content;
+        }
+
+        $html = new WP_HTML_Tag_Processor($content);
+        if (! $html->next_tag(['class_name' => 'ppcart-product-header'])) {
+            return $content;
+        }
+
+        $style = (string) $html->get_attribute('style');
+        if ($color) {
+            $style .= ';background-color:' . $color;
+        }
+        if ($image) {
+            $style .= ';background-image:url("' . str_replace(['"', '(', ')'], ['%22', '%28', '%29'], $image) . '");background-size:cover;background-position:center';
+        }
+        $style .= ';padding:var(--wp--preset--spacing--40, 24px)';
+        $html->set_attribute('style', safecss_filter_attr($style));
+
+        return $html->get_updated_html();
     }
 
     public static function get_product_post_types()

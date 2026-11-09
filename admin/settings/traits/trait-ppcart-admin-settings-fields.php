@@ -64,5 +64,4 @@ trait PPCart_Admin_Settings_Fields_Trait
         }
         return $callback;
     }
-
 }

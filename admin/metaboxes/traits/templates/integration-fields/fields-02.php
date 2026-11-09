@@ -11,7 +11,7 @@ return [
             'class'         => 'widefat',
             'description'   => '',
             'id'            => 'mc_phone_tag',
-            'label'         => __('Phone Merge Tag', 'publishpress-cart'),
+            'label'         => __('Phone merge tag', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'text',
             'value'         => '',
@@ -29,7 +29,7 @@ return [
         'select' => [
             'class'         => '',
             'id'            => 'activecampaign_lists',
-            'label'         => __('ActiveCampaign List', 'publishpress-cart'),
+            'label'         => __('ActiveCampaign list', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -47,9 +47,9 @@ return [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => 'Separate multiple classes with commas',
+            'description'   => __('Separate tags with commas.', 'publishpress-cart'),
             'id'            => 'activecampaign_tags',
-            'label'         => __('ActiveCampaign Tags', 'publishpress-cart'),
+            'label'         => __('ActiveCampaign tags', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'text',
             'value'         => '',
@@ -67,7 +67,7 @@ return [
         'textarea' => [
             'class'         => 'field_map',
             'id'            => 'activecampaign_field_map',
-            'label'         => __('Field Map', 'publishpress-cart'),
+            'label'         => __('Field map', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'textarea',
             'note'   => __('Put each field pair on a separate line and use a colon (":") to separate the ActiveCampaign personalization tag from the field value. For example: %TAG%:ppcart_field_id', 'publishpress-cart'),
@@ -86,7 +86,7 @@ return [
         'select' => [
             'class'         => 'sendfox_list_name',
             'id'            => 'sendfox_list',
-            'label'         => __('SendFox List', 'publishpress-cart'),
+            'label'         => __('SendFox list', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -105,7 +105,7 @@ return [
         'select' => [
             'class'         => '',
             'id'            => 'tutor_action',
-            'label'         => __('Tutor Action', 'publishpress-cart'),
+            'label'         => __('Tutor action', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -146,7 +146,7 @@ return [
         'select' => [
             'class'         => '',
             'id'            => 'wlm_action',
-            'label'         => __('Member Actions', 'publishpress-cart'),
+            'label'         => __('Member actions', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -169,7 +169,7 @@ return [
         'select' => [
             'class'         => '',
             'id'            => 'wlm_level',
-            'label'         => __('Membership Level', 'publishpress-cart'),
+            'label'         => __('Membership level', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -188,7 +188,7 @@ return [
         'select' => [
             'class'         => '',
             'id'            => 'rcp_level',
-            'label'         => __('Membership Level', 'publishpress-cart'),
+            'label'         => __('Membership level', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
@@ -207,7 +207,7 @@ return [
         'select' => [
             'class'         => '',
             'id'            => 'rcp_status',
-            'label'         => __('Member Status', 'publishpress-cart'),
+            'label'         => __('Member status', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',

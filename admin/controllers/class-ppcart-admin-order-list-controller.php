@@ -95,7 +95,8 @@ class PPCart_Admin_Order_List_Controller
                 echo implode('<br>', array_map('esc_html', $labels[$column]));
                 break;
             case 'shortcode':
-                echo '<code>[ppcart_form id="' . esc_attr($post_id) . '"]</code>';
+                $shortcode = '[ppcart_form id="' . absint($post_id) . '"]';
+                echo '<button type="button" class="button-link ppcart-shortcode-copy" data-ppcart-copy="' . esc_attr($shortcode) . '" aria-label="' . esc_attr__('Copy shortcode', 'publishpress-cart') . '" title="' . esc_attr__('Copy shortcode', 'publishpress-cart') . '"><code>' . esc_html($shortcode) . '</code></button>';
                 break;
         }
     }
