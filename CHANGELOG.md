@@ -1,9 +1,34 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
-[Unreleased]
+[1.2.0] - 11 Nov, 2026
 
-- Added : Permission-checked MCP category/tag deletion, manual order administration, synthetic test emails, Stripe record synchronization and declared checkout-field mappings.
-- Added : MCP actions for store settings, products, payment plans, product categories and tags, purchase notifications, secure downloads, integration rules, feature discovery, reports, refunds and subscription transitions with native permissions.
+- Added : MCP integration with Hub, #1022
+- Added : Cart welcome screen after plugin activation, #949
+- Fixed : Improve the layout of the Cart dashboard widget, #1069
+- Added : Copy product shortcodes with one click, #1035
+- Added : Preview Pro features in the Cart Free menu, #1028
+- Update : Clarify labels for checkout offers, #1016
+- Update : Make the split checkout layout optional and clarify the design settings, #1017
+- Update : Prefix Gutenberg block titles with Cart, #1037
+- Update : Show progress and result messages when uploading files, #1043
+- Update : Show PublishPress Cart Free on the Plugins screen, #1027
+- Update : Remove the duplicate navigation menu from the Affiliates screen, #1030
+- Fixed : Hide the related-product box when it has no products and support post revisions, #737
+- Fixed : Rate-limit Stripe checkout and card setup requests, #830
+- Fixed : Improve checkout layout in narrow containers, #1034
+- Fixed : Keep checkout shortcodes within the page content width, #1036
+- Fixed : Hide Cart branding throughout the admin interface when White Label is enabled, #1038
+- Added : Add Cart layout shortcodes and Elementor widgets, #1055, #1056
+- Added : Manage global coupons from their own screen while keeping product-specific coupons, #699, #985
+- Added : Install Meta Pixel optionally and track the InitiateCheckout event, #999
+- Added : Add customers to PublishPress Permissions groups after purchase, #182
+- Update : Clarify Sale metabox instructions and scheduling help, #1033
+- Fixed : Identify missing required fields and prevent publishing incomplete products, #556, #567
+- Fixed : Return native Dashicons choices for white-label settings.
+- Fixed : Preserve the first custom tax rate ID returned by the native insert helper.
+- Fixed : Allow new affiliates to be added, #1029
+- Fixed : Populate order bump choices for new products, #1031
+- Fixed : Align the synchronized start date controls and metabox display, #1032
 
 [1.1.0] - 3 Nov, 2026
 

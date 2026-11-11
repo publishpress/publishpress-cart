@@ -181,9 +181,9 @@ function ppcart_pro_locked_product_field_labels($tab_id)
 
 /**
      * One display-only card that previews a Pro feature: what it does, the
-     * options it adds, and an upgrade link. Nothing in it is a form control.
+     * an upgrade link. Nothing in it is a form control.
      *
-     * @param array $args title, text, labels (string[]), context, class.
+     * @param array $args title, text, context, class.
      *
      * @return string
      */
@@ -200,15 +200,6 @@ function ppcart_pro_product_preview_card_html($args)
         ]
     );
 
-    $list = '';
-    if (! empty($args['labels'])) {
-        $list .= '<p class="ppcart-pro-preview__list-label">' . esc_html__('Options you get with Pro:', 'publishpress-cart') . '</p><ul class="ppcart-pro-preview__list">';
-        foreach ((array) $args['labels'] as $label) {
-            $list .= '<li>' . esc_html($label) . '</li>';
-        }
-        $list .= '</ul>';
-    }
-
     return '<div class="' . esc_attr(trim('ppcart-pro-preview ' . $args['class'])) . '">' .
             '<div class="ppcart-pro-preview__header">' .
                 '<span class="ppcart-pro-preview__icon dashicons dashicons-lock" aria-hidden="true"></span>' .
@@ -217,7 +208,6 @@ function ppcart_pro_product_preview_card_html($args)
                     '<p class="ppcart-pro-preview__text">' . esc_html($args['text']) . '</p>' .
                 '</div>' .
             '</div>' .
-            $list .
             '<a class="button ppcart-pro-preview__cta" href="' . esc_url(ppcart_pro_upgrade_url($args['context'])) . '" target="_blank" rel="noopener noreferrer">' .
                 esc_html__('Upgrade to Pro', 'publishpress-cart') .
                 '<span class="screen-reader-text"> ' . esc_html__('(opens in a new tab)', 'publishpress-cart') . '</span>' .

@@ -64,7 +64,6 @@ class PPCart_Welcome
             return;
         }
 
-        $dashboard = admin_url('admin.php?page=' . PPCart_Admin_Screens::menu_slug());
         $new_product = add_query_arg('post_type', ppcart_live_post_type('product'), admin_url('post-new.php'));
         $payments = admin_url('admin.php?page=' . PPCart_Admin_Screens::PAGE_SETTINGS . '#payment_methods');
         $support = 'https://publishpress.com/publishpress-support/';
@@ -94,7 +93,6 @@ class PPCart_Welcome
                     <p class="ppcart-welcome__lead"><?php esc_html_e('Create a product, set its price, and share its checkout page with your customers.', 'publishpress-cart'); ?></p>
                     <div class="ppcart-welcome__actions">
                         <a class="ppcart-welcome__primary" href="<?php echo esc_url($new_product); ?>"><?php esc_html_e('Create your first product', 'publishpress-cart'); ?></a>
-                        <a href="<?php echo esc_url($dashboard); ?>"><?php esc_html_e('Go to dashboard', 'publishpress-cart'); ?></a>
                     </div>
                 </div>
                 <div class="ppcart-welcome__art" aria-hidden="true">
