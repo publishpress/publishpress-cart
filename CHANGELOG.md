@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
-[1.2.0] - 10 Nov, 2026
+[1.2.0] - 11 Nov, 2026
 
 - Added : MCP integration with Hub, #1022
 - Added : Cart welcome screen after plugin activation, #949

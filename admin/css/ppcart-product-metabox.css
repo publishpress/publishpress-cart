@@ -836,35 +836,6 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
   margin: 4px 0 0;
 }
 
-:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__list-label {
-  font-weight: 600;
-  margin: 16px 0 8px;
-}
-
-:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__list {
-  display: grid;
-  gap: 6px 16px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  list-style: none;
-  margin: 0 0 16px;
-  padding: 0;
-}
-
-:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__list li {
-  margin: 0;
-  padding-left: 22px;
-  position: relative;
-}
-
-:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__list li::before {
-  color: var(--ppcart-primary);
-  content: "\f147";
-  font: normal 18px/1 dashicons;
-  left: 0;
-  position: absolute;
-  top: 1px;
-}
-
 :is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__cta {
   align-items: center;
   background: #fdb324;
@@ -874,6 +845,7 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
   color: #1f2430;
   display: inline-flex;
   font-weight: 600;
+  margin-top: 16px;
   min-height: 38px;
   padding: 0 16px;
 }
