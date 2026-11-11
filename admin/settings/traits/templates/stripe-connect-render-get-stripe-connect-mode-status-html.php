@@ -110,6 +110,17 @@ try {
             echo '</span>';
             echo wp_kses($disconnect_link, $allowed_html);
             echo '</div>';
+
+            if (! empty($webhook['secret_unverified'])) {
+                // Connected accounts cannot read endpoints, so a stale saved
+                // secret still shows as active. Let the owner replace it.
+                echo '<details class="ppcart-step__replace-secret" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-stripe-webhook-' . $mode . '-replace-secret')) . '">';
+                echo '<summary>' . esc_html__('Replace the webhook signing secret', 'publishpress-cart') . '</summary>';
+                echo '<p class="ppcart-step__text">' . esc_html__('Stripe rejects events with "Invalid Stripe webhook signature" when this secret does not match your endpoint. Paste the current signing secret from the endpoint in your Stripe Dashboard.', 'publishpress-cart') . '</p>';
+                echo wp_kses($this->webhooks->get_stripe_webhook_manual_setup_html($mode), $allowed_html);
+                echo '</details>';
+            }
+
             echo '</div>';
         } else {
         // Step 1 done, step 2 still open.
