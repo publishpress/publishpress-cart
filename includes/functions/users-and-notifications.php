@@ -214,6 +214,9 @@ function ppcart_create_user($order_id, $customerEmail, $first_name, $last_name, 
                 ppcart_update_post_meta($sub_id, 'user_account', $user_id);
             }
 
+            // Mark the account as created by this order; auto-login only applies to such accounts.
+            ppcart_update_post_meta($order_id, 'auto_login_user', $user_id);
+
             ppcart_log_entry($order_id, $msg);
             do_action('ppcart_after_user_is_created', $user_id, $order_id);
 
