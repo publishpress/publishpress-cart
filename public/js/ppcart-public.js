@@ -183,9 +183,10 @@
         }
 
         function getCheckoutAmount(form) {
+            // A coupon can set the total to 0; only an empty total falls back to the plan price.
             var amount = parseFloat($('[name="ppcart_amount"]', form).val());
 
-            if (isNaN(amount) || amount <= 0) {
+            if (isNaN(amount)) {
                 amount = parseFloat($('input[name="ppcart_product_option"]:checked', form).data('price'));
             }
 
