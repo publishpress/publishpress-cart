@@ -203,6 +203,29 @@ function ppcart_create_user($order_id, $customerEmail, $first_name, $last_name, 
         ];
         $user_id = wp_insert_user($user_data);
 
+        if (is_wp_error($user_id)) {
+            $current_user = wp_get_current_user();
+
+            // A logged-in buyer's own login is pre-filled at checkout, so link the order to that account.
+            if ($current_user->exists() && 0 === strcasecmp($current_user->user_login, (string) $creds['username'])) {
+                if ($order_id) {
+                    ppcart_update_post_meta($order_id, 'user_account', $current_user->ID);
+                }
+                if ($sub_id) {
+                    ppcart_update_post_meta($sub_id, 'user_account', $current_user->ID);
+                }
+
+                return $current_user->ID;
+            }
+
+            if ($order_id) {
+                /* translators: %s: error message. */
+                ppcart_log_entry($order_id, sprintf(__('User account was not created: %s', 'publishpress-cart'), $user_id->get_error_message()));
+            }
+
+            return 0;
+        }
+
         // add new user account to order info
         if ($user_id && $order_id) {
             /* translators: %s: user ID. */
