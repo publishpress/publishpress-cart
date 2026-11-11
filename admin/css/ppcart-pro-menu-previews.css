@@ -1,0 +1,51 @@
+.ppcart-pro-menu-preview {
+    --ppcart-surface: #fff;
+    --ppcart-card-border: rgba(226, 232, 240, .82);
+    --ppcart-primary: #0a47c2;
+    --ppcart-text-muted: #5b6473;
+    --ppcart-radius: 8px;
+    --ppcart-radius-sm: 6px;
+    max-width: 1200px;
+}
+.ppcart-pro-preview__stage {
+    position: relative;
+    display: grid;
+    min-height: 360px;
+    margin-top: 18px;
+    padding: 24px;
+    overflow: hidden;
+    place-items: center;
+    border: 1px solid #ded7f1;
+    border-radius: 14px;
+    background: #f6f3fc;
+}
+.ppcart-pro-preview__sample {
+    position: absolute;
+    inset: 28px;
+    opacity: .58;
+    filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
+}
+.ppcart-pro-preview__sample-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 22px;
+}
+.ppcart-pro-preview__sample-heading span {
+    padding: 6px 10px;
+    border: 1px solid #aaa0ca;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.ppcart-pro-preview__sample td { padding: 16px 10px; }
+.ppcart-pro-preview__promo {
+    position: relative;
+    width: min(100%, 560px);
+}
+
+.ppcart-pro-preview__promo .ppcart-pro-preview__header + .ppcart-pro-preview__cta {
+    margin-top: 16px;
+}

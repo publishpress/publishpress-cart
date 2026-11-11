@@ -35,6 +35,54 @@ class PPCart_Product_Admin
      */
     private $stripe;
 
+    /** @var bool Whether non-form callers receive exceptions instead of terminated HTML output. */
+    private $throw_errors = false;
+
+    /** @var array|null Expected native object values for checked API saves. */
+    private $expected_objects;
+
+    /**
+     * Save using the native Stripe lifecycle without terminating an API request.
+     *
+     * @since 1.1.0
+     * @param int $post_id Product ID.
+     * @param array $objects Prepared native repeater values.
+     * @return void
+     * @throws Exception When the gateway fails.
+     */
+    public function save_objects_checked($post_id, array $objects, $expected_objects = null)
+    {
+        $previous_errors = $this->throw_errors;
+        $previous_expected = $this->expected_objects;
+        $this->throw_errors = true;
+        $this->expected_objects = $expected_objects;
+        try {
+            $this->save_stripe_objects($post_id, $objects);
+        } finally {
+            $this->throw_errors = $previous_errors;
+            $this->expected_objects = $previous_expected;
+        }
+    }
+
+    /**
+     * Persist native gateway objects without overwriting a newer nonempty metadata value.
+     *
+     * @since 1.1.0
+     * @param int $post_id Product ID.
+     * @param string $name Native object meta key.
+     * @param array $value Native prepared objects.
+     * @return void
+     * @throws RuntimeException If a checked save cannot be confirmed.
+     */
+    public function persist_objects($post_id, $name, array $value)
+    {
+        $previous = $this->expected_objects[$name] ?? '';
+        ppcart_update_post_meta($post_id, $name, wp_slash($value), $previous);
+        if ($this->throw_errors && ppcart_get_post_meta($post_id, $name, true) !== $value) {
+            throw new RuntimeException('Cart gateway object save could not be confirmed.');
+        }
+    }
+
     /**
      * Initialize the class and set its properties.
      *
@@ -91,6 +139,9 @@ class PPCart_Product_Admin
             ppcart_update_post_meta($post_id, 'stripe_prod_id', $product->id);
             return $product;
         } catch (Exception $e) {
+            if ($this->throw_errors) {
+                throw $e;
+            }
             echo esc_html($e->getMessage());
             exit;
         }
@@ -114,6 +165,9 @@ class PPCart_Product_Admin
             ]);
             return $stripe_plan->id;
         } catch (Exception $e) {
+            if ($this->throw_errors) {
+                throw $e;
+            }
             echo esc_html($e->getMessage());
             exit;
         }

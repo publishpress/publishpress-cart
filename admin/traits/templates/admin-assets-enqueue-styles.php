@@ -35,6 +35,10 @@ wp_enqueue_style('ppcart-datatables', PPCART_BASE_URL . 'admin/css/jquery.dataTa
 wp_enqueue_style('ppcart-font-awesome-svg-with-js', PPCART_BASE_URL . 'includes/assets/font-awesome-svg-with-js.min.css', [], $this->version, 'all');
 wp_enqueue_style('wp-color-picker');
 
+if (PPCart_Admin_Screens::is_contacts_screen($hook_suffix)) {
+    wp_enqueue_style('list-tables');
+}
+
 if (PPCart_Admin_Screens::is_plugin_screen($hook_suffix)) {
     wp_enqueue_style('wp-jquery-ui-dialog');
 }

@@ -115,6 +115,25 @@ class OrderAccessTest extends WPTestCase
         $this->assertStringContainsString('Handbook.pdf', $html);
     }
 
+    public function test_IT_323_downloads_default_to_active_and_keep_hidden_files_private(): void
+    {
+        $userId = $this->createCustomer();
+        $orderId = $this->createPaidOrderWithDownload($userId, 'secret-token');
+        wp_set_current_user($userId);
+
+        $files = new PPCart_Files();
+        $this->assertCount(1, $files->get_order_downloads($orderId));
+        $this->assertCount(1, $files->get_order_downloads($orderId, ['status' => 'active']));
+
+        $productId = (int) ppcart_get_post_meta($orderId, 'product_id', true);
+        $productFiles = ppcart_get_post_meta($productId, 'files', true);
+        $productFiles[0]['file_hide'] = true;
+        ppcart_update_post_meta($productId, 'files', $productFiles);
+
+        $this->assertSame([], $files->get_order_downloads($orderId));
+        $this->assertCount(1, $files->get_order_downloads($orderId, ['status' => 'all']));
+    }
+
     public function test_IT_325_trusted_email_caller_emits_download_links_without_login(): void
     {
         $orderId = $this->createPaidOrderWithDownload(0, 'secret-token');

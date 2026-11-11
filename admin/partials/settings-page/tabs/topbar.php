@@ -5,7 +5,9 @@ if (! defined('ABSPATH')) {
 ?>
     <header class="ppcart-settings__topbar">
         <div class="ppcart-settings__brand">
-            <img class="ppcart-settings__brand-logo" src="<?php echo esc_url($brand_logo_url); ?>" alt="<?php esc_attr_e('PublishPress', 'publishpress-cart'); ?>" />
+            <?php if (apply_filters('ppcart_show_admin_branding', true)) : ?>
+                <img class="ppcart-settings__brand-logo" src="<?php echo esc_url($brand_logo_url); ?>" alt="<?php esc_attr_e('PublishPress', 'publishpress-cart'); ?>" />
+            <?php endif; ?>
             <span class="ppcart-settings__brand-name"><?php echo esc_html($brand_title); ?></span>
             <span class="ppcart-settings__breadcrumb">/ <strong><?php esc_html_e('General', 'publishpress-cart'); ?></strong></span>
         </div>

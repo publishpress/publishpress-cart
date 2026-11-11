@@ -81,3 +81,5 @@ yarn.lock export-ignore
 AGENTS.md export-ignore
 CONTEXT.md export-ignore
 REVIEW.md export-ignore
+/security-audit export-ignore
+/.agents export-ignore

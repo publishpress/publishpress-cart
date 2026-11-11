@@ -50,6 +50,7 @@
             return {
                 error: parsed.data.error,
                 fields: parsed.data.fields,
+                code: parsed.data.code,
             };
         }
 
@@ -832,6 +833,8 @@
 
             $('#ppcart-payment-form', '#'+form_wrapper).toggleClass('step-1 step-2');
             $('.ppcart-checkout-form-steps .steps', '#'+form_wrapper).toggleClass('ppcart-current');
+            $('.ppcart-checkout-form-steps .steps a', '#'+form_wrapper).removeAttr('aria-current');
+            $('.ppcart-checkout-form-steps .steps.ppcart-current a', '#'+form_wrapper).attr('aria-current', 'step');
             return false;
 
         });
@@ -1045,6 +1048,8 @@
                 }
                 $('#ppcart-payment-form', '#'+form_wrapper).toggleClass('step-1 step-2');
                 $('.ppcart-checkout-form-steps .steps', '#'+form_wrapper).toggleClass('ppcart-current');
+                $('.ppcart-checkout-form-steps .steps a', '#'+form_wrapper).removeAttr('aria-current');
+                $('.ppcart-checkout-form-steps .steps.ppcart-current a', '#'+form_wrapper).attr('aria-current', 'step');
             }
         });
 
@@ -2471,6 +2476,13 @@
                     return;
                 }
 
+                var $mount = $(mountSelector);
+                $mount.siblings('.ppcart-checkout-rate-limit-message').remove();
+                if (response && response.code === 'ppcart_checkout_rate_limited') {
+                    $('<div class="ppcart-checkout-rate-limit-message" role="alert"></div>')
+                        .text(response.error).insertAfter($mount);
+                    return;
+                }
                 if (!response || 'undefined' !== typeof response.error || 'undefined' === typeof response.clientSecret) {
                     return;
                 }

@@ -50,6 +50,8 @@ $posted_values = ppcart_parse_checkout_request(null, $ppcart_product);
 
 do_action('ppcart_before_create_main_order');
 
+ppcart_check_stripe_checkout_rate_limit(false);
+
 $apikey = $ppcart_stripe['sk'];
 $stripe = ppcart_stripe_client($apikey);
 
