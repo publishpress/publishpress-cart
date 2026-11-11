@@ -113,6 +113,7 @@ if (isset($ppcart_stripe['pk'])) {
     global $post;
     $stripe = $ppcart_stripe['pk'];
     wp_localize_script('ppcart', 'ppcart_stripe_key', [ $stripe ]);
+    wp_localize_script('ppcart', 'ppcart_stripe_options', [ 'locale' => ppcart_stripe_locale() ]);
     // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Stripe controls this remote script URL and recommends loading it directly from js.stripe.com.
     wp_register_script('ppcart-stripe-api-v3', 'https://js.stripe.com/v3/', [], null, true);
 

@@ -1095,7 +1095,7 @@
 
         if ($('.ppcart-stripe #card-element').length > 0 || $('.ppcart-stripe-express #express-pay-element').length > 0) {
             // Create a Stripe client.
-            var stripe = Stripe(ppcart_stripe_key[0]);
+            var stripe = Stripe(ppcart_stripe_key[0], window.ppcart_stripe_options || {});
             var card = {};
         }
 
