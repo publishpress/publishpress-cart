@@ -909,6 +909,10 @@
             }
         });
 
+        $(document).on('change', '.ppcart-password-toggle', function() {
+            $(this).closest('.ppcart-form-group').find('input.ppcart-password').attr('type', this.checked ? 'text' : 'password');
+        });
+
         /* track any change to total amount due
         $(document).on('change', '#ppcart-payment-form input', function() {
             amount = false;
