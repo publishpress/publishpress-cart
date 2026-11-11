@@ -53,7 +53,7 @@ function ppcart_pro_locked_product_fields($tab_id)
             [ 'label' => __('Coupon CSV file', 'publishpress-cart'), 'type' => 'image' ],
         ],
         'ppcart_pro_order_bumps'     => [
-            [ 'label' => __('Enable order bump', 'publishpress-cart'), 'type' => 'toggle' ],
+            [ 'label' => __('Enable offers during checkout', 'publishpress-cart'), 'type' => 'toggle' ],
             [ 'label' => __('Background color', 'publishpress-cart'), 'type' => 'text' ],
             [ 'label' => __('Select product', 'publishpress-cart'), 'type' => 'select' ],
             [ 'label' => __('Price', 'publishpress-cart'), 'type' => 'text' ],
@@ -62,7 +62,7 @@ function ppcart_pro_locked_product_fields($tab_id)
             [ 'label' => __('Product description', 'publishpress-cart'), 'type' => 'textarea' ],
         ],
         'ppcart_pro_upsell_path'     => [
-            [ 'label' => __('Select path', 'publishpress-cart'), 'type' => 'select' ],
+            [ 'label' => __('Select offers', 'publishpress-cart'), 'type' => 'select' ],
         ],
         'ppcart_pro_affiliates'      => [
             [ 'label' => __('Enable affiliate sales', 'publishpress-cart'), 'type' => 'toggle' ],
@@ -152,7 +152,7 @@ function ppcart_product_tab_description($tab_id)
     $descriptions = [
         'coupons' => __('Offer customers discounts on this product using coupon codes. Set the discount amount or percentage and choose when each coupon can be used.', 'publishpress-cart'),
         'orderbump' => __('Offer an extra product on the checkout form. Customers can add it to their order before completing payment.', 'publishpress-cart'),
-        'upsellPath' => __('Offer additional products after checkout. Select an upsell path to choose which offers customers see and what happens when they accept or decline.', 'publishpress-cart'),
+        'upsellPath' => __('Offer additional products after checkout. Choose a sequence of offers and decide what happens when customers accept or decline.', 'publishpress-cart'),
         'affiliate' => __('Let affiliates earn commissions for referring customers to this product. Choose whether affiliate sales are enabled and set the commission rules.', 'publishpress-cart'),
     ];
 
@@ -181,9 +181,9 @@ function ppcart_pro_locked_product_field_labels($tab_id)
 
 /**
      * One display-only card that previews a Pro feature: what it does, the
-     * options it adds, and an upgrade link. Nothing in it is a form control.
+     * an upgrade link. Nothing in it is a form control.
      *
-     * @param array $args title, text, labels (string[]), context, class.
+     * @param array $args title, text, context, class.
      *
      * @return string
      */
@@ -200,15 +200,6 @@ function ppcart_pro_product_preview_card_html($args)
         ]
     );
 
-    $list = '';
-    if (! empty($args['labels'])) {
-        $list .= '<p class="ppcart-pro-preview__list-label">' . esc_html__('Options you get with Pro:', 'publishpress-cart') . '</p><ul class="ppcart-pro-preview__list">';
-        foreach ((array) $args['labels'] as $label) {
-            $list .= '<li>' . esc_html($label) . '</li>';
-        }
-        $list .= '</ul>';
-    }
-
     return '<div class="' . esc_attr(trim('ppcart-pro-preview ' . $args['class'])) . '">' .
             '<div class="ppcart-pro-preview__header">' .
                 '<span class="ppcart-pro-preview__icon dashicons dashicons-lock" aria-hidden="true"></span>' .
@@ -217,7 +208,6 @@ function ppcart_pro_product_preview_card_html($args)
                     '<p class="ppcart-pro-preview__text">' . esc_html($args['text']) . '</p>' .
                 '</div>' .
             '</div>' .
-            $list .
             '<a class="button ppcart-pro-preview__cta" href="' . esc_url(ppcart_pro_upgrade_url($args['context'])) . '" target="_blank" rel="noopener noreferrer">' .
                 esc_html__('Upgrade to Pro', 'publishpress-cart') .
                 '<span class="screen-reader-text"> ' . esc_html__('(opens in a new tab)', 'publishpress-cart') . '</span>' .

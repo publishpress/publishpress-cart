@@ -714,7 +714,7 @@ jQuery(document).ready(function($){
     $legacyTabs.find('.ppcart-tab-nav a').click(function(){
 
         var $container = $(this).closest('.ppcart-settings-tabs');
-        var errors = false;
+        var missingFields = [];
         $container.find('.required:visible').each(function(){
             var $fileRow = $(this).closest('#repeater_ppcart_files > .ppcart-repeater');
             if ($fileRow.length &&
@@ -723,17 +723,29 @@ jQuery(document).ready(function($){
                 $fileRow.find('.required').removeClass('error');
                 return;
             }
+            var invalid = false;
             if($(this).hasClass("plugin-remove_button") && $(this).prev("select").val().length == 0){
                 $(this).addClass('error');
-                errors = true;
+                invalid = true;
             }else if ($(this).val() == '' && !$(this).hasClass("plugin-remove_button")) {
                 $(this).addClass('error');
-                errors = true;
+                invalid = true;
+            }
+            if (invalid) {
+                var $label = $(this).closest('.wrap-field, .ppcart-field').find('label').first().clone();
+                $label.find('.req, .screen-reader-text, .ppcart-tooltip').remove();
+                var label = $.trim($label.text()) || $(this).attr('aria-label') || $(this).attr('placeholder') || $(this).attr('name');
+                var row = $.trim($(this).closest('.ppcart-repeater').children('.handle').find('.title-repeater').text());
+                var description = row ? row + ': ' + label : label;
+                if (missingFields.indexOf(description) === -1) {
+                    missingFields.push(description);
+                }
             }
         });
 
-        if (errors) {
-            alert('Required fields missing');
+        if (missingFields.length) {
+            var heading = window.ppcart_admin_i18n && window.ppcart_admin_i18n.required_fields_missing || 'Required fields missing:';
+            alert(heading + '\n\n' + missingFields.join('\n'));
             return false;
         }
 
@@ -1197,39 +1209,69 @@ jQuery(document).ready(function($){
 	}
 
 	$(document).on('click', '[data-ppcart-copy]', function(e) {
-		e.preventDefault();
+        e.preventDefault();
 
-		var $button = $(this);
-		var copyText = $button.attr('data-ppcart-copy');
-		var originalText = $button.text();
+        var $button = $(this);
+        var copyText = $button.attr('data-ppcart-copy');
+        var labels = window.ppcart_admin_i18n || {};
+        var originalHtml = $button.data('ppcart-copy-original-html');
+        var originalLabel = $button.data('ppcart-copy-original-label');
 
-		function setCopiedState() {
-			$button.text('Copied');
-			window.setTimeout(function() {
-				$button.text(originalText);
-			}, 1400);
-		}
+        if (typeof originalHtml === 'undefined') {
+            originalHtml = $button.html();
+            originalLabel = $button.attr('aria-label') || '';
+            $button.data('ppcart-copy-original-html', originalHtml);
+            $button.data('ppcart-copy-original-label', originalLabel);
+        }
 
-		function copyWithTextarea() {
-			var $textarea = $('<textarea />').val(copyText).attr('readonly', 'readonly').css({
-				left: '-9999px',
-				position: 'absolute'
-			});
+        function setFeedback(message) {
+            window.clearTimeout($button.data('ppcart-copy-timer'));
+            $button.text(message).attr('aria-label', message);
+            $button.data('ppcart-copy-timer', window.setTimeout(function() {
+                $button.html(originalHtml);
+                if (originalLabel) {
+                    $button.attr('aria-label', originalLabel);
+                } else {
+                    $button.removeAttr('aria-label');
+                }
+            }, 1400));
+        }
 
-			$('body').append($textarea);
-			$textarea[0].select();
-			document.execCommand('copy');
-			$textarea.remove();
-			setCopiedState();
-		}
+        function setCopiedState() {
+            setFeedback(labels.copy_success || 'Copied');
+        }
 
-		if (window.navigator && window.navigator.clipboard && window.navigator.clipboard.writeText) {
-			window.navigator.clipboard.writeText(copyText).then(setCopiedState).catch(copyWithTextarea);
-			return;
-		}
+        function copyWithTextarea() {
+            var $textarea = $('<textarea />').val(copyText).attr('readonly', 'readonly').css({
+                left: '-9999px',
+                position: 'absolute'
+            });
+            var copied = false;
 
-		copyWithTextarea();
-	});
+            $('body').append($textarea);
+            try {
+                $textarea[0].select();
+                copied = document.execCommand('copy');
+            } catch (error) {
+                copied = false;
+            } finally {
+                $textarea.remove();
+                $button.trigger('focus');
+            }
+            if (copied) {
+                setCopiedState();
+            } else {
+                setFeedback(labels.copy_failed || 'Copy failed');
+            }
+        }
+
+        if (window.navigator && window.navigator.clipboard && window.navigator.clipboard.writeText) {
+            window.navigator.clipboard.writeText(copyText).then(setCopiedState).catch(copyWithTextarea);
+            return;
+        }
+
+        copyWithTextarea();
+    });
 
 	//resend purchase confirmation email
 	$('#resend-purchase-confirmation-email').on('click', function(e) {

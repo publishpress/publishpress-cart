@@ -790,7 +790,7 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
 
 /* Pro previews -------------------------------------------------------- */
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview {
   background: var(--ppcart-surface);
   border: 1px solid var(--ppcart-card-border);
   border-radius: var(--ppcart-radius);
@@ -799,13 +799,13 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
   padding: 20px 24px;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__header {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__header {
   align-items: flex-start;
   display: flex;
   gap: 12px;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__icon {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__icon {
   align-items: center;
   background: #fff5e0;
   border-radius: 50%;
@@ -818,7 +818,7 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
   width: 36px;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__title {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__title {
   align-items: center;
   display: flex;
   font-size: 15px;
@@ -827,45 +827,16 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
   margin: 0;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__title .ppcart-settings__nav-pro-badge {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__title .ppcart-settings__nav-pro-badge {
   margin-left: 0;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__text {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__text {
   color: var(--ppcart-text-muted);
   margin: 4px 0 0;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list-label {
-  font-weight: 600;
-  margin: 16px 0 8px;
-}
-
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list {
-  display: grid;
-  gap: 6px 16px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  list-style: none;
-  margin: 0 0 16px;
-  padding: 0;
-}
-
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list li {
-  margin: 0;
-  padding-left: 22px;
-  position: relative;
-}
-
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__list li::before {
-  color: var(--ppcart-primary);
-  content: "\f147";
-  font: normal 18px/1 dashicons;
-  left: 0;
-  position: absolute;
-  top: 1px;
-}
-
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__cta {
   align-items: center;
   background: #fdb324;
   border: 1px solid #fdb324;
@@ -874,18 +845,19 @@ body:not(.block-editor-page) #ppcart-product-settings .ppcart-ui.ppcart-settings
   color: #1f2430;
   display: inline-flex;
   font-weight: 600;
+  margin-top: 16px;
   min-height: 38px;
   padding: 0 16px;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta:hover,
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta:focus {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__cta:hover,
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__cta:focus {
   background: #f0a500;
   border-color: #f0a500;
   color: #1f2430;
 }
 
-#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-pro-preview__cta:focus {
+:is(#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs, .ppcart-pro-menu-preview) .ppcart-pro-preview__cta:focus {
   box-shadow: 0 0 0 1px #fff, 0 0 0 3px #1f2430;
 }
 

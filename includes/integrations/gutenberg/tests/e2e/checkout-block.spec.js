@@ -19,7 +19,7 @@ const arrangementLabelsById = {
 	contact_info: 'Contact Info',
 	payment_method: 'Payment Method',
 	payment_details: 'Payment Details',
-	order_bumps: 'Order Bumps',
+	order_bumps: 'Offers during checkout',
 	order_summary: 'Order Summary',
 	terms_consent: 'Terms & Consent',
 	express_payment: 'Express Payment',

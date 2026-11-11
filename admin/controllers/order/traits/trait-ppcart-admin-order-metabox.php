@@ -10,6 +10,39 @@ trait PPCart_Admin_Order_Metabox_Trait
 {
     use PPCart_Admin_Order_Metabox_Rendering_Trait;
 
+    /**
+     * Include the related product in WordPress metadata revisions and the editor API.
+     *
+     * Register for all post types: existing links may also belong to posts or CPTs.
+     * Core only creates revisions for post types that support them.
+     *
+     * @return void
+     */
+    public function register_related_product_meta()
+    {
+        register_post_meta('', ppcart_meta_key('related_product'), [
+            'type'              => 'integer',
+            'single'            => true,
+            'label'             => __('Related Product', 'publishpress-cart'),
+            'description'       => __('The product whose checkout rules apply to this content.', 'publishpress-cart'),
+            'sanitize_callback' => 'absint',
+            'auth_callback'     => [$this, 'can_edit_related_product_meta'],
+            'show_in_rest'      => true,
+            'revisions_enabled' => true,
+        ]);
+    }
+
+    /**
+     * @param bool   $allowed  Whether editing the metadata is allowed.
+     * @param string $meta_key Metadata key.
+     * @param int    $post_id  Post being edited.
+     * @return bool
+     */
+    public function can_edit_related_product_meta($allowed, $meta_key, $post_id)
+    {
+        return current_user_can('edit_post', $post_id);
+    }
+
     public function add_metaboxes()
     {
 
@@ -48,6 +81,20 @@ trait PPCart_Admin_Order_Metabox_Trait
         $has_product = $post instanceof WP_Post && intval(ppcart_get_post_meta($post->ID, 'related_product', true)) > 0;
 
         if (! in_array((string) $post_type, $post_types, true) && ! $has_product) {
+            return;
+        }
+
+        // Match the published products offered by wp_dropdown_pages(). Keep an
+        // existing link editable even when its product is no longer published.
+        if (
+            ! $has_product && ! get_posts([
+                'post_type'      => ppcart_query_post_types('product'),
+                'post_status'    => 'publish',
+                'posts_per_page' => 1,
+                'fields'         => 'ids',
+                'no_found_rows'  => true,
+            ])
+        ) {
             return;
         }
 

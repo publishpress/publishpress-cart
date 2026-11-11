@@ -21,7 +21,7 @@ $default_sections = [
         ],
         'header' => [
             'title'       => __('Page header', 'publishpress-cart'),
-            'description' => __('Change how the top of the product page looks.', 'publishpress-cart'),
+            'description' => __('Customize the header on the default Cart product page. For the split layout, set a featured image on the product to change the background. Edit custom block templates in the Site Editor.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_hide_title', '_ppcart_header_color', '_ppcart_header_image' ],
         ],
     ],
@@ -34,7 +34,7 @@ $default_sections = [
         ],
         'sale' => [
             'title'       => __('Sale', 'publishpress-cart'),
-            'description' => __('Set the sale price in each plan above.', 'publishpress-cart'),
+            'description' => __('Enter a sale price in each payment plan you want to discount.', 'publishpress-cart'),
             'fields'      => [ '_ppcart_on_sale', '_ppcart_schedule_sale', '_ppcart_sale_start', '_ppcart_sale_end', '_ppcart_show_full_price' ],
         ],
     ],

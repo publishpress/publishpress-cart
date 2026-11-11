@@ -8,7 +8,7 @@ return [
     'On Sale?' => [
         'class'     => 'widefat',
         'description'   => __('Use the sale price now.', 'publishpress-cart'),
-        'tooltip'       => __('While this is on, the sale dates below are not used.', 'publishpress-cart'),
+        'tooltip'       => __('Turn this off to schedule a sale.', 'publishpress-cart'),
         'id'            => '_ppcart_on_sale',
         'label'     => __('On sale now', 'publishpress-cart'),
         'placeholder'   => '',

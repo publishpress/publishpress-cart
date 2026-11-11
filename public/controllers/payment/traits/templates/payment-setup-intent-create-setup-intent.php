@@ -43,6 +43,9 @@ $ppcart_product = ppcart_setup_product($ppcart_product_id);
 // Read only the checkout fields declared for this product; the nonce is verified above.
 $posted_values = ppcart_parse_checkout_request(null, $ppcart_product);
 
+// SetupIntents are issued while preparing the subscription Payment Element.
+ppcart_check_stripe_checkout_rate_limit(true);
+
 $apikey = $ppcart_stripe['sk'];
 $stripe = ppcart_stripe_client($apikey);
 

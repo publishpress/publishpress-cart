@@ -1,35 +1,13 @@
 <?php
 
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 
 global $wpdb, $ppcart_currency_symbol, $ppcart_public;
 
 remove_filter('the_title', [ $ppcart_public, 'public_product_name' ]);
 
-function ppcart_csv_escape_cell($value)
-{
-    $value = html_entity_decode(wp_strip_all_tags((string) $value), ENT_QUOTES, 'UTF-8');
-
-    if ('' !== $value && preg_match('/^[=\+\-@\t\r\n]/', $value)) {
-        $value = "'" . $value;
-    }
-
-    if (false !== strpbrk($value, "\",\r\n")) {
-        $value = '"' . str_replace('"', '""', $value) . '"';
-    }
-
-    return $value;
-}
-
-
-function ppcart_csv_row($values)
-{
-    return implode(',', array_map('ppcart_csv_escape_cell', $values)) . "\n";
-}
-
+require_once PPCART_BASE_DIR . 'includes/helpers/ppcart-csv.php';
 
 $csv_output_report = '';
 $filename = strtolower(apply_filters('ppcart_plugin_title', 'PublishPress Cart'));
@@ -169,7 +147,7 @@ if ($export_mode === 'contacts') {
             esc_html__('Amount Paid', 'publishpress-cart'),
             esc_html__('Product Name', 'publishpress-cart'),
             esc_html__('Payment Plan', 'publishpress-cart'),
-            esc_html__('Order Bumps', 'publishpress-cart'),
+            esc_html__('Offers during checkout', 'publishpress-cart'),
             esc_html__('Status', 'publishpress-cart'),
             esc_html__('Coupon', 'publishpress-cart'),
             esc_html__('Purchase URL', 'publishpress-cart'),

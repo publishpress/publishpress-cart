@@ -30,7 +30,7 @@ const restBase = config.restBase || '/publishpress-cart/v1';
 const productPostTypes = Array.isArray( config.productPostTypes ) && config.productPostTypes.length
 	? config.productPostTypes.map( ( postType ) => String( postType ) )
 	: [ 'ppcart_product' ];
-const blockTitle = __( 'Checkout', 'publishpress-cart' );
+const blockTitle = __( 'Cart Checkout', 'publishpress-cart' );
 const siteTitle = config.siteTitle || __( 'Site title', 'publishpress-cart' );
 
 function normalizeProductId( value ) {
@@ -91,7 +91,7 @@ const arrangementSections = {
 	contact_info: __( 'Contact Info', 'publishpress-cart' ),
 	payment_method: __( 'Payment Method', 'publishpress-cart' ),
 	payment_details: __( 'Payment Details', 'publishpress-cart' ),
-	order_bumps: __( 'Order Bumps', 'publishpress-cart' ),
+	order_bumps: __( 'Offers during checkout', 'publishpress-cart' ),
 	order_summary: __( 'Order Summary', 'publishpress-cart' ),
 	terms_consent: __( 'Terms & Consent', 'publishpress-cart' ),
 	express_payment: __( 'Express Payment', 'publishpress-cart' ),

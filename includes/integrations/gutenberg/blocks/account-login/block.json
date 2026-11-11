@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-login",
 	"version": "1.0.0",
-	"title": "Account Login",
+	"title": "Cart Account Login",
 	"category": "widgets",
 	"icon": "lock",
 	"description": "Display the customer account login and password reset form.",

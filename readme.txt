@@ -4,7 +4,7 @@ Tags: ecommerce, shopping cart, sales funnel, digital products, elementor
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,6 +119,14 @@ PublishPress Cart is based on Studiocart 2.9.0 and is maintained by PublishPress
 == External services ==
 
 PublishPress Cart can connect to third-party services when you enable and configure the related feature. These connections are optional unless you choose the related payment gateway, spam-protection feature, analytics feature, or marketing integration.
+
+= Meta Pixel =
+
+If you enter a Meta Pixel ID in the Facebook Ad Events integration, Cart loads Meta Pixel from https://connect.facebook.net on checkout and paid order confirmation pages. Meta receives PageView events and any Cart events you enable, which can include the product ID, price, currency, and an order event ID. Meta Pixel may collect browser and device data and use cookies. A Meta account and a Pixel ID are required for this optional setup. If your site already loads Meta Pixel, Cart can send enabled events to that installation.
+
+Service: https://www.facebook.com/business/tools/meta-pixel
+Terms: https://www.facebook.com/legal/technology_terms
+Privacy: https://www.facebook.com/privacy/policy/
 
 = Stripe =
 
