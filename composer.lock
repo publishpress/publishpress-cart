@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2592d29ec67c2c21c69d366674c9227",
+    "content-hash": "45c6b1955c314dc7b4455426ebef6c09",
     "packages": [],
     "packages-dev": [
         {
@@ -6145,16 +6145,16 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "1.8.18",
+            "version": "dev-cart-594-translations-delivery-system",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-dev-workspace.git",
-                "reference": "8feb2d312176a013c4bcd626d405cbd68357f1fb"
+                "reference": "54f83327b4c1eda7e44abda6678d85826d3cf49c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/8feb2d312176a013c4bcd626d405cbd68357f1fb",
-                "reference": "8feb2d312176a013c4bcd626d405cbd68357f1fb",
+                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/54f83327b4c1eda7e44abda6678d85826d3cf49c",
+                "reference": "54f83327b4c1eda7e44abda6678d85826d3cf49c",
                 "shasum": ""
             },
             "require": {
@@ -6185,7 +6185,7 @@
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^10",
                 "publishpress/publishpress-phpcs-standards": "^1.1",
-                "publishpress/translations": "^1.4",
+                "publishpress/translations": "dev-cart-594-translations-delivery-system",
                 "spatie/ray": "^1.41",
                 "squizlabs/php_codesniffer": "^3.8",
                 "symfony/http-client": "^7.1",
@@ -6211,10 +6211,9 @@
             "description": "Shared Composer scripts for PublishPress plugins",
             "support": {
                 "issues": "https://github.com/publishpress/library-dev-workspace/issues",
-                "source": "https://github.com/publishpress/library-dev-workspace/tree/1.8.18"
+                "source": "https://github.com/publishpress/library-dev-workspace/tree/cart-594-translations-delivery-system"
             },
-            "time": "2026-10-09T15:56:24+00:00",
-            "published-time": "2026-10-09T15:57:25+00:00"
+            "time": "2026-10-14T00:58:26+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
@@ -6267,16 +6266,16 @@
         },
         {
             "name": "publishpress/translations",
-            "version": "v1.6.2",
+            "version": "dev-cart-594-translations-delivery-system",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-publishpress-translator.git",
-                "reference": "aa9421e14127010657a1bdb5c5e1bd3e6db3c649"
+                "reference": "2b6e568315709b042ea5890aec3097da21bcb1fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-publishpress-translator/zipball/aa9421e14127010657a1bdb5c5e1bd3e6db3c649",
-                "reference": "aa9421e14127010657a1bdb5c5e1bd3e6db3c649",
+                "url": "https://api.github.com/repos/publishpress/library-publishpress-translator/zipball/2b6e568315709b042ea5890aec3097da21bcb1fd",
+                "reference": "2b6e568315709b042ea5890aec3097da21bcb1fd",
                 "shasum": ""
             },
             "require": {
@@ -6318,10 +6317,9 @@
             "description": "AI-powered translation automation for PublishPress plugins using Potomatic",
             "support": {
                 "issues": "https://github.com/publishpress/library-publishpress-translator/issues",
-                "source": "https://github.com/publishpress/library-publishpress-translator/tree/v1.6.2"
+                "source": "https://github.com/publishpress/library-publishpress-translator/tree/cart-594-translations-delivery-system"
             },
-            "time": "2026-11-09T14:34:44+00:00",
-            "published-time": "2026-11-09T14:34:57+00:00"
+            "time": "2026-10-14T00:56:16+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -13912,8 +13910,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "publishpress/dev-workspace": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

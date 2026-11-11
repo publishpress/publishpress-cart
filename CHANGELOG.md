@@ -1,5 +1,9 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+- Added: Publish one locales archive from the plugin release and register the text domain, repository, and version with Hub. Translation delivery is 1.1.0, not 1.0.1 (#594).
+
 [1.2.0] - 11 Nov, 2026
 
 - Added : MCP integration with Hub, #1022

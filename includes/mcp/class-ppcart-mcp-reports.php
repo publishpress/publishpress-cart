@@ -50,12 +50,12 @@ class PPCart_Mcp_Reports
         }
         $types = [];
         foreach (['product', 'order', 'subscription'] as $kind) {
-            $types = array_merge($types, ppcart_query_post_types($kind)); 
+            $types = array_merge($types, ppcart_query_post_types($kind));
         }
         // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- Native summaries can include historical records; every contributor must be authorized within a bounded scope.
         $ids = get_posts(['post_type' => array_unique($types), 'post_status' => array_keys(get_post_stati()), 'posts_per_page' => 1001, 'fields' => 'ids']);
         if (count($ids) > 1000) {
-            return new WP_Error('ppcart_mcp_scope_limit', __('Use native reports for a summary exceeding 1,000 permission-checked records.', 'publishpress-cart')); 
+            return new WP_Error('ppcart_mcp_scope_limit', __('Use native reports for a summary exceeding 1,000 permission-checked records.', 'publishpress-cart'));
         }
         foreach ($ids as $id) {
             if (! current_user_can('read_post', $id) || ! current_user_can('edit_post', $id)) {
