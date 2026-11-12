@@ -136,35 +136,50 @@ class PPCart_Admin_Filters
     public function custom_posts_filter()
     {
         global $typenow, $wpdb;
+        $visible_filters = [];
         foreach ($this->meta_filters as $meta_filter) {
-            if (in_array($typenow, $meta_filter['post_types'])) {
-                $meta_key = $meta_filter['key'];
-                $default_option = $meta_filter['default_option'] ?? 'All ' . $meta_key;
+            if (in_array($typenow, $meta_filter['post_types'], true)) {
+                $visible_filters[] = $meta_filter;
+            }
+        }
 
-                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Admin filter options are built from distinct meta values at runtime.
-                $meta_values = $wpdb->get_col($wpdb->prepare(
-                    "SELECT DISTINCT meta_value FROM $wpdb->postmeta WHERE meta_key = %s ORDER BY meta_value ASC",
-                    $meta_key
-                ));
+        if (! $visible_filters) {
+            return;
+        }
 
-                if ($meta_values) {
-                    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin list filter parameter.
-                    $current_meta_value = isset($_GET[$meta_key]) ? sanitize_text_field(wp_unslash($_GET[$meta_key])) : '';
+        $meta_keys = array_values(array_unique(array_column($visible_filters, 'key')));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Admin filter options are built from distinct meta values at runtime.
+        $rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT DISTINCT meta_key, meta_value FROM $wpdb->postmeta WHERE meta_key IN (" . implode(',', array_fill(0, count($meta_keys), '%s')) . ') ORDER BY meta_value ASC',
+            $meta_keys
+        ));
+        $values_by_key = [];
+        foreach ((array) $rows as $row) {
+            $values_by_key[$row->meta_key][] = $row->meta_value;
+        }
 
-                    echo '<select name="' . esc_attr($meta_key) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-meta-filter-' . $meta_key)) . '">';
-                    echo '<option value="">' . esc_html($default_option) . '</option>'; // Default option
-                    foreach ($meta_values as $meta_value) {
-                        echo '<option value="' . esc_attr($meta_value) . '"';
-                        if ($current_meta_value == $meta_value) {
-                            echo ' selected="selected"';
-                        }
-                        if ($meta_key == ppcart_meta_key('pay_method')) {
-                            $meta_value = ucwords(str_replace('_', ' ', $meta_value));
-                        }
-                        echo '>' . esc_html($meta_value) . '</option>';
+        foreach ($visible_filters as $meta_filter) {
+            $meta_key = $meta_filter['key'];
+            $default_option = $meta_filter['default_option'] ?? 'All ' . $meta_key;
+            $meta_values = $values_by_key[$meta_key] ?? [];
+
+            if ($meta_values) {
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin list filter parameter.
+                $current_meta_value = isset($_GET[$meta_key]) ? sanitize_text_field(wp_unslash($_GET[$meta_key])) : '';
+
+                echo '<select name="' . esc_attr($meta_key) . '" data-testid="' . esc_attr(ppcart_testid('ppcart-admin-meta-filter-' . $meta_key)) . '">';
+                echo '<option value="">' . esc_html($default_option) . '</option>'; // Default option
+                foreach ($meta_values as $meta_value) {
+                    echo '<option value="' . esc_attr($meta_value) . '"';
+                    if ($current_meta_value == $meta_value) {
+                        echo ' selected="selected"';
                     }
-                    echo '</select>';
+                    if ($meta_key == ppcart_meta_key('pay_method')) {
+                        $meta_value = ucwords(str_replace('_', ' ', $meta_value));
+                    }
+                    echo '>' . esc_html($meta_value) . '</option>';
                 }
+                echo '</select>';
             }
         }
     }
