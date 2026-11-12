@@ -88,7 +88,8 @@ function ppcart_prepare_update_cart_amount_response($order, $amount_due_label, $
             $sub['sub_discount_duration']
         );
         $sub_summary = preg_replace('/<br\\s*\\/?>/i', "\n", (string) $sub_summary);
-        $response['sub_summary'] = wp_strip_all_tags((string) $sub_summary);
+        // The browser renders this as text, so decode entities such as &euro; from ppcart_format_price().
+        $response['sub_summary'] = html_entity_decode(wp_strip_all_tags((string) $sub_summary), ENT_QUOTES | ENT_HTML5, 'UTF-8');
         $total_label = $due_today_label;
         $response['total_label'] = $total_label;
     }
