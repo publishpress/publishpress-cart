@@ -54,7 +54,7 @@ function ppcart_generate_login_creds($customerEmail, $password = false)
     }
     $username = $customerEmail;
 
-    if (is_countable($ppcart_product->custom_fields)) {
+    if ($ppcart_product && is_countable($ppcart_product->custom_fields)) {
         foreach ($ppcart_product->custom_fields as $field) {
             $key = str_replace([' ','.'], ['_','_'], $field['field_id']);
             // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Checkout context reads posted custom-field payload.
