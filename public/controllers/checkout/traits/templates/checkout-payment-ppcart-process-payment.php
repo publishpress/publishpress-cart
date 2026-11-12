@@ -57,6 +57,10 @@ if (! ppcart_checkout_completion_allowed($order_id, $completion_context, [])) {
 $ppcart_product = ppcart_setup_product($ppcart_product_id);
 $order_info = (array) ppcart_setup_order($order_id);
 
+// Log in a buyer whose account this order just created, when auto-login is on.
+ppcart_remember_auto_login_request($order_id);
+ppcart_maybe_auto_login_order_buyer($order_id, $ppcart_product);
+
 if (! $step_get || 1 === $step_get) {
     $_POST['ppcart_purchase_amount'] = $order_info['amount'];
 }

@@ -181,6 +181,9 @@ if ($ppcart_order_post) {
 }
 
 $data['order_id'] = $order_post_id;
+if ($order_post_id) {
+    ppcart_remember_auto_login_request($order_post_id);
+}
 $data['amount'] = $cart_order->amount;
 if ($order_post_id) {
     $data['ppcart_access'] = PPCart_Order::ensure_invoice_access_token($order_post_id);
