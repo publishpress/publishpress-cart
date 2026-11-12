@@ -13,6 +13,7 @@ $response = ppcart_safe_remote_post(
     $url,
     [
         'body'    => $postvars,
+        // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- reCAPTCHA siteverify can take longer than 3 seconds.
         'timeout' => 10,
     ]
 );
