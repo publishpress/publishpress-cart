@@ -21,8 +21,13 @@ jobs:
     secrets: inherit
 
   deploy-wp-org:
+    needs:
+      - code-standards
+      - unit-tests
+      - integration-tests
     permissions:
       contents: write
     uses: publishpress/github-workflows/.github/workflows/deploy-free.yml@v3
-    needs: [code-standards, unit-tests, integration-tests]
+    with:
+      stable_branch: master
     secrets: inherit
