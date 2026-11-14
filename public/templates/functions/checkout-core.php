@@ -350,7 +350,7 @@ function ppcart_do_payment_confirmation($prod_id)
                 <div class="ppcart-section products">
                     <?php if ($show_confirm) : ?>
                         <div>
-                            <img src="<?php echo esc_url(PPCART_BASE_URL . 'public/images/checkmark.png'); ?>" style="display: inline-block;width: 80px;margin-left: 12px;">
+                            <img src="<?php echo esc_url(PPCART_BASE_URL . 'public/images/checkmark.png'); ?>" alt="" style="display: inline-block;width: 80px;margin-left: 12px;">
                             <?php
                                 ppcart_do_confirmation_message();
                         ppcart_template('shortcodes/receipt', '', ppcart_get_item_list($orderID));

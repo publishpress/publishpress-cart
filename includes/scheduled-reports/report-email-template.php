@@ -44,7 +44,7 @@ function ppcart_schedule_report_email_html($report)
         <div class="schedule-main mail">
             <div class="logo">
                 <?php if (! empty($report['company_logo'])) : ?>
-                    <img src="<?php echo esc_url($report['company_logo']); ?>" alt="Logo">
+                    <img src="<?php echo esc_url($report['company_logo']); ?>" alt="<?php echo esc_attr($report['site_name']); ?>">
                 <?php else : ?>
                     <span><?php echo esc_html($report['site_name']); ?></span>
                 <?php endif; ?>

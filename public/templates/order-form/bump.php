@@ -18,7 +18,7 @@ global $ppcart_product;
     <h3 class="title"><?php echo esc_html($args['headline']); ?></h3>
 
     <?php if ($args['image'] && $args['image_pos'] == 'top') : ?>
-        <div class="ppcart-bump-image"><img src="<?php echo esc_url($args['image']); ?>"></div>
+        <div class="ppcart-bump-image"><img src="<?php echo esc_url($args['image']); ?>" alt="<?php echo esc_attr($args['headline']); ?>"></div>
     <?php endif; ?>
 
     <div class="ppcart-row <?php echo esc_attr($args['atts']); ?>">
