@@ -1,6 +1,6 @@
 # PublishPress Cart Hook Manifest
 
-Generated on 2026-11-09 from a static PHP token audit of `publishpress-cart`.
+Generated on 2026-11-14 from a static PHP token audit of `publishpress-cart`.
 
 ## Prefix Policy
 
@@ -170,6 +170,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_admin_reports_product_columns` | Action | `do_action` | Public | canonical | `admin/reports/templates/admin-reports-page.php` | ppcart_admin_reports_product_columns |
 | `ppcart_admin_reports_summary_columns` | Action | `do_action` | Public | canonical | `admin/reports/templates/admin-reports-page.php` | ppcart_admin_reports_summary_columns |
 | `ppcart_admin_reports_transactions_label` | Filter | `apply_filters` | Public | canonical | `admin/reports/templates/admin-reports-page.php` | ppcart_admin_reports_transactions_label |
+| `ppcart_after_auto_login` | Action | `do_action` | Public | canonical | `includes/functions/auto-login.php` | ppcart_after_auto_login |
 | `ppcart_after_buy_button` | Action | `do_action` | Public | canonical | `public/templates/order-form/submit-button.php` | ppcart_after_buy_button |
 | `ppcart_after_downloads_attached_to_order` | Action | `do_action` | Public | canonical | `includes/files/traits/trait-ppcart-files-order.php` | ppcart_after_downloads_attached_to_order |
 | `ppcart_after_load_from_post` | Action | `do_action` | Public | canonical | `models/order/traits/templates/order-checkout-input-load-from-post.php` | ppcart_after_load_from_post |
@@ -196,7 +197,9 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_after_update_stock` | Action | `do_action` | Public | canonical | `includes/functions/prices-and-marketing.php` | ppcart_after_update_stock |
 | `ppcart_after_user_is_created` | Action | `do_action` | Public | canonical | `includes/functions/users-and-notifications.php` | ppcart_after_user_is_created |
 | `ppcart_after_validate_meta` | Action | `do_action` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-save-validate-meta.php` | ppcart_after_validate_meta |
+| `ppcart_allow_auto_login` | Filter | `apply_filters` | Public | canonical | `includes/functions/auto-login.php` | ppcart_allow_auto_login |
 | `ppcart_allow_privileged_customer_role` | Filter | `apply_filters` | Public | canonical | `includes/functions/users-and-notifications.php` | ppcart_allow_privileged_customer_role |
+| `ppcart_auto_login_window` | Filter | `apply_filters` | Public | canonical | `includes/functions/auto-login.php` | ppcart_auto_login_window |
 | `ppcart_backend_message_{$k}` | Filter | `apply_filters` | Public | canonical | `includes/functions/merge-tags-and-dates.php` | ppcart_backend_message_{$k} |
 | `ppcart_before_buy_button` | Action | `add_action` | Public | canonical | `includes/integrations/GoogleRecaptcha.php` | ppcart_before_buy_button |
 | `ppcart_before_buy_button` | Action | `do_action` | Public | canonical | `public/templates/order-form/submit-button.php` | ppcart_before_buy_button |
@@ -660,6 +663,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_stripe_checkout_session_completed` | Action | `do_action` | Public | canonical | `includes/stripe-sync/traits/templates/stripe-sync-hosted-checkout-sync-checkout-session-completed.php` | ppcart_stripe_checkout_session_completed |
 | `ppcart_stripe_connect_credentials_http_args` | Filter | `apply_filters` | Public | canonical | `admin/settings/traits/templates/stripe-connect-maybe-handle-proxy-return.php` | ppcart_stripe_connect_credentials_http_args |
 | `ppcart_stripe_invoice_response` | Action | `do_action` | Public | canonical | `includes/stripe-sync/traits/templates/stripe-sync-invoices-sync-invoice-resource.php` | ppcart_stripe_invoice_response |
+| `ppcart_stripe_locale` | Filter | `apply_filters` | Public | canonical | `includes/functions/payment-and-locale-lists.php` | ppcart_stripe_locale |
 | `ppcart_stripe_platform_publishable_key` | Filter | `apply_filters` | Public | canonical | `includes/functions/prices-and-marketing.php` | ppcart_stripe_platform_publishable_key |
 | `ppcart_stripe_platform_secret_key` | Filter | `apply_filters` | Public | canonical | `includes/functions/prices-and-marketing.php` | ppcart_stripe_platform_secret_key |
 | `ppcart_stripe_subscription_invoice_args` | Filter | `apply_filters` | Public | canonical | `public/controllers/traits/templates/subscription-create-create-stripe-subscription.php` | ppcart_stripe_subscription_invoice_args |
@@ -742,6 +746,8 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `pre_update_option` | Filter | `add_filter` | Internal | unclassified | `includes/secrets/traits/trait-ppcart-secrets-config.php` | pre_update_option |
 | `pre_update_option__ppcart_tax_rates` | Filter | `add_filter` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | pre_update_option__ppcart_tax_rates |
 | `publishpress-cart_wp_reviews_allow_display_notice` | Filter | `add_filter` | Internal | unclassified | `includes/class-ppcart-reviews.php` | publishpress-cart_wp_reviews_allow_display_notice |
+| `publishpress_bundled_translations_hub_notice_screens` | Filter | `add_filter` | Internal | unclassified | `includes/helpers/ppcart-language-pack-notice.php` | publishpress_bundled_translations_hub_notice_screens |
+| `publishpress_hub_language_pack_domains` | Filter | `add_filter` | Internal | unclassified | `publishpress-cart.php` | publishpress_hub_language_pack_domains |
 | `query_vars` | Filter | `add_filter` | Internal | unclassified | `includes/bootstrap/class-ppcart-public-hook-registrar.php` | query_vars |
 | `render_block_core/cover` | Filter | `add_filter` | Internal | unclassified | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` | render_block_core/cover |
 | `render_block_core/group` | Filter | `add_filter` | Internal | unclassified | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` | render_block_core/group |

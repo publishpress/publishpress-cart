@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-09",
+    "generated_at": "2026-11-14",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -1626,6 +1626,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_after_auto_login",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/auto-login.php",
+            "recommended_hook": "ppcart_after_auto_login",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_after_buy_button",
             "type": "action",
             "operation": "do_action",
@@ -1886,6 +1896,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_allow_auto_login",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/auto-login.php",
+            "recommended_hook": "ppcart_allow_auto_login",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_allow_privileged_customer_role",
             "type": "filter",
             "operation": "apply_filters",
@@ -1893,6 +1913,16 @@
             "status": "canonical",
             "file": "includes/functions/users-and-notifications.php",
             "recommended_hook": "ppcart_allow_privileged_customer_role",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_auto_login_window",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/auto-login.php",
+            "recommended_hook": "ppcart_auto_login_window",
             "notes": "Canonical hook prefix."
         },
         {
@@ -6526,6 +6556,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_stripe_locale",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/functions/payment-and-locale-lists.php",
+            "recommended_hook": "ppcart_stripe_locale",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_stripe_platform_publishable_key",
             "type": "filter",
             "operation": "apply_filters",
@@ -7343,6 +7383,26 @@
             "status": "unclassified",
             "file": "includes/class-ppcart-reviews.php",
             "recommended_hook": "publishpress-cart_wp_reviews_allow_display_notice",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "publishpress_bundled_translations_hub_notice_screens",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/helpers/ppcart-language-pack-notice.php",
+            "recommended_hook": "publishpress_bundled_translations_hub_notice_screens",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "publishpress_hub_language_pack_domains",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "publishpress-cart.php",
+            "recommended_hook": "publishpress_hub_language_pack_domains",
             "notes": "Review before documenting as public API."
         },
         {
