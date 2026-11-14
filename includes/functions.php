@@ -202,6 +202,7 @@ function ppcart_frontend_allowed_html()
         'aria-hidden'     => true,
         'aria-label'      => true,
         'aria-live'       => true,
+        'aria-required'   => true,
         'aria-selected'   => true,
         'class'           => true,
         'data-active-tab' => true,

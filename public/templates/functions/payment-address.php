@@ -147,8 +147,8 @@ function ppcart_do_vat_info()
                 <label for="method-vat-number-available"><?php esc_html_e('Enter VAT number', "publishpress-cart"); ?></label>
             </div>
             <div class="ppcart-form-group ppcart-col-sm-12 vat_number_field" style="display:none;">
-                <label for="vat_number"><?php esc_html_e('VAT Number', "publishpress-cart"); ?><span class="req">*</span></label>
-                <input id="vat_number" type="text" name="vat-number" placeholder="<?php esc_attr_e('VAT Number', "publishpress-cart"); ?>" class="ppcart-form-control required" aria-label='VAT Number' data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-vat-number')); ?>">
+                <label for="vat_number"><?php esc_html_e('VAT Number', "publishpress-cart"); ?><span class="req" aria-hidden="true">*</span></label>
+                <input id="vat_number" type="text" name="vat-number" placeholder="<?php esc_attr_e('VAT Number', "publishpress-cart"); ?>" class="ppcart-form-control required" aria-label="<?php esc_attr_e('VAT Number', 'publishpress-cart'); ?>" aria-required="true" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-vat-number')); ?>">
             </div>
         </div>
     </div>
@@ -231,7 +231,7 @@ function ppcart_do_payment_details_content($post_id, $hide_labels)
       <div class="ppcart-form-group ppcart-col-sm-12">
         <?php if ($hide_labels != 'hide') : ?>
         <label for="card-element">
-           <?php esc_html_e("Credit or debit card", "publishpress-cart"); ?> <span class="req">*</span>
+           <?php esc_html_e("Credit or debit card", "publishpress-cart"); ?> <span class="req" aria-hidden="true">*</span>
         </label>
         <?php endif; ?>
 

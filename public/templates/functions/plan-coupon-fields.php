@@ -300,8 +300,12 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
                     }
                     ?>
                         <div class="<?php echo esc_attr($pwyw_class); ?>">
-                            <span class="ppcart-currency"><?php echo esc_html(ppcart_get_currency_symbol()); ?></span>
-                            <input id="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" name="pwyw_amount[<?php echo esc_attr($item['option_id']); ?>]" type="number" min="<?php echo esc_attr(floatval($item[$price])); ?>" class="ppcart-form-control ppcart-mb-0 required" placeholder="Amount" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-custom-price-input')); ?>">
+                            <label for="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" class="ppcart-screen-reader-text"><?php
+                                /* translators: %s: payment plan name. */
+                                echo esc_html(sprintf(__('Your price for %s', 'publishpress-cart'), wp_strip_all_tags((string) ($item[$name] ?? $item['option_name'] ?? ''))));
+                            ?></label>
+                            <span class="ppcart-currency" aria-hidden="true"><?php echo esc_html(ppcart_get_currency_symbol()); ?></span>
+                            <input id="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" name="pwyw_amount[<?php echo esc_attr($item['option_id']); ?>]" type="number" min="<?php echo esc_attr(floatval($item[$price])); ?>" class="ppcart-form-control ppcart-mb-0 required" placeholder="<?php esc_attr_e('Amount', 'publishpress-cart'); ?>" aria-required="true" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-custom-price-input')); ?>">
                         </div>
                     </div>
                 <?php endif;?>
@@ -430,6 +434,8 @@ function ppcart_do_field($args)
     }
 
     $class .= (!$required) ? '' : ' required';
+    // aria-required (not native `required`) so browser validation does not change checkout behaviour.
+    $aria_required = ($required && !in_array($type, ['radio', 'checkbox'], true)) ? ' aria-required="true"' : '';
     $class .= (!is_array($posted_ppcart_errors) || !isset($posted_ppcart_errors[$name])) ? '' : ' invalid';
     $class .= ($type == 'password') ? ' ppcart-password' : '';
     if (is_user_logged_in()) {
@@ -464,11 +470,13 @@ function ppcart_do_field($args)
     <?php if ($type != 'hidden') : ?>
     <div class="ppcart-form-group ppcart-col-sm-<?php echo esc_attr($cols); ?> <?php echo esc_attr($div_class); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($group_testid)); ?>">
         <?php if ($hide_labels != 'hide') : ?>
-        <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($label); ?><?php echo (!$required) ? '' : ' <span class="req">*</span>'; ?></label>
+        <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($label); ?><?php echo (!$required) ? '' : ' <span class="req" aria-hidden="true">*</span>'; ?></label>
+        <?php elseif ($type == 'select') : ?>
+        <label for="<?php echo esc_attr($name); ?>" class="ppcart-screen-reader-text"><?php echo esc_html($label); ?></label>
         <?php endif; ?>
     <?php endif; ?>
         <?php if ($type == 'select') : ?>
-            <select id="<?php echo esc_attr($name); ?>" name="<?php echo esc_attr($name); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>">
+            <select id="<?php echo esc_attr($name); ?>" name="<?php echo esc_attr($name); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>">
                 <?php foreach ($choices as $k => $v) {
                     echo '<option value="' . esc_attr($k) . '" ' . selected($k, $value, false) . '>' . esc_html($v) . '</option>';
                 } ?>
@@ -489,7 +497,7 @@ function ppcart_do_field($args)
             <?php endforeach; ?>
             <?php echo wp_kses_post($description); ?>
         <?php elseif ($type == 'quantity') : ?>
-            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="number" class="ppcart-form-control <?php echo esc_attr($class); ?>" step="1" min="1" max="" placeholder="<?php esc_attr_e('Qty', 'publishpress-cart'); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>" inputmode="numeric" pattern="[0-9]*" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
+            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="number" class="ppcart-form-control <?php echo esc_attr($class); ?>" step="1" min="1" max="" placeholder="<?php esc_attr_e('Qty', 'publishpress-cart'); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?> inputmode="numeric" pattern="[0-9]*" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
             <?php if ($qty_price) :
                 ?> data-ppcart-qty-price="<?php echo esc_attr($qty_price); ?>"<?php
             endif; ?>>
@@ -498,7 +506,7 @@ function ppcart_do_field($args)
                   <div class="error"><?php echo esc_html(sanitize_text_field($posted_ppcart_errors[$name])); ?></div>
               <?php endif; ?>
         <?php else : ?>
-            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
+            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
             <?php if ($type == 'password') :
                 ?>pattern="(?=.*\d)(?=.*[a-z]).{8,}"<?php
             endif; ?>
