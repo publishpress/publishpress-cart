@@ -82,8 +82,9 @@ function ppcart_do_payment_methods($post_id)
 
     ?>
 
-    <h3 class="title"><?php echo esc_html(ppcart_checkout_text_setting('paymentInfoHeading', esc_html__("Payment Info", "publishpress-cart"))); ?></h3>
-    <div class="pay-methods">
+    <?php $pay_methods_heading_id = wp_unique_id('ppcart-pay-methods-heading-'); ?>
+    <h3 class="title" id="<?php echo esc_attr($pay_methods_heading_id); ?>"><?php echo esc_html(ppcart_checkout_text_setting('paymentInfoHeading', esc_html__("Payment Info", "publishpress-cart"))); ?></h3>
+    <fieldset class="pay-methods ppcart-fieldset" aria-labelledby="<?php echo esc_attr($pay_methods_heading_id); ?>">
         <?php if (!empty($payment_methods)) : ?>
             <?php foreach ($payment_methods as $k => $method) : ?>
                 <?php $method_testid = 'ppcart-payment-method-' . ppcart_checkout_testid_suffix($method['value']); ?>
@@ -104,7 +105,7 @@ function ppcart_do_payment_methods($post_id)
         <?php else : ?>
             <?php esc_html_e('Sorry, it seems that there are no payment methods available. Please contact us for assistance.', 'publishpress-cart'); ?>
         <?php endif; ?>
-    </div>
+    </fieldset>
     <?php
 }
 
