@@ -24,6 +24,23 @@ Displays an order form.
 | `template` | `2-step` for the two-step checkout layout |
 | `coupon` | Pre-apply a coupon code |
 
+## Checkout and account layouts
+
+| Shortcode | Displays |
+|-----------|----------|
+| `[ppcart_checkout_form id="123" plan="monthly" coupon="vip20"]` | Checkout for the selected product. The plan and coupon are optional. Omit the ID on a product template to use the current product. |
+| `[ppcart_account_page_builder]` | A customer account page with login and tabbed account content. |
+| `[ppcart_account_navigation]` | Account navigation with its corresponding tab panels. |
+| `[ppcart_account_tab component="account-orders"]` | One account panel. Choose `account-orders`, `account-subscriptions`, `account-payment-plans`, `account-profile`, or `account-downloads`. |
+| `[ppcart_account_orders]` | Customer order history. |
+| `[ppcart_account_subscriptions]` | Customer subscriptions. |
+| `[ppcart_account_payment_plans]` | Customer installment plans. |
+| `[ppcart_account_profile]` | Customer profile. |
+| `[ppcart_account_login]` | Customer login form. |
+| `[ppcart_account_downloads]` | Customer downloads. |
+
+In Elementor, search the widget panel for **Cart Checkout** or **Cart Account** to find the corresponding widgets.
+
 ## Receipt
 
 ```text

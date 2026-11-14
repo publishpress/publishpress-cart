@@ -19,6 +19,50 @@ trait PPCart_Product_Metaboxes_Save_Trait
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
     }
 
+    /**
+     * Sanitize a local scalar field using the same two passes as the native form.
+     *
+     * @since 1.1.0
+     * @param string $type Native field type.
+     * @param mixed $value Unslashed value.
+     * @return mixed
+     */
+    public function sanitize_local_field($type, $value)
+    {
+        if (null === $value) {
+            return null;
+        }
+        if ('checkbox' === $type && is_bool($value)) {
+            return $value ? 1 : 0;
+        }
+        switch ($type) {
+            case 'email':
+                $posted = sanitize_email($value);
+                break;
+            case 'file':
+                $posted = sanitize_file_name($value);
+                break;
+            case 'file-upload':
+            case 'secure-file-upload':
+            case 'url':
+                $posted = esc_url_raw($value);
+                break;
+            case 'textarea':
+                $posted = sanitize_textarea_field($value);
+                break;
+            case 'editor':
+            case 'email_editor':
+                $posted = wp_kses_post($value);
+                break;
+            default:
+                $posted = sanitize_text_field($value);
+        }
+        if ('' === $posted) {
+            return null;
+        }
+        return '0' === $posted ? 0 : $this->sanitizer($type, $posted);
+    }
+
     private function sanitizer($type, $data)
     {
 

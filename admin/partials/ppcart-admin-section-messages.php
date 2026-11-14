@@ -10,7 +10,7 @@ if (! defined('ABSPATH')) {
  *
  * Enter text below to appear below the section title on the Settings page
  *
- * @link https://publishpress.com/publishpress-cart/
+ * @link https://publishpress.com/cart/
  * @since 1.0.0
  *
  * @package PublishPress_Cart

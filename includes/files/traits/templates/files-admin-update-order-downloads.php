@@ -78,7 +78,7 @@ foreach ($files as $download) {
 
     if (!empty($changes)) {
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Updates download counters/expiry for a single download row.
-        $wpdb->update(self::live_table(), $changes, [ 'download_id' => $download->download_id ], [ '%s', '%s' ], [ '%d' ]);
+        $this->update_download_access($post_id, (int) $download->download_id, $changes);
     }
 }
 

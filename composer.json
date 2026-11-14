@@ -37,7 +37,7 @@
         "php": ">=7.4"
     },
     "require-dev": {
-        "publishpress/dev-workspace": "^1.8"
+        "publishpress/dev-workspace": "^2.1.0"
     },
     "scripts": {
         "pre-autoload-dump": "@composer dumpautoload --working-dir=./lib",

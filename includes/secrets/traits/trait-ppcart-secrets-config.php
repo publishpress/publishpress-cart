@@ -290,6 +290,7 @@ trait PPCart_Secrets_Config_Trait
             '_ppcart_googlerecaptchav2_site_secret',
             '_ppcart_googlerecaptchav3_site_secret',
             '_ppcart_drip_api_key',
+            '_ppcart_flodesk_api_key',
             '_ppcart_mailerlite_api_key',
             '_ppcart_gurucan_api_key',
             '_ppcart_heartbeat_api_key',

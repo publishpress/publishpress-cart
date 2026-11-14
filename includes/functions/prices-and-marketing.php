@@ -407,3 +407,15 @@ function ppcart_get_font_awesome_icon_html($icon)
         esc_attr($icon_name)
     );
 }
+
+/**
+ * Native combined selector, shared by settings and API clients. Hosted takes precedence.
+ *
+ * @since 1.1.0
+ * @return string
+ */
+function ppcart_get_stripe_checkout_experience()
+{
+    return get_option('_ppcart_stripe_hosted_checkout_enable') ? 'hosted'
+        : (get_option('_ppcart_stripe_payment_element_enable', '1') ? 'element' : 'classic');
+}

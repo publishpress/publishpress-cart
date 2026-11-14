@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-tab",
 	"version": "1.0.0",
-	"title": "Account Tab",
+	"title": "Cart Account Tab",
 	"category": "widgets",
 	"icon": "index-card",
 	"description": "Group account component blocks inside one account navigation tab.",

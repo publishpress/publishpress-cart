@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-page-builder",
 	"version": "1.0.0",
-	"title": "Account Page Builder",
+	"title": "Cart Account Page Builder",
 	"category": "widgets",
 	"icon": "screenoptions",
 	"description": "Build a customer account page from sortable account component blocks.",

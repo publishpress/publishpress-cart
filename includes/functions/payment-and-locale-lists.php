@@ -24,6 +24,40 @@ function ppcart_enabled_processors()
     return implode(', ', $processors);
 }
 
+/**
+ * Map the site locale to a Stripe.js locale so Elements match the site language.
+ *
+ * @return string Stripe locale code, or 'auto' when Stripe has no match.
+ */
+function ppcart_stripe_locale()
+{
+    $supported = [
+        'ar', 'bg', 'cs', 'da', 'de', 'el', 'en', 'en-GB', 'es', 'es-419', 'et', 'fi', 'fil', 'fr', 'fr-CA',
+        'he', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lt', 'lv', 'ms', 'mt', 'nb', 'nl', 'pl', 'pt', 'pt-BR',
+        'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'vi', 'zh', 'zh-HK', 'zh-TW',
+    ];
+
+    $wp_locale = str_replace('_', '-', (string) get_locale());
+    $language  = strtolower(strtok($wp_locale, '-'));
+    $aliases   = [
+        'nn' => 'nb',
+        'no' => 'nb',
+        'tl' => 'fil',
+    ];
+
+    if (in_array($wp_locale, $supported, true)) {
+        $locale = $wp_locale;
+    } elseif (isset($aliases[ $language ])) {
+        $locale = $aliases[ $language ];
+    } elseif (in_array($language, $supported, true)) {
+        $locale = $language;
+    } else {
+        $locale = 'auto';
+    }
+
+    return (string) apply_filters('ppcart_stripe_locale', $locale, get_locale());
+}
+
 function ppcart_payment_methods()
 {
     global $ppcart_stripe;
