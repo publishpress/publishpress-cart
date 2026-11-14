@@ -454,7 +454,7 @@ body.ppcart-checkout-1 {
 
         input:focus,
         .StripeElement--focus {
-            border: 1px solid #0eb8c1;
+            border: 1px solid #0ca2aa;
             box-shadow: 0 1px 3px 0 #cfd7df;
             outline: none;
         }
@@ -537,7 +537,7 @@ body.ppcart-checkout-1 {
                     }
 
                     [for^="ppcart-orderbump"]:before {
-                        border-color: #dadada;
+                        border-color: #929292;
                     }
 
                     [for^="ppcart-orderbump"]:hover:before,
@@ -1040,7 +1040,7 @@ body.ppcart-checkout-1 {
                     left: 0;
                     width: 15px;
                     height: 15px;
-                    border: 1px solid #a9a9a9;
+                    border: 1px solid #929292;
                     text-align: center;
                     top: 0;
                     transition: all 0.4s ease;
@@ -1085,7 +1085,7 @@ body.ppcart-checkout-1 {
             }
 
             &.invalid + .item-name{
-                color: #fa7559;
+                color: #e12c07;
             }
         }
 
@@ -1270,7 +1270,7 @@ body.ppcart-checkout-1 {
 
     label {
         .req {
-            color: #fa755a;
+            color: #e12c07;
             font-weight: bold;
         }
     }
@@ -1618,11 +1618,11 @@ body.ppcart-checkout-1 {
 
             &.invalid {
                 label {
-                    color: #fa755a;
+                    color: #e12c07;
                 }
 
                 input[type="checkbox"]+label:before {
-                    border-color: #fa755a;
+                    border-color: #e12c07;
                 }
 
                 .error {
@@ -1654,7 +1654,7 @@ body.ppcart-checkout-1 {
         padding: 9px 12px;
         color: #000;
         background-color: white;
-        border: 1px solid #ddd;
+        border: 1px solid #929292;
         border-radius: 3px;
         display: block;
         -webkit-transition: box-shadow 150ms ease;
@@ -1676,7 +1676,7 @@ body.ppcart-checkout-1 {
 
     input:focus,
     .StripeElement--focus {
-        border: 1px solid #0eb8c1;
+        border: 1px solid #0ca2aa;
         outline: none;
     }
 
@@ -1693,7 +1693,7 @@ body.ppcart-checkout-1 {
     .form-errors {
         border: 1px solid;
         border-radius: 3px;
-        color: #fa755a;
+        color: #e12c07;
         font-size: 14px;
         list-style-type: none;
         margin: 0 0 30px;
@@ -1701,13 +1701,13 @@ body.ppcart-checkout-1 {
     }
 
     input.ppcart-form-control.invalid {
-        color: #fa755a;
+        color: #e12c07;
     }
 
     .selectize-control .selectize-input.invalid,
     input.ppcart-form-control.invalid,
     .StripeElement--invalid {
-        border-color: #fa755a;
+        border-color: #e12c07;
     }
 
     input.valid {
@@ -1723,7 +1723,7 @@ body.ppcart-checkout-1 {
     #card-errors {
         font-size: 10px;
         font-weight: normal;
-        color: #fa7559;
+        color: #e12c07;
         letter-spacing: 0.05em;
         text-align: right;
         line-height: 15px;
@@ -1735,22 +1735,22 @@ body.ppcart-checkout-1 {
 
     ::-webkit-input-placeholder {
         /* Chrome/Opera/Safari */
-        color: #acb7c3 !important;
+        color: #64778b !important;
     }
 
     ::-moz-placeholder {
         /* Firefox 19+ */
-        color: #acb7c3 !important;
+        color: #64778b !important;
     }
 
     :-ms-input-placeholder {
         /* IE 10+ */
-        color: #acb7c3 !important;
+        color: #64778b !important;
     }
 
     :-moz-placeholder {
         /* Firefox 18- */
-        color: #acb7c3 !important;
+        color: #64778b !important;
     }
 
     .ppcart-container {
