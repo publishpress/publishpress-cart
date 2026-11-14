@@ -597,17 +597,94 @@
         return $form.find(':input').not('[name="_wp_http_referer"]').serialize();
     }
 
+    /**
+     * Announce a save status message to assistive technology (WCAG 4.1.3).
+     */
+    function announceSaveStatus(message) {
+        if (!message) {
+            return;
+        }
+        if (window.wp && window.wp.a11y && typeof window.wp.a11y.speak === 'function') {
+            window.wp.a11y.speak(message, 'polite');
+            return;
+        }
+        var $status = $page ? $page.find('[data-pp-save-status]') : $();
+        if (!$status.length) {
+            return;
+        }
+        $status.text('');
+        window.setTimeout(function () {
+            $status.text(message);
+        }, 100);
+    }
+
+    /**
+     * Scroll the focused element up if the sticky save bar covers it (WCAG 2.4.11).
+     * scroll-padding-bottom in CSS handles most cases; this covers browsers that
+     * ignore it for focus and the moment the bar slides in over a focused field.
+     */
+    function keepFocusClearOfSavebar(element) {
+        if (!$savebar || !$savebar.length || !$savebar.hasClass('is-visible')) {
+            return;
+        }
+        if (!element || element === document.body || !element.getBoundingClientRect
+            || $savebar[0].contains(element)
+            || $(element).closest('[role="dialog"], .ppcart-settings__modal').length) {
+            return;
+        }
+        var barTop = $savebar[0].getBoundingClientRect().top;
+        var rect = element.getBoundingClientRect();
+        var gap = 16;
+        if (rect.height && rect.bottom > barTop - gap && rect.top < barTop) {
+            window.scrollBy(0, rect.bottom - barTop + gap);
+        }
+    }
+
     function setSavebarVisible(visible) {
         if (!$savebar || !$savebar.length) {
             return;
         }
+        var wasVisible = $savebar.hasClass('is-visible');
         $savebar.toggleClass('is-visible', !!visible);
+        if (visible && !wasVisible) {
+            var message = (window.ppcartSettingsI18n && window.ppcartSettingsI18n.unsavedChanges) || 'You have unsaved changes';
+            announceSaveStatus(message);
+            // Wait for the slide-in transition before checking what it covers.
+            window.setTimeout(function () {
+                keepFocusClearOfSavebar(document.activeElement);
+            }, 300);
+        }
     }
 
     function setSavingState(isSaving) {
         $page.toggleClass('is-saving', !!isSaving);
         $form.attr('aria-busy', isSaving ? 'true' : 'false');
         $page.find('.ppcart-settings__save-button').attr('aria-disabled', isSaving ? 'true' : 'false');
+        if (isSaving) {
+            announceSaveStatus((window.ppcartSettingsI18n && window.ppcartSettingsI18n.savingChanges) || 'Saving changes…');
+        }
+    }
+
+    /**
+     * After options.php redirects back, announce the result notices
+     * ("Settings saved." or validation errors) that settings_errors() printed.
+     */
+    function announceSaveResult() {
+        var messages = [];
+        $page.find('.ppcart-settings__notice-stack .settings-error').each(function () {
+            var $notice = $(this).clone();
+            $notice.find('.notice-dismiss, .screen-reader-text').remove();
+            var text = $.trim($notice.text().replace(/\s+/g, ' '));
+            if (text) {
+                messages.push(text);
+            }
+        });
+        if (messages.length) {
+            // Let wp.a11y create its live regions before speaking.
+            window.setTimeout(function () {
+                announceSaveStatus(messages.join(' '));
+            }, 500);
+        }
     }
 
     function bindSaveBar() {
@@ -689,6 +766,12 @@
 
         $savebar.find('[data-pp-save]').on('click', submitForm);
         $page.on('click', '.ppcart-settings__integration-panel [data-pp-save]', submitForm);
+
+        $page.on('focusin', function (event) {
+            keepFocusClearOfSavebar(event.target);
+        });
+
+        announceSaveResult();
     }
 
     /* -------------------------------------------------------------------------

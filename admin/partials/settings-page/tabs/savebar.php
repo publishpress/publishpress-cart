@@ -3,7 +3,8 @@ if (! defined('ABSPATH')) {
     exit;
 }
 ?>
-    <div class="ppcart-settings__savebar" role="status" aria-live="polite">
+    <div class="ppcart-settings__save-status screen-reader-text" role="status" aria-live="polite" aria-atomic="true" data-pp-save-status></div>
+    <div class="ppcart-settings__savebar">
         <span class="ppcart-settings__savebar-message"><?php esc_html_e('You have unsaved changes', 'publishpress-cart'); ?></span>
         <span class="ppcart-settings__savebar-spacer"></span>
         <button type="button" class="button button-secondary" data-pp-discard data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-settings-discard')); ?>"><?php esc_html_e('Discard', 'publishpress-cart'); ?></button>
