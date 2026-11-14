@@ -884,6 +884,15 @@ body.ppcart-checkout-1 .ppcart-container {
 .ppcart #ppcart-payment-form input[type=radio]:active + .item-name:before {
   transition-duration: 0s;
 }
+/* The native input is visually hidden, so show keyboard focus on the drawn box (WCAG 2.4.7). */
+.ppcart #ppcart-payment-form input[type=checkbox]:focus-visible + label:before,
+.ppcart #ppcart-payment-form input[type=checkbox]:focus-visible + .item-name:before,
+.ppcart #ppcart-payment-form input[type=radio]:focus-visible + label:before,
+.ppcart #ppcart-payment-form input[type=radio]:focus-visible + .item-name:before {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
+}
 .ppcart #ppcart-payment-form input[type=checkbox] + label,
 .ppcart #ppcart-payment-form input[type=checkbox] + .item-name,
 .ppcart #ppcart-payment-form input[type=radio] + label,
