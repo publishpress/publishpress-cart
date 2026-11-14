@@ -99,6 +99,10 @@ if (PPCart_Admin_Screens::is_reports_screen($hook_suffix)) {
             'noProducts'           => __('No matching products', 'publishpress-cart'),
             'allProducts'          => __('All products', 'publishpress-cart'),
             'searching'            => __('Searching…', 'publishpress-cart'),
+            'oneResult'            => __('1 result available.', 'publishpress-cart'),
+            /* translators: %d: number of search results. */
+            'manyResults'          => __('%d results available.', 'publishpress-cart'),
+            'resultsHint'          => __('Use the up and down arrow keys to choose one.', 'publishpress-cart'),
         ]
     );
 }
