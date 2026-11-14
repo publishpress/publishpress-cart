@@ -2908,33 +2908,116 @@
 
     /**
      * My Account page tabs nested
+     *
+     * The navigation uses the ARIA tabs pattern: the selected tab carries
+     * aria-selected="true" and is the only tab in the Tab order (roving
+     * tabindex); arrow keys, Home and End move between tabs.
      */
-     jQuery('.ppcart-nav-tabs li a').click(function(event) {
-        var tab_id = jQuery(this).attr('href') || '';
-        var account = jQuery(this).closest('.ppcart-account-list, .ppcart-my-account');
+    function ppcart_account_tab_scope(tab) {
+        var account = jQuery(tab).closest('.ppcart-account-list, .ppcart-my-account');
 
-        event.preventDefault();
+        return account.length ? account : jQuery(document);
+    }
 
-        if (tab_id.charAt(0) === '#') {
-            tab_id = tab_id.substring(1);
-        }
+    function ppcart_account_tab_panel_id(tab) {
+        var tab_id = jQuery(tab).attr('href') || '';
+
+        return tab_id.charAt(0) === '#' ? tab_id.substring(1) : tab_id;
+    }
+
+    function ppcart_select_account_tab(tab, focus) {
+        var $tab = jQuery(tab);
+        var tab_id = ppcart_account_tab_panel_id($tab);
+        var account = ppcart_account_tab_scope($tab);
 
         if (!tab_id) {
-            return false;
+            return;
         }
 
-        if (!account.length) {
-            account = jQuery(document);
-        }
-
-        account.find('.ppcart-nav-tabs li a').removeClass('active');
+        account.find('.ppcart-nav-tabs li a')
+            .removeClass('active')
+            .attr('aria-selected', 'false')
+            .attr('tabindex', '-1');
         account.find('.tabcontent').removeClass('active');
 
-        jQuery(this).addClass('active');
-        account.find("#" + tab_id).addClass('active');
+        $tab.addClass('active').attr('aria-selected', 'true').attr('tabindex', '0');
+        account.find('#' + tab_id).addClass('active');
+
+        if (focus) {
+            $tab.trigger('focus');
+        }
+    }
+
+    jQuery('.ppcart-nav-tabs').each(function() {
+        var $tabs = jQuery(this).find('li a');
+        var $selected = $tabs.filter('.active').first();
+
+        if (!$selected.length) {
+            $selected = $tabs.first();
+        }
+
+        $tabs.each(function() {
+            var $tab = jQuery(this);
+            var panel_id = ppcart_account_tab_panel_id($tab);
+            var $panel = panel_id ? ppcart_account_tab_scope($tab).find('#' + panel_id) : jQuery();
+
+            $tab.attr('tabindex', this === $selected.get(0) ? '0' : '-1');
+
+            if (!$panel.length) {
+                $tab.removeAttr('aria-controls');
+            }
+        });
+    });
+
+    // A panel block rendered without a matching tab is not a tab panel.
+    jQuery('.tabcontent[role="tabpanel"]').each(function() {
+        var labelled_by = jQuery(this).attr('aria-labelledby');
+
+        if (labelled_by && !document.getElementById(labelled_by)) {
+            jQuery(this).removeAttr('role').removeAttr('aria-labelledby');
+        }
+    });
+
+     jQuery('.ppcart-nav-tabs li a').click(function(event) {
+        event.preventDefault();
+
+        ppcart_select_account_tab(this, false);
 
         return false;
     })
+
+    jQuery('.ppcart-nav-tabs li a').on('keydown', function(event) {
+        var $tabs = jQuery(this).closest('.ppcart-nav-tabs').find('li a');
+        var index = $tabs.index(this);
+        var target = -1;
+
+        switch (event.key) {
+            case 'ArrowRight':
+            case 'ArrowDown':
+                target = (index + 1) % $tabs.length;
+                break;
+            case 'ArrowLeft':
+            case 'ArrowUp':
+                target = (index - 1 + $tabs.length) % $tabs.length;
+                break;
+            case 'Home':
+                target = 0;
+                break;
+            case 'End':
+                target = $tabs.length - 1;
+                break;
+            case ' ':
+            case 'Spacebar':
+                event.preventDefault();
+                ppcart_select_account_tab(this, false);
+                return;
+            default:
+                return;
+        }
+
+        event.preventDefault();
+        ppcart_select_account_tab($tabs.get(target), true);
+    });
 
     /**
      * Tabs left aligned on my account page
