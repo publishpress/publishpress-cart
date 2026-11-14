@@ -2,7 +2,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [Unreleased]
 
-- Added: Publish one locales archive from the plugin release and register the text domain, repository, and version with Hub. Translation delivery is 1.1.0, not 1.0.1 (#594).
+- Added: Publish one locales archive from the plugin release and register the text domain, repository, and installed version with Hub (#594).
+- Fixed: Use the released shared language workflow and translation library 1.0.6 or newer, and register the Hub translation notice only on Cart admin screens without replacing other plugins' registrations.
 
 [1.2.0] - 11 Nov, 2026
 

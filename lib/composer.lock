@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c12514a25f689603d21356ad5d9a1d8f",
+    "content-hash": "95e736a3b9d782290d2d3d3c63f31972",
     "packages": [
         {
             "name": "publishpress/bundled-translations",
@@ -63,8 +63,7 @@
                 "issues": "https://github.com/publishpress/library-bundled-translations/issues",
                 "source": "https://github.com/publishpress/library-bundled-translations/tree/v1.0.6"
             },
-            "time": "2026-10-23T14:11:03+00:00",
-            "published-time": "2026-10-23T14:11:24+00:00"
+            "time": "2026-10-23T14:11:03+00:00"
         },
         {
             "name": "publishpress/dompdf-dompdf",
@@ -227,8 +226,7 @@
                 "issues": "https://github.com/publishpress/library-instance-protection/issues",
                 "source": "https://github.com/publishpress/library-instance-protection/tree/2.1.0"
             },
-            "time": "2025-12-09T00:25:13+00:00",
-            "published-time": "2025-12-09T00:28:56+00:00"
+            "time": "2025-12-09T00:25:13+00:00"
         },
         {
             "name": "publishpress/pimple-pimple",
@@ -312,8 +310,7 @@
                 "issues": "https://github.com/publishpress/library-pimple-pimple/issues",
                 "source": "https://github.com/publishpress/library-pimple-pimple/tree/3.5.0.11"
             },
-            "time": "2026-09-11T18:31:32+00:00",
-            "published-time": "2026-09-11T18:33:28+00:00"
+            "time": "2026-09-11T18:31:32+00:00"
         },
         {
             "name": "publishpress/psr-container",
@@ -412,8 +409,7 @@
                 "issues": "https://github.com/publishpress/library-psr-container/issues",
                 "source": "https://github.com/publishpress/library-psr-container/tree/2.0.2.1"
             },
-            "time": "2025-12-09T15:18:16+00:00",
-            "published-time": "2025-12-09T15:19:09+00:00"
+            "time": "2025-12-09T15:18:16+00:00"
         },
         {
             "name": "publishpress/stripe-php",
@@ -597,8 +593,7 @@
                 "issues": "https://github.com/publishpress/library-wordpress-reviews/issues",
                 "source": "https://github.com/publishpress/library-wordpress-reviews/tree/1.2.2"
             },
-            "time": "2026-09-11T02:52:42+00:00",
-            "published-time": "2026-09-11T02:54:21+00:00"
+            "time": "2026-09-11T02:52:42+00:00"
         },
         {
             "name": "publishpress/wordpress-version-notices",
@@ -673,8 +668,7 @@
                 "issues": "https://github.com/publishpress/library-wordpress-version-notices/issues",
                 "source": "https://github.com/publishpress/library-wordpress-version-notices/tree/2.2.1"
             },
-            "time": "2026-05-13T15:05:11+00:00",
-            "published-time": "2026-05-13T15:06:15+00:00"
+            "time": "2026-05-13T15:05:11+00:00"
         }
     ],
     "packages-dev": [],
@@ -690,5 +684,5 @@
     "platform-overrides": {
         "php": "7.4.0"
     },
-    "plugin-api-version": "2.11.0"
+    "plugin-api-version": "2.6.0"
 }

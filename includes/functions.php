@@ -852,6 +852,7 @@ require_once __DIR__ . '/functions/mailchimp-api.php';
 require_once __DIR__ . '/functions/orders-products-and-formatting.php';
 require_once __DIR__ . '/functions/integrations-and-stock.php';
 require_once __DIR__ . '/functions/users-and-notifications.php';
+require_once __DIR__ . '/functions/auto-login.php';
 require_once __DIR__ . '/functions/currencies.php';
 require_once __DIR__ . '/functions/prices-and-marketing.php';
 require_once __DIR__ . '/functions/product-and-order-setup.php';

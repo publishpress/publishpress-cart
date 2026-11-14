@@ -1264,6 +1264,10 @@ body.ppcart-checkout-1 .ppcart-container {
   color: red;
 }
 .ppcart .total {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
   background: #f3f5f6;
   padding: 15px;
   font-weight: bold;

@@ -16,7 +16,7 @@
     updateCardTrigger.click(function (e) {
 
         e.preventDefault();
-        stripe = Stripe(ppcart_stripe_key[0]);
+        stripe = Stripe(ppcart_stripe_key[0], window.ppcart_stripe_options || {});
         if(jQuery("#ppcart-update-card-form").length) {
             cardNumber = ppcartStripe.mountStripeCard();
         }

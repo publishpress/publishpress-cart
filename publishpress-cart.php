@@ -25,9 +25,7 @@
  * Domain Path:       /languages
  */
 
-if (! defined('ABSPATH')) {
-    die('You are not allowed to call this page directly.');
-}
+defined('ABSPATH') || exit;
 
 // If the plugin is already loaded, terminate the plugin execution.
 if (defined('PPCART_FREE_LOADED')) {
@@ -300,6 +298,8 @@ function ppcart_language_pack_directory()
 
     return trailingslashit($uploads['basedir']) . 'publishpress/language-packs';
 }
+
+require_once __DIR__ . '/includes/helpers/ppcart-language-pack-notice.php';
 
 add_action('plugins_loaded', function () {
     if (class_exists('PublishPress\BundledTranslations\BundledTranslations')) {

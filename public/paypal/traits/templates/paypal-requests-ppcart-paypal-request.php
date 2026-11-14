@@ -55,6 +55,7 @@ if ($is_sub) {
 }
 
 $order_id = $ppcart_order->store();
+ppcart_remember_auto_login_request($order_id);
 $ppcart_order->cancel_url = esc_url_raw((string) $cancel_url);
 if (! empty($ppcart_product->upsell_path) && $ppcart_product->confirmation != 'redirect') {
     $return_url = $ppcart_product->form_action;
