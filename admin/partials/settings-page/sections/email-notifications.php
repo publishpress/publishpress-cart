@@ -41,7 +41,7 @@ foreach ($email_template_sections as $email_section) {
     ?>
             <div class="ppcart-settings__email-notifications-row" role="row">
                 <div class="ppcart-settings__email-notifications-email" role="cell">
-                    <span class="ppcart-settings__email-status <?php echo $is_enabled ? 'is-enabled' : 'is-disabled'; ?>" aria-hidden="true"></span>
+                    <span class="ppcart-settings__email-status <?php echo $is_enabled ? 'is-enabled' : 'is-disabled'; ?>"><span class="screen-reader-text"><?php echo $is_enabled ? esc_html__('Enabled', 'publishpress-cart') : esc_html__('Disabled', 'publishpress-cart'); ?></span></span>
                     <span class="ppcart-settings__email-summary">
                         <span class="ppcart-settings__email-title"><?php echo esc_html($email_section['title']); ?></span>
                         <span class="ppcart-settings__email-desc"><?php echo esc_html($description); ?></span>

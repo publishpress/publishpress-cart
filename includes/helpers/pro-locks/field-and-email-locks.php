@@ -182,7 +182,7 @@ function ppcart_pro_locked_email_rows_html($exclude_titles = [])
 
         $html .= '<div class="ppcart-settings__email-notifications-row ppcart-settings__email-notifications-row--locked" role="row">' .
                 '<div class="ppcart-settings__email-notifications-email" role="cell">' .
-                    '<span class="ppcart-settings__email-status is-disabled" aria-hidden="true"></span>' .
+                    '<span class="ppcart-settings__email-status is-disabled"><span class="screen-reader-text">' . esc_html__('Disabled', 'publishpress-cart') . '</span></span>' .
                     '<span class="ppcart-settings__email-summary">' .
                         '<span class="ppcart-settings__email-title">' . esc_html($title) . '</span>' .
                         '<span class="ppcart-settings__email-desc">' . esc_html($description) . '</span>' .
