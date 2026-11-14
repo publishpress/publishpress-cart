@@ -108,7 +108,7 @@ if (PPCart_Admin_Screens::is_settings_screen($hook_suffix)) {
     wp_enqueue_script(
         'ppcart-settings',
         PPCART_BASE_URL . 'admin/js/ppcart-settings.js',
-        [ 'jquery', 'ppcart', 'wp-util' ],
+        [ 'jquery', 'ppcart', 'wp-util', 'wp-a11y' ],
         $this->version,
         true
     );
@@ -117,6 +117,8 @@ if (PPCart_Admin_Screens::is_settings_screen($hook_suffix)) {
         'noResults'           => __('No matching settings', 'publishpress-cart'),
         'noResultsHint'       => __('Try a different keyword or clear the search to see all settings.', 'publishpress-cart'),
         'discardConfirm'      => __('Discard your unsaved changes?', 'publishpress-cart'),
+        'unsavedChanges'      => __('You have unsaved changes', 'publishpress-cart'),
+        'savingChanges'       => __('Saving changes…', 'publishpress-cart'),
         'resetEmailConfirm'   => __('Reset this email template to the built-in default?', 'publishpress-cart'),
         'previewTitle'        => __('Email preview', 'publishpress-cart'),
         'previewLoading'      => __('Generating preview...', 'publishpress-cart'),
