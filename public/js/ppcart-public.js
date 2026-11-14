@@ -622,10 +622,10 @@
                     schedulePaymentIntentPreload('#'+wrap_id);
 					return resp.success;
 				} else {
-					alert('Something went wrong.')
+					alert(ppcart_translate_frontend.something_went_wrong)
 				}
 			} catch (error) {
-				alert('Something went wrong.')
+				alert(ppcart_translate_frontend.something_went_wrong)
 			}
             return false;
 
@@ -865,12 +865,12 @@
 					}
 					return resp.success;
 				} else {
-					alert('Something went wrong.')
+					alert(ppcart_translate_frontend.something_went_wrong)
 					$el.addClass('invalid');
 					$('#ppcart_card_button, .ppcart-next-btn').attr("disabled", true);
 				}
 			} catch (error) {
-				alert('Something went wrong.')
+				alert(ppcart_translate_frontend.something_went_wrong)
 				$el.addClass('invalid');
 				$('#ppcart_card_button, .ppcart-next-btn').attr("disabled", true);
 			}
@@ -1853,7 +1853,7 @@
                                             $($this).css('pointer-events', '');
                                             $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
                                             console.error('Error confirming the payment method:', textStatus, errorThrown);
-                                            alert('An unexpected error occurred.');
+                                            alert(ppcart_translate_frontend.unexpected_error);
                                         });
                                     } else {
                                         var intent = {
@@ -1915,7 +1915,7 @@
                                 ev.complete('fail');
                                 $($this).css('pointer-events', '');
                                 $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
-                                alert('An unexpected error occurred.');
+                                alert(ppcart_translate_frontend.unexpected_error);
                             }
                         });
                     }

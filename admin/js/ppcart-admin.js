@@ -1290,7 +1290,7 @@ jQuery(document).ready(function($){
                 location.reload();
             },
             error: function(xhr, status, error) {
-                alert('An error occurred: ' + error);
+                alert(ppcart_translate_backend.error_occurred.replace('%s', error));
             }
         });
     });
