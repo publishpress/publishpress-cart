@@ -1224,9 +1224,28 @@ jQuery(document).ready(function($){
             $button.data('ppcart-copy-original-label', originalLabel);
         }
 
+        function announce(message) {
+            if (window.wp && window.wp.a11y && typeof window.wp.a11y.speak === 'function') {
+                window.wp.a11y.speak(message, 'polite');
+                return;
+            }
+
+            var $region = $('#ppcart-copy-live-region');
+            if (!$region.length) {
+                $region = $('<div id="ppcart-copy-live-region" class="screen-reader-text" role="status" aria-live="polite" aria-atomic="true"></div>').appendTo('body');
+            }
+            $region.text('');
+            window.setTimeout(function() {
+                $region.text(message);
+            }, 100);
+        }
+
         function setFeedback(message) {
             window.clearTimeout($button.data('ppcart-copy-timer'));
-            $button.text(message).attr('aria-label', message);
+            // Show the result as the button's visible text, and drop any aria-label
+            // meanwhile so the accessible name matches what is on screen.
+            $button.text(message).removeAttr('aria-label');
+            announce(message);
             $button.data('ppcart-copy-timer', window.setTimeout(function() {
                 $button.html(originalHtml);
                 if (originalLabel) {
