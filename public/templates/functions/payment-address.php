@@ -148,7 +148,7 @@ function ppcart_do_vat_info()
             </div>
             <div class="ppcart-form-group ppcart-col-sm-12 vat_number_field" style="display:none;">
                 <label for="vat_number"><?php esc_html_e('VAT Number', "publishpress-cart"); ?><span class="req">*</span></label>
-                <input id="vat_number" type="text" name="vat-number" placeholder="<?php esc_attr_e('VAT Number', "publishpress-cart"); ?>" class="ppcart-form-control required" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-vat-number')); ?>">
+                <input id="vat_number" type="text" name="vat-number" placeholder="<?php esc_attr_e('VAT Number', "publishpress-cart"); ?>" class="ppcart-form-control required" aria-label='VAT Number' data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-vat-number')); ?>">
             </div>
         </div>
     </div>

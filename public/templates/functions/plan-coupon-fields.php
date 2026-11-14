@@ -301,7 +301,7 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
                     ?>
                         <div class="<?php echo esc_attr($pwyw_class); ?>">
                             <span class="ppcart-currency"><?php echo esc_html(ppcart_get_currency_symbol()); ?></span>
-                            <input id="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" name="pwyw_amount[<?php echo esc_attr($item['option_id']); ?>]" type="number" min="<?php echo esc_attr(floatval($item[$price])); ?>" class="ppcart-form-control ppcart-mb-0 required" placeholder="<?php esc_attr_e('Amount', 'publishpress-cart'); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-custom-price-input')); ?>">
+                            <input id="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" name="pwyw_amount[<?php echo esc_attr($item['option_id']); ?>]" type="number" min="<?php echo esc_attr(floatval($item[$price])); ?>" class="ppcart-form-control ppcart-mb-0 required" placeholder="Amount" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-custom-price-input')); ?>">
                         </div>
                     </div>
                 <?php endif;?>
