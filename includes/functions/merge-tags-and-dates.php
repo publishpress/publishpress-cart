@@ -619,6 +619,9 @@ function ppcart_translate_js($js_script = '')
             'month'     => __('month', 'publishpress-cart'),
             'months'    => __('months', 'publishpress-cart'),
             'missing_required'   => __("Required fields missing", "publishpress-cart"),
+            'order_update_failed' => __("We couldn't update your order total. Check your connection and try again.", "publishpress-cart"),
+            'username_check_failed' => __("We couldn't check if this username is available. Try again in a moment.", "publishpress-cart"),
+            'payment_not_ready' => __("The payment form is still loading. Wait a moment, then try again.", "publishpress-cart"),
             'year'      => __('year', 'publishpress-cart'),
             'years'     => __('years', 'publishpress-cart'),
         ];

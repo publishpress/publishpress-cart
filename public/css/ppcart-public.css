@@ -1504,6 +1504,9 @@ body.ppcart-checkout-1 .ppcart-container {
   text-align: right;
   line-height: 15px;
 }
+.ppcart .error.ppcart-checkout-error-summary {
+  margin-bottom: 10px;
+}
 .ppcart .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
