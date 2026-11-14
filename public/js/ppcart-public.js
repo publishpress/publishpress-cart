@@ -622,10 +622,10 @@
                     schedulePaymentIntentPreload('#'+wrap_id);
 					return resp.success;
 				} else {
-					alert('Something went wrong.')
+					showCheckoutErrorSummary('#'+wrap_id, ppcart_translate_frontend.order_update_failed);
 				}
 			} catch (error) {
-				alert('Something went wrong.')
+				showCheckoutErrorSummary('#'+wrap_id, ppcart_translate_frontend.order_update_failed);
 			}
             return false;
 
@@ -694,20 +694,168 @@
             }
         });
 
-        // remove error message on focus
-        $(document).on('focus', '#ppcart-payment-form input:not([type="checkbox"]):not([type="radio"]), #ppcart-payment-form select', function() {
-            $(this).removeClass('invalid valid').siblings('.error').remove();
-            $(this).closest('.ppcart-form-group').find('input').removeClass('invalid')
-            $(this).closest('.ppcart-form-group').find('.error').remove()
+        // Clear a field's error message. Errors stay visible while the field
+        // only has focus, so keyboard and screen reader users can read them;
+        // they are cleared once the value changes and re-checked on blur.
+        function clearFieldError($field) {
+            $field.removeClass('invalid valid').siblings('.error').remove();
+            $field.closest('.ppcart-form-group').find('input').removeClass('invalid');
+            $field.closest('.ppcart-form-group').find('.error').remove();
 
-            if ($(this).attr('id') == 'address1') {
+            if ($field.attr('id') == 'address1') {
                 $('.ppcart-address-2 .error').remove();
             }
 
-            if ($(this).hasClass('selectized')) {
-                $(this).next('.selectize-control').find('.selectize-input').removeClass('invalid');
+            if ($field.hasClass('selectized')) {
+                $field.next('.selectize-control').find('.selectize-input').removeClass('invalid');
             }
+        }
+
+        $(document).on('input change', '#ppcart-payment-form input:not([type="checkbox"]):not([type="radio"]):not([name^="pwyw_amount["]), #ppcart-payment-form select', function() {
+            clearFieldError($(this));
         });
+
+        // Link each visible field error to its field (aria-invalid and
+        // aria-describedby), and unlink it again once the error is removed.
+        var fieldErrorCounter = 0;
+        var fieldErrorSyncQueued = false;
+
+        function getErrorFields($error) {
+            var $container = $error.closest('.checkbox-wrap, .ppcart-form-group');
+            var $fields = $container.find('input, select, textarea').not('[type="hidden"], [type="button"], [type="submit"], .selectize-control input');
+
+            // address1 errors are shown in the address2 group on singular product pages.
+            if ($container.find('#address2').length && $container.closest('#ppcart-payment-form').find('#address1.invalid').length) {
+                $fields = $container.closest('#ppcart-payment-form').find('#address1');
+            }
+
+            return $fields;
+        }
+
+        function setDescribedBy($el, errorId, add) {
+            $el.each(function() {
+                var ids = ($(this).attr('aria-describedby') || '').split(/\s+/).filter(function(id) {
+                    return id && id.indexOf('ppcart-field-error-') !== 0;
+                });
+
+                if (add) {
+                    ids.push(errorId);
+                }
+
+                if (ids.length) {
+                    $(this).attr('aria-describedby', ids.join(' '));
+                } else {
+                    $(this).removeAttr('aria-describedby');
+                }
+            });
+        }
+
+        function syncFieldErrors() {
+            fieldErrorSyncQueued = false;
+
+            var $forms = $('[id="ppcart-payment-form"]');
+            var $linked = $forms.find('[data-ppcart-error-linked]');
+            var stillLinked = [];
+
+            $forms.find('.error').not('.ppcart-checkout-error-summary').each(function() {
+                var $error = $(this);
+                var $fields = getErrorFields($error);
+
+                if (!$fields.length) {
+                    return;
+                }
+
+                if (!this.id) {
+                    fieldErrorCounter++;
+                    this.id = 'ppcart-field-error-' + fieldErrorCounter;
+                }
+
+                $fields.each(function() {
+                    var $targets = $(this);
+                    if ($targets.hasClass('selectized')) {
+                        $targets = $targets.add($targets.next('.selectize-control').find('.selectize-input input'));
+                    }
+                    $targets.attr({ 'aria-invalid': 'true', 'data-ppcart-error-linked': '1' });
+                    setDescribedBy($targets, $error.attr('id'), true);
+                    stillLinked = stillLinked.concat($targets.get());
+                });
+            });
+
+            $linked.each(function() {
+                if (stillLinked.indexOf(this) === -1) {
+                    $(this).removeAttr('aria-invalid data-ppcart-error-linked');
+                    setDescribedBy($(this), '', false);
+                }
+            });
+        }
+
+        function nodeHasFieldError(node) {
+            return node.nodeType === 1 && ($(node).is('.error') || $(node).find('.error').length > 0);
+        }
+
+        if (typeof MutationObserver !== 'undefined') {
+            new MutationObserver(function(mutations) {
+                if (fieldErrorSyncQueued) {
+                    return;
+                }
+
+                for (var i = 0; i < mutations.length; i++) {
+                    var nodes = Array.prototype.slice.call(mutations[i].addedNodes).concat(Array.prototype.slice.call(mutations[i].removedNodes));
+                    for (var j = 0; j < nodes.length; j++) {
+                        if (nodeHasFieldError(nodes[j])) {
+                            fieldErrorSyncQueued = true;
+                            setTimeout(syncFieldErrors, 0);
+                            return;
+                        }
+                    }
+                }
+            }).observe(document.body, { childList: true, subtree: true });
+        }
+
+        // Show a checkout-level error message next to the submit button,
+        // announced to screen readers, instead of a browser alert.
+        function showCheckoutErrorSummary(form, message) {
+            var $wrap = $(form);
+            var $summary = $wrap.find('.ppcart-checkout-error-summary');
+
+            if (!$summary.length) {
+                $summary = $('<div class="error ppcart-checkout-error-summary" role="alert"></div>');
+                var $anchor = $wrap.find('.ppcart-submit-button-section').first();
+
+                if (!$anchor.length) {
+                    $anchor = $wrap.find('#ppcart_card_button').closest('.ppcart-form-group');
+                }
+
+                if ($anchor.length) {
+                    $anchor.before($summary);
+                } else {
+                    $wrap.find('#ppcart-payment-form').prepend($summary);
+                }
+            }
+
+            // Set the text after insertion so the live region is announced.
+            $summary.text('');
+            setTimeout(function() {
+                $summary.text(message);
+            }, 50);
+        }
+
+        // Move keyboard focus to the first field that has an error.
+        function focusFirstInvalidField(form) {
+            var $field = $(form).find('input.invalid, select.invalid, textarea.invalid, .checkbox-wrap.invalid input, .ppcart-form-group.invalid input').filter(function() {
+                return $(this).is(':visible') || $(this).hasClass('selectized');
+            }).first();
+
+            if (!$field.length) {
+                return;
+            }
+
+            if ($field.hasClass('selectized') && $field[0].selectize) {
+                $field[0].selectize.focus();
+            } else {
+                $field.trigger('focus');
+            }
+        }
 
         function format_price(amt) {
             var currency = (typeof ppcart_currency !== 'undefined') ? ppcart_currency : {symbol: '$', position: '', thousep: ',', decisep: '.', decinum: 2};
@@ -764,7 +912,7 @@
 
         // check required on blur
         $(document).on('blur', '#ppcart-payment-form input.required:not([type="checkbox"]):not([type="radio"]), #ppcart-payment-form select.required', function() {
-            $(this).removeClass('invalid').siblings('.error').remove();
+            clearFieldError($(this));
 
             if ($(this).val().length < 1) {
                 var $el = $(this);
@@ -809,7 +957,7 @@
 
         // check username on blur
         $(document).on('blur', '#ppcart-wpuserid', function() {
-            $(this).removeClass('invalid valid').siblings('.error').remove();
+            clearFieldError($(this));
 
             if (($(this).val().length > 0)) {
                 checkUsername($(this));
@@ -865,13 +1013,13 @@
 					}
 					return resp.success;
 				} else {
-					alert('Something went wrong.')
 					$el.addClass('invalid');
+					$el.closest('.ppcart-form-group').append($('<div class="error"></div>').text(ppcart_translate_frontend.username_check_failed));
 					$('#ppcart_card_button, .ppcart-next-btn').attr("disabled", true);
 				}
 			} catch (error) {
-				alert('Something went wrong.')
 				$el.addClass('invalid');
+				$el.closest('.ppcart-form-group').append($('<div class="error"></div>').text(ppcart_translate_frontend.username_check_failed));
 				$('#ppcart_card_button, .ppcart-next-btn').attr("disabled", true);
 			}
             return false;
@@ -883,6 +1031,7 @@
 
             var val = $(this).val();
             var validEmail = regExEmail.test(val);
+            clearFieldError($(this));
             if (!validEmail) {
                 $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_email + '</div>');
             }
@@ -894,6 +1043,7 @@
 
             var val = $(this).val();
             var validPhone = isValidPhonenumber(val);
+            clearFieldError($(this));
             if (!validPhone) {
                 $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_phone + '</div>');
             }
@@ -904,6 +1054,7 @@
             var val = $(this).val();
             if (val.length) {
                 var validPass = isValidPassword(val);
+                clearFieldError($(this));
                 if (!validPass) {
                     $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_pass + '</div>');
                 }
@@ -1250,10 +1401,11 @@
                 var form = '#'+form_wrapper;
 
                 if (errors) {
-                    alert(ppcart_translate_frontend.missing_required);
                     $btn.removeClass('running').removeAttr("disabled");
                     $btn.find('span.text').text(originalText);
                     updateSubmitButtonState(form);
+                    showCheckoutErrorSummary(form, ppcart_translate_frontend.missing_required);
+                    focusFirstInvalidField(form);
                     return false;
                 }
 
@@ -1312,12 +1464,13 @@
                         $.post(ppcart.ajax, paramObj, function(res) {
                             var response = ppcart_parse_json_response(res);
                             if ('undefined' !== typeof response.error) {
-                                alert(response.error);
+                                showCheckoutErrorSummary(form, response.error);
 
                                 if ('undefined' !== typeof response.fields) {
                                     $.each(response.fields, function(i, item) {
                                         invalidate_field($('[name="' + item['field'] + '"]', form), item['message'])
                                     });
+                                    focusFirstInvalidField(form);
                                 }
 
                                 $btn = $('#ppcart_card_button', form);
@@ -1357,7 +1510,7 @@
                             var message = (response && response.data && response.data.error)
                                 ? response.data.error
                                 : (response && response.error ? response.error : ppcart_translate_frontend.missing_required);
-                            alert(message);
+                            showCheckoutErrorSummary(form, message);
 
                             $btn = $('#ppcart_card_button', form);
                             $btn.removeClass('running').removeAttr("disabled");
@@ -1375,10 +1528,10 @@
                         if (!peIntent || !peIntent.clientSecret) {
                             // The element/intent is not ready yet; (re)mount and ask to retry.
                             mountPaymentElement(form);
-                            alert(ppcart_translate_frontend.missing_required);
                             $btn.removeClass('running').removeAttr("disabled");
                             $btn.find('span.text').text(originalText);
                             updateSubmitButtonState(form);
+                            showCheckoutErrorSummary(form, ppcart_translate_frontend.payment_not_ready);
                             return false;
                         }
 
@@ -1770,7 +1923,8 @@
                                         'opacity': '1'
                                     });
                                     $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
-                                    alert(ppcart_translate_frontend.missing_required);
+                                    showCheckoutErrorSummary('#'+form, ppcart_translate_frontend.missing_required);
+                                    focusFirstInvalidField('#'+form);
                                     return ev.complete('fail');
                                 }
                                 if(jQuery(".g-recaptcha", form_wrapper).length>0){
