@@ -31,9 +31,9 @@ class CheckoutRequiredFieldsTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-396
+     * @test-id IT-413
      */
-    public function test_IT_396_required_text_field_is_announced_as_required_and_asterisk_is_hidden(): void
+    public function test_IT_413_required_text_field_is_announced_as_required_and_asterisk_is_hidden(): void
     {
         $html = $this->renderField(['name' => 'first_name', 'label' => 'First Name', 'required' => true]);
 
@@ -47,9 +47,9 @@ class CheckoutRequiredFieldsTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-396
+     * @test-id IT-413
      */
-    public function test_IT_396_select_keeps_screen_reader_label_when_labels_are_hidden(): void
+    public function test_IT_413_select_keeps_screen_reader_label_when_labels_are_hidden(): void
     {
         $html = $this->renderField([
             'name'        => 'country',
@@ -69,9 +69,9 @@ class CheckoutRequiredFieldsTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-396
+     * @test-id IT-413
      */
-    public function test_IT_396_aria_required_survives_frontend_kses(): void
+    public function test_IT_413_aria_required_survives_frontend_kses(): void
     {
         $sanitized = ppcart_kses_frontend_html('<select name="state" aria-required="true"></select><input name="zip" aria-required="true">');
 
