@@ -1861,6 +1861,10 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     left: 21px !important;
 }
 
+.ppcart-settings__panel .ckbx-style input:focus-visible + label::before {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ppcart-primary);
+}
+
 .ppcart-settings__panel .checkbox-wrap {
     display: inline-flex;
     align-items: center;

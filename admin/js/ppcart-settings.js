@@ -1441,6 +1441,34 @@
     }
 
     /* -------------------------------------------------------------------------
+     * Row labels for selectize controls. The Settings API row label points at
+     * the original <select>, which selectize hides; name the visible
+     * "{id}-selectized" input by that label instead (WCAG 1.3.1, 4.1.2).
+     * ---------------------------------------------------------------------*/
+    function labelSelectizedControls() {
+        if (!$page || !$page.length) {
+            return;
+        }
+        $page.find('.form-table th label[for]').each(function () {
+            var $label = $(this);
+            var controlId = $label.attr('for');
+            if (!controlId) {
+                return;
+            }
+            var input = document.getElementById(controlId + '-selectized');
+            if (!input) {
+                return;
+            }
+            var labelId = $label.attr('id');
+            if (!labelId) {
+                labelId = controlId + '-row-label';
+                $label.attr('id', labelId);
+            }
+            input.setAttribute('aria-labelledby', labelId);
+        });
+    }
+
+    /* -------------------------------------------------------------------------
      * Init
      * ---------------------------------------------------------------------*/
     function init() {
@@ -1474,6 +1502,9 @@
         bindEmailTemplateModals();
         bindPaymentMethods();
         bindMaintenanceSecrets();
+        labelSelectizedControls();
+        // Selectize may still be building its inputs; label again once loaded.
+        $(window).on('load', labelSelectizedControls);
 
         var initialTab = pendingTabRequest || getInitialTabId();
         pendingTabRequest = null;
