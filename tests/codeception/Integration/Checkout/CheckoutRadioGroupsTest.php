@@ -53,9 +53,9 @@ class CheckoutRadioGroupsTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-397
+     * @test-id IT-414
      */
-    public function test_IT_397_payment_plan_radios_are_grouped_and_named_by_heading(): void
+    public function test_IT_414_payment_plan_radios_are_grouped_and_named_by_heading(): void
     {
         $productId = $this->createProductWithPlans();
         $GLOBALS['ppcart_product'] = ppcart_setup_product($productId);
@@ -74,9 +74,9 @@ class CheckoutRadioGroupsTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-397
+     * @test-id IT-414
      */
-    public function test_IT_397_payment_method_radios_are_grouped_and_named_by_heading(): void
+    public function test_IT_414_payment_method_radios_are_grouped_and_named_by_heading(): void
     {
         update_option('_ppcart_cashondelivery_enable', '1');
 
@@ -94,9 +94,9 @@ class CheckoutRadioGroupsTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-397
+     * @test-id IT-414
      */
-    public function test_IT_397_frontend_kses_keeps_fieldset_group_name(): void
+    public function test_IT_414_frontend_kses_keeps_fieldset_group_name(): void
     {
         $sanitized = ppcart_kses_frontend_html('<fieldset class="pay-methods" aria-labelledby="h1"><input type="radio" name="pay-method"></fieldset>');
 
@@ -109,7 +109,7 @@ class CheckoutRadioGroupsTest extends WPTestCase
             [
                 'post_type'   => ppcart_live_post_type('product'),
                 'post_status' => 'publish',
-                'post_title'  => 'IT-397 Product ' . wp_generate_uuid4(),
+                'post_title'  => 'IT-414 Product ' . wp_generate_uuid4(),
             ]
         );
 
