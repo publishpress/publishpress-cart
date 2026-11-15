@@ -192,9 +192,9 @@ class EmailHtmlEntityDecodeTest extends Unit
     }
 
     /**
-     * @test-id UT-371
+     * @test-id UT-377
      */
-    public function test_UT_371_rendered_email_declares_site_language_subject_title_and_presentation_tables(): void
+    public function test_UT_377_rendered_email_declares_site_language_subject_title_and_presentation_tables(): void
     {
         WordPressStubContext::set(
             'get_bloginfo',
@@ -235,9 +235,9 @@ class EmailHtmlEntityDecodeTest extends Unit
     }
 
     /**
-     * @test-id UT-371
+     * @test-id UT-377
      */
-    public function test_UT_371_rendered_email_title_falls_back_to_headline_without_subject(): void
+    public function test_UT_377_rendered_email_title_falls_back_to_headline_without_subject(): void
     {
         $html = ppcart_get_email_html(
             array(
