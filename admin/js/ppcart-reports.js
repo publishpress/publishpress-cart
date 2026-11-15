@@ -191,6 +191,13 @@
             hideResults();
         }
 
+        // Speak search results to screen readers; the visual list is not a live region.
+        function announce(message) {
+            if (message && window.wp && window.wp.a11y && 'function' === typeof window.wp.a11y.speak) {
+                window.wp.a11y.speak(String(message), 'polite');
+            }
+        }
+
         function showStatus(message) {
             $results.html('<li class="' + emptyClass + '"></li>');
             $results.find('li').text(message);
@@ -230,6 +237,8 @@
             });
 
             if (!rows.length) {
+                announce(settings.emptyMessage);
+
                 if (!settings.allLabel) {
                     showStatus(settings.emptyMessage);
                     return;
@@ -239,6 +248,14 @@
                     .addClass(emptyClass)
                     .text(settings.emptyMessage)
                     .appendTo($results);
+            }
+
+            if (rows.length) {
+                announce(
+                    1 === rows.length
+                        ? (reportsConfig.oneResult || '1 result found.')
+                        : String(reportsConfig.manyResults || '%d results found.').replace('%d', rows.length)
+                );
             }
 
             $results.removeAttr('hidden');
@@ -284,6 +301,7 @@
                     return;
                 }
 
+                announce(settings.emptyMessage);
                 showStatus(settings.emptyMessage);
             });
         }

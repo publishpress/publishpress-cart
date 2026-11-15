@@ -84,7 +84,7 @@ if (PPCart_Admin_Screens::is_reports_screen($hook_suffix)) {
     wp_enqueue_script(
         'ppcart-reports',
         PPCART_BASE_URL . 'admin/js/ppcart-reports.js',
-        [ 'jquery', 'ppcart-flatpickr' ],
+        [ 'jquery', 'ppcart-flatpickr', 'wp-a11y' ],
         $this->version,
         true
     );
@@ -99,6 +99,9 @@ if (PPCart_Admin_Screens::is_reports_screen($hook_suffix)) {
             'noProducts'           => __('No matching products', 'publishpress-cart'),
             'allProducts'          => __('All products', 'publishpress-cart'),
             'searching'            => __('Searching…', 'publishpress-cart'),
+            'oneResult'            => __('1 result found.', 'publishpress-cart'),
+            /* translators: %d: number of search results. */
+            'manyResults'          => __('%d results found.', 'publishpress-cart'),
         ]
     );
 }

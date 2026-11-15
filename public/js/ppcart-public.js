@@ -28,6 +28,66 @@
      * Although scripts in the WordPress core, Plugins and Themes may be
      * practising this, we should strive to set a better example in our own work.
      */
+    /**
+     * Announce a status message to screen readers without moving focus.
+     *
+     * Uses wp.a11y.speak() when the page already loads it; otherwise a shared,
+     * visually hidden polite live region.
+     */
+    function ppcart_announce(message) {
+        var text = $.trim(String(message || ''));
+        var region;
+
+        if (!text) {
+            return;
+        }
+
+        if (window.wp && window.wp.a11y && 'function' === typeof window.wp.a11y.speak) {
+            window.wp.a11y.speak(text, 'polite');
+            return;
+        }
+
+        region = document.getElementById('ppcart-a11y-status');
+
+        if (!region) {
+            region = document.createElement('div');
+            region.id = 'ppcart-a11y-status';
+            region.setAttribute('role', 'status');
+            region.setAttribute('aria-live', 'polite');
+            region.setAttribute('aria-atomic', 'true');
+            region.style.cssText = 'position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;';
+            document.body.appendChild(region);
+        }
+
+        // Clear first so repeating the same message is announced again.
+        region.textContent = '';
+        window.setTimeout(function() {
+            region.textContent = text;
+        }, 100);
+    }
+
+    /**
+     * Show an error message inline after a control, in a live region, instead
+     * of a browser alert. Reuses the notice on repeat failures.
+     */
+    function ppcart_show_inline_notice($anchor, message) {
+        var text = $.trim(String(message || ''));
+        var $notice;
+
+        if (!text || !$anchor || !$anchor.length) {
+            return;
+        }
+
+        $notice = $anchor.next('.ppcart-inline-notice');
+
+        if (!$notice.length) {
+            $notice = $('<div class="error ppcart-inline-notice" role="alert"></div>');
+            $anchor.after($notice);
+        }
+
+        $notice.text(text);
+    }
+
     var regExPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
         regExEmail = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
@@ -503,10 +563,10 @@
                         tax_rate_data = response.rates;
                         $('.vat_container', '#'+wrap_id).hide();
                         let vat_error = "Invalid VAT Number";
-                        $('#vat_number', '#'+wrap_id).removeClass('valid invalid');
+                        $('#vat_number', '#'+wrap_id).removeClass('valid invalid').removeAttr('aria-invalid');
                         $('#vat_number', '#'+wrap_id).parent().find('.error').remove();
                         if (!response.is_valid_vat) {
-                            $('#vat_number', '#'+wrap_id).addClass('invalid');
+                            $('#vat_number', '#'+wrap_id).addClass('invalid').attr('aria-invalid', 'true');
                             if (response.vat_error != "") {
                                 vat_error = response.vat_error;
                             }
@@ -514,6 +574,10 @@
                                 $('#vat_number', '#'+wrap_id).parent().append($('<div class="error"></div>').text(vat_error))
                             } else {
                                 $('#vat_number', '#'+wrap_id).parent().find('.error').text(vat_error);
+                            }
+                            // Only speak errors for a number the customer actually entered.
+                            if (tax_obj.vat_number != '') {
+                                ppcart_announce(vat_error);
                             }
                         } else if(tax_obj.vat_number != '') {
                             $('#vat_number', '#'+wrap_id).addClass('valid');
@@ -537,6 +601,8 @@
 
                         var container = $('#'+wrap_id).closest("#ppcart-form-container").find('.summary-items'),
                             totalContainer = $('#'+wrap_id).closest("#ppcart-form-container").find('.total');
+
+                        var previousTotalText = $.trim(totalContainer.text());
 
                         container.empty();
                         totalContainer.empty();
@@ -613,6 +679,11 @@
                                     $small.append(document.createTextNode(line));
                                 });
                                 $totalRhs.append($small);
+                            }
+
+                            // Announce a recalculated total (not the first render).
+                            if (previousTotalText && previousTotalText !== $.trim(totalContainer.text())) {
+                                ppcart_announce($.trim(String(resp.total_label || '') + ' ' + String(resp.total_price || '')));
                             }
                         }
 					}
@@ -1605,10 +1676,10 @@
                         alert(ppcart_translate_frontend.sub_cancel); //custom message
                         location.reload();
                     } else {
-                        alert(response);
+                        ppcart_show_inline_notice(_this, response);
                     }
                 }).fail(function() {
-                    alert(response.fail);
+                    ppcart_show_inline_notice(_this, ppcart_translate_frontend.try_again);
                 });
             } else {
                 return false;
@@ -1653,10 +1724,10 @@
                         alert(successMessage); //custom message
                         location.reload();
                     }else{
-                            alert(response);
+                        ppcart_show_inline_notice(_this, response);
                     }
                 }).fail(function() {
-                    alert(response.fail);
+                    ppcart_show_inline_notice(_this, ppcart_translate_frontend.try_again);
                 });
             } else {
                 return false;
