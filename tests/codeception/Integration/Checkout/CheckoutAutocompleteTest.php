@@ -27,7 +27,41 @@ class CheckoutAutocompleteTest extends WPTestCase
         }
 
         $this->previousProduct = $GLOBALS['ppcart_product'] ?? null;
-        $GLOBALS['ppcart_product'] = (object) ['ID' => 0, 'default_fields' => true];
+        $GLOBALS['ppcart_product'] = (object) ['ID' => 0, 'default_fields' => $this->defaultFieldsConfig()];
+    }
+
+    /**
+     * A product's saved checkout field configuration, as the default fields
+     * filter rebuilds the form from it. Autocomplete tokens must survive it.
+     *
+     * @return array<string, array<string, string>>
+     */
+    private function defaultFieldsConfig(): array
+    {
+        $labels = [
+            'first_name' => 'First Name',
+            'last_name'  => 'Last Name',
+            'email'      => 'Email',
+            'phone'      => 'Phone Number',
+            'company'    => 'Company Name',
+            'country'    => 'Country',
+            'address_1'  => 'Address',
+            'address_2'  => 'Apartment, suite, unit etc.',
+            'city'       => 'Town / City',
+            'state'      => 'State / County',
+            'zip'        => 'Postcode / Zip',
+        ];
+        $config = [];
+
+        foreach ($labels as $key => $label) {
+            $config[ $key ] = [
+                'default_field_label'    => $label,
+                'default_field_size'     => '6',
+                'default_field_required' => '1',
+            ];
+        }
+
+        return $config;
     }
 
     protected function tearDown(): void
@@ -51,9 +85,9 @@ class CheckoutAutocompleteTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-398
+     * @test-id IT-415
      */
-    public function test_IT_398_contact_fields_carry_autocomplete_tokens(): void
+    public function test_IT_415_contact_fields_carry_autocomplete_tokens(): void
     {
         ob_start();
         ppcart_do_checkoutform_fields(0, false);
@@ -67,9 +101,9 @@ class CheckoutAutocompleteTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-398
+     * @test-id IT-415
      */
-    public function test_IT_398_address_fields_carry_autocomplete_tokens(): void
+    public function test_IT_415_address_fields_carry_autocomplete_tokens(): void
     {
         ob_start();
         ppcart_address_fields(0, false);
@@ -84,9 +118,9 @@ class CheckoutAutocompleteTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-398
+     * @test-id IT-415
      */
-    public function test_IT_398_frontend_kses_keeps_select_autocomplete(): void
+    public function test_IT_415_frontend_kses_keeps_select_autocomplete(): void
     {
         $sanitized = ppcart_kses_frontend_html('<select name="country" autocomplete="country"></select>');
 
