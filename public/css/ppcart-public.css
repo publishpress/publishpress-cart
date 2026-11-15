@@ -2232,6 +2232,18 @@ body.ppcart-checkout-1 .ppcart-container {
 .ppcart-archive .ppcart-archive-navigation .page-numbers.next svg, .ppcart-archive .ppcart-archive-navigation .page-numbers.prev svg {
   width: 20px;
 }
+.ppcart-archive .ppcart-archive-navigation .screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
 
 /* Upgrade Path plans Css*/
 .upgrade-plan-container {
