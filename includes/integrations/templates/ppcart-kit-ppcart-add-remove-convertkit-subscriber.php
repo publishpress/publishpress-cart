@@ -35,7 +35,9 @@ try {
     $info = ppcart_webhook_order_body($order_id);
 
     foreach ($custom_fields as $k => $v) {
-        if ($v && is_array($values) && isset($values[$v])) {
+        if (0 === strpos((string) $v, 'custom.')) {
+            $mapped_fields[$k] = ppcart_integration_custom_value($v, $order_id);
+        } elseif ($v && is_array($values) && isset($values[$v])) {
             $mapped_fields[$k] = $values[$v]['value'];
         } elseif ($v && isset($info[$v])) {
             $mapped_fields[$k] = $info[$v]; // order data

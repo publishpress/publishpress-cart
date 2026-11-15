@@ -47,6 +47,8 @@ if ($pe_mount && ! empty($ppcart_stripe['is_payment_element'])) {
 do_action('ppcart_before_create_stripe_payment_intent');
 do_action('ppcart_before_create_main_order');
 
+ppcart_check_stripe_checkout_rate_limit($preload_intent || ($pe_mount && ! empty($ppcart_stripe['is_payment_element'])));
+
 $apikey = $ppcart_stripe['sk'];
 
 $stripe = ppcart_stripe_client($apikey);

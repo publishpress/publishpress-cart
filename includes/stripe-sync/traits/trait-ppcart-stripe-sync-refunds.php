@@ -6,6 +6,12 @@ if (! defined('ABSPATH')) {
 
 trait PPCart_Stripe_Sync_Refunds_Trait
 {
+    /** @param PPCart_Order $order Persisted native order. @return string */
+    public static function sync_order_by_local($order)
+    {
+        return include __DIR__ . '/templates/stripe-sync-refunds-sync-order-by-local.php';
+    }
+
     /**
      * Sync paid/refunded state for a Stripe charge.
      *

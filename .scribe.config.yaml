@@ -206,6 +206,13 @@ modules:
     features: [core-checkout, subscriptions, order-bumps-upsells]
     notes: Guests never reuse a Stripe customer by email; subscription and upsell charges use only server-bound customers and payment methods.
 
+  - id: product-metabox
+    name: Product settings metabox layout
+    suites: [unit, integration]
+    test_range: UT-370, IT-394
+    features: [payment-plans]
+    notes: Grouped tabs, field sections, visible help text and repeater empty states in the product settings metabox.
+
   - id: stripe-prefixed-sdk
     name: Prefixed Stripe SDK list responses
     suites: [unit]

@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once __DIR__ . '/order/traits/trait-ppcart-order-persistence.php';
+require_once __DIR__ . '/order/traits/trait-ppcart-order-administration.php';
 require_once __DIR__ . '/order/traits/trait-ppcart-order-checkout-input.php';
 require_once __DIR__ . '/order/traits/trait-ppcart-order-amounts.php';
 require_once __DIR__ . '/order/traits/trait-ppcart-order-invoices.php';
@@ -13,6 +14,7 @@ require_once __DIR__ . '/order/traits/trait-ppcart-order-lookups.php';
 class PPCart_Order extends stdClass
 {
     use PPCart_Order_Persistence;
+    use PPCart_Order_Administration;
     use PPCart_Order_Checkout_Input;
     use PPCart_Order_Amounts;
     use PPCart_Order_Invoices;

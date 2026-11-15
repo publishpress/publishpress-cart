@@ -29,7 +29,7 @@ if (false !== $ppcart_order_get && null !== $ppcart_order_get) {
 
     $closed_msg = ppcart_get_post_meta($atts['id'], 'confirmation_message', true);
     $closed_msg = (!$closed_msg) ? __("Thank you. We've received your order.", "publishpress-cart") : $closed_msg;
-    $msg = '<p>' . wp_kses_post(wp_specialchars_decode($closed_msg, 'ENT_QUOTES')) . '</p>';
+    $msg = '<p>' . wp_kses_post(nl2br(wp_specialchars_decode($closed_msg, 'ENT_QUOTES'))) . '</p>';
     return $msg . do_shortcode('[ppcart_receipt]');
 }
 
@@ -167,4 +167,9 @@ if (null !== $ppcart_product_shortcode_buffer_error) {
 }
 $output_string = $ppcart_product_shortcode_buffer_output;
 
-return $output_string;
+if ('' === trim($output_string)) {
+    return '';
+}
+
+// Keep the checkout container inside the theme's content-width wrapper.
+return '<div class="ppcart-checkout-embed">' . $output_string . '</div>';

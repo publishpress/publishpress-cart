@@ -6,7 +6,7 @@ if (! defined('ABSPATH')) {
 
 
 
-global $ppcart_product;
+global $ppcart_product, $ppcart_currency;
 
 $oto_get         = ppcart_filter_input(INPUT_GET, 'ppcart-oto', FILTER_VALIDATE_INT);
 $oto2_get        = ppcart_filter_input(INPUT_GET, 'ppcart-oto-2', FILTER_VALIDATE_INT);
@@ -45,6 +45,12 @@ if ($ppcart_order && $ppcart_order->id) {
     do_action('ppcart_js_purchase_tracking', $ppcart_order);
 }
 
+$ppcart_meta_pixel_id = trim((string) get_option('_ppcart_fb_pixel_id'));
+$ppcart_meta_paid_confirmation = ($ppcart_meta_pixel_id !== '' || get_option('_ppcart_fb_purchase'))
+    && $ppcart_order && $ppcart_order->id
+    && in_array(get_post_status($ppcart_order->id), ['paid', 'completed'], true)
+    && PPCart_Order::visitor_can_view($ppcart_order->id);
+
 $ppcart_order_tracking_buffer_level = ob_get_level();
 $ppcart_order_tracking_buffer_active = true;
 $ppcart_order_tracking_buffer_error = null;
@@ -57,14 +63,77 @@ ob_start(static function ($buffer, $phase) use (&$ppcart_order_tracking_buffer_a
 try {
     ?>
 jQuery('document').ready(function($){
+    <?php if (ctype_digit($ppcart_meta_pixel_id)) : ?>
+    if (typeof window.fbq === 'undefined' && !document.querySelector('script[src*="connect.facebook.net/"][src*="/fbevents.js"]')
+        && (<?php echo $ppcart_meta_paid_confirmation ? 'true' : 'false'; ?> || $('form[id="ppcart-payment-form"] [name="ppcart_product_id"]').length)) {
+        var pixel = function() {
+            if (pixel.callMethod) {
+                pixel.callMethod.apply(pixel, arguments);
+            } else {
+                pixel.queue.push(arguments);
+            }
+        };
+        window.fbq = pixel;
+        window._fbq = window._fbq || pixel;
+        pixel.push = pixel;
+        pixel.loaded = true;
+        pixel.version = '2.0';
+        pixel.queue = [];
+        pixel('init', '<?php echo esc_js($ppcart_meta_pixel_id); ?>');
+        pixel('track', 'PageView');
+
+        var pixelScript = document.createElement('script');
+        pixelScript.async = true;
+        pixelScript.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        document.head.appendChild(pixelScript);
+    }
+    <?php endif; ?>
+
     if ( typeof fbq !== "undefined") {
 
-        <?php if ($ppcart_order && $ppcart_order->id) : ?>
-        if('undefined' !== typeof ppcart.fb_purchase_event && 'enabled' == ppcart.fb_purchase_event) {
-            fbq('track', 'Purchase', {
-                currency: '<?php echo esc_js($ppcart_order->currency); ?>',
-                value: '<?php echo esc_js($ppcart_order->amount); ?>'
+        <?php if (get_option('_ppcart_fb_initiate_checkout')) : ?>
+        function trackCheckout() {
+            var form = $(this);
+            var product = form.find('[name="ppcart_product_id"]').val();
+            var price = form.find('[name="ppcart_product_option"]:checked').attr('data-price');
+            if (!product || price === undefined || !Number.isFinite(Number(price)) || form.data('ppcartMetaCheckout')) {
+                return;
+            }
+
+            fbq('track', 'InitiateCheckout', {
+                content_ids: [product],
+                content_type: 'product',
+                currency: '<?php echo esc_js(strtoupper((string) $ppcart_currency)); ?>',
+                value: Number(price)
             });
+            form.data('ppcartMetaCheckout', true);
+        }
+
+        $(document).on('ppcart/orderform/ready', '#ppcart-payment-form', trackCheckout);
+        $('form[id="ppcart-payment-form"]:visible').each(trackCheckout);
+        <?php endif; ?>
+
+        <?php if ($ppcart_meta_paid_confirmation) : ?>
+        if (ppcart.fb_purchase_event === 'enabled') {
+            var purchaseId = 'ppcart-meta-purchase-<?php echo esc_js((string) $ppcart_order->id); ?>';
+            var sent = false;
+            try {
+                sent = window.localStorage.getItem(purchaseId) === '1';
+            } catch (error) {
+                // Storage may be unavailable in privacy mode.
+            }
+
+            if (!sent) {
+                fbq('track', 'Purchase', {
+                    currency: '<?php echo esc_js(strtoupper((string) $ppcart_order->currency)); ?>',
+                    value: Number('<?php echo esc_js((string) $ppcart_order->amount); ?>')
+                }, { eventID: purchaseId });
+                try {
+                    window.localStorage.setItem(purchaseId, '1');
+                } catch (error) {
+                    // Keep the event usable when storage is blocked.
+                }
+            }
         }
         <?php endif; ?>
 

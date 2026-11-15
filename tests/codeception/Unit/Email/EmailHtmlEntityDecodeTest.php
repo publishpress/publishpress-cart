@@ -181,7 +181,7 @@ class EmailHtmlEntityDecodeTest extends Unit
         );
 
         $this->assertStringContainsString(
-            'href="https://publishpress.com/publishpress-cart/"',
+            'href="https://publishpress.com/cart/"',
             $html
         );
         $this->assertStringContainsString('&mdash;', $html);

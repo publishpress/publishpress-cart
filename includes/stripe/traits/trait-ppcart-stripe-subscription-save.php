@@ -112,7 +112,8 @@ trait PPCart_Stripe_Subscription_Save_Trait
         wp_update_post([ 'ID'   =>  $post_id, 'post_status'   =>  $status ]);
 
         ppcart_log_entry($post_id, __('Creating subscription.', 'publishpress-cart'));
-        do_action('ppcart_fter_order_created', $post_id, $status, $order);
+        do_action('ppcart_after_order_created', $post_id, $status, $order);
+        do_action_deprecated('ppcart_fter_order_created', [$post_id, $status, $order], '1.1.0', 'ppcart_after_order_created');
 
         return $post_id;
     }

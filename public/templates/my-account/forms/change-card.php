@@ -12,11 +12,11 @@ $ppcart_plan = $ppcart_plan ? (string) absint($ppcart_plan) : '';
 $request_action = ppcart_filter_input_request('action', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 ?>
 <div class="ppcart">
-    <div class="modal update-card-modal" aria-hidden="true">
+    <div class="modal update-card-modal" role="dialog" aria-modal="true" aria-labelledby="ppcart-update-card-title" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-header">
-                <h2><?php esc_html_e('Update Payment Method', 'publishpress-cart'); ?></h2>
-                <a href="#" class="ppcart-btn-close closemodal" aria-hidden="true" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-close')); ?>">&times;</a>
+                <h2 id="ppcart-update-card-title"><?php esc_html_e('Update Payment Method', 'publishpress-cart'); ?></h2>
+                <button type="button" class="ppcart-btn-close closemodal" aria-label="<?php esc_attr_e('Close update payment method', 'publishpress-cart'); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-close')); ?>"><span aria-hidden="true">&times;</span></button>
             </div>
 
             <div class="modal-body">
@@ -28,28 +28,28 @@ $request_action = ppcart_filter_input_request('action', FILTER_SANITIZE_FULL_SPE
                             <div class="ppcart-row">
 
                                 <div class="ppcart-form-group ppcart-col-sm-12">
-                                    <label for="first_name"><?php esc_html_e('Cardholder Name', 'publishpress-cart'); ?><span class="req">*</span></label>
+                                    <label for="ppcart-card-holder-name"><?php esc_html_e('Cardholder Name', 'publishpress-cart'); ?><span class="req" aria-hidden="true">*</span></label>
                                     <label id="ppcart-cardholder-error" class="err-hide"></label>
-                                    <input type="text" id="ppcart-card-holder-name" name="card_holder" class="ppcart-form-control required" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-holder-name')); ?>">
+                                    <input type="text" id="ppcart-card-holder-name" name="card_holder" autocomplete="cc-name" aria-required="true" class="ppcart-form-control required" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-holder-name')); ?>">
                                     <input type="hidden" id="ppcart-subscription-id" name="ppcart_subscription_id" value="<?php echo esc_attr($ppcart_plan); ?>">
                                 </div>
 
                                 <div class="ppcart-form-group ppcart-col-sm-12">
-                                    <label for="last_name"><?php esc_html_e('Card Number', 'publishpress-cart'); ?><span class="req">*</span></label>
+                                    <span class="ppcart-card-element-label" id="ppcart-card-number-label"><?php esc_html_e('Card Number', 'publishpress-cart'); ?><span class="req" aria-hidden="true">*</span></span>
                                     <label id="ppcart-card-error" class="err-hide"></label>
-                                    <div id="ppcart-card-number" class="ppcart-form-control" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-number')); ?>"></div>
+                                    <div id="ppcart-card-number" class="ppcart-form-control" aria-labelledby="ppcart-card-number-label" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-number')); ?>"></div>
                                 </div>
 
                                 <div class="ppcart-form-group ppcart-col-sm-6">
-                                    <label><?php esc_html_e('Security Code', 'publishpress-cart'); ?><span class="req">*</span></label>
+                                    <span class="ppcart-card-element-label" id="ppcart-card-cvc-label"><?php esc_html_e('Security Code', 'publishpress-cart'); ?><span class="req" aria-hidden="true">*</span></span>
                                     <label id="ppcart-cvc-error" class="err-hide"></label>
-                                    <div id="ppcart-card-cvc" class="ppcart-form-control" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-cvc')); ?>"></div>
+                                    <div id="ppcart-card-cvc" class="ppcart-form-control" aria-labelledby="ppcart-card-cvc-label" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-cvc')); ?>"></div>
                                 </div>
 
                                 <div class="ppcart-form-group ppcart-col-sm-6">
-                                    <label><?php esc_html_e('Expiry Date', 'publishpress-cart'); ?><span class="req">*</span></label>
+                                    <span class="ppcart-card-element-label" id="ppcart-card-expiry-label"><?php esc_html_e('Expiry Date', 'publishpress-cart'); ?><span class="req" aria-hidden="true">*</span></span>
                                     <label id="ppcart-expiry-error" class="err-hide"></label>
-                                    <div id="ppcart-card-expiry" class="ppcart-form-control" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-expiry')); ?>"></div>
+                                    <div id="ppcart-card-expiry" class="ppcart-form-control" aria-labelledby="ppcart-card-expiry-label" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-update-card-expiry')); ?>"></div>
                                 </div>
 
                                 <div class="ppcart-form-group ppcart-col-sm-12">
