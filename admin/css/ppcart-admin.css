@@ -1652,6 +1652,20 @@ td.column-order .row-actions{
   transition: all 0.2s ease;
   color: #2271b1;
   cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0;
+}
+.ridoption_id .ppcart-plan-id-copy-icon .dashicons {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+.ridoption_id .ppcart-plan-id-copy-icon:focus {
+  box-shadow: 0 0 0 2px #2271b1;
+  outline: 2px solid transparent;
 }
 
 

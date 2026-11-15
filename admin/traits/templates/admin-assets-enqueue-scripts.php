@@ -29,7 +29,7 @@ wp_enqueue_script('ppcart-selectize', PPCART_BASE_URL . 'admin/js/selectize.js',
 wp_enqueue_script('ppcart-flatpickr', PPCART_BASE_URL . 'admin/assets/libs/flatpickr.min.js', [ 'jquery', 'jquery-ui-datepicker', 'jquery-ui-slider' ], $this->version, false);
 wp_enqueue_script('ppcart-font-awesome-all', PPCART_BASE_URL . 'includes/assets/font-awesome-all.min.js', [], $this->version, true);
 wp_enqueue_script('jquery-ui-dialog');
-wp_enqueue_script('ppcart', PPCART_BASE_URL . 'admin/js/ppcart-admin.js', [ 'jquery', 'wp-color-picker', 'jquery-ui-dialog' ], $this->version, false);
+wp_enqueue_script('ppcart', PPCART_BASE_URL . 'admin/js/ppcart-admin.js', [ 'jquery', 'wp-color-picker', 'jquery-ui-dialog', 'wp-a11y' ], $this->version, false);
 wp_enqueue_script('moment');
 wp_enqueue_script('ppcart-daterangepicker', PPCART_BASE_URL . 'admin/js/ppcart-daterangepicker.min.js', [ 'jquery', 'jquery-ui-datepicker', 'jquery-ui-slider', 'moment' ], $this->version, false);
 wp_enqueue_script('ppcart-datatables', PPCART_BASE_URL . 'admin/js/jquery.dataTables.min.js', [ 'jquery' ], $this->version, true);
@@ -51,6 +51,7 @@ wp_localize_script('ppcart', 'ppcart_translate_backend', ppcart_translate_js('pp
 wp_localize_script('ppcart', 'ppcart_admin_i18n', [
     'copy_success' => __('Copied', 'publishpress-cart'),
     'copy_failed' => __('Copy failed', 'publishpress-cart'),
+    'copy_plan_id' => __('Copy plan ID', 'publishpress-cart'),
     'required_fields_missing' => __('Required fields missing:', 'publishpress-cart'),
     'payment_label_cashondelivery' => __('Cash on Delivery', 'publishpress-cart'),
     'payment_label_stripe' => __('Stripe', 'publishpress-cart'),
