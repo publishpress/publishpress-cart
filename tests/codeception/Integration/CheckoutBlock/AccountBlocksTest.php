@@ -470,14 +470,51 @@ class AccountBlocksTest extends CheckoutBlockTestCase
 
     public function test_IT_086_account_tab_script_normalizes_hash_tab_links(): void
     {
-        $pluginRoot = defined('PPCART_PLUGIN_ROOT')
-            ? PPCART_PLUGIN_ROOT
-            : dirname(__DIR__, 4) . '/';
-        $accountTabScript = file_get_contents($pluginRoot . 'public/js/ppcart-public.js');
+        $this->ensureAccountFixtures();
 
-        $this->assertStringContainsString('tab_id.substring(1)', $accountTabScript);
-        $this->assertStringContainsString('account.find("#" + tab_id).addClass', $accountTabScript);
-        $this->assertStringNotContainsString("var tab_id = jQuery(this).attr('href');", $accountTabScript);
+        if (! $this->temporaryUserId) {
+            $this->markTestSkipped('Account component rendering checks require creating a temporary account user.');
+        }
+
+        wp_set_current_user($this->temporaryUserId);
+
+        $output = $this->renderBlocks(
+            '<!-- wp:publishpress-cart/account-page-builder -->'
+            . '<!-- wp:publishpress-cart/account-navigation -->'
+            . '<!-- wp:publishpress-cart/account-tab {"tabId":"tab-orders","label":"Orders"} -->'
+            . '<!-- wp:publishpress-cart/account-orders /-->'
+            . '<!-- /wp:publishpress-cart/account-tab -->'
+            . '<!-- wp:publishpress-cart/account-tab {"tabId":"tab-profile","label":"My Profile"} -->'
+            . '<!-- wp:publishpress-cart/account-profile /-->'
+            . '<!-- /wp:publishpress-cart/account-tab -->'
+            . '<!-- /wp:publishpress-cart/account-navigation -->'
+            . '<!-- /wp:publishpress-cart/account-page-builder -->'
+        );
+
+        $xpath   = $this->accountMarkupXPath($output);
+        $tabs    = $xpath->query('//ul[contains(concat(" ", normalize-space(@class), " "), " ppcart-nav-tabs ")]//a');
+        $targets = [];
+
+        $this->assertSame(2, $tabs->length);
+
+        foreach ($tabs as $tab) {
+            $href = $tab->getAttribute('href');
+
+            // The tab link is an in-page hash link, so the tab script can
+            // resolve the panel from the hash alone, without the page address.
+            $this->assertMatchesRegularExpression('/^#[A-Za-z][\w-]*$/', $href);
+
+            $panelId = substr($href, 1);
+            $panels  = $xpath->query('//*[@id="' . $panelId . '"][contains(concat(" ", normalize-space(@class), " "), " tabcontent ")]');
+
+            $this->assertSame(1, $panels->length, $href . ' points at exactly one tab panel');
+            $this->assertSame($panelId, $tab->getAttribute('aria-controls'));
+            $this->assertSame($tab->getAttribute('id'), $panels->item(0)->getAttribute('aria-labelledby'));
+
+            $targets[] = $panelId;
+        }
+
+        $this->assertSame([ 'tab-orders', 'tab-profile' ], $targets);
     }
 
     public function test_IT_087_account_orders_block_renders_order_history_and_fires_extension_hook(): void
