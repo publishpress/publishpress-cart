@@ -76,7 +76,9 @@ class SettingsRowLabelsTest extends WPTestCase
                     $xpath = $this->renderSection((string) $page, (string) $section);
                     $label = $xpath->query('//th//label[@for="' . $id . '"]')->item(0);
                     $this->assertNotNull($label, "Row label for {$id} is not tied to a control.");
-                    $this->assertSame(trim(wp_strip_all_tags((string) $field['title'])), trim($label->textContent));
+                    // Titles are stored HTML-escaped; the label text is what is read out.
+                    $title = html_entity_decode(wp_strip_all_tags((string) $field['title']), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                    $this->assertSame(trim($title), trim($label->textContent));
                     $this->assertSame(1, $xpath->query('//td//*[@id="' . $id . '"][self::input or self::select or self::textarea]')->length, "No control with id {$id}.");
                     $found[$id] = true;
                 }
