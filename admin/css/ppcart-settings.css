@@ -16,7 +16,7 @@
     --ppcart-border-strong: #d4d7de;
     --ppcart-text: #1a1d24;
     --ppcart-text-muted: #5b6473;
-    --ppcart-text-soft: #7a8493;
+    --ppcart-text-soft: #646e7d; /* 4.7:1 on the #f1f5f9 nav hover, 5.2:1 on white */
     --ppcart-primary: #0a47c2;
     --ppcart-primary-hover: #0838a0;
     --ppcart-primary-soft: #e8efff;
@@ -218,7 +218,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     outline: none;
     border-color: var(--ppcart-primary);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(10, 71, 194, .12);
+    box-shadow: 0 0 0 1px var(--ppcart-primary); /* solid 2px ring with the border, 7.8:1 */
 }
 
 .ppcart-settings__search::before {
@@ -229,7 +229,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     width: 16px;
     height: 16px;
     transform: translateY(-50%);
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a8493' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/></svg>") center / 16px no-repeat;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23646e7d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/></svg>") center / 16px no-repeat;
     pointer-events: none;
 }
 
@@ -863,7 +863,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     height: 20px;
     flex: 0 0 36px;
     border-radius: 999px;
-    background: #cbd2dd;
+    background: #7d8796; /* off track: 3.6:1 against white */
     transition: background .16s ease;
 }
 
@@ -1704,7 +1704,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
 .ppcart-settings__panel select:focus,
 .ppcart-settings__panel textarea:focus {
     border-color: var(--ppcart-primary);
-    box-shadow: 0 0 0 3px rgba(10, 71, 194, .12);
+    box-shadow: 0 0 0 1px var(--ppcart-primary); /* solid 2px ring with the border, 7.8:1 */
     outline: none;
 }
 
@@ -1722,7 +1722,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     background:
         url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%230a47c2' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 12px center / 16px 16px no-repeat,
         linear-gradient(to left, #eef4ff 0, #eef4ff 40px, rgba(10, 71, 194, .32) 40px, rgba(10, 71, 194, .32) 41px, #fff 41px);
-    box-shadow: 0 0 0 3px rgba(10, 71, 194, .12);
+    box-shadow: 0 0 0 1px var(--ppcart-primary); /* solid 2px ring with the border, 7.8:1 */
 }
 
 .ppcart-settings__panel select::-ms-expand {
@@ -1780,7 +1780,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     border-color: var(--ppcart-primary);
     background:
         linear-gradient(to left, #eef4ff 0, #eef4ff 40px, rgba(10, 71, 194, .32) 40px, rgba(10, 71, 194, .32) 41px, #fff 41px);
-    box-shadow: 0 0 0 3px rgba(10, 71, 194, .12);
+    box-shadow: 0 0 0 1px var(--ppcart-primary); /* solid 2px ring with the border, 7.8:1 */
 }
 
 .ppcart-settings__panel .selectize-control.single.focus .selectize-input::after,
@@ -1835,7 +1835,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     content: "";
     position: absolute;
     inset: 0;
-    background: #cbd2dd !important;
+    background: #7d8796 !important; /* off track: 3.6:1 against white */
     border-radius: 999px;
     transition: background .18s;
 }
@@ -1882,10 +1882,17 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-sizing: content-box;
     width: 18px;
     height: 18px;
+    /* Transparent border grows the hit area to 24px (WCAG 2.5.8); negative margins keep the layout. */
+    border: 3px solid transparent;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    margin-right: -3px;
     border-radius: 999px;
     background: var(--ppcart-border);
+    background-clip: padding-box;
     color: var(--ppcart-text-muted);
     font-style: normal;
     font-size: 11px;
@@ -2284,7 +2291,7 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     height: 22px;
     flex: 0 0 40px;
     border-radius: 999px;
-    background: #cbd2dd;
+    background: #7d8796; /* off track: 3.6:1 against white */
     transition: background .16s ease;
 }
 
@@ -3503,7 +3510,7 @@ html:has(.ppcart-settings-page .ppcart-settings__savebar.is-visible) {
     width: 15px;
     height: 15px;
     transform: translateY(-50%);
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a8493' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/></svg>") center / 15px no-repeat;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23646e7d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/></svg>") center / 15px no-repeat;
     pointer-events: none;
 }
 

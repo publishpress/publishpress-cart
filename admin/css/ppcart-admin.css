@@ -929,6 +929,16 @@ td.column-order .row-actions{
   right: 6px;
   top: 50%;
 }
+/* Grow the 16px clear icon's hit area to 24px (WCAG 2.5.8) without moving it. */
+.ppcart-settings-tabs .datepicker + .clear-date::before {
+  content: "";
+  height: 24px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+}
 .ppcart-settings-tabs .input-group {
   flex-grow: 1;
   position: relative;
