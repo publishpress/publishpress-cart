@@ -208,6 +208,14 @@ $integration_meta = [
         'learn_more'  => 'https://www.drip.com/',
         'configured_options' => [ '_ppcart_drip_id', '_ppcart_drip_api_key' ],
     ],
+    'brevo'          => [
+        'title'       => __('Brevo', 'publishpress-cart'),
+        'description' => __('Add customers to Brevo contact lists.', 'publishpress-cart'),
+        'category'    => 'email-marketing',
+        'logo_label'  => 'BR',
+        'learn_more'  => 'https://www.brevo.com/',
+        'configured_options' => [ '_ppcart_brevo_api_key' ],
+    ],
     'flodesk'        => [
         'title'       => __('Flodesk', 'publishpress-cart'),
         'description' => __('Add customers to Flodesk segments.', 'publishpress-cart'),
