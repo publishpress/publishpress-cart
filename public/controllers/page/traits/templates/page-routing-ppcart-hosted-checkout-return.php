@@ -196,7 +196,7 @@ if ($order_id) {
         // Brief client delay before retry so a lagging webhook can land.
         nocache_headers();
         $target = esc_url($processing);
-        echo '<!DOCTYPE html><html><head><meta charset="utf-8">';
+        echo '<!DOCTYPE html><html ' . get_language_attributes() . '><head><meta charset="utf-8">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_language_attributes() returns escaped attributes.
         echo '<meta http-equiv="refresh" content="2;url=' . esc_url($target) . '">';
         echo '<title>' . esc_html__('Processing payment…', 'publishpress-cart') . '</title></head><body>';
         echo '<p>' . esc_html__('Your payment is being confirmed. This page will refresh automatically…', 'publishpress-cart') . '</p>';
@@ -214,7 +214,7 @@ if ($order_id) {
 
     nocache_headers();
     $status_url = esc_url(PPCart_Order::confirmation_url($clean_url, $order_id));
-    echo '<!DOCTYPE html><html><head><meta charset="utf-8">';
+    echo '<!DOCTYPE html><html ' . get_language_attributes() . '><head><meta charset="utf-8">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_language_attributes() returns escaped attributes.
     echo '<title>' . esc_html__('Payment processing', 'publishpress-cart') . '</title></head><body>';
     echo '<p>' . esc_html__('We are still confirming your payment. You can leave this page open and refresh shortly, or check your email for a confirmation.', 'publishpress-cart') . '</p>';
     if ($order_id) {
