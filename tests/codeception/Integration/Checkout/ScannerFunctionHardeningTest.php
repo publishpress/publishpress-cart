@@ -47,7 +47,10 @@ class ScannerFunctionHardeningTest extends WPTestCase
         ]);
         $html = (string) ob_get_clean();
 
-        $this->assertStringContainsString('<label for="ppcart_test_select">Pick one <span class="req">*</span></label>', $html);
+        // The visual "*" is hidden from assistive tech; the select itself
+        // reports that it is required.
+        $this->assertStringContainsString('<label for="ppcart_test_select">Pick one <span class="req" aria-hidden="true">*</span></label>', $html);
+        $this->assertMatchesRegularExpression('/<select id="ppcart_test_select"[^>]*\saria-required="true"/', $html);
         $this->assertStringContainsString('name="ppcart_test_select"', $html);
         $this->assertStringContainsString('class="ppcart-form-control  required"', $html);
         $this->assertStringContainsString('<option value="b" ' . selected('b', 'b', false) . '>Beta</option>', $html);
