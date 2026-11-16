@@ -855,7 +855,7 @@ body.ppcart-checkout-1 {
                 .step-number {
                     font-weight: bold;
                     font-size: 36px;
-                    line-height: 1em;
+                    line-height: 1;
                     margin-right: 10px;
                 }
 
@@ -1440,7 +1440,7 @@ body.ppcart-checkout-1 {
             box-shadow: 0 0;
             font-size: 12px !important;
             font-weight: 600;
-            height: 34px;
+            min-height: 34px;
             padding: 0;
             z-index: 1;
             width: 100px;
@@ -1508,7 +1508,7 @@ body.ppcart-checkout-1 {
     .ppcart-field-description {
         color: #777;
         font-size: 12px;
-        line-height: 1em;
+        line-height: 1;
         margin-top: 5px;
     }
 

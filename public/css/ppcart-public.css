@@ -752,7 +752,7 @@ body.ppcart-checkout-1 .ppcart-container {
 .ppcart .ppcart-checkout-form-steps .steps a .step-number {
   font-weight: bold;
   font-size: 36px;
-  line-height: 1em;
+  line-height: 1;
   margin-right: 10px;
 }
 .ppcart .ppcart-checkout-form-steps .steps a .step-heading {
@@ -1250,7 +1250,7 @@ body.ppcart-checkout-1 .ppcart-container {
   box-shadow: 0 0;
   font-size: 12px !important;
   font-weight: 600;
-  height: 34px;
+  min-height: 34px;
   padding: 0;
   z-index: 1;
   width: 100px;
@@ -1310,7 +1310,7 @@ body.ppcart-checkout-1 .ppcart-container {
 .ppcart .ppcart-field-description {
   color: #777;
   font-size: 12px;
-  line-height: 1em;
+  line-height: 1;
   margin-top: 5px;
 }
 .ppcart .pwyw-suggested,
@@ -2512,6 +2512,9 @@ body.ppcart-checkout-1 .ppcart-container {
 .dropdown {
   display: inline-block;
   position: relative;
+  /* Width floor lives here, capped at the container, so the menu never forces horizontal scrolling (WCAG 1.4.10). */
+  min-width: min(365px, 100%);
+  max-width: 100%;
 }
 .dropdown .dropdown-button {
   background-color: transparent;
@@ -2523,7 +2526,7 @@ body.ppcart-checkout-1 .ppcart-container {
   justify-content: space-between;
   padding: 9px 25px 9px 30px;
   min-height: 58px;
-  min-width: 365px;
+  min-width: 100%;
 }
 .dropdown .dropdown-button:hover,
 .dropdown .dropdown-button:focus {
@@ -2866,13 +2869,15 @@ body.ppcart-checkout-1 .ppcart-container {
     font-size: 16px;
     line-height: 20px;
   }
+  .dropdown {
+    min-width: min(320px, 100%);
+  }
   .dropdown .dropdown-button {
     padding: 9px 20px;
     min-height: auto;
-    min-width: 320px;
   }
-  .footer-item-rhs .dropdown .dropdown-button {
-    min-width: 262px;
+  .footer-item-rhs .dropdown {
+    min-width: min(262px, 100%);
   }
   .dropdown .dropdown-button > span {
     font-size: 16px;
@@ -2886,8 +2891,8 @@ body.ppcart-checkout-1 .ppcart-container {
   .dropdown .dropdown-button span img {
     display: none;
   }
-  .download-rhs .dropdown .dropdown-button {
-    min-width: 280px;
+  .download-rhs .dropdown {
+    min-width: min(280px, 100%);
   }
 }
 
