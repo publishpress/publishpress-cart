@@ -6,6 +6,7 @@ Internal documentation for developers and maintainers. Not shipped to end users.
 
 | Doc | Purpose |
 |-----|---------|
+| [mcp-integration.md](mcp-integration.md) | Supported MCP operations, value formats and permissions |
 | [architecture.md](architecture.md) | How the plugin is organized and maintainability strategy |
 | [../adr/overview.md](../adr/overview.md) | Architecture Decision Records (unique `ADR-NNNN`) |
 | [pro-plugin-extraction.md](pro-plugin-extraction.md) | Free/Pro architecture split — hooks, module moves, phases |

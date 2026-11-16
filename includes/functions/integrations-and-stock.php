@@ -106,17 +106,14 @@ function ppcart_trigger_integrations($status, $order_info)
             case 'past_due':
                 $action = 'ppcart_subscription_past_due';
                 break;
-            case 'trialing':
-                $action = 'ppcart_subscription_trialing';
-                break;
             case 'renewal':
                 $action = 'ppcart_renewal_payment';
                 break;
-            case 'failed' && $event_type == 'renewal':
-                $action = 'ppcart_renewal_failed';
+            case 'failed':
+                $action = ($event_type == 'renewal') ? 'ppcart_renewal_failed' : false;
                 break;
-            case 'uncollectible' && $event_type == 'renewal':
-                $action = 'ppcart_renewal_uncollectible';
+            case 'uncollectible':
+                $action = ($event_type == 'renewal') ? 'ppcart_renewal_uncollectible' : false;
                 break;
             case 'refunded':
                 $action = 'ppcart_order_refunded';

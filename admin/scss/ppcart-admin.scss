@@ -2005,3 +2005,12 @@ td.column-order .row-actions {
         }
     }
 }
+
+
+.ppcart-upload-status.is-error {
+  color: #b32d2e;
+}
+
+.ppcart-upload-status.is-success {
+  color: #008a20;
+}

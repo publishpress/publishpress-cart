@@ -98,6 +98,11 @@ class UpdateCartAmountSummaryEscapeTest extends WPTestCase
         }
         $this->assertStringNotContainsString('<br', (string) $response['sub_summary']);
         $this->assertStringNotContainsString('<script', (string) $response['sub_summary']);
+        $this->assertSame(
+            html_entity_decode((string) $response['sub_summary'], ENT_QUOTES | ENT_HTML5, 'UTF-8'),
+            (string) $response['sub_summary'],
+            'sub_summary is rendered as text, so it must not contain HTML entities.'
+        );
         $this->assertStringNotContainsString('ppcart-Price-currencySymbol', (string) $response['total_price']);
 
         $orderForList = new \PPCart_Order();

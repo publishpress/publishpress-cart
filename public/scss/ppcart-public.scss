@@ -2468,3 +2468,27 @@ body.ppcart-checkout-1 {
     }
   
   }
+
+
+/* Embedded split-in forms respond to their content width, not the viewport. */
+#ppcart-form-container.ppcart-shortcode.ppcart-splitin-form {
+  container: ppcart-splitin / inline-size;
+}
+
+@container ppcart-splitin (max-width: 991px) {
+  .splitin-checkout-wrap {
+    flex-direction: column;
+  }
+
+  #ppcart-form-container.ppcart-shortcode .splitin-checkout-wrap .checkout-inner {
+    flex: auto;
+    min-width: 0;
+    padding: clamp(16px, 5cqw, 40px);
+  }
+
+  .ppcart-splitin-form .checkout-inner .order-summary-form-wrap {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

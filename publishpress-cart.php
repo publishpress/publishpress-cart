@@ -14,9 +14,10 @@
  *
  * @wordpress-plugin
  * Plugin Name:       PublishPress Cart - eCommerce for Digital Products
- * Plugin URI:        https://publishpress.com/publishpress-cart/
+ * Plugin URI:        https://publishpress.com/cart/
  * Description:       Create order pages and simplified sales flow creation that helps you sell digital products, programs, and services.
- * Version:           1.0.1
+ * Version:           1.2.0
+ * Requires PHP:      8.2
  * Author:            PublishPress
  * Author URI:        https://publishpress.com/
  * License:           GPL-2.0-or-later
@@ -36,7 +37,24 @@ if (defined('PPCART_FREE_LOADED')) {
 
 define('PPCART_FREE_LOADED', true);
 
-const PPCART_MINIMUM_PHP_VERSION = '7.4';
+if (is_admin()) {
+    add_filter('all_plugins', static function ($plugins) {
+        global $pagenow;
+
+        if ('plugins.php' !== $pagenow) {
+            return $plugins;
+        }
+
+        $plugin_file = plugin_basename(__FILE__);
+        if (isset($plugins[$plugin_file]['Name'])) {
+            $plugins[$plugin_file]['Name'] = 'PublishPress Cart Free';
+        }
+
+        return $plugins;
+    });
+}
+
+const PPCART_MINIMUM_PHP_VERSION = '8.2';
 const PPCART_MINIMUM_WP_VERSION = '6.7';
 
 global $wp_version;
@@ -115,7 +133,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/helpers/ppcart-meta.php';
 ppcart_maybe_register_studiocart_constants($ppcart_loaded_companion_packages);
 
 if (! defined('PPCART_VERSION')) {
-    define('PPCART_VERSION', '1.0.1');
+    define('PPCART_VERSION', '1.2.0');
 }
 if (! defined('PPCART_BASE_DIR')) {
     define('PPCART_BASE_DIR', plugin_dir_path(__FILE__));
@@ -152,10 +170,15 @@ if (! defined('PPCART_DOCS_URL')) {
  * This action is documented in includes/class-ppcart-activator.php
  */
 if (! function_exists('ppcart_activate')) {
-    function ppcart_activate()
+    function ppcart_activate($network_wide = null)
     {
         require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-activator.php';
+
         PPCart_Activator::activate();
+
+        if (null !== $network_wide && is_admin()) {
+            PPCart_Welcome::queue_redirect($network_wide);
+        }
     }
 }
 
@@ -190,17 +213,14 @@ if (! function_exists('ppcart_upgrade')) {
     }
 }
 
+if (is_admin()) {
+    require_once __DIR__ . '/admin/class-ppcart-welcome.php';
+    add_action('admin_init', ['PPCart_Welcome', 'maybe_redirect']);
+    add_action('admin_menu', ['PPCart_Welcome', 'register_page'], 20);
+}
+
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');
 register_deactivation_hook(PPCART_BASE_FILE, 'ppcart_deactivate');
-
-/**
- * First-time Activate-while-Studiocart-is-on never reached ppcart_activate()
- * because that hook is registered after the conflict return above. Run it once
- * Studiocart is gone so tax table, caps, API key, and rewrite flush still happen.
- */
-if (PPCart_Studiocart_Conflict::consume_pending_activation()) {
-    ppcart_activate();
-}
 
 add_action(
     'upgrader_process_complete',
@@ -329,5 +349,11 @@ function ppcart_helper()
 
 if (! did_action('ppcart_loaded')) {
     ppcart_run();
+
+    // Retry deferred activation only after Cart has loaded its dependencies.
+    if (PPCart_Studiocart_Conflict::consume_pending_activation()) {
+        ppcart_activate();
+    }
+
     do_action('ppcart_loaded');
 }

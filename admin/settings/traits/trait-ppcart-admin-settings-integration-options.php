@@ -145,6 +145,26 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
                 ],
             ],
             'fbads' => [
+                'pixel_id' => [
+                    'type'          => 'text',
+                    'label'         => esc_html__('Meta Pixel ID', 'publishpress-cart'),
+                    'settings'      => [
+                        'id'            => '_ppcart_fb_pixel_id',
+                        'value'         => '',
+                        'description'   => esc_html__('Enter the numeric Pixel ID to load Meta Pixel on checkout and paid confirmation pages. Leave blank if your site already loads Meta Pixel.', 'publishpress-cart'),
+                    ],
+                    'tab' => 'integrations',
+                ],
+                'initiate_checkout_event' => [
+                    'type'          => 'checkbox',
+                    'label'         => esc_html__('Initiate Checkout', 'publishpress-cart'),
+                    'settings'      => [
+                        'id'            => '_ppcart_fb_initiate_checkout',
+                        'value'         => '',
+                        'description'   => esc_html__('Sends an InitiateCheckout event to an existing Meta Pixel installation when the checkout form is displayed.', 'publishpress-cart'),
+                    ],
+                    'tab' => 'integrations',
+                ],
                 'pay_info_event' => [
                     'type'          => 'checkbox',
                     'label'         => esc_html__('Add Payment Info', 'publishpress-cart'),
@@ -152,7 +172,7 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
                         'id'            => '_ppcart_fb_add_payment_info',
                         'value'         => '',
                         'description'   => esc_html__('Sends an AddPaymentInfo event to an existing Meta Pixel installation.', 'publishpress-cart'),
-                        'note'          => esc_html__('Requires Meta Pixel or another plugin/theme to load fbq on the checkout page.', 'publishpress-cart'),
+                        'note'          => esc_html__('Requires a Meta Pixel ID above or an existing Meta Pixel installation.', 'publishpress-cart'),
                     ],
                     'tab' => 'integrations',
                 ],
@@ -163,7 +183,7 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
                         'id'            => '_ppcart_fb_purchase',
                         'value'         => '',
                         'description'   => esc_html__('Sends a Purchase event to an existing Meta Pixel installation.', 'publishpress-cart'),
-                        'note'          => esc_html__('Requires Meta Pixel or another plugin/theme to load fbq on the checkout page.', 'publishpress-cart'),
+                        'note'          => esc_html__('Requires a Meta Pixel ID above or an existing Meta Pixel installation.', 'publishpress-cart'),
                     ],
                     'tab' => 'integrations',
                 ],
@@ -174,7 +194,7 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
                         'id'            => '_ppcart_fb_lead',
                         'value'         => '',
                         'description'   => esc_html__('Sends a Lead event when a two-step checkout captures customer details.', 'publishpress-cart'),
-                        'note'          => esc_html__('Requires Meta Pixel or another plugin/theme to load fbq on the checkout page.', 'publishpress-cart'),
+                        'note'          => esc_html__('Requires a Meta Pixel ID above or an existing Meta Pixel installation.', 'publishpress-cart'),
                     ],
                     'tab' => 'integrations',
                 ],

@@ -2325,3 +2325,17 @@ body.ppcart-notif-modal-open {
     margin-bottom: 20px;
   }
 }
+
+.ppcart-settings-tabs .ppcart-product-tab-description {
+  flex: 0 0 100%;
+  margin: 0 0 20px;
+}
+
+
+.ppcart-upload-status.is-error {
+  color: #b32d2e;
+}
+
+.ppcart-upload-status.is-success {
+  color: #008a20;
+}

@@ -39,7 +39,17 @@ function ppcart_get_transaction_id($order_id)
             break;
     }
 
-    $txnid = apply_filters('ppcart_ransaction_id', $txnid, $method, $order_id);
+    /**
+     * Filters the transaction ID of an order.
+     *
+     * Replaces the StudioCart filter studiocart_transaction_id.
+     *
+     * @param string $txnid    Transaction ID.
+     * @param string $method   Payment method.
+     * @param int    $order_id Order post ID.
+     */
+    $txnid = apply_filters('ppcart_transaction_id', $txnid, $method, $order_id);
+    $txnid = apply_filters_deprecated('ppcart_ransaction_id', [$txnid, $method, $order_id], '1.1.0', 'ppcart_transaction_id');
     if ($txnid) {
         ppcart_update_post_meta($order_id, 'transaction_id', $txnid);
     }

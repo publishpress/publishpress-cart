@@ -48,6 +48,23 @@ trait PPCart_Stripe_Sync_Subscriptions_Trait
     }
 
     /**
+     * Pause using the persisted gateway mode and native synchronization.
+     *
+     * @since 1.1.0
+     * @param PPCart_Subscription $sub Subscription.
+     * @return PPCart_Subscription|false
+     */
+    public static function pause_subscription($sub)
+    {
+        if (! $sub || ! $sub->id || 'stripe' !== $sub->pay_method || empty($sub->subscription_id)) {
+            return false;
+        }
+        $stripe = self::get_client_for_mode($sub->gateway_mode);
+        $resource = $stripe->subscriptions->update($sub->subscription_id, ['pause_collection' => ['behavior' => 'void']]);
+        return self::sync_subscription_resource($resource, $stripe, null, true);
+    }
+
+    /**
      * Resume a paused Stripe-backed subscription through Stripe first.
      *
      * @param PPCart_Subscription|int $sub Local subscription or ID.
