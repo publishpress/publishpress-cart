@@ -5,6 +5,11 @@ if (! defined('ABSPATH')) {
 }
 
 
+// Revision metadata is copied/restored by WordPress, never from this form.
+if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+    return;
+}
+
 // phpcs:ignore WordPress.Security.NonceVerification.Missing -- This reads the nonce value that is verified immediately below.
 $nonce = isset($_POST['ppcart_related_product']) ? sanitize_text_field(wp_unslash($_POST['ppcart_related_product'])) : '';
 if ('' === $nonce || ! ppcart_verify_nonce($nonce, 'ppcart_related_product')) {

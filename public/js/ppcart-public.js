@@ -50,6 +50,7 @@
             return {
                 error: parsed.data.error,
                 fields: parsed.data.fields,
+                code: parsed.data.code,
             };
         }
 
@@ -182,9 +183,10 @@
         }
 
         function getCheckoutAmount(form) {
+            // A coupon can set the total to 0; only an empty total falls back to the plan price.
             var amount = parseFloat($('[name="ppcart_amount"]', form).val());
 
-            if (isNaN(amount) || amount <= 0) {
+            if (isNaN(amount)) {
                 amount = parseFloat($('input[name="ppcart_product_option"]:checked', form).data('price'));
             }
 
@@ -908,6 +910,10 @@
             }
         });
 
+        $(document).on('change', '.ppcart-password-toggle', function() {
+            $(this).closest('.ppcart-form-group').find('input.ppcart-password').attr('type', this.checked ? 'text' : 'password');
+        });
+
         /* track any change to total amount due
         $(document).on('change', '#ppcart-payment-form input', function() {
             amount = false;
@@ -1094,7 +1100,7 @@
 
         if ($('.ppcart-stripe #card-element').length > 0 || $('.ppcart-stripe-express #express-pay-element').length > 0) {
             // Create a Stripe client.
-            var stripe = Stripe(ppcart_stripe_key[0]);
+            var stripe = Stripe(ppcart_stripe_key[0], window.ppcart_stripe_options || {});
             var card = {};
         }
 
@@ -2430,7 +2436,38 @@
             });
         }
 
-        function mountPaymentElement(form) {
+        // The mount request runs the reCAPTCHA v3 check server-side, so fetch a
+        // fresh token first. grecaptcha loads async: wait for it (up to ~10s).
+        function mountPaymentElement(form, attempt) {
+            form = form.charAt(0) === '#' ? form : '#' + form;
+            var $token = $('.ppcart-grtoken', form);
+
+            if ($token.length === 0) {
+                mountPaymentElementNow(form);
+                return;
+            }
+
+            if (typeof grecaptcha === 'undefined' || typeof grecaptcha.ready !== 'function') {
+                attempt = attempt || 0;
+                if (attempt < 40) {
+                    setTimeout(function() { mountPaymentElement(form, attempt + 1); }, 250);
+                } else {
+                    mountPaymentElementNow(form);
+                }
+                return;
+            }
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute($token.attr('data-sitekey'), { action: 'submit' }).then(function(token) {
+                    $token.val(token);
+                    mountPaymentElementNow(form);
+                }, function() {
+                    mountPaymentElementNow(form);
+                });
+            });
+        }
+
+        function mountPaymentElementNow(form) {
             form = form.charAt(0) === '#' ? form : '#' + form;
             var formId = form.replace('#', '');
             var state = getCheckoutIntentState(formId);
@@ -2475,6 +2512,13 @@
                     return;
                 }
 
+                var $mount = $(mountSelector);
+                $mount.siblings('.ppcart-checkout-rate-limit-message').remove();
+                if (response && response.code === 'ppcart_checkout_rate_limited') {
+                    $('<div class="ppcart-checkout-rate-limit-message" role="alert"></div>')
+                        .text(response.error).insertAfter($mount);
+                    return;
+                }
                 if (!response || 'undefined' !== typeof response.error || 'undefined' === typeof response.clientSecret) {
                     return;
                 }

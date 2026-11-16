@@ -37,6 +37,12 @@ if [[ "$CACHE_PATH" != /* ]]; then
     CACHE_PATH="$ROOT/${CACHE_PATH#./}"
 fi
 
+# Print one stat field (%u or %g). GNU stat (Linux, containers) takes -c;
+# BSD stat (macOS hosts) has no -c and takes -f with the same field codes.
+stat_field() {
+    stat -c "$1" "$2" 2>/dev/null || stat -f "$1" "$2"
+}
+
 upsert_dotenv() {
     local file="$1" key="$2" value="$3"
     local tmp
@@ -64,9 +70,9 @@ upsert_dotenv() {
     # root, which is nobody:nogroup on the host, so .env becomes mode 600
     # and Codeception cannot load params. Give the file back to the repo owner.
     local repo_uid repo_gid file_uid
-    repo_uid="$(stat -c '%u' "$(dirname "$file")")"
-    repo_gid="$(stat -c '%g' "$(dirname "$file")")"
-    file_uid="$(stat -c '%u' "$file")"
+    repo_uid="$(stat_field '%u' "$(dirname "$file")")"
+    repo_gid="$(stat_field '%g' "$(dirname "$file")")"
+    file_uid="$(stat_field '%u' "$file")"
     if [[ "$file_uid" != "$repo_uid" ]]; then
         chown "${repo_uid}:${repo_gid}" "$file" 2>/dev/null || true
     fi

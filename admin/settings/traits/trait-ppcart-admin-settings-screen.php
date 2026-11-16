@@ -52,6 +52,10 @@ trait PPCart_Admin_Settings_Screen_Trait
      */
     public function render_plugin_admin_footer_markup($extra_class = '')
     {
+        if (! apply_filters('ppcart_show_admin_branding', true)) {
+            return;
+        }
+
         $logo_url = esc_url(PPCART_BASE_URL . 'admin/assets/publishpress-logo.png');
         $classes  = 'ppcart-pp-admin-footer';
 
@@ -83,19 +87,19 @@ trait PPCart_Admin_Settings_Screen_Trait
                         <li>
                             <a href="https://publishpress.com/links/about-cart" target="_blank" rel="noopener noreferrer"
                                title="<?php esc_attr_e('About PublishPress Cart', 'publishpress-cart'); ?>">
-                                <?php esc_html_e('About', 'publishpress-cart'); ?>
+                                <?php esc_html_e('About PublishPress Cart', 'publishpress-cart'); ?>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo esc_url(PPCART_DOCS_URL); ?>" target="_blank" rel="noopener noreferrer"
                                title="<?php esc_attr_e('PublishPress Cart Documentation', 'publishpress-cart'); ?>">
-                                <?php esc_html_e('Documentation', 'publishpress-cart'); ?>
+                                <?php esc_html_e('PublishPress Cart Documentation', 'publishpress-cart'); ?>
                             </a>
                         </li>
                         <li>
                             <a href="https://publishpress.com/publishpress-support/" target="_blank" rel="noopener noreferrer"
                                title="<?php esc_attr_e('Contact the PublishPress team', 'publishpress-cart'); ?>">
-                                <?php esc_html_e('Contact', 'publishpress-cart'); ?>
+                                <?php esc_html_e('Contact PublishPress', 'publishpress-cart'); ?>
                             </a>
                         </li>
                     </ul>
