@@ -1256,6 +1256,33 @@ jQuery(document).ready(function($){
 		});
 	}
 
+	/*
+	 * "?" help tooltips open on hover and focus (balloon.css). Escape hides the
+	 * open tooltip without moving focus; it shows again after the pointer
+	 * leaves or focus moves away (WCAG 1.4.13 Content on Hover or Focus).
+	 */
+	$(document).on('keydown', function(e) {
+		if ('Escape' !== e.key && 'Esc' !== e.key) {
+			return;
+		}
+
+		var open = document.querySelectorAll('.ppcart-tooltip:hover, .ppcart-tooltip:focus');
+		if (!open.length) {
+			return;
+		}
+
+		$(open).addClass('is-dismissed');
+	});
+
+	$(document).on('mouseleave focusout', '.ppcart-tooltip.is-dismissed', function() {
+		var tooltip = this;
+		// Keep it hidden while it is still hovered or focused.
+		if (tooltip.matches(':hover') || tooltip === document.activeElement) {
+			return;
+		}
+		$(tooltip).removeClass('is-dismissed');
+	});
+
 	$(document).on('click', '[data-ppcart-copy]', function(e) {
         e.preventDefault();
 

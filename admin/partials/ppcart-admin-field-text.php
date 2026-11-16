@@ -34,7 +34,7 @@ if ($right_currency) {
 }
 
 if (! empty($atts['label'])) {
-    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
+    ppcart_admin_field_label($atts, $field_dom_id);
 }
 
 ?><div class="input-group field-<?php echo esc_attr($atts['type']); ?>">
@@ -58,9 +58,7 @@ if (! empty($atts['label'])) {
     placeholder="<?php echo esc_attr($atts['placeholder']); ?>"
     type="<?php echo esc_attr($atts['type']); ?>"
     data-testid="<?php echo esc_attr($testid); ?>"
-    <?php if ('' !== $help_id) :
-        ?>aria-describedby="<?php echo esc_attr($help_id); ?>"<?php
-    endif; ?>
+    <?php echo ppcart_admin_field_label_aria_attrs($atts, $field_dom_id, $help_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute values are escaped by the helper. ?>
     autocomplete="new-password" autocorrect="off" autocapitalize="none"
     <?php if (isset($atts['step'])) :
         ?>step="<?php echo esc_attr($atts['step']); ?>"<?php

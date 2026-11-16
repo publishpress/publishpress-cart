@@ -414,18 +414,91 @@ function ppcart_admin_field_dom_id($atts)
  * 'description' is the one short help line under the control. 'tooltip' holds
  * the details that do not fit in that line.
  *
- * @param array $atts Field attributes.
+ * The tooltip is a focusable role="img" named by its text, so keyboard and
+ * screen reader users can reach it. Pass $field_dom_id to give it a stable id
+ * that the field can reference with aria-describedby (see
+ * ppcart_admin_field_label_aria_attrs()).
+ *
+ * @param array  $atts         Field attributes.
+ * @param string $field_dom_id Optional. DOM id of the field the label is for.
  * @return void
  */
-function ppcart_admin_field_tooltip($atts)
+function ppcart_admin_field_tooltip($atts, $field_dom_id = '')
 {
     if (empty($atts['tooltip'])) {
         return;
     }
 
     $text = wp_strip_all_tags(wp_specialchars_decode((string) $atts['tooltip'], ENT_QUOTES));
+    $id   = '' !== (string) $field_dom_id ? (string) $field_dom_id . '-tooltip' : '';
 
-    ?><span class="ppcart-tooltip" tabindex="0" aria-label="<?php echo esc_attr($text); ?>" data-balloon-pos="up" data-balloon-length="large">?</span><?php
+    ?><span class="ppcart-tooltip"<?php
+    if ('' !== $id) {
+        ?> id="<?php echo esc_attr($id); ?>"<?php
+    }
+    ?> tabindex="0" role="img" aria-label="<?php echo esc_attr($text); ?>" data-balloon-pos="up" data-balloon-length="large">?</span><?php
+}
+
+/**
+ * Print an admin field label: the label text plus the optional "?" tooltip.
+ *
+ * When the field has a tooltip, the label text sits in its own span so the
+ * field can be named by that text alone. Otherwise the tooltip text would be
+ * read as part of the field's accessible name.
+ *
+ * @param array  $atts         Field attributes.
+ * @param string $field_dom_id DOM id of the labelled control.
+ * @param string $class        Optional label class.
+ * @return void
+ */
+function ppcart_admin_field_label($atts, $field_dom_id, $class = '')
+{
+    $label        = isset($atts['label']) ? (string) $atts['label'] : '';
+    $field_dom_id = (string) $field_dom_id;
+    $has_tooltip  = ! empty($atts['tooltip']) && '' !== $field_dom_id;
+
+    ?><label<?php
+    if ('' !== $class) {
+        ?> class="<?php echo esc_attr($class); ?>"<?php
+    }
+    ?> for="<?php echo esc_attr($field_dom_id); ?>"><?php
+    if ($has_tooltip) {
+        ?><span id="<?php echo esc_attr($field_dom_id . '-label'); ?>"><?php echo esc_html($label); ?></span><?php
+        ppcart_admin_field_tooltip($atts, $field_dom_id);
+    } else {
+        echo esc_html($label);
+        ppcart_admin_field_tooltip($atts);
+    }
+    ?></label><?php
+}
+
+/**
+ * Build the aria attributes that name a field by its label text and describe it
+ * with its help line and "?" tooltip.
+ *
+ * Returns an attribute string with a leading space, already escaped, or ''.
+ *
+ * @param array  $atts         Field attributes.
+ * @param string $field_dom_id DOM id of the control.
+ * @param string $help_id      Optional id of the help line under the control.
+ * @return string
+ */
+function ppcart_admin_field_label_aria_attrs($atts, $field_dom_id, $help_id = '')
+{
+    $field_dom_id = (string) $field_dom_id;
+    $describedby  = '' !== (string) $help_id ? [ (string) $help_id ] : [];
+    $attrs        = '';
+
+    if (! empty($atts['tooltip']) && ! empty($atts['label']) && '' !== $field_dom_id) {
+        $attrs        .= ' aria-labelledby="' . esc_attr($field_dom_id . '-label') . '"';
+        $describedby[] = $field_dom_id . '-tooltip';
+    }
+
+    if (! empty($describedby)) {
+        $attrs .= ' aria-describedby="' . esc_attr(implode(' ', $describedby)) . '"';
+    }
+
+    return $attrs;
 }
 
 /**

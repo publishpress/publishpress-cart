@@ -750,6 +750,13 @@ td.column-order .row-actions{
   margin-top: 2px;
 }
 
+/* Escape hides an open "?" tooltip (ppcart-admin.js) until hover/focus ends. */
+.ppcart-tooltip.is-dismissed::before,
+.ppcart-tooltip.is-dismissed::after {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 #content_tab_emails .wp-editor-wrap {
   width: 600px;
 }

@@ -491,49 +491,49 @@ $this->render_metric_card(
                     <div class="total-sales column">
                         <div class="postbox">
                             <p><?php esc_html_e('Total Sales', 'publishpress-cart'); ?></p>
-                            <h3><?php ppcart_formatted_price($carttotal['total']); ?></h3>
+                            <p class="ppcart-report-total"><strong><?php ppcart_formatted_price($carttotal['total']); ?></strong></p>
                         </div>
                     </div>
 
                     <div class="total-sales column">
                         <div class="postbox">
                             <p><?php esc_html_e('Net Sales', 'publishpress-cart'); ?></p>
-                            <h3><?php ppcart_formatted_price($carttotal['total'] - $refunded_amount); ?></h3>
+                            <p class="ppcart-report-total"><strong><?php ppcart_formatted_price($carttotal['total'] - $refunded_amount); ?></strong></p>
                         </div>
                     </div>
 
                     <div class="total-downsells column">
                         <div class="postbox">
                             <p><?php esc_html_e('Total Refunds', 'publishpress-cart'); ?></p>
-                            <h3><?php echo esc_html($refunded_time); ?></h3>
+                            <p class="ppcart-report-total"><strong><?php echo esc_html($refunded_time); ?></strong></p>
                         </div>
                     </div>
 
                     <div class="total-downsells column">
                         <div class="postbox">
                             <p><?php esc_html_e('Amount Refunded', 'publishpress-cart'); ?></p>
-                            <h3><?php ppcart_formatted_price($refunded_amount); ?></h3>
+                            <p class="ppcart-report-total"><strong><?php ppcart_formatted_price($refunded_amount); ?></strong></p>
                         </div>
                     </div>
 
                     <div class="total-upsells column">
                         <div class="postbox">
                             <p><?php esc_html_e('Avg Revenue per Customer', 'publishpress-cart'); ?></p>
-                            <h3><?php ppcart_formatted_price($period_customer_value); ?></h3>
+                            <p class="ppcart-report-total"><strong><?php ppcart_formatted_price($period_customer_value); ?></strong></p>
                         </div>
                     </div>
 
                     <div class="total-orders column">
                         <div class="postbox">
                             <p><?php echo esc_html(apply_filters('ppcart_admin_reports_transactions_label', __('Transactions', 'publishpress-cart'))); ?></p>
-                            <h3><?php echo esc_html($query->found_posts); ?></h3>
+                            <p class="ppcart-report-total"><strong><?php echo esc_html($query->found_posts); ?></strong></p>
                         </div>
                     </div>
 
                     <div class="total-upsells column">
                         <div class="postbox">
                             <p><?php esc_html_e('Customers', 'publishpress-cart'); ?></p>
-                            <h3><?php echo esc_html(count($customers)); ?></h3>
+                            <p class="ppcart-report-total"><strong><?php echo esc_html(count($customers)); ?></strong></p>
                         </div>
                     </div>
 
