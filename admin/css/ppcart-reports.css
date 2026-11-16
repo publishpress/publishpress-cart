@@ -55,7 +55,7 @@ body.ppcart-admin-page #wpbody-content {
     --pp-cr-border-strong: #d4d7de;
     --pp-cr-text: #1a1d24;
     --pp-cr-muted: #5b6473;
-    --pp-cr-soft: #7a8493;
+    --pp-cr-soft: #646e7d; /* 4.5:1+ on white and the soft panel fills */
     --pp-cr-primary: #0a47c2;
     --pp-cr-primary-hover: #0838a0;
     --pp-cr-primary-soft: #e8efff;
@@ -635,7 +635,7 @@ body.ppcart-admin-page #wpbody-content {
     --pp-cr-border-strong: #d4d7de;
     --pp-cr-text: #1a1d24;
     --pp-cr-muted: #5b6473;
-    --pp-cr-soft: #7a8493;
+    --pp-cr-soft: #646e7d; /* 4.5:1+ on white and the soft panel fills */
     --pp-cr-primary: #0a47c2;
     --pp-cr-primary-hover: #0838a0;
     --pp-cr-primary-soft: #e8efff;
