@@ -215,8 +215,8 @@ if (! function_exists('ppcart_upgrade')) {
 
 if (is_admin()) {
     require_once __DIR__ . '/admin/class-ppcart-welcome.php';
-    add_action('admin_init', [PPCart_Welcome::class, 'maybe_redirect']);
-    add_action('admin_menu', [PPCart_Welcome::class, 'register_page'], 20);
+    add_action('admin_init', ['PPCart_Welcome', 'maybe_redirect']);
+    add_action('admin_menu', ['PPCart_Welcome', 'register_page'], 20);
 }
 
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');
