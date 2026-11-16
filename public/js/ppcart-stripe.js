@@ -174,7 +174,8 @@
                 ppcartStripe.hideLoader(buttonElem);
 
                 var data = xhr.responseJSON && xhr.responseJSON.data ? xhr.responseJSON.data : {};
-                alert(data.message ? data.message : 'Unable to save the new card. Please try again.');
+                var fallbackMessage = (window.ppcart_translate_frontend && window.ppcart_translate_frontend.card_save_failed) || 'Unable to save the new card. Please try again.';
+                alert(data.message ? data.message : fallbackMessage);
             },
         });
     };
