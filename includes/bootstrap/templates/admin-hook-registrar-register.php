@@ -7,6 +7,7 @@ if (! defined('ABSPATH')) {
 
 global $ppcart_product_fields, $ppcart_files;
 $plugin_admin = new PPCart_Admin($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
+$plugin_sample_data = new PPCart_Sample_Data();
 $plugin_admin_order = new PPCart_Admin_Order_Controller($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
 $plugin_admin_subscription = new PPCart_Admin_Subscription_Controller($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
 $plugin_admin_order_list = new PPCart_Admin_Order_List_Controller($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
@@ -32,6 +33,9 @@ $plugin_admin_ajax = new PPCart_Admin_Ajax($this->cart->get_plugin_name(), $this
 $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 $this->loader->add_action('admin_init', $plugin_admin_legacy_tracking_notice, 'maybe_dismiss_notice');
+$this->loader->add_action('admin_menu', $plugin_sample_data, 'register_page');
+$this->loader->add_action('admin_post_ppcart_generate_sample_data', $plugin_sample_data, 'generate');
+$this->loader->add_action('admin_post_ppcart_remove_sample_data', $plugin_sample_data, 'remove');
 $this->loader->add_action('admin_notices', $plugin_admin_legacy_tracking_notice, 'render_notice');
 
 $this->loader->add_action('init', $plugin_post_types, 'create_custom_post_type', 0);

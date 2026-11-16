@@ -68,6 +68,7 @@ class PPCart_Dependency_Loader
          * The class responsible for defining all actions that occur in the admin area.
          */
         require_once $base_path . 'admin/class-ppcart-admin.php';
+        require_once $base_path . 'admin/class-ppcart-sample-data.php';
         require_once $base_path . 'admin/controllers/class-ppcart-admin-order-controller.php';
         require_once $base_path . 'admin/controllers/class-ppcart-admin-subscription-controller.php';
         require_once $base_path . 'admin/controllers/class-ppcart-admin-order-list-controller.php';
