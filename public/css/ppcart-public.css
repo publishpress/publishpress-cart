@@ -413,7 +413,8 @@ body.ppcart-checkout-1 .ppcart-container {
   .ppcart-page.page-closed #ppcart-payment-form .products {
     min-height: 40vh;
   }
-  .ppcart-page.page-closed #ppcart-payment-form .products > div {
+  .ppcart-page.page-closed #ppcart-payment-form .products > div,
+  .ppcart-page.page-closed #ppcart-payment-form .products > .ppcart-fieldset > div {
     min-width: 0;
     line-height: 1.35;
   }
@@ -1103,6 +1104,12 @@ body.ppcart-checkout-1 .ppcart-container {
 .ppcart label .req {
   color: #e12c07;
   font-weight: bold;
+}
+.ppcart fieldset.ppcart-fieldset {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
 }
 .ppcart .products.hidden {
   display: none;
