@@ -25,6 +25,7 @@ class PPCart_Admin_Screens
     public const PAGE_EXTENSIONS       = 'ppcart-extensions';
     public const PAGE_WHITE_LABEL      = 'ppcart-white-label';
     public const PAGE_AFFILIATES       = 'ppcart-affiliates';
+    public const PAGE_SAMPLE_DATA      = 'ppcart-sample-data';
 
     public const ADMIN_BODY_CLASS = 'ppcart-admin-page';
     public const MENU_HOOK_PREFIX = 'ppcart_page_';
@@ -47,6 +48,7 @@ class PPCart_Admin_Screens
         self::PAGE_EXTENSIONS,
         self::PAGE_WHITE_LABEL,
         self::PAGE_AFFILIATES,
+        self::PAGE_SAMPLE_DATA,
     ];
 
     public const HOOK_SUFFIXES = [
