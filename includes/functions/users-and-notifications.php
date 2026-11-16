@@ -288,6 +288,7 @@ function ppcart_new_user_notification($user, $order_id, $test = false)
         'order_info' => $order_info,
         'headline' => '',
         'body' => $body,
+        'subject' => $subject,
     ];
 
     $body = ppcart_get_email_html($atts);
@@ -358,6 +359,7 @@ function ppcart_notification_send($status, $order_info, $test = false)
             'order_info' => $order_info,
             'headline' => $headline,
             'body' => $body,
+            'subject' => $subject,
         ];
 
         $to = apply_filters('ppcart_notification_email_to', trim($order_info['email']), $type, $order_info);

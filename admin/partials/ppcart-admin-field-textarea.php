@@ -31,7 +31,7 @@ $testid_source = ! empty($atts['id']) ? $atts['id'] : ($atts['name'] ?? '');
 $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
 $help_id = ! empty($atts['description']) ? $field_dom_id . '-help' : '';
 if (! empty($atts['label'])) {
-    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
+    ppcart_admin_field_label($atts, $field_dom_id);
 }
 
 ?><div class="input-group field-<?php echo esc_attr($atts['type']); ?>"><div class="textarea-wrap"><textarea
@@ -41,9 +41,7 @@ if (! empty($atts['label'])) {
     name="<?php echo esc_attr($atts['name']); ?>"
     placeholder="<?php echo esc_attr($atts['placeholder']); ?>"
     data-testid="<?php echo esc_attr($testid); ?>"
-    <?php if ('' !== $help_id) :
-        ?>aria-describedby="<?php echo esc_attr($help_id); ?>"<?php
-    endif; ?>
+    <?php echo ppcart_admin_field_label_aria_attrs($atts, $field_dom_id, $help_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute values are escaped by the helper. ?>
     rows="<?php echo esc_attr($atts['rows']); ?>"><?php
 
     echo esc_html($atts['value']);
