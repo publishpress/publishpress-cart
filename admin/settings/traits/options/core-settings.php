@@ -229,6 +229,8 @@ $options = [
             'label'         => esc_html__('Test email', 'publishpress-cart'),
             'settings'      => [
                 'id'            => '_ppcart_email_preview',
+                // The row label "Test email" names the email type select.
+                'label_for'     => 'ppcart-email-type',
                 'skip_register' => true,
                 'description'   => '
                         <div class="ppcart-settings__email-test">
