@@ -564,6 +564,8 @@ function ppcart_translate_js($js_script = '')
             'something_went_wrong' => __("Something went wrong. Please try again.", "publishpress-cart"),
             'list_renewed'   => __("Mailing lists refreshed.", "publishpress-cart"),
             'missing_required'   => __("Required fields missing", "publishpress-cart"),
+            /* translators: %s: error message returned by the server. */
+            'error_occurred'     => __("An error occurred: %s", "publishpress-cart"),
             ];
         foreach ($return_data as $k => $v) {
             $return_data[$k] = apply_filters('ppcart_backend_message_' . $k, $v);
@@ -599,6 +601,8 @@ function ppcart_translate_js($js_script = '')
             'includes' => __('includes', "publishpress-cart"),
             'included_in_price' => __('Included In Price', "publishpress-cart"),
             'field_required' => __('This field is required', "publishpress-cart"),
+            'unexpected_error' => __('An unexpected error occurred.', 'publishpress-cart'),
+            'card_save_failed' => __('Unable to save the new card. Please try again.', 'publishpress-cart'),
             'username_exists' => __("This username already exists", "publishpress-cart"),
             'with_a' => apply_filters('ppcart_plan_text_with_a', __('with a', 'publishpress-cart')),
             'day_free_trial' => apply_filters('ppcart_plan_text_day_free_trial', __('-day free trial', 'publishpress-cart')),
