@@ -2,6 +2,7 @@
 title: "LearnDash"
 order: 25
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # LearnDash

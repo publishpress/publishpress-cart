@@ -2,6 +2,7 @@
 title: "PublishPress Cart Actions and Filters"
 order: 35
 doc_category: publishpress-cart
+section: Developers
 ---
 
 # PublishPress Cart Actions and Filters

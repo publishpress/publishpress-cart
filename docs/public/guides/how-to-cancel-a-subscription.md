@@ -2,6 +2,7 @@
 title: "How to Cancel a Subscription"
 order: 20
 doc_category: publishpress-cart
+section: Subscription
 ---
 
 # How to Cancel a Subscription

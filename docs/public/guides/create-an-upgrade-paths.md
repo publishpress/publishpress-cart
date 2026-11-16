@@ -2,6 +2,7 @@
 title: "Create an Upgrade Paths"
 order: 5
 doc_category: publishpress-cart
+section: Upgrade Paths
 ---
 
 # Create an Upgrade Paths

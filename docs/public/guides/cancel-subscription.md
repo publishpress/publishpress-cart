@@ -2,6 +2,7 @@
 title: "Cancel Subscription"
 order: 4
 doc_category: publishpress-cart
+section: Subscription
 ---
 
 # Cancel Subscription

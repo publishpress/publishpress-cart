@@ -2,6 +2,7 @@
 title: "SendFox"
 order: 38
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # SendFox

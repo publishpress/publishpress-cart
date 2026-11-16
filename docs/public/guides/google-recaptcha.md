@@ -2,6 +2,7 @@
 title: "Google ReCAPTCHA"
 order: 15
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Google ReCAPTCHA

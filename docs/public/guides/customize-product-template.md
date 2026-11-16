@@ -2,6 +2,7 @@
 title: "Customize Product Template"
 order: 9
 doc_category: publishpress-cart
+section: Products
 ---
 
 # Customize Product Template

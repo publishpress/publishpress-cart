@@ -2,6 +2,7 @@
 title: "How to Add Collection"
 order: 19
 doc_category: publishpress-cart
+section: Collections
 ---
 
 # How to Add Collection

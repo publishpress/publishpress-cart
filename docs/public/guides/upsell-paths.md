@@ -2,6 +2,7 @@
 title: "Create an Upsell Paths"
 order: 42
 doc_category: publishpress-cart
+section: Upsell Paths
 ---
 
 # Create an Upsell Paths

@@ -2,6 +2,7 @@
 title: "Product Configuration"
 order: 34
 doc_category: publishpress-cart
+section: Products
 ---
 
 # Product Configuration

@@ -2,6 +2,7 @@
 title: "Academy LMS"
 order: 1
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Academy LMS

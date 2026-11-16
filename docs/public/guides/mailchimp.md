@@ -2,6 +2,7 @@
 title: "Mailchimp"
 order: 26
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Mailchimp

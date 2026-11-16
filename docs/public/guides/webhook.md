@@ -2,6 +2,7 @@
 title: "Webhooks"
 order: 43
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Webhooks
