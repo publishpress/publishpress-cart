@@ -82,27 +82,12 @@ if (empty($log_entries)) {
     $cart_order->id = $post_id;
 } else {
     $cart_order = new PPCart_Order($post_id);
-    $first_name = isset($_POST['_ppcart_firstname']) ? sanitize_text_field(wp_unslash($_POST['_ppcart_firstname'])) : '';
-    $last_name = isset($_POST['_ppcart_lastname']) ? sanitize_text_field(wp_unslash($_POST['_ppcart_lastname'])) : '';
-    $email = isset($_POST['_ppcart_email']) ? sanitize_email(wp_unslash($_POST['_ppcart_email'])) : '';
-    $vat_number = isset($_POST['_ppcart_vat_number']) ? sanitize_text_field(wp_unslash($_POST['_ppcart_vat_number'])) : '';
-
-    $cart_order->first_name = $cart_order->firstname = $first_name;
-    $cart_order->last_name = $cart_order->lastname = $last_name;
-    $cart_order->email = $email;
-    $cart_order->vat_number = $vat_number;
-
-    $fields = ['phone','country','address1','address2','city','state','zip','company'];
-    foreach ($fields as $field) {
-        $field_key = '_ppcart_' . $field;
-        $posted_field = isset($_POST[ $field_key ]) ? sanitize_text_field(wp_unslash($_POST[ $field_key ])) : '';
-
-        if ('' !== $posted_field) {
-            $cart_order->$field = $posted_field;
-        } else {
-            $cart_order->$field = null;
-        }
+    $details = [];
+    foreach (PPCart_Order::admin_customer_fields() as $field) {
+        $key = '_ppcart_' . $field;
+        $details[$field] = isset($_POST[$key]) ? sanitize_text_field(wp_unslash($_POST[$key])) : '';
     }
+    $cart_order->apply_admin_customer_details($details);
 }
 
 if ('' !== $ppcart_status) {

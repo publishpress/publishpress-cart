@@ -226,6 +226,11 @@ class PPCart_Contacts_Page
             'info'              => __('_START_ - _END_ of _TOTAL_ customers', 'publishpress-cart'),
             'infoEmpty'         => __('No customers found', 'publishpress-cart'),
             'zeroRecords'       => __('No matching customers found', 'publishpress-cart'),
+            /* translators: _PAGE_ and _PAGES_ are replaced with the current and total page numbers. */
+            'pageOf'            => __('_PAGE_ of _PAGES_', 'publishpress-cart'),
+            'oneItem'           => __('1 item', 'publishpress-cart'),
+            /* translators: _TOTAL_ is replaced with the number of matching customers. */
+            'items'             => __('_TOTAL_ items', 'publishpress-cart'),
         ];
 
         wp_add_inline_script(
@@ -246,8 +251,36 @@ class PPCart_Contacts_Page
                     return;
                 }
 
+                $.fn.dataTable.ext.renderer.pagingButton.ppcartWordPress = function ( settings, type, content, active, disabled ) {
+                    disabled = disabled || ! new $.fn.dataTable.Api( settings ).page.info().pages;
+                    var control = disabled
+                        ? $( '<span class=\"tablenav-pages-navspan\" aria-hidden=\"true\"></span>' )
+                        : $( '<button type=\"button\" class=\"button\"></button>' );
+                    control.html( content );
+                    return { display: control[0], clicker: control[0] };
+                };
+
+                $.fn.dataTable.ext.renderer.pagingContainer.ppcartWordPress = function ( settings, buttons ) {
+                    var info = new $.fn.dataTable.Api( settings ).page.info();
+                    var pageText = contactsTableI18n.pageOf
+                        .replace( '_PAGE_', info.pages ? info.page + 1 : 0 )
+                        .replace( '_PAGES_', info.pages );
+                    var links = $( '<span class=\"pagination-links\"></span>' );
+                    links.append( buttons[0], ' ', buttons[1], ' ' );
+                    links.append( $( '<span class=\"paging-input\"><span class=\"tablenav-paging-text\"></span></span>' )
+                        .find( '.tablenav-paging-text' ).text( pageText ).end() );
+                    links.append( ' ', buttons[2], ' ', buttons[3] );
+                    var itemText = info.recordsDisplay === 1 ? contactsTableI18n.oneItem
+                        : contactsTableI18n.items.replace( '_TOTAL_', info.recordsDisplay.toLocaleString() );
+                    return $( '<div class=\"tablenav bottom\"><div class=\"tablenav-pages\"></div></div>' )
+                        .find( '.tablenav-pages' ).toggleClass( 'one-page', info.pages <= 1 )
+                        .append( $( '<span class=\"displaying-num\"></span>' ).text( itemText ), links ).end();
+                };
+
                 \$contactsTable.DataTable( {
                     pageLength: 25,
+                    pagingType: 'full',
+                    renderer: { pagingButton: 'ppcartWordPress', pagingContainer: 'ppcartWordPress' },
                     order: [[ 0, 'desc' ]],
                     language: {
                         search: '',

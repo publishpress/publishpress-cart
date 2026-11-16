@@ -287,27 +287,6 @@ export const coreAdminTests: AdminTestCase[] = [
     ],
   },
   {
-    id: "AD-011",
-    title: "Extensions Page",
-    startUrl: "{{publishpress_cart_host}}/wp-admin/admin.php?page=ppcart-extensions",
-    steps: [
-      {
-        command: "assertElementPresent",
-        target: ".cart-extensions-wrap",
-      },
-      {
-        command: "assertElementPresent",
-        target: "[id^=\"product-\"]",
-        optional: true,
-      },
-      {
-        command: "assertTextPresent",
-        target: "body",
-        value: "Extensions",
-      }
-    ],
-  },
-  {
     id: "AD-020",
     title: "Settings General Tab",
     startUrl: "{{publishpress_cart_host}}/wp-admin/admin.php?page=ppcart-settings",

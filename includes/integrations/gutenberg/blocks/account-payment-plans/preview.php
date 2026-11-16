@@ -35,7 +35,7 @@ try {
                 <table class="ppcart-account-table" cellpadding="0" cellspacing="0">
                     <thead><tr><th><?php echo esc_html($product_lbl); ?></th><th><?php echo esc_html($status_lbl); ?></th><th><?php echo esc_html($next_lbl); ?></th><th><?php echo esc_html($price_lbl); ?></th><th></th></tr></thead>
                     <tbody>
-                        <tr><td><?php echo esc_html($product); ?></td><td><?php echo esc_html($status_text); ?></td><td><?php echo esc_html($next); ?></td><td><?php echo esc_html($price); ?></td><td><a class="ppcart-account-action-button" href="#" data-testid="ppcart-account-payment-plan-preview-pay"><?php echo esc_html($pay); ?></a> <a class="ppcart-account-action-button" href="#" data-testid="ppcart-account-payment-plan-preview-manage"><?php echo esc_html($manage); ?></a></td></tr>
+                        <tr><td><?php echo esc_html($product); ?></td><td><?php echo esc_html($status_text); ?></td><td><?php echo esc_html($next); ?></td><td><?php echo esc_html($price); ?></td><td><a class="ppcart-account-action-button" data-testid="ppcart-account-payment-plan-preview-pay"><?php echo esc_html($pay); ?></a> <a class="ppcart-account-action-button" data-testid="ppcart-account-payment-plan-preview-manage"><?php echo esc_html($manage); ?></a></td></tr>
                     </tbody>
                 </table>
             </div>

@@ -280,7 +280,7 @@ if ($order_results->have_posts()) {
                 'date'          => get_the_time('M j, Y', $order_post_id),
                 'edit_url'      => ppcart_get_edit_post_url($order_post_id),
                 'product_title' => get_the_title($order_data->bump_id),
-                'type_label'    => __('Order Bump', 'publishpress-cart'),
+                'type_label'    => __('Offer during checkout', 'publishpress-cart'),
                 'type_class'    => 'bump',
                 'status'        => $order_status,
                 'status_label'  => $order_data->status_label,

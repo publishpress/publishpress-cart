@@ -49,6 +49,9 @@ wp_localize_script(
 
 wp_localize_script('ppcart', 'ppcart_translate_backend', ppcart_translate_js('ppcart-admin.js'));
 wp_localize_script('ppcart', 'ppcart_admin_i18n', [
+    'copy_success' => __('Copied', 'publishpress-cart'),
+    'copy_failed' => __('Copy failed', 'publishpress-cart'),
+    'required_fields_missing' => __('Required fields missing:', 'publishpress-cart'),
     'payment_label_cashondelivery' => __('Cash on Delivery', 'publishpress-cart'),
     'payment_label_stripe' => __('Stripe', 'publishpress-cart'),
     'payment_label_paypal' => __('PayPal', 'publishpress-cart'),
@@ -135,6 +138,11 @@ if (PPCart_Admin_Screens::is_settings_screen($hook_suffix)) {
 wp_enqueue_media();
 wp_enqueue_editor();
 wp_enqueue_script('ppcart-uploader', PPCART_BASE_URL . 'admin/js/ppcart-file-uploader.js', [ 'jquery' ], $this->version, true);
+wp_localize_script('ppcart-uploader', 'ppcartUploaderI18n', [
+    'uploading' => __('Uploading file…', 'publishpress-cart'),
+    'uploaded' => __('File uploaded successfully.', 'publishpress-cart'),
+    'failed' => __('Upload failed. Please try again.', 'publishpress-cart'),
+]);
 wp_enqueue_script('ppcart-repeater', PPCART_BASE_URL . 'admin/js/ppcart-repeater.js', [ 'jquery', 'editor', 'quicktags', 'jquery-ui-sortable' ], $this->version, true);
 
 wp_localize_script('ppcart-repeater', 'ppcartNotificationI18n', [
@@ -146,3 +154,5 @@ wp_localize_script('ppcart-repeater', 'ppcartNotificationI18n', [
     'testFailed'     => __('Test email failed to send. Please refresh the page and try again.', 'publishpress-cart'),
     'testNeedEmail'  => __('Enter an email address to send the test to.', 'publishpress-cart'),
 ]);
+
+$this->enqueue_product_metabox_assets($hook_suffix);

@@ -133,7 +133,9 @@ function ppcart_add_remove_activecampaign_subscriber($order_id, $service_id, $ac
         foreach ($custom as $k => $v) {
             $field_id_parts = explode(',', $k, 2);
             $field_id = trim($field_id_parts[0]);
-            if ($v && is_array($values) && isset($values[$v])) {
+            if (0 === strpos((string) $v, 'custom.')) {
+                $field_values[] = ['field' => $field_id, 'value' => ppcart_integration_custom_value($v, $order_id)];
+            } elseif ($v && is_array($values) && isset($values[$v])) {
                 $field_values[] = ['field' => $field_id, 'value' => $values[$v]['value']];
             } elseif ($v && isset($info[$v])) {
                 $field_values[] = ['field' => $field_id, 'value' => $info[$v]];
@@ -404,6 +406,26 @@ function ppcart_admin_field_dom_id($atts)
     }
 
     return isset($atts['id']) ? (string) $atts['id'] : '';
+}
+
+/**
+ * Print the "?" tooltip inside an admin field label.
+ *
+ * 'description' is the one short help line under the control. 'tooltip' holds
+ * the details that do not fit in that line.
+ *
+ * @param array $atts Field attributes.
+ * @return void
+ */
+function ppcart_admin_field_tooltip($atts)
+{
+    if (empty($atts['tooltip'])) {
+        return;
+    }
+
+    $text = wp_strip_all_tags(wp_specialchars_decode((string) $atts['tooltip'], ENT_QUOTES));
+
+    ?><span class="ppcart-tooltip" tabindex="0" aria-label="<?php echo esc_attr($text); ?>" data-balloon-pos="up" data-balloon-length="large">?</span><?php
 }
 
 /**

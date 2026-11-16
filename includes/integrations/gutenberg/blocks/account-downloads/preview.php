@@ -32,7 +32,7 @@ foreach ($sample as $item) {
     $items .= '<div class="ppcart-download-item">'
         . '<span class="ppcart-download-icon" aria-hidden="true">&#128196;</span>'
         . '<div class="ppcart-download-meta"><strong>' . esc_html($item['name']) . '</strong><span>' . esc_html($item['meta']) . '</span></div>'
-        . '<a class="ppcart-download-action" href="#" data-testid="' . esc_attr(ppcart_testid('ppcart-account-download-preview-' . $item_index)) . '">' . $download_label . '</a>'
+        . '<a class="ppcart-download-action" data-testid="' . esc_attr(ppcart_testid('ppcart-account-download-preview-' . $item_index)) . '">' . $download_label . '</a>'
         . '</div>';
 }
 

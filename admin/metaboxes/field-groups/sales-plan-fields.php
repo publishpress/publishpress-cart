@@ -7,9 +7,10 @@ if (! defined('ABSPATH')) {
 return [
     'Hide Plans Section' => [
         'class'         => 'widefat',
-        'description'   => '',
+        'description'   => __('Hide the plan list at checkout.', 'publishpress-cart'),
+        'tooltip'       => __('The first visible plan is selected for the customer.', 'publishpress-cart'),
         'id'            => '_ppcart_hide_plans',
-        'label'         => __('Hide Plans Section', 'publishpress-cart'),
+        'label'         => __('Hide plans section', 'publishpress-cart'),
         'placeholder'   => '',
         'type'          => 'checkbox',
         'value'         => '',
@@ -17,9 +18,9 @@ return [
     ],
     'Section Heading' => [
         'class'     => 'widefat',
-        'description'   => '',
+        'description'   => __('Shown above the plan list at checkout.', 'publishpress-cart'),
         'id'            => '_ppcart_plan_heading',
-        'label'     => __('Section Heading', 'publishpress-cart'),
+        'label'     => __('Section heading', 'publishpress-cart'),
         'placeholder'   => '',
         'type'      => 'text',
         'value'     => __('Payment Plan', 'publishpress-cart'),
@@ -34,14 +35,45 @@ return [
     'Payment Plan' => [
         'class'         => 'ppcart-repeater',
         'id'            => '_ppcart_pay_options',
-        'label-add'     => __('+ Add New', 'publishpress-cart'),
-        'label-edit'    => __('Edit Payment Plan', 'publishpress-cart'),
-        'label-header'  => __('Payment Plan', 'publishpress-cart'),
-        'label-remove'  => __('Remove Payment Plan', 'publishpress-cart'),
+        'label-add'     => __('+ Add payment plan', 'publishpress-cart'),
+        'label-edit'    => __('Edit payment plan', 'publishpress-cart'),
+        'label-header'  => __('Payment plan', 'publishpress-cart'),
+        'label-remove'  => __('Remove payment plan', 'publishpress-cart'),
         'title-field'   => 'name',
         'type'          => 'repeater',
         'value'         => '',
         'class_size'    => '',
+        'summary'       => true,
+        'empty_state'   => [
+            'icon'  => 'dashicons-money-alt',
+            'title' => __('No payment plans yet', 'publishpress-cart'),
+            'text'  => __('Add a plan to set the price customers pay for this product.', 'publishpress-cart'),
+        ],
+        'sections'      => apply_filters(
+            'ppcart_pay_plan_field_sections',
+            [
+                // The sale price sits next to the price, and the sale label next to the label.
+                'main' => [
+                    'fields' => [ 'product_type', 'price', 'sale_price', 'name_your_own_price_text', 'recurring_pwyw', 'name_your_own_price_text_recurring' ],
+                ],
+                'billing' => [
+                    'title'  => __('Billing', 'publishpress-cart'),
+                    'fields' => [ 'frequency', 'interval', 'installments' ],
+                ],
+                'sale' => [
+                    'title'  => __('Sale billing', 'publishpress-cart'),
+                    'fields' => [ 'sale_frequency', 'sale_interval', 'sale_installments', 'sale_sign_up_fee' ],
+                ],
+                'labels' => [
+                    'fields' => [ 'option_name', 'sale_option_name' ],
+                ],
+                'advanced' => [
+                    'title'  => __('Advanced', 'publishpress-cart'),
+                    'type'   => 'details',
+                    'fields' => [ 'option_id', 'url_slug', 'is_hidden', 'stripe_plan_id', 'sale_stripe_plan_id' ],
+                ],
+            ]
+        ),
         'fields'        => $this->pay_plan_fields($save),
     ],
 ];
