@@ -93,11 +93,14 @@ foreach ($options as $k => $v) {
                                 placeholder="<?php echo esc_attr__('Search by name or email', 'publishpress-cart'); ?>"
                                 autocomplete="off"
                                 spellcheck="false"
+                                role="combobox"
                                 aria-autocomplete="list"
+                                aria-expanded="false"
                                 aria-controls="ppcart-reports-customer-results"
                                 data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-reports-customer')); ?>"
                             />
-                            <ul id="ppcart-reports-customer-results" class="ppcart-reports-search-results ppcart-reports-customer-results" hidden></ul>
+                            <ul id="ppcart-reports-customer-results" class="ppcart-reports-search-results ppcart-reports-customer-results" role="listbox" aria-label="<?php echo esc_attr__('Customers', 'publishpress-cart'); ?>" hidden></ul>
+                            <span class="screen-reader-text ppcart-reports-customer-status" role="status" aria-live="polite" aria-atomic="true"></span>
                         </div>
                         <div class="ppcart-reports-filter-field ppcart-reports-product-search">
                             <label class="screen-reader-text" for="ppcart-reports-product-search"><?php esc_html_e('Search products', 'publishpress-cart'); ?></label>
@@ -110,12 +113,15 @@ foreach ($options as $k => $v) {
                                 placeholder="<?php echo esc_attr__('All products', 'publishpress-cart'); ?>"
                                 autocomplete="off"
                                 spellcheck="false"
+                                role="combobox"
                                 aria-autocomplete="list"
+                                aria-expanded="false"
                                 aria-controls="ppcart-reports-product-results"
                                 title="<?php echo esc_attr__('Filters by the order or subscription\'s primary product', 'publishpress-cart'); ?>"
                                 data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-reports-product')); ?>"
                             />
-                            <ul id="ppcart-reports-product-results" class="ppcart-reports-search-results ppcart-reports-product-results" hidden></ul>
+                            <ul id="ppcart-reports-product-results" class="ppcart-reports-search-results ppcart-reports-product-results" role="listbox" aria-label="<?php echo esc_attr__('Products', 'publishpress-cart'); ?>" hidden></ul>
+                            <span class="screen-reader-text ppcart-reports-product-status" role="status" aria-live="polite" aria-atomic="true"></span>
                         </div>
                         <input class="button button-primary" type="submit" value="<?php echo esc_attr__('Apply', 'publishpress-cart'); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-reports-apply')); ?>" />
                         <a class="button ppcart-reports-clear" href="<?php echo esc_url($clear_url); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-reports-clear')); ?>"><?php esc_html_e('Clear filters', 'publishpress-cart'); ?></a>
