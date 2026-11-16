@@ -17,11 +17,14 @@
   --ppcart-card-border: rgba(226, 232, 240, 0.82);
   --ppcart-text: #1a1d24;
   --ppcart-text-muted: #5b6473;
-  --ppcart-text-soft: #7a8493;
+  --ppcart-text-soft: #646e7d; /* 4.9:1 on #f8fafc */
   --ppcart-primary: #0a47c2;
   --ppcart-primary-hover: #0838a0;
   --ppcart-primary-soft: #e8efff;
-  --ppcart-focus-ring: 0 0 0 3px rgba(10, 71, 194, 0.12);
+  /* With the primary border colour this draws a solid 2px ring (7.8:1). */
+  --ppcart-focus-ring: 0 0 0 1px var(--ppcart-primary);
+  /* Form field borders need 3:1 against white (WCAG 1.4.11). */
+  --ppcart-field-border: #868e9b;
   --ppcart-section-header: #655997;
   --ppcart-sidebar-primary: #3858e9;
   --ppcart-sidebar-bg: #f8fafc;
@@ -80,20 +83,24 @@
   height: 16px;
   justify-content: center;
   line-height: 1;
-  margin: 0 0 0 6px;
+  margin: -4px -4px -4px 2px;
   vertical-align: 1px;
   width: 16px;
+  /* Transparent border grows the hit area to 24px (WCAG 2.5.8); negative margins keep the layout. */
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  box-sizing: content-box;
 }
 
 /* ppcart-admin.css removes the gap for the old label layout. */
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col .ppcart-row > label:first-child .ppcart-tooltip {
   flex: none;
-  margin: 0 0 0 6px;
+  margin: -4px -4px -4px 2px;
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tooltip:hover,
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-tooltip:focus {
-  background: var(--ppcart-border-strong);
+  background-color: var(--ppcart-border-strong);
   color: var(--ppcart-text);
 }
 
@@ -130,7 +137,7 @@
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col select,
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-right-col textarea {
   background-color: var(--ppcart-surface);
-  border: 1px solid var(--ppcart-border-strong);
+  border: 1px solid var(--ppcart-field-border);
   border-radius: var(--ppcart-radius-sm);
   box-shadow: none;
   box-sizing: border-box;
@@ -502,7 +509,7 @@
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control .selectize-input {
-  border: 1px solid var(--ppcart-border-strong);
+  border: 1px solid var(--ppcart-field-border);
   border-radius: var(--ppcart-radius-sm);
   box-shadow: none;
   color: var(--ppcart-text);

@@ -201,6 +201,7 @@ function ppcart_frontend_allowed_html()
         'aria-expanded'   => true,
         'aria-hidden'     => true,
         'aria-label'      => true,
+        'aria-labelledby' => true,
         'aria-live'       => true,
         'aria-selected'   => true,
         'class'           => true,
@@ -278,6 +279,7 @@ function ppcart_frontend_allowed_html()
     ]);
 
     $allowed['select'] = array_merge($global_attributes, [
+        'autocomplete' => true,
         'disabled' => true,
         'multiple' => true,
         'name'     => true,

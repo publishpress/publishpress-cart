@@ -29,7 +29,7 @@ wp_enqueue_script('ppcart-selectize', PPCART_BASE_URL . 'admin/js/selectize.js',
 wp_enqueue_script('ppcart-flatpickr', PPCART_BASE_URL . 'admin/assets/libs/flatpickr.min.js', [ 'jquery', 'jquery-ui-datepicker', 'jquery-ui-slider' ], $this->version, false);
 wp_enqueue_script('ppcart-font-awesome-all', PPCART_BASE_URL . 'includes/assets/font-awesome-all.min.js', [], $this->version, true);
 wp_enqueue_script('jquery-ui-dialog');
-wp_enqueue_script('ppcart', PPCART_BASE_URL . 'admin/js/ppcart-admin.js', [ 'jquery', 'wp-color-picker', 'jquery-ui-dialog' ], $this->version, false);
+wp_enqueue_script('ppcart', PPCART_BASE_URL . 'admin/js/ppcart-admin.js', [ 'jquery', 'wp-color-picker', 'jquery-ui-dialog', 'wp-a11y' ], $this->version, false);
 wp_enqueue_script('moment');
 wp_enqueue_script('ppcart-daterangepicker', PPCART_BASE_URL . 'admin/js/ppcart-daterangepicker.min.js', [ 'jquery', 'jquery-ui-datepicker', 'jquery-ui-slider', 'moment' ], $this->version, false);
 wp_enqueue_script('ppcart-datatables', PPCART_BASE_URL . 'admin/js/jquery.dataTables.min.js', [ 'jquery' ], $this->version, true);
@@ -145,7 +145,15 @@ wp_localize_script('ppcart-uploader', 'ppcartUploaderI18n', [
     'uploaded' => __('File uploaded successfully.', 'publishpress-cart'),
     'failed' => __('Upload failed. Please try again.', 'publishpress-cart'),
 ]);
-wp_enqueue_script('ppcart-repeater', PPCART_BASE_URL . 'admin/js/ppcart-repeater.js', [ 'jquery', 'editor', 'quicktags', 'jquery-ui-sortable' ], $this->version, true);
+wp_enqueue_script('ppcart-repeater', PPCART_BASE_URL . 'admin/js/ppcart-repeater.js', [ 'jquery', 'editor', 'quicktags', 'jquery-ui-sortable', 'wp-a11y' ], $this->version, true);
+
+wp_localize_script('ppcart-repeater', 'ppcartRepeaterI18n', [
+    /* translators: 1: item title, 2: new position, 3: number of items. */
+    'movedTo'      => __('%1$s moved to position %2$d of %3$d.', 'publishpress-cart'),
+    'alreadyFirst' => __('This item is already first.', 'publishpress-cart'),
+    'alreadyLast'  => __('This item is already last.', 'publishpress-cart'),
+    'removed'      => __('Item removed.', 'publishpress-cart'),
+]);
 
 wp_localize_script('ppcart-repeater', 'ppcartNotificationI18n', [
     'previewTitle'   => __('Email preview', 'publishpress-cart'),

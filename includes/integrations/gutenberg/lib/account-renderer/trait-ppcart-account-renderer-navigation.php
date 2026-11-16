@@ -54,8 +54,8 @@ trait PPCart_Account_Renderer_Navigation
         $tabs             = $this->get_navigation_tabs($attributes, $inner_blocks);
         $renders_fragment = $this->is_rendering_layout || $has_nested_tab_blocks;
         $output           = $renders_fragment
-            ? '<div class="tab"><ul class="ppcart-nav-tabs">'
-            : '<div class="ppcart-my-account ppcart-account-list"><div class="tab"><ul class="ppcart-nav-tabs">';
+            ? '<div class="tab"><ul class="ppcart-nav-tabs" role="tablist">'
+            : '<div class="ppcart-my-account ppcart-account-list"><div class="tab"><ul class="ppcart-nav-tabs" role="tablist">';
 
         foreach ($tabs as $account_tab) {
             if (empty($account_tab['id']) || empty($account_tab['title'])) {
@@ -68,13 +68,16 @@ trait PPCart_Account_Renderer_Navigation
                 continue;
             }
 
-            $active = $tab_id === $active_tab ? ' active' : '';
-            $output .= sprintf(
-                '<li><a class="tablinks%1$s" href="#%2$s" data-testid="%4$s">%3$s</a></li>',
+            $is_selected = $tab_id === $active_tab;
+            $active      = $is_selected ? ' active' : '';
+            $output     .= sprintf(
+                '<li role="presentation"><a class="tablinks%1$s" href="#%2$s" id="%5$s" role="tab" aria-controls="%2$s" aria-selected="%6$s" data-testid="%4$s">%3$s</a></li>',
                 esc_attr($active),
                 esc_attr($tab_id),
                 esc_html($account_tab['title']),
-                esc_attr(ppcart_testid('ppcart-account-tab-' . $tab_id))
+                esc_attr(ppcart_testid('ppcart-account-tab-' . $tab_id)),
+                esc_attr('ppcart-account-tablink-' . $tab_id),
+                $is_selected ? 'true' : 'false'
             );
         }
 

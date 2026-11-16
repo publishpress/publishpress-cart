@@ -161,6 +161,10 @@ class AccountBlocksTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('href="#tab-profile"', $output);
         $this->assertStringNotContainsString('href="#tab-subscriptions"', $output);
         $this->assertStringContainsString('tablinks active', $output);
+
+        $tabs = $this->accountTabSelection($output);
+
+        $this->assertSame([ 'tab-orders' => 'false', 'tab-profile' => 'true' ], $tabs);
     }
 
     public function test_IT_075_account_page_builder_preserves_saved_child_block_order(): void
@@ -252,6 +256,23 @@ class AccountBlocksTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('profile-wrapper', $output);
         $this->assertSame(1, substr_count($output, 'class="tabcontent active"'));
         $this->assertStringContainsString('id="tab-orders" class="tabcontent active"', $output);
+
+        $this->assertSame(
+            [ 'tab-orders' => 'true', 'tab-subscriptions' => 'false', 'tab-profile' => 'false' ],
+            $this->accountTabSelection($output)
+        );
+
+        $xpath = $this->accountMarkupXPath($output);
+
+        foreach ([ 'tab-orders', 'tab-subscriptions', 'tab-profile' ] as $tabId) {
+            $panel = $xpath->query('//*[@id="' . $tabId . '"]')->item(0);
+            $tab   = $xpath->query('//a[@role="tab"][@aria-controls="' . $tabId . '"]')->item(0);
+
+            $this->assertNotNull($panel, $tabId . ' panel is rendered');
+            $this->assertNotNull($tab, $tabId . ' tab controls its panel');
+            $this->assertSame('tabpanel', $panel->getAttribute('role'));
+            $this->assertSame($tab->getAttribute('id'), $panel->getAttribute('aria-labelledby'));
+        }
     }
 
     public function test_IT_078_account_page_builder_honors_navigation_included_tabs_filter(): void
@@ -449,14 +470,51 @@ class AccountBlocksTest extends CheckoutBlockTestCase
 
     public function test_IT_086_account_tab_script_normalizes_hash_tab_links(): void
     {
-        $pluginRoot = defined('PPCART_PLUGIN_ROOT')
-            ? PPCART_PLUGIN_ROOT
-            : dirname(__DIR__, 4) . '/';
-        $accountTabScript = file_get_contents($pluginRoot . 'public/js/ppcart-public.js');
+        $this->ensureAccountFixtures();
 
-        $this->assertStringContainsString('tab_id.substring(1)', $accountTabScript);
-        $this->assertStringContainsString('account.find("#" + tab_id).addClass', $accountTabScript);
-        $this->assertStringNotContainsString("var tab_id = jQuery(this).attr('href');", $accountTabScript);
+        if (! $this->temporaryUserId) {
+            $this->markTestSkipped('Account component rendering checks require creating a temporary account user.');
+        }
+
+        wp_set_current_user($this->temporaryUserId);
+
+        $output = $this->renderBlocks(
+            '<!-- wp:publishpress-cart/account-page-builder -->'
+            . '<!-- wp:publishpress-cart/account-navigation -->'
+            . '<!-- wp:publishpress-cart/account-tab {"tabId":"tab-orders","label":"Orders"} -->'
+            . '<!-- wp:publishpress-cart/account-orders /-->'
+            . '<!-- /wp:publishpress-cart/account-tab -->'
+            . '<!-- wp:publishpress-cart/account-tab {"tabId":"tab-profile","label":"My Profile"} -->'
+            . '<!-- wp:publishpress-cart/account-profile /-->'
+            . '<!-- /wp:publishpress-cart/account-tab -->'
+            . '<!-- /wp:publishpress-cart/account-navigation -->'
+            . '<!-- /wp:publishpress-cart/account-page-builder -->'
+        );
+
+        $xpath   = $this->accountMarkupXPath($output);
+        $tabs    = $xpath->query('//ul[contains(concat(" ", normalize-space(@class), " "), " ppcart-nav-tabs ")]//a');
+        $targets = [];
+
+        $this->assertSame(2, $tabs->length);
+
+        foreach ($tabs as $tab) {
+            $href = $tab->getAttribute('href');
+
+            // The tab link is an in-page hash link, so the tab script can
+            // resolve the panel from the hash alone, without the page address.
+            $this->assertMatchesRegularExpression('/^#[A-Za-z][\w-]*$/', $href);
+
+            $panelId = substr($href, 1);
+            $panels  = $xpath->query('//*[@id="' . $panelId . '"][contains(concat(" ", normalize-space(@class), " "), " tabcontent ")]');
+
+            $this->assertSame(1, $panels->length, $href . ' points at exactly one tab panel');
+            $this->assertSame($panelId, $tab->getAttribute('aria-controls'));
+            $this->assertSame($tab->getAttribute('id'), $panels->item(0)->getAttribute('aria-labelledby'));
+
+            $targets[] = $panelId;
+        }
+
+        $this->assertSame([ 'tab-orders', 'tab-profile' ], $targets);
     }
 
     public function test_IT_087_account_orders_block_renders_order_history_and_fires_extension_hook(): void
@@ -915,5 +973,40 @@ class AccountBlocksTest extends CheckoutBlockTestCase
         $this->assertArrayHasKey('code', $data);
         $this->assertSame('publishpress_cart_account_detail_forbidden', $data['code']);
         $this->assertStringNotContainsString('Other Account Block Subscription', wp_json_encode($data));
+    }
+
+    /**
+     * Map each rendered account tab's panel id to its aria-selected value.
+     *
+     * @return array<string, string>
+     */
+    private function accountTabSelection(string $html): array
+    {
+        $xpath = $this->accountMarkupXPath($html);
+        $lists = $xpath->query('//ul[contains(concat(" ", normalize-space(@class), " "), " ppcart-nav-tabs ")]');
+
+        $this->assertSame(1, $lists->length);
+        $this->assertSame('tablist', $lists->item(0)->getAttribute('role'));
+
+        $selection = [];
+
+        foreach ($xpath->query('.//a', $lists->item(0)) as $tab) {
+            $this->assertSame('tab', $tab->getAttribute('role'));
+            $this->assertSame('presentation', $tab->parentNode->getAttribute('role'));
+            $selection[ ltrim($tab->getAttribute('href'), '#') ] = $tab->getAttribute('aria-selected');
+        }
+
+        return $selection;
+    }
+
+    private function accountMarkupXPath(string $html): \DOMXPath
+    {
+        $document = new \DOMDocument();
+        $previous = libxml_use_internal_errors(true);
+        $document->loadHTML('<?xml encoding="utf-8"?><div>' . $html . '</div>');
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        return new \DOMXPath($document);
     }
 }
