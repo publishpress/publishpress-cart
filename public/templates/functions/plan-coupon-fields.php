@@ -197,13 +197,16 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
     $plan_heading = (isset($ppcart_product->plan_heading) && $ppcart_product->plan_heading) ? $ppcart_product->plan_heading : esc_html__("Payment Plan", "publishpress-cart");
     $plan_heading = apply_filters('ppcart_plan_heading', $plan_heading, $ppcart_product->ID);
     $plan_heading = ppcart_checkout_text_setting('paymentPlanHeading', $plan_heading);
+    $plan_heading_id = wp_unique_id('ppcart-plan-heading-');
     ?>
 
-        <h3 class="title"><?php echo esc_html($plan_heading); ?></h3>
+        <h3 class="title" id="<?php echo esc_attr($plan_heading_id); ?>"><?php echo esc_html($plan_heading); ?></h3>
 
         <?php if ($include_coupon) {
             do_action('ppcart_coupon_fields', $post_id);
         } ?>
+
+        <fieldset class="ppcart-fieldset ppcart-plan-options" aria-labelledby="<?php echo esc_attr($plan_heading_id); ?>">
 
         <?php foreach ($items as $item) :
             $item['product_type'] ??= false;
@@ -312,6 +315,7 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
             </div>
         <?php $i++;
         endforeach; ?>
+        </fieldset>
 
         <?php if ($include_coupon) {
             do_action('ppcart_coupon_status', $post_id);

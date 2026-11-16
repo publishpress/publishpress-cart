@@ -201,6 +201,7 @@ function ppcart_frontend_allowed_html()
         'aria-expanded'   => true,
         'aria-hidden'     => true,
         'aria-label'      => true,
+        'aria-labelledby' => true,
         'aria-live'       => true,
         'aria-required'   => true,
         'aria-selected'   => true,
