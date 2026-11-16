@@ -73,7 +73,7 @@ Defines how we know the product is safe, reliable, and maintainable enough to la
 - [ ] Verify seamless upgrade from latest pre-PublishPress releases, ensuring all data and configuration settings remain compatible or are migrated without loss.
 - [ ] Studiocart migration path documented and tested.
 - [x] Minimum WordPress version set to 6.7 and validated in the main plugin file.
-- [x] Minimum PHP version is set to 7.4 and enforced in the main plugin file (aligned with WordPress core recommendations; lower from current 8.0 minimum where applicable).
+- [x] Minimum PHP version is set to 8.2 and enforced in the main plugin file.
 - [x] Main plugin file loads gracefully on unsupported PHP versions, with no fatal errors or exceptions.
 - [ ] Delete security related docs and transfer to a new repository, migrating issues, milestones (required to remove any security related notes)
 
