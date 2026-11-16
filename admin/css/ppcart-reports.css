@@ -192,9 +192,15 @@ body.ppcart-admin-page #wpbody-content {
 }
 
 .ppcart-reports-search-results__option:hover,
-.ppcart-reports-search-results__option:focus {
+.ppcart-reports-search-results__option:focus,
+.ppcart-reports-search-results__option.is-active {
     background: #e8efff;
     color: #0a47c2;
+}
+
+.ppcart-reports-search-results__option.is-active {
+    outline: 2px solid #0a47c2;
+    outline-offset: -2px;
 }
 
 .ppcart-reports-search-results__empty {
