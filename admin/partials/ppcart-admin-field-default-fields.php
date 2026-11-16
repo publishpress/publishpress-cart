@@ -81,6 +81,10 @@ foreach ($repeater as $key => $saved) {
     ?><li class="<?php echo esc_attr($setatts['class']); ?>" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-row-' . $k)); ?>">
             <div class="handle">
                 <span class="title-repeater" data-label="<?php echo esc_attr($setatts['label-header']); ?>"><?php echo esc_html($setatts['label-header']); ?></span>
+                <?php
+                $move_testid_prefix = $repeater_testid . '-' . $k;
+                include(plugin_dir_path(__FILE__) . 'ppcart-admin-repeater-move-buttons.php');
+                ?>
                 <button aria-expanded="true" class="ppcart-btn-edit" type="button" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-edit-' . $k)); ?>">
                     <span class="screen-reader-text"><?php echo esc_html($setatts['label-edit']); ?></span>
                     <span class="toggle-arrow"></span>
