@@ -197,13 +197,16 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
     $plan_heading = (isset($ppcart_product->plan_heading) && $ppcart_product->plan_heading) ? $ppcart_product->plan_heading : esc_html__("Payment Plan", "publishpress-cart");
     $plan_heading = apply_filters('ppcart_plan_heading', $plan_heading, $ppcart_product->ID);
     $plan_heading = ppcart_checkout_text_setting('paymentPlanHeading', $plan_heading);
+    $plan_heading_id = wp_unique_id('ppcart-plan-heading-');
     ?>
 
-        <h3 class="title"><?php echo esc_html($plan_heading); ?></h3>
+        <h3 class="title" id="<?php echo esc_attr($plan_heading_id); ?>"><?php echo esc_html($plan_heading); ?></h3>
 
         <?php if ($include_coupon) {
             do_action('ppcart_coupon_fields', $post_id);
         } ?>
+
+        <fieldset class="ppcart-fieldset ppcart-plan-options" aria-labelledby="<?php echo esc_attr($plan_heading_id); ?>">
 
         <?php foreach ($items as $item) :
             $item['product_type'] ??= false;
@@ -308,6 +311,7 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
             </div>
         <?php $i++;
         endforeach; ?>
+        </fieldset>
 
         <?php if ($include_coupon) {
             do_action('ppcart_coupon_status', $post_id);
@@ -397,6 +401,7 @@ function ppcart_do_field($args)
         'div_class' => '',
         'qty_price' => false,
         'testid' => '',
+        'autocomplete' => '',
     ];
 
     $args = wp_parse_args($args, $defaults);
@@ -413,6 +418,8 @@ function ppcart_do_field($args)
     $div_class   = $args['div_class'];
     $qty_price   = $args['qty_price'];
     $testid      = $args['testid'];
+    $autocomplete = (string) $args['autocomplete'];
+    $autocomplete_attr = ('' !== $autocomplete) ? ' autocomplete="' . esc_attr($autocomplete) . '"' : '';
     $name        = isset($args['name']) ? $args['name'] : null;
     $label       = isset($args['label']) ? $args['label'] : null;
     $choices     = isset($args['choices']) ? $args['choices'] : null;
@@ -468,7 +475,7 @@ function ppcart_do_field($args)
         <?php endif; ?>
     <?php endif; ?>
         <?php if ($type == 'select') : ?>
-            <select id="<?php echo esc_attr($name); ?>" name="<?php echo esc_attr($name); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>">
+            <select id="<?php echo esc_attr($name); ?>" name="<?php echo esc_attr($name); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>"<?php echo $autocomplete_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>">
                 <?php foreach ($choices as $k => $v) {
                     echo '<option value="' . esc_attr($k) . '" ' . selected($k, $value, false) . '>' . esc_html($v) . '</option>';
                 } ?>
@@ -498,7 +505,7 @@ function ppcart_do_field($args)
                   <div class="error"><?php echo esc_html(sanitize_text_field($posted_ppcart_errors[$name])); ?></div>
               <?php endif; ?>
         <?php else : ?>
-            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
+            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $autocomplete_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
             <?php if ($type == 'password') :
                 ?>pattern="(?=.*\d)(?=.*[a-z]).{8,}"<?php
             endif; ?>
@@ -531,18 +538,18 @@ function ppcart_do_checkoutform_fields($post_id, $hide_labels, $twostep = false)
         <div class="ppcart-row checkout-contact-info">
         <?php
         $fields = [
-            'firstname' => ['name' => 'first_name','label' => esc_html__('First Name', 'publishpress-cart'),'required' => true, 'hide_labels' => $hide_labels],
-            'lastname' => ['name' => 'last_name','label' => esc_html__('Last Name', 'publishpress-cart'),'required' => true, 'hide_labels' => $hide_labels],
+            'firstname' => ['name' => 'first_name','label' => esc_html__('First Name', 'publishpress-cart'),'autocomplete' => 'given-name','required' => true, 'hide_labels' => $hide_labels],
+            'lastname' => ['name' => 'last_name','label' => esc_html__('Last Name', 'publishpress-cart'),'autocomplete' => 'family-name','required' => true, 'hide_labels' => $hide_labels],
 
         ];
     if (!isset($ppcart_product->hide_phone_field) || !$ppcart_product->hide_phone_field) {
-        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','required' => true, 'hide_labels' => $hide_labels];
-        $fields['phone'] = ['name' => 'phone','label' => esc_html__('Phone Number', 'publishpress-cart'),'type' => 'tel','hide_labels' => $hide_labels];
+        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','autocomplete' => 'email','required' => true, 'hide_labels' => $hide_labels];
+        $fields['phone'] = ['name' => 'phone','label' => esc_html__('Phone Number', 'publishpress-cart'),'type' => 'tel','autocomplete' => 'tel','hide_labels' => $hide_labels];
     } else {
-        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','required' => true, 'hide_labels' => $hide_labels,'cols' => 12];
+        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','autocomplete' => 'email','required' => true, 'hide_labels' => $hide_labels,'cols' => 12];
     }
 
-    $fields['company'] = ['name' => 'company','label' => esc_html__('Company Name', 'publishpress-cart'),'hide_labels' => $hide_labels];
+    $fields['company'] = ['name' => 'company','label' => esc_html__('Company Name', 'publishpress-cart'),'autocomplete' => 'organization','hide_labels' => $hide_labels];
 
     if (!isset($ppcart_product->default_fields)) {
         foreach ($fields as $k => $field) { // deprecated

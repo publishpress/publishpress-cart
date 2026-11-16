@@ -1208,6 +1208,33 @@ jQuery(document).ready(function($){
 		});
 	}
 
+	/*
+	 * "?" help tooltips open on hover and focus (balloon.css). Escape hides the
+	 * open tooltip without moving focus; it shows again after the pointer
+	 * leaves or focus moves away (WCAG 1.4.13 Content on Hover or Focus).
+	 */
+	$(document).on('keydown', function(e) {
+		if ('Escape' !== e.key && 'Esc' !== e.key) {
+			return;
+		}
+
+		var open = document.querySelectorAll('.ppcart-tooltip:hover, .ppcart-tooltip:focus');
+		if (!open.length) {
+			return;
+		}
+
+		$(open).addClass('is-dismissed');
+	});
+
+	$(document).on('mouseleave focusout', '.ppcart-tooltip.is-dismissed', function() {
+		var tooltip = this;
+		// Keep it hidden while it is still hovered or focused.
+		if (tooltip.matches(':hover') || tooltip === document.activeElement) {
+			return;
+		}
+		$(tooltip).removeClass('is-dismissed');
+	});
+
 	$(document).on('click', '[data-ppcart-copy]', function(e) {
         e.preventDefault();
 
@@ -1224,9 +1251,28 @@ jQuery(document).ready(function($){
             $button.data('ppcart-copy-original-label', originalLabel);
         }
 
+        function announce(message) {
+            if (window.wp && window.wp.a11y && typeof window.wp.a11y.speak === 'function') {
+                window.wp.a11y.speak(message, 'polite');
+                return;
+            }
+
+            var $region = $('#ppcart-copy-live-region');
+            if (!$region.length) {
+                $region = $('<div id="ppcart-copy-live-region" class="screen-reader-text" role="status" aria-live="polite" aria-atomic="true"></div>').appendTo('body');
+            }
+            $region.text('');
+            window.setTimeout(function() {
+                $region.text(message);
+            }, 100);
+        }
+
         function setFeedback(message) {
             window.clearTimeout($button.data('ppcart-copy-timer'));
-            $button.text(message).attr('aria-label', message);
+            // Show the result as the button's visible text, and drop any aria-label
+            // meanwhile so the accessible name matches what is on screen.
+            $button.text(message).removeAttr('aria-label');
+            announce(message);
             $button.data('ppcart-copy-timer', window.setTimeout(function() {
                 $button.html(originalHtml);
                 if (originalLabel) {

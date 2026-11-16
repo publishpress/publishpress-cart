@@ -750,6 +750,13 @@ td.column-order .row-actions{
   margin-top: 2px;
 }
 
+/* Escape hides an open "?" tooltip (ppcart-admin.js) until hover/focus ends. */
+.ppcart-tooltip.is-dismissed::before,
+.ppcart-tooltip.is-dismissed::after {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 #content_tab_emails .wp-editor-wrap {
   width: 600px;
 }
@@ -900,6 +907,16 @@ td.column-order .row-actions{
   position: absolute;
   right: 6px;
   top: 50%;
+}
+/* Grow the 16px clear icon's hit area to 24px (WCAG 2.5.8) without moving it. */
+.ppcart-settings-tabs .datepicker + .clear-date::before {
+  content: "";
+  height: 24px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
 }
 .ppcart-settings-tabs .input-group {
   flex-grow: 1;
