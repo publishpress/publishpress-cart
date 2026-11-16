@@ -2,6 +2,8 @@
     'use strict';
 
     var MIN_HEIGHT = 200;
+    // Tall enough for the product settings tabs and one panel.
+    var DEFAULT_HEIGHT = 520;
 
     function getPreferences() {
         try {
@@ -31,7 +33,7 @@
         if ( typeof preferences.dispatch.setDefaults === 'function' ) {
             preferences.dispatch.setDefaults( 'core/edit-post', {
                 metaBoxesMainIsOpen: true,
-                metaBoxesMainOpenHeight: MIN_HEIGHT
+                metaBoxesMainOpenHeight: DEFAULT_HEIGHT
             } );
         }
 
@@ -41,7 +43,10 @@
 
         currentHeight = preferences.select.get( 'core/edit-post', 'metaBoxesMainOpenHeight' );
 
-        if ( typeof currentHeight !== 'number' || currentHeight < MIN_HEIGHT ) {
+        // Earlier versions saved MIN_HEIGHT for every user; treat that value as "never resized".
+        if ( typeof currentHeight !== 'number' || currentHeight === MIN_HEIGHT ) {
+            preferences.dispatch.set( 'core/edit-post', 'metaBoxesMainOpenHeight', DEFAULT_HEIGHT );
+        } else if ( currentHeight < MIN_HEIGHT ) {
             preferences.dispatch.set( 'core/edit-post', 'metaBoxesMainOpenHeight', MIN_HEIGHT );
         }
     }

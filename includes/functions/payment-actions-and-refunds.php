@@ -21,15 +21,35 @@ function ppcart_validate_payment_key()
             } elseif ($credentials_status['requires_reconnect']) {
                 $action_needed['stripe'] = __('Stripe is using legacy credentials that are not stored as direct Stripe keys. Use Connect with Stripe to sync keys before removing payment decryptor support.', 'publishpress-cart');
             } else {
-                $stripe = ppcart_stripe_client($ppcart_stripe['sk']);
-                try {
-                    $stripe->webhookEndpoints->all(['limit' => 1]);
-                } catch (\Exception $e) {
-                    $message = (string) $e->getMessage();
+                // This runs on every Cart admin screen. Cache the result so a
+                // slow or unreachable Stripe API (30s connect timeout) does
+                // not block each page load until the host times it out.
+                $cache_key = 'ppcart_stripe_key_check_' . md5($ppcart_stripe['mode'] . '|' . $ppcart_stripe['sk']);
+                $cached = get_transient($cache_key);
 
-                    if ('' !== $message) {
-                        $action_needed['stripe'] = $message; //add custom message
+                if (is_array($cached) && array_key_exists('message', $cached)) {
+                    $message = (string) $cached['message'];
+                } else {
+                    $message = '';
+                    $stripe = ppcart_stripe_client($ppcart_stripe['sk']);
+                    try {
+                        // Connect OAuth tokens cannot read webhook endpoints, so
+                        // probing those reported a false error for every
+                        // connected store. Balance works for both key types.
+                        $stripe->balance->retrieve();
+                    } catch (\Exception $e) {
+                        $message = (string) $e->getMessage();
                     }
+
+                    set_transient(
+                        $cache_key,
+                        [ 'message' => $message ],
+                        '' === $message ? 12 * HOUR_IN_SECONDS : 15 * MINUTE_IN_SECONDS
+                    );
+                }
+
+                if ('' !== $message) {
+                    $action_needed['stripe'] = $message; //add custom message
                 }
             }
         }
@@ -405,7 +425,8 @@ function ppcart_order_refund($data)
                 $refund_args['charge'] = $order->transaction_id;
             }
 
-            $refund = $stripe->refunds->create($refund_args);
+            $request_options = empty($data['idempotency_key']) ? [] : ['idempotency_key' => $data['idempotency_key']];
+            $refund = $stripe->refunds->create($refund_args, $request_options);
             if (isset($refund->id) && $refund->status == "succeeded") {
                 if (class_exists('PPCart_Stripe_Sync')) {
                     $stripe_refund_synced = (bool) PPCart_Stripe_Sync::sync_refund($refund, $stripe, null, true);
@@ -449,88 +470,26 @@ function ppcart_order_refund($data)
 /**
  * Pause-Restart Subscription
  */
+require_once dirname(__DIR__) . '/class-ppcart-subscription-actions.php';
+
 add_action('wp_ajax_ppcart_pause_restart_subscription', 'ppcart_pause_restart_subscription');
 
 function ppcart_pause_restart_subscription()
 {
-
-    global $ppcart_stripe;
-    $response = false;
-
-    // Verify nonce
-    // phpcs:ignore WordPress.Security.NonceVerification.Missing -- This reads the nonce value that is verified immediately in this condition.
+    // phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verified before reading the action payload.
     if (!isset($_POST['nonce']) || !ppcart_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'ppcart_ajax_nonce')) {
         esc_html_e('Oops, something went wrong, please try again later.', 'publishpress-cart');
         die;
     }
-    // phpcs:disable WordPress.Security.NonceVerification.Missing -- Remaining request fields are read only after the AJAX nonce check above.
-
-    $post_id = isset($_POST['id']) ? absint(wp_unslash($_POST['id'])) : 0;
-    $sub = new PPCart_Subscription($post_id);
-
-    $owner_user_id = isset($sub->user_account) ? absint($sub->user_account) : 0;
-    $current_user_id = get_current_user_id();
-    if ($owner_user_id !== $current_user_id && ! current_user_can('manage_options')) {
-        wp_send_json_error([ 'error' => __('Permission denied.', 'publishpress-cart') ], 403);
-    }
-
+    $id = isset($_POST['id']) ? absint(wp_unslash($_POST['id'])) : 0;
     $type = sanitize_text_field(wp_unslash($_POST['type'] ?? ''));
-    $status = ($type == 'started') ? 'active' : $type;
-
-    if ($sub->pay_method == 'stripe') {
-        //stripe
-
-        $apikey = $ppcart_stripe['sk'];
-        $stripe = ppcart_stripe_client($apikey);
-        try {
-            $data = [
-                'pause_collection' => [
-                    'behavior' => 'void',
-                ],
-            ];
-            if ($type == 'started') {
-                $data = [
-                    'pause_collection' => '',
-                ];
-            }
-            $stripesub = $stripe->subscriptions->update($sub->subscription_id, $data);
-            $response = ppcart_get_stripe_subscription_period_end($stripesub);
-        } catch (\Exception $e) {
-            echo esc_html($e->getMessage()); //add custom message
-        }
-    } else {
-        $response = apply_filters('ppcart_subscription_pause_restart', $response, $sub, $type);
+    // phpcs:enable WordPress.Security.NonceVerification.Missing
+    $result = PPCart_Subscription_Actions::change($id, $type);
+    if (is_wp_error($result)) {
+        wp_send_json_error(['error' => $result->get_error_message()], 'ppcart_subscription_forbidden' === $result->get_error_code() ? 403 : 400);
     }
-
-    if ($response) {
-        $current_user = wp_get_current_user();
-
-        if ($type == 'paused') {
-            /* translators: %s: user login. */
-            $log_entry = sprintf(__('Subscription paused by %s', 'publishpress-cart'), esc_html($current_user->user_login));
-        } else {
-            /* translators: %s: user login. */
-            $log_entry = sprintf(__('Subscription started by %s', 'publishpress-cart'), esc_html($current_user->user_login));
-        }
-
-        if ($sub->pay_method == 'stripe' && isset($stripesub) && class_exists('PPCart_Stripe_Sync')) {
-            PPCart_Stripe_Sync::sync_subscription_resource($stripesub, $stripe, null, true);
-        } else {
-            $sub->status = $status;
-            $sub->sub_status = $status;
-
-            if ($type != 'paused' && $sub->pay_method == 'stripe') {
-                $sub->sub_next_bill_date = $response;
-            }
-
-            $sub->store();
-        }
-
-        ppcart_log_entry($sub->id, $log_entry);
         echo 'OK';
         exit;
-    }
-    // phpcs:enable WordPress.Security.NonceVerification.Missing
 }
 
 /**

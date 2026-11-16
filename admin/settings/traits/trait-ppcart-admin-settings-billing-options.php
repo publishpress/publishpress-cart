@@ -37,7 +37,7 @@ trait PPCart_Admin_Settings_Billing_Options_Trait
      *
      */
 
-    public function get_payment_fields()
+    public function get_payment_fields($local_only = false)
     {
         $paypal_ssl_verify_option   = class_exists('PPCart_Paypal') ? PPCart_Paypal::SSL_VERIFY_OPTION : '_ppcart_paypal_ssl_verify';
         $paypal_ssl_verify_locked   = true;
@@ -45,6 +45,6 @@ trait PPCart_Admin_Settings_Billing_Options_Trait
         $paypal_ssl_verify_note     = __('Always enabled for PayPal API requests.', 'publishpress-cart');
 
         $payment_fields = require __DIR__ . '/options/payment-fields.php';
-        return apply_filters('ppcart_payment_field_option_list', $payment_fields);
+        return apply_filters('ppcart_payment_field_option_list', $payment_fields, $local_only);
     }
 }

@@ -77,58 +77,72 @@
             parent.find( '[name="async-upload"]' ).click();
 		});
 
-		$( '.ppcart-upload-file-field' ).on('change', function(e) {
-			e.preventDefault();
+        $( '.ppcart-upload-file-field' ).on('change', function(e) {
+            e.preventDefault();
 
-			var formData = new FormData();
-			var $imgFile = $(this);
-			var parent = $(this).closest('.wrap-field, .ppcart-field, td');
+            var $fileInput = $(this);
+            var file = this.files && this.files[0];
+            var $parent = $fileInput.closest('.wrap-field, .ppcart-field, td');
+            var labels = window.ppcartUploaderI18n || {};
+            var $status = $parent.find('.ppcart-upload-status');
 
-			formData.append('action', 'upload-attachment');
-			formData.append('async-upload', $imgFile[0].files[0]);
-			formData.append('name', $imgFile[0].files[0].name);
-			formData.append('type', 'ppcart_upload');
-			formData.append('_wpnonce', ppcart_reg_vars.media_nonce);
+            // Cancelling the file picker does not start an upload.
+            if (!file || $fileInput.prop('disabled')) {
+                return;
+            }
+            if (!$status.length) {
+                $status = $('<p class="description ppcart-upload-status" role="status" aria-live="polite" aria-atomic="true"></p>');
+                $parent.find('.input-group').first().after($status);
+            }
 
-			var url = ppcart_reg_vars.upload_url;
+            function showStatus(message, state) {
+                $status.removeClass('is-error is-success').addClass(state || '').text(message);
+            }
 
-			$.ajax({
-				url: ppcart_reg_vars.upload_url,
-				data: formData,
-				processData: false,
-				contentType: false,
-				dataType: 'json',
-				/*xhr: function() {
-					var myXhr = $.ajaxSettings.xhr();
+            function errorMessage(response) {
+                var data = response && response.data;
+                if (data && typeof data.message === 'string' && data.message.trim()) {
+                    return data.message;
+                }
+                return labels.failed || 'Upload failed. Please try again.';
+            }
 
-					if ( myXhr.upload ) {
-						myXhr.upload.addEventListener( 'progress', function(e) {
-							if ( e.lengthComputable ) {
-								var perc = ( e.loaded / e.total ) * 100;
-								perc = perc.toFixed(2);
-								$imgNotice.html('Uploading&hellip;(' + perc + '%)');
-							}
-						}, false );
-					}
+            var formData = new FormData();
+            formData.append('action', 'upload-attachment');
+            formData.append('async-upload', file);
+            formData.append('name', file.name);
+            formData.append('type', 'ppcart_upload');
+            formData.append('_wpnonce', ppcart_reg_vars.media_nonce);
 
-					return myXhr;
-				},*/
-				type: 'POST',
-				/*beforeSend: function() {
-					$imgFile.hide();
-					$imgNotice.html('Uploading&hellip;').show();
-				},*/
-				success: function(resp) {
-					if ( resp.success ) {
-						field = parent.find( '[data-id="url-file"]' );
-						field.val(resp.data.url);
+            $fileInput.prop('disabled', true);
+            $parent.attr('aria-busy', 'true');
+            showStatus(labels.uploading || 'Uploading file…');
 
-					} else {
-						alert('Something went wrong, please try again.');
-					}
-				}
-			});
-		});
+            $.ajax({
+                url: ppcart_reg_vars.upload_url,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                type: 'POST',
+                success: function(response) {
+                    if (response && response.success && response.data && typeof response.data.url === 'string' && response.data.url.trim()) {
+                        $parent.find('[data-id="url-file"]').val(response.data.url).trigger('input').trigger('change');
+                        showStatus(labels.uploaded || 'File uploaded successfully.', 'is-success');
+                    } else {
+                        showStatus(errorMessage(response), 'is-error');
+                    }
+                },
+                error: function(xhr) {
+                    showStatus(errorMessage(xhr.responseJSON), 'is-error');
+                },
+                complete: function() {
+                    // Reset so choosing the same file again can retry a failed upload.
+                    $fileInput.val('').prop('disabled', false);
+                    $parent.removeAttr('aria-busy');
+                }
+            });
+        });
 	});
 	
 })( jQuery );

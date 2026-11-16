@@ -88,6 +88,9 @@ if ($query_ppcart_pp && $query_ppcart_order) {
         return;
     }
 
+    // Log in a buyer whose account this order just created, when auto-login is on.
+    ppcart_maybe_auto_login_order_buyer($order_id, $ppcart_product);
+
     if (apply_filters('ppcart_paypal_after_checkout_complete', false, $ppcart_product, $order_info, $query_ppcart_oto)) {
         return;
     }

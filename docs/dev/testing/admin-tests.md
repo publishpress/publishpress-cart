@@ -1,12 +1,12 @@
 # Admin browser tests
 
 The Playwright admin suite catalog is under `docs/testing/cases/admin/`
-(39 cases: AD-001–AD-011, AD-020–AD-031, AD-040–AD-041, AD-101–AD-103,
+(38 cases: AD-001–AD-010, AD-020–AD-031, AD-040–AD-041, AD-101–AD-103,
 AD-201–AD-211).
 
 | Group | Cases | Behavior |
 | --- | ---: | --- |
-| Core | 25 | Admin pages, tabs, filters, controls, and log viewers |
+| Core | 24 | Admin pages, tabs, filters, controls, and log viewers |
 | Fixture-dependent | 3 | Existing product, order, and subscription editors |
 | Workflows | 11 | Product, taxonomy, and branding persistence workflows |
 

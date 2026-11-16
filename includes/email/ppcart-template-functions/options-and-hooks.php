@@ -98,10 +98,10 @@ function ppcart_get_latest_email_preview_order_id()
     return ! empty($orders[0]) ? absint($orders[0]) : 0;
 }
 
-function ppcart_get_mock_email_preview_order_data()
+function ppcart_get_mock_email_preview_order_data($sample_id = 1001)
 {
     $order_info = new PPCart_Order();
-    $order_info->id                = 1001;
+    $order_info->id                = (int) $sample_id;
     $order_info->status            = 'paid';
     $order_info->product_name      = __('Sample Product', 'publishpress-cart');
     $order_info->item_name         = __('Professional Plan', 'publishpress-cart');
@@ -331,7 +331,7 @@ function ppcart_register_email_template_option_filters()
 
 function ppcart_email_personalize_replacements($replacements, $order_info)
 {
-    $replacements['PublishPress Cart'] = '<a href="https://publishpress.com/publishpress-cart/" target="_blank" rel="noreferrer noopener">PublishPress Cart</a>';
+    $replacements['PublishPress Cart'] = '<a href="https://publishpress.com/cart/" target="_blank" rel="noreferrer noopener">PublishPress Cart</a>';
 
     if (isset($order_info['quantity'])) {
         $replacements['quantity'] = $order_info['quantity'];
