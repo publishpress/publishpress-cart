@@ -51,6 +51,7 @@ wp_localize_script('ppcart', 'ppcart_translate_backend', ppcart_translate_js('pp
 wp_localize_script('ppcart', 'ppcart_admin_i18n', [
     'copy_success' => __('Copied', 'publishpress-cart'),
     'copy_failed' => __('Copy failed', 'publishpress-cart'),
+    'copy_plan_id' => __('Copy plan ID', 'publishpress-cart'),
     'required_fields_missing' => __('Required fields missing:', 'publishpress-cart'),
     'payment_label_cashondelivery' => __('Cash on Delivery', 'publishpress-cart'),
     'payment_label_stripe' => __('Stripe', 'publishpress-cart'),
