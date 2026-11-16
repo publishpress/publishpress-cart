@@ -190,5 +190,70 @@ class EmailHtmlEntityDecodeTest extends Unit
         $this->assertStringContainsString('A &amp; B', $html);
         $this->assertStringContainsString('&lt;a href=', $html);
     }
+
+    /**
+     * @test-id UT-377
+     */
+    public function test_UT_377_rendered_email_declares_site_language_subject_title_and_presentation_tables(): void
+    {
+        WordPressStubContext::set(
+            'get_bloginfo',
+            static function ($show = '') {
+                return 'language' === $show ? 'fr-FR' : 'Test Site';
+            }
+        );
+
+        $html = ppcart_get_email_html(
+            array(
+                'type' => 'registration',
+                'order_info' => array(
+                    'firstname' => 'Ada',
+                    'lastname' => 'Buyer',
+                    'email' => 'buyer@example.test',
+                    'phone' => '',
+                ),
+                'headline' => 'Welcome',
+                'body' => 'Thanks for registering.',
+                'subject' => 'Your account & order',
+            )
+        );
+
+        $document = new \DOMDocument();
+        $previous = libxml_use_internal_errors(true);
+        $document->loadHTML($html);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        $this->assertSame('fr-FR', $document->documentElement->getAttribute('lang'));
+        $this->assertSame('Your account & order', $document->getElementsByTagName('title')->item(0)->textContent);
+
+        $tables = $document->getElementsByTagName('table');
+        $this->assertGreaterThan(0, $tables->length);
+        foreach ($tables as $table) {
+            $this->assertSame('presentation', $table->getAttribute('role'));
+        }
+    }
+
+    /**
+     * @test-id UT-377
+     */
+    public function test_UT_377_rendered_email_title_falls_back_to_headline_without_subject(): void
+    {
+        $html = ppcart_get_email_html(
+            array(
+                'type' => 'registration',
+                'order_info' => array(
+                    'firstname' => 'Ada',
+                    'lastname' => 'Buyer',
+                    'email' => 'buyer@example.test',
+                    'phone' => '',
+                ),
+                'headline' => 'Welcome aboard',
+                'body' => 'Thanks for registering.',
+            )
+        );
+
+        $this->assertStringContainsString('<title>Welcome aboard</title>', $html);
+    }
 }
 }
