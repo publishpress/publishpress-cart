@@ -17,6 +17,7 @@
  * Plugin URI:        https://publishpress.com/cart/
  * Description:       Create order pages and simplified sales flow creation that helps you sell digital products, programs, and services.
  * Version:           1.2.0
+ * Requires PHP:      8.2
  * Author:            PublishPress
  * Author URI:        https://publishpress.com/
  * License:           GPL-2.0-or-later
@@ -53,7 +54,7 @@ if (is_admin()) {
     });
 }
 
-const PPCART_MINIMUM_PHP_VERSION = '7.4';
+const PPCART_MINIMUM_PHP_VERSION = '8.2';
 const PPCART_MINIMUM_WP_VERSION = '6.7';
 
 global $wp_version;
