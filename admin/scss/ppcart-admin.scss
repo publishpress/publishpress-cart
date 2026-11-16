@@ -2021,3 +2021,61 @@ td.column-order .row-actions {
 .ppcart-upload-status.is-success {
   color: #008a20;
 }
+
+/* Move up / Move down buttons in a repeater row header (WCAG 2.5.7). */
+.ppcart-repeater .handle .ppcart-repeater-move {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 2px;
+  margin-left: auto;
+  cursor: default;
+}
+
+.ppcart-repeater .handle .ppcart-repeater-enable ~ .ppcart-repeater-move {
+  margin-left: 0;
+}
+
+.ppcart-repeater .handle .ppcart-repeater-move-btn {
+  align-items: center;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: none;
+  color: #50575e;
+  cursor: pointer;
+  display: inline-flex;
+  height: 28px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 28px;
+}
+
+.ppcart-repeater .handle .ppcart-repeater-move-btn .dashicons {
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.ppcart-repeater .handle .ppcart-repeater-move-btn:hover {
+  background: #fff;
+  border-color: #8c8f94;
+  color: #1d2327;
+}
+
+.ppcart-repeater .handle .ppcart-repeater-move-btn:focus {
+  border-color: #2271b1;
+  box-shadow: 0 0 0 1px #2271b1;
+  color: #1d2327;
+  outline: 2px solid transparent;
+}
+
+.ppcart-repeater .handle .ppcart-repeater-move-btn[aria-disabled="true"] {
+  background: none;
+  cursor: default;
+  opacity: 0.45;
+}
+
+.ppcart-repeater .handle .ppcart-repeater-move-btn[aria-disabled="true"]:hover {
+  border-color: transparent;
+}
