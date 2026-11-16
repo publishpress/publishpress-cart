@@ -160,7 +160,7 @@ try {
                             <?php echo esc_html($migration_notice); ?>
                         </p>
                     <?php endif; ?>
-                    <div class="ppcart-secrets-maintenance__result" data-ppcart-migrate-secrets-result hidden></div>
+                    <div class="ppcart-secrets-maintenance__result" data-ppcart-migrate-secrets-result role="status" aria-live="polite" hidden></div>
                 <?php endif; ?>
             </td>
         </tr>

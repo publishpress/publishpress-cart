@@ -1020,6 +1020,14 @@ body.ppcart-checkout-1 {
                 transition-duration: 0s;
             }
 
+            /* The native input is visually hidden, so show keyboard focus on the drawn box (WCAG 2.4.7). */
+            &:focus-visible+label:before,
+            &:focus-visible+.item-name:before {
+                outline: 2px solid #000;
+                outline-offset: 2px;
+                box-shadow: 0 0 0 2px #fff;
+            }
+
             + label,
             + .item-name {
                 display: inline-block;
