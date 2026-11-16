@@ -139,6 +139,8 @@
         syncPresetState($presets.find('.ppcart-date-picker__preset'), $range.val());
     }
 
+    // ARIA 1.2 combobox: the input keeps focus, options are referenced with
+    // aria-activedescendant, and a polite live region announces the result count.
     function initFilterSearch(settings) {
         var $wrap = $(settings.wrap);
         var reportsConfig = window.ppcartReports || {};
@@ -148,6 +150,7 @@
         var searchToken = 0;
         var optionClass = 'ppcart-reports-search-results__option';
         var emptyClass = 'ppcart-reports-search-results__empty';
+        var activeClass = 'is-active';
 
         if (!$wrap.length) {
             return;
@@ -156,9 +159,82 @@
         var $search = $wrap.find(settings.input);
         var $value = $wrap.find(settings.value);
         var $results = $wrap.find(settings.results);
+        var $status = $wrap.find(settings.status);
         var $form = $wrap.closest('form');
+        var listId = $results.attr('id') || '';
 
-        $results.appendTo(document.body);
+        $search.attr({
+            role: 'combobox',
+            'aria-autocomplete': 'list',
+            'aria-expanded': 'false',
+            'aria-controls': listId
+        });
+        $results.attr('role', 'listbox');
+
+        function announce(message) {
+            if (!$status.length) {
+                return;
+            }
+
+            // Clear first so the same message is read again on a repeat search.
+            $status.text('');
+            window.setTimeout(function() {
+                $status.text(message || '');
+            }, 50);
+        }
+
+        function getOptions() {
+            return $results.children('.' + optionClass);
+        }
+
+        function setActive($option) {
+            getOptions().removeClass(activeClass).attr('aria-selected', 'false');
+
+            if (!$option || !$option.length) {
+                $search.removeAttr('aria-activedescendant');
+                return;
+            }
+
+            $option.addClass(activeClass).attr('aria-selected', 'true');
+            $search.attr('aria-activedescendant', $option.attr('id'));
+
+            var list = $results[0];
+            var item = $option[0];
+
+            if (item.offsetTop < list.scrollTop) {
+                list.scrollTop = item.offsetTop;
+            } else if (item.offsetTop + item.offsetHeight > list.scrollTop + list.clientHeight) {
+                list.scrollTop = item.offsetTop + item.offsetHeight - list.clientHeight;
+            }
+        }
+
+        function moveActive(step) {
+            var $options = getOptions();
+
+            if (!$options.length) {
+                return;
+            }
+
+            var index = $options.index($options.filter('.' + activeClass));
+            var next;
+
+            if (index < 0) {
+                next = step > 0 ? 0 : $options.length - 1;
+            } else {
+                next = (index + step + $options.length) % $options.length;
+            }
+
+            setActive($options.eq(next));
+        }
+
+        function isOpen() {
+            return !$results.is('[hidden]');
+        }
+
+        function setExpanded() {
+            // Only expanded while the listbox holds options a user can choose.
+            $search.attr('aria-expanded', isOpen() && getOptions().length ? 'true' : 'false');
+        }
 
         function hideResults() {
             window.clearTimeout(searchTimer);
@@ -170,12 +246,14 @@
             }
 
             $results.empty().attr('hidden', true);
-            $search.attr('aria-expanded', 'false');
+            $search.removeAttr('aria-activedescendant');
+            setExpanded();
         }
 
         function positionResults() {
             var rect = $search[0].getBoundingClientRect();
 
+            // Fixed so the list is not clipped by the filter bar; it stays next to the input in the DOM.
             $results.css({
                 position: 'fixed',
                 left: rect.left + 'px',
@@ -191,34 +269,51 @@
             hideResults();
         }
 
-        // Speak search results to screen readers; the visual list is not a live region.
-        function announce(message) {
-            if (message && window.wp && window.wp.a11y && 'function' === typeof window.wp.a11y.speak) {
-                window.wp.a11y.speak(String(message), 'polite');
+        // Status text is shown in the list for sighted users and read from the live region.
+        function showStatus(message, speak) {
+            $results.empty();
+            $('<li />')
+                .addClass(emptyClass)
+                .attr('aria-hidden', 'true')
+                .text(message)
+                .appendTo($results);
+            $results.removeAttr('hidden');
+            $search.removeAttr('aria-activedescendant');
+            setExpanded();
+            positionResults();
+
+            if (speak) {
+                announce(message);
             }
         }
 
-        function showStatus(message) {
-            $results.html('<li class="' + emptyClass + '"></li>');
-            $results.find('li').text(message);
-            $results.removeAttr('hidden');
-            $search.attr('aria-expanded', 'true');
-            positionResults();
+        function appendOption(value, label) {
+            var index = getOptions().length;
+
+            $('<li />')
+                .addClass(optionClass)
+                .attr({
+                    id: listId + '-option-' + index,
+                    role: 'option',
+                    'aria-selected': 'false',
+                    'data-value': value,
+                    'data-label': label
+                })
+                .text(label)
+                .appendTo($results);
         }
 
-        function appendOption(value, label) {
-            var $item = $('<li />');
-            $('<button type="button" />')
-                .addClass(optionClass)
-                .text(label)
-                .attr('data-value', value)
-                .attr('data-label', label)
-                .appendTo($item);
-            $item.appendTo($results);
+        function resultsMessage(count) {
+            var message = 1 === count
+                ? (reportsConfig.oneResult || '1 result available.')
+                : (reportsConfig.manyResults || '%d results available.').replace('%d', count);
+
+            return message + ' ' + (reportsConfig.resultsHint || 'Use the up and down arrow keys to choose one.');
         }
 
         function renderResults(items) {
             var rows = items || [];
+            var count = 0;
 
             $results.empty();
 
@@ -234,33 +329,27 @@
                 }
 
                 appendOption(itemValue, item.text || itemValue);
+                count += 1;
             });
 
-            if (!rows.length) {
-                announce(settings.emptyMessage);
-
+            if (!count) {
                 if (!settings.allLabel) {
-                    showStatus(settings.emptyMessage);
+                    showStatus(settings.emptyMessage, true);
                     return;
                 }
 
                 $('<li />')
                     .addClass(emptyClass)
+                    .attr('aria-hidden', 'true')
                     .text(settings.emptyMessage)
                     .appendTo($results);
             }
 
-            if (rows.length) {
-                announce(
-                    1 === rows.length
-                        ? (reportsConfig.oneResult || '1 result found.')
-                        : String(reportsConfig.manyResults || '%d results found.').replace('%d', rows.length)
-                );
-            }
-
             $results.removeAttr('hidden');
-            $search.attr('aria-expanded', 'true');
+            $search.removeAttr('aria-activedescendant');
+            setExpanded();
             positionResults();
+            announce(count ? resultsMessage(count) : settings.emptyMessage);
         }
 
         function runSearch(term) {
@@ -301,9 +390,13 @@
                     return;
                 }
 
-                announce(settings.emptyMessage);
-                showStatus(settings.emptyMessage);
+                showStatus(settings.emptyMessage, true);
             });
+        }
+
+        function openSearch() {
+            showStatus(reportsConfig.searching || 'Searching…', false);
+            runSearch($value.val() ? '' : $.trim($search.val()));
         }
 
         $search.on('input', function() {
@@ -323,7 +416,7 @@
                 return;
             }
 
-            showStatus(reportsConfig.searching || 'Searching…');
+            showStatus(reportsConfig.searching || 'Searching…', false);
 
             searchTimer = window.setTimeout(function() {
                 runSearch(term);
@@ -331,12 +424,11 @@
         });
 
         $search.on('focus', function() {
-            if (!settings.searchOnEmptyFocus || !$results.is('[hidden]')) {
+            if (!settings.searchOnEmptyFocus || isOpen()) {
                 return;
             }
 
-            showStatus(reportsConfig.searching || 'Searching…');
-            runSearch($value.val() ? '' : $.trim($search.val()));
+            openSearch();
         });
 
         $results.on('mousedown', '.' + optionClass, function(event) {
@@ -346,11 +438,62 @@
         $results.on('click', '.' + optionClass, function(event) {
             event.preventDefault();
             selectItem($(this).attr('data-value'), $(this).attr('data-label'));
+            $search.trigger('focus');
         });
 
         $search.on('keydown', function(event) {
-            if ('Escape' === event.key) {
-                hideResults();
+            var $active;
+
+            switch (event.key) {
+                case 'ArrowDown':
+                case 'Down':
+                    event.preventDefault();
+
+                    if (!isOpen() || !getOptions().length) {
+                        if (event.altKey || !isOpen()) {
+                            if (settings.searchOnEmptyFocus || $.trim($search.val())) {
+                                openSearch();
+                            }
+                        }
+                        return;
+                    }
+
+                    if (!event.altKey) {
+                        moveActive(1);
+                    }
+                    break;
+
+                case 'ArrowUp':
+                case 'Up':
+                    if (!isOpen() || !getOptions().length) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    moveActive(-1);
+                    break;
+
+                case 'Enter':
+                    $active = getOptions().filter('.' + activeClass);
+
+                    // With an option highlighted, Enter picks it; otherwise it submits the filters.
+                    if (isOpen() && $active.length) {
+                        event.preventDefault();
+                        selectItem($active.attr('data-value'), $active.attr('data-label'));
+                    }
+                    break;
+
+                case 'Escape':
+                case 'Esc':
+                    if (isOpen()) {
+                        event.preventDefault();
+                        hideResults();
+                    }
+                    break;
+
+                case 'Tab':
+                    hideResults();
+                    break;
             }
         });
 
@@ -370,15 +513,13 @@
             if (
                 !$wrap.is(event.target)
                 && !$wrap.has(event.target).length
-                && !$results.is(event.target)
-                && !$results.has(event.target).length
             ) {
                 hideResults();
             }
         });
 
         $(window).on('resize scroll', function() {
-            if (!$results.is('[hidden]')) {
+            if (isOpen()) {
                 positionResults();
             }
         });
@@ -392,6 +533,7 @@
             input: '.ppcart-reports-customer-input',
             value: '.ppcart-reports-customer-value',
             results: '.ppcart-reports-customer-results',
+            status: '.ppcart-reports-customer-status',
             action: 'ppcart_search_report_customers',
             nonce: reportsConfig.searchCustomersNonce,
             valueKey: 'email',
@@ -411,6 +553,7 @@
             input: '.ppcart-reports-product-input',
             value: '.ppcart-reports-product-value',
             results: '.ppcart-reports-product-results',
+            status: '.ppcart-reports-product-status',
             action: 'ppcart_search_report_products',
             nonce: reportsConfig.searchProductsNonce,
             valueKey: 'id',
