@@ -2,6 +2,7 @@
 title: "Gurucan"
 order: 17
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Gurucan

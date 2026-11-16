@@ -2,6 +2,7 @@
 title: "MemberVault"
 order: 32
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # MemberVault

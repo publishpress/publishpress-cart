@@ -2,6 +2,7 @@
 title: "Managing an Order"
 order: 30
 doc_category: publishpress-cart
+section: Orders
 ---
 
 # Managing an Order

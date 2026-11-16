@@ -2,6 +2,7 @@
 title: "Wishlist Member"
 order: 44
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Wishlist Member

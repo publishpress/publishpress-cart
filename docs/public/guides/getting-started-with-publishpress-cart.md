@@ -2,6 +2,7 @@
 title: "Getting Started With PublishPress Cart"
 order: 14
 doc_category: publishpress-cart
+section: Getting Started
 ---
 
 # Getting Started With PublishPress Cart

@@ -2,6 +2,7 @@
 title: "Integrations Overview"
 order: 22
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Integrations Overview

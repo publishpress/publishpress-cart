@@ -2,6 +2,7 @@
 title: "Heartbeat"
 order: 18
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Heartbeat

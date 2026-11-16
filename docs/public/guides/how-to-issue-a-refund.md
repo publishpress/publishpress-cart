@@ -2,6 +2,7 @@
 title: "How to Issue a Refund"
 order: 21
 doc_category: publishpress-cart
+section: Orders
 ---
 
 # How to Issue a Refund

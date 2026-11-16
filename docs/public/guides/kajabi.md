@@ -2,6 +2,7 @@
 title: "Kajabi"
 order: 23
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Kajabi

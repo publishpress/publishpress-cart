@@ -2,6 +2,7 @@
 title: "Creating Product"
 order: 7
 doc_category: publishpress-cart
+section: Products
 ---
 
 # Creating Product

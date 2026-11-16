@@ -2,6 +2,7 @@
 title: "Customize Checkout Form"
 order: 8
 doc_category: publishpress-cart
+section: Products
 ---
 
 # Customize Checkout Form

@@ -2,6 +2,7 @@
 title: "How to Move from Studiocart to PublishPress Cart"
 order: 33
 doc_category: publishpress-cart
+section: Getting Started
 ---
 
 # How to Move from Studiocart to PublishPress Cart

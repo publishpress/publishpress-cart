@@ -2,6 +2,7 @@
 title: "WP Courseware"
 order: 46
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # WP Courseware

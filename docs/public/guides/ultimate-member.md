@@ -2,6 +2,7 @@
 title: "Ultimate Member"
 order: 41
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Ultimate Member

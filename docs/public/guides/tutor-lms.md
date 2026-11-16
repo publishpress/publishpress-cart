@@ -2,6 +2,7 @@
 title: "Tutor LMS"
 order: 40
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Tutor LMS

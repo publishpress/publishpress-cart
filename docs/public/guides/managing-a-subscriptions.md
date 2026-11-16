@@ -2,6 +2,7 @@
 title: "Managing a Subscriptions"
 order: 29
 doc_category: publishpress-cart
+section: Subscription
 ---
 
 # Managing a Subscriptions

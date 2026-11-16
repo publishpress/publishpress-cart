@@ -2,6 +2,7 @@
 title: "ARMember"
 order: 3
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # ARMember

@@ -2,6 +2,7 @@
 title: "Teachable"
 order: 39
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Teachable

@@ -2,6 +2,7 @@
 title: "WooCommerce"
 order: 45
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # WooCommerce

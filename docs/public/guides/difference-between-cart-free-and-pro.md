@@ -2,6 +2,7 @@
 title: "Difference Between Cart Free and Pro"
 order: 10
 doc_category: publishpress-cart
+section: Getting Started
 ---
 
 # Difference Between Cart Free and Pro

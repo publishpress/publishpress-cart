@@ -2,6 +2,7 @@
 title: "MasterStudy LMS"
 order: 31
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # MasterStudy LMS

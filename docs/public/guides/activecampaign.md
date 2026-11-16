@@ -2,6 +2,7 @@
 title: "ActiveCampaign"
 order: 2
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # ActiveCampaign

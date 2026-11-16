@@ -2,6 +2,7 @@
 title: "FluentCRM"
 order: 13
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # FluentCRM

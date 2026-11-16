@@ -2,6 +2,7 @@
 title: "Restrict Content Pro"
 order: 37
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Restrict Content Pro

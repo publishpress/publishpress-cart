@@ -2,6 +2,7 @@
 title: "MailerLite"
 order: 27
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # MailerLite

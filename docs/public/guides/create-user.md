@@ -2,6 +2,7 @@
 title: "Create User"
 order: 6
 doc_category: publishpress-cart
+section: Subscription
 ---
 
 # Create User

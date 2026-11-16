@@ -2,6 +2,7 @@
 title: "Groups by Itthinx"
 order: 16
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Groups by Itthinx

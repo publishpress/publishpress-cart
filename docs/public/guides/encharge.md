@@ -2,6 +2,7 @@
 title: "Encharge"
 order: 12
 doc_category: publishpress-cart
+section: Integrations
 ---
 
 # Encharge
