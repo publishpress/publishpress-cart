@@ -55,7 +55,7 @@ $area_points = $padding_left . ',' . ($padding_top + $plot_height) . ' ' . implo
 
 ?>
 <div class="ppcart-report-chart">
-    <svg viewBox="0 0 <?php echo esc_attr($width); ?> <?php echo esc_attr($height); ?>" role="img" aria-label="<?php esc_attr_e('Revenue trend chart', 'publishpress-cart'); ?>">
+    <svg viewBox="0 0 <?php echo esc_attr($width); ?> <?php echo esc_attr($height); ?>" role="img" aria-label="<?php esc_attr_e('Revenue trend chart. The revenue data table after the chart lists each period.', 'publishpress-cart'); ?>">
         <rect class="ppcart-report-chart__background" x="<?php echo esc_attr($padding_left); ?>" y="<?php echo esc_attr($padding_top); ?>" width="<?php echo esc_attr($plot_width); ?>" height="<?php echo esc_attr($plot_height); ?>"></rect>
 
         <?php
@@ -80,5 +80,25 @@ $area_points = $padding_left . ',' . ($padding_top + $plot_height) . ' ' . implo
             <?php endif; ?>
         <?php endforeach; ?>
     </svg>
+    <details class="ppcart-report-chart__data">
+        <summary><?php esc_html_e('Show data table', 'publishpress-cart'); ?></summary>
+        <table class="widefat striped ppcart-report-chart__table">
+            <caption><?php esc_html_e('Revenue by period', 'publishpress-cart'); ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col"><?php esc_html_e('Period', 'publishpress-cart'); ?></th>
+                    <th scope="col"><?php esc_html_e('Revenue', 'publishpress-cart'); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($point_data as $point) : ?>
+                    <tr>
+                        <th scope="row"><?php echo esc_html($point['label']); ?></th>
+                        <td><?php echo esc_html($point['display']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </details>
 </div>
 <?php

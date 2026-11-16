@@ -3223,6 +3223,21 @@ body.ppcart-settings-modal-open {
     transform: translateY(0);
 }
 
+/*
+ * Keep focused fields clear of the sticky save bar (WCAG 2.4.11). The browser
+ * honours scroll-padding when it scrolls a focused element into view; 80px is
+ * the bar height (--ppcart-savebar-height, 64px) plus a small gap. The token is
+ * scoped to .ppcart-settings-page, so it cannot be read on <html>.
+ */
+html:has(.ppcart-settings-page .ppcart-settings__savebar.is-visible) {
+    scroll-padding-bottom: 80px;
+}
+
+/* Leave room to scroll the last fields above the bar while it is shown. */
+.ppcart-settings-page:has(.ppcart-settings__savebar.is-visible) .ppcart-settings__main {
+    padding-bottom: calc(var(--ppcart-savebar-height) + 24px);
+}
+
 .folded .ppcart-settings__savebar {
     left: 36px;
 }

@@ -26,7 +26,21 @@ if ($order) {
         $fileName = $file_prefix . "-" . get_post_timestamp($order_id) . ".pdf";
         $pdfPath = $fileName;
         $dompdf = new Dompdf();
-        $content = "<html>
+
+        // Document title for PDF metadata and the HTML source, e.g. "Invoice 1234".
+        $pdf_document_label = isset($document_type) && is_string($document_type) && '' !== $document_type
+            ? $document_type
+            : ('receipt' === $doc_type ? __('Receipt', 'publishpress-cart') : __('Invoice', 'publishpress-cart'));
+        $pdf_document_number = isset($invoice_number) && is_scalar($invoice_number) && '' !== (string) $invoice_number
+            ? (string) $invoice_number
+            : (string) $order_id;
+        /* translators: 1: document type (Invoice or Receipt), 2: invoice or receipt number. */
+        $pdf_title = sprintf(__('%1$s %2$s', 'publishpress-cart'), $pdf_document_label, $pdf_document_number);
+
+        $content = "<html lang=\"" . esc_attr(get_bloginfo('language')) . "\">
+                <head>
+                    <title>" . esc_html($pdf_title) . "</title>
+                </head>
                 <body>
                     <style>
                     @page { margin-top: 0px;padding-top:0px; }
@@ -57,6 +71,7 @@ if ($order) {
         $dompdf->setPaper('8.5x11');
         // Render the HTML as PDF
         $dompdf->render();
+        $dompdf->addInfo('Title', $pdf_title);
 
         if ($stream) {
             // Output the generated PDF to Browser
