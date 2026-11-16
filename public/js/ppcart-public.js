@@ -2078,7 +2078,7 @@
                                             $($this).css('pointer-events', '');
                                             $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
                                             console.error('Error confirming the payment method:', textStatus, errorThrown);
-                                            alert('An unexpected error occurred.');
+                                            alert(ppcart_translate_frontend.unexpected_error);
                                         });
                                     } else {
                                         var intent = {
@@ -2140,7 +2140,7 @@
                                 ev.complete('fail');
                                 $($this).css('pointer-events', '');
                                 $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
-                                alert('An unexpected error occurred.');
+                                alert(ppcart_translate_frontend.unexpected_error);
                             }
                         });
                     }
