@@ -7,7 +7,8 @@ if (! defined('ABSPATH')) {
 return [
     [
         'class'     => 'datepicker',
-        'description'   => '',
+        'description'   => __('Leave empty to open now.', 'publishpress-cart'),
+        'tooltip'       => __('Uses the site time zone.', 'publishpress-cart'),
         'id'            => '_ppcart_checkout_starts',
         'label'     => __('Checkout starts', 'publishpress-cart'),
         'placeholder'   => '',
@@ -17,7 +18,8 @@ return [
     ],
     [
         'class'     => 'datepicker',
-        'description'   => '',
+        'description'   => __('Leave empty to keep it open.', 'publishpress-cart'),
+        'tooltip'       => __('Uses the site time zone.', 'publishpress-cart'),
         'id'            => '_ppcart_checkout_ends',
         'label'     => __('Checkout ends', 'publishpress-cart'),
         'placeholder'   => '',
@@ -26,23 +28,24 @@ return [
         'class_size' => '',
     ],
     [
-        'class'         => '',
+        'class'         => 'ppcart-segmented',
         'description'   => '',
         'id'            => '_ppcart_checkout_ended_action',
-        'label'         => __('When checkout ended', 'publishpress-cart'),
+        'label'         => __('Show customers', 'publishpress-cart'),
         'placeholder'   => '',
         'type'          => 'select',
         'value'         => '',
         'selections'    => [
-            'message'       => 'Display message',
-            'redirect'      => 'Perform redirect',
+            'message'       => __('A message', 'publishpress-cart'),
+            'redirect'      => __('Another page', 'publishpress-cart'),
         ],
         'class_size' => '',
     ],
     [
-        'description'   => '',
+        'description'   => __('Customers go to this URL instead of the checkout form.', 'publishpress-cart'),
+        'placeholder'   => 'https://',
         'id'            => '_ppcart_checkout_ended_redirect',
-        'label'         => __('Checkout ended redirect URL', 'publishpress-cart'),
+        'label'         => __('Redirect URL', 'publishpress-cart'),
         'value'         => '',
         'type'          => 'url',
         'conditional_logic' => [
@@ -53,7 +56,7 @@ return [
         ],
     ],
     [
-        'description'   => '',
+        'description'   => __('Shown in place of the checkout form.', 'publishpress-cart'),
         'id'            => '_ppcart_checkout_ended_message',
         'label'         => __('Checkout ended message', 'publishpress-cart'),
         'value'         => __('Sorry, this product is no longer for sale.', 'publishpress-cart'),

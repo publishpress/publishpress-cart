@@ -52,6 +52,10 @@ trait PPCart_Admin_Settings_Screen_Trait
      */
     public function render_plugin_admin_footer_markup($extra_class = '')
     {
+        if (! apply_filters('ppcart_show_admin_branding', true)) {
+            return;
+        }
+
         $logo_url = esc_url(PPCART_BASE_URL . 'admin/assets/publishpress-logo.png');
         $classes  = 'ppcart-pp-admin-footer';
 

@@ -31,7 +31,7 @@ class PPCart_Dashboard_Renderer
         $subscription_type = function_exists('ppcart_live_post_type') ? ppcart_live_post_type('subscription') : 'ppcart_subscription';
         ?>
         <h3><?php esc_html_e('Orders this month', 'publishpress-cart'); ?> <a href="<?php echo esc_url(admin_url('edit.php?post_type=' . $order_type . '&order_type=orders')); ?>"><?php esc_html_e('View all orders', 'publishpress-cart'); ?></a></h3>
-        <ul id="ppcart-order-stats">
+        <ul class="ppcart-dashboard-widget__stats">
             <li><?php esc_html_e('Total Orders', 'publishpress-cart'); ?> <b><?php echo esc_html($orders['total_orders']); ?></b></li>
             <li><?php esc_html_e('Total Sales', 'publishpress-cart'); ?> <b><?php ppcart_formatted_price($orders['total_sales']); ?></b></li>
             <li><?php esc_html_e('Avg. Order Value', 'publishpress-cart'); ?> <b><?php ppcart_formatted_price($orders['average_order_value']); ?></b></li>
@@ -47,7 +47,7 @@ class PPCart_Dashboard_Renderer
         $subscription_type = function_exists('ppcart_live_post_type') ? ppcart_live_post_type('subscription') : 'ppcart_subscription';
         ?>
         <h3><?php esc_html_e('Subscriptions this month', 'publishpress-cart'); ?> <a href="<?php echo esc_url(admin_url('edit.php?post_type=' . $subscription_type . '&subscription_type=ongoing')); ?>"><?php esc_html_e('View all subscriptions', 'publishpress-cart'); ?></a></h3>
-        <ul id="ppcart-order-stats">
+        <ul class="ppcart-dashboard-widget__stats">
             <li><?php esc_html_e('Active Subscriptions', 'publishpress-cart'); ?> <b><?php echo esc_html($subscriptions['active_subscriptions']); ?></b></li>
             <li><?php esc_html_e('New Sign-ups', 'publishpress-cart'); ?> <b><?php echo esc_html($subscriptions['new_sign_ups']); ?></b></li>
             <li><?php esc_html_e('Trials', 'publishpress-cart'); ?> <b><?php echo esc_html($subscriptions['trials']); ?></b></li>
@@ -62,7 +62,7 @@ class PPCart_Dashboard_Renderer
         $subscription_type = function_exists('ppcart_live_post_type') ? ppcart_live_post_type('subscription') : 'ppcart_subscription';
         ?>
         <h3><?php esc_html_e('Payment plans this month', 'publishpress-cart'); ?> <a href="<?php echo esc_url(admin_url('edit.php?post_type=' . $subscription_type . '&subscription_type=installments')); ?>"><?php esc_html_e('View all plans', 'publishpress-cart'); ?></a></h3>
-        <ul id="ppcart-order-stats">
+        <ul class="ppcart-dashboard-widget__stats">
             <li><?php esc_html_e('Active Plans', 'publishpress-cart'); ?> <b><?php echo esc_html($plans['active_plans']); ?></b></li>
             <li><?php esc_html_e('Collected Revenue', 'publishpress-cart'); ?>  <b><?php echo wp_kses_post($plans['collected']); ?></b></li>
             <li><?php esc_html_e('Revenue Expected', 'publishpress-cart'); ?> <b><?php echo wp_kses_post($plans['expected']); ?></b> <small>(<?php esc_html_e('all active plans', 'publishpress-cart'); ?>)</small></li>
@@ -81,7 +81,7 @@ class PPCart_Dashboard_Renderer
         ];
 
         echo '<h3>' . esc_html__('Quick Links', 'publishpress-cart') . '</h3>';
-        echo '<ul>';
+        echo '<ul class="ppcart-dashboard-widget__links">';
         foreach ($links as $url => $label) {
             echo '<li><a href="' . esc_url($url) . '">' . esc_html($label) . '</a></li>';
         }

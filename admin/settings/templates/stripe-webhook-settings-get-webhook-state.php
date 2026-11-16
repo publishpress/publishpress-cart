@@ -101,6 +101,9 @@ try {
         if ('' !== $stored_secret) {
             $state['state'] = 'active';
             $state['note'] = __('This account does not let us re-check the endpoint, so no live status is shown.', 'publishpress-cart');
+            // The saved secret cannot be checked against Stripe here, so keep
+            // the signing-secret form reachable in case it is stale.
+            $state['secret_unverified'] = true;
             return $state;
         }
 

@@ -73,12 +73,7 @@ trait PPCart_Admin_Assets_Trait
      */
     private function enqueue_product_editor_metabox_panel_script($hook_suffix)
     {
-        if ('post.php' !== $hook_suffix && 'post-new.php' !== $hook_suffix) {
-            return;
-        }
-
-        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
-        if (! $screen || 'post' !== $screen->base || ! (function_exists('ppcart_is_product_post_type') && ppcart_is_product_post_type($screen->post_type))) {
+        if (! $this->is_product_edit_screen($hook_suffix)) {
             return;
         }
 
@@ -94,5 +89,82 @@ trait PPCart_Admin_Assets_Trait
             $this->version,
             true
         );
+    }
+
+    /**
+     * Whether the current screen edits a product.
+     *
+     * @param string $hook_suffix Current admin hook suffix.
+     * @return bool
+     */
+    private function is_product_edit_screen($hook_suffix)
+    {
+        if ('post.php' !== $hook_suffix && 'post-new.php' !== $hook_suffix) {
+            return false;
+        }
+
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+        if (! $screen || 'post' !== $screen->base) {
+            return false;
+        }
+
+        // Other post types can show the product metabox too (Pro collections use this filter).
+        $metabox_post_types = (array) apply_filters('ppcart_product_metabox_post_type', ppcart_live_post_type('product'));
+
+        return in_array($screen->post_type, $metabox_post_types, true)
+            || (function_exists('ppcart_is_product_post_type') && ppcart_is_product_post_type($screen->post_type));
+    }
+
+    /**
+     * Product settings metabox layout, tabs and required-field check.
+     *
+     * @param string $hook_suffix Current admin hook suffix.
+     * @return void
+     */
+    private function enqueue_product_metabox_assets($hook_suffix)
+    {
+        if (! $this->is_product_edit_screen($hook_suffix)) {
+            return;
+        }
+
+        wp_enqueue_style(
+            'ppcart-components',
+            PPCART_BASE_URL . 'admin/css/ppcart-components.css',
+            [ 'ppcart', 'ppcart-pro-locks' ],
+            $this->version,
+            'all'
+        );
+
+        wp_enqueue_style(
+            'ppcart-product-metabox',
+            PPCART_BASE_URL . 'admin/css/ppcart-product-metabox.css',
+            [ 'ppcart-components' ],
+            $this->version,
+            'all'
+        );
+
+        wp_enqueue_script(
+            'ppcart-product-metabox',
+            PPCART_BASE_URL . 'admin/js/ppcart-product-metabox.js',
+            [ 'jquery', 'ppcart-repeater' ],
+            $this->version,
+            true
+        );
+
+        wp_localize_script('ppcart-product-metabox', 'ppcartProductMetaboxI18n', [
+            'field'        => __('Field', 'publishpress-cart'),
+            'required'     => __('Enter a value. This field is required.', 'publishpress-cart'),
+            'oneEmpty'     => __('1 required field is empty', 'publishpress-cart'),
+            /* translators: %d: number of empty required fields. */
+            'manyEmpty'    => __('%d required fields are empty', 'publishpress-cart'),
+            'heading'      => __('Some required fields are empty.', 'publishpress-cart'),
+            'intro'        => __('Fill them in, then save the product again.', 'publishpress-cart'),
+            /* translators: %d: number of fields not listed. */
+            'more'         => __('and %d more', 'publishpress-cart'),
+            'editorNotice' => __('Product settings: some required fields are empty.', 'publishpress-cart'),
+            'showFields'   => __('Show fields', 'publishpress-cart'),
+            'sale'         => __('Sale', 'publishpress-cart'),
+            'hidden'       => __('Hidden', 'publishpress-cart'),
+        ]);
     }
 }

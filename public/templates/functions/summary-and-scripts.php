@@ -344,18 +344,18 @@ function ppcart_do_2step_checkout_form_open($post_id)
     $step_two_subheading = ppcart_checkout_text_setting('twoStepTabTwoSubheading', $ppcart_product->twostep_subhead_2);
     ?>
     <div id="ppcart-payment-form-<?php echo esc_attr($ppcart_product->ID . '-' . $ppcart_uid); ?>" class="ppcart-form-wrap">
-        <div class="ppcart-embed-checkout-form-nav ppcart-border-none">
+        <nav class="ppcart-embed-checkout-form-nav ppcart-border-none" aria-label="<?php esc_attr_e('Checkout steps', 'publishpress-cart'); ?>">
             <ul class="ppcart-checkout-form-steps">
-                <div class="steps step-one ppcart-current">
-                    <a href="#" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-step-one-tab')); ?>">
+                <li class="steps step-one ppcart-current">
+                    <a href="#" aria-current="step" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-step-one-tab')); ?>">
                         <div class="step-number">1</div>
                         <div class="step-heading">
                             <div class="step-name"><?php echo esc_html($step_one_heading); ?></div>
                             <div class="step-sub-name"><?php echo esc_html($step_one_subheading); ?></div>
                         </div>
                     </a>
-                </div>
-                <div class="steps step-two">
+                </li>
+                <li class="steps step-two">
                     <a href="#" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-step-two-tab')); ?>">
                         <div class="step-number">2</div>
                         <div class="step-heading">
@@ -363,9 +363,9 @@ function ppcart_do_2step_checkout_form_open($post_id)
                             <div class="step-sub-name"><?php echo esc_html($step_two_subheading); ?></div>
                         </div>
                     </a>
-                </div>
+                </li>
             </ul>
-        </div>
+        </nav>
 
         <form id="ppcart-payment-form" class="ppcart-2step-wrapper step-1" action="<?php echo esc_url($action); ?>" method="post">
 

@@ -18,6 +18,8 @@ $ppcart_product_fields = new PPCart_Product_Metaboxes($this->cart->get_plugin_na
 $order_fields = new PPCart_Order_Metaboxes($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
 $order_admin = new PPCart_Order_Admin($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
 $plugin_settings = new PPCart_Admin_Settings($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
+require_once dirname(__DIR__, 2) . '/mcp/bootstrap.php';
+ppcart_mcp_boot($plugin_settings, $ppcart_product_fields);
 $plugin_reports = new PPCart_Admin_Reports($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
 $plugin_contacts_page =  new PPCart_Contacts_Page($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
 $plugin_customer =  new PPCart_Customer_Reports($this->cart->get_plugin_name(), $this->cart->get_plugin_title(), $this->cart->get_version());
@@ -77,6 +79,8 @@ $this->loader->add_action('admin_menu', $plugin_reports, 'setup_plugin_options_m
 $this->loader->add_action('admin_menu', $plugin_customer, 'setup_plugin_options_menu');
 $this->loader->add_action('admin_menu', $plugin_contacts_page, 'setup_plugin_options_menu');
 $this->loader->add_action('admin_menu', $plugin_extensions_page, 'setup_plugin_options_menu');
+require_once PPCART_BASE_DIR . 'admin/class-ppcart-pro-menu-previews.php';
+$this->loader->add_action('admin_menu', new PPCart_Pro_Menu_Previews(), 'register_pages', 20);
 
 
 // Register Importer
@@ -110,6 +114,7 @@ $this->loader->add_action('update_option__ppcart_activecampaign_secret_key', $pl
 $this->loader->add_action('add_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
 $this->loader->add_action('update_option__ppcart_sendfox_api_key', $plugin_admin, 'get_sendfox_lists', 10);
 
+$this->loader->add_action('init', $plugin_admin_order, 'register_related_product_meta');
 $this->loader->add_action('admin_init', $plugin_admin_order, 'add_metaboxes', 99);
 $this->loader->add_action('edit_form_after_editor', $plugin_admin_order, 'product_info_callback');
 $this->loader->add_action('edit_form_advanced', $plugin_admin_order, 'product_form_callback');
@@ -119,6 +124,7 @@ foreach ($ppcart_product_types as $ppcart_product_type) {
     $this->loader->add_filter('manage_' . $ppcart_product_type . '_posts_columns', $plugin_admin_order_list, 'set_custom_edit_product_columns');
     $this->loader->add_action('manage_' . $ppcart_product_type . '_posts_custom_column', $plugin_admin_order_list, 'custom_product_column', 10, 2);
 }
+$this->loader->add_filter('default_hidden_columns', $plugin_admin_order_list, 'default_hidden_product_columns', 10, 2);
 $this->loader->add_filter('post_row_actions', $plugin_admin, 'add_product_duplicate_row_action', 10, 2);
 $this->loader->add_filter('page_row_actions', $plugin_admin, 'add_product_duplicate_row_action', 10, 2);
 $this->loader->add_action('admin_action_ppcart_duplicate_product', $plugin_admin, 'handle_product_duplicate_action');
