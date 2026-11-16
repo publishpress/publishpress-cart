@@ -1377,12 +1377,12 @@
                             fontSmoothing: 'antialiased',
                             fontSize: '16px',
                             '::placeholder': {
-                                color: '#aab7c4'
+                                color: '#64778b'
                             }
                         },
                         invalid: {
-                            color: '#fa755a',
-                            iconColor: '#fa755a'
+                            color: '#e12c07',
+                            iconColor: '#e12c07'
                         }
                     };
 
@@ -2559,7 +2559,7 @@
                 variables: {
                     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
                     colorText: '#32325d',
-                    colorDanger: '#fa755a'
+                    colorDanger: '#e12c07'
                 }
             };
         }
