@@ -376,7 +376,10 @@ export async function expectRowState(
     `.ppcart-settings__email-notifications-row:has(.ppcart-settings__email-title:text-is("${descriptor.title}"))`,
   );
 
-  await expect(row.locator(`.ppcart-settings__email-status.${state}`)).toHaveCount(1);
+  const status = row.locator(`.ppcart-settings__email-status.${state}`);
+  await expect(status).toHaveCount(1);
+  // The state is announced as text, not only by the dot colour (WCAG 1.4.1).
+  await expect(status).toHaveText(enabled ? 'Enabled' : 'Disabled');
 }
 
 /**
