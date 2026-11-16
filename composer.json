@@ -34,7 +34,7 @@
     "prefer-stable": true,
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.4"
+        "php": ">=8.2"
     },
     "require-dev": {
         "publishpress/dev-workspace": "^2.1.0"
