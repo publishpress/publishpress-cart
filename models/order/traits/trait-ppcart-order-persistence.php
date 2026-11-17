@@ -122,6 +122,12 @@ trait PPCart_Order_Persistence
         return $this->set_date($iso_date);
     }
 
+    /**
+     * Set the order date.
+     *
+     * @param string $date_time UTC date, 'Y-m-d H:i:s'.
+     * @return string|false The UTC date, or false without an order ID.
+     */
     public function set_date($date_time)
     {
         if (!$this->id) {
@@ -131,13 +137,13 @@ trait PPCart_Order_Persistence
         wp_update_post(
             [
             'ID' => $this->id,
-            'post_date' => get_gmt_from_date($date_time),
-            'post_date_gmt' => get_gmt_from_date($date_time),
+            'post_date' => get_date_from_gmt($date_time),
+            'post_date_gmt' => $date_time,
             ],
             false
         );
 
-        return get_gmt_from_date($date_time);
+        return $date_time;
     }
 
     public function refund_log($amount, $refundID)
