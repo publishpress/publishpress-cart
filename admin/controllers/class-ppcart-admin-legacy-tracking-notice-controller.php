@@ -86,14 +86,10 @@ class PPCart_Admin_Legacy_Tracking_Notice_Controller
             'update_post_meta_cache' => false,
             'update_post_term_cache' => false,
             'meta_query'             => [
-                'relation' => 'OR',
                 [
-                    'key'     => '_ppcart_tracking_main',
-                    'compare' => 'EXISTS',
-                ],
-                [
-                    'key'     => '_ppcart_tracking_lead',
-                    'compare' => 'EXISTS',
+                    'key'         => [ '_ppcart_tracking_main', '_ppcart_tracking_lead' ],
+                    'compare_key' => 'IN',
+                    'compare'     => 'EXISTS',
                 ],
             ],
         ]);
