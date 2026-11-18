@@ -19,6 +19,7 @@ class PPCart_Paypal_Onpage
     public const SDK_HANDLE        = 'ppcart-paypal-sdk';
     public const SCRIPT_HANDLE     = 'ppcart-paypal-onpage';
     public const APPROVE_RETRY_MAX = 8;
+    private const FIRST_PAYMENT_WAITS = 4;
     public const CRON_HOOK         = 'ppcart_paypal_onpage_reconcile';
     private const RECONCILE_LIMIT  = 20;
 
@@ -106,8 +107,8 @@ class PPCart_Paypal_Onpage
             // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Bounded hourly lookup of PayPal subscriptions past their bill date.
             'meta_query'     => [
                 [
-                    'key'   => ppcart_meta_key('pay_method'),
-                    'value' => 'paypal',
+                    'key'   => ppcart_meta_key('paypal_onpage'),
+                    'value' => '1',
                 ],
                 [
                     'key'     => ppcart_meta_key('sub_next_bill_date'),
@@ -228,6 +229,9 @@ class PPCart_Paypal_Onpage
         $order_id   = $this->paypal->paypal_store_checkout_order($order, $sub, $product_id, $cancel_url);
         $request_id = wp_generate_uuid4();
         PPCart_Paypal_Sync::mark_onpage($order_id);
+        if ($sub) {
+            PPCart_Paypal_Sync::mark_onpage($sub->id);
+        }
         ppcart_update_post_meta($order_id, 'paypal_request_id', $request_id);
         ppcart_update_post_meta($order_id, 'paypal_return_url', esc_url_raw((string) $order->return_url));
 
@@ -272,6 +276,7 @@ class PPCart_Paypal_Onpage
 
         $order_id = isset($_POST['ppcart_order_id']) ? absint(wp_unslash($_POST['ppcart_order_id'])) : 0;
         $access   = isset($_POST['access']) ? sanitize_text_field(wp_unslash($_POST['access'])) : '';
+        $attempt  = isset($_POST['attempt']) ? absint(wp_unslash($_POST['attempt'])) : self::FIRST_PAYMENT_WAITS;
 
         if (! $order_id || ! PPCart_Paypal_Sync::is_onpage_order($order_id) || ! PPCart_Order::token_matches($order_id, $access)) {
             $this->respond([ 'error' => __('An error occurred, please refresh the page and try again.', 'publishpress-cart') ]);
@@ -282,6 +287,12 @@ class PPCart_Paypal_Onpage
 
         switch ($result) {
             case PPCart_Paypal_Sync::RESULT_COMPLETE:
+                // An active subscription settles checkout, but PayPal posts its first
+                // payment a few seconds later. Wait briefly so the receipt shows it paid.
+                $unpaid = PPCart_Order::$paid_str !== (string) ppcart_get_post_meta($order_id, 'status', true);
+                if ($unpaid && $attempt < self::FIRST_PAYMENT_WAITS) {
+                    $this->respond([ 'retry' => true ]);
+                }
                 $url = esc_url_raw((string) ppcart_get_post_meta($order_id, 'paypal_return_url'));
                 if ('' === $url) {
                     $this->respond([ 'error' => __('An error occurred, please refresh the page and try again.', 'publishpress-cart') ]);
@@ -358,7 +369,7 @@ class PPCart_Paypal_Onpage
                     'return_url'          => $page_url,
                     'cancel_url'          => $page_url,
                 ],
-            ], [ 'PayPal-Request-Id' => $request_id ]);
+            ], [ 'PayPal-Request-Id' => $request_id . '-' . $attempt ]);
 
             if (PPCart_Paypal_Sync::ok($res) && ! empty($res['body']['id'])) {
                 return sanitize_text_field((string) $res['body']['id']);

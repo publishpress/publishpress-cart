@@ -91,7 +91,8 @@
             action: 'ppcart_paypal_onpage_approve',
             'ppcart-nonce': nonce(form),
             ppcart_order_id: orderId,
-            access: access
+            access: access,
+            attempt: attempt
         };
 
         function retryOrSettle() {
