@@ -275,6 +275,37 @@ class RenewalRepairTest extends StripeSyncTestCase
         $this->assertSame($listCallsAfterFirstRun, $fake->listCalls());
     }
 
+    public function test_background_sync_sends_no_renewal_emails_for_imported_orders(): void
+    {
+        update_option('_ppcart_email_renewal_enable', 1);
+        $subscriptionId = $this->createSubscriptionWithInitialOrder(gmdate('Y-m-d H:i:s', (int) strtotime('-7 months')));
+        $this->useFakeStripe($subscriptionId, 6);
+
+        $renewalActions = 0;
+        $countRenewal = static function () use (&$renewalActions) {
+            $renewalActions++;
+        };
+        $mails = 0;
+        $countMail = static function () use (&$mails) {
+            $mails++;
+
+            return true;
+        };
+        add_action('ppcart_renewal_payment', $countRenewal);
+        add_filter('pre_wp_mail', $countMail);
+
+        PPCart_Stripe_Sync::reconcile_stale_subscriptions();
+
+        remove_action('ppcart_renewal_payment', $countRenewal);
+        remove_filter('pre_wp_mail', $countMail);
+        delete_option('_ppcart_email_renewal_enable');
+
+        $this->assertSame(7, $this->orderCount($subscriptionId));
+        $this->assertSame(0, $renewalActions);
+        $this->assertSame(0, $mails);
+        $this->assertFalse(has_filter('ppcart_trigger_order_integrations', '__return_false'));
+    }
+
     public function test_background_sync_skips_subscriptions_with_current_orders(): void
     {
         $subscriptionId = $this->createSubscriptionWithInitialOrder(gmdate('Y-m-d H:i:s', time() - 2 * DAY_IN_SECONDS));

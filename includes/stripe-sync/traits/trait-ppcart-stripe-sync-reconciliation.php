@@ -155,7 +155,14 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
             }
 
             ppcart_update_post_meta($sub->id, 'stripe_renewal_repair_period', $period_start);
-            self::sync_subscription_invoices($sub, $stripe);
+            // These payments are old. Record the orders, but do not send renewal
+            // emails or run integrations for them again.
+            add_filter('ppcart_trigger_order_integrations', '__return_false', 999);
+            try {
+                self::sync_subscription_invoices($sub, $stripe);
+            } finally {
+                remove_filter('ppcart_trigger_order_integrations', '__return_false', 999);
+            }
             ppcart_log_entry($sub->id, __('Missing renewal orders imported from Stripe by the background sync', 'publishpress-cart'));
 
             return true;
