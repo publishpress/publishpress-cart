@@ -72,7 +72,11 @@ if (! $existing && $payment_intent) {
     }
 }
 
-$invoice_date = self::path($invoice, [ 'status_transitions', 'finalized_at' ], self::get($invoice, 'created', time()));
+// Date renewal orders by when Stripe took the payment, as Stripe shows it.
+$invoice_date = self::path($invoice, [ 'status_transitions', 'paid_at' ], 0);
+if (! $invoice_date) {
+    $invoice_date = self::path($invoice, [ 'status_transitions', 'finalized_at' ], self::get($invoice, 'created', time()));
+}
 
 return PPCart_Stripe_Sync_Context::run(
     function () use ($existing, $sub, $invoice, $charge_id, $payment_intent, $payment_intent_status, $order_status, $invoice_date, $event, $event_type, $currency) {
