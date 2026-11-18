@@ -388,6 +388,7 @@ add_action( 'ppcart_checkout_complete', 'myplugin_checkout_complete', 10, 2 );
 | `ppcart_paypal_custom_payment_vars` | filter | Free | Filters the custom data sent to PayPal in the ‘custom’ field of a payment request. Return: array — the custom data. Note: Subscription payments pass more data than one-time payments. | `$custom` (array) Custom data; ‘order_id’, plus ‘subscription_id’ for subscriptions  
 `$order_data` (array) Order data  
 `$sub_data` (array\|false) Subscription data, or false for one-time payments |
+| `ppcart_paypal_onpage_reconcile` | action | Free | WP-Cron hook that fires hourly while on-page PayPal checkout is active. The plugin reconciles pending on-page orders of the last 48 hours and PayPal subscriptions past their next bill date with what PayPal reports. | — |
 | `ppcart_paypal_payment_vars` | filter | Free | Filters the PayPal payment variables before the plugin builds the PayPal URL query string. Return: array — the PayPal payment variables. | `$data` (array) PayPal payment variables  
 `$order` (PPCart_Order) Order object  
 `$sub` (PPCart_Subscription\|false) Subscription object, if any |

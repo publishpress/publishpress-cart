@@ -1,5 +1,9 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
+[1.3.0] - Unreleased
+
+- Added : On-page PayPal checkout with the PayPal JavaScript SDK popup for one-time payments and subscriptions, with a REST webhook and an hourly reconcile job, #1161
+
 [1.2.0] - 11 Nov, 2026
 
 - Added : MCP integration with Hub, #1022

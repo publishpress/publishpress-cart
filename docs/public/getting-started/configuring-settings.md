@@ -33,6 +33,30 @@ Stripe **API** is **Test** or **Live**. After you switch to **Live**, click
 **Update** on each subscription product. See
 [Using Stripe with recurring payment plans](../subscriptions/using-stripe-with-recurring-payment-plans.md).
 
+### PayPal
+
+PayPal has two **Checkout experience** options.
+
+- **Redirect to PayPal** is the default. The buyer leaves your site, pays on
+  PayPal, and comes back to the confirmation page. This option needs the
+  **PayPal Email** of the selected mode. Add the **PDT Token** so the
+  confirmation page can verify the payment at once.
+- **On this page (PayPal popup)** keeps the buyer on your checkout page. PayPal
+  opens in a popup. After approval the buyer lands on the confirmation page.
+  This option works for one-time payments and subscriptions.
+
+On-page checkout needs the **Client ID** and **Secret** of the selected mode
+(**Sandbox** or **Live**). Create them in the PayPal Developer Dashboard under
+your app. Without them, the checkout uses the redirect flow.
+
+When you save the PayPal settings with on-page checkout and credentials, Cart
+registers a webhook in your PayPal app. The webhook URL is
+`https://your-site.example/ppcart-webhook/paypal-rest`. The field shows
+"registered" when this worked. PayPal refuses local and non-HTTPS URLs. In that
+case the field shows the URL and the events, so you can add the webhook
+yourself. On-page checkout still works without the webhook. An hourly check
+completes payments that PayPal could not report.
+
 ## Downloads
 
 **Logged in user downloads only** restricts file downloads to signed-in customers.
