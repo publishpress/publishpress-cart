@@ -64,21 +64,105 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
         );
 
         $synced = 0;
+        $repairs_left = 10;
         foreach ($posts as $post_id) {
             if ($synced >= 50) {
                 break;
             }
 
             try {
-                self::sync_subscription_by_local($post_id, false);
+                $sub = self::sync_subscription_by_local($post_id, false);
                 $synced++;
             } catch (\PublishPress\Stripe\Exception\RateLimitException $e) {
                 self::mark_sync_failure($post_id, $e, true);
+                continue;
             } catch (\PublishPress\Stripe\Exception\ApiErrorException $e) {
                 self::mark_sync_failure($post_id, $e, false);
+                continue;
             } catch (Exception $e) {
                 self::mark_sync_failure($post_id, $e, false);
+                continue;
             }
+
+            if ($repairs_left > 0 && self::maybe_repair_missing_renewals($sub)) {
+                $repairs_left--;
+            }
+        }
+    }
+
+    /**
+     * Import renewal invoices that never became orders.
+     *
+     * A renewal is missing when the newest local order is older than the start
+     * of the subscription's current Stripe billing period. This happens when a
+     * webhook never reached the site, for example on sites migrated from
+     * StudioCart. Each subscription is repaired at most once per billing period,
+     * so an invoice the site refuses is not fetched again every hour.
+     *
+     * @param PPCart_Subscription|false $sub Local subscription, just synced from Stripe.
+     * @return bool Whether a repair ran.
+     */
+    public static function maybe_repair_missing_renewals($sub)
+    {
+        if (! $sub || ! $sub->id || empty($sub->subscription_id)) {
+            return false;
+        }
+
+        if (! in_array($sub->status, [ 'active', 'past_due', 'unpaid' ], true)) {
+            return false;
+        }
+
+        try {
+            $stripe = self::get_client_for_mode($sub->gateway_mode);
+            $stripe_sub = $stripe->subscriptions->retrieve($sub->subscription_id);
+
+            $period_start = absint(self::get($stripe_sub, 'current_period_start', 0));
+            if (! $period_start) {
+                $period_start = absint(self::path($stripe_sub, [ 'items', 'data', 0, 'current_period_start' ], 0));
+            }
+
+            // Give the webhook a day to deliver a new renewal before importing it here.
+            if (! $period_start || $period_start > time() - DAY_IN_SECONDS) {
+                return false;
+            }
+
+            if ((int) ppcart_get_post_meta($sub->id, 'stripe_renewal_repair_period', true) === $period_start) {
+                return false;
+            }
+
+            $last_order = get_posts(
+                [
+                    'post_type'      => ppcart_query_post_types('order'),
+                    'post_status'    => 'any',
+                    'posts_per_page' => 1,
+                    'orderby'        => 'date',
+                    'order'          => 'DESC',
+                    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Newest order linked to this subscription.
+                    'meta_query'     => [
+                        [
+                            'key'   => ppcart_meta_key('subscription_id'),
+                            'value' => $sub->id,
+                        ],
+                    ],
+                ]
+            );
+            $last_order_time = $last_order ? (int) get_post_time('U', true, $last_order[0]) : 0;
+
+            // Orders can be dated a little before the period starts; a missing
+            // renewal leaves a gap of at least one billing period.
+            if ($last_order_time && $last_order_time >= $period_start - DAY_IN_SECONDS) {
+                return false;
+            }
+
+            ppcart_update_post_meta($sub->id, 'stripe_renewal_repair_period', $period_start);
+            self::sync_subscription_invoices($sub, $stripe);
+            ppcart_log_entry($sub->id, __('Missing renewal orders imported from Stripe by the background sync', 'publishpress-cart'));
+
+            return true;
+        } catch (\Throwable $e) {
+            self::log_debug('Renewal repair failed for subscription ' . $sub->id . ': ' . $e->getMessage(), 3);
+
+            return false;
         }
     }
 
