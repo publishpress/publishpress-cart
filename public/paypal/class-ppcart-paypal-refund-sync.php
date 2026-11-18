@@ -62,11 +62,13 @@ class PPCart_Paypal_Refund_Sync
 
             return null === $body ? null : 'REFUNDED' === ($body['status'] ?? '');
         }, function () use ($capture) {
-            $body  = $capture();
-            $order = PPCart_Paypal_Sync::find_order_by_paypal_order_id($body['supplementary_data']['related_ids']['order_id'] ?? '');
-            if ($order) {
-                (new PPCart_Paypal_Sync())->sync_order($order->id);
+            $body = $capture();
+            if (null === $body) {
+                return PPCart_Paypal_Sync::RESULT_UNAVAILABLE;
             }
+            $order = PPCart_Paypal_Sync::find_order_by_paypal_order_id($body['supplementary_data']['related_ids']['order_id'] ?? '');
+
+            return $order ? (new PPCart_Paypal_Sync())->sync_order($order->id) : PPCart_Paypal_Sync::RESULT_FAILED;
         });
     }
 
@@ -108,10 +110,12 @@ class PPCart_Paypal_Refund_Sync
             return null === $body ? null : 'refunded' === strtolower((string) ($body['state'] ?? ''));
         }, function () use ($sale) {
             $body = $sale();
-            $sub  = PPCart_Subscription::get_by_sub_id(sanitize_text_field((string) ($body['billing_agreement_id'] ?? '')));
-            if ($sub) {
-                (new PPCart_Paypal_Sync())->sync_subscription($sub);
+            if (null === $body) {
+                return PPCart_Paypal_Sync::RESULT_UNAVAILABLE;
             }
+            $sub = PPCart_Subscription::get_by_sub_id(sanitize_text_field((string) ($body['billing_agreement_id'] ?? '')));
+
+            return $sub ? (new PPCart_Paypal_Sync())->sync_subscription($sub) : PPCart_Paypal_Sync::RESULT_FAILED;
         });
     }
 
@@ -123,15 +127,18 @@ class PPCart_Paypal_Refund_Sync
      * @param string   $transaction_id Capture or sale ID the refund belongs to.
      * @param float    $amount         Refunded amount.
      * @param callable $fully_refunded Returns true, false, or null when PayPal could not be read.
-     * @param callable $record_payment Records the payment locally when a refund arrives before it.
+     * @param callable $record_payment Records the payment locally when a refund arrives before it; returns a RESULT_* value.
      * @return string
      */
     private function apply($refund_id, $transaction_id, $amount, callable $fully_refunded, callable $record_payment)
     {
         $found = '' !== $transaction_id ? PPCart_Order::get_by_trans_id($transaction_id) : false;
         if (! $found && '' !== $transaction_id) {
-            $record_payment();
-            $found = PPCart_Order::get_by_trans_id($transaction_id);
+            $recorded = $record_payment();
+            $found    = PPCart_Order::get_by_trans_id($transaction_id);
+            if (! $found && in_array($recorded, [ PPCart_Paypal_Sync::RESULT_UNAVAILABLE, PPCart_Paypal_Sync::RESULT_BUSY ], true)) {
+                return $recorded;
+            }
         }
         if (! $found || ! PPCart_Paypal_Sync::is_onpage_order($found->id)) {
             PPCart_Paypal_Sync::log('refund ' . $refund_id . ' has no on-page order for payment ' . $transaction_id);
