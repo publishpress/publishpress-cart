@@ -11,15 +11,24 @@ trait PPCart_Files_Order_Trait
         global $wpdb;
         $args['downloads_remaining'] = '0';
         $args['download_expires'] = ppcart_localize_dt()->format('Y-m-d H:i:s');
-        $downloads = $this->get_order_downloads($order_data['id'], ['status' => 'all']);
-        if (is_countable($downloads)) {
-            foreach ($downloads as $download) {
-                if ($download->product_id == $order_data['product_id']) {
-                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Marks existing downloads as revoked for refunded item.
-                    $wpdb->update(self::live_table(), $args, [ 'download_id' => $download->download_id ], [ '%s', '%s' ], [ '%d' ]);
-                }
-            }
+        $downloads = $this->get_order_downloads($order_data['id'], [
+            'status' => 'all',
+            'product_id' => $order_data['product_id'],
+        ]);
+        if (! is_countable($downloads)) {
+            return;
         }
+
+        $download_ids = array_values(array_unique(array_map('intval', array_column($downloads, 'download_id'))));
+        if (! $download_ids) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Revokes the selected download rows for a refunded item in one update.
+        $wpdb->query($wpdb->prepare(
+            'UPDATE %i SET downloads_remaining = %s, download_expires = %s WHERE download_id IN (' . implode(',', array_fill(0, count($download_ids), '%d')) . ')',
+            array_merge([self::live_table(), $args['downloads_remaining'], $args['download_expires']], $download_ids)
+        ));
     }
 
     public function attach_downloads_to_order($order)
