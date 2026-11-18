@@ -144,6 +144,7 @@ class PPCart_Dependency_Loader
         require_once $base_path . 'public/paypal/class-ppcart-paypal-record-lock.php';
         require_once $base_path . 'public/paypal/class-ppcart-paypal-sync.php';
         require_once $base_path . 'public/paypal/class-ppcart-paypal-refund-sync.php';
+        require_once $base_path . 'public/paypal/class-ppcart-paypal-webhook.php';
         require_once $base_path . 'public/paypal/class-ppcart-paypal-onpage.php';
         new PPCart_Paypal_Onpage($ppcart_paypal, $cart->get_version());
 

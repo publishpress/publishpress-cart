@@ -26,6 +26,7 @@ if (! defined('ABSPATH')) {
  * @author PublishPress <help@publishpress.com>
  */
 require_once __DIR__ . '/settings/class-ppcart-admin-stripe-connect-settings.php';
+require_once __DIR__ . '/settings/class-ppcart-admin-paypal-webhook.php';
 require_once __DIR__ . '/settings/traits/trait-ppcart-admin-settings-email.php';
 require_once __DIR__ . '/settings/traits/trait-ppcart-admin-settings-screen.php';
 require_once __DIR__ . '/settings/traits/trait-ppcart-admin-settings-sections.php';
@@ -79,6 +80,13 @@ class PPCart_Admin_Settings
     private $stripe_connect;
 
     /**
+     * PayPal on-page webhook registration.
+     *
+     * @var PPCart_Admin_Paypal_Webhook
+     */
+    private $paypal_webhook;
+
+    /**
      * Initialize the class and set its properties.
      *
      * @since 1.0.0
@@ -92,6 +100,7 @@ class PPCart_Admin_Settings
         $this->plugin_title = $plugin_title;
         $this->version = $version;
         $this->stripe_connect = new PPCart_Admin_Stripe_Connect_Settings();
+        $this->paypal_webhook = new PPCart_Admin_Paypal_Webhook();
 
         add_filter('admin_body_class', [$this,'admin_body_class']);
         add_action('admin_footer', [$this, 'render_plugin_admin_footer']);

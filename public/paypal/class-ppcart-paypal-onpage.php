@@ -19,6 +19,8 @@ class PPCart_Paypal_Onpage
     public const SDK_HANDLE        = 'ppcart-paypal-sdk';
     public const SCRIPT_HANDLE     = 'ppcart-paypal-onpage';
     public const APPROVE_RETRY_MAX = 8;
+    public const CRON_HOOK         = 'ppcart_paypal_onpage_reconcile';
+    private const RECONCILE_LIMIT  = 20;
 
     /**
      * @var PPCart_Paypal
@@ -46,6 +48,78 @@ class PPCart_Paypal_Onpage
         add_action('wp_ajax_nopriv_ppcart_paypal_onpage_create', [ $this, 'ajax_create' ]);
         add_action('wp_ajax_ppcart_paypal_onpage_approve', [ $this, 'ajax_approve' ]);
         add_action('wp_ajax_nopriv_ppcart_paypal_onpage_approve', [ $this, 'ajax_approve' ]);
+        add_action('admin_init', [ $this, 'sync_schedule' ]);
+        add_action(self::CRON_HOOK, [ $this, 'reconcile' ]);
+    }
+
+    /**
+     * Keep the hourly reconcile job scheduled only while on-page checkout is active.
+     *
+     * @return void
+     */
+    public function sync_schedule()
+    {
+        $next = wp_next_scheduled(self::CRON_HOOK);
+        if (self::is_active()) {
+            if (! $next) {
+                wp_schedule_event(time() + HOUR_IN_SECONDS, 'hourly', self::CRON_HOOK);
+            }
+        } elseif ($next) {
+            wp_clear_scheduled_hook(self::CRON_HOOK);
+        }
+    }
+
+    /**
+     * Converge records that a lost webhook or a lost capture response left behind.
+     *
+     * @return void
+     */
+    public function reconcile()
+    {
+        $sync = new PPCart_Paypal_Sync();
+
+        $orders = get_posts([
+            'post_type'      => ppcart_query_post_types('order'),
+            'post_status'    => PPCart_Order::$pending_str,
+            'posts_per_page' => self::RECONCILE_LIMIT,
+            'fields'         => 'ids',
+            'orderby'        => 'date',
+            'order'          => 'ASC',
+            'date_query'     => [ [ 'after' => '48 hours ago' ] ],
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Bounded hourly lookup of on-page orders.
+            'meta_query'     => [
+                [
+                    'key'   => ppcart_meta_key('paypal_onpage'),
+                    'value' => '1',
+                ],
+            ],
+        ]);
+        foreach ($orders as $order_id) {
+            $sync->sync_order((int) $order_id);
+        }
+
+        $subscriptions = get_posts([
+            'post_type'      => ppcart_query_post_types('subscription'),
+            'post_status'    => [ PPCart_Subscription::$active_str, PPCart_Subscription::$trial_str, PPCart_Subscription::$past_due_str ],
+            'posts_per_page' => self::RECONCILE_LIMIT,
+            'fields'         => 'ids',
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Bounded hourly lookup of PayPal subscriptions past their bill date.
+            'meta_query'     => [
+                [
+                    'key'   => ppcart_meta_key('pay_method'),
+                    'value' => 'paypal',
+                ],
+                [
+                    'key'     => ppcart_meta_key('sub_next_bill_date'),
+                    'value'   => time(),
+                    'type'    => 'NUMERIC',
+                    'compare' => '<',
+                ],
+            ],
+        ]);
+        foreach ($subscriptions as $sub_id) {
+            $sync->sync_subscription((int) $sub_id);
+        }
     }
 
     /**
@@ -122,7 +196,10 @@ class PPCart_Paypal_Onpage
      */
     public function ajax_create()
     {
-        $this->verify_nonce();
+        $nonce = $this->posted_nonce();
+        if ('' === $nonce || ! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
+            $this->respond([ 'error' => __('An error occurred, please refresh the page and try again.', 'publishpress-cart') ]);
+        }
 
         if (! self::is_active()) {
             $this->respond([ 'fallback' => 'redirect' ]);
@@ -188,7 +265,10 @@ class PPCart_Paypal_Onpage
      */
     public function ajax_approve()
     {
-        $this->verify_nonce();
+        $nonce = $this->posted_nonce();
+        if ('' === $nonce || ! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
+            $this->respond([ 'error' => __('An error occurred, please refresh the page and try again.', 'publishpress-cart') ]);
+        }
 
         $order_id = isset($_POST['ppcart_order_id']) ? absint(wp_unslash($_POST['ppcart_order_id'])) : 0;
         $access   = isset($_POST['access']) ? sanitize_text_field(wp_unslash($_POST['access'])) : '';
@@ -293,15 +373,11 @@ class PPCart_Paypal_Onpage
         return '';
     }
 
-    private function verify_nonce()
+    private function posted_nonce()
     {
-        $nonce = isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification.
-            ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The value is verified immediately below.
+        return isset($_POST['ppcart-nonce']) && is_string($_POST['ppcart-nonce']) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reading the nonce field for immediate verification by the caller.
+            ? sanitize_text_field(wp_unslash($_POST['ppcart-nonce'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The caller verifies the value at once.
             : '';
-
-        if ('' === $nonce || ! ppcart_verify_nonce($nonce, 'ppcart_purchase_nonce')) {
-            $this->respond([ 'error' => __('An error occurred, please refresh the page and try again.', 'publishpress-cart') ]);
-        }
     }
 
     private function respond($data)

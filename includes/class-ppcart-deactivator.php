@@ -38,5 +38,6 @@ class PPCart_Deactivator
         wp_clear_scheduled_hook('ppcart_daily_events', ['reminder']);
         wp_clear_scheduled_hook('ppcart_daily_events', ['trial_ending']);
         wp_clear_scheduled_hook('ppcart_cleanup_preloaded_intents');
+        wp_clear_scheduled_hook('ppcart_paypal_onpage_reconcile');
     }
 }
