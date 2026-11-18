@@ -515,10 +515,14 @@ function ppcart_do_field($args)
         <?php else : ?>
             <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?><?php echo $autocomplete_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
             <?php if ($type == 'password') :
-                ?>pattern="(?=.*\d)(?=.*[a-z]).{8,}"<?php
+                ?>pattern="(?=.*\d)(?=.*[a-z]).{8,}" aria-describedby="<?php echo esc_attr($id); ?>-rules"<?php
             endif; ?>
             >
             <?php if ($type == 'password') : ?>
+                <div class="ppcart-password-rules" id="<?php echo esc_attr($id); ?>-rules" data-ppcart-password-level="0" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-password-rules')); ?>">
+                    <div class="ppcart-password-meter" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <p class="ppcart-password-rules-text" aria-live="polite"><?php esc_html_e('Use at least 8 characters, 1 lowercase letter, and 1 number', 'publishpress-cart'); ?></p>
+                </div>
                 <div class="password-toggle">
                     <input type="checkbox" name="ppcart-show-password" id="ppcart-show-password" class="ppcart-password-toggle" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-show-password')); ?>">
                     <label for="ppcart-show-password"><?php esc_html_e('Show password', 'publishpress-cart'); ?></label>

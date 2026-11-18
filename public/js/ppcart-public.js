@@ -133,23 +133,67 @@
         return (/^\d{7,}$/).test(value.replace(/[\s()+\-\.]|ext/gi, ''));
     }
 
+    var passwordRules = {
+        length: function (value) {
+            return value.length >= 8;
+        },
+        lowercase: function (value) {
+            return /[a-z]/.test(value);
+        },
+        number: function (value) {
+            return /[0-9]/.test(value);
+        }
+    };
+
     function isValidPassword(value) {
-        var lowerCaseLetters = /[a-z]/g;
-        if (!value.match(lowerCaseLetters)) {
-            return false;
-        }
-
-        // Validate numbers
-        var numbers = /[0-9]/g;
-        if (!value.match(numbers)) {
-            return false;
-        }
-
-        // Validate length
-        if (!value.length >= 8) {
-            return false;
+        for (var rule in passwordRules) {
+            if (!passwordRules[rule](value)) {
+                return false;
+            }
         }
         return true;
+    }
+
+    // Fill the strength bar and name the missing requirements; mark the field valid when none is missing.
+    function updatePasswordRules($field) {
+        var value = $field.val();
+        var strings = ppcart_translate_frontend;
+        var missing = [];
+        var total = 0;
+
+        for (var rule in passwordRules) {
+            total++;
+            if (!passwordRules[rule](value)) {
+                missing.push(strings['password_rule_' + rule]);
+            }
+        }
+
+        var valid = !missing.length;
+        var text = strings.password_strong;
+        if (!value.length) {
+            text = strings.password_rules_hint;
+        } else if (!valid) {
+            text = strings.password_still_needed.replace('%s', missing.join(', '));
+        }
+
+        var $rules = $field.closest('.ppcart-form-group').find('.ppcart-password-rules');
+        $rules.removeClass('is-invalid').toggleClass('is-strong', valid).attr('data-ppcart-password-level', total - missing.length);
+        $rules.find('.ppcart-password-rules-text').text(text);
+        $field.toggleClass('valid', valid);
+
+        return valid;
+    }
+
+    // The strength text already names the missing requirements, so it turns red in place of a second message.
+    function showPasswordError($field) {
+        var $group = $field.addClass('invalid').closest('.ppcart-form-group');
+        var $rules = $group.find('.ppcart-password-rules');
+
+        if ($rules.length) {
+            $rules.addClass('is-invalid');
+        } else {
+            $group.append($('<div class="error"></div>').text(ppcart_translate_frontend.invalid_pass));
+        }
     }
 
     $(document).ready(function() {
@@ -1124,12 +1168,17 @@
         $(document).on('blur', '#ppcart-payment-form input.ppcart-password', function() {
             var val = $(this).val();
             if (val.length) {
-                var validPass = isValidPassword(val);
                 clearFieldError($(this));
+                var validPass = updatePasswordRules($(this));
                 if (!validPass) {
-                    $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_pass + '</div>');
+                    showPasswordError($(this));
                 }
             }
+        });
+
+        // Registered after the handler that clears field errors, so the valid mark is put back.
+        $(document).on('input change', '#ppcart-payment-form input.ppcart-password', function() {
+            updatePasswordRules($(this));
         });
 
         $(document).on('change', '.ppcart-password-toggle', function() {
@@ -1246,10 +1295,10 @@
             // check password
             $('#'+form_wrapper+' input.ppcart-password').each(function () {
                 if ($(this).val().length) {
-                    var validPass = isValidPassword($(this).val());
+                    var validPass = updatePasswordRules($(this));
                     if (!validPass) {
                         if (showErrors) {
-                            $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_pass + '</div>');
+                            showPasswordError($(this));
                         }
                         errors = true;
                     }

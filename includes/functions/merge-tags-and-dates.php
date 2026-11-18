@@ -598,6 +598,13 @@ function ppcart_translate_js($js_script = '')
             'invalid_email' => __('Enter a valid email', "publishpress-cart"),
             'invalid_phone' => __('Enter a valid phone number', "publishpress-cart"),
             'invalid_pass' => __('Use 8 or more characters with a mix of letters, numbers, and symbols', "publishpress-cart"),
+            'password_rules_hint' => __('Use at least 8 characters, 1 lowercase letter, and 1 number', 'publishpress-cart'),
+            /* translators: %s: comma-separated list of the password requirements not met yet. */
+            'password_still_needed' => __('Still needed: %s', 'publishpress-cart'),
+            'password_strong' => __('Strong password', 'publishpress-cart'),
+            'password_rule_length' => __('8 characters', 'publishpress-cart'),
+            'password_rule_lowercase' => __('1 lowercase letter', 'publishpress-cart'),
+            'password_rule_number' => __('1 number', 'publishpress-cart'),
             'includes' => __('includes', "publishpress-cart"),
             'included_in_price' => __('Included In Price', "publishpress-cart"),
             'field_required' => __('This field is required', "publishpress-cart"),

@@ -1723,6 +1723,59 @@ body.ppcart-checkout-1 {
         background-size: auto 14px;
     }
 
+    .ppcart-password-rules {
+        color: #6b6b6b;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-top: 8px;
+        text-align: left;
+
+        .ppcart-password-meter {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .ppcart-password-meter span {
+            background: #dcdcde;
+            border-radius: 2px;
+            flex: 1;
+            height: 4px;
+        }
+
+        &[data-ppcart-password-level="1"] .ppcart-password-meter span:nth-child(-n+1) {
+            background: #e12c07;
+        }
+
+        &[data-ppcart-password-level="2"] .ppcart-password-meter span:nth-child(-n+2) {
+            background: #dba617;
+        }
+
+        &[data-ppcart-password-level="3"] .ppcart-password-meter span {
+            background: #1e7b34;
+        }
+
+        .ppcart-password-rules-text {
+            color: inherit;
+            font-size: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        &.is-invalid .ppcart-password-rules-text {
+            color: #e12c07;
+        }
+
+        &.is-strong .ppcart-password-rules-text {
+            color: #1e7b34;
+            font-weight: 600;
+        }
+
+        & + .password-toggle {
+            margin-top: 10px;
+        }
+    }
+
     .error {
         margin-bottom: -15px;
     }
