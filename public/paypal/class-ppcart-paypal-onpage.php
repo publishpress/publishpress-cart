@@ -84,18 +84,15 @@ class PPCart_Paypal_Onpage
             'post_status'    => PPCart_Order::$pending_str,
             'posts_per_page' => self::RECONCILE_LIMIT,
             'fields'         => 'ids',
-            'orderby'        => 'date',
+            // Least recently checked first, so abandoned checkouts cannot fill every batch.
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Bounded hourly lookup of on-page orders.
+            'meta_key'       => ppcart_meta_key('paypal_checked'),
+            'orderby'        => 'meta_value_num',
             'order'          => 'ASC',
             'date_query'     => [ [ 'after' => '48 hours ago' ] ],
-            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Bounded hourly lookup of on-page orders.
-            'meta_query'     => [
-                [
-                    'key'   => ppcart_meta_key('paypal_onpage'),
-                    'value' => '1',
-                ],
-            ],
         ]);
         foreach ($orders as $order_id) {
+            ppcart_update_post_meta((int) $order_id, 'paypal_checked', time());
             $sync->sync_order((int) $order_id);
         }
 
@@ -229,6 +226,7 @@ class PPCart_Paypal_Onpage
         $order_id   = $this->paypal->paypal_store_checkout_order($order, $sub, $product_id, $cancel_url);
         $request_id = wp_generate_uuid4();
         PPCart_Paypal_Sync::mark_onpage($order_id);
+        ppcart_update_post_meta($order_id, 'paypal_checked', 0);
         if ($sub) {
             PPCart_Paypal_Sync::mark_onpage($sub->id);
         }

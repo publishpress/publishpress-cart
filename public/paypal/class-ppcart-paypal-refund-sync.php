@@ -51,13 +51,22 @@ class PPCart_Paypal_Refund_Sync
         $capture_id = self::linked_id($refund, 'up');
         $amount     = (float) ($refund['amount']['value'] ?? 0);
 
-        return $this->apply($refund_id, $capture_id, $amount, function () use ($capture_id) {
-            $capture = $this->client->request('GET', '/v2/payments/captures/' . rawurlencode($capture_id));
-            if (! PPCart_Paypal_Sync::ok($capture)) {
-                return null;
-            }
+        $capture = function () use ($capture_id) {
+            $res = $this->client->request('GET', '/v2/payments/captures/' . rawurlencode($capture_id));
 
-            return 'REFUNDED' === ($capture['body']['status'] ?? '');
+            return PPCart_Paypal_Sync::ok($res) ? $res['body'] : null;
+        };
+
+        return $this->apply($refund_id, $capture_id, $amount, function () use ($capture) {
+            $body = $capture();
+
+            return null === $body ? null : 'REFUNDED' === ($body['status'] ?? '');
+        }, function () use ($capture) {
+            $body  = $capture();
+            $order = PPCart_Paypal_Sync::find_order_by_paypal_order_id($body['supplementary_data']['related_ids']['order_id'] ?? '');
+            if ($order) {
+                (new PPCart_Paypal_Sync())->sync_order($order->id);
+            }
         });
     }
 
@@ -87,13 +96,22 @@ class PPCart_Paypal_Refund_Sync
         $sale_id = sanitize_text_field((string) ($refund['sale_id'] ?? ''));
         $amount  = (float) ($refund['amount']['total'] ?? 0);
 
-        return $this->apply($refund_id, $sale_id, $amount, function () use ($sale_id) {
-            $sale = $this->client->request('GET', '/v1/payments/sale/' . rawurlencode($sale_id));
-            if (! PPCart_Paypal_Sync::ok($sale)) {
-                return null;
-            }
+        $sale = function () use ($sale_id) {
+            $res = $this->client->request('GET', '/v1/payments/sale/' . rawurlencode($sale_id));
 
-            return 'refunded' === strtolower((string) ($sale['body']['state'] ?? ''));
+            return PPCart_Paypal_Sync::ok($res) ? $res['body'] : null;
+        };
+
+        return $this->apply($refund_id, $sale_id, $amount, function () use ($sale) {
+            $body = $sale();
+
+            return null === $body ? null : 'refunded' === strtolower((string) ($body['state'] ?? ''));
+        }, function () use ($sale) {
+            $body = $sale();
+            $sub  = PPCart_Subscription::get_by_sub_id(sanitize_text_field((string) ($body['billing_agreement_id'] ?? '')));
+            if ($sub) {
+                (new PPCart_Paypal_Sync())->sync_subscription($sub);
+            }
         });
     }
 
@@ -105,11 +123,16 @@ class PPCart_Paypal_Refund_Sync
      * @param string   $transaction_id Capture or sale ID the refund belongs to.
      * @param float    $amount         Refunded amount.
      * @param callable $fully_refunded Returns true, false, or null when PayPal could not be read.
+     * @param callable $record_payment Records the payment locally when a refund arrives before it.
      * @return string
      */
-    private function apply($refund_id, $transaction_id, $amount, callable $fully_refunded)
+    private function apply($refund_id, $transaction_id, $amount, callable $fully_refunded, callable $record_payment)
     {
         $found = '' !== $transaction_id ? PPCart_Order::get_by_trans_id($transaction_id) : false;
+        if (! $found && '' !== $transaction_id) {
+            $record_payment();
+            $found = PPCart_Order::get_by_trans_id($transaction_id);
+        }
         if (! $found || ! PPCart_Paypal_Sync::is_onpage_order($found->id)) {
             PPCart_Paypal_Sync::log('refund ' . $refund_id . ' has no on-page order for payment ' . $transaction_id);
             return PPCart_Paypal_Sync::RESULT_FAILED;

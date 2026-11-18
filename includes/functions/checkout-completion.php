@@ -148,7 +148,9 @@ function ppcart_checkout_completion_allowed($order_id, $context, $args = [])
         return false;
     }
 
-    $paypal_onpage = 'paypal' === $context && (bool) ppcart_get_post_meta($order_id, 'paypal_onpage', true);
+    // The access token of an on-page PayPal order exists before payment, so no
+    // context may complete that order until PayPal has settled it.
+    $paypal_onpage = (bool) ppcart_get_post_meta($order_id, 'paypal_onpage', true);
     if ($paypal_onpage && ! ppcart_paypal_onpage_order_is_settled($order_id)) {
         return false;
     }

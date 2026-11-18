@@ -177,7 +177,7 @@ $payment_fields = [
                     'redirect' => __('Redirect to PayPal', 'publishpress-cart'),
                     'onpage'   => __('On this page (PayPal popup)', 'publishpress-cart'),
                 ],
-                'description'   => esc_html__('On-page checkout needs the Client ID and Secret of the selected mode. Without them the checkout redirects to PayPal.', 'publishpress-cart'),
+                'description'   => esc_html__('On-page checkout needs the PayPal Email, Client ID and Secret of the selected mode. Without the Client ID and Secret the checkout redirects to PayPal.', 'publishpress-cart'),
                 'note'          => class_exists('PPCart_Admin_Paypal_Webhook') ? PPCart_Admin_Paypal_Webhook::status_note() : '',
             ],
             'tab' => 'payment',

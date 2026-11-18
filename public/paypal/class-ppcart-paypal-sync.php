@@ -289,6 +289,11 @@ class PPCart_Paypal_Sync
             return self::RESULT_PENDING;
         }
 
+        $payments = $this->fetch_subscription_payments($client, $path);
+        if (null === $payments) {
+            return self::RESULT_UNAVAILABLE;
+        }
+
         $local_status = $this->local_subscription_status($paypal_sub, $sub);
         if ('' !== $local_status) {
             $sub->status     = $local_status;
@@ -302,7 +307,7 @@ class PPCart_Paypal_Sync
             }
         }
 
-        $this->apply_subscription_payments($client, $path, $sub, $first);
+        $this->apply_subscription_payments($payments, $sub, $first);
 
         if (
             'ACTIVE' === $paypal_status
@@ -359,21 +364,25 @@ class PPCart_Paypal_Sync
     }
 
     /**
-     * Record each completed PayPal transaction of the last 30 days once.
+     * The payments PayPal took in the last 30 days, oldest first. A payment
+     * that was refunded later still happened, so it is listed too.
+     *
+     * @return array[]|null Null when PayPal could not be read.
      */
-    private function apply_subscription_payments(PPCart_Paypal_Rest_Client $client, $path, PPCart_Subscription $sub, PPCart_Order $first)
+    private function fetch_subscription_payments(PPCart_Paypal_Rest_Client $client, $path)
     {
         $res = $client->request('GET', $path . '/transactions?' . http_build_query([
             'start_time' => gmdate('Y-m-d\TH:i:s\Z', time() - 30 * DAY_IN_SECONDS),
             'end_time'   => gmdate('Y-m-d\TH:i:s\Z', time() + DAY_IN_SECONDS),
         ]));
         if (! self::ok($res)) {
-            return;
+            return null;
         }
 
+        $paid         = [ 'COMPLETED', 'PARTIALLY_REFUNDED', 'REFUNDED' ];
         $transactions = [];
         foreach ((array) ($res['body']['transactions'] ?? []) as $transaction) {
-            if (is_array($transaction) && 'COMPLETED' === ($transaction['status'] ?? '') && ! empty($transaction['id'])) {
+            if (is_array($transaction) && in_array($transaction['status'] ?? '', $paid, true) && ! empty($transaction['id'])) {
                 $transactions[] = $transaction;
             }
         }
@@ -381,6 +390,14 @@ class PPCart_Paypal_Sync
             return strcmp((string) ($a['time'] ?? ''), (string) ($b['time'] ?? ''));
         });
 
+        return $transactions;
+    }
+
+    /**
+     * Record each PayPal payment once.
+     */
+    private function apply_subscription_payments(array $transactions, PPCart_Subscription $sub, PPCart_Order $first)
+    {
         foreach ($transactions as $transaction) {
             $txn_id = sanitize_text_field((string) $transaction['id']);
             if (PPCart_Order::get_by_trans_id($txn_id)) {

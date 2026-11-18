@@ -143,6 +143,11 @@ if (!empty($request_data['txn_id'])) {
     }
 }
 
+if ($ppcart_order->id && ppcart_get_post_meta($ppcart_order->id, 'paypal_onpage')) {
+    http_response_code(200);
+    exit();
+}
+
 global $ppcart_debug_logger;
 $ppcart_debug_logger->log_debug('Processing paypal ipn response:' . wp_json_encode($request_data));
 

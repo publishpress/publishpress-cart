@@ -45,9 +45,10 @@ PayPal has two **Checkout experience** options.
   opens in a popup. After approval the buyer lands on the confirmation page.
   This option works for one-time payments and subscriptions.
 
-On-page checkout needs the **Client ID** and **Secret** of the selected mode
-(**Sandbox** or **Live**). Create them in the PayPal Developer Dashboard under
-your app. Without them, the checkout uses the redirect flow.
+On-page checkout needs the **PayPal Email**, **Client ID** and **Secret** of the
+selected mode (**Sandbox** or **Live**). Create the Client ID and Secret in the
+PayPal Developer Dashboard under your app. Without them, the checkout uses the
+redirect flow.
 
 When you save the PayPal settings with on-page checkout and credentials, Cart
 registers a webhook in your PayPal app. The webhook URL is
