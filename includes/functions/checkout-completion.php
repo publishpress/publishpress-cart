@@ -106,6 +106,34 @@ function ppcart_checkout_completion_owner_or_admin($order_id)
 }
 
 /**
+ * Whether an on-page PayPal order is settled in stored state.
+ *
+ * Only the PayPal sync writes this state: the order is paid, or it belongs to
+ * a subscription that is active or trialing.
+ *
+ * @param int $order_id Order post ID.
+ * @return bool
+ */
+function ppcart_paypal_onpage_order_is_settled($order_id)
+{
+    $order_id = absint($order_id);
+    if (! $order_id) {
+        return false;
+    }
+
+    if (PPCart_Order::$paid_str === (string) ppcart_get_post_meta($order_id, 'status', true)) {
+        return true;
+    }
+
+    $subscription_id = absint(ppcart_get_post_meta($order_id, 'subscription_id', true));
+    if (! $subscription_id) {
+        return false;
+    }
+
+    return in_array((string) ppcart_get_post_meta($subscription_id, 'status', true), [ 'active', 'trialing' ], true);
+}
+
+/**
  * Whether checkout completion side effects may run for this request.
  *
  * @param int    $order_id Order post ID.
@@ -117,6 +145,13 @@ function ppcart_checkout_completion_allowed($order_id, $context, $args = [])
 {
     $order_id = absint($order_id);
     if (! $order_id) {
+        return false;
+    }
+
+    // The access token of an on-page PayPal order exists before payment, so no
+    // context may complete that order until PayPal has settled it.
+    $paypal_onpage = (bool) ppcart_get_post_meta($order_id, 'paypal_onpage', true);
+    if ($paypal_onpage && ! ppcart_paypal_onpage_order_is_settled($order_id)) {
         return false;
     }
 
@@ -141,7 +176,7 @@ function ppcart_checkout_completion_allowed($order_id, $context, $args = [])
         || ('' !== $request_token && PPCart_Order::token_matches($order_id, $request_token));
 
     if ('paypal' === $context) {
-        if (ppcart_paypal_pdt_is_configured()) {
+        if (! $paypal_onpage && ppcart_paypal_pdt_is_configured()) {
             return ! empty($args['pdt_verified']);
         }
 

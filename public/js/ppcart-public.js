@@ -3105,6 +3105,7 @@
 
         // Handle paypal form submission.
         $(document).on('ppcart/orderform/submit', '#ppcart-payment-form', function(event) {
+            if (window.ppcartPaypalOnpageReady) { return; }
 
             var form = '#' + $(this).parent().attr('id');
             if ($('.pay-methods', form).length > 0 && $('[name="pay-method"]:checked', form).val() != 'paypal') {
