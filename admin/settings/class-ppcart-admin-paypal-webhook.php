@@ -139,7 +139,7 @@ class PPCart_Admin_Paypal_Webhook
      */
     public static function status_note()
     {
-        if ('onpage' !== get_option(PPCart_Paypal_Onpage::OPTION_EXPERIENCE, 'redirect')) {
+        if (! class_exists('PPCart_Paypal_Onpage') || 'onpage' !== get_option(PPCart_Paypal_Onpage::OPTION_EXPERIENCE, 'redirect')) {
             return '';
         }
 
