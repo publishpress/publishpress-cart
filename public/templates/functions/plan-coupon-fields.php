@@ -406,7 +406,6 @@ function ppcart_do_field($args)
         'qty_price' => false,
         'testid' => '',
         'autocomplete' => '',
-        'password_strength' => true,
     ];
 
     $args = wp_parse_args($args, $defaults);
@@ -423,8 +422,13 @@ function ppcart_do_field($args)
     $div_class   = $args['div_class'];
     $qty_price   = $args['qty_price'];
     $testid      = $args['testid'];
-    // Password fields only: show the strength bar and its requirement text under the field.
-    $password_strength = ('password' === $type) && ! empty($args['password_strength']);
+    /**
+     * Filters whether a checkout password field shows the strength bar and its requirement text.
+     *
+     * @param bool  $show Whether to show the strength bar. Default true.
+     * @param array $args Field arguments passed to ppcart_do_field().
+     */
+    $password_strength = ('password' === $type) && apply_filters('ppcart_checkout_password_strength', true, $args);
     $autocomplete = (string) $args['autocomplete'];
     $autocomplete_attr = ('' !== $autocomplete) ? ' autocomplete="' . esc_attr($autocomplete) . '"' : '';
     $name        = isset($args['name']) ? $args['name'] : null;
