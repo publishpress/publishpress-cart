@@ -426,21 +426,17 @@ class PPCart_Paypal_Sync
     }
 
     /**
-     * Client for the mode a record was created in, so a mode switch in the
-     * settings does not orphan older records.
-     *
      * @param string $gateway_mode test|live|'' (empty = the current setting).
      * @return PPCart_Paypal_Rest_Client
      */
     private function client($gateway_mode = '')
     {
-        $mode = 'live' === $gateway_mode ? 'live' : ('test' === $gateway_mode ? 'sandbox' : PPCart_Paypal_Rest_Client::current_mode());
-        if (! isset($this->clients[ $mode ])) {
-            $credentials            = PPCart_Paypal_Rest_Client::credentials($mode);
-            $this->clients[ $mode ] = new PPCart_Paypal_Rest_Client($mode, $credentials['client_id'], $credentials['secret']);
+        $gateway_mode = (string) $gateway_mode;
+        if (! isset($this->clients[ $gateway_mode ])) {
+            $this->clients[ $gateway_mode ] = PPCart_Paypal_Rest_Client::for_gateway_mode($gateway_mode);
         }
 
-        return $this->clients[ $mode ];
+        return $this->clients[ $gateway_mode ];
     }
 
     private function with_lock($record_id, callable $callback)

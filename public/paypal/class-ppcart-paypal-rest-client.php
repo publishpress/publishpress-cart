@@ -53,6 +53,27 @@ class PPCart_Paypal_Rest_Client
     }
 
     /**
+     * Client for the mode a record was created in, so a mode switch in the
+     * settings does not orphan older records.
+     *
+     * @param string $gateway_mode test|live, or '' for the current setting.
+     * @return self
+     */
+    public static function for_gateway_mode($gateway_mode)
+    {
+        if ('live' === $gateway_mode) {
+            $mode = 'live';
+        } elseif ('test' === $gateway_mode) {
+            $mode = 'sandbox';
+        } else {
+            $mode = self::current_mode();
+        }
+        $credentials = self::credentials($mode);
+
+        return new self($mode, $credentials['client_id'], $credentials['secret']);
+    }
+
+    /**
      * @return string sandbox|live
      */
     public static function current_mode()

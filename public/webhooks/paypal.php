@@ -105,6 +105,12 @@ $subscription_id = '0';
 // Grab PublishPress Cart order/subscription IDs from custom meta.
 if (isset($request_data['custom'])) {
     $custom = (string) $request_data['custom'];
+    // On-page (REST) records have one writer, PPCart_Paypal_Sync. PayPal still
+    // sends account IPNs for them; they must not touch those records.
+    if (0 === strpos($custom, 'ppcart:')) {
+        http_response_code(200);
+        exit();
+    }
     if (is_numeric($custom) || strpos($custom, '=') !== false) { // deprecated
         $custom_id  = explode("=", $custom);
         $order_id = absint($custom_id[0]);
