@@ -16,7 +16,7 @@
  * Plugin Name:       PublishPress Cart - eCommerce for Digital Products
  * Plugin URI:        https://publishpress.com/cart/
  * Description:       Create order pages and simplified sales flow creation that helps you sell digital products, programs, and services.
- * Version:           1.2.0
+ * Version:           1.3.0
  * Requires PHP:      8.2
  * Author:            PublishPress
  * Author URI:        https://publishpress.com/
@@ -133,7 +133,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/helpers/ppcart-meta.php';
 ppcart_maybe_register_studiocart_constants($ppcart_loaded_companion_packages);
 
 if (! defined('PPCART_VERSION')) {
-    define('PPCART_VERSION', '1.2.0');
+    define('PPCART_VERSION', '1.3.0');
 }
 if (! defined('PPCART_BASE_DIR')) {
     define('PPCART_BASE_DIR', plugin_dir_path(__FILE__));
