@@ -701,6 +701,55 @@ class ChargeAndInvoiceSyncTest extends StripeSyncTestCase
         $this->assertGreaterThan($refundsBefore, did_action('ppcart_order_refunded'));
     }
 
+    public function test_IT_018_renewal_repair_still_runs_refund_integrations(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(
+            array(
+                'subscription_id' => 'sub_repair_refunded',
+            )
+        );
+        $orderId = $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_repair_refunded',
+                'status' => 'paid',
+                'payment_status' => 'paid',
+                'subscription_id' => $subscriptionId,
+            )
+        );
+
+        $refundsBefore = did_action('ppcart_order_refunded');
+        // The renewal repair syncs invoices with this filter in place.
+        add_filter('ppcart_trigger_order_integrations', array(PPCart_Stripe_Sync::class, 'filter_repair_order_integrations'), 999, 2);
+        try {
+            PPCart_Stripe_Sync::sync_invoice_resource(
+                $this->refundTestInvoice('sub_repair_refunded', 'ch_repair_refunded'),
+                new PPCart_Subscription($subscriptionId),
+                '',
+                null,
+                'USD',
+                '',
+                $this->createStripeChargeClientStub($this->refundTestCharge('ch_repair_refunded', 2000))
+            );
+        } finally {
+            remove_filter('ppcart_trigger_order_integrations', array(PPCart_Stripe_Sync::class, 'filter_repair_order_integrations'), 999);
+        }
+
+        $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'status', true));
+        $this->assertGreaterThan($refundsBefore, did_action('ppcart_order_refunded'));
+    }
+
+    public function test_IT_019_renewal_repair_keeps_integrations_off_for_paid_orders(): void
+    {
+        $paid = new PPCart_Order();
+        $paid->status = 'paid';
+        $refunded = new PPCart_Order();
+        $refunded->status = 'refunded';
+
+        $this->assertFalse(PPCart_Stripe_Sync::filter_repair_order_integrations(true, $paid));
+        $this->assertTrue(PPCart_Stripe_Sync::filter_repair_order_integrations(true, $refunded));
+        $this->assertFalse(PPCart_Stripe_Sync::filter_repair_order_integrations(false, $refunded));
+    }
+
     public function test_IT_017_partially_refunded_charge_keeps_the_order_paid(): void
     {
         $subscriptionId = $this->createStripeSubscription(
