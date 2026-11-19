@@ -6,9 +6,7 @@ if (! defined('ABSPATH')) {
 
 
 $report_filters = ppcart_parse_report_filters();
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only date filter for report rendering.
-$date = (null === $report_filters['date']) ? date_i18n('Y-m-d') : $report_filters['date'];
-$report_period = $this->get_report_period($date);
+$report_period = $this->get_report_period($report_filters['date'] ?? '');
 $date          = $report_period['raw'];
 $report_filters['date'] = $date;
 $export_query = [
@@ -80,7 +78,7 @@ foreach ($options as $k => $v) {
                         <input type="hidden" name="page" value="<?php echo esc_attr(PPCart_Admin_Screens::PAGE_REPORTS); ?>" />
                         <label class="ppcart-reports-filter-field">
                             <span class="screen-reader-text"><?php esc_html_e('Date range', 'publishpress-cart'); ?></span>
-                            <input class="ppcart-date-range-input" type="text" name="date" id="reports-range" value="<?php echo esc_attr($date); ?>" autocomplete="off" placeholder="<?php echo esc_attr__('Select date range', 'publishpress-cart'); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-reports-date-range')); ?>" />
+                            <input class="ppcart-date-range-input" type="text" name="date" id="reports-range" value="<?php echo esc_attr($date); ?>" autocomplete="off" placeholder="<?php echo esc_attr__('All Time', 'publishpress-cart'); ?>" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-reports-date-range')); ?>" />
                         </label>
                         <div class="ppcart-reports-filter-field ppcart-reports-customer-search">
                             <label class="screen-reader-text" for="ppcart-reports-customer-search"><?php esc_html_e('Search customers by name or email', 'publishpress-cart'); ?></label>
