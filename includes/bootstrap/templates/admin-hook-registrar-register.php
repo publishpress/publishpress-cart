@@ -155,6 +155,7 @@ $this->loader->add_action('load-edit.php', $plugin_admin_order_list, 'load_edit_
 $this->loader->add_action('init', $plugin_admin_order_list, 'order_custom_status', 1);
 foreach ($ppcart_order_types as $ppcart_order_type) {
     $this->loader->add_filter('views_edit-' . $ppcart_order_type, $plugin_admin_order_list, 'order_remove_statuses');
+    $this->loader->add_filter('views_edit-' . $ppcart_order_type, $plugin_admin_order_list, 'order_partially_refunded_view');
 }
 
 // MODIFY ORDER details post title
