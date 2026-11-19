@@ -218,6 +218,7 @@ $fields = [
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
+            'new_row_value' => 'year',
             'selections'    => [
                 'day' => __('Day', 'publishpress-cart'),
                 'week' => __('Week', 'publishpress-cart'),
