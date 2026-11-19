@@ -9,5 +9,12 @@ on:
   workflow_dispatch:
 
 jobs:
+  language-pack-packaging:
+    name: Check language-pack packaging
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - run: bash tests/language-pack-packaging.sh
+
   check:
     uses: publishpress/github-workflows/.github/workflows/code-standards.yml@v3

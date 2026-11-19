@@ -31,3 +31,13 @@ jobs:
     with:
       stable_branch: master
     secrets: inherit
+
+  language-packs:
+    name: Publish language packs
+    permissions:
+      contents: write
+    needs: [deploy-wp-org]
+    uses: publishpress/github-workflows/.github/workflows/language-pack.yml@v3
+    with:
+      text_domain: publishpress-cart
+    secrets: inherit

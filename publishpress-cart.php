@@ -26,9 +26,7 @@
  * Domain Path:       /languages
  */
 
-if (! defined('ABSPATH')) {
-    die('You are not allowed to call this page directly.');
-}
+defined('ABSPATH') || exit;
 
 // If the plugin is already loaded, terminate the plugin execution.
 if (defined('PPCART_FREE_LOADED')) {
@@ -263,11 +261,57 @@ if (
     require_once PPCART_PRO_LIB_VENDOR_DIR . $ppcart_bundled_translations_path;
 }
 
+add_filter(
+    'publishpress_hub_language_pack_domains',
+    static function ($packs) {
+        if (! is_array($packs)) {
+            $packs = [];
+        }
+
+        $packs[] = [
+            'domain' => 'publishpress-cart',
+            'repository' => 'publishpress-cart',
+            'version' => PPCART_VERSION,
+        ];
+
+        return $packs;
+    }
+);
+
+/**
+ * Directory where Hub unpacks the current language pack.
+ *
+ * WordPress treats the uploads directory as writable. The pack stays here
+ * after Hub is deactivated. Loco Translate paths are unchanged.
+ *
+ * @return string Absolute directory, or an empty string when uploads are unavailable.
+ */
+function ppcart_language_pack_directory()
+{
+    if (! function_exists('wp_upload_dir')) {
+        return '';
+    }
+
+    $uploads = wp_upload_dir(null, false);
+    if (! is_array($uploads) || ! empty($uploads['error']) || empty($uploads['basedir'])) {
+        return '';
+    }
+
+    return trailingslashit($uploads['basedir']) . 'publishpress/language-packs';
+}
+
+require_once __DIR__ . '/includes/helpers/ppcart-language-pack-notice.php';
+
 add_action('plugins_loaded', function () {
     if (class_exists('PublishPress\BundledTranslations\BundledTranslations')) {
+        $ppcart_languages_dir = ppcart_language_pack_directory();
+        if ($ppcart_languages_dir === '') {
+            $ppcart_languages_dir = PPCART_BASE_DIR . 'languages';
+        }
+
         $ppcart_bundled_translations = new PublishPress\BundledTranslations\BundledTranslations(
             'publishpress-cart',
-            PPCART_BASE_DIR . 'languages',
+            $ppcart_languages_dir,
             PPCART_BASE_FILE
         );
 
