@@ -142,6 +142,10 @@ trait PPCart_Order_Persistence
         }
 
         $gmt_date = get_gmt_from_date($date_time);
+        $post = get_post($this->id);
+        if ($post && $post->post_date === $date_time && $post->post_date_gmt === $gmt_date) {
+            return $gmt_date;
+        }
 
         wp_update_post(
             [
