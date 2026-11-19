@@ -631,4 +631,152 @@ class ChargeAndInvoiceSyncTest extends StripeSyncTestCase
         $this->assertSame('paid', ppcart_get_post_meta((int) $result->id, 'status', true));
         $this->assertSame('refunded', ppcart_get_post_meta($firstOrderId, 'status', true));
     }
+
+    public function test_IT_015_imported_invoice_with_a_refunded_charge_becomes_a_refunded_order(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(
+            array(
+                'subscription_id' => 'sub_import_refunded',
+            )
+        );
+        $firstOrderId = $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_import_first',
+                'status' => 'paid',
+                'payment_status' => 'paid',
+                'subscription_id' => $subscriptionId,
+            )
+        );
+        ppcart_update_post_meta($subscriptionId, 'first_order', $firstOrderId);
+
+        $refundsBefore = did_action('ppcart_order_refunded');
+        $result = PPCart_Stripe_Sync::sync_invoice_resource(
+            $this->refundTestInvoice('sub_import_refunded', 'ch_import_refunded'),
+            new PPCart_Subscription($subscriptionId),
+            '',
+            null,
+            'USD',
+            '',
+            $this->createStripeChargeClientStub($this->refundTestCharge('ch_import_refunded', 2000))
+        );
+
+        $this->assertNotFalse($result);
+        $this->assertNotSame($firstOrderId, (int) $result->id);
+        $this->assertSame('refunded', ppcart_get_post_meta((int) $result->id, 'status', true));
+        $this->assertSame('refunded', ppcart_get_post_meta((int) $result->id, 'payment_status', true));
+        $this->assertArrayHasKey('re_import_refunded', ppcart_get_post_meta((int) $result->id, 'refund_log', true));
+        $this->assertSame($refundsBefore, did_action('ppcart_order_refunded'));
+    }
+
+    public function test_IT_016_paid_order_whose_charge_was_refunded_becomes_refunded(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(
+            array(
+                'subscription_id' => 'sub_paid_then_refunded',
+            )
+        );
+        $orderId = $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_paid_then_refunded',
+                'status' => 'paid',
+                'payment_status' => 'paid',
+                'subscription_id' => $subscriptionId,
+            )
+        );
+
+        $refundsBefore = did_action('ppcart_order_refunded');
+        $result = PPCart_Stripe_Sync::sync_invoice_resource(
+            $this->refundTestInvoice('sub_paid_then_refunded', 'ch_paid_then_refunded'),
+            new PPCart_Subscription($subscriptionId),
+            '',
+            null,
+            'USD',
+            '',
+            $this->createStripeChargeClientStub($this->refundTestCharge('ch_paid_then_refunded', 2000))
+        );
+
+        $this->assertNotFalse($result);
+        $this->assertSame($orderId, (int) $result->id);
+        $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'status', true));
+        $this->assertGreaterThan($refundsBefore, did_action('ppcart_order_refunded'));
+    }
+
+    public function test_IT_017_partially_refunded_charge_keeps_the_order_paid(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(
+            array(
+                'subscription_id' => 'sub_partial_refund',
+            )
+        );
+        $orderId = $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_partial_refund',
+                'status' => 'paid',
+                'payment_status' => 'paid',
+                'subscription_id' => $subscriptionId,
+            )
+        );
+
+        PPCart_Stripe_Sync::sync_invoice_resource(
+            $this->refundTestInvoice('sub_partial_refund', 'ch_partial_refund'),
+            new PPCart_Subscription($subscriptionId),
+            '',
+            null,
+            'USD',
+            '',
+            $this->createStripeChargeClientStub($this->refundTestCharge('ch_partial_refund', 500))
+        );
+
+        $this->assertSame('paid', ppcart_get_post_meta($orderId, 'status', true));
+        $this->assertArrayHasKey('re_partial_refund', ppcart_get_post_meta($orderId, 'refund_log', true));
+    }
+
+    private function refundTestInvoice(string $stripeSubscriptionId, string $chargeId): object
+    {
+        return (object) array(
+            'subscription' => $stripeSubscriptionId,
+            'charge' => $chargeId,
+            'amount_paid' => 2000,
+            'currency' => 'usd',
+            'status' => 'paid',
+            'status_transitions' => (object) array(
+                'paid_at' => 1234567890,
+                'finalized_at' => 1234567890,
+            ),
+            'lines' => (object) array(
+                'data' => array(
+                    (object) array(
+                        'subscription_item' => 'si_' . $stripeSubscriptionId,
+                        'metadata' => (object) array(
+                            'ppcart_product_id' => 123,
+                        ),
+                        'period' => (object) array(
+                            'end' => 3333333333,
+                        ),
+                    ),
+                ),
+            ),
+        );
+    }
+
+    private function refundTestCharge(string $chargeId, int $amountRefunded): object
+    {
+        return (object) array(
+            'id' => $chargeId,
+            'amount' => 2000,
+            'amount_refunded' => $amountRefunded,
+            'currency' => 'usd',
+            'refunded' => $amountRefunded >= 2000,
+            'metadata' => (object) array(),
+            'refunds' => (object) array(
+                'data' => array(
+                    (object) array(
+                        'id' => 're_' . substr($chargeId, 3),
+                        'amount' => $amountRefunded,
+                        'created' => 1234567890,
+                    ),
+                ),
+            ),
+        );
+    }
 }
