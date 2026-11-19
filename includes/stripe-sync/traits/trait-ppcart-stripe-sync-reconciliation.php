@@ -91,6 +91,23 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
     }
 
     /**
+     * Keep integrations off for orders the renewal repair imports, but let a
+     * paid order that the repair turns refunded run its refund integrations.
+     *
+     * @param bool         $trigger Whether to run the order integrations.
+     * @param PPCart_Order $order   Order that was just stored.
+     * @return bool
+     */
+    public static function filter_repair_order_integrations($trigger, $order = null)
+    {
+        if ($order && 'refunded' === $order->status) {
+            return $trigger;
+        }
+
+        return false;
+    }
+
+    /**
      * Import renewal invoices that never became orders.
      *
      * A renewal is missing when the newest local order is older than the start
@@ -157,11 +174,11 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
             ppcart_update_post_meta($sub->id, 'stripe_renewal_repair_period', $period_start);
             // These payments are old. Record the orders, but do not send renewal
             // emails or run integrations for them again.
-            add_filter('ppcart_trigger_order_integrations', '__return_false', 999);
+            add_filter('ppcart_trigger_order_integrations', [ __CLASS__, 'filter_repair_order_integrations' ], 999, 2);
             try {
                 self::sync_subscription_invoices($sub, $stripe);
             } finally {
-                remove_filter('ppcart_trigger_order_integrations', '__return_false', 999);
+                remove_filter('ppcart_trigger_order_integrations', [ __CLASS__, 'filter_repair_order_integrations' ], 999);
             }
             ppcart_log_entry($sub->id, __('Missing renewal orders imported from Stripe by the background sync', 'publishpress-cart'));
 

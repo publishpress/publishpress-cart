@@ -304,6 +304,7 @@ class RenewalRepairTest extends StripeSyncTestCase
         $this->assertSame(0, $renewalActions);
         $this->assertSame(0, $mails);
         $this->assertFalse(has_filter('ppcart_trigger_order_integrations', '__return_false'));
+        $this->assertFalse(has_filter('ppcart_trigger_order_integrations', array(PPCart_Stripe_Sync::class, 'filter_repair_order_integrations')));
     }
 
     public function test_background_sync_skips_subscriptions_with_current_orders(): void
