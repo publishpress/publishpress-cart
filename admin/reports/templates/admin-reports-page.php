@@ -35,12 +35,12 @@ $product_search_value = $report_filters['product_id'] > 0
 
             <?php settings_errors(); ?>
 
-            <h1><?php echo esc_html(apply_filters('ppcart_plugin_title', $this->plugin_title)); ?></h1>
+            <hr class="wp-header-end" />
 
             <div class="ppcart-reports ppcart-reports-page">
                 <div class="ppcart-reports-header">
                     <div class="ppcart-reports-title">
-                        <h2><?php esc_html_e('Reports', 'publishpress-cart'); ?></h2>
+                        <h1><?php esc_html_e('Reports', 'publishpress-cart'); ?></h1>
                         <p><?php
                             /* translators: %s: report period label. */
                             echo esc_html(sprintf(__('Performance summary for %s', 'publishpress-cart'), $report_period['label'])); ?></p>
