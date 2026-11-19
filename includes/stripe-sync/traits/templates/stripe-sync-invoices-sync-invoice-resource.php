@@ -78,8 +78,22 @@ if (! $invoice_date) {
     $invoice_date = self::path($invoice, [ 'status_transitions', 'finalized_at' ], self::get($invoice, 'created', time()));
 }
 
+// Stripe keeps a refunded invoice as "paid", so read the refund from the charge.
+$refunded_charge = null;
+if ($charge_id && 'paid' === $order_status['post_status'] && 'invoice.payment_failed' !== $event_type) {
+    try {
+        $charge_client = $stripe ? $stripe : self::get_client_for_mode(self::get($invoice, 'livemode', false) ? 'live' : 'test');
+        $charge = $charge_client->charges->retrieve($charge_id, [ 'expand' => [ 'refunds' ] ]);
+        if (absint(self::get($charge, 'amount_refunded', 0)) > 0) {
+            $refunded_charge = $charge;
+        }
+    } catch (Throwable $e) {
+        // Without the charge, keep the invoice status.
+    }
+}
+
 return PPCart_Stripe_Sync_Context::run(
-    function () use ($existing, $sub, $invoice, $charge_id, $payment_intent, $payment_intent_status, $order_status, $invoice_date, $event, $event_type, $currency) {
+    function () use ($existing, $sub, $invoice, $charge_id, $payment_intent, $payment_intent_status, $order_status, $invoice_date, $event, $event_type, $currency, $refunded_charge) {
         $order = $existing;
 
         if (! $order) {
@@ -130,12 +144,31 @@ return PPCart_Stripe_Sync_Context::run(
             'payment_status' => $order_status['payment_status'],
             'status'         => $order_status['post_status'],
         ];
+        $trigger_integrations = true;
+        if ($refunded_charge) {
+            $order->refund_log = self::build_refund_log_from_charge($refunded_charge, $currency);
+
+            if (absint(self::get($refunded_charge, 'amount_refunded', 0)) >= absint(self::get($refunded_charge, 'amount', 0))) {
+                $values['payment_status'] = 'refunded';
+                $values['status'] = 'refunded';
+
+                // An imported payment that was refunded long ago must not
+                // grant or remove access now. A paid order that turns
+                // refunded still runs its refund integrations.
+                $trigger_integrations = (bool) $existing;
+            }
+        }
+
         if (! self::order_matches_values($order, $values)) {
             $order->transaction_id = $values['transaction_id'];
             $order->amount = $values['amount'];
             $order->payment_status = $values['payment_status'];
             $order->status = $values['status'];
-            $order->store();
+            $order->store($trigger_integrations);
+        }
+        if ($refunded_charge && $order->id) {
+            ppcart_update_post_meta($order->id, 'refund_log', $order->refund_log);
+            ppcart_update_post_meta($order->id, 'refund_amount', ppcart_format_stripe_number(absint(self::get($refunded_charge, 'amount_refunded', 0)), $currency));
         }
         $order->set_date_from_timestamp($invoice_date);
 

@@ -45,7 +45,7 @@ for ($page_number = 0; $page_number < 20; $page_number++) {
 // initial invoice lands on the subscription's first order.
 $invoice_data = array_reverse($invoice_data);
 foreach ($invoice_data as $invoice) {
-    self::sync_invoice_resource($invoice, $sub, '', null, $ppcart_currency);
+    self::sync_invoice_resource($invoice, $sub, '', null, $ppcart_currency, '', $stripe);
 }
 
 try {
