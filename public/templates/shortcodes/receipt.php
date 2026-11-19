@@ -50,7 +50,7 @@ if (! defined('ABSPATH')) {
 
         <?php if (isset($attr['discounts'])) : ?>
             <?php foreach ($attr['discounts'] as $item) : ?>
-                <div class="item"><?php echo esc_html($item['product_name']); ?></div>
+                <div class="item"><?php echo wp_kses($item['product_name'], [ 'span' => [ 'class' => true ] ]); ?></div>
                 <div class="order-total">
                     -<?php ppcart_formatted_price($item['total_amount']); ?>
                 </div>
