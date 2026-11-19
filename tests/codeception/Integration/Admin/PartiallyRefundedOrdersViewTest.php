@@ -61,9 +61,9 @@ class PartiallyRefundedOrdersViewTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-416
+     * @test-id IT-420
      */
-    public function test_IT_416_lists_only_orders_with_a_refund_below_the_order_amount(): void
+    public function test_IT_420_lists_only_orders_with_a_refund_below_the_order_amount(): void
     {
         $partialAmount   = $this->insertOrder('paid', '100.00', '30.00');
         $partialLog      = $this->insertOrder('paid', '100.00', null, [
@@ -95,9 +95,9 @@ class PartiallyRefundedOrdersViewTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-416
+     * @test-id IT-420
      */
-    public function test_IT_416_view_link_shows_the_count_after_the_refunded_view(): void
+    public function test_IT_420_view_link_shows_the_count_after_the_refunded_view(): void
     {
         $postType = ppcart_live_post_type('order');
         $this->insertOrder('paid', '100.00', '30.00');
@@ -130,9 +130,9 @@ class PartiallyRefundedOrdersViewTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-416
+     * @test-id IT-420
      */
-    public function test_IT_416_view_is_not_added_to_other_post_types(): void
+    public function test_IT_420_view_is_not_added_to_other_post_types(): void
     {
         $GLOBALS['typenow'] = ppcart_live_post_type('subscription');
         $views = [ 'all' => '<a href="#">All</a>' ];
@@ -141,9 +141,9 @@ class PartiallyRefundedOrdersViewTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-416
+     * @test-id IT-420
      */
-    public function test_IT_416_selected_view_limits_the_orders_list_query(): void
+    public function test_IT_420_selected_view_limits_the_orders_list_query(): void
     {
         $postType = ppcart_live_post_type('order');
         $partial  = $this->insertOrder('paid', '100.00', '30.00');
