@@ -161,7 +161,7 @@ trait PPCart_Product_Metabox_Integration_Options_Trait
 
     public static function fa_icons()
     {
-        $options = ['none' => __('none', 'publishpress-cart')];
+        $options = ['none' => __('None', 'publishpress-cart')];
         $files = require(defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR : dirname(__DIR__, 3) . '/') . 'includes/assets/font-awesome-icons.php';
 
         if (! is_array($files)) {
