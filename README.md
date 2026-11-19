@@ -6,7 +6,7 @@ WordPress.org ships this Free plugin only. StudioCart leftover names, Compatibil
 
 ## Requirements
 
-- WordPress 6.7+ with PHP 8.2+.
+- WordPress 6.7+ with PHP 7.4+.
 - Composer for PHP dependencies.
 - npm for Playwright browser tests.
 - Gateway sandbox credentials for checkout regression tests that use external providers.

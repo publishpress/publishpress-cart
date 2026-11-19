@@ -1,49 +1,5 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
-[1.3.0] - 19 Nov, 2026
-
-- Added : Offer an optional PayPal popup checkout for one-time payments and subscriptions, so buyers can reach the confirmation page without leaving your site, #1161, #1168
-- Update : Require PHP 8.2 or later, #1141
-- Update : Use clearer names for purchase types in integration settings, #1179
-- Update : Use the same Cart menu order in Free and Pro, #1181
-- Update : Make Cart admin lists more consistent, #1180
-- Update : Use yearly billing by default when creating a subscription plan, #1166
-- Update : Explain how to use payment plan slugs in checkout links, #1153
-- Update : Show all dates by default in Reports and Customer Activity, #1151, #1109
-- Update : Remove the duplicate heading from the Reports screen, #1150
-- Added : Show a checkmark when a checkout password meets the requirements, #1163
-- Fixed : Include Cart products in WordPress category and tag archives, #1105
-- Fixed : Wrap long payment plan names in order details, #1106
-- Fixed : Show applied coupons on order confirmation receipts, #1111
-- Fixed : Prevent a Collections warning when saving an order, #1149
-- Fixed : Allow global coupons to discount the full order amount in Pro, #1099
-- Fixed : Complete fully discounted checkouts as free orders without charging Stripe, #1077, #1080
-- Fixed : Apply coupons to Stripe subscriptions that use flexible billing, #1154, #1155
-- Fixed : Import all Stripe subscription invoices when syncing and recover missing renewal orders automatically, #1170, #1171, #626, #1172
-- Fixed : Import renewals when a known Stripe subscription still references a previous site URL, #1175
-- Fixed : Use the payment time and site timezone for Stripe-synced orders, #1157, #1160
-- Fixed : Import refunded Stripe payments as refunded orders and run refund integrations when renewal repair detects a refund, #1192, #1193, #1194, #1195
-- Fixed : Let connected Stripe accounts update the webhook signing secret, #1093
-- Fixed : Display the Stripe payment form in the site's language, #1086, #1089
-- Fixed : Load the Stripe payment form when Google reCAPTCHA is enabled, #1045, #1048
-- Fixed : Let administrators copy the REST API key from Cart settings, #1188
-- Fixed : Restore the View Log and Clear Log buttons in Cart settings, #644
-- Fixed : Recheck a renewed Pro license even when the key stays the same, #1114
-- Fixed : Prevent a fatal error when saving an order for a product connected to MemberPress, #1113
-- Fixed : Let signed-in users check out when the product asks for a username, #1112
-- Fixed : Sign buyers in automatically when checkout creates their account, #1084
-- Fixed : Restore missing translations and make Pro messages and more checkout and admin prompts translatable, #1088, #1091, #1094, #1128
-- Fixed : Display currency symbols correctly in checkout subscription text, #1087, #1090
-- Fixed : Keep the checkout total inside the Amount Due box, #1079, #1082
-- Fixed : Make the Show password checkbox reveal the password at checkout, #1078, #1081
-- Fixed : Group payment options, identify required fields and controls, and announce field errors to screen readers at checkout, #1131, #1127, #1120
-- Fixed : Improve checkout contrast and make keyboard focus visible on checkboxes and radio buttons, #1124, #1122
-- Fixed : Improve admin contrast and control sizes, and keep keyboard focus visible above the settings save bar, #1129, #1119
-- Fixed : Make Reports search suggestions keyboard-accessible and provide a table for the revenue chart, #1130, #1126
-- Fixed : Let keyboard users dismiss help tooltips and reorder repeatable fields, #1125, #1123
-- Fixed : Announce the selected customer account tab, shortcode copy results, and email notification settings to screen readers, #1121, #1118, #1117
-- Fixed : Set the document language and title for emails, PDFs, and standalone pages, #1132
-
 [1.2.0] - 11 Nov, 2026
 
 - Added : MCP integration with Hub, #1022

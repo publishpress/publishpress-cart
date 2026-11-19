@@ -447,12 +447,6 @@ class PPCart_Mcp_Abilities
      */
     public function ability($name, $label, $description, array $schema, $callback, $read_only, $permission = null, $idempotent = true)
     {
-        // Extension controls can be attached later on init. The services validate live native fields.
-        if ('update-settings' === $name) {
-            $schema['properties']['changes'] = ['type' => 'object'];
-        } elseif (in_array($name, ['set-product-integrations', 'set-affiliate-commissions'], true)) {
-            $schema['properties']['rows']['items'] = ['type' => 'object'];
-        }
         $name = 'publishpress-cart/' . $name;
         if (wp_has_ability($name)) {
             return;

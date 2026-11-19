@@ -185,7 +185,6 @@ class SecretsTest extends Unit
         $this->assertTrue(ppcart_is_sensitive_option('_ppcart_mailchimp_api'));
         $this->assertTrue(ppcart_is_sensitive_option('_ppcart_drip_api_key'));
         $this->assertTrue(ppcart_is_sensitive_option('_ppcart_flodesk_api_key'));
-        $this->assertTrue(ppcart_is_sensitive_option('_ppcart_brevo_api_key'));
         $this->assertFalse(ppcart_is_sensitive_option('_ppcart_currency'));
         $this->assertFalse(ppcart_is_sensitive_option(PPCart_Secrets::ENCRYPT_SECRETS_OPTION));
         $this->assertFalse(ppcart_is_sensitive_option('_sc_mailchimp_api'));

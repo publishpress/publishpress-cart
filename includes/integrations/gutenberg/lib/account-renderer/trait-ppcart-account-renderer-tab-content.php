@@ -488,11 +488,10 @@ trait PPCart_Account_Renderer_Tab_Content
         $content = ppcart_kses_frontend_html($content);
 
         return sprintf(
-            $this->is_rendering_layout ? '<div id="%1$s" class="tabcontent%2$s" role="tabpanel" aria-labelledby="%4$s">%3$s</div>' : '<div class="ppcart-my-account ppcart-account-list"><div id="%1$s" class="tabcontent%2$s" role="tabpanel" aria-labelledby="%4$s">%3$s</div></div>',
+            $this->is_rendering_layout ? '<div id="%1$s" class="tabcontent%2$s">%3$s</div>' : '<div class="ppcart-my-account ppcart-account-list"><div id="%1$s" class="tabcontent%2$s">%3$s</div></div>',
             esc_attr($tab_id),
             esc_attr($active),
-            $content,
-            esc_attr('ppcart-account-tablink-' . $tab_id)
+            $content
         );
     }
 

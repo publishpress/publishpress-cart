@@ -169,10 +169,6 @@ if ([] !== $empty_state) {
                     </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
-                <?php
-                $move_testid_prefix = $repeater_testid . '-' . $row_testid_suffix;
-                include(plugin_dir_path(__FILE__) . 'ppcart-admin-repeater-move-buttons.php');
-                ?>
                 <button aria-expanded="true" class="ppcart-btn-edit" type="button" data-testid="<?php echo esc_attr(ppcart_testid($repeater_testid . '-edit-' . $row_testid_suffix)); ?>">
                     <span class="screen-reader-text"><?php echo esc_html($setatts['label-edit']); ?></span>
                     <span class="toggle-arrow"></span>

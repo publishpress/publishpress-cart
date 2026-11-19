@@ -144,47 +144,17 @@ class ProductMetaboxLayoutTest extends WPTestCase
             ],
         ]);
 
-        $document = new \DOMDocument();
-        $document->loadHTML('<?xml encoding="utf-8"?><div>' . $html . '</div>', LIBXML_NOERROR | LIBXML_NOWARNING);
-        $xpath = new \DOMXPath($document);
-
-        $tooltipIn = static function (string $fieldId) use ($xpath): ?\DOMElement {
-            $tooltip = $xpath->query(
-                '//label[@for="' . $fieldId . '"]/*[contains(concat(" ", normalize-space(@class), " "), " ppcart-tooltip ")]'
-            )->item(0);
-
-            return $tooltip instanceof \DOMElement ? $tooltip : null;
-        };
-
-        // A focusable "?" inside the label carries the tooltip text, escaped
-        // in the markup and decoded back to the original text.
-        $startsTooltip = $tooltipIn('_ppcart_checkout_starts');
-        $this->assertNotNull($startsTooltip);
-        $this->assertSame('?', trim($startsTooltip->textContent));
-        $this->assertSame('0', $startsTooltip->getAttribute('tabindex'));
-        $this->assertSame('Uses the site time zone.', $startsTooltip->getAttribute('aria-label'));
-        $this->assertSame(
-            'Checkout starts?',
-            trim($xpath->query('//label[@for="_ppcart_checkout_starts"]')->item(0)->textContent)
+        $this->assertMatchesRegularExpression(
+            '/<label for="_ppcart_checkout_starts">Checkout starts<span class="ppcart-tooltip" tabindex="0" aria-label="Uses the site time zone\." [^>]*>\?<\/span><\/label>/',
+            $html
         );
-        $this->assertSame(
-            'Leave empty to open now.',
-            trim($xpath->query('//*[@id="_ppcart_checkout_starts-help"]')->item(0)->textContent)
+        $this->assertStringContainsString('id="_ppcart_checkout_starts-help">Leave empty to open now.</p>', $html);
+        $this->assertMatchesRegularExpression(
+            '/<label class="ppcart-label" for="_ppcart_manage_stock">Limit product sales<span class="ppcart-tooltip" tabindex="0" aria-label="Checkout closes at &quot;0&quot; &amp; stays closed\."/',
+            $html
         );
-
-        $stockTooltip = $tooltipIn('_ppcart_manage_stock');
-        $this->assertNotNull($stockTooltip);
-        $this->assertSame('?', trim($stockTooltip->textContent));
-        $this->assertSame('0', $stockTooltip->getAttribute('tabindex'));
-        $this->assertSame('Checkout closes at "0" & stays closed.', $stockTooltip->getAttribute('aria-label'));
-        $this->assertStringContainsString('aria-label="Checkout closes at &quot;0&quot; &amp; stays closed."', $html);
-        $this->assertSame(
-            'Limit product sales?',
-            trim($xpath->query('//label[@for="_ppcart_manage_stock"][contains(@class, "ppcart-label")]')->item(0)->textContent)
-        );
-
         $this->assertStringNotContainsString('_ppcart_manage_stock-help', $html);
-        $this->assertSame(2, $xpath->query('//*[contains(concat(" ", normalize-space(@class), " "), " ppcart-tooltip ")]')->length);
+        $this->assertSame(2, substr_count($html, 'class="ppcart-tooltip"'));
     }
 
     /**

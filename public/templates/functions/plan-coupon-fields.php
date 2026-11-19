@@ -197,16 +197,13 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
     $plan_heading = (isset($ppcart_product->plan_heading) && $ppcart_product->plan_heading) ? $ppcart_product->plan_heading : esc_html__("Payment Plan", "publishpress-cart");
     $plan_heading = apply_filters('ppcart_plan_heading', $plan_heading, $ppcart_product->ID);
     $plan_heading = ppcart_checkout_text_setting('paymentPlanHeading', $plan_heading);
-    $plan_heading_id = wp_unique_id('ppcart-plan-heading-');
     ?>
 
-        <h3 class="title" id="<?php echo esc_attr($plan_heading_id); ?>"><?php echo esc_html($plan_heading); ?></h3>
+        <h3 class="title"><?php echo esc_html($plan_heading); ?></h3>
 
         <?php if ($include_coupon) {
             do_action('ppcart_coupon_fields', $post_id);
         } ?>
-
-        <fieldset class="ppcart-fieldset ppcart-plan-options" aria-labelledby="<?php echo esc_attr($plan_heading_id); ?>">
 
         <?php foreach ($items as $item) :
             $item['product_type'] ??= false;
@@ -303,19 +300,14 @@ function ppcart_payment_plan_options($post_id, $hide_labels, $plan = false, $inc
                     }
                     ?>
                         <div class="<?php echo esc_attr($pwyw_class); ?>">
-                            <label for="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" class="ppcart-screen-reader-text"><?php
-                                /* translators: %s: payment plan name. */
-                                echo esc_html(sprintf(__('Your price for %s', 'publishpress-cart'), wp_strip_all_tags((string) ($item[$name] ?? $item['option_name'] ?? ''))));
-                            ?></label>
-                            <span class="ppcart-currency" aria-hidden="true"><?php echo esc_html(ppcart_get_currency_symbol()); ?></span>
-                            <input id="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" name="pwyw_amount[<?php echo esc_attr($item['option_id']); ?>]" type="number" min="<?php echo esc_attr(floatval($item[$price])); ?>" class="ppcart-form-control ppcart-mb-0 required" placeholder="<?php esc_attr_e('Amount', 'publishpress-cart'); ?>" aria-required="true" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-custom-price-input')); ?>">
+                            <span class="ppcart-currency"><?php echo esc_html(ppcart_get_currency_symbol()); ?></span>
+                            <input id="pwyw-amount-input-<?php echo esc_attr($item['option_id']); ?>" name="pwyw_amount[<?php echo esc_attr($item['option_id']); ?>]" type="number" min="<?php echo esc_attr(floatval($item[$price])); ?>" class="ppcart-form-control ppcart-mb-0 required" placeholder="Amount" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-custom-price-input')); ?>">
                         </div>
                     </div>
                 <?php endif;?>
             </div>
         <?php $i++;
         endforeach; ?>
-        </fieldset>
 
         <?php if ($include_coupon) {
             do_action('ppcart_coupon_status', $post_id);
@@ -405,7 +397,6 @@ function ppcart_do_field($args)
         'div_class' => '',
         'qty_price' => false,
         'testid' => '',
-        'autocomplete' => '',
     ];
 
     $args = wp_parse_args($args, $defaults);
@@ -422,15 +413,6 @@ function ppcart_do_field($args)
     $div_class   = $args['div_class'];
     $qty_price   = $args['qty_price'];
     $testid      = $args['testid'];
-    /**
-     * Filters whether a checkout password field shows the strength bar and its requirement text.
-     *
-     * @param bool  $show Whether to show the strength bar. Default true.
-     * @param array $args Field arguments passed to ppcart_do_field().
-     */
-    $password_strength = ('password' === $type) && apply_filters('ppcart_checkout_password_strength', true, $args);
-    $autocomplete = (string) $args['autocomplete'];
-    $autocomplete_attr = ('' !== $autocomplete) ? ' autocomplete="' . esc_attr($autocomplete) . '"' : '';
     $name        = isset($args['name']) ? $args['name'] : null;
     $label       = isset($args['label']) ? $args['label'] : null;
     $choices     = isset($args['choices']) ? $args['choices'] : null;
@@ -448,8 +430,6 @@ function ppcart_do_field($args)
     }
 
     $class .= (!$required) ? '' : ' required';
-    // aria-required (not native `required`) so browser validation does not change checkout behaviour.
-    $aria_required = ($required && !in_array($type, ['radio', 'checkbox'], true)) ? ' aria-required="true"' : '';
     $class .= (!is_array($posted_ppcart_errors) || !isset($posted_ppcart_errors[$name])) ? '' : ' invalid';
     $class .= ($type == 'password') ? ' ppcart-password' : '';
     if (is_user_logged_in()) {
@@ -484,13 +464,11 @@ function ppcart_do_field($args)
     <?php if ($type != 'hidden') : ?>
     <div class="ppcart-form-group ppcart-col-sm-<?php echo esc_attr($cols); ?> <?php echo esc_attr($div_class); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($group_testid)); ?>">
         <?php if ($hide_labels != 'hide') : ?>
-        <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($label); ?><?php echo (!$required) ? '' : ' <span class="req" aria-hidden="true">*</span>'; ?></label>
-        <?php elseif ($type == 'select') : ?>
-        <label for="<?php echo esc_attr($name); ?>" class="ppcart-screen-reader-text"><?php echo esc_html($label); ?></label>
+        <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($label); ?><?php echo (!$required) ? '' : ' <span class="req">*</span>'; ?></label>
         <?php endif; ?>
     <?php endif; ?>
         <?php if ($type == 'select') : ?>
-            <select id="<?php echo esc_attr($name); ?>" name="<?php echo esc_attr($name); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?><?php echo $autocomplete_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>">
+            <select id="<?php echo esc_attr($name); ?>" name="<?php echo esc_attr($name); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>">
                 <?php foreach ($choices as $k => $v) {
                     echo '<option value="' . esc_attr($k) . '" ' . selected($k, $value, false) . '>' . esc_html($v) . '</option>';
                 } ?>
@@ -511,7 +489,7 @@ function ppcart_do_field($args)
             <?php endforeach; ?>
             <?php echo wp_kses_post($description); ?>
         <?php elseif ($type == 'quantity') : ?>
-            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="number" class="ppcart-form-control <?php echo esc_attr($class); ?>" step="1" min="1" max="" placeholder="<?php esc_attr_e('Qty', 'publishpress-cart'); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?> inputmode="numeric" pattern="[0-9]*" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
+            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="number" class="ppcart-form-control <?php echo esc_attr($class); ?>" step="1" min="1" max="" placeholder="<?php esc_attr_e('Qty', 'publishpress-cart'); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>" inputmode="numeric" pattern="[0-9]*" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
             <?php if ($qty_price) :
                 ?> data-ppcart-qty-price="<?php echo esc_attr($qty_price); ?>"<?php
             endif; ?>>
@@ -520,20 +498,11 @@ function ppcart_do_field($args)
                   <div class="error"><?php echo esc_html(sanitize_text_field($posted_ppcart_errors[$name])); ?></div>
               <?php endif; ?>
         <?php else : ?>
-            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?><?php echo $autocomplete_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
+            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
             <?php if ($type == 'password') :
                 ?>pattern="(?=.*\d)(?=.*[a-z]).{8,}"<?php
             endif; ?>
-            <?php if ($password_strength) :
-                ?> aria-describedby="<?php echo esc_attr($id); ?>-rules"<?php
-            endif; ?>
             >
-            <?php if ($password_strength) : ?>
-                <div class="ppcart-password-rules" id="<?php echo esc_attr($id); ?>-rules" data-ppcart-password-level="0" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-password-rules')); ?>">
-                    <div class="ppcart-password-meter" aria-hidden="true"><span></span><span></span><span></span></div>
-                    <p class="ppcart-password-rules-text" aria-live="polite"><?php esc_html_e('Use at least 8 characters, 1 lowercase letter, and 1 number', 'publishpress-cart'); ?></p>
-                </div>
-            <?php endif; ?>
             <?php if ($type == 'password') : ?>
                 <div class="password-toggle">
                     <input type="checkbox" name="ppcart-show-password" id="ppcart-show-password" class="ppcart-password-toggle" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-show-password')); ?>">
@@ -562,18 +531,18 @@ function ppcart_do_checkoutform_fields($post_id, $hide_labels, $twostep = false)
         <div class="ppcart-row checkout-contact-info">
         <?php
         $fields = [
-            'firstname' => ['name' => 'first_name','label' => esc_html__('First Name', 'publishpress-cart'),'autocomplete' => 'given-name','required' => true, 'hide_labels' => $hide_labels],
-            'lastname' => ['name' => 'last_name','label' => esc_html__('Last Name', 'publishpress-cart'),'autocomplete' => 'family-name','required' => true, 'hide_labels' => $hide_labels],
+            'firstname' => ['name' => 'first_name','label' => esc_html__('First Name', 'publishpress-cart'),'required' => true, 'hide_labels' => $hide_labels],
+            'lastname' => ['name' => 'last_name','label' => esc_html__('Last Name', 'publishpress-cart'),'required' => true, 'hide_labels' => $hide_labels],
 
         ];
     if (!isset($ppcart_product->hide_phone_field) || !$ppcart_product->hide_phone_field) {
-        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','autocomplete' => 'email','required' => true, 'hide_labels' => $hide_labels];
-        $fields['phone'] = ['name' => 'phone','label' => esc_html__('Phone Number', 'publishpress-cart'),'type' => 'tel','autocomplete' => 'tel','hide_labels' => $hide_labels];
+        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','required' => true, 'hide_labels' => $hide_labels];
+        $fields['phone'] = ['name' => 'phone','label' => esc_html__('Phone Number', 'publishpress-cart'),'type' => 'tel','hide_labels' => $hide_labels];
     } else {
-        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','autocomplete' => 'email','required' => true, 'hide_labels' => $hide_labels,'cols' => 12];
+        $fields['email'] = ['name' => 'email','label' => esc_html__('Email', 'publishpress-cart'),'type' => 'email','required' => true, 'hide_labels' => $hide_labels,'cols' => 12];
     }
 
-    $fields['company'] = ['name' => 'company','label' => esc_html__('Company Name', 'publishpress-cart'),'autocomplete' => 'organization','hide_labels' => $hide_labels];
+    $fields['company'] = ['name' => 'company','label' => esc_html__('Company Name', 'publishpress-cart'),'hide_labels' => $hide_labels];
 
     if (!isset($ppcart_product->default_fields)) {
         foreach ($fields as $k => $field) { // deprecated

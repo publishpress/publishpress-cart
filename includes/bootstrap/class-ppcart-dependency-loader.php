@@ -136,19 +136,6 @@ class PPCart_Dependency_Loader
         $ppcart_paypal = new $ppcart_paypal_class($cart->get_plugin_name(), $cart->get_version());
 
         /**
-         * On-page PayPal checkout (PayPal JavaScript SDK) and its reconciliation.
-         */
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-rest-client.php';
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-billing-shape.php';
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-plans.php';
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-record-lock.php';
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-sync.php';
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-refund-sync.php';
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-webhook.php';
-        require_once $base_path . 'public/paypal/class-ppcart-paypal-onpage.php';
-        new PPCart_Paypal_Onpage($ppcart_paypal, $cart->get_version());
-
-        /**
          * The class responsible for sanitizing user input
          */
         require_once $base_path . 'includes/class-ppcart-sanitize.php';

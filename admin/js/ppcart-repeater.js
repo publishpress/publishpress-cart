@@ -22,7 +22,6 @@
 		clone.find('.ppcart-unique').val(uniqid());
 		
         updateNames(parent);
-        syncMoveButtons(parent);
         initializeSelect2(clone.find('.ppcart-selectize'));
         flatpickr(clone.find('.datepicker'), {enableTime: true,dateFormat: "Y-m-d h:i K",allowInput: true});
         initializeDeferredEditors(clone);
@@ -198,7 +197,7 @@
         }
     }
 
-    function repairEditor($textarea, preserveFocus) {
+    function repairEditor($textarea) {
         if (!window.tinymce || !window.wp || !window.wp.editor) {
             return;
         }
@@ -242,10 +241,7 @@
         if (newEditor) {
             try {
                 newEditor.setContent(content);
-                // A keyboard move keeps focus on its button; only a click in the editor focuses it.
-                if (!preserveFocus) {
-                    newEditor.focus();
-                }
+                newEditor.focus();
             } catch (e) {
                 // Fall back to whatever the textarea holds.
             }
@@ -259,9 +255,9 @@
         }, 200);
     }
 
-    function repairEditors(scope, preserveFocus) {
+    function repairEditors(scope) {
         $(scope).find('.ridmessage textarea.wp-editor-area, .ridmessage textarea.ppcart-deferred-editor').each(function() {
-            repairEditor($(this), preserveFocus);
+            repairEditor($(this));
         });
     }
 
@@ -623,93 +619,6 @@
         });
     }
 
-    function repeaterText(key, fallback) {
-        var strings = window.ppcartRepeaterI18n || {};
-        return strings[key] || fallback;
-    }
-
-    function speak(message) {
-        if (message && window.wp && window.wp.a11y && typeof window.wp.a11y.speak === 'function') {
-            window.wp.a11y.speak(message, 'polite');
-        }
-    }
-
-    function getRepeaterRows($list) {
-        return $list.children('.ppcart-repeater').not('.hidden');
-    }
-
-    function getRepeaterTitle($row) {
-        return $.trim($row.children('.handle').find('.title-repeater').first().text());
-    }
-
-    // aria-disabled (not disabled) so a button that reaches the end keeps focus.
-    function syncMoveButtons($lists) {
-        $lists.each(function() {
-            var $rows = getRepeaterRows($(this));
-            var last = $rows.length - 1;
-
-            $rows.each(function(idx) {
-                var $handle = $(this).children('.handle');
-                $handle.find('.ppcart-repeater-move-up').attr('aria-disabled', idx === 0 ? 'true' : 'false');
-                $handle.find('.ppcart-repeater-move-down').attr('aria-disabled', idx === last ? 'true' : 'false');
-            });
-        });
-    }
-
-    // Shared by drag-and-drop and the move buttons, so both save the same order.
-    function afterRepeaterReorder($list, preserveFocus) {
-        updateNames($list);
-        syncMoveButtons($list);
-        // Moving rows in the DOM wipes TinyMCE iframes.
-        setTimeout(function() {
-            repairEditors($list, preserveFocus);
-        }, 50);
-    }
-
-    /**
-     * Moves a row up or down with a button, for keyboard and single-pointer users.
-     */
-    $(document).on('click', '.ppcart-repeater-move-btn', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        var button = this;
-        var $button = $(button);
-        var $row = $button.closest('.ppcart-repeater');
-        var $list = $row.closest('.ppcart-repeaters');
-        var moveUp = $button.attr('data-ppcart-move') === 'up';
-        var $target = moveUp
-            ? $row.prevAll('.ppcart-repeater').not('.hidden').first()
-            : $row.nextAll('.ppcart-repeater').not('.hidden').first();
-        var $rows;
-
-        if (!$target.length) {
-            speak(moveUp
-                ? repeaterText('alreadyFirst', 'This item is already first.')
-                : repeaterText('alreadyLast', 'This item is already last.'));
-            return;
-        }
-
-        if (moveUp) {
-            $row.insertBefore($target);
-        } else {
-            $row.insertAfter($target);
-        }
-
-        afterRepeaterReorder($list, true);
-
-        // A DOM move drops focus; put it back on the button that was pressed.
-        button.focus();
-
-        $rows = getRepeaterRows($list);
-        speak(
-            repeaterText('movedTo', '%1$s moved to position %2$d of %3$d.')
-                .replace('%1$s', getRepeaterTitle($row))
-                .replace('%2$d', String($rows.index($row) + 1))
-                .replace('%3$d', String($rows.length))
-        );
-    });
-
 	/**
 	 * Removes the selected repeater.
 	 */
@@ -717,28 +626,14 @@
 
 		var parents = $(this).parents('li.ppcart-repeater');
         var list = parents.closest('.ppcart-repeaters');
-        var $next = parents.nextAll('.ppcart-repeater').not('.hidden').first();
-        var $focusTarget;
 
 		if ( ! parents.hasClass( 'first' ) ) {
 
 			parents.remove();
 
-            // Keep focus in the list: the next row, or the add button after the last row.
-            $focusTarget = $next.length ? $next.children('.handle').find('.ppcart-btn-edit').first() : $();
-            if (!$focusTarget.length) {
-                $focusTarget = list.find('.add-repeater').first();
-            }
-            if ($focusTarget.length) {
-                $focusTarget.trigger('focus');
-            }
-
-            speak(repeaterText('removed', 'Item removed.'));
-
 		}
 
         updateNames(list);
-        syncMoveButtons(list);
 
 		return false;
 
@@ -863,10 +758,14 @@
                 items: '.ppcart-repeater',
                 opacity: 0.6,
                 stop: function (event, ui) {
-                    afterRepeaterReorder($(this));
+                    updateNames($(this));
+                    // Sorting moves rows in the DOM, which wipes TinyMCE iframes.
+                    var $list = $(this);
+                    setTimeout(function() {
+                        repairEditors($list);
+                    }, 50);
                 }
             });
-            syncMoveButtons($( '.ppcart-repeaters' ));
         }
         schedulePageLoadDeferredEditors();
         syncRepeaterEnabledState(document);

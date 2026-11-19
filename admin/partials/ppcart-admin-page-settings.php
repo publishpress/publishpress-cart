@@ -101,16 +101,6 @@ try {
 
     // Surface "Settings saved." after redirect from options.php and any other
     // notices registered via add_settings_error().
-    if (current_user_can('manage_options')) {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This flag only displays a notice after a redirect.
-        if (isset($_GET['ppcart_debug_log_cleared'])) {
-            add_settings_error('ppcart_debug_log', 'ppcart_debug_log_cleared', __('Debug log cleared.', 'publishpress-cart'), 'success');
-        }
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This flag only displays a notice after a redirect.
-        if (isset($_GET['ppcart_stripe_webhook_log_cleared'])) {
-            add_settings_error('ppcart_debug_log', 'ppcart_stripe_webhook_log_cleared', __('Stripe webhook log cleared.', 'publishpress-cart'), 'success');
-        }
-    }
     settings_errors();
 
     // Render captured global admin notices and plugin notices inside the settings shell.

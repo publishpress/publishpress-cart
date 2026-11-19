@@ -13,20 +13,12 @@ if ('ppcart-settings' !== $current_page) {
 }
 
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- These are route checks only; each log action verifies its own nonce below.
-if (empty($_REQUEST['ppcart_view_log']) && empty($_REQUEST['ppcart_download_log']) && ! isset($_REQUEST['ppcart_reset_log'])) {
+if (empty($_REQUEST['ppcart_view_log']) && empty($_REQUEST['ppcart_download_log'])) {
     return;
 }
 
 if (function_exists('current_user_can') && ! current_user_can('manage_options')) {
     wp_die(esc_html__('Sorry, you are not allowed to access this page.', 'publishpress-cart'));
-}
-
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Verify the action nonce before clearing the log.
-if (isset($_REQUEST['ppcart_reset_log'])) {
-    ppcart_check_admin_referer('ppcart_reset_debug_log', 'ppcart_reset_debug_log_nonce');
-    $this->reset_log_file();
-    wp_safe_redirect(admin_url('admin.php?page=ppcart-settings&ppcart_debug_log_cleared=1#debug'));
-    exit();
 }
 
 //View debug log

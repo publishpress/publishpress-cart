@@ -143,7 +143,6 @@ function ppcart_pro_locked_integration_keys()
 
     $keys = [
         // Email marketing.
-        'brevo',
         'convertkit',
         'drip',
         'flodesk',

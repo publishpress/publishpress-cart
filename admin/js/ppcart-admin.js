@@ -540,75 +540,37 @@ jQuery(document).ready(function($){
         $(this).val('');
     });
 
-    // Copy to clipboard plan id. A real button, so keyboard users can reach it and it has a name.
-    $(document).on('click', '.ridoption_id .input-group .ppcart-plan-id-copy-icon', function(e) {
-        e.preventDefault();
-
-        var $button = $(this);
-        var $icon = $button.find('.dashicons');
-        var $input = $button.siblings('input');
-        var i18n = window.ppcart_admin_i18n || {};
-
-        function done(copied) {
-            var message = copied ? (i18n.copy_success || 'Copied') : (i18n.copy_failed || 'Copy failed');
-
-            if (window.wp && window.wp.a11y && typeof window.wp.a11y.speak === 'function') {
-                window.wp.a11y.speak(message, 'polite');
-            }
-
-            if (!copied) {
-                return;
-            }
-
-            window.clearTimeout($button.data('ppcart-copy-timer'));
-            $button.addClass('copied');
-            $icon.removeClass('dashicons-admin-page').addClass('dashicons-yes');
-            $button.data('ppcart-copy-timer', window.setTimeout(function() {
-                $button.removeClass('copied');
-                $icon.removeClass('dashicons-yes').addClass('dashicons-admin-page');
-            }, 1000));
-        }
-
-        function fallbackCopy() {
-            var copied = false;
-
-            // Fallback for older browsers.
+    // Copy to clipboard plan id
+    $(document).on('click', '.ridoption_id .input-group .ppcart-plan-id-copy-icon', async function() {
+        const $input = $(this).siblings('input');
+        try {
+            await navigator.clipboard.writeText($input.val());
+            $(this).addClass('copied');
+            $(this).removeClass('dashicons-admin-page').addClass('dashicons-yes');
+            setTimeout(() => {
+                $(this).removeClass('copied');
+                $(this).removeClass('dashicons-yes').addClass('dashicons-admin-page');
+            }, 1000);
+        } catch (err) {
+            // Fallback for older browsers
             $input[0].select();
-            try {
-                copied = document.execCommand('copy');
-            } catch (err) {
-                copied = false;
-            }
-            // Selecting the input moved focus; return it to the button.
-            $button.trigger('focus');
-            done(copied);
-        }
-
-        if (window.navigator.clipboard && window.navigator.clipboard.writeText) {
-            window.navigator.clipboard.writeText($input.val()).then(function() {
-                done(true);
-            }).catch(fallbackCopy);
-        } else {
-            fallbackCopy();
+            document.execCommand('copy');
+            $(this).addClass('copied');
+            $(this).removeClass('dashicons-admin-page').addClass('dashicons-yes');
+            setTimeout(() => {
+                $(this).removeClass('copied');
+                $(this).removeClass('dashicons-yes').addClass('dashicons-admin-page');
+            }, 1000);
         }
     });
 
-    // Add copy buttons to all plan ID fields
-    function addPlanIdCopyButtons(scope) {
-        var label = (window.ppcart_admin_i18n && window.ppcart_admin_i18n.copy_plan_id) || 'Copy plan ID';
-
-        $(scope).find('.ridoption_id .input-group').each(function() {
-            if (!$(this).find('.ppcart-plan-id-copy-icon').length) {
-                var $copyButton = $('<button type="button" class="ppcart-plan-id-copy-icon"></button>');
-
-                $('<span class="dashicons dashicons-admin-page" aria-hidden="true"></span>').appendTo($copyButton);
-                $('<span class="screen-reader-text"></span>').text(label).appendTo($copyButton);
-                $(this).append($copyButton);
-            }
-        });
-    }
-
-    addPlanIdCopyButtons(document);
+    // Add copy icons to all plan ID fields
+    $('.ridoption_id .input-group').each(function() {
+        if (!$(this).find('.ppcart-plan-id-copy-icon').length) {
+            const $copyIcon = $('<span class="dashicons dashicons-admin-page ppcart-plan-id-copy-icon"></span>');
+            $(this).append($copyIcon);
+        }
+    });
 
     $('.ridoption_id input, .ridfield_id input, .ridurl_slug input').keyup(function(){
         var val = $(this).val().replace(/\s+/g, '-');
@@ -727,18 +689,8 @@ jQuery(document).ready(function($){
     });
 
     $('.datepicker + .clear-date').click(function(){
-        var $date = $(this).closest('.field-text').find('.datepicker');
-        $(this).hide();
-        $date.val('');
-        // The clear control just hid itself; keep focus on the date field.
-        $date.trigger('focus');
+        $(this).hide().closest('.field-text').find('.datepicker').val('');
         return false;
-    }).on('keydown', function(e){
-        // role="button": Space activates it like a button.
-        if (' ' === e.key || 'Spacebar' === e.key) {
-            e.preventDefault();
-            $(this).trigger('click');
-        }
     });
 
     $('.ppcart-settings-tabs .required').each(function(){
@@ -1256,33 +1208,6 @@ jQuery(document).ready(function($){
 		});
 	}
 
-	/*
-	 * "?" help tooltips open on hover and focus (balloon.css). Escape hides the
-	 * open tooltip without moving focus; it shows again after the pointer
-	 * leaves or focus moves away (WCAG 1.4.13 Content on Hover or Focus).
-	 */
-	$(document).on('keydown', function(e) {
-		if ('Escape' !== e.key && 'Esc' !== e.key) {
-			return;
-		}
-
-		var open = document.querySelectorAll('.ppcart-tooltip:hover, .ppcart-tooltip:focus');
-		if (!open.length) {
-			return;
-		}
-
-		$(open).addClass('is-dismissed');
-	});
-
-	$(document).on('mouseleave focusout', '.ppcart-tooltip.is-dismissed', function() {
-		var tooltip = this;
-		// Keep it hidden while it is still hovered or focused.
-		if (tooltip.matches(':hover') || tooltip === document.activeElement) {
-			return;
-		}
-		$(tooltip).removeClass('is-dismissed');
-	});
-
 	$(document).on('click', '[data-ppcart-copy]', function(e) {
         e.preventDefault();
 
@@ -1299,28 +1224,9 @@ jQuery(document).ready(function($){
             $button.data('ppcart-copy-original-label', originalLabel);
         }
 
-        function announce(message) {
-            if (window.wp && window.wp.a11y && typeof window.wp.a11y.speak === 'function') {
-                window.wp.a11y.speak(message, 'polite');
-                return;
-            }
-
-            var $region = $('#ppcart-copy-live-region');
-            if (!$region.length) {
-                $region = $('<div id="ppcart-copy-live-region" class="screen-reader-text" role="status" aria-live="polite" aria-atomic="true"></div>').appendTo('body');
-            }
-            $region.text('');
-            window.setTimeout(function() {
-                $region.text(message);
-            }, 100);
-        }
-
         function setFeedback(message) {
             window.clearTimeout($button.data('ppcart-copy-timer'));
-            // Show the result as the button's visible text, and drop any aria-label
-            // meanwhile so the accessible name matches what is on screen.
-            $button.text(message).removeAttr('aria-label');
-            announce(message);
+            $button.text(message).attr('aria-label', message);
             $button.data('ppcart-copy-timer', window.setTimeout(function() {
                 $button.html(originalHtml);
                 if (originalLabel) {
@@ -1384,7 +1290,7 @@ jQuery(document).ready(function($){
                 location.reload();
             },
             error: function(xhr, status, error) {
-                alert(ppcart_translate_backend.error_occurred.replace('%s', error));
+                alert('An error occurred: ' + error);
             }
         });
     });

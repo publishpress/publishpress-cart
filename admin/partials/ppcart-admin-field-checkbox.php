@@ -32,7 +32,7 @@ $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
 $data_attrs = isset($atts['data']) && is_array($atts['data']) ? $atts['data'] : [];
 $help_id = ! empty($atts['description']) ? $field_id . '-help' : '';
 ?>
-<?php ppcart_admin_field_label($atts, $field_id, 'ppcart-label'); ?>
+<label class="ppcart-label" for="<?php echo esc_attr($field_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label>
 <div class="checkbox-wrap">
     <span class="ckbx-style">
         <input
@@ -42,7 +42,9 @@ $help_id = ! empty($atts['description']) ? $field_id . '-help' : '';
             name="<?php echo esc_attr($atts['name']); ?>"
             type="checkbox"
             data-testid="<?php echo esc_attr($testid); ?>"
-            <?php echo ppcart_admin_field_label_aria_attrs($atts, $field_id, $help_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute values are escaped by the helper. ?>
+            <?php if ('' !== $help_id) :
+                ?>aria-describedby="<?php echo esc_attr($help_id); ?>"<?php
+            endif; ?>
             <?php disabled(! empty($atts['disabled'])); ?>
             <?php foreach ($data_attrs as $data_attr => $data_value) : ?>
             <?php if (is_scalar($data_value) && preg_match('/^[a-z0-9_-]+$/', (string) $data_attr)) : ?>

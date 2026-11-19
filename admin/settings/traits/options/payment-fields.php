@@ -167,21 +167,6 @@ $payment_fields = [
             ],
             'tab' => 'payment',
         ],
-        'paypal-checkout-experience' => [
-            'type'          => 'select',
-            'label'         => esc_html__('Checkout experience', 'publishpress-cart'),
-            'settings'      => [
-                'id'            => '_ppcart_paypal_checkout_experience',
-                'value'         => 'redirect',
-                'selections'    => [
-                    'redirect' => __('Redirect to PayPal', 'publishpress-cart'),
-                    'onpage'   => __('On this page (PayPal popup)', 'publishpress-cart'),
-                ],
-                'description'   => esc_html__('On-page checkout needs the PayPal Email, Client ID and Secret of the selected mode. Without the Client ID and Secret the checkout redirects to PayPal.', 'publishpress-cart'),
-                'note'          => class_exists('PPCart_Admin_Paypal_Webhook') ? PPCart_Admin_Paypal_Webhook::status_note() : '',
-            ],
-            'tab' => 'payment',
-        ],
         'paypal-email' => [
             'type'          => 'text',
             'label'         => esc_html__('PayPal Email', 'publishpress-cart'),

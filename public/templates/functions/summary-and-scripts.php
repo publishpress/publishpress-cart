@@ -139,12 +139,12 @@ function ppcart_do_terms_consent_content($post_id)
             $terms_text = sprintf(
                 /* translators: %s: terms and conditions link. */
                 esc_html_x('I have read and I accept the %s', 'terms and conditions', 'publishpress-cart'),
-                '<a href="' . esc_url($terms) . '" target="_blank" rel="noopener noreferrer" data-testid="' . esc_attr(ppcart_data_testid_attribute('ppcart-checkout-terms-link')) . '">' . esc_html__('terms and conditions', 'publishpress-cart') . '</a> <span class="req" aria-hidden="true">*</span>'
+                '<a href="' . esc_url($terms) . '" target="_blank" rel="noopener noreferrer" data-testid="' . esc_attr(ppcart_data_testid_attribute('ppcart-checkout-terms-link')) . '">' . esc_html__('terms and conditions', 'publishpress-cart') . '</a> <span class="req">*</span>'
             ); ?>
 
             <div class="checkbox-wrap <?php echo esc_attr($class); ?>">
                 <label>
-                    <input type="checkbox" class="required" aria-required="true" id="ppcart_accept_terms" name="ppcart_accept_terms" value="yes" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-terms-checkbox')); ?>">
+                    <input type="checkbox" class="required" id="ppcart_accept_terms" name="ppcart_accept_terms" value="yes" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-terms-checkbox')); ?>">
                     <span class="item-name"><?php echo wp_kses_post(apply_filters('ppcart_checkout_page_terms_text', $terms_text, $ppcart_product)); ?></span>
                 </label>
             </div>
@@ -158,11 +158,11 @@ function ppcart_do_terms_consent_content($post_id)
             $privacy_text = sprintf(
                 /* translators: %s: privacy policy link. */
                 esc_html_x('I have read and I accept the %s', 'privacy policy', 'publishpress-cart'),
-                '<a href="' . esc_url($privacy) . '" target="_blank" rel="noopener noreferrer" data-testid="' . esc_attr(ppcart_data_testid_attribute('ppcart-checkout-privacy-link')) . '">' . esc_html__('privacy policy', 'publishpress-cart') . '</a> <span class="req" aria-hidden="true">*</span>'
+                '<a href="' . esc_url($privacy) . '" target="_blank" rel="noopener noreferrer" data-testid="' . esc_attr(ppcart_data_testid_attribute('ppcart-checkout-privacy-link')) . '">' . esc_html__('privacy policy', 'publishpress-cart') . '</a> <span class="req">*</span>'
             ); ?>
             <div class="checkbox-wrap <?php echo esc_attr($class); ?>">
                 <label>
-                    <input type="checkbox" class="required" aria-required="true" id="ppcart_accept_privacy" name="ppcart_accept_privacy" value="yes" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-privacy-checkbox')); ?>">
+                    <input type="checkbox" class="required" id="ppcart_accept_privacy" name="ppcart_accept_privacy" value="yes" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-privacy-checkbox')); ?>">
                     <span class="item-name"><?php echo wp_kses_post(apply_filters('ppcart_checkout_page_privacy_text', $privacy_text, $ppcart_product)); ?></span>
                 </label>
             </div>
@@ -178,11 +178,11 @@ function ppcart_do_terms_consent_content($post_id)
             <div class="checkbox-wrap <?php echo esc_attr($class); ?>">
                 <label>
                     <input type="checkbox" id="ppcart_consent" name="ppcart_consent" value="yes" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute('ppcart-checkout-consent-checkbox')); ?>" <?php if ($required) {
-                        echo 'class="required" aria-required="true"';
+                        echo 'class="required"';
                                                                                                               } ?> >
                     <span class="item-name"><?php echo wp_kses_post(wp_specialchars_decode($ppcart_product->optin_checkbox_text, 'ENT_QUOTES')); ?>
                     <?php if ($required) {
-                        echo '<span class="req" aria-hidden="true">*</span>';
+                        echo '<span class="req">*</span>';
                     } ?>
                     </span>
                 </label>

@@ -83,19 +83,6 @@ if ($export_mode === 'contacts') {
     $fromdate = $dates[0] . " 00:00:00";
     $todate = $dates[1] ?? $dates[0];
     $todate .= " 23:59:59";
-    $date_query = [];
-    if ('' !== trim((string) $daterange)) {
-        $date_query = [
-            [
-                'post_date' => 'post_date',
-                'after' => $fromdate,
-            ],
-            [
-                'post_date' => 'post_date',
-                'before'  => $todate,
-            ],
-        ];
-    }
     $customer = false;
     $report_filters = ppcart_parse_report_filters(
         [
@@ -120,10 +107,21 @@ if ($export_mode === 'contacts') {
         $args = [
             'post_type' => ppcart_query_post_types('order'),
             'post_status' => 'any',
-            'date_query' => $date_query,
             // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- This admin/report selector intentionally loads all matching records for aggregate calculations or option lists.
             'posts_per_page' => -1,
         ];
+        if ('' !== trim((string) $daterange)) {
+            $args['date_query'] = [
+                [
+                    'post_date' => 'post_date',
+                    'after' => $fromdate,
+                ],
+                [
+                    'post_date' => 'post_date',
+                    'before'  => $todate,
+                ],
+            ];
+        }
         $args = ppcart_apply_report_filters_to_query_args(
             $args,
             [
@@ -238,7 +236,16 @@ if ($export_mode === 'contacts') {
         ]);
         $subscription_args = ['post_type' => ppcart_query_post_types('subscription'),
             'post_status' => 'any',
-            'date_query' => $date_query,
+            'date_query' => [
+                [
+                'post_date' => 'post_date',
+                'after' => $fromdate,
+                ],
+                [
+                'post_date' => 'post_date',
+                'before'  => $todate,
+                ],
+            ],
             // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- This admin/report selector intentionally loads all matching records for aggregate calculations or option lists.
             'posts_per_page' => -1,
         ];

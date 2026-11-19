@@ -23,7 +23,7 @@ $remove_testid = ppcart_testid('ppcart-admin-field-' . $testid_source . '-remove
 $help_id = ! empty($atts['description']) ? $field_dom_id . '-help' : '';
 
 if (! empty($atts['label'])) {
-    ppcart_admin_field_label($atts, $field_dom_id);
+    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
 }
 
 ?><div class="input-group field-upload">
@@ -33,7 +33,9 @@ if (! empty($atts['label'])) {
     id="<?php echo esc_attr($field_dom_id); ?>"
     name="<?php echo esc_attr($atts['name']); ?>"
     data-testid="<?php echo esc_attr($testid); ?>"
-    <?php echo ppcart_admin_field_label_aria_attrs($atts, $field_dom_id, $help_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute values are escaped by the helper. ?>
+    <?php if ('' !== $help_id) :
+        ?>aria-describedby="<?php echo esc_attr($help_id); ?>"<?php
+    endif; ?>
     type="<?php echo esc_attr($atts['field-type']); ?>"
     value="<?php echo esc_attr($atts['value']); ?>" />
 <a href="#" class="button upload-file <?php echo ($atts['value']) ? 'hide' : ''; ?>" data-testid="<?php echo esc_attr($upload_testid); ?>"><?php echo esc_html($atts['label-upload']); ?></a>

@@ -7,7 +7,7 @@ description: Implement, audit or test PublishPress Cart MCP abilities using nati
 
 ## Native integration
 
-Use `includes/mcp/` and the existing native hook/require-based architecture. Keep PHP 8.2 compatibility and focused files below 500 lines. Use canonical `ppcart_` hooks and helpers. Do not introduce legacy prefixes or inspect vendor copies as implementation references.
+Use `includes/mcp/` and the existing native hook/require-based architecture. Keep PHP 7.4 compatibility and focused files below 500 lines. Use canonical `ppcart_` hooks and helpers. Do not introduce legacy prefixes or inspect vendor copies as implementation references.
 
 Register private `publishpress-cart/` abilities in the shared `publishpress` category. Guard optional API availability and duplicate category/action registration. Hub owns transport, authentication and action selection; Cart owns native operation permissions and validation. Check permissions in both the ability callback and the executing service. An Administrator role never overrides a denied capability.
 

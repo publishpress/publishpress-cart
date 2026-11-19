@@ -28,66 +28,6 @@
      * Although scripts in the WordPress core, Plugins and Themes may be
      * practising this, we should strive to set a better example in our own work.
      */
-    /**
-     * Announce a status message to screen readers without moving focus.
-     *
-     * Uses wp.a11y.speak() when the page already loads it; otherwise a shared,
-     * visually hidden polite live region.
-     */
-    function ppcart_announce(message) {
-        var text = $.trim(String(message || ''));
-        var region;
-
-        if (!text) {
-            return;
-        }
-
-        if (window.wp && window.wp.a11y && 'function' === typeof window.wp.a11y.speak) {
-            window.wp.a11y.speak(text, 'polite');
-            return;
-        }
-
-        region = document.getElementById('ppcart-a11y-status');
-
-        if (!region) {
-            region = document.createElement('div');
-            region.id = 'ppcart-a11y-status';
-            region.setAttribute('role', 'status');
-            region.setAttribute('aria-live', 'polite');
-            region.setAttribute('aria-atomic', 'true');
-            region.style.cssText = 'position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;';
-            document.body.appendChild(region);
-        }
-
-        // Clear first so repeating the same message is announced again.
-        region.textContent = '';
-        window.setTimeout(function() {
-            region.textContent = text;
-        }, 100);
-    }
-
-    /**
-     * Show an error message inline after a control, in a live region, instead
-     * of a browser alert. Reuses the notice on repeat failures.
-     */
-    function ppcart_show_inline_notice($anchor, message) {
-        var text = $.trim(String(message || ''));
-        var $notice;
-
-        if (!text || !$anchor || !$anchor.length) {
-            return;
-        }
-
-        $notice = $anchor.next('.ppcart-inline-notice');
-
-        if (!$notice.length) {
-            $notice = $('<div class="error ppcart-inline-notice" role="alert"></div>');
-            $anchor.after($notice);
-        }
-
-        $notice.text(text);
-    }
-
     var regExPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
         regExEmail = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
@@ -133,67 +73,23 @@
         return (/^\d{7,}$/).test(value.replace(/[\s()+\-\.]|ext/gi, ''));
     }
 
-    var passwordRules = {
-        length: function (value) {
-            return value.length >= 8;
-        },
-        lowercase: function (value) {
-            return /[a-z]/.test(value);
-        },
-        number: function (value) {
-            return /[0-9]/.test(value);
-        }
-    };
-
     function isValidPassword(value) {
-        for (var rule in passwordRules) {
-            if (!passwordRules[rule](value)) {
-                return false;
-            }
+        var lowerCaseLetters = /[a-z]/g;
+        if (!value.match(lowerCaseLetters)) {
+            return false;
+        }
+
+        // Validate numbers
+        var numbers = /[0-9]/g;
+        if (!value.match(numbers)) {
+            return false;
+        }
+
+        // Validate length
+        if (!value.length >= 8) {
+            return false;
         }
         return true;
-    }
-
-    // Fill the strength bar and name the missing requirements; mark the field valid when none is missing.
-    function updatePasswordRules($field) {
-        var value = $field.val();
-        var strings = ppcart_translate_frontend;
-        var missing = [];
-        var total = 0;
-
-        for (var rule in passwordRules) {
-            total++;
-            if (!passwordRules[rule](value)) {
-                missing.push(strings['password_rule_' + rule]);
-            }
-        }
-
-        var valid = !missing.length;
-        var text = strings.password_strong;
-        if (!value.length) {
-            text = strings.password_rules_hint;
-        } else if (!valid) {
-            text = strings.password_still_needed.replace('%s', missing.join(', '));
-        }
-
-        var $rules = $field.closest('.ppcart-form-group').find('.ppcart-password-rules');
-        $rules.removeClass('is-invalid').toggleClass('is-strong', valid).attr('data-ppcart-password-level', total - missing.length);
-        $rules.find('.ppcart-password-rules-text').text(text);
-        $field.toggleClass('valid', valid);
-
-        return valid;
-    }
-
-    // The strength text already names the missing requirements, so it turns red in place of a second message.
-    function showPasswordError($field) {
-        var $group = $field.addClass('invalid').closest('.ppcart-form-group');
-        var $rules = $group.find('.ppcart-password-rules');
-
-        if ($rules.length) {
-            $rules.addClass('is-invalid');
-        } else {
-            $group.append($('<div class="error"></div>').text(ppcart_translate_frontend.invalid_pass));
-        }
     }
 
     $(document).ready(function() {
@@ -287,10 +183,9 @@
         }
 
         function getCheckoutAmount(form) {
-            // A coupon can set the total to 0; only an empty total falls back to the plan price.
             var amount = parseFloat($('[name="ppcart_amount"]', form).val());
 
-            if (isNaN(amount)) {
+            if (isNaN(amount) || amount <= 0) {
                 amount = parseFloat($('input[name="ppcart_product_option"]:checked', form).data('price'));
             }
 
@@ -607,10 +502,10 @@
                         tax_rate_data = response.rates;
                         $('.vat_container', '#'+wrap_id).hide();
                         let vat_error = "Invalid VAT Number";
-                        $('#vat_number', '#'+wrap_id).removeClass('valid invalid').removeAttr('aria-invalid');
+                        $('#vat_number', '#'+wrap_id).removeClass('valid invalid');
                         $('#vat_number', '#'+wrap_id).parent().find('.error').remove();
                         if (!response.is_valid_vat) {
-                            $('#vat_number', '#'+wrap_id).addClass('invalid').attr('aria-invalid', 'true');
+                            $('#vat_number', '#'+wrap_id).addClass('invalid');
                             if (response.vat_error != "") {
                                 vat_error = response.vat_error;
                             }
@@ -618,10 +513,6 @@
                                 $('#vat_number', '#'+wrap_id).parent().append($('<div class="error"></div>').text(vat_error))
                             } else {
                                 $('#vat_number', '#'+wrap_id).parent().find('.error').text(vat_error);
-                            }
-                            // Only speak errors for a number the customer actually entered.
-                            if (tax_obj.vat_number != '') {
-                                ppcart_announce(vat_error);
                             }
                         } else if(tax_obj.vat_number != '') {
                             $('#vat_number', '#'+wrap_id).addClass('valid');
@@ -645,8 +536,6 @@
 
                         var container = $('#'+wrap_id).closest("#ppcart-form-container").find('.summary-items'),
                             totalContainer = $('#'+wrap_id).closest("#ppcart-form-container").find('.total');
-
-                        var previousTotalText = $.trim(totalContainer.text());
 
                         container.empty();
                         totalContainer.empty();
@@ -724,11 +613,6 @@
                                 });
                                 $totalRhs.append($small);
                             }
-
-                            // Announce a recalculated total (not the first render).
-                            if (previousTotalText && previousTotalText !== $.trim(totalContainer.text())) {
-                                ppcart_announce($.trim(String(resp.total_label || '') + ' ' + String(resp.total_price || '')));
-                            }
                         }
 					}
                     initialExpressPayment('#'+wrap_id);
@@ -737,10 +621,10 @@
                     schedulePaymentIntentPreload('#'+wrap_id);
 					return resp.success;
 				} else {
-					showCheckoutErrorSummary('#'+wrap_id, ppcart_translate_frontend.order_update_failed);
+					alert('Something went wrong.')
 				}
 			} catch (error) {
-				showCheckoutErrorSummary('#'+wrap_id, ppcart_translate_frontend.order_update_failed);
+				alert('Something went wrong.')
 			}
             return false;
 
@@ -809,168 +693,20 @@
             }
         });
 
-        // Clear a field's error message. Errors stay visible while the field
-        // only has focus, so keyboard and screen reader users can read them;
-        // they are cleared once the value changes and re-checked on blur.
-        function clearFieldError($field) {
-            $field.removeClass('invalid valid').siblings('.error').remove();
-            $field.closest('.ppcart-form-group').find('input').removeClass('invalid');
-            $field.closest('.ppcart-form-group').find('.error').remove();
+        // remove error message on focus
+        $(document).on('focus', '#ppcart-payment-form input:not([type="checkbox"]):not([type="radio"]), #ppcart-payment-form select', function() {
+            $(this).removeClass('invalid valid').siblings('.error').remove();
+            $(this).closest('.ppcart-form-group').find('input').removeClass('invalid')
+            $(this).closest('.ppcart-form-group').find('.error').remove()
 
-            if ($field.attr('id') == 'address1') {
+            if ($(this).attr('id') == 'address1') {
                 $('.ppcart-address-2 .error').remove();
             }
 
-            if ($field.hasClass('selectized')) {
-                $field.next('.selectize-control').find('.selectize-input').removeClass('invalid');
+            if ($(this).hasClass('selectized')) {
+                $(this).next('.selectize-control').find('.selectize-input').removeClass('invalid');
             }
-        }
-
-        $(document).on('input change', '#ppcart-payment-form input:not([type="checkbox"]):not([type="radio"]):not([name^="pwyw_amount["]), #ppcart-payment-form select', function() {
-            clearFieldError($(this));
         });
-
-        // Link each visible field error to its field (aria-invalid and
-        // aria-describedby), and unlink it again once the error is removed.
-        var fieldErrorCounter = 0;
-        var fieldErrorSyncQueued = false;
-
-        function getErrorFields($error) {
-            var $container = $error.closest('.checkbox-wrap, .ppcart-form-group');
-            var $fields = $container.find('input, select, textarea').not('[type="hidden"], [type="button"], [type="submit"], .selectize-control input');
-
-            // address1 errors are shown in the address2 group on singular product pages.
-            if ($container.find('#address2').length && $container.closest('#ppcart-payment-form').find('#address1.invalid').length) {
-                $fields = $container.closest('#ppcart-payment-form').find('#address1');
-            }
-
-            return $fields;
-        }
-
-        function setDescribedBy($el, errorId, add) {
-            $el.each(function() {
-                var ids = ($(this).attr('aria-describedby') || '').split(/\s+/).filter(function(id) {
-                    return id && id.indexOf('ppcart-field-error-') !== 0;
-                });
-
-                if (add) {
-                    ids.push(errorId);
-                }
-
-                if (ids.length) {
-                    $(this).attr('aria-describedby', ids.join(' '));
-                } else {
-                    $(this).removeAttr('aria-describedby');
-                }
-            });
-        }
-
-        function syncFieldErrors() {
-            fieldErrorSyncQueued = false;
-
-            var $forms = $('[id="ppcart-payment-form"]');
-            var $linked = $forms.find('[data-ppcart-error-linked]');
-            var stillLinked = [];
-
-            $forms.find('.error').not('.ppcart-checkout-error-summary').each(function() {
-                var $error = $(this);
-                var $fields = getErrorFields($error);
-
-                if (!$fields.length) {
-                    return;
-                }
-
-                if (!this.id) {
-                    fieldErrorCounter++;
-                    this.id = 'ppcart-field-error-' + fieldErrorCounter;
-                }
-
-                $fields.each(function() {
-                    var $targets = $(this);
-                    if ($targets.hasClass('selectized')) {
-                        $targets = $targets.add($targets.next('.selectize-control').find('.selectize-input input'));
-                    }
-                    $targets.attr({ 'aria-invalid': 'true', 'data-ppcart-error-linked': '1' });
-                    setDescribedBy($targets, $error.attr('id'), true);
-                    stillLinked = stillLinked.concat($targets.get());
-                });
-            });
-
-            $linked.each(function() {
-                if (stillLinked.indexOf(this) === -1) {
-                    $(this).removeAttr('aria-invalid data-ppcart-error-linked');
-                    setDescribedBy($(this), '', false);
-                }
-            });
-        }
-
-        function nodeHasFieldError(node) {
-            return node.nodeType === 1 && ($(node).is('.error') || $(node).find('.error').length > 0);
-        }
-
-        if (typeof MutationObserver !== 'undefined') {
-            new MutationObserver(function(mutations) {
-                if (fieldErrorSyncQueued) {
-                    return;
-                }
-
-                for (var i = 0; i < mutations.length; i++) {
-                    var nodes = Array.prototype.slice.call(mutations[i].addedNodes).concat(Array.prototype.slice.call(mutations[i].removedNodes));
-                    for (var j = 0; j < nodes.length; j++) {
-                        if (nodeHasFieldError(nodes[j])) {
-                            fieldErrorSyncQueued = true;
-                            setTimeout(syncFieldErrors, 0);
-                            return;
-                        }
-                    }
-                }
-            }).observe(document.body, { childList: true, subtree: true });
-        }
-
-        // Show a checkout-level error message next to the submit button,
-        // announced to screen readers, instead of a browser alert.
-        function showCheckoutErrorSummary(form, message) {
-            var $wrap = $(form);
-            var $summary = $wrap.find('.ppcart-checkout-error-summary');
-
-            if (!$summary.length) {
-                $summary = $('<div class="error ppcart-checkout-error-summary" role="alert"></div>');
-                var $anchor = $wrap.find('.ppcart-submit-button-section').first();
-
-                if (!$anchor.length) {
-                    $anchor = $wrap.find('#ppcart_card_button').closest('.ppcart-form-group');
-                }
-
-                if ($anchor.length) {
-                    $anchor.before($summary);
-                } else {
-                    $wrap.find('#ppcart-payment-form').prepend($summary);
-                }
-            }
-
-            // Set the text after insertion so the live region is announced.
-            $summary.text('');
-            setTimeout(function() {
-                $summary.text(message);
-            }, 50);
-        }
-
-        // Move keyboard focus to the first field that has an error.
-        function focusFirstInvalidField(form) {
-            var $field = $(form).find('input.invalid, select.invalid, textarea.invalid, .checkbox-wrap.invalid input, .ppcart-form-group.invalid input').filter(function() {
-                return $(this).is(':visible') || $(this).hasClass('selectized');
-            }).first();
-
-            if (!$field.length) {
-                return;
-            }
-
-            if ($field.hasClass('selectized') && $field[0].selectize) {
-                $field[0].selectize.focus();
-            } else {
-                $field.trigger('focus');
-            }
-        }
 
         function format_price(amt) {
             var currency = (typeof ppcart_currency !== 'undefined') ? ppcart_currency : {symbol: '$', position: '', thousep: ',', decisep: '.', decinum: 2};
@@ -1027,7 +763,7 @@
 
         // check required on blur
         $(document).on('blur', '#ppcart-payment-form input.required:not([type="checkbox"]):not([type="radio"]), #ppcart-payment-form select.required', function() {
-            clearFieldError($(this));
+            $(this).removeClass('invalid').siblings('.error').remove();
 
             if ($(this).val().length < 1) {
                 var $el = $(this);
@@ -1072,7 +808,7 @@
 
         // check username on blur
         $(document).on('blur', '#ppcart-wpuserid', function() {
-            clearFieldError($(this));
+            $(this).removeClass('invalid valid').siblings('.error').remove();
 
             if (($(this).val().length > 0)) {
                 checkUsername($(this));
@@ -1128,13 +864,13 @@
 					}
 					return resp.success;
 				} else {
+					alert('Something went wrong.')
 					$el.addClass('invalid');
-					$el.closest('.ppcart-form-group').append($('<div class="error"></div>').text(ppcart_translate_frontend.username_check_failed));
 					$('#ppcart_card_button, .ppcart-next-btn').attr("disabled", true);
 				}
 			} catch (error) {
+				alert('Something went wrong.')
 				$el.addClass('invalid');
-				$el.closest('.ppcart-form-group').append($('<div class="error"></div>').text(ppcart_translate_frontend.username_check_failed));
 				$('#ppcart_card_button, .ppcart-next-btn').attr("disabled", true);
 			}
             return false;
@@ -1146,7 +882,6 @@
 
             var val = $(this).val();
             var validEmail = regExEmail.test(val);
-            clearFieldError($(this));
             if (!validEmail) {
                 $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_email + '</div>');
             }
@@ -1158,7 +893,6 @@
 
             var val = $(this).val();
             var validPhone = isValidPhonenumber(val);
-            clearFieldError($(this));
             if (!validPhone) {
                 $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_phone + '</div>');
             }
@@ -1168,21 +902,11 @@
         $(document).on('blur', '#ppcart-payment-form input.ppcart-password', function() {
             var val = $(this).val();
             if (val.length) {
-                clearFieldError($(this));
-                var validPass = updatePasswordRules($(this));
+                var validPass = isValidPassword(val);
                 if (!validPass) {
-                    showPasswordError($(this));
+                    $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_pass + '</div>');
                 }
             }
-        });
-
-        // Registered after the handler that clears field errors, so the valid mark is put back.
-        $(document).on('input change', '#ppcart-payment-form input.ppcart-password', function() {
-            updatePasswordRules($(this));
-        });
-
-        $(document).on('change', '.ppcart-password-toggle', function() {
-            $(this).closest('.ppcart-form-group').find('input.ppcart-password').attr('type', this.checked ? 'text' : 'password');
         });
 
         /* track any change to total amount due
@@ -1295,10 +1019,10 @@
             // check password
             $('#'+form_wrapper+' input.ppcart-password').each(function () {
                 if ($(this).val().length) {
-                    var validPass = updatePasswordRules($(this));
+                    var validPass = isValidPassword($(this).val());
                     if (!validPass) {
                         if (showErrors) {
-                            showPasswordError($(this));
+                            $(this).addClass('invalid').closest('.ppcart-form-group').append('<div class="error">' + ppcart_translate_frontend.invalid_pass + '</div>');
                         }
                         errors = true;
                     }
@@ -1371,7 +1095,7 @@
 
         if ($('.ppcart-stripe #card-element').length > 0 || $('.ppcart-stripe-express #express-pay-element').length > 0) {
             // Create a Stripe client.
-            var stripe = Stripe(ppcart_stripe_key[0], window.ppcart_stripe_options || {});
+            var stripe = Stripe(ppcart_stripe_key[0]);
             var card = {};
         }
 
@@ -1426,12 +1150,12 @@
                             fontSmoothing: 'antialiased',
                             fontSize: '16px',
                             '::placeholder': {
-                                color: '#64778b'
+                                color: '#aab7c4'
                             }
                         },
                         invalid: {
-                            color: '#e12c07',
-                            iconColor: '#e12c07'
+                            color: '#fa755a',
+                            iconColor: '#fa755a'
                         }
                     };
 
@@ -1521,11 +1245,10 @@
                 var form = '#'+form_wrapper;
 
                 if (errors) {
+                    alert(ppcart_translate_frontend.missing_required);
                     $btn.removeClass('running').removeAttr("disabled");
                     $btn.find('span.text').text(originalText);
                     updateSubmitButtonState(form);
-                    showCheckoutErrorSummary(form, ppcart_translate_frontend.missing_required);
-                    focusFirstInvalidField(form);
                     return false;
                 }
 
@@ -1584,13 +1307,12 @@
                         $.post(ppcart.ajax, paramObj, function(res) {
                             var response = ppcart_parse_json_response(res);
                             if ('undefined' !== typeof response.error) {
-                                showCheckoutErrorSummary(form, response.error);
+                                alert(response.error);
 
                                 if ('undefined' !== typeof response.fields) {
                                     $.each(response.fields, function(i, item) {
                                         invalidate_field($('[name="' + item['field'] + '"]', form), item['message'])
                                     });
-                                    focusFirstInvalidField(form);
                                 }
 
                                 $btn = $('#ppcart_card_button', form);
@@ -1630,7 +1352,7 @@
                             var message = (response && response.data && response.data.error)
                                 ? response.data.error
                                 : (response && response.error ? response.error : ppcart_translate_frontend.missing_required);
-                            showCheckoutErrorSummary(form, message);
+                            alert(message);
 
                             $btn = $('#ppcart_card_button', form);
                             $btn.removeClass('running').removeAttr("disabled");
@@ -1648,10 +1370,10 @@
                         if (!peIntent || !peIntent.clientSecret) {
                             // The element/intent is not ready yet; (re)mount and ask to retry.
                             mountPaymentElement(form);
+                            alert(ppcart_translate_frontend.missing_required);
                             $btn.removeClass('running').removeAttr("disabled");
                             $btn.find('span.text').text(originalText);
                             updateSubmitButtonState(form);
-                            showCheckoutErrorSummary(form, ppcart_translate_frontend.payment_not_ready);
                             return false;
                         }
 
@@ -1878,10 +1600,10 @@
                         alert(ppcart_translate_frontend.sub_cancel); //custom message
                         location.reload();
                     } else {
-                        ppcart_show_inline_notice(_this, response);
+                        alert(response);
                     }
                 }).fail(function() {
-                    ppcart_show_inline_notice(_this, ppcart_translate_frontend.try_again);
+                    alert(response.fail);
                 });
             } else {
                 return false;
@@ -1926,10 +1648,10 @@
                         alert(successMessage); //custom message
                         location.reload();
                     }else{
-                        ppcart_show_inline_notice(_this, response);
+                            alert(response);
                     }
                 }).fail(function() {
-                    ppcart_show_inline_notice(_this, ppcart_translate_frontend.try_again);
+                    alert(response.fail);
                 });
             } else {
                 return false;
@@ -2043,8 +1765,7 @@
                                         'opacity': '1'
                                     });
                                     $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
-                                    showCheckoutErrorSummary('#'+form, ppcart_translate_frontend.missing_required);
-                                    focusFirstInvalidField('#'+form);
+                                    alert(ppcart_translate_frontend.missing_required);
                                     return ev.complete('fail');
                                 }
                                 if(jQuery(".g-recaptcha", form_wrapper).length>0){
@@ -2127,7 +1848,7 @@
                                             $($this).css('pointer-events', '');
                                             $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
                                             console.error('Error confirming the payment method:', textStatus, errorThrown);
-                                            alert(ppcart_translate_frontend.unexpected_error);
+                                            alert('An unexpected error occurred.');
                                         });
                                     } else {
                                         var intent = {
@@ -2189,7 +1910,7 @@
                                 ev.complete('fail');
                                 $($this).css('pointer-events', '');
                                 $('#ppcart_card_button', form_wrapper).removeClass('running').removeAttr("disabled");
-                                alert(ppcart_translate_frontend.unexpected_error);
+                                alert('An unexpected error occurred.');
                             }
                         });
                     }
@@ -2608,7 +2329,7 @@
                 variables: {
                     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
                     colorText: '#32325d',
-                    colorDanger: '#e12c07'
+                    colorDanger: '#fa755a'
                 }
             };
         }
@@ -2710,38 +2431,7 @@
             });
         }
 
-        // The mount request runs the reCAPTCHA v3 check server-side, so fetch a
-        // fresh token first. grecaptcha loads async: wait for it (up to ~10s).
-        function mountPaymentElement(form, attempt) {
-            form = form.charAt(0) === '#' ? form : '#' + form;
-            var $token = $('.ppcart-grtoken', form);
-
-            if ($token.length === 0) {
-                mountPaymentElementNow(form);
-                return;
-            }
-
-            if (typeof grecaptcha === 'undefined' || typeof grecaptcha.ready !== 'function') {
-                attempt = attempt || 0;
-                if (attempt < 40) {
-                    setTimeout(function() { mountPaymentElement(form, attempt + 1); }, 250);
-                } else {
-                    mountPaymentElementNow(form);
-                }
-                return;
-            }
-
-            grecaptcha.ready(function() {
-                grecaptcha.execute($token.attr('data-sitekey'), { action: 'submit' }).then(function(token) {
-                    $token.val(token);
-                    mountPaymentElementNow(form);
-                }, function() {
-                    mountPaymentElementNow(form);
-                });
-            });
-        }
-
-        function mountPaymentElementNow(form) {
+        function mountPaymentElement(form) {
             form = form.charAt(0) === '#' ? form : '#' + form;
             var formId = form.replace('#', '');
             var state = getCheckoutIntentState(formId);
@@ -3154,7 +2844,6 @@
 
         // Handle paypal form submission.
         $(document).on('ppcart/orderform/submit', '#ppcart-payment-form', function(event) {
-            if (window.ppcartPaypalOnpageReady) { return; }
 
             var form = '#' + $(this).parent().attr('id');
             if ($('.pay-methods', form).length > 0 && $('[name="pay-method"]:checked', form).val() != 'paypal') {
@@ -3183,116 +2872,33 @@
 
     /**
      * My Account page tabs nested
-     *
-     * The navigation uses the ARIA tabs pattern: the selected tab carries
-     * aria-selected="true" and is the only tab in the Tab order (roving
-     * tabindex); arrow keys, Home and End move between tabs.
      */
-    function ppcart_account_tab_scope(tab) {
-        var account = jQuery(tab).closest('.ppcart-account-list, .ppcart-my-account');
-
-        return account.length ? account : jQuery(document);
-    }
-
-    function ppcart_account_tab_panel_id(tab) {
-        var tab_id = jQuery(tab).attr('href') || '';
-
-        return tab_id.charAt(0) === '#' ? tab_id.substring(1) : tab_id;
-    }
-
-    function ppcart_select_account_tab(tab, focus) {
-        var $tab = jQuery(tab);
-        var tab_id = ppcart_account_tab_panel_id($tab);
-        var account = ppcart_account_tab_scope($tab);
-
-        if (!tab_id) {
-            return;
-        }
-
-        account.find('.ppcart-nav-tabs li a')
-            .removeClass('active')
-            .attr('aria-selected', 'false')
-            .attr('tabindex', '-1');
-        account.find('.tabcontent').removeClass('active');
-
-        $tab.addClass('active').attr('aria-selected', 'true').attr('tabindex', '0');
-        account.find('#' + tab_id).addClass('active');
-
-        if (focus) {
-            $tab.trigger('focus');
-        }
-    }
-
-    jQuery('.ppcart-nav-tabs').each(function() {
-        var $tabs = jQuery(this).find('li a');
-        var $selected = $tabs.filter('.active').first();
-
-        if (!$selected.length) {
-            $selected = $tabs.first();
-        }
-
-        $tabs.each(function() {
-            var $tab = jQuery(this);
-            var panel_id = ppcart_account_tab_panel_id($tab);
-            var $panel = panel_id ? ppcart_account_tab_scope($tab).find('#' + panel_id) : jQuery();
-
-            $tab.attr('tabindex', this === $selected.get(0) ? '0' : '-1');
-
-            if (!$panel.length) {
-                $tab.removeAttr('aria-controls');
-            }
-        });
-    });
-
-    // A panel block rendered without a matching tab is not a tab panel.
-    jQuery('.tabcontent[role="tabpanel"]').each(function() {
-        var labelled_by = jQuery(this).attr('aria-labelledby');
-
-        if (labelled_by && !document.getElementById(labelled_by)) {
-            jQuery(this).removeAttr('role').removeAttr('aria-labelledby');
-        }
-    });
-
      jQuery('.ppcart-nav-tabs li a').click(function(event) {
+        var tab_id = jQuery(this).attr('href') || '';
+        var account = jQuery(this).closest('.ppcart-account-list, .ppcart-my-account');
+
         event.preventDefault();
 
-        ppcart_select_account_tab(this, false);
+        if (tab_id.charAt(0) === '#') {
+            tab_id = tab_id.substring(1);
+        }
+
+        if (!tab_id) {
+            return false;
+        }
+
+        if (!account.length) {
+            account = jQuery(document);
+        }
+
+        account.find('.ppcart-nav-tabs li a').removeClass('active');
+        account.find('.tabcontent').removeClass('active');
+
+        jQuery(this).addClass('active');
+        account.find("#" + tab_id).addClass('active');
 
         return false;
     })
-
-    jQuery('.ppcart-nav-tabs li a').on('keydown', function(event) {
-        var $tabs = jQuery(this).closest('.ppcart-nav-tabs').find('li a');
-        var index = $tabs.index(this);
-        var target = -1;
-
-        switch (event.key) {
-            case 'ArrowRight':
-            case 'ArrowDown':
-                target = (index + 1) % $tabs.length;
-                break;
-            case 'ArrowLeft':
-            case 'ArrowUp':
-                target = (index - 1 + $tabs.length) % $tabs.length;
-                break;
-            case 'Home':
-                target = 0;
-                break;
-            case 'End':
-                target = $tabs.length - 1;
-                break;
-            case ' ':
-            case 'Spacebar':
-                event.preventDefault();
-                ppcart_select_account_tab(this, false);
-                return;
-            default:
-                return;
-        }
-
-        event.preventDefault();
-        ppcart_select_account_tab($tabs.get(target), true);
-    });
 
     /**
      * Tabs left aligned on my account page

@@ -34,10 +34,10 @@
     "prefer-stable": true,
     "minimum-stability": "stable",
     "require": {
-        "php": ">=8.2"
+        "php": ">=7.4"
     },
     "require-dev": {
-        "publishpress/dev-workspace": "^2.1.0"
+        "publishpress/dev-workspace": "^1.8"
     },
     "scripts": {
         "pre-autoload-dump": "@composer dumpautoload --working-dir=./lib",

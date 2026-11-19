@@ -16,11 +16,7 @@ if ($check_login && !is_user_logged_in()) {
         wp_safe_redirect(get_permalink($pid));
         exit;
     } else {
-        wp_die(
-            esc_html__('Unauthorized, please log in to download.', 'publishpress-cart'),
-            esc_html__('Login required', 'publishpress-cart'),
-            [ 'response' => 403 ]
-        );
+        esc_html_e('Unauthorized, please log in to download.', 'publishpress-cart');
     }
     exit;
 }
@@ -74,9 +70,6 @@ if ($download) {
 
     exit;
 } else {
-    wp_die(
-        esc_html__('Sorry, this file is no longer available.', 'publishpress-cart'),
-        esc_html__('File unavailable', 'publishpress-cart'),
-        [ 'response' => 404 ]
-    );
+    esc_html_e('Sorry, this file is no longer available.', 'publishpress-cart');
+    exit;
 }

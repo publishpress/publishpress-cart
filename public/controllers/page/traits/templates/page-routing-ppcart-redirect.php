@@ -5,10 +5,6 @@ if (! defined('ABSPATH')) {
 }
 
 
-if (is_tax(ppcart_all_known_taxonomies())) {
-    return;
-}
-
 $ppcart_order_get      = filter_input(INPUT_GET, 'ppcart-order', FILTER_VALIDATE_INT);
 $purchase_amount   = ppcart_filter_input(INPUT_POST, 'ppcart_purchase_amount', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 

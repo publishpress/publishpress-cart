@@ -22,7 +22,6 @@ $atts = [
     'order_info' => $order_info,
     'headline' => $headline,
     'body' => ppcart_personalize($body, $order_info, false, true, true),
-    'subject' => ppcart_personalize(ppcart_get_email_template_value($email_type, 'subject'), $order_info),
 ];
 
 // Render the email shell directly. email-main.php escapes each value where it

@@ -48,7 +48,7 @@ class PPCart_Stripe_Webhook_Logger
     public static function init()
     {
         if (function_exists('add_action')) {
-            add_action('admin_init', [ __CLASS__, 'handle_admin_request' ]);
+            add_action('init', [ __CLASS__, 'handle_admin_request' ]);
         }
 
         if (function_exists('add_filter')) {

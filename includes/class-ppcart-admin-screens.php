@@ -70,7 +70,6 @@ class PPCart_Admin_Screens
     public const POST_TYPE_MEMBERSHIP   = 'ppcart_membership';
     public const POST_TYPE_COLLECTION   = 'ppcart_collection';
     public const POST_TYPE_UPGRADE_PATH = 'ppcart_upgrade_path';
-    public const POST_TYPE_GLOBAL_COUPON = 'ppcart_global_coupon';
 
     public const TAXONOMY_PRODUCT_CATEGORY = 'ppcart_product_cat';
     public const TAXONOMY_PRODUCT_TAG      = 'ppcart_product_tag';
@@ -92,7 +91,6 @@ class PPCart_Admin_Screens
         self::POST_TYPE_MEMBERSHIP,
         self::POST_TYPE_COLLECTION,
         self::POST_TYPE_UPGRADE_PATH,
-        self::POST_TYPE_GLOBAL_COUPON,
     ];
 
     public const TAXONOMIES = [
@@ -181,8 +179,7 @@ class PPCart_Admin_Screens
                 $types,
                 ppcart_known_pro_post_types('us_path'),
                 ppcart_known_pro_post_types('collection'),
-                ppcart_known_pro_post_types('upgrade_path'),
-                ppcart_known_pro_post_types('global_coupon')
+                ppcart_known_pro_post_types('upgrade_path')
             );
         }
 
@@ -195,7 +192,6 @@ class PPCart_Admin_Screens
             self::POST_TYPE_UPSELL_PATH,
             self::POST_TYPE_COLLECTION,
             self::POST_TYPE_UPGRADE_PATH,
-            self::POST_TYPE_GLOBAL_COUPON,
         ];
     }
 

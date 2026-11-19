@@ -12,11 +12,6 @@ trait PPCart_Admin_Settings_Screen_Trait
             $classes .= ' ' . PPCart_Admin_Screens::ADMIN_BODY_CLASS . ' ';
         }
 
-        $screen = get_current_screen();
-        if ($screen && 'edit' === $screen->base && in_array($screen->post_type, PPCart_Admin_Screens::modern_admin_post_types(), true)) {
-            $classes .= ' ppcart-modern-list ';
-        }
-
         return $classes;
     }
 
@@ -185,56 +180,6 @@ trait PPCart_Admin_Settings_Screen_Trait
     }
 
     /**
-     * Keep Cart pages and their Free previews in the same sidebar order.
-     *
-     * @return void
-     */
-    public function order_cart_submenu()
-    {
-        global $submenu;
-
-        $menu_slug = PPCart_Admin_Screens::menu_slug();
-        if (empty($submenu[$menu_slug])) {
-            return;
-        }
-
-        $product_cat = ppcart_live_taxonomy('product_cat');
-        $product_tag = ppcart_live_taxonomy('product_tag');
-        $order = [
-            [$menu_slug],
-            ['edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_PRODUCT],
-            ['edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_ORDER],
-            ['edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_SUBSCRIPTION],
-            ['ppcart-pro-preview-upsell-paths', 'edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_UPSELL_PATH],
-            ['ppcart-pro-preview-global-coupons', 'edit.php?post_type=ppcart_global_coupon'],
-            ['ppcart-pro-preview-collections', 'edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_COLLECTION],
-            ['ppcart-pro-preview-upgrade-paths', 'edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_UPGRADE_PATH],
-            ['edit-tags.php?taxonomy=' . $product_cat],
-            ['edit-tags.php?taxonomy=' . $product_tag],
-            [PPCart_Admin_Screens::PAGE_SETTINGS],
-            [PPCart_Admin_Screens::PAGE_REPORTS],
-            [PPCart_Admin_Screens::PAGE_CONTACTS],
-            ['ppcart-pro-preview-affiliates', PPCart_Admin_Screens::PAGE_AFFILIATES],
-        ];
-
-        $positions = [];
-        foreach ($order as $position => $slugs) {
-            foreach ($slugs as $slug) {
-                $positions[$slug] = $position;
-            }
-        }
-
-        $items = [];
-        foreach ($submenu[$menu_slug] as $item) {
-            $items[$positions[$item[2]] ?? count($order)][] = $item;
-        }
-
-        ksort($items);
-        // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Reorder the existing WordPress Cart submenu entries.
-        $submenu[$menu_slug] = array_merge(...array_values($items));
-    }
-
-    /**
      * This function highlights the correct top level menu item
      *when viewing a plugin taxonomy.
      */
@@ -301,6 +246,17 @@ trait PPCart_Admin_Settings_Screen_Trait
      */
     public function page_options()
     {
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is only a route check; ppcart_check_admin_referer() validates before mutation.
+        if (isset($_REQUEST['ppcart_reset_log'])) {
+            if (function_exists('current_user_can') && ! current_user_can('manage_options')) {
+                wp_die(esc_html__('Sorry, you are not allowed to access this page.', 'publishpress-cart'));
+            }
+            ppcart_check_admin_referer('ppcart_reset_debug_log', 'ppcart_reset_debug_log_nonce');
+            global $ppcart_debug_logger;
+            $ppcart_debug_logger->reset_log_file();
+            echo '<div id="message" class="updated fade"><p>Debug log files have been reset!</p></div>';
+        }
 
         include((defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR . 'admin/partials/' : dirname(__DIR__, 2) . '/partials/') . 'ppcart-admin-page-settings.php');
     }

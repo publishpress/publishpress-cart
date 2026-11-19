@@ -19,6 +19,16 @@ body.ppcart-admin-page #wpbody-content {
     margin: 24px 24px 0;
 }
 
+.ppcart-reports-wrap > h1 {
+    color: #1a1d24;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.25;
+    margin: 0 0 18px;
+    padding: 0;
+}
+
 .ppcart-reports-wrap .pp-columns-wrapper.pp-enable-sidebar {
     align-items: start;
     display: grid;
@@ -45,7 +55,7 @@ body.ppcart-admin-page #wpbody-content {
     --pp-cr-border-strong: #d4d7de;
     --pp-cr-text: #1a1d24;
     --pp-cr-muted: #5b6473;
-    --pp-cr-soft: #646e7d; /* 4.5:1+ on white and the soft panel fills */
+    --pp-cr-soft: #7a8493;
     --pp-cr-primary: #0a47c2;
     --pp-cr-primary-hover: #0838a0;
     --pp-cr-primary-soft: #e8efff;
@@ -85,7 +95,7 @@ body.ppcart-admin-page #wpbody-content {
     min-width: 0;
 }
 
-.ppcart-reports-page .ppcart-reports-header h1 {
+.ppcart-reports-page .ppcart-reports-header h2 {
     color: var(--pp-cr-text);
     flex-grow: 0;
     font-size: 24px;
@@ -93,7 +103,6 @@ body.ppcart-admin-page #wpbody-content {
     letter-spacing: 0;
     line-height: 1.25;
     margin: 0;
-    padding: 0;
 }
 
 .ppcart-reports-title p {
@@ -183,15 +192,9 @@ body.ppcart-admin-page #wpbody-content {
 }
 
 .ppcart-reports-search-results__option:hover,
-.ppcart-reports-search-results__option:focus,
-.ppcart-reports-search-results__option.is-active {
+.ppcart-reports-search-results__option:focus {
     background: #e8efff;
     color: #0a47c2;
-}
-
-.ppcart-reports-search-results__option.is-active {
-    outline: 2px solid #0a47c2;
-    outline-offset: -2px;
 }
 
 .ppcart-reports-search-results__empty {
@@ -392,47 +395,6 @@ body.ppcart-admin-page #wpbody-content {
     fill: var(--pp-cr-soft);
 }
 
-/* Text alternative for the revenue chart (WCAG 1.1.1, 1.3.1). */
-.ppcart-report-chart__data {
-    margin: 10px 0 0;
-}
-
-.ppcart-report-chart__data summary {
-    color: var(--pp-cr-primary);
-    cursor: pointer;
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 4px 2px;
-}
-
-.ppcart-report-chart__data summary:hover {
-    color: var(--pp-cr-primary-hover);
-    text-decoration: underline;
-}
-
-.ppcart-report-chart__data summary:focus-visible {
-    border-radius: 2px;
-    outline: 2px solid var(--pp-cr-primary);
-    outline-offset: 2px;
-}
-
-.ppcart-report-chart__table {
-    margin-top: 8px;
-}
-
-.ppcart-report-chart__table caption {
-    color: var(--pp-cr-muted);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 0 0 6px;
-    text-align: left;
-}
-
-.ppcart-report-chart__table tbody th {
-    font-weight: 400;
-}
-
 .ppcart-report-health {
     display: grid;
     gap: 10px;
@@ -555,8 +517,6 @@ body.ppcart-admin-page #wpbody-content {
     margin: 0 0 6px;
 }
 
-/* Figures are values, not headings. The h3 rule stays for columns added through ppcart_admin_reports_summary_columns. */
-.ppcart-reports-page .totals .postbox p.ppcart-report-total,
 .ppcart-reports-page .totals .postbox h3 {
     color: var(--pp-cr-text);
     font-size: 22px;
@@ -626,7 +586,7 @@ body.ppcart-admin-page #wpbody-content {
     --pp-cr-border-strong: #d4d7de;
     --pp-cr-text: #1a1d24;
     --pp-cr-muted: #5b6473;
-    --pp-cr-soft: #646e7d; /* 4.5:1+ on white and the soft panel fills */
+    --pp-cr-soft: #7a8493;
     --pp-cr-primary: #0a47c2;
     --pp-cr-primary-hover: #0838a0;
     --pp-cr-primary-soft: #e8efff;

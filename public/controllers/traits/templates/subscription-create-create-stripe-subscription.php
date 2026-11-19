@@ -177,7 +177,7 @@ $ppcart_debug_logger->log_event(
         'currency'        => $ppcart_currency,
         'item_count'      => count($args['items']),
         'has_trial'       => ! empty($args['trial_period_days']),
-        'has_coupon'      => ! empty($args['discounts']),
+        'has_coupon'      => ! empty($args['coupon']),
     ]
 );
 

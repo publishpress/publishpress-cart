@@ -30,10 +30,9 @@ trait PPCart_Stripe_Sync_Invoices_Trait
      * @param object|null           $event      Source webhook event.
      * @param string                $currency              Currency fallback.
      * @param string                $payment_intent_status Latest PaymentIntent status for a failed invoice event.
-     * @param object|null           $stripe                Stripe client, used to read refunds on the invoice charge.
      * @return PPCart_Order|false
      */
-    public static function sync_invoice_resource($invoice, $sub = null, $event_type = '', $event = null, $currency = 'USD', $payment_intent_status = '', $stripe = null)
+    public static function sync_invoice_resource($invoice, $sub = null, $event_type = '', $event = null, $currency = 'USD', $payment_intent_status = '')
     {
         $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-invoices-sync-invoice-resource.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;

@@ -18,23 +18,6 @@ foreach ($fields as $section => $sfields) {
         if (!empty($v['tab'])) {
             $settings_page = $this->plugin_name . '-' . $v['tab'];
         }
-        // Tie the row label (the Settings API field title) to the control so the
-        // control gets an accessible name (WCAG 1.3.1, 4.1.2). Only for field
-        // types whose partial renders one control with this DOM id.
-        $label_for_types = [ 'text', 'email', 'password', 'color', 'textarea', 'upload', 'select', 'checkbox' ];
-        if (
-            empty($v['settings']['label_for'])
-            && ! empty($v['settings']['id'])
-            && in_array($v['type'] ?? '', $label_for_types, true)
-        ) {
-            if (! empty($v['settings']['html_id'])) {
-                $v['settings']['label_for'] = $v['settings']['html_id'];
-            } elseif ('checkbox' === $v['type'] && ! empty($v['settings']['rid'])) {
-                $v['settings']['label_for'] = $v['settings']['rid'];
-            } else {
-                $v['settings']['label_for'] = $v['settings']['id'];
-            }
-        }
         add_settings_field(
             $k,
             // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy public hook cannot gain a separator without breaking integrations.

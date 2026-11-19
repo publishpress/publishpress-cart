@@ -26,8 +26,9 @@ function ppcart_report_filter_scalar($value)
 /**
  * Read and sanitize the Reports page customer/product/date filters.
  *
- * A missing date is left to the caller. An empty customer means all
- * customers, and a missing/deleted product ID means all products.
+ * Missing or invalid values fall back to the unfiltered defaults: today's
+ * date is left to the caller, an empty customer means all customers, and
+ * a missing/deleted product ID means all products.
  *
  * @param array|null $source Request values. Defaults to GET.
  * @return array{date: string|null, customer: string, product_id: int}

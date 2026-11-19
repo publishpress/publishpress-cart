@@ -105,12 +105,6 @@ $subscription_id = '0';
 // Grab PublishPress Cart order/subscription IDs from custom meta.
 if (isset($request_data['custom'])) {
     $custom = (string) $request_data['custom'];
-    // On-page (REST) records have one writer, PPCart_Paypal_Sync. PayPal still
-    // sends account IPNs for them; they must not touch those records.
-    if (0 === strpos($custom, 'ppcart:')) {
-        http_response_code(200);
-        exit();
-    }
     if (is_numeric($custom) || strpos($custom, '=') !== false) { // deprecated
         $custom_id  = explode("=", $custom);
         $order_id = absint($custom_id[0]);
@@ -141,11 +135,6 @@ if (!empty($request_data['txn_id'])) {
             $request_data['txn_id'] = sanitize_text_field($request_data['parent_txn_id']);
         }
     }
-}
-
-if ($ppcart_order->id && ppcart_get_post_meta($ppcart_order->id, 'paypal_onpage')) {
-    http_response_code(200);
-    exit();
 }
 
 global $ppcart_debug_logger;

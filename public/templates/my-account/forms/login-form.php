@@ -19,9 +19,9 @@ if ($attr['action'] == 'reset') : ?>
     <h3><?php esc_html_e('Pick a New Password', 'publishpress-cart'); ?></h3>
 
     <form name="resetpassform" id="resetpassform" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-reset-password-form')); ?>" action="<?php echo esc_url(site_url('wp-login.php?action=resetpass&key=' . $attr['key'] . '&login=' . rawurlencode($attr['login']))); ?>"
-        method="post">
+        method="post" autocomplete="off">
         <input type="hidden" id="user_login" name="rp_login" value="<?php echo esc_attr($attr['login']); ?>"
-            autocomplete="username" />
+            autocomplete="off" />
         <input type="hidden" name="rp_key" value="<?php echo esc_attr($attr['key']); ?>" />
 
         <?php if (count($attr['errors']) > 0) : ?>
@@ -34,11 +34,11 @@ if ($attr['action'] == 'reset') : ?>
 
         <p>
             <label for="pass1"><?php esc_html_e('New password', 'publishpress-cart') ?></label>
-            <input type="password" name="pass1" id="pass1" class="input" size="20" value="" autocomplete="new-password" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-reset-password-new')); ?>" />
+            <input type="password" name="pass1" id="pass1" class="input" size="20" value="" autocomplete="off" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-reset-password-new')); ?>" />
         </p>
         <p>
             <label for="pass2"><?php esc_html_e('Repeat new password', 'publishpress-cart') ?></label>
-            <input type="password" name="pass2" id="pass2" class="input" size="20" value="" autocomplete="new-password" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-reset-password-repeat')); ?>" />
+            <input type="password" name="pass2" id="pass2" class="input" size="20" value="" autocomplete="off" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-reset-password-repeat')); ?>" />
         </p>
 
         <p class="description"><?php echo esc_html(wp_get_password_hint()); ?></p>
@@ -75,7 +75,7 @@ if ($attr['action'] == 'reset') : ?>
         <?php wp_nonce_field('ppcart_lost_password', 'ppcart_lost_password_nonce'); ?>
         <p class="form-row">
             <label for="user_login"><?php esc_html_e('Username or Email Address', 'publishpress-cart'); ?>
-                <input type="text" name="user_login" id="user_login" autocomplete="username" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-lost-password-login')); ?>">
+                <input type="text" name="user_login" id="user_login" data-testid="<?php echo esc_attr(ppcart_testid('ppcart-account-lost-password-login')); ?>">
         </p>
 
         <p class="lostpassword-submit">

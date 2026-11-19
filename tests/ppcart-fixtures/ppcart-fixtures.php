@@ -4,7 +4,7 @@
  * Description:       Creates dummy PublishPress Cart data for local and automated testing.
  * Version:           1.0.0
  * Requires at least: 6.0
- * Requires PHP:      8.2
+ * Requires PHP:      7.4
  * Author:            PublishPress
  * License:           GPL-2.0-or-later
  *

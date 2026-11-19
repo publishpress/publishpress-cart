@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-10T10:08:07+00:00\n"
-"PO-Revision-Date: 2026-11-19 14:09+0000\n"
+"POT-Creation-Date: 2026-10-14T16:18:02+00:00\n"
+"PO-Revision-Date: 2026-11-10 10:16+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -35,15 +35,15 @@ msgstr ""
 "Buat halaman pemesanan dan alur penjualan yang disederhanakan yang membantu "
 "Anda menjual produk digital, program, dan layanan."
 
-#: publishpress-cart.php:21
-#: admin/class-ppcart-welcome.php:81
+#: publishpress-cart.php:20
+#: admin/class-ppcart-welcome.php:82
 #: admin/partials/settings-page/tabs/topbar.php:9
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:115
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:110
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-cart.php:22
+#: publishpress-cart.php:21
 #. Author URI of the plugin
 #, fuzzy
 msgid "https://publishpress.com/"
@@ -51,8 +51,8 @@ msgstr "https://publishpress.com/publishpress-cart/"
 
 #: admin/class-ppcart-admin-reports.php:89
 #: admin/class-ppcart-admin-reports.php:90
-#: admin/partials/ppcart-admin-page-settings.php:155
-#: admin/reports/templates/admin-reports-page.php:43
+#: admin/partials/ppcart-admin-page-settings.php:145
+#: admin/reports/templates/admin-reports-page.php:45
 msgid "Reports"
 msgstr "Laporan"
 
@@ -82,8 +82,7 @@ msgstr "Lihat Basis Pengetahuan"
 #: admin/class-ppcart-contacts-page.php:81
 #: admin/class-ppcart-contacts-page.php:162
 #: admin/class-ppcart-contacts-page.php:171
-#: admin/reports/templates/admin-reports-page.php:100
-#: admin/reports/templates/admin-reports-page.php:539
+#: admin/reports/templates/admin-reports-page.php:535
 msgid "Customers"
 msgstr "Pelanggan"
 
@@ -109,37 +108,37 @@ msgid "Lifetime value"
 msgstr "Nilai seumur hidup"
 
 #: admin/class-ppcart-contacts-page.php:188
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:172
 #: admin/controllers/order/templates/product-form.php:320
 #: admin/controllers/order/templates/product-form.php:337
 #: admin/controllers/order/templates/product-form.php:453
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:201
 #: admin/reports/templates/customer-report/page.php:189
-#: public/partials/csv-export.php:138
-#: public/partials/csv-export.php:231
+#: public/partials/csv-export.php:136
+#: public/partials/csv-export.php:229
 #: public/templates/my-account/tabs/order-history.php:13
 msgid "Date"
 msgstr "Tanggal"
 
 #: admin/class-ppcart-contacts-page.php:189
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:180
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:203
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:48
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:216
-#: admin/partials/ppcart-admin-page-settings.php:153
+#: admin/partials/ppcart-admin-page-settings.php:143
 #: admin/partials/settings-page/sections/email-notifications.php:10
 #: public/partials/csv-export.php:22
-#: public/partials/csv-export.php:141
-#: public/templates/functions/plan-coupon-fields.php:570
-#: public/templates/functions/plan-coupon-fields.php:573
+#: public/partials/csv-export.php:139
+#: public/templates/functions/plan-coupon-fields.php:539
+#: public/templates/functions/plan-coupon-fields.php:542
 #: public/templates/my-account/tabs/user-profile.php:27, fuzzy
 msgid "Email"
 msgstr "Email"
 
 #: admin/class-ppcart-contacts-page.php:190
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:202
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
 msgid "Name"
 msgstr "Nama"
 
@@ -280,8 +279,8 @@ msgid "Add new"
 msgstr "Tambahkan baru"
 
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:194
 #: admin/controllers/order/templates/product-form.php:322
 #: admin/controllers/order/templates/product-form.php:339
 #: admin/controllers/order/templates/product-form.php:454
@@ -289,8 +288,8 @@ msgstr "Tambahkan baru"
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:238
 #: admin/reports/templates/customer-report/page.php:193
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:135
-#: public/partials/csv-export.php:153
-#: public/partials/csv-export.php:235
+#: public/partials/csv-export.php:151
+#: public/partials/csv-export.php:233
 #: public/templates/my-account/tabs/order-history.php:14
 #: public/templates/my-account/tabs/plans.php:38
 #: public/templates/my-account/tabs/subscriptions.php:43, fuzzy
@@ -300,55 +299,54 @@ msgstr "Status"
 #: admin/class-ppcart-pro-menu-previews.php:68
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
-#: admin/reports/templates/admin-reports-page.php:458
+#: admin/reports/templates/admin-reports-page.php:454
 msgid "Active"
 msgstr "Aktif"
 
 #: admin/class-ppcart-welcome.php:45
-#: admin/class-ppcart-welcome.php:91
+#: admin/class-ppcart-welcome.php:92
 msgid "Welcome to Cart"
 msgstr "Selamat datang di Keranjang"
 
-#: admin/class-ppcart-welcome.php:72
-#: admin/reports/templates/admin-reports-page.php:121
+#: admin/class-ppcart-welcome.php:73
 #: includes/templates/post-types-create-custom-post-type.php:12
 msgid "Products"
 msgstr "Produk"
 
-#: admin/class-ppcart-welcome.php:72
+#: admin/class-ppcart-welcome.php:73
 msgid "Add a digital product and set its price."
 msgstr "Tambahkan produk digital dan tetapkan harganya."
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:74
 msgid "Payments"
 msgstr "Pembayaran"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:74
 msgid "Choose how customers pay at checkout."
 msgstr "Pilih bagaimana pelanggan membayar saat checkout."
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:75
 msgid "Getting started guide"
 msgstr "Panduan memulai"
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:75
 msgid "Learn how to publish and share a checkout page."
 msgstr "Pelajari cara menerbitkan dan membagikan halaman checkout."
 
-#: admin/class-ppcart-welcome.php:83
+#: admin/class-ppcart-welcome.php:84
 #: admin/partials/ppcart-admin-page-settings.php:26
 msgid "Cart"
 msgstr "Keranjang"
 
-#: admin/class-ppcart-welcome.php:86
+#: admin/class-ppcart-welcome.php:87
 msgid "Get support"
 msgstr "Dapatkan dukungan"
 
-#: admin/class-ppcart-welcome.php:92
+#: admin/class-ppcart-welcome.php:93
 msgid "Start selling from your WordPress site"
 msgstr "Mulai menjual dari situs WordPress Anda"
 
-#: admin/class-ppcart-welcome.php:93
+#: admin/class-ppcart-welcome.php:94
 msgid ""
 "Create a product, set its price, and share its checkout page with your "
 "customers."
@@ -356,11 +354,15 @@ msgstr ""
 "Buat produk, tetapkan harganya, dan bagikan halaman checkout-nya dengan "
 "pelanggan Anda."
 
-#: admin/class-ppcart-welcome.php:95
+#: admin/class-ppcart-welcome.php:96
 msgid "Create your first product"
 msgstr "Buat produk pertama Anda"
 
-#: admin/class-ppcart-welcome.php:110
+#: admin/class-ppcart-welcome.php:97
+msgid "Go to dashboard"
+msgstr "Pergi ke dashboard"
+
+#: admin/class-ppcart-welcome.php:112
 msgid "Set up your store"
 msgstr "Siapkan toko Anda"
 
@@ -410,59 +412,52 @@ msgstr "Jenis Pembayaran"
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:101
-#. translators: %s: product shortcode, for example [ppcart_form id="12"].
-#, php-format
-msgid "Copy shortcode %s"
-msgstr "Salin shortcode %s"
-
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:102
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:99
 msgid "Copy shortcode"
 msgstr "Salin shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:138
 msgid "One-time Payment"
 msgstr "Pembayaran Sekali"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:142
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:139
 msgid "Recurring Payments (Subscriptions)"
 msgstr "Pembayaran Berulang (Langganan)"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:143
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:140
 msgid "Pay What You Want"
 msgstr "Bayar Sesuai Keinginan Anda"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:144
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:57
-#: admin/reports/templates/admin-reports-page.php:356
-#: public/templates/functions/plan-coupon-fields.php:291
+#: admin/reports/templates/admin-reports-page.php:352
+#: public/templates/functions/plan-coupon-fields.php:288
 msgid "Free"
 msgstr "Gratis"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:152
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:149
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:171
 msgid "Order #"
 msgstr "Pesanan #"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:173
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:195
 #: admin/controllers/order/templates/product-form.php:321
 #: admin/controllers/order/templates/product-form.php:338
-#: includes/scheduled-reports/report-email-template.php:59
-#: public/templates/functions/plan-coupon-fields.php:311
+#: includes/scheduled-reports/report-email-template.php:57
 #: public/templates/pdf-invoice/invoice.php:148
 msgid "Amount"
 msgstr "Jumlah"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:178
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:201
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:52
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:173
 #: admin/reports/templates/customer-report/page.php:190
-#: includes/scheduled-reports/report-email-template.php:149
+#: includes/scheduled-reports/report-email-template.php:147
 #: includes/templates/post-types-create-custom-post-type.php:12
 #: public/templates/my-account/tabs/order-history.php:12
 #: public/templates/my-account/tabs/plans.php:37
@@ -471,21 +466,21 @@ msgstr "Jumlah"
 msgid "Product"
 msgstr "Produk"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:182
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
 #: public/templates/pdf-invoice/invoice.php:84
 msgid "Invoice Number"
 msgstr "Nomor Faktur"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:196, fuzzy
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:193, fuzzy
 msgid "Sub ID"
 msgstr "Sub ID"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:196
 #: public/templates/my-account/subscription-detail.php:84
 msgid "Start Date"
 msgstr "Tanggal Mulai"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
 #: admin/reports/templates/customer-report/page.php:283
 #: public/templates/my-account/subscription-detail.php:95
 #: public/templates/my-account/tabs/plans.php:39
@@ -493,51 +488,51 @@ msgstr "Tanggal Mulai"
 msgid "Next Payment"
 msgstr "Pembayaran Berikutnya"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:242
 msgid "Update status to paid"
 msgstr "Perbarui status menjadi dibayar"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:246
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:243
 msgid "Update status to failed"
 msgstr "Perbarui status menjadi gagal"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:247
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:244
 msgid "Update status to pending"
 msgstr "Perbarui status menjadi tertunda"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:248
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:256
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:253
 msgid "Update status to completed"
 msgstr "Perbarui status menjadi selesai"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:251
 msgid "Resume in Stripe / update active"
 msgstr "Lanjutkan di Stripe / perbarui aktif"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:255
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:252
 msgid "Update status to canceled"
 msgstr "Perbarui status menjadi dibatalkan"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:257
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
 msgstr "Sinkronkan dengan Stripe"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:288
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:285
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s langganan disinkronkan dari Stripe."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:300
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:297
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s gagal; lihat log langganannya untuk alasan tersebut."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:310
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:307
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
@@ -635,7 +630,7 @@ msgstr "Masalah pengembalian dana"
 
 #: admin/controllers/order/templates/product-form.php:294
 #: admin/reports/templates/customer-report/page.php:105
-#: includes/scheduled-reports/report-email-template.php:113
+#: includes/scheduled-reports/report-email-template.php:111
 msgid "Refunds"
 msgstr "Pengembalian dana"
 
@@ -710,7 +705,7 @@ msgstr "Isi kembali barang yang dikembalikan"
 #: admin/order-metaboxes/traits/trait-ppcart-order-metabox-field-groups.php:87
 #: admin/partials/settings-page/sections/payment-method.php:268
 #: admin/partials/settings-page/tabs/panels.php:387
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
 #: public/templates/my-account/subscription-detail.php:56
 #: public/templates/my-account/tabs/user-profile.php:92
 msgid "Cancel"
@@ -810,14 +805,12 @@ msgid "Order actions"
 msgstr "Tindakan pesanan"
 
 #: admin/controllers/order/templates/product-info-metabox.php:146
-#: public/partials/invoice-pdf.php:33
 #: public/templates/my-account/order-detail.php:40
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Invoice"
 msgstr "Faktur"
 
 #: admin/controllers/order/templates/product-info-metabox.php:153
-#: public/partials/invoice-pdf.php:33
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Receipt"
 msgstr "Struk"
@@ -842,6 +835,8 @@ msgstr "Edit detail"
 #: admin/order-metaboxes/traits/templates/order-metabox-edit-fields-get-edit-field-sections.php:29
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:140
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:308
+#: admin/partials/settings-page/metadata.php:506
+#: admin/partials/settings-page/metadata.php:510
 #: admin/partials/settings-page/metadata.php:514
 #: admin/partials/settings-page/metadata.php:518
 #: admin/partials/settings-page/metadata.php:522
@@ -851,11 +846,9 @@ msgstr "Edit detail"
 #: admin/partials/settings-page/metadata.php:538
 #: admin/partials/settings-page/metadata.php:542
 #: admin/partials/settings-page/metadata.php:546
-#: admin/partials/settings-page/metadata.php:550
-#: admin/partials/settings-page/metadata.php:554
-#: admin/partials/settings-page/metadata.php:566
+#: admin/partials/settings-page/metadata.php:558
 #: admin/partials/settings-page/sections/email-notifications.php:36
-#: includes/scheduled-reports/report-email-template.php:148
+#: includes/scheduled-reports/report-email-template.php:146
 msgid "Customer"
 msgstr "Pelanggan"
 
@@ -898,7 +891,7 @@ msgstr "Alamat Penagihan"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:225
 #: admin/reports/templates/customer-report/page.php:235
 #: admin/traits/trait-ppcart-admin-profile.php:28
-#: public/partials/csv-export.php:142
+#: public/partials/csv-export.php:140
 #: public/templates/my-account/tabs/user-profile.php:32
 #: public/templates/my-account/tabs/user-profile.php:33
 msgid "Phone"
@@ -916,8 +909,8 @@ msgstr "Perusahaan"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:243
 #: public/templates/email/order-table.php:233
+#: public/templates/functions/payment-address.php:150
 #: public/templates/functions/payment-address.php:151
-#: public/templates/functions/payment-address.php:152
 #: public/templates/pdf-invoice/invoice.php:119
 msgid "VAT Number"
 msgstr "Nomor PPN"
@@ -925,7 +918,7 @@ msgstr "Nomor PPN"
 #: admin/controllers/order/templates/product-info-metabox.php:232
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:192
 #: admin/traits/trait-ppcart-admin-profile.php:22
-#: public/templates/functions/payment-address.php:311
+#: public/templates/functions/payment-address.php:308
 #: public/templates/my-account/order-detail.php:35
 #: public/templates/my-account/tabs/user-profile.php:38
 #: public/templates/my-account/tabs/user-profile.php:39
@@ -934,7 +927,7 @@ msgstr "Alamat"
 
 #: admin/controllers/order/templates/product-info-metabox.php:236
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:196
-#: public/partials/csv-export.php:144
+#: public/partials/csv-export.php:142
 #: public/templates/my-account/tabs/user-profile.php:43
 #: public/templates/my-account/tabs/user-profile.php:44
 msgid "Address 2"
@@ -945,7 +938,7 @@ msgstr "Alamat 2"
 #: admin/partials/ppcart-admin-page-settings-tax.php:25
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:24
-#: public/partials/csv-export.php:145
+#: public/partials/csv-export.php:143
 #: public/templates/my-account/tabs/user-profile.php:48
 #: public/templates/my-account/tabs/user-profile.php:49
 msgid "City"
@@ -954,7 +947,7 @@ msgstr "Kota"
 #: admin/controllers/order/templates/product-info-metabox.php:244
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:204
 #: admin/traits/trait-ppcart-admin-profile.php:25
-#: public/partials/csv-export.php:146
+#: public/partials/csv-export.php:144
 #: public/templates/my-account/tabs/user-profile.php:53
 #: public/templates/my-account/tabs/user-profile.php:54
 msgid "State"
@@ -963,7 +956,7 @@ msgstr "Negara Bagian"
 #: admin/controllers/order/templates/product-info-metabox.php:248
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:208
 #: admin/traits/trait-ppcart-admin-profile.php:26
-#: public/partials/csv-export.php:147
+#: public/partials/csv-export.php:145
 #: public/templates/my-account/tabs/user-profile.php:58
 #: public/templates/my-account/tabs/user-profile.php:59
 msgid "Zip"
@@ -974,8 +967,8 @@ msgstr "Kode Pos"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:129
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:297
 #: admin/traits/trait-ppcart-admin-profile.php:27
-#: public/partials/csv-export.php:148
-#: public/templates/functions/payment-address.php:300
+#: public/partials/csv-export.php:146
+#: public/templates/functions/payment-address.php:298
 #: public/templates/my-account/tabs/user-profile.php:63
 #: public/templates/my-account/tabs/user-profile.php:64
 msgid "Country"
@@ -1010,13 +1003,13 @@ msgid "Order status"
 msgstr "Status pesanan"
 
 #: admin/controllers/order/templates/product-info-metabox.php:283
-#: public/partials/csv-export.php:158
+#: public/partials/csv-export.php:156
 msgid "Opted-in"
 msgstr "Terdaftar"
 
 #: admin/controllers/order/templates/product-info-metabox.php:295
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:253
-#: public/partials/csv-export.php:157
+#: public/partials/csv-export.php:155
 msgid "Custom Fields"
 msgstr "Bidang Kustom"
 
@@ -1055,7 +1048,7 @@ msgid "No recurring payment plans found"
 msgstr "Tidak ada rencana pembayaran berulang yang ditemukan"
 
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:34
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:168
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:153
 msgid "Test email sent."
 msgstr "Email uji terkirim."
 
@@ -1097,7 +1090,7 @@ msgid "No notes found"
 msgstr "Tidak ada catatan yang ditemukan"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:38
-#: public/templates/functions/plan-coupon-fields.php:514
+#: public/templates/functions/plan-coupon-fields.php:492
 #: public/templates/pdf-invoice/invoice.php:146, fuzzy
 msgid "Qty"
 msgstr "Qty"
@@ -1111,7 +1104,7 @@ msgid "Recurring Payment"
 msgstr "Pembayaran Berulang"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:108
-#: admin/partials/settings-page/metadata.php:454
+#: admin/partials/settings-page/metadata.php:446
 #: public/templates/my-account/subscription-detail.php:56
 msgid "Cancel Subscription"
 msgstr "Batalkan Langganan"
@@ -1129,8 +1122,8 @@ msgstr "Lanjutkan"
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:115
 #: admin/controllers/templates/order-list-custom-status.php:108
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:29
-#: admin/reports/templates/admin-reports-page.php:466
-#: public/partials/csv-export.php:318
+#: admin/reports/templates/admin-reports-page.php:462
+#: public/partials/csv-export.php:325
 msgid "Canceled"
 msgstr "Dibatalkan"
 
@@ -1253,7 +1246,7 @@ msgid "Error loading subscription."
 msgstr "Kesalahan memuat langganan."
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-sync-ajax.php:67
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid "Subscription synced successfully."
 msgstr "Langganan berhasil disinkronkan."
 
@@ -1415,7 +1408,7 @@ msgstr[0] "Belum Dibayar <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
-#: public/partials/csv-export.php:320
+#: public/partials/csv-export.php:327
 msgid "Paused"
 msgstr "Dijeda"
 
@@ -1483,7 +1476,7 @@ msgid "Total Orders"
 msgstr "Total Pesanan"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:36
-#: admin/reports/templates/admin-reports-page.php:497
+#: admin/reports/templates/admin-reports-page.php:493
 msgid "Total Sales"
 msgstr "Total Penjualan"
 
@@ -1492,7 +1485,7 @@ msgid "Avg. Order Value"
 msgstr "Rata-rata Nilai Pesanan"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:38
-#: includes/scheduled-reports/report-email-template.php:116
+#: includes/scheduled-reports/report-email-template.php:114
 msgid "Pending Orders"
 msgstr "Pesanan Tertunda"
 
@@ -1502,7 +1495,7 @@ msgid "Paid Orders"
 msgstr "Pesanan yang Dibayar"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:40
-#: includes/scheduled-reports/report-email-template.php:118
+#: includes/scheduled-reports/report-email-template.php:116
 msgid "Refunded Orders"
 msgstr "Pesanan yang Dikembalikan"
 
@@ -1529,12 +1522,12 @@ msgid "Trials"
 msgstr "Percobaan"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:54
-#: admin/reports/templates/admin-reports-page.php:628
+#: admin/reports/templates/admin-reports-page.php:624
 msgid "Renewals"
 msgstr "Perpanjangan"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:409, fuzzy
+#: admin/reports/templates/admin-reports-page.php:405, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1580,7 +1573,7 @@ msgid "View Contacts"
 msgstr "Lihat Kontak"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:80
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:180
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:175
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -1724,9 +1717,9 @@ msgstr "Label notifikasi"
 
 #: admin/metaboxes/field-groups/message-fields.php:158
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:30
-#: admin/settings/traits/options/core-settings.php:264
-#: admin/settings/traits/options/core-settings.php:322
-#: admin/settings/traits/options/core-settings.php:380
+#: admin/settings/traits/options/core-settings.php:262
+#: admin/settings/traits/options/core-settings.php:320
+#: admin/settings/traits/options/core-settings.php:378
 #: admin/settings/traits/options/payment-fields.php:11
 #: admin/settings/traits/options/payment-fields.php:23
 #: admin/settings/traits/options/payment-fields.php:135
@@ -1778,13 +1771,13 @@ msgid "Bcc"
 msgstr "Bcc"
 
 #: admin/metaboxes/field-groups/message-fields.php:266
-#: admin/settings/traits/options/core-settings.php:274
-#: admin/settings/traits/options/core-settings.php:332
-#: admin/settings/traits/options/core-settings.php:400
-#: admin/settings/traits/options/core-settings.php:443
-#: admin/settings/traits/options/core-settings.php:486
-#: admin/settings/traits/options/core-settings.php:529
-#: admin/settings/traits/options/core-settings.php:572
+#: admin/settings/traits/options/core-settings.php:272
+#: admin/settings/traits/options/core-settings.php:330
+#: admin/settings/traits/options/core-settings.php:398
+#: admin/settings/traits/options/core-settings.php:441
+#: admin/settings/traits/options/core-settings.php:484
+#: admin/settings/traits/options/core-settings.php:527
+#: admin/settings/traits/options/core-settings.php:570
 msgid "Subject"
 msgstr "Subjek"
 
@@ -1894,8 +1887,7 @@ msgstr "Gunakan pengaturan default"
 #: admin/metaboxes/field-groups/sales-checkout-fields.php:62
 #: admin/partials/ppcart-admin-field-repeater.php:156
 #: admin/partials/settings-page/render-helpers.php:7
-#: admin/partials/settings-page/sections/email-notifications.php:44
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:134
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 msgid "Disabled"
 msgstr "Dinonaktifkan"
 
@@ -2006,8 +1998,8 @@ msgstr "Judul bagian"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:26
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:184
-#: public/partials/csv-export.php:151
-#: public/partials/csv-export.php:233
+#: public/partials/csv-export.php:149
+#: public/partials/csv-export.php:231
 #: public/templates/functions/plan-coupon-fields.php:197
 msgid "Payment Plan"
 msgstr "Rencana Pembayaran"
@@ -2048,7 +2040,7 @@ msgid "Sale billing"
 msgstr "Penagihan penjualan"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:71
-#: admin/partials/ppcart-admin-page-settings.php:158
+#: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:108
 msgid "Advanced"
 msgstr "Lanjutan"
@@ -2091,27 +2083,21 @@ msgid "One-time"
 msgstr "Sekali saja"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:56
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:324
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:323
 msgid "Pay what you want"
 msgstr "Bayar sesuai keinginan Anda"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:65
-msgid "Optional. Set a slug to preselect this plan from a checkout link."
-msgstr "Opsional. Atur slug untuk memilih rencana ini dari tautan checkout."
-
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:66
 msgid ""
-"For example, enter annual and add ?ppcart-pay-plan=annual to the checkout "
-"link. Use letters, numbers, dashes or underscores. The slug must be unique "
-"for this product."
+"Letters, numbers, dashes and underscores only. Must be unique for this "
+"product."
 msgstr ""
-"Misalnya, masukkan tahunan dan tambahkan ?ppcart-pay-plan=annual ke tautan "
-"checkout. Gunakan huruf, angka, tanda hubung, atau garis bawah. Slug harus "
-"unik untuk produk ini."
+"Huruf, angka, tanda hubung, dan garis bawah saja. Harus unik untuk produk "
+"ini."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:68
-msgid "Checkout link slug"
-msgstr "Slug tautan checkout"
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:68, fuzzy
+msgid "URL slug"
+msgstr "URL slug"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:78
 msgid "Plan name on the checkout form."
@@ -2221,31 +2207,31 @@ msgstr "Frekuensi penjualan"
 msgid "Pay interval"
 msgstr "Interval pembayaran"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:222
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:246
 msgid "Day"
 msgstr "Hari"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
 msgid "Week"
 msgstr "Minggu"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
 msgid "Month"
 msgstr "Bulan"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:226
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:250
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
 msgid "Year"
 msgstr "Tahun"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:242
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:241
 msgid "Sale pay interval"
 msgstr "Interval pembayaran penjualan"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:265
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:264
 msgid ""
 "Billing stops after this many payments. Otherwise it continues until the "
 "subscription is canceled."
@@ -2253,35 +2239,35 @@ msgstr ""
 "Penagihan berhenti setelah pembayaran ini. Jika tidak, akan berlanjut "
 "hingga langganan dibatalkan."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:267
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:266
 msgid "Number of payments"
 msgstr "Jumlah pembayaran"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:286
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:285
 msgid "Sale number of payments"
 msgstr "Jumlah pembayaran penjualan"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:303
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:302
 msgid "Shown in place of the price at checkout."
 msgstr "Ditampilkan sebagai pengganti harga saat checkout."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:304
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:341
 msgid "Name your price label"
 msgstr "Label nama harga Anda"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:306
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:308
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:343
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:345
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:307
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:344
 msgid "Name your price"
 msgstr "Nama harga Anda"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:320
 msgid "Customers choose their own recurring amount."
 msgstr "Pelanggan memilih jumlah berulang mereka sendiri."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:322
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
 msgid "The amount must be at or above the plan price."
 msgstr "Jumlah harus sama dengan atau di atas harga rencana."
 
@@ -2600,7 +2586,7 @@ msgid "Grow sales"
 msgstr "Tumbuhkan penjualan"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:9
-#: admin/partials/ppcart-admin-page-settings.php:147
+#: admin/partials/ppcart-admin-page-settings.php:137
 #: admin/partials/settings-page/tabs/topbar.php:12
 msgid "General"
 msgstr "Umum"
@@ -2626,7 +2612,7 @@ msgid "Emails"
 msgstr "Email"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:15
-#: admin/partials/ppcart-admin-page-settings.php:154
+#: admin/partials/ppcart-admin-page-settings.php:144
 #: admin/partials/settings-page/tabs/panels.php:67
 msgid "Integrations"
 msgstr "Integrasi"
@@ -2637,8 +2623,8 @@ msgstr "Notifikasi produk"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:164
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:121
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
 msgid "Email preview"
 msgstr "Pratampilan email"
 
@@ -2811,7 +2797,7 @@ msgstr "Pilih"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metabox-integration-options.php:107
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:156
-#: admin/settings/traits/options/core-settings.php:239
+#: admin/settings/traits/options/core-settings.php:237
 msgid "-- Select --"
 msgstr "-- Pilih --"
 
@@ -2911,8 +2897,8 @@ msgid "Checkbox label"
 msgstr "Label kotak centang"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:143
-#: admin/settings/traits/options/core-settings.php:295
-#: admin/settings/traits/options/core-settings.php:353
+#: admin/settings/traits/options/core-settings.php:293
+#: admin/settings/traits/options/core-settings.php:351
 msgid "Headline"
 msgstr "Judul Utama"
 
@@ -2961,7 +2947,7 @@ msgid "Header background image"
 msgstr "Gambar latar belakang header"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:35
-#: public/partials/csv-export.php:322
+#: public/partials/csv-export.php:329
 msgid "Until canceled"
 msgstr "Sampai dibatalkan"
 
@@ -2990,8 +2976,8 @@ msgstr "Nama Depan "
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:39
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:207
 #: public/partials/csv-export.php:21
-#: public/partials/csv-export.php:140
-#: public/templates/functions/plan-coupon-fields.php:566
+#: public/partials/csv-export.php:138
+#: public/templates/functions/plan-coupon-fields.php:535
 #: public/templates/my-account/tabs/user-profile.php:22
 msgid "Last Name"
 msgstr "Nama Belakang"
@@ -3041,7 +3027,7 @@ msgstr "Perubahan yang belum disimpan"
 #: admin/partials/settings-page/tabs/form-actions.php:7
 #: admin/partials/settings-page/tabs/form-actions.php:8
 #: admin/partials/settings-page/tabs/panels.php:388
-#: admin/partials/settings-page/tabs/savebar.php:12
+#: admin/partials/settings-page/tabs/savebar.php:11
 msgid "Save changes"
 msgstr "Simpan perubahan"
 
@@ -3052,10 +3038,6 @@ msgstr "Dan"
 #: admin/partials/ppcart-admin-field-conditions.php:61
 msgid "Or"
 msgstr "Atau"
-
-#: admin/partials/ppcart-admin-field-conditions.php:98
-msgid "Remove condition"
-msgstr "Hapus kondisi"
 
 #: admin/partials/ppcart-admin-field-conditions.php:106
 msgid "+ Add another condition"
@@ -3068,16 +3050,6 @@ msgstr "Edit Field"
 #: admin/partials/ppcart-admin-field-secure-file-upload.php:39
 msgid "Media Library"
 msgstr "Perpustakaan Media"
-
-#: admin/partials/ppcart-admin-field-text.php:86
-#. translators: %s: date field label.
-#, php-format
-msgid "Clear %s"
-msgstr "Bersihkan %s"
-
-#: admin/partials/ppcart-admin-field-text.php:87
-msgid "Clear date"
-msgstr "Bersihkan tanggal"
 
 #: admin/partials/ppcart-admin-page-settings-tax.php:9
 msgid "Custom Tax Rates"
@@ -3154,7 +3126,7 @@ msgid "Loading&hellip;"
 msgstr "Memuat&hellip;"
 
 #: admin/partials/ppcart-admin-page-settings.php:44
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:176
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:171
 #. translators: %s: plugin title.
 #, php-format
 msgid "%s Settings"
@@ -3172,53 +3144,37 @@ msgstr "Silakan aktifkan setidaknya satu metode pembayaran di"
 msgid "PublishPress Cart settings"
 msgstr "Pengaturan Keranjang PublishPress"
 
-#: admin/partials/ppcart-admin-page-settings.php:107
-msgid "Debug log cleared."
-msgstr "Log debug telah dibersihkan."
-
-#: admin/partials/ppcart-admin-page-settings.php:111
-msgid "Stripe webhook log cleared."
-msgstr "Log webhook Stripe telah dibersihkan."
-
-#: admin/partials/ppcart-admin-page-settings.php:148
+#: admin/partials/ppcart-admin-page-settings.php:138
 msgid "Pages"
 msgstr "Halaman"
 
-#: admin/partials/ppcart-admin-page-settings.php:149
+#: admin/partials/ppcart-admin-page-settings.php:139
 msgid "Branding"
 msgstr "Merek"
 
-#: admin/partials/ppcart-admin-page-settings.php:150
+#: admin/partials/ppcart-admin-page-settings.php:140
 msgid "Payment Methods"
 msgstr "Metode Pembayaran"
 
-#: admin/partials/ppcart-admin-page-settings.php:151
+#: admin/partials/ppcart-admin-page-settings.php:141
 msgid "Invoices"
 msgstr "Faktur"
 
-#: admin/partials/ppcart-admin-page-settings.php:152
+#: admin/partials/ppcart-admin-page-settings.php:142
 msgid "Downloads"
 msgstr "Unduhan"
 
-#: admin/partials/ppcart-admin-page-settings.php:156, fuzzy
+#: admin/partials/ppcart-admin-page-settings.php:146, fuzzy
 msgid "Debug"
 msgstr "Debug"
 
-#: admin/partials/ppcart-admin-page-settings.php:157
+#: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
 msgstr "Pemeliharaan"
 
-#: admin/partials/ppcart-admin-page-settings.php:173
+#: admin/partials/ppcart-admin-page-settings.php:163
 msgid "White Label"
 msgstr "Label Putih"
-
-#: admin/partials/ppcart-admin-repeater-move-buttons.php:25
-msgid "Move up"
-msgstr "Pindahkan ke atas"
-
-#: admin/partials/ppcart-admin-repeater-move-buttons.php:29
-msgid "Move down"
-msgstr "Pindahkan ke bawah"
 
 #: admin/partials/settings-page/metadata.php:11
 msgid "Currency and pricing defaults for your store."
@@ -3395,398 +3351,389 @@ msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "Sinkronkan pelanggan, tag, dan aktivitas ecommerce ke Drip."
 
 #: admin/partials/settings-page/metadata.php:212, fuzzy
-msgid "Brevo"
-msgstr "Brevo"
-
-#: admin/partials/settings-page/metadata.php:213
-msgid "Add customers to Brevo contact lists."
-msgstr "Tambahkan pelanggan ke daftar kontak Brevo."
-
-#: admin/partials/settings-page/metadata.php:220, fuzzy
 msgid "Flodesk"
 msgstr "Flodesk"
 
-#: admin/partials/settings-page/metadata.php:221
+#: admin/partials/settings-page/metadata.php:213
 msgid "Add customers to Flodesk segments."
 msgstr "Tambahkan pelanggan ke segmen Flodesk."
 
-#: admin/partials/settings-page/metadata.php:229, fuzzy
+#: admin/partials/settings-page/metadata.php:221, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
-#: admin/partials/settings-page/metadata.php:230
+#: admin/partials/settings-page/metadata.php:222
 msgid "Add customers to MailerLite subscribers and groups."
 msgstr "Tambahkan pelanggan ke dalam langganan dan grup MailerLite."
 
-#: admin/partials/settings-page/metadata.php:238, fuzzy
+#: admin/partials/settings-page/metadata.php:230, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
-#: admin/partials/settings-page/metadata.php:239
+#: admin/partials/settings-page/metadata.php:231
 msgid "Add customers to MailPoet lists."
 msgstr "Tambahkan pelanggan ke dalam daftar MailPoet."
 
-#: admin/partials/settings-page/metadata.php:246, fuzzy
+#: admin/partials/settings-page/metadata.php:238, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
-#: admin/partials/settings-page/metadata.php:247
+#: admin/partials/settings-page/metadata.php:239
 msgid "Track order events and sync customers to Encharge."
 msgstr "Lacak peristiwa pesanan dan sinkronkan pelanggan ke Encharge."
 
-#: admin/partials/settings-page/metadata.php:256, fuzzy
+#: admin/partials/settings-page/metadata.php:248, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
-#: admin/partials/settings-page/metadata.php:257
+#: admin/partials/settings-page/metadata.php:249
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "Tambahkan pelanggan ke dalam daftar dan tag FluentCRM."
 
-#: admin/partials/settings-page/metadata.php:264, fuzzy
+#: admin/partials/settings-page/metadata.php:256, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
-#: admin/partials/settings-page/metadata.php:265
+#: admin/partials/settings-page/metadata.php:257
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "Daftarkan atau hapus siswa dari kursus Academy LMS."
 
-#: admin/partials/settings-page/metadata.php:272, fuzzy
+#: admin/partials/settings-page/metadata.php:264, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
-#: admin/partials/settings-page/metadata.php:273
+#: admin/partials/settings-page/metadata.php:265
 msgid "Add or remove customers in Gurucan products."
 msgstr "Tambahkan atau hapus pelanggan dalam produk Gurucan."
 
-#: admin/partials/settings-page/metadata.php:281
+#: admin/partials/settings-page/metadata.php:273
 msgid "Heartbeat"
 msgstr "Detak Jantung"
 
-#: admin/partials/settings-page/metadata.php:282
+#: admin/partials/settings-page/metadata.php:274
 msgid "Manage community access in Heartbeat."
 msgstr "Kelola akses komunitas di Detak Jantung."
 
-#: admin/partials/settings-page/metadata.php:290, fuzzy
+#: admin/partials/settings-page/metadata.php:282, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
-#: admin/partials/settings-page/metadata.php:291
+#: admin/partials/settings-page/metadata.php:283
 msgid "Enable Kajabi purchase automations."
 msgstr "Aktifkan otomatisasi pembelian Kajabi."
 
-#: admin/partials/settings-page/metadata.php:299, fuzzy
+#: admin/partials/settings-page/metadata.php:291, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
-#: admin/partials/settings-page/metadata.php:300
+#: admin/partials/settings-page/metadata.php:292
 msgid "Enroll customers into Teachable schools and products."
 msgstr "Daftarkan pelanggan ke sekolah dan produk Teachable."
 
-#: admin/partials/settings-page/metadata.php:308, fuzzy
+#: admin/partials/settings-page/metadata.php:300, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:301
 msgid "Grant customers access to Upcoach programs."
 msgstr "Beri pelanggan akses ke program Upcoach."
 
-#: admin/partials/settings-page/metadata.php:317, fuzzy
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
-#: admin/partials/settings-page/metadata.php:318
+#: admin/partials/settings-page/metadata.php:310
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Daftarkan atau hapus siswa dari kursus Tutor LMS."
 
-#: admin/partials/settings-page/metadata.php:325, fuzzy
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
-#: admin/partials/settings-page/metadata.php:326
+#: admin/partials/settings-page/metadata.php:318
 msgid "Grant or revoke LearnDash course access."
 msgstr "Beri atau cabut akses kursus LearnDash."
 
-#: admin/partials/settings-page/metadata.php:333, fuzzy
+#: admin/partials/settings-page/metadata.php:325, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
-#: admin/partials/settings-page/metadata.php:334
+#: admin/partials/settings-page/metadata.php:326
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "Kelola pendaftaran WP Courseware setelah pembelian."
 
-#: admin/partials/settings-page/metadata.php:341, fuzzy
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
-#: admin/partials/settings-page/metadata.php:342
+#: admin/partials/settings-page/metadata.php:334
 msgid "Enroll customers into MasterStudy LMS courses."
 msgstr "Daftarkan pelanggan ke kursus MasterStudy LMS."
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:341
 msgid "Groups"
 msgstr "Grup"
 
-#: admin/partials/settings-page/metadata.php:350
+#: admin/partials/settings-page/metadata.php:342
 msgid "Add or remove customers from WordPress Groups."
 msgstr "Tambahkan atau hapus pelanggan dari Grup WordPress."
 
-#: admin/partials/settings-page/metadata.php:357, fuzzy
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
-#: admin/partials/settings-page/metadata.php:358
+#: admin/partials/settings-page/metadata.php:350
 msgid "Grant customers MemberPress membership access."
 msgstr "Beri pelanggan akses ke keanggotaan MemberPress."
 
-#: admin/partials/settings-page/metadata.php:365, fuzzy
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
-#: admin/partials/settings-page/metadata.php:366
+#: admin/partials/settings-page/metadata.php:358
 msgid "Grant customers ARMember plan access."
 msgstr "Beri akses rencana ARMember kepada pelanggan."
 
-#: admin/partials/settings-page/metadata.php:373, fuzzy
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:366
 msgid "Grant customers WishList Member level access."
 msgstr "Beri akses level WishList Member kepada pelanggan."
 
-#: admin/partials/settings-page/metadata.php:381, fuzzy
+#: admin/partials/settings-page/metadata.php:373, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:374
 msgid "Grant customers Restrict Content Pro access."
 msgstr "Beri akses Restrict Content Pro kepada pelanggan."
 
-#: admin/partials/settings-page/metadata.php:389, fuzzy
+#: admin/partials/settings-page/metadata.php:381, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:382
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "Kirim email selamat datang Ultimate Member untuk pelanggan baru."
 
-#: admin/partials/settings-page/metadata.php:398, fuzzy
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
-#: admin/partials/settings-page/metadata.php:399
+#: admin/partials/settings-page/metadata.php:391
 msgid "Choose Elementor templates for checkout components."
 msgstr "Pilih template Elementor untuk komponen checkout."
 
-#: admin/partials/settings-page/metadata.php:406, fuzzy
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
-#: admin/partials/settings-page/metadata.php:407
+#: admin/partials/settings-page/metadata.php:399
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "Gunakan formulir pesanan PublishPress Cart di dalam tata letak Divi."
 
-#: admin/partials/settings-page/metadata.php:414, fuzzy
+#: admin/partials/settings-page/metadata.php:406, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
-#: admin/partials/settings-page/metadata.php:415
+#: admin/partials/settings-page/metadata.php:407
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Gunakan kondisi PublishPress Cart di Oxygen Builder."
 
-#: admin/partials/settings-page/metadata.php:422, fuzzy
+#: admin/partials/settings-page/metadata.php:414, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
-#: admin/partials/settings-page/metadata.php:423
+#: admin/partials/settings-page/metadata.php:415
 msgid "Use PublishPress Cart blocks in the WordPress block editor."
 msgstr "Gunakan blok PublishPress Cart di editor blok WordPress."
 
-#: admin/partials/settings-page/metadata.php:430
+#: admin/partials/settings-page/metadata.php:422
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: admin/partials/settings-page/metadata.php:431
+#: admin/partials/settings-page/metadata.php:423
 msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "Hubungkan produk PublishPress Cart dengan alur WooCommerce."
 
-#: admin/partials/settings-page/metadata.php:438
-#: admin/partials/settings-page/metadata.php:446, fuzzy
+#: admin/partials/settings-page/metadata.php:430
+#: admin/partials/settings-page/metadata.php:438, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
+#: admin/partials/settings-page/metadata.php:431
 #: admin/partials/settings-page/metadata.php:439
-#: admin/partials/settings-page/metadata.php:447
 msgid "Sell domains through WP Domain Checker checkout flows."
 msgstr "Jual domain melalui alur checkout WP Domain Checker."
 
-#: admin/partials/settings-page/metadata.php:455
+#: admin/partials/settings-page/metadata.php:447
 msgid "Cancel an existing subscription as an order automation."
 msgstr "Batalkan langganan yang ada sebagai otomatisasi pesanan."
 
-#: admin/partials/settings-page/metadata.php:460
+#: admin/partials/settings-page/metadata.php:452
 msgid "Refund Order"
 msgstr "Pengembalian Pesanan"
 
-#: admin/partials/settings-page/metadata.php:461
+#: admin/partials/settings-page/metadata.php:453
 msgid "Refund an existing order as an order automation."
 msgstr "Kembalikan pesanan yang ada sebagai otomatisasi pesanan."
 
-#: admin/partials/settings-page/metadata.php:466, fuzzy
+#: admin/partials/settings-page/metadata.php:458, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
-#: admin/partials/settings-page/metadata.php:467
+#: admin/partials/settings-page/metadata.php:459
 msgid "Send order data to an external webhook URL."
 msgstr "Kirim data pesanan ke URL webhook eksternal."
 
-#: admin/partials/settings-page/metadata.php:474
+#: admin/partials/settings-page/metadata.php:466
 msgid "All"
 msgstr "Semua"
 
-#: admin/partials/settings-page/metadata.php:475
+#: admin/partials/settings-page/metadata.php:467
 msgid "Email Marketing"
 msgstr "Pemasaran Email"
 
-#: admin/partials/settings-page/metadata.php:476
+#: admin/partials/settings-page/metadata.php:468
 msgid "Analytics"
 msgstr "Analitik"
 
-#: admin/partials/settings-page/metadata.php:477
+#: admin/partials/settings-page/metadata.php:469
 msgid "Ads"
 msgstr "Iklan"
 
-#: admin/partials/settings-page/metadata.php:478
+#: admin/partials/settings-page/metadata.php:470
 msgid "Automation"
 msgstr "Otomatisasi"
 
-#: admin/partials/settings-page/metadata.php:479
+#: admin/partials/settings-page/metadata.php:471
 msgid "Courses"
 msgstr "Kursus"
 
-#: admin/partials/settings-page/metadata.php:480
+#: admin/partials/settings-page/metadata.php:472
 msgid "Membership"
 msgstr "Keanggotaan"
 
-#: admin/partials/settings-page/metadata.php:481
+#: admin/partials/settings-page/metadata.php:473
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:107
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:30
 msgid "Security"
 msgstr "Keamanan"
 
-#: admin/partials/settings-page/metadata.php:482
+#: admin/partials/settings-page/metadata.php:474
 msgid "Builders"
 msgstr "Pembuat"
 
-#: admin/partials/settings-page/metadata.php:487
-#: admin/reports/templates/admin-reports-page.php:355
+#: admin/partials/settings-page/metadata.php:479
+#: admin/reports/templates/admin-reports-page.php:351
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:31
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:56
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
 #: public/templates/functions/payment-address.php:74, fuzzy
 msgid "Cash on Delivery"
 msgstr "Cash on Delivery"
 
-#: admin/partials/settings-page/metadata.php:488
+#: admin/partials/settings-page/metadata.php:480
 msgid "Manage Cash on Delivery"
 msgstr "Kelola Cash on Delivery"
 
-#: admin/partials/settings-page/metadata.php:489
+#: admin/partials/settings-page/metadata.php:481
 msgid "Allow customers to pay with cash when their order is delivered."
 msgstr "Izinkan pelanggan membayar dengan uang tunai saat pesanan mereka dikirim."
 
-#: admin/partials/settings-page/metadata.php:491
+#: admin/partials/settings-page/metadata.php:483
 #: admin/partials/settings-page/sections/email-notifications.php:53
 #: admin/partials/settings-page/sections/payment-method.php:14
 #: public/templates/my-account/subscription-row.php:47
 msgid "Manage"
 msgstr "Kelola"
 
-#: admin/partials/settings-page/metadata.php:494
+#: admin/partials/settings-page/metadata.php:486
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:32
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:57, fuzzy
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:56, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
-#: admin/partials/settings-page/metadata.php:495
-#: admin/partials/settings-page/metadata.php:499
+#: admin/partials/settings-page/metadata.php:487
+#: admin/partials/settings-page/metadata.php:491
 msgid "Manage Stripe"
 msgstr "Kelola Stripe"
 
-#: admin/partials/settings-page/metadata.php:496
+#: admin/partials/settings-page/metadata.php:488
 msgid "Accept credit cards and other payments securely via Stripe."
 msgstr "Terima kartu kredit dan pembayaran lainnya dengan aman melalui Stripe."
 
-#: admin/partials/settings-page/metadata.php:502
+#: admin/partials/settings-page/metadata.php:494
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:33
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:57
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
-#: admin/partials/settings-page/metadata.php:503
-#: admin/partials/settings-page/metadata.php:507
+#: admin/partials/settings-page/metadata.php:495
+#: admin/partials/settings-page/metadata.php:499
 msgid "Manage PayPal"
 msgstr "Kelola PayPal"
 
-#: admin/partials/settings-page/metadata.php:504
+#: admin/partials/settings-page/metadata.php:496
 msgid "Accept payments securely via PayPal."
 msgstr "Terima pembayaran dengan aman melalui PayPal."
 
-#: admin/partials/settings-page/metadata.php:513
+#: admin/partials/settings-page/metadata.php:505
 msgid "Sent after an order is received (pending payment). Useful for COD orders."
 msgstr ""
 "Dikirim setelah pesanan diterima (menunggu pembayaran). Berguna untuk "
 "pesanan COD."
 
-#: admin/partials/settings-page/metadata.php:517
+#: admin/partials/settings-page/metadata.php:509
 msgid "Sent to customers after purchase (paid)."
 msgstr "Dikirim kepada pelanggan setelah pembelian (dibayar)."
 
-#: admin/partials/settings-page/metadata.php:521
+#: admin/partials/settings-page/metadata.php:513
 msgid "Sent when an order is marked complete."
 msgstr "Dikirim ketika pesanan ditandai lengkap."
 
-#: admin/partials/settings-page/metadata.php:525
+#: admin/partials/settings-page/metadata.php:517
 msgid "Sent when a new user account is created."
 msgstr "Dikirim ketika akun pengguna baru dibuat."
 
-#: admin/partials/settings-page/metadata.php:529
+#: admin/partials/settings-page/metadata.php:521
 msgid "Sent when an order is refunded."
 msgstr "Dikirim ketika pesanan dikembalikan."
 
-#: admin/partials/settings-page/metadata.php:533
+#: admin/partials/settings-page/metadata.php:525
 msgid "Sent before a subscription trial ends."
 msgstr "Dikirim sebelum percobaan langganan berakhir."
 
-#: admin/partials/settings-page/metadata.php:537
+#: admin/partials/settings-page/metadata.php:529
 msgid "Sent before an upcoming subscription renewal."
 msgstr "Dikirim sebelum perpanjangan langganan yang akan datang."
 
-#: admin/partials/settings-page/metadata.php:541
+#: admin/partials/settings-page/metadata.php:533
 msgid "Sent after a subscription renews."
 msgstr "Dikirim setelah langganan diperpanjang."
 
-#: admin/partials/settings-page/metadata.php:545
+#: admin/partials/settings-page/metadata.php:537
 msgid "Sent when a subscription renewal payment fails."
 msgstr "Dikirim ketika pembayaran perpanjangan langganan gagal."
 
-#: admin/partials/settings-page/metadata.php:549
+#: admin/partials/settings-page/metadata.php:541
 msgid "Sent when a subscription is canceled."
 msgstr "Dikirim ketika langganan dibatalkan."
 
-#: admin/partials/settings-page/metadata.php:553
+#: admin/partials/settings-page/metadata.php:545
 msgid "Sent when a subscription is paused."
 msgstr "Dikirim ketika langganan dijeda."
 
-#: admin/partials/settings-page/metadata.php:565
+#: admin/partials/settings-page/metadata.php:557
 #: admin/partials/settings-page/sections/email-notifications.php:40
 msgid "Configure this automated email notification."
 msgstr "Konfigurasi pemberitahuan email otomatis ini."
 
 #: admin/partials/settings-page/render-helpers.php:8
-#: admin/partials/settings-page/sections/email-notifications.php:44
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:133
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
 msgid "Enabled"
 msgstr "Diaktifkan"
 
@@ -3837,7 +3784,7 @@ msgid "Reset to default"
 msgstr "Atur ulang ke default"
 
 #: admin/partials/settings-page/sections/email-notifications.php:117
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
 msgid "Preview"
 msgstr "Pratampilan"
 
@@ -3958,12 +3905,11 @@ msgstr "Pelajari lebih lanjut tentang %s"
 msgid "Configuration"
 msgstr "Konfigurasi"
 
-#: admin/partials/settings-page/tabs/savebar.php:8
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
+#: admin/partials/settings-page/tabs/savebar.php:7
 msgid "You have unsaved changes"
 msgstr "Anda memiliki perubahan yang belum disimpan"
 
-#: admin/partials/settings-page/tabs/savebar.php:10
+#: admin/partials/settings-page/tabs/savebar.php:9
 msgid "Discard"
 msgstr "Buang"
 
@@ -3979,56 +3925,56 @@ msgstr "Pengaturan pencarian"
 msgid "Search settings..."
 msgstr "Pengaturan pencarian..."
 
-#: admin/reports/templates/admin-reports-page.php:46
+#: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
 #, php-format
 msgid "Performance summary for %s"
 msgstr "Ringkasan kinerja untuk %s"
 
-#: admin/reports/templates/admin-reports-page.php:80
+#: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
 msgstr "Rentang tanggal"
 
-#: admin/reports/templates/admin-reports-page.php:81
-msgid "All Time"
-msgstr "Sepanjang Waktu"
+#: admin/reports/templates/admin-reports-page.php:83
+msgid "Select date range"
+msgstr "Pilih rentang tanggal"
 
-#: admin/reports/templates/admin-reports-page.php:84
+#: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
 msgstr "Cari pelanggan berdasarkan nama atau email"
 
-#: admin/reports/templates/admin-reports-page.php:91
+#: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
 msgstr "Cari berdasarkan nama atau email"
 
-#: admin/reports/templates/admin-reports-page.php:104
+#: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
 msgstr "Cari produk"
 
-#: admin/reports/templates/admin-reports-page.php:111
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
+#: admin/reports/templates/admin-reports-page.php:110
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
 msgid "All products"
 msgstr "Semua produk"
 
-#: admin/reports/templates/admin-reports-page.php:118
+#: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
 msgstr "Filter berdasarkan produk utama dari pesanan atau langganan"
 
-#: admin/reports/templates/admin-reports-page.php:124
+#: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
 msgid "Apply"
 msgstr "Terapkan"
 
-#: admin/reports/templates/admin-reports-page.php:125
+#: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
 msgstr "Bersihkan filter"
 
-#: admin/reports/templates/admin-reports-page.php:126
-#: admin/reports/templates/customer-reports-page.php:97
+#: admin/reports/templates/admin-reports-page.php:122
+#: admin/reports/templates/customer-reports-page.php:85
 msgid "Export Orders"
 msgstr "Ekspor Pesanan"
 
-#: admin/reports/templates/admin-reports-page.php:130
+#: admin/reports/templates/admin-reports-page.php:126
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
@@ -4036,152 +3982,152 @@ msgstr ""
 "Filter produk cocok dengan produk utama pada setiap pesanan atau langganan, "
 "bukan item bump atau upsell."
 
-#: admin/reports/templates/admin-reports-page.php:370
+#: admin/reports/templates/admin-reports-page.php:366
 #. translators: %s: canceled subscription count.
 #, php-format
 msgid "%s cancellations in local records"
 msgstr "%s pembatalan dalam catatan lokal"
 
-#: admin/reports/templates/admin-reports-page.php:375
+#: admin/reports/templates/admin-reports-page.php:371
 #. translators: 1: canceled subscription count, 2: active subscriptions at period start.
 #, php-format
 msgid "%1$s cancellations; %2$s active at period start"
 msgstr "%1$s pembatalan; %2$s aktif pada awal periode"
 
-#: admin/reports/templates/admin-reports-page.php:381
+#: admin/reports/templates/admin-reports-page.php:377
 msgid "Report overview"
 msgstr "Ikhtisar laporan"
 
-#: admin/reports/templates/admin-reports-page.php:384
+#: admin/reports/templates/admin-reports-page.php:380
 #: admin/reports/templates/customer-report/page.php:89
 msgid "Net Revenue"
 msgstr "Pendapatan Bersih"
 
-#: admin/reports/templates/admin-reports-page.php:388
+#: admin/reports/templates/admin-reports-page.php:384
 #. translators: %s: gross revenue.
 #, php-format
 msgid "Gross %s before refunds"
 msgstr "Pendapatan kotor %s sebelum pengembalian"
 
-#: admin/reports/templates/admin-reports-page.php:394
+#: admin/reports/templates/admin-reports-page.php:390
 msgid "Customer Lifetime Value"
 msgstr "Nilai Seumur Hidup Pelanggan"
 
-#: admin/reports/templates/admin-reports-page.php:399
+#: admin/reports/templates/admin-reports-page.php:395
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
 msgstr "Rata-rata sepanjang masa di antara %s pelanggan yang cocok"
 
-#: admin/reports/templates/admin-reports-page.php:404
+#: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s customers"
 msgstr "Rata-rata sepanjang masa di antara %s pelanggan"
 
-#: admin/reports/templates/admin-reports-page.php:413
+#: admin/reports/templates/admin-reports-page.php:409
 #. translators: %s: recurring subscription count.
 #, php-format
 msgid "%s active recurring subscriptions"
 msgstr "%s langganan berulang aktif"
 
-#: admin/reports/templates/admin-reports-page.php:418
+#: admin/reports/templates/admin-reports-page.php:414
 msgid "Churn Rate"
 msgstr "Tingkat Churn"
 
-#: admin/reports/templates/admin-reports-page.php:423
-#: admin/reports/templates/admin-reports-page.php:532
+#: admin/reports/templates/admin-reports-page.php:419
+#: admin/reports/templates/admin-reports-page.php:528
 msgid "Transactions"
 msgstr "Transaksi"
 
-#: admin/reports/templates/admin-reports-page.php:428
+#: admin/reports/templates/admin-reports-page.php:424
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
 msgstr "%1$s baru, %2$s pembaruan"
 
-#: admin/reports/templates/admin-reports-page.php:432
+#: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
 msgstr "Pesanan yang dibayar dan penawaran pasca pembelian"
 
-#: admin/reports/templates/admin-reports-page.php:435
+#: admin/reports/templates/admin-reports-page.php:431
 msgid "Avg Order Value"
 msgstr "Rata-rata Nilai Pesanan"
 
-#: admin/reports/templates/admin-reports-page.php:437
+#: admin/reports/templates/admin-reports-page.php:433
 msgid "Based on paid transactions"
 msgstr "Berdasarkan transaksi yang dibayar"
 
-#: admin/reports/templates/admin-reports-page.php:445
+#: admin/reports/templates/admin-reports-page.php:441
 msgid "Revenue Trend"
 msgstr "Tren Pendapatan"
 
-#: admin/reports/templates/admin-reports-page.php:453
+#: admin/reports/templates/admin-reports-page.php:449
 msgid "Subscription Health"
 msgstr "Kesehatan Langganan"
 
-#: admin/reports/templates/admin-reports-page.php:454
+#: admin/reports/templates/admin-reports-page.php:450
 msgid "Local subscription records"
 msgstr "Catatan langganan lokal"
 
-#: admin/reports/templates/admin-reports-page.php:462
-#: admin/reports/templates/admin-reports-page.php:624
+#: admin/reports/templates/admin-reports-page.php:458
+#: admin/reports/templates/admin-reports-page.php:620
 msgid "New"
 msgstr "Baru"
 
-#: admin/reports/templates/admin-reports-page.php:476
+#: admin/reports/templates/admin-reports-page.php:472
 msgid "Top Products by Revenue"
 msgstr "Produk Teratas Berdasarkan Pendapatan"
 
-#: admin/reports/templates/admin-reports-page.php:477
+#: admin/reports/templates/admin-reports-page.php:473
 msgid "Paid order amount"
 msgstr "Jumlah pesanan yang dibayar"
 
-#: admin/reports/templates/admin-reports-page.php:479
+#: admin/reports/templates/admin-reports-page.php:475
 msgid "No paid product revenue found for this period."
 msgstr "Tidak ada pendapatan produk yang dibayar ditemukan untuk periode ini."
 
-#: admin/reports/templates/admin-reports-page.php:484
+#: admin/reports/templates/admin-reports-page.php:480
 msgid "Payment Method Mix"
 msgstr "Campuran Metode Pembayaran"
 
-#: admin/reports/templates/admin-reports-page.php:485
+#: admin/reports/templates/admin-reports-page.php:481
 msgid "Transactions by gateway"
 msgstr "Transaksi berdasarkan gateway"
 
-#: admin/reports/templates/admin-reports-page.php:487
+#: admin/reports/templates/admin-reports-page.php:483
 msgid "No payment method data found for this period."
 msgstr "Tidak ada data metode pembayaran ditemukan untuk periode ini."
 
-#: admin/reports/templates/admin-reports-page.php:491
+#: admin/reports/templates/admin-reports-page.php:487
 msgid "Detailed order breakdown"
 msgstr "Rincian pemesanan yang detail"
 
-#: admin/reports/templates/admin-reports-page.php:504
+#: admin/reports/templates/admin-reports-page.php:500
 msgid "Net Sales"
 msgstr "Penjualan Bersih"
 
-#: admin/reports/templates/admin-reports-page.php:511
+#: admin/reports/templates/admin-reports-page.php:507
 msgid "Total Refunds"
 msgstr "Total Pengembalian Dana"
 
-#: admin/reports/templates/admin-reports-page.php:518
+#: admin/reports/templates/admin-reports-page.php:514
 msgid "Amount Refunded"
 msgstr "Jumlah yang Dikembalikan"
 
-#: admin/reports/templates/admin-reports-page.php:525
+#: admin/reports/templates/admin-reports-page.php:521
 msgid "Avg Revenue per Customer"
 msgstr "Rata-rata Pendapatan per Pelanggan"
 
-#: admin/reports/templates/admin-reports-page.php:558
+#: admin/reports/templates/admin-reports-page.php:554
 msgid "Sales by Product"
 msgstr "Penjualan berdasarkan Produk"
 
-#: admin/reports/templates/admin-reports-page.php:562
+#: admin/reports/templates/admin-reports-page.php:558
 msgid "No product sales in this period"
 msgstr "Tidak ada penjualan produk dalam periode ini"
 
-#: admin/reports/templates/admin-reports-page.php:563
+#: admin/reports/templates/admin-reports-page.php:559
 msgid ""
 "Completed paid orders will appear here once customers buy a product in the "
 "selected date range."
@@ -4189,15 +4135,15 @@ msgstr ""
 "Pesanan yang telah dibayar akan muncul di sini setelah pelanggan membeli "
 "produk dalam rentang tanggal yang dipilih."
 
-#: admin/reports/templates/admin-reports-page.php:574
+#: admin/reports/templates/admin-reports-page.php:570
 msgid "Refunds by Product"
 msgstr "Pengembalian Dana berdasarkan Produk"
 
-#: admin/reports/templates/admin-reports-page.php:578
+#: admin/reports/templates/admin-reports-page.php:574
 msgid "No product refunds in this period"
 msgstr "Tidak ada pengembalian produk dalam periode ini"
 
-#: admin/reports/templates/admin-reports-page.php:579
+#: admin/reports/templates/admin-reports-page.php:575
 msgid ""
 "Refunded products will appear here when an order refund is recorded for the "
 "selected date range."
@@ -4205,15 +4151,15 @@ msgstr ""
 "Produk yang dikembalikan akan muncul di sini ketika pengembalian dana "
 "pesanan tercatat untuk rentang tanggal yang dipilih."
 
-#: admin/reports/templates/admin-reports-page.php:590
+#: admin/reports/templates/admin-reports-page.php:586
 msgid "Transactions by Payment Gateway"
 msgstr "Transaksi berdasarkan Gerbang Pembayaran"
 
-#: admin/reports/templates/admin-reports-page.php:594
+#: admin/reports/templates/admin-reports-page.php:590
 msgid "No gateway transactions in this period"
 msgstr "Tidak ada transaksi gerbang dalam periode ini"
 
-#: admin/reports/templates/admin-reports-page.php:595
+#: admin/reports/templates/admin-reports-page.php:591
 msgid ""
 "Paid transactions will be grouped by gateway here after checkout activity "
 "is recorded."
@@ -4221,19 +4167,19 @@ msgstr ""
 "Transaksi yang dibayar akan dikelompokkan berdasarkan gerbang di sini "
 "setelah aktivitas checkout tercatat."
 
-#: admin/reports/templates/admin-reports-page.php:622
+#: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
 msgstr "Pesanan berdasarkan Tipe"
 
-#: admin/reports/templates/admin-reports-page.php:635
+#: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
 msgstr "Pesanan Utama berdasarkan Produk"
 
-#: admin/reports/templates/admin-reports-page.php:655
+#: admin/reports/templates/admin-reports-page.php:651
 msgid "No main orders in this period"
 msgstr "Tidak ada pesanan utama dalam periode ini"
 
-#: admin/reports/templates/admin-reports-page.php:656
+#: admin/reports/templates/admin-reports-page.php:652
 msgid ""
 "Main product order counts will appear here once paid checkout orders are "
 "tracked."
@@ -4323,17 +4269,17 @@ msgid "Plan"
 msgstr "Rencana"
 
 #: admin/reports/templates/customer-report/page.php:192
-#: public/partials/csv-export.php:234
+#: public/partials/csv-export.php:232
 msgid "Pay Interval"
 msgstr "Interval Pembayaran"
 
 #: admin/reports/templates/customer-report/page.php:194
-#: public/partials/csv-export.php:236
+#: public/partials/csv-export.php:234
 msgid "Total Revenue"
 msgstr "Total Pendapatan"
 
 #: admin/reports/templates/customer-report/page.php:195
-#: public/partials/csv-export.php:237
+#: public/partials/csv-export.php:235
 msgid "Remaining Payments"
 msgstr "Pembayaran Tersisa"
 
@@ -4397,35 +4343,34 @@ msgstr "Produk yang Dibeli"
 msgid "Subscription Revenue"
 msgstr "Pendapatan Langganan"
 
-#: admin/reports/templates/customer-reports-page.php:25
-#: admin/reports/traits/templates/reports-date-get-report-period.php:17
-msgid "All time"
-msgstr "Seluruh waktu"
-
-#: admin/reports/templates/customer-reports-page.php:97
+#: admin/reports/templates/customer-reports-page.php:85
 msgid "Export Subscriptions"
 msgstr "Ekspor Langganan"
 
-#: admin/reports/templates/customer-reports-page.php:257, fuzzy
+#: admin/reports/templates/customer-reports-page.php:253, fuzzy
 msgid "Upsell"
 msgstr "Upsell"
 
-#: admin/reports/templates/customer-reports-page.php:260, fuzzy
+#: admin/reports/templates/customer-reports-page.php:256, fuzzy
 msgid "Downsell"
 msgstr "Downsell"
 
-#: admin/reports/templates/customer-reports-page.php:272
+#: admin/reports/templates/customer-reports-page.php:268
 #: includes/templates/post-types-create-custom-post-type.php:13
 msgid "Order"
 msgstr "Pesanan"
 
-#: admin/reports/templates/customer-reports-page.php:287
+#: admin/reports/templates/customer-reports-page.php:283
 msgid "Offer during checkout"
 msgstr "Tawarkan selama checkout"
 
-#: admin/reports/templates/customer-reports-page.php:392
+#: admin/reports/templates/customer-reports-page.php:388
 msgid "Guest customer"
 msgstr "Pelanggan tamu"
+
+#: admin/reports/traits/templates/reports-date-get-report-period.php:17
+msgid "All time"
+msgstr "Seluruh waktu"
 
 #: admin/reports/traits/templates/reports-render-render-bar-rows.php:16
 msgid "No data for this period"
@@ -4444,79 +4389,12 @@ msgstr ""
 "dicatat untuk rentang tanggal yang dipilih."
 
 #: admin/reports/traits/templates/reports-render-render-revenue-chart.php:58
-msgid ""
-"Revenue trend chart. The revenue data table after the chart lists each "
-"period."
-msgstr ""
-"Grafik tren pendapatan. Tabel data pendapatan setelah grafik mencantumkan "
-"setiap periode."
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:84
-msgid "Show data table"
-msgstr "Tampilkan tabel data"
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:86
-msgid "Revenue by period"
-msgstr "Pendapatan berdasarkan periode"
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:89
-msgid "Period"
-msgstr "Periode"
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:90
-msgid "Revenue"
-msgstr "Pendapatan"
+msgid "Revenue trend chart"
+msgstr "Grafik tren pendapatan"
 
 #: admin/reports/traits/trait-ppcart-admin-reports-data.php:131
 msgid "Unknown product"
 msgstr "Produk tidak diketahui"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:147
-msgid "live"
-msgstr "langsung"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:147, fuzzy
-msgid "sandbox"
-msgstr "sandbox"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:154
-#. translators: 1: live or sandbox, 2: webhook URL.
-#, php-format
-msgid "PayPal webhook registered for %1$s mode at %2$s."
-msgstr "Webhook PayPal terdaftar untuk mode %1$s di %2$s."
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:160
-#. translators: 1: live or sandbox, 2: PayPal error, 3: webhook URL, 4: event names.
-#, php-format
-msgid ""
-"PayPal refused the webhook for %1$s mode: %2$s. Add it yourself in your "
-"PayPal app (Developer Dashboard, your app, Webhooks) with the URL %3$s and "
-"these events: %4$s. Until then, the hourly check completes payments."
-msgstr ""
-"PayPal menolak webhook untuk mode %1$s: %2$s. Tambahkan sendiri di aplikasi "
-"PayPal Anda (Dasbor Pengembang, aplikasi Anda, Webhooks) dengan URL %3$s "
-"dan acara ini: %4$s. Sampai saat itu, pemeriksaan setiap jam menyelesaikan "
-"pembayaran."
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:169
-#. translators: %s: webhook URL.
-#, php-format
-msgid ""
-"The PayPal webhook is registered when you save with Client ID and Secret "
-"set. URL: %s"
-msgstr ""
-"Webhook PayPal terdaftar saat Anda menyimpan dengan Client ID dan Secret "
-"yang diatur. URL: %s"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:190
-msgid "PayPal could not be reached."
-msgstr "PayPal tidak dapat dijangkau."
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:192
-#. translators: %d: HTTP status code.
-#, fuzzy, php-format
-msgid "HTTP %d"
-msgstr "HTTP %d"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:28
 #. translators: %s: the Stripe permission name, wrapped in strong tags.
@@ -4595,7 +4473,7 @@ msgstr ""
 "Akun ini tidak memungkinkan kami untuk memeriksa ulang titik akhir, jadi "
 "status langsung tidak ditampilkan."
 
-#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:115
+#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
@@ -4750,7 +4628,7 @@ msgid "Privacy Policy URL"
 msgstr "URL Kebijakan Privasi"
 
 #: admin/settings/traits/options/core-settings.php:114
-#: public/templates/functions/plan-coupon-fields.php:576
+#: public/templates/functions/plan-coupon-fields.php:545
 msgid "Company Name"
 msgstr "Nama Perusahaan"
 
@@ -4840,80 +4718,80 @@ msgstr "Teks Footer"
 msgid "Test email"
 msgstr "Email Uji"
 
-#: admin/settings/traits/options/core-settings.php:240
+#: admin/settings/traits/options/core-settings.php:238
 msgid "Order Received"
 msgstr "Pesanan Diterima"
 
-#: admin/settings/traits/options/core-settings.php:241
+#: admin/settings/traits/options/core-settings.php:239
 msgid "New User Welcome"
 msgstr "Selamat Datang Pengguna Baru"
 
-#: admin/settings/traits/options/core-settings.php:242
+#: admin/settings/traits/options/core-settings.php:240
 msgid "Purchase Confirmation"
 msgstr "Konfirmasi Pembelian"
 
-#: admin/settings/traits/options/core-settings.php:243
+#: admin/settings/traits/options/core-settings.php:241
 msgid "Order Refunded"
 msgstr "Pesanan Telah Dikembalikan"
 
-#: admin/settings/traits/options/core-settings.php:244
+#: admin/settings/traits/options/core-settings.php:242
 msgid "Trial Ending Reminder"
 msgstr "Pengingat Akhir Masa Percobaan"
 
-#: admin/settings/traits/options/core-settings.php:245
+#: admin/settings/traits/options/core-settings.php:243
 msgid "Upcoming Renewal Reminder"
 msgstr "Pengingat Pembaruan yang Akan Datang"
 
-#: admin/settings/traits/options/core-settings.php:246
+#: admin/settings/traits/options/core-settings.php:244
 msgid "Subscription Renewal Confirmation"
 msgstr "Konfirmasi Pembaruan Langganan"
 
-#: admin/settings/traits/options/core-settings.php:247
+#: admin/settings/traits/options/core-settings.php:245
 msgid "Failed Renewal Payment"
 msgstr "Pembayaran Pembaruan Gagal"
 
-#: admin/settings/traits/options/core-settings.php:248
+#: admin/settings/traits/options/core-settings.php:246
 msgid "Subscription Canceled Confirmation"
 msgstr "Konfirmasi Langganan Dibatalkan"
 
-#: admin/settings/traits/options/core-settings.php:249
+#: admin/settings/traits/options/core-settings.php:247
 msgid "Subscription Paused Confirmation"
 msgstr "Konfirmasi Langganan Ditunda"
 
-#: admin/settings/traits/options/core-settings.php:251
+#: admin/settings/traits/options/core-settings.php:249
 msgid "Preview Email"
 msgstr "Pratinjau Email"
 
-#: admin/settings/traits/options/core-settings.php:252
+#: admin/settings/traits/options/core-settings.php:250
 msgid "Send Test"
 msgstr "Kirim Uji"
 
-#: admin/settings/traits/options/core-settings.php:254
+#: admin/settings/traits/options/core-settings.php:252
 msgid "Preview and test emails use sample order data for personalization tags."
 msgstr ""
 "Pratinjau dan uji email menggunakan data pesanan sampel untuk tag "
 "personalisasi."
 
-#: admin/settings/traits/options/core-settings.php:285
-#: admin/settings/traits/options/core-settings.php:343
-#: admin/settings/traits/options/core-settings.php:410
-#: admin/settings/traits/options/core-settings.php:453
-#: admin/settings/traits/options/core-settings.php:496
-#: admin/settings/traits/options/core-settings.php:539
-#: admin/settings/traits/options/core-settings.php:582
+#: admin/settings/traits/options/core-settings.php:283
+#: admin/settings/traits/options/core-settings.php:341
+#: admin/settings/traits/options/core-settings.php:408
+#: admin/settings/traits/options/core-settings.php:451
+#: admin/settings/traits/options/core-settings.php:494
+#: admin/settings/traits/options/core-settings.php:537
+#: admin/settings/traits/options/core-settings.php:580
 msgid "Send to admin?"
 msgstr "Kirim ke admin?"
 
-#: admin/settings/traits/options/core-settings.php:306
-#: admin/settings/traits/options/core-settings.php:364
+#: admin/settings/traits/options/core-settings.php:304
+#: admin/settings/traits/options/core-settings.php:362
 msgid "Body Text"
 msgstr "Teks Badan"
 
-#: admin/settings/traits/options/core-settings.php:390
+#: admin/settings/traits/options/core-settings.php:388
 msgid "Use WordPress Default Notification"
 msgstr "Gunakan Notifikasi Default WordPress"
 
-#: admin/settings/traits/options/core-settings.php:394
+#: admin/settings/traits/options/core-settings.php:392
 msgid ""
 "If enabled, WordPress default new user notification will be used instead of "
 "custom email template."
@@ -4921,21 +4799,21 @@ msgstr ""
 "Jika diaktifkan, notifikasi pengguna baru default WordPress akan digunakan "
 "sebagai pengganti template email kustom."
 
-#: admin/settings/traits/options/core-settings.php:420
-#: admin/settings/traits/options/core-settings.php:463
-#: admin/settings/traits/options/core-settings.php:506
-#: admin/settings/traits/options/core-settings.php:549
+#: admin/settings/traits/options/core-settings.php:418
+#: admin/settings/traits/options/core-settings.php:461
+#: admin/settings/traits/options/core-settings.php:504
+#: admin/settings/traits/options/core-settings.php:547
 msgid "Body"
 msgstr "Badan"
 
-#: admin/settings/traits/options/core-settings.php:433
-#: admin/settings/traits/options/core-settings.php:476
-#: admin/settings/traits/options/core-settings.php:519
-#: admin/settings/traits/options/core-settings.php:562
+#: admin/settings/traits/options/core-settings.php:431
+#: admin/settings/traits/options/core-settings.php:474
+#: admin/settings/traits/options/core-settings.php:517
+#: admin/settings/traits/options/core-settings.php:560
 msgid "Enable/Disable"
 msgstr "Aktifkan/nonaktifkan"
 
-#: admin/settings/traits/options/core-settings.php:592
+#: admin/settings/traits/options/core-settings.php:590
 msgid "Subscription Canceled"
 msgstr "Langganan Dibatalkan"
 
@@ -5009,7 +4887,6 @@ msgid "Connection Status"
 msgstr "Status Koneksi"
 
 #: admin/settings/traits/options/payment-fields.php:61
-#: admin/settings/traits/options/payment-fields.php:172
 msgid "Checkout experience"
 msgstr "Pengalaman checkout"
 
@@ -5065,53 +4942,35 @@ msgstr ""
 "Verifikasi sertifikat TLS PayPal dan kecocokan hostname untuk permintaan "
 "API PayPal sisi server."
 
-#: admin/settings/traits/options/payment-fields.php:177
-msgid "Redirect to PayPal"
-msgstr "Alihkan ke PayPal"
-
-#: admin/settings/traits/options/payment-fields.php:178
-msgid "On this page (PayPal popup)"
-msgstr "Di halaman ini (popup PayPal)"
-
-#: admin/settings/traits/options/payment-fields.php:180
-msgid ""
-"On-page checkout needs the PayPal Email, Client ID and Secret of the "
-"selected mode. Without the Client ID and Secret the checkout redirects to "
-"PayPal."
-msgstr ""
-"Checkout di halaman memerlukan Email PayPal, Client ID, dan Secret dari "
-"mode yang dipilih. Tanpa Client ID dan Secret, checkout mengalihkan ke "
-"PayPal."
-
-#: admin/settings/traits/options/payment-fields.php:187
+#: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
 msgstr "Email PayPal"
 
-#: admin/settings/traits/options/payment-fields.php:197
+#: admin/settings/traits/options/payment-fields.php:182
 msgid "Client ID"
 msgstr "ID Klien"
 
-#: admin/settings/traits/options/payment-fields.php:207
+#: admin/settings/traits/options/payment-fields.php:192
 msgid "Secret"
 msgstr "Rahasia"
 
-#: admin/settings/traits/options/payment-fields.php:217
+#: admin/settings/traits/options/payment-fields.php:202
 msgid "PDT Token"
 msgstr "Token PDT"
 
-#: admin/settings/traits/options/payment-fields.php:227
+#: admin/settings/traits/options/payment-fields.php:212
 msgid "Sandbox Email"
 msgstr "Email Sandbox"
 
-#: admin/settings/traits/options/payment-fields.php:237
+#: admin/settings/traits/options/payment-fields.php:222
 msgid "Sandbox Client ID"
 msgstr "ID Klien Sandbox"
 
-#: admin/settings/traits/options/payment-fields.php:247
+#: admin/settings/traits/options/payment-fields.php:232
 msgid "Sandbox Secret"
 msgstr "Rahasia Sandbox"
 
-#: admin/settings/traits/options/payment-fields.php:257
+#: admin/settings/traits/options/payment-fields.php:242
 msgid "Sandbox PDT Token"
 msgstr "Token PDT Sandbox"
 
@@ -5190,7 +5049,7 @@ msgid "Stripe checkout is disabled. You can still connect now."
 msgstr "Checkout Stripe dinonaktifkan. Anda masih dapat terhubung sekarang."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:141
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
 msgstr "2. Pasang webhook"
 
@@ -5211,7 +5070,7 @@ msgid "Stripe is ready"
 msgstr "Stripe siap"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
 msgid "Keys synced"
 msgstr "Kunci disinkronkan"
 
@@ -5221,37 +5080,23 @@ msgstr "Kunci disinkronkan"
 msgid "Webhook active with %d events"
 msgstr "Webhook aktif dengan %d acara"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:118
-msgid "Replace the webhook signing secret"
-msgstr "Ganti rahasia tanda tangan webhook"
-
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
-msgid ""
-"Stripe rejects events with \"Invalid Stripe webhook signature\" when this "
-"secret does not match your endpoint. Paste the current signing secret from "
-"the endpoint in your Stripe Dashboard."
-msgstr ""
-"Stripe menolak acara dengan \"Tanda tangan webhook Stripe tidak valid\" "
-"ketika rahasia ini tidak cocok dengan titik akhir Anda. Tempelkan rahasia "
-"tanda tangan saat ini dari titik akhir di Dasbor Stripe Anda."
-
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "1. Stripe account connected"
 msgstr "1. Akun Stripe terhubung"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:142
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
 msgstr "Pesanan tidak akan selesai sampai ini dilakukan."
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
 msgstr "Butuh perhatian"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
 msgstr "Tidak terpasang"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:160
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
 msgstr "Perbaiki acara"
 
@@ -5421,51 +5266,51 @@ msgstr "DataLayer dengan GA4"
 msgid "DataLayer with Enhanced Ecommerce (UA)"
 msgstr "DataLayer dengan Enhanced Ecommerce (UA)"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:80
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:75
 #. translators: %1$s is the plugin name, %2$s is the star rating markup.
 #, php-format
 msgid "If you like %1$s, please leave us a %2$s rating. Thank you!"
 msgstr "Jika Anda suka %1$s, silakan beri kami penilaian %2$s. Terima kasih!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:94
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:89
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:90
 msgid "About PublishPress Cart"
 msgstr "Tentang PublishPress Cart"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:100
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:96
 msgid "PublishPress Cart Documentation"
 msgstr "Dokumentasi PublishPress Cart"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:106
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
 msgid "Contact the PublishPress team"
 msgstr "Hubungi tim PublishPress"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:107
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:102
 msgid "Contact PublishPress"
 msgstr "Hubungi PublishPress"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:156
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:157
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:151
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:152
 #: includes/templates/post-types-create-custom-post-type.php:100
 #: includes/templates/post-types-create-custom-post-type.php:118
 msgid "Categories"
 msgstr "Kategori"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:164
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:165
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:159
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:160
 #: includes/templates/post-types-create-custom-post-type.php:106
 #: includes/templates/post-types-create-custom-post-type.php:119
 msgid "Tags"
 msgstr "Tag"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:271
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:216
 #. translators: %s: plugin title.
 #, php-format
 msgid "Welcome to %s"
 msgstr "Selamat datang di %s"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:272
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:217
 msgid ""
 "To get started, head over to the settings page to connect your Stripe "
 "account and select your currency. Once that's done, you'll be ready to "
@@ -5475,9 +5320,13 @@ msgstr ""
 "Anda dan memilih mata uang Anda. Setelah itu selesai, Anda akan siap untuk "
 "membuat produk pertama Anda!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:276
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:221
 msgid "Get Started!"
 msgstr "Mulai!"
+
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:253
+msgid "Sorry, you are not allowed to access this page."
+msgstr "Maaf, Anda tidak diizinkan untuk mengakses halaman ini."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
@@ -5604,38 +5453,34 @@ msgid "Copy failed"
 msgstr "Salin gagal"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
-msgid "Copy plan ID"
-msgstr "Salin ID rencana"
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
 msgid "Required fields missing:"
 msgstr "Bidang yang diperlukan hilang:"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
 msgid "Configuration error: Missing AJAX settings. Please refresh the page."
 msgstr "Kesalahan konfigurasi: Pengaturan AJAX hilang. Silakan muat ulang halaman."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
 msgid "Subscription ID is missing."
 msgstr "ID langganan hilang."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
 msgid "Sync subscription with Stripe?"
 msgstr "Sinkronkan langganan dengan Stripe?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Wait..."
 msgstr "Tunggu..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
 msgid "Error: Please try again."
 msgstr "Kesalahan: Silakan coba lagi."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 msgid "Migration required"
 msgstr "Migrasi diperlukan"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:66
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
@@ -5644,7 +5489,7 @@ msgstr ""
 "mengaktifkan enkripsi, jalankan migrasi dari Pengaturan → Pemeliharaan "
 "untuk mengenkripsinya."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:67
 #. translators: %d: number of stored credentials.
 #, php-format
 msgid ""
@@ -5655,89 +5500,71 @@ msgstr ""
 "mengaktifkan enkripsi, jalankan migrasi dari Pengaturan → Pemeliharaan "
 "untuk mengenkripsinya."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 msgid "Encryption updated"
 msgstr "Enkripsi diperbarui"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
 #: admin/traits/trait-ppcart-admin-integrations.php:149, fuzzy
 msgid "OK"
 msgstr "OK"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:73
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
 msgstr "Tidak dapat memperbarui pengaturan enkripsi keamanan."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "No matching customers"
 msgstr "Tidak ada pelanggan yang cocok"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
 msgid "No matching products"
 msgstr "Tidak ada produk yang cocok"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:102
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
 msgid "Searching…"
 msgstr "Mencari…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:103
-msgid "1 result available."
-msgstr "1 hasil tersedia."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:105
-#. translators: %d: number of search results.
-#, php-format
-msgid "%d results available."
-msgstr "%d hasil tersedia."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:106
-msgid "Use the up and down arrow keys to choose one."
-msgstr "Gunakan tombol panah atas dan bawah untuk memilih satu."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:117
 msgid "No matching settings"
 msgstr "Tidak ada pengaturan yang cocok"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:118
 msgid "Try a different keyword or clear the search to see all settings."
 msgstr ""
 "Coba kata kunci yang berbeda atau hapus pencarian untuk melihat semua "
 "pengaturan."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:119
 msgid "Discard your unsaved changes?"
 msgstr "Buang perubahan yang tidak disimpan?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
-msgid "Saving changes…"
-msgstr "Menyimpan perubahan…"
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:120
 msgid "Reset this email template to the built-in default?"
 msgstr "Atur ulang template email ini ke default bawaan?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:129
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
 msgid "Generating preview..."
 msgstr "Menghasilkan pratampilan..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:166
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
 msgid "Email preview could not be generated. Please refresh the page and try again."
 msgstr ""
 "Pratampilan email tidak dapat dihasilkan. Silakan muat ulang halaman dan "
 "coba lagi."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:132
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
 msgid "Close Preview"
 msgstr "Tutup Pratampilan"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:135
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:131
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
@@ -5745,7 +5572,7 @@ msgstr "Tutup Pratampilan"
 msgid "Encrypt stored credentials"
 msgstr "Enkripsi kredensial yang disimpan"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:137
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
 #. translators: %d: number of plaintext credentials.
 #, php-format
 msgid ""
@@ -5755,7 +5582,7 @@ msgstr ""
 "Enkripsi %d kredensial teks biasa dalam database? Ambil cadangan terlebih "
 "dahulu dan jalankan ini selama jendela pemeliharaan."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:138
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
@@ -5763,49 +5590,31 @@ msgstr ""
 "Pindai kredensial yang disimpan dan enkripsi nilai teks biasa? Ambil "
 "cadangan terlebih dahulu dan jalankan ini selama jendela pemeliharaan."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Uploading file…"
 msgstr "Mengunggah file…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:143
 msgid "File uploaded successfully."
 msgstr "File berhasil diunggah."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Upload failed. Please try again."
 msgstr "Unggahan gagal. Silakan coba lagi."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:157
-#. translators: 1: item title, 2: new position, 3: number of items.
-#, php-format
-msgid "%1$s moved to position %2$d of %3$d."
-msgstr "%1$s dipindahkan ke posisi %2$d dari %3$d."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:158
-msgid "This item is already first."
-msgstr "Item ini sudah menjadi yang pertama."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:159
-msgid "This item is already last."
-msgstr "Item ini sudah menjadi yang terakhir."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:160
-msgid "Item removed."
-msgstr "Item dihapus."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:165
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
 msgid "Generating preview…"
 msgstr "Menghasilkan pratayang…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:167
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:152
 msgid "Sending test email…"
 msgstr "Mengirim email uji…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:169
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:154
 msgid "Test email failed to send. Please refresh the page and try again."
 msgstr "Email uji gagal dikirim. Harap segarkan halaman dan coba lagi."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:170
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:155
 msgid "Enter an email address to send the test to."
 msgstr "Masukkan alamat email untuk mengirim uji ke."
 
@@ -5830,7 +5639,6 @@ msgid "First page"
 msgstr "Halaman pertama"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:153
-#: public/templates/archive/navigation.php:23
 msgid "Previous page"
 msgstr "Halaman sebelumnya"
 
@@ -5839,7 +5647,6 @@ msgid "Current page"
 msgstr "Halaman saat ini"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:170
-#: public/templates/archive/navigation.php:24
 msgid "Next page"
 msgstr "Halaman berikutnya"
 
@@ -6248,87 +6055,81 @@ msgid "Product duplicated. New product ID: %d."
 msgstr "Produk telah diduplikasi. ID produk baru: %d."
 
 #: admin/traits/trait-ppcart-admin-profile.php:23
-#: public/templates/functions/payment-address.php:321
+#: public/templates/functions/payment-address.php:317
 msgid "Address Line 2"
 msgstr "Alamat Baris 2"
 
-#: includes/scheduled-reports/report-email-template.php:25
-#. translators: %s: plugin title.
-#, php-format
-msgid "Your %s Summary Report"
-msgstr "Laporan Ringkasan %s Anda"
-
-#: includes/scheduled-reports/report-email-template.php:58
+#: includes/scheduled-reports/report-email-template.php:56
 msgid "Ending Trials"
 msgstr "Mengakhiri Percobaan"
 
-#: includes/scheduled-reports/report-email-template.php:58
+#: includes/scheduled-reports/report-email-template.php:56
 msgid "End date"
 msgstr "Tanggal akhir"
 
-#: includes/scheduled-reports/report-email-template.php:58
+#: includes/scheduled-reports/report-email-template.php:56
 msgid "Recurring amount"
 msgstr "Jumlah berulang"
 
-#: includes/scheduled-reports/report-email-template.php:59
+#: includes/scheduled-reports/report-email-template.php:57
 msgid "Subscription Renewals"
 msgstr "Perpanjangan Langganan"
 
-#: includes/scheduled-reports/report-email-template.php:59
+#: includes/scheduled-reports/report-email-template.php:57
 msgid "Next bill date"
 msgstr "Tanggal tagihan berikutnya"
 
-#: includes/scheduled-reports/report-email-template.php:96
+#: includes/scheduled-reports/report-email-template.php:94
 msgid "Here is your summary for"
 msgstr "Berikut adalah ringkasan Anda untuk"
 
-#: includes/scheduled-reports/report-email-template.php:98
+#: includes/scheduled-reports/report-email-template.php:96
 msgid "for the week of"
 msgstr "untuk minggu yang"
 
+#: includes/scheduled-reports/report-email-template.php:98
 #: includes/scheduled-reports/report-email-template.php:100
-#: includes/scheduled-reports/report-email-template.php:102
 msgid "for"
 msgstr "untuk"
 
-#: includes/scheduled-reports/report-email-template.php:112
+#: includes/scheduled-reports/report-email-template.php:110
 msgid "Gross revenue"
 msgstr "Pendapatan kotor"
 
-#: includes/scheduled-reports/report-email-template.php:114
+#: includes/scheduled-reports/report-email-template.php:112
 msgid "Net revenue"
 msgstr "Pendapatan bersih"
 
-#: includes/scheduled-reports/report-email-template.php:115
+#: includes/scheduled-reports/report-email-template.php:113
 msgid "Completed Orders"
 msgstr "Pesanan Selesai"
 
-#: includes/scheduled-reports/report-email-template.php:117
+#: includes/scheduled-reports/report-email-template.php:115
 msgid "Failed Orders"
 msgstr "Pesanan Gagal"
 
-#: includes/scheduled-reports/report-email-template.php:119
+#: includes/scheduled-reports/report-email-template.php:117
 msgid "Subscriptions Started"
 msgstr "Langganan Dimulai"
 
-#: includes/scheduled-reports/report-email-template.php:120
+#: includes/scheduled-reports/report-email-template.php:118
 msgid "Trials Started"
 msgstr "Percobaan Dimulai"
 
-#: includes/scheduled-reports/report-email-template.php:121
+#: includes/scheduled-reports/report-email-template.php:119
 msgid "Subscriptions Canceled"
 msgstr "Langganan Dibatalkan"
 
-#: includes/scheduled-reports/report-email-template.php:131
+#: includes/scheduled-reports/report-email-template.php:129
 msgid "Coming up for the week of"
 msgstr "Akan datang untuk minggu yang"
 
+#: includes/scheduled-reports/report-email-template.php:131
 #: includes/scheduled-reports/report-email-template.php:133
-#: includes/scheduled-reports/report-email-template.php:135
 msgid "Coming up for"
 msgstr "Akan datang untuk"
 
-#: includes/scheduled-reports/report-email-template.php:165
+#: includes/scheduled-reports/report-email-template.php:163
 msgid "Nothing found for this time period"
 msgstr "Tidak ada yang ditemukan untuk periode waktu ini"
 
@@ -6614,12 +6415,6 @@ msgstr "Langganan tidak valid."
 msgid "Stripe subscription is not linked to a PublishPress Cart subscription."
 msgstr "Langganan Stripe tidak terhubung dengan langganan PublishPress Cart."
 
-#: includes/stripe-sync/traits/trait-ppcart-stripe-sync-reconciliation.php:183
-msgid "Missing renewal orders imported from Stripe by the background sync"
-msgstr ""
-"Pesanan pembaruan yang hilang diimpor dari Stripe oleh sinkronisasi latar "
-"belakang"
-
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
@@ -6850,7 +6645,7 @@ msgstr "Lupa kata sandi Anda?"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:31
 #: public/templates/functions/checkout-core.php:186
 #: public/templates/functions/checkout-core.php:193
-#: public/templates/functions/payment-address.php:200
+#: public/templates/functions/payment-address.php:199
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Due"
 msgstr "Jumlah yang Harus Dibayar"
@@ -6858,7 +6653,7 @@ msgstr "Jumlah yang Harus Dibayar"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:36
 #: public/templates/functions/checkout-core.php:183
 #: public/templates/functions/checkout-core.php:190
-#: public/templates/functions/payment-address.php:201
+#: public/templates/functions/payment-address.php:200
 msgid "Due Today"
 msgstr "Jatuh Tempo Hari Ini"
 
@@ -6997,43 +6792,43 @@ msgid "My Account"
 msgstr "Akun Saya"
 
 #: public/partials/csv-export.php:20
-#: public/partials/csv-export.php:139
-#: public/templates/functions/plan-coupon-fields.php:565
+#: public/partials/csv-export.php:137
+#: public/templates/functions/plan-coupon-fields.php:534
 #: public/templates/my-account/tabs/user-profile.php:17
 msgid "First Name"
 msgstr "Nama Depan"
 
-#: public/partials/csv-export.php:137, fuzzy
+#: public/partials/csv-export.php:135, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: public/partials/csv-export.php:143
+#: public/partials/csv-export.php:141
 msgid "Address 1"
 msgstr "Alamat 1"
 
-#: public/partials/csv-export.php:149
+#: public/partials/csv-export.php:147
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Paid"
 msgstr "Jumlah yang Dibayar"
 
-#: public/partials/csv-export.php:150
-#: public/partials/csv-export.php:232
+#: public/partials/csv-export.php:148
+#: public/partials/csv-export.php:230
 msgid "Product Name"
 msgstr "Nama Produk"
 
-#: public/partials/csv-export.php:152
+#: public/partials/csv-export.php:150
 msgid "Offers during checkout"
 msgstr "Penawaran saat checkout"
 
-#: public/partials/csv-export.php:154
+#: public/partials/csv-export.php:152
 msgid "Coupon"
 msgstr "Kupon"
 
-#: public/partials/csv-export.php:155
+#: public/partials/csv-export.php:153
 msgid "Purchase URL"
 msgstr "URL Pembelian"
 
-#: public/partials/csv-export.php:156
+#: public/partials/csv-export.php:154
 msgid "IP Address"
 msgstr "Alamat IP"
 
@@ -7045,63 +6840,41 @@ msgstr "struk"
 msgid "invoice"
 msgstr "invoice"
 
-#: public/partials/invoice-pdf.php:38
-#. translators: 1: document type (Invoice or Receipt), 2: invoice or receipt number.
-#, fuzzy, php-format
-msgid "%1$s %2$s"
-msgstr "%1$s %2$s"
-
-#: public/partials/invoice-pdf.php:95
+#: public/partials/invoice-pdf.php:80
 msgid "Unauthorized"
 msgstr "Tidak Berwenang"
 
-#: public/paypal/class-ppcart-paypal-onpage.php:182
-msgid ""
-"Your PayPal payment is being processed. You will receive a confirmation "
-"email when it completes."
-msgstr ""
-"Pembayaran PayPal Anda sedang diproses. Anda akan menerima email konfirmasi "
-"ketika selesai."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:183
-msgid "We could not complete your PayPal payment. Please try again."
-msgstr "Kami tidak dapat menyelesaikan pembayaran PayPal Anda. Silakan coba lagi."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:184
-msgid "PayPal checkout was cancelled."
-msgstr "Checkout PayPal dibatalkan."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:185
-msgid "PayPal could not open on this page. Please click the button again."
-msgstr "PayPal tidak dapat terbuka di halaman ini. Silakan klik tombol lagi."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:199
-#: public/paypal/class-ppcart-paypal-onpage.php:272
-#: public/paypal/class-ppcart-paypal-onpage.php:280
-#: public/paypal/class-ppcart-paypal-onpage.php:296
-#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:14
+#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:16
 msgid "An error occurred, please refresh the page and try again."
 msgstr "Terjadi kesalahan, silakan segarkan halaman dan coba lagi."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:246
-msgid "PayPal could not start this subscription. Please try again."
-msgstr "PayPal tidak dapat memulai langganan ini. Silakan coba lagi."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:256
-msgid "PayPal could not start this payment. Please try again."
-msgstr "PayPal tidak dapat memulai pembayaran ini. Silakan coba lagi."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:304
-msgid "PayPal did not complete this payment. Please try again."
-msgstr "PayPal tidak menyelesaikan pembayaran ini. Silakan coba lagi."
 
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:49
 msgid "Pay with PayPal"
 msgstr "Bayar dengan PayPal"
 
-#: public/paypal/traits/trait-ppcart-paypal-subscriptions.php:93
-msgid "PayPal did not complete the refund."
-msgstr "PayPal tidak menyelesaikan pengembalian dana."
+#: public/templates/archive/navigation.php:22
+msgid ""
+"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
+"7-7\"></path></svg>"
+msgstr ""
+"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
+"7-7\"></path></svg>"
+
+#: public/templates/archive/navigation.php:23
+msgid ""
+"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
+"7\"></path></svg>"
+msgstr ""
+"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
+"7\"></path></svg>"
 
 #: public/templates/checkout1.php:218
 #: public/templates/checkout1.php:260
@@ -7150,11 +6923,11 @@ msgstr ""
 msgid "Credit Card"
 msgstr "Kartu Kredit"
 
-#: public/templates/functions/payment-address.php:86
+#: public/templates/functions/payment-address.php:85
 msgid "Payment Info"
 msgstr "Informasi Pembayaran"
 
-#: public/templates/functions/payment-address.php:106
+#: public/templates/functions/payment-address.php:105
 msgid ""
 "Sorry, it seems that there are no payment methods available. Please contact "
 "us for assistance."
@@ -7162,47 +6935,37 @@ msgstr ""
 "Maaf, sepertinya tidak ada metode pembayaran yang tersedia. Silakan hubungi "
 "kami untuk bantuan."
 
-#: public/templates/functions/payment-address.php:148
+#: public/templates/functions/payment-address.php:147
 msgid "Enter VAT number"
 msgstr "Masukkan nomor PPN"
 
-#: public/templates/functions/payment-address.php:235
-#: public/templates/functions/payment-address.php:239
+#: public/templates/functions/payment-address.php:234
+#: public/templates/functions/payment-address.php:238
 msgid "Credit or debit card"
 msgstr "Kartu kredit atau debit"
 
-#: public/templates/functions/payment-address.php:280
-#: public/templates/functions/payment-address.php:340
+#: public/templates/functions/payment-address.php:279
+#: public/templates/functions/payment-address.php:334
 msgid "State / County"
 msgstr "Provinsi / Daerah"
 
-#: public/templates/functions/payment-address.php:330
+#: public/templates/functions/payment-address.php:325
 msgid "Town / City"
 msgstr "Kota / Kabupaten"
 
-#: public/templates/functions/payment-address.php:350
+#: public/templates/functions/payment-address.php:343
 msgid "Postcode / Zip"
 msgstr "Kode Pos"
 
-#: public/templates/functions/plan-coupon-fields.php:308
-#. translators: %s: payment plan name.
-#, php-format
-msgid "Your price for %s"
-msgstr "Harga Anda untuk %s"
-
-#: public/templates/functions/plan-coupon-fields.php:534
-msgid "Use at least 8 characters, 1 lowercase letter, and 1 number"
-msgstr "Gunakan setidaknya 8 karakter, 1 huruf kecil, dan 1 angka"
-
-#: public/templates/functions/plan-coupon-fields.php:540
+#: public/templates/functions/plan-coupon-fields.php:509
 msgid "Show password"
 msgstr "Tampilkan kata sandi"
 
-#: public/templates/functions/plan-coupon-fields.php:557
+#: public/templates/functions/plan-coupon-fields.php:526
 msgid "Contact Info"
 msgstr "Info Kontak"
 
-#: public/templates/functions/plan-coupon-fields.php:571
+#: public/templates/functions/plan-coupon-fields.php:540
 msgid "Phone Number"
 msgstr "Nomor Telepon"
 
@@ -7474,7 +7237,7 @@ msgstr "Dikembalikan pada %s"
 msgid "Notes / Terms"
 msgstr "Catatan / Syarat"
 
-#: admin/reports/templates/customer-reports-page.php:48
+#: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
 #, fuzzy, php-format
 msgctxt "date range"

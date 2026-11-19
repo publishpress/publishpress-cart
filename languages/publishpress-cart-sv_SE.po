@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-10T10:08:07+00:00\n"
-"PO-Revision-Date: 2026-11-19 14:13+0000\n"
+"POT-Creation-Date: 2026-10-14T16:18:02+00:00\n"
+"PO-Revision-Date: 2026-11-10 10:19+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -35,15 +35,15 @@ msgstr ""
 "Skapa beställningssidor och förenklad försäljningsflödes skapande som "
 "hjälper dig att sälja digitala produkter, program och tjänster."
 
-#: publishpress-cart.php:21
-#: admin/class-ppcart-welcome.php:81
+#: publishpress-cart.php:20
+#: admin/class-ppcart-welcome.php:82
 #: admin/partials/settings-page/tabs/topbar.php:9
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:115
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:110
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-cart.php:22
+#: publishpress-cart.php:21
 #. Author URI of the plugin
 #, fuzzy
 msgid "https://publishpress.com/"
@@ -51,8 +51,8 @@ msgstr "https://publishpress.com/publishpress-cart/"
 
 #: admin/class-ppcart-admin-reports.php:89
 #: admin/class-ppcart-admin-reports.php:90
-#: admin/partials/ppcart-admin-page-settings.php:155
-#: admin/reports/templates/admin-reports-page.php:43
+#: admin/partials/ppcart-admin-page-settings.php:145
+#: admin/reports/templates/admin-reports-page.php:45
 msgid "Reports"
 msgstr "Rapporter"
 
@@ -80,8 +80,7 @@ msgstr "Visa kunskapsbas"
 #: admin/class-ppcart-contacts-page.php:81
 #: admin/class-ppcart-contacts-page.php:162
 #: admin/class-ppcart-contacts-page.php:171
-#: admin/reports/templates/admin-reports-page.php:100
-#: admin/reports/templates/admin-reports-page.php:539
+#: admin/reports/templates/admin-reports-page.php:535
 msgid "Customers"
 msgstr "Kunder"
 
@@ -107,37 +106,37 @@ msgid "Lifetime value"
 msgstr "Livstidsvärde"
 
 #: admin/class-ppcart-contacts-page.php:188
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:172
 #: admin/controllers/order/templates/product-form.php:320
 #: admin/controllers/order/templates/product-form.php:337
 #: admin/controllers/order/templates/product-form.php:453
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:201
 #: admin/reports/templates/customer-report/page.php:189
-#: public/partials/csv-export.php:138
-#: public/partials/csv-export.php:231
+#: public/partials/csv-export.php:136
+#: public/partials/csv-export.php:229
 #: public/templates/my-account/tabs/order-history.php:13
 msgid "Date"
 msgstr "Datum"
 
 #: admin/class-ppcart-contacts-page.php:189
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:180
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:203
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:48
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:216
-#: admin/partials/ppcart-admin-page-settings.php:153
+#: admin/partials/ppcart-admin-page-settings.php:143
 #: admin/partials/settings-page/sections/email-notifications.php:10
 #: public/partials/csv-export.php:22
-#: public/partials/csv-export.php:141
-#: public/templates/functions/plan-coupon-fields.php:570
-#: public/templates/functions/plan-coupon-fields.php:573
+#: public/partials/csv-export.php:139
+#: public/templates/functions/plan-coupon-fields.php:539
+#: public/templates/functions/plan-coupon-fields.php:542
 #: public/templates/my-account/tabs/user-profile.php:27
 msgid "Email"
 msgstr "E-post"
 
 #: admin/class-ppcart-contacts-page.php:190
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:202
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
 msgid "Name"
 msgstr "Namn"
 
@@ -279,8 +278,8 @@ msgid "Add new"
 msgstr "Lägg till ny"
 
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:194
 #: admin/controllers/order/templates/product-form.php:322
 #: admin/controllers/order/templates/product-form.php:339
 #: admin/controllers/order/templates/product-form.php:454
@@ -288,8 +287,8 @@ msgstr "Lägg till ny"
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:238
 #: admin/reports/templates/customer-report/page.php:193
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:135
-#: public/partials/csv-export.php:153
-#: public/partials/csv-export.php:235
+#: public/partials/csv-export.php:151
+#: public/partials/csv-export.php:233
 #: public/templates/my-account/tabs/order-history.php:14
 #: public/templates/my-account/tabs/plans.php:38
 #: public/templates/my-account/tabs/subscriptions.php:43, fuzzy
@@ -299,55 +298,54 @@ msgstr "Status"
 #: admin/class-ppcart-pro-menu-previews.php:68
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
-#: admin/reports/templates/admin-reports-page.php:458
+#: admin/reports/templates/admin-reports-page.php:454
 msgid "Active"
 msgstr "Aktiv"
 
 #: admin/class-ppcart-welcome.php:45
-#: admin/class-ppcart-welcome.php:91
+#: admin/class-ppcart-welcome.php:92
 msgid "Welcome to Cart"
 msgstr "Välkommen till Cart"
 
-#: admin/class-ppcart-welcome.php:72
-#: admin/reports/templates/admin-reports-page.php:121
+#: admin/class-ppcart-welcome.php:73
 #: includes/templates/post-types-create-custom-post-type.php:12
 msgid "Products"
 msgstr "Produkter"
 
-#: admin/class-ppcart-welcome.php:72
+#: admin/class-ppcart-welcome.php:73
 msgid "Add a digital product and set its price."
 msgstr "Lägg till en digital produkt och ställ in dess pris."
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:74
 msgid "Payments"
 msgstr "Betalningar"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:74
 msgid "Choose how customers pay at checkout."
 msgstr "Välj hur kunder betalar vid kassan."
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:75
 msgid "Getting started guide"
 msgstr "Kom igång-guide"
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:75
 msgid "Learn how to publish and share a checkout page."
 msgstr "Lär dig hur du publicerar och delar en kassasida."
 
-#: admin/class-ppcart-welcome.php:83
+#: admin/class-ppcart-welcome.php:84
 #: admin/partials/ppcart-admin-page-settings.php:26
 msgid "Cart"
 msgstr "Kundvagn"
 
-#: admin/class-ppcart-welcome.php:86
+#: admin/class-ppcart-welcome.php:87
 msgid "Get support"
 msgstr "Få stöd"
 
-#: admin/class-ppcart-welcome.php:92
+#: admin/class-ppcart-welcome.php:93
 msgid "Start selling from your WordPress site"
 msgstr "Börja sälja från din WordPress-sajt"
 
-#: admin/class-ppcart-welcome.php:93
+#: admin/class-ppcart-welcome.php:94
 msgid ""
 "Create a product, set its price, and share its checkout page with your "
 "customers."
@@ -355,11 +353,15 @@ msgstr ""
 "Skapa en produkt, ställ in dess pris och dela dess kassasida med dina "
 "kunder."
 
-#: admin/class-ppcart-welcome.php:95
+#: admin/class-ppcart-welcome.php:96
 msgid "Create your first product"
 msgstr "Skapa din första produkt"
 
-#: admin/class-ppcart-welcome.php:110
+#: admin/class-ppcart-welcome.php:97
+msgid "Go to dashboard"
+msgstr "Gå till dashboard"
+
+#: admin/class-ppcart-welcome.php:112
 msgid "Set up your store"
 msgstr "Ställ in din butik"
 
@@ -411,59 +413,52 @@ msgstr "Betalningsmetod"
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:101
-#. translators: %s: product shortcode, for example [ppcart_form id="12"].
-#, php-format
-msgid "Copy shortcode %s"
-msgstr "Kopiera shortcode %s"
-
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:102
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:99
 msgid "Copy shortcode"
 msgstr "Kopiera shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:138
 msgid "One-time Payment"
 msgstr "Engångsbetalning"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:142
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:139
 msgid "Recurring Payments (Subscriptions)"
 msgstr "Återkommande betalningar (prenumerationer)"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:143
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:140
 msgid "Pay What You Want"
 msgstr "Betala vad du vill"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:144
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:57
-#: admin/reports/templates/admin-reports-page.php:356
-#: public/templates/functions/plan-coupon-fields.php:291
+#: admin/reports/templates/admin-reports-page.php:352
+#: public/templates/functions/plan-coupon-fields.php:288
 msgid "Free"
 msgstr "Gratis"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:152
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:149
 msgid "Unknown"
 msgstr "Okänd"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:174, fuzzy
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:171, fuzzy
 msgid "Order #"
 msgstr "Order #"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:173
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:195
 #: admin/controllers/order/templates/product-form.php:321
 #: admin/controllers/order/templates/product-form.php:338
-#: includes/scheduled-reports/report-email-template.php:59
-#: public/templates/functions/plan-coupon-fields.php:311
+#: includes/scheduled-reports/report-email-template.php:57
 #: public/templates/pdf-invoice/invoice.php:148
 msgid "Amount"
 msgstr "Belopp"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:178
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:201
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:52
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:173
 #: admin/reports/templates/customer-report/page.php:190
-#: includes/scheduled-reports/report-email-template.php:149
+#: includes/scheduled-reports/report-email-template.php:147
 #: includes/templates/post-types-create-custom-post-type.php:12
 #: public/templates/my-account/tabs/order-history.php:12
 #: public/templates/my-account/tabs/plans.php:37
@@ -472,21 +467,21 @@ msgstr "Belopp"
 msgid "Product"
 msgstr "Produkt"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:182
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
 #: public/templates/pdf-invoice/invoice.php:84
 msgid "Invoice Number"
 msgstr "Fakturanummer"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:196, fuzzy
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:193, fuzzy
 msgid "Sub ID"
 msgstr "Sub ID"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:196
 #: public/templates/my-account/subscription-detail.php:84
 msgid "Start Date"
 msgstr "Startdatum"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
 #: admin/reports/templates/customer-report/page.php:283
 #: public/templates/my-account/subscription-detail.php:95
 #: public/templates/my-account/tabs/plans.php:39
@@ -494,37 +489,37 @@ msgstr "Startdatum"
 msgid "Next Payment"
 msgstr "Nästa betalning"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:242
 msgid "Update status to paid"
 msgstr "Uppdatera status till betald"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:246
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:243
 msgid "Update status to failed"
 msgstr "Uppdatera status till misslyckad"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:247
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:244
 msgid "Update status to pending"
 msgstr "Uppdatera status till pågående"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:248
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:256
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:253
 msgid "Update status to completed"
 msgstr "Uppdatera status till slutförd"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:251
 msgid "Resume in Stripe / update active"
 msgstr "Återuppta i Stripe / uppdatera aktiv"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:255
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:252
 msgid "Update status to canceled"
 msgstr "Uppdatera status till avbruten"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:257
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
 msgstr "Synkronisera med Stripe"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:288
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:285
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
@@ -532,7 +527,7 @@ msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s prenumeration synkroniserad från Stripe."
 msgstr[1] "%s prenumerationer synkroniserade från Stripe."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:300
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:297
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
@@ -540,7 +535,7 @@ msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s misslyckades; se dess prenumerationslogg för orsaken."
 msgstr[1] "%s misslyckades; se deras prenumerationsloggar för orsaken."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:310
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:307
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
@@ -638,7 +633,7 @@ msgstr "Utfärda återbetalning"
 
 #: admin/controllers/order/templates/product-form.php:294
 #: admin/reports/templates/customer-report/page.php:105
-#: includes/scheduled-reports/report-email-template.php:113
+#: includes/scheduled-reports/report-email-template.php:111
 msgid "Refunds"
 msgstr "Återbetalningar"
 
@@ -714,7 +709,7 @@ msgstr "Återställ återbetalda artiklar"
 #: admin/order-metaboxes/traits/trait-ppcart-order-metabox-field-groups.php:87
 #: admin/partials/settings-page/sections/payment-method.php:268
 #: admin/partials/settings-page/tabs/panels.php:387
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
 #: public/templates/my-account/subscription-detail.php:56
 #: public/templates/my-account/tabs/user-profile.php:92
 msgid "Cancel"
@@ -814,14 +809,12 @@ msgid "Order actions"
 msgstr "Beställningsåtgärder"
 
 #: admin/controllers/order/templates/product-info-metabox.php:146
-#: public/partials/invoice-pdf.php:33
 #: public/templates/my-account/order-detail.php:40
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Invoice"
 msgstr "Faktura"
 
 #: admin/controllers/order/templates/product-info-metabox.php:153
-#: public/partials/invoice-pdf.php:33
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Receipt"
 msgstr "Kvitto"
@@ -846,6 +839,8 @@ msgstr "Redigera uppgifter"
 #: admin/order-metaboxes/traits/templates/order-metabox-edit-fields-get-edit-field-sections.php:29
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:140
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:308
+#: admin/partials/settings-page/metadata.php:506
+#: admin/partials/settings-page/metadata.php:510
 #: admin/partials/settings-page/metadata.php:514
 #: admin/partials/settings-page/metadata.php:518
 #: admin/partials/settings-page/metadata.php:522
@@ -855,11 +850,9 @@ msgstr "Redigera uppgifter"
 #: admin/partials/settings-page/metadata.php:538
 #: admin/partials/settings-page/metadata.php:542
 #: admin/partials/settings-page/metadata.php:546
-#: admin/partials/settings-page/metadata.php:550
-#: admin/partials/settings-page/metadata.php:554
-#: admin/partials/settings-page/metadata.php:566
+#: admin/partials/settings-page/metadata.php:558
 #: admin/partials/settings-page/sections/email-notifications.php:36
-#: includes/scheduled-reports/report-email-template.php:148
+#: includes/scheduled-reports/report-email-template.php:146
 msgid "Customer"
 msgstr "Kund"
 
@@ -902,7 +895,7 @@ msgstr "Faktureringsadress"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:225
 #: admin/reports/templates/customer-report/page.php:235
 #: admin/traits/trait-ppcart-admin-profile.php:28
-#: public/partials/csv-export.php:142
+#: public/partials/csv-export.php:140
 #: public/templates/my-account/tabs/user-profile.php:32
 #: public/templates/my-account/tabs/user-profile.php:33
 msgid "Phone"
@@ -920,8 +913,8 @@ msgstr "Företag"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:243
 #: public/templates/email/order-table.php:233
+#: public/templates/functions/payment-address.php:150
 #: public/templates/functions/payment-address.php:151
-#: public/templates/functions/payment-address.php:152
 #: public/templates/pdf-invoice/invoice.php:119
 msgid "VAT Number"
 msgstr "Momsnummer"
@@ -929,7 +922,7 @@ msgstr "Momsnummer"
 #: admin/controllers/order/templates/product-info-metabox.php:232
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:192
 #: admin/traits/trait-ppcart-admin-profile.php:22
-#: public/templates/functions/payment-address.php:311
+#: public/templates/functions/payment-address.php:308
 #: public/templates/my-account/order-detail.php:35
 #: public/templates/my-account/tabs/user-profile.php:38
 #: public/templates/my-account/tabs/user-profile.php:39
@@ -938,7 +931,7 @@ msgstr "Adress"
 
 #: admin/controllers/order/templates/product-info-metabox.php:236
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:196
-#: public/partials/csv-export.php:144
+#: public/partials/csv-export.php:142
 #: public/templates/my-account/tabs/user-profile.php:43
 #: public/templates/my-account/tabs/user-profile.php:44
 msgid "Address 2"
@@ -949,7 +942,7 @@ msgstr "Adress 2"
 #: admin/partials/ppcart-admin-page-settings-tax.php:25
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:24
-#: public/partials/csv-export.php:145
+#: public/partials/csv-export.php:143
 #: public/templates/my-account/tabs/user-profile.php:48
 #: public/templates/my-account/tabs/user-profile.php:49
 msgid "City"
@@ -958,7 +951,7 @@ msgstr "Stad"
 #: admin/controllers/order/templates/product-info-metabox.php:244
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:204
 #: admin/traits/trait-ppcart-admin-profile.php:25
-#: public/partials/csv-export.php:146
+#: public/partials/csv-export.php:144
 #: public/templates/my-account/tabs/user-profile.php:53
 #: public/templates/my-account/tabs/user-profile.php:54
 msgid "State"
@@ -967,7 +960,7 @@ msgstr "Stat"
 #: admin/controllers/order/templates/product-info-metabox.php:248
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:208
 #: admin/traits/trait-ppcart-admin-profile.php:26
-#: public/partials/csv-export.php:147
+#: public/partials/csv-export.php:145
 #: public/templates/my-account/tabs/user-profile.php:58
 #: public/templates/my-account/tabs/user-profile.php:59
 msgid "Zip"
@@ -978,8 +971,8 @@ msgstr "Postnummer"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:129
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:297
 #: admin/traits/trait-ppcart-admin-profile.php:27
-#: public/partials/csv-export.php:148
-#: public/templates/functions/payment-address.php:300
+#: public/partials/csv-export.php:146
+#: public/templates/functions/payment-address.php:298
 #: public/templates/my-account/tabs/user-profile.php:63
 #: public/templates/my-account/tabs/user-profile.php:64
 msgid "Country"
@@ -1014,13 +1007,13 @@ msgid "Order status"
 msgstr "Orderstatus"
 
 #: admin/controllers/order/templates/product-info-metabox.php:283
-#: public/partials/csv-export.php:158
+#: public/partials/csv-export.php:156
 msgid "Opted-in"
 msgstr "Jag har valt att ta emot"
 
 #: admin/controllers/order/templates/product-info-metabox.php:295
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:253
-#: public/partials/csv-export.php:157
+#: public/partials/csv-export.php:155
 msgid "Custom Fields"
 msgstr "Anpassade fält"
 
@@ -1059,7 +1052,7 @@ msgid "No recurring payment plans found"
 msgstr "Inga återkommande betalningsplaner hittades"
 
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:34
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:168
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:153
 msgid "Test email sent."
 msgstr "Test-e-post skickad."
 
@@ -1101,7 +1094,7 @@ msgid "No notes found"
 msgstr "Inga anteckningar hittades"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:38
-#: public/templates/functions/plan-coupon-fields.php:514
+#: public/templates/functions/plan-coupon-fields.php:492
 #: public/templates/pdf-invoice/invoice.php:146
 msgid "Qty"
 msgstr "Antal"
@@ -1115,7 +1108,7 @@ msgid "Recurring Payment"
 msgstr "Återkommande betalning"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:108
-#: admin/partials/settings-page/metadata.php:454
+#: admin/partials/settings-page/metadata.php:446
 #: public/templates/my-account/subscription-detail.php:56
 msgid "Cancel Subscription"
 msgstr "Avbryt prenumeration"
@@ -1133,8 +1126,8 @@ msgstr "Återuppta"
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:115
 #: admin/controllers/templates/order-list-custom-status.php:108
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:29
-#: admin/reports/templates/admin-reports-page.php:466
-#: public/partials/csv-export.php:318
+#: admin/reports/templates/admin-reports-page.php:462
+#: public/partials/csv-export.php:325
 msgid "Canceled"
 msgstr "Avbruten"
 
@@ -1257,7 +1250,7 @@ msgid "Error loading subscription."
 msgstr "Fel vid inläsning av prenumeration."
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-sync-ajax.php:67
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid "Subscription synced successfully."
 msgstr "Prenumeration synkroniserad framgångsrikt."
 
@@ -1427,7 +1420,7 @@ msgstr[1] "Obetalda <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
-#: public/partials/csv-export.php:320
+#: public/partials/csv-export.php:327
 msgid "Paused"
 msgstr "Pausad"
 
@@ -1500,7 +1493,7 @@ msgid "Total Orders"
 msgstr "Totala beställningar"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:36
-#: admin/reports/templates/admin-reports-page.php:497
+#: admin/reports/templates/admin-reports-page.php:493
 msgid "Total Sales"
 msgstr "Totala försäljningar"
 
@@ -1509,7 +1502,7 @@ msgid "Avg. Order Value"
 msgstr "Genomsnittligt beställningsvärde"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:38
-#: includes/scheduled-reports/report-email-template.php:116
+#: includes/scheduled-reports/report-email-template.php:114
 msgid "Pending Orders"
 msgstr "Pågående beställningar"
 
@@ -1519,7 +1512,7 @@ msgid "Paid Orders"
 msgstr "Betalda beställningar"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:40
-#: includes/scheduled-reports/report-email-template.php:118
+#: includes/scheduled-reports/report-email-template.php:116
 msgid "Refunded Orders"
 msgstr "Återbetalda beställningar"
 
@@ -1546,12 +1539,12 @@ msgid "Trials"
 msgstr "Tester"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:54
-#: admin/reports/templates/admin-reports-page.php:628
+#: admin/reports/templates/admin-reports-page.php:624
 msgid "Renewals"
 msgstr "Förnyelser"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:409, fuzzy
+#: admin/reports/templates/admin-reports-page.php:405, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1597,7 +1590,7 @@ msgid "View Contacts"
 msgstr "Visa kontakter"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:80
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:180
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:175
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -1741,9 +1734,9 @@ msgstr "Meddelande etikett"
 
 #: admin/metaboxes/field-groups/message-fields.php:158
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:30
-#: admin/settings/traits/options/core-settings.php:264
-#: admin/settings/traits/options/core-settings.php:322
-#: admin/settings/traits/options/core-settings.php:380
+#: admin/settings/traits/options/core-settings.php:262
+#: admin/settings/traits/options/core-settings.php:320
+#: admin/settings/traits/options/core-settings.php:378
 #: admin/settings/traits/options/payment-fields.php:11
 #: admin/settings/traits/options/payment-fields.php:23
 #: admin/settings/traits/options/payment-fields.php:135
@@ -1795,13 +1788,13 @@ msgid "Bcc"
 msgstr "Bcc"
 
 #: admin/metaboxes/field-groups/message-fields.php:266
-#: admin/settings/traits/options/core-settings.php:274
-#: admin/settings/traits/options/core-settings.php:332
-#: admin/settings/traits/options/core-settings.php:400
-#: admin/settings/traits/options/core-settings.php:443
-#: admin/settings/traits/options/core-settings.php:486
-#: admin/settings/traits/options/core-settings.php:529
-#: admin/settings/traits/options/core-settings.php:572
+#: admin/settings/traits/options/core-settings.php:272
+#: admin/settings/traits/options/core-settings.php:330
+#: admin/settings/traits/options/core-settings.php:398
+#: admin/settings/traits/options/core-settings.php:441
+#: admin/settings/traits/options/core-settings.php:484
+#: admin/settings/traits/options/core-settings.php:527
+#: admin/settings/traits/options/core-settings.php:570
 msgid "Subject"
 msgstr "Ämne"
 
@@ -1911,8 +1904,7 @@ msgstr "Använd standardinställning"
 #: admin/metaboxes/field-groups/sales-checkout-fields.php:62
 #: admin/partials/ppcart-admin-field-repeater.php:156
 #: admin/partials/settings-page/render-helpers.php:7
-#: admin/partials/settings-page/sections/email-notifications.php:44
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:134
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 msgid "Disabled"
 msgstr "Inaktiverad"
 
@@ -2023,8 +2015,8 @@ msgstr "Avsnittsrubrik"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:26
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:184
-#: public/partials/csv-export.php:151
-#: public/partials/csv-export.php:233
+#: public/partials/csv-export.php:149
+#: public/partials/csv-export.php:231
 #: public/templates/functions/plan-coupon-fields.php:197
 msgid "Payment Plan"
 msgstr "Betalningsplan"
@@ -2063,7 +2055,7 @@ msgid "Sale billing"
 msgstr "Reafakturering"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:71
-#: admin/partials/ppcart-admin-page-settings.php:158
+#: admin/partials/ppcart-admin-page-settings.php:148
 #: admin/partials/settings-page/metadata.php:108
 msgid "Advanced"
 msgstr "Avancerat"
@@ -2106,29 +2098,21 @@ msgid "One-time"
 msgstr "Engångsbetalning"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:56
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:324
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:323
 msgid "Pay what you want"
 msgstr "Betala vad du vill"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:65
-msgid "Optional. Set a slug to preselect this plan from a checkout link."
-msgstr ""
-"Valfritt. Ställ in en slug för att förvalja denna plan från en "
-"checkout-länk."
-
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:66
 msgid ""
-"For example, enter annual and add ?ppcart-pay-plan=annual to the checkout "
-"link. Use letters, numbers, dashes or underscores. The slug must be unique "
-"for this product."
+"Letters, numbers, dashes and underscores only. Must be unique for this "
+"product."
 msgstr ""
-"Till exempel, ange årlig och lägg till ?ppcart-pay-plan=annual till "
-"checkout-länken. Använd bokstäver, siffror, bindestreck eller understreck. "
-"Slugen måste vara unik för denna produkt."
+"Bokstäver, siffror, bindestreck och understreck endast. Måste vara unikt "
+"för denna produkt."
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:68
-msgid "Checkout link slug"
-msgstr "Checkout-länk slug"
+msgid "URL slug"
+msgstr "URL-slug"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:78
 msgid "Plan name on the checkout form."
@@ -2238,31 +2222,31 @@ msgstr "Försäljningsfrekvens"
 msgid "Pay interval"
 msgstr "Betalningsintervall"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:222
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:246
 msgid "Day"
 msgstr "Dag"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
 msgid "Week"
 msgstr "Vecka"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
 msgid "Month"
 msgstr "Månad"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:226
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:250
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
 msgid "Year"
 msgstr "År"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:242
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:241
 msgid "Sale pay interval"
 msgstr "Försäljningsbetalningsintervall"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:265
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:264
 msgid ""
 "Billing stops after this many payments. Otherwise it continues until the "
 "subscription is canceled."
@@ -2270,35 +2254,35 @@ msgstr ""
 "Faktureringen stannar efter detta antal betalningar. Annars fortsätter den "
 "tills prenumerationen avbryts."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:267
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:266
 msgid "Number of payments"
 msgstr "Antal betalningar"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:286
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:285
 msgid "Sale number of payments"
 msgstr "Försäljningsantal betalningar"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:303
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:302
 msgid "Shown in place of the price at checkout."
 msgstr "Visas istället för priset vid kassan."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:304
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:341
 msgid "Name your price label"
 msgstr "Namnge din prislabel"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:306
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:308
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:343
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:345
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:307
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:344
 msgid "Name your price"
 msgstr "Namnge ditt pris"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:320
 msgid "Customers choose their own recurring amount."
 msgstr "Kunder väljer sitt eget återkommande belopp."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:322
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
 msgid "The amount must be at or above the plan price."
 msgstr "Beloppet måste vara lika med eller över planens pris."
 
@@ -2615,7 +2599,7 @@ msgid "Grow sales"
 msgstr "Öka försäljningen"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:9
-#: admin/partials/ppcart-admin-page-settings.php:147
+#: admin/partials/ppcart-admin-page-settings.php:137
 #: admin/partials/settings-page/tabs/topbar.php:12
 msgid "General"
 msgstr "Allmän"
@@ -2641,7 +2625,7 @@ msgid "Emails"
 msgstr "E-postmeddelanden"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:15
-#: admin/partials/ppcart-admin-page-settings.php:154
+#: admin/partials/ppcart-admin-page-settings.php:144
 #: admin/partials/settings-page/tabs/panels.php:67
 msgid "Integrations"
 msgstr "Integrationer"
@@ -2652,8 +2636,8 @@ msgstr "Produktmeddelande"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:164
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:121
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
 msgid "Email preview"
 msgstr "E-postförhandsvisning"
 
@@ -2826,7 +2810,7 @@ msgstr "Välj"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metabox-integration-options.php:107
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:156
-#: admin/settings/traits/options/core-settings.php:239
+#: admin/settings/traits/options/core-settings.php:237
 msgid "-- Select --"
 msgstr "-- Välj --"
 
@@ -2926,8 +2910,8 @@ msgid "Checkbox label"
 msgstr "Checkbox etikett"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:143
-#: admin/settings/traits/options/core-settings.php:295
-#: admin/settings/traits/options/core-settings.php:353
+#: admin/settings/traits/options/core-settings.php:293
+#: admin/settings/traits/options/core-settings.php:351
 msgid "Headline"
 msgstr "Rubrik"
 
@@ -2976,7 +2960,7 @@ msgid "Header background image"
 msgstr "Sidhuvudets bakgrundsbild"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:35
-#: public/partials/csv-export.php:322
+#: public/partials/csv-export.php:329
 msgid "Until canceled"
 msgstr "Tills det avbryts"
 
@@ -3005,8 +2989,8 @@ msgstr "Förnamn "
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:39
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:207
 #: public/partials/csv-export.php:21
-#: public/partials/csv-export.php:140
-#: public/templates/functions/plan-coupon-fields.php:566
+#: public/partials/csv-export.php:138
+#: public/templates/functions/plan-coupon-fields.php:535
 #: public/templates/my-account/tabs/user-profile.php:22
 msgid "Last Name"
 msgstr "Efternamn"
@@ -3056,7 +3040,7 @@ msgstr "Sparade ändringar"
 #: admin/partials/settings-page/tabs/form-actions.php:7
 #: admin/partials/settings-page/tabs/form-actions.php:8
 #: admin/partials/settings-page/tabs/panels.php:388
-#: admin/partials/settings-page/tabs/savebar.php:12
+#: admin/partials/settings-page/tabs/savebar.php:11
 msgid "Save changes"
 msgstr "Spara ändringar"
 
@@ -3067,10 +3051,6 @@ msgstr "Och"
 #: admin/partials/ppcart-admin-field-conditions.php:61
 msgid "Or"
 msgstr "Eller"
-
-#: admin/partials/ppcart-admin-field-conditions.php:98
-msgid "Remove condition"
-msgstr "Ta bort villkor"
 
 #: admin/partials/ppcart-admin-field-conditions.php:106
 msgid "+ Add another condition"
@@ -3083,16 +3063,6 @@ msgstr "Redigera fält"
 #: admin/partials/ppcart-admin-field-secure-file-upload.php:39
 msgid "Media Library"
 msgstr "Mediebibliotek"
-
-#: admin/partials/ppcart-admin-field-text.php:86
-#. translators: %s: date field label.
-#, php-format
-msgid "Clear %s"
-msgstr "Rensa %s"
-
-#: admin/partials/ppcart-admin-field-text.php:87
-msgid "Clear date"
-msgstr "Rensa datum"
 
 #: admin/partials/ppcart-admin-page-settings-tax.php:9
 msgid "Custom Tax Rates"
@@ -3169,7 +3139,7 @@ msgid "Loading&hellip;"
 msgstr "Laddar&hellip;"
 
 #: admin/partials/ppcart-admin-page-settings.php:44
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:176
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:171
 #. translators: %s: plugin title.
 #, php-format
 msgid "%s Settings"
@@ -3187,53 +3157,37 @@ msgstr "Vänligen aktivera minst en betalningsmetod i"
 msgid "PublishPress Cart settings"
 msgstr "PublishPress Kundvagnsinställningar"
 
-#: admin/partials/ppcart-admin-page-settings.php:107
-msgid "Debug log cleared."
-msgstr "Debug-logg rensad."
-
-#: admin/partials/ppcart-admin-page-settings.php:111
-msgid "Stripe webhook log cleared."
-msgstr "Stripe webhook-logg rensad."
-
-#: admin/partials/ppcart-admin-page-settings.php:148
+#: admin/partials/ppcart-admin-page-settings.php:138
 msgid "Pages"
 msgstr "Sidor"
 
-#: admin/partials/ppcart-admin-page-settings.php:149
+#: admin/partials/ppcart-admin-page-settings.php:139
 msgid "Branding"
 msgstr "Varumärke"
 
-#: admin/partials/ppcart-admin-page-settings.php:150
+#: admin/partials/ppcart-admin-page-settings.php:140
 msgid "Payment Methods"
 msgstr "Betalningsmetoder"
 
-#: admin/partials/ppcart-admin-page-settings.php:151
+#: admin/partials/ppcart-admin-page-settings.php:141
 msgid "Invoices"
 msgstr "Fakturor"
 
-#: admin/partials/ppcart-admin-page-settings.php:152
+#: admin/partials/ppcart-admin-page-settings.php:142
 msgid "Downloads"
 msgstr "Nedladdningar"
 
-#: admin/partials/ppcart-admin-page-settings.php:156
+#: admin/partials/ppcart-admin-page-settings.php:146
 msgid "Debug"
 msgstr "Felsökning"
 
-#: admin/partials/ppcart-admin-page-settings.php:157
+#: admin/partials/ppcart-admin-page-settings.php:147
 msgid "Maintenance"
 msgstr "Underhåll"
 
-#: admin/partials/ppcart-admin-page-settings.php:173
+#: admin/partials/ppcart-admin-page-settings.php:163
 msgid "White Label"
 msgstr "Vit etikett"
-
-#: admin/partials/ppcart-admin-repeater-move-buttons.php:25
-msgid "Move up"
-msgstr "Flytta upp"
-
-#: admin/partials/ppcart-admin-repeater-move-buttons.php:29
-msgid "Move down"
-msgstr "Flytta ner"
 
 #: admin/partials/settings-page/metadata.php:11
 msgid "Currency and pricing defaults for your store."
@@ -3414,398 +3368,389 @@ msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "Synkronisera kunder, taggar och e-handelsaktiviteter till Drip."
 
 #: admin/partials/settings-page/metadata.php:212, fuzzy
-msgid "Brevo"
-msgstr "Brevo"
-
-#: admin/partials/settings-page/metadata.php:213
-msgid "Add customers to Brevo contact lists."
-msgstr "Lägg till kunder i Brevo kontaktlistor."
-
-#: admin/partials/settings-page/metadata.php:220, fuzzy
 msgid "Flodesk"
 msgstr "Flodesk"
 
-#: admin/partials/settings-page/metadata.php:221
+#: admin/partials/settings-page/metadata.php:213
 msgid "Add customers to Flodesk segments."
 msgstr "Lägg till kunder i Flodesk-segment."
 
-#: admin/partials/settings-page/metadata.php:229, fuzzy
+#: admin/partials/settings-page/metadata.php:221, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
-#: admin/partials/settings-page/metadata.php:230
+#: admin/partials/settings-page/metadata.php:222
 msgid "Add customers to MailerLite subscribers and groups."
 msgstr "Lägg till kunder som MailerLite-prenumeranter och grupper."
 
-#: admin/partials/settings-page/metadata.php:238, fuzzy
+#: admin/partials/settings-page/metadata.php:230, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
-#: admin/partials/settings-page/metadata.php:239
+#: admin/partials/settings-page/metadata.php:231
 msgid "Add customers to MailPoet lists."
 msgstr "Lägg till kunder i MailPoet-listor."
 
-#: admin/partials/settings-page/metadata.php:246, fuzzy
+#: admin/partials/settings-page/metadata.php:238, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
-#: admin/partials/settings-page/metadata.php:247
+#: admin/partials/settings-page/metadata.php:239
 msgid "Track order events and sync customers to Encharge."
 msgstr "Spåra beställningsevenemang och synkronisera kunder till Encharge."
 
-#: admin/partials/settings-page/metadata.php:256, fuzzy
+#: admin/partials/settings-page/metadata.php:248, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
-#: admin/partials/settings-page/metadata.php:257
+#: admin/partials/settings-page/metadata.php:249
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "Lägg till kunder i FluentCRM-listor och taggar."
 
-#: admin/partials/settings-page/metadata.php:264, fuzzy
+#: admin/partials/settings-page/metadata.php:256, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
-#: admin/partials/settings-page/metadata.php:265
+#: admin/partials/settings-page/metadata.php:257
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "Registrera eller ta bort studenter från Academy LMS-kurser."
 
-#: admin/partials/settings-page/metadata.php:272, fuzzy
+#: admin/partials/settings-page/metadata.php:264, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
-#: admin/partials/settings-page/metadata.php:273
+#: admin/partials/settings-page/metadata.php:265
 msgid "Add or remove customers in Gurucan products."
 msgstr "Lägg till eller ta bort kunder i Gurucan-produkter."
 
-#: admin/partials/settings-page/metadata.php:281, fuzzy
+#: admin/partials/settings-page/metadata.php:273, fuzzy
 msgid "Heartbeat"
 msgstr "Heartbeat"
 
-#: admin/partials/settings-page/metadata.php:282
+#: admin/partials/settings-page/metadata.php:274
 msgid "Manage community access in Heartbeat."
 msgstr "Hantera communityåtkomst i Heartbeat."
 
-#: admin/partials/settings-page/metadata.php:290, fuzzy
+#: admin/partials/settings-page/metadata.php:282, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
-#: admin/partials/settings-page/metadata.php:291
+#: admin/partials/settings-page/metadata.php:283
 msgid "Enable Kajabi purchase automations."
 msgstr "Aktivera Kajabi köpautomatiseringar."
 
-#: admin/partials/settings-page/metadata.php:299, fuzzy
+#: admin/partials/settings-page/metadata.php:291, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
-#: admin/partials/settings-page/metadata.php:300
+#: admin/partials/settings-page/metadata.php:292
 msgid "Enroll customers into Teachable schools and products."
 msgstr "Registrera kunder i Teachable skolor och produkter."
 
-#: admin/partials/settings-page/metadata.php:308, fuzzy
+#: admin/partials/settings-page/metadata.php:300, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
-#: admin/partials/settings-page/metadata.php:309
+#: admin/partials/settings-page/metadata.php:301
 msgid "Grant customers access to Upcoach programs."
 msgstr "Ge kunder åtkomst till Upcoach program."
 
-#: admin/partials/settings-page/metadata.php:317, fuzzy
+#: admin/partials/settings-page/metadata.php:309, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
-#: admin/partials/settings-page/metadata.php:318
+#: admin/partials/settings-page/metadata.php:310
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Registrera eller ta bort studenter från Tutor LMS kurser."
 
-#: admin/partials/settings-page/metadata.php:325, fuzzy
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
-#: admin/partials/settings-page/metadata.php:326
+#: admin/partials/settings-page/metadata.php:318
 msgid "Grant or revoke LearnDash course access."
 msgstr "Ge eller återkalla LearnDash kursåtkomst."
 
-#: admin/partials/settings-page/metadata.php:333, fuzzy
+#: admin/partials/settings-page/metadata.php:325, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
-#: admin/partials/settings-page/metadata.php:334
+#: admin/partials/settings-page/metadata.php:326
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "Hantera WP Courseware registreringar efter köp."
 
-#: admin/partials/settings-page/metadata.php:341, fuzzy
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
-#: admin/partials/settings-page/metadata.php:342
+#: admin/partials/settings-page/metadata.php:334
 msgid "Enroll customers into MasterStudy LMS courses."
 msgstr "Registrera kunder i MasterStudy LMS kurser."
 
-#: admin/partials/settings-page/metadata.php:349
+#: admin/partials/settings-page/metadata.php:341
 msgid "Groups"
 msgstr "Grupper"
 
-#: admin/partials/settings-page/metadata.php:350
+#: admin/partials/settings-page/metadata.php:342
 msgid "Add or remove customers from WordPress Groups."
 msgstr "Lägg till eller ta bort kunder från WordPress Grupper."
 
-#: admin/partials/settings-page/metadata.php:357, fuzzy
+#: admin/partials/settings-page/metadata.php:349, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
-#: admin/partials/settings-page/metadata.php:358
+#: admin/partials/settings-page/metadata.php:350
 msgid "Grant customers MemberPress membership access."
 msgstr "Ge kunder MemberPress medlemsåtkomst."
 
-#: admin/partials/settings-page/metadata.php:365, fuzzy
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
-#: admin/partials/settings-page/metadata.php:366
+#: admin/partials/settings-page/metadata.php:358
 msgid "Grant customers ARMember plan access."
 msgstr "Ge kunderna tillgång till ARMember-planen."
 
-#: admin/partials/settings-page/metadata.php:373, fuzzy
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:366
 msgid "Grant customers WishList Member level access."
 msgstr "Ge kunderna tillgång till WishList Member-nivån."
 
-#: admin/partials/settings-page/metadata.php:381, fuzzy
+#: admin/partials/settings-page/metadata.php:373, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:374
 msgid "Grant customers Restrict Content Pro access."
 msgstr "Ge kunderna tillgång till Restrict Content Pro."
 
-#: admin/partials/settings-page/metadata.php:389, fuzzy
+#: admin/partials/settings-page/metadata.php:381, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
-#: admin/partials/settings-page/metadata.php:390
+#: admin/partials/settings-page/metadata.php:382
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "Skicka välkomstmejl för Ultimate Member till nya kunder."
 
-#: admin/partials/settings-page/metadata.php:398, fuzzy
+#: admin/partials/settings-page/metadata.php:390, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
-#: admin/partials/settings-page/metadata.php:399
+#: admin/partials/settings-page/metadata.php:391
 msgid "Choose Elementor templates for checkout components."
 msgstr "Välj Elementor-mallar för kassakomponenter."
 
-#: admin/partials/settings-page/metadata.php:406, fuzzy
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
-#: admin/partials/settings-page/metadata.php:407
+#: admin/partials/settings-page/metadata.php:399
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "Använd PublishPress Cart-beställningsformulär i Divi-layoutar."
 
-#: admin/partials/settings-page/metadata.php:414, fuzzy
+#: admin/partials/settings-page/metadata.php:406, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
-#: admin/partials/settings-page/metadata.php:415
+#: admin/partials/settings-page/metadata.php:407
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Använd PublishPress Cart-villkor i Oxygen Builder."
 
-#: admin/partials/settings-page/metadata.php:422, fuzzy
+#: admin/partials/settings-page/metadata.php:414, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
-#: admin/partials/settings-page/metadata.php:423
+#: admin/partials/settings-page/metadata.php:415
 msgid "Use PublishPress Cart blocks in the WordPress block editor."
 msgstr "Använd PublishPress Cart-block i WordPress blockredigeraren."
 
-#: admin/partials/settings-page/metadata.php:430
+#: admin/partials/settings-page/metadata.php:422
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: admin/partials/settings-page/metadata.php:431
+#: admin/partials/settings-page/metadata.php:423
 msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "Anslut PublishPress Cart-produkter med WooCommerce-flöden."
 
-#: admin/partials/settings-page/metadata.php:438
-#: admin/partials/settings-page/metadata.php:446, fuzzy
+#: admin/partials/settings-page/metadata.php:430
+#: admin/partials/settings-page/metadata.php:438, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
+#: admin/partials/settings-page/metadata.php:431
 #: admin/partials/settings-page/metadata.php:439
-#: admin/partials/settings-page/metadata.php:447
 msgid "Sell domains through WP Domain Checker checkout flows."
 msgstr "Sälj domäner genom WP Domain Checker-kassaflöden."
 
-#: admin/partials/settings-page/metadata.php:455
+#: admin/partials/settings-page/metadata.php:447
 msgid "Cancel an existing subscription as an order automation."
 msgstr "Avbryt en befintlig prenumeration som en orderautomatisering."
 
-#: admin/partials/settings-page/metadata.php:460
+#: admin/partials/settings-page/metadata.php:452
 msgid "Refund Order"
 msgstr "Återbetalning av order"
 
-#: admin/partials/settings-page/metadata.php:461
+#: admin/partials/settings-page/metadata.php:453
 msgid "Refund an existing order as an order automation."
 msgstr "Återbetala en befintlig order som en orderautomatisering."
 
-#: admin/partials/settings-page/metadata.php:466, fuzzy
+#: admin/partials/settings-page/metadata.php:458, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
-#: admin/partials/settings-page/metadata.php:467
+#: admin/partials/settings-page/metadata.php:459
 msgid "Send order data to an external webhook URL."
 msgstr "Skicka orderdata till en extern webhook-URL."
 
-#: admin/partials/settings-page/metadata.php:474
+#: admin/partials/settings-page/metadata.php:466
 msgid "All"
 msgstr "Alla"
 
-#: admin/partials/settings-page/metadata.php:475
+#: admin/partials/settings-page/metadata.php:467
 msgid "Email Marketing"
 msgstr "E-postmarknadsföring"
 
-#: admin/partials/settings-page/metadata.php:476
+#: admin/partials/settings-page/metadata.php:468
 msgid "Analytics"
 msgstr "Analys"
 
-#: admin/partials/settings-page/metadata.php:477
+#: admin/partials/settings-page/metadata.php:469
 msgid "Ads"
 msgstr "Annons"
 
-#: admin/partials/settings-page/metadata.php:478
+#: admin/partials/settings-page/metadata.php:470
 msgid "Automation"
 msgstr "Automatisering"
 
-#: admin/partials/settings-page/metadata.php:479
+#: admin/partials/settings-page/metadata.php:471
 msgid "Courses"
 msgstr "Kurser"
 
-#: admin/partials/settings-page/metadata.php:480
+#: admin/partials/settings-page/metadata.php:472
 msgid "Membership"
 msgstr "Medlemskap"
 
-#: admin/partials/settings-page/metadata.php:481
+#: admin/partials/settings-page/metadata.php:473
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:107
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:30
 msgid "Security"
 msgstr "Säkerhet"
 
-#: admin/partials/settings-page/metadata.php:482
+#: admin/partials/settings-page/metadata.php:474
 msgid "Builders"
 msgstr "Byggare"
 
-#: admin/partials/settings-page/metadata.php:487
-#: admin/reports/templates/admin-reports-page.php:355
+#: admin/partials/settings-page/metadata.php:479
+#: admin/reports/templates/admin-reports-page.php:351
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:31
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:56
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
 #: public/templates/functions/payment-address.php:74
 msgid "Cash on Delivery"
 msgstr "Kontant vid leverans"
 
-#: admin/partials/settings-page/metadata.php:488
+#: admin/partials/settings-page/metadata.php:480
 msgid "Manage Cash on Delivery"
 msgstr "Hantera efterkrav"
 
-#: admin/partials/settings-page/metadata.php:489
+#: admin/partials/settings-page/metadata.php:481
 msgid "Allow customers to pay with cash when their order is delivered."
 msgstr "Tillåt kunder att betala med kontanter när deras order levereras."
 
-#: admin/partials/settings-page/metadata.php:491
+#: admin/partials/settings-page/metadata.php:483
 #: admin/partials/settings-page/sections/email-notifications.php:53
 #: admin/partials/settings-page/sections/payment-method.php:14
 #: public/templates/my-account/subscription-row.php:47
 msgid "Manage"
 msgstr "Hantera"
 
-#: admin/partials/settings-page/metadata.php:494
+#: admin/partials/settings-page/metadata.php:486
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:32
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:57, fuzzy
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:56, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
-#: admin/partials/settings-page/metadata.php:495
-#: admin/partials/settings-page/metadata.php:499
+#: admin/partials/settings-page/metadata.php:487
+#: admin/partials/settings-page/metadata.php:491
 msgid "Manage Stripe"
 msgstr "Hantera Stripe"
 
-#: admin/partials/settings-page/metadata.php:496
+#: admin/partials/settings-page/metadata.php:488
 msgid "Accept credit cards and other payments securely via Stripe."
 msgstr "Acceptera kreditkort och andra betalningar säkert via Stripe."
 
-#: admin/partials/settings-page/metadata.php:502
+#: admin/partials/settings-page/metadata.php:494
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:33
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:57
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
-#: admin/partials/settings-page/metadata.php:503
-#: admin/partials/settings-page/metadata.php:507
+#: admin/partials/settings-page/metadata.php:495
+#: admin/partials/settings-page/metadata.php:499
 msgid "Manage PayPal"
 msgstr "Hantera PayPal"
 
-#: admin/partials/settings-page/metadata.php:504
+#: admin/partials/settings-page/metadata.php:496
 msgid "Accept payments securely via PayPal."
 msgstr "Acceptera betalningar säkert via PayPal."
 
-#: admin/partials/settings-page/metadata.php:513
+#: admin/partials/settings-page/metadata.php:505
 msgid "Sent after an order is received (pending payment). Useful for COD orders."
 msgstr ""
 "Skickas efter att en order har mottagits (väntande betalning). Användbart "
 "för efterkravsorder."
 
-#: admin/partials/settings-page/metadata.php:517
+#: admin/partials/settings-page/metadata.php:509
 msgid "Sent to customers after purchase (paid)."
 msgstr "Skickas till kunder efter köp (betald)."
 
-#: admin/partials/settings-page/metadata.php:521
+#: admin/partials/settings-page/metadata.php:513
 msgid "Sent when an order is marked complete."
 msgstr "Skickas när en beställning markeras som komplett."
 
-#: admin/partials/settings-page/metadata.php:525
+#: admin/partials/settings-page/metadata.php:517
 msgid "Sent when a new user account is created."
 msgstr "Skickas när ett nytt användarkonto skapas."
 
-#: admin/partials/settings-page/metadata.php:529
+#: admin/partials/settings-page/metadata.php:521
 msgid "Sent when an order is refunded."
 msgstr "Skickas när en beställning återbetalas."
 
-#: admin/partials/settings-page/metadata.php:533
+#: admin/partials/settings-page/metadata.php:525
 msgid "Sent before a subscription trial ends."
 msgstr "Skickas innan en prenumerationsperiod avslutas."
 
-#: admin/partials/settings-page/metadata.php:537
+#: admin/partials/settings-page/metadata.php:529
 msgid "Sent before an upcoming subscription renewal."
 msgstr "Skickas innan en kommande prenumerationsförnyelse."
 
-#: admin/partials/settings-page/metadata.php:541
+#: admin/partials/settings-page/metadata.php:533
 msgid "Sent after a subscription renews."
 msgstr "Skickas efter att en prenumeration förnyas."
 
-#: admin/partials/settings-page/metadata.php:545
+#: admin/partials/settings-page/metadata.php:537
 msgid "Sent when a subscription renewal payment fails."
 msgstr "Skickas när en betalning för prenumerationsförnyelse misslyckas."
 
-#: admin/partials/settings-page/metadata.php:549
+#: admin/partials/settings-page/metadata.php:541
 msgid "Sent when a subscription is canceled."
 msgstr "Skickas när en prenumeration avbryts."
 
-#: admin/partials/settings-page/metadata.php:553
+#: admin/partials/settings-page/metadata.php:545
 msgid "Sent when a subscription is paused."
 msgstr "Skickas när en prenumeration pausas."
 
-#: admin/partials/settings-page/metadata.php:565
+#: admin/partials/settings-page/metadata.php:557
 #: admin/partials/settings-page/sections/email-notifications.php:40
 msgid "Configure this automated email notification."
 msgstr "Konfigurera denna automatiserade e-postavisering."
 
 #: admin/partials/settings-page/render-helpers.php:8
-#: admin/partials/settings-page/sections/email-notifications.php:44
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:133
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
 msgid "Enabled"
 msgstr "Aktiverad"
 
@@ -3856,7 +3801,7 @@ msgid "Reset to default"
 msgstr "Återställ till standard"
 
 #: admin/partials/settings-page/sections/email-notifications.php:117
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
 msgid "Preview"
 msgstr "Förhandsvisning"
 
@@ -3977,12 +3922,11 @@ msgstr "Läs mer om %s"
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: admin/partials/settings-page/tabs/savebar.php:8
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
+#: admin/partials/settings-page/tabs/savebar.php:7
 msgid "You have unsaved changes"
 msgstr "Du har osparade ändringar"
 
-#: admin/partials/settings-page/tabs/savebar.php:10
+#: admin/partials/settings-page/tabs/savebar.php:9
 msgid "Discard"
 msgstr "Kasta bort"
 
@@ -3998,56 +3942,56 @@ msgstr "Sökinställningar"
 msgid "Search settings..."
 msgstr "Sökinställningar..."
 
-#: admin/reports/templates/admin-reports-page.php:46
+#: admin/reports/templates/admin-reports-page.php:48
 #. translators: %s: report period label.
 #, php-format
 msgid "Performance summary for %s"
 msgstr "Prestandasammanfattning för %s"
 
-#: admin/reports/templates/admin-reports-page.php:80
+#: admin/reports/templates/admin-reports-page.php:82
 msgid "Date range"
 msgstr "Datumintervall"
 
-#: admin/reports/templates/admin-reports-page.php:81
-msgid "All Time"
-msgstr "All tid"
+#: admin/reports/templates/admin-reports-page.php:83
+msgid "Select date range"
+msgstr "Välj dataintervall"
 
-#: admin/reports/templates/admin-reports-page.php:84
+#: admin/reports/templates/admin-reports-page.php:86
 msgid "Search customers by name or email"
 msgstr "Sök kunder efter namn eller e-post"
 
-#: admin/reports/templates/admin-reports-page.php:91
+#: admin/reports/templates/admin-reports-page.php:93
 msgid "Search by name or email"
 msgstr "Sök efter namn eller e-post"
 
-#: admin/reports/templates/admin-reports-page.php:104
+#: admin/reports/templates/admin-reports-page.php:103
 msgid "Search products"
 msgstr "Sök produkter"
 
-#: admin/reports/templates/admin-reports-page.php:111
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
+#: admin/reports/templates/admin-reports-page.php:110
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
 msgid "All products"
 msgstr "Alla produkter"
 
-#: admin/reports/templates/admin-reports-page.php:118
+#: admin/reports/templates/admin-reports-page.php:115
 msgid "Filters by the order or subscription's primary product"
 msgstr "Filtrera efter ordning eller abonnemangets primära produkt"
 
-#: admin/reports/templates/admin-reports-page.php:124
+#: admin/reports/templates/admin-reports-page.php:120
 #: admin/reports/templates/customer-report/page.php:83
 msgid "Apply"
 msgstr "Tillämpa"
 
-#: admin/reports/templates/admin-reports-page.php:125
+#: admin/reports/templates/admin-reports-page.php:121
 msgid "Clear filters"
 msgstr "Rensa filter"
 
-#: admin/reports/templates/admin-reports-page.php:126
-#: admin/reports/templates/customer-reports-page.php:97
+#: admin/reports/templates/admin-reports-page.php:122
+#: admin/reports/templates/customer-reports-page.php:85
 msgid "Export Orders"
 msgstr "Exportera beställningar"
 
-#: admin/reports/templates/admin-reports-page.php:130
+#: admin/reports/templates/admin-reports-page.php:126
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
@@ -4055,152 +3999,152 @@ msgstr ""
 "Produktfiltret matchar den primära produkten på varje beställning eller "
 "abonnemang, inte bump- eller upsell-postpositioner."
 
-#: admin/reports/templates/admin-reports-page.php:370
+#: admin/reports/templates/admin-reports-page.php:366
 #. translators: %s: canceled subscription count.
 #, php-format
 msgid "%s cancellations in local records"
 msgstr "%s avbokningar i lokala register"
 
-#: admin/reports/templates/admin-reports-page.php:375
+#: admin/reports/templates/admin-reports-page.php:371
 #. translators: 1: canceled subscription count, 2: active subscriptions at period start.
 #, php-format
 msgid "%1$s cancellations; %2$s active at period start"
 msgstr "%1$s avbokningar; %2$s aktiva vid periodens början"
 
-#: admin/reports/templates/admin-reports-page.php:381
+#: admin/reports/templates/admin-reports-page.php:377
 msgid "Report overview"
 msgstr "Rapportöversikt"
 
-#: admin/reports/templates/admin-reports-page.php:384
+#: admin/reports/templates/admin-reports-page.php:380
 #: admin/reports/templates/customer-report/page.php:89
 msgid "Net Revenue"
 msgstr "Nettointäkter"
 
-#: admin/reports/templates/admin-reports-page.php:388
+#: admin/reports/templates/admin-reports-page.php:384
 #. translators: %s: gross revenue.
 #, php-format
 msgid "Gross %s before refunds"
 msgstr "Brutto %s före återbetalningar"
 
-#: admin/reports/templates/admin-reports-page.php:394
+#: admin/reports/templates/admin-reports-page.php:390
 msgid "Customer Lifetime Value"
 msgstr "Kundlivstidsvärde"
 
-#: admin/reports/templates/admin-reports-page.php:399
+#: admin/reports/templates/admin-reports-page.php:395
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
 msgstr "Genomsnittligt antal kunder genom alla tider: %s"
 
-#: admin/reports/templates/admin-reports-page.php:404
+#: admin/reports/templates/admin-reports-page.php:400
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s customers"
 msgstr "Genomsnittligt över %s kunder genom tiderna"
 
-#: admin/reports/templates/admin-reports-page.php:413
+#: admin/reports/templates/admin-reports-page.php:409
 #. translators: %s: recurring subscription count.
 #, php-format
 msgid "%s active recurring subscriptions"
 msgstr "%s aktiva återkommande prenumerationer"
 
-#: admin/reports/templates/admin-reports-page.php:418
+#: admin/reports/templates/admin-reports-page.php:414
 msgid "Churn Rate"
 msgstr "Avhoppsfrekvens"
 
-#: admin/reports/templates/admin-reports-page.php:423
-#: admin/reports/templates/admin-reports-page.php:532
+#: admin/reports/templates/admin-reports-page.php:419
+#: admin/reports/templates/admin-reports-page.php:528
 msgid "Transactions"
 msgstr "Transaktioner"
 
-#: admin/reports/templates/admin-reports-page.php:428
+#: admin/reports/templates/admin-reports-page.php:424
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
 msgstr "%1$s nya, %2$s förnyelser"
 
-#: admin/reports/templates/admin-reports-page.php:432
+#: admin/reports/templates/admin-reports-page.php:428
 msgid "Paid orders and post-purchase offers"
 msgstr "Betalda beställningar och erbjudanden efter köp"
 
-#: admin/reports/templates/admin-reports-page.php:435
+#: admin/reports/templates/admin-reports-page.php:431
 msgid "Avg Order Value"
 msgstr "Genomsnittligt ordervärde"
 
-#: admin/reports/templates/admin-reports-page.php:437
+#: admin/reports/templates/admin-reports-page.php:433
 msgid "Based on paid transactions"
 msgstr "Baserat på betalda transaktioner"
 
-#: admin/reports/templates/admin-reports-page.php:445
+#: admin/reports/templates/admin-reports-page.php:441
 msgid "Revenue Trend"
 msgstr "Intäktsutveckling"
 
-#: admin/reports/templates/admin-reports-page.php:453
+#: admin/reports/templates/admin-reports-page.php:449
 msgid "Subscription Health"
 msgstr "Prenumerationshälsa"
 
-#: admin/reports/templates/admin-reports-page.php:454
+#: admin/reports/templates/admin-reports-page.php:450
 msgid "Local subscription records"
 msgstr "Lokala prenumerationsregister"
 
-#: admin/reports/templates/admin-reports-page.php:462
-#: admin/reports/templates/admin-reports-page.php:624
+#: admin/reports/templates/admin-reports-page.php:458
+#: admin/reports/templates/admin-reports-page.php:620
 msgid "New"
 msgstr "Ny"
 
-#: admin/reports/templates/admin-reports-page.php:476
+#: admin/reports/templates/admin-reports-page.php:472
 msgid "Top Products by Revenue"
 msgstr "Toppprodukter efter intäkter"
 
-#: admin/reports/templates/admin-reports-page.php:477
+#: admin/reports/templates/admin-reports-page.php:473
 msgid "Paid order amount"
 msgstr "Betald orderbelopp"
 
-#: admin/reports/templates/admin-reports-page.php:479
+#: admin/reports/templates/admin-reports-page.php:475
 msgid "No paid product revenue found for this period."
 msgstr "Inga intäkter från betalda produkter hittades för denna period."
 
-#: admin/reports/templates/admin-reports-page.php:484
+#: admin/reports/templates/admin-reports-page.php:480
 msgid "Payment Method Mix"
 msgstr "Betalningsmetodmix"
 
-#: admin/reports/templates/admin-reports-page.php:485
+#: admin/reports/templates/admin-reports-page.php:481
 msgid "Transactions by gateway"
 msgstr "Transaktioner efter gateway"
 
-#: admin/reports/templates/admin-reports-page.php:487
+#: admin/reports/templates/admin-reports-page.php:483
 msgid "No payment method data found for this period."
 msgstr "Inga betalningsmetodsdata hittades för denna period."
 
-#: admin/reports/templates/admin-reports-page.php:491
+#: admin/reports/templates/admin-reports-page.php:487
 msgid "Detailed order breakdown"
 msgstr "Detaljerad orderöversikt"
 
-#: admin/reports/templates/admin-reports-page.php:504
+#: admin/reports/templates/admin-reports-page.php:500
 msgid "Net Sales"
 msgstr "Nettoförsäljning"
 
-#: admin/reports/templates/admin-reports-page.php:511
+#: admin/reports/templates/admin-reports-page.php:507
 msgid "Total Refunds"
 msgstr "Totala återbetalningar"
 
-#: admin/reports/templates/admin-reports-page.php:518
+#: admin/reports/templates/admin-reports-page.php:514
 msgid "Amount Refunded"
 msgstr "Återbetalt belopp"
 
-#: admin/reports/templates/admin-reports-page.php:525
+#: admin/reports/templates/admin-reports-page.php:521
 msgid "Avg Revenue per Customer"
 msgstr "Genomsnittlig intäkt per kund"
 
-#: admin/reports/templates/admin-reports-page.php:558
+#: admin/reports/templates/admin-reports-page.php:554
 msgid "Sales by Product"
 msgstr "Försäljning per produkt"
 
-#: admin/reports/templates/admin-reports-page.php:562
+#: admin/reports/templates/admin-reports-page.php:558
 msgid "No product sales in this period"
 msgstr "Inga produktförsäljningar under denna period"
 
-#: admin/reports/templates/admin-reports-page.php:563
+#: admin/reports/templates/admin-reports-page.php:559
 msgid ""
 "Completed paid orders will appear here once customers buy a product in the "
 "selected date range."
@@ -4208,15 +4152,15 @@ msgstr ""
 "Slutförda betalda beställningar kommer att visas här när kunder köper en "
 "produkt inom det valda dataintervallet."
 
-#: admin/reports/templates/admin-reports-page.php:574
+#: admin/reports/templates/admin-reports-page.php:570
 msgid "Refunds by Product"
 msgstr "Återbetalningar per produkt"
 
-#: admin/reports/templates/admin-reports-page.php:578
+#: admin/reports/templates/admin-reports-page.php:574
 msgid "No product refunds in this period"
 msgstr "Inga produktåterbetalningar under denna period"
 
-#: admin/reports/templates/admin-reports-page.php:579
+#: admin/reports/templates/admin-reports-page.php:575
 msgid ""
 "Refunded products will appear here when an order refund is recorded for the "
 "selected date range."
@@ -4224,15 +4168,15 @@ msgstr ""
 "Återbetalda produkter kommer att visas här när en orderåterbetalning "
 "registreras för det valda dataintervallet."
 
-#: admin/reports/templates/admin-reports-page.php:590
+#: admin/reports/templates/admin-reports-page.php:586
 msgid "Transactions by Payment Gateway"
 msgstr "Transaktioner per betalningsgateway"
 
-#: admin/reports/templates/admin-reports-page.php:594
+#: admin/reports/templates/admin-reports-page.php:590
 msgid "No gateway transactions in this period"
 msgstr "Inga gatewaytransaktioner under denna period"
 
-#: admin/reports/templates/admin-reports-page.php:595
+#: admin/reports/templates/admin-reports-page.php:591
 msgid ""
 "Paid transactions will be grouped by gateway here after checkout activity "
 "is recorded."
@@ -4240,19 +4184,19 @@ msgstr ""
 "Betalda transaktioner kommer att grupperas per gateway här efter att "
 "kassaaktivitet har registrerats."
 
-#: admin/reports/templates/admin-reports-page.php:622
+#: admin/reports/templates/admin-reports-page.php:618
 msgid "Orders by Type"
 msgstr "Beställningar efter typ"
 
-#: admin/reports/templates/admin-reports-page.php:635
+#: admin/reports/templates/admin-reports-page.php:631
 msgid "Main Orders by Product"
 msgstr "Huvudordrar per produkt"
 
-#: admin/reports/templates/admin-reports-page.php:655
+#: admin/reports/templates/admin-reports-page.php:651
 msgid "No main orders in this period"
 msgstr "Inga huvudordrar under denna period"
 
-#: admin/reports/templates/admin-reports-page.php:656
+#: admin/reports/templates/admin-reports-page.php:652
 msgid ""
 "Main product order counts will appear here once paid checkout orders are "
 "tracked."
@@ -4342,17 +4286,17 @@ msgid "Plan"
 msgstr "Plan"
 
 #: admin/reports/templates/customer-report/page.php:192
-#: public/partials/csv-export.php:234
+#: public/partials/csv-export.php:232
 msgid "Pay Interval"
 msgstr "Betalningsintervall"
 
 #: admin/reports/templates/customer-report/page.php:194
-#: public/partials/csv-export.php:236
+#: public/partials/csv-export.php:234
 msgid "Total Revenue"
 msgstr "Totala intäkter"
 
 #: admin/reports/templates/customer-report/page.php:195
-#: public/partials/csv-export.php:237
+#: public/partials/csv-export.php:235
 msgid "Remaining Payments"
 msgstr "Kvarvarande betalningar"
 
@@ -4416,35 +4360,34 @@ msgstr "Köpta produkter"
 msgid "Subscription Revenue"
 msgstr "Prenumerationsintäkter"
 
-#: admin/reports/templates/customer-reports-page.php:25
-#: admin/reports/traits/templates/reports-date-get-report-period.php:17
-msgid "All time"
-msgstr "All tid"
-
-#: admin/reports/templates/customer-reports-page.php:97
+#: admin/reports/templates/customer-reports-page.php:85
 msgid "Export Subscriptions"
 msgstr "Exportera prenumerationer"
 
-#: admin/reports/templates/customer-reports-page.php:257
+#: admin/reports/templates/customer-reports-page.php:253
 msgid "Upsell"
 msgstr "Uppprissättning"
 
-#: admin/reports/templates/customer-reports-page.php:260
+#: admin/reports/templates/customer-reports-page.php:256
 msgid "Downsell"
 msgstr "Nedprissättning"
 
-#: admin/reports/templates/customer-reports-page.php:272
+#: admin/reports/templates/customer-reports-page.php:268
 #: includes/templates/post-types-create-custom-post-type.php:13
 msgid "Order"
 msgstr "Beställning"
 
-#: admin/reports/templates/customer-reports-page.php:287
+#: admin/reports/templates/customer-reports-page.php:283
 msgid "Offer during checkout"
 msgstr "Erbjudande under kassan"
 
-#: admin/reports/templates/customer-reports-page.php:392
+#: admin/reports/templates/customer-reports-page.php:388
 msgid "Guest customer"
 msgstr "Gästkund"
+
+#: admin/reports/traits/templates/reports-date-get-report-period.php:17
+msgid "All time"
+msgstr "All tid"
 
 #: admin/reports/traits/templates/reports-render-render-bar-rows.php:16
 msgid "No data for this period"
@@ -4463,79 +4406,12 @@ msgstr ""
 "kassaaktiviteten har registrerats för det valda dataintervallet."
 
 #: admin/reports/traits/templates/reports-render-render-revenue-chart.php:58
-msgid ""
-"Revenue trend chart. The revenue data table after the chart lists each "
-"period."
-msgstr ""
-"Intäktstrenddiagram. Datatabellen för intäkter efter diagrammet listar "
-"varje period."
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:84
-msgid "Show data table"
-msgstr "Visa datatabell"
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:86
-msgid "Revenue by period"
-msgstr "Intäkter per period"
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:89, fuzzy
-msgid "Period"
-msgstr "Period"
-
-#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:90
-msgid "Revenue"
-msgstr "Intäkter"
+msgid "Revenue trend chart"
+msgstr "Intäkts trenddiagram"
 
 #: admin/reports/traits/trait-ppcart-admin-reports-data.php:131
 msgid "Unknown product"
 msgstr "Okänt produkt"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:147, fuzzy
-msgid "live"
-msgstr "live"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:147, fuzzy
-msgid "sandbox"
-msgstr "sandbox"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:154
-#. translators: 1: live or sandbox, 2: webhook URL.
-#, php-format
-msgid "PayPal webhook registered for %1$s mode at %2$s."
-msgstr "PayPal webhook registrerad för %1$s-läge på %2$s."
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:160
-#. translators: 1: live or sandbox, 2: PayPal error, 3: webhook URL, 4: event names.
-#, php-format
-msgid ""
-"PayPal refused the webhook for %1$s mode: %2$s. Add it yourself in your "
-"PayPal app (Developer Dashboard, your app, Webhooks) with the URL %3$s and "
-"these events: %4$s. Until then, the hourly check completes payments."
-msgstr ""
-"PayPal vägrade webhooken för %1$s-läge: %2$s. Lägg till det själv i din "
-"PayPal-app (Developer Dashboard, din app, Webhooks) med URL: %3$s och dessa "
-"händelser: %4$s. Tills dess slutförs betalningar genom den timvisa "
-"kontrollen."
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:169
-#. translators: %s: webhook URL.
-#, php-format
-msgid ""
-"The PayPal webhook is registered when you save with Client ID and Secret "
-"set. URL: %s"
-msgstr ""
-"PayPal-webhooken är registrerad när du sparar med Client ID och Secret "
-"inställt. URL: %s"
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:190
-msgid "PayPal could not be reached."
-msgstr "PayPal kunde inte nås."
-
-#: admin/settings/class-ppcart-admin-paypal-webhook.php:192
-#. translators: %d: HTTP status code.
-#, fuzzy, php-format
-msgid "HTTP %d"
-msgstr "HTTP %d"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:28
 #. translators: %s: the Stripe permission name, wrapped in strong tags.
@@ -4614,7 +4490,7 @@ msgstr ""
 "Detta konto tillåter oss inte att återkontrollera slutpunkten, så ingen "
 "live-status visas."
 
-#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:115
+#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
@@ -4769,7 +4645,7 @@ msgid "Privacy Policy URL"
 msgstr "Integritetspolicy URL"
 
 #: admin/settings/traits/options/core-settings.php:114
-#: public/templates/functions/plan-coupon-fields.php:576
+#: public/templates/functions/plan-coupon-fields.php:545
 msgid "Company Name"
 msgstr "Företagsnamn"
 
@@ -4857,80 +4733,80 @@ msgstr "Fotnotstext"
 msgid "Test email"
 msgstr "Test-e-post"
 
-#: admin/settings/traits/options/core-settings.php:240
+#: admin/settings/traits/options/core-settings.php:238
 msgid "Order Received"
 msgstr "Order mottagen"
 
-#: admin/settings/traits/options/core-settings.php:241
+#: admin/settings/traits/options/core-settings.php:239
 msgid "New User Welcome"
 msgstr "Välkomstmeddelande för Ny Användare"
 
-#: admin/settings/traits/options/core-settings.php:242
+#: admin/settings/traits/options/core-settings.php:240
 msgid "Purchase Confirmation"
 msgstr "Köpebekräftelse"
 
-#: admin/settings/traits/options/core-settings.php:243
+#: admin/settings/traits/options/core-settings.php:241
 msgid "Order Refunded"
 msgstr "Order Återbetalad"
 
-#: admin/settings/traits/options/core-settings.php:244
+#: admin/settings/traits/options/core-settings.php:242
 msgid "Trial Ending Reminder"
 msgstr "Påminnelse om Slut på Provperiod"
 
-#: admin/settings/traits/options/core-settings.php:245
+#: admin/settings/traits/options/core-settings.php:243
 msgid "Upcoming Renewal Reminder"
 msgstr "Kommande Förnyelse Påminnelse"
 
-#: admin/settings/traits/options/core-settings.php:246
+#: admin/settings/traits/options/core-settings.php:244
 msgid "Subscription Renewal Confirmation"
 msgstr "Bekräftelse på Prenumerationsförnyelse"
 
-#: admin/settings/traits/options/core-settings.php:247
+#: admin/settings/traits/options/core-settings.php:245
 msgid "Failed Renewal Payment"
 msgstr "Misslyckad förnyelsebetalning"
 
-#: admin/settings/traits/options/core-settings.php:248
+#: admin/settings/traits/options/core-settings.php:246
 msgid "Subscription Canceled Confirmation"
 msgstr "Bekräftelse på Avbruten Prenumeration"
 
-#: admin/settings/traits/options/core-settings.php:249
+#: admin/settings/traits/options/core-settings.php:247
 msgid "Subscription Paused Confirmation"
 msgstr "Bekräftelse på Pausad Prenumeration"
 
-#: admin/settings/traits/options/core-settings.php:251
+#: admin/settings/traits/options/core-settings.php:249
 msgid "Preview Email"
 msgstr "Förhandsgranska e-post"
 
-#: admin/settings/traits/options/core-settings.php:252
+#: admin/settings/traits/options/core-settings.php:250
 msgid "Send Test"
 msgstr "Skicka test"
 
-#: admin/settings/traits/options/core-settings.php:254
+#: admin/settings/traits/options/core-settings.php:252
 msgid "Preview and test emails use sample order data for personalization tags."
 msgstr ""
 "Förhandsgranskningar och test-e-post använder exempelorderdatat för "
 "personaliseringstaggar."
 
-#: admin/settings/traits/options/core-settings.php:285
-#: admin/settings/traits/options/core-settings.php:343
-#: admin/settings/traits/options/core-settings.php:410
-#: admin/settings/traits/options/core-settings.php:453
-#: admin/settings/traits/options/core-settings.php:496
-#: admin/settings/traits/options/core-settings.php:539
-#: admin/settings/traits/options/core-settings.php:582
+#: admin/settings/traits/options/core-settings.php:283
+#: admin/settings/traits/options/core-settings.php:341
+#: admin/settings/traits/options/core-settings.php:408
+#: admin/settings/traits/options/core-settings.php:451
+#: admin/settings/traits/options/core-settings.php:494
+#: admin/settings/traits/options/core-settings.php:537
+#: admin/settings/traits/options/core-settings.php:580
 msgid "Send to admin?"
 msgstr "Skicka till administratör?"
 
-#: admin/settings/traits/options/core-settings.php:306
-#: admin/settings/traits/options/core-settings.php:364
+#: admin/settings/traits/options/core-settings.php:304
+#: admin/settings/traits/options/core-settings.php:362
 msgid "Body Text"
 msgstr "Brödtext"
 
-#: admin/settings/traits/options/core-settings.php:390
+#: admin/settings/traits/options/core-settings.php:388
 msgid "Use WordPress Default Notification"
 msgstr "Använd WordPress standardmeddelande"
 
-#: admin/settings/traits/options/core-settings.php:394
+#: admin/settings/traits/options/core-settings.php:392
 msgid ""
 "If enabled, WordPress default new user notification will be used instead of "
 "custom email template."
@@ -4938,21 +4814,21 @@ msgstr ""
 "Om aktiverat kommer WordPress standardmeddelande för nya användare att "
 "användas istället för anpassad e-postmall."
 
-#: admin/settings/traits/options/core-settings.php:420
-#: admin/settings/traits/options/core-settings.php:463
-#: admin/settings/traits/options/core-settings.php:506
-#: admin/settings/traits/options/core-settings.php:549
+#: admin/settings/traits/options/core-settings.php:418
+#: admin/settings/traits/options/core-settings.php:461
+#: admin/settings/traits/options/core-settings.php:504
+#: admin/settings/traits/options/core-settings.php:547
 msgid "Body"
 msgstr "Kropp"
 
-#: admin/settings/traits/options/core-settings.php:433
-#: admin/settings/traits/options/core-settings.php:476
-#: admin/settings/traits/options/core-settings.php:519
-#: admin/settings/traits/options/core-settings.php:562
+#: admin/settings/traits/options/core-settings.php:431
+#: admin/settings/traits/options/core-settings.php:474
+#: admin/settings/traits/options/core-settings.php:517
+#: admin/settings/traits/options/core-settings.php:560
 msgid "Enable/Disable"
 msgstr "Aktivera/Avaktivera"
 
-#: admin/settings/traits/options/core-settings.php:592
+#: admin/settings/traits/options/core-settings.php:590
 msgid "Subscription Canceled"
 msgstr "Prenumeration Avbruten"
 
@@ -5026,7 +4902,6 @@ msgid "Connection Status"
 msgstr "Anslutningsstatus"
 
 #: admin/settings/traits/options/payment-fields.php:61
-#: admin/settings/traits/options/payment-fields.php:172
 msgid "Checkout experience"
 msgstr "Kassan"
 
@@ -5082,52 +4957,35 @@ msgstr ""
 "Verifierar PayPal TLS-certifikat och kontroll av värdnamn för "
 "serverbaserade PayPal API-förfrågningar."
 
-#: admin/settings/traits/options/payment-fields.php:177
-msgid "Redirect to PayPal"
-msgstr "Omdirigera till PayPal"
-
-#: admin/settings/traits/options/payment-fields.php:178
-msgid "On this page (PayPal popup)"
-msgstr "På denna sida (PayPal-popup)"
-
-#: admin/settings/traits/options/payment-fields.php:180
-msgid ""
-"On-page checkout needs the PayPal Email, Client ID and Secret of the "
-"selected mode. Without the Client ID and Secret the checkout redirects to "
-"PayPal."
-msgstr ""
-"On-page checkout behöver PayPal-e-post, Client ID och Secret för det valda "
-"läget. Utan Client ID och Secret omdirigeras checkouten till PayPal."
-
-#: admin/settings/traits/options/payment-fields.php:187
+#: admin/settings/traits/options/payment-fields.php:172
 msgid "PayPal Email"
 msgstr "PayPal-e-post"
 
-#: admin/settings/traits/options/payment-fields.php:197
+#: admin/settings/traits/options/payment-fields.php:182
 msgid "Client ID"
 msgstr "Klient-ID"
 
-#: admin/settings/traits/options/payment-fields.php:207
+#: admin/settings/traits/options/payment-fields.php:192
 msgid "Secret"
 msgstr "Hemlighet"
 
-#: admin/settings/traits/options/payment-fields.php:217
+#: admin/settings/traits/options/payment-fields.php:202
 msgid "PDT Token"
 msgstr "PDT-token"
 
-#: admin/settings/traits/options/payment-fields.php:227
+#: admin/settings/traits/options/payment-fields.php:212
 msgid "Sandbox Email"
 msgstr "Sandbox-e-post"
 
-#: admin/settings/traits/options/payment-fields.php:237
+#: admin/settings/traits/options/payment-fields.php:222
 msgid "Sandbox Client ID"
 msgstr "Sandbox Klient-ID"
 
-#: admin/settings/traits/options/payment-fields.php:247
+#: admin/settings/traits/options/payment-fields.php:232
 msgid "Sandbox Secret"
 msgstr "Sandbox Hemlighet"
 
-#: admin/settings/traits/options/payment-fields.php:257
+#: admin/settings/traits/options/payment-fields.php:242
 msgid "Sandbox PDT Token"
 msgstr "Sandbox PDT-token"
 
@@ -5208,7 +5066,7 @@ msgid "Stripe checkout is disabled. You can still connect now."
 msgstr "Stripe-kassan är inaktiverad. Du kan fortfarande ansluta nu."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:141
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "2. Install the webhook"
 msgstr "2. Installera webhooken"
 
@@ -5229,7 +5087,7 @@ msgid "Stripe is ready"
 msgstr "Stripe är redo"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
 msgid "Keys synced"
 msgstr "Nycklar synkroniserade"
 
@@ -5239,37 +5097,23 @@ msgstr "Nycklar synkroniserade"
 msgid "Webhook active with %d events"
 msgstr "Webhook aktiv med %d händelser"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:118
-msgid "Replace the webhook signing secret"
-msgstr "Ersätt webhook-signaturhemligheten"
-
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
-msgid ""
-"Stripe rejects events with \"Invalid Stripe webhook signature\" when this "
-"secret does not match your endpoint. Paste the current signing secret from "
-"the endpoint in your Stripe Dashboard."
-msgstr ""
-"Stripe avvisar händelser med \"Ogiltig Stripe webhook-signatur\" när denna "
-"hemlighet inte matchar din slutpunkt. Klistra in den aktuella "
-"signaturhemligheten från slutpunkten i din Stripe Dashboard."
-
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "1. Stripe account connected"
 msgstr "1. Stripe-konto anslutet"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:142
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Orders will not complete until this is done."
 msgstr "Beställningar kommer inte att slutföras förrän detta är gjort."
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Needs attention"
 msgstr "Behöver uppmärksamhet"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
 msgid "Not installed"
 msgstr "Inte installerad"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:160
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
 msgid "Fix the events"
 msgstr "Fixa händelserna"
 
@@ -5442,51 +5286,51 @@ msgstr "DataLayer med GA4"
 msgid "DataLayer with Enhanced Ecommerce (UA)"
 msgstr "DataLayer med förbättrad e-handel (UA)"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:80
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:75
 #. translators: %1$s is the plugin name, %2$s is the star rating markup.
 #, php-format
 msgid "If you like %1$s, please leave us a %2$s rating. Thank you!"
 msgstr "Om du gillar %1$s, vänligen ge oss en %2$s betyg. Tack!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:94
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:89
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:90
 msgid "About PublishPress Cart"
 msgstr "Om PublishPress Cart"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:100
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:96
 msgid "PublishPress Cart Documentation"
 msgstr "Dokumentation för PublishPress Cart"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:106
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
 msgid "Contact the PublishPress team"
 msgstr "Kontakta PublishPress-teamet"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:107
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:102
 msgid "Contact PublishPress"
 msgstr "Kontakta PublishPress"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:156
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:157
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:151
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:152
 #: includes/templates/post-types-create-custom-post-type.php:100
 #: includes/templates/post-types-create-custom-post-type.php:118
 msgid "Categories"
 msgstr "Kategorier"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:164
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:165
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:159
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:160
 #: includes/templates/post-types-create-custom-post-type.php:106
 #: includes/templates/post-types-create-custom-post-type.php:119
 msgid "Tags"
 msgstr "Taggar"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:271
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:216
 #. translators: %s: plugin title.
 #, php-format
 msgid "Welcome to %s"
 msgstr "Välkommen till %s"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:272
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:217
 msgid ""
 "To get started, head over to the settings page to connect your Stripe "
 "account and select your currency. Once that's done, you'll be ready to "
@@ -5496,9 +5340,13 @@ msgstr ""
 "Stripe-konto och välja din valuta. När det är klart är du redo att skapa "
 "din första produkt!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:276
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:221
 msgid "Get Started!"
 msgstr "Kom igång!"
+
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:253
+msgid "Sorry, you are not allowed to access this page."
+msgstr "Förlåt, du har inte tillåtelse att komma åt denna sida."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
@@ -5627,38 +5475,34 @@ msgid "Copy failed"
 msgstr "Kopiering misslyckades"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
-msgid "Copy plan ID"
-msgstr "Kopiera plan-ID"
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
 msgid "Required fields missing:"
 msgstr "Obligatoriska fält saknas:"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
 msgid "Configuration error: Missing AJAX settings. Please refresh the page."
 msgstr "Konfigurationsfel: Saknar AJAX-inställningar. Vänligen uppdatera sidan."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
 msgid "Subscription ID is missing."
 msgstr "Prenumerations-ID saknas."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
 msgid "Sync subscription with Stripe?"
 msgstr "Synka prenumeration med Stripe?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Wait..."
 msgstr "Vänta..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
 msgid "Error: Please try again."
 msgstr "Fel: Vänligen försök igen."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 msgid "Migration required"
 msgstr "Migration krävs"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:66
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
@@ -5666,7 +5510,7 @@ msgstr ""
 "Du har 1 lagrad behörighet i klartext. Efter att ha aktiverat kryptering, "
 "kör migration från Inställningar → Underhåll för att kryptera den."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:67
 #. translators: %d: number of stored credentials.
 #, php-format
 msgid ""
@@ -5677,89 +5521,71 @@ msgstr ""
 "kryptering, kör migration från Inställningar → Underhåll för att kryptera "
 "dem."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 msgid "Encryption updated"
 msgstr "Kryptering uppdaterad"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
 msgstr "Fortsätt"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
 #: admin/traits/trait-ppcart-admin-integrations.php:149, fuzzy
 msgid "OK"
 msgstr "OK"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:73
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
 msgstr "Kunde inte uppdatera inställningen för säkerhetskryptering."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:98
 msgid "No matching customers"
 msgstr "Inga matchande kunder"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
 msgid "No matching products"
 msgstr "Inga matchande produkter"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:102
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
 msgid "Searching…"
 msgstr "Söker…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:103
-msgid "1 result available."
-msgstr "1 resultat tillgängligt."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:105
-#. translators: %d: number of search results.
-#, php-format
-msgid "%d results available."
-msgstr "%d resultat tillgängliga."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:106
-msgid "Use the up and down arrow keys to choose one."
-msgstr "Använd upp- och nerpiltangenterna för att välja en."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:117
 msgid "No matching settings"
 msgstr "Inga matchande inställningar"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:118
 msgid "Try a different keyword or clear the search to see all settings."
 msgstr ""
 "Försök med ett annat nyckelord eller rensa sökningen för att se alla "
 "inställningar."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:119
 msgid "Discard your unsaved changes?"
 msgstr "Vill du kassera dina osparade ändringar?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
-msgid "Saving changes…"
-msgstr "Sparar ändringar…"
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:120
 msgid "Reset this email template to the built-in default?"
 msgstr "Återställ denna e-postmall till standardinställningarna?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:129
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
 msgid "Generating preview..."
 msgstr "Genererar förhandsvisning..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:166
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
 msgid "Email preview could not be generated. Please refresh the page and try again."
 msgstr ""
 "E-postförhandsvisningen kunde inte genereras. Vänligen uppdatera sidan och "
 "försök igen."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:132
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
 msgid "Close Preview"
 msgstr "Stäng förhandsvisning"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:135
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:131
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
@@ -5767,7 +5593,7 @@ msgstr "Stäng förhandsvisning"
 msgid "Encrypt stored credentials"
 msgstr "Kryptera lagrade behörigheter"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:137
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
 #. translators: %d: number of plaintext credentials.
 #, php-format
 msgid ""
@@ -5777,7 +5603,7 @@ msgstr ""
 "Kryptera %d klartextbehörighet(er) i databasen? Ta en säkerhetskopia först "
 "och kör detta under en underhållsfönster."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:138
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
@@ -5785,51 +5611,33 @@ msgstr ""
 "Skanna lagrade behörigheter och kryptera eventuella klartextvärden? Ta en "
 "säkerhetskopia först och kör detta under en underhållsfönster."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:142
 msgid "Uploading file…"
 msgstr "Laddar upp fil…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:143
 msgid "File uploaded successfully."
 msgstr "Fil uppladdad framgångsrikt."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:144
 msgid "Upload failed. Please try again."
 msgstr "Uppladdning misslyckades. Försök igen."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:157
-#. translators: 1: item title, 2: new position, 3: number of items.
-#, php-format
-msgid "%1$s moved to position %2$d of %3$d."
-msgstr "%1$s flyttades till position %2$d av %3$d."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:158
-msgid "This item is already first."
-msgstr "Denna artikel är redan först."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:159
-msgid "This item is already last."
-msgstr "Denna artikel är redan sist."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:160
-msgid "Item removed."
-msgstr "Artikel borttagen."
-
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:165
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
 msgid "Generating preview…"
 msgstr "Genererar förhandsvisning…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:167
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:152
 msgid "Sending test email…"
 msgstr "Skickar test-e-post…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:169
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:154
 msgid "Test email failed to send. Please refresh the page and try again."
 msgstr ""
 "Test-e-posten misslyckades att skickas. Vänligen uppdatera sidan och försök "
 "igen."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:170
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:155
 msgid "Enter an email address to send the test to."
 msgstr "Ange en e-postadress att skicka testet till."
 
@@ -5854,7 +5662,6 @@ msgid "First page"
 msgstr "Första sidan"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:153
-#: public/templates/archive/navigation.php:23
 msgid "Previous page"
 msgstr "Föregående sida"
 
@@ -5863,7 +5670,6 @@ msgid "Current page"
 msgstr "Aktuell sida"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:170
-#: public/templates/archive/navigation.php:24
 msgid "Next page"
 msgstr "Nästa sida"
 
@@ -6272,87 +6078,81 @@ msgid "Product duplicated. New product ID: %d."
 msgstr "Produkten duplicerad. Ny produkt-ID: %d."
 
 #: admin/traits/trait-ppcart-admin-profile.php:23
-#: public/templates/functions/payment-address.php:321
+#: public/templates/functions/payment-address.php:317
 msgid "Address Line 2"
 msgstr "Adressrad 2"
 
-#: includes/scheduled-reports/report-email-template.php:25
-#. translators: %s: plugin title.
-#, php-format
-msgid "Your %s Summary Report"
-msgstr "Din %s sammanfattningsrapport"
-
-#: includes/scheduled-reports/report-email-template.php:58
+#: includes/scheduled-reports/report-email-template.php:56
 msgid "Ending Trials"
 msgstr "Avslutande prov"
 
-#: includes/scheduled-reports/report-email-template.php:58
+#: includes/scheduled-reports/report-email-template.php:56
 msgid "End date"
 msgstr "Slutdatum"
 
-#: includes/scheduled-reports/report-email-template.php:58
+#: includes/scheduled-reports/report-email-template.php:56
 msgid "Recurring amount"
 msgstr "Återkommande belopp"
 
-#: includes/scheduled-reports/report-email-template.php:59
+#: includes/scheduled-reports/report-email-template.php:57
 msgid "Subscription Renewals"
 msgstr "Prenumerationsförnyelser"
 
-#: includes/scheduled-reports/report-email-template.php:59
+#: includes/scheduled-reports/report-email-template.php:57
 msgid "Next bill date"
 msgstr "Nästa fakturadatum"
 
-#: includes/scheduled-reports/report-email-template.php:96
+#: includes/scheduled-reports/report-email-template.php:94
 msgid "Here is your summary for"
 msgstr "Här är din sammanfattning för"
 
-#: includes/scheduled-reports/report-email-template.php:98
+#: includes/scheduled-reports/report-email-template.php:96
 msgid "for the week of"
 msgstr "för veckan av"
 
+#: includes/scheduled-reports/report-email-template.php:98
 #: includes/scheduled-reports/report-email-template.php:100
-#: includes/scheduled-reports/report-email-template.php:102
 msgid "for"
 msgstr "för"
 
-#: includes/scheduled-reports/report-email-template.php:112
+#: includes/scheduled-reports/report-email-template.php:110
 msgid "Gross revenue"
 msgstr "Bruttointäkter"
 
-#: includes/scheduled-reports/report-email-template.php:114
+#: includes/scheduled-reports/report-email-template.php:112
 msgid "Net revenue"
 msgstr "Nettointäkter"
 
-#: includes/scheduled-reports/report-email-template.php:115
+#: includes/scheduled-reports/report-email-template.php:113
 msgid "Completed Orders"
 msgstr "Avslutade beställningar"
 
-#: includes/scheduled-reports/report-email-template.php:117
+#: includes/scheduled-reports/report-email-template.php:115
 msgid "Failed Orders"
 msgstr "Misslyckade beställningar"
 
-#: includes/scheduled-reports/report-email-template.php:119
+#: includes/scheduled-reports/report-email-template.php:117
 msgid "Subscriptions Started"
 msgstr "Startade prenumerationer"
 
-#: includes/scheduled-reports/report-email-template.php:120
+#: includes/scheduled-reports/report-email-template.php:118
 msgid "Trials Started"
 msgstr "Startade prov"
 
-#: includes/scheduled-reports/report-email-template.php:121
+#: includes/scheduled-reports/report-email-template.php:119
 msgid "Subscriptions Canceled"
 msgstr "Avbrutna prenumerationer"
 
-#: includes/scheduled-reports/report-email-template.php:131
+#: includes/scheduled-reports/report-email-template.php:129
 msgid "Coming up for the week of"
 msgstr "Kommer upp för veckan av"
 
+#: includes/scheduled-reports/report-email-template.php:131
 #: includes/scheduled-reports/report-email-template.php:133
-#: includes/scheduled-reports/report-email-template.php:135
 msgid "Coming up for"
 msgstr "Kommer upp för"
 
-#: includes/scheduled-reports/report-email-template.php:165
+#: includes/scheduled-reports/report-email-template.php:163
 msgid "Nothing found for this time period"
 msgstr "Inga resultat hittades för denna tidsperiod"
 
@@ -6640,10 +6440,6 @@ msgstr ""
 "Stripe-prenumerationen är inte kopplad till en PublishPress "
 "Cart-prenumeration."
 
-#: includes/stripe-sync/traits/trait-ppcart-stripe-sync-reconciliation.php:183
-msgid "Missing renewal orders imported from Stripe by the background sync"
-msgstr "Saknade förnyelseorder importerades från Stripe av bakgrundssynkronisering"
-
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
@@ -6872,7 +6668,7 @@ msgstr "Glömt ditt lösenord?"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:31
 #: public/templates/functions/checkout-core.php:186
 #: public/templates/functions/checkout-core.php:193
-#: public/templates/functions/payment-address.php:200
+#: public/templates/functions/payment-address.php:199
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Due"
 msgstr "Belopp att betala"
@@ -6880,7 +6676,7 @@ msgstr "Belopp att betala"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:36
 #: public/templates/functions/checkout-core.php:183
 #: public/templates/functions/checkout-core.php:190
-#: public/templates/functions/payment-address.php:201
+#: public/templates/functions/payment-address.php:200
 msgid "Due Today"
 msgstr "Förfaller idag"
 
@@ -7016,43 +6812,43 @@ msgid "My Account"
 msgstr "Mitt konto"
 
 #: public/partials/csv-export.php:20
-#: public/partials/csv-export.php:139
-#: public/templates/functions/plan-coupon-fields.php:565
+#: public/partials/csv-export.php:137
+#: public/templates/functions/plan-coupon-fields.php:534
 #: public/templates/my-account/tabs/user-profile.php:17
 msgid "First Name"
 msgstr "Förnamn"
 
-#: public/partials/csv-export.php:137, fuzzy
+#: public/partials/csv-export.php:135, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: public/partials/csv-export.php:143
+#: public/partials/csv-export.php:141
 msgid "Address 1"
 msgstr "Adress 1"
 
-#: public/partials/csv-export.php:149
+#: public/partials/csv-export.php:147
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Paid"
 msgstr "Betalat belopp"
 
-#: public/partials/csv-export.php:150
-#: public/partials/csv-export.php:232
+#: public/partials/csv-export.php:148
+#: public/partials/csv-export.php:230
 msgid "Product Name"
 msgstr "Produktnamn"
 
-#: public/partials/csv-export.php:152
+#: public/partials/csv-export.php:150
 msgid "Offers during checkout"
 msgstr "Erbjudanden under kassan"
 
-#: public/partials/csv-export.php:154
+#: public/partials/csv-export.php:152
 msgid "Coupon"
 msgstr "Kupong"
 
-#: public/partials/csv-export.php:155
+#: public/partials/csv-export.php:153
 msgid "Purchase URL"
 msgstr "Köplänk"
 
-#: public/partials/csv-export.php:156
+#: public/partials/csv-export.php:154
 msgid "IP Address"
 msgstr "IP-adress"
 
@@ -7064,63 +6860,41 @@ msgstr "kvitto"
 msgid "invoice"
 msgstr "faktura"
 
-#: public/partials/invoice-pdf.php:38
-#. translators: 1: document type (Invoice or Receipt), 2: invoice or receipt number.
-#, fuzzy, php-format
-msgid "%1$s %2$s"
-msgstr "%1$s %2$s"
-
-#: public/partials/invoice-pdf.php:95
+#: public/partials/invoice-pdf.php:80
 msgid "Unauthorized"
 msgstr "Obehörig"
 
-#: public/paypal/class-ppcart-paypal-onpage.php:182
-msgid ""
-"Your PayPal payment is being processed. You will receive a confirmation "
-"email when it completes."
-msgstr ""
-"Din PayPal-betalning behandlas. Du kommer att få ett bekräftelsemail när "
-"den är klar."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:183
-msgid "We could not complete your PayPal payment. Please try again."
-msgstr "Vi kunde inte slutföra din PayPal-betalning. Vänligen försök igen."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:184
-msgid "PayPal checkout was cancelled."
-msgstr "PayPal-kassan avbröts."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:185
-msgid "PayPal could not open on this page. Please click the button again."
-msgstr "PayPal kunde inte öppnas på den här sidan. Vänligen klicka på knappen igen."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:199
-#: public/paypal/class-ppcart-paypal-onpage.php:272
-#: public/paypal/class-ppcart-paypal-onpage.php:280
-#: public/paypal/class-ppcart-paypal-onpage.php:296
-#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:14
+#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:16
 msgid "An error occurred, please refresh the page and try again."
 msgstr "Ett fel inträffade, vänligen uppdatera sidan och försök igen."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:246
-msgid "PayPal could not start this subscription. Please try again."
-msgstr "PayPal kunde inte starta denna prenumeration. Vänligen försök igen."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:256
-msgid "PayPal could not start this payment. Please try again."
-msgstr "PayPal kunde inte starta denna betalning. Vänligen försök igen."
-
-#: public/paypal/class-ppcart-paypal-onpage.php:304
-msgid "PayPal did not complete this payment. Please try again."
-msgstr "PayPal slutförde inte denna betalning. Vänligen försök igen."
 
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:49
 msgid "Pay with PayPal"
 msgstr "Betala med PayPal"
 
-#: public/paypal/traits/trait-ppcart-paypal-subscriptions.php:93
-msgid "PayPal did not complete the refund."
-msgstr "PayPal slutförde inte återbetalningen."
+#: public/templates/archive/navigation.php:22
+msgid ""
+"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
+"7-7\"></path></svg>"
+msgstr ""
+"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
+"7-7\"></path></svg>"
+
+#: public/templates/archive/navigation.php:23
+msgid ""
+"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
+"7\"></path></svg>"
+msgstr ""
+"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
+"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
+"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
+"7\"></path></svg>"
 
 #: public/templates/checkout1.php:218
 #: public/templates/checkout1.php:260
@@ -7169,11 +6943,11 @@ msgstr ""
 msgid "Credit Card"
 msgstr "Kreditkort"
 
-#: public/templates/functions/payment-address.php:86
+#: public/templates/functions/payment-address.php:85
 msgid "Payment Info"
 msgstr "Betalningsinformation"
 
-#: public/templates/functions/payment-address.php:106
+#: public/templates/functions/payment-address.php:105
 msgid ""
 "Sorry, it seems that there are no payment methods available. Please contact "
 "us for assistance."
@@ -7181,47 +6955,37 @@ msgstr ""
 "Förlåt, det verkar som om det inte finns några tillgängliga "
 "betalningsmetoder. Vänligen kontakta oss för hjälp."
 
-#: public/templates/functions/payment-address.php:148
+#: public/templates/functions/payment-address.php:147
 msgid "Enter VAT number"
 msgstr "Ange momsnummer"
 
-#: public/templates/functions/payment-address.php:235
-#: public/templates/functions/payment-address.php:239
+#: public/templates/functions/payment-address.php:234
+#: public/templates/functions/payment-address.php:238
 msgid "Credit or debit card"
 msgstr "Kredit- eller betalkort"
 
-#: public/templates/functions/payment-address.php:280
-#: public/templates/functions/payment-address.php:340
+#: public/templates/functions/payment-address.php:279
+#: public/templates/functions/payment-address.php:334
 msgid "State / County"
 msgstr "Stat / Län"
 
-#: public/templates/functions/payment-address.php:330
+#: public/templates/functions/payment-address.php:325
 msgid "Town / City"
 msgstr "Ort / Stad"
 
-#: public/templates/functions/payment-address.php:350
+#: public/templates/functions/payment-address.php:343
 msgid "Postcode / Zip"
 msgstr "Postnummer"
 
-#: public/templates/functions/plan-coupon-fields.php:308
-#. translators: %s: payment plan name.
-#, php-format
-msgid "Your price for %s"
-msgstr "Ditt pris för %s"
-
-#: public/templates/functions/plan-coupon-fields.php:534
-msgid "Use at least 8 characters, 1 lowercase letter, and 1 number"
-msgstr "Använd minst 8 tecken, 1 gemen bokstav och 1 siffra"
-
-#: public/templates/functions/plan-coupon-fields.php:540
+#: public/templates/functions/plan-coupon-fields.php:509
 msgid "Show password"
 msgstr "Visa lösenord"
 
-#: public/templates/functions/plan-coupon-fields.php:557
+#: public/templates/functions/plan-coupon-fields.php:526
 msgid "Contact Info"
 msgstr "Kontaktinformation"
 
-#: public/templates/functions/plan-coupon-fields.php:571
+#: public/templates/functions/plan-coupon-fields.php:540
 msgid "Phone Number"
 msgstr "Telefonnummer"
 
@@ -7493,7 +7257,7 @@ msgstr "Återbetald den %s"
 msgid "Notes / Terms"
 msgstr "Anteckningar / Villkor"
 
-#: admin/reports/templates/customer-reports-page.php:48
+#: admin/reports/templates/customer-reports-page.php:46
 #. translators: 1: start date, 2: end date.
 #, fuzzy, php-format
 msgctxt "date range"

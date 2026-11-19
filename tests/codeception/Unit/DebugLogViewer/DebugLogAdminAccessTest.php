@@ -262,11 +262,13 @@ class DebugLogAdminAccessTest extends Unit
 
     public function test_UT_038_debug_log_reset_is_denied_without_the_manage_options_capability(): void
     {
-        $this->setRequest(array('page' => 'ppcart-settings', 'ppcart_reset_log' => '1'));
+        $this->setRequest(array('ppcart_reset_log' => '1'));
         $this->setUserCaps(array('manage_options' => false));
 
+        $settings = (new \ReflectionClass(PPCart_Admin_Settings::class))->newInstanceWithoutConstructor();
+
         try {
-            $this->callViewLogRequest();
+            $settings->page_options();
             $this->fail('Expected wp_die when resetting debug log without manage_options.');
         } catch (\RuntimeException $exception) {
             $this->assertSame('wp_die', $exception->getMessage());

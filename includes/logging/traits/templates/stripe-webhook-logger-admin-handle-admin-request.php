@@ -5,12 +5,6 @@ if (! defined('ABSPATH')) {
 }
 
 
-// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- The action nonce is verified below.
-$current_page = isset($_REQUEST['page']) ? sanitize_key(wp_unslash($_REQUEST['page'])) : '';
-if ('ppcart-settings' !== $current_page) {
-    return;
-}
-
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- These are route checks only; each log action verifies its own nonce below.
 if (empty($_REQUEST['ppcart_view_stripe_webhook_log']) && empty($_REQUEST['ppcart_clear_stripe_webhook_log']) && empty($_REQUEST['ppcart_download_stripe_webhook_log'])) {
     return;
@@ -25,7 +19,7 @@ if (! empty($_REQUEST['ppcart_clear_stripe_webhook_log'])) {
     ppcart_check_admin_referer('ppcart_clear_stripe_webhook_log', 'ppcart_clear_stripe_webhook_log_nonce');
     self::clear_log_files();
     if (function_exists('wp_safe_redirect')) {
-        wp_safe_redirect(admin_url('admin.php?page=ppcart-settings&ppcart_stripe_webhook_log_cleared=1#debug'));
+        wp_safe_redirect(admin_url('admin.php?page=ppcart-settings&ppcart_stripe_webhook_log_cleared=1'));
         exit();
     }
     return;

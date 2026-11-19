@@ -28,8 +28,6 @@ $field_dom_id = ppcart_admin_field_dom_id($atts);
 $testid_source = ! empty($atts['id']) ? $atts['id'] : ($atts['name'] ?? '');
 $testid = ppcart_testid('ppcart-admin-field-' . $testid_source);
 $help_id = ! empty($atts['description']) ? $field_dom_id . '-help' : '';
-// The select is named by aria-label; the "?" tooltip joins its description.
-$select_describedby = trim($help_id . ((! empty($atts['tooltip']) && ! empty($atts['label'])) ? ' ' . $field_dom_id . '-tooltip' : ''));
 
 $atts['value'] = maybe_unserialize($atts['value']);
 
@@ -39,7 +37,7 @@ if ($replace && strpos($atts['class'], '{val}') !== false) {
 }
 
 if (! empty($atts['label'])) {
-    ppcart_admin_field_label($atts, $field_dom_id);
+    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
 }
 echo '<div class="input-group field-select" style="flex-grow: 1;">';
 if ($atts['id'] == 'converkit_tags' || $atts['id'] == 'mail_groups' || $atts['id'] == 'mail_tags') {
@@ -49,8 +47,8 @@ if ($atts['id'] == 'converkit_tags' || $atts['id'] == 'mail_groups' || $atts['id
             class="<?php echo esc_attr($atts['class']); ?>"
             id="<?php echo esc_attr($field_dom_id); ?>"
             data-testid="<?php echo esc_attr($testid); ?>"
-            <?php if ('' !== $select_describedby) {
-                echo 'aria-describedby="' . esc_attr($select_describedby) . '"';
+            <?php if ('' !== $help_id) {
+                echo 'aria-describedby="' . esc_attr($help_id) . '"';
             } ?>
             name="<?php echo esc_attr($atts['name']); ?>[]">
 <?php
@@ -65,8 +63,8 @@ if ($atts['id'] == 'converkit_tags' || $atts['id'] == 'mail_groups' || $atts['id
         class="<?php echo esc_attr($atts['class']); ?>"
         id="<?php echo esc_attr($field_dom_id); ?>"
         data-testid="<?php echo esc_attr($testid); ?>"
-        <?php if ('' !== $select_describedby) {
-            echo 'aria-describedby="' . esc_attr($select_describedby) . '"';
+        <?php if ('' !== $help_id) {
+            echo 'aria-describedby="' . esc_attr($help_id) . '"';
         } ?>
         <?php if ($atts['placeholder']) {
             echo 'data-placeholder="' . esc_attr($atts['placeholder']) . '"';

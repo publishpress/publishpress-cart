@@ -8,10 +8,6 @@ trait PPCart_Paypal_Subscriptions_Trait
 {
     public function paypal_refund($data, $order)
     {
-        if (ppcart_get_post_meta($order->id, 'paypal_order_id')) {
-            $this->paypal_refund_capture($data, $order);
-            return;
-        }
 
         $access_token = $this->paypal_oauthtoken();
 
@@ -53,46 +49,6 @@ trait PPCart_Paypal_Subscriptions_Trait
         }
 
         throw new Exception(esc_html(sanitize_text_field($ret)));
-    }
-
-    /**
-     * Refund a one-time on-page payment: its transaction ID is a v2 capture.
-     *
-     * @param array        $data  Refund data with refund_amount and an optional idempotency_key.
-     * @param PPCart_Order $order Order to refund.
-     * @return void
-     * @throws Exception When PayPal refuses the refund.
-     */
-    private function paypal_refund_capture($data, $order)
-    {
-        $client  = PPCart_Paypal_Rest_Client::for_gateway_mode((string) $order->gateway_mode);
-        $headers = [];
-        if (! empty($data['idempotency_key'])) {
-            $headers['PayPal-Request-Id'] = sanitize_text_field((string) $data['idempotency_key']);
-        }
-
-        $res = $client->request(
-            'POST',
-            '/v2/payments/captures/' . rawurlencode(trim((string) $order->transaction_id)) . '/refund',
-            [
-                'amount' => [
-                    'value'         => PPCart_Paypal_Billing_Shape::money($data['refund_amount']),
-                    'currency_code' => PPCart_Paypal_Sync::record_currency($order),
-                ],
-            ],
-            $headers
-        );
-
-        if (PPCart_Paypal_Sync::ok($res) && 'COMPLETED' === ($res['body']['status'] ?? '') && ! empty($res['body']['id'])) {
-            $order->refund_log($data['refund_amount'], sanitize_text_field((string) $res['body']['id']));
-            return;
-        }
-
-        $message = isset($res['body']['message']) && is_string($res['body']['message'])
-            ? $res['body']['message']
-            : __('PayPal did not complete the refund.', 'publishpress-cart');
-
-        throw new Exception(esc_html(sanitize_text_field($message)));
     }
 
     public function paypal_pause_restart_subscription($return, $sub, $type)

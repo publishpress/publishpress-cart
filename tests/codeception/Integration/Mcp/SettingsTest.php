@@ -13,46 +13,6 @@ require_once dirname(__DIR__, 2) . '/Support/Integration/McpTestCase.php';
  */
 class SettingsTest extends McpTestCase
 {
-    public function test_native_extension_controls_added_after_registration_are_validated_live(): void
-    {
-        wp_get_ability('publishpress-cart/update-settings');
-        $id = '_ppcart_mcp_late_control_fixture';
-        $allow = static function ($ids) use ($id) {
-            $ids[] = $id;
-            return $ids;
-        };
-        $control = static function ($sections) use ($id) {
-            $sections['settings']['mcp-late-control'] = [
-                'type' => 'checkbox', 'label' => 'Late native control',
-                'settings' => ['id' => $id, 'value' => ''],
-            ];
-            return $sections;
-        };
-        add_filter('ppcart_mcp_setting_ids', $allow);
-        add_filter('ppcart_mcp_setting_definitions', $control);
-        try {
-            $before = $this->execute('get-settings', []);
-            $this->assertSame('boolean', $before['settings']->$id['schema']['type']);
-            $patch = ['changes' => (object) [$id => true], 'revision' => $before['revision'], 'dry_run' => true];
-            $this->assertNotWPError($this->execute('update-settings', $patch));
-            $this->assertFalse(get_option($id, false));
-            $bad = $patch;
-            $bad['dry_run'] = false;
-            $bad['changes'] = (object) [$id => 'false', '_ppcart_company_name' => 'Must not save'];
-            $this->assertWPError($this->execute('update-settings', $bad));
-            $this->assertSame($before['revision'], $this->execute('get-settings', [])['revision']);
-            $patch['dry_run'] = false;
-            $saved = $this->execute('update-settings', $patch);
-            $this->assertNotWPError($saved);
-            $this->assertSame('1', (string) get_option($id));
-            $this->assertSame('1', (string) $this->execute('get-settings', [])['settings']->$id['stored_value']);
-        } finally {
-            remove_filter('ppcart_mcp_setting_ids', $allow);
-            remove_filter('ppcart_mcp_setting_definitions', $control);
-            delete_option($id);
-        }
-    }
-
     public function test_native_settings_preview_save_and_stale_revision(): void
     {
         $before = $this->execute('get-settings', new \stdClass());

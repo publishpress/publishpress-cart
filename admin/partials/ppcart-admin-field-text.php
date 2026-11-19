@@ -34,7 +34,7 @@ if ($right_currency) {
 }
 
 if (! empty($atts['label'])) {
-    ppcart_admin_field_label($atts, $field_dom_id);
+    ?><label for="<?php echo esc_attr($field_dom_id); ?>"><?php echo esc_html($atts['label']); ?><?php ppcart_admin_field_tooltip($atts); ?></label><?php
 }
 
 ?><div class="input-group field-<?php echo esc_attr($atts['type']); ?>">
@@ -58,7 +58,9 @@ if (! empty($atts['label'])) {
     placeholder="<?php echo esc_attr($atts['placeholder']); ?>"
     type="<?php echo esc_attr($atts['type']); ?>"
     data-testid="<?php echo esc_attr($testid); ?>"
-    <?php echo ppcart_admin_field_label_aria_attrs($atts, $field_dom_id, $help_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute values are escaped by the helper. ?>
+    <?php if ('' !== $help_id) :
+        ?>aria-describedby="<?php echo esc_attr($help_id); ?>"<?php
+    endif; ?>
     autocomplete="new-password" autocorrect="off" autocapitalize="none"
     <?php if (isset($atts['step'])) :
         ?>step="<?php echo esc_attr($atts['step']); ?>"<?php
@@ -78,15 +80,7 @@ if ($right_currency) {
 }
 ?>
     <?php if ($atts['class'] == 'datepicker') : ?>
-        <a href="#" class="clear-date" role="button" aria-label="<?php
-            $clear_date_label = trim(wp_strip_all_tags((string) ($atts['label'] ?? '')));
-            echo esc_attr(
-                '' !== $clear_date_label
-                    /* translators: %s: date field label. */
-                    ? sprintf(__('Clear %s', 'publishpress-cart'), $clear_date_label)
-                    : __('Clear date', 'publishpress-cart')
-            );
-        ?>" data-testid="<?php echo esc_attr($clear_testid); ?>"><svg aria-hidden="true" width="16px" enable-background="new 0 0 24 24" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path fill="#b1b1b1" d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M16.9,15.5l-1.4,1.4L12,13.4l-3.5,3.5   l-1.4-1.4l3.5-3.5L7.1,8.5l1.4-1.4l3.5,3.5l3.5-3.5l1.4,1.4L13.4,12L16.9,15.5z"/></g></svg></a>
+        <a href="#" class="clear-date" data-testid="<?php echo esc_attr($clear_testid); ?>"><svg width="16px" enable-background="new 0 0 24 24" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path fill="#b1b1b1" d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M16.9,15.5l-1.4,1.4L12,13.4l-3.5,3.5   l-1.4-1.4l3.5-3.5L7.1,8.5l1.4-1.4l3.5,3.5l3.5-3.5l1.4,1.4L13.4,12L16.9,15.5z"/></g></svg></a>
     <?php endif; ?>
 
 <?php if ('' !== $help_id) :?>

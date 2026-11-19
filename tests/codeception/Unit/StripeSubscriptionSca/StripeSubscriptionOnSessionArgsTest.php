@@ -89,30 +89,4 @@ class StripeSubscriptionOnSessionArgsTest extends Unit
             $args['expand']
         );
     }
-
-    /**
-     * @test-id UT-345
-     */
-    public function test_UT_345_moves_top_level_coupon_into_discounts(): void
-    {
-        $args = ppcart_stripe_subscription_on_session_args(
-            [
-                'coupon'    => 'coupon_vat',
-                'discounts' => [['coupon' => 'coupon_existing']],
-            ]
-        );
-
-        $this->assertArrayNotHasKey('coupon', $args);
-        $this->assertSame(
-            [
-                ['coupon' => 'coupon_existing'],
-                ['coupon' => 'coupon_vat'],
-            ],
-            $args['discounts']
-        );
-
-        $empty = ppcart_stripe_subscription_on_session_args(['coupon' => '']);
-        $this->assertArrayNotHasKey('coupon', $empty);
-        $this->assertArrayNotHasKey('discounts', $empty);
-    }
 }

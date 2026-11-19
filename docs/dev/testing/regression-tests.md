@@ -373,7 +373,7 @@ Full detail: `tests/playwright/support/`.
 - **PayPal `#btnNext` not found** — Buyer may already be logged in from a prior test; use `PayPalSteps::loginAndComplete()` (skips login when checkout is ready).
 - **PayPal currency error (EN/PT)** — BR sandbox needs `REGRESSION_CURRENCY=BRL` and `composer test:regression:setup`.
 - **Playwright browser missing** — Run `npx playwright install chromium`.
-- **Flood of `PHP Deprecated` from `thecodingmachine/safe` during setup/WP-CLI/web** — Expected on PHP 8.4 with Safe v1.x (pulled in via `dompdf` → `sabberworm/php-css-parser`). Those signature deprecations ignore `set_error_handler`; only `error_reporting` works, and `WP_DEBUG` resets it before plugins load. Isolated test WordPress and this plugin's DDEV `.web` site install `tests/bin/lib/silence-php-deprecations.php` as an mu-plugin. `regression_wp()` still strips leftover `Deprecated:` lines from stderr. Do not raise Safe until `lib/composer.json` `platform.php` moves off 7.4 (Safe 2.x/3.x needs a newer PHP floor).
+- **Flood of `PHP Deprecated` from `thecodingmachine/safe` during setup/WP-CLI/web** — Expected on PHP 8.4 with Safe v1.x (pulled in via `dompdf` → `sabberworm/php-css-parser`). Those signature deprecations ignore `set_error_handler`; only `error_reporting` works, and `WP_DEBUG` resets it before plugins load. Isolated test WordPress and this plugin's DDEV `.web` site install `tests/bin/lib/silence-php-deprecations.php` as an mu-plugin. `regression_wp()` still strips leftover `Deprecated:` lines from stderr. Do not raise Safe until the plugin can drop min PHP 7.4 / `lib/composer.json` `platform.php` 7.4 (Safe 2.x/3.x needs a newer PHP floor).
 
 ## Code layout
 
