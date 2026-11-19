@@ -84,7 +84,15 @@ return PPCart_Stripe_Sync_Context::run(
 
         if (! $order) {
             $order = $sub->first_order();
-            if ($order && (((! $order->transaction_id || strpos($order->transaction_id, 'ch_') !== 0) && $sub->order_count() == 1) === false)) {
+            if (
+                $order
+                && (
+                    'refunded' === $order->status
+                    || 'refunded' === $order->payment_status
+                    || (((! $order->transaction_id || strpos($order->transaction_id, 'ch_') !== 0) && $sub->order_count() == 1) === false)
+                )
+            ) {
+                // A refunded first order is never reused for a new payment.
                 $order = $sub->new_order();
             }
         }
@@ -106,6 +114,14 @@ return PPCart_Stripe_Sync_Context::run(
                 self::mark_resource_event($order->id, $event);
                 return $order;
             }
+        }
+
+        // Stripe keeps a refunded invoice as "paid", so the invoice never
+        // proves a refund was undone. Leave refunded orders to the charge and
+        // refund sync, or they flip back to paid and re-run integrations.
+        if ($existing && ('refunded' === $order->status || 'refunded' === $order->payment_status)) {
+            self::mark_resource_event($order->id, $event);
+            return $order;
         }
 
         $values = [
