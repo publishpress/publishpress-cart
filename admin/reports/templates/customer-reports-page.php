@@ -20,33 +20,45 @@ if (! in_array($report_type, ['order', 'subscription'], true)) {
 
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only report filtering via admin query parameters.
 $customer = sanitize_email(wp_unslash($_REQUEST['customerid']));
-$today    = wp_date('Y-m-d');
-$default_from = wp_date('Y-m-d', strtotime('-1 month', strtotime($today)));
-
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only report filtering via admin query parameters.
-$date = isset($_REQUEST['date']) ? sanitize_text_field(wp_unslash($_REQUEST['date'])) : $default_from . ' to ' . $today;
-$date_parts = array_map('trim', explode(' to ', $date));
-$from_value = ! empty($date_parts[0]) ? $date_parts[0] : $default_from;
-$to_value   = ! empty($date_parts[1]) ? $date_parts[1] : $from_value;
-$from_ts    = strtotime($from_value);
-$to_ts      = strtotime($to_value);
-
-if (false === $from_ts || false === $to_ts) {
-    $from_value = $default_from;
-    $to_value   = $today;
+$date = isset($_REQUEST['date']) ? sanitize_text_field(wp_unslash($_REQUEST['date'])) : '';
+$date_label = __('All time', 'publishpress-cart');
+$date_query = [];
+if ('' !== $date) {
+    $today    = wp_date('Y-m-d');
+    $default_from = wp_date('Y-m-d', strtotime('-1 month', strtotime($today)));
+    $date_parts = array_map('trim', explode(' to ', $date));
+    $from_value = ! empty($date_parts[0]) ? $date_parts[0] : $default_from;
+    $to_value   = ! empty($date_parts[1]) ? $date_parts[1] : $from_value;
     $from_ts    = strtotime($from_value);
     $to_ts      = strtotime($to_value);
-    $date       = $from_value . ' to ' . $to_value;
-}
 
-$fromdate = $from_value . ' 00:00:00';
-$todate   = $to_value . ' 23:59:59';
-$date_label = sprintf(
-    /* translators: 1: start date, 2: end date. */
-    _x('%1$s - %2$s', 'date range', 'publishpress-cart'),
-    date_i18n('M j, Y', $from_ts),
-    date_i18n('M j, Y', $to_ts)
-);
+    if (false === $from_ts || false === $to_ts) {
+        $from_value = $default_from;
+        $to_value   = $today;
+        $from_ts    = strtotime($from_value);
+        $to_ts      = strtotime($to_value);
+        $date       = $from_value . ' to ' . $to_value;
+    }
+
+    $fromdate = $from_value . ' 00:00:00';
+    $todate   = $to_value . ' 23:59:59';
+    $date_label = sprintf(
+        /* translators: 1: start date, 2: end date. */
+        _x('%1$s - %2$s', 'date range', 'publishpress-cart'),
+        date_i18n('M j, Y', $from_ts),
+        date_i18n('M j, Y', $to_ts)
+    );
+
+    $date_query = [
+        [
+            'column'    => 'post_date',
+            'after'     => $fromdate,
+            'before'    => $todate,
+            'inclusive' => true,
+        ],
+    ];
+}
 
 $orders_url = add_query_arg(
     [
@@ -106,14 +118,6 @@ if (isset($_REQUEST['customername'])) {
     $customer_name = trim((string) $customer_user->first_name . ' ' . (string) $customer_user->last_name);
 }
 
-$date_query = [
-    [
-        'column'    => 'post_date',
-        'after'     => $fromdate,
-        'before'    => $todate,
-        'inclusive' => true,
-    ],
-];
 $customer_meta_query = [
     [
         'key' => ppcart_meta_key('email'),
