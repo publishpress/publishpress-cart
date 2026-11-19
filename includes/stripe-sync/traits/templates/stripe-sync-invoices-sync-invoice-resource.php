@@ -108,6 +108,14 @@ return PPCart_Stripe_Sync_Context::run(
             }
         }
 
+        // Stripe keeps a refunded invoice as "paid", so the invoice never
+        // proves a refund was undone. Leave refunded orders to the charge and
+        // refund sync, or they flip back to paid and re-run integrations.
+        if ('refunded' === $order->status || 'refunded' === $order->payment_status) {
+            self::mark_resource_event($order->id, $event);
+            return $order;
+        }
+
         $values = [
             'transaction_id' => $charge_id ? $charge_id : $payment_intent,
             'amount'         => ppcart_format_stripe_number(self::get($invoice, 'amount_paid', 0), $currency),

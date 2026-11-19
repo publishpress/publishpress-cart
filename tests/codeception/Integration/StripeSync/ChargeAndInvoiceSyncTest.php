@@ -526,4 +526,56 @@ class ChargeAndInvoiceSyncTest extends StripeSyncTestCase
 
         $this->assertSame('', ppcart_get_post_meta($subscriptionId, 'sub_next_bill_date', true));
     }
+
+    public function test_IT_013_paid_invoice_sync_does_not_flip_a_refunded_order_back_to_paid(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(
+            array(
+                'subscription_id' => 'sub_invoice_refunded',
+            )
+        );
+        $orderId = $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_invoice_refunded',
+                'status' => 'refunded',
+                'payment_status' => 'refunded',
+                'subscription_id' => $subscriptionId,
+            )
+        );
+
+        $result = PPCart_Stripe_Sync::sync_invoice_resource(
+            (object) array(
+                'subscription' => 'sub_invoice_refunded',
+                'charge' => 'ch_invoice_refunded',
+                'payment_intent' => 'pi_invoice_refunded',
+                'amount_paid' => 20000,
+                'currency' => 'usd',
+                'status' => 'paid',
+                'status_transitions' => (object) array(
+                    'paid_at' => 1234567890,
+                    'finalized_at' => 1234567890,
+                ),
+                'lines' => (object) array(
+                    'data' => array(
+                        (object) array(
+                            'subscription_item' => 'si_invoice_refunded',
+                            'metadata' => (object) array(
+                                'ppcart_product_id' => 123,
+                            ),
+                            'period' => (object) array(
+                                'end' => 3333333333,
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            new PPCart_Subscription($subscriptionId),
+            'invoice.paid'
+        );
+
+        $this->assertNotFalse($result);
+        $this->assertSame($orderId, (int) $result->id);
+        $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'status', true));
+        $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'payment_status', true));
+    }
 }
