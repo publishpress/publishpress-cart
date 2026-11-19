@@ -1719,7 +1719,11 @@ jQuery(document).ready(function($){
         var ajax_url = ppcart_reg_vars.ajax_url;
         var wp_nonce = ppcart_reg_vars.nonce;
         var order_id = _this.data('id');
-        var anchor_text = _this.text();
+        var anchor_text = _this.html();
+
+        if (_this.hasClass('disabled')) {
+            return;
+        }
 
         if (!ajax_url || !wp_nonce) {
             alert((window.ppcart_admin_i18n && window.ppcart_admin_i18n.sync_config_error) || ppcart_translate_backend.try_again);
@@ -1732,7 +1736,7 @@ jQuery(document).ready(function($){
             return;
         }
 
-        if (confirm(ppcart_reg_vars.confirm_sync_stripe || ppcart_translate_backend.confirm_sync_stripe || (window.ppcart_admin_i18n && window.ppcart_admin_i18n.sync_confirm) || ppcart_translate_backend.try_again)) {
+        if (confirm((window.ppcart_admin_i18n && window.ppcart_admin_i18n.sync_order_confirm) || ppcart_reg_vars.confirm_sync_stripe || ppcart_translate_backend.confirm_sync_stripe || (window.ppcart_admin_i18n && window.ppcart_admin_i18n.sync_confirm) || ppcart_translate_backend.try_again)) {
             _this.html("<strong>" + (ppcart_reg_vars.wait || ppcart_translate_backend.wait || (window.ppcart_admin_i18n && window.ppcart_admin_i18n.sync_wait) || '') + "</strong>");
             _this.addClass('disabled');
 
@@ -1742,7 +1746,7 @@ jQuery(document).ready(function($){
                 'order_id': order_id
             }, function(response) {
                 if (response.success) {
-                    alert(response.data.message || ppcart_translate_backend.sub_sync_success || (window.ppcart_admin_i18n && window.ppcart_admin_i18n.sync_success) || ppcart_translate_backend.try_again);
+                    alert(response.data.message || (window.ppcart_admin_i18n && window.ppcart_admin_i18n.sync_order_success) || ppcart_translate_backend.try_again);
                     location.reload();
                 } else {
                     _this.html(anchor_text);

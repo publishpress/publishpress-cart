@@ -6,10 +6,36 @@ if (! defined('ABSPATH')) {
 
 trait PPCart_Stripe_Sync_Refunds_Trait
 {
-    /** @param PPCart_Order $order Persisted native order. @return string */
-    public static function sync_order_by_local($order)
+    /**
+     * @param PPCart_Order $order  Persisted native order.
+     * @param object|null  $stripe Stripe client. Defaults to the client for the order's mode.
+     * @return string
+     */
+    public static function sync_order_by_local($order, $stripe = null)
     {
         return include __DIR__ . '/templates/stripe-sync-refunds-sync-order-by-local.php';
+    }
+
+    /**
+     * Get the Stripe charge or payment intent ID that a manual order sync can load.
+     *
+     * @param object|null $order Order object or order data.
+     * @return string The `ch_` or `pi_` ID, or an empty string when the order can't be synced.
+     */
+    public static function get_order_sync_payment_id($order)
+    {
+        if (! $order || ! isset($order->pay_method) || 'stripe' !== $order->pay_method) {
+            return '';
+        }
+
+        foreach ([ 'stripe_charge_id', 'transaction_id' ] as $field) {
+            $payment_id = isset($order->$field) && is_scalar($order->$field) ? (string) $order->$field : '';
+            if (0 === strpos($payment_id, 'ch_') || 0 === strpos($payment_id, 'pi_')) {
+                return $payment_id;
+            }
+        }
+
+        return '';
     }
 
     /**
