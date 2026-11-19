@@ -33,6 +33,7 @@ class PPCart_Public_Hook_Registrar
         $this->loader->add_filter('wp', $plugin_public_page, 'email_preview_template');
         $this->loader->add_filter('admin_init', $plugin_public_page, 'email_preview_template');
         $this->loader->add_filter('query_vars', $plugin_public_page, 'query_vars');
+        $this->loader->add_action('pre_get_posts', $plugin_public_page, 'include_products_in_taxonomy_archives');
 
         $this->loader->add_action('template_redirect', $plugin_public_page, 'hosted_checkout_return', 5);
         $this->loader->add_action('template_redirect', $plugin_public_page, 'redirect');
