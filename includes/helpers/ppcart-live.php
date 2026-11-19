@@ -39,6 +39,7 @@ if (! function_exists('ppcart_canonical_live_pro_post_types')) {
             'us_path'      => 'ppcart_us_path',
             'membership'   => 'ppcart_membership',
             'upgrade_path' => 'ppcart_upgrade_path',
+            'global_coupon' => 'ppcart_global_coupon',
         ];
     }
 }

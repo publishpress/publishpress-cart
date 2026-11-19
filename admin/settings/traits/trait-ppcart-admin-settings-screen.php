@@ -12,6 +12,11 @@ trait PPCart_Admin_Settings_Screen_Trait
             $classes .= ' ' . PPCart_Admin_Screens::ADMIN_BODY_CLASS . ' ';
         }
 
+        $screen = get_current_screen();
+        if ($screen && 'edit' === $screen->base && in_array($screen->post_type, PPCart_Admin_Screens::modern_admin_post_types(), true)) {
+            $classes .= ' ppcart-modern-list ';
+        }
+
         return $classes;
     }
 
