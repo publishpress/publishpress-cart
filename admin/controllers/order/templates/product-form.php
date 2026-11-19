@@ -120,7 +120,7 @@ foreach ($list as $item) :
                         </div>
                     </td>
 
-                    <td class="ppcart-line-item-detail">
+                    <td class="ppcart-line-item-detail ppcart-line-item-detail--plan-name">
                         <?php echo esc_html($item_price_name ? $item_price_name : __('Default', 'publishpress-cart')); ?>
                     </td>
 

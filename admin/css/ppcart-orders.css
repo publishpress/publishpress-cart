@@ -2317,6 +2317,11 @@ body.post-type-ppcart_order #order_line_items td.ppcart-line-item-detail{
   white-space: nowrap;
 }
 
+body.post-type-ppcart_order #order_line_items td.ppcart-line-item-detail--plan-name{
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
 body.post-type-ppcart_order .ppcart-order-items th.line_cost,
 body.post-type-ppcart_subscription .ppcart-order-items th.line_cost{
   text-align: right;
