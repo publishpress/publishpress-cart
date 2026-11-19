@@ -133,14 +133,19 @@ function ppcart_unsubscribe_customer()
         }
     }
 
+    // Only the admin subscription screen may fall back to a local cancel when
+    // Stripe no longer has the subscription. The customer account page may not.
+    $allow_local_cancel = $can_manage_subscription && ! empty($_POST['admin_cancel']);
+
     ppcart_do_cancel_subscription(
         $sub,
         $sub_id,
         $now,
         true,
         [
-            'cancel_timing' => $now ? 'immediate' : 'period_end',
-            'refund_action' => $now ? $refund_action : 'no_refund',
+            'cancel_timing'      => $now ? 'immediate' : 'period_end',
+            'refund_action'      => $now ? $refund_action : 'no_refund',
+            'allow_local_cancel' => $allow_local_cancel,
         ]
     );
 
@@ -276,7 +281,11 @@ function ppcart_issue_stripe_subscription_cancellation_refund($sub, $stripe_sub,
  * @param string|false            $sub_id  Gateway subscription ID, or false to use stored meta.
  * @param bool                    $now     True to cancel immediately.
  * @param bool                    $echo    True to print the response instead of returning it.
- * @param array                   $options Extra cancel options.
+ * @param array                   $options Extra cancel options. Pass
+ *                                         `allow_local_cancel` => true only from admin
+ *                                         actions; it lets a user who can manage orders
+ *                                         cancel locally when Stripe no longer has the
+ *                                         subscription or no key exists for its mode.
  * @return string|void
  */
 function ppcart_do_cancel_subscription($sub, $sub_id = false, $now = true, $echo = true, $options = [])
@@ -309,10 +318,48 @@ function ppcart_do_cancel_subscription($sub, $sub_id = false, $now = true, $echo
     if ($sub->pay_method == 'stripe') {
         //stripe
 
-        $apikey = $ppcart_stripe['sk'];
-        $stripe = ppcart_stripe_client($apikey);
+        $allow_local_cancel = ! empty($options['allow_local_cancel']) && ppcart_current_user_can_cancel_subscription_locally();
+        $sub_mode = isset($sub->gateway_mode) && in_array($sub->gateway_mode, [ 'test', 'live' ], true) ? $sub->gateway_mode : '';
+        $stripe = null;
+        $mode_key_missing = false;
+
+        // Use the client for the subscription's own mode. A subscription created in
+        // test mode does not exist in live mode, so the site's current key can't cancel it.
+        if ('' !== $sub_mode && class_exists('PPCart_Stripe_Sync')) {
+            try {
+                $stripe = PPCart_Stripe_Sync::get_client_for_mode($sub_mode);
+            } catch (\Exception $e) {
+                $stripe = null;
+                $mode_key_missing = true;
+            }
+        }
+
+        if ($mode_key_missing && $allow_local_cancel) {
+            ppcart_cancel_stripe_subscription_locally(
+                $sub,
+                sprintf(
+                    /* translators: 1: Stripe subscription ID, 2: Stripe mode. */
+                    __('Stripe subscription %1$s could not be checked because no Stripe API key is set for %2$s mode. The subscription was canceled locally.', 'publishpress-cart'),
+                    $sub_id,
+                    $sub_mode
+                )
+            );
+            if ('refund' === $refund_action) {
+                $refund_error = __('No refund was issued because the subscription was canceled locally.', 'publishpress-cart');
+            }
+            $canceled = true;
+        }
+    }
+
+    if ($sub->pay_method == 'stripe' && ! $canceled) {
+        $stripe_sub_loaded = false;
         try {
+            if (! $stripe) {
+                $apikey = is_array($ppcart_stripe) && isset($ppcart_stripe['sk']) ? $ppcart_stripe['sk'] : null;
+                $stripe = ppcart_stripe_client($apikey);
+            }
             $stripesub = $stripe->subscriptions->retrieve($sub_id);
+            $stripe_sub_loaded = true;
             $sub->cancel_date = gmdate('Y-m-d');
             if ($now) {
                 // cancel now
@@ -347,7 +394,6 @@ function ppcart_do_cancel_subscription($sub, $sub_id = false, $now = true, $echo
                 }
             } else {
                 // cancel later
-                $stripe = ppcart_stripe_client($apikey);
                 $stripesub = $stripe->subscriptions->update($sub_id, ['cancel_at_period_end' => true]);
 
                 if (isset($stripesub->cancel_at) && $stripesub->cancel_at) {
@@ -364,7 +410,25 @@ function ppcart_do_cancel_subscription($sub, $sub_id = false, $now = true, $echo
                 }
             }
         } catch (\Exception $e) {
-            if ($echo) {
+            $is_missing_in_stripe = ! $stripe_sub_loaded
+                && $e instanceof \PublishPress\Stripe\Exception\InvalidRequestException
+                && 'resource_missing' === $e->getStripeCode();
+
+            if ($is_missing_in_stripe && $allow_local_cancel) {
+                ppcart_cancel_stripe_subscription_locally(
+                    $sub,
+                    sprintf(
+                        /* translators: 1: Stripe subscription ID, 2: Stripe mode. */
+                        __('Stripe subscription %1$s was not found in Stripe (%2$s mode). The subscription was canceled locally.', 'publishpress-cart'),
+                        $sub_id,
+                        '' !== $sub_mode ? $sub_mode : (is_array($ppcart_stripe) && ! empty($ppcart_stripe['mode']) ? $ppcart_stripe['mode'] : __('unknown', 'publishpress-cart'))
+                    )
+                );
+                if ('refund' === $refund_action) {
+                    $refund_error = __('No refund was issued because the subscription was canceled locally.', 'publishpress-cart');
+                }
+                $canceled = true;
+            } elseif ($echo) {
                 echo esc_html($e->getMessage()); //add custom message
             } else {
                 return esc_html($e->getMessage());
@@ -387,6 +451,44 @@ function ppcart_do_cancel_subscription($sub, $sub_id = false, $now = true, $echo
             return $response;
         }
     }
+}
+
+/**
+ * Whether the current user may cancel a Stripe subscription locally when Stripe
+ * can't cancel it (missing in Stripe, or no API key for its mode).
+ *
+ * @return bool
+ */
+function ppcart_current_user_can_cancel_subscription_locally()
+{
+    return current_user_can('manage_options') || ppcart_user_can('manage_orders');
+}
+
+/**
+ * Mark a Stripe subscription canceled without calling Stripe.
+ *
+ * Status is a Stripe-owned field, so the write runs inside the sync context.
+ *
+ * @param PPCart_Subscription $sub       Subscription.
+ * @param string              $log_entry Log entry that explains why.
+ * @return void
+ */
+function ppcart_cancel_stripe_subscription_locally($sub, $log_entry)
+{
+    $apply = static function () use ($sub) {
+        $sub->status      = 'canceled';
+        $sub->sub_status  = 'canceled';
+        $sub->cancel_date = gmdate('Y-m-d');
+        $sub->store();
+    };
+
+    if (class_exists('PPCart_Stripe_Sync_Context')) {
+        PPCart_Stripe_Sync_Context::run($apply);
+    } else {
+        $apply();
+    }
+
+    ppcart_log_entry($sub->id, $log_entry);
 }
 
 function ppcart_order_refund($data)

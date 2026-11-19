@@ -105,7 +105,13 @@ if (in_array('bulk_' . $doaction, $bulk_actions)) {
                             PPCart_Subscription::update($ppcart_subscription);
                         }
                     } else {
-                        $out = ppcart_do_cancel_subscription($ppcart_subscription, $ppcart_subscription->subscription_id, $now = true, $echo = false);
+                        $out = ppcart_do_cancel_subscription(
+                            $ppcart_subscription,
+                            $ppcart_subscription->subscription_id,
+                            true,
+                            false,
+                            [ 'allow_local_cancel' => true ]
+                        );
                         if ($out == 'OK') {
                             ppcart_log_entry($ppcart_subscription->id, __("Subscription canceled by admin", 'publishpress-cart'));
                         } else {

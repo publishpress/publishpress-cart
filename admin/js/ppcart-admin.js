@@ -1626,7 +1626,8 @@ jQuery(document).ready(function($){
 			'subscription_id': stripe_subscriber_id,
 			'nonce': wp_nonce,
 			'id': ordertId,
-			'payment_method': payment_method
+			'payment_method': payment_method,
+			'admin_cancel': 1
 		};
 
 		if (payment_method === 'stripe') {
