@@ -82,6 +82,8 @@ $this->loader->add_action('admin_menu', $plugin_extensions_page, 'setup_plugin_o
 require_once PPCART_BASE_DIR . 'admin/class-ppcart-pro-menu-previews.php';
 $this->loader->add_action('admin_menu', new PPCart_Pro_Menu_Previews(), 'register_pages', 20);
 
+$this->loader->add_action('admin_menu', $plugin_settings, 'order_cart_submenu', PHP_INT_MAX);
+
 
 // Register Importer
 $this->loader->add_action('admin_init', $plugin_admin, 'register_importers');

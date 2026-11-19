@@ -62,10 +62,10 @@ $fields = [
     [
         'text' => [
             'class'         => 'widefat',
-            'description'   => '',
-            'tooltip'       => __('Letters, numbers, dashes and underscores only. Must be unique for this product.', 'publishpress-cart'),
+            'description'   => __('Optional. Set a slug to preselect this plan from a checkout link.', 'publishpress-cart'),
+            'tooltip'       => __('For example, enter annual and add ?ppcart-pay-plan=annual to the checkout link. Use letters, numbers, dashes or underscores. The slug must be unique for this product.', 'publishpress-cart'),
             'id'            => 'url_slug',
-            'label'         => __('URL slug', 'publishpress-cart'),
+            'label'         => __('Checkout link slug', 'publishpress-cart'),
             'placeholder'   => '',
             'type'          => 'text',
             'value'         => '',
@@ -218,6 +218,7 @@ $fields = [
             'placeholder'   => '',
             'type'          => 'select',
             'value'         => '',
+            'new_row_value' => 'year',
             'selections'    => [
                 'day' => __('Day', 'publishpress-cart'),
                 'week' => __('Week', 'publishpress-cart'),

@@ -564,6 +564,8 @@ function ppcart_translate_js($js_script = '')
             'something_went_wrong' => __("Something went wrong. Please try again.", "publishpress-cart"),
             'list_renewed'   => __("Mailing lists refreshed.", "publishpress-cart"),
             'missing_required'   => __("Required fields missing", "publishpress-cart"),
+            /* translators: %s: error message returned by the server. */
+            'error_occurred'     => __("An error occurred: %s", "publishpress-cart"),
             ];
         foreach ($return_data as $k => $v) {
             $return_data[$k] = apply_filters('ppcart_backend_message_' . $k, $v);
@@ -596,9 +598,18 @@ function ppcart_translate_js($js_script = '')
             'invalid_email' => __('Enter a valid email', "publishpress-cart"),
             'invalid_phone' => __('Enter a valid phone number', "publishpress-cart"),
             'invalid_pass' => __('Use 8 or more characters with a mix of letters, numbers, and symbols', "publishpress-cart"),
+            'password_rules_hint' => __('Use at least 8 characters, 1 lowercase letter, and 1 number', 'publishpress-cart'),
+            /* translators: %s: comma-separated list of the password requirements not met yet. */
+            'password_still_needed' => __('Still needed: %s', 'publishpress-cart'),
+            'password_strong' => __('Strong password', 'publishpress-cart'),
+            'password_rule_length' => __('8 characters', 'publishpress-cart'),
+            'password_rule_lowercase' => __('1 lowercase letter', 'publishpress-cart'),
+            'password_rule_number' => __('1 number', 'publishpress-cart'),
             'includes' => __('includes', "publishpress-cart"),
             'included_in_price' => __('Included In Price', "publishpress-cart"),
             'field_required' => __('This field is required', "publishpress-cart"),
+            'unexpected_error' => __('An unexpected error occurred.', 'publishpress-cart'),
+            'card_save_failed' => __('Unable to save the new card. Please try again.', 'publishpress-cart'),
             'username_exists' => __("This username already exists", "publishpress-cart"),
             'with_a' => apply_filters('ppcart_plan_text_with_a', __('with a', 'publishpress-cart')),
             'day_free_trial' => apply_filters('ppcart_plan_text_day_free_trial', __('-day free trial', 'publishpress-cart')),
@@ -619,6 +630,9 @@ function ppcart_translate_js($js_script = '')
             'month'     => __('month', 'publishpress-cart'),
             'months'    => __('months', 'publishpress-cart'),
             'missing_required'   => __("Required fields missing", "publishpress-cart"),
+            'order_update_failed' => __("We couldn't update your order total. Check your connection and try again.", "publishpress-cart"),
+            'username_check_failed' => __("We couldn't check if this username is available. Try again in a moment.", "publishpress-cart"),
+            'payment_not_ready' => __("The payment form is still loading. Wait a moment, then try again.", "publishpress-cart"),
             'year'      => __('year', 'publishpress-cart'),
             'years'     => __('years', 'publishpress-cart'),
         ];

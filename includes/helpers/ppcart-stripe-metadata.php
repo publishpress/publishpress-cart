@@ -318,6 +318,22 @@ function ppcart_stripe_subscription_on_session_args($args)
     }
     $args['expand'] = $expand;
 
+    // Flexible billing mode (the pinned API version) rejects the top-level
+    // coupon parameter; send it as a subscription discount instead.
+    if (array_key_exists('coupon', $args)) {
+        $coupon = $args['coupon'];
+        unset($args['coupon']);
+
+        if (is_string($coupon) && '' !== $coupon) {
+            $discounts = [];
+            if (isset($args['discounts']) && is_array($args['discounts'])) {
+                $discounts = $args['discounts'];
+            }
+            $discounts[] = ['coupon' => $coupon];
+            $args['discounts'] = $discounts;
+        }
+    }
+
     return $args;
 }
 

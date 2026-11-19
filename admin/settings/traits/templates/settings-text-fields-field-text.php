@@ -26,7 +26,11 @@ if ($atts['id'] == '_ppcart_api_key' && ! $atts['value']) {
     update_option('_ppcart_api_key', $apikey);
     $atts['value'] = $apikey;
 }
-if (! empty($atts['secret']) || (class_exists('PPCart_Secrets') && PPCart_Secrets::is_sensitive_option($atts['id']))) {
+if ($atts['id'] == '_ppcart_api_key') {
+    // Admins need the key to connect the REST API, so show it read-only.
+    $atts['value']    = (string) ppcart_get_sensitive_option('_ppcart_api_key', '');
+    $atts['readonly'] = true;
+} elseif (! empty($atts['secret']) || (class_exists('PPCart_Secrets') && PPCart_Secrets::is_sensitive_option($atts['id']))) {
     $this->apply_secret_field_mask($atts);
 }
 include((defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR . 'admin/partials/' : dirname(__DIR__, 3) . '/partials/') . '' . 'ppcart-admin-field-text.php');

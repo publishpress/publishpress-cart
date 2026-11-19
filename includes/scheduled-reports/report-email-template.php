@@ -18,9 +18,11 @@ function ppcart_schedule_report_email_html($report)
     try {
         ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="<?php echo esc_attr(get_bloginfo('language')); ?>">
         <head>
         <meta name="viewport" content="width=device-width">
+        <?php /* translators: %s: plugin title. */ ?>
+        <title><?php echo esc_html(sprintf(__('Your %s Summary Report', 'publishpress-cart'), apply_filters('ppcart_plugin_title', 'PublishPress Cart'))); ?></title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="x-apple-disable-message-reformatting">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,7 +46,7 @@ function ppcart_schedule_report_email_html($report)
         <div class="schedule-main mail">
             <div class="logo">
                 <?php if (! empty($report['company_logo'])) : ?>
-                    <img src="<?php echo esc_url($report['company_logo']); ?>" alt="Logo">
+                    <img src="<?php echo esc_url($report['company_logo']); ?>" alt="<?php echo esc_attr($report['site_name']); ?>">
                 <?php else : ?>
                     <span><?php echo esc_html($report['site_name']); ?></span>
                 <?php endif; ?>

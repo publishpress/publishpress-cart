@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-10-14T16:18:02+00:00\n"
-"PO-Revision-Date: 2026-11-10 10:16+0000\n"
+"PO-Revision-Date: 2026-11-19 14:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: ja\n"
@@ -32,23 +32,23 @@ msgid ""
 "digital products, programs, and services."
 msgstr "デジタル商品、プログラム、サービスを販売するのに役立つ注文ページと簡素化された販売フローの作成。"
 
-#: publishpress-cart.php:20
-#: admin/class-ppcart-welcome.php:82
+#: publishpress-cart.php:21
+#: admin/class-ppcart-welcome.php:81
 #: admin/partials/settings-page/tabs/topbar.php:9
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:110
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:115
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-cart.php:21
+#: publishpress-cart.php:22
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
 
 #: admin/class-ppcart-admin-reports.php:89
 #: admin/class-ppcart-admin-reports.php:90
-#: admin/partials/ppcart-admin-page-settings.php:145
-#: admin/reports/templates/admin-reports-page.php:45
+#: admin/partials/ppcart-admin-page-settings.php:155
+#: admin/reports/templates/admin-reports-page.php:43
 msgid "Reports"
 msgstr "レポート"
 
@@ -76,7 +76,8 @@ msgstr "ナレッジベースを見る"
 #: admin/class-ppcart-contacts-page.php:81
 #: admin/class-ppcart-contacts-page.php:162
 #: admin/class-ppcart-contacts-page.php:171
-#: admin/reports/templates/admin-reports-page.php:535
+#: admin/reports/templates/admin-reports-page.php:100
+#: admin/reports/templates/admin-reports-page.php:539
 msgid "Customers"
 msgstr "顧客"
 
@@ -102,37 +103,37 @@ msgid "Lifetime value"
 msgstr "ライフタイムバリュー"
 
 #: admin/class-ppcart-contacts-page.php:188
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:172
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
 #: admin/controllers/order/templates/product-form.php:320
 #: admin/controllers/order/templates/product-form.php:337
 #: admin/controllers/order/templates/product-form.php:453
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:201
 #: admin/reports/templates/customer-report/page.php:189
-#: public/partials/csv-export.php:136
-#: public/partials/csv-export.php:229
+#: public/partials/csv-export.php:138
+#: public/partials/csv-export.php:231
 #: public/templates/my-account/tabs/order-history.php:13
 msgid "Date"
 msgstr "日付"
 
 #: admin/class-ppcart-contacts-page.php:189
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:180
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:203
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:48
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:216
-#: admin/partials/ppcart-admin-page-settings.php:143
+#: admin/partials/ppcart-admin-page-settings.php:153
 #: admin/partials/settings-page/sections/email-notifications.php:10
 #: public/partials/csv-export.php:22
-#: public/partials/csv-export.php:139
-#: public/templates/functions/plan-coupon-fields.php:539
-#: public/templates/functions/plan-coupon-fields.php:542
+#: public/partials/csv-export.php:141
+#: public/templates/functions/plan-coupon-fields.php:570
+#: public/templates/functions/plan-coupon-fields.php:573
 #: public/templates/my-account/tabs/user-profile.php:27
 msgid "Email"
 msgstr "メール"
 
 #: admin/class-ppcart-contacts-page.php:190
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:202
 msgid "Name"
 msgstr "名前"
 
@@ -268,8 +269,8 @@ msgid "Add new"
 msgstr "新規追加"
 
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:194
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
 #: admin/controllers/order/templates/product-form.php:322
 #: admin/controllers/order/templates/product-form.php:339
 #: admin/controllers/order/templates/product-form.php:454
@@ -277,8 +278,8 @@ msgstr "新規追加"
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:238
 #: admin/reports/templates/customer-report/page.php:193
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:135
-#: public/partials/csv-export.php:151
-#: public/partials/csv-export.php:233
+#: public/partials/csv-export.php:153
+#: public/partials/csv-export.php:235
 #: public/templates/my-account/tabs/order-history.php:14
 #: public/templates/my-account/tabs/plans.php:38
 #: public/templates/my-account/tabs/subscriptions.php:43
@@ -288,68 +289,65 @@ msgstr "ステータス"
 #: admin/class-ppcart-pro-menu-previews.php:68
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
-#: admin/reports/templates/admin-reports-page.php:454
+#: admin/reports/templates/admin-reports-page.php:458
 msgid "Active"
 msgstr "アクティブ"
 
 #: admin/class-ppcart-welcome.php:45
-#: admin/class-ppcart-welcome.php:92
+#: admin/class-ppcart-welcome.php:91
 msgid "Welcome to Cart"
 msgstr "カートへようこそ"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:72
+#: admin/reports/templates/admin-reports-page.php:121
 #: includes/templates/post-types-create-custom-post-type.php:12
 msgid "Products"
 msgstr "製品"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:72
 msgid "Add a digital product and set its price."
 msgstr "デジタル製品を追加し、その価格を設定します。"
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:73
 msgid "Payments"
 msgstr "支払い"
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:73
 msgid "Choose how customers pay at checkout."
 msgstr "チェックアウト時に顧客が支払う方法を選択します。"
 
-#: admin/class-ppcart-welcome.php:75
+#: admin/class-ppcart-welcome.php:74
 msgid "Getting started guide"
 msgstr "始め方ガイド"
 
-#: admin/class-ppcart-welcome.php:75
+#: admin/class-ppcart-welcome.php:74
 msgid "Learn how to publish and share a checkout page."
 msgstr "チェックアウトページを公開し、共有する方法を学びます。"
 
-#: admin/class-ppcart-welcome.php:84
+#: admin/class-ppcart-welcome.php:83
 #: admin/partials/ppcart-admin-page-settings.php:26
 msgid "Cart"
 msgstr "カート"
 
-#: admin/class-ppcart-welcome.php:87
+#: admin/class-ppcart-welcome.php:86
 msgid "Get support"
 msgstr "サポートを受ける"
 
-#: admin/class-ppcart-welcome.php:93
+#: admin/class-ppcart-welcome.php:92
 msgid "Start selling from your WordPress site"
 msgstr "あなたのWordPressサイトから販売を開始する"
 
-#: admin/class-ppcart-welcome.php:94
+#: admin/class-ppcart-welcome.php:93
 msgid ""
 "Create a product, set its price, and share its checkout page with your "
 "customers."
 msgstr "製品を作成し、その価格を設定し、顧客とチェックアウトページを共有します。"
 
-#: admin/class-ppcart-welcome.php:96
+#: admin/class-ppcart-welcome.php:95
 msgid "Create your first product"
 msgstr "最初の製品を作成する"
 
-#: admin/class-ppcart-welcome.php:97
-msgid "Go to dashboard"
-msgstr "ダッシュボードに移動"
-
-#: admin/class-ppcart-welcome.php:112
+#: admin/class-ppcart-welcome.php:110
 msgid "Set up your store"
 msgstr "ストアを設定する"
 
@@ -398,52 +396,59 @@ msgstr "支払い方法"
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:99
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:101
+#. translators: %s: product shortcode, for example [ppcart_form id="12"].
+#, php-format
+msgid "Copy shortcode %s"
+msgstr "ショートコード %s をコピー"
+
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:102
 msgid "Copy shortcode"
 msgstr "ショートコードをコピー"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:138
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
 msgid "One-time Payment"
 msgstr "一度の支払い"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:139
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:142
 msgid "Recurring Payments (Subscriptions)"
 msgstr "定期的な支払い (サブスクリプション)"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:140
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:143
 msgid "Pay What You Want"
 msgstr "好きな金額を支払う"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:144
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:57
-#: admin/reports/templates/admin-reports-page.php:352
-#: public/templates/functions/plan-coupon-fields.php:288
+#: admin/reports/templates/admin-reports-page.php:356
+#: public/templates/functions/plan-coupon-fields.php:291
 msgid "Free"
 msgstr "無料"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:149
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:152
 msgid "Unknown"
 msgstr "不明"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:171
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
 msgid "Order #"
 msgstr "注文番号 #"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:173
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:195
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
 #: admin/controllers/order/templates/product-form.php:321
 #: admin/controllers/order/templates/product-form.php:338
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
+#: public/templates/functions/plan-coupon-fields.php:311
 #: public/templates/pdf-invoice/invoice.php:148
 msgid "Amount"
 msgstr "金額"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:178
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:201
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:52
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:173
 #: admin/reports/templates/customer-report/page.php:190
-#: includes/scheduled-reports/report-email-template.php:147
+#: includes/scheduled-reports/report-email-template.php:149
 #: includes/templates/post-types-create-custom-post-type.php:12
 #: public/templates/my-account/tabs/order-history.php:12
 #: public/templates/my-account/tabs/plans.php:37
@@ -452,21 +457,21 @@ msgstr "金額"
 msgid "Product"
 msgstr "商品"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:182
 #: public/templates/pdf-invoice/invoice.php:84
 msgid "Invoice Number"
 msgstr "請求書番号"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:193
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:196
 msgid "Sub ID"
 msgstr "サブID"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:196
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
 #: public/templates/my-account/subscription-detail.php:84
 msgid "Start Date"
 msgstr "開始日"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
 #: admin/reports/templates/customer-report/page.php:283
 #: public/templates/my-account/subscription-detail.php:95
 #: public/templates/my-account/tabs/plans.php:39
@@ -474,51 +479,51 @@ msgstr "開始日"
 msgid "Next Payment"
 msgstr "次の支払い"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:242
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
 msgid "Update status to paid"
 msgstr "ステータスを支払い済みに更新"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:243
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:246
 msgid "Update status to failed"
 msgstr "ステータスを失敗に更新"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:244
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:247
 msgid "Update status to pending"
 msgstr "ステータスを保留に更新"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:253
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:248
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:256
 msgid "Update status to completed"
 msgstr "ステータスを完了に更新"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:251
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
 msgid "Resume in Stripe / update active"
 msgstr "Stripeで再開 / アクティブを更新"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:252
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:255
 msgid "Update status to canceled"
 msgstr "ステータスをキャンセルに更新"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:257
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
 msgstr "Stripeと同期"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:285
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:288
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s 件のサブスクリプションがStripeから同期されました。"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:297
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:300
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s 件のサブスクリプションが失敗しました; 理由についてはそのサブスクリプションログを確認してください。"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:307
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:310
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
@@ -614,7 +619,7 @@ msgstr "返金を発行"
 
 #: admin/controllers/order/templates/product-form.php:294
 #: admin/reports/templates/customer-report/page.php:105
-#: includes/scheduled-reports/report-email-template.php:111
+#: includes/scheduled-reports/report-email-template.php:113
 msgid "Refunds"
 msgstr "返金"
 
@@ -687,7 +692,7 @@ msgstr "返金されたアイテムを再入荷する"
 #: admin/order-metaboxes/traits/trait-ppcart-order-metabox-field-groups.php:87
 #: admin/partials/settings-page/sections/payment-method.php:268
 #: admin/partials/settings-page/tabs/panels.php:387
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
 #: public/templates/my-account/subscription-detail.php:56
 #: public/templates/my-account/tabs/user-profile.php:92
 msgid "Cancel"
@@ -787,12 +792,14 @@ msgid "Order actions"
 msgstr "注文アクション"
 
 #: admin/controllers/order/templates/product-info-metabox.php:146
+#: public/partials/invoice-pdf.php:33
 #: public/templates/my-account/order-detail.php:40
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Invoice"
 msgstr "請求書"
 
 #: admin/controllers/order/templates/product-info-metabox.php:153
+#: public/partials/invoice-pdf.php:33
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Receipt"
 msgstr "領収書"
@@ -817,8 +824,6 @@ msgstr "詳細を編集"
 #: admin/order-metaboxes/traits/templates/order-metabox-edit-fields-get-edit-field-sections.php:29
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:140
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:308
-#: admin/partials/settings-page/metadata.php:506
-#: admin/partials/settings-page/metadata.php:510
 #: admin/partials/settings-page/metadata.php:514
 #: admin/partials/settings-page/metadata.php:518
 #: admin/partials/settings-page/metadata.php:522
@@ -828,9 +833,11 @@ msgstr "詳細を編集"
 #: admin/partials/settings-page/metadata.php:538
 #: admin/partials/settings-page/metadata.php:542
 #: admin/partials/settings-page/metadata.php:546
-#: admin/partials/settings-page/metadata.php:558
+#: admin/partials/settings-page/metadata.php:550
+#: admin/partials/settings-page/metadata.php:554
+#: admin/partials/settings-page/metadata.php:566
 #: admin/partials/settings-page/sections/email-notifications.php:36
-#: includes/scheduled-reports/report-email-template.php:146
+#: includes/scheduled-reports/report-email-template.php:148
 msgid "Customer"
 msgstr "顧客"
 
@@ -873,7 +880,7 @@ msgstr "請求先住所"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:225
 #: admin/reports/templates/customer-report/page.php:235
 #: admin/traits/trait-ppcart-admin-profile.php:28
-#: public/partials/csv-export.php:140
+#: public/partials/csv-export.php:142
 #: public/templates/my-account/tabs/user-profile.php:32
 #: public/templates/my-account/tabs/user-profile.php:33
 msgid "Phone"
@@ -891,8 +898,8 @@ msgstr "会社"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:243
 #: public/templates/email/order-table.php:233
-#: public/templates/functions/payment-address.php:150
 #: public/templates/functions/payment-address.php:151
+#: public/templates/functions/payment-address.php:152
 #: public/templates/pdf-invoice/invoice.php:119
 msgid "VAT Number"
 msgstr "VAT番号"
@@ -900,7 +907,7 @@ msgstr "VAT番号"
 #: admin/controllers/order/templates/product-info-metabox.php:232
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:192
 #: admin/traits/trait-ppcart-admin-profile.php:22
-#: public/templates/functions/payment-address.php:308
+#: public/templates/functions/payment-address.php:311
 #: public/templates/my-account/order-detail.php:35
 #: public/templates/my-account/tabs/user-profile.php:38
 #: public/templates/my-account/tabs/user-profile.php:39
@@ -909,7 +916,7 @@ msgstr "住所"
 
 #: admin/controllers/order/templates/product-info-metabox.php:236
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:196
-#: public/partials/csv-export.php:142
+#: public/partials/csv-export.php:144
 #: public/templates/my-account/tabs/user-profile.php:43
 #: public/templates/my-account/tabs/user-profile.php:44
 msgid "Address 2"
@@ -920,7 +927,7 @@ msgstr "住所2"
 #: admin/partials/ppcart-admin-page-settings-tax.php:25
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:24
-#: public/partials/csv-export.php:143
+#: public/partials/csv-export.php:145
 #: public/templates/my-account/tabs/user-profile.php:48
 #: public/templates/my-account/tabs/user-profile.php:49
 msgid "City"
@@ -929,7 +936,7 @@ msgstr "市"
 #: admin/controllers/order/templates/product-info-metabox.php:244
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:204
 #: admin/traits/trait-ppcart-admin-profile.php:25
-#: public/partials/csv-export.php:144
+#: public/partials/csv-export.php:146
 #: public/templates/my-account/tabs/user-profile.php:53
 #: public/templates/my-account/tabs/user-profile.php:54
 msgid "State"
@@ -938,7 +945,7 @@ msgstr "州"
 #: admin/controllers/order/templates/product-info-metabox.php:248
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:208
 #: admin/traits/trait-ppcart-admin-profile.php:26
-#: public/partials/csv-export.php:145
+#: public/partials/csv-export.php:147
 #: public/templates/my-account/tabs/user-profile.php:58
 #: public/templates/my-account/tabs/user-profile.php:59
 msgid "Zip"
@@ -949,8 +956,8 @@ msgstr "郵便番号"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:129
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:297
 #: admin/traits/trait-ppcart-admin-profile.php:27
-#: public/partials/csv-export.php:146
-#: public/templates/functions/payment-address.php:298
+#: public/partials/csv-export.php:148
+#: public/templates/functions/payment-address.php:300
 #: public/templates/my-account/tabs/user-profile.php:63
 #: public/templates/my-account/tabs/user-profile.php:64
 msgid "Country"
@@ -985,13 +992,13 @@ msgid "Order status"
 msgstr "注文状況"
 
 #: admin/controllers/order/templates/product-info-metabox.php:283
-#: public/partials/csv-export.php:156
+#: public/partials/csv-export.php:158
 msgid "Opted-in"
 msgstr "オプトイン"
 
 #: admin/controllers/order/templates/product-info-metabox.php:295
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:253
-#: public/partials/csv-export.php:155
+#: public/partials/csv-export.php:157
 msgid "Custom Fields"
 msgstr "カスタムフィールド"
 
@@ -1030,7 +1037,7 @@ msgid "No recurring payment plans found"
 msgstr "定期支払いプランが見つかりません"
 
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:34
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:153
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:168
 msgid "Test email sent."
 msgstr "テストメールが送信されました。"
 
@@ -1072,7 +1079,7 @@ msgid "No notes found"
 msgstr "メモが見つかりません"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:38
-#: public/templates/functions/plan-coupon-fields.php:492
+#: public/templates/functions/plan-coupon-fields.php:514
 #: public/templates/pdf-invoice/invoice.php:146
 msgid "Qty"
 msgstr "数量"
@@ -1086,7 +1093,7 @@ msgid "Recurring Payment"
 msgstr "定期支払い"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:108
-#: admin/partials/settings-page/metadata.php:446
+#: admin/partials/settings-page/metadata.php:454
 #: public/templates/my-account/subscription-detail.php:56
 msgid "Cancel Subscription"
 msgstr "サブスクリプションをキャンセル"
@@ -1104,8 +1111,8 @@ msgstr "再開"
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:115
 #: admin/controllers/templates/order-list-custom-status.php:108
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:29
-#: admin/reports/templates/admin-reports-page.php:462
-#: public/partials/csv-export.php:325
+#: admin/reports/templates/admin-reports-page.php:466
+#: public/partials/csv-export.php:318
 msgid "Canceled"
 msgstr "キャンセル済み"
 
@@ -1224,7 +1231,7 @@ msgid "Error loading subscription."
 msgstr "定期購読の読み込み中にエラーが発生しました。"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-sync-ajax.php:67
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
 msgid "Subscription synced successfully."
 msgstr "サブスクリプションが正常に同期されました。"
 
@@ -1382,7 +1389,7 @@ msgstr[0] "未払い <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
-#: public/partials/csv-export.php:327
+#: public/partials/csv-export.php:320
 msgid "Paused"
 msgstr "一時停止"
 
@@ -1450,7 +1457,7 @@ msgid "Total Orders"
 msgstr "総注文数"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:36
-#: admin/reports/templates/admin-reports-page.php:493
+#: admin/reports/templates/admin-reports-page.php:497
 msgid "Total Sales"
 msgstr "総売上"
 
@@ -1459,7 +1466,7 @@ msgid "Avg. Order Value"
 msgstr "平均注文額"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:38
-#: includes/scheduled-reports/report-email-template.php:114
+#: includes/scheduled-reports/report-email-template.php:116
 msgid "Pending Orders"
 msgstr "保留中の注文"
 
@@ -1469,7 +1476,7 @@ msgid "Paid Orders"
 msgstr "支払い済み注文"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:40
-#: includes/scheduled-reports/report-email-template.php:116
+#: includes/scheduled-reports/report-email-template.php:118
 msgid "Refunded Orders"
 msgstr "返金された注文"
 
@@ -1496,12 +1503,12 @@ msgid "Trials"
 msgstr "トライアル"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:54
-#: admin/reports/templates/admin-reports-page.php:624
+#: admin/reports/templates/admin-reports-page.php:628
 msgid "Renewals"
 msgstr "更新"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:405
+#: admin/reports/templates/admin-reports-page.php:409
 msgid "MRR"
 msgstr "月次収益（MRR）"
 
@@ -1547,7 +1554,7 @@ msgid "View Contacts"
 msgstr "連絡先を表示"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:80
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:175
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:180
 msgid "Settings"
 msgstr "設定"
 
@@ -1689,9 +1696,9 @@ msgstr "通知ラベル"
 
 #: admin/metaboxes/field-groups/message-fields.php:158
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:30
-#: admin/settings/traits/options/core-settings.php:262
-#: admin/settings/traits/options/core-settings.php:320
-#: admin/settings/traits/options/core-settings.php:378
+#: admin/settings/traits/options/core-settings.php:264
+#: admin/settings/traits/options/core-settings.php:322
+#: admin/settings/traits/options/core-settings.php:380
 #: admin/settings/traits/options/payment-fields.php:11
 #: admin/settings/traits/options/payment-fields.php:23
 #: admin/settings/traits/options/payment-fields.php:135
@@ -1743,13 +1750,13 @@ msgid "Bcc"
 msgstr "Bcc"
 
 #: admin/metaboxes/field-groups/message-fields.php:266
-#: admin/settings/traits/options/core-settings.php:272
-#: admin/settings/traits/options/core-settings.php:330
-#: admin/settings/traits/options/core-settings.php:398
-#: admin/settings/traits/options/core-settings.php:441
-#: admin/settings/traits/options/core-settings.php:484
-#: admin/settings/traits/options/core-settings.php:527
-#: admin/settings/traits/options/core-settings.php:570
+#: admin/settings/traits/options/core-settings.php:274
+#: admin/settings/traits/options/core-settings.php:332
+#: admin/settings/traits/options/core-settings.php:400
+#: admin/settings/traits/options/core-settings.php:443
+#: admin/settings/traits/options/core-settings.php:486
+#: admin/settings/traits/options/core-settings.php:529
+#: admin/settings/traits/options/core-settings.php:572
 msgid "Subject"
 msgstr "件名"
 
@@ -1857,7 +1864,8 @@ msgstr "デフォルト設定を使用"
 #: admin/metaboxes/field-groups/sales-checkout-fields.php:62
 #: admin/partials/ppcart-admin-field-repeater.php:156
 #: admin/partials/settings-page/render-helpers.php:7
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
+#: admin/partials/settings-page/sections/email-notifications.php:44
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:134
 msgid "Disabled"
 msgstr "無効"
 
@@ -1966,8 +1974,8 @@ msgstr "セクション見出し"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:26
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:184
-#: public/partials/csv-export.php:149
-#: public/partials/csv-export.php:231
+#: public/partials/csv-export.php:151
+#: public/partials/csv-export.php:233
 #: public/templates/functions/plan-coupon-fields.php:197
 msgid "Payment Plan"
 msgstr "支払いプラン"
@@ -2006,7 +2014,7 @@ msgid "Sale billing"
 msgstr "セール請求"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:71
-#: admin/partials/ppcart-admin-page-settings.php:148
+#: admin/partials/ppcart-admin-page-settings.php:158
 #: admin/partials/settings-page/metadata.php:108
 msgid "Advanced"
 msgstr "詳細設定"
@@ -2047,19 +2055,26 @@ msgid "One-time"
 msgstr "一回限り"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:56
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:323
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:324
 msgid "Pay what you want"
 msgstr "支払いはあなたの希望額で"
 
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:65
+msgid "Optional. Set a slug to preselect this plan from a checkout link."
+msgstr "オプション。チェックアウトリンクからこのプランを事前選択するためのスラッグを設定します。"
+
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:66
 msgid ""
-"Letters, numbers, dashes and underscores only. Must be unique for this "
-"product."
-msgstr "文字、数字、ダッシュ、アンダースコアのみ。 この商品専用でユニークでなければなりません。"
+"For example, enter annual and add ?ppcart-pay-plan=annual to the checkout "
+"link. Use letters, numbers, dashes or underscores. The slug must be unique "
+"for this product."
+msgstr ""
+"例えば、annualと入力し、チェックアウトリンクに?ppcart-pay-"
+"plan=annualを追加します。文字、数字、ハイフンまたはアンダースコアを使用します。スラッグはこの製品に対して一意でなければなりません。"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:68
-msgid "URL slug"
-msgstr "URLスラッグ"
+msgid "Checkout link slug"
+msgstr "チェックアウトリンクスラッグ"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:78
 msgid "Plan name on the checkout form."
@@ -2167,65 +2182,65 @@ msgstr "セール頻度"
 msgid "Pay interval"
 msgstr "支払い間隔"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:222
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:246
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
 msgid "Day"
 msgstr "日"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
 msgid "Week"
 msgstr "週"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
 msgid "Month"
 msgstr "月"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:226
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:250
 msgid "Year"
 msgstr "年"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:241
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:242
 msgid "Sale pay interval"
 msgstr "セール支払い間隔"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:264
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:265
 msgid ""
 "Billing stops after this many payments. Otherwise it continues until the "
 "subscription is canceled."
 msgstr "この回数の支払いの後、請求が停止します。さもなければ、サブスクリプションがキャンセルされるまで継続します。"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:266
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:267
 msgid "Number of payments"
 msgstr "支払い回数"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:285
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:286
 msgid "Sale number of payments"
 msgstr "セール支払い回数"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:302
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:303
 msgid "Shown in place of the price at checkout."
 msgstr "チェックアウト時に価格の代わりに表示されます。"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:304
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:341
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
 msgid "Name your price label"
 msgstr "価格を決めるラベル"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:307
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:344
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:306
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:308
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:343
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:345
 msgid "Name your price"
 msgstr "価格を決める"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:320
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
 msgid "Customers choose their own recurring amount."
 msgstr "顧客は自分の定期的な金額を選択します。"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:322
 msgid "The amount must be at or above the plan price."
 msgstr "金額はプラン価格以上でなければなりません。"
 
@@ -2540,7 +2555,7 @@ msgid "Grow sales"
 msgstr "販売を増やす"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:9
-#: admin/partials/ppcart-admin-page-settings.php:137
+#: admin/partials/ppcart-admin-page-settings.php:147
 #: admin/partials/settings-page/tabs/topbar.php:12
 msgid "General"
 msgstr "一般"
@@ -2566,7 +2581,7 @@ msgid "Emails"
 msgstr "メール"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:15
-#: admin/partials/ppcart-admin-page-settings.php:144
+#: admin/partials/ppcart-admin-page-settings.php:154
 #: admin/partials/settings-page/tabs/panels.php:67
 msgid "Integrations"
 msgstr "統合"
@@ -2577,8 +2592,8 @@ msgstr "商品通知"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:121
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:164
 msgid "Email preview"
 msgstr "メールプレビュー"
 
@@ -2744,7 +2759,7 @@ msgstr "選択"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metabox-integration-options.php:107
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:156
-#: admin/settings/traits/options/core-settings.php:237
+#: admin/settings/traits/options/core-settings.php:239
 msgid "-- Select --"
 msgstr "-- 選択 --"
 
@@ -2844,8 +2859,8 @@ msgid "Checkbox label"
 msgstr "チェックボックスのラベル"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:143
-#: admin/settings/traits/options/core-settings.php:293
-#: admin/settings/traits/options/core-settings.php:351
+#: admin/settings/traits/options/core-settings.php:295
+#: admin/settings/traits/options/core-settings.php:353
 msgid "Headline"
 msgstr "見出し"
 
@@ -2894,7 +2909,7 @@ msgid "Header background image"
 msgstr "ヘッダー背景画像"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:35
-#: public/partials/csv-export.php:329
+#: public/partials/csv-export.php:322
 msgid "Until canceled"
 msgstr "キャンセルされるまで"
 
@@ -2923,8 +2938,8 @@ msgstr "名 "
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:39
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:207
 #: public/partials/csv-export.php:21
-#: public/partials/csv-export.php:138
-#: public/templates/functions/plan-coupon-fields.php:535
+#: public/partials/csv-export.php:140
+#: public/templates/functions/plan-coupon-fields.php:566
 #: public/templates/my-account/tabs/user-profile.php:22
 msgid "Last Name"
 msgstr "姓"
@@ -2974,7 +2989,7 @@ msgstr "保存されていない変更"
 #: admin/partials/settings-page/tabs/form-actions.php:7
 #: admin/partials/settings-page/tabs/form-actions.php:8
 #: admin/partials/settings-page/tabs/panels.php:388
-#: admin/partials/settings-page/tabs/savebar.php:11
+#: admin/partials/settings-page/tabs/savebar.php:12
 msgid "Save changes"
 msgstr "変更を保存"
 
@@ -2985,6 +3000,10 @@ msgstr "そして"
 #: admin/partials/ppcart-admin-field-conditions.php:61
 msgid "Or"
 msgstr "または"
+
+#: admin/partials/ppcart-admin-field-conditions.php:98
+msgid "Remove condition"
+msgstr "条件を削除"
 
 #: admin/partials/ppcart-admin-field-conditions.php:106
 msgid "+ Add another condition"
@@ -2997,6 +3016,16 @@ msgstr "フィールドを編集"
 #: admin/partials/ppcart-admin-field-secure-file-upload.php:39
 msgid "Media Library"
 msgstr "メディアライブラリ"
+
+#: admin/partials/ppcart-admin-field-text.php:86
+#. translators: %s: date field label.
+#, php-format
+msgid "Clear %s"
+msgstr "%s をクリア"
+
+#: admin/partials/ppcart-admin-field-text.php:87
+msgid "Clear date"
+msgstr "日付をクリア"
 
 #: admin/partials/ppcart-admin-page-settings-tax.php:9
 msgid "Custom Tax Rates"
@@ -3071,7 +3100,7 @@ msgid "Loading&hellip;"
 msgstr "読み込み中&hellip;"
 
 #: admin/partials/ppcart-admin-page-settings.php:44
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:171
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:176
 #. translators: %s: plugin title.
 #, php-format
 msgid "%s Settings"
@@ -3089,37 +3118,53 @@ msgstr "設定で少なくとも一つの支払い方法を有効にしてくだ
 msgid "PublishPress Cart settings"
 msgstr "PublishPress カート設定"
 
-#: admin/partials/ppcart-admin-page-settings.php:138
+#: admin/partials/ppcart-admin-page-settings.php:107
+msgid "Debug log cleared."
+msgstr "デバッグログがクリアされました。"
+
+#: admin/partials/ppcart-admin-page-settings.php:111
+msgid "Stripe webhook log cleared."
+msgstr "Stripe ウェブフックログがクリアされました。"
+
+#: admin/partials/ppcart-admin-page-settings.php:148
 msgid "Pages"
 msgstr "ページ"
 
-#: admin/partials/ppcart-admin-page-settings.php:139
+#: admin/partials/ppcart-admin-page-settings.php:149
 msgid "Branding"
 msgstr "ブランディング"
 
-#: admin/partials/ppcart-admin-page-settings.php:140
+#: admin/partials/ppcart-admin-page-settings.php:150
 msgid "Payment Methods"
 msgstr "支払い方法"
 
-#: admin/partials/ppcart-admin-page-settings.php:141
+#: admin/partials/ppcart-admin-page-settings.php:151
 msgid "Invoices"
 msgstr "請求書"
 
-#: admin/partials/ppcart-admin-page-settings.php:142
+#: admin/partials/ppcart-admin-page-settings.php:152
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: admin/partials/ppcart-admin-page-settings.php:146
+#: admin/partials/ppcart-admin-page-settings.php:156
 msgid "Debug"
 msgstr "デバッグ"
 
-#: admin/partials/ppcart-admin-page-settings.php:147
+#: admin/partials/ppcart-admin-page-settings.php:157
 msgid "Maintenance"
 msgstr "メンテナンス"
 
-#: admin/partials/ppcart-admin-page-settings.php:163
+#: admin/partials/ppcart-admin-page-settings.php:173
 msgid "White Label"
 msgstr "ホワイトラベル"
+
+#: admin/partials/ppcart-admin-repeater-move-buttons.php:25
+msgid "Move up"
+msgstr "上に移動"
+
+#: admin/partials/ppcart-admin-repeater-move-buttons.php:29
+msgid "Move down"
+msgstr "下に移動"
 
 #: admin/partials/settings-page/metadata.php:11
 msgid "Currency and pricing defaults for your store."
@@ -3289,387 +3334,396 @@ msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "顧客、タグ、eコマース活動を Drip に同期します。"
 
 #: admin/partials/settings-page/metadata.php:212, fuzzy
+msgid "Brevo"
+msgstr "Brevo"
+
+#: admin/partials/settings-page/metadata.php:213
+msgid "Add customers to Brevo contact lists."
+msgstr "Brevo の連絡先リストに顧客を追加します。"
+
+#: admin/partials/settings-page/metadata.php:220, fuzzy
 msgid "Flodesk"
 msgstr "Flodesk"
 
-#: admin/partials/settings-page/metadata.php:213
+#: admin/partials/settings-page/metadata.php:221
 msgid "Add customers to Flodesk segments."
 msgstr "Flodesk セグメントに顧客を追加します。"
 
-#: admin/partials/settings-page/metadata.php:221, fuzzy
+#: admin/partials/settings-page/metadata.php:229, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:230
 msgid "Add customers to MailerLite subscribers and groups."
 msgstr "顧客を MailerLite の購読者およびグループに追加します。"
 
-#: admin/partials/settings-page/metadata.php:230, fuzzy
+#: admin/partials/settings-page/metadata.php:238, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
-#: admin/partials/settings-page/metadata.php:231
+#: admin/partials/settings-page/metadata.php:239
 msgid "Add customers to MailPoet lists."
 msgstr "顧客を MailPoet のリストに追加します。"
 
-#: admin/partials/settings-page/metadata.php:238, fuzzy
+#: admin/partials/settings-page/metadata.php:246, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
-#: admin/partials/settings-page/metadata.php:239
+#: admin/partials/settings-page/metadata.php:247
 msgid "Track order events and sync customers to Encharge."
 msgstr "注文イベントを追跡し、顧客を Encharge に同期します。"
 
-#: admin/partials/settings-page/metadata.php:248, fuzzy
+#: admin/partials/settings-page/metadata.php:256, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
-#: admin/partials/settings-page/metadata.php:249
+#: admin/partials/settings-page/metadata.php:257
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "顧客を FluentCRM のリストとタグに追加します。"
 
-#: admin/partials/settings-page/metadata.php:256, fuzzy
+#: admin/partials/settings-page/metadata.php:264, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
-#: admin/partials/settings-page/metadata.php:257
+#: admin/partials/settings-page/metadata.php:265
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "アカデミーLMSコースに学生を登録または削除します。"
 
-#: admin/partials/settings-page/metadata.php:264, fuzzy
+#: admin/partials/settings-page/metadata.php:272, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
-#: admin/partials/settings-page/metadata.php:265
+#: admin/partials/settings-page/metadata.php:273
 msgid "Add or remove customers in Gurucan products."
 msgstr "Gurucan製品に顧客を追加または削除します。"
 
-#: admin/partials/settings-page/metadata.php:273, fuzzy
+#: admin/partials/settings-page/metadata.php:281, fuzzy
 msgid "Heartbeat"
 msgstr "Heartbeat"
 
-#: admin/partials/settings-page/metadata.php:274
+#: admin/partials/settings-page/metadata.php:282
 msgid "Manage community access in Heartbeat."
 msgstr "Heartbeatのコミュニティアクセスを管理します。"
 
-#: admin/partials/settings-page/metadata.php:282, fuzzy
+#: admin/partials/settings-page/metadata.php:290, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
-#: admin/partials/settings-page/metadata.php:283
+#: admin/partials/settings-page/metadata.php:291
 msgid "Enable Kajabi purchase automations."
 msgstr "Kajabiの購入自動化を有効にします。"
 
-#: admin/partials/settings-page/metadata.php:291, fuzzy
+#: admin/partials/settings-page/metadata.php:299, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
-#: admin/partials/settings-page/metadata.php:292
+#: admin/partials/settings-page/metadata.php:300
 msgid "Enroll customers into Teachable schools and products."
 msgstr "Teachableの学校や製品に顧客を登録します。"
 
-#: admin/partials/settings-page/metadata.php:300, fuzzy
+#: admin/partials/settings-page/metadata.php:308, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:309
 msgid "Grant customers access to Upcoach programs."
 msgstr "Upcoachプログラムへの顧客アクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:309, fuzzy
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
-#: admin/partials/settings-page/metadata.php:310
+#: admin/partials/settings-page/metadata.php:318
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Tutor LMSコースに学生を登録または削除します。"
 
-#: admin/partials/settings-page/metadata.php:317, fuzzy
+#: admin/partials/settings-page/metadata.php:325, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
-#: admin/partials/settings-page/metadata.php:318
+#: admin/partials/settings-page/metadata.php:326
 msgid "Grant or revoke LearnDash course access."
 msgstr "LearnDashコースへのアクセスを付与または取り消します。"
 
-#: admin/partials/settings-page/metadata.php:325, fuzzy
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
-#: admin/partials/settings-page/metadata.php:326
+#: admin/partials/settings-page/metadata.php:334
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "購入後のWP Coursewareの登録を管理します。"
 
-#: admin/partials/settings-page/metadata.php:333, fuzzy
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
-#: admin/partials/settings-page/metadata.php:334
+#: admin/partials/settings-page/metadata.php:342
 msgid "Enroll customers into MasterStudy LMS courses."
 msgstr "MasterStudy LMSコースに顧客を登録します。"
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:349
 msgid "Groups"
 msgstr "グループ"
 
-#: admin/partials/settings-page/metadata.php:342
+#: admin/partials/settings-page/metadata.php:350
 msgid "Add or remove customers from WordPress Groups."
 msgstr "WordPressグループから顧客を追加または削除します。"
 
-#: admin/partials/settings-page/metadata.php:349, fuzzy
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
-#: admin/partials/settings-page/metadata.php:350
+#: admin/partials/settings-page/metadata.php:358
 msgid "Grant customers MemberPress membership access."
 msgstr "顧客にMemberPressメンバーシップアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:357, fuzzy
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
-#: admin/partials/settings-page/metadata.php:358
+#: admin/partials/settings-page/metadata.php:366
 msgid "Grant customers ARMember plan access."
 msgstr "顧客にARMemberプランアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:365, fuzzy
+#: admin/partials/settings-page/metadata.php:373, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
-#: admin/partials/settings-page/metadata.php:366
+#: admin/partials/settings-page/metadata.php:374
 msgid "Grant customers WishList Member level access."
 msgstr "顧客にWishList Memberレベルアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:373, fuzzy
+#: admin/partials/settings-page/metadata.php:381, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:382
 msgid "Grant customers Restrict Content Pro access."
 msgstr "顧客にRestrict Content Proアクセスを付与します。"
 
-#: admin/partials/settings-page/metadata.php:381, fuzzy
+#: admin/partials/settings-page/metadata.php:389, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:390
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "新しい顧客にUltimate Memberの歓迎メールを送信します。"
 
-#: admin/partials/settings-page/metadata.php:390, fuzzy
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
-#: admin/partials/settings-page/metadata.php:391
+#: admin/partials/settings-page/metadata.php:399
 msgid "Choose Elementor templates for checkout components."
 msgstr "チェックアウトコンポーネントのためにElementorテンプレートを選択します。"
 
-#: admin/partials/settings-page/metadata.php:398, fuzzy
+#: admin/partials/settings-page/metadata.php:406, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
-#: admin/partials/settings-page/metadata.php:399
+#: admin/partials/settings-page/metadata.php:407
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "Diviレイアウト内でPublishPress Cart注文フォームを使用します。"
 
-#: admin/partials/settings-page/metadata.php:406, fuzzy
+#: admin/partials/settings-page/metadata.php:414, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
-#: admin/partials/settings-page/metadata.php:407
+#: admin/partials/settings-page/metadata.php:415
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Oxygen BuilderでPublishPress Cart条件を使用します。"
 
-#: admin/partials/settings-page/metadata.php:414, fuzzy
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
-#: admin/partials/settings-page/metadata.php:415
+#: admin/partials/settings-page/metadata.php:423
 msgid "Use PublishPress Cart blocks in the WordPress block editor."
 msgstr "WordPressブロックエディタでPublishPress Cartブロックを使用します。"
 
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:430
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: admin/partials/settings-page/metadata.php:423
+#: admin/partials/settings-page/metadata.php:431
 msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "WooCommerceフローとPublishPressカート製品を接続します。"
 
-#: admin/partials/settings-page/metadata.php:430
 #: admin/partials/settings-page/metadata.php:438
+#: admin/partials/settings-page/metadata.php:446
 msgid "WP Domain Checker"
 msgstr "WPドメインチェッカー"
 
-#: admin/partials/settings-page/metadata.php:431
 #: admin/partials/settings-page/metadata.php:439
+#: admin/partials/settings-page/metadata.php:447
 msgid "Sell domains through WP Domain Checker checkout flows."
 msgstr "WPドメインチェッカーのチェックアウトフローを通じてドメインを販売します。"
 
-#: admin/partials/settings-page/metadata.php:447
+#: admin/partials/settings-page/metadata.php:455
 msgid "Cancel an existing subscription as an order automation."
 msgstr "既存のサブスクリプションを注文の自動化としてキャンセルします。"
 
-#: admin/partials/settings-page/metadata.php:452
+#: admin/partials/settings-page/metadata.php:460
 msgid "Refund Order"
 msgstr "注文を返金する"
 
-#: admin/partials/settings-page/metadata.php:453
+#: admin/partials/settings-page/metadata.php:461
 msgid "Refund an existing order as an order automation."
 msgstr "既存の注文を注文の自動化として返金します。"
 
-#: admin/partials/settings-page/metadata.php:458, fuzzy
+#: admin/partials/settings-page/metadata.php:466, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
-#: admin/partials/settings-page/metadata.php:459
+#: admin/partials/settings-page/metadata.php:467
 msgid "Send order data to an external webhook URL."
 msgstr "注文データを外部Webhook URLに送信します。"
 
-#: admin/partials/settings-page/metadata.php:466
+#: admin/partials/settings-page/metadata.php:474
 msgid "All"
 msgstr "すべて"
 
-#: admin/partials/settings-page/metadata.php:467
+#: admin/partials/settings-page/metadata.php:475
 msgid "Email Marketing"
 msgstr "メールマーケティング"
 
-#: admin/partials/settings-page/metadata.php:468
+#: admin/partials/settings-page/metadata.php:476
 msgid "Analytics"
 msgstr "分析"
 
-#: admin/partials/settings-page/metadata.php:469
+#: admin/partials/settings-page/metadata.php:477
 msgid "Ads"
 msgstr "広告"
 
-#: admin/partials/settings-page/metadata.php:470
+#: admin/partials/settings-page/metadata.php:478
 msgid "Automation"
 msgstr "自動化"
 
-#: admin/partials/settings-page/metadata.php:471
+#: admin/partials/settings-page/metadata.php:479
 msgid "Courses"
 msgstr "コース"
 
-#: admin/partials/settings-page/metadata.php:472
+#: admin/partials/settings-page/metadata.php:480
 msgid "Membership"
 msgstr "メンバーシップ"
 
-#: admin/partials/settings-page/metadata.php:473
+#: admin/partials/settings-page/metadata.php:481
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:107
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:30
 msgid "Security"
 msgstr "セキュリティ"
 
-#: admin/partials/settings-page/metadata.php:474
+#: admin/partials/settings-page/metadata.php:482
 msgid "Builders"
 msgstr "ビルダー"
 
-#: admin/partials/settings-page/metadata.php:479
-#: admin/reports/templates/admin-reports-page.php:351
+#: admin/partials/settings-page/metadata.php:487
+#: admin/reports/templates/admin-reports-page.php:355
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:31
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:56
 #: public/templates/functions/payment-address.php:74
 msgid "Cash on Delivery"
 msgstr "代金引換"
 
-#: admin/partials/settings-page/metadata.php:480
+#: admin/partials/settings-page/metadata.php:488
 msgid "Manage Cash on Delivery"
 msgstr "代金引換を管理する"
 
-#: admin/partials/settings-page/metadata.php:481
+#: admin/partials/settings-page/metadata.php:489
 msgid "Allow customers to pay with cash when their order is delivered."
 msgstr "顧客が注文を配達されたときに現金で支払うことを許可します。"
 
-#: admin/partials/settings-page/metadata.php:483
+#: admin/partials/settings-page/metadata.php:491
 #: admin/partials/settings-page/sections/email-notifications.php:53
 #: admin/partials/settings-page/sections/payment-method.php:14
 #: public/templates/my-account/subscription-row.php:47
 msgid "Manage"
 msgstr "管理"
 
-#: admin/partials/settings-page/metadata.php:486
+#: admin/partials/settings-page/metadata.php:494
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:32
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:56, fuzzy
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:57, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
-#: admin/partials/settings-page/metadata.php:487
-#: admin/partials/settings-page/metadata.php:491
+#: admin/partials/settings-page/metadata.php:495
+#: admin/partials/settings-page/metadata.php:499
 msgid "Manage Stripe"
 msgstr "Stripeを管理する"
 
-#: admin/partials/settings-page/metadata.php:488
+#: admin/partials/settings-page/metadata.php:496
 msgid "Accept credit cards and other payments securely via Stripe."
 msgstr "Stripeを介してクレジットカードやその他の支払いを安全に受け入れます。"
 
-#: admin/partials/settings-page/metadata.php:494
+#: admin/partials/settings-page/metadata.php:502
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:33
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:57
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
-#: admin/partials/settings-page/metadata.php:495
-#: admin/partials/settings-page/metadata.php:499
+#: admin/partials/settings-page/metadata.php:503
+#: admin/partials/settings-page/metadata.php:507
 msgid "Manage PayPal"
 msgstr "PayPalを管理"
 
-#: admin/partials/settings-page/metadata.php:496
+#: admin/partials/settings-page/metadata.php:504
 msgid "Accept payments securely via PayPal."
 msgstr "PayPalを通じて安全に支払いを受け入れる。"
 
-#: admin/partials/settings-page/metadata.php:505
+#: admin/partials/settings-page/metadata.php:513
 msgid "Sent after an order is received (pending payment). Useful for COD orders."
 msgstr "注文が受け取られた後に送信されます（支払い待ち）。着払い注文に便利です。"
 
-#: admin/partials/settings-page/metadata.php:509
+#: admin/partials/settings-page/metadata.php:517
 msgid "Sent to customers after purchase (paid)."
 msgstr "購入後に顧客に送信されます（支払い済み）。"
 
-#: admin/partials/settings-page/metadata.php:513
+#: admin/partials/settings-page/metadata.php:521
 msgid "Sent when an order is marked complete."
 msgstr "注文が完了としてマークされたときに送信されます。"
 
-#: admin/partials/settings-page/metadata.php:517
+#: admin/partials/settings-page/metadata.php:525
 msgid "Sent when a new user account is created."
 msgstr "新しいユーザーアカウントが作成されたときに送信されます。"
 
-#: admin/partials/settings-page/metadata.php:521
+#: admin/partials/settings-page/metadata.php:529
 msgid "Sent when an order is refunded."
 msgstr "注文が返金されたときに送信されます。"
 
-#: admin/partials/settings-page/metadata.php:525
+#: admin/partials/settings-page/metadata.php:533
 msgid "Sent before a subscription trial ends."
 msgstr "サブスクリプションのトライアルが終了する前に送信されます。"
 
-#: admin/partials/settings-page/metadata.php:529
+#: admin/partials/settings-page/metadata.php:537
 msgid "Sent before an upcoming subscription renewal."
 msgstr "今後のサブスクリプション更新の前に送信されます。"
 
-#: admin/partials/settings-page/metadata.php:533
+#: admin/partials/settings-page/metadata.php:541
 msgid "Sent after a subscription renews."
 msgstr "サブスクリプションが更新された後に送信されます。"
 
-#: admin/partials/settings-page/metadata.php:537
+#: admin/partials/settings-page/metadata.php:545
 msgid "Sent when a subscription renewal payment fails."
 msgstr "サブスクリプション更新の支払いが失敗したときに送信されます。"
 
-#: admin/partials/settings-page/metadata.php:541
+#: admin/partials/settings-page/metadata.php:549
 msgid "Sent when a subscription is canceled."
 msgstr "サブスクリプションがキャンセルされたときに送信されます。"
 
-#: admin/partials/settings-page/metadata.php:545
+#: admin/partials/settings-page/metadata.php:553
 msgid "Sent when a subscription is paused."
 msgstr "サブスクリプションが一時停止されたときに送信されます。"
 
-#: admin/partials/settings-page/metadata.php:557
+#: admin/partials/settings-page/metadata.php:565
 #: admin/partials/settings-page/sections/email-notifications.php:40
 msgid "Configure this automated email notification."
 msgstr "この自動メール通知を設定します。"
 
 #: admin/partials/settings-page/render-helpers.php:8
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
+#: admin/partials/settings-page/sections/email-notifications.php:44
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:133
 msgid "Enabled"
 msgstr "有効"
 
@@ -3720,7 +3774,7 @@ msgid "Reset to default"
 msgstr "デフォルトにリセット"
 
 #: admin/partials/settings-page/sections/email-notifications.php:117
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
 msgid "Preview"
 msgstr "プレビュー"
 
@@ -3841,11 +3895,12 @@ msgstr "%sについての詳細"
 msgid "Configuration"
 msgstr "設定"
 
-#: admin/partials/settings-page/tabs/savebar.php:7
+#: admin/partials/settings-page/tabs/savebar.php:8
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
 msgid "You have unsaved changes"
 msgstr "保存されていない変更があります"
 
-#: admin/partials/settings-page/tabs/savebar.php:9
+#: admin/partials/settings-page/tabs/savebar.php:10
 msgid "Discard"
 msgstr "破棄"
 
@@ -3861,253 +3916,253 @@ msgstr "検索設定"
 msgid "Search settings..."
 msgstr "検索設定..."
 
-#: admin/reports/templates/admin-reports-page.php:48
+#: admin/reports/templates/admin-reports-page.php:46
 #. translators: %s: report period label.
 #, php-format
 msgid "Performance summary for %s"
 msgstr "のパフォーマンスサマリー %s"
 
-#: admin/reports/templates/admin-reports-page.php:82
+#: admin/reports/templates/admin-reports-page.php:80
 msgid "Date range"
 msgstr "日付範囲"
 
-#: admin/reports/templates/admin-reports-page.php:83
-msgid "Select date range"
-msgstr "日付範囲を選択"
+#: admin/reports/templates/admin-reports-page.php:81
+msgid "All Time"
+msgstr "すべての時間"
 
-#: admin/reports/templates/admin-reports-page.php:86
+#: admin/reports/templates/admin-reports-page.php:84
 msgid "Search customers by name or email"
 msgstr "名前またはメールで顧客を検索"
 
-#: admin/reports/templates/admin-reports-page.php:93
+#: admin/reports/templates/admin-reports-page.php:91
 msgid "Search by name or email"
 msgstr "名前またはメールで検索"
 
-#: admin/reports/templates/admin-reports-page.php:103
+#: admin/reports/templates/admin-reports-page.php:104
 msgid "Search products"
 msgstr "商品を検索"
 
-#: admin/reports/templates/admin-reports-page.php:110
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
+#: admin/reports/templates/admin-reports-page.php:111
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
 msgid "All products"
 msgstr "すべての商品"
 
-#: admin/reports/templates/admin-reports-page.php:115
+#: admin/reports/templates/admin-reports-page.php:118
 msgid "Filters by the order or subscription's primary product"
 msgstr "注文またはサブスクリプションの主要製品によるフィルタ"
 
-#: admin/reports/templates/admin-reports-page.php:120
+#: admin/reports/templates/admin-reports-page.php:124
 #: admin/reports/templates/customer-report/page.php:83
 msgid "Apply"
 msgstr "適用"
 
-#: admin/reports/templates/admin-reports-page.php:121
+#: admin/reports/templates/admin-reports-page.php:125
 msgid "Clear filters"
 msgstr "フィルタをクリア"
 
-#: admin/reports/templates/admin-reports-page.php:122
-#: admin/reports/templates/customer-reports-page.php:85
+#: admin/reports/templates/admin-reports-page.php:126
+#: admin/reports/templates/customer-reports-page.php:97
 msgid "Export Orders"
 msgstr "注文をエクスポート"
 
-#: admin/reports/templates/admin-reports-page.php:126
+#: admin/reports/templates/admin-reports-page.php:130
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
 msgstr "製品フィルタは、各注文またはサブスクリプションの主要製品に一致し、バンプやアップセルのラインアイテムには一致しません。"
 
-#: admin/reports/templates/admin-reports-page.php:366
+#: admin/reports/templates/admin-reports-page.php:370
 #. translators: %s: canceled subscription count.
 #, php-format
 msgid "%s cancellations in local records"
 msgstr "%s 件のキャンセルがローカル記録にあります"
 
-#: admin/reports/templates/admin-reports-page.php:371
+#: admin/reports/templates/admin-reports-page.php:375
 #. translators: 1: canceled subscription count, 2: active subscriptions at period start.
 #, php-format
 msgid "%1$s cancellations; %2$s active at period start"
 msgstr "%1$s 件のキャンセル; %2$s 件が期間開始時にアクティブ"
 
-#: admin/reports/templates/admin-reports-page.php:377
+#: admin/reports/templates/admin-reports-page.php:381
 msgid "Report overview"
 msgstr "レポート概要"
 
-#: admin/reports/templates/admin-reports-page.php:380
+#: admin/reports/templates/admin-reports-page.php:384
 #: admin/reports/templates/customer-report/page.php:89
 msgid "Net Revenue"
 msgstr "純収益"
 
-#: admin/reports/templates/admin-reports-page.php:384
+#: admin/reports/templates/admin-reports-page.php:388
 #. translators: %s: gross revenue.
 #, php-format
 msgid "Gross %s before refunds"
 msgstr "返金前の総額 %s"
 
-#: admin/reports/templates/admin-reports-page.php:390
+#: admin/reports/templates/admin-reports-page.php:394
 msgid "Customer Lifetime Value"
 msgstr "顧客生涯価値"
 
-#: admin/reports/templates/admin-reports-page.php:395
+#: admin/reports/templates/admin-reports-page.php:399
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
 msgstr "すべての時間の平均：%sの一致する顧客"
 
-#: admin/reports/templates/admin-reports-page.php:400
+#: admin/reports/templates/admin-reports-page.php:404
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s customers"
 msgstr "%s 名の顧客にわたる全期間の平均"
 
-#: admin/reports/templates/admin-reports-page.php:409
+#: admin/reports/templates/admin-reports-page.php:413
 #. translators: %s: recurring subscription count.
 #, php-format
 msgid "%s active recurring subscriptions"
 msgstr "%s 件のアクティブな定期購読"
 
-#: admin/reports/templates/admin-reports-page.php:414
+#: admin/reports/templates/admin-reports-page.php:418
 msgid "Churn Rate"
 msgstr "解約率"
 
-#: admin/reports/templates/admin-reports-page.php:419
-#: admin/reports/templates/admin-reports-page.php:528
+#: admin/reports/templates/admin-reports-page.php:423
+#: admin/reports/templates/admin-reports-page.php:532
 msgid "Transactions"
 msgstr "取引"
 
-#: admin/reports/templates/admin-reports-page.php:424
+#: admin/reports/templates/admin-reports-page.php:428
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
 msgstr "%1$s 新規, %2$s 更新"
 
-#: admin/reports/templates/admin-reports-page.php:428
+#: admin/reports/templates/admin-reports-page.php:432
 msgid "Paid orders and post-purchase offers"
 msgstr "支払い済みの注文と購入後のオファー"
 
-#: admin/reports/templates/admin-reports-page.php:431
+#: admin/reports/templates/admin-reports-page.php:435
 msgid "Avg Order Value"
 msgstr "平均注文額"
 
-#: admin/reports/templates/admin-reports-page.php:433
+#: admin/reports/templates/admin-reports-page.php:437
 msgid "Based on paid transactions"
 msgstr "支払い取引に基づく"
 
-#: admin/reports/templates/admin-reports-page.php:441
+#: admin/reports/templates/admin-reports-page.php:445
 msgid "Revenue Trend"
 msgstr "収益トレンド"
 
-#: admin/reports/templates/admin-reports-page.php:449
+#: admin/reports/templates/admin-reports-page.php:453
 msgid "Subscription Health"
 msgstr "サブスクリプションの健康状態"
 
-#: admin/reports/templates/admin-reports-page.php:450
+#: admin/reports/templates/admin-reports-page.php:454
 msgid "Local subscription records"
 msgstr "ローカルサブスクリプション記録"
 
-#: admin/reports/templates/admin-reports-page.php:458
-#: admin/reports/templates/admin-reports-page.php:620
+#: admin/reports/templates/admin-reports-page.php:462
+#: admin/reports/templates/admin-reports-page.php:624
 msgid "New"
 msgstr "新規"
 
-#: admin/reports/templates/admin-reports-page.php:472
+#: admin/reports/templates/admin-reports-page.php:476
 msgid "Top Products by Revenue"
 msgstr "収益別トップ製品"
 
-#: admin/reports/templates/admin-reports-page.php:473
+#: admin/reports/templates/admin-reports-page.php:477
 msgid "Paid order amount"
 msgstr "有料注文金額"
 
-#: admin/reports/templates/admin-reports-page.php:475
+#: admin/reports/templates/admin-reports-page.php:479
 msgid "No paid product revenue found for this period."
 msgstr "この期間に有料製品の収益は見つかりませんでした。"
 
-#: admin/reports/templates/admin-reports-page.php:480
+#: admin/reports/templates/admin-reports-page.php:484
 msgid "Payment Method Mix"
 msgstr "支払い方法の割合"
 
-#: admin/reports/templates/admin-reports-page.php:481
+#: admin/reports/templates/admin-reports-page.php:485
 msgid "Transactions by gateway"
 msgstr "ゲートウェイ別取引"
 
-#: admin/reports/templates/admin-reports-page.php:483
+#: admin/reports/templates/admin-reports-page.php:487
 msgid "No payment method data found for this period."
 msgstr "この期間に支払い方法のデータは見つかりませんでした。"
 
-#: admin/reports/templates/admin-reports-page.php:487
+#: admin/reports/templates/admin-reports-page.php:491
 msgid "Detailed order breakdown"
 msgstr "詳細な注文内訳"
 
-#: admin/reports/templates/admin-reports-page.php:500
+#: admin/reports/templates/admin-reports-page.php:504
 msgid "Net Sales"
 msgstr "純売上"
 
-#: admin/reports/templates/admin-reports-page.php:507
+#: admin/reports/templates/admin-reports-page.php:511
 msgid "Total Refunds"
 msgstr "総払い戻し"
 
-#: admin/reports/templates/admin-reports-page.php:514
+#: admin/reports/templates/admin-reports-page.php:518
 msgid "Amount Refunded"
 msgstr "払い戻し金額"
 
-#: admin/reports/templates/admin-reports-page.php:521
+#: admin/reports/templates/admin-reports-page.php:525
 msgid "Avg Revenue per Customer"
 msgstr "顧客あたりの平均収益"
 
-#: admin/reports/templates/admin-reports-page.php:554
+#: admin/reports/templates/admin-reports-page.php:558
 msgid "Sales by Product"
 msgstr "製品別売上"
 
-#: admin/reports/templates/admin-reports-page.php:558
+#: admin/reports/templates/admin-reports-page.php:562
 msgid "No product sales in this period"
 msgstr "この期間に製品の販売はありません"
 
-#: admin/reports/templates/admin-reports-page.php:559
+#: admin/reports/templates/admin-reports-page.php:563
 msgid ""
 "Completed paid orders will appear here once customers buy a product in the "
 "selected date range."
 msgstr "選択した日付範囲内で顧客が製品を購入すると、完了した有料注文がここに表示されます。"
 
-#: admin/reports/templates/admin-reports-page.php:570
+#: admin/reports/templates/admin-reports-page.php:574
 msgid "Refunds by Product"
 msgstr "製品別返金"
 
-#: admin/reports/templates/admin-reports-page.php:574
+#: admin/reports/templates/admin-reports-page.php:578
 msgid "No product refunds in this period"
 msgstr "この期間に製品の返金はありません"
 
-#: admin/reports/templates/admin-reports-page.php:575
+#: admin/reports/templates/admin-reports-page.php:579
 msgid ""
 "Refunded products will appear here when an order refund is recorded for the "
 "selected date range."
 msgstr "選択した日付範囲内で注文の返金が記録されると、返金された製品がここに表示されます。"
 
-#: admin/reports/templates/admin-reports-page.php:586
+#: admin/reports/templates/admin-reports-page.php:590
 msgid "Transactions by Payment Gateway"
 msgstr "支払いゲートウェイ別取引"
 
-#: admin/reports/templates/admin-reports-page.php:590
+#: admin/reports/templates/admin-reports-page.php:594
 msgid "No gateway transactions in this period"
 msgstr "この期間にゲートウェイ取引はありません"
 
-#: admin/reports/templates/admin-reports-page.php:591
+#: admin/reports/templates/admin-reports-page.php:595
 msgid ""
 "Paid transactions will be grouped by gateway here after checkout activity "
 "is recorded."
 msgstr "チェックアウト活動が記録された後、ここに支払いトランザクションがゲートウェイ別にグループ化されます。"
 
-#: admin/reports/templates/admin-reports-page.php:618
+#: admin/reports/templates/admin-reports-page.php:622
 msgid "Orders by Type"
 msgstr "注文タイプ別"
 
-#: admin/reports/templates/admin-reports-page.php:631
+#: admin/reports/templates/admin-reports-page.php:635
 msgid "Main Orders by Product"
 msgstr "製品別メイン注文"
 
-#: admin/reports/templates/admin-reports-page.php:651
+#: admin/reports/templates/admin-reports-page.php:655
 msgid "No main orders in this period"
 msgstr "この期間にメイン注文はありません"
 
-#: admin/reports/templates/admin-reports-page.php:652
+#: admin/reports/templates/admin-reports-page.php:656
 msgid ""
 "Main product order counts will appear here once paid checkout orders are "
 "tracked."
@@ -4189,17 +4244,17 @@ msgid "Plan"
 msgstr "プラン"
 
 #: admin/reports/templates/customer-report/page.php:192
-#: public/partials/csv-export.php:232
+#: public/partials/csv-export.php:234
 msgid "Pay Interval"
 msgstr "支払い間隔"
 
 #: admin/reports/templates/customer-report/page.php:194
-#: public/partials/csv-export.php:234
+#: public/partials/csv-export.php:236
 msgid "Total Revenue"
 msgstr "総収益"
 
 #: admin/reports/templates/customer-report/page.php:195
-#: public/partials/csv-export.php:235
+#: public/partials/csv-export.php:237
 msgid "Remaining Payments"
 msgstr "残りの支払い"
 
@@ -4261,34 +4316,35 @@ msgstr "購入した商品"
 msgid "Subscription Revenue"
 msgstr "購読収益"
 
-#: admin/reports/templates/customer-reports-page.php:85
+#: admin/reports/templates/customer-reports-page.php:25
+#: admin/reports/traits/templates/reports-date-get-report-period.php:17
+msgid "All time"
+msgstr "すべての時間"
+
+#: admin/reports/templates/customer-reports-page.php:97
 msgid "Export Subscriptions"
 msgstr "サブスクリプションをエクスポート"
 
-#: admin/reports/templates/customer-reports-page.php:253
+#: admin/reports/templates/customer-reports-page.php:257
 msgid "Upsell"
 msgstr "アップセル"
 
-#: admin/reports/templates/customer-reports-page.php:256
+#: admin/reports/templates/customer-reports-page.php:260
 msgid "Downsell"
 msgstr "ダウンサル"
 
-#: admin/reports/templates/customer-reports-page.php:268
+#: admin/reports/templates/customer-reports-page.php:272
 #: includes/templates/post-types-create-custom-post-type.php:13
 msgid "Order"
 msgstr "注文"
 
-#: admin/reports/templates/customer-reports-page.php:283
+#: admin/reports/templates/customer-reports-page.php:287
 msgid "Offer during checkout"
 msgstr "チェックアウト中のオファー"
 
-#: admin/reports/templates/customer-reports-page.php:388
+#: admin/reports/templates/customer-reports-page.php:392
 msgid "Guest customer"
 msgstr "ゲスト顧客"
-
-#: admin/reports/traits/templates/reports-date-get-report-period.php:17
-msgid "All time"
-msgstr "すべての時間"
 
 #: admin/reports/traits/templates/reports-render-render-bar-rows.php:16
 msgid "No data for this period"
@@ -4305,12 +4361,74 @@ msgid ""
 msgstr "支払い済みの注文は、選択した日付範囲のチェックアウト活動が記録された後に、このチャートに表示されます。"
 
 #: admin/reports/traits/templates/reports-render-render-revenue-chart.php:58
-msgid "Revenue trend chart"
-msgstr "収益トレンドチャート"
+msgid ""
+"Revenue trend chart. The revenue data table after the chart lists each "
+"period."
+msgstr "収益トレンドチャート。チャートの後に収益データテーブルが各期間をリスト表示します。"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:84
+msgid "Show data table"
+msgstr "データテーブルを表示"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:86
+msgid "Revenue by period"
+msgstr "期間別収益"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:89
+msgid "Period"
+msgstr "期間"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:90
+msgid "Revenue"
+msgstr "収益"
 
 #: admin/reports/traits/trait-ppcart-admin-reports-data.php:131
 msgid "Unknown product"
 msgstr "不明な製品"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:147
+msgid "live"
+msgstr "ライブ"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:147
+msgid "sandbox"
+msgstr "サンドボックス"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:154
+#. translators: 1: live or sandbox, 2: webhook URL.
+#, php-format
+msgid "PayPal webhook registered for %1$s mode at %2$s."
+msgstr "%1$s モードで %2$s に PayPal ウェブフックが登録されました。"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:160
+#. translators: 1: live or sandbox, 2: PayPal error, 3: webhook URL, 4: event names.
+#, php-format
+msgid ""
+"PayPal refused the webhook for %1$s mode: %2$s. Add it yourself in your "
+"PayPal app (Developer Dashboard, your app, Webhooks) with the URL %3$s and "
+"these events: %4$s. Until then, the hourly check completes payments."
+msgstr ""
+"PayPal は %1$s モードのウェブフックを拒否しました: %2$s。PayPal アプリ (Developer Dashboard, "
+"あなたのアプリ, Webhooks) で URL %3$s とこれらのイベント: %4$s "
+"を使用して自分で追加してください。それまでは、時間ごとのチェックが支払いを完了します。"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:169
+#. translators: %s: webhook URL.
+#, php-format
+msgid ""
+"The PayPal webhook is registered when you save with Client ID and Secret "
+"set. URL: %s"
+msgstr "クライアント ID とシークレットが設定されているときに PayPal ウェブフックが登録されます。URL: %s"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:190
+msgid "PayPal could not be reached."
+msgstr "PayPal に到達できませんでした。"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:192
+#. translators: %d: HTTP status code.
+#, fuzzy, php-format
+msgid "HTTP %d"
+msgstr "HTTP %d"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:28
 #. translators: %s: the Stripe permission name, wrapped in strong tags.
@@ -4381,7 +4499,7 @@ msgid ""
 "shown."
 msgstr "このアカウントではエンドポイントを再確認することができないため、ライブステータスは表示されません。"
 
-#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
+#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:115
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
@@ -4519,7 +4637,7 @@ msgid "Privacy Policy URL"
 msgstr "プライバシーポリシーのURL"
 
 #: admin/settings/traits/options/core-settings.php:114
-#: public/templates/functions/plan-coupon-fields.php:545
+#: public/templates/functions/plan-coupon-fields.php:576
 msgid "Company Name"
 msgstr "会社名"
 
@@ -4605,98 +4723,98 @@ msgstr "フッターテキスト"
 msgid "Test email"
 msgstr "テストメール"
 
-#: admin/settings/traits/options/core-settings.php:238
+#: admin/settings/traits/options/core-settings.php:240
 msgid "Order Received"
 msgstr "注文を受け取りました"
 
-#: admin/settings/traits/options/core-settings.php:239
+#: admin/settings/traits/options/core-settings.php:241
 msgid "New User Welcome"
 msgstr "新しいユーザーを歓迎します"
 
-#: admin/settings/traits/options/core-settings.php:240
+#: admin/settings/traits/options/core-settings.php:242
 msgid "Purchase Confirmation"
 msgstr "購入確認"
 
-#: admin/settings/traits/options/core-settings.php:241
+#: admin/settings/traits/options/core-settings.php:243
 msgid "Order Refunded"
 msgstr "注文が返金されました"
 
-#: admin/settings/traits/options/core-settings.php:242
+#: admin/settings/traits/options/core-settings.php:244
 msgid "Trial Ending Reminder"
 msgstr "トライアル終了のお知らせ"
 
-#: admin/settings/traits/options/core-settings.php:243
+#: admin/settings/traits/options/core-settings.php:245
 msgid "Upcoming Renewal Reminder"
 msgstr "次回更新のお知らせ"
 
-#: admin/settings/traits/options/core-settings.php:244
+#: admin/settings/traits/options/core-settings.php:246
 msgid "Subscription Renewal Confirmation"
 msgstr "サブスクリプション更新確認"
 
-#: admin/settings/traits/options/core-settings.php:245
+#: admin/settings/traits/options/core-settings.php:247
 msgid "Failed Renewal Payment"
 msgstr "更新支払い失敗"
 
-#: admin/settings/traits/options/core-settings.php:246
+#: admin/settings/traits/options/core-settings.php:248
 msgid "Subscription Canceled Confirmation"
 msgstr "サブスクリプションキャンセル確認"
 
-#: admin/settings/traits/options/core-settings.php:247
+#: admin/settings/traits/options/core-settings.php:249
 msgid "Subscription Paused Confirmation"
 msgstr "サブスクリプション一時停止確認"
 
-#: admin/settings/traits/options/core-settings.php:249
+#: admin/settings/traits/options/core-settings.php:251
 msgid "Preview Email"
 msgstr "メールのプレビュー"
 
-#: admin/settings/traits/options/core-settings.php:250
+#: admin/settings/traits/options/core-settings.php:252
 msgid "Send Test"
 msgstr "テスト送信"
 
-#: admin/settings/traits/options/core-settings.php:252
+#: admin/settings/traits/options/core-settings.php:254
 msgid "Preview and test emails use sample order data for personalization tags."
 msgstr "プレビューとテストメールは、パーソナライズタグのためにサンプル注文データを使用します。"
 
-#: admin/settings/traits/options/core-settings.php:283
-#: admin/settings/traits/options/core-settings.php:341
-#: admin/settings/traits/options/core-settings.php:408
-#: admin/settings/traits/options/core-settings.php:451
-#: admin/settings/traits/options/core-settings.php:494
-#: admin/settings/traits/options/core-settings.php:537
-#: admin/settings/traits/options/core-settings.php:580
+#: admin/settings/traits/options/core-settings.php:285
+#: admin/settings/traits/options/core-settings.php:343
+#: admin/settings/traits/options/core-settings.php:410
+#: admin/settings/traits/options/core-settings.php:453
+#: admin/settings/traits/options/core-settings.php:496
+#: admin/settings/traits/options/core-settings.php:539
+#: admin/settings/traits/options/core-settings.php:582
 msgid "Send to admin?"
 msgstr "管理者に送信しますか？"
 
-#: admin/settings/traits/options/core-settings.php:304
-#: admin/settings/traits/options/core-settings.php:362
+#: admin/settings/traits/options/core-settings.php:306
+#: admin/settings/traits/options/core-settings.php:364
 msgid "Body Text"
 msgstr "本文テキスト"
 
-#: admin/settings/traits/options/core-settings.php:388
+#: admin/settings/traits/options/core-settings.php:390
 msgid "Use WordPress Default Notification"
 msgstr "WordPressのデフォルト通知を使用"
 
-#: admin/settings/traits/options/core-settings.php:392
+#: admin/settings/traits/options/core-settings.php:394
 msgid ""
 "If enabled, WordPress default new user notification will be used instead of "
 "custom email template."
 msgstr "有効にすると、カスタムメールテンプレートの代わりにWordPressのデフォルトの新規ユーザー通知が使用されます。"
 
-#: admin/settings/traits/options/core-settings.php:418
-#: admin/settings/traits/options/core-settings.php:461
-#: admin/settings/traits/options/core-settings.php:504
-#: admin/settings/traits/options/core-settings.php:547
+#: admin/settings/traits/options/core-settings.php:420
+#: admin/settings/traits/options/core-settings.php:463
+#: admin/settings/traits/options/core-settings.php:506
+#: admin/settings/traits/options/core-settings.php:549
 msgid "Body"
 msgstr "本文"
 
-#: admin/settings/traits/options/core-settings.php:431
-#: admin/settings/traits/options/core-settings.php:474
-#: admin/settings/traits/options/core-settings.php:517
-#: admin/settings/traits/options/core-settings.php:560
+#: admin/settings/traits/options/core-settings.php:433
+#: admin/settings/traits/options/core-settings.php:476
+#: admin/settings/traits/options/core-settings.php:519
+#: admin/settings/traits/options/core-settings.php:562
 msgid "Enable/Disable"
 msgstr "有効/無効"
 
-#: admin/settings/traits/options/core-settings.php:590
+#: admin/settings/traits/options/core-settings.php:592
 msgid "Subscription Canceled"
 msgstr "サブスクリプションがキャンセルされました"
 
@@ -4768,6 +4886,7 @@ msgid "Connection Status"
 msgstr "接続ステータス"
 
 #: admin/settings/traits/options/payment-fields.php:61
+#: admin/settings/traits/options/payment-fields.php:172
 msgid "Checkout experience"
 msgstr "チェックアウト体験"
 
@@ -4821,35 +4940,52 @@ msgid ""
 "PayPal API requests."
 msgstr "サーバー側のPayPal APIリクエスト用にPayPal TLS証明書とホスト名の一致を確認します。"
 
-#: admin/settings/traits/options/payment-fields.php:172
+#: admin/settings/traits/options/payment-fields.php:177
+msgid "Redirect to PayPal"
+msgstr "PayPal にリダイレクト"
+
+#: admin/settings/traits/options/payment-fields.php:178
+msgid "On this page (PayPal popup)"
+msgstr "このページで (PayPal ポップアップ)"
+
+#: admin/settings/traits/options/payment-fields.php:180
+msgid ""
+"On-page checkout needs the PayPal Email, Client ID and Secret of the "
+"selected mode. Without the Client ID and Secret the checkout redirects to "
+"PayPal."
+msgstr ""
+"オンページチェックアウトには、選択したモードの PayPal メール、クライアント ID、およびシークレットが必要です。クライアント ID "
+"とシークレットがない場合、チェックアウトは PayPal にリダイレクトされます。"
+
+#: admin/settings/traits/options/payment-fields.php:187
 msgid "PayPal Email"
 msgstr "PayPalメール"
 
-#: admin/settings/traits/options/payment-fields.php:182
+#: admin/settings/traits/options/payment-fields.php:197
 msgid "Client ID"
 msgstr "クライアントID"
 
-#: admin/settings/traits/options/payment-fields.php:192
+#: admin/settings/traits/options/payment-fields.php:207
 msgid "Secret"
 msgstr "シークレット"
 
-#: admin/settings/traits/options/payment-fields.php:202
+#: admin/settings/traits/options/payment-fields.php:217
 msgid "PDT Token"
 msgstr "PDTトークン"
 
-#: admin/settings/traits/options/payment-fields.php:212
+#: admin/settings/traits/options/payment-fields.php:227
 msgid "Sandbox Email"
 msgstr "サンドボックスメール"
 
-#: admin/settings/traits/options/payment-fields.php:222
+#: admin/settings/traits/options/payment-fields.php:237
 msgid "Sandbox Client ID"
 msgstr "サンドボックスクライアントID"
 
-#: admin/settings/traits/options/payment-fields.php:232
+#: admin/settings/traits/options/payment-fields.php:247
 msgid "Sandbox Secret"
 msgstr "サンドボックスシークレット"
 
-#: admin/settings/traits/options/payment-fields.php:242
+#: admin/settings/traits/options/payment-fields.php:257
 msgid "Sandbox PDT Token"
 msgstr "サンドボックスPDTトークン"
 
@@ -4924,7 +5060,7 @@ msgid "Stripe checkout is disabled. You can still connect now."
 msgstr "Stripeチェックアウトは無効です。今すぐ接続することはできます。"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:141
 msgid "2. Install the webhook"
 msgstr "2. Webhookをインストールする"
 
@@ -4945,7 +5081,7 @@ msgid "Stripe is ready"
 msgstr "Stripeは準備ができています"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Keys synced"
 msgstr "キーが同期されました"
 
@@ -4955,23 +5091,36 @@ msgstr "キーが同期されました"
 msgid "Webhook active with %d events"
 msgstr "Webhookが%dイベントでアクティブです"
 
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:118
+msgid "Replace the webhook signing secret"
+msgstr "ウェブフック署名シークレットを置き換える"
+
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
+msgid ""
+"Stripe rejects events with \"Invalid Stripe webhook signature\" when this "
+"secret does not match your endpoint. Paste the current signing secret from "
+"the endpoint in your Stripe Dashboard."
+msgstr ""
+"このシークレットがエンドポイントと一致しない場合、Stripe は \"無効な Stripe ウェブフック署名\" "
+"のイベントを拒否します。Stripe ダッシュボードのエンドポイントから現在の署名シークレットを貼り付けてください。"
+
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "1. Stripe account connected"
 msgstr "1. Stripeアカウントが接続されました"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:142
 msgid "Orders will not complete until this is done."
 msgstr "これが完了するまで、注文は完了しません。"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
 msgid "Needs attention"
 msgstr "注意が必要です"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
 msgid "Not installed"
 msgstr "インストールされていません"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:160
 msgid "Fix the events"
 msgstr "イベントを修正する"
 
@@ -5128,64 +5277,60 @@ msgstr "GA4とのデータレイヤー"
 msgid "DataLayer with Enhanced Ecommerce (UA)"
 msgstr "拡張eコマース（UA）とのデータレイヤー"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:75
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:80
 #. translators: %1$s is the plugin name, %2$s is the star rating markup.
 #, php-format
 msgid "If you like %1$s, please leave us a %2$s rating. Thank you!"
 msgstr "%1$sが気に入ったら、%2$sの評価をぜひお願いします。ありがとうございます！"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:89
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:90
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:94
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
 msgid "About PublishPress Cart"
 msgstr "PublishPress Cartについて"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:96
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:100
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
 msgid "PublishPress Cart Documentation"
 msgstr "PublishPress Cartのドキュメント"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:106
 msgid "Contact the PublishPress team"
 msgstr "PublishPressチームに連絡する"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:102
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:107
 msgid "Contact PublishPress"
 msgstr "PublishPressに連絡する"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:151
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:152
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:156
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:157
 #: includes/templates/post-types-create-custom-post-type.php:100
 #: includes/templates/post-types-create-custom-post-type.php:118
 msgid "Categories"
 msgstr "カテゴリ"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:159
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:160
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:164
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:165
 #: includes/templates/post-types-create-custom-post-type.php:106
 #: includes/templates/post-types-create-custom-post-type.php:119
 msgid "Tags"
 msgstr "タグ"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:216
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:271
 #. translators: %s: plugin title.
 #, php-format
 msgid "Welcome to %s"
 msgstr "%sへようこそ"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:217
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:272
 msgid ""
 "To get started, head over to the settings page to connect your Stripe "
 "account and select your currency. Once that's done, you'll be ready to "
 "create your first product!"
 msgstr "開始するには、設定ページに移動してStripeアカウントを接続し、通貨を選択してください。それが完了すれば、最初の商品を作成する準備が整います！"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:221
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:276
 msgid "Get Started!"
 msgstr "始める！"
-
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:253
-msgid "Sorry, you are not allowed to access this page."
-msgstr "申し訳ありませんが、このページにアクセスすることはできません。"
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
@@ -5312,40 +5457,44 @@ msgid "Copy failed"
 msgstr "コピーに失敗しました"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
+msgid "Copy plan ID"
+msgstr "プラン ID をコピー"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
 msgid "Required fields missing:"
 msgstr "必須フィールドが不足しています:"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
 msgid "Configuration error: Missing AJAX settings. Please refresh the page."
 msgstr "設定エラー：AJAX設定が欠落しています。ページを更新してください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
 msgid "Subscription ID is missing."
 msgstr "サブスクリプションIDが欠落しています。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Sync subscription with Stripe?"
 msgstr "Stripeとサブスクリプションを同期しますか？"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid "Wait..."
 msgstr "お待ちください..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 msgid "Error: Please try again."
 msgstr "エラー：もう一度お試しください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Migration required"
 msgstr "移行が必要です"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
 msgstr "プレーンテキストで1つのストレージ資格情報があります。暗号化を有効にした後、設定 → メンテナンスから移行を実行して暗号化してください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:67
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #. translators: %d: number of stored credentials.
 #, php-format
 msgid ""
@@ -5353,67 +5502,85 @@ msgid ""
 "migration from Settings → Maintenance to encrypt them."
 msgstr "プレーンテキストで%dのストレージ資格情報があります。暗号化を有効にした後、設定 → メンテナンスから移行を実行して暗号化してください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 msgid "Encryption updated"
 msgstr "暗号化が更新されました"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
 msgstr "続行"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
 #: admin/traits/trait-ppcart-admin-integrations.php:149, fuzzy
 msgid "OK"
 msgstr "OK"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:73
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
 msgstr "セキュリティ暗号化設定を更新できませんでした。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:98
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
 msgid "No matching customers"
 msgstr "一致する顧客はありません"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
 msgid "No matching products"
 msgstr "一致する製品はありません"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:102
 msgid "Searching…"
 msgstr "検索中…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:117
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:103
+msgid "1 result available."
+msgstr "1 件の結果が利用可能です。"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:105
+#. translators: %d: number of search results.
+#, php-format
+msgid "%d results available."
+msgstr "%d 件の結果が利用可能です。"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:106
+msgid "Use the up and down arrow keys to choose one."
+msgstr "上下の矢印キーを使って1つを選択します。"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
 msgid "No matching settings"
 msgstr "一致する設定がありません"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:118
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
 msgid "Try a different keyword or clear the search to see all settings."
 msgstr "別のキーワードを試すか、検索をクリアしてすべての設定を表示してください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:119
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
 msgid "Discard your unsaved changes?"
 msgstr "保存されていない変更を破棄しますか？"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:120
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
+msgid "Saving changes…"
+msgstr "変更を保存中…"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 msgid "Reset this email template to the built-in default?"
 msgstr "このメールテンプレートを組み込みのデフォルトにリセットしますか？"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:129
 msgid "Generating preview..."
 msgstr "プレビューを生成中..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:166
 msgid "Email preview could not be generated. Please refresh the page and try again."
 msgstr "メールプレビューを生成できませんでした。ページを更新してもう一度お試しください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:132
 msgid "Close Preview"
 msgstr "プレビューを閉じる"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:131
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
@@ -5421,7 +5588,7 @@ msgstr "プレビューを閉じる"
 msgid "Encrypt stored credentials"
 msgstr "ストレージ資格情報を暗号化"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:137
 #. translators: %d: number of plaintext credentials.
 #, php-format
 msgid ""
@@ -5429,37 +5596,55 @@ msgid ""
 "run this during a maintenance window."
 msgstr "データベース内の%dのプレーンテキスト資格情報を暗号化しますか？まずバックアップを取り、メンテナンスウィンドウ中にこれを実行してください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:138
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
 msgstr "ストレージ資格情報をスキャンし、プレーンテキスト値を暗号化しますか？まずバックアップを取り、メンテナンスウィンドウ中にこれを実行してください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:142
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
 msgid "Uploading file…"
 msgstr "ファイルをアップロード中…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:143
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
 msgid "File uploaded successfully."
 msgstr "ファイルは正常にアップロードされました。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:144
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
 msgid "Upload failed. Please try again."
 msgstr "アップロードに失敗しました。もう一度お試しください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:157
+#. translators: 1: item title, 2: new position, 3: number of items.
+#, php-format
+msgid "%1$s moved to position %2$d of %3$d."
+msgstr "%1$s が %2$d の位置に %3$d 移動しました。"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:158
+msgid "This item is already first."
+msgstr "このアイテムはすでに最初です。"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:159
+msgid "This item is already last."
+msgstr "このアイテムはすでに最後です。"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:160
+msgid "Item removed."
+msgstr "アイテムが削除されました。"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:165
 msgid "Generating preview…"
 msgstr "プレビューを生成中…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:152
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:167
 msgid "Sending test email…"
 msgstr "テストメールを送信中…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:154
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:169
 msgid "Test email failed to send. Please refresh the page and try again."
 msgstr "テストメールの送信に失敗しました。ページを更新してもう一度お試しください。"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:155
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:170
 msgid "Enter an email address to send the test to."
 msgstr "テストを送信するためのメールアドレスを入力してください。"
 
@@ -5484,6 +5669,7 @@ msgid "First page"
 msgstr "最初のページ"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:153
+#: public/templates/archive/navigation.php:23
 msgid "Previous page"
 msgstr "前のページ"
 
@@ -5492,6 +5678,7 @@ msgid "Current page"
 msgstr "現在のページ"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:170
+#: public/templates/archive/navigation.php:24
 msgid "Next page"
 msgstr "次のページ"
 
@@ -5857,81 +6044,87 @@ msgid "Product duplicated. New product ID: %d."
 msgstr "商品が重複しました。新しい商品ID: %d。"
 
 #: admin/traits/trait-ppcart-admin-profile.php:23
-#: public/templates/functions/payment-address.php:317
+#: public/templates/functions/payment-address.php:321
 msgid "Address Line 2"
 msgstr "住所ライン2"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:25
+#. translators: %s: plugin title.
+#, php-format
+msgid "Your %s Summary Report"
+msgstr "あなたの %s サマリーレポート"
+
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "Ending Trials"
 msgstr "終了するトライアル"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "End date"
 msgstr "終了日"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "Recurring amount"
 msgstr "定期的な金額"
 
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
 msgid "Subscription Renewals"
 msgstr "サブスクリプション更新"
 
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
 msgid "Next bill date"
 msgstr "次の請求日"
 
-#: includes/scheduled-reports/report-email-template.php:94
+#: includes/scheduled-reports/report-email-template.php:96
 msgid "Here is your summary for"
 msgstr "こちらがあなたのサマリーです"
 
-#: includes/scheduled-reports/report-email-template.php:96
+#: includes/scheduled-reports/report-email-template.php:98
 msgid "for the week of"
 msgstr "の週の"
 
-#: includes/scheduled-reports/report-email-template.php:98
 #: includes/scheduled-reports/report-email-template.php:100
+#: includes/scheduled-reports/report-email-template.php:102
 msgid "for"
 msgstr "のため"
 
-#: includes/scheduled-reports/report-email-template.php:110
+#: includes/scheduled-reports/report-email-template.php:112
 msgid "Gross revenue"
 msgstr "総収益"
 
-#: includes/scheduled-reports/report-email-template.php:112
+#: includes/scheduled-reports/report-email-template.php:114
 msgid "Net revenue"
 msgstr "純収益"
 
-#: includes/scheduled-reports/report-email-template.php:113
+#: includes/scheduled-reports/report-email-template.php:115
 msgid "Completed Orders"
 msgstr "完了した注文"
 
-#: includes/scheduled-reports/report-email-template.php:115
+#: includes/scheduled-reports/report-email-template.php:117
 msgid "Failed Orders"
 msgstr "失敗した注文"
 
-#: includes/scheduled-reports/report-email-template.php:117
+#: includes/scheduled-reports/report-email-template.php:119
 msgid "Subscriptions Started"
 msgstr "開始されたサブスクリプション"
 
-#: includes/scheduled-reports/report-email-template.php:118
+#: includes/scheduled-reports/report-email-template.php:120
 msgid "Trials Started"
 msgstr "開始されたトライアル"
 
-#: includes/scheduled-reports/report-email-template.php:119
+#: includes/scheduled-reports/report-email-template.php:121
 msgid "Subscriptions Canceled"
 msgstr "キャンセルされたサブスクリプション"
 
-#: includes/scheduled-reports/report-email-template.php:129
+#: includes/scheduled-reports/report-email-template.php:131
 msgid "Coming up for the week of"
 msgstr "の週の予定"
 
-#: includes/scheduled-reports/report-email-template.php:131
 #: includes/scheduled-reports/report-email-template.php:133
+#: includes/scheduled-reports/report-email-template.php:135
 msgid "Coming up for"
 msgstr "の予定"
 
-#: includes/scheduled-reports/report-email-template.php:163
+#: includes/scheduled-reports/report-email-template.php:165
 msgid "Nothing found for this time period"
 msgstr "この期間に見つかりませんでした"
 
@@ -6053,7 +6246,9 @@ msgid_plural ""
 msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
-msgstr[0] "%dの資格情報は、再保存するか再び暗号化を有効にするまでデータベース内で暗号化されたままです。"
+msgstr[0] ""
+"%d credentials remain encrypted in the database until you re-save them or "
+"enable encryption again."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -6151,7 +6346,9 @@ msgid_plural ""
 msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
-msgstr[0] "暗号化は有効ですが、%d の保存された資格情報はまだプレーンテキストです。保存された資格情報を暗号化して再試行してください。"
+msgstr[0] ""
+"Encryption is enabled but %d stored credentials are still in plaintext. Use "
+"Encrypt stored credentials to retry."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -6163,7 +6360,9 @@ msgid_plural ""
 msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
-msgstr[0] "プレーンテキストに%dの資格情報が保存されています。暗号化を有効にすると、自動的に暗号化されます。"
+msgstr[0] ""
+"You have %d stored credentials in plaintext. Enabling encryption will "
+"encrypt them automatically."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
@@ -6186,6 +6385,10 @@ msgstr "無効なサブスクリプションです。"
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-sync-subscription-by-local.php:21
 msgid "Stripe subscription is not linked to a PublishPress Cart subscription."
 msgstr "StripeサブスクリプションはPublishPressカートサブスクリプションにリンクされていません。"
+
+#: includes/stripe-sync/traits/trait-ppcart-stripe-sync-reconciliation.php:183
+msgid "Missing renewal orders imported from Stripe by the background sync"
+msgstr "バックグラウンド同期によってStripeからインポートされた更新注文が欠落しています"
 
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
@@ -6407,7 +6610,7 @@ msgstr "パスワードを忘れましたか？"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:31
 #: public/templates/functions/checkout-core.php:186
 #: public/templates/functions/checkout-core.php:193
-#: public/templates/functions/payment-address.php:199
+#: public/templates/functions/payment-address.php:200
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Due"
 msgstr "支払う金額"
@@ -6415,7 +6618,7 @@ msgstr "支払う金額"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:36
 #: public/templates/functions/checkout-core.php:183
 #: public/templates/functions/checkout-core.php:190
-#: public/templates/functions/payment-address.php:200
+#: public/templates/functions/payment-address.php:201
 msgid "Due Today"
 msgstr "本日支払い期限"
 
@@ -6541,43 +6744,43 @@ msgid "My Account"
 msgstr "マイアカウント"
 
 #: public/partials/csv-export.php:20
-#: public/partials/csv-export.php:137
-#: public/templates/functions/plan-coupon-fields.php:534
+#: public/partials/csv-export.php:139
+#: public/templates/functions/plan-coupon-fields.php:565
 #: public/templates/my-account/tabs/user-profile.php:17
 msgid "First Name"
 msgstr "名"
 
-#: public/partials/csv-export.php:135, fuzzy
+#: public/partials/csv-export.php:137, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: public/partials/csv-export.php:141
+#: public/partials/csv-export.php:143
 msgid "Address 1"
 msgstr "住所 1"
 
-#: public/partials/csv-export.php:147
+#: public/partials/csv-export.php:149
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Paid"
 msgstr "支払った金額"
 
-#: public/partials/csv-export.php:148
-#: public/partials/csv-export.php:230
+#: public/partials/csv-export.php:150
+#: public/partials/csv-export.php:232
 msgid "Product Name"
 msgstr "商品名"
 
-#: public/partials/csv-export.php:150
+#: public/partials/csv-export.php:152
 msgid "Offers during checkout"
 msgstr "チェックアウト時のオファー"
 
-#: public/partials/csv-export.php:152
+#: public/partials/csv-export.php:154
 msgid "Coupon"
 msgstr "クーポン"
 
-#: public/partials/csv-export.php:153
+#: public/partials/csv-export.php:155
 msgid "Purchase URL"
 msgstr "購入URL"
 
-#: public/partials/csv-export.php:154
+#: public/partials/csv-export.php:156
 msgid "IP Address"
 msgstr "IPアドレス"
 
@@ -6589,41 +6792,61 @@ msgstr "領収書"
 msgid "invoice"
 msgstr "請求書"
 
-#: public/partials/invoice-pdf.php:80
+#: public/partials/invoice-pdf.php:38
+#. translators: 1: document type (Invoice or Receipt), 2: invoice or receipt number.
+#, fuzzy, php-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: public/partials/invoice-pdf.php:95
 msgid "Unauthorized"
 msgstr "未承認"
 
-#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:16
+#: public/paypal/class-ppcart-paypal-onpage.php:182
+msgid ""
+"Your PayPal payment is being processed. You will receive a confirmation "
+"email when it completes."
+msgstr "あなたのPayPal支払いは処理中です。完了すると確認メールが届きます。"
+
+#: public/paypal/class-ppcart-paypal-onpage.php:183
+msgid "We could not complete your PayPal payment. Please try again."
+msgstr "あなたのPayPal支払いを完了できませんでした。もう一度お試しください。"
+
+#: public/paypal/class-ppcart-paypal-onpage.php:184
+msgid "PayPal checkout was cancelled."
+msgstr "PayPalのチェックアウトがキャンセルされました。"
+
+#: public/paypal/class-ppcart-paypal-onpage.php:185
+msgid "PayPal could not open on this page. Please click the button again."
+msgstr "このページでPayPalを開くことができませんでした。もう一度ボタンをクリックしてください。"
+
+#: public/paypal/class-ppcart-paypal-onpage.php:199
+#: public/paypal/class-ppcart-paypal-onpage.php:272
+#: public/paypal/class-ppcart-paypal-onpage.php:280
+#: public/paypal/class-ppcart-paypal-onpage.php:296
+#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:14
 msgid "An error occurred, please refresh the page and try again."
 msgstr "エラーが発生しました。ページを更新して再試行してください。"
+
+#: public/paypal/class-ppcart-paypal-onpage.php:246
+msgid "PayPal could not start this subscription. Please try again."
+msgstr "PayPalはこのサブスクリプションを開始できませんでした。もう一度お試しください。"
+
+#: public/paypal/class-ppcart-paypal-onpage.php:256
+msgid "PayPal could not start this payment. Please try again."
+msgstr "PayPalはこの支払いを開始できませんでした。もう一度お試しください。"
+
+#: public/paypal/class-ppcart-paypal-onpage.php:304
+msgid "PayPal did not complete this payment. Please try again."
+msgstr "PayPalはこの支払いを完了しませんでした。もう一度お試しください。"
 
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:49
 msgid "Pay with PayPal"
 msgstr "PayPalで支払う"
 
-#: public/templates/archive/navigation.php:22
-msgid ""
-"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
-"7-7\"></path></svg>"
-msgstr ""
-"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
-"7-7\"></path></svg>"
-
-#: public/templates/archive/navigation.php:23
-msgid ""
-"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
-"7\"></path></svg>"
-msgstr ""
-"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
-"7\"></path></svg>"
+#: public/paypal/traits/trait-ppcart-paypal-subscriptions.php:93
+msgid "PayPal did not complete the refund."
+msgstr "PayPalは返金を完了しませんでした。"
 
 #: public/templates/checkout1.php:218
 #: public/templates/checkout1.php:260
@@ -6671,47 +6894,57 @@ msgstr ""
 msgid "Credit Card"
 msgstr "クレジットカード"
 
-#: public/templates/functions/payment-address.php:85
+#: public/templates/functions/payment-address.php:86
 msgid "Payment Info"
 msgstr "支払い情報"
 
-#: public/templates/functions/payment-address.php:105
+#: public/templates/functions/payment-address.php:106
 msgid ""
 "Sorry, it seems that there are no payment methods available. Please contact "
 "us for assistance."
 msgstr "申し訳ありませんが、利用可能な支払い方法がないようです。サポートが必要な場合はお問い合わせください。"
 
-#: public/templates/functions/payment-address.php:147
+#: public/templates/functions/payment-address.php:148
 msgid "Enter VAT number"
 msgstr "VAT番号を入力してください"
 
-#: public/templates/functions/payment-address.php:234
-#: public/templates/functions/payment-address.php:238
+#: public/templates/functions/payment-address.php:235
+#: public/templates/functions/payment-address.php:239
 msgid "Credit or debit card"
 msgstr "クレジットカードまたはデビットカード"
 
-#: public/templates/functions/payment-address.php:279
-#: public/templates/functions/payment-address.php:334
+#: public/templates/functions/payment-address.php:280
+#: public/templates/functions/payment-address.php:340
 msgid "State / County"
 msgstr "州 / 郡"
 
-#: public/templates/functions/payment-address.php:325
+#: public/templates/functions/payment-address.php:330
 msgid "Town / City"
 msgstr "町 / 市"
 
-#: public/templates/functions/payment-address.php:343
+#: public/templates/functions/payment-address.php:350
 msgid "Postcode / Zip"
 msgstr "郵便番号 / ゼップ"
 
-#: public/templates/functions/plan-coupon-fields.php:509
+#: public/templates/functions/plan-coupon-fields.php:308
+#. translators: %s: payment plan name.
+#, php-format
+msgid "Your price for %s"
+msgstr "あなたの %s の価格"
+
+#: public/templates/functions/plan-coupon-fields.php:534
+msgid "Use at least 8 characters, 1 lowercase letter, and 1 number"
+msgstr "8文字以上、1つの小文字、1つの数字を使用してください"
+
+#: public/templates/functions/plan-coupon-fields.php:540
 msgid "Show password"
 msgstr "パスワードを表示"
 
-#: public/templates/functions/plan-coupon-fields.php:526
+#: public/templates/functions/plan-coupon-fields.php:557
 msgid "Contact Info"
 msgstr "連絡先情報"
 
-#: public/templates/functions/plan-coupon-fields.php:540
+#: public/templates/functions/plan-coupon-fields.php:571
 msgid "Phone Number"
 msgstr "電話番号"
 
@@ -6981,7 +7214,7 @@ msgstr "%s に返金済み"
 msgid "Notes / Terms"
 msgstr "ノート / 条件"
 
-#: admin/reports/templates/customer-reports-page.php:46
+#: admin/reports/templates/customer-reports-page.php:48
 #. translators: 1: start date, 2: end date.
 #, fuzzy, php-format
 msgctxt "date range"

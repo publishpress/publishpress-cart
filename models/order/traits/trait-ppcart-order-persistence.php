@@ -116,28 +116,47 @@ trait PPCart_Order_Persistence
         unset($order->items);
     }
 
+    /**
+     * Set the order date from a Unix (UTC) timestamp.
+     *
+     * @param int $gmt_timestamp Unix timestamp.
+     * @return string|false GMT date, or false without an order ID.
+     */
     public function set_date_from_timestamp($gmt_timestamp)
     {
-        $iso_date = gmdate('Y-m-d H:i:s', $gmt_timestamp);
-        return $this->set_date($iso_date);
+        $gmt_date = gmdate('Y-m-d H:i:s', (int) $gmt_timestamp);
+
+        return $this->set_date(get_date_from_gmt($gmt_date));
     }
 
+    /**
+     * Set the order date.
+     *
+     * @param string $date_time Date in the site's timezone (Y-m-d H:i:s).
+     * @return string|false GMT date, or false without an order ID.
+     */
     public function set_date($date_time)
     {
         if (!$this->id) {
             return false;
         }
 
+        $gmt_date = get_gmt_from_date($date_time);
+        $post = get_post($this->id);
+        if ($post && $post->post_date === $date_time && $post->post_date_gmt === $gmt_date) {
+            return $gmt_date;
+        }
+
         wp_update_post(
             [
             'ID' => $this->id,
-            'post_date' => get_gmt_from_date($date_time),
-            'post_date_gmt' => get_gmt_from_date($date_time),
+            'post_date' => $date_time,
+            'post_date_gmt' => $gmt_date,
             ],
             false
         );
 
-        return get_gmt_from_date($date_time);
+        return $gmt_date;
     }
 
     public function refund_log($amount, $refundID)

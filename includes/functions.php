@@ -201,7 +201,9 @@ function ppcart_frontend_allowed_html()
         'aria-expanded'   => true,
         'aria-hidden'     => true,
         'aria-label'      => true,
+        'aria-labelledby' => true,
         'aria-live'       => true,
+        'aria-required'   => true,
         'aria-selected'   => true,
         'class'           => true,
         'data-active-tab' => true,
@@ -278,6 +280,7 @@ function ppcart_frontend_allowed_html()
     ]);
 
     $allowed['select'] = array_merge($global_attributes, [
+        'autocomplete' => true,
         'disabled' => true,
         'multiple' => true,
         'name'     => true,
@@ -852,6 +855,7 @@ require_once __DIR__ . '/functions/mailchimp-api.php';
 require_once __DIR__ . '/functions/orders-products-and-formatting.php';
 require_once __DIR__ . '/functions/integrations-and-stock.php';
 require_once __DIR__ . '/functions/users-and-notifications.php';
+require_once __DIR__ . '/functions/auto-login.php';
 require_once __DIR__ . '/functions/currencies.php';
 require_once __DIR__ . '/functions/prices-and-marketing.php';
 require_once __DIR__ . '/functions/product-and-order-setup.php';

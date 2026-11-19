@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-10-14T16:18:02+00:00\n"
-"PO-Revision-Date: 2026-11-10 10:17+0000\n"
+"PO-Revision-Date: 2026-11-19 14:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Language: ko_KR\n"
@@ -33,15 +33,15 @@ msgid ""
 "digital products, programs, and services."
 msgstr "디지털 제품, 프로그램 및 서비스를 판매하는 데 도움이 되는 주문 페이지 및 간소화된 판매 흐름 생성을 만듭니다."
 
-#: publishpress-cart.php:20
-#: admin/class-ppcart-welcome.php:82
+#: publishpress-cart.php:21
+#: admin/class-ppcart-welcome.php:81
 #: admin/partials/settings-page/tabs/topbar.php:9
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:110
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:115
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-cart.php:21
+#: publishpress-cart.php:22
 #. Author URI of the plugin
 #, fuzzy
 msgid "https://publishpress.com/"
@@ -49,8 +49,8 @@ msgstr "https://publishpress.com/publishpress-cart/"
 
 #: admin/class-ppcart-admin-reports.php:89
 #: admin/class-ppcart-admin-reports.php:90
-#: admin/partials/ppcart-admin-page-settings.php:145
-#: admin/reports/templates/admin-reports-page.php:45
+#: admin/partials/ppcart-admin-page-settings.php:155
+#: admin/reports/templates/admin-reports-page.php:43
 msgid "Reports"
 msgstr "보고서"
 
@@ -78,7 +78,8 @@ msgstr "지식 기반 보기"
 #: admin/class-ppcart-contacts-page.php:81
 #: admin/class-ppcart-contacts-page.php:162
 #: admin/class-ppcart-contacts-page.php:171
-#: admin/reports/templates/admin-reports-page.php:535
+#: admin/reports/templates/admin-reports-page.php:100
+#: admin/reports/templates/admin-reports-page.php:539
 msgid "Customers"
 msgstr "고객"
 
@@ -104,37 +105,37 @@ msgid "Lifetime value"
 msgstr "평생 가치"
 
 #: admin/class-ppcart-contacts-page.php:188
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:172
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
 #: admin/controllers/order/templates/product-form.php:320
 #: admin/controllers/order/templates/product-form.php:337
 #: admin/controllers/order/templates/product-form.php:453
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:201
 #: admin/reports/templates/customer-report/page.php:189
-#: public/partials/csv-export.php:136
-#: public/partials/csv-export.php:229
+#: public/partials/csv-export.php:138
+#: public/partials/csv-export.php:231
 #: public/templates/my-account/tabs/order-history.php:13
 msgid "Date"
 msgstr "날짜"
 
 #: admin/class-ppcart-contacts-page.php:189
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:180
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:203
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:48
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:216
-#: admin/partials/ppcart-admin-page-settings.php:143
+#: admin/partials/ppcart-admin-page-settings.php:153
 #: admin/partials/settings-page/sections/email-notifications.php:10
 #: public/partials/csv-export.php:22
-#: public/partials/csv-export.php:139
-#: public/templates/functions/plan-coupon-fields.php:539
-#: public/templates/functions/plan-coupon-fields.php:542
+#: public/partials/csv-export.php:141
+#: public/templates/functions/plan-coupon-fields.php:570
+#: public/templates/functions/plan-coupon-fields.php:573
 #: public/templates/my-account/tabs/user-profile.php:27
 msgid "Email"
 msgstr "이메일"
 
 #: admin/class-ppcart-contacts-page.php:190
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:202
 msgid "Name"
 msgstr "이름"
 
@@ -272,8 +273,8 @@ msgid "Add new"
 msgstr "새로 추가"
 
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:194
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
 #: admin/controllers/order/templates/product-form.php:322
 #: admin/controllers/order/templates/product-form.php:339
 #: admin/controllers/order/templates/product-form.php:454
@@ -281,8 +282,8 @@ msgstr "새로 추가"
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:238
 #: admin/reports/templates/customer-report/page.php:193
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:135
-#: public/partials/csv-export.php:151
-#: public/partials/csv-export.php:233
+#: public/partials/csv-export.php:153
+#: public/partials/csv-export.php:235
 #: public/templates/my-account/tabs/order-history.php:14
 #: public/templates/my-account/tabs/plans.php:38
 #: public/templates/my-account/tabs/subscriptions.php:43
@@ -292,68 +293,65 @@ msgstr "상태"
 #: admin/class-ppcart-pro-menu-previews.php:68
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
-#: admin/reports/templates/admin-reports-page.php:454
+#: admin/reports/templates/admin-reports-page.php:458
 msgid "Active"
 msgstr "활성"
 
 #: admin/class-ppcart-welcome.php:45
-#: admin/class-ppcart-welcome.php:92
+#: admin/class-ppcart-welcome.php:91
 msgid "Welcome to Cart"
 msgstr "장바구니에 오신 것을 환영합니다"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:72
+#: admin/reports/templates/admin-reports-page.php:121
 #: includes/templates/post-types-create-custom-post-type.php:12
 msgid "Products"
 msgstr "제품"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:72
 msgid "Add a digital product and set its price."
 msgstr "디지털 제품을 추가하고 가격을 설정하세요."
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:73
 msgid "Payments"
 msgstr "결제"
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:73
 msgid "Choose how customers pay at checkout."
 msgstr "체크아웃 시 고객이 결제하는 방법을 선택하세요."
 
-#: admin/class-ppcart-welcome.php:75
+#: admin/class-ppcart-welcome.php:74
 msgid "Getting started guide"
 msgstr "시작 가이드"
 
-#: admin/class-ppcart-welcome.php:75
+#: admin/class-ppcart-welcome.php:74
 msgid "Learn how to publish and share a checkout page."
 msgstr "체크아웃 페이지를 게시하고 공유하는 방법을 알아보세요."
 
-#: admin/class-ppcart-welcome.php:84
+#: admin/class-ppcart-welcome.php:83
 #: admin/partials/ppcart-admin-page-settings.php:26
 msgid "Cart"
 msgstr "장바구니"
 
-#: admin/class-ppcart-welcome.php:87
+#: admin/class-ppcart-welcome.php:86
 msgid "Get support"
 msgstr "지원 받기"
 
-#: admin/class-ppcart-welcome.php:93
+#: admin/class-ppcart-welcome.php:92
 msgid "Start selling from your WordPress site"
 msgstr "WordPress 사이트에서 판매를 시작하세요"
 
-#: admin/class-ppcart-welcome.php:94
+#: admin/class-ppcart-welcome.php:93
 msgid ""
 "Create a product, set its price, and share its checkout page with your "
 "customers."
 msgstr "제품을 생성하고 가격을 설정한 후 고객과 체크아웃 페이지를 공유하세요."
 
-#: admin/class-ppcart-welcome.php:96
+#: admin/class-ppcart-welcome.php:95
 msgid "Create your first product"
 msgstr "첫 번째 제품 만들기"
 
-#: admin/class-ppcart-welcome.php:97
-msgid "Go to dashboard"
-msgstr "대시보드로 이동"
-
-#: admin/class-ppcart-welcome.php:112
+#: admin/class-ppcart-welcome.php:110
 msgid "Set up your store"
 msgstr "상점 설정"
 
@@ -402,52 +400,59 @@ msgstr "결제 유형"
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:99
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:101
+#. translators: %s: product shortcode, for example [ppcart_form id="12"].
+#, php-format
+msgid "Copy shortcode %s"
+msgstr "복사 shortcode %s"
+
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:102
 msgid "Copy shortcode"
 msgstr "shortcode 복사"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:138
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
 msgid "One-time Payment"
 msgstr "일회성 결제"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:139
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:142
 msgid "Recurring Payments (Subscriptions)"
 msgstr "정기 결제 (구독)"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:140
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:143
 msgid "Pay What You Want"
 msgstr "원하는 만큼 지불"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:144
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:57
-#: admin/reports/templates/admin-reports-page.php:352
-#: public/templates/functions/plan-coupon-fields.php:288
+#: admin/reports/templates/admin-reports-page.php:356
+#: public/templates/functions/plan-coupon-fields.php:291
 msgid "Free"
 msgstr "무료"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:149
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:152
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:171
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
 msgid "Order #"
 msgstr "주문 #"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:173
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:195
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
 #: admin/controllers/order/templates/product-form.php:321
 #: admin/controllers/order/templates/product-form.php:338
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
+#: public/templates/functions/plan-coupon-fields.php:311
 #: public/templates/pdf-invoice/invoice.php:148
 msgid "Amount"
 msgstr "금액"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:178
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:201
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:52
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:173
 #: admin/reports/templates/customer-report/page.php:190
-#: includes/scheduled-reports/report-email-template.php:147
+#: includes/scheduled-reports/report-email-template.php:149
 #: includes/templates/post-types-create-custom-post-type.php:12
 #: public/templates/my-account/tabs/order-history.php:12
 #: public/templates/my-account/tabs/plans.php:37
@@ -456,21 +461,21 @@ msgstr "금액"
 msgid "Product"
 msgstr "제품"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:182
 #: public/templates/pdf-invoice/invoice.php:84
 msgid "Invoice Number"
 msgstr "청구서 번호"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:193
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:196
 msgid "Sub ID"
 msgstr "하위 ID"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:196
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
 #: public/templates/my-account/subscription-detail.php:84
 msgid "Start Date"
 msgstr "시작 날짜"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
 #: admin/reports/templates/customer-report/page.php:283
 #: public/templates/my-account/subscription-detail.php:95
 #: public/templates/my-account/tabs/plans.php:39
@@ -478,51 +483,51 @@ msgstr "시작 날짜"
 msgid "Next Payment"
 msgstr "다음 결제"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:242
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
 msgid "Update status to paid"
 msgstr "상태를 결제 완료로 업데이트"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:243
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:246
 msgid "Update status to failed"
 msgstr "상태를 실패로 업데이트"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:244
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:247
 msgid "Update status to pending"
 msgstr "상태를 보류 중으로 업데이트"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:253
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:248
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:256
 msgid "Update status to completed"
 msgstr "상태를 완료로 업데이트"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:251
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
 msgid "Resume in Stripe / update active"
 msgstr "Stripe에서 재개 / 활성 업데이트"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:252
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:255
 msgid "Update status to canceled"
 msgstr "상태를 취소로 업데이트"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:257
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
 msgstr "Stripe와 동기화"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:285
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:288
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
 msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s 구독이 Stripe에서 동기화되었습니다."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:297
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:300
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
 msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s 실패; 이유는 해당 구독 로그를 확인하세요."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:307
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:310
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
@@ -618,7 +623,7 @@ msgstr "환불 발행"
 
 #: admin/controllers/order/templates/product-form.php:294
 #: admin/reports/templates/customer-report/page.php:105
-#: includes/scheduled-reports/report-email-template.php:111
+#: includes/scheduled-reports/report-email-template.php:113
 msgid "Refunds"
 msgstr "환불"
 
@@ -691,7 +696,7 @@ msgstr "환불된 품목 재고 보충"
 #: admin/order-metaboxes/traits/trait-ppcart-order-metabox-field-groups.php:87
 #: admin/partials/settings-page/sections/payment-method.php:268
 #: admin/partials/settings-page/tabs/panels.php:387
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
 #: public/templates/my-account/subscription-detail.php:56
 #: public/templates/my-account/tabs/user-profile.php:92
 msgid "Cancel"
@@ -791,12 +796,14 @@ msgid "Order actions"
 msgstr "주문 작업"
 
 #: admin/controllers/order/templates/product-info-metabox.php:146
+#: public/partials/invoice-pdf.php:33
 #: public/templates/my-account/order-detail.php:40
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Invoice"
 msgstr "청구서"
 
 #: admin/controllers/order/templates/product-info-metabox.php:153
+#: public/partials/invoice-pdf.php:33
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Receipt"
 msgstr "영수증"
@@ -821,8 +828,6 @@ msgstr "세부정보 수정"
 #: admin/order-metaboxes/traits/templates/order-metabox-edit-fields-get-edit-field-sections.php:29
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:140
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:308
-#: admin/partials/settings-page/metadata.php:506
-#: admin/partials/settings-page/metadata.php:510
 #: admin/partials/settings-page/metadata.php:514
 #: admin/partials/settings-page/metadata.php:518
 #: admin/partials/settings-page/metadata.php:522
@@ -832,9 +837,11 @@ msgstr "세부정보 수정"
 #: admin/partials/settings-page/metadata.php:538
 #: admin/partials/settings-page/metadata.php:542
 #: admin/partials/settings-page/metadata.php:546
-#: admin/partials/settings-page/metadata.php:558
+#: admin/partials/settings-page/metadata.php:550
+#: admin/partials/settings-page/metadata.php:554
+#: admin/partials/settings-page/metadata.php:566
 #: admin/partials/settings-page/sections/email-notifications.php:36
-#: includes/scheduled-reports/report-email-template.php:146
+#: includes/scheduled-reports/report-email-template.php:148
 msgid "Customer"
 msgstr "고객"
 
@@ -877,7 +884,7 @@ msgstr "청구 주소"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:225
 #: admin/reports/templates/customer-report/page.php:235
 #: admin/traits/trait-ppcart-admin-profile.php:28
-#: public/partials/csv-export.php:140
+#: public/partials/csv-export.php:142
 #: public/templates/my-account/tabs/user-profile.php:32
 #: public/templates/my-account/tabs/user-profile.php:33
 msgid "Phone"
@@ -895,8 +902,8 @@ msgstr "회사"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:243
 #: public/templates/email/order-table.php:233
-#: public/templates/functions/payment-address.php:150
 #: public/templates/functions/payment-address.php:151
+#: public/templates/functions/payment-address.php:152
 #: public/templates/pdf-invoice/invoice.php:119
 msgid "VAT Number"
 msgstr "부가세 번호"
@@ -904,7 +911,7 @@ msgstr "부가세 번호"
 #: admin/controllers/order/templates/product-info-metabox.php:232
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:192
 #: admin/traits/trait-ppcart-admin-profile.php:22
-#: public/templates/functions/payment-address.php:308
+#: public/templates/functions/payment-address.php:311
 #: public/templates/my-account/order-detail.php:35
 #: public/templates/my-account/tabs/user-profile.php:38
 #: public/templates/my-account/tabs/user-profile.php:39
@@ -913,7 +920,7 @@ msgstr "주소"
 
 #: admin/controllers/order/templates/product-info-metabox.php:236
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:196
-#: public/partials/csv-export.php:142
+#: public/partials/csv-export.php:144
 #: public/templates/my-account/tabs/user-profile.php:43
 #: public/templates/my-account/tabs/user-profile.php:44
 msgid "Address 2"
@@ -924,7 +931,7 @@ msgstr "주소 2"
 #: admin/partials/ppcart-admin-page-settings-tax.php:25
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:24
-#: public/partials/csv-export.php:143
+#: public/partials/csv-export.php:145
 #: public/templates/my-account/tabs/user-profile.php:48
 #: public/templates/my-account/tabs/user-profile.php:49
 msgid "City"
@@ -933,7 +940,7 @@ msgstr "도시"
 #: admin/controllers/order/templates/product-info-metabox.php:244
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:204
 #: admin/traits/trait-ppcart-admin-profile.php:25
-#: public/partials/csv-export.php:144
+#: public/partials/csv-export.php:146
 #: public/templates/my-account/tabs/user-profile.php:53
 #: public/templates/my-account/tabs/user-profile.php:54
 msgid "State"
@@ -942,7 +949,7 @@ msgstr "주"
 #: admin/controllers/order/templates/product-info-metabox.php:248
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:208
 #: admin/traits/trait-ppcart-admin-profile.php:26
-#: public/partials/csv-export.php:145
+#: public/partials/csv-export.php:147
 #: public/templates/my-account/tabs/user-profile.php:58
 #: public/templates/my-account/tabs/user-profile.php:59
 msgid "Zip"
@@ -953,8 +960,8 @@ msgstr "우편번호"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:129
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:297
 #: admin/traits/trait-ppcart-admin-profile.php:27
-#: public/partials/csv-export.php:146
-#: public/templates/functions/payment-address.php:298
+#: public/partials/csv-export.php:148
+#: public/templates/functions/payment-address.php:300
 #: public/templates/my-account/tabs/user-profile.php:63
 #: public/templates/my-account/tabs/user-profile.php:64
 msgid "Country"
@@ -989,13 +996,13 @@ msgid "Order status"
 msgstr "주문 상태"
 
 #: admin/controllers/order/templates/product-info-metabox.php:283
-#: public/partials/csv-export.php:156
+#: public/partials/csv-export.php:158
 msgid "Opted-in"
 msgstr "옵트인"
 
 #: admin/controllers/order/templates/product-info-metabox.php:295
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:253
-#: public/partials/csv-export.php:155
+#: public/partials/csv-export.php:157
 msgid "Custom Fields"
 msgstr "사용자 정의 필드"
 
@@ -1034,7 +1041,7 @@ msgid "No recurring payment plans found"
 msgstr "재발송 결제 계획을 찾을 수 없습니다"
 
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:34
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:153
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:168
 msgid "Test email sent."
 msgstr "테스트 이메일이 전송되었습니다."
 
@@ -1076,7 +1083,7 @@ msgid "No notes found"
 msgstr "메모를 찾을 수 없습니다"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:38
-#: public/templates/functions/plan-coupon-fields.php:492
+#: public/templates/functions/plan-coupon-fields.php:514
 #: public/templates/pdf-invoice/invoice.php:146
 msgid "Qty"
 msgstr "수량"
@@ -1090,7 +1097,7 @@ msgid "Recurring Payment"
 msgstr "정기 결제"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:108
-#: admin/partials/settings-page/metadata.php:446
+#: admin/partials/settings-page/metadata.php:454
 #: public/templates/my-account/subscription-detail.php:56
 msgid "Cancel Subscription"
 msgstr "구독 취소"
@@ -1108,8 +1115,8 @@ msgstr "재개"
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:115
 #: admin/controllers/templates/order-list-custom-status.php:108
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:29
-#: admin/reports/templates/admin-reports-page.php:462
-#: public/partials/csv-export.php:325
+#: admin/reports/templates/admin-reports-page.php:466
+#: public/partials/csv-export.php:318
 msgid "Canceled"
 msgstr "취소됨"
 
@@ -1228,7 +1235,7 @@ msgid "Error loading subscription."
 msgstr "구독을 로드하는 중 오류가 발생했습니다."
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-sync-ajax.php:67
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
 msgid "Subscription synced successfully."
 msgstr "구독이 성공적으로 동기화되었습니다."
 
@@ -1386,7 +1393,7 @@ msgstr[0] "미지급 <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
-#: public/partials/csv-export.php:327
+#: public/partials/csv-export.php:320
 msgid "Paused"
 msgstr "일시 중지됨"
 
@@ -1454,7 +1461,7 @@ msgid "Total Orders"
 msgstr "총 주문"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:36
-#: admin/reports/templates/admin-reports-page.php:493
+#: admin/reports/templates/admin-reports-page.php:497
 msgid "Total Sales"
 msgstr "총 판매"
 
@@ -1463,7 +1470,7 @@ msgid "Avg. Order Value"
 msgstr "평균 주문 가치"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:38
-#: includes/scheduled-reports/report-email-template.php:114
+#: includes/scheduled-reports/report-email-template.php:116
 msgid "Pending Orders"
 msgstr "보류 중인 주문"
 
@@ -1473,7 +1480,7 @@ msgid "Paid Orders"
 msgstr "결제된 주문"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:40
-#: includes/scheduled-reports/report-email-template.php:116
+#: includes/scheduled-reports/report-email-template.php:118
 msgid "Refunded Orders"
 msgstr "환불된 주문"
 
@@ -1500,12 +1507,12 @@ msgid "Trials"
 msgstr "체험판"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:54
-#: admin/reports/templates/admin-reports-page.php:624
+#: admin/reports/templates/admin-reports-page.php:628
 msgid "Renewals"
 msgstr "갱신"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:405, fuzzy
+#: admin/reports/templates/admin-reports-page.php:409, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1551,7 +1558,7 @@ msgid "View Contacts"
 msgstr "연락처 보기"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:80
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:175
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:180
 msgid "Settings"
 msgstr "설정"
 
@@ -1693,9 +1700,9 @@ msgstr "알림 라벨"
 
 #: admin/metaboxes/field-groups/message-fields.php:158
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:30
-#: admin/settings/traits/options/core-settings.php:262
-#: admin/settings/traits/options/core-settings.php:320
-#: admin/settings/traits/options/core-settings.php:378
+#: admin/settings/traits/options/core-settings.php:264
+#: admin/settings/traits/options/core-settings.php:322
+#: admin/settings/traits/options/core-settings.php:380
 #: admin/settings/traits/options/payment-fields.php:11
 #: admin/settings/traits/options/payment-fields.php:23
 #: admin/settings/traits/options/payment-fields.php:135
@@ -1747,13 +1754,13 @@ msgid "Bcc"
 msgstr "숨은 참조"
 
 #: admin/metaboxes/field-groups/message-fields.php:266
-#: admin/settings/traits/options/core-settings.php:272
-#: admin/settings/traits/options/core-settings.php:330
-#: admin/settings/traits/options/core-settings.php:398
-#: admin/settings/traits/options/core-settings.php:441
-#: admin/settings/traits/options/core-settings.php:484
-#: admin/settings/traits/options/core-settings.php:527
-#: admin/settings/traits/options/core-settings.php:570
+#: admin/settings/traits/options/core-settings.php:274
+#: admin/settings/traits/options/core-settings.php:332
+#: admin/settings/traits/options/core-settings.php:400
+#: admin/settings/traits/options/core-settings.php:443
+#: admin/settings/traits/options/core-settings.php:486
+#: admin/settings/traits/options/core-settings.php:529
+#: admin/settings/traits/options/core-settings.php:572
 msgid "Subject"
 msgstr "제목"
 
@@ -1861,7 +1868,8 @@ msgstr "기본 설정 사용"
 #: admin/metaboxes/field-groups/sales-checkout-fields.php:62
 #: admin/partials/ppcart-admin-field-repeater.php:156
 #: admin/partials/settings-page/render-helpers.php:7
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
+#: admin/partials/settings-page/sections/email-notifications.php:44
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:134
 msgid "Disabled"
 msgstr "비활성화됨"
 
@@ -1970,8 +1978,8 @@ msgstr "섹션 제목"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:26
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:184
-#: public/partials/csv-export.php:149
-#: public/partials/csv-export.php:231
+#: public/partials/csv-export.php:151
+#: public/partials/csv-export.php:233
 #: public/templates/functions/plan-coupon-fields.php:197
 msgid "Payment Plan"
 msgstr "결제 계획"
@@ -2010,7 +2018,7 @@ msgid "Sale billing"
 msgstr "판매 청구"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:71
-#: admin/partials/ppcart-admin-page-settings.php:148
+#: admin/partials/ppcart-admin-page-settings.php:158
 #: admin/partials/settings-page/metadata.php:108
 msgid "Advanced"
 msgstr "고급"
@@ -2051,19 +2059,26 @@ msgid "One-time"
 msgstr "일회성"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:56
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:323
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:324
 msgid "Pay what you want"
 msgstr "원하는 금액 지불"
 
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:65
+msgid "Optional. Set a slug to preselect this plan from a checkout link."
+msgstr "선택 사항입니다. 체크아웃 링크에서 이 계획을 미리 선택하려면 슬러그를 설정하세요."
+
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:66
 msgid ""
-"Letters, numbers, dashes and underscores only. Must be unique for this "
-"product."
-msgstr "문자, 숫자, 대시 및 밑줄만 사용 가능합니다. 이 제품에 대해 고유해야 합니다."
+"For example, enter annual and add ?ppcart-pay-plan=annual to the checkout "
+"link. Use letters, numbers, dashes or underscores. The slug must be unique "
+"for this product."
+msgstr ""
+"예를 들어 연간을 입력하고 체크아웃 링크에 ?ppcart-pay-plan=annual을 추가하세요. 문자, 숫자, 대시 또는 밑줄을 "
+"사용할 수 있습니다. 슬러그는 이 제품에 대해 고유해야 합니다."
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:68
-msgid "URL slug"
-msgstr "URL 슬러그"
+msgid "Checkout link slug"
+msgstr "체크아웃 링크 슬러그"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:78
 msgid "Plan name on the checkout form."
@@ -2171,65 +2186,65 @@ msgstr "세일 빈도"
 msgid "Pay interval"
 msgstr "지불 간격"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:222
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:246
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
 msgid "Day"
 msgstr "일"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
 msgid "Week"
 msgstr "주"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
 msgid "Month"
 msgstr "월"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:226
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:250
 msgid "Year"
 msgstr "년"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:241
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:242
 msgid "Sale pay interval"
 msgstr "세일 지불 간격"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:264
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:265
 msgid ""
 "Billing stops after this many payments. Otherwise it continues until the "
 "subscription is canceled."
 msgstr "이 수의 결제 후 청구가 중단됩니다. 그렇지 않으면 구독이 취소될 때까지 계속됩니다."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:266
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:267
 msgid "Number of payments"
 msgstr "결제 횟수"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:285
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:286
 msgid "Sale number of payments"
 msgstr "세일 결제 횟수"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:302
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:303
 msgid "Shown in place of the price at checkout."
 msgstr "체크아웃 시 가격 대신 표시됩니다."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:304
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:341
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
 msgid "Name your price label"
 msgstr "가격 이름 라벨"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:307
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:344
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:306
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:308
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:343
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:345
 msgid "Name your price"
 msgstr "가격 이름"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:320
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
 msgid "Customers choose their own recurring amount."
 msgstr "고객이 자신의 반복 금액을 선택합니다."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:322
 msgid "The amount must be at or above the plan price."
 msgstr "금액은 요금제 가격 이상이어야 합니다."
 
@@ -2544,7 +2559,7 @@ msgid "Grow sales"
 msgstr "판매 성장"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:9
-#: admin/partials/ppcart-admin-page-settings.php:137
+#: admin/partials/ppcart-admin-page-settings.php:147
 #: admin/partials/settings-page/tabs/topbar.php:12
 msgid "General"
 msgstr "일반"
@@ -2570,7 +2585,7 @@ msgid "Emails"
 msgstr "이메일"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:15
-#: admin/partials/ppcart-admin-page-settings.php:144
+#: admin/partials/ppcart-admin-page-settings.php:154
 #: admin/partials/settings-page/tabs/panels.php:67
 msgid "Integrations"
 msgstr "통합"
@@ -2581,8 +2596,8 @@ msgstr "상품 알림"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:121
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:164
 msgid "Email preview"
 msgstr "이메일 미리보기"
 
@@ -2748,7 +2763,7 @@ msgstr "선택"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metabox-integration-options.php:107
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:156
-#: admin/settings/traits/options/core-settings.php:237
+#: admin/settings/traits/options/core-settings.php:239
 msgid "-- Select --"
 msgstr "-- 선택 --"
 
@@ -2848,8 +2863,8 @@ msgid "Checkbox label"
 msgstr "체크박스 레이블"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:143
-#: admin/settings/traits/options/core-settings.php:293
-#: admin/settings/traits/options/core-settings.php:351
+#: admin/settings/traits/options/core-settings.php:295
+#: admin/settings/traits/options/core-settings.php:353
 msgid "Headline"
 msgstr "헤드라인"
 
@@ -2898,7 +2913,7 @@ msgid "Header background image"
 msgstr "헤더 배경 이미지"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:35
-#: public/partials/csv-export.php:329
+#: public/partials/csv-export.php:322
 msgid "Until canceled"
 msgstr "취소될 때까지"
 
@@ -2927,8 +2942,8 @@ msgstr "이름 "
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:39
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:207
 #: public/partials/csv-export.php:21
-#: public/partials/csv-export.php:138
-#: public/templates/functions/plan-coupon-fields.php:535
+#: public/partials/csv-export.php:140
+#: public/templates/functions/plan-coupon-fields.php:566
 #: public/templates/my-account/tabs/user-profile.php:22
 msgid "Last Name"
 msgstr "성"
@@ -2978,7 +2993,7 @@ msgstr "저장되지 않은 변경 사항"
 #: admin/partials/settings-page/tabs/form-actions.php:7
 #: admin/partials/settings-page/tabs/form-actions.php:8
 #: admin/partials/settings-page/tabs/panels.php:388
-#: admin/partials/settings-page/tabs/savebar.php:11
+#: admin/partials/settings-page/tabs/savebar.php:12
 msgid "Save changes"
 msgstr "변경 사항 저장"
 
@@ -2989,6 +3004,10 @@ msgstr "그리고"
 #: admin/partials/ppcart-admin-field-conditions.php:61
 msgid "Or"
 msgstr "또는"
+
+#: admin/partials/ppcart-admin-field-conditions.php:98
+msgid "Remove condition"
+msgstr "조건 제거"
 
 #: admin/partials/ppcart-admin-field-conditions.php:106
 msgid "+ Add another condition"
@@ -3001,6 +3020,16 @@ msgstr "필드 수정"
 #: admin/partials/ppcart-admin-field-secure-file-upload.php:39
 msgid "Media Library"
 msgstr "미디어 라이브러리"
+
+#: admin/partials/ppcart-admin-field-text.php:86
+#. translators: %s: date field label.
+#, php-format
+msgid "Clear %s"
+msgstr "지우기 %s"
+
+#: admin/partials/ppcart-admin-field-text.php:87
+msgid "Clear date"
+msgstr "날짜 지우기"
 
 #: admin/partials/ppcart-admin-page-settings-tax.php:9
 msgid "Custom Tax Rates"
@@ -3075,7 +3104,7 @@ msgid "Loading&hellip;"
 msgstr "로드 중&hellip;"
 
 #: admin/partials/ppcart-admin-page-settings.php:44
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:171
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:176
 #. translators: %s: plugin title.
 #, php-format
 msgid "%s Settings"
@@ -3093,37 +3122,53 @@ msgstr "다음에서 최소한 하나의 결제 방법을 활성화하십시오.
 msgid "PublishPress Cart settings"
 msgstr "PublishPress 장바구니 설정"
 
-#: admin/partials/ppcart-admin-page-settings.php:138
+#: admin/partials/ppcart-admin-page-settings.php:107
+msgid "Debug log cleared."
+msgstr "디버그 로그가 지워졌습니다."
+
+#: admin/partials/ppcart-admin-page-settings.php:111
+msgid "Stripe webhook log cleared."
+msgstr "Stripe 웹후크 로그가 지워졌습니다."
+
+#: admin/partials/ppcart-admin-page-settings.php:148
 msgid "Pages"
 msgstr "페이지"
 
-#: admin/partials/ppcart-admin-page-settings.php:139
+#: admin/partials/ppcart-admin-page-settings.php:149
 msgid "Branding"
 msgstr "브랜딩"
 
-#: admin/partials/ppcart-admin-page-settings.php:140
+#: admin/partials/ppcart-admin-page-settings.php:150
 msgid "Payment Methods"
 msgstr "결제 방법"
 
-#: admin/partials/ppcart-admin-page-settings.php:141
+#: admin/partials/ppcart-admin-page-settings.php:151
 msgid "Invoices"
 msgstr "청구서"
 
-#: admin/partials/ppcart-admin-page-settings.php:142
+#: admin/partials/ppcart-admin-page-settings.php:152
 msgid "Downloads"
 msgstr "다운로드"
 
-#: admin/partials/ppcart-admin-page-settings.php:146
+#: admin/partials/ppcart-admin-page-settings.php:156
 msgid "Debug"
 msgstr "디버그"
 
-#: admin/partials/ppcart-admin-page-settings.php:147
+#: admin/partials/ppcart-admin-page-settings.php:157
 msgid "Maintenance"
 msgstr "유지보수"
 
-#: admin/partials/ppcart-admin-page-settings.php:163
+#: admin/partials/ppcart-admin-page-settings.php:173
 msgid "White Label"
 msgstr "화이트 라벨"
+
+#: admin/partials/ppcart-admin-repeater-move-buttons.php:25
+msgid "Move up"
+msgstr "위로 이동"
+
+#: admin/partials/ppcart-admin-repeater-move-buttons.php:29
+msgid "Move down"
+msgstr "아래로 이동"
 
 #: admin/partials/settings-page/metadata.php:11
 msgid "Currency and pricing defaults for your store."
@@ -3293,387 +3338,396 @@ msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "고객, 태그 및 전자상거래 활동을 드립에 동기화합니다."
 
 #: admin/partials/settings-page/metadata.php:212, fuzzy
+msgid "Brevo"
+msgstr "Brevo"
+
+#: admin/partials/settings-page/metadata.php:213
+msgid "Add customers to Brevo contact lists."
+msgstr "고객을 Brevo 연락처 목록에 추가합니다."
+
+#: admin/partials/settings-page/metadata.php:220, fuzzy
 msgid "Flodesk"
 msgstr "Flodesk"
 
-#: admin/partials/settings-page/metadata.php:213
+#: admin/partials/settings-page/metadata.php:221
 msgid "Add customers to Flodesk segments."
 msgstr "Flodesk 세그먼트에 고객 추가하기."
 
-#: admin/partials/settings-page/metadata.php:221
+#: admin/partials/settings-page/metadata.php:229
 msgid "MailerLite"
 msgstr "메일러라이트"
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:230
 msgid "Add customers to MailerLite subscribers and groups."
 msgstr "고객을 메일러라이트 구독자 및 그룹에 추가합니다."
 
-#: admin/partials/settings-page/metadata.php:230
+#: admin/partials/settings-page/metadata.php:238
 msgid "MailPoet"
 msgstr "메일포엣"
 
-#: admin/partials/settings-page/metadata.php:231
+#: admin/partials/settings-page/metadata.php:239
 msgid "Add customers to MailPoet lists."
 msgstr "고객을 메일포엣 목록에 추가합니다."
 
-#: admin/partials/settings-page/metadata.php:238
+#: admin/partials/settings-page/metadata.php:246
 msgid "Encharge"
 msgstr "엔차지"
 
-#: admin/partials/settings-page/metadata.php:239
+#: admin/partials/settings-page/metadata.php:247
 msgid "Track order events and sync customers to Encharge."
 msgstr "주문 이벤트를 추적하고 고객을 엔차지에 동기화합니다."
 
-#: admin/partials/settings-page/metadata.php:248
+#: admin/partials/settings-page/metadata.php:256
 msgid "FluentCRM"
 msgstr "플루언트CRM"
 
-#: admin/partials/settings-page/metadata.php:249
+#: admin/partials/settings-page/metadata.php:257
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "고객을 플루언트CRM 목록 및 태그에 추가합니다."
 
-#: admin/partials/settings-page/metadata.php:256
+#: admin/partials/settings-page/metadata.php:264
 msgid "Academy LMS"
 msgstr "아카데미 LMS"
 
-#: admin/partials/settings-page/metadata.php:257
+#: admin/partials/settings-page/metadata.php:265
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "아카데미 LMS 과정에 학생을 등록하거나 제거합니다."
 
-#: admin/partials/settings-page/metadata.php:264
+#: admin/partials/settings-page/metadata.php:272
 msgid "Gurucan"
 msgstr "구루칸"
 
-#: admin/partials/settings-page/metadata.php:265
+#: admin/partials/settings-page/metadata.php:273
 msgid "Add or remove customers in Gurucan products."
 msgstr "구루칸 제품에서 고객을 추가하거나 제거합니다."
 
-#: admin/partials/settings-page/metadata.php:273
+#: admin/partials/settings-page/metadata.php:281
 msgid "Heartbeat"
 msgstr "하트비트"
 
-#: admin/partials/settings-page/metadata.php:274
+#: admin/partials/settings-page/metadata.php:282
 msgid "Manage community access in Heartbeat."
 msgstr "하트비트에서 커뮤니티 접근을 관리합니다."
 
-#: admin/partials/settings-page/metadata.php:282, fuzzy
+#: admin/partials/settings-page/metadata.php:290, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
-#: admin/partials/settings-page/metadata.php:283
+#: admin/partials/settings-page/metadata.php:291
 msgid "Enable Kajabi purchase automations."
 msgstr "Kajabi 구매 자동화를 활성화합니다."
 
-#: admin/partials/settings-page/metadata.php:291, fuzzy
+#: admin/partials/settings-page/metadata.php:299, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
-#: admin/partials/settings-page/metadata.php:292
+#: admin/partials/settings-page/metadata.php:300
 msgid "Enroll customers into Teachable schools and products."
 msgstr "고객을 Teachable 학교와 제품에 등록합니다."
 
-#: admin/partials/settings-page/metadata.php:300, fuzzy
+#: admin/partials/settings-page/metadata.php:308, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:309
 msgid "Grant customers access to Upcoach programs."
 msgstr "고객에게 Upcoach 프로그램 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:309, fuzzy
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
-#: admin/partials/settings-page/metadata.php:310
+#: admin/partials/settings-page/metadata.php:318
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Tutor LMS 과정에서 학생을 등록하거나 제거합니다."
 
-#: admin/partials/settings-page/metadata.php:317, fuzzy
+#: admin/partials/settings-page/metadata.php:325, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
-#: admin/partials/settings-page/metadata.php:318
+#: admin/partials/settings-page/metadata.php:326
 msgid "Grant or revoke LearnDash course access."
 msgstr "LearnDash 과정 접근을 허용하거나 철회합니다."
 
-#: admin/partials/settings-page/metadata.php:325, fuzzy
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
-#: admin/partials/settings-page/metadata.php:326
+#: admin/partials/settings-page/metadata.php:334
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "구매 후 WP Courseware 등록을 관리합니다."
 
-#: admin/partials/settings-page/metadata.php:333, fuzzy
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
-#: admin/partials/settings-page/metadata.php:334
+#: admin/partials/settings-page/metadata.php:342
 msgid "Enroll customers into MasterStudy LMS courses."
 msgstr "고객을 MasterStudy LMS 과정에 등록합니다."
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:349
 msgid "Groups"
 msgstr "그룹"
 
-#: admin/partials/settings-page/metadata.php:342
+#: admin/partials/settings-page/metadata.php:350
 msgid "Add or remove customers from WordPress Groups."
 msgstr "WordPress 그룹에서 고객을 추가하거나 제거합니다."
 
-#: admin/partials/settings-page/metadata.php:349, fuzzy
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
-#: admin/partials/settings-page/metadata.php:350
+#: admin/partials/settings-page/metadata.php:358
 msgid "Grant customers MemberPress membership access."
 msgstr "고객에게 MemberPress 회원 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:357, fuzzy
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
-#: admin/partials/settings-page/metadata.php:358
+#: admin/partials/settings-page/metadata.php:366
 msgid "Grant customers ARMember plan access."
 msgstr "고객에게 ARMember 플랜 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:365, fuzzy
+#: admin/partials/settings-page/metadata.php:373, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
-#: admin/partials/settings-page/metadata.php:366
+#: admin/partials/settings-page/metadata.php:374
 msgid "Grant customers WishList Member level access."
 msgstr "고객에게 WishList Member 레벨 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:373, fuzzy
+#: admin/partials/settings-page/metadata.php:381, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:382
 msgid "Grant customers Restrict Content Pro access."
 msgstr "고객에게 Restrict Content Pro 접근을 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:381, fuzzy
+#: admin/partials/settings-page/metadata.php:389, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:390
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "새 고객에게 Ultimate Member 환영 이메일을 보냅니다."
 
-#: admin/partials/settings-page/metadata.php:390, fuzzy
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
-#: admin/partials/settings-page/metadata.php:391
+#: admin/partials/settings-page/metadata.php:399
 msgid "Choose Elementor templates for checkout components."
 msgstr "체크아웃 구성 요소를 위한 Elementor 템플릿을 선택합니다."
 
-#: admin/partials/settings-page/metadata.php:398, fuzzy
+#: admin/partials/settings-page/metadata.php:406, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
-#: admin/partials/settings-page/metadata.php:399
+#: admin/partials/settings-page/metadata.php:407
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "Divi 레이아웃 내에서 PublishPress Cart 주문 양식을 사용합니다."
 
-#: admin/partials/settings-page/metadata.php:406, fuzzy
+#: admin/partials/settings-page/metadata.php:414, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
-#: admin/partials/settings-page/metadata.php:407
+#: admin/partials/settings-page/metadata.php:415
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Oxygen Builder에서 PublishPress Cart 조건을 사용합니다."
 
-#: admin/partials/settings-page/metadata.php:414, fuzzy
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
-#: admin/partials/settings-page/metadata.php:415
+#: admin/partials/settings-page/metadata.php:423
 msgid "Use PublishPress Cart blocks in the WordPress block editor."
 msgstr "WordPress 블록 편집기에서 PublishPress Cart 블록을 사용합니다."
 
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:430
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: admin/partials/settings-page/metadata.php:423
+#: admin/partials/settings-page/metadata.php:431
 msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "WooCommerce 흐름과 PublishPress Cart 제품을 연결합니다."
 
-#: admin/partials/settings-page/metadata.php:430
-#: admin/partials/settings-page/metadata.php:438, fuzzy
+#: admin/partials/settings-page/metadata.php:438
+#: admin/partials/settings-page/metadata.php:446, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
-#: admin/partials/settings-page/metadata.php:431
 #: admin/partials/settings-page/metadata.php:439
+#: admin/partials/settings-page/metadata.php:447
 msgid "Sell domains through WP Domain Checker checkout flows."
 msgstr "WP Domain Checker 체크아웃 흐름을 통해 도메인을 판매합니다."
 
-#: admin/partials/settings-page/metadata.php:447
+#: admin/partials/settings-page/metadata.php:455
 msgid "Cancel an existing subscription as an order automation."
 msgstr "주문 자동화로 기존 구독을 취소합니다."
 
-#: admin/partials/settings-page/metadata.php:452
+#: admin/partials/settings-page/metadata.php:460
 msgid "Refund Order"
 msgstr "주문 환불"
 
-#: admin/partials/settings-page/metadata.php:453
+#: admin/partials/settings-page/metadata.php:461
 msgid "Refund an existing order as an order automation."
 msgstr "주문 자동화로 기존 주문을 환불합니다."
 
-#: admin/partials/settings-page/metadata.php:458
+#: admin/partials/settings-page/metadata.php:466
 msgid "Webhook"
 msgstr "웹후크"
 
-#: admin/partials/settings-page/metadata.php:459
+#: admin/partials/settings-page/metadata.php:467
 msgid "Send order data to an external webhook URL."
 msgstr "주문 데이터를 외부 웹훅 URL로 전송합니다."
 
-#: admin/partials/settings-page/metadata.php:466
+#: admin/partials/settings-page/metadata.php:474
 msgid "All"
 msgstr "모두"
 
-#: admin/partials/settings-page/metadata.php:467
+#: admin/partials/settings-page/metadata.php:475
 msgid "Email Marketing"
 msgstr "이메일 마케팅"
 
-#: admin/partials/settings-page/metadata.php:468
+#: admin/partials/settings-page/metadata.php:476
 msgid "Analytics"
 msgstr "분석"
 
-#: admin/partials/settings-page/metadata.php:469
+#: admin/partials/settings-page/metadata.php:477
 msgid "Ads"
 msgstr "광고"
 
-#: admin/partials/settings-page/metadata.php:470
+#: admin/partials/settings-page/metadata.php:478
 msgid "Automation"
 msgstr "자동화"
 
-#: admin/partials/settings-page/metadata.php:471
+#: admin/partials/settings-page/metadata.php:479
 msgid "Courses"
 msgstr "강의"
 
-#: admin/partials/settings-page/metadata.php:472
+#: admin/partials/settings-page/metadata.php:480
 msgid "Membership"
 msgstr "회원권"
 
-#: admin/partials/settings-page/metadata.php:473
+#: admin/partials/settings-page/metadata.php:481
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:107
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:30
 msgid "Security"
 msgstr "보안"
 
-#: admin/partials/settings-page/metadata.php:474
+#: admin/partials/settings-page/metadata.php:482
 msgid "Builders"
 msgstr "빌더"
 
-#: admin/partials/settings-page/metadata.php:479
-#: admin/reports/templates/admin-reports-page.php:351
+#: admin/partials/settings-page/metadata.php:487
+#: admin/reports/templates/admin-reports-page.php:355
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:31
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:56
 #: public/templates/functions/payment-address.php:74
 msgid "Cash on Delivery"
 msgstr "현금 배송"
 
-#: admin/partials/settings-page/metadata.php:480
+#: admin/partials/settings-page/metadata.php:488
 msgid "Manage Cash on Delivery"
 msgstr "현금 배달 관리"
 
-#: admin/partials/settings-page/metadata.php:481
+#: admin/partials/settings-page/metadata.php:489
 msgid "Allow customers to pay with cash when their order is delivered."
 msgstr "주문이 배달될 때 고객이 현금으로 결제할 수 있도록 허용합니다."
 
-#: admin/partials/settings-page/metadata.php:483
+#: admin/partials/settings-page/metadata.php:491
 #: admin/partials/settings-page/sections/email-notifications.php:53
 #: admin/partials/settings-page/sections/payment-method.php:14
 #: public/templates/my-account/subscription-row.php:47
 msgid "Manage"
 msgstr "관리"
 
-#: admin/partials/settings-page/metadata.php:486
+#: admin/partials/settings-page/metadata.php:494
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:32
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:56, fuzzy
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:57, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
-#: admin/partials/settings-page/metadata.php:487
-#: admin/partials/settings-page/metadata.php:491
+#: admin/partials/settings-page/metadata.php:495
+#: admin/partials/settings-page/metadata.php:499
 msgid "Manage Stripe"
 msgstr "스트라이프 관리"
 
-#: admin/partials/settings-page/metadata.php:488
+#: admin/partials/settings-page/metadata.php:496
 msgid "Accept credit cards and other payments securely via Stripe."
 msgstr "스트라이프를 통해 신용 카드 및 기타 결제를 안전하게 수락합니다."
 
-#: admin/partials/settings-page/metadata.php:494
+#: admin/partials/settings-page/metadata.php:502
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:33
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:57
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
-#: admin/partials/settings-page/metadata.php:495
-#: admin/partials/settings-page/metadata.php:499
+#: admin/partials/settings-page/metadata.php:503
+#: admin/partials/settings-page/metadata.php:507
 msgid "Manage PayPal"
 msgstr "페이팔 관리"
 
-#: admin/partials/settings-page/metadata.php:496
+#: admin/partials/settings-page/metadata.php:504
 msgid "Accept payments securely via PayPal."
 msgstr "페이팔을 통해 안전하게 결제를 수락합니다."
 
-#: admin/partials/settings-page/metadata.php:505
+#: admin/partials/settings-page/metadata.php:513
 msgid "Sent after an order is received (pending payment). Useful for COD orders."
 msgstr "주문이 접수된 후 전송됩니다 (결제 대기 중). COD 주문에 유용합니다."
 
-#: admin/partials/settings-page/metadata.php:509
+#: admin/partials/settings-page/metadata.php:517
 msgid "Sent to customers after purchase (paid)."
 msgstr "구매 후 고객에게 전송됩니다 (결제 완료)."
 
-#: admin/partials/settings-page/metadata.php:513
+#: admin/partials/settings-page/metadata.php:521
 msgid "Sent when an order is marked complete."
 msgstr "주문이 완료로 표시될 때 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:517
+#: admin/partials/settings-page/metadata.php:525
 msgid "Sent when a new user account is created."
 msgstr "새 사용자 계정이 생성될 때 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:521
+#: admin/partials/settings-page/metadata.php:529
 msgid "Sent when an order is refunded."
 msgstr "주문이 환불될 때 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:525
+#: admin/partials/settings-page/metadata.php:533
 msgid "Sent before a subscription trial ends."
 msgstr "구독 체험이 종료되기 전에 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:529
+#: admin/partials/settings-page/metadata.php:537
 msgid "Sent before an upcoming subscription renewal."
 msgstr "다가오는 구독 갱신 전에 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:533
+#: admin/partials/settings-page/metadata.php:541
 msgid "Sent after a subscription renews."
 msgstr "구독이 갱신된 후 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:537
+#: admin/partials/settings-page/metadata.php:545
 msgid "Sent when a subscription renewal payment fails."
 msgstr "구독 갱신 결제가 실패할 때 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:541
+#: admin/partials/settings-page/metadata.php:549
 msgid "Sent when a subscription is canceled."
 msgstr "구독이 취소될 때 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:545
+#: admin/partials/settings-page/metadata.php:553
 msgid "Sent when a subscription is paused."
 msgstr "구독이 일시 중지될 때 전송됩니다."
 
-#: admin/partials/settings-page/metadata.php:557
+#: admin/partials/settings-page/metadata.php:565
 #: admin/partials/settings-page/sections/email-notifications.php:40
 msgid "Configure this automated email notification."
 msgstr "이 자동 이메일 알림을 구성하세요."
 
 #: admin/partials/settings-page/render-helpers.php:8
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
+#: admin/partials/settings-page/sections/email-notifications.php:44
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:133
 msgid "Enabled"
 msgstr "활성화됨"
 
@@ -3724,7 +3778,7 @@ msgid "Reset to default"
 msgstr "기본값으로 재설정"
 
 #: admin/partials/settings-page/sections/email-notifications.php:117
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
 msgid "Preview"
 msgstr "미리보기"
 
@@ -3845,11 +3899,12 @@ msgstr "%s에 대해 자세히 알아보기"
 msgid "Configuration"
 msgstr "구성"
 
-#: admin/partials/settings-page/tabs/savebar.php:7
+#: admin/partials/settings-page/tabs/savebar.php:8
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
 msgid "You have unsaved changes"
 msgstr "저장되지 않은 변경 사항이 있습니다"
 
-#: admin/partials/settings-page/tabs/savebar.php:9
+#: admin/partials/settings-page/tabs/savebar.php:10
 msgid "Discard"
 msgstr "버리기"
 
@@ -3865,253 +3920,253 @@ msgstr "검색 설정"
 msgid "Search settings..."
 msgstr "설정 검색..."
 
-#: admin/reports/templates/admin-reports-page.php:48
+#: admin/reports/templates/admin-reports-page.php:46
 #. translators: %s: report period label.
 #, php-format
 msgid "Performance summary for %s"
 msgstr "%s에 대한 성과 요약"
 
-#: admin/reports/templates/admin-reports-page.php:82
+#: admin/reports/templates/admin-reports-page.php:80
 msgid "Date range"
 msgstr "날짜 범위"
 
-#: admin/reports/templates/admin-reports-page.php:83
-msgid "Select date range"
-msgstr "날짜 범위 선택"
+#: admin/reports/templates/admin-reports-page.php:81
+msgid "All Time"
+msgstr "전체 시간"
 
-#: admin/reports/templates/admin-reports-page.php:86
+#: admin/reports/templates/admin-reports-page.php:84
 msgid "Search customers by name or email"
 msgstr "이름 또는 이메일로 고객 검색"
 
-#: admin/reports/templates/admin-reports-page.php:93
+#: admin/reports/templates/admin-reports-page.php:91
 msgid "Search by name or email"
 msgstr "이름 또는 이메일로 검색"
 
-#: admin/reports/templates/admin-reports-page.php:103
+#: admin/reports/templates/admin-reports-page.php:104
 msgid "Search products"
 msgstr "상품 검색"
 
-#: admin/reports/templates/admin-reports-page.php:110
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
+#: admin/reports/templates/admin-reports-page.php:111
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
 msgid "All products"
 msgstr "모든 상품"
 
-#: admin/reports/templates/admin-reports-page.php:115
+#: admin/reports/templates/admin-reports-page.php:118
 msgid "Filters by the order or subscription's primary product"
 msgstr "주문 또는 구독의 기본 제품으로 필터링"
 
-#: admin/reports/templates/admin-reports-page.php:120
+#: admin/reports/templates/admin-reports-page.php:124
 #: admin/reports/templates/customer-report/page.php:83
 msgid "Apply"
 msgstr "적용"
 
-#: admin/reports/templates/admin-reports-page.php:121
+#: admin/reports/templates/admin-reports-page.php:125
 msgid "Clear filters"
 msgstr "필터 지우기"
 
-#: admin/reports/templates/admin-reports-page.php:122
-#: admin/reports/templates/customer-reports-page.php:85
+#: admin/reports/templates/admin-reports-page.php:126
+#: admin/reports/templates/customer-reports-page.php:97
 msgid "Export Orders"
 msgstr "주문 내보내기"
 
-#: admin/reports/templates/admin-reports-page.php:126
+#: admin/reports/templates/admin-reports-page.php:130
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
 msgstr "제품 필터는 각 주문 또는 구독의 기본 제품과 일치하며, 범프 또는 업셀 항목과는 일치하지 않습니다."
 
-#: admin/reports/templates/admin-reports-page.php:366
+#: admin/reports/templates/admin-reports-page.php:370
 #. translators: %s: canceled subscription count.
 #, php-format
 msgid "%s cancellations in local records"
 msgstr "%s 건의 취소가 로컬 기록에 있습니다"
 
-#: admin/reports/templates/admin-reports-page.php:371
+#: admin/reports/templates/admin-reports-page.php:375
 #. translators: 1: canceled subscription count, 2: active subscriptions at period start.
 #, php-format
 msgid "%1$s cancellations; %2$s active at period start"
 msgstr "%1$s 건의 취소; %2$s 건이 기간 시작 시 활성 상태"
 
-#: admin/reports/templates/admin-reports-page.php:377
+#: admin/reports/templates/admin-reports-page.php:381
 msgid "Report overview"
 msgstr "보고서 개요"
 
-#: admin/reports/templates/admin-reports-page.php:380
+#: admin/reports/templates/admin-reports-page.php:384
 #: admin/reports/templates/customer-report/page.php:89
 msgid "Net Revenue"
 msgstr "순수익"
 
-#: admin/reports/templates/admin-reports-page.php:384
+#: admin/reports/templates/admin-reports-page.php:388
 #. translators: %s: gross revenue.
 #, php-format
 msgid "Gross %s before refunds"
 msgstr "%s 환불 전 총 수익"
 
-#: admin/reports/templates/admin-reports-page.php:390
+#: admin/reports/templates/admin-reports-page.php:394
 msgid "Customer Lifetime Value"
 msgstr "고객 평생 가치"
 
-#: admin/reports/templates/admin-reports-page.php:395
+#: admin/reports/templates/admin-reports-page.php:399
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
 msgstr "모든 시간 동안 %s명의 일치하는 고객에 대한 평균"
 
-#: admin/reports/templates/admin-reports-page.php:400
+#: admin/reports/templates/admin-reports-page.php:404
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s customers"
 msgstr "%s 고객의 모든 시간 평균"
 
-#: admin/reports/templates/admin-reports-page.php:409
+#: admin/reports/templates/admin-reports-page.php:413
 #. translators: %s: recurring subscription count.
 #, php-format
 msgid "%s active recurring subscriptions"
 msgstr "%s 활성 반복 구독"
 
-#: admin/reports/templates/admin-reports-page.php:414
+#: admin/reports/templates/admin-reports-page.php:418
 msgid "Churn Rate"
 msgstr "이탈률"
 
-#: admin/reports/templates/admin-reports-page.php:419
-#: admin/reports/templates/admin-reports-page.php:528
+#: admin/reports/templates/admin-reports-page.php:423
+#: admin/reports/templates/admin-reports-page.php:532
 msgid "Transactions"
 msgstr "거래"
 
-#: admin/reports/templates/admin-reports-page.php:424
+#: admin/reports/templates/admin-reports-page.php:428
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
 msgstr "%1$s 신규, %2$s 갱신"
 
-#: admin/reports/templates/admin-reports-page.php:428
+#: admin/reports/templates/admin-reports-page.php:432
 msgid "Paid orders and post-purchase offers"
 msgstr "유료 주문 및 구매 후 제안"
 
-#: admin/reports/templates/admin-reports-page.php:431
+#: admin/reports/templates/admin-reports-page.php:435
 msgid "Avg Order Value"
 msgstr "평균 주문 가치"
 
-#: admin/reports/templates/admin-reports-page.php:433
+#: admin/reports/templates/admin-reports-page.php:437
 msgid "Based on paid transactions"
 msgstr "유료 거래를 기준으로"
 
-#: admin/reports/templates/admin-reports-page.php:441
+#: admin/reports/templates/admin-reports-page.php:445
 msgid "Revenue Trend"
 msgstr "수익 추세"
 
-#: admin/reports/templates/admin-reports-page.php:449
+#: admin/reports/templates/admin-reports-page.php:453
 msgid "Subscription Health"
 msgstr "구독 건강"
 
-#: admin/reports/templates/admin-reports-page.php:450
+#: admin/reports/templates/admin-reports-page.php:454
 msgid "Local subscription records"
 msgstr "지역 구독 기록"
 
-#: admin/reports/templates/admin-reports-page.php:458
-#: admin/reports/templates/admin-reports-page.php:620
+#: admin/reports/templates/admin-reports-page.php:462
+#: admin/reports/templates/admin-reports-page.php:624
 msgid "New"
 msgstr "새로운"
 
-#: admin/reports/templates/admin-reports-page.php:472
+#: admin/reports/templates/admin-reports-page.php:476
 msgid "Top Products by Revenue"
 msgstr "수익 기준 상위 제품"
 
-#: admin/reports/templates/admin-reports-page.php:473
+#: admin/reports/templates/admin-reports-page.php:477
 msgid "Paid order amount"
 msgstr "유료 주문 금액"
 
-#: admin/reports/templates/admin-reports-page.php:475
+#: admin/reports/templates/admin-reports-page.php:479
 msgid "No paid product revenue found for this period."
 msgstr "이 기간에 대한 유료 제품 수익이 없습니다."
 
-#: admin/reports/templates/admin-reports-page.php:480
+#: admin/reports/templates/admin-reports-page.php:484
 msgid "Payment Method Mix"
 msgstr "결제 방법 믹스"
 
-#: admin/reports/templates/admin-reports-page.php:481
+#: admin/reports/templates/admin-reports-page.php:485
 msgid "Transactions by gateway"
 msgstr "게이트웨이별 거래"
 
-#: admin/reports/templates/admin-reports-page.php:483
+#: admin/reports/templates/admin-reports-page.php:487
 msgid "No payment method data found for this period."
 msgstr "이 기간에 대한 결제 방법 데이터가 없습니다."
 
-#: admin/reports/templates/admin-reports-page.php:487
+#: admin/reports/templates/admin-reports-page.php:491
 msgid "Detailed order breakdown"
 msgstr "상세 주문 내역"
 
-#: admin/reports/templates/admin-reports-page.php:500
+#: admin/reports/templates/admin-reports-page.php:504
 msgid "Net Sales"
 msgstr "순 매출"
 
-#: admin/reports/templates/admin-reports-page.php:507
+#: admin/reports/templates/admin-reports-page.php:511
 msgid "Total Refunds"
 msgstr "총 환불"
 
-#: admin/reports/templates/admin-reports-page.php:514
+#: admin/reports/templates/admin-reports-page.php:518
 msgid "Amount Refunded"
 msgstr "환불된 금액"
 
-#: admin/reports/templates/admin-reports-page.php:521
+#: admin/reports/templates/admin-reports-page.php:525
 msgid "Avg Revenue per Customer"
 msgstr "고객당 평균 수익"
 
-#: admin/reports/templates/admin-reports-page.php:554
+#: admin/reports/templates/admin-reports-page.php:558
 msgid "Sales by Product"
 msgstr "제품별 판매"
 
-#: admin/reports/templates/admin-reports-page.php:558
+#: admin/reports/templates/admin-reports-page.php:562
 msgid "No product sales in this period"
 msgstr "이 기간 동안 제품 판매 없음"
 
-#: admin/reports/templates/admin-reports-page.php:559
+#: admin/reports/templates/admin-reports-page.php:563
 msgid ""
 "Completed paid orders will appear here once customers buy a product in the "
 "selected date range."
 msgstr "선택한 날짜 범위 내에서 고객이 제품을 구매하면 완료된 유료 주문이 여기에 표시됩니다."
 
-#: admin/reports/templates/admin-reports-page.php:570
+#: admin/reports/templates/admin-reports-page.php:574
 msgid "Refunds by Product"
 msgstr "제품별 환불"
 
-#: admin/reports/templates/admin-reports-page.php:574
+#: admin/reports/templates/admin-reports-page.php:578
 msgid "No product refunds in this period"
 msgstr "이 기간 동안 제품 환불 없음"
 
-#: admin/reports/templates/admin-reports-page.php:575
+#: admin/reports/templates/admin-reports-page.php:579
 msgid ""
 "Refunded products will appear here when an order refund is recorded for the "
 "selected date range."
 msgstr "선택한 날짜 범위 내에서 주문 환불이 기록되면 환불된 제품이 여기에 표시됩니다."
 
-#: admin/reports/templates/admin-reports-page.php:586
+#: admin/reports/templates/admin-reports-page.php:590
 msgid "Transactions by Payment Gateway"
 msgstr "결제 게이트웨이별 거래"
 
-#: admin/reports/templates/admin-reports-page.php:590
+#: admin/reports/templates/admin-reports-page.php:594
 msgid "No gateway transactions in this period"
 msgstr "이 기간 동안 게이트웨이 거래 없음"
 
-#: admin/reports/templates/admin-reports-page.php:591
+#: admin/reports/templates/admin-reports-page.php:595
 msgid ""
 "Paid transactions will be grouped by gateway here after checkout activity "
 "is recorded."
 msgstr "체크아웃 활동이 기록된 후, 유료 거래가 여기에 게이트웨이별로 그룹화됩니다."
 
-#: admin/reports/templates/admin-reports-page.php:618
+#: admin/reports/templates/admin-reports-page.php:622
 msgid "Orders by Type"
 msgstr "주문 유형별"
 
-#: admin/reports/templates/admin-reports-page.php:631
+#: admin/reports/templates/admin-reports-page.php:635
 msgid "Main Orders by Product"
 msgstr "제품별 주요 주문"
 
-#: admin/reports/templates/admin-reports-page.php:651
+#: admin/reports/templates/admin-reports-page.php:655
 msgid "No main orders in this period"
 msgstr "이 기간 동안 주요 주문 없음"
 
-#: admin/reports/templates/admin-reports-page.php:652
+#: admin/reports/templates/admin-reports-page.php:656
 msgid ""
 "Main product order counts will appear here once paid checkout orders are "
 "tracked."
@@ -4193,17 +4248,17 @@ msgid "Plan"
 msgstr "플랜"
 
 #: admin/reports/templates/customer-report/page.php:192
-#: public/partials/csv-export.php:232
+#: public/partials/csv-export.php:234
 msgid "Pay Interval"
 msgstr "결제 간격"
 
 #: admin/reports/templates/customer-report/page.php:194
-#: public/partials/csv-export.php:234
+#: public/partials/csv-export.php:236
 msgid "Total Revenue"
 msgstr "총 수익"
 
 #: admin/reports/templates/customer-report/page.php:195
-#: public/partials/csv-export.php:235
+#: public/partials/csv-export.php:237
 msgid "Remaining Payments"
 msgstr "남은 결제"
 
@@ -4265,34 +4320,35 @@ msgstr "구매한 제품"
 msgid "Subscription Revenue"
 msgstr "구독 수익"
 
-#: admin/reports/templates/customer-reports-page.php:85
+#: admin/reports/templates/customer-reports-page.php:25
+#: admin/reports/traits/templates/reports-date-get-report-period.php:17
+msgid "All time"
+msgstr "전체 기간"
+
+#: admin/reports/templates/customer-reports-page.php:97
 msgid "Export Subscriptions"
 msgstr "구독 내보내기"
 
-#: admin/reports/templates/customer-reports-page.php:253
+#: admin/reports/templates/customer-reports-page.php:257
 msgid "Upsell"
 msgstr "업셀"
 
-#: admin/reports/templates/customer-reports-page.php:256
+#: admin/reports/templates/customer-reports-page.php:260
 msgid "Downsell"
 msgstr "다운셀"
 
-#: admin/reports/templates/customer-reports-page.php:268
+#: admin/reports/templates/customer-reports-page.php:272
 #: includes/templates/post-types-create-custom-post-type.php:13
 msgid "Order"
 msgstr "주문"
 
-#: admin/reports/templates/customer-reports-page.php:283
+#: admin/reports/templates/customer-reports-page.php:287
 msgid "Offer during checkout"
 msgstr "체크아웃 중 제공"
 
-#: admin/reports/templates/customer-reports-page.php:388
+#: admin/reports/templates/customer-reports-page.php:392
 msgid "Guest customer"
 msgstr "게스트 고객"
-
-#: admin/reports/traits/templates/reports-date-get-report-period.php:17
-msgid "All time"
-msgstr "전체 기간"
 
 #: admin/reports/traits/templates/reports-render-render-bar-rows.php:16
 msgid "No data for this period"
@@ -4309,12 +4365,73 @@ msgid ""
 msgstr "결제된 주문은 선택한 날짜 범위에 대한 체크아웃 활동이 기록된 후 이 차트에 나타납니다."
 
 #: admin/reports/traits/templates/reports-render-render-revenue-chart.php:58
-msgid "Revenue trend chart"
-msgstr "수익 추세 차트"
+msgid ""
+"Revenue trend chart. The revenue data table after the chart lists each "
+"period."
+msgstr "수익 추세 차트. 차트 이후의 수익 데이터 테이블에는 각 기간이 나열됩니다."
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:84
+msgid "Show data table"
+msgstr "데이터 테이블 표시"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:86
+msgid "Revenue by period"
+msgstr "기간별 수익"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:89
+msgid "Period"
+msgstr "기간"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:90
+msgid "Revenue"
+msgstr "수익"
 
 #: admin/reports/traits/trait-ppcart-admin-reports-data.php:131
 msgid "Unknown product"
 msgstr "알 수 없는 제품"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:147
+msgid "live"
+msgstr "실시간"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:147
+msgid "sandbox"
+msgstr "샌드박스"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:154
+#. translators: 1: live or sandbox, 2: webhook URL.
+#, php-format
+msgid "PayPal webhook registered for %1$s mode at %2$s."
+msgstr "PayPal 웹후크가 %1$s 모드에서 %2$s에 등록되었습니다."
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:160
+#. translators: 1: live or sandbox, 2: PayPal error, 3: webhook URL, 4: event names.
+#, php-format
+msgid ""
+"PayPal refused the webhook for %1$s mode: %2$s. Add it yourself in your "
+"PayPal app (Developer Dashboard, your app, Webhooks) with the URL %3$s and "
+"these events: %4$s. Until then, the hourly check completes payments."
+msgstr ""
+"PayPal이 %1$s 모드에 대한 웹후크를 거부했습니다: %2$s. URL %3$s와 함께 이러한 이벤트 %4$s를 사용하여 "
+"PayPal 앱(개발자 대시보드, 귀하의 앱, 웹후크)에서 직접 추가하세요. 그때까지는 매시간 확인이 결제를 완료합니다."
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:169
+#. translators: %s: webhook URL.
+#, php-format
+msgid ""
+"The PayPal webhook is registered when you save with Client ID and Secret "
+"set. URL: %s"
+msgstr "PayPal 웹후크는 클라이언트 ID와 비밀이 설정된 상태로 저장하면 등록됩니다. URL: %s"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:190
+msgid "PayPal could not be reached."
+msgstr "PayPal에 연결할 수 없습니다."
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:192
+#. translators: %d: HTTP status code.
+#, fuzzy, php-format
+msgid "HTTP %d"
+msgstr "HTTP %d"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:28
 #. translators: %s: the Stripe permission name, wrapped in strong tags.
@@ -4385,7 +4502,7 @@ msgid ""
 "shown."
 msgstr "이 계정은 엔드포인트를 재확인할 수 없으므로 실시간 상태가 표시되지 않습니다."
 
-#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
+#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:115
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
@@ -4524,7 +4641,7 @@ msgid "Privacy Policy URL"
 msgstr "개인정보 처리방침 URL"
 
 #: admin/settings/traits/options/core-settings.php:114
-#: public/templates/functions/plan-coupon-fields.php:545
+#: public/templates/functions/plan-coupon-fields.php:576
 msgid "Company Name"
 msgstr "회사 이름"
 
@@ -4610,98 +4727,98 @@ msgstr "푸터 텍스트"
 msgid "Test email"
 msgstr "테스트 이메일"
 
-#: admin/settings/traits/options/core-settings.php:238
+#: admin/settings/traits/options/core-settings.php:240
 msgid "Order Received"
 msgstr "주문 접수"
 
-#: admin/settings/traits/options/core-settings.php:239
+#: admin/settings/traits/options/core-settings.php:241
 msgid "New User Welcome"
 msgstr "신규 사용자 환영"
 
-#: admin/settings/traits/options/core-settings.php:240
+#: admin/settings/traits/options/core-settings.php:242
 msgid "Purchase Confirmation"
 msgstr "구매 확인"
 
-#: admin/settings/traits/options/core-settings.php:241
+#: admin/settings/traits/options/core-settings.php:243
 msgid "Order Refunded"
 msgstr "주문 환불됨"
 
-#: admin/settings/traits/options/core-settings.php:242
+#: admin/settings/traits/options/core-settings.php:244
 msgid "Trial Ending Reminder"
 msgstr "체험 종료 알림"
 
-#: admin/settings/traits/options/core-settings.php:243
+#: admin/settings/traits/options/core-settings.php:245
 msgid "Upcoming Renewal Reminder"
 msgstr "다가오는 갱신 알림"
 
-#: admin/settings/traits/options/core-settings.php:244
+#: admin/settings/traits/options/core-settings.php:246
 msgid "Subscription Renewal Confirmation"
 msgstr "구독 갱신 확인"
 
-#: admin/settings/traits/options/core-settings.php:245
+#: admin/settings/traits/options/core-settings.php:247
 msgid "Failed Renewal Payment"
 msgstr "갱신 결제 실패"
 
-#: admin/settings/traits/options/core-settings.php:246
+#: admin/settings/traits/options/core-settings.php:248
 msgid "Subscription Canceled Confirmation"
 msgstr "구독 취소 확인"
 
-#: admin/settings/traits/options/core-settings.php:247
+#: admin/settings/traits/options/core-settings.php:249
 msgid "Subscription Paused Confirmation"
 msgstr "구독 일시 정지 확인"
 
-#: admin/settings/traits/options/core-settings.php:249
+#: admin/settings/traits/options/core-settings.php:251
 msgid "Preview Email"
 msgstr "이메일 미리보기"
 
-#: admin/settings/traits/options/core-settings.php:250
+#: admin/settings/traits/options/core-settings.php:252
 msgid "Send Test"
 msgstr "테스트 전송"
 
-#: admin/settings/traits/options/core-settings.php:252
+#: admin/settings/traits/options/core-settings.php:254
 msgid "Preview and test emails use sample order data for personalization tags."
 msgstr "미리보기 및 테스트 이메일은 개인화 태그를 위한 샘플 주문 데이터를 사용합니다."
 
-#: admin/settings/traits/options/core-settings.php:283
-#: admin/settings/traits/options/core-settings.php:341
-#: admin/settings/traits/options/core-settings.php:408
-#: admin/settings/traits/options/core-settings.php:451
-#: admin/settings/traits/options/core-settings.php:494
-#: admin/settings/traits/options/core-settings.php:537
-#: admin/settings/traits/options/core-settings.php:580
+#: admin/settings/traits/options/core-settings.php:285
+#: admin/settings/traits/options/core-settings.php:343
+#: admin/settings/traits/options/core-settings.php:410
+#: admin/settings/traits/options/core-settings.php:453
+#: admin/settings/traits/options/core-settings.php:496
+#: admin/settings/traits/options/core-settings.php:539
+#: admin/settings/traits/options/core-settings.php:582
 msgid "Send to admin?"
 msgstr "관리자에게 전송하시겠습니까?"
 
-#: admin/settings/traits/options/core-settings.php:304
-#: admin/settings/traits/options/core-settings.php:362
+#: admin/settings/traits/options/core-settings.php:306
+#: admin/settings/traits/options/core-settings.php:364
 msgid "Body Text"
 msgstr "본문 텍스트"
 
-#: admin/settings/traits/options/core-settings.php:388
+#: admin/settings/traits/options/core-settings.php:390
 msgid "Use WordPress Default Notification"
 msgstr "WordPress 기본 알림 사용"
 
-#: admin/settings/traits/options/core-settings.php:392
+#: admin/settings/traits/options/core-settings.php:394
 msgid ""
 "If enabled, WordPress default new user notification will be used instead of "
 "custom email template."
 msgstr "사용하도록 설정하면 WordPress 기본 신규 사용자 알림이 사용자 지정 이메일 템플릿 대신 사용됩니다."
 
-#: admin/settings/traits/options/core-settings.php:418
-#: admin/settings/traits/options/core-settings.php:461
-#: admin/settings/traits/options/core-settings.php:504
-#: admin/settings/traits/options/core-settings.php:547
+#: admin/settings/traits/options/core-settings.php:420
+#: admin/settings/traits/options/core-settings.php:463
+#: admin/settings/traits/options/core-settings.php:506
+#: admin/settings/traits/options/core-settings.php:549
 msgid "Body"
 msgstr "본문"
 
-#: admin/settings/traits/options/core-settings.php:431
-#: admin/settings/traits/options/core-settings.php:474
-#: admin/settings/traits/options/core-settings.php:517
-#: admin/settings/traits/options/core-settings.php:560
+#: admin/settings/traits/options/core-settings.php:433
+#: admin/settings/traits/options/core-settings.php:476
+#: admin/settings/traits/options/core-settings.php:519
+#: admin/settings/traits/options/core-settings.php:562
 msgid "Enable/Disable"
 msgstr "사용/사용 안 함"
 
-#: admin/settings/traits/options/core-settings.php:590
+#: admin/settings/traits/options/core-settings.php:592
 msgid "Subscription Canceled"
 msgstr "구독 취소됨"
 
@@ -4775,6 +4892,7 @@ msgid "Connection Status"
 msgstr "연결 상태"
 
 #: admin/settings/traits/options/payment-fields.php:61
+#: admin/settings/traits/options/payment-fields.php:172
 msgid "Checkout experience"
 msgstr "결제 경험"
 
@@ -4828,35 +4946,52 @@ msgid ""
 "PayPal API requests."
 msgstr "PayPal TLS 인증서 및 서버측 PayPal API 요청을 위한 호스트 이름 일치를 확인합니다."
 
-#: admin/settings/traits/options/payment-fields.php:172
+#: admin/settings/traits/options/payment-fields.php:177
+msgid "Redirect to PayPal"
+msgstr "PayPal로 리디렉션"
+
+#: admin/settings/traits/options/payment-fields.php:178
+msgid "On this page (PayPal popup)"
+msgstr "이 페이지에서 (PayPal 팝업)"
+
+#: admin/settings/traits/options/payment-fields.php:180
+msgid ""
+"On-page checkout needs the PayPal Email, Client ID and Secret of the "
+"selected mode. Without the Client ID and Secret the checkout redirects to "
+"PayPal."
+msgstr ""
+"페이지 내 체크아웃에는 선택한 모드의 PayPal 이메일, 클라이언트 ID 및 비밀이 필요합니다. 클라이언트 ID와 비밀이 없으면 "
+"체크아웃이 PayPal로 리디렉션됩니다."
+
+#: admin/settings/traits/options/payment-fields.php:187
 msgid "PayPal Email"
 msgstr "PayPal 이메일"
 
-#: admin/settings/traits/options/payment-fields.php:182
+#: admin/settings/traits/options/payment-fields.php:197
 msgid "Client ID"
 msgstr "클라이언트 ID"
 
-#: admin/settings/traits/options/payment-fields.php:192
+#: admin/settings/traits/options/payment-fields.php:207
 msgid "Secret"
 msgstr "비밀"
 
-#: admin/settings/traits/options/payment-fields.php:202
+#: admin/settings/traits/options/payment-fields.php:217
 msgid "PDT Token"
 msgstr "PDT 토큰"
 
-#: admin/settings/traits/options/payment-fields.php:212
+#: admin/settings/traits/options/payment-fields.php:227
 msgid "Sandbox Email"
 msgstr "샌드박스 이메일"
 
-#: admin/settings/traits/options/payment-fields.php:222
+#: admin/settings/traits/options/payment-fields.php:237
 msgid "Sandbox Client ID"
 msgstr "샌드박스 클라이언트 ID"
 
-#: admin/settings/traits/options/payment-fields.php:232
+#: admin/settings/traits/options/payment-fields.php:247
 msgid "Sandbox Secret"
 msgstr "샌드박스 비밀"
 
-#: admin/settings/traits/options/payment-fields.php:242
+#: admin/settings/traits/options/payment-fields.php:257
 msgid "Sandbox PDT Token"
 msgstr "샌드박스 PDT 토큰"
 
@@ -4931,7 +5066,7 @@ msgid "Stripe checkout is disabled. You can still connect now."
 msgstr "Stripe 체크아웃이 비활성화되었습니다. 지금도 연결할 수 있습니다."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:141
 msgid "2. Install the webhook"
 msgstr "2. 웹후크 설치"
 
@@ -4952,7 +5087,7 @@ msgid "Stripe is ready"
 msgstr "Stripe 준비 완료"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Keys synced"
 msgstr "키가 동기화됨"
 
@@ -4962,23 +5097,36 @@ msgstr "키가 동기화됨"
 msgid "Webhook active with %d events"
 msgstr "웹후크가 %d 이벤트로 활성화됨"
 
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:118
+msgid "Replace the webhook signing secret"
+msgstr "웹후크 서명 비밀 교체"
+
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
+msgid ""
+"Stripe rejects events with \"Invalid Stripe webhook signature\" when this "
+"secret does not match your endpoint. Paste the current signing secret from "
+"the endpoint in your Stripe Dashboard."
+msgstr ""
+"이 비밀이 귀하의 엔드포인트와 일치하지 않으면 Stripe는 \"유효하지 않은 Stripe 웹후크 서명\"으로 이벤트를 거부합니다. "
+"Stripe 대시보드의 엔드포인트에서 현재 서명 비밀을 붙여넣으세요."
+
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "1. Stripe account connected"
 msgstr "1. Stripe 계정 연결됨"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:142
 msgid "Orders will not complete until this is done."
 msgstr "이 작업이 완료될 때까지 주문이 완료되지 않습니다."
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
 msgid "Needs attention"
 msgstr "주의 필요"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
 msgid "Not installed"
 msgstr "설치되지 않음"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:160
 msgid "Fix the events"
 msgstr "이벤트 수정"
 
@@ -5135,64 +5283,60 @@ msgstr "GA4와 함께하는 데이터 레이어"
 msgid "DataLayer with Enhanced Ecommerce (UA)"
 msgstr "향상된 전자상거래(UA)와 함께하는 데이터 레이어"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:75
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:80
 #. translators: %1$s is the plugin name, %2$s is the star rating markup.
 #, php-format
 msgid "If you like %1$s, please leave us a %2$s rating. Thank you!"
 msgstr "%1$s를 좋아하신다면, %2$s 평점을 남겨주세요. 감사합니다!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:89
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:90
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:94
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
 msgid "About PublishPress Cart"
 msgstr "PublishPress Cart에 대하여"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:96
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:100
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
 msgid "PublishPress Cart Documentation"
 msgstr "PublishPress Cart 문서"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:106
 msgid "Contact the PublishPress team"
 msgstr "PublishPress 팀에 연락하기"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:102
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:107
 msgid "Contact PublishPress"
 msgstr "PublishPress에 문의하기"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:151
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:152
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:156
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:157
 #: includes/templates/post-types-create-custom-post-type.php:100
 #: includes/templates/post-types-create-custom-post-type.php:118
 msgid "Categories"
 msgstr "카테고리"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:159
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:160
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:164
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:165
 #: includes/templates/post-types-create-custom-post-type.php:106
 #: includes/templates/post-types-create-custom-post-type.php:119
 msgid "Tags"
 msgstr "태그"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:216
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:271
 #. translators: %s: plugin title.
 #, php-format
 msgid "Welcome to %s"
 msgstr "%s에 오신 것을 환영합니다"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:217
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:272
 msgid ""
 "To get started, head over to the settings page to connect your Stripe "
 "account and select your currency. Once that's done, you'll be ready to "
 "create your first product!"
 msgstr "시작하려면, 설정 페이지로 이동하여 Stripe 계정을 연결하고 통화를 선택하세요. 완료되면 첫 제품을 만들 준비가 됩니다!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:221
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:276
 msgid "Get Started!"
 msgstr "시작하기!"
-
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:253
-msgid "Sorry, you are not allowed to access this page."
-msgstr "죄송합니다. 이 페이지에 접근할 수 없습니다."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
@@ -5319,40 +5463,44 @@ msgid "Copy failed"
 msgstr "복사 실패"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
+msgid "Copy plan ID"
+msgstr "계획 ID 복사"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
 msgid "Required fields missing:"
 msgstr "필수 필드가 누락되었습니다:"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
 msgid "Configuration error: Missing AJAX settings. Please refresh the page."
 msgstr "구성 오류: AJAX 설정이 누락되었습니다. 페이지를 새로 고쳐 주십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
 msgid "Subscription ID is missing."
 msgstr "구독 ID가 없습니다."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Sync subscription with Stripe?"
 msgstr "Stripe와 구독 동기화?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid "Wait..."
 msgstr "기다려주세요..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 msgid "Error: Please try again."
 msgstr "오류: 다시 시도해 주십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Migration required"
 msgstr "마이그레이션 필요"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
 msgstr "평문으로 저장된 자격 증명이 1개 있습니다. 암호화를 활성화한 후 설정 → 유지 관리에서 마이그레이션을 실행하여 암호화하십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:67
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #. translators: %d: number of stored credentials.
 #, php-format
 msgid ""
@@ -5360,67 +5508,85 @@ msgid ""
 "migration from Settings → Maintenance to encrypt them."
 msgstr "평문으로 저장된 자격 증명이 %d개 있습니다. 암호화를 활성화한 후 설정 → 유지 관리에서 마이그레이션을 실행하여 암호화하십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 msgid "Encryption updated"
 msgstr "암호화 업데이트됨"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
 msgstr "계속"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
 #: admin/traits/trait-ppcart-admin-integrations.php:149
 msgid "OK"
 msgstr "확인"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:73
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
 msgstr "보안 암호화 설정을 업데이트할 수 없습니다."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:98
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
 msgid "No matching customers"
 msgstr "일치하는 고객 없음"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
 msgid "No matching products"
 msgstr "일치하는 제품 없음"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:102
 msgid "Searching…"
 msgstr "검색 중…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:117
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:103
+msgid "1 result available."
+msgstr "1개의 결과가 있습니다."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:105
+#. translators: %d: number of search results.
+#, php-format
+msgid "%d results available."
+msgstr "%d개의 결과가 있습니다."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:106
+msgid "Use the up and down arrow keys to choose one."
+msgstr "위쪽 및 아래쪽 화살표 키를 사용하여 하나를 선택하세요."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
 msgid "No matching settings"
 msgstr "일치하는 설정이 없습니다."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:118
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
 msgid "Try a different keyword or clear the search to see all settings."
 msgstr "다른 키워드를 시도하거나 검색을 지우면 모든 설정을 볼 수 있습니다."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:119
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
 msgid "Discard your unsaved changes?"
 msgstr "저장되지 않은 변경 사항을 취소하시겠습니까?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:120
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
+msgid "Saving changes…"
+msgstr "변경 사항 저장 중…"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 msgid "Reset this email template to the built-in default?"
 msgstr "이 이메일 템플릿을 기본값으로 재설정하시겠습니까?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:129
 msgid "Generating preview..."
 msgstr "미리보기 생성 중..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:166
 msgid "Email preview could not be generated. Please refresh the page and try again."
 msgstr "이메일 미리보기를 생성할 수 없습니다. 페이지를 새로 고치고 다시 시도하십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:132
 msgid "Close Preview"
 msgstr "미리보기 닫기"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:131
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
@@ -5428,7 +5594,7 @@ msgstr "미리보기 닫기"
 msgid "Encrypt stored credentials"
 msgstr "저장된 자격 증명 암호화"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:137
 #. translators: %d: number of plaintext credentials.
 #, php-format
 msgid ""
@@ -5436,37 +5602,55 @@ msgid ""
 "run this during a maintenance window."
 msgstr "데이터베이스에서 %d개의 평문 자격 증명을 암호화하시겠습니까? 먼저 백업을 하고 유지 관리 기간 동안 실행하십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:138
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
 msgstr "저장된 자격 증명을 스캔하고 평문 값을 암호화하시겠습니까? 먼저 백업을 하고 유지 관리 기간 동안 실행하십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:142
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
 msgid "Uploading file…"
 msgstr "파일 업로드 중…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:143
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
 msgid "File uploaded successfully."
 msgstr "파일이 성공적으로 업로드되었습니다."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:144
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
 msgid "Upload failed. Please try again."
 msgstr "업로드 실패. 다시 시도하세요."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:157
+#. translators: 1: item title, 2: new position, 3: number of items.
+#, php-format
+msgid "%1$s moved to position %2$d of %3$d."
+msgstr "%1$s가 %2$d의 %3$d 위치로 이동했습니다."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:158
+msgid "This item is already first."
+msgstr "이 항목은 이미 첫 번째입니다."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:159
+msgid "This item is already last."
+msgstr "이 항목은 이미 마지막입니다."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:160
+msgid "Item removed."
+msgstr "항목이 제거되었습니다."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:165
 msgid "Generating preview…"
 msgstr "미리보기 생성 중…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:152
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:167
 msgid "Sending test email…"
 msgstr "테스트 이메일 전송 중…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:154
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:169
 msgid "Test email failed to send. Please refresh the page and try again."
 msgstr "테스트 이메일을 전송하지 못했습니다. 페이지를 새로 고치고 다시 시도하십시오."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:155
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:170
 msgid "Enter an email address to send the test to."
 msgstr "테스트를 보낼 이메일 주소를 입력하십시오."
 
@@ -5491,6 +5675,7 @@ msgid "First page"
 msgstr "첫 페이지"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:153
+#: public/templates/archive/navigation.php:23
 msgid "Previous page"
 msgstr "이전 페이지"
 
@@ -5499,6 +5684,7 @@ msgid "Current page"
 msgstr "현재 페이지"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:170
+#: public/templates/archive/navigation.php:24
 msgid "Next page"
 msgstr "다음 페이지"
 
@@ -5864,81 +6050,87 @@ msgid "Product duplicated. New product ID: %d."
 msgstr "제품이 중복되었습니다. 새 제품 ID: %d."
 
 #: admin/traits/trait-ppcart-admin-profile.php:23
-#: public/templates/functions/payment-address.php:317
+#: public/templates/functions/payment-address.php:321
 msgid "Address Line 2"
 msgstr "주소 줄 2"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:25
+#. translators: %s: plugin title.
+#, php-format
+msgid "Your %s Summary Report"
+msgstr "당신의 %s 요약 보고서"
+
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "Ending Trials"
 msgstr "종료하는 시험"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "End date"
 msgstr "종료 날짜"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "Recurring amount"
 msgstr "정기 금액"
 
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
 msgid "Subscription Renewals"
 msgstr "구독 갱신"
 
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
 msgid "Next bill date"
 msgstr "다음 청구 날짜"
 
-#: includes/scheduled-reports/report-email-template.php:94
+#: includes/scheduled-reports/report-email-template.php:96
 msgid "Here is your summary for"
 msgstr "다음은 당신의 요약입니다"
 
-#: includes/scheduled-reports/report-email-template.php:96
+#: includes/scheduled-reports/report-email-template.php:98
 msgid "for the week of"
 msgstr "주차"
 
-#: includes/scheduled-reports/report-email-template.php:98
 #: includes/scheduled-reports/report-email-template.php:100
+#: includes/scheduled-reports/report-email-template.php:102
 msgid "for"
 msgstr "에 대한"
 
-#: includes/scheduled-reports/report-email-template.php:110
+#: includes/scheduled-reports/report-email-template.php:112
 msgid "Gross revenue"
 msgstr "총 수익"
 
-#: includes/scheduled-reports/report-email-template.php:112
+#: includes/scheduled-reports/report-email-template.php:114
 msgid "Net revenue"
 msgstr "순 수익"
 
-#: includes/scheduled-reports/report-email-template.php:113
+#: includes/scheduled-reports/report-email-template.php:115
 msgid "Completed Orders"
 msgstr "완료된 주문"
 
-#: includes/scheduled-reports/report-email-template.php:115
+#: includes/scheduled-reports/report-email-template.php:117
 msgid "Failed Orders"
 msgstr "실패한 주문"
 
-#: includes/scheduled-reports/report-email-template.php:117
+#: includes/scheduled-reports/report-email-template.php:119
 msgid "Subscriptions Started"
 msgstr "시작된 구독"
 
-#: includes/scheduled-reports/report-email-template.php:118
+#: includes/scheduled-reports/report-email-template.php:120
 msgid "Trials Started"
 msgstr "시작된 시험"
 
-#: includes/scheduled-reports/report-email-template.php:119
+#: includes/scheduled-reports/report-email-template.php:121
 msgid "Subscriptions Canceled"
 msgstr "취소된 구독"
 
-#: includes/scheduled-reports/report-email-template.php:129
+#: includes/scheduled-reports/report-email-template.php:131
 msgid "Coming up for the week of"
 msgstr "다음 주에 대한"
 
-#: includes/scheduled-reports/report-email-template.php:131
 #: includes/scheduled-reports/report-email-template.php:133
+#: includes/scheduled-reports/report-email-template.php:135
 msgid "Coming up for"
 msgstr "에 대한"
 
-#: includes/scheduled-reports/report-email-template.php:163
+#: includes/scheduled-reports/report-email-template.php:165
 msgid "Nothing found for this time period"
 msgstr "이 기간 동안 찾을 수 없습니다"
 
@@ -6060,7 +6252,9 @@ msgid_plural ""
 msgstr[0] ""
 "%d credentials remain encrypted in the database until you re-save them or "
 "enable encryption again."
-msgstr[0] "%d 자격 증명이 다시 저장되거나 암호화가 다시 활성화될 때까지 데이터베이스에서 암호화되어 있습니다."
+msgstr[0] ""
+"%d credentials remain encrypted in the database until you re-save them or "
+"enable encryption again."
 
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:112
 msgid ""
@@ -6160,7 +6354,9 @@ msgid_plural ""
 msgstr[0] ""
 "Encryption is enabled but %d stored credentials are still in plaintext. Use "
 "Encrypt stored credentials to retry."
-msgstr[0] "암호화가 활성화되었지만 %d 저장된 자격 증명이 여전히 평문입니다. 재시도를 위해 저장된 자격 증명 암호화 사용하십시오."
+msgstr[0] ""
+"Encryption is enabled but %d stored credentials are still in plaintext. Use "
+"Encrypt stored credentials to retry."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:94
 #. translators: %d: number of plaintext credentials.
@@ -6172,7 +6368,9 @@ msgid_plural ""
 msgstr[0] ""
 "You have %d stored credentials in plaintext. Enabling encryption will "
 "encrypt them automatically."
-msgstr[0] "당신은 %d개의 평문 자격 증명이 저장되어 있습니다. 암호화를 활성화하면 자동으로 암호화됩니다."
+msgstr[0] ""
+"You have %d stored credentials in plaintext. Enabling encryption will "
+"encrypt them automatically."
 
 #: includes/secrets/traits/trait-ppcart-secrets-migration.php:115
 msgid ""
@@ -6195,6 +6393,10 @@ msgstr "유효하지 않은 구독입니다."
 #: includes/stripe-sync/traits/templates/stripe-sync-subscriptions-sync-subscription-by-local.php:21
 msgid "Stripe subscription is not linked to a PublishPress Cart subscription."
 msgstr "Stripe 구독은 PublishPress Cart 구독과 연결되어 있지 않습니다."
+
+#: includes/stripe-sync/traits/trait-ppcart-stripe-sync-reconciliation.php:183
+msgid "Missing renewal orders imported from Stripe by the background sync"
+msgstr "백그라운드 동기화로 Stripe에서 가져온 갱신 주문이 없습니다"
 
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
@@ -6416,7 +6618,7 @@ msgstr "비밀번호를 잊으셨나요?"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:31
 #: public/templates/functions/checkout-core.php:186
 #: public/templates/functions/checkout-core.php:193
-#: public/templates/functions/payment-address.php:199
+#: public/templates/functions/payment-address.php:200
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Due"
 msgstr "청구 금액"
@@ -6424,7 +6626,7 @@ msgstr "청구 금액"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:36
 #: public/templates/functions/checkout-core.php:183
 #: public/templates/functions/checkout-core.php:190
-#: public/templates/functions/payment-address.php:200
+#: public/templates/functions/payment-address.php:201
 msgid "Due Today"
 msgstr "오늘 만기"
 
@@ -6552,43 +6754,43 @@ msgid "My Account"
 msgstr "내 계정"
 
 #: public/partials/csv-export.php:20
-#: public/partials/csv-export.php:137
-#: public/templates/functions/plan-coupon-fields.php:534
+#: public/partials/csv-export.php:139
+#: public/templates/functions/plan-coupon-fields.php:565
 #: public/templates/my-account/tabs/user-profile.php:17
 msgid "First Name"
 msgstr "이름"
 
-#: public/partials/csv-export.php:135
+#: public/partials/csv-export.php:137
 msgid "ID"
 msgstr "아이디"
 
-#: public/partials/csv-export.php:141
+#: public/partials/csv-export.php:143
 msgid "Address 1"
 msgstr "주소 1"
 
-#: public/partials/csv-export.php:147
+#: public/partials/csv-export.php:149
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Paid"
 msgstr "지불 금액"
 
-#: public/partials/csv-export.php:148
-#: public/partials/csv-export.php:230
+#: public/partials/csv-export.php:150
+#: public/partials/csv-export.php:232
 msgid "Product Name"
 msgstr "제품 이름"
 
-#: public/partials/csv-export.php:150
+#: public/partials/csv-export.php:152
 msgid "Offers during checkout"
 msgstr "체크아웃 중 제공되는 혜택"
 
-#: public/partials/csv-export.php:152
+#: public/partials/csv-export.php:154
 msgid "Coupon"
 msgstr "쿠폰"
 
-#: public/partials/csv-export.php:153
+#: public/partials/csv-export.php:155
 msgid "Purchase URL"
 msgstr "구매 URL"
 
-#: public/partials/csv-export.php:154
+#: public/partials/csv-export.php:156
 msgid "IP Address"
 msgstr "IP 주소"
 
@@ -6600,41 +6802,61 @@ msgstr "영수증"
 msgid "invoice"
 msgstr "청구서"
 
-#: public/partials/invoice-pdf.php:80
+#: public/partials/invoice-pdf.php:38
+#. translators: 1: document type (Invoice or Receipt), 2: invoice or receipt number.
+#, fuzzy, php-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: public/partials/invoice-pdf.php:95
 msgid "Unauthorized"
 msgstr "권한 없음"
 
-#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:16
+#: public/paypal/class-ppcart-paypal-onpage.php:182
+msgid ""
+"Your PayPal payment is being processed. You will receive a confirmation "
+"email when it completes."
+msgstr "당신의 PayPal 결제가 처리되고 있습니다. 완료되면 확인 이메일을 받게 됩니다."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:183
+msgid "We could not complete your PayPal payment. Please try again."
+msgstr "PayPal 결제를 완료할 수 없습니다. 다시 시도해 주세요."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:184
+msgid "PayPal checkout was cancelled."
+msgstr "PayPal 체크아웃이 취소되었습니다."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:185
+msgid "PayPal could not open on this page. Please click the button again."
+msgstr "이 페이지에서 PayPal을 열 수 없습니다. 버튼을 다시 클릭해 주세요."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:199
+#: public/paypal/class-ppcart-paypal-onpage.php:272
+#: public/paypal/class-ppcart-paypal-onpage.php:280
+#: public/paypal/class-ppcart-paypal-onpage.php:296
+#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:14
 msgid "An error occurred, please refresh the page and try again."
 msgstr "오류가 발생했습니다. 페이지를 새로 고치고 다시 시도하십시오."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:246
+msgid "PayPal could not start this subscription. Please try again."
+msgstr "PayPal이 이 구독을 시작할 수 없습니다. 다시 시도해 주세요."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:256
+msgid "PayPal could not start this payment. Please try again."
+msgstr "PayPal이 이 결제를 시작할 수 없습니다. 다시 시도해 주세요."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:304
+msgid "PayPal did not complete this payment. Please try again."
+msgstr "PayPal이 이 결제를 완료하지 못했습니다. 다시 시도해 주세요."
 
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:49
 msgid "Pay with PayPal"
 msgstr "PayPal로 결제"
 
-#: public/templates/archive/navigation.php:22
-msgid ""
-"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
-"7-7\"></path></svg>"
-msgstr ""
-"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
-"7-7\"></path></svg>"
-
-#: public/templates/archive/navigation.php:23
-msgid ""
-"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
-"7\"></path></svg>"
-msgstr ""
-"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
-"7\"></path></svg>"
+#: public/paypal/traits/trait-ppcart-paypal-subscriptions.php:93
+msgid "PayPal did not complete the refund."
+msgstr "PayPal이 환불을 완료하지 못했습니다."
 
 #: public/templates/checkout1.php:218
 #: public/templates/checkout1.php:260
@@ -6682,47 +6904,57 @@ msgstr ""
 msgid "Credit Card"
 msgstr "신용 카드"
 
-#: public/templates/functions/payment-address.php:85
+#: public/templates/functions/payment-address.php:86
 msgid "Payment Info"
 msgstr "결제 정보"
 
-#: public/templates/functions/payment-address.php:105
+#: public/templates/functions/payment-address.php:106
 msgid ""
 "Sorry, it seems that there are no payment methods available. Please contact "
 "us for assistance."
 msgstr "죄송합니다, 사용 가능한 결제 방법이 없는 것 같습니다. 도움을 받으시려면 저희에게 연락해 주세요."
 
-#: public/templates/functions/payment-address.php:147
+#: public/templates/functions/payment-address.php:148
 msgid "Enter VAT number"
 msgstr "VAT 번호를 입력하세요"
 
-#: public/templates/functions/payment-address.php:234
-#: public/templates/functions/payment-address.php:238
+#: public/templates/functions/payment-address.php:235
+#: public/templates/functions/payment-address.php:239
 msgid "Credit or debit card"
 msgstr "신용 카드 또는 직불 카드"
 
-#: public/templates/functions/payment-address.php:279
-#: public/templates/functions/payment-address.php:334
+#: public/templates/functions/payment-address.php:280
+#: public/templates/functions/payment-address.php:340
 msgid "State / County"
 msgstr "주 / 카운티"
 
-#: public/templates/functions/payment-address.php:325
+#: public/templates/functions/payment-address.php:330
 msgid "Town / City"
 msgstr "도시 / 시"
 
-#: public/templates/functions/payment-address.php:343
+#: public/templates/functions/payment-address.php:350
 msgid "Postcode / Zip"
 msgstr "우편번호 / ZIP"
 
-#: public/templates/functions/plan-coupon-fields.php:509
+#: public/templates/functions/plan-coupon-fields.php:308
+#. translators: %s: payment plan name.
+#, php-format
+msgid "Your price for %s"
+msgstr "당신의 %s 가격"
+
+#: public/templates/functions/plan-coupon-fields.php:534
+msgid "Use at least 8 characters, 1 lowercase letter, and 1 number"
+msgstr "최소 8자, 1개의 소문자 및 1개의 숫자를 사용하세요"
+
+#: public/templates/functions/plan-coupon-fields.php:540
 msgid "Show password"
 msgstr "비밀번호 표시"
 
-#: public/templates/functions/plan-coupon-fields.php:526
+#: public/templates/functions/plan-coupon-fields.php:557
 msgid "Contact Info"
 msgstr "연락처 정보"
 
-#: public/templates/functions/plan-coupon-fields.php:540
+#: public/templates/functions/plan-coupon-fields.php:571
 msgid "Phone Number"
 msgstr "전화번호"
 
@@ -6992,7 +7224,7 @@ msgstr "%s에 환불됨"
 msgid "Notes / Terms"
 msgstr "메모 / 약관"
 
-#: admin/reports/templates/customer-reports-page.php:46
+#: admin/reports/templates/customer-reports-page.php:48
 #. translators: 1: start date, 2: end date.
 #, fuzzy, php-format
 msgctxt "date range"

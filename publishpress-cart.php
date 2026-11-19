@@ -16,7 +16,8 @@
  * Plugin Name:       PublishPress Cart - eCommerce for Digital Products
  * Plugin URI:        https://publishpress.com/cart/
  * Description:       Create order pages and simplified sales flow creation that helps you sell digital products, programs, and services.
- * Version:           1.2.0
+ * Version:           1.3.0
+ * Requires PHP:      8.2
  * Author:            PublishPress
  * Author URI:        https://publishpress.com/
  * License:           GPL-2.0-or-later
@@ -53,7 +54,7 @@ if (is_admin()) {
     });
 }
 
-const PPCART_MINIMUM_PHP_VERSION = '7.4';
+const PPCART_MINIMUM_PHP_VERSION = '8.2';
 const PPCART_MINIMUM_WP_VERSION = '6.7';
 
 global $wp_version;
@@ -132,7 +133,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/helpers/ppcart-meta.php';
 ppcart_maybe_register_studiocart_constants($ppcart_loaded_companion_packages);
 
 if (! defined('PPCART_VERSION')) {
-    define('PPCART_VERSION', '1.2.0');
+    define('PPCART_VERSION', '1.3.0');
 }
 if (! defined('PPCART_BASE_DIR')) {
     define('PPCART_BASE_DIR', plugin_dir_path(__FILE__));
@@ -214,8 +215,8 @@ if (! function_exists('ppcart_upgrade')) {
 
 if (is_admin()) {
     require_once __DIR__ . '/admin/class-ppcart-welcome.php';
-    add_action('admin_init', [PPCart_Welcome::class, 'maybe_redirect']);
-    add_action('admin_menu', [PPCart_Welcome::class, 'register_page'], 20);
+    add_action('admin_init', ['PPCart_Welcome', 'maybe_redirect']);
+    add_action('admin_menu', ['PPCart_Welcome', 'register_page'], 20);
 }
 
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');

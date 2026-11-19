@@ -55,4 +55,4 @@ if ($invoice_id && 'invoice.payment_failed' !== $event_type) {
     }
 }
 
-return self::sync_invoice_resource($invoice, null, $event_type, $event, 'USD', $payment_intent_status);
+return self::sync_invoice_resource($invoice, null, $event_type, $event, 'USD', $payment_intent_status, $stripe);

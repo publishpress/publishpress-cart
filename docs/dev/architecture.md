@@ -53,8 +53,8 @@ There is **no** first-party `api/` REST directory.
 | `includes/integrations/gutenberg/` | Checkout and account blocks |
 | `public/class-ppcart-public.php` | Storefront coordinator (hooks, order-status integrations) |
 | `public/controllers/` | Checkout, account, assets, payment, orders, hosted checkout |
-| `public/class-ppcart-paypal.php` + `public/paypal/` | PayPal checkout (direct cURL) |
-| `public/webhooks/` | `stripe.php`, `paypal.php` — keep thin |
+| `public/class-ppcart-paypal.php` + `public/paypal/` | PayPal checkout. Redirect flow (Payments Standard, IPN, PDT) in the traits. On-page flow (JavaScript SDK popup + REST) in `class-ppcart-paypal-onpage.php`, `class-ppcart-paypal-sync.php`, `class-ppcart-paypal-refund-sync.php`, `class-ppcart-paypal-rest-client.php`, `class-ppcart-paypal-billing-shape.php`, `class-ppcart-paypal-plans.php`, `class-ppcart-paypal-record-lock.php`, `class-ppcart-paypal-webhook.php` |
+| `public/webhooks/` | `stripe.php`, `paypal.php` (IPN), `paypal-rest.php` (REST webhook) — keep thin |
 | `public/templates/` | Storefront PHP templates |
 | `admin/` | Settings, product/order metaboxes, reports, contacts |
 | `admin/dashboard/` | WP dashboard monthly overview widget |
@@ -93,7 +93,9 @@ during merchant CPT slug migration.
 | `PPCart_Public_Page_Controller` | Product templates, redirects, hosted-checkout return |
 | `PPCart_Public_Hosted_Checkout_Controller` | Stripe hosted checkout |
 | `PPCart_Public_Subscription_Checkout_Controller` | Subscription checkout helpers |
-| `PPCart_Paypal` | PayPal checkout |
+| `PPCart_Paypal` | PayPal checkout (redirect flow); `paypal_build_checkout_order()` and `paypal_store_checkout_order()` are shared with the on-page flow |
+| `PPCart_Paypal_Onpage` | On-page PayPal checkout: the `_ppcart_paypal_checkout_experience` switch, the SDK script, the create and approve AJAX handlers, the hourly reconcile job |
+| `PPCart_Paypal_Sync` / `PPCart_Paypal_Refund_Sync` | The only writers of on-page PayPal records. Read the resource from PayPal under a per-record lock (`PPCart_Paypal_Record_Lock`), then make local state match |
 
 ---
 
@@ -123,11 +125,15 @@ New checkout code must not add `global $`. Prefer passing `$ppcart_public` or op
 Entry scripts stay in `public/webhooks/`:
 
 ```
-HTTP request → public/webhooks/stripe.php | paypal.php
+HTTP request → public/webhooks/stripe.php | paypal.php | paypal-rest.php
             → includes/stripe-sync/ / public/paypal / order models
 ```
 
-Business logic must not grow in `stripe.php` / `paypal.php`.
+Business logic must not grow in `stripe.php` / `paypal.php` / `paypal-rest.php`.
+
+`paypal.php` is the IPN handler of the redirect flow. It ignores on-page records (a `custom` value that starts with `ppcart:`); those have one writer, `PPCart_Paypal_Sync`.
+
+`paypal-rest.php` receives PayPal REST webhooks at `/ppcart-webhook/paypal-rest` and hands the decoded event to `PPCart_Paypal_Webhook::handle()`. The event body only names a resource. The handler checks that the id belongs to a local on-page record, throttles one id to one run per 30 seconds, and calls the sync, which reads the resource from PayPal with the merchant's credentials. An on-page order completes checkout only when `ppcart_paypal_onpage_order_is_settled()` reads the state the sync stored. `PPCart_Admin_Paypal_Webhook` registers the webhook URL in the merchant's PayPal app when the PayPal settings are saved; the hourly `ppcart_paypal_onpage_reconcile` job covers sites PayPal cannot reach.
 
 ---
 

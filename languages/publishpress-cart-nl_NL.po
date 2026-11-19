@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-14T16:18:02+00:00\n"
-"PO-Revision-Date: 2026-11-10 10:17+0000\n"
+"POT-Creation-Date: 2026-11-10T10:08:07+00:00\n"
+"PO-Revision-Date: 2026-11-19 14:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-cart\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -35,15 +35,15 @@ msgstr ""
 "Maak bestelpagina's en vereenvoudigde verkoopflow-creatie die je helpt "
 "digitale producten, programma's en diensten te verkopen."
 
-#: publishpress-cart.php:20
-#: admin/class-ppcart-welcome.php:82
+#: publishpress-cart.php:21
+#: admin/class-ppcart-welcome.php:81
 #: admin/partials/settings-page/tabs/topbar.php:9
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:110
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:115
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-cart.php:21
+#: publishpress-cart.php:22
 #. Author URI of the plugin
 #, fuzzy
 msgid "https://publishpress.com/"
@@ -51,8 +51,8 @@ msgstr "https://publishpress.com/publishpress-cart/"
 
 #: admin/class-ppcart-admin-reports.php:89
 #: admin/class-ppcart-admin-reports.php:90
-#: admin/partials/ppcart-admin-page-settings.php:145
-#: admin/reports/templates/admin-reports-page.php:45
+#: admin/partials/ppcart-admin-page-settings.php:155
+#: admin/reports/templates/admin-reports-page.php:43
 msgid "Reports"
 msgstr "Rapporten"
 
@@ -80,7 +80,8 @@ msgstr "Bekijk de kennisbank"
 #: admin/class-ppcart-contacts-page.php:81
 #: admin/class-ppcart-contacts-page.php:162
 #: admin/class-ppcart-contacts-page.php:171
-#: admin/reports/templates/admin-reports-page.php:535
+#: admin/reports/templates/admin-reports-page.php:100
+#: admin/reports/templates/admin-reports-page.php:539
 msgid "Customers"
 msgstr "Klanten"
 
@@ -106,37 +107,37 @@ msgid "Lifetime value"
 msgstr "Levenslange waarde"
 
 #: admin/class-ppcart-contacts-page.php:188
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:172
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
 #: admin/controllers/order/templates/product-form.php:320
 #: admin/controllers/order/templates/product-form.php:337
 #: admin/controllers/order/templates/product-form.php:453
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:201
 #: admin/reports/templates/customer-report/page.php:189
-#: public/partials/csv-export.php:136
-#: public/partials/csv-export.php:229
+#: public/partials/csv-export.php:138
+#: public/partials/csv-export.php:231
 #: public/templates/my-account/tabs/order-history.php:13
 msgid "Date"
 msgstr "Datum"
 
 #: admin/class-ppcart-contacts-page.php:189
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:180
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:203
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:48
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:216
-#: admin/partials/ppcart-admin-page-settings.php:143
+#: admin/partials/ppcart-admin-page-settings.php:153
 #: admin/partials/settings-page/sections/email-notifications.php:10
 #: public/partials/csv-export.php:22
-#: public/partials/csv-export.php:139
-#: public/templates/functions/plan-coupon-fields.php:539
-#: public/templates/functions/plan-coupon-fields.php:542
+#: public/partials/csv-export.php:141
+#: public/templates/functions/plan-coupon-fields.php:570
+#: public/templates/functions/plan-coupon-fields.php:573
 #: public/templates/my-account/tabs/user-profile.php:27
 msgid "Email"
 msgstr "E-mail"
 
 #: admin/class-ppcart-contacts-page.php:190
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:202
 msgid "Name"
 msgstr "Naam"
 
@@ -278,8 +279,8 @@ msgid "Add new"
 msgstr "Voeg nieuw toe"
 
 #: admin/class-ppcart-pro-menu-previews.php:65
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:194
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:177
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
 #: admin/controllers/order/templates/product-form.php:322
 #: admin/controllers/order/templates/product-form.php:339
 #: admin/controllers/order/templates/product-form.php:454
@@ -287,8 +288,8 @@ msgstr "Voeg nieuw toe"
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:238
 #: admin/reports/templates/customer-report/page.php:193
 #: admin/settings/traits/trait-ppcart-admin-settings-integration-options.php:135
-#: public/partials/csv-export.php:151
-#: public/partials/csv-export.php:233
+#: public/partials/csv-export.php:153
+#: public/partials/csv-export.php:235
 #: public/templates/my-account/tabs/order-history.php:14
 #: public/templates/my-account/tabs/plans.php:38
 #: public/templates/my-account/tabs/subscriptions.php:43, fuzzy
@@ -298,68 +299,65 @@ msgstr "Status"
 #: admin/class-ppcart-pro-menu-previews.php:68
 #: admin/controllers/templates/order-list-custom-status.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:25
-#: admin/reports/templates/admin-reports-page.php:454
+#: admin/reports/templates/admin-reports-page.php:458
 msgid "Active"
 msgstr "Actief"
 
 #: admin/class-ppcart-welcome.php:45
-#: admin/class-ppcart-welcome.php:92
+#: admin/class-ppcart-welcome.php:91
 msgid "Welcome to Cart"
 msgstr "Welkom bij de Winkelwagentje"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:72
+#: admin/reports/templates/admin-reports-page.php:121
 #: includes/templates/post-types-create-custom-post-type.php:12
 msgid "Products"
 msgstr "Producten"
 
-#: admin/class-ppcart-welcome.php:73
+#: admin/class-ppcart-welcome.php:72
 msgid "Add a digital product and set its price."
 msgstr "Voeg een digitaal product toe en stel de prijs in."
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:73
 msgid "Payments"
 msgstr "Betalingen"
 
-#: admin/class-ppcart-welcome.php:74
+#: admin/class-ppcart-welcome.php:73
 msgid "Choose how customers pay at checkout."
 msgstr "Kies hoe klanten betalen bij de kassa."
 
-#: admin/class-ppcart-welcome.php:75
+#: admin/class-ppcart-welcome.php:74
 msgid "Getting started guide"
 msgstr "Handleiding voor beginners"
 
-#: admin/class-ppcart-welcome.php:75
+#: admin/class-ppcart-welcome.php:74
 msgid "Learn how to publish and share a checkout page."
 msgstr "Leer hoe je een kassapagina publiceert en deelt."
 
-#: admin/class-ppcart-welcome.php:84
+#: admin/class-ppcart-welcome.php:83
 #: admin/partials/ppcart-admin-page-settings.php:26
 msgid "Cart"
 msgstr "Winkelwagentje"
 
-#: admin/class-ppcart-welcome.php:87
+#: admin/class-ppcart-welcome.php:86
 msgid "Get support"
 msgstr "Krijg ondersteuning"
 
-#: admin/class-ppcart-welcome.php:93
+#: admin/class-ppcart-welcome.php:92
 msgid "Start selling from your WordPress site"
 msgstr "Begin met verkopen vanuit je WordPress-site"
 
-#: admin/class-ppcart-welcome.php:94
+#: admin/class-ppcart-welcome.php:93
 msgid ""
 "Create a product, set its price, and share its checkout page with your "
 "customers."
 msgstr "Maak een product, stel de prijs in en deel de kassapagina met je klanten."
 
-#: admin/class-ppcart-welcome.php:96
+#: admin/class-ppcart-welcome.php:95
 msgid "Create your first product"
 msgstr "Maak je eerste product"
 
-#: admin/class-ppcart-welcome.php:97
-msgid "Go to dashboard"
-msgstr "Ga naar dashboard"
-
-#: admin/class-ppcart-welcome.php:112
+#: admin/class-ppcart-welcome.php:110
 msgid "Set up your store"
 msgstr "Stel je winkel in"
 
@@ -411,52 +409,59 @@ msgstr "Betalingswijze"
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:99
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:101
+#. translators: %s: product shortcode, for example [ppcart_form id="12"].
+#, php-format
+msgid "Copy shortcode %s"
+msgstr "Kopieer shortcode %s"
+
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:102
 msgid "Copy shortcode"
 msgstr "Kopieer shortcode"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:138
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
 msgid "One-time Payment"
 msgstr "Eenmalige betaling"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:139
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:142
 msgid "Recurring Payments (Subscriptions)"
 msgstr "Terugkerende betalingen (abonnementen)"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:140
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:143
 msgid "Pay What You Want"
 msgstr "Betaal wat je wilt"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:141
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:144
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:57
-#: admin/reports/templates/admin-reports-page.php:352
-#: public/templates/functions/plan-coupon-fields.php:288
+#: admin/reports/templates/admin-reports-page.php:356
+#: public/templates/functions/plan-coupon-fields.php:291
 msgid "Free"
 msgstr "Gratis"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:149
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:152
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:171
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:174
 msgid "Order #"
 msgstr "Bestelling #"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:173
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:195
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:176
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
 #: admin/controllers/order/templates/product-form.php:321
 #: admin/controllers/order/templates/product-form.php:338
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
+#: public/templates/functions/plan-coupon-fields.php:311
 #: public/templates/pdf-invoice/invoice.php:148
 msgid "Amount"
 msgstr "Bedrag"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:175
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:198
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:178
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:201
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:52
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:173
 #: admin/reports/templates/customer-report/page.php:190
-#: includes/scheduled-reports/report-email-template.php:147
+#: includes/scheduled-reports/report-email-template.php:149
 #: includes/templates/post-types-create-custom-post-type.php:12
 #: public/templates/my-account/tabs/order-history.php:12
 #: public/templates/my-account/tabs/plans.php:37
@@ -465,21 +470,21 @@ msgstr "Bedrag"
 msgid "Product"
 msgstr "Product"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:179
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:182
 #: public/templates/pdf-invoice/invoice.php:84
 msgid "Invoice Number"
 msgstr "Factuurnummer"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:193, fuzzy
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:196, fuzzy
 msgid "Sub ID"
 msgstr "Sub ID"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:196
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:199
 #: public/templates/my-account/subscription-detail.php:84
 msgid "Start Date"
 msgstr "Startdatum"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:197
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:200
 #: admin/reports/templates/customer-report/page.php:283
 #: public/templates/my-account/subscription-detail.php:95
 #: public/templates/my-account/tabs/plans.php:39
@@ -487,37 +492,37 @@ msgstr "Startdatum"
 msgid "Next Payment"
 msgstr "Volgende betaling"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:242
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
 msgid "Update status to paid"
 msgstr "Status bijwerken naar betaald"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:243
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:246
 msgid "Update status to failed"
 msgstr "Status bijwerken naar mislukt"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:244
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:247
 msgid "Update status to pending"
 msgstr "Status bijwerken naar in behandeling"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:245
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:253
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:248
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:256
 msgid "Update status to completed"
 msgstr "Status bijwerken naar voltooid"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:251
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
 msgid "Resume in Stripe / update active"
 msgstr "Hervatten in Stripe / actieve bijwerken"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:252
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:255
 msgid "Update status to canceled"
 msgstr "Status bijwerken naar geannuleerd"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:254
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:257
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:128
 msgid "Sync with Stripe"
 msgstr "Synchroniseer met Stripe"
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:285
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:288
 #. translators: %s: number of subscriptions synced.
 #, php-format
 msgid "%s subscription synced from Stripe."
@@ -525,7 +530,7 @@ msgid_plural "%s subscriptions synced from Stripe."
 msgstr[0] "%s abonnement gesynchroniseerd van Stripe."
 msgstr[1] "%s abonnementen gesynchroniseerd van Stripe."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:297
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:300
 #. translators: %s: number of subscriptions that failed to sync.
 #, php-format
 msgid "%s failed; see its subscription log for the reason."
@@ -533,7 +538,7 @@ msgid_plural "%s failed; see their subscription logs for the reason."
 msgstr[0] "%s mislukt; zie het abonnementslogboek voor de reden."
 msgstr[1] "%s mislukt; zie hun abonnementslogboeken voor de reden."
 
-#: admin/controllers/class-ppcart-admin-order-list-controller.php:307
+#: admin/controllers/class-ppcart-admin-order-list-controller.php:310
 msgid ""
 "Each run syncs a limited number of subscriptions. Select the rest and run "
 "it again to continue."
@@ -631,7 +636,7 @@ msgstr "Terugbetaling aanvragen"
 
 #: admin/controllers/order/templates/product-form.php:294
 #: admin/reports/templates/customer-report/page.php:105
-#: includes/scheduled-reports/report-email-template.php:111
+#: includes/scheduled-reports/report-email-template.php:113
 msgid "Refunds"
 msgstr "Terugbetalingen"
 
@@ -707,7 +712,7 @@ msgstr "Herbevoorraden terugbetaalde artikelen"
 #: admin/order-metaboxes/traits/trait-ppcart-order-metabox-field-groups.php:87
 #: admin/partials/settings-page/sections/payment-method.php:268
 #: admin/partials/settings-page/tabs/panels.php:387
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
 #: public/templates/my-account/subscription-detail.php:56
 #: public/templates/my-account/tabs/user-profile.php:92
 msgid "Cancel"
@@ -807,12 +812,14 @@ msgid "Order actions"
 msgstr "Bestelacties"
 
 #: admin/controllers/order/templates/product-info-metabox.php:146
+#: public/partials/invoice-pdf.php:33
 #: public/templates/my-account/order-detail.php:40
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Invoice"
 msgstr "Factuur"
 
 #: admin/controllers/order/templates/product-info-metabox.php:153
+#: public/partials/invoice-pdf.php:33
 #: public/templates/pdf-invoice/invoice.php:83
 msgid "Receipt"
 msgstr "Ontvangstbewijs"
@@ -837,8 +844,6 @@ msgstr "Gegevens bewerken"
 #: admin/order-metaboxes/traits/templates/order-metabox-edit-fields-get-edit-field-sections.php:29
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:140
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:308
-#: admin/partials/settings-page/metadata.php:506
-#: admin/partials/settings-page/metadata.php:510
 #: admin/partials/settings-page/metadata.php:514
 #: admin/partials/settings-page/metadata.php:518
 #: admin/partials/settings-page/metadata.php:522
@@ -848,9 +853,11 @@ msgstr "Gegevens bewerken"
 #: admin/partials/settings-page/metadata.php:538
 #: admin/partials/settings-page/metadata.php:542
 #: admin/partials/settings-page/metadata.php:546
-#: admin/partials/settings-page/metadata.php:558
+#: admin/partials/settings-page/metadata.php:550
+#: admin/partials/settings-page/metadata.php:554
+#: admin/partials/settings-page/metadata.php:566
 #: admin/partials/settings-page/sections/email-notifications.php:36
-#: includes/scheduled-reports/report-email-template.php:146
+#: includes/scheduled-reports/report-email-template.php:148
 msgid "Customer"
 msgstr "Klant"
 
@@ -893,7 +900,7 @@ msgstr "Factuuradres"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:225
 #: admin/reports/templates/customer-report/page.php:235
 #: admin/traits/trait-ppcart-admin-profile.php:28
-#: public/partials/csv-export.php:140
+#: public/partials/csv-export.php:142
 #: public/templates/my-account/tabs/user-profile.php:32
 #: public/templates/my-account/tabs/user-profile.php:33
 msgid "Phone"
@@ -911,8 +918,8 @@ msgstr "Bedrijf"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:75
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:243
 #: public/templates/email/order-table.php:233
-#: public/templates/functions/payment-address.php:150
 #: public/templates/functions/payment-address.php:151
+#: public/templates/functions/payment-address.php:152
 #: public/templates/pdf-invoice/invoice.php:119
 msgid "VAT Number"
 msgstr "BTW-nummer"
@@ -920,7 +927,7 @@ msgstr "BTW-nummer"
 #: admin/controllers/order/templates/product-info-metabox.php:232
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:192
 #: admin/traits/trait-ppcart-admin-profile.php:22
-#: public/templates/functions/payment-address.php:308
+#: public/templates/functions/payment-address.php:311
 #: public/templates/my-account/order-detail.php:35
 #: public/templates/my-account/tabs/user-profile.php:38
 #: public/templates/my-account/tabs/user-profile.php:39
@@ -929,7 +936,7 @@ msgstr "Adres"
 
 #: admin/controllers/order/templates/product-info-metabox.php:236
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:196
-#: public/partials/csv-export.php:142
+#: public/partials/csv-export.php:144
 #: public/templates/my-account/tabs/user-profile.php:43
 #: public/templates/my-account/tabs/user-profile.php:44
 msgid "Address 2"
@@ -940,7 +947,7 @@ msgstr "Adres 2"
 #: admin/partials/ppcart-admin-page-settings-tax.php:25
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:39
 #: admin/traits/trait-ppcart-admin-profile.php:24
-#: public/partials/csv-export.php:143
+#: public/partials/csv-export.php:145
 #: public/templates/my-account/tabs/user-profile.php:48
 #: public/templates/my-account/tabs/user-profile.php:49
 msgid "City"
@@ -949,7 +956,7 @@ msgstr "Stad"
 #: admin/controllers/order/templates/product-info-metabox.php:244
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:204
 #: admin/traits/trait-ppcart-admin-profile.php:25
-#: public/partials/csv-export.php:144
+#: public/partials/csv-export.php:146
 #: public/templates/my-account/tabs/user-profile.php:53
 #: public/templates/my-account/tabs/user-profile.php:54
 msgid "State"
@@ -958,7 +965,7 @@ msgstr "Staat"
 #: admin/controllers/order/templates/product-info-metabox.php:248
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:208
 #: admin/traits/trait-ppcart-admin-profile.php:26
-#: public/partials/csv-export.php:145
+#: public/partials/csv-export.php:147
 #: public/templates/my-account/tabs/user-profile.php:58
 #: public/templates/my-account/tabs/user-profile.php:59
 msgid "Zip"
@@ -969,8 +976,8 @@ msgstr "Postcode"
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:129
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:297
 #: admin/traits/trait-ppcart-admin-profile.php:27
-#: public/partials/csv-export.php:146
-#: public/templates/functions/payment-address.php:298
+#: public/partials/csv-export.php:148
+#: public/templates/functions/payment-address.php:300
 #: public/templates/my-account/tabs/user-profile.php:63
 #: public/templates/my-account/tabs/user-profile.php:64
 msgid "Country"
@@ -1005,13 +1012,13 @@ msgid "Order status"
 msgstr "Bestelstatus"
 
 #: admin/controllers/order/templates/product-info-metabox.php:283
-#: public/partials/csv-export.php:156
+#: public/partials/csv-export.php:158
 msgid "Opted-in"
 msgstr "Ingeschreven"
 
 #: admin/controllers/order/templates/product-info-metabox.php:295
 #: admin/controllers/subscription/traits/templates/admin-subscription-info-callback.php:253
-#: public/partials/csv-export.php:155
+#: public/partials/csv-export.php:157
 msgid "Custom Fields"
 msgstr "Aangepaste velden"
 
@@ -1050,7 +1057,7 @@ msgid "No recurring payment plans found"
 msgstr "Geen terugkerende betalingsplannen gevonden"
 
 #: admin/controllers/order/traits/trait-ppcart-admin-order-ajax.php:34
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:153
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:168
 msgid "Test email sent."
 msgstr "Test e-mail verzonden."
 
@@ -1094,7 +1101,7 @@ msgid "No notes found"
 msgstr "Geen notities gevonden"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:38
-#: public/templates/functions/plan-coupon-fields.php:492
+#: public/templates/functions/plan-coupon-fields.php:514
 #: public/templates/pdf-invoice/invoice.php:146
 msgid "Qty"
 msgstr "Aantal"
@@ -1108,7 +1115,7 @@ msgid "Recurring Payment"
 msgstr "Terugkerende betaling"
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:108
-#: admin/partials/settings-page/metadata.php:446
+#: admin/partials/settings-page/metadata.php:454
 #: public/templates/my-account/subscription-detail.php:56
 msgid "Cancel Subscription"
 msgstr "Abonnement annuleren"
@@ -1126,8 +1133,8 @@ msgstr "Hervatten"
 #: admin/controllers/subscription/traits/templates/admin-subscription-form-callback.php:115
 #: admin/controllers/templates/order-list-custom-status.php:108
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:29
-#: admin/reports/templates/admin-reports-page.php:462
-#: public/partials/csv-export.php:325
+#: admin/reports/templates/admin-reports-page.php:466
+#: public/partials/csv-export.php:318
 msgid "Canceled"
 msgstr "Geannuleerd"
 
@@ -1250,7 +1257,7 @@ msgid "Error loading subscription."
 msgstr "Fout bij het laden van abonnement."
 
 #: admin/controllers/subscription/traits/templates/admin-subscription-sync-ajax.php:67
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
 msgid "Subscription synced successfully."
 msgstr "Abonnement succesvol gesynchroniseerd."
 
@@ -1420,7 +1427,7 @@ msgstr[1] "Onbetaald <span class=\\\"count\\\">(%s)</span>"
 
 #: admin/controllers/templates/order-list-custom-status.php:97
 #: admin/order-metaboxes/traits/templates/order-metabox-render-subscription-edit-details.php:28
-#: public/partials/csv-export.php:327
+#: public/partials/csv-export.php:320
 msgid "Paused"
 msgstr "Pauze"
 
@@ -1493,7 +1500,7 @@ msgid "Total Orders"
 msgstr "Totaal aantal bestellingen"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:36
-#: admin/reports/templates/admin-reports-page.php:493
+#: admin/reports/templates/admin-reports-page.php:497
 msgid "Total Sales"
 msgstr "Totaal aantal verkopen"
 
@@ -1502,7 +1509,7 @@ msgid "Avg. Order Value"
 msgstr "Gem. Bestelwaarde"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:38
-#: includes/scheduled-reports/report-email-template.php:114
+#: includes/scheduled-reports/report-email-template.php:116
 msgid "Pending Orders"
 msgstr "Openstaande bestellingen"
 
@@ -1512,7 +1519,7 @@ msgid "Paid Orders"
 msgstr "Betaalde Orders"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:40
-#: includes/scheduled-reports/report-email-template.php:116
+#: includes/scheduled-reports/report-email-template.php:118
 msgid "Refunded Orders"
 msgstr "Terugbetaalde bestellingen"
 
@@ -1539,12 +1546,12 @@ msgid "Trials"
 msgstr "Proefperiodes"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:54
-#: admin/reports/templates/admin-reports-page.php:624
+#: admin/reports/templates/admin-reports-page.php:628
 msgid "Renewals"
 msgstr "Verlengingen"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:55
-#: admin/reports/templates/admin-reports-page.php:405, fuzzy
+#: admin/reports/templates/admin-reports-page.php:409, fuzzy
 msgid "MRR"
 msgstr "MRR"
 
@@ -1590,7 +1597,7 @@ msgid "View Contacts"
 msgstr "Bekijk Contacten"
 
 #: admin/dashboard/class-ppcart-dashboard-renderer.php:80
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:175
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:180
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -1734,9 +1741,9 @@ msgstr "Melding label"
 
 #: admin/metaboxes/field-groups/message-fields.php:158
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:30
-#: admin/settings/traits/options/core-settings.php:262
-#: admin/settings/traits/options/core-settings.php:320
-#: admin/settings/traits/options/core-settings.php:378
+#: admin/settings/traits/options/core-settings.php:264
+#: admin/settings/traits/options/core-settings.php:322
+#: admin/settings/traits/options/core-settings.php:380
 #: admin/settings/traits/options/payment-fields.php:11
 #: admin/settings/traits/options/payment-fields.php:23
 #: admin/settings/traits/options/payment-fields.php:135
@@ -1788,13 +1795,13 @@ msgid "Bcc"
 msgstr "Bcc"
 
 #: admin/metaboxes/field-groups/message-fields.php:266
-#: admin/settings/traits/options/core-settings.php:272
-#: admin/settings/traits/options/core-settings.php:330
-#: admin/settings/traits/options/core-settings.php:398
-#: admin/settings/traits/options/core-settings.php:441
-#: admin/settings/traits/options/core-settings.php:484
-#: admin/settings/traits/options/core-settings.php:527
-#: admin/settings/traits/options/core-settings.php:570
+#: admin/settings/traits/options/core-settings.php:274
+#: admin/settings/traits/options/core-settings.php:332
+#: admin/settings/traits/options/core-settings.php:400
+#: admin/settings/traits/options/core-settings.php:443
+#: admin/settings/traits/options/core-settings.php:486
+#: admin/settings/traits/options/core-settings.php:529
+#: admin/settings/traits/options/core-settings.php:572
 msgid "Subject"
 msgstr "Onderwerp"
 
@@ -1905,7 +1912,8 @@ msgstr "Gebruik standaardinstelling"
 #: admin/metaboxes/field-groups/sales-checkout-fields.php:62
 #: admin/partials/ppcart-admin-field-repeater.php:156
 #: admin/partials/settings-page/render-helpers.php:7
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
+#: admin/partials/settings-page/sections/email-notifications.php:44
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:134
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
@@ -2017,8 +2025,8 @@ msgstr "Sectie kop"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:26
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:184
-#: public/partials/csv-export.php:149
-#: public/partials/csv-export.php:231
+#: public/partials/csv-export.php:151
+#: public/partials/csv-export.php:233
 #: public/templates/functions/plan-coupon-fields.php:197
 msgid "Payment Plan"
 msgstr "Betalingsplan"
@@ -2059,7 +2067,7 @@ msgid "Sale billing"
 msgstr "Verkoopfacturering"
 
 #: admin/metaboxes/field-groups/sales-plan-fields.php:71
-#: admin/partials/ppcart-admin-page-settings.php:148
+#: admin/partials/ppcart-admin-page-settings.php:158
 #: admin/partials/settings-page/metadata.php:108
 msgid "Advanced"
 msgstr "Geavanceerd"
@@ -2102,21 +2110,29 @@ msgid "One-time"
 msgstr "Eenmalig"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:56
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:323
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:324
 msgid "Pay what you want"
 msgstr "Betaal wat je wilt"
 
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:65
+msgid "Optional. Set a slug to preselect this plan from a checkout link."
+msgstr ""
+"Optioneel. Stel een slug in om dit plan vooraf te selecteren vanuit een "
+"afrekenlink."
+
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:66
 msgid ""
-"Letters, numbers, dashes and underscores only. Must be unique for this "
-"product."
+"For example, enter annual and add ?ppcart-pay-plan=annual to the checkout "
+"link. Use letters, numbers, dashes or underscores. The slug must be unique "
+"for this product."
 msgstr ""
-"Letters, cijfers, streepjes en underscores alleen. Moet uniek zijn voor dit "
-"product."
+"Voer bijvoorbeeld jaarlijks in en voeg ?ppcart-pay-plan=annual toe aan de "
+"afrekenlink. Gebruik letters, cijfers, koppeltekens of underscores. De slug "
+"moet uniek zijn voor dit product."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:68, fuzzy
-msgid "URL slug"
-msgstr "URL slug"
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:68
+msgid "Checkout link slug"
+msgstr "Afrekenlink slug"
 
 #: admin/metaboxes/traits/fields/pay-plan-fields.php:78
 msgid "Plan name on the checkout form."
@@ -2226,31 +2242,31 @@ msgstr "Verkoopfrequentie"
 msgid "Pay interval"
 msgstr "Betaalinterval"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:222
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:246
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:247
 msgid "Day"
 msgstr "Dag"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:223
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:247, fuzzy
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:248, fuzzy
 msgid "Week"
 msgstr "Week"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:224
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:248
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
 msgid "Month"
 msgstr "Maand"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:225
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:249
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:226
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:250
 msgid "Year"
 msgstr "Jaar"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:241
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:242
 msgid "Sale pay interval"
 msgstr "Verkoop betaalinterval"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:264
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:265
 msgid ""
 "Billing stops after this many payments. Otherwise it continues until the "
 "subscription is canceled."
@@ -2258,35 +2274,35 @@ msgstr ""
 "Facturering stopt na dit aantal betalingen. Anders gaat het door totdat het "
 "abonnement wordt geannuleerd."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:266
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:267
 msgid "Number of payments"
 msgstr "Aantal betalingen"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:285
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:286
 msgid "Sale number of payments"
 msgstr "Verkoop aantal betalingen"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:302
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:303
 msgid "Shown in place of the price at checkout."
 msgstr "Getoond in plaats van de prijs bij afrekenen."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:304
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:341
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
 msgid "Name your price label"
 msgstr "Naam je prijs label"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:305
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:307
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:342
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:344
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:306
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:308
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:343
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:345
 msgid "Name your price"
 msgstr "Naam je prijs"
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:320
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
 msgid "Customers choose their own recurring amount."
 msgstr "Klanten kiezen hun eigen terugkerende bedrag."
 
-#: admin/metaboxes/traits/fields/pay-plan-fields.php:321
+#: admin/metaboxes/traits/fields/pay-plan-fields.php:322
 msgid "The amount must be at or above the plan price."
 msgstr "Het bedrag moet gelijk aan of hoger zijn dan de planprijs."
 
@@ -2605,7 +2621,7 @@ msgid "Grow sales"
 msgstr "Verkoop vergroten"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:9
-#: admin/partials/ppcart-admin-page-settings.php:137
+#: admin/partials/ppcart-admin-page-settings.php:147
 #: admin/partials/settings-page/tabs/topbar.php:12
 msgid "General"
 msgstr "Algemeen"
@@ -2631,7 +2647,7 @@ msgid "Emails"
 msgstr "E-mails"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tabs.php:15
-#: admin/partials/ppcart-admin-page-settings.php:144
+#: admin/partials/ppcart-admin-page-settings.php:154
 #: admin/partials/settings-page/tabs/panels.php:67
 msgid "Integrations"
 msgstr "Integraties"
@@ -2642,8 +2658,8 @@ msgstr "Productmelding"
 
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:17
 #: admin/metaboxes/traits/templates/product-metabox-render-render-product-notification-modal.php:27
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:121
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:164
 msgid "Email preview"
 msgstr "E-mailvoorbeeld"
 
@@ -2817,7 +2833,7 @@ msgstr "Selecteer"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metabox-integration-options.php:107
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:156
-#: admin/settings/traits/options/core-settings.php:237
+#: admin/settings/traits/options/core-settings.php:239
 msgid "-- Select --"
 msgstr "-- Selecteer --"
 
@@ -2917,8 +2933,8 @@ msgid "Checkbox label"
 msgstr "Checkbox-label"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-bump-fields.php:143
-#: admin/settings/traits/options/core-settings.php:293
-#: admin/settings/traits/options/core-settings.php:351
+#: admin/settings/traits/options/core-settings.php:295
+#: admin/settings/traits/options/core-settings.php:353
 msgid "Headline"
 msgstr "Kop"
 
@@ -2967,7 +2983,7 @@ msgid "Header background image"
 msgstr "Achtergrondafbeelding koptekst"
 
 #: admin/metaboxes/traits/trait-ppcart-product-metaboxes-pay-plan-fields.php:35
-#: public/partials/csv-export.php:329
+#: public/partials/csv-export.php:322
 msgid "Until canceled"
 msgstr "Tot geannuleerd"
 
@@ -2996,8 +3012,8 @@ msgstr "Voornaam "
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:39
 #: admin/order-metaboxes/traits/templates/order-metabox-field-groups-set-field-groups.php:207
 #: public/partials/csv-export.php:21
-#: public/partials/csv-export.php:138
-#: public/templates/functions/plan-coupon-fields.php:535
+#: public/partials/csv-export.php:140
+#: public/templates/functions/plan-coupon-fields.php:566
 #: public/templates/my-account/tabs/user-profile.php:22
 msgid "Last Name"
 msgstr "Achternaam"
@@ -3047,7 +3063,7 @@ msgstr "Niet-opgeslagen wijzigingen"
 #: admin/partials/settings-page/tabs/form-actions.php:7
 #: admin/partials/settings-page/tabs/form-actions.php:8
 #: admin/partials/settings-page/tabs/panels.php:388
-#: admin/partials/settings-page/tabs/savebar.php:11
+#: admin/partials/settings-page/tabs/savebar.php:12
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
 
@@ -3058,6 +3074,10 @@ msgstr "En"
 #: admin/partials/ppcart-admin-field-conditions.php:61
 msgid "Or"
 msgstr "Of"
+
+#: admin/partials/ppcart-admin-field-conditions.php:98
+msgid "Remove condition"
+msgstr "Verwijder voorwaarde"
 
 #: admin/partials/ppcart-admin-field-conditions.php:106
 msgid "+ Add another condition"
@@ -3070,6 +3090,16 @@ msgstr "Bewerk Veld"
 #: admin/partials/ppcart-admin-field-secure-file-upload.php:39
 msgid "Media Library"
 msgstr "Mediabibliotheek"
+
+#: admin/partials/ppcart-admin-field-text.php:86
+#. translators: %s: date field label.
+#, php-format
+msgid "Clear %s"
+msgstr "Wis %s"
+
+#: admin/partials/ppcart-admin-field-text.php:87
+msgid "Clear date"
+msgstr "Wis datum"
 
 #: admin/partials/ppcart-admin-page-settings-tax.php:9
 msgid "Custom Tax Rates"
@@ -3146,7 +3176,7 @@ msgid "Loading&hellip;"
 msgstr "Laden&hellip;"
 
 #: admin/partials/ppcart-admin-page-settings.php:44
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:171
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:176
 #. translators: %s: plugin title.
 #, php-format
 msgid "%s Settings"
@@ -3164,37 +3194,53 @@ msgstr "Schakel alstublieft ten minste één betaalmethode in de"
 msgid "PublishPress Cart settings"
 msgstr "PublishPress Winkelwagentje-instellingen"
 
-#: admin/partials/ppcart-admin-page-settings.php:138
+#: admin/partials/ppcart-admin-page-settings.php:107
+msgid "Debug log cleared."
+msgstr "Debug-log gewist."
+
+#: admin/partials/ppcart-admin-page-settings.php:111
+msgid "Stripe webhook log cleared."
+msgstr "Stripe webhook-log gewist."
+
+#: admin/partials/ppcart-admin-page-settings.php:148
 msgid "Pages"
 msgstr "Pagina's"
 
-#: admin/partials/ppcart-admin-page-settings.php:139, fuzzy
+#: admin/partials/ppcart-admin-page-settings.php:149, fuzzy
 msgid "Branding"
 msgstr "Branding"
 
-#: admin/partials/ppcart-admin-page-settings.php:140
+#: admin/partials/ppcart-admin-page-settings.php:150
 msgid "Payment Methods"
 msgstr "Betaalmethoden"
 
-#: admin/partials/ppcart-admin-page-settings.php:141
+#: admin/partials/ppcart-admin-page-settings.php:151
 msgid "Invoices"
 msgstr "Facturen"
 
-#: admin/partials/ppcart-admin-page-settings.php:142, fuzzy
+#: admin/partials/ppcart-admin-page-settings.php:152, fuzzy
 msgid "Downloads"
 msgstr "Downloads"
 
-#: admin/partials/ppcart-admin-page-settings.php:146
+#: admin/partials/ppcart-admin-page-settings.php:156
 msgid "Debug"
 msgstr "Debuggen"
 
-#: admin/partials/ppcart-admin-page-settings.php:147
+#: admin/partials/ppcart-admin-page-settings.php:157
 msgid "Maintenance"
 msgstr "Onderhoud"
 
-#: admin/partials/ppcart-admin-page-settings.php:163, fuzzy
+#: admin/partials/ppcart-admin-page-settings.php:173, fuzzy
 msgid "White Label"
 msgstr "White Label"
+
+#: admin/partials/ppcart-admin-repeater-move-buttons.php:25
+msgid "Move up"
+msgstr "Omhoog verplaatsen"
+
+#: admin/partials/ppcart-admin-repeater-move-buttons.php:29
+msgid "Move down"
+msgstr "Omlaag verplaatsen"
 
 #: admin/partials/settings-page/metadata.php:11
 msgid "Currency and pricing defaults for your store."
@@ -3379,389 +3425,398 @@ msgid "Sync customers, tags and ecommerce activity to Drip."
 msgstr "Synchroniseer klanten, tags en e-commerce activiteiten met Drip."
 
 #: admin/partials/settings-page/metadata.php:212, fuzzy
+msgid "Brevo"
+msgstr "Brevo"
+
+#: admin/partials/settings-page/metadata.php:213
+msgid "Add customers to Brevo contact lists."
+msgstr "Voeg klanten toe aan Brevo-contactlijsten."
+
+#: admin/partials/settings-page/metadata.php:220, fuzzy
 msgid "Flodesk"
 msgstr "Flodesk"
 
-#: admin/partials/settings-page/metadata.php:213
+#: admin/partials/settings-page/metadata.php:221
 msgid "Add customers to Flodesk segments."
 msgstr "Voeg klanten toe aan Flodesk-segmenten."
 
-#: admin/partials/settings-page/metadata.php:221, fuzzy
+#: admin/partials/settings-page/metadata.php:229, fuzzy
 msgid "MailerLite"
 msgstr "MailerLite"
 
-#: admin/partials/settings-page/metadata.php:222
+#: admin/partials/settings-page/metadata.php:230
 msgid "Add customers to MailerLite subscribers and groups."
 msgstr "Voeg klanten toe aan MailerLite abonnees en groepen."
 
-#: admin/partials/settings-page/metadata.php:230, fuzzy
+#: admin/partials/settings-page/metadata.php:238, fuzzy
 msgid "MailPoet"
 msgstr "MailPoet"
 
-#: admin/partials/settings-page/metadata.php:231
+#: admin/partials/settings-page/metadata.php:239
 msgid "Add customers to MailPoet lists."
 msgstr "Voeg klanten toe aan MailPoet lijsten."
 
-#: admin/partials/settings-page/metadata.php:238, fuzzy
+#: admin/partials/settings-page/metadata.php:246, fuzzy
 msgid "Encharge"
 msgstr "Encharge"
 
-#: admin/partials/settings-page/metadata.php:239
+#: admin/partials/settings-page/metadata.php:247
 msgid "Track order events and sync customers to Encharge."
 msgstr "Volg order gebeurtenissen en synchroniseer klanten met Encharge."
 
-#: admin/partials/settings-page/metadata.php:248, fuzzy
+#: admin/partials/settings-page/metadata.php:256, fuzzy
 msgid "FluentCRM"
 msgstr "FluentCRM"
 
-#: admin/partials/settings-page/metadata.php:249
+#: admin/partials/settings-page/metadata.php:257
 msgid "Add customers to FluentCRM lists and tags."
 msgstr "Voeg klanten toe aan FluentCRM lijsten en tags."
 
-#: admin/partials/settings-page/metadata.php:256, fuzzy
+#: admin/partials/settings-page/metadata.php:264, fuzzy
 msgid "Academy LMS"
 msgstr "Academy LMS"
 
-#: admin/partials/settings-page/metadata.php:257
+#: admin/partials/settings-page/metadata.php:265
 msgid "Enroll or remove students from Academy LMS courses."
 msgstr "Schrijf studenten in of verwijder ze uit Academy LMS cursussen."
 
-#: admin/partials/settings-page/metadata.php:264, fuzzy
+#: admin/partials/settings-page/metadata.php:272, fuzzy
 msgid "Gurucan"
 msgstr "Gurucan"
 
-#: admin/partials/settings-page/metadata.php:265
+#: admin/partials/settings-page/metadata.php:273
 msgid "Add or remove customers in Gurucan products."
 msgstr "Voeg klanten toe of verwijder ze in Gurucan producten."
 
-#: admin/partials/settings-page/metadata.php:273
+#: admin/partials/settings-page/metadata.php:281
 msgid "Heartbeat"
 msgstr "Hartslag"
 
-#: admin/partials/settings-page/metadata.php:274
+#: admin/partials/settings-page/metadata.php:282
 msgid "Manage community access in Heartbeat."
 msgstr "Beheer de toegang van de gemeenschap in Hartslag."
 
-#: admin/partials/settings-page/metadata.php:282, fuzzy
+#: admin/partials/settings-page/metadata.php:290, fuzzy
 msgid "Kajabi"
 msgstr "Kajabi"
 
-#: admin/partials/settings-page/metadata.php:283
+#: admin/partials/settings-page/metadata.php:291
 msgid "Enable Kajabi purchase automations."
 msgstr "Schakel Kajabi aankoopautomatiseringen in."
 
-#: admin/partials/settings-page/metadata.php:291, fuzzy
+#: admin/partials/settings-page/metadata.php:299, fuzzy
 msgid "Teachable"
 msgstr "Teachable"
 
-#: admin/partials/settings-page/metadata.php:292
+#: admin/partials/settings-page/metadata.php:300
 msgid "Enroll customers into Teachable schools and products."
 msgstr "Schrijf klanten in voor Teachable scholen en producten."
 
-#: admin/partials/settings-page/metadata.php:300, fuzzy
+#: admin/partials/settings-page/metadata.php:308, fuzzy
 msgid "Upcoach"
 msgstr "Upcoach"
 
-#: admin/partials/settings-page/metadata.php:301
+#: admin/partials/settings-page/metadata.php:309
 msgid "Grant customers access to Upcoach programs."
 msgstr "Verleen klanten toegang tot Upcoach programma's."
 
-#: admin/partials/settings-page/metadata.php:309, fuzzy
+#: admin/partials/settings-page/metadata.php:317, fuzzy
 msgid "Tutor LMS"
 msgstr "Tutor LMS"
 
-#: admin/partials/settings-page/metadata.php:310
+#: admin/partials/settings-page/metadata.php:318
 msgid "Enroll or remove students from Tutor LMS courses."
 msgstr "Schrijf studenten in of verwijder ze uit Tutor LMS cursussen."
 
-#: admin/partials/settings-page/metadata.php:317, fuzzy
+#: admin/partials/settings-page/metadata.php:325, fuzzy
 msgid "LearnDash"
 msgstr "LearnDash"
 
-#: admin/partials/settings-page/metadata.php:318
+#: admin/partials/settings-page/metadata.php:326
 msgid "Grant or revoke LearnDash course access."
 msgstr "Verleen of herroep toegang tot LearnDash cursussen."
 
-#: admin/partials/settings-page/metadata.php:325, fuzzy
+#: admin/partials/settings-page/metadata.php:333, fuzzy
 msgid "WP Courseware"
 msgstr "WP Courseware"
 
-#: admin/partials/settings-page/metadata.php:326
+#: admin/partials/settings-page/metadata.php:334
 msgid "Manage WP Courseware enrollments after purchase."
 msgstr "Beheer WP Courseware inschrijvingen na aankoop."
 
-#: admin/partials/settings-page/metadata.php:333, fuzzy
+#: admin/partials/settings-page/metadata.php:341, fuzzy
 msgid "MasterStudy LMS"
 msgstr "MasterStudy LMS"
 
-#: admin/partials/settings-page/metadata.php:334
+#: admin/partials/settings-page/metadata.php:342
 msgid "Enroll customers into MasterStudy LMS courses."
 msgstr "Schrijf klanten in voor MasterStudy LMS cursussen."
 
-#: admin/partials/settings-page/metadata.php:341
+#: admin/partials/settings-page/metadata.php:349
 msgid "Groups"
 msgstr "Groepen"
 
-#: admin/partials/settings-page/metadata.php:342
+#: admin/partials/settings-page/metadata.php:350
 msgid "Add or remove customers from WordPress Groups."
 msgstr "Voeg klanten toe of verwijder ze uit WordPress Groepen."
 
-#: admin/partials/settings-page/metadata.php:349, fuzzy
+#: admin/partials/settings-page/metadata.php:357, fuzzy
 msgid "MemberPress"
 msgstr "MemberPress"
 
-#: admin/partials/settings-page/metadata.php:350
+#: admin/partials/settings-page/metadata.php:358
 msgid "Grant customers MemberPress membership access."
 msgstr "Verleen klanten toegang tot MemberPress lidmaatschap."
 
-#: admin/partials/settings-page/metadata.php:357, fuzzy
+#: admin/partials/settings-page/metadata.php:365, fuzzy
 msgid "ARMember"
 msgstr "ARMember"
 
-#: admin/partials/settings-page/metadata.php:358
+#: admin/partials/settings-page/metadata.php:366
 msgid "Grant customers ARMember plan access."
 msgstr "Geef klanten toegang tot het ARMember-plan."
 
-#: admin/partials/settings-page/metadata.php:365, fuzzy
+#: admin/partials/settings-page/metadata.php:373, fuzzy
 msgid "WishList Member"
 msgstr "WishList Member"
 
-#: admin/partials/settings-page/metadata.php:366
+#: admin/partials/settings-page/metadata.php:374
 msgid "Grant customers WishList Member level access."
 msgstr "Geef klanten toegang tot het WishList Member-niveau."
 
-#: admin/partials/settings-page/metadata.php:373, fuzzy
+#: admin/partials/settings-page/metadata.php:381, fuzzy
 msgid "Restrict Content Pro"
 msgstr "Restrict Content Pro"
 
-#: admin/partials/settings-page/metadata.php:374
+#: admin/partials/settings-page/metadata.php:382
 msgid "Grant customers Restrict Content Pro access."
 msgstr "Geef klanten toegang tot Restrict Content Pro."
 
-#: admin/partials/settings-page/metadata.php:381, fuzzy
+#: admin/partials/settings-page/metadata.php:389, fuzzy
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
-#: admin/partials/settings-page/metadata.php:382
+#: admin/partials/settings-page/metadata.php:390
 msgid "Send Ultimate Member welcome emails for new customers."
 msgstr "Stuur welkomst-e-mails van Ultimate Member voor nieuwe klanten."
 
-#: admin/partials/settings-page/metadata.php:390, fuzzy
+#: admin/partials/settings-page/metadata.php:398, fuzzy
 msgid "Elementor"
 msgstr "Elementor"
 
-#: admin/partials/settings-page/metadata.php:391
+#: admin/partials/settings-page/metadata.php:399
 msgid "Choose Elementor templates for checkout components."
 msgstr "Kies Elementor-sjablonen voor afrekencomponenten."
 
-#: admin/partials/settings-page/metadata.php:398, fuzzy
+#: admin/partials/settings-page/metadata.php:406, fuzzy
 msgid "Divi"
 msgstr "Divi"
 
-#: admin/partials/settings-page/metadata.php:399
+#: admin/partials/settings-page/metadata.php:407
 msgid "Use PublishPress Cart order forms inside Divi layouts."
 msgstr "Gebruik PublishPress Cart-bestelformulieren binnen Divi-indelingen."
 
-#: admin/partials/settings-page/metadata.php:406, fuzzy
+#: admin/partials/settings-page/metadata.php:414, fuzzy
 msgid "Oxygen Builder"
 msgstr "Oxygen Builder"
 
-#: admin/partials/settings-page/metadata.php:407
+#: admin/partials/settings-page/metadata.php:415
 msgid "Use PublishPress Cart conditions in Oxygen Builder."
 msgstr "Gebruik PublishPress Cart-voorwaarden in Oxygen Builder."
 
-#: admin/partials/settings-page/metadata.php:414, fuzzy
+#: admin/partials/settings-page/metadata.php:422, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
-#: admin/partials/settings-page/metadata.php:415
+#: admin/partials/settings-page/metadata.php:423
 msgid "Use PublishPress Cart blocks in the WordPress block editor."
 msgstr "Gebruik PublishPress Cart-blokken in de WordPress blokeditor."
 
-#: admin/partials/settings-page/metadata.php:422
+#: admin/partials/settings-page/metadata.php:430
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: admin/partials/settings-page/metadata.php:423
+#: admin/partials/settings-page/metadata.php:431
 msgid "Connect PublishPress Cart products with WooCommerce flows."
 msgstr "Verbind PublishPress Cart-producten met WooCommerce-stromen."
 
-#: admin/partials/settings-page/metadata.php:430
-#: admin/partials/settings-page/metadata.php:438, fuzzy
+#: admin/partials/settings-page/metadata.php:438
+#: admin/partials/settings-page/metadata.php:446, fuzzy
 msgid "WP Domain Checker"
 msgstr "WP Domain Checker"
 
-#: admin/partials/settings-page/metadata.php:431
 #: admin/partials/settings-page/metadata.php:439
+#: admin/partials/settings-page/metadata.php:447
 msgid "Sell domains through WP Domain Checker checkout flows."
 msgstr "Verkoop domeinen via de afrekenstromen van WP Domain Checker."
 
-#: admin/partials/settings-page/metadata.php:447
+#: admin/partials/settings-page/metadata.php:455
 msgid "Cancel an existing subscription as an order automation."
 msgstr "Annuleer een bestaande abonnement als een orderautomatisering."
 
-#: admin/partials/settings-page/metadata.php:452
+#: admin/partials/settings-page/metadata.php:460
 msgid "Refund Order"
 msgstr "Terugbetaling Bestelling"
 
-#: admin/partials/settings-page/metadata.php:453
+#: admin/partials/settings-page/metadata.php:461
 msgid "Refund an existing order as an order automation."
 msgstr "Terugbetaling van een bestaande bestelling als een orderautomatisering."
 
-#: admin/partials/settings-page/metadata.php:458, fuzzy
+#: admin/partials/settings-page/metadata.php:466, fuzzy
 msgid "Webhook"
 msgstr "Webhook"
 
-#: admin/partials/settings-page/metadata.php:459
+#: admin/partials/settings-page/metadata.php:467
 msgid "Send order data to an external webhook URL."
 msgstr "Stuur bestelgegevens naar een externe webhook-URL."
 
-#: admin/partials/settings-page/metadata.php:466
+#: admin/partials/settings-page/metadata.php:474
 msgid "All"
 msgstr "Alle"
 
-#: admin/partials/settings-page/metadata.php:467
+#: admin/partials/settings-page/metadata.php:475
 msgid "Email Marketing"
 msgstr "E-mailmarketing"
 
-#: admin/partials/settings-page/metadata.php:468, fuzzy
+#: admin/partials/settings-page/metadata.php:476, fuzzy
 msgid "Analytics"
 msgstr "Analytics"
 
-#: admin/partials/settings-page/metadata.php:469
+#: admin/partials/settings-page/metadata.php:477
 msgid "Ads"
 msgstr "Advertenties"
 
-#: admin/partials/settings-page/metadata.php:470
+#: admin/partials/settings-page/metadata.php:478
 msgid "Automation"
 msgstr "Automatisering"
 
-#: admin/partials/settings-page/metadata.php:471
+#: admin/partials/settings-page/metadata.php:479
 msgid "Courses"
 msgstr "Cursussen"
 
-#: admin/partials/settings-page/metadata.php:472
+#: admin/partials/settings-page/metadata.php:480
 msgid "Membership"
 msgstr "Lidmaatschap"
 
-#: admin/partials/settings-page/metadata.php:473
+#: admin/partials/settings-page/metadata.php:481
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:107
 #: includes/secrets/traits/templates/secrets-render-render-getting-started-encryption-html.php:30
 msgid "Security"
 msgstr "Beveiliging"
 
-#: admin/partials/settings-page/metadata.php:474
+#: admin/partials/settings-page/metadata.php:482
 msgid "Builders"
 msgstr "Bouwers"
 
-#: admin/partials/settings-page/metadata.php:479
-#: admin/reports/templates/admin-reports-page.php:351
+#: admin/partials/settings-page/metadata.php:487
+#: admin/reports/templates/admin-reports-page.php:355
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:31
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:56
 #: public/templates/functions/payment-address.php:74
 msgid "Cash on Delivery"
 msgstr "Contante betaling bij levering"
 
-#: admin/partials/settings-page/metadata.php:480
+#: admin/partials/settings-page/metadata.php:488
 msgid "Manage Cash on Delivery"
 msgstr "Beheer Rembours"
 
-#: admin/partials/settings-page/metadata.php:481
+#: admin/partials/settings-page/metadata.php:489
 msgid "Allow customers to pay with cash when their order is delivered."
 msgstr "Sta klanten toe om contant te betalen wanneer hun bestelling wordt geleverd."
 
-#: admin/partials/settings-page/metadata.php:483
+#: admin/partials/settings-page/metadata.php:491
 #: admin/partials/settings-page/sections/email-notifications.php:53
 #: admin/partials/settings-page/sections/payment-method.php:14
 #: public/templates/my-account/subscription-row.php:47
 msgid "Manage"
 msgstr "Beheren"
 
-#: admin/partials/settings-page/metadata.php:486
+#: admin/partials/settings-page/metadata.php:494
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:32
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:56, fuzzy
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:57, fuzzy
 msgid "Stripe"
 msgstr "Stripe"
 
-#: admin/partials/settings-page/metadata.php:487
-#: admin/partials/settings-page/metadata.php:491
+#: admin/partials/settings-page/metadata.php:495
+#: admin/partials/settings-page/metadata.php:499
 msgid "Manage Stripe"
 msgstr "Beheer Stripe"
 
-#: admin/partials/settings-page/metadata.php:488
+#: admin/partials/settings-page/metadata.php:496
 msgid "Accept credit cards and other payments securely via Stripe."
 msgstr "Accepteer creditcards en andere betalingen veilig via Stripe."
 
-#: admin/partials/settings-page/metadata.php:494
+#: admin/partials/settings-page/metadata.php:502
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:33
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:57
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:48
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:88, fuzzy
 msgid "PayPal"
 msgstr "PayPal"
 
-#: admin/partials/settings-page/metadata.php:495
-#: admin/partials/settings-page/metadata.php:499
+#: admin/partials/settings-page/metadata.php:503
+#: admin/partials/settings-page/metadata.php:507
 msgid "Manage PayPal"
 msgstr "Beheer PayPal"
 
-#: admin/partials/settings-page/metadata.php:496
+#: admin/partials/settings-page/metadata.php:504
 msgid "Accept payments securely via PayPal."
 msgstr "Accepteer betalingen veilig via PayPal."
 
-#: admin/partials/settings-page/metadata.php:505
+#: admin/partials/settings-page/metadata.php:513
 msgid "Sent after an order is received (pending payment). Useful for COD orders."
 msgstr ""
 "Verzonden nadat een bestelling is ontvangen (in afwachting van betaling). "
 "Handig voor Rembours-bestellingen."
 
-#: admin/partials/settings-page/metadata.php:509
+#: admin/partials/settings-page/metadata.php:517
 msgid "Sent to customers after purchase (paid)."
 msgstr "Verzonden naar klanten na aankoop (betaald)."
 
-#: admin/partials/settings-page/metadata.php:513
+#: admin/partials/settings-page/metadata.php:521
 msgid "Sent when an order is marked complete."
 msgstr "Verzonden wanneer een bestelling als voltooid is gemarkeerd."
 
-#: admin/partials/settings-page/metadata.php:517
+#: admin/partials/settings-page/metadata.php:525
 msgid "Sent when a new user account is created."
 msgstr "Verzonden wanneer een nieuw gebruikersaccount is aangemaakt."
 
-#: admin/partials/settings-page/metadata.php:521
+#: admin/partials/settings-page/metadata.php:529
 msgid "Sent when an order is refunded."
 msgstr "Verzonden wanneer een bestelling wordt terugbetaald."
 
-#: admin/partials/settings-page/metadata.php:525
+#: admin/partials/settings-page/metadata.php:533
 msgid "Sent before a subscription trial ends."
 msgstr "Verzonden voordat een proefabonnement eindigt."
 
-#: admin/partials/settings-page/metadata.php:529
+#: admin/partials/settings-page/metadata.php:537
 msgid "Sent before an upcoming subscription renewal."
 msgstr "Verzonden voordat een aankomend abonnement wordt vernieuwd."
 
-#: admin/partials/settings-page/metadata.php:533
+#: admin/partials/settings-page/metadata.php:541
 msgid "Sent after a subscription renews."
 msgstr "Verzonden nadat een abonnement is vernieuwd."
 
-#: admin/partials/settings-page/metadata.php:537
+#: admin/partials/settings-page/metadata.php:545
 msgid "Sent when a subscription renewal payment fails."
 msgstr "Verzonden wanneer een betaling voor abonnementvernieuwing mislukt."
 
-#: admin/partials/settings-page/metadata.php:541
+#: admin/partials/settings-page/metadata.php:549
 msgid "Sent when a subscription is canceled."
 msgstr "Verzonden wanneer een abonnement is geannuleerd."
 
-#: admin/partials/settings-page/metadata.php:545
+#: admin/partials/settings-page/metadata.php:553
 msgid "Sent when a subscription is paused."
 msgstr "Verzonden wanneer een abonnement is gepauzeerd."
 
-#: admin/partials/settings-page/metadata.php:557
+#: admin/partials/settings-page/metadata.php:565
 #: admin/partials/settings-page/sections/email-notifications.php:40
 msgid "Configure this automated email notification."
 msgstr "Configureer deze automatische e-mailmelding."
 
 #: admin/partials/settings-page/render-helpers.php:8
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
+#: admin/partials/settings-page/sections/email-notifications.php:44
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:133
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
@@ -3812,7 +3867,7 @@ msgid "Reset to default"
 msgstr "Reset naar standaard"
 
 #: admin/partials/settings-page/sections/email-notifications.php:117
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
 msgid "Preview"
 msgstr "Voorbeeld"
 
@@ -3933,11 +3988,12 @@ msgstr "Leer meer over %s"
 msgid "Configuration"
 msgstr "Configuratie"
 
-#: admin/partials/settings-page/tabs/savebar.php:7
+#: admin/partials/settings-page/tabs/savebar.php:8
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
 msgid "You have unsaved changes"
 msgstr "Je hebt niet-opgeslagen wijzigingen"
 
-#: admin/partials/settings-page/tabs/savebar.php:9
+#: admin/partials/settings-page/tabs/savebar.php:10
 msgid "Discard"
 msgstr "Verwerpen"
 
@@ -3953,56 +4009,56 @@ msgstr "Zoekinstellingen"
 msgid "Search settings..."
 msgstr "Zoekinstellingen..."
 
-#: admin/reports/templates/admin-reports-page.php:48
+#: admin/reports/templates/admin-reports-page.php:46
 #. translators: %s: report period label.
 #, php-format
 msgid "Performance summary for %s"
 msgstr "Prestatieoverzicht voor %s"
 
-#: admin/reports/templates/admin-reports-page.php:82
+#: admin/reports/templates/admin-reports-page.php:80
 msgid "Date range"
 msgstr "Datumbereik"
 
-#: admin/reports/templates/admin-reports-page.php:83
-msgid "Select date range"
-msgstr "Selecteer datumbereik"
+#: admin/reports/templates/admin-reports-page.php:81
+msgid "All Time"
+msgstr "Alle Tijd"
 
-#: admin/reports/templates/admin-reports-page.php:86
+#: admin/reports/templates/admin-reports-page.php:84
 msgid "Search customers by name or email"
 msgstr "Zoek klanten op naam of e-mail"
 
-#: admin/reports/templates/admin-reports-page.php:93
+#: admin/reports/templates/admin-reports-page.php:91
 msgid "Search by name or email"
 msgstr "Zoek op naam of e-mail"
 
-#: admin/reports/templates/admin-reports-page.php:103
+#: admin/reports/templates/admin-reports-page.php:104
 msgid "Search products"
 msgstr "Zoek producten"
 
-#: admin/reports/templates/admin-reports-page.php:110
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
+#: admin/reports/templates/admin-reports-page.php:111
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
 msgid "All products"
 msgstr "Alle producten"
 
-#: admin/reports/templates/admin-reports-page.php:115
+#: admin/reports/templates/admin-reports-page.php:118
 msgid "Filters by the order or subscription's primary product"
 msgstr "Filters op het primaire product van de bestelling of abonnement"
 
-#: admin/reports/templates/admin-reports-page.php:120
+#: admin/reports/templates/admin-reports-page.php:124
 #: admin/reports/templates/customer-report/page.php:83
 msgid "Apply"
 msgstr "Toepassen"
 
-#: admin/reports/templates/admin-reports-page.php:121
+#: admin/reports/templates/admin-reports-page.php:125
 msgid "Clear filters"
 msgstr "Filters wissen"
 
-#: admin/reports/templates/admin-reports-page.php:122
-#: admin/reports/templates/customer-reports-page.php:85
+#: admin/reports/templates/admin-reports-page.php:126
+#: admin/reports/templates/customer-reports-page.php:97
 msgid "Export Orders"
 msgstr "Exporteer Orders"
 
-#: admin/reports/templates/admin-reports-page.php:126
+#: admin/reports/templates/admin-reports-page.php:130
 msgid ""
 "The product filter matches the primary product on each order or "
 "subscription, not bump or upsell line items."
@@ -4010,152 +4066,152 @@ msgstr ""
 "De productfilter komt overeen met het primaire product op elke bestelling "
 "of abonnement, niet bump of upsell regelitems."
 
-#: admin/reports/templates/admin-reports-page.php:366
+#: admin/reports/templates/admin-reports-page.php:370
 #. translators: %s: canceled subscription count.
 #, php-format
 msgid "%s cancellations in local records"
 msgstr "%s annuleringen in lokale records"
 
-#: admin/reports/templates/admin-reports-page.php:371
+#: admin/reports/templates/admin-reports-page.php:375
 #. translators: 1: canceled subscription count, 2: active subscriptions at period start.
 #, php-format
 msgid "%1$s cancellations; %2$s active at period start"
 msgstr "%1$s annuleringen; %2$s actief aan het begin van de periode"
 
-#: admin/reports/templates/admin-reports-page.php:377
+#: admin/reports/templates/admin-reports-page.php:381
 msgid "Report overview"
 msgstr "Rapportoverzicht"
 
-#: admin/reports/templates/admin-reports-page.php:380
+#: admin/reports/templates/admin-reports-page.php:384
 #: admin/reports/templates/customer-report/page.php:89
 msgid "Net Revenue"
 msgstr "Netto Omzet"
 
-#: admin/reports/templates/admin-reports-page.php:384
+#: admin/reports/templates/admin-reports-page.php:388
 #. translators: %s: gross revenue.
 #, php-format
 msgid "Gross %s before refunds"
 msgstr "Bruto %s voor terugbetalingen"
 
-#: admin/reports/templates/admin-reports-page.php:390
+#: admin/reports/templates/admin-reports-page.php:394
 msgid "Customer Lifetime Value"
 msgstr "Klantenlevenswaarde"
 
-#: admin/reports/templates/admin-reports-page.php:395
+#: admin/reports/templates/admin-reports-page.php:399
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s matching customers"
 msgstr "Gemiddelde over %s overeenkomende klanten aller tijden"
 
-#: admin/reports/templates/admin-reports-page.php:400
+#: admin/reports/templates/admin-reports-page.php:404
 #. translators: %s: customer count.
 #, php-format
 msgid "All-time average across %s customers"
 msgstr "Gemiddelde over %s klanten"
 
-#: admin/reports/templates/admin-reports-page.php:409
+#: admin/reports/templates/admin-reports-page.php:413
 #. translators: %s: recurring subscription count.
 #, php-format
 msgid "%s active recurring subscriptions"
 msgstr "%s actieve terugkerende abonnementen"
 
-#: admin/reports/templates/admin-reports-page.php:414
+#: admin/reports/templates/admin-reports-page.php:418
 msgid "Churn Rate"
 msgstr "Churnpercentage"
 
-#: admin/reports/templates/admin-reports-page.php:419
-#: admin/reports/templates/admin-reports-page.php:528
+#: admin/reports/templates/admin-reports-page.php:423
+#: admin/reports/templates/admin-reports-page.php:532
 msgid "Transactions"
 msgstr "Transacties"
 
-#: admin/reports/templates/admin-reports-page.php:424
+#: admin/reports/templates/admin-reports-page.php:428
 #. translators: 1: new order count, 2: renewal order count.
 #, php-format
 msgid "%1$s new, %2$s renewals"
 msgstr "%1$s nieuw, %2$s verlengingen"
 
-#: admin/reports/templates/admin-reports-page.php:428
+#: admin/reports/templates/admin-reports-page.php:432
 msgid "Paid orders and post-purchase offers"
 msgstr "Betaalde bestellingen en aanbiedingen na aankoop"
 
-#: admin/reports/templates/admin-reports-page.php:431
+#: admin/reports/templates/admin-reports-page.php:435
 msgid "Avg Order Value"
 msgstr "Gemiddelde Bestelwaarde"
 
-#: admin/reports/templates/admin-reports-page.php:433
+#: admin/reports/templates/admin-reports-page.php:437
 msgid "Based on paid transactions"
 msgstr "Gebaseerd op betaalde transacties"
 
-#: admin/reports/templates/admin-reports-page.php:441
+#: admin/reports/templates/admin-reports-page.php:445
 msgid "Revenue Trend"
 msgstr "Omzettrend"
 
-#: admin/reports/templates/admin-reports-page.php:449
+#: admin/reports/templates/admin-reports-page.php:453
 msgid "Subscription Health"
 msgstr "Abonnementsgezondheid"
 
-#: admin/reports/templates/admin-reports-page.php:450
+#: admin/reports/templates/admin-reports-page.php:454
 msgid "Local subscription records"
 msgstr "Lokale abonnementsrecords"
 
-#: admin/reports/templates/admin-reports-page.php:458
-#: admin/reports/templates/admin-reports-page.php:620
+#: admin/reports/templates/admin-reports-page.php:462
+#: admin/reports/templates/admin-reports-page.php:624
 msgid "New"
 msgstr "Nieuw"
 
-#: admin/reports/templates/admin-reports-page.php:472
+#: admin/reports/templates/admin-reports-page.php:476
 msgid "Top Products by Revenue"
 msgstr "Topproducten op basis van omzet"
 
-#: admin/reports/templates/admin-reports-page.php:473
+#: admin/reports/templates/admin-reports-page.php:477
 msgid "Paid order amount"
 msgstr "Betaalde bestelbedrag"
 
-#: admin/reports/templates/admin-reports-page.php:475
+#: admin/reports/templates/admin-reports-page.php:479
 msgid "No paid product revenue found for this period."
 msgstr "Geen betaalde productomzet gevonden voor deze periode."
 
-#: admin/reports/templates/admin-reports-page.php:480
+#: admin/reports/templates/admin-reports-page.php:484
 msgid "Payment Method Mix"
 msgstr "Betalingsmethodemix"
 
-#: admin/reports/templates/admin-reports-page.php:481
+#: admin/reports/templates/admin-reports-page.php:485
 msgid "Transactions by gateway"
 msgstr "Transacties per gateway"
 
-#: admin/reports/templates/admin-reports-page.php:483
+#: admin/reports/templates/admin-reports-page.php:487
 msgid "No payment method data found for this period."
 msgstr "Geen gegevens over betalingsmethoden gevonden voor deze periode."
 
-#: admin/reports/templates/admin-reports-page.php:487
+#: admin/reports/templates/admin-reports-page.php:491
 msgid "Detailed order breakdown"
 msgstr "Gedetailleerde besteloverzicht"
 
-#: admin/reports/templates/admin-reports-page.php:500
+#: admin/reports/templates/admin-reports-page.php:504
 msgid "Net Sales"
 msgstr "Nettoverkoop"
 
-#: admin/reports/templates/admin-reports-page.php:507
+#: admin/reports/templates/admin-reports-page.php:511
 msgid "Total Refunds"
 msgstr "Totaal terugbetalingen"
 
-#: admin/reports/templates/admin-reports-page.php:514
+#: admin/reports/templates/admin-reports-page.php:518
 msgid "Amount Refunded"
 msgstr "Bedrag terugbetaald"
 
-#: admin/reports/templates/admin-reports-page.php:521
+#: admin/reports/templates/admin-reports-page.php:525
 msgid "Avg Revenue per Customer"
 msgstr "Gemiddelde omzet per klant"
 
-#: admin/reports/templates/admin-reports-page.php:554
+#: admin/reports/templates/admin-reports-page.php:558
 msgid "Sales by Product"
 msgstr "Verkoop per product"
 
-#: admin/reports/templates/admin-reports-page.php:558
+#: admin/reports/templates/admin-reports-page.php:562
 msgid "No product sales in this period"
 msgstr "Geen productverkopen in deze periode"
 
-#: admin/reports/templates/admin-reports-page.php:559
+#: admin/reports/templates/admin-reports-page.php:563
 msgid ""
 "Completed paid orders will appear here once customers buy a product in the "
 "selected date range."
@@ -4163,15 +4219,15 @@ msgstr ""
 "Voltooide betaalde bestellingen verschijnen hier zodra klanten een product "
 "kopen in de geselecteerde datumbereik."
 
-#: admin/reports/templates/admin-reports-page.php:570
+#: admin/reports/templates/admin-reports-page.php:574
 msgid "Refunds by Product"
 msgstr "Terugbetalingen per product"
 
-#: admin/reports/templates/admin-reports-page.php:574
+#: admin/reports/templates/admin-reports-page.php:578
 msgid "No product refunds in this period"
 msgstr "Geen productterugbetalingen in deze periode"
 
-#: admin/reports/templates/admin-reports-page.php:575
+#: admin/reports/templates/admin-reports-page.php:579
 msgid ""
 "Refunded products will appear here when an order refund is recorded for the "
 "selected date range."
@@ -4179,15 +4235,15 @@ msgstr ""
 "Terugbetaalde producten verschijnen hier wanneer een terugbetaling van een "
 "bestelling is vastgelegd voor de geselecteerde datumbereik."
 
-#: admin/reports/templates/admin-reports-page.php:586
+#: admin/reports/templates/admin-reports-page.php:590
 msgid "Transactions by Payment Gateway"
 msgstr "Transacties per betalingsgateway"
 
-#: admin/reports/templates/admin-reports-page.php:590
+#: admin/reports/templates/admin-reports-page.php:594
 msgid "No gateway transactions in this period"
 msgstr "Geen gatewaytransacties in deze periode"
 
-#: admin/reports/templates/admin-reports-page.php:591
+#: admin/reports/templates/admin-reports-page.php:595
 msgid ""
 "Paid transactions will be grouped by gateway here after checkout activity "
 "is recorded."
@@ -4195,19 +4251,19 @@ msgstr ""
 "Betaalde transacties worden hier per gateway gegroepeerd nadat de "
 "checkout-activiteit is vastgelegd."
 
-#: admin/reports/templates/admin-reports-page.php:618
+#: admin/reports/templates/admin-reports-page.php:622
 msgid "Orders by Type"
 msgstr "Bestellingen op Type"
 
-#: admin/reports/templates/admin-reports-page.php:631
+#: admin/reports/templates/admin-reports-page.php:635
 msgid "Main Orders by Product"
 msgstr "Hoofdorders per product"
 
-#: admin/reports/templates/admin-reports-page.php:651
+#: admin/reports/templates/admin-reports-page.php:655
 msgid "No main orders in this period"
 msgstr "Geen hoofdorders in deze periode"
 
-#: admin/reports/templates/admin-reports-page.php:652
+#: admin/reports/templates/admin-reports-page.php:656
 msgid ""
 "Main product order counts will appear here once paid checkout orders are "
 "tracked."
@@ -4297,17 +4353,17 @@ msgid "Plan"
 msgstr "Plan"
 
 #: admin/reports/templates/customer-report/page.php:192
-#: public/partials/csv-export.php:232
+#: public/partials/csv-export.php:234
 msgid "Pay Interval"
 msgstr "Betalingsinterval"
 
 #: admin/reports/templates/customer-report/page.php:194
-#: public/partials/csv-export.php:234
+#: public/partials/csv-export.php:236
 msgid "Total Revenue"
 msgstr "Totale Inkomsten"
 
 #: admin/reports/templates/customer-report/page.php:195
-#: public/partials/csv-export.php:235
+#: public/partials/csv-export.php:237
 msgid "Remaining Payments"
 msgstr "Resterende Betalingen"
 
@@ -4371,34 +4427,35 @@ msgstr "Gekoopte producten"
 msgid "Subscription Revenue"
 msgstr "Abonnementsinkomsten"
 
-#: admin/reports/templates/customer-reports-page.php:85
+#: admin/reports/templates/customer-reports-page.php:25
+#: admin/reports/traits/templates/reports-date-get-report-period.php:17
+msgid "All time"
+msgstr "Alle tijd"
+
+#: admin/reports/templates/customer-reports-page.php:97
 msgid "Export Subscriptions"
 msgstr "Exporteer Abonnementen"
 
-#: admin/reports/templates/customer-reports-page.php:253, fuzzy
+#: admin/reports/templates/customer-reports-page.php:257, fuzzy
 msgid "Upsell"
 msgstr "Upsell"
 
-#: admin/reports/templates/customer-reports-page.php:256, fuzzy
+#: admin/reports/templates/customer-reports-page.php:260, fuzzy
 msgid "Downsell"
 msgstr "Downsell"
 
-#: admin/reports/templates/customer-reports-page.php:268
+#: admin/reports/templates/customer-reports-page.php:272
 #: includes/templates/post-types-create-custom-post-type.php:13
 msgid "Order"
 msgstr "Bestelling"
 
-#: admin/reports/templates/customer-reports-page.php:283
+#: admin/reports/templates/customer-reports-page.php:287
 msgid "Offer during checkout"
 msgstr "Aanbieding tijdens de kassa"
 
-#: admin/reports/templates/customer-reports-page.php:388
+#: admin/reports/templates/customer-reports-page.php:392
 msgid "Guest customer"
 msgstr "Gastklant"
-
-#: admin/reports/traits/templates/reports-date-get-report-period.php:17
-msgid "All time"
-msgstr "Alle tijd"
 
 #: admin/reports/traits/templates/reports-render-render-bar-rows.php:16
 msgid "No data for this period"
@@ -4417,12 +4474,77 @@ msgstr ""
 "afrekenactiviteit is geregistreerd voor het geselecteerde datumbereik."
 
 #: admin/reports/traits/templates/reports-render-render-revenue-chart.php:58
-msgid "Revenue trend chart"
-msgstr "Inkomsten trendgrafiek"
+msgid ""
+"Revenue trend chart. The revenue data table after the chart lists each "
+"period."
+msgstr "Omzettrend grafiek. De omzetdatatabel na de grafiek toont elke periode."
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:84
+msgid "Show data table"
+msgstr "Toon datatabel"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:86
+msgid "Revenue by period"
+msgstr "Omzet per periode"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:89
+msgid "Period"
+msgstr "Periode"
+
+#: admin/reports/traits/templates/reports-render-render-revenue-chart.php:90
+msgid "Revenue"
+msgstr "Omzet"
 
 #: admin/reports/traits/trait-ppcart-admin-reports-data.php:131
 msgid "Unknown product"
 msgstr "Onbekend product"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:147, fuzzy
+msgid "live"
+msgstr "live"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:147, fuzzy
+msgid "sandbox"
+msgstr "sandbox"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:154
+#. translators: 1: live or sandbox, 2: webhook URL.
+#, php-format
+msgid "PayPal webhook registered for %1$s mode at %2$s."
+msgstr "PayPal webhook geregistreerd voor %1$s modus op %2$s."
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:160
+#. translators: 1: live or sandbox, 2: PayPal error, 3: webhook URL, 4: event names.
+#, php-format
+msgid ""
+"PayPal refused the webhook for %1$s mode: %2$s. Add it yourself in your "
+"PayPal app (Developer Dashboard, your app, Webhooks) with the URL %3$s and "
+"these events: %4$s. Until then, the hourly check completes payments."
+msgstr ""
+"PayPal heeft de webhook geweigerd voor %1$s modus: %2$s. Voeg deze zelf toe "
+"in je PayPal-app (Developer Dashboard, je app, Webhooks) met de URL %3$s en "
+"deze evenementen: %4$s. Tot die tijd voltooit de uurlijkse controle "
+"betalingen."
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:169
+#. translators: %s: webhook URL.
+#, php-format
+msgid ""
+"The PayPal webhook is registered when you save with Client ID and Secret "
+"set. URL: %s"
+msgstr ""
+"De PayPal webhook is geregistreerd wanneer je opslaat met Client ID en "
+"Secret ingesteld. URL: %s"
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:190
+msgid "PayPal could not be reached."
+msgstr "PayPal kon niet worden bereikt."
+
+#: admin/settings/class-ppcart-admin-paypal-webhook.php:192
+#. translators: %d: HTTP status code.
+#, fuzzy, php-format
+msgid "HTTP %d"
+msgstr "HTTP %d"
 
 #: admin/settings/templates/stripe-webhook-settings-get-manual-setup-html.php:28
 #. translators: %s: the Stripe permission name, wrapped in strong tags.
@@ -4503,7 +4625,7 @@ msgstr ""
 "Dit account laat ons de eindpunt niet opnieuw controleren, dus er wordt "
 "geen live status weergegeven."
 
-#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:112
+#: admin/settings/templates/stripe-webhook-settings-get-webhook-state.php:115
 #. translators: %s: error message from Stripe.
 #, php-format
 msgid "Webhook check failed: %s"
@@ -4659,7 +4781,7 @@ msgid "Privacy Policy URL"
 msgstr "URL voor Privacybeleid"
 
 #: admin/settings/traits/options/core-settings.php:114
-#: public/templates/functions/plan-coupon-fields.php:545
+#: public/templates/functions/plan-coupon-fields.php:576
 msgid "Company Name"
 msgstr "Bedrijfsnaam"
 
@@ -4749,80 +4871,80 @@ msgstr "Voettekst"
 msgid "Test email"
 msgstr "Test e-mail"
 
-#: admin/settings/traits/options/core-settings.php:238
+#: admin/settings/traits/options/core-settings.php:240
 msgid "Order Received"
 msgstr "Bestelling Ontvangen"
 
-#: admin/settings/traits/options/core-settings.php:239
+#: admin/settings/traits/options/core-settings.php:241
 msgid "New User Welcome"
 msgstr "Welkom Nieuwe Gebruiker"
 
-#: admin/settings/traits/options/core-settings.php:240
+#: admin/settings/traits/options/core-settings.php:242
 msgid "Purchase Confirmation"
 msgstr "Bevestiging Aankoop"
 
-#: admin/settings/traits/options/core-settings.php:241
+#: admin/settings/traits/options/core-settings.php:243
 msgid "Order Refunded"
 msgstr "Bestelling Terugbetaald"
 
-#: admin/settings/traits/options/core-settings.php:242
+#: admin/settings/traits/options/core-settings.php:244
 msgid "Trial Ending Reminder"
 msgstr "Herinnering Proefperiode Eindigt"
 
-#: admin/settings/traits/options/core-settings.php:243
+#: admin/settings/traits/options/core-settings.php:245
 msgid "Upcoming Renewal Reminder"
 msgstr "Herinnering Aanstaande Vernieuwing"
 
-#: admin/settings/traits/options/core-settings.php:244
+#: admin/settings/traits/options/core-settings.php:246
 msgid "Subscription Renewal Confirmation"
 msgstr "Bevestiging Vernieuwing Abonnement"
 
-#: admin/settings/traits/options/core-settings.php:245
+#: admin/settings/traits/options/core-settings.php:247
 msgid "Failed Renewal Payment"
 msgstr "Mislukte Vernieuwingsbetaling"
 
-#: admin/settings/traits/options/core-settings.php:246
+#: admin/settings/traits/options/core-settings.php:248
 msgid "Subscription Canceled Confirmation"
 msgstr "Bevestiging Abonnement Geannuleerd"
 
-#: admin/settings/traits/options/core-settings.php:247
+#: admin/settings/traits/options/core-settings.php:249
 msgid "Subscription Paused Confirmation"
 msgstr "Bevestiging Abonnement Paus"
 
-#: admin/settings/traits/options/core-settings.php:249
+#: admin/settings/traits/options/core-settings.php:251
 msgid "Preview Email"
 msgstr "E-mail Voorbeeld"
 
-#: admin/settings/traits/options/core-settings.php:250
+#: admin/settings/traits/options/core-settings.php:252
 msgid "Send Test"
 msgstr "Verzend Test"
 
-#: admin/settings/traits/options/core-settings.php:252
+#: admin/settings/traits/options/core-settings.php:254
 msgid "Preview and test emails use sample order data for personalization tags."
 msgstr ""
 "Voorbeelden van e-mails gebruiken voorbeeld bestelgegevens voor "
 "personalisatietags."
 
-#: admin/settings/traits/options/core-settings.php:283
-#: admin/settings/traits/options/core-settings.php:341
-#: admin/settings/traits/options/core-settings.php:408
-#: admin/settings/traits/options/core-settings.php:451
-#: admin/settings/traits/options/core-settings.php:494
-#: admin/settings/traits/options/core-settings.php:537
-#: admin/settings/traits/options/core-settings.php:580
+#: admin/settings/traits/options/core-settings.php:285
+#: admin/settings/traits/options/core-settings.php:343
+#: admin/settings/traits/options/core-settings.php:410
+#: admin/settings/traits/options/core-settings.php:453
+#: admin/settings/traits/options/core-settings.php:496
+#: admin/settings/traits/options/core-settings.php:539
+#: admin/settings/traits/options/core-settings.php:582
 msgid "Send to admin?"
 msgstr "Naar admin verzenden?"
 
-#: admin/settings/traits/options/core-settings.php:304
-#: admin/settings/traits/options/core-settings.php:362
+#: admin/settings/traits/options/core-settings.php:306
+#: admin/settings/traits/options/core-settings.php:364
 msgid "Body Text"
 msgstr "Lichaamstekst"
 
-#: admin/settings/traits/options/core-settings.php:388
+#: admin/settings/traits/options/core-settings.php:390
 msgid "Use WordPress Default Notification"
 msgstr "Gebruik WordPress Standaardmelding"
 
-#: admin/settings/traits/options/core-settings.php:392
+#: admin/settings/traits/options/core-settings.php:394
 msgid ""
 "If enabled, WordPress default new user notification will be used instead of "
 "custom email template."
@@ -4830,21 +4952,21 @@ msgstr ""
 "Indien ingeschakeld, wordt de standaardmelding voor nieuwe gebruikers van "
 "WordPress gebruikt in plaats van de aangepaste e-mailsjabloon."
 
-#: admin/settings/traits/options/core-settings.php:418
-#: admin/settings/traits/options/core-settings.php:461
-#: admin/settings/traits/options/core-settings.php:504
-#: admin/settings/traits/options/core-settings.php:547
+#: admin/settings/traits/options/core-settings.php:420
+#: admin/settings/traits/options/core-settings.php:463
+#: admin/settings/traits/options/core-settings.php:506
+#: admin/settings/traits/options/core-settings.php:549
 msgid "Body"
 msgstr "Lichaam"
 
-#: admin/settings/traits/options/core-settings.php:431
-#: admin/settings/traits/options/core-settings.php:474
-#: admin/settings/traits/options/core-settings.php:517
-#: admin/settings/traits/options/core-settings.php:560
+#: admin/settings/traits/options/core-settings.php:433
+#: admin/settings/traits/options/core-settings.php:476
+#: admin/settings/traits/options/core-settings.php:519
+#: admin/settings/traits/options/core-settings.php:562
 msgid "Enable/Disable"
 msgstr "Inschakelen/Uitschakelen"
 
-#: admin/settings/traits/options/core-settings.php:590
+#: admin/settings/traits/options/core-settings.php:592
 msgid "Subscription Canceled"
 msgstr "Abonnement Geannuleerd"
 
@@ -4918,6 +5040,7 @@ msgid "Connection Status"
 msgstr "Verbindingstatus"
 
 #: admin/settings/traits/options/payment-fields.php:61
+#: admin/settings/traits/options/payment-fields.php:172
 msgid "Checkout experience"
 msgstr "Checkout ervaring"
 
@@ -4973,35 +5096,53 @@ msgstr ""
 "Verifieert PayPal TLS-certificaten en hostname overeenkomsten voor "
 "server-side PayPal API-aanvragen."
 
-#: admin/settings/traits/options/payment-fields.php:172
+#: admin/settings/traits/options/payment-fields.php:177
+msgid "Redirect to PayPal"
+msgstr "Omleiden naar PayPal"
+
+#: admin/settings/traits/options/payment-fields.php:178
+msgid "On this page (PayPal popup)"
+msgstr "Op deze pagina (PayPal-popup)"
+
+#: admin/settings/traits/options/payment-fields.php:180
+msgid ""
+"On-page checkout needs the PayPal Email, Client ID and Secret of the "
+"selected mode. Without the Client ID and Secret the checkout redirects to "
+"PayPal."
+msgstr ""
+"Afrekenen op de pagina vereist het PayPal-e-mailadres, Client ID en Secret "
+"van de geselecteerde modus. Zonder de Client ID en Secret wordt de "
+"afrekening omgeleid naar PayPal."
+
+#: admin/settings/traits/options/payment-fields.php:187
 msgid "PayPal Email"
 msgstr "PayPal E-mail"
 
-#: admin/settings/traits/options/payment-fields.php:182
+#: admin/settings/traits/options/payment-fields.php:197
 msgid "Client ID"
 msgstr "Client-ID"
 
-#: admin/settings/traits/options/payment-fields.php:192
+#: admin/settings/traits/options/payment-fields.php:207
 msgid "Secret"
 msgstr "Geheim"
 
-#: admin/settings/traits/options/payment-fields.php:202, fuzzy
+#: admin/settings/traits/options/payment-fields.php:217, fuzzy
 msgid "PDT Token"
 msgstr "PDT Token"
 
-#: admin/settings/traits/options/payment-fields.php:212
+#: admin/settings/traits/options/payment-fields.php:227
 msgid "Sandbox Email"
 msgstr "Sandbox E-mail"
 
-#: admin/settings/traits/options/payment-fields.php:222
+#: admin/settings/traits/options/payment-fields.php:237
 msgid "Sandbox Client ID"
 msgstr "Sandbox Client-ID"
 
-#: admin/settings/traits/options/payment-fields.php:232
+#: admin/settings/traits/options/payment-fields.php:247
 msgid "Sandbox Secret"
 msgstr "Sandbox Geheim"
 
-#: admin/settings/traits/options/payment-fields.php:242, fuzzy
+#: admin/settings/traits/options/payment-fields.php:257, fuzzy
 msgid "Sandbox PDT Token"
 msgstr "Sandbox PDT Token"
 
@@ -5080,7 +5221,7 @@ msgid "Stripe checkout is disabled. You can still connect now."
 msgstr "Stripe-afrekenen is uitgeschakeld. Je kunt nu nog steeds verbinden."
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:73
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:141
 msgid "2. Install the webhook"
 msgstr "2. Installeer de webhook"
 
@@ -5101,7 +5242,7 @@ msgid "Stripe is ready"
 msgstr "Stripe is gereed"
 
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:99
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:120
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
 msgid "Keys synced"
 msgstr "Sleutels gesynchroniseerd"
 
@@ -5111,23 +5252,37 @@ msgstr "Sleutels gesynchroniseerd"
 msgid "Webhook active with %d events"
 msgstr "Webhook actief met %d evenementen"
 
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:118
+msgid "Replace the webhook signing secret"
+msgstr "Vervang het webhook-handtekening geheim"
+
 #: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:119
+msgid ""
+"Stripe rejects events with \"Invalid Stripe webhook signature\" when this "
+"secret does not match your endpoint. Paste the current signing secret from "
+"the endpoint in your Stripe Dashboard."
+msgstr ""
+"Stripe wijst evenementen af met \"Ongeldige Stripe webhook-handtekening\" "
+"wanneer dit geheim niet overeenkomt met je endpoint. Plak het huidige "
+"handtekening geheim van het endpoint in je Stripe Dashboard."
+
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:130
 msgid "1. Stripe account connected"
 msgstr "1. Stripe-account verbonden"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:131
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:142
 msgid "Orders will not complete until this is done."
 msgstr "Bestellingen zullen niet worden voltooid totdat dit is gedaan."
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
 msgid "Needs attention"
 msgstr "Heeft aandacht nodig"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:134
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:145
 msgid "Not installed"
 msgstr "Niet geïnstalleerd"
 
-#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:149
+#: admin/settings/traits/templates/stripe-connect-render-get-stripe-connect-mode-status-html.php:160
 msgid "Fix the events"
 msgstr "Herstel de evenementen"
 
@@ -5300,7 +5455,7 @@ msgstr "DataLayer met GA4"
 msgid "DataLayer with Enhanced Ecommerce (UA)"
 msgstr "DataLayer met Verbeterde E-commerce (UA)"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:75
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:80
 #. translators: %1$s is the plugin name, %2$s is the star rating markup.
 #, php-format
 msgid "If you like %1$s, please leave us a %2$s rating. Thank you!"
@@ -5308,45 +5463,45 @@ msgstr ""
 "Als je %1$s leuk vindt, laat ons dan alsjeblieft een %2$s beoordeling "
 "achter. Bedankt!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:89
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:90
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:94
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
 msgid "About PublishPress Cart"
 msgstr "Over PublishPress Cart"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:95
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:96
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:100
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
 msgid "PublishPress Cart Documentation"
 msgstr "PublishPress Cart Documentatie"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:101
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:106
 msgid "Contact the PublishPress team"
 msgstr "Neem contact op met het PublishPress team"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:102
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:107
 msgid "Contact PublishPress"
 msgstr "Neem contact op met PublishPress"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:151
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:152
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:156
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:157
 #: includes/templates/post-types-create-custom-post-type.php:100
 #: includes/templates/post-types-create-custom-post-type.php:118
 msgid "Categories"
 msgstr "Categorieën"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:159
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:160
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:164
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:165
 #: includes/templates/post-types-create-custom-post-type.php:106
 #: includes/templates/post-types-create-custom-post-type.php:119, fuzzy
 msgid "Tags"
 msgstr "Tags"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:216
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:271
 #. translators: %s: plugin title.
 #, php-format
 msgid "Welcome to %s"
 msgstr "Welkom bij %s"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:217
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:272
 msgid ""
 "To get started, head over to the settings page to connect your Stripe "
 "account and select your currency. Once that's done, you'll be ready to "
@@ -5356,13 +5511,9 @@ msgstr ""
 "koppelen en je valuta te selecteren. Zodra dat is gedaan, ben je klaar om "
 "je eerste product te maken!"
 
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:221
+#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:276
 msgid "Get Started!"
 msgstr "Aan de slag!"
-
-#: admin/settings/traits/trait-ppcart-admin-settings-screen.php:253
-msgid "Sorry, you are not allowed to access this page."
-msgstr "Sorry, je hebt geen toegang tot deze pagina."
 
 #: admin/settings/traits/trait-ppcart-admin-settings-sections.php:62
 msgid "Tax Options"
@@ -5493,36 +5644,40 @@ msgid "Copy failed"
 msgstr "Kopiëren mislukt"
 
 #: admin/traits/templates/admin-assets-enqueue-scripts.php:54
+msgid "Copy plan ID"
+msgstr "Kopieer plan-ID"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:55
 msgid "Required fields missing:"
 msgstr "Vereiste velden ontbreken:"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:58
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
 msgid "Configuration error: Missing AJAX settings. Please refresh the page."
 msgstr ""
 "Configuratiefout: Ontbrekende AJAX-instellingen. Vernieuw de pagina "
 "alstublieft."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:59
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
 msgid "Subscription ID is missing."
 msgstr "Abonnements-ID ontbreekt."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:60
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
 msgid "Sync subscription with Stripe?"
 msgstr "Abonnement synchroniseren met Stripe?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:61
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:62
 msgid "Wait..."
 msgstr "Even wachten..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:63
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
 msgid "Error: Please try again."
 msgstr "Fout: Probeer het opnieuw."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:64
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
 msgid "Migration required"
 msgstr "Migratie vereist"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:65
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:66
 msgid ""
 "You have 1 stored credential in plaintext. After enabling encryption, run "
 "migration from Settings → Maintenance to encrypt it."
@@ -5531,7 +5686,7 @@ msgstr ""
 "hebt ingeschakeld, voer je migratie uit vanuit Instellingen → Onderhoud om "
 "deze te versleutelen."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:67
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
 #. translators: %d: number of stored credentials.
 #, php-format
 msgid ""
@@ -5542,71 +5697,89 @@ msgstr ""
 "hebt ingeschakeld, voer je migratie uit vanuit Instellingen → Onderhoud om "
 "deze te versleutelen."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:68
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
 msgid "Encryption updated"
 msgstr "Versleuteling bijgewerkt"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:69
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:70
 #: public/controllers/page/traits/templates/page-routing-ppcart-hosted-checkout-return.php:203
 msgid "Continue"
 msgstr "Doorgaan"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:71
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
 #: admin/traits/trait-ppcart-admin-integrations.php:149, fuzzy
 msgid "OK"
 msgstr "OK"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:72
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:73
 #: includes/secrets/traits/trait-ppcart-secrets-ajax.php:41
 msgid "Unable to update security encryption setting."
 msgstr "Kan de beveiligingsversleutelingsinstelling niet bijwerken."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:98
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
 msgid "No matching customers"
 msgstr "Geen overeenkomende klanten"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:99
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:100
 msgid "No matching products"
 msgstr "Geen overeenkomende producten"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:101
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:102
 msgid "Searching…"
 msgstr "Zoeken…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:117
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:103
+msgid "1 result available."
+msgstr "1 resultaat beschikbaar."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:105
+#. translators: %d: number of search results.
+#, php-format
+msgid "%d results available."
+msgstr "%d resultaten beschikbaar."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:106
+msgid "Use the up and down arrow keys to choose one."
+msgstr "Gebruik de pijltjestoetsen omhoog en omlaag om er een te kiezen."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
 msgid "No matching settings"
 msgstr "Geen overeenkomende instellingen"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:118
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
 msgid "Try a different keyword or clear the search to see all settings."
 msgstr ""
 "Probeer een ander zoekwoord of maak de zoekopdracht leeg om alle "
 "instellingen te zien."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:119
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:124
 msgid "Discard your unsaved changes?"
 msgstr "Je niet-opgeslagen wijzigingen weggooien?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:120
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:126
+msgid "Saving changes…"
+msgstr "Wijzigingen opslaan…"
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:127
 msgid "Reset this email template to the built-in default?"
 msgstr "Dit e-mailsjabloon resetten naar de standaardinstellingen?"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:122
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:129
 msgid "Generating preview..."
 msgstr "Voorbeeld aan het genereren..."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:123
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:166
 msgid "Email preview could not be generated. Please refresh the page and try again."
 msgstr ""
 "E-mailvoorbeeld kon niet worden gegenereerd. Vernieuw de pagina en probeer "
 "het opnieuw."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:125
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:132
 msgid "Close Preview"
 msgstr "Sluit voorbeeld"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:128
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:131
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:135
 #: includes/secrets/traits/templates/secrets-render-render-maintenance-secret-storage-html.php:142
@@ -5614,7 +5787,7 @@ msgstr "Sluit voorbeeld"
 msgid "Encrypt stored credentials"
 msgstr "Versleutel opgeslagen inloggegevens"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:130
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:137
 #. translators: %d: number of plaintext credentials.
 #, php-format
 msgid ""
@@ -5624,7 +5797,7 @@ msgstr ""
 "%d inloggegeven(s) in platte tekst in de database versleutelen? Maak eerst "
 "een back-up en voer dit uit tijdens een onderhoudsvenster."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:131
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:138
 msgid ""
 "Scan stored credentials and encrypt any plaintext values? Take a backup "
 "first and run this during a maintenance window."
@@ -5633,33 +5806,51 @@ msgstr ""
 "versleutelen? Maak eerst een back-up en voer dit uit tijdens een "
 "onderhoudsvenster."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:142
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:149
 msgid "Uploading file…"
 msgstr "Bestand wordt geüpload…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:143
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
 msgid "File uploaded successfully."
 msgstr "Bestand succesvol geüpload."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:144
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:151
 msgid "Upload failed. Please try again."
 msgstr "Uploaden mislukt. Probeer het opnieuw."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:150
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:157
+#. translators: 1: item title, 2: new position, 3: number of items.
+#, php-format
+msgid "%1$s moved to position %2$d of %3$d."
+msgstr "%1$s verplaatst naar positie %2$d van %3$d."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:158
+msgid "This item is already first."
+msgstr "Dit item is al eerste."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:159
+msgid "This item is already last."
+msgstr "Dit item is al laatste."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:160
+msgid "Item removed."
+msgstr "Item verwijderd."
+
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:165
 msgid "Generating preview…"
 msgstr "Voorbeeld genereren…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:152
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:167
 msgid "Sending test email…"
 msgstr "Test-e-mail verzenden…"
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:154
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:169
 msgid "Test email failed to send. Please refresh the page and try again."
 msgstr ""
 "Test-e-mail kon niet worden verzonden. Vernieuw de pagina en probeer het "
 "opnieuw."
 
-#: admin/traits/templates/admin-assets-enqueue-scripts.php:155
+#: admin/traits/templates/admin-assets-enqueue-scripts.php:170
 msgid "Enter an email address to send the test to."
 msgstr "Voer een e-mailadres in om de test naartoe te sturen."
 
@@ -5684,6 +5875,7 @@ msgid "First page"
 msgstr "Eerste pagina"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:153
+#: public/templates/archive/navigation.php:23
 msgid "Previous page"
 msgstr "Vorige pagina"
 
@@ -5692,6 +5884,7 @@ msgid "Current page"
 msgstr "Huidige pagina"
 
 #: admin/traits/templates/admin-assets-tax-rate-templates.php:170
+#: public/templates/archive/navigation.php:24
 msgid "Next page"
 msgstr "Volgende pagina"
 
@@ -6102,81 +6295,87 @@ msgid "Product duplicated. New product ID: %d."
 msgstr "Product gedupliceerd. Nieuwe product-ID: %d."
 
 #: admin/traits/trait-ppcart-admin-profile.php:23
-#: public/templates/functions/payment-address.php:317
+#: public/templates/functions/payment-address.php:321
 msgid "Address Line 2"
 msgstr "Adresregel 2"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:25
+#. translators: %s: plugin title.
+#, php-format
+msgid "Your %s Summary Report"
+msgstr "Uw %s Samenvattingsrapport"
+
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "Ending Trials"
 msgstr "Beëindigen Proefversies"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "End date"
 msgstr "Einddatum"
 
-#: includes/scheduled-reports/report-email-template.php:56
+#: includes/scheduled-reports/report-email-template.php:58
 msgid "Recurring amount"
 msgstr "Terugkerend bedrag"
 
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
 msgid "Subscription Renewals"
 msgstr "Abonnementsverlengingen"
 
-#: includes/scheduled-reports/report-email-template.php:57
+#: includes/scheduled-reports/report-email-template.php:59
 msgid "Next bill date"
 msgstr "Volgende factuurdatum"
 
-#: includes/scheduled-reports/report-email-template.php:94
+#: includes/scheduled-reports/report-email-template.php:96
 msgid "Here is your summary for"
 msgstr "Hier is uw samenvatting voor"
 
-#: includes/scheduled-reports/report-email-template.php:96
+#: includes/scheduled-reports/report-email-template.php:98
 msgid "for the week of"
 msgstr "voor de week van"
 
-#: includes/scheduled-reports/report-email-template.php:98
 #: includes/scheduled-reports/report-email-template.php:100
+#: includes/scheduled-reports/report-email-template.php:102
 msgid "for"
 msgstr "voor"
 
-#: includes/scheduled-reports/report-email-template.php:110
+#: includes/scheduled-reports/report-email-template.php:112
 msgid "Gross revenue"
 msgstr "Bruto-inkomsten"
 
-#: includes/scheduled-reports/report-email-template.php:112
+#: includes/scheduled-reports/report-email-template.php:114
 msgid "Net revenue"
 msgstr "Netto-inkomsten"
 
-#: includes/scheduled-reports/report-email-template.php:113
+#: includes/scheduled-reports/report-email-template.php:115
 msgid "Completed Orders"
 msgstr "Voltooide Bestellingen"
 
-#: includes/scheduled-reports/report-email-template.php:115
+#: includes/scheduled-reports/report-email-template.php:117
 msgid "Failed Orders"
 msgstr "Mislukte Bestellingen"
 
-#: includes/scheduled-reports/report-email-template.php:117
+#: includes/scheduled-reports/report-email-template.php:119
 msgid "Subscriptions Started"
 msgstr "Gestarte Abonnementen"
 
-#: includes/scheduled-reports/report-email-template.php:118
+#: includes/scheduled-reports/report-email-template.php:120
 msgid "Trials Started"
 msgstr "Gestarte Proefversies"
 
-#: includes/scheduled-reports/report-email-template.php:119
+#: includes/scheduled-reports/report-email-template.php:121
 msgid "Subscriptions Canceled"
 msgstr "Geannuleerde Abonnementen"
 
-#: includes/scheduled-reports/report-email-template.php:129
+#: includes/scheduled-reports/report-email-template.php:131
 msgid "Coming up for the week of"
 msgstr "Komend voor de week van"
 
-#: includes/scheduled-reports/report-email-template.php:131
 #: includes/scheduled-reports/report-email-template.php:133
+#: includes/scheduled-reports/report-email-template.php:135
 msgid "Coming up for"
 msgstr "Komend voor"
 
-#: includes/scheduled-reports/report-email-template.php:163
+#: includes/scheduled-reports/report-email-template.php:165
 msgid "Nothing found for this time period"
 msgstr "Niets gevonden voor deze periode"
 
@@ -6470,6 +6669,12 @@ msgstr "Ongeldige abonnement."
 msgid "Stripe subscription is not linked to a PublishPress Cart subscription."
 msgstr "Stripe-abonnement is niet gekoppeld aan een PublishPress Cart-abonnement."
 
+#: includes/stripe-sync/traits/trait-ppcart-stripe-sync-reconciliation.php:183
+msgid "Missing renewal orders imported from Stripe by the background sync"
+msgstr ""
+"Ontbrekende verlengingsbestellingen geïmporteerd van Stripe door de "
+"achtergrond synchronisatie"
+
 #: includes/stripe/class-ppcart-stripe-checkout-customer.php:416
 #: public/controllers/traits/templates/subscription-create-create-subscription.php:73
 msgid "This payment could not be verified. Please reload the page and try again."
@@ -6698,7 +6903,7 @@ msgstr "Wachtwoord vergeten?"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:31
 #: public/templates/functions/checkout-core.php:186
 #: public/templates/functions/checkout-core.php:193
-#: public/templates/functions/payment-address.php:199
+#: public/templates/functions/payment-address.php:200
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Due"
 msgstr "Te betalen bedrag"
@@ -6706,7 +6911,7 @@ msgstr "Te betalen bedrag"
 #: public/controllers/order/traits/templates/order-cart-ppcart-update-cart-amount.php:36
 #: public/templates/functions/checkout-core.php:183
 #: public/templates/functions/checkout-core.php:190
-#: public/templates/functions/payment-address.php:200
+#: public/templates/functions/payment-address.php:201
 msgid "Due Today"
 msgstr "Verschuldigd Vandaag"
 
@@ -6842,43 +7047,43 @@ msgid "My Account"
 msgstr "Mijn Account"
 
 #: public/partials/csv-export.php:20
-#: public/partials/csv-export.php:137
-#: public/templates/functions/plan-coupon-fields.php:534
+#: public/partials/csv-export.php:139
+#: public/templates/functions/plan-coupon-fields.php:565
 #: public/templates/my-account/tabs/user-profile.php:17
 msgid "First Name"
 msgstr "Voornaam"
 
-#: public/partials/csv-export.php:135, fuzzy
+#: public/partials/csv-export.php:137, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: public/partials/csv-export.php:141
+#: public/partials/csv-export.php:143
 msgid "Address 1"
 msgstr "Adres 1"
 
-#: public/partials/csv-export.php:147
+#: public/partials/csv-export.php:149
 #: public/templates/pdf-invoice/invoice.php:85
 msgid "Amount Paid"
 msgstr "Betaald bedrag"
 
-#: public/partials/csv-export.php:148
-#: public/partials/csv-export.php:230
+#: public/partials/csv-export.php:150
+#: public/partials/csv-export.php:232
 msgid "Product Name"
 msgstr "Productnaam"
 
-#: public/partials/csv-export.php:150
+#: public/partials/csv-export.php:152
 msgid "Offers during checkout"
 msgstr "Aanbiedingen tijdens het afrekenen"
 
-#: public/partials/csv-export.php:152, fuzzy
+#: public/partials/csv-export.php:154, fuzzy
 msgid "Coupon"
 msgstr "Coupon"
 
-#: public/partials/csv-export.php:153
+#: public/partials/csv-export.php:155
 msgid "Purchase URL"
 msgstr "Aankoop-URL"
 
-#: public/partials/csv-export.php:154
+#: public/partials/csv-export.php:156
 msgid "IP Address"
 msgstr "IP-adres"
 
@@ -6890,41 +7095,65 @@ msgstr "ontvangst"
 msgid "invoice"
 msgstr "factuur"
 
-#: public/partials/invoice-pdf.php:80
+#: public/partials/invoice-pdf.php:38
+#. translators: 1: document type (Invoice or Receipt), 2: invoice or receipt number.
+#, fuzzy, php-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: public/partials/invoice-pdf.php:95
 msgid "Unauthorized"
 msgstr "Niet gemachtigd"
 
-#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:16
+#: public/paypal/class-ppcart-paypal-onpage.php:182
+msgid ""
+"Your PayPal payment is being processed. You will receive a confirmation "
+"email when it completes."
+msgstr ""
+"Uw PayPal-betaling wordt verwerkt. U ontvangt een bevestigingsmail wanneer "
+"deze is voltooid."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:183
+msgid "We could not complete your PayPal payment. Please try again."
+msgstr ""
+"We konden uw PayPal-betaling niet voltooien. Probeer het alstublieft "
+"opnieuw."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:184
+msgid "PayPal checkout was cancelled."
+msgstr "PayPal-afrekenen is geannuleerd."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:185
+msgid "PayPal could not open on this page. Please click the button again."
+msgstr "PayPal kon deze pagina niet openen. Klik alstublieft de knop opnieuw."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:199
+#: public/paypal/class-ppcart-paypal-onpage.php:272
+#: public/paypal/class-ppcart-paypal-onpage.php:280
+#: public/paypal/class-ppcart-paypal-onpage.php:296
+#: public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php:14
 msgid "An error occurred, please refresh the page and try again."
 msgstr "Er is een fout opgetreden, ververs de pagina en probeer het opnieuw."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:246
+msgid "PayPal could not start this subscription. Please try again."
+msgstr "PayPal kon dit abonnement niet starten. Probeer het alstublieft opnieuw."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:256
+msgid "PayPal could not start this payment. Please try again."
+msgstr "PayPal kon deze betaling niet starten. Probeer het alstublieft opnieuw."
+
+#: public/paypal/class-ppcart-paypal-onpage.php:304
+msgid "PayPal did not complete this payment. Please try again."
+msgstr "PayPal heeft deze betaling niet voltooid. Probeer het alstublieft opnieuw."
 
 #: public/paypal/traits/trait-ppcart-paypal-settings.php:49
 msgid "Pay with PayPal"
 msgstr "Betalen met PayPal"
 
-#: public/templates/archive/navigation.php:22
-msgid ""
-"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
-"7-7\"></path></svg>"
-msgstr ""
-"<svg id=\"left\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 "
-"7-7\"></path></svg>"
-
-#: public/templates/archive/navigation.php:23
-msgid ""
-"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
-"7\"></path></svg>"
-msgstr ""
-"<svg id=\"right\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 "
-"24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" "
-"stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 "
-"7\"></path></svg>"
+#: public/paypal/traits/trait-ppcart-paypal-subscriptions.php:93
+msgid "PayPal did not complete the refund."
+msgstr "PayPal heeft de terugbetaling niet voltooid."
 
 #: public/templates/checkout1.php:218
 #: public/templates/checkout1.php:260
@@ -6973,11 +7202,11 @@ msgstr ""
 msgid "Credit Card"
 msgstr "Creditcard"
 
-#: public/templates/functions/payment-address.php:85
+#: public/templates/functions/payment-address.php:86
 msgid "Payment Info"
 msgstr "Betaalinformatie"
 
-#: public/templates/functions/payment-address.php:105
+#: public/templates/functions/payment-address.php:106
 msgid ""
 "Sorry, it seems that there are no payment methods available. Please contact "
 "us for assistance."
@@ -6985,37 +7214,47 @@ msgstr ""
 "Sorry, het lijkt erop dat er geen betaalmethoden beschikbaar zijn. Neem "
 "contact met ons op voor hulp."
 
-#: public/templates/functions/payment-address.php:147
+#: public/templates/functions/payment-address.php:148
 msgid "Enter VAT number"
 msgstr "Voer btw-nummer in"
 
-#: public/templates/functions/payment-address.php:234
-#: public/templates/functions/payment-address.php:238
+#: public/templates/functions/payment-address.php:235
+#: public/templates/functions/payment-address.php:239
 msgid "Credit or debit card"
 msgstr "Credit- of debitcard"
 
-#: public/templates/functions/payment-address.php:279
-#: public/templates/functions/payment-address.php:334
+#: public/templates/functions/payment-address.php:280
+#: public/templates/functions/payment-address.php:340
 msgid "State / County"
 msgstr "Staat / Provincie"
 
-#: public/templates/functions/payment-address.php:325
+#: public/templates/functions/payment-address.php:330
 msgid "Town / City"
 msgstr "Plaats / Stad"
 
-#: public/templates/functions/payment-address.php:343
+#: public/templates/functions/payment-address.php:350
 msgid "Postcode / Zip"
 msgstr "Postcode"
 
-#: public/templates/functions/plan-coupon-fields.php:509
+#: public/templates/functions/plan-coupon-fields.php:308
+#. translators: %s: payment plan name.
+#, php-format
+msgid "Your price for %s"
+msgstr "Uw prijs voor %s"
+
+#: public/templates/functions/plan-coupon-fields.php:534
+msgid "Use at least 8 characters, 1 lowercase letter, and 1 number"
+msgstr "Gebruik minimaal 8 tekens, 1 kleine letter en 1 cijfer"
+
+#: public/templates/functions/plan-coupon-fields.php:540
 msgid "Show password"
 msgstr "Toon wachtwoord"
 
-#: public/templates/functions/plan-coupon-fields.php:526
+#: public/templates/functions/plan-coupon-fields.php:557
 msgid "Contact Info"
 msgstr "Contactinformatie"
 
-#: public/templates/functions/plan-coupon-fields.php:540
+#: public/templates/functions/plan-coupon-fields.php:571
 msgid "Phone Number"
 msgstr "Telefoonnummer"
 
@@ -7287,7 +7526,7 @@ msgstr "Terugbetaald op %s"
 msgid "Notes / Terms"
 msgstr "Notities / Voorwaarden"
 
-#: admin/reports/templates/customer-reports-page.php:46
+#: admin/reports/templates/customer-reports-page.php:48
 #. translators: 1: start date, 2: end date.
 #, fuzzy, php-format
 msgctxt "date range"
