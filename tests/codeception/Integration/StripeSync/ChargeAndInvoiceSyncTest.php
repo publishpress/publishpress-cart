@@ -112,7 +112,10 @@ class ChargeAndInvoiceSyncTest extends StripeSyncTestCase
                 'subscription_id' => $subscriptionId,
             )
         );
-        $modifiedBefore = $this->getPostModified($orderId);
+        $invoiceDate = 1234567890;
+        (new PPCart_Order($orderId))->set_date_from_timestamp($invoiceDate);
+        $saveHook = 'save_post_' . get_post_type($orderId);
+        $savesBefore = did_action($saveHook);
 
         PPCart_Stripe_Sync::sync_invoice_resource(
             (object) array(
@@ -123,7 +126,7 @@ class ChargeAndInvoiceSyncTest extends StripeSyncTestCase
                 'currency' => 'usd',
                 'status' => 'paid',
                 'status_transitions' => (object) array(
-                    'finalized_at' => 1234567890,
+                    'paid_at' => $invoiceDate,
                 ),
                 'lines' => (object) array(
                     'data' => array(
@@ -141,10 +144,14 @@ class ChargeAndInvoiceSyncTest extends StripeSyncTestCase
                 ),
             ),
             new PPCart_Subscription($subscriptionId),
-            'invoice.payment_succeeded'
+            'invoice.payment_succeeded',
+            null,
+            'USD',
+            '',
+            $this->createStripeChargeClientStub((object) array('amount_refunded' => 0))
         );
 
-        $this->assertSame($modifiedBefore, $this->getPostModified($orderId));
+        $this->assertSame($savesBefore, did_action($saveHook));
     }
 
     public function test_IT_005_charge_sync_does_not_flip_a_fully_refunded_order_back_to_paid(): void
