@@ -44,9 +44,12 @@ trait PPCart_Stripe_Sync_Refunds_Trait
      * @param object|array $charge Stripe charge resource.
      * @param object|null  $event  Source webhook event.
      * @param object|null  $stripe Stripe client.
+     * @param bool         $force  Skip the site ownership check. Use it only when
+     *                             the charge was loaded from a local order's own
+     *                             payment ID.
      * @return PPCart_Order|false
      */
-    public static function sync_charge_status($charge, $event = null, $stripe = null)
+    public static function sync_charge_status($charge, $event = null, $stripe = null, $force = false)
     {
         $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-refunds-sync-charge-status.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;

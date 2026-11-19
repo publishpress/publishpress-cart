@@ -38,7 +38,9 @@ if (empty($charge)) {
     throw new Exception(esc_html__('Stripe charge could not be loaded for this order.', 'publishpress-cart'));
 }
 
-$synced = PPCart_Stripe_Sync::sync_charge_status($charge, null, $stripe);
+// The charge comes from this order's own payment ID, so it belongs here even
+// without Cart metadata (for example a payment imported from another plugin).
+$synced = PPCart_Stripe_Sync::sync_charge_status($charge, null, $stripe, true);
 if (! $synced) {
     throw new Exception(esc_html__('Stripe charge could not be matched to this local order.', 'publishpress-cart'));
 }
