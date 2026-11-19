@@ -247,17 +247,6 @@ trait PPCart_Admin_Settings_Screen_Trait
     public function page_options()
     {
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is only a route check; ppcart_check_admin_referer() validates before mutation.
-        if (isset($_REQUEST['ppcart_reset_log'])) {
-            if (function_exists('current_user_can') && ! current_user_can('manage_options')) {
-                wp_die(esc_html__('Sorry, you are not allowed to access this page.', 'publishpress-cart'));
-            }
-            ppcart_check_admin_referer('ppcart_reset_debug_log', 'ppcart_reset_debug_log_nonce');
-            global $ppcart_debug_logger;
-            $ppcart_debug_logger->reset_log_file();
-            echo '<div id="message" class="updated fade"><p>Debug log files have been reset!</p></div>';
-        }
-
         include((defined('PPCART_BASE_DIR') ? PPCART_BASE_DIR . 'admin/partials/' : dirname(__DIR__, 2) . '/partials/') . 'ppcart-admin-page-settings.php');
     }
 }
