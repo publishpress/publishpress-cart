@@ -1488,7 +1488,8 @@ body.post-type-ppcart_subscription .ppcart-status.pending,
 body.post-type-ppcart_subscription .ppcart-status.pending-payment,
 body.post-type-ppcart_subscription .ppcart-status.past_due,
 body.post-type-ppcart_subscription .ppcart-status.paused,
-body.post-type-ppcart_subscription .ppcart-status.trialing{
+body.post-type-ppcart_subscription .ppcart-status.trialing,
+body.post-type-ppcart_subscription .ppcart-status.pending-cancellation{
   background: var(--pp-co-warning-soft);
   border-color: rgba(185, 91, 0, .24);
   color: var(--pp-co-warning);
