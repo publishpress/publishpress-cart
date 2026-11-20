@@ -10,6 +10,7 @@ use PPCart_Admin_Order_List_Controller;
 use PPCart_Admin_Subscription_Controller;
 use PPCart_Order;
 use PPCart_Stripe_Sync;
+use PPCart_Subscription;
 use ReflectionClass;
 use Tests\Support\Integration\StripeSyncTestCase;
 
@@ -354,6 +355,108 @@ class OrderSyncTest extends StripeSyncTestCase
     {
         return (new ReflectionClass(PPCart_Admin_Order_List_Controller::class))
             ->newInstanceWithoutConstructor();
+    }
+
+    public function test_refund_event_on_a_renewal_charge_without_cart_metadata_updates_its_order(): void
+    {
+        // Newer Stripe API versions send no invoice field on a charge, and a
+        // renewal charge has no Cart metadata. Its order is matched by the charge.
+        $orderId = $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_renewal_partial',
+                'status' => 'paid',
+                'payment_status' => 'paid',
+            )
+        );
+
+        $result = PPCart_Stripe_Sync::sync_charge_refund(
+            $this->charge('ch_renewal_partial', 500),
+            $this->createStripeChargeClientStub($this->charge('ch_renewal_partial', 500))
+        );
+
+        $this->assertNotFalse($result);
+        $this->assertSame('paid', ppcart_get_post_meta($orderId, 'status', true));
+        $this->assertArrayHasKey('re_renewal_partial', ppcart_get_post_meta($orderId, 'refund_log', true));
+    }
+
+    public function test_refund_event_for_a_charge_with_no_local_order_is_skipped(): void
+    {
+        $charge = $this->charge('ch_not_from_this_site', 2000);
+
+        $this->assertFalse(
+            PPCart_Stripe_Sync::sync_charge_refund($charge, $this->createStripeChargeClientStub($charge))
+        );
+    }
+
+    public function test_refund_event_for_a_charge_from_another_site_is_skipped(): void
+    {
+        $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_other_origin',
+            )
+        );
+        $charge = $this->charge('ch_other_origin', 2000);
+        $charge->metadata = (object) array('origin' => 'https://other-site.example');
+
+        $this->assertFalse(
+            PPCart_Stripe_Sync::sync_charge_refund($charge, $this->createStripeChargeClientStub($charge))
+        );
+    }
+
+    public function test_subscription_invoice_sync_sets_a_partially_refunded_renewal_back_to_paid(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(
+            array(
+                'subscription_id' => 'sub_partial_renewal',
+            )
+        );
+        $orderId = $this->createStripeOrder(
+            array(
+                'transaction_id' => 'ch_partial_renewal',
+                'status' => 'refunded',
+                'payment_status' => 'refunded',
+                'subscription_id' => $subscriptionId,
+            )
+        );
+
+        $result = PPCart_Stripe_Sync::sync_invoice_resource(
+            (object) array(
+                'subscription' => 'sub_partial_renewal',
+                'charge' => 'ch_partial_renewal',
+                'payment_intent' => 'pi_partial_renewal',
+                'amount_paid' => 2000,
+                'currency' => 'usd',
+                'status' => 'paid',
+                'status_transitions' => (object) array(
+                    'paid_at' => 1234567890,
+                    'finalized_at' => 1234567890,
+                ),
+                'lines' => (object) array(
+                    'data' => array(
+                        (object) array(
+                            'subscription_item' => 'si_partial_renewal',
+                            'metadata' => (object) array(
+                                'ppcart_product_id' => 123,
+                            ),
+                            'period' => (object) array(
+                                'end' => 3333333333,
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            new PPCart_Subscription($subscriptionId),
+            'invoice.paid',
+            null,
+            'USD',
+            '',
+            $this->createStripeChargeClientStub($this->charge('ch_partial_renewal', 500))
+        );
+
+        $this->assertNotFalse($result);
+        $this->assertSame($orderId, (int) $result->id);
+        $this->assertSame('paid', ppcart_get_post_meta($orderId, 'status', true));
+        $this->assertArrayHasKey('re_partial_renewal', ppcart_get_post_meta($orderId, 'refund_log', true));
     }
 
     private function charge(string $chargeId, int $amountRefunded): object
