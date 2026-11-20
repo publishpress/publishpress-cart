@@ -497,6 +497,16 @@
 
     function bindIntegrations() {
         var $integrationCards = $page.find('[data-pp-integration-card]');
+
+        var categories = $integrationCards.map(function () {
+            return $(this).attr('data-pp-integration-category');
+        }).get();
+
+        $page.find('[data-pp-integration-filter]').each(function () {
+            var category = $(this).attr('data-pp-integration-filter');
+            this.hidden = category !== 'all' && categories.indexOf(category) === -1;
+        });
+
         if (!$integrationCards.length) {
             return;
         }
