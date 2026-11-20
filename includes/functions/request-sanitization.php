@@ -65,6 +65,33 @@ function ppcart_sanitize_request_price($value)
 }
 
 /**
+ * Sanitize a machine-formatted amount that the checkout script writes, such as the
+ * cart total returned by ppcart_update_cart_amount ("104.72").
+ *
+ * The store's thousand/decimal separators don't apply here: on a store that uses "."
+ * as its thousand separator, the price sanitizer reads "104.72" as a malformed
+ * thousands group and aborts the request. Values that aren't a plain number still go
+ * through the price sanitizer.
+ *
+ * @param mixed $value Raw request value.
+ * @return string|null Normalized amount, or null when the value is not scalar.
+ */
+function ppcart_sanitize_request_amount($value)
+{
+    $scalar = ppcart_request_scalar($value);
+    if (null === $scalar) {
+        return null;
+    }
+
+    $scalar = trim(sanitize_text_field($scalar));
+    if (preg_match('/^-?\d+(\.\d+)?$/', $scalar)) {
+        return $scalar;
+    }
+
+    return ppcart_sanitize_request_price($scalar);
+}
+
+/**
  * Sanitize one request value with the function appropriate to its type.
  *
  * @param mixed  $value Request value, already unslashed.
@@ -75,6 +102,10 @@ function ppcart_sanitize_request_value($value, $type)
 {
     if ('price' === $type) {
         return ppcart_sanitize_request_price($value);
+    }
+
+    if ('amount' === $type) {
+        return ppcart_sanitize_request_amount($value);
     }
 
     $value = ppcart_request_scalar($value);
@@ -287,7 +318,7 @@ function ppcart_checkout_request_schema($product = null)
         'ppcart_product_option'        => 'text',
         'ppcart_product_name'          => 'text',
         'ppcart_qty'                   => 'int',
-        'ppcart_amount'                => 'price',
+        'ppcart_amount'                => 'amount',
         'ppcart_page_id'               => 'int',
         'ppcart_page_url'              => 'url_raw',
         'ppcart_currency_code'         => 'text',
