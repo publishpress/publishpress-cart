@@ -8,6 +8,19 @@ if (! defined('ABSPATH')) {
 $ppcart_subscription = new PPCart_Subscription($post_id);
 $sub = $ppcart_subscription->get_data();
 
+// A subscription that is set to cancel shows when it ends instead of a next payment.
+$ppcart_pending_cancellation = ! empty($sub['cancel_date']) && ! in_array($sub['status'], [ 'canceled', 'completed' ], true);
+$ppcart_cancel_ends_on = '';
+if ($ppcart_pending_cancellation) {
+    if (is_numeric($sub['cancel_at'] ?? '') && (int) $sub['cancel_at'] > 0) {
+        $ppcart_cancel_ends_on = get_date_from_gmt(gmdate('Y-m-d H:i:s', (int) $sub['cancel_at']), 'M j, Y');
+    } elseif (! empty($sub['next_pay_date']) && 'n/a' !== $sub['next_pay_date']) {
+        $ppcart_cancel_ends_on = $sub['next_pay_date'];
+    } elseif (! empty($sub['end_date'])) {
+        $ppcart_cancel_ends_on = $sub['end_date'];
+    }
+}
+
 switch ($column) {
     case 'sub_id':
         echo '<a href="' . esc_url(get_edit_post_link($post_id)) . '">#' . esc_html($post_id) . '</a>';
@@ -17,6 +30,14 @@ switch ($column) {
         }
         break;
     case 'status':
+        if ($ppcart_pending_cancellation) {
+            $ppcart_cancel_label = $ppcart_cancel_ends_on
+                /* translators: %s: date the subscription ends. */
+                ? sprintf(__('Cancels %s', 'publishpress-cart'), $ppcart_cancel_ends_on)
+                : __('Cancellation Pending', 'publishpress-cart');
+            echo '<span class="ppcart-status pending-cancellation">' . esc_html($ppcart_cancel_label) . '</span>';
+            break;
+        }
         echo '<span class="ppcart-status ' . esc_attr($sub['status']) . '">' . esc_html($sub['status_label']) . '</span>';
         break;
     case 'name':
@@ -38,7 +59,7 @@ switch ($column) {
         echo esc_html($sub['start_date']);
         break;
     case 'next_payment':
-        echo ($sub['next_pay_date']) ? esc_html($sub['next_pay_date']) : '-';
+        echo ($sub['next_pay_date'] && ! $ppcart_pending_cancellation) ? esc_html($sub['next_pay_date']) : '-';
         break;
     case 'amount':
         echo wp_kses_post($sub['sub_payment']);
