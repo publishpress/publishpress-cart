@@ -450,7 +450,7 @@ body.post-type-ppcart_product .wp-list-table .column-wpseo-linked{
   }
 
   body.post-type-ppcart_subscription .wp-list-table .column-sub_id{
-    width: 4%;
+    width: 190px;
   }
 
   body.post-type-ppcart_subscription .wp-list-table .column-status{
