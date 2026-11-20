@@ -802,6 +802,32 @@
             }
         });
 
+        // Quantity: recalculate the order summary when the customer changes the number.
+        var qtyTimer;
+        $(document).on('input change', 'input[name^="ppcart_qty"]', function(e) {
+            var $input = $(this),
+                form = $input.closest('form').parent().attr('id');
+
+            clearTimeout(qtyTimer);
+            qtyTimer = setTimeout(function() {
+                // One product needs at least 1. A collection item can be 0 (not bought).
+                var value = parseInt($input.val(), 10),
+                    min = ('ppcart_qty' === $input.attr('name')) ? 1 : 0;
+                if (isNaN(value)) {
+                    return;
+                }
+                if (value < min) {
+                    $input.val(min);
+                }
+
+                update_form(form);
+
+                if (ppcart.is_payment_element) {
+                    schedulePaymentElementAmountSync(form);
+                }
+            }, 'change' === e.type ? 0 : 400);
+        });
+
         /* Change Vat Customer Type */
         $(document).on('change', 'input[name="vat-number-available"]', function() {
             if (this.checked) {

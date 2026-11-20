@@ -290,11 +290,24 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
                     }
                 }
 
-                // Card state classes only — integration status badges are intentionally not rendered.
+                $status_label = '';
+                $status_class = 'is-disabled';
+
                 if (! empty($enable_options)) {
-                    $card_classes[] = $is_enabled_status ? 'is-enabled' : 'is-disabled';
+                    $status_class = $is_enabled_status ? 'is-enabled' : 'is-disabled';
+                    $status_label = $is_enabled_status ? __('Enabled', 'publishpress-cart') : __('Disabled', 'publishpress-cart');
+                    $card_classes[] = $status_class;
                 } else {
                     $card_classes[] = $is_configured ? 'is-configured' : 'is-not-configured';
+
+                    if (! empty($configured_options)) {
+                        $status_class = $is_configured ? 'is-enabled' : 'is-disabled';
+                        $status_label = $is_configured ? __('Configured', 'publishpress-cart') : __('Not configured', 'publishpress-cart');
+                    } elseif (! empty($integration_info['required_class'])) {
+                        $plugin_active = class_exists($integration_info['required_class']);
+                        $status_class = $plugin_active ? 'is-enabled' : 'is-disabled';
+                        $status_label = $plugin_active ? __('Plugin active', 'publishpress-cart') : __('Plugin inactive', 'publishpress-cart');
+                    }
                 }
                 ?>
                                         <div class="<?php echo esc_attr(implode(' ', $card_classes)); ?>"
@@ -312,7 +325,12 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
                                                 <?php endif; ?>
                                             </span>
                                             <span class="ppcart-settings__integration-summary ppcart-settings__payment-summary">
-                                                <span class="ppcart-settings__integration-title ppcart-settings__payment-title"><?php echo esc_html($integration_title); ?></span>
+                                                <span class="ppcart-settings__integration-title ppcart-settings__payment-title">
+                                                    <?php echo esc_html($integration_title); ?>
+                                                    <?php if ($status_label) : ?>
+                                                        <span class="ppcart-settings__payment-status <?php echo esc_attr($status_class); ?>"><?php echo esc_html($status_label); ?></span>
+                                                    <?php endif; ?>
+                                                </span>
                                                 <?php if ($description) : ?>
                                                     <span class="ppcart-settings__integration-desc ppcart-settings__payment-desc"><?php echo esc_html($description); ?></span>
                                                 <?php endif; ?>

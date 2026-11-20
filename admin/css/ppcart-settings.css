@@ -1460,19 +1460,6 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     font-weight: 700;
 }
 
-.ppcart-settings__integration-panel .form-table tr:has(.checkbox-wrap) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 12px;
-    align-items: center;
-}
-
-.ppcart-settings__integration-panel .form-table tr:has(.checkbox-wrap) th,
-.ppcart-settings__integration-panel .form-table tr:has(.checkbox-wrap) td {
-    width: auto;
-    margin: 0;
-}
-
 .ppcart-settings__integration-panel .form-table td input[type="text"],
 .ppcart-settings__integration-panel .form-table td input[type="email"],
 .ppcart-settings__integration-panel .form-table td input[type="url"],
@@ -2057,19 +2044,6 @@ body.ppcart-admin-page:has(.ppcart-settings-page) #wpfooter {
     font-size: 13px;
     font-weight: 700;
     line-height: 1.35;
-}
-
-.ppcart-settings__panel .ppcart-settings__integration-panel .form-table tr:has(.checkbox-wrap) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 12px;
-    align-items: center;
-}
-
-.ppcart-settings__panel .ppcart-settings__integration-panel .form-table tr:has(.checkbox-wrap) th,
-.ppcart-settings__panel .ppcart-settings__integration-panel .form-table tr:has(.checkbox-wrap) td {
-    width: auto;
-    margin: 0;
 }
 
 .ppcart-settings__panel .ppcart-settings__integration-panel .form-table td .input-group,

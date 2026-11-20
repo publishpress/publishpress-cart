@@ -113,10 +113,24 @@ if ($installments == '-1') {
                             <?php endif; ?>
                         <?php else :
                             $cancel_text = __('Canceled', 'publishpress-cart');
+                            $cancel_ends_on = '';
                             if ($subscription->cancel_date && $subscription->status != 'canceled') :
                                 $cancel_text = __('Cancellation Pending', 'publishpress-cart');
+                                if (is_numeric($subscription->cancel_at) && $subscription->cancel_at > 0) :
+                                    $cancel_ends_on = get_date_from_gmt(gmdate('Y-m-d H:i:s', (int) $subscription->cancel_at), 'M j, Y');
+                                elseif (! empty($subscription->end_date)) :
+                                    $cancel_ends_on = $subscription->end_date;
+                                endif;
                             endif; ?>
                             <button type="button" class="button" disabled><?php echo esc_html($cancel_text); ?></button>
+                            <?php if ($cancel_ends_on) : ?>
+                                <span class="ppcart-subscription-cancel-ends-on">
+                                    <?php
+                                    /* translators: %s: date the subscription ends. */
+                                    echo esc_html(sprintf(__('Ends on %s', 'publishpress-cart'), $cancel_ends_on));
+                                    ?>
+                                </span>
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php if ($is_stripe_subscription) : ?>
                             <button

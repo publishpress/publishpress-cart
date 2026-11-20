@@ -92,6 +92,18 @@ if ($charge_id && 'paid' === $order_status['post_status'] && 'invoice.payment_fa
     }
 }
 
+// An order marked refunded whose charge is only partly refunded goes back to
+// paid with its refund recorded. The charge sync does that. The invoice can't,
+// because Stripe keeps a refunded invoice as "paid".
+if (
+    $existing
+    && $refunded_charge
+    && ('refunded' === $existing->status || 'refunded' === $existing->payment_status)
+    && absint(self::get($refunded_charge, 'amount_refunded', 0)) < absint(self::get($refunded_charge, 'amount', 0))
+) {
+    return self::sync_charge_refund($refunded_charge, $charge_client, $event, true);
+}
+
 return PPCart_Stripe_Sync_Context::run(
     function () use ($existing, $sub, $invoice, $charge_id, $payment_intent, $payment_intent_status, $order_status, $invoice_date, $event, $event_type, $currency, $refunded_charge) {
         $order = $existing;

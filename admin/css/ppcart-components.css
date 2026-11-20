@@ -542,11 +542,22 @@
   color: var(--ppcart-primary);
 }
 
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.single .selectize-input,
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-control.single .selectize-input.input-active {
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
 /* Icon select: each option and the chosen item show the icon before its name. */
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-icon-option {
   align-items: center;
   display: flex;
   gap: 10px;
+}
+
+#ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .selectize-input .ppcart-icon-option {
+  display: inline-flex;
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-icon-option__icon {
@@ -557,7 +568,7 @@
 }
 
 #ppcart-product-settings .ppcart-ui.ppcart-settings-tabs .ppcart-icon-option__icon:empty {
-  visibility: hidden;
+  display: none;
 }
 
 /* Chips and badges ------------------------------------------------------ */

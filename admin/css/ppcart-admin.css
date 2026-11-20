@@ -1349,17 +1349,16 @@ td.column-order .row-actions{
 #ppcart-product-settings .ppcart-settings-tabs .ppcart-right-col .ppcart-row > label:first-child,
 #ppcart-product-settings .ppcart-settings-tabs .ppcart-right-col .ppcart-row > .label:first-child,
 #ppcart-product-settings .ppcart-settings-tabs .ppcart-right-col .ppcart-row > .ppcart-label:first-child {
-  align-items: flex-start;
+  /* Inline flow: the "*" and "?" follow the last word, even when the label wraps. */
+  display: block;
   flex-basis: 180px;
-  gap: 6px;
   line-height: 1.35;
   min-width: 180px;
   padding-top: 4px;
 }
 #ppcart-product-settings .ppcart-settings-tabs .ppcart-right-col .ppcart-row > label:first-child .ppcart-tooltip {
-  flex: 0 0 14px;
-  margin-left: 0;
-  margin-top: 1px;
+  margin-left: 4px;
+  vertical-align: 1px;
 }
 #ppcart-product-settings .ppcart-settings-tabs .ppcart-right-col input[type=text]:not(.ppcart-color-field),
 #ppcart-product-settings .ppcart-settings-tabs .ppcart-right-col input[type=number],

@@ -39,6 +39,16 @@ return PPCart_Stripe_Sync_Context::run(
         if ('canceled' === $local_sub->status && empty($local_sub->cancel_date)) {
             $canceled_at = self::get($stripe_sub, 'canceled_at', 0);
             $local_sub->cancel_date = $canceled_at ? gmdate('Y-m-d', (int) $canceled_at) : gmdate('Y-m-d');
+        } elseif ('canceled' !== $mapped['status']) {
+            // A cancellation scheduled in Stripe is a pending cancellation in Cart, the same
+            // as Cart's own cancel-at-period-end action. cancel_date is the day it was requested.
+            if (empty($mapped['cancel_at'])) {
+                // The scheduled cancellation was removed in Stripe.
+                $local_sub->cancel_date = '';
+            } elseif (empty($local_sub->cancel_date) && self::is_pending_cancellation($local_sub, $mapped['cancel_at'])) {
+                $canceled_at = self::get($stripe_sub, 'canceled_at', 0);
+                $local_sub->cancel_date = $canceled_at ? gmdate('Y-m-d', (int) $canceled_at) : gmdate('Y-m-d');
+            }
         }
 
         $local_sub->store();

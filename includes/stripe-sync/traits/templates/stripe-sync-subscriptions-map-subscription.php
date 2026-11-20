@@ -41,6 +41,12 @@ if (! $current_period_end) {
     );
 }
 
+// cancel_at_period_end cancels at the end of the current period. Read it as a
+// cancel_at on that date, in case Stripe leaves cancel_at empty.
+if (! $cancel_at && 'canceled' !== $local_status && self::get($subscription, 'cancel_at_period_end', false)) {
+    $cancel_at = $current_period_end;
+}
+
 $next_bill = $current_period_end;
 
 if ($cancel_at || in_array($local_status, [ 'canceled', 'paused' ], true)) {

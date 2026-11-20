@@ -28,6 +28,8 @@ $stripe_id = $order_data->stripe_charge_id ?? $order_data->transaction_id ?? fal
 
 $paypal_id = $order_data->paypal_txn_id ?? $order_data->transaction_id ?? false;
 
+$stripe_sync_payment_id = class_exists('PPCart_Stripe_Sync') ? PPCart_Stripe_Sync::get_order_sync_payment_id($order_data) : '';
+
 $is_locked_post = in_array(PPCart_Status_Labels::logical_from_post($post), ['canceled', 'refunded'], true);
 
 ppcart_enqueue_or_print_inline_style(
@@ -157,6 +159,18 @@ if (class_exists('PPCart_Order_Refunds') && PPCart_Order_Refunds::is_partially_r
                         <span class="dashicons dashicons-media-document" aria-hidden="true"></span>
                         <?php esc_html_e('Resend email', 'publishpress-cart'); ?>
                     </a>
+                <?php endif; ?>
+                <?php if ($stripe_sync_payment_id) : ?>
+                    <button
+                        type="button"
+                        class="button ppcart-hero-action ppcart_sync_order"
+                        data-id="<?php echo esc_attr($post->ID); ?>"
+                        data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-order-' . $post->ID . '-sync')); ?>"
+                        title="<?php echo esc_attr__('Refresh payment and refund status from Stripe', 'publishpress-cart'); ?>"
+                    >
+                        <span class="dashicons dashicons-update" aria-hidden="true"></span>
+                        <?php esc_html_e('Sync with Stripe', 'publishpress-cart'); ?>
+                    </button>
                 <?php endif; ?>
             </div>
         </div>
