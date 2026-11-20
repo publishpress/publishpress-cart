@@ -78,8 +78,13 @@ trait PPCart_Order_Lookups
         if ($children = ppcart_get_post_meta($this->id, 'order_child')) {
             $data = [];
             foreach ($children as $child) {
+                // Rows can come back as a serialized string or a bare ID from older data.
+                $child = maybe_unserialize($child);
                 if (is_numeric($child)) {
                     $child = ['id' => $child];
+                }
+                if (! is_array($child) || empty($child['id'])) {
+                    continue;
                 }
 
                 $child = new PPCart_Order($child['id']);
