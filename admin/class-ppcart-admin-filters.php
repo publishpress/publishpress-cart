@@ -70,8 +70,10 @@ class PPCart_Admin_Filters
             } elseif ($subscription_type == 'pending_cancellation') {
                 $query->set('meta_query', [
                     [
+                        // A cleared cancel_date can stay stored as an empty value.
                         'key' => ppcart_meta_key('cancel_date'),
-                        'compare' => 'EXISTS',
+                        'value' => '',
+                        'compare' => '!=',
                     ],
                     [
                         'key' => ppcart_meta_key('status'),
