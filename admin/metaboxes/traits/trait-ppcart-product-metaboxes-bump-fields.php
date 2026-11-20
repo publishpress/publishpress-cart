@@ -127,7 +127,7 @@ trait PPCart_Product_Metaboxes_Bump_Fields_Trait
                 'class_size' => '',
             ]],
             ['text' => [
-                'class'     => 'widefat',
+                'class'     => 'widefat required',
                 'description'   => '',
                 'id'            => 'ob_cb_label',
                 'label'     => __('Checkbox label', 'publishpress-cart'),
@@ -137,7 +137,7 @@ trait PPCart_Product_Metaboxes_Bump_Fields_Trait
                 'class_size'    => '',
             ]],
             ['text' => [
-                'class'     => 'widefat',
+                'class'     => 'widefat required',
                 'description'   => '',
                 'id'            => 'ob_headline',
                 'label'     => __('Headline', 'publishpress-cart'),

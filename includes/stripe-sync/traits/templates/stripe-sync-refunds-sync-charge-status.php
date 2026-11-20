@@ -13,7 +13,7 @@ if ($stripe && self::get($charge, 'id', '')) {
     }
 }
 
-if (! self::charge_belongs_to_site($charge)) {
+if (! $force && ! self::charge_belongs_to_site($charge)) {
     self::record_webhook_log(
         $event,
         'skipped',

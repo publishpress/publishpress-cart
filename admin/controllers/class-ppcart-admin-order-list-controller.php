@@ -250,6 +250,7 @@ class PPCart_Admin_Order_List_Controller
         $bulk_array['ppcart_make_failed'] = __('Update status to failed', 'publishpress-cart');
         $bulk_array['ppcart_make_pending'] = __('Update status to pending', 'publishpress-cart');
         $bulk_array['ppcart_make_completed'] = __('Update status to completed', 'publishpress-cart');
+        $bulk_array['ppcart_sync_stripe'] = __('Sync with Stripe', 'publishpress-cart');
         return $bulk_array;
     }
 
@@ -286,7 +287,31 @@ class PPCart_Admin_Order_List_Controller
         $synced = absint(wp_unslash($_GET['bulk_ppcart_sync_stripe']));
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only notice routing after a completed admin action.
         $failed = isset($_GET['bulk_ppcart_sync_stripe_failed']) ? absint(wp_unslash($_GET['bulk_ppcart_sync_stripe_failed'])) : 0;
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only notice routing after a completed admin action.
+        $skipped = isset($_GET['bulk_ppcart_sync_stripe_skipped']) ? absint(wp_unslash($_GET['bulk_ppcart_sync_stripe_skipped'])) : 0;
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only notice routing after a completed admin action.
+        $post_type = isset($_GET['post_type']) ? sanitize_key(wp_unslash($_GET['post_type'])) : '';
 
+        $message = ppcart_is_order_post_type($post_type)
+            ? $this->get_order_sync_notice_message($synced, $failed, $skipped)
+            : $this->get_subscription_sync_notice_message($synced, $failed);
+
+        printf(
+            '<div class="notice notice-%1$s is-dismissible"><p>%2$s</p></div>',
+            ($failed || $skipped) ? 'warning' : 'success',
+            esc_html($message)
+        );
+    }
+
+    /**
+     * Build the notice text for a bulk subscription sync.
+     *
+     * @param int $synced Number of subscriptions synced.
+     * @param int $failed Number of subscriptions that failed to sync.
+     * @return string
+     */
+    private function get_subscription_sync_notice_message($synced, $failed)
+    {
         $message = sprintf(
             /* translators: %s: number of subscriptions synced. */
             _n(
@@ -311,13 +336,57 @@ class PPCart_Admin_Order_List_Controller
             );
         }
 
-        $message .= ' ' . __('Each run syncs a limited number of subscriptions. Select the rest and run it again to continue.', 'publishpress-cart');
+        return $message . ' ' . __('Each run syncs a limited number of subscriptions. Select the rest and run it again to continue.', 'publishpress-cart');
+    }
 
-        printf(
-            '<div class="notice notice-%1$s is-dismissible"><p>%2$s</p></div>',
-            $failed ? 'warning' : 'success',
-            esc_html($message)
+    /**
+     * Build the notice text for a bulk order sync.
+     *
+     * @param int $synced  Number of orders synced.
+     * @param int $failed  Number of orders that failed to sync.
+     * @param int $skipped Number of orders with no Stripe payment to sync from.
+     * @return string
+     */
+    private function get_order_sync_notice_message($synced, $failed, $skipped)
+    {
+        $message = sprintf(
+            /* translators: %s: number of orders synced. */
+            _n(
+                '%s order synced from Stripe.',
+                '%s orders synced from Stripe.',
+                $synced,
+                'publishpress-cart'
+            ),
+            number_format_i18n($synced)
         );
+
+        if ($failed) {
+            $message .= ' ' . sprintf(
+                /* translators: %s: number of orders that failed to sync. */
+                _n(
+                    '%s failed; see its order log for the reason.',
+                    '%s failed; see their order logs for the reason.',
+                    $failed,
+                    'publishpress-cart'
+                ),
+                number_format_i18n($failed)
+            );
+        }
+
+        if ($skipped) {
+            $message .= ' ' . sprintf(
+                /* translators: %s: number of orders skipped. */
+                _n(
+                    '%s skipped because it has no Stripe payment to sync from.',
+                    '%s skipped because they have no Stripe payment to sync from.',
+                    $skipped,
+                    'publishpress-cart'
+                ),
+                number_format_i18n($skipped)
+            );
+        }
+
+        return $message . ' ' . __('Each run syncs a limited number of orders. Select the rest and run it again to continue.', 'publishpress-cart');
     }
 
     public function order_custom_status()

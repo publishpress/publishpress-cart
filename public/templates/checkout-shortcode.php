@@ -18,6 +18,11 @@ if (!isset($product_id) || !in_array(get_post_type($product_id), $post_types)) {
 $ppcart_product = ppcart_setup_product($product_id);
 $cart_closed = ppcart_is_cart_closed();
 
+// Use the product's "Hide field labels" setting when the shortcode or block does not set hide_labels.
+if (empty($hide_labels)) {
+    $hide_labels = apply_filters('ppcart_checkout_hide_labels', false, $ppcart_product) ? 'hide' : false;
+}
+
 // 2-step option now stored in _ppcart_display meta
 if (isset($template) && $template == 'opt-in') {
     $ppcart_product->show_optin = true;
