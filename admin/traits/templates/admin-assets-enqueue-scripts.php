@@ -62,6 +62,9 @@ wp_localize_script('ppcart', 'ppcart_admin_i18n', [
     'sync_wait' => __('Wait...', 'publishpress-cart'),
     'sync_success' => __('Subscription synced successfully.', 'publishpress-cart'),
     'sync_try_again' => __('Error: Please try again.', 'publishpress-cart'),
+    'sync_missing_order_id' => __('Order ID is missing.', 'publishpress-cart'),
+    'sync_order_confirm' => __('Sync this order with Stripe?', 'publishpress-cart'),
+    'sync_order_success' => __('Order synced successfully.', 'publishpress-cart'),
     'encrypt_migration_title' => __('Migration required', 'publishpress-cart'),
     'encrypt_migration_confirm_singular' => __('You have 1 stored credential in plaintext. After enabling encryption, run migration from Settings → Maintenance to encrypt it.', 'publishpress-cart'),
     /* translators: %d: number of stored credentials. */
