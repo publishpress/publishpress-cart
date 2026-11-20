@@ -29,7 +29,9 @@ $get_payment_method_status = static function ($payment_key, $is_enabled) {
 };
 
 $has_meaningful_option_value = static function ($option_name) {
-    $option_value = get_option($option_name, '');
+    $option_value = ppcart_is_sensitive_option($option_name)
+        ? ppcart_get_sensitive_option($option_name, '')
+        : get_option($option_name, '');
 
     if (is_array($option_value)) {
         return ! empty($option_value);

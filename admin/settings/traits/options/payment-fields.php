@@ -4,6 +4,16 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+// The connection status box asks Stripe about the webhook endpoint. Settings
+// fields are registered on admin_init for every admin request, including
+// admin-ajax, so only build this box when the Cart settings page is shown.
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only screen check.
+$ppcart_settings_page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+$ppcart_render_stripe_connect_html = ! $local_only
+    && ! wp_doing_ajax()
+    && ! wp_doing_cron()
+    && PPCart_Admin_Screens::PAGE_SETTINGS === $ppcart_settings_page;
+
 $payment_fields = [
     'cashondelivery' => [
         'cashondelivery-gateway' => [
@@ -52,7 +62,7 @@ $payment_fields = [
             'label'         => esc_html__('Connection Status', 'publishpress-cart'),
             'settings'      => [
                 'id'            => '_ppcart_stripe_connect_status',
-                'description'   => $this->stripe_connect->get_stripe_connect_settings_html(),
+                'description'   => $ppcart_render_stripe_connect_html ? $this->stripe_connect->get_stripe_connect_settings_html() : '',
             ],
             'tab' => 'payment',
         ],

@@ -4,7 +4,7 @@ Tags: ecommerce, shopping cart, sales funnel, digital products, elementor
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -260,14 +260,4 @@ When you connect Stripe with the optional Connect Stripe button and PublishPress
 
 == Changelog ==
 
-= 1.0.1 - 14 Oct 2026 =
-
-* Update: Rename Contacts to Customers and link order customer names to customer reports.
-* Update: Match product editor buttons to the blue Settings buttons.
-* Update: Use traceable PublishPress links for settings and extension upgrade prompts.
-* Update: Rename the unlimited subscription option from "Never expires" to "Until canceled".
-* Update: Replace WordPress.org banners with PublishPress Cart branding.
-
-= 1.0.0 - 21 Sep 2026 =
-
-* Initial release of PublishPress Cart, based on Studiocart 2.9.0, with updated plugin identity, packaging, and ongoing maintenance by PublishPress.
+The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-cart/blob/master/CHANGELOG.md).

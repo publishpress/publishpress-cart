@@ -129,6 +129,22 @@ trait PPCart_Stripe_Sync_Subscriptions_Trait
     }
 
     /**
+     * Check whether a Stripe cancel_at is a cancellation someone requested.
+     *
+     * Payment plans are created with cancel_at set to their last installment,
+     * so that date alone is not a pending cancellation.
+     *
+     * @param PPCart_Subscription $sub       Local subscription.
+     * @param int                 $cancel_at Stripe cancel_at timestamp, or 0.
+     * @return bool
+     */
+    private static function is_pending_cancellation($sub, $cancel_at)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-subscriptions-is-pending-cancellation.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
      * Check whether a subscription belongs to this site.
      *
      * @param object|array $subscription Stripe subscription resource.
