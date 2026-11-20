@@ -41,7 +41,10 @@ if (! $sub || ! $sub->id) {
 }
 
 $next_bill = self::path($line, [ 'period', 'end' ], '');
-if ($next_bill && ! in_array($sub->status, [ 'canceled', 'paused', 'completed' ], true)) {
+// A subscription that is set to cancel has no next payment. The invoice period
+// end is the day it ends, not a billing date.
+$is_pending_cancellation = ! empty($sub->cancel_date) && ! empty($sub->cancel_at);
+if ($next_bill && ! $is_pending_cancellation && ! in_array($sub->status, [ 'canceled', 'paused', 'completed' ], true)) {
     PPCart_Stripe_Sync_Context::run(
         function () use ($sub, $next_bill, $event) {
             $sub->sub_next_bill_date = $next_bill;

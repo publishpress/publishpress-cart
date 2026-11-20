@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Integration\StripeSync;
 
 use PPCart_Stripe_Sync;
+use PPCart_Subscription;
 use Tests\Support\Integration\StripeSyncTestCase;
 
 class PendingCancellationSyncTest extends StripeSyncTestCase
@@ -109,6 +110,50 @@ class PendingCancellationSyncTest extends StripeSyncTestCase
         $this->assertSame('active', ppcart_get_post_meta($subscriptionId, 'status', true));
         $this->assertSame('2023-11-14', ppcart_get_post_meta($subscriptionId, 'cancel_date', true));
         $this->assertEquals(1900000000, ppcart_get_post_meta($subscriptionId, 'cancel_at', true));
+    }
+
+    public function test_IT_423_invoice_sync_does_not_restore_the_next_payment_of_a_pending_cancellation(): void
+    {
+        $subscriptionId = $this->createStripeSubscriptionWithOrder(
+            array(
+                'subscription_id' => 'sub_pending_invoice',
+                'sub_next_bill_date' => '',
+                'cancel_at' => 1900000000,
+                'cancel_date' => '2023-11-14',
+            )
+        );
+
+        PPCart_Stripe_Sync::sync_invoice_resource(
+            (object) array(
+                'subscription' => 'sub_pending_invoice',
+                'charge' => 'ch_pending_invoice',
+                'payment_intent' => 'pi_pending_invoice',
+                'amount_paid' => 20000,
+                'currency' => 'usd',
+                'status' => 'paid',
+                'status_transitions' => (object) array(
+                    'paid_at' => 1234567890,
+                    'finalized_at' => 1234567890,
+                ),
+                'lines' => (object) array(
+                    'data' => array(
+                        (object) array(
+                            'subscription_item' => 'si_pending_invoice',
+                            'metadata' => (object) array(
+                                'ppcart_product_id' => 123,
+                            ),
+                            'period' => (object) array(
+                                'end' => 1900000000,
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            new PPCart_Subscription($subscriptionId),
+            'invoice.paid'
+        );
+
+        $this->assertSame('', ppcart_get_post_meta($subscriptionId, 'sub_next_bill_date', true));
     }
 
     private function syncStripeSubscription(int $subscriptionId, string $stripeId, string $status, int $cancelAt, int $canceledAt): void

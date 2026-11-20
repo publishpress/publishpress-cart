@@ -68,10 +68,11 @@ try {
             );
         }
     } elseif (empty($mapped['sub_next_bill_date'])) {
+        // store() skips empty values, so delete the meta to clear the date.
         PPCart_Stripe_Sync_Context::run(
             function () use ($sub) {
                 $sub->sub_next_bill_date = '';
-                $sub->store();
+                ppcart_delete_post_meta($sub->id, 'sub_next_bill_date');
             }
         );
     }
