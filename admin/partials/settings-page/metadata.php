@@ -241,6 +241,7 @@ $integration_meta = [
         'logo_label'  => 'MP',
         'logo_file'   => 'integration-logos/mailpoet.svg',
         'learn_more'  => 'https://www.mailpoet.com/',
+        'required_class' => '\MailPoet\API\API',
     ],
     'encharge'       => [
         'title'       => __('Encharge', 'publishpress-cart'),
