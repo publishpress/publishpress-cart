@@ -80,6 +80,37 @@ class PendingCancellationSyncTest extends StripeSyncTestCase
         $this->assertSame('', ppcart_get_post_meta($subscriptionId, 'cancel_date', true));
     }
 
+    public function test_IT_421_cancel_at_period_end_without_cancel_at_marks_the_subscription_pending_cancellation(): void
+    {
+        $subscriptionId = $this->createStripeSubscriptionWithOrder(
+            array(
+                'subscription_id' => 'sub_period_end',
+                'sub_next_bill_date' => '1900000000',
+            )
+        );
+
+        PPCart_Stripe_Sync::sync_subscription_resource(
+            (object) array(
+                'id' => 'sub_period_end',
+                'status' => 'active',
+                'current_period_end' => 1900000000,
+                'cancel_at' => null,
+                'cancel_at_period_end' => true,
+                'canceled_at' => 1700000000,
+                'metadata' => (object) array(
+                    'ppcart_subscription_id' => $subscriptionId,
+                ),
+            ),
+            null,
+            null,
+            true
+        );
+
+        $this->assertSame('active', ppcart_get_post_meta($subscriptionId, 'status', true));
+        $this->assertSame('2023-11-14', ppcart_get_post_meta($subscriptionId, 'cancel_date', true));
+        $this->assertEquals(1900000000, ppcart_get_post_meta($subscriptionId, 'cancel_at', true));
+    }
+
     private function syncStripeSubscription(int $subscriptionId, string $stripeId, string $status, int $cancelAt, int $canceledAt): void
     {
         PPCart_Stripe_Sync::sync_subscription_resource(
