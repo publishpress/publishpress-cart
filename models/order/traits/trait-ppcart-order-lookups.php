@@ -75,11 +75,16 @@ trait PPCart_Order_Lookups
     public function get_children($return_obj = false)
     {
         $data = false;
-        if ($children = ppcart_get_post_meta($this->id, 'order_child')) {
+        if ($children = ppcart_get_post_meta($this->id, 'order_child', false)) {
             $data = [];
             foreach ($children as $child) {
+                // Each row is one child order: an array with an id, a bare ID, or older serialized data.
+                $child = maybe_unserialize($child);
                 if (is_numeric($child)) {
                     $child = ['id' => $child];
+                }
+                if (! is_array($child) || empty($child['id'])) {
+                    continue;
                 }
 
                 $child = new PPCart_Order($child['id']);

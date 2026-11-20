@@ -562,9 +562,16 @@ if ($show_related) {  ?>
                     <?php
     endif;
 
-    $child_orders = ppcart_get_post_meta($post->ID, 'order_child');
+    $child_orders = ppcart_get_post_meta($post->ID, 'order_child', false);
     if ($child_orders) :
         foreach ($child_orders as $child_order) {
+            $child_order = maybe_unserialize($child_order);
+            if (is_numeric($child_order)) {
+                $child_order = ['id' => $child_order];
+            }
+            if (! is_array($child_order) || empty($child_order['id'])) {
+                continue;
+            }
             $child_order = new PPCart_Order($child_order['id']);
             ?>
                         <tr>
