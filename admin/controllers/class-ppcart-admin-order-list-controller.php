@@ -69,6 +69,10 @@ class PPCart_Admin_Order_List_Controller
         } elseif (ppcart_is_order_post_type($post_type) && '' !== $order_email) {
             add_action('pre_get_posts', [$this, 'order_email_filter']);
         }
+
+        if (ppcart_is_order_post_type($post_type) && $this->is_partially_refunded_view()) {
+            add_action('pre_get_posts', [$this, 'order_partially_refunded_filter']);
+        }
     }
 
     public function set_custom_edit_product_columns($columns)

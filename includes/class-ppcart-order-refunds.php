@@ -73,6 +73,60 @@ class PPCart_Order_Refunds
     }
 
     /**
+     * Get the IDs of partially refunded orders.
+     *
+     * Uses the same rule as is_partially_refunded(), so the result matches the
+     * "Partially refunded" label on the Orders list. SQL only narrows the set to
+     * orders that hold refund data. The amounts are compared in PHP, because
+     * they are stored as formatted strings that SQL can't compare reliably.
+     *
+     * @param string|string[] $post_types Order post types.
+     * @return int[]
+     */
+    public static function get_partially_refunded_order_ids($post_types)
+    {
+        global $wpdb;
+
+        $post_types = array_values(array_filter(array_map('sanitize_key', (array) $post_types)));
+        // Match the statuses the "All" view lists, so trashed orders stay out.
+        $statuses = array_values(get_post_stati([ 'show_in_admin_all_list' => true ]));
+        if (! $post_types || ! $statuses) {
+            return [];
+        }
+
+        $meta_keys = [ ppcart_meta_key('refund_amount'), ppcart_meta_key('refund_log') ];
+        $type_in   = implode(',', array_fill(0, count($post_types), '%s'));
+        $status_in = implode(',', array_fill(0, count($statuses), '%s'));
+        $key_in    = implode(',', array_fill(0, count($meta_keys), '%s'));
+
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Placeholder lists are generated from the counts of the prepared values.
+        $ids = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Admin list view; the result changes whenever a refund is stored.
+            $wpdb->prepare(
+                "SELECT DISTINCT pm.post_id
+                FROM {$wpdb->postmeta} pm
+                INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+                WHERE p.post_type IN ($type_in)
+                AND p.post_status IN ($status_in)
+                AND pm.meta_key IN ($key_in)
+                AND pm.meta_value NOT IN ('', '0', 'a:0:{}')",
+                array_merge($post_types, $statuses, $meta_keys)
+            )
+        );
+        // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+
+        $ids = array_values(array_filter(array_map('absint', (array) $ids)));
+        if (! $ids) {
+            return [];
+        }
+
+        update_meta_cache('post', $ids);
+
+        return array_values(array_filter($ids, static function ($order_id) {
+            return self::is_partially_refunded($order_id);
+        }));
+    }
+
+    /**
      * Sum refund log entries.
      *
      * @param mixed $refund_log Raw refund log.
