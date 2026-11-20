@@ -72,10 +72,10 @@ if ($data['tax_amount']) {
     $data['invoice_tax_amount'] = $data['tax_amount'];
 }
 
-if ($children = ppcart_get_post_meta($this->id, 'order_child')) {
+if ($children = ppcart_get_post_meta($this->id, 'order_child', false)) {
     $data['order_child'] = [];
     foreach ($children as $child) {
-        // Rows can come back as a serialized string or a bare ID from older data.
+        // Each row is one child order: an array with an id, a bare ID, or older serialized data.
         $child = maybe_unserialize($child);
         if (is_numeric($child)) {
             $child = ['id' => $child];

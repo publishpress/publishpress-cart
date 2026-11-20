@@ -14,6 +14,21 @@ class OrderChildMetaTest extends WPTestCase
      */
     protected $tester;
 
+    public function test_IT_422_an_order_with_one_bump_child_order_loads_its_child(): void
+    {
+        $parentId = $this->createOrder();
+        $childId = $this->createOrder();
+
+        // The row Cart writes when it creates a child order, such as an order bump.
+        add_post_meta($parentId, ppcart_meta_key('order_child'), [ 'id' => $childId, 'type' => 'bump' ]);
+
+        $order = new PPCart_Order($parentId);
+        $data = $order->get_data();
+
+        $this->assertSame([ $childId ], array_map('intval', array_column($data['order_child'], 'id')));
+        $this->assertCount(1, $order->get_children());
+    }
+
     public function test_IT_422_an_order_with_a_malformed_child_order_row_still_loads(): void
     {
         $parentId = $this->createOrder();
