@@ -544,6 +544,8 @@
         $(document).on('change', 'input[name=ppcart_product_option]', function() {
             var form = '#' + $(this).closest('form').parent().attr('id');
             update_pwyw(form);
+            // Refresh the order summary and total for the newly selected plan.
+            update_form(form);
             // Plan switch can change intent type/amount; remount the element.
             if (ppcart.is_payment_element) {
                 schedulePaymentElementRemount(form);
