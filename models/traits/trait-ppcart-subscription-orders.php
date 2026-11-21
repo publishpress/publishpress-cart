@@ -28,7 +28,10 @@ trait PPCart_Subscription_Orders
             }
         } else {
             $first_order = new PPCart_Order($this->first_order);
-            if (!$first_order) {
+            // The stored first order can point to an order that no longer
+            // exists. Fall back to the subscription's oldest order.
+            if (!$first_order || empty($first_order->id)) {
+                $first_order = false;
                 $first_order = $this->orders(1);
                 if (is_array($first_order) && isset($first_order[0]) && is_object($first_order[0])) {
                     $first_order = $first_order[0];
