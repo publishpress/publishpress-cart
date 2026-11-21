@@ -217,6 +217,10 @@ if (is_admin()) {
     require_once __DIR__ . '/admin/class-ppcart-welcome.php';
     add_action('admin_init', ['PPCart_Welcome', 'maybe_redirect']);
     add_action('admin_menu', ['PPCart_Welcome', 'register_page'], 20);
+
+    require_once __DIR__ . '/admin/class-ppcart-admin-stripe-import.php';
+    add_action('admin_menu', ['PPCart_Admin_Stripe_Import', 'register_page'], 20);
+    add_action('manage_posts_extra_tablenav', ['PPCart_Admin_Stripe_Import', 'list_button']);
 }
 
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');
