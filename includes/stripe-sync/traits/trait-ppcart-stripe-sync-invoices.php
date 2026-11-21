@@ -104,4 +104,20 @@ trait PPCart_Stripe_Sync_Invoices_Trait
         $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-invoices-invoice-payment-ids.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
     }
+
+    /**
+     * Find a paid order of a subscription that has no charge ID and matches
+     * an invoice's amount and payment date.
+     *
+     * @param PPCart_Subscription $sub      Local subscription.
+     * @param int                 $amount   Invoice amount paid, in Stripe's smallest unit.
+     * @param string              $currency Invoice currency.
+     * @param int                 $paid_at  Invoice payment time (Unix).
+     * @return int Order ID, or 0.
+     */
+    private static function find_unlinked_order_for_invoice($sub, $amount, $currency, $paid_at)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-invoices-find-unlinked-order-for-invoice.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
 }

@@ -7,7 +7,8 @@ if (! defined('ABSPATH')) {
 
 global $ppcart_currency;
 
-if (! $sub || ! $sub->id || empty($sub->subscription_id)) {
+$stripe_subscription_id = ($sub && $sub->id) ? $sub->get_stripe_subscription_id() : '';
+if (! $stripe_subscription_id) {
     return false;
 }
 
@@ -19,7 +20,7 @@ if (! $stripe) {
 // 100, and a long-running subscription can have more. The page cap only stops
 // a runaway loop (20 pages is 2,000 invoices).
 $invoice_params = [
-    'subscription' => $sub->subscription_id,
+    'subscription' => $stripe_subscription_id,
     'limit'        => 100,
     'expand'       => [ 'data.payments' ],
 ];
@@ -49,14 +50,14 @@ foreach ($invoice_data as $invoice) {
 }
 
 try {
-    $stripe_sub = $stripe->subscriptions->retrieve($sub->subscription_id);
+    $stripe_sub = $stripe->subscriptions->retrieve($stripe_subscription_id);
     $mapped = self::map_subscription($stripe_sub);
     $customer = self::get($stripe_sub, 'customer', '');
     if ($customer && ! empty($mapped['sub_next_bill_date'])) {
         $upcoming = $stripe->invoices->createPreview(
             [
                 'customer'     => $customer,
-                'subscription' => $sub->subscription_id,
+                'subscription' => $stripe_subscription_id,
             ]
         );
         if ($upcoming && self::get($upcoming, 'next_payment_attempt')) {

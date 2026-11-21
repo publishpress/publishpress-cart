@@ -14,7 +14,7 @@ $order_obj = new PPCart_Subscription($post->ID);
 $subscription = (object) $order_obj->get_data();
 
 $product_id = $subscription->product_id;
-$subscription_gateway_id = ! empty($subscription->subscription_id) ? $subscription->subscription_id : ($subscription->stripe_subscription_id ?? '');
+$subscription_gateway_id = $order_obj->get_stripe_subscription_id();
 $is_stripe_subscription = 'stripe' === $subscription->pay_method && '' !== $subscription_gateway_id;
 $has_subscription_thumbnail = ! empty($product_id) && has_post_thumbnail((int) $product_id);
 $installments = $subscription->sub_installments;
