@@ -17,6 +17,7 @@ require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-r
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-reconciliation.php';
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-owned-fields.php';
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-utilities.php';
+require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-import.php';
 
 /**
  * Stripe as the authoritative source for PublishPress Cart payment records.
@@ -35,6 +36,7 @@ class PPCart_Stripe_Sync
     use PPCart_Stripe_Sync_Reconciliation_Trait;
     use PPCart_Stripe_Sync_Owned_Fields_Trait;
     use PPCart_Stripe_Sync_Utilities_Trait;
+    use PPCart_Stripe_Sync_Import_Trait;
 
     /**
      * Webhook event dedupe TTL, in seconds.
