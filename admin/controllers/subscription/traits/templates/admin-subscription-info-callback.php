@@ -14,9 +14,13 @@ if (! ppcart_is_subscription_post_type($post->post_type) || !isset($_GET['post']
 $cart_subscription = new PPCart_Subscription($post->ID);
 $cart_subscription = (object) $cart_subscription->get_data();
 
-$str_mode = $cart_subscription->gateway_mode ?? $cart_subscription->stripe_mode ?? 'test';
+// Subscriptions saved before Cart stored a mode follow the site's Stripe mode.
+$str_mode = ppcart_normalize_stripe_mode($cart_subscription->gateway_mode ?? $cart_subscription->stripe_mode ?? '');
 
-$stripe_id = $cart_subscription->subscription_id ?? $cart_subscription->stripe_subscription_id ?? '';
+$stripe_id = PPCart_Subscription::pick_stripe_subscription_id(
+    $cart_subscription->subscription_id ?? '',
+    ppcart_get_post_meta($post->ID, 'stripe_subscription_id', true)
+);
 $paypal_id = $cart_subscription->subscription_id ?? $cart_subscription->paypal_txn_id ?? '';
 
 $details_link = '';

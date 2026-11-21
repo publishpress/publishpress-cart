@@ -9,12 +9,13 @@ if (is_numeric($sub)) {
     $sub = new PPCart_Subscription($sub);
 }
 
-if (! $sub || ! $sub->id || empty($sub->subscription_id)) {
+$stripe_subscription_id = ($sub && $sub->id) ? $sub->get_stripe_subscription_id() : '';
+if (! $stripe_subscription_id) {
     throw new Exception(esc_html__('Invalid subscription.', 'publishpress-cart'));
 }
 
 $stripe = self::get_client_for_mode($sub->gateway_mode);
-$stripe_sub = $stripe->subscriptions->retrieve($sub->subscription_id);
+$stripe_sub = $stripe->subscriptions->retrieve($stripe_subscription_id);
 $sub = self::sync_subscription_resource($stripe_sub, $stripe, null, true);
 
 if (! $sub) {

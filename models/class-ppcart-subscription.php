@@ -182,4 +182,41 @@ class PPCart_Subscription
     public static $cod_gateway_str   = 'cod';
     public static $stripe_gateway_str = 'stripe';
     public static $paypal_gateway_str = 'paypal';
+
+    /**
+     * The Stripe subscription ID (sub_...) of this subscription.
+     *
+     * Subscriptions migrated from old StudioCart versions can keep
+     * StudioCart's own ID in subscription_id and the Stripe ID in
+     * stripe_subscription_id. Use the one Stripe knows.
+     *
+     * @return string
+     */
+    public function get_stripe_subscription_id()
+    {
+        $stripe_subscription_id = ($this->id && function_exists('ppcart_get_post_meta'))
+            ? ppcart_get_post_meta($this->id, 'stripe_subscription_id', true)
+            : '';
+
+        return self::pick_stripe_subscription_id($this->subscription_id ?? '', $stripe_subscription_id);
+    }
+
+    /**
+     * Pick the Stripe subscription ID from a subscription's two ID fields.
+     *
+     * @param mixed $subscription_id        The subscription_id value.
+     * @param mixed $stripe_subscription_id The stripe_subscription_id value.
+     * @return string
+     */
+    public static function pick_stripe_subscription_id($subscription_id, $stripe_subscription_id)
+    {
+        $subscription_id = is_string($subscription_id) ? $subscription_id : '';
+        $stripe_subscription_id = is_string($stripe_subscription_id) ? $stripe_subscription_id : '';
+
+        if (0 !== strpos($subscription_id, 'sub_') && 0 === strpos($stripe_subscription_id, 'sub_')) {
+            return $stripe_subscription_id;
+        }
+
+        return '' !== $subscription_id ? $subscription_id : $stripe_subscription_id;
+    }
 }
