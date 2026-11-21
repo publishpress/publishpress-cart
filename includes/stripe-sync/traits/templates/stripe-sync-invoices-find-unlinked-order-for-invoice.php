@@ -16,7 +16,7 @@ $order_ids = get_posts(
     [
         'post_type'      => ppcart_query_post_types('order'),
         'post_status'    => 'any',
-        'posts_per_page' => -1,
+        'posts_per_page' => 500,
         'fields'         => 'ids',
         'orderby'        => 'date',
         'order'          => 'ASC',
@@ -35,8 +35,8 @@ foreach ($order_ids as $order_id) {
         continue;
     }
 
-    $status = (string) ppcart_get_post_meta($order_id, 'status', true);
-    if (! in_array($status, [ 'paid', 'completed', 'refunded' ], true)) {
+    $order_status = (string) ppcart_get_post_meta($order_id, 'status', true);
+    if (! in_array($order_status, [ 'paid', 'completed', 'refunded' ], true)) {
         continue;
     }
 
