@@ -20,10 +20,10 @@ if ($existing && $existing->id) {
     );
 }
 
-$mode = ppcart_normalize_stripe_mode($args['mode'] ?? '');
+$import_mode = ppcart_normalize_stripe_mode($args['mode'] ?? '');
 
 try {
-    $stripe = self::get_client_for_mode($mode);
+    $stripe = self::get_client_for_mode($import_mode);
     $stripe_sub = $stripe->subscriptions->retrieve($stripe_subscription_id, [ 'expand' => [ 'customer' ] ]);
 } catch (Throwable $e) {
     return new WP_Error('ppcart_import_stripe', $e->getMessage());
@@ -73,7 +73,7 @@ $user = $email ? get_user_by('email', $email) : false;
 $sub = new PPCart_Subscription();
 $sub->subscription_id = $stripe_subscription_id;
 $sub->pay_method = 'stripe';
-$sub->gateway_mode = self::get($stripe_sub, 'livemode', 'live' === $mode) ? 'live' : 'test';
+$sub->gateway_mode = self::get($stripe_sub, 'livemode', 'live' === $import_mode) ? 'live' : 'test';
 $sub->status = $mapped['status'];
 $sub->sub_status = $mapped['sub_status'];
 $sub->sub_next_bill_date = $mapped['sub_next_bill_date'];

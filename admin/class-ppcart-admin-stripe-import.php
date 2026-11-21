@@ -91,7 +91,7 @@ class PPCart_Admin_Stripe_Import
             [
                 'post_type'      => ppcart_query_post_types('product'),
                 'post_status'    => [ 'publish', 'private', 'draft' ],
-                'posts_per_page' => -1,
+                'posts_per_page' => 500,
                 'orderby'        => 'title',
                 'order'          => 'ASC',
             ]
