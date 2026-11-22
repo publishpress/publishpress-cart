@@ -14,6 +14,7 @@ class PPCart_Admin_Filters
 
         add_action('restrict_manage_posts', [$this, 'subscriptions_type_filter']);
         add_action('pre_get_posts', [$this, 'apply_subscription_type_filter']);
+        add_action('load-edit.php', [$this, 'register_pending_cancellation_view']);
 
         add_action('restrict_manage_posts', [$this, 'order_type_filter']);
         add_action('pre_get_posts', [$this, 'apply_order_type_filter']);
@@ -68,21 +69,119 @@ class PPCart_Admin_Filters
                 $query->set('meta_value', 1);
                 $query->set('meta_compare', '>');
             } elseif ($subscription_type == 'pending_cancellation') {
-                $query->set('meta_query', [
-                    [
-                        // A cleared cancel_date can stay stored as an empty value.
-                        'key' => ppcart_meta_key('cancel_date'),
-                        'value' => '',
-                        'compare' => '!=',
-                    ],
-                    [
-                        'key' => ppcart_meta_key('status'),
-                        'value' => 'canceled',
-                        'compare' => '!=',
-                    ],
-                ]);
+                $query->set('meta_query', self::pending_cancellation_meta_query());
             }
         }
+    }
+
+    /**
+     * Meta query for subscriptions that are set to cancel but aren't canceled yet.
+     *
+     * @return array
+     */
+    public static function pending_cancellation_meta_query()
+    {
+        return [
+            [
+                // A cleared cancel_date can stay stored as an empty value.
+                'key' => ppcart_meta_key('cancel_date'),
+                'value' => '',
+                'compare' => '!=',
+            ],
+            [
+                'key' => ppcart_meta_key('status'),
+                'value' => 'canceled',
+                'compare' => '!=',
+            ],
+        ];
+    }
+
+    /**
+     * Add the "Pending Cancellation" view to the Subscriptions list.
+     *
+     * @return void
+     */
+    public function register_pending_cancellation_view()
+    {
+        global $typenow;
+
+        if ($typenow && ppcart_is_subscription_post_type($typenow)) {
+            add_filter('views_edit-' . $typenow, [$this, 'pending_cancellation_view']);
+        }
+    }
+
+    /**
+     * Add a "Pending Cancellation (N)" link after the Active view.
+     *
+     * @param array $views Status view links keyed by status.
+     * @return array
+     */
+    public function pending_cancellation_view($views)
+    {
+        global $typenow;
+
+        $post_type = (string) $typenow;
+        if (! ppcart_is_subscription_post_type($post_type)) {
+            return $views;
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin list filter parameter.
+        $current = isset($_GET['subscription_type']) && 'pending_cancellation' === sanitize_key(wp_unslash($_GET['subscription_type']));
+
+        $count_query = new WP_Query(
+            [
+                'post_type'              => $post_type,
+                'post_status'            => 'any',
+                'posts_per_page'         => 1,
+                'fields'                 => 'ids',
+                'update_post_meta_cache' => false,
+                'update_post_term_cache' => false,
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Counts subscriptions pending cancellation.
+                'meta_query'             => self::pending_cancellation_meta_query(),
+            ]
+        );
+        $count = (int) $count_query->found_posts;
+
+        if (0 === $count && ! $current) {
+            return $views;
+        }
+
+        $url = add_query_arg(
+            [
+                'post_type'         => $post_type,
+                'subscription_type' => 'pending_cancellation',
+            ],
+            admin_url('edit.php')
+        );
+
+        $label = sprintf(
+            /* translators: %s: number of subscriptions pending cancellation. */
+            _n(
+                'Pending Cancellation <span class="count">(%s)</span>',
+                'Pending Cancellation <span class="count">(%s)</span>',
+                $count,
+                'publishpress-cart'
+            ),
+            number_format_i18n($count)
+        );
+
+        $link = sprintf(
+            '<a href="%1$s"%2$s>%3$s</a>',
+            esc_url($url),
+            $current ? ' class="current" aria-current="page"' : '',
+            wp_kses($label, [ 'span' => [ 'class' => true ] ])
+        );
+
+        $key      = 'ppcart_pending_cancellation';
+        $position = array_search('active', array_keys($views), true);
+        if (false === $position) {
+            $views[ $key ] = $link;
+            return $views;
+        }
+
+        return array_slice($views, 0, $position + 1, true)
+            + [ $key => $link ]
+            + array_slice($views, $position + 1, null, true);
     }
 
     // Display custom posts filter dropdown
