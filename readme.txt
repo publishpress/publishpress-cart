@@ -8,7 +8,7 @@ Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-SPublishPress Cart turns your WordPress site into a complete store for digital products, online courses, coaching, memberships, events, and services.
+PublishPress Cart turns your WordPress site into a complete store for digital products, online courses, coaching, memberships, events, and services.
 
 == Description ==
 
@@ -106,13 +106,29 @@ Each product can run its own automations. Choose what triggers them, such as a p
 
 See [the full Free vs Pro comparison](https://publishpress.com/knowledge-base/difference-between-cart-free-and-pro/).
 
-## Documentation and support ##
+## Join PublishPress and get the Pro plugins ##
 
-* [Getting started with PublishPress Cart](https://publishpress.com/knowledge-base/getting-started-with-publishpress-cart/)
-* [Creating a product](https://publishpress.com/knowledge-base/creating-product/)
-* [Product configuration](https://publishpress.com/knowledge-base/product-configuration/)
-* [Customizing the checkout form](https://publishpress.com/knowledge-base/customize-checkout-form/)
-* [PublishPress support](https://publishpress.com/publishpress-support/)
+The Pro versions of the PublishPress plugins are well worth your investment. The Pro versions have extra features and faster support. [Click here to join PublishPress](https://publishpress.com/pricing/).
+
+Join PublishPress and you'll get access to these Pro plugins:
+
+* [PublishPress Authors Pro](https://publishpress.com/authors) allows you to add multiple authors and guest authors to WordPress posts.
+* [PublishPress Blocks Pro](https://publishpress.com/blocks) has everything you need to build professional websites with the WordPress block editor.
+* [PublishPress Cart Pro](https://publishpress.com/cart) turns your WordPress site into a complete store for digital products, online courses, coaching, memberships, events, and services.
+* [PublishPress Capabilities Pro](https://publishpress.com/capabilities) is the plugin to manage your WordPress user roles, permissions, and capabilities.
+* [PublishPress Checklists Pro](https://publishpress.com/checklists) enables you to define tasks that must be completed before content is published.
+* [PublishPress Future Pro](https://publishpress.com/future) is the plugin for scheduling changes to your posts.
+* [PublishPress Permissions Pro](https://publishpress.com/permissions)  is the plugin for restricted content and advanced WordPress permissions.
+* [PublishPress Planner Pro](https://publishpress.com/publishpress) is the plugin for managing and scheduling WordPress content.
+* [PublishPress Revisions Pro](https://publishpress.com/revisions) allows you to update your published pages with teamwork and precision.
+* [PublishPress Series Pro](https://publishpress.com/series) enables you to group content together into a series.
+* [PublishPress Shortlinks Pro](https://publishpress.com/shortlinks) allows you to create custom URLs for your posts and external links.
+* [PublishPress Statuses Pro](https://publishpress.com/statuses) enables you to create additional publishing steps for your posts.
+* [PublishPress Tag Groups Pro](https://publishpress.com/tag-groups) helps visitors discover your content through flexible displays for tags and categories.
+* [PublishPress Taxonomies Pro](https://publishpress.com/taxonomies) enables you to create and manage the taxonomies that organize your WordPress content.
+
+
+Together, these plugins are a suite of powerful publishing tools for WordPress. If you need to create a professional workflow in WordPress, with moderation, revisions, permissions and more... then you should try PublishPress.
 
 ## External services ##
 
@@ -120,7 +136,7 @@ PublishPress Cart can connect to third-party services when you enable and config
 
 = Meta Pixel =
 
-If you enter a Meta Pixel ID in the Facebook Ad Events integration, Cart loads Meta Pixel from https://connect.facebook.net on checkout and paid order confirmation pages. Meta receives PageView events and any Cart events you enable, which can include the product ID, price, currency, and an order event ID. Meta Pixel may collect browser and device data and use cookies. A Meta account and a Pixel ID are required for this optional setup. If your site already loads Meta Pixel, Cart can send enabled events to that installation.
+If you enter a Meta Pixel ID in the Facebook Ad Events integration, PublishPress Cart loads Meta Pixel from https://connect.facebook.net on checkout and paid order confirmation pages. Meta receives PageView events and any PublishPress Cart events you enable, which can include the product ID, price, currency, and an order event ID. Meta Pixel may collect browser and device data and use cookies. A Meta account and a Pixel ID are required for this optional setup. If your site already loads Meta Pixel, PublishPress Cart can send enabled events to that installation.
 
 Service: Meta Platforms, Inc. Terms: [https://www.facebook.com/legal/technology_terms](https://www.facebook.com/legal/technology_terms). Privacy: [https://www.facebook.com/privacy/policy/](https://www.facebook.com/privacy/policy/).
 
@@ -227,9 +243,9 @@ There are many options, including WooCommerce, Easy Digital Downloads, SureCart,
 
 We're different in three key ways:
 
-* **Built for digital products and services.** Cart is focused on memberships, courses, file downloads, bookings, and online offers. It does not handle shipping for physical products.
+* **Built for digital products and services.** PublishPress Cart is focused on memberships, courses, file downloads, bookings, and online offers. It does not handle shipping for physical products.
 * **Core features in one plugin.** Payment plans, subscriptions, file delivery, customer accounts, and automations are built in rather than split across dozens of add-ons.
-* **Connected to the PublishPress suite.** Cart works alongside other PublishPress plugins. For example, you can generate QR codes or short links with PublishPress Shortlinks, schedule access changes with PublishPress Future, or manage access with PublishPress Permissions.
+* **Connected to the PublishPress suite.** PublishPress Cart works alongside other PublishPress plugins. For example, you can generate QR codes or short links with PublishPress Shortlinks, schedule access changes with PublishPress Future, or manage access with PublishPress Permissions.
 
 PublishPress Cart isn't trying to out-muscle WooCommerce for massive, complex retail catalogs. Instead, it's designed to be simpler, faster to set up, and budget-friendly. It starts at $79/year for a single site, giving most digital creators and site owners what they need in one place.
 
