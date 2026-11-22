@@ -114,11 +114,11 @@ Join PublishPress and you'll get access to these Pro plugins:
 
 * [PublishPress Authors Pro](https://publishpress.com/authors) allows you to add multiple authors and guest authors to WordPress posts.
 * [PublishPress Blocks Pro](https://publishpress.com/blocks) has everything you need to build professional websites with the WordPress block editor.
-* [PublishPress Cart Pro](https://publishpress.com/cart) turns your WordPress site into a complete store for digital products, online courses, coaching, memberships, events, and services.
+* [PublishPress Cart Pro](https://publishpress.com/cart) turns your WordPress site into a complete store for digital products.
 * [PublishPress Capabilities Pro](https://publishpress.com/capabilities) is the plugin to manage your WordPress user roles, permissions, and capabilities.
 * [PublishPress Checklists Pro](https://publishpress.com/checklists) enables you to define tasks that must be completed before content is published.
 * [PublishPress Future Pro](https://publishpress.com/future) is the plugin for scheduling changes to your posts.
-* [PublishPress Permissions Pro](https://publishpress.com/permissions)  is the plugin for restricted content and advanced WordPress permissions.
+* [PublishPress Permissions Pro](https://publishpress.com/permissions) is the plugin for restricted content and advanced WordPress permissions.
 * [PublishPress Planner Pro](https://publishpress.com/publishpress) is the plugin for managing and scheduling WordPress content.
 * [PublishPress Revisions Pro](https://publishpress.com/revisions) allows you to update your published pages with teamwork and precision.
 * [PublishPress Series Pro](https://publishpress.com/series) enables you to group content together into a series.
@@ -127,8 +127,7 @@ Join PublishPress and you'll get access to these Pro plugins:
 * [PublishPress Tag Groups Pro](https://publishpress.com/tag-groups) helps visitors discover your content through flexible displays for tags and categories.
 * [PublishPress Taxonomies Pro](https://publishpress.com/taxonomies) enables you to create and manage the taxonomies that organize your WordPress content.
 
-
-Together, these plugins are a suite of powerful publishing tools for WordPress. If you need to create a professional workflow in WordPress, with moderation, revisions, permissions and more... then you should try PublishPress.
+Together, these plugins are a suite of powerful publishing tools for WordPress. If you need to create a professional workflow in WordPress, with moderation, revisions, permissions and more, then you should try PublishPress.
 
 ## External services ##
 
