@@ -1534,6 +1534,78 @@
     }
 
     /* -------------------------------------------------------------------------
+     * Maintenance — import subscriptions from Stripe
+     * ---------------------------------------------------------------------*/
+    function bindMaintenanceStripeImport() {
+        var $box = $page.find('[data-ppcart-stripe-import]');
+        if (!$box.length) {
+            return;
+        }
+
+        var $ids = $box.find('[data-ppcart-stripe-import-ids]');
+        var $product = $box.find('[data-ppcart-stripe-import-product]');
+        var $button = $box.find('[data-ppcart-stripe-import-run]');
+        var $result = $box.find('[data-ppcart-stripe-import-result]');
+
+        function showMessage(message) {
+            $result.removeAttr('hidden').empty().append($('<p>').text(message));
+        }
+
+        function showResults(results) {
+            var $list = $('<ul class="ppcart-stripe-import__list">');
+            $.each(results, function (index, row) {
+                var $item = $('<li>').addClass(row.success ? 'is-success' : 'is-error');
+                $item.append($('<code>').text(row.id), ' ');
+                if (row.success && row.url) {
+                    $item.append($('<a>').attr('href', row.url).text(row.label), ' ');
+                }
+                $item.append(document.createTextNode(row.message || ''));
+                $list.append($item);
+            });
+            $result.removeAttr('hidden').empty().append($list);
+        }
+
+        $button.on('click', function (event) {
+            event.preventDefault();
+            if ($button.prop('disabled')) {
+                return;
+            }
+
+            var ids = $.trim($ids.val() || '');
+            if (!ids) {
+                showMessage($button.attr('data-empty-text'));
+                $ids.trigger('focus');
+                return;
+            }
+
+            $button.prop('disabled', true).attr('aria-busy', 'true');
+            showMessage($button.attr('data-running-text'));
+
+            $.post(
+                window.ajaxurl || '/wp-admin/admin-ajax.php',
+                {
+                    action: 'ppcart_import_stripe_subscriptions',
+                    nonce: $button.attr('data-nonce'),
+                    ids: ids,
+                    product_id: $product.val() || 0
+                }
+            ).done(function (response) {
+                if (response && response.success && response.data && response.data.results) {
+                    showResults(response.data.results);
+                    return;
+                }
+                showMessage(response && response.data && response.data.message
+                    ? response.data.message
+                    : $button.attr('data-failed-text'));
+            }).fail(function () {
+                showMessage($button.attr('data-failed-text'));
+            }).always(function () {
+                $button.prop('disabled', false).removeAttr('aria-busy');
+            });
+        });
+    }
+
+    /* -------------------------------------------------------------------------
      * Row labels for selectize controls. The Settings API row label points at
      * the original <select>, which selectize hides; name the visible
      * "{id}-selectized" input by that label instead (WCAG 1.3.1, 4.1.2).
@@ -1595,6 +1667,7 @@
         bindEmailTemplateModals();
         bindPaymentMethods();
         bindMaintenanceSecrets();
+        bindMaintenanceStripeImport();
         labelSelectizedControls();
         // Selectize may still be building its inputs; label again once loaded.
         $(window).on('load', labelSelectizedControls);

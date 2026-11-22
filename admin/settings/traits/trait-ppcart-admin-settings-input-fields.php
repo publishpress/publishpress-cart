@@ -49,6 +49,19 @@ trait PPCart_Admin_Settings_Input_Fields_Trait
         }
     }
 
+    /**
+     * Renders the Maintenance form to Import Subscriptions from Stripe.
+     *
+     * @param array $args Field arguments.
+     * @return void
+     */
+    public function field_maintenance_stripe_import($args)
+    {
+        if (class_exists('PPCart_Admin_Stripe_Import')) {
+            PPCart_Admin_Stripe_Import::render_maintenance_card();
+        }
+    }
+
     private static function get_pages()
     {
         $pages = get_pages();

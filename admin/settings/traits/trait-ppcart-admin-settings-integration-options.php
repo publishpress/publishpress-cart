@@ -48,6 +48,17 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
                     'tab'      => 'maintenance',
                 ],
             ],
+            'maintenance-stripe-import' => [
+                'maintenance-stripe-import-form' => [
+                    'type'     => 'maintenance_stripe_import',
+                    'label'    => '',
+                    'settings' => [
+                        'id'              => 'ppcart_maintenance_stripe_import',
+                        'skip_register'   => true,
+                    ],
+                    'tab'      => 'maintenance',
+                ],
+            ],
         ];
     }
 

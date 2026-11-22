@@ -4270,3 +4270,21 @@ html:has(.ppcart-settings-page .ppcart-settings__savebar.is-visible) {
 .ppcart-ready .ppcart-step__note {
     color: #047857;
 }
+
+/* Maintenance: import subscriptions from Stripe */
+.ppcart-stripe-import__result {
+    margin-top: 12px;
+}
+
+.ppcart-stripe-import__result p,
+.ppcart-stripe-import__list {
+    margin: 0;
+}
+
+.ppcart-stripe-import__list li {
+    margin: 0 0 6px;
+}
+
+.ppcart-stripe-import__list li.is-error {
+    color: var(--ppcart-danger, #b32d2e);
+}
