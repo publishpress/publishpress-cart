@@ -113,7 +113,11 @@ return PPCart_Stripe_Sync_Context::run(
 
         if (! $order) {
             $order = $sub->first_order();
-            if (
+            if (! $order || empty($order->id)) {
+                // A subscription with no order yet, for example one imported
+                // from Stripe, gets a new order built from its own details.
+                $order = $sub->new_order();
+            } elseif (
                 $order
                 && (
                     'refunded' === $order->status
@@ -180,6 +184,25 @@ return PPCart_Stripe_Sync_Context::run(
             $order->payment_status = $values['payment_status'];
             $order->status = $values['status'];
             $order->store($trigger_integrations);
+        }
+        // An order found by its charge can be missing its subscription, for
+        // example a renewal created before the subscription had a first order.
+        // Link it and fill in the customer from the subscription. Only meta is
+        // written, so no integrations run again.
+        if ($existing && $order->id && empty($order->subscription_id)) {
+            ppcart_update_post_meta($order->id, 'subscription_id', $sub->id);
+            $order->subscription_id = $sub->id;
+            foreach (
+                [
+                    'firstname', 'lastname', 'first_name', 'last_name', 'customer_name', 'customer_id',
+                    'email', 'phone', 'user_account', 'product_id', 'product_name', 'currency',
+                ] as $field
+            ) {
+                if (empty($order->$field) && isset($sub->$field) && '' !== $sub->$field && null !== $sub->$field) {
+                    ppcart_update_post_meta($order->id, $field, $sub->$field);
+                    $order->$field = $sub->$field;
+                }
+            }
         }
         if ($refunded_charge && $order->id) {
             ppcart_update_post_meta($order->id, 'refund_log', $order->refund_log);

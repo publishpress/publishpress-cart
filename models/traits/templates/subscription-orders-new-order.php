@@ -8,6 +8,23 @@ if (! defined('ABSPATH')) {
 // phpcs:disable VariableAnalysis.CodeAnalysis.VariableAnalysis.SelfOutsideClass -- Included from PPCart_Subscription_Orders::new_order().
 
 $new_order = $this->first_order();
+if (! $new_order || empty($new_order->id)) {
+    // No first order to copy, for example a subscription imported from
+    // Stripe or StudioCart. Start from the subscription's own details.
+    $new_order = new PPCart_Order();
+    foreach (
+        [
+            'firstname', 'lastname', 'first_name', 'last_name', 'customer_name', 'customer_id',
+            'company', 'email', 'phone', 'country', 'address1', 'address2', 'city', 'state', 'zip',
+            'user_account', 'currency', 'tax_type', 'product_id', 'product_name', 'page_id', 'page_url',
+            'plan_id', 'option_id',
+        ] as $field
+    ) {
+        if (isset($this->$field) && '' !== $this->$field && null !== $this->$field) {
+            $new_order->$field = $this->$field;
+        }
+    }
+}
 if ($new_order) {
     $new_order->id = 0;
     $new_order->pay_method = $this->pay_method;
@@ -18,6 +35,7 @@ if ($new_order) {
     $new_order->main_offer_amt = $this->sub_amount;
     $new_order->tax_amount = $this->tax_amount;
     $new_order->quantity = $this->quantity;
+    $new_order->subscription_id = $this->id;
 
     $children = [
       'transaction_id'    => null,
@@ -44,7 +62,7 @@ if ($new_order) {
     $new_order->items = [
       [
         'product_id'     => $this->product_id,
-        'price_id'       => $this->option_id,
+        'price_id'       => (string) ($this->option_id ?? ''),
         'product_name'   => $this->product_name,
         'price_name'     => $this->sub_item_name,
         'unit_price'     => $this->sub_amount,
