@@ -217,6 +217,9 @@ if (is_admin()) {
     require_once __DIR__ . '/admin/class-ppcart-welcome.php';
     add_action('admin_init', ['PPCart_Welcome', 'maybe_redirect']);
     add_action('admin_menu', ['PPCart_Welcome', 'register_page'], 20);
+
+    require_once __DIR__ . '/admin/class-ppcart-admin-stripe-import.php';
+    add_action('wp_ajax_' . PPCart_Admin_Stripe_Import::AJAX_ACTION, ['PPCart_Admin_Stripe_Import', 'ajax_import']);
 }
 
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');
