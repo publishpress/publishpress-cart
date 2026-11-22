@@ -81,6 +81,22 @@ if (! $invoice_date) {
     $invoice_date = self::path($invoice, [ 'status_transitions', 'finalized_at' ], self::get($invoice, 'created', time()));
 }
 
+// Orders migrated from old StudioCart versions have no charge ID. Match the
+// invoice to such an order of this subscription by amount and payment date,
+// so Sync with Stripe doesn't create a second order for the same payment.
+if (! $existing && ($charge_id || $payment_intent)) {
+    $legacy_order_id = self::find_unlinked_order_for_invoice($sub, self::get($invoice, 'amount_paid', 0), $currency, $invoice_date);
+    if ($legacy_order_id) {
+        $existing = new PPCart_Order($legacy_order_id);
+        PPCart_Stripe_Sync_Context::run(
+            function () use ($legacy_order_id, $charge_id, $payment_intent) {
+                ppcart_update_post_meta($legacy_order_id, 'transaction_id', $charge_id ? $charge_id : $payment_intent);
+            }
+        );
+        $existing->transaction_id = $charge_id ? $charge_id : $payment_intent;
+    }
+}
+
 // Stripe keeps a refunded invoice as "paid", so read the refund from the charge.
 $refunded_charge = null;
 if ($charge_id && 'paid' === $order_status['post_status'] && 'invoice.payment_failed' !== $event_type) {
