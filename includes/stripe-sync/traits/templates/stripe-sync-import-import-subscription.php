@@ -41,12 +41,10 @@ if (! $product_id) {
     $product_id = self::find_product_for_stripe_price($price_id);
 }
 if (! $product_id) {
-    foreach ([ 'ppcart_product_id', 'sc_product_id' ] as $key) {
-        $candidate = absint(self::metadata($stripe_sub, $key, 0));
-        if ($candidate && ppcart_is_product_post_type(get_post_type($candidate))) {
-            $product_id = $candidate;
-            break;
-        }
+    // self::metadata() also reads the leftover name when Compat is active.
+    $candidate = absint(self::metadata($stripe_sub, 'ppcart_product_id', 0));
+    if ($candidate && ppcart_is_product_post_type(get_post_type($candidate))) {
+        $product_id = $candidate;
     }
 }
 if (! $product_id || ! ppcart_is_product_post_type(get_post_type($product_id))) {
