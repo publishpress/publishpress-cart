@@ -115,6 +115,8 @@ if (is_user_logged_in()) {
     } elseif ($attr['action'] == 'lostpassword') {
         // Check if the user just requested a new password
         $attr['lost_password_sent'] = is_string($checkemail_request) && 'confirm' === $checkemail_request;
+        $user_login_request = ppcart_filter_input_request('user_login', FILTER_UNSAFE_RAW);
+        $attr['user_login'] = is_string($user_login_request) ? sanitize_text_field($user_login_request) : '';
 
         // Retrieve possible errors from request parameters
         $attr['errors'] = [];

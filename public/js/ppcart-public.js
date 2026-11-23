@@ -1208,6 +1208,158 @@
             }
         });
 
+        var existingAccountResults = {};
+        var existingAccountTimer = null;
+
+        function existingAccountFieldGroups($form) {
+            // Wrappers without the data attribute are matched by their inputs, for Pro versions that predate it.
+            return $form.find('[data-ppcart-account-field]')
+                .add($form.find('#ppcart-wpuserid, input.ppcart-password').closest('.ppcart-form-group'));
+        }
+
+        function setExistingAccount($email, email) {
+            var $form = $email.closest('form');
+            var $notice = $email.closest('.ppcart-form-group').find('.ppcart-existing-account-notice');
+            var $groups = existingAccountFieldGroups($form);
+            var exists = '' !== email;
+
+            if (!$notice.length || (!exists && $notice.prop('hidden'))) {
+                return;
+            }
+
+            $notice.data('email', email).prop('hidden', !exists);
+            $notice.find('.ppcart-existing-account-error').prop('hidden', true).text('');
+
+            if (exists) {
+                $notice.find('.ppcart-existing-account-reset').attr('href', function(i, href) {
+                    var url = new URL(href, window.location.href);
+                    url.searchParams.set('user_login', email);
+                    return url.toString();
+                });
+                $notice.find('.ppcart-existing-account-login-page').attr('href', function(i, href) {
+                    var url = new URL(href, window.location.href);
+                    url.searchParams.set('redirect_to', window.ppcartReturnUrl());
+                    return url.toString();
+                });
+                $groups.hide();
+                $groups.find('input, select, textarea').not(':disabled').prop('disabled', true).attr('data-ppcart-account-disabled', '1');
+            } else {
+                $notice.find('.ppcart-existing-account-login').prop('hidden', true);
+                $notice.find('.ppcart-existing-account-login-toggle').attr('aria-expanded', 'false');
+                $groups.show();
+                $groups.find('[data-ppcart-account-disabled]').prop('disabled', false).removeAttr('data-ppcart-account-disabled');
+            }
+        }
+
+        function checkExistingAccount($email) {
+            var email = $.trim(String($email.val() || '')).toLowerCase();
+
+            clearTimeout(existingAccountTimer);
+            if (!regExEmail.test(email)) {
+                setExistingAccount($email, '');
+                return;
+            }
+            if (Object.prototype.hasOwnProperty.call(existingAccountResults, email)) {
+                setExistingAccount($email, existingAccountResults[email] ? email : '');
+                return;
+            }
+
+            existingAccountTimer = setTimeout(async function() {
+                var $form = $email.closest('form');
+                var params = new FormData();
+                var exists = false;
+
+                params.append('action', 'ppcart_check_email');
+                params.append('email', email);
+                params.append('ppcart_product_id', $('input[name=ppcart_product_id]', $form).val() || '');
+                params.append('ppcart-nonce', $('input[name=ppcart-nonce]', $form).val() || '');
+
+                try {
+                    const response = await fetch(ppcart.ajax, { method: 'POST', body: params });
+                    if (response.ok) {
+                        const resp = await response.json();
+                        exists = !!(resp && resp.success && resp.data && true === resp.data.exists);
+                    }
+                } catch (error) {
+                    exists = false;
+                }
+
+                existingAccountResults[email] = exists;
+                if ($.trim(String($email.val() || '')).toLowerCase() === email) {
+                    setExistingAccount($email, exists ? email : '');
+                }
+            }, 300);
+        }
+
+        async function existingAccountLogin($button) {
+            var $notice = $button.closest('.ppcart-existing-account-notice');
+            var $form = $button.closest('form');
+            var $password = $notice.find('.ppcart-existing-account-password');
+            var $error = $notice.find('.ppcart-existing-account-error');
+            var message = ppcart_translate_frontend.existing_account_login_failed;
+            var params = new FormData();
+
+            $error.prop('hidden', true).text('');
+            if (!$password.val()) {
+                $password.trigger('focus');
+                return;
+            }
+
+            params.append('action', 'ppcart_checkout_login');
+            params.append('email', $notice.data('email') || '');
+            params.append('password', $password.val());
+            params.append('ppcart_product_id', $('input[name=ppcart_product_id]', $form).val() || '');
+            params.append('ppcart-nonce', $('input[name=ppcart-nonce]', $form).val() || '');
+            $button.prop('disabled', true);
+
+            try {
+                const response = await fetch(ppcart.ajax, { method: 'POST', body: params });
+                const resp = await response.json();
+                if (resp && resp.success) {
+                    window.location.reload();
+                    return;
+                }
+                if (resp && resp.data && resp.data.error) {
+                    message = resp.data.error;
+                }
+            } catch (error) {
+                message = ppcart_translate_frontend.existing_account_login_failed;
+            }
+
+            $error.text(message).prop('hidden', false);
+            $button.prop('disabled', false);
+        }
+
+        $(document).on('blur', '#ppcart-payment-form input[data-ppcart-account-check]', function() {
+            checkExistingAccount($(this));
+        });
+
+        $(document).on('input', '#ppcart-payment-form input[data-ppcart-account-check]', function() {
+            var $notice = $(this).closest('.ppcart-form-group').find('.ppcart-existing-account-notice');
+            if (!$notice.prop('hidden') && $.trim(String($(this).val() || '')).toLowerCase() !== $notice.data('email')) {
+                setExistingAccount($(this), '');
+            }
+        });
+
+        $(document).on('click', '.ppcart-existing-account-login-toggle', function() {
+            var $login = $(this).closest('.ppcart-existing-account-notice').find('.ppcart-existing-account-login');
+            $login.prop('hidden', false);
+            $(this).attr('aria-expanded', 'true');
+            $login.find('.ppcart-existing-account-password').trigger('focus');
+        });
+
+        $(document).on('click', '.ppcart-existing-account-login-submit', function() {
+            existingAccountLogin($(this));
+        });
+
+        $(document).on('keydown', '.ppcart-existing-account-password', function(event) {
+            if ('Enter' === event.key) {
+                event.preventDefault();
+                event.stopPropagation();
+                existingAccountLogin($(this).closest('.ppcart-existing-account-login').find('.ppcart-existing-account-login-submit'));
+            }
+        });
+
         // check phone number
         $(document).on('blur', '#ppcart-payment-form input[type="tel"]', function() {
             if ($(this).val().length < 1) return;
@@ -1311,7 +1463,7 @@
             });
 
             // check username
-            if ($('#'+form_wrapper+' #ppcart-wpuserid').length > 0) {
+            if ($('#'+form_wrapper+' #ppcart-wpuserid:not(:disabled)').length > 0) {
                 var $username = $('#'+form_wrapper+' #ppcart-wpuserid');
                 if (($username.val().length > 0)) {
                     var check = await checkUsername($username);
@@ -1349,7 +1501,7 @@
 
 
             // check password
-            $('#'+form_wrapper+' input.ppcart-password').each(function () {
+            $('#'+form_wrapper+' input.ppcart-password:not(:disabled)').each(function () {
                 if ($(this).val().length) {
                     var validPass = updatePasswordRules($(this));
                     if (!validPass) {

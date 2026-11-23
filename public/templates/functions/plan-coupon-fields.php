@@ -406,6 +406,8 @@ function ppcart_do_field($args)
         'qty_price' => false,
         'testid' => '',
         'autocomplete' => '',
+        'account_check' => false,
+        'account_field' => false,
     ];
 
     $args = wp_parse_args($args, $defaults);
@@ -439,6 +441,12 @@ function ppcart_do_field($args)
     if (!$id) {
         $id = $name;
     }
+
+    global $ppcart_product;
+    $account_field = ! empty($args['account_field'])
+        || 'password' === $type
+        || in_array($name, array_map(static fn($key) => 'ppcart_custom_fields[' . $key . ']', ppcart_checkout_account_field_keys($ppcart_product)), true);
+    $account_check = ! empty($args['account_check']) && 'email' === $type;
 
     $testid = $testid ? (string) $testid : 'ppcart-checkout-field-' . ppcart_checkout_testid_suffix($name);
     $group_testid = 'ppcart-checkout-field-group-' . ppcart_checkout_testid_suffix($name);
@@ -482,7 +490,7 @@ function ppcart_do_field($args)
     } ?>
 
     <?php if ($type != 'hidden') : ?>
-    <div class="ppcart-form-group ppcart-col-sm-<?php echo esc_attr($cols); ?> <?php echo esc_attr($div_class); ?>" data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($group_testid)); ?>">
+    <div class="ppcart-form-group ppcart-col-sm-<?php echo esc_attr($cols); ?> <?php echo esc_attr($div_class); ?>"<?php echo $account_field ? ' data-ppcart-account-field="1"' : ''; ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($group_testid)); ?>">
         <?php if ($hide_labels != 'hide') : ?>
         <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($label); ?><?php echo (!$required) ? '' : ' <span class="req" aria-hidden="true">*</span>'; ?></label>
         <?php elseif ($type == 'select') : ?>
@@ -520,7 +528,7 @@ function ppcart_do_field($args)
                   <div class="error"><?php echo esc_html(sanitize_text_field($posted_ppcart_errors[$name])); ?></div>
               <?php endif; ?>
         <?php else : ?>
-            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?><?php echo $autocomplete_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
+            <input id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" type="<?php echo esc_attr($type); ?>" class="ppcart-form-control <?php echo esc_attr($class); ?>" placeholder="<?php echo esc_attr($label); ?>" value="<?php echo esc_attr($value); ?>" aria-label="<?php echo esc_attr($label); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string. ?><?php echo $autocomplete_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?><?php echo $account_check ? ' data-ppcart-account-check="1"' : ''; ?> data-testid="<?php echo esc_attr(ppcart_data_testid_attribute($testid)); ?>"
             <?php if ($type == 'password') :
                 ?>pattern="(?=.*\d)(?=.*[a-z]).{8,}"<?php
             endif; ?>
@@ -544,6 +552,9 @@ function ppcart_do_field($args)
               <?php if (is_array($posted_ppcart_errors) && isset($posted_ppcart_errors[$name])) : ?>
                   <div class="error"><?php echo esc_html(sanitize_text_field($posted_ppcart_errors[$name])); ?></div>
               <?php endif; ?>
+              <?php if ($account_check) {
+                    echo ppcart_get_template('checkout/existing-account', 'notice', ppcart_existing_account_urls()); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output.
+              } ?>
         <?php endif; ?>
     <?php if ($type != 'hidden') : ?>
     </div>
@@ -587,6 +598,9 @@ function ppcart_do_checkoutform_fields($post_id, $hide_labels, $twostep = false)
     }
 
     $fields = apply_filters('ppcart_order_form_fields', $fields, $ppcart_product);
+    if (isset($fields['email']) && ppcart_existing_account_check_enabled($ppcart_product)) {
+        $fields['email']['account_check'] = true;
+    }
     foreach ($fields as $k => $field) {
         ppcart_do_field($field);
     }
