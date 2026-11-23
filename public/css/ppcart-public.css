@@ -3559,3 +3559,47 @@ main:has(.ppcart.ppcart-splitin-form) .has-global-padding > .alignfull {
     margin-right: auto;
   }
 }
+.ppcart .ppcart-existing-account [hidden] {
+  display: none !important;
+}
+.ppcart .ppcart-existing-account-notice {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 8px;
+  text-align: left;
+}
+.ppcart .ppcart-existing-account-message {
+  margin: 0;
+}
+.ppcart .ppcart-existing-account-login-toggle {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 0;
+  text-decoration: underline;
+}
+.ppcart .ppcart-existing-account-login {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.ppcart .ppcart-existing-account-login label {
+  flex-basis: 100%;
+}
+.ppcart .ppcart-existing-account-login .ppcart-existing-account-password {
+  flex: 1 1 12em;
+}
+.ppcart .ppcart-existing-account-error {
+  color: #e12c07;
+  flex-basis: 100%;
+  margin: 0;
+}
+.ppcart .ppcart-existing-account-fallback {
+  flex-basis: 100%;
+  font-size: 12px;
+  margin: 0;
+}

@@ -215,6 +215,8 @@ function ppcart_frontend_allowed_html()
         'data-installments' => true,
         'data-interval'   => true,
         'data-item-id'    => true,
+        'data-ppcart-account-check' => true,
+        'data-ppcart-account-field' => true,
         'data-ppcart-qty-price' => true,
         'data-prefix'     => true,
         'data-price'      => true,
@@ -856,6 +858,7 @@ require_once __DIR__ . '/functions/orders-products-and-formatting.php';
 require_once __DIR__ . '/functions/integrations-and-stock.php';
 require_once __DIR__ . '/functions/users-and-notifications.php';
 require_once __DIR__ . '/functions/auto-login.php';
+require_once __DIR__ . '/functions/existing-account-checkout.php';
 require_once __DIR__ . '/functions/currencies.php';
 require_once __DIR__ . '/functions/prices-and-marketing.php';
 require_once __DIR__ . '/functions/product-and-order-setup.php';

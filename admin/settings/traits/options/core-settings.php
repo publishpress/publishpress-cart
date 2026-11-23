@@ -89,6 +89,20 @@ $options = [
                 'description'   => esc_html__('Turn on to hide free orders from the "Orders" tab in My Account', 'publishpress-cart'),
             ],
         ],
+        'existing-account-checkout' => [
+            'type'          => 'select',
+            'label'         => esc_html__("When the buyer's email already has an account", 'publishpress-cart'),
+            'subsection'    => 'pages',
+            'settings'      => [
+                'id'            => '_ppcart_existing_account_checkout',
+                'value'         => '',
+                'selections'    => [
+                    ''      => esc_html__('Do nothing', 'publishpress-cart'),
+                    'login' => esc_html__('Ask the buyer to log in or reset their password', 'publishpress-cart'),
+                ],
+                'description'   => esc_html__('Applies to products that create or update a user account. The checkout then tells visitors whether an email is registered on this site.', 'publishpress-cart'),
+            ],
+        ],
         'terms-url' => [
             'type'          => 'text',
             'label'         => esc_html__('Terms and Conditions URL', 'publishpress-cart'),
