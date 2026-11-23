@@ -72,6 +72,11 @@ function ppcart_pro_locked_product_fields($tab_id)
             [ 'label' => __('Type', 'publishpress-cart'), 'type' => 'select' ],
             [ 'label' => __('Amount', 'publishpress-cart'), 'type' => 'text' ],
         ],
+        'ppcart_pro_embed'           => [
+            [ 'label' => __('Inline checkout', 'publishpress-cart'), 'type' => 'text' ],
+            [ 'label' => __('Popup button', 'publishpress-cart'), 'type' => 'text' ],
+            [ 'label' => __('Popup link', 'publishpress-cart'), 'type' => 'text' ],
+        ],
     ];
 
     $list = $fields[ $tab_id ] ?? [];
@@ -147,6 +152,7 @@ function ppcart_product_tab_description($tab_id)
         'ppcart_pro_order_bumps' => 'orderbump',
         'ppcart_pro_upsell_path' => 'upsellPath',
         'ppcart_pro_affiliates' => 'affiliate',
+        'ppcart_pro_embed' => 'embed',
     ];
     $tab_id = $aliases[$tab_id] ?? $tab_id;
     $descriptions = [
@@ -154,6 +160,7 @@ function ppcart_product_tab_description($tab_id)
         'orderbump' => __('Offer an extra product on the checkout form. Customers can add it to their order before completing payment.', 'publishpress-cart'),
         'upsellPath' => __('Offer additional products after checkout. Choose a sequence of offers and decide what happens when customers accept or decline.', 'publishpress-cart'),
         'affiliate' => __('Let affiliates earn commissions for referring customers to this product. Choose whether affiliate sales are enabled and set the commission rules.', 'publishpress-cart'),
+        'embed' => __('Show the checkout form of this product on another website. Copy a code and paste it into your page.', 'publishpress-cart'),
     ];
 
     return $descriptions[$tab_id] ?? '';

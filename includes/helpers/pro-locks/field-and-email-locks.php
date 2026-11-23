@@ -233,6 +233,7 @@ function ppcart_pro_locked_product_tabs()
             'ppcart_pro_order_bumps'     => __('Offers during checkout', 'publishpress-cart'),
             'ppcart_pro_upsell_path'     => __('Offers after checkout', 'publishpress-cart'),
             'ppcart_pro_affiliates'      => __('Affiliates', 'publishpress-cart'),
+            'ppcart_pro_embed'           => __('Embed', 'publishpress-cart'),
         ]
     );
 }
