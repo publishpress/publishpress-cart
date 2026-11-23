@@ -25,8 +25,8 @@ The admin side is `admin/class-ppcart-admin-embed-tab.php`, `admin/partials/ppca
    - `wp_redirect` at priority 999 calls `bounce_external_redirect()`. On an embed request, a redirect to another origin becomes a 200 bounce page (`ppcart_embed_bounce_page()`) that loads the frame bridge and calls `ppcartNavigate()`, so the top window opens the target. A 302 would load that site inside the frame. This covers a closed cart with a redirect URL and a subscription whose confirmation redirects.
    - `template_include` at priority 999 returns the shell template.
    - `show_admin_bar` at priority 999 returns false.
-   - `wp_enqueue_scripts` at priority 20 fires `ppcart_enqueue_frontend_assets`, enqueues `ppcart-embed.css` with the appearance CSS variables, the web font stylesheet, and `ppcart-embed-frame.js`.
-   - `body_class` adds `ppcart-embed` and one class for each set appearance value.
+   - `wp_enqueue_scripts` at priority 20 fires `ppcart_enqueue_frontend_assets`, enqueues `ppcart-embed.css` and `ppcart-embed-frame.js`.
+   - `body_class` adds `ppcart-embed`, and `ppcart-embed--layout-2-step` for the 2-step layout.
 5. The shell prints the content. For a product, the content is `[ppcart_form id="<ID>"]`. The shortcode prints the receipt when `ppcart-order` is in the URL. For any other allowed post, the content is the post content.
 6. The frame bridge runs inside the iframe. It reports the height to the loader and routes navigations (see the next sections).
 
@@ -40,14 +40,13 @@ renders the content before `wp_head()`, as block themes do, so that inline CSS
 from the checkout attaches to its stylesheet in the head.
 
 The shell is one column, up to 1100px wide. The `html` and `body` backgrounds are
-transparent unless the product sets a background color.
+transparent, so the host page shows through.
 
-`PPCart_Embed_Appearance` (`includes/embed/class-ppcart-embed-appearance.php`) is
-free of WordPress state. `sanitize()` returns all eight appearance keys and makes each invalid
-value `''`. `body_classes()` and `css_variables()` emit a class and a variable
-only for a set value. Every rule in `public/css/ppcart-embed.css` is scoped by
-its body class, so an empty value writes no rule. The admin live preview reads
-the same class and variable names from `style_map()`.
+The embed has no style settings of its own. The checkout keeps the look of the
+product, such as its **Primary Color**. The shell prints `wp_head()`, so CSS that
+the site adds there also loads in the frame, and a rule that starts with
+`body.ppcart-embed` reaches only the embedded checkout. CSS on the host page
+cannot reach inside the frame.
 
 ## Message protocol
 
@@ -147,7 +146,7 @@ add_filter('ppcart_embed_allows_post', function ($allowed, $post) {
 ```
 
 PHP helpers: `ppcart_is_embed_request()`, `ppcart_embed_request_mode()`,
-`ppcart_embed_allows_post()`, `ppcart_embed_appearance($product_id)`, and
+`ppcart_embed_allows_post()`, and
 `ppcart_embed_frame_header_lines($sources)` in
 `includes/embed/ppcart-embed-functions.php`.
 
@@ -157,36 +156,25 @@ frame.
 
 ## Meta keys
 
-The Embed tab saves one meta key per field through the product metabox.
-`ppcart_embed_appearance()` reads them and validates them with
-`PPCart_Embed_Appearance::sanitize()`. An empty value deletes the meta and keeps
-the default look.
+The Embed tab has no fields and saves nothing. One meta key changes the embed:
 
 | Meta key | Value | Invalid or empty means |
 |----------|-------|------------------------|
-| `_ppcart_embed_layout` | `standard` or `2-step` | The product display setting. Free has no Layout field. |
-| `_ppcart_embed_accent` | `#rrggbb` | The product **Primary Color**. |
-| `_ppcart_embed_text` | `#rrggbb` | The default text color. |
-| `_ppcart_embed_background` | `#rrggbb` | A transparent background. |
-| `_ppcart_embed_font_family` | Letters, digits, spaces, commas, hyphens, and quotes, up to 200 characters | The default font. |
-| `_ppcart_embed_font_url` | An `https` URL with no spaces, quotes, `<`, or `>` | No web font. |
-| `_ppcart_embed_radius` | An integer from 0 to 24 (pixels) | The default corners. |
-| `_ppcart_embed_button_text` | Text up to 60 characters, with tags removed | The product **Submit Button Text**, then "Buy now". |
+| `_ppcart_embed_layout` | `standard` or `2-step` | The product display setting. Free has no field for it. |
 
-For a user who can edit the product, the query arg `ppcart-embed-layout=standard|2-step` overrides the saved layout, so the admin preview can show a layout before it is saved.
+`PPCart_Public_Embed_Controller::layout()` reads it and passes it to
+`[ppcart_form]` as the `skin`.
 
 ## Tests
 
 | Suite | IDs | File |
 |-------|-----|------|
-| Unit | UT-378 to UT-380 | `tests/codeception/Unit/Embed/EmbedAppearanceTest.php` |
 | Unit | UT-381, UT-382 | `tests/codeception/Unit/Embed/EmbedFrameHeadersTest.php` |
 | Unit | UT-383, UT-384 | `tests/codeception/Unit/Embed/EmbedRedirectBounceTest.php` |
-| Integration | IT-434 to IT-439, IT-443 | `tests/codeception/Integration/Embed/EmbedCheckoutTest.php` |
-| Integration | IT-440 to IT-442 | `tests/codeception/Integration/Embed/EmbedTabSaveTest.php` |
+| Integration | IT-434 to IT-438, IT-443 | `tests/codeception/Integration/Embed/EmbedCheckoutTest.php` |
 | Harness | none | `tests/playwright/unit/embed-frame-route.spec.ts` (the `route()` rule) |
-| Admin | AD-212 | `tests/playwright/admin/ad212-product-embed-tab-previews-and-saves-accent.spec.ts` |
-| Regression | RT-110 to RT-122 | `tests/playwright/regression/rt110-*.spec.ts` to `rt122-*.spec.ts` |
+| Admin | AD-212 | `tests/playwright/admin/ad212-product-embed-tab-shows-and-copies-embed-code.spec.ts` |
+| Regression | RT-110 to RT-115, RT-117 to RT-122 | `tests/playwright/regression/rt110-*.spec.ts` to `rt122-*.spec.ts` |
 
 The regression specs cover these buyer flows:
 
@@ -198,7 +186,6 @@ The regression specs cover these buyer flows:
 | RT-113 | The popup link opens the dialog on a page with the loader. |
 | RT-114 | The popup link without the loader opens a full-page embed checkout that completes a free order. |
 | RT-115 | A product that redirects to an external thank-you page navigates the top window. |
-| RT-116 | The saved appearance styles the form and the receipt in the frame. |
 | RT-117 | A mocked Stripe one-time order completes inside the inline frame. |
 | RT-118 | On a 375 x 812 viewport, the popup fills the screen and the inline form has no horizontal overflow. |
 | RT-119 | Two inline embeds on one page render and size independently. |
@@ -216,7 +203,7 @@ public, so production does not need the flag.
 The fixtures in `tests/ppcart-fixtures/ppcart-regression-fixtures.php` create the
 products and the plain page. `composer test:regression:setup:mocked` writes their
 paths to `.env` as `URL_EMBED_PRODUCT_FREE`, `URL_EMBED_PRODUCT_STRIPE`,
-`URL_EMBED_PRODUCT_REDIRECT`, `URL_EMBED_PRODUCT_STYLED`, and
+`URL_EMBED_PRODUCT_REDIRECT`, and
 `URL_EMBED_PLAIN_PAGE`. Each spec skips when its key is missing.
 
 To run only the embed specs:

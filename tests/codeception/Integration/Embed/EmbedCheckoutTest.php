@@ -38,7 +38,7 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         parent::tearDown();
     }
 
-    public function test_IT_394_the_shell_template_serves_only_embed_requests_on_singular_posts(): void
+    public function test_IT_434_the_shell_template_serves_only_embed_requests_on_singular_posts(): void
     {
         $controller = new \PPCart_Public_Embed_Controller();
         $fallback   = '/tmp/theme-single.php';
@@ -60,27 +60,20 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         $this->assertSame($fallback, $controller->template_include($fallback));
     }
 
-    public function test_IT_395_the_shell_renders_the_product_form_with_the_saved_appearance(): void
+    public function test_IT_435_the_shell_renders_the_product_form(): void
     {
-        update_post_meta($this->temporaryProductId, '_ppcart_embed_accent', '#ff5a1f');
-        update_post_meta($this->temporaryProductId, '_ppcart_embed_radius', '12');
-        update_post_meta($this->temporaryProductId, '_ppcart_embed_font_url', 'https://fonts.example/inter.css');
-
         $html = $this->renderShell(add_query_arg('ppcart-embed', '1', get_permalink($this->temporaryProductId)));
 
         $this->assertStringContainsString('id="ppcart_card_button"', $html);
         $this->assertStringContainsString('data-testid="ppcart-order-submit"', $html);
-        $this->assertStringContainsString(':root{--ppcart-embed-accent:#ff5a1f;--ppcart-embed-radius:12px;}', $html);
-        $this->assertMatchesRegularExpression('/<body class="[^"]*\bppcart-embed\b[^"]*\bppcart-embed--accent\b[^"]*\bppcart-embed--radius\b[^"]*"/', $html);
-        $this->assertStringNotContainsString('ppcart-embed--text', $html);
+        $this->assertMatchesRegularExpression('/<body class="[^"]*\bppcart-embed\b[^"]*"/', $html);
         $this->assertStringContainsString('<main class="ppcart-embed__main">', $html);
         $this->assertStringContainsString('public/css/ppcart-embed.css', $html);
         $this->assertStringContainsString('public/js/ppcart-embed-frame.js', $html);
-        $this->assertStringContainsString("href='https://fonts.example/inter.css'", $html);
         $this->assertFalse(apply_filters('show_admin_bar', true));
     }
 
-    public function test_IT_396_the_2_step_layout_passes_the_skin_to_the_checkout_template(): void
+    public function test_IT_436_the_2_step_layout_passes_the_skin_to_the_checkout_template(): void
     {
         update_post_meta($this->temporaryProductId, '_ppcart_embed_layout', '2-step');
         add_filter('ppcart_checkout_template_path', [ $this, 'captureSkin' ], 10, 2);
@@ -92,27 +85,7 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('id="ppcart_card_button"', $html);
     }
 
-    public function test_IT_399_an_editor_previews_a_layout_before_saving_it_and_a_visitor_cannot(): void
-    {
-        update_post_meta($this->temporaryProductId, '_ppcart_embed_layout', '2-step');
-        add_filter('ppcart_checkout_template_path', [ $this, 'captureSkin' ], 10, 2);
-        $url = add_query_arg([ 'ppcart-embed' => '1', 'ppcart-embed-layout' => 'standard' ], get_permalink($this->temporaryProductId));
-
-        $visitorHtml = $this->renderShell($url);
-
-        $this->assertSame([ '2-step' ], $this->capturedSkins);
-        $this->assertMatchesRegularExpression('/<body class="[^"]*\bppcart-embed--layout-2-step\b[^"]*"/', $visitorHtml);
-
-        $this->capturedSkins = [];
-        wp_set_current_user(self::factory()->user->create([ 'role' => 'administrator' ]));
-
-        $editorHtml = $this->renderShell($url);
-
-        $this->assertSame([ 'normal' ], $this->capturedSkins);
-        $this->assertStringNotContainsString('ppcart-embed--layout-2-step', $editorHtml);
-    }
-
-    public function test_IT_397_only_pages_with_checkout_content_render_inside_the_shell(): void
+    public function test_IT_437_only_pages_with_checkout_content_render_inside_the_shell(): void
     {
         $controller = new \PPCart_Public_Embed_Controller();
         $fallback   = '/tmp/theme-single.php';
@@ -149,7 +122,7 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('public/js/ppcart-embed-frame.js', $html);
     }
 
-    public function test_IT_403_a_confirmation_page_opened_with_a_valid_order_token_renders_inside_the_shell(): void
+    public function test_IT_443_a_confirmation_page_opened_with_a_valid_order_token_renders_inside_the_shell(): void
     {
         $this->temporaryPageId = (int) wp_insert_post([
             'post_type'    => 'page',
@@ -177,7 +150,7 @@ class EmbedCheckoutTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('public/js/ppcart-embed-frame.js', $html);
     }
 
-    public function test_IT_398_frame_header_lines_come_from_the_frame_ancestors_filter(): void
+    public function test_IT_438_frame_header_lines_come_from_the_frame_ancestors_filter(): void
     {
         $controller = new \PPCart_Public_Embed_Controller();
 

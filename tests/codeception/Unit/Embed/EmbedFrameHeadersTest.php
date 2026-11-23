@@ -20,7 +20,7 @@ class EmbedFrameHeadersTest extends Unit
     /**
      * @test-id UT-381
      */
-    public function test_UT_373_frame_header_lines_allow_every_origin_by_default(): void
+    public function test_UT_381_frame_header_lines_allow_every_origin_by_default(): void
     {
         $this->assertSame(
             [ 'Content-Security-Policy: frame-ancestors *' ],
@@ -31,7 +31,7 @@ class EmbedFrameHeadersTest extends Unit
     /**
      * @test-id UT-381
      */
-    public function test_UT_373_frame_header_lines_join_the_filtered_sources(): void
+    public function test_UT_381_frame_header_lines_join_the_filtered_sources(): void
     {
         $this->assertSame(
             [ "Content-Security-Policy: frame-ancestors 'self' https://merchant.example https://*.shop.example:8443" ],
@@ -42,7 +42,7 @@ class EmbedFrameHeadersTest extends Unit
     /**
      * @test-id UT-381
      */
-    public function test_UT_373_frame_header_lines_block_framing_when_no_source_is_valid(): void
+    public function test_UT_381_frame_header_lines_block_framing_when_no_source_is_valid(): void
     {
         $this->assertSame(
             [ "Content-Security-Policy: frame-ancestors 'none'" ],
@@ -57,7 +57,7 @@ class EmbedFrameHeadersTest extends Unit
     /**
      * @test-id UT-382
      */
-    public function test_UT_374_frame_header_lines_keep_other_policies_without_their_frame_ancestors(): void
+    public function test_UT_382_frame_header_lines_keep_other_policies_without_their_frame_ancestors(): void
     {
         $this->assertSame(
             [

@@ -16,7 +16,6 @@ const DEFAULTS: Record<string, string> = {
   url_embed_product_free: '/',
   url_embed_product_stripe: '/',
   url_embed_product_redirect: '/',
-  url_embed_product_styled: '/',
   url_embed_product_closed: '/',
   url_embed_plain_page: '/',
   first_name: 'Test',

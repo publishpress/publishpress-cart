@@ -20,7 +20,7 @@ class EmbedRedirectBounceTest extends Unit
     /**
      * @test-id UT-383
      */
-    public function test_UT_375_only_a_redirect_to_another_origin_leaves_the_site(): void
+    public function test_UT_383_only_a_redirect_to_another_origin_leaves_the_site(): void
     {
         $site = 'https://shop.example';
 
@@ -35,7 +35,7 @@ class EmbedRedirectBounceTest extends Unit
     /**
      * @test-id UT-384
      */
-    public function test_UT_376_the_bounce_page_hands_the_url_to_the_frame_bridge_escaped(): void
+    public function test_UT_384_the_bounce_page_hands_the_url_to_the_frame_bridge_escaped(): void
     {
         $html = ppcart_embed_bounce_page(
             'https://thanks.merchant.example/t?a=1&b="x"</script>',

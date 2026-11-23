@@ -5691,16 +5691,6 @@
             "operation": "add_filter",
             "classification": "public",
             "status": "canonical",
-            "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
-            "recommended_hook": "ppcart_product_field_groups",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "ppcart_product_field_groups",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
             "file": "includes/files/class-ppcart-files.php",
             "recommended_hook": "ppcart_product_field_groups",
             "notes": "Canonical hook prefix."
@@ -5963,16 +5953,6 @@
             "status": "canonical",
             "file": "admin/templates/product-admin-save-stripe-objects.php",
             "recommended_hook": "ppcart_product_save_stripe_meta",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "ppcart_product_setting_tab_embed_fields",
-            "type": "filter",
-            "operation": "add_filter",
-            "classification": "public",
-            "status": "canonical",
-            "file": "includes/bootstrap/templates/admin-hook-registrar-register.php",
-            "recommended_hook": "ppcart_product_setting_tab_embed_fields",
             "notes": "Canonical hook prefix."
         },
         {

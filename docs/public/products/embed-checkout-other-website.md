@@ -19,22 +19,11 @@ Checkout block instead. See [Embed an order form anywhere](embed-order-form.md).
 1. Go to **Cart → Products** and open the product.
 2. Publish the product. The **Embed** tab shows the code only for a published product.
 3. Open the **Embed** tab.
-4. To change the look of the checkout, fill in the fields in the table below.
-5. Look at the **Preview**. It changes as you type.
-6. Click **Update** to save the look.
-7. Click **Copy** next to the code you want, and paste it into your website.
+4. Choose how the checkout shows: **Inline checkout**, **Popup button**, or **Popup link**.
+5. Click **Copy**, and paste the code into your website.
 
-Every field is optional. An empty field keeps the normal look of the checkout.
-
-| Field | What it changes |
-|-------|-----------------|
-| **Accent color** | The buttons and the selected options. Empty keeps the **Primary Color** of the product. |
-| **Text color** | The labels and the text of the form and the receipt. |
-| **Background color** | The color behind the form. Empty keeps it transparent, so your page shows through. |
-| **Font family** | The font of the form, for example `Georgia, serif`. |
-| **Web font URL** | An `https` stylesheet that loads the font, such as a Google Fonts link. Write the font name in **Font family** too. |
-| **Corner radius** | The roundness of buttons, fields, and boxes, from 0 to 24 pixels. |
-| **Popup button text** | The label of the popup button. Empty uses the **Submit Button Text** of the product, or "Buy now". |
+The checkout keeps the look of the product, such as its **Primary Color**. To
+see the checkout alone, click **Open the embedded checkout in a new tab**.
 
 ## Pick a code
 
@@ -43,7 +32,7 @@ The **Embed** tab gives three codes.
 | Code | What the buyer sees | Use it when |
 |------|---------------------|-------------|
 | **Inline checkout** | The checkout form in your page. The form area grows with its content. | You have room for the form on the page. |
-| **Popup button** | A button in your colors. A click opens the checkout in a popup over the page. | You want a buy button in a sales section. |
+| **Popup button** | A plain button that your website styles. Its label is the **Submit Button Text** of the product, or "Buy now". A click opens the checkout in a popup over the page. | You want a buy button in a sales section. |
 | **Popup link** | A plain link. On a page with the loader script, it opens the popup. On other pages, it opens the checkout page of the product. | Your site builder button accepts only a link. |
 
 The inline checkout and the popup button codes end with the loader script, a

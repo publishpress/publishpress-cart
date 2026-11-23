@@ -4,7 +4,6 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-require_once __DIR__ . '/class-ppcart-embed-appearance.php';
 
 /**
  * Header lines an embed response sends so the host page may frame it.
@@ -113,23 +112,6 @@ function ppcart_embed_bounce_page($location, $bridge_src)
         . '<script src="' . $source . '"></script>'
         . '<script>window.ppcartNavigate(' . json_encode((string) $location, $flags) . ');</script>'
         . '</body></html>';
-}
-
-/**
- * Saved embed appearance of a product.
- *
- * @param int $product_id Product post ID.
- * @return array<string, string|int> See PPCart_Embed_Appearance::sanitize().
- */
-function ppcart_embed_appearance($product_id)
-{
-    $raw = [];
-
-    foreach (PPCart_Embed_Appearance::KEYS as $key) {
-        $raw[ $key ] = ppcart_get_post_meta(absint($product_id), 'embed_' . $key, true);
-    }
-
-    return PPCart_Embed_Appearance::sanitize($raw);
 }
 
 /**

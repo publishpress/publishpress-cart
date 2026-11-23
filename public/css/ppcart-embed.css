@@ -1,9 +1,7 @@
 /*
  * Embedded checkout shell. Loaded only on ?ppcart-embed= requests
  * (PPCart_Public_Embed_Controller), so the html and body rules below never
- * reach a normal page. Every appearance rule is scoped by a body class from
- * PPCart_Embed_Appearance::body_classes(), so an unset value writes no rule
- * and the Cart default stays.
+ * reach a normal page.
  */
 html {
     height: auto;
@@ -37,62 +35,6 @@ body.ppcart-embed .ppcart-embed__main > :last-child {
     }
 }
 
-/* Accent */
-body.ppcart-embed--accent #ppcart_card_button,
-body.ppcart-embed--accent .ppcart .ppcart-btn-block {
-    background-color: var(--ppcart-embed-accent);
-}
-
-body.ppcart-embed--accent .ppcart #ppcart-payment-form input[type=radio] + label:after,
-body.ppcart-embed--accent .ppcart #ppcart-payment-form input[type=radio] + .item-name:after,
-body.ppcart-embed--accent .ppcart #ppcart-payment-form input[type=checkbox] + label:after,
-body.ppcart-embed--accent .ppcart #ppcart-payment-form input[type=checkbox] + .item-name:after {
-    background-color: var(--ppcart-embed-accent);
-}
-
-body.ppcart-embed--accent .ppcart .ppcart-checkout-form-steps .steps.ppcart-current {
-    border-top-color: var(--ppcart-embed-accent);
-}
-
-body.ppcart-embed--accent .ppcart .ppcart-checkout-form-steps .steps.ppcart-current a .step-number,
-body.ppcart-embed--accent .ppcart .ppcart-checkout-form-steps .steps.ppcart-current a .step-heading .step-name {
-    color: var(--ppcart-embed-accent);
-}
-
-/* Text */
-body.ppcart-embed--text .ppcart-embed__main,
-body.ppcart-embed--text .ppcart,
-body.ppcart-embed--text .ppcart label,
-body.ppcart-embed--text .ppcart .title,
-body.ppcart-embed--text .ppcart .ppcart-form-control,
-body.ppcart-embed--text .ppcart .ppcart-checkout-form-steps .steps a {
-    color: var(--ppcart-embed-text);
-}
-
-/* Background */
-body.ppcart-embed--bg {
-    background: var(--ppcart-embed-bg);
-}
-
-/* Font */
-body.ppcart-embed--font .ppcart-embed__main,
-body.ppcart-embed--font .ppcart,
-body.ppcart-embed--font .ppcart input,
-body.ppcart-embed--font .ppcart button,
-body.ppcart-embed--font .ppcart select,
-body.ppcart-embed--font .ppcart textarea {
-    font-family: var(--ppcart-embed-font);
-}
-
-/* Corner radius */
-body.ppcart-embed--radius #ppcart_card_button,
-body.ppcart-embed--radius .ppcart .ppcart-btn-block,
-body.ppcart-embed--radius .ppcart .ppcart-form-control,
-body.ppcart-embed--radius .ppcart .ppcart-section.orderbump,
-body.ppcart-embed--radius .ppcart .ppcart-checkout-form-steps .steps {
-    border-radius: var(--ppcart-embed-radius);
-}
-
 /* Receipt. The shortcode receipt has no card of its own, unlike the product page confirmation. */
 body.ppcart-embed .ppcart-order-confirmation-message {
     display: flex;
@@ -111,7 +53,7 @@ body.ppcart-embed .ppcart-order-confirmation-message::before {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--ppcart-embed-accent, #16a34a) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 24px no-repeat;
+    background: #16a34a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 24px no-repeat;
 }
 
 body.ppcart-embed #ppcart-order-details {
@@ -120,7 +62,7 @@ body.ppcart-embed #ppcart-order-details {
     margin: 0 auto;
     padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--ppcart-embed-radius, 8px);
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.7);
 }
 

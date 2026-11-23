@@ -1335,7 +1335,7 @@ export const workflowsAdminTests: AdminTestCase[] = [
   },
   {
     id: "AD-212",
-    title: "Product Embed Tab Previews And Saves The Accent Color",
+    title: "Product Embed Tab Shows And Copies The Embed Code",
     startUrl: "{{publishpress_cart_host}}/wp-admin/post-new.php?post_type={{admin_product_post_type}}",
     steps: [
       {
@@ -1376,36 +1376,12 @@ export const workflowsAdminTests: AdminTestCase[] = [
       },
       {
         command: "assertElementPresent",
-        target: "[data-testid=\"ppcart-admin-embed-preview\"]",
+        target: "[data-testid=\"ppcart-admin-embed-type-inline\"]",
       },
       {
         command: "assertTextPresent",
         target: "[data-ppcart-embed-code=\"inline\"]",
         value: "data-ppcart-checkout=",
-      },
-      {
-        command: "assertTextPresent",
-        target: "[data-ppcart-embed-code=\"popup\"]",
-        value: "data-ppcart-popup=",
-      },
-      {
-        command: "assertTextPresent",
-        target: "[data-ppcart-embed-code=\"link\"]",
-        value: "ppcart-embed=popup",
-      },
-      {
-        command: "click",
-        target: "#rid_ppcart_embed_accent .wp-color-result",
-      },
-      {
-        command: "assign",
-        target: "#_ppcart_embed_accent",
-        value: "#ff5a1f",
-      },
-      {
-        command: "assertTextPresent",
-        target: "[data-ppcart-embed-code=\"popup\"]",
-        value: "background:#ff5a1f",
       }
     ],
   }

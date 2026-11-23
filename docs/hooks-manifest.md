@@ -576,7 +576,6 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_product_archive_args` | Filter | `apply_filters` | Public | canonical | `public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php` | ppcart_product_archive_args |
 | `ppcart_product_duplicate_excluded_meta_keys` | Filter | `apply_filters` | Public | canonical | `includes/class-ppcart-product-duplicator.php` | ppcart_product_duplicate_excluded_meta_keys |
 | `ppcart_product_duplicate_meta_key` | Filter | `apply_filters` | Public | canonical | `includes/class-ppcart-product-duplicator.php` | ppcart_product_duplicate_meta_key |
-| `ppcart_product_field_groups` | Filter | `add_filter` | Public | canonical | `includes/bootstrap/templates/admin-hook-registrar-register.php` | ppcart_product_field_groups |
 | `ppcart_product_field_groups` | Filter | `add_filter` | Public | canonical | `includes/files/class-ppcart-files.php` | ppcart_product_field_groups |
 | `ppcart_product_field_groups` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | ppcart_product_field_groups |
 | `ppcart_product_field_scripts` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-render-product-settings-fields.php` | ppcart_product_field_scripts |
@@ -604,7 +603,6 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_product_price` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_product_price |
 | `ppcart_product_print_field_scripts` | Action | `do_action` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-render-product-settings-fields.php` | ppcart_product_print_field_scripts |
 | `ppcart_product_save_stripe_meta` | Action | `do_action` | Public | canonical | `admin/templates/product-admin-save-stripe-objects.php` | ppcart_product_save_stripe_meta |
-| `ppcart_product_setting_tab_embed_fields` | Filter | `add_filter` | Public | canonical | `includes/bootstrap/templates/admin-hook-registrar-register.php` | ppcart_product_setting_tab_embed_fields |
 | `ppcart_product_setting_tab_fields` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/trait-ppcart-product-metaboxes-render.php` | ppcart_product_setting_tab_fields |
 | `ppcart_product_setting_tab_files_fields` | Filter | `add_filter` | Public | canonical | `includes/files/class-ppcart-files.php` | ppcart_product_setting_tab_files_fields |
 | `ppcart_product_setting_tab_groups` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-render-get-product-setting-tab-groups.php` | ppcart_product_setting_tab_groups |

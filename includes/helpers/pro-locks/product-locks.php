@@ -154,7 +154,7 @@ function ppcart_product_tab_description($tab_id)
         'orderbump' => __('Offer an extra product on the checkout form. Customers can add it to their order before completing payment.', 'publishpress-cart'),
         'upsellPath' => __('Offer additional products after checkout. Choose a sequence of offers and decide what happens when customers accept or decline.', 'publishpress-cart'),
         'affiliate' => __('Let affiliates earn commissions for referring customers to this product. Choose whether affiliate sales are enabled and set the commission rules.', 'publishpress-cart'),
-        'embed' => __('Show the checkout form of this product on another website. Choose the look, check it in the preview, then copy the code into your page.', 'publishpress-cart'),
+        'embed' => __('Show the checkout form of this product on another website. Copy a code and paste it into your page.', 'publishpress-cart'),
     ];
 
     return $descriptions[$tab_id] ?? '';

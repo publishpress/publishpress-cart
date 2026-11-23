@@ -7,18 +7,11 @@ if (! defined('ABSPATH')) {
 /**
  * Serves the embedded checkout: a singular front-end request with `?ppcart-embed=`
  * gets the bare shell in `public/templates/embed/checkout.php`, frame headers, no
- * admin bar, the frame bridge script, and the saved appearance as body classes and
- * CSS variables. The host page loads `public/js/ppcart-embed.js` to frame it.
+ * admin bar, and the frame bridge script. The host page loads `public/js/ppcart-embed.js` to frame it.
  */
 class PPCart_Public_Embed_Controller
 {
     const SHELL_TEMPLATE = 'public/templates/embed/checkout.php';
-
-    /**
-     * Style handle of the merchant's web font. WordPress prints it as
-     * `<link id="ppcart-embed-font-css">`, which the admin live preview swaps.
-     */
-    const FONT_HANDLE = 'ppcart-embed-font';
 
     const SKINS = [
         'standard' => 'normal',
@@ -112,22 +105,10 @@ class PPCart_Public_Embed_Controller
             return;
         }
 
-        $appearance = $this->appearance();
-
         // A non-product page fires no shortcode, and the embed stylesheet depends on the checkout one.
         do_action('ppcart_enqueue_frontend_assets');
 
         wp_enqueue_style('ppcart-embed', PPCART_BASE_URL . 'public/css/ppcart-embed.css', [ 'ppcart' ], PPCART_VERSION);
-
-        $variables = PPCart_Embed_Appearance::css_variables($appearance);
-        if ('' !== $variables) {
-            wp_add_inline_style('ppcart-embed', ':root{' . $variables . '}');
-        }
-
-        if ('' !== $appearance['font_url']) {
-            // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- A third-party font stylesheet chosen by the merchant.
-            wp_enqueue_style(self::FONT_HANDLE, $appearance['font_url'], [], null);
-        }
 
         wp_enqueue_script('ppcart-embed-frame', PPCART_BASE_URL . 'public/js/ppcart-embed-frame.js', [ 'ppcart' ], PPCART_VERSION, true);
     }
@@ -138,31 +119,33 @@ class PPCart_Public_Embed_Controller
             return $classes;
         }
 
-        return array_merge((array) $classes, [ 'ppcart-embed' ], PPCart_Embed_Appearance::body_classes($this->appearance()));
+        $classes   = (array) $classes;
+        $classes[] = 'ppcart-embed';
+
+        if ('2-step' === $this->layout()) {
+            $classes[] = 'ppcart-embed--layout-2-step';
+        }
+
+        return $classes;
     }
 
     /**
-     * Appearance of the embedded post: the product's saved values with the preview
-     * layout override, or every value '' for a non-product post.
+     * Checkout layout of the embedded product, from its `embed_layout` meta. Free has
+     * no field for it; '' keeps the product's own checkout template.
      *
-     * @return array<string, string|int>
+     * @return string A key of SKINS, or ''.
      */
-    public function appearance()
+    public function layout()
     {
         $post_id = get_queried_object_id();
 
         if (! ppcart_is_product_post_type(get_post_type($post_id))) {
-            return PPCart_Embed_Appearance::sanitize([]);
+            return '';
         }
 
-        $appearance = ppcart_embed_appearance($post_id);
-        $preview    = $this->preview_layout($post_id);
+        $layout = (string) ppcart_get_post_meta($post_id, 'embed_layout', true);
 
-        if ('' !== $preview) {
-            $appearance['layout'] = $preview;
-        }
-
-        return $appearance;
+        return isset(self::SKINS[ $layout ]) ? $layout : '';
     }
 
     /**
@@ -182,30 +165,10 @@ class PPCart_Public_Embed_Controller
             return;
         }
 
-        $layout = $this->appearance()['layout'];
-        $skin   = isset(self::SKINS[ $layout ]) ? ' skin="' . self::SKINS[ $layout ] . '"' : '';
+        $layout = $this->layout();
+        $skin   = '' !== $layout ? ' skin="' . self::SKINS[ $layout ] . '"' : '';
 
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The shortcode handler returns ppcart_kses_frontend_html() output.
         echo do_shortcode('[ppcart_form id="' . absint($post_id) . '"' . $skin . ']');
-    }
-
-    /**
-     * The admin preview shows a layout before it is saved. Only an editor of the product may ask for it.
-     */
-    private function preview_layout($post_id)
-    {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview flag, gated on edit_post.
-        if (! isset($_GET['ppcart-embed-layout']) || ! is_scalar($_GET['ppcart-embed-layout'])) {
-            return '';
-        }
-
-        if (! current_user_can('edit_post', $post_id)) {
-            return '';
-        }
-
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview flag, gated on edit_post.
-        $layout = sanitize_text_field(wp_unslash($_GET['ppcart-embed-layout']));
-
-        return in_array($layout, PPCart_Embed_Appearance::LAYOUTS, true) ? $layout : '';
     }
 }

@@ -693,19 +693,6 @@ final class PPCart_Regression_Fixtures {
 				],
 				'pay_options' => [ self::free_plan( $plan_defaults, 'reg_embed_closed' ) ],
 			],
-			'embed_styled' => [
-				'title'       => 'PublishPress Cart Regression - Embed Styled',
-				'url_key'     => 'url_embed_product_styled',
-				'meta'        => [
-					'embed_accent'      => '#ff5a1f',
-					'embed_text'        => '#112233',
-					'embed_background'  => '#fffbe6',
-					'embed_font_family' => 'Georgia, serif',
-					'embed_radius'      => '12',
-					'embed_button_text' => 'Get the course',
-				],
-				'pay_options' => [ self::free_plan( $plan_defaults, 'reg_embed_styled' ) ],
-			],
 		];
 	}
 
