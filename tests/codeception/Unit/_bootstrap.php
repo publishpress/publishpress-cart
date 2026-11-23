@@ -608,6 +608,13 @@ if (! function_exists('wp_upload_dir')) {
     }
 }
 
+if (! function_exists('wp_strip_all_tags')) {
+    function wp_strip_all_tags($text)
+    {
+        return trim(strip_tags((string) $text));
+    }
+}
+
 if (! function_exists('wp_parse_url')) {
     function wp_parse_url($url, $component = -1)
     {

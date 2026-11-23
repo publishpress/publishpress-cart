@@ -68,7 +68,7 @@ function ppcart_embed_frame_header_lines($sources, $existing_policies = [])
 }
 
 /**
- * Whether a redirect target is on another origin than the site. Pure PHP.
+ * Whether a redirect target is on another origin than the site.
  *
  * @param string $location Redirect target.
  * @param string $site_url Site home URL.
@@ -76,8 +76,8 @@ function ppcart_embed_frame_header_lines($sources, $existing_policies = [])
  */
 function ppcart_embed_redirect_leaves_site($location, $site_url)
 {
-    $target = parse_url((string) $location);
-    $site   = parse_url((string) $site_url);
+    $target = wp_parse_url((string) $location);
+    $site   = wp_parse_url((string) $site_url);
 
     if (! is_array($target) || empty($target['host'])) {
         return false;

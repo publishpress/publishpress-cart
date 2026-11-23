@@ -7,7 +7,7 @@ if (! defined('ABSPATH')) {
 /**
  * Appearance of an embedded checkout, as saved in the product's `_ppcart_embed_*` meta.
  *
- * Pure PHP with no WordPress calls, so unit tests run without WordPress. Every value is
+ * Needs no WordPress state, so unit tests run without WordPress. Every value is
  * optional and '' means "keep the current Cart look", so the static stylesheet
  * `public/css/ppcart-embed.css` scopes each rule by the matching body class and an unset
  * value writes no rule.
@@ -165,7 +165,7 @@ class PPCart_Embed_Appearance
                 return preg_match('/' . self::RADIUS_PATTERN . '/', $value) && (int) $value <= self::RADIUS_MAX ? (int) $value : '';
 
             case 'button_text':
-                $value = trim(strip_tags($value));
+                $value = trim(wp_strip_all_tags($value));
 
                 return ('' !== $value && self::length($value) <= self::BUTTON_TEXT_MAX) ? $value : '';
         }
