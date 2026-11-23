@@ -4288,3 +4288,32 @@ html:has(.ppcart-settings-page .ppcart-settings__savebar.is-visible) {
 .ppcart-stripe-import__list li.is-error {
     color: var(--ppcart-danger, #b32d2e);
 }
+
+.ppcart-settings__card.ppcart-settings__shortcode {
+    border-color: var(--ppcart-border-strong);
+}
+
+.ppcart-settings__shortcode-row {
+    padding: 16px 24px;
+}
+
+.ppcart-settings__shortcode-row + .ppcart-settings__shortcode-row {
+    border-top: 1px solid var(--ppcart-border);
+}
+
+.ppcart-settings__shortcode-row h4,
+.ppcart-settings__shortcode-row p {
+    margin: 0 0 8px;
+}
+
+.ppcart-settings__shortcode-example {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ppcart-settings__panel .ppcart-settings__shortcode-example input[readonly] {
+    flex: 1;
+    min-width: 0;
+    max-width: 560px;
+}

@@ -1,8 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 $tab_meta = [
     'general'         => [
@@ -74,6 +72,11 @@ $tab_meta = [
         'icon'        => 'sliders',
         'group'       => 'advanced',
         'description' => __('Configure store options that do not belong in the main setup tabs.', 'publishpress-cart'),
+    ],
+    'shortcodes'      => [
+        'icon'        => 'layers',
+        'group'       => 'advanced',
+        'description' => __('Copy a shortcode into a Shortcode block or a page builder. Replace example IDs with your own.', 'publishpress-cart'),
     ],
     'white_label'     => [
         'icon'        => 'brand',
