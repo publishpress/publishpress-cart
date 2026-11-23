@@ -43,7 +43,7 @@ The shell is one column, up to 1100px wide. The `html` and `body` backgrounds ar
 transparent unless the product sets a background color.
 
 `PPCart_Embed_Appearance` (`includes/embed/class-ppcart-embed-appearance.php`) is
-pure PHP. `sanitize()` returns all eight appearance keys and makes each invalid
+free of WordPress state. `sanitize()` returns all eight appearance keys and makes each invalid
 value `''`. `body_classes()` and `css_variables()` emit a class and a variable
 only for a set value. Every rule in `public/css/ppcart-embed.css` is scoped by
 its body class, so an empty value writes no rule. The admin live preview reads
@@ -110,6 +110,11 @@ URLs that come back in the top window must not carry the flag. The PayPal
 `cancel_url` drops `ppcart-embed` in `ppcart-public.js`. The Stripe Checkout
 return URL drops it on the server, in
 `public/controllers/templates/hosted-checkout-controller-create-checkout-session.php`.
+
+The on-page PayPal flow (`public/js/ppcart-paypal-onpage.js`) is a known limit.
+It assigns `window.location.href` after capture and does not call
+`window.ppcartNavigate`, so the next page loads in the frame without the embed
+flag. The PayPal JavaScript SDK popup inside a cross-origin frame is not tested.
 
 Payment Element methods that redirect to a bank page use Stripe `return_url` in
 the current window, so they navigate the frame. Cards, wallets, and Link do not

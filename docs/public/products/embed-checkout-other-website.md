@@ -89,6 +89,7 @@ plain HTML page, paste the code where the checkout or the button goes.
 ## Known limits
 
 - Some payment methods of the Stripe Payment Element send the buyer to a bank page to confirm the payment. That bank page opens inside the checkout area, not in the whole window. Cards, wallets, and Link do not do this.
+- PayPal checkout with the **On this page (PayPal popup)** setting is not supported inside the embedded checkout. After the payment, the next page can open inside the checkout area without the embedded layout. If you embed the checkout, use the PayPal setting that sends the buyer to PayPal.
 - A buyer who is logged in to your WordPress site is usually not logged in inside the embedded checkout. Browsers block the login cookie of your site on another website.
 - If your web server or CDN blocks framing for all pages (an `X-Frame-Options` header or a `frame-ancestors` policy), the checkout cannot show on another website. Allow framing for your product pages, or ask your host to do it. A security plugin that sets these headers through WordPress is handled: the embedded checkout lifts only its framing rule.
 - Some site builders, such as Wix, put custom code in a box of a fixed height on another domain. There, the inline checkout works but scrolls inside that box. The popup also works, but it stays inside the box and does not cover the whole page. On these builders, put the inline code in a box that is tall enough for the form, or link a button to the normal checkout page of the product.
