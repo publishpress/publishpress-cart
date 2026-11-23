@@ -20,4 +20,14 @@ foreach ($items as $item) {
     }
 }
 
-return false;
+// Subscriptions bought before a store moved to Cart (for example from
+// Studiocart) carry leftover metadata keys that only Compatibility Mode reads.
+// A Stripe subscription this site already stores still belongs here.
+$stripe_sub_id = self::get($subscription, 'id', '');
+if (! $stripe_sub_id || ! is_string($stripe_sub_id)) {
+    return false;
+}
+
+$local_sub = PPCart_Subscription::get_by_sub_id($stripe_sub_id);
+
+return (bool) ($local_sub && $local_sub->id);
