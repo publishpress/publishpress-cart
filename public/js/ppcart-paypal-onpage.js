@@ -110,7 +110,11 @@
             var response = parseResponse(res);
 
             if (response.url) {
-                window.location.href = response.url;
+                if (typeof window.ppcartNavigate === 'function') {
+                    window.ppcartNavigate(response.url);
+                } else {
+                    window.location.href = response.url;
+                }
                 return;
             }
             if (response.retry) {

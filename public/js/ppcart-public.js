@@ -1,6 +1,24 @@
 (function($) {
     'use strict';
 
+    // Extension points for code that shows the checkout in another context, such as
+    // a frame on another website. Define either function before this script runs to
+    // replace it.
+    //
+    // ppcartNavigate(url): the one entry point for checkout navigations.
+    if (typeof window.ppcartNavigate !== 'function') {
+        window.ppcartNavigate = function(url) {
+            window.location.href = url;
+        };
+    }
+
+    // ppcartReturnUrl(): the address a payment page sends the buyer back to.
+    if (typeof window.ppcartReturnUrl !== 'function') {
+        window.ppcartReturnUrl = function() {
+            return window.location.href;
+        };
+    }
+
     /**
      * All of the code for your public-facing JavaScript source
      * should reside in this file.
@@ -1636,7 +1654,7 @@
                                 $btn.find('span.text').text(originalText);
                             } else {
                                 if ('undefined' !== typeof response.redirect) {
-                                    window.location.href = response.redirect;
+                                    window.ppcartNavigate(response.redirect);
                                 } else {
                                     // var formEl = document.getElementById(form_wrapper).firstChild;
 
@@ -1661,7 +1679,7 @@
                             var response = ppcart_parse_json_response(res);
 
                             if (response && response.success && response.data && response.data.url) {
-                                window.location = response.data.url;
+                                window.ppcartNavigate(response.data.url);
                                 return;
                             }
 
@@ -1828,7 +1846,7 @@
                             return false;
                         } else {
                             if ('undefined' !== typeof response.redirect) {
-                                window.location.href = response.redirect;
+                                window.ppcartNavigate(response.redirect);
                             } else {
                                 var intent = storePaymentIntentState(form_wrapper, response, intentFingerprint);
                                 submitPaymentIntent(intent);
@@ -2137,7 +2155,7 @@
 
                                             response.paymentMethodId = paymentMethodId;
                                             if ('undefined' !== typeof response.redirect) {
-                                                window.location.href = response.redirect;
+                                                window.ppcartNavigate(response.redirect);
                                             } else {
                                                 clientSecret = response.clientSecret;
                                                 intent_id = response.intent_id;
@@ -3206,7 +3224,7 @@
             paramObj.push(
                 { name: "ppcart_page_id", value: ppcart.page_id },
                 { name: "action", value: "ppcart_paypal_request" },
-                { name: "cancel_url", value: window.location.href }
+                { name: "cancel_url", value: window.ppcartReturnUrl() }
             );
 
             //var is_subscription = $('input[name="ppcart_product_option"]:checked').data('installments');
@@ -3216,7 +3234,7 @@
                     alert(response.error);
                     $('#ppcart_card_button', form).removeClass('running').removeAttr("disabled");
                 } else {
-                    window.location.href = response.url;
+                    window.ppcartNavigate(response.url);
                 }
             });
         });

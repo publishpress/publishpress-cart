@@ -28,10 +28,12 @@ $default_groups = [
             'orderbump',
             'upsellPath',
             'affiliate',
+            'embed',
             'ppcart_pro_coupons',
             'ppcart_pro_order_bumps',
             'ppcart_pro_upsell_path',
             'ppcart_pro_affiliates',
+            'ppcart_pro_embed',
         ],
     ],
 ];
