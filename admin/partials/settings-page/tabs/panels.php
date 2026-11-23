@@ -1,7 +1,5 @@
 <?php
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 foreach ($setting_tabs as $tab_slug => $tab_label) :
     $description = $tab_meta[$tab_slug]['description'] ?? '';
@@ -17,6 +15,12 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
         </div>
 
         <?php
+    if ('shortcodes' === $tab_slug) {
+        require __DIR__ . '/shortcodes.php';
+        echo '</section>';
+        continue;
+    }
+
             // Render each WP settings section as its own modern card.
 
             // Locked tabs come in two flavours: complex tabs (Tax) blur

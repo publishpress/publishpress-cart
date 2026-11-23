@@ -13,9 +13,7 @@
  * @subpackage PublishPress_Cart/admin/partials
  */
 
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 $plugin_name       = $this->plugin_name;
 $plugin_title_raw  = apply_filters('ppcart_plugin_title', $this->plugin_title);
@@ -156,6 +154,7 @@ $default_setting_tabs = [
     'debug'           => __('Debug', 'publishpress-cart'),
     'maintenance'     => __('Maintenance', 'publishpress-cart'),
     'advanced'        => __('Advanced', 'publishpress-cart'),
+    'shortcodes'      => __('Shortcodes', 'publishpress-cart'),
 ];
 
 $setting_tabs = apply_filters(

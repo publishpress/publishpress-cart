@@ -540,8 +540,8 @@ jQuery(document).ready(function($){
         $(this).val('');
     });
 
-    // Copy to clipboard plan id. A real button, so keyboard users can reach it and it has a name.
-    $(document).on('click', '.ridoption_id .input-group .ppcart-plan-id-copy-icon', function(e) {
+    // Copy a shortcode example or plan ID from its adjacent input.
+    $(document).on('click', '.ridoption_id .input-group .ppcart-plan-id-copy-icon, [data-pp-copy-shortcode]', function(e) {
         e.preventDefault();
 
         var $button = $(this);
