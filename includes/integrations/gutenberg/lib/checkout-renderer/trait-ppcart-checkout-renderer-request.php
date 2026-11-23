@@ -49,11 +49,14 @@ trait PPCart_Checkout_Renderer_Request
                 continue;
             }
 
+            $checkout_product = ppcart_setup_product($product->ID);
+            $plans = $this->get_product_plans($checkout_product);
+
             $data[] = [
                 'id'                  => $product->ID,
                 'title'               => html_entity_decode(get_the_title($product), ENT_QUOTES, get_bloginfo('charset')),
-                'plans'               => $this->get_product_plans($product->ID),
-                'sectionAvailability' => $this->get_product_section_availability($product->ID),
+                'plans'               => $plans,
+                'sectionAvailability' => $this->get_product_section_availability($product->ID, $checkout_product, $plans),
                 'defaultTemplate'     => $this->get_product_default_template($product->ID),
             ];
         }
@@ -272,37 +275,36 @@ trait PPCart_Checkout_Renderer_Request
         return $this->normalize_template($template);
     }
 
-    private function get_product_plans($product_id)
+    private function get_product_plans($product)
     {
-        $plans   = [];
-        $options = ppcart_get_post_meta($product_id, 'pay_options');
+        $plans = [];
+        if (! $product) {
+            return $plans;
+        }
 
-        foreach ($options as $option_group) {
-            if (! is_array($option_group)) {
+        $options = apply_filters('ppcart_checkout_form_pay_options', $product->pay_options ?? [], $product);
+        foreach (is_array($options) ? $options : [] as $option) {
+            if (! is_array($option) || empty($option['option_id']) || isset($option['is_hidden'])) {
                 continue;
             }
 
-            foreach ($option_group as $option) {
-                if (! is_array($option) || empty($option['option_id'])) {
-                    continue;
-                }
-
-                $plans[] = [
-                    'value' => sanitize_text_field($option['option_id']),
-                    'label' => isset($option['option_name']) && '' !== $option['option_name'] ? sanitize_text_field($option['option_name']) : sanitize_text_field($option['option_id']),
-                ];
+            if (isset($product->show_optin) && 'free' !== ($option['product_type'] ?? '')) {
+                continue;
             }
+
+            $value = sanitize_text_field($option['option_id']);
+            $plans[] = [
+                'value' => $value,
+                'label' => isset($option['option_name']) && '' !== $option['option_name'] ? sanitize_text_field($option['option_name']) : $value,
+            ];
         }
 
         return $plans;
     }
 
-    private function get_product_section_availability($product_id)
+    private function get_product_section_availability($product_id, $product, $plans)
     {
         global $ppcart_stripe;
-
-        $product = function_exists('ppcart_setup_product') ? ppcart_setup_product($product_id) : null;
-        $plans   = $this->get_product_plans($product_id);
 
         $payment_methods = [];
         if (apply_filters('ppcart_checkout_payment_method_enabled', true, 'stripe', $product_id)) {
@@ -325,7 +327,7 @@ trait PPCart_Checkout_Renderer_Request
         $payment_methods = apply_filters('ppcart_payment_methods', $payment_methods, $product_id);
 
         $sections = [
-            'payment_plan'   => $product ? empty($product->hide_plans) && count($plans) > 1 : count($plans) > 1,
+            'payment_plan'   => empty($product->hide_plans) && count($plans) > 1,
             'coupon'         => false,
             'contact_info'   => true,
             'payment_method' => ! empty($payment_methods),
