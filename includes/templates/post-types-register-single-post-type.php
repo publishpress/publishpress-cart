@@ -1,8 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 
 $opts = [];
@@ -67,6 +65,18 @@ $opts['rewrite']['feeds']                       = false;
 $opts['rewrite']['pages']                       = true;
 $opts['rewrite']['slug']                        = strtolower($plural);
 $opts['rewrite']['with_front']                  = false;
+$canonical_bases = [
+    'ppcart_product' => 'products',
+    'ppcart_order' => 'orders',
+    'ppcart_subscription' => 'subscriptions',
+    'ppcart_collection' => 'collections',
+    'ppcart_us_path' => 'offers-after-checkout',
+    'ppcart_upgrade_path' => 'change_plan',
+];
+if (isset($canonical_bases[$cpt_name])) {
+    $opts['rewrite']['slug'] = $canonical_bases[$cpt_name];
+}
+
 $opts = apply_filters('ppcart_cpt_options', $opts, $cpt_name);
 
 if (function_exists('ppcart_is_subscription_post_type') && ppcart_is_subscription_post_type($cpt_name)) {
@@ -79,3 +89,6 @@ if (function_exists('ppcart_is_product_post_type') && ppcart_is_product_post_typ
 }
 
 register_post_type(strtolower($cpt_name), $opts);
+if (isset($canonical_bases[$cpt_name], $opts['rewrite']['slug'])) {
+    self::register_legacy_routes($cpt_name, $opts['rewrite']['slug']);
+}
