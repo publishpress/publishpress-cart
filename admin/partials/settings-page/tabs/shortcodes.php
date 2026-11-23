@@ -135,6 +135,7 @@ $shortcode_groups = [
     'checkout' => __('Checkout and receipts', 'publishpress-cart'),
     'store' => __('Storefront', 'publishpress-cart'),
     'account' => __('Customer account', 'publishpress-cart'),
+    'affiliates' => __('Affiliates', 'publishpress-cart'),
     'additional' => __('Additional shortcodes', 'publishpress-cart'),
 ];
 
