@@ -536,8 +536,18 @@
 
         $(document).on('input change blur', '#ppcart-payment-form input, #ppcart-payment-form select, #ppcart-payment-form textarea', function() {
             var form = getFormWrapperFromElement(this);
-            clearPreparedPaymentIntent(form);
+            var state = getCheckoutIntentState(form);
+            var fingerprint = buildPaymentIntentFingerprint(form);
+
             updateSubmitButtonState(form);
+
+            // A blur or an event that changes no value keeps the prepared intent. Each new
+            // intent creates a pending order, so only a changed form may ask for one.
+            if ((state.intent && state.fingerprint === fingerprint) || (state.pending && state.pendingFingerprint === fingerprint)) {
+                return;
+            }
+
+            clearPreparedPaymentIntent(form);
             schedulePaymentIntentPreload(form);
         });
 
@@ -1736,6 +1746,9 @@
 
                     paramObj.push({name: "action", value: "ppcart_create_payment_intent"});
                     var intentFingerprint = buildPaymentIntentFingerprint(form);
+
+                    // The submit owns the intent from here; a preload that fires later would create a second order.
+                    clearTimeout(getCheckoutIntentState(form_wrapper).preloadTimer);
 
                     var refreshExistingPaymentIntentAmount = function(intent, callback) {
                         if (!$('input[name=order_id]', form).length || intent.amount) {
