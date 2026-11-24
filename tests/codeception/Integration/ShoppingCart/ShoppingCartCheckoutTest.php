@@ -77,7 +77,7 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         global $wp_rest_server;
         $wp_rest_server = null;
         [$GLOBALS['ppcart_stripe'], $GLOBALS['ppcart_currency'], $_GET, $_POST] = array_values($this->globals);
-        foreach (['_ppcart_stripe_enable', '_ppcart_stripe_connect_account_id_test', '_ppcart_cashondelivery_enable', '_ppcart_shopping_cart_enable', '_ppcart_cart_checkout_phone', '_ppcart_cart_page_id', '_ppcart_cart_checkout_terms', '_ppcart_cart_checkout_terms_url', '_ppcart_cart_confirmation_message'] as $option) {
+        foreach (['_ppcart_stripe_enable', '_ppcart_stripe_connect_account_id_test', '_ppcart_cashondelivery_enable', '_ppcart_shopping_cart_enable', '_ppcart_cart_checkout_phone', '_ppcart_cart_page_id', '_ppcart_cart_checkout_terms', '_ppcart_cart_checkout_terms_url', '_ppcart_cart_confirmation_message', '_ppcart_cart_confirmation', '_ppcart_cart_redirect'] as $option) {
             delete_option($option);
         }
         parent::tearDown();
@@ -138,8 +138,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame(['idempotency_key' => 'ppcart-cart-order-' . $order->id], $options);
 
         $this->assertSame('requires_payment', $data['status']);
-        $this->assertSame(['client_secret' => 'pi_cart_secret_1', 'amount' => 8800, 'currency' => 'usd'], $data['payment']);
         $this->assertTrue(\PPCart_Order::token_matches($order->id, $data['token']));
+        $this->assertSame(['client_secret' => 'pi_cart_secret_1', 'amount' => 8800, 'currency' => 'usd', 'return_url' => \PPCart_Order::confirmation_url(get_permalink($page), $order->id)], $data['payment']);
         $this->assertSame('message', $data['confirmation']['type']);
         $this->assertStringStartsWith(get_permalink($page), $data['confirmation']['url']);
         $this->assertStringContainsString('ppcart-order=' . $order->id . '&token=' . $data['token'], $data['confirmation']['url']);
@@ -332,6 +332,39 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         foreach (['Writer Toolkit', 'Editing Course', '29.00', '59.00', '88.00'] as $expected) {
             $this->assertStringContainsString($expected, $paid);
         }
+    }
+
+    /** @test-id IT-446 */
+    public function test_IT_446_a_payment_that_left_the_page_returns_to_the_checkout_page_before_the_confirmation(): void
+    {
+        update_option('_ppcart_cart_confirmation', 'url');
+        update_option('_ppcart_cart_redirect', 'https://merchant.example/thanks');
+        $page = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
+        $data = $this->checkout(self::BUYER + ['ppcart_cart_revision' => $this->cart()->revision, 'ppcart_page_id' => $page])->get_data();
+        $orderId = $data['order_id'];
+        $checkoutPage = \PPCart_Order::confirmation_url(get_permalink($page), $orderId);
+        $this->asGuestWith();
+
+        $this->assertSame('https://merchant.example/thanks', $data['confirmation']['url']);
+        $this->assertSame($checkoutPage, $data['payment']['return_url']);
+
+        $_GET = ['ppcart-order' => (string) $orderId, 'token' => $data['token'], 'payment_intent' => 'pi_cart_1'];
+        $this->assertSame('', $this->controller()->payment_return_url());
+
+        $this->stripe->status = 'succeeded';
+        $_GET['token'] = 'wrong';
+        $this->assertSame('', $this->controller()->payment_return_url());
+        $_GET = ['ppcart-order' => (string) $orderId, 'token' => $data['token']];
+        $this->assertSame('', $this->controller()->payment_return_url());
+        $this->assertSame(['pending-payment', 0], [(new \PPCart_Order($orderId))->status, $this->completed]);
+
+        $_GET['payment_intent'] = 'pi_cart_1';
+        $this->assertSame('https://merchant.example/thanks', $this->controller()->payment_return_url());
+        $this->assertSame(['paid', 1], [(new \PPCart_Order($orderId))->status, $this->completed]);
+
+        update_option('_ppcart_cart_confirmation', 'message');
+        $this->assertSame($checkoutPage, $this->controller()->payment_return_url());
+        $this->assertSame(1, $this->completed);
     }
 
     /** @test-id IT-446 */

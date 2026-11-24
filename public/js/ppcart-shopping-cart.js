@@ -251,10 +251,10 @@ function stripePaymentAdapter(form) {
             const { error } = elements ? await elements.submit() : { error: { message: config.error } };
             if (error) throw new Error(error.message);
         },
-        async pay(payment, billing, returnUrl) {
+        async pay(payment, billing) {
             const { error } = await stripe.confirmPayment({
                 elements, clientSecret: payment.client_secret, redirect: 'if_required',
-                confirmParams: { return_url: returnUrl, payment_method_data: { billing_details: billing } },
+                confirmParams: { return_url: payment.return_url || window.location.href, payment_method_data: { billing_details: billing } },
             });
             if (error) throw new Error(error.message);
         },
@@ -318,7 +318,7 @@ export function mountShoppingCartCheckout(form, paymentAdapter = stripePaymentAd
             }
             const { result } = placed;
             if (!['requires_payment', 'requires_approval'].includes(result.status)) return leave(result);
-            if (card) await paymentAdapter.pay(result.payment, { name: `${data.first_name || ''} ${data.last_name || ''}`.trim(), email: data.email }, result.confirmation.url || window.location.href);
+            if (card) await paymentAdapter.pay(result.payment, { name: `${data.first_name || ''} ${data.last_name || ''}`.trim(), email: data.email });
             const paid = await requestShoppingCart('POST', '/checkout/confirm', { order_id: result.order_id, token: result.token });
             channel?.postMessage('changed');
             leave(paid);

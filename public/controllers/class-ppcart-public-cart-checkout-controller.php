@@ -73,6 +73,29 @@ final class PPCart_Public_Cart_Checkout_Controller
         return rest_ensure_response($payment + $this->result($order, $request));
     }
 
+    public function template_redirect(): void
+    {
+        ppcart_redirect($this->payment_return_url());
+    }
+
+    /**
+     * Where the buyer goes when a payment that left the page sends them back to
+     * the checkout page. Empty when the request is not the return of a paid cart order.
+     */
+    public function payment_return_url(): string
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- The order access token in the request is the proof.
+        $order_id = isset($_GET['ppcart-order'], $_GET['payment_intent']) ? absint(wp_unslash($_GET['ppcart-order'])) : 0;
+        if (! $order_id || ! PPCart_Order::visitor_can_view($order_id)) {
+            return '';
+        }
+        $order = new PPCart_Order($order_id);
+        if (! $order->id || ! ppcart_order_is_shopping_cart($order) || true !== $this->stripe->settle($order)) {
+            return '';
+        }
+        return (string) $this->confirmation($order)['url'];
+    }
+
     public function confirm(WP_REST_Request $request): WP_REST_Response|WP_Error
     {
         $order_id = absint($request['order_id']);
@@ -184,28 +207,35 @@ final class PPCart_Public_Cart_Checkout_Controller
             ppcart_log_entry($order->id, $intent->get_error_message());
             return $intent;
         }
+        $checkout_page = $order->page_url ?: $this->settings->urls()['checkout'];
         return [
             'status'  => 'requires_payment',
             'payment' => [
                 'client_secret' => $intent['client_secret'],
                 'amount'        => PPCart_Shopping_Cart_Stripe::amount((float) $order->amount),
                 'currency'      => strtolower((string) $GLOBALS['ppcart_currency']),
+                'return_url'    => $checkout_page ? PPCart_Order::confirmation_url($checkout_page, $order->id) : '',
             ],
         ];
     }
 
     private function result(PPCart_Order $order, WP_REST_Request $request): array
     {
+        return [
+            'order_id'     => (int) $order->id,
+            'token'        => PPCart_Order::ensure_invoice_access_token($order->id),
+            'confirmation' => $this->confirmation($order),
+            'cart'         => $this->view->response($this->store->read(), $request),
+        ];
+    }
+
+    private function confirmation(PPCart_Order $order): array
+    {
         $confirmation = $this->settings->confirmation($order);
         if ('message' === $confirmation['type'] && $order->page_url) {
             $confirmation['url'] = PPCart_Order::confirmation_url($order->page_url, $order->id);
         }
-        return [
-            'order_id'     => (int) $order->id,
-            'token'        => PPCart_Order::ensure_invoice_access_token($order->id),
-            'confirmation' => $confirmation,
-            'cart'         => $this->view->response($this->store->read(), $request),
-        ];
+        return $confirmation;
     }
 
     private function no_payment_method(): WP_Error

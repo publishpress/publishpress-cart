@@ -696,6 +696,8 @@ Namespace `ppcart/v1`. Routes and bodies are those of spec §10.
 
 The cart checkout form carries `ppcart_cart_revision`. `claim_checkout()` reads the row, prices it, runs `ready_to_pay( $seen_revision, $customer )`, and writes `_checkout_claim` with `WHERE revision = $seen_revision` in one try. Any failure returns `ppcart_cart_changed` or the gate code with `data.cart`. The form redraws the summary and the new revision. The buyer must submit again. No gateway call happens on a refused request. The buyer pays only for the cart they saw.
 
+**Return from a payment that leaves the page.** The Stripe `return_url` is always the checkout page with the order ID and the order token (`payment.return_url` in the checkout response). It is never the confirmation target, because a redirect confirmation can be a URL on another site. `PPCart_Public_Cart_Checkout_Controller::template_redirect()` handles a request that has `ppcart-order`, a valid order token, and Stripe's `payment_intent` argument. It settles the cart order through the PaymentIntent that the order stored, then redirects to the confirmation URL from the Cart settings. When the payment is not complete, there is no redirect and the page shows the pending order. PayPal standard does the same on its own return request (`paypal-requests-ppcart-paypal-process-payment.php`).
+
 ### 6.4 Cache
 
 - Cookies are set only on the first successful add. `ppcart_cart` is HttpOnly, Secure on HTTPS, SameSite=Lax, path `COOKIEPATH`, lifetime from the Cart settings. `ppcart_cart_count` has the same flags without HttpOnly. PHP never reads `ppcart_cart_count`.
