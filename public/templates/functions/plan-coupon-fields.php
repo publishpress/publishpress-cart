@@ -329,7 +329,10 @@ function ppcart_do_coupon_section($post_id)
 {
     global $ppcart_product;
 
-    if (!isset($ppcart_product->show_coupon_field)) {
+    $context = ppcart_checkout_get_arrangement_context();
+    $has_preset_coupon = !empty($context['coupon']) && empty($ppcart_product->show_optin);
+
+    if (!isset($ppcart_product->show_coupon_field) && !$has_preset_coupon) {
         return;
     }
 

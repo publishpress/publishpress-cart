@@ -193,6 +193,7 @@ class PPCart_Gutenberg_Assets
                 'siteTitle'        => get_bloginfo('name'),
                 'restBase'         => '/publishpress-cart/v1',
                 'productPostTypes' => $this->checkout_renderer->get_product_post_types(),
+                'isPro'            => ppcart_is_pro() ? '1' : '0',
             ]
         );
     }

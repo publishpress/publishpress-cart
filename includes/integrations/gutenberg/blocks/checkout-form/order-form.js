@@ -1080,12 +1080,15 @@ function Edit( props ) {
 									__nextHasNoMarginBottom
 								/>
 							</PanelRow>
-							<TextControl
-								label={ __( 'Coupon Code', 'publishpress-cart' ) }
-								value={ attributes.coupon || '' }
-								onChange={ ( value ) => setAttributes( { coupon: value } ) }
-								__nextHasNoMarginBottom
-							/>
+							{ config.isPro === '1' && (
+								<TextControl
+									label={ __( 'Coupon Code', 'publishpress-cart' ) }
+									help={ __( 'With PublishPress Cart Pro, a valid code entered here is automatically applied at checkout.', 'publishpress-cart' ) }
+									value={ attributes.coupon || '' }
+									onChange={ ( value ) => setAttributes( { coupon: value } ) }
+									__nextHasNoMarginBottom
+								/>
+							) }
 						</>
 					) }
 					</PanelBody>

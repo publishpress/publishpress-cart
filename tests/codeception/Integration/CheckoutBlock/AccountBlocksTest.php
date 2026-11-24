@@ -258,13 +258,13 @@ class AccountBlocksTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('id="tab-orders" class="tabcontent active"', $output);
 
         $this->assertSame(
-            [ 'tab-orders' => 'true', 'tab-subscriptions' => 'false', 'tab-profile' => 'false' ],
+            [ 'tab-orders' => 'true', 'tab-subscriptions' => 'false', 'tab-profile' => 'false', 'tab-files' => 'false' ],
             $this->accountTabSelection($output)
         );
 
         $xpath = $this->accountMarkupXPath($output);
 
-        foreach ([ 'tab-orders', 'tab-subscriptions', 'tab-profile' ] as $tabId) {
+        foreach ([ 'tab-orders', 'tab-subscriptions', 'tab-profile', 'tab-files' ] as $tabId) {
             $panel = $xpath->query('//*[@id="' . $tabId . '"]')->item(0);
             $tab   = $xpath->query('//a[@role="tab"][@aria-controls="' . $tabId . '"]')->item(0);
 
@@ -495,8 +495,6 @@ class AccountBlocksTest extends CheckoutBlockTestCase
         $tabs    = $xpath->query('//ul[contains(concat(" ", normalize-space(@class), " "), " ppcart-nav-tabs ")]//a');
         $targets = [];
 
-        $this->assertSame(2, $tabs->length);
-
         foreach ($tabs as $tab) {
             $href = $tab->getAttribute('href');
 
@@ -514,7 +512,7 @@ class AccountBlocksTest extends CheckoutBlockTestCase
             $targets[] = $panelId;
         }
 
-        $this->assertSame([ 'tab-orders', 'tab-profile' ], $targets);
+        $this->assertSame([ 'tab-orders', 'tab-profile', 'tab-files' ], $targets);
     }
 
     public function test_IT_087_account_orders_block_renders_order_history_and_fires_extension_hook(): void
