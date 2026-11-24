@@ -99,8 +99,8 @@ final class PPCart_Shopping_Cart_Settings
         }
         $type = $settings['type'] ?? $field['type'];
         return match ($type) {
-            'checkbox' => in_array($value, [1, '1', true], true) ? 1 : 0,
-            'number' => is_numeric($value) ? max(1, (int) $value) : $default,
+            'checkbox' => (in_array($value, [1, '1', true], true) ? 1 : 0),
+            'number' => (is_numeric($value) ? max(1, (int) $value) : $default),
             'url' => esc_url_raw((string) $value),
             'textarea', 'editor' => wp_kses_post((string) $value),
             default => sanitize_text_field((string) $value),
