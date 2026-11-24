@@ -7696,6 +7696,36 @@
             "notes": "Review before documenting as public API."
         },
         {
+            "name": "rest_api_init",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/shopping-cart/loader.php",
+            "recommended_hook": "rest_api_init",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "rest_authentication_errors",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/shopping-cart/loader.php",
+            "recommended_hook": "rest_authentication_errors",
+            "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "rest_post_dispatch",
+            "type": "filter",
+            "operation": "add_filter",
+            "classification": "internal",
+            "status": "unclassified",
+            "file": "includes/shopping-cart/loader.php",
+            "recommended_hook": "rest_post_dispatch",
+            "notes": "Review before documenting as public API."
+        },
+        {
             "name": "restrict_manage_posts",
             "type": "action",
             "operation": "add_action",

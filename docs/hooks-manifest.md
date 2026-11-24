@@ -777,6 +777,9 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `render_block_core/group` | Filter | `add_filter` | Internal | unclassified | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` | render_block_core/group |
 | `render_block_core/post-title` | Filter | `add_filter` | Internal | unclassified | `includes/integrations/gutenberg/templates/class-ppcart-product-template.php` | render_block_core/post-title |
 | `rest_api_init` | Action | `add_action` | Internal | unclassified | `includes/integrations/gutenberg/lib/class-ppcart-gutenberg-bootstrap.php` | rest_api_init |
+| `rest_api_init` | Action | `add_action` | Internal | unclassified | `includes/shopping-cart/loader.php` | rest_api_init |
+| `rest_authentication_errors` | Filter | `add_filter` | Internal | unclassified | `includes/shopping-cart/loader.php` | rest_authentication_errors |
+| `rest_post_dispatch` | Filter | `add_filter` | Internal | unclassified | `includes/shopping-cart/loader.php` | rest_post_dispatch |
 | `restrict_manage_posts` | Action | `add_action` | External | wordpress_core | `admin/class-ppcart-admin-filters.php` |  |
 | `retrieve_password_message` | Filter | `add_filter` | Internal | unclassified | `public/controllers/class-ppcart-public-account-controller.php` | retrieve_password_message |
 | `save_post` | Action | `add_action` | External | wordpress_core | `admin/controllers/class-ppcart-admin-order-controller.php` |  |
