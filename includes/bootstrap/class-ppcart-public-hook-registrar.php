@@ -39,6 +39,8 @@ class PPCart_Public_Hook_Registrar
         $this->loader->add_action('template_redirect', $plugin_public_page, 'redirect');
         $this->loader->add_filter('ppcart_checkout_complete', $plugin_public_order, 'conditional_order_confirmations', 10, 3);
 
+        // Block themes can render checkout before wp_enqueue_scripts runs.
+        $this->loader->add_action('init', $plugin_public_assets, 'register_checkout_script');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public_assets, 'enqueue_styles', 10);
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public_assets, 'enqueue_scripts');
         $this->loader->add_action('init', $plugin_public_checkout, 'process_payment', 9999);

@@ -199,6 +199,7 @@ trait PPCart_Checkout_Renderer_Request
                 'contentOrder' => $content_order,
                 'template'     => $template,
                 'textSettings' => $text_settings,
+                'coupon'       => $context['atts']['coupon'] ?? '',
             ];
         };
 
