@@ -141,7 +141,7 @@ When **Enable shopping cart** is off, the Mini Cart block renders nothing. The S
 
 All new blocks use the same registration as the existing blocks (`lib/class-ppcart-gutenberg-bootstrap.php`): `block.json` + `render.php` + an editor script built by `wp-scripts`. They render on the server, so the shop and cart work without JavaScript for viewing. JavaScript adds the AJAX actions.
 
-All new blocks accept the same `styleSettings` object as the checkout block (`preset`, `accentColor`, `surfaceStyle`, `density`, `cornerRadius`; see `trait-ppcart-checkout-renderer-styles.php:170-291`). Move the style resolver into a shared helper so that all blocks look the same. Output the values as CSS custom properties (`--ppcart-accent`, `--ppcart-radius`, …) scoped to the block wrapper.
+All new blocks accept the `styleSettings` object of the checkout block, but read only `preset` and `accentColor` from it. The Shop, Mini Cart, and Shopping Cart blocks do not offer `surfaceStyle`, `density`, or `cornerRadius`, and ignore saved values for them (see `trait-ppcart-checkout-renderer-styles.php:170-291` for the full set). Move the style resolver into a shared helper so that all blocks look the same. Output the values as CSS custom properties (`--ppcart-accent`, `--ppcart-radius`, …) scoped to the block wrapper.
 
 Each block also has a shortcode for classic themes. Both call the same render function.
 

@@ -171,6 +171,19 @@ class ShopTest extends WPTestCase
     }
 
     /** @test-id IT-435 */
+    public function test_IT_435_shop_style_ignores_saved_surface_density_and_corners(): void
+    {
+        $this->product('Styled');
+        $html = ppcart_render_shop(['styleSettings' => ['surfaceStyle' => 'boxed', 'density' => 'spacious', 'cornerRadius' => 'rounded']]);
+        $this->assertStringNotContainsString('--ppcart-surface', $html);
+        $this->assertStringNotContainsString('--ppcart-radius', $html);
+        $html = ppcart_render_shop(['styleSettings' => ['accentColor' => '#123456', 'cornerRadius' => 'rounded']]);
+        $this->assertStringContainsString('--ppcart-accent:#123456', $html);
+        $this->assertStringNotContainsString('--ppcart-radius', $html);
+        $this->assertStringContainsString('--ppcart-radius', ppcart_render_shop(['styleSettings' => ['preset' => 'compact']]));
+    }
+
+    /** @test-id IT-435 */
     public function test_IT_435_shared_styles_keep_base_and_preset_values(): void
     {
         $this->assertSame([], ppcart_block_style_tokens([]));

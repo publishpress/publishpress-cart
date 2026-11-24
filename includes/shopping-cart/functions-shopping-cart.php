@@ -162,11 +162,16 @@ function ppcart_shopping_cart_assets(): void
     ]);
 }
 
+function ppcart_shopping_cart_style_tokens(array $settings): array
+{
+    return ppcart_block_style_tokens(array_intersect_key($settings, array_flip(['preset', 'accentColor'])));
+}
+
 function ppcart_shopping_cart_style(array $attributes): string
 {
     $settings = $attributes['styleSettings'] ?? $attributes['stylesettings'] ?? [];
     $style = '';
-    foreach (ppcart_block_style_tokens(is_array($settings) ? $settings : []) as $key => $value) {
+    foreach (ppcart_shopping_cart_style_tokens(is_array($settings) ? $settings : []) as $key => $value) {
         $style .= $key . ':' . $value . ';';
     }
     return $style;

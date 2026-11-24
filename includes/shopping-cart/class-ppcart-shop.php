@@ -92,7 +92,7 @@ final class PPCart_Shop
         foreach ($query->posts as $product) {
             $cards[] = $catalog->shop_card($product->ID, $cart);
         }
-        $tokens = ppcart_block_style_tokens($attributes['styleSettings']);
+        $tokens = ppcart_shopping_cart_style_tokens($attributes['styleSettings']);
         $tokens['--ppcart-shop-columns'] = (string) $attributes['columns'];
         $style = '';
         foreach ($tokens as $key => $value) {
