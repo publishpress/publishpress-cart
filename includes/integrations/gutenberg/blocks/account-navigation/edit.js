@@ -22,6 +22,7 @@ import {
 	AccountNavigationPreviewContext,
 	accountNavigationAllowedBlocks,
 	accountNavigationTemplate,
+	createAccountTabBlock,
 	getAccountTabDefinition,
 	getIncludedNavigationTabs,
 	getVisibleNavigationTabId,
@@ -113,6 +114,7 @@ export function AccountNavigationEdit( {
 		[ clientId ]
 	);
 	const { replaceInnerBlocks } = useDispatch( blockEditorStore );
+	const selectedNavigationTabs = getIncludedNavigationTabs( attributes );
 	const blockProps = useBlockProps( {
 		className: 'ppcart-account-navigation-editor',
 	} );
@@ -131,10 +133,20 @@ export function AccountNavigationEdit( {
 		const normalizedNavigation =
 			normalizeAccountNavigationBlocks( innerBlocks );
 
-		if ( normalizedNavigation.changed ) {
-			replaceInnerBlocks( clientId, normalizedNavigation.blocks, false );
+		const blocks = normalizedNavigation.blocks;
+		const needsDownloadsTab =
+			blocks.length > 0 &&
+			selectedNavigationTabs.includes( 'tab-files' ) &&
+			! blocks.some( ( block ) => block.attributes?.tabId === 'tab-files' );
+
+		if ( needsDownloadsTab ) {
+			blocks.push( createAccountTabBlock( 'tab-files' ) );
 		}
-	}, [ clientId, innerBlocks, replaceInnerBlocks ] );
+
+		if ( normalizedNavigation.changed || needsDownloadsTab ) {
+			replaceInnerBlocks( clientId, blocks, false );
+		}
+	}, [ clientId, innerBlocks, replaceInnerBlocks, selectedNavigationTabs ] );
 
 	useEffect( () => {
 		setPreviewActiveTab( attributes.activeTab || 'tab-orders' );
@@ -151,7 +163,6 @@ export function AccountNavigationEdit( {
 			};
 		} );
 
-	const selectedNavigationTabs = getIncludedNavigationTabs( attributes );
 	const visibleTabs = editorTabs.filter( ( tab ) =>
 		selectedNavigationTabs.includes( tab.tabId )
 	);

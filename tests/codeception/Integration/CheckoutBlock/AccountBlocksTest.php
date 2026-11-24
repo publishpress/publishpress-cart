@@ -258,13 +258,13 @@ class AccountBlocksTest extends CheckoutBlockTestCase
         $this->assertStringContainsString('id="tab-orders" class="tabcontent active"', $output);
 
         $this->assertSame(
-            [ 'tab-orders' => 'true', 'tab-subscriptions' => 'false', 'tab-profile' => 'false' ],
+            [ 'tab-orders' => 'true', 'tab-subscriptions' => 'false', 'tab-profile' => 'false', 'tab-files' => 'false' ],
             $this->accountTabSelection($output)
         );
 
         $xpath = $this->accountMarkupXPath($output);
 
-        foreach ([ 'tab-orders', 'tab-subscriptions', 'tab-profile' ] as $tabId) {
+        foreach ([ 'tab-orders', 'tab-subscriptions', 'tab-profile', 'tab-files' ] as $tabId) {
             $panel = $xpath->query('//*[@id="' . $tabId . '"]')->item(0);
             $tab   = $xpath->query('//a[@role="tab"][@aria-controls="' . $tabId . '"]')->item(0);
 

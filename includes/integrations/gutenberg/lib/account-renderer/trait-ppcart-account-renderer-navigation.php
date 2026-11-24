@@ -12,7 +12,7 @@ trait PPCart_Account_Renderer_Navigation
             return '';
         }
 
-        $inner_blocks           = $this->get_layout_inner_blocks($block);
+        $inner_blocks           = $this->with_missing_downloads_tab($this->get_layout_inner_blocks($block), $attributes);
         $has_nested_tab_blocks  = ! empty($inner_blocks);
         $previous_layout_state  = $this->is_rendering_layout;
         $active_tab = 'tab-orders';
@@ -115,6 +115,37 @@ trait PPCart_Account_Renderer_Navigation
         }
 
         return $output;
+    }
+
+    private function with_missing_downloads_tab($inner_blocks, $attributes)
+    {
+        $included_tabs = $this->get_configured_navigation_tabs($attributes);
+        if (! $inner_blocks || (is_array($included_tabs) && ! in_array('tab-files', $included_tabs, true))) {
+            return $inner_blocks;
+        }
+
+        $has_account_tab = false;
+        foreach ($inner_blocks as $inner_block) {
+            if ('tab-files' === $this->get_tab_id_for_inner_block($inner_block)) {
+                return $inner_blocks;
+            }
+            if ('publishpress-cart/account-tab' === ($inner_block['blockName'] ?? '')) {
+                $has_account_tab = true;
+            }
+        }
+
+        if (! $has_account_tab) {
+            return $inner_blocks;
+        }
+
+        // Older navigation templates exposed Downloads without saving its panel.
+        $downloads_tab = parse_blocks(
+            '<!-- wp:publishpress-cart/account-tab {"tabId":"tab-files"} -->'
+            . '<!-- wp:publishpress-cart/account-downloads /-->'
+            . '<!-- /wp:publishpress-cart/account-tab -->'
+        );
+
+        return array_merge($inner_blocks, $downloads_tab);
     }
 
     private function get_navigation_tabs($attributes, $inner_blocks)
