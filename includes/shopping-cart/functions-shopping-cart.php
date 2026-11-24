@@ -203,3 +203,24 @@ function ppcart_render_shopping_cart($attributes = []): string
     ppcart_shopping_cart_assets();
     return (new PPCart_Shopping_Cart_View())->render('cart', ppcart_get_shopping_cart(), (array) $attributes);
 }
+
+/** The cart checkout form, or the confirmation of a cart order the visitor may view. */
+function ppcart_render_shopping_cart_checkout($attributes = []): string
+{
+    return (new PPCart_Public_Cart_Checkout_Controller())->render((array) $attributes);
+}
+
+/** The confirmation of a cart order: the Cart settings message and the receipt. */
+function ppcart_shopping_cart_confirmation(PPCart_Order $order, array $attributes = []): string
+{
+    ppcart_shopping_cart_assets();
+    $placed = in_array($order->status, ['paid', 'completed'], true) || PPCart_Order::$cod_gateway_str === $order->pay_method;
+    return ppcart_get_template('shopping-cart/confirmation', '', [
+        'style'    => ppcart_shopping_cart_style($attributes),
+        'placed'   => $placed,
+        'message'  => (new PPCart_Shopping_Cart_Settings())->confirmation($order)['message'],
+        'items'    => ppcart_get_item_list($order->id),
+        'order_id' => (int) $order->id,
+        'token'    => $placed ? '' : PPCart_Order::ensure_invoice_access_token($order->id),
+    ]);
+}

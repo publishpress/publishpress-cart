@@ -20,6 +20,8 @@ final class PPCart_Shopping_Cart_View
         foreach (is_string($requested) ? explode(',', $requested) : [] as $fragment) {
             if (in_array($fragment, ['drawer', 'cart'], true)) {
                 $response['fragments'][$fragment] = $this->render($fragment, $cart);
+            } elseif ('checkout' === $fragment) {
+                $response['fragments'][$fragment] = $this->render('summary', $cart, [], ['checkout' => true]);
             }
         }
         return $response;
@@ -44,9 +46,10 @@ final class PPCart_Shopping_Cart_View
         ];
     }
 
-    public function render(string $template, PPCart_Shopping_Cart_Priced $cart, array $attributes = []): string
+    /** @param array<string,mixed> $data More values for the template. */
+    public function render(string $template, PPCart_Shopping_Cart_Priced $cart, array $attributes = [], array $data = []): string
     {
-        return ppcart_get_template('shopping-cart/' . $template, '', [
+        return ppcart_get_template('shopping-cart/' . $template, '', $data + [
             'cart' => $this->data($cart),
             'priced_cart' => $cart,
             'style' => ppcart_shopping_cart_style($attributes),

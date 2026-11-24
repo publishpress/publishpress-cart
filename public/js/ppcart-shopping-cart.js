@@ -30,8 +30,10 @@ function announce(message) {
 export async function requestShoppingCart(method, path = '', data = undefined) {
     const send = async (withNonce) => {
         const url = new URL(config.restUrl, window.location.href);
-        url.pathname += path;
-        url.searchParams.set('fragments', 'drawer,cart');
+        // Plain permalinks carry the route in the rest_route parameter.
+        if (url.searchParams.has('rest_route')) url.searchParams.set('rest_route', url.searchParams.get('rest_route') + path);
+        else url.pathname += path;
+        url.searchParams.set('fragments', ['drawer', 'cart', 'checkout'].filter(name => name === 'drawer' || document.querySelector(name === 'cart' ? '[data-ppcart-cart]' : '[data-ppcart-checkout-summary]')).join(','));
         const headers = { Accept: 'application/json' };
         if (withNonce && nonce) headers['X-WP-Nonce'] = nonce;
         if (data !== undefined) headers['Content-Type'] = 'application/json';
@@ -52,6 +54,7 @@ export async function requestShoppingCart(method, path = '', data = undefined) {
         const error = new Error(result.payload.message || config.error);
         error.code = result.payload.code;
         error.cart = result.payload.data?.cart;
+        error.fields = result.payload.data?.fields || [];
         throw error;
     }
     nonce = result.payload.nonce || nonce;
@@ -88,6 +91,14 @@ export function applyShoppingCartResponse(response, root = document) {
         const hadFocus = panel.contains(document.activeElement);
         panel.innerHTML = response.fragments.drawer;
         if (!panel.hidden && hadFocus) panel.querySelector('[data-ppcart-close-drawer]')?.focus();
+    }
+    if (response.fragments?.checkout) {
+        root.querySelectorAll('[data-ppcart-checkout-summary]').forEach(node => {
+            const template = document.createElement('template');
+            template.innerHTML = response.fragments.checkout;
+            node.replaceWith(template.content.firstElementChild);
+        });
+        root.dispatchEvent(new CustomEvent('ppcart-shopping-cart-checkout-summary', { detail: response }));
     }
     if (response.fragments?.cart) {
         root.querySelectorAll('[data-ppcart-cart]').forEach(node => {
@@ -218,14 +229,124 @@ export function mountShoppingCart(root = document) {
     });
 }
 
+function stripePaymentAdapter(form) {
+    const key = form.dataset.ppcartStripeKey;
+    const target = form.querySelector('[data-ppcart-payment-element]');
+    if (!key || !target || typeof window.Stripe !== 'function') return null;
+    const amount = () => Number(document.querySelector('[data-ppcart-checkout-summary]')?.dataset.ppcartAmount || 0);
+    const stripe = window.Stripe(key, { locale: form.dataset.ppcartStripeLocale || 'auto' });
+    let elements = null;
+    const mount = () => {
+        if (elements || amount() < 1) return;
+        elements = stripe.elements({ mode: 'payment', amount: amount(), currency: form.dataset.ppcartCurrency, allowedPaymentMethodTypes: ['card'] });
+        elements.create('payment').mount(target);
+    };
+    mount();
+    return {
+        refresh() {
+            if (elements && amount() > 0) elements.update({ amount: amount() });
+            else mount();
+        },
+        async validate() {
+            const { error } = elements ? await elements.submit() : { error: { message: config.error } };
+            if (error) throw new Error(error.message);
+        },
+        async pay(payment, billing, returnUrl) {
+            const { error } = await stripe.confirmPayment({
+                elements, clientSecret: payment.client_secret, redirect: 'if_required',
+                confirmParams: { return_url: returnUrl, payment_method_data: { billing_details: billing } },
+            });
+            if (error) throw new Error(error.message);
+        },
+    };
+}
+
+export function mountShoppingCartCheckout(form, paymentAdapter = stripePaymentAdapter(form)) {
+    if (mounted.has(form)) return;
+    mounted.add(form);
+    const button = form.querySelector('button[type="submit"]');
+    const errorBox = form.querySelector('[data-ppcart-checkout-error]');
+    const paymentBox = form.querySelector('[data-ppcart-checkout-payment]');
+    let placed = null;
+    const method = () => (new FormData(form)).get('pay-method') || '';
+    const free = () => Number(document.querySelector('[data-ppcart-checkout-summary]')?.dataset.ppcartAmount || 0) < 1;
+    const fail = (message, fields = []) => {
+        errorBox.textContent = message || '';
+        errorBox.hidden = !message;
+        form.querySelectorAll('[data-ppcart-field]').forEach(node => node.classList.toggle('ppcart-shopping-cart-invalid', fields.includes(node.dataset.ppcartField)));
+    };
+    const showMethod = () => {
+        if (paymentBox) paymentBox.hidden = free();
+        form.querySelectorAll('[data-ppcart-pay-method]').forEach(node => { node.hidden = node.dataset.ppcartPayMethod !== method(); });
+    };
+    const leave = result => window.location.assign(result.confirmation.url || window.location.href);
+
+    showMethod();
+    form.addEventListener('change', event => { if (event.target.name === 'pay-method') showMethod(); });
+    document.addEventListener('ppcart-shopping-cart-checkout-summary', event => {
+        form.elements.ppcart_cart_revision.value = event.detail.revision;
+        showMethod();
+        paymentAdapter?.refresh();
+    });
+    form.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (button.disabled) return;
+        button.disabled = true;
+        form.setAttribute('aria-busy', 'true');
+        fail('');
+        try {
+            const card = !free() && method() === 'stripe';
+            if (card && !paymentAdapter) throw new Error(config.error);
+            if (card) await paymentAdapter.validate();
+            const data = Object.fromEntries(new FormData(form));
+            const sent = JSON.stringify(data);
+            // A declined card pays the same order again. A changed form or cart places a new order.
+            if (!placed || placed.sent !== sent) {
+                const result = await requestShoppingCart('POST', '/checkout', data);
+                channel?.postMessage('changed');
+                if (result.status !== 'requires_payment') return leave(result);
+                applyShoppingCartResponse(result.cart);
+                placed = { result, sent: JSON.stringify(Object.fromEntries(new FormData(form))) };
+            }
+            const { result } = placed;
+            await paymentAdapter.pay(result.payment, { name: `${data.first_name || ''} ${data.last_name || ''}`.trim(), email: data.email }, result.confirmation.url || window.location.href);
+            const paid = await requestShoppingCart('POST', '/checkout/confirm', { order_id: result.order_id, token: result.token });
+            channel?.postMessage('changed');
+            leave(paid);
+        } catch (error) {
+            if (error.cart) applyShoppingCartResponse(error.cart);
+            if (error.cart && !error.cart.count) return window.location.reload();
+            fail(error.message || config.error, error.fields);
+        } finally {
+            button.disabled = false;
+            form.removeAttribute('aria-busy');
+        }
+    });
+}
+
+async function settlePendingOrder(node) {
+    try {
+        await requestShoppingCart('POST', '/checkout/confirm', { order_id: Number(node.dataset.ppcartPendingOrder), token: node.dataset.ppcartPendingToken });
+        window.location.reload();
+    } catch (error) {
+        // The page keeps its waiting notice. The Stripe webhook can still complete the order.
+    }
+}
+
+function mountShoppingCartCheckouts() {
+    document.querySelectorAll('[data-ppcart-checkout-form]').forEach(form => mountShoppingCartCheckout(form));
+    document.querySelectorAll('[data-ppcart-pending-order]').forEach(node => { void settlePendingOrder(node); });
+}
+
 channel?.addEventListener('message', event => {
     if (event.data !== 'changed') return;
     currentCart = null;
     readCount(document);
-    if ((overlay() && !overlay().hidden) || document.querySelector('[data-ppcart-cart]')) {
+    if ((overlay() && !overlay().hidden) || document.querySelector('[data-ppcart-cart], [data-ppcart-checkout-summary]')) {
         requestShoppingCart('GET').then(response => applyShoppingCartResponse(response)).catch(error => announce(error.message));
     }
 });
 window.addEventListener('pageshow', () => readCount(document));
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => mountShoppingCart());
-else mountShoppingCart();
+const mountAll = () => { mountShoppingCart(); mountShoppingCartCheckouts(); };
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountAll);
+else mountAll();

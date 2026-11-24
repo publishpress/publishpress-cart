@@ -11,6 +11,7 @@ final class PPCart_Public_Shopping_Cart_Controller
         add_shortcode('ppcart_shop', 'ppcart_render_shop');
         add_shortcode('ppcart_mini_cart', 'ppcart_render_mini_cart');
         add_shortcode('ppcart_cart', 'ppcart_render_shopping_cart');
+        add_shortcode('ppcart_cart_checkout', 'ppcart_render_shopping_cart_checkout');
     }
 
     public function template_redirect(): void

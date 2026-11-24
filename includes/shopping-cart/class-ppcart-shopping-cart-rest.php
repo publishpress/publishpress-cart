@@ -11,6 +11,9 @@ final class PPCart_Shopping_Cart_Rest
     private const STATUS = [
         'ppcart_cart_disabled'          => 403,
         'ppcart_cart_item_missing'      => 404,
+        'ppcart_cart_order_missing'     => 404,
+        'ppcart_cart_payment_failed'    => 402,
+        'ppcart_cart_payment_incomplete' => 402,
         'ppcart_cart_already_in_cart'   => 409,
         'ppcart_cart_full'              => 409,
         'ppcart_cart_conflict'          => 409,
@@ -21,6 +24,9 @@ final class PPCart_Shopping_Cart_Rest
         'ppcart_cart_empty'             => 422,
         'ppcart_cart_purchase_limit'    => 422,
         'ppcart_cart_out_of_stock'      => 422,
+        'ppcart_cart_checkout_invalid'  => 422,
+        'ppcart_cart_payment_method'    => 422,
+        'ppcart_cart_payment_unavailable' => 503,
     ];
 
     public function __construct(

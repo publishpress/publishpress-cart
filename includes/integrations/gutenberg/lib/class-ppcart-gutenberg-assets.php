@@ -115,7 +115,7 @@ class PPCart_Gutenberg_Assets
         wp_register_style(
             self::CHECKOUT_EDITOR_STYLE_HANDLE,
             plugins_url('css/checkout-editor.css', $this->base_file),
-            [ self::CHECKOUT_STYLE_HANDLE, self::CHECKOUT_PUBLIC_STYLE_HANDLE, self::SELECTIZE_STYLE_HANDLE ],
+            [ self::CHECKOUT_STYLE_HANDLE, self::CHECKOUT_PUBLIC_STYLE_HANDLE, self::SELECTIZE_STYLE_HANDLE, 'ppcart-shopping-cart' ],
             PPCART_VERSION
         );
 

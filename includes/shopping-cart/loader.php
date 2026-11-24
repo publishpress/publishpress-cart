@@ -15,6 +15,8 @@ require_once __DIR__ . '/class-ppcart-shopping-cart-store.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-view.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-rest.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-completion.php';
+require_once __DIR__ . '/class-ppcart-shopping-cart-checkout-input.php';
+require_once __DIR__ . '/class-ppcart-shopping-cart-stripe.php';
 require_once __DIR__ . '/class-ppcart-shop.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-product-settings.php';
 

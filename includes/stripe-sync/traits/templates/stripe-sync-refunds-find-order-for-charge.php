@@ -8,7 +8,9 @@ if (! defined('ABSPATH')) {
 $order_id = absint(self::metadata($charge, 'ppcart_order_id', 0));
 if ($order_id) {
     $cart_order = new PPCart_Order($order_id);
-    if ($cart_order->id) {
+    // A cart order is matched only by the payment it stored, never by the metadata order ID alone.
+    $payment_ids = array_filter([ (string) self::get($charge, 'id', ''), (string) self::get($charge, 'payment_intent', '') ]);
+    if ($cart_order->id && (! ppcart_order_is_shopping_cart($cart_order) || in_array((string) $cart_order->transaction_id, $payment_ids, true))) {
         return $cart_order;
     }
 }

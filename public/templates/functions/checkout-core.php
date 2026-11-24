@@ -342,6 +342,12 @@ function ppcart_do_payment_confirmation($prod_id)
         $show_confirm = false;
         $orderID      = false;
     }
+    $ppcart_cart_order = $show_confirm ? new PPCart_Order($orderID) : null;
+    if ($ppcart_cart_order && ppcart_order_is_shopping_cart($ppcart_cart_order)) {
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output.
+        echo ppcart_shopping_cart_confirmation($ppcart_cart_order);
+        return;
+    }
     ?>
 
     <section class="ppcart pay-confirm">
