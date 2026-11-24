@@ -91,7 +91,7 @@ if (! $ppcart_product && $ppcart_order_get && $ppcart_pid_get) {
 }
 
 // selectize is enqueued via enqueue_frontend_assets() when needed.
-wp_register_script('ppcart', PPCART_BASE_URL . 'public/js/ppcart-public.js', [ 'jquery' ], $this->version, true);
+$this->register_checkout_script();
 
 if (! empty($ppcart_plan_get) || is_object($ppcart_product)) {
     wp_register_script('ppcart-stripe', PPCART_BASE_URL . 'public/js/ppcart-stripe.js', [ 'jquery' ], $this->version, true);
