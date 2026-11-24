@@ -1139,36 +1139,40 @@ function Edit( props ) {
 						value={ styleSettings.accentColor }
 						onChange={ ( value ) => updateStyle( 'accentColor', value ) }
 					/>
-					<SegmentedControl
-						label={ __( 'Surface', 'publishpress-cart' ) }
-						value={ styleSettings.surfaceStyle }
-						options={ [
-							{ label: __( 'Default', 'publishpress-cart' ), value: '' },
-							{ label: __( 'Card', 'publishpress-cart' ), value: 'card' },
-							{ label: __( 'Boxed', 'publishpress-cart' ), value: 'boxed' },
-						] }
-						onChange={ ( value ) => updateStyle( 'surfaceStyle', value ) }
-					/>
-					<SegmentedControl
-						label={ __( 'Density', 'publishpress-cart' ) }
-						value={ styleSettings.density }
-						options={ [
-							{ label: __( 'Default', 'publishpress-cart' ), value: '' },
-							{ label: __( 'Compact', 'publishpress-cart' ), value: 'compact' },
-							{ label: __( 'Spacious', 'publishpress-cart' ), value: 'spacious' },
-						] }
-						onChange={ ( value ) => updateStyle( 'density', value ) }
-					/>
-					<SegmentedControl
-						label={ __( 'Corners', 'publishpress-cart' ) }
-						value={ styleSettings.cornerRadius }
-						options={ [
-							{ label: __( 'Default', 'publishpress-cart' ), value: '' },
-							{ label: __( 'Square', 'publishpress-cart' ), value: 'square' },
-							{ label: __( 'Rounded', 'publishpress-cart' ), value: 'rounded' },
-						] }
-						onChange={ ( value ) => updateStyle( 'cornerRadius', value ) }
-					/>
+					{ ! isCartSource && (
+						<>
+							<SegmentedControl
+								label={ __( 'Surface', 'publishpress-cart' ) }
+								value={ styleSettings.surfaceStyle }
+								options={ [
+									{ label: __( 'Default', 'publishpress-cart' ), value: '' },
+									{ label: __( 'Card', 'publishpress-cart' ), value: 'card' },
+									{ label: __( 'Boxed', 'publishpress-cart' ), value: 'boxed' },
+								] }
+								onChange={ ( value ) => updateStyle( 'surfaceStyle', value ) }
+							/>
+							<SegmentedControl
+								label={ __( 'Density', 'publishpress-cart' ) }
+								value={ styleSettings.density }
+								options={ [
+									{ label: __( 'Default', 'publishpress-cart' ), value: '' },
+									{ label: __( 'Compact', 'publishpress-cart' ), value: 'compact' },
+									{ label: __( 'Spacious', 'publishpress-cart' ), value: 'spacious' },
+								] }
+								onChange={ ( value ) => updateStyle( 'density', value ) }
+							/>
+							<SegmentedControl
+								label={ __( 'Corners', 'publishpress-cart' ) }
+								value={ styleSettings.cornerRadius }
+								options={ [
+									{ label: __( 'Default', 'publishpress-cart' ), value: '' },
+									{ label: __( 'Square', 'publishpress-cart' ), value: 'square' },
+									{ label: __( 'Rounded', 'publishpress-cart' ), value: 'rounded' },
+								] }
+								onChange={ ( value ) => updateStyle( 'cornerRadius', value ) }
+							/>
+						</>
+					) }
 					<Button
 						variant="secondary"
 						onClick={ () => resetStyleSettings( designStyleKeys ) }

@@ -72,8 +72,8 @@ The block and its shortcode show the same output. The shortcode options are in
 [Available shortcodes](getting-started/shortcodes.md#shop-and-cart).
 
 The **Cart Shop**, **Cart Mini Cart**, and **Cart Shopping Cart** blocks have
-two **Style** settings: a style preset and an accent color. The **Cart
-Checkout** block keeps its full **Design** settings.
+two **Style** settings: a style preset and an accent color. A **Cart Checkout**
+block set to **Cart** has the same two settings in its **Design** panel.
 
 The **Cart Shop**, **Cart Shopping Cart**, and **Cart Checkout** blocks can use
 **Wide width** or **Full width** from the block toolbar. Without one of these,
