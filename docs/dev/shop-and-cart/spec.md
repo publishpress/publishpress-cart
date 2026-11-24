@@ -91,7 +91,7 @@ A plan is cart-eligible when its type is `one-time` or `free`. Filter: `ppcart_s
 
 | Item | Value |
 |------|-------|
-| Location | Product edit → **General** tab, next to "Hide product title" (`_ppcart_hide_title`) |
+| Location | Product edit → **General** tab → **Page header** card, next to "Hide page title" (`_ppcart_hide_title`; `admin/metaboxes/traits/templates/product-metabox-render-tab-sections.php:22-26`) |
 | Label | Show in Shop Page |
 | Description | List this product on the Shop page. The product checkout page still works when this is off. |
 | Meta key | `_ppcart_show_in_shop` |
@@ -211,7 +211,7 @@ Shortcode: `[ppcart_cart]`
 - Right column: summary card (Subtotal, then the Pro slot for discount and tax, then Total), a **Checkout** button and a **Continue shopping** link.
 - Notices: price changed, item removed (not eligible any more).
 - Empty state: "Your cart is empty." and a **Browse the shop** button (links to the Shop page).
-- Hooks for Pro: `ppcart_shopping_cart_before_totals`, `ppcart_shopping_cart_after_totals` (the coupon field goes here), and the filter `ppcart_shopping_cart_totals`.
+- Hooks for Pro: `ppcart_shopping_cart_after_totals` (the coupon field goes here) and the filter `ppcart_shopping_cart_totals`.
 
 ### 8.4 Cart Checkout — existing block `publishpress-cart/checkout-form`, new source "Cart"
 
@@ -233,6 +233,7 @@ Shortcode: `[ppcart_cart]`
 | `user_id` | bigint, index | 0 for guests |
 | `items` | longtext | JSON list of `{product_id, plan_id, quantity, seen_price, added_at}` |
 | `meta` | longtext | JSON, for extensions (Pro coupon code) |
+| `revision` | bigint unsigned, default 0 | Compare-and-swap token. Each write adds 1 and requires the revision it read. See [architecture.md](architecture.md) §5 |
 | `created_at`, `updated_at`, `expires_at` | datetime, index on `expires_at` | |
 
 Why a table, not transients: an object cache can evict a transient before it expires. A table also makes cart abandonment possible later.
@@ -285,8 +286,8 @@ Steps:
    - `item_type = 'main'`, `product_id`, `price_id = plan_id`, `product_name`, `price_name`
    - `unit_price`, `quantity`, `subtotal`, `total_amount`
    - `maybe_apply_tax_to_item()` runs for each item. Pro tax already reads `_ppcart_product_taxable` from `$item['product_id']`.
-4. Run `calculate_*_from_items()` and `calculate_final_amounts()`.
-5. Fire `ppcart_shopping_cart_order_loaded` (filter, for Pro coupons).
+4. Fire `ppcart_shopping_cart_order_loaded` (filter, for Pro coupons). This is the same place where Buy now applies its coupons.
+5. Run `finalize_amounts()` (the shared `calculate_*_from_items()` and `calculate_final_amounts()` tail; see architecture.md).
 6. Create the payment (§12). Store the pending order. Return `formAction` from the Cart settings.
 7. When the order is complete, empty the shopping cart.
 
@@ -332,23 +333,24 @@ New hooks. Treat them as a public contract from the first release:
 
 | Hook | Type | Purpose |
 |------|------|---------|
+| `ppcart_shop_query_args` | filter (array args, array attributes) | Merchants: Shop query (§8.1) |
 | `ppcart_shopping_cart_product_is_eligible` | filter (bool, product_id) | Pro: collections in the cart |
 | `ppcart_shopping_cart_plan_is_eligible` | filter (bool, plan, product_id) | Later: subscriptions, pay-what-you-want |
 | `ppcart_shopping_cart_item_max_quantity` | filter (int, product_id, plan_id) | Pro: quantity |
-| `ppcart_shopping_cart_max_items` | filter (int) | |
-| `ppcart_shopping_cart_item_added` / `_item_removed` / `_emptied` | action | Analytics, Pro |
-| `ppcart_shopping_cart_totals` | filter (array, cart) | Pro: discount, tax preview |
-| `ppcart_shopping_cart_before_totals` / `_after_totals` | action | Pro: coupon field |
-| `ppcart_shopping_cart_order_loaded` | filter (order, cart) | Pro: coupons on the order |
-| `ppcart_shopping_cart_order_created` | action (order, cart) | |
-| `ppcart_shopping_cart_checkout_fields` | filter (array) | Checkout field list |
+| `ppcart_shopping_cart_max_items` | filter (int) | Merchants: line limit (§5.2) |
+| `ppcart_shopping_cart_totals` | filter (array, priced cart) | Pro: discount, tax preview |
+| `ppcart_shopping_cart_after_totals` | action (priced cart) | Pro: coupon field |
+| `ppcart_shopping_cart_order_loaded` | filter (order, priced cart) | Pro: coupons on the order |
+| `ppcart_shopping_cart_checkout_fields` | filter (array) | Pro tax: checkout field list |
+
+Each hook has a named caller. `item_added`, `item_removed`, `emptied`, `before_totals` and `order_created` do not ship in v1 (see [architecture.md](architecture.md) §7).
 
 Overridable templates (theme folder `publishpress-cart/`):
 
 - `shopping-cart/cart.php`
 - `shopping-cart/mini-cart.php`
 - `shopping-cart/drawer.php`
-- `archive/item.php` (existing; it gets a price and a button form)
+- `shopping-cart/shop-card.php` (new; replaces the deleted `archive/item.php`)
 
 **Pro follow-up work** (Pro repo, after Free ships):
 
