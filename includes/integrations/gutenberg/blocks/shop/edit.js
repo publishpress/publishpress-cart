@@ -2,15 +2,39 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, SelectControl, TextControl, ToggleControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import { useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import ShoppingCartStyleControls from '../shopping-cart-style-controls';
+
+function syncPreviewPrice( event ) {
+    const select = event.target.closest( '.ppcart-shopping-cart-add select' );
+    const price = select?.closest( '.ppcart-shop-card' )?.querySelector( '[data-ppcart-shop-price]' );
+    const selected = select?.selectedOptions[ 0 ]?.dataset.ppcartPrice;
+    if ( price && selected ) {
+        price.textContent = selected;
+    }
+}
+
+function blockPreviewSubmit( event ) {
+    event.preventDefault();
+}
 
 registerBlockType( metadata.name, {
     ...metadata,
     title: __( 'Cart Shop', 'publishpress-cart' ),
     edit( { attributes, setAttributes } ) {
-        return <div { ...useBlockProps() }>
+        const preview = useRef();
+        useEffect( () => {
+            const node = preview.current;
+            node.addEventListener( 'change', syncPreviewPrice );
+            node.addEventListener( 'submit', blockPreviewSubmit );
+            return () => {
+                node.removeEventListener( 'change', syncPreviewPrice );
+                node.removeEventListener( 'submit', blockPreviewSubmit );
+            };
+        }, [] );
+        return <div { ...useBlockProps( { ref: preview } ) }>
             <InspectorControls>
                 <PanelBody title={ __( 'Shop', 'publishpress-cart' ) }>
                     <SelectControl label={ __( 'Pagination', 'publishpress-cart' ) } value={ attributes.pagination } onChange={ ( pagination ) => setAttributes( { pagination } ) } options={ [ [ 'numbers', __( 'Page numbers', 'publishpress-cart' ) ], [ 'prev_next', __( 'Previous and next', 'publishpress-cart' ) ], [ 'load_more', __( 'Load more button', 'publishpress-cart' ) ], [ 'none', __( 'Show all products', 'publishpress-cart' ) ] ].map( ( [ value, label ] ) => ( { value, label } ) ) } />
