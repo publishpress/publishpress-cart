@@ -59,7 +59,6 @@ class PPCart_Public_Page_Controller
 
         add_shortcode('ppcart_form', [$this, 'product_shortcode']);
         add_shortcode('ppcart_receipt', [$this, 'receipt_shortcode']);
-        add_shortcode('ppcart_store', [$this, 'store_shortcode']);
         add_shortcode('ppcart_customer_bought_product', [$this, 'customer_bought_product']);
         add_shortcode('ppcart_customer_has_subscription', [$this, 'customer_has_subscription']);
     }

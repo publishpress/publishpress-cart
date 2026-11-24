@@ -39,6 +39,9 @@ foreach ($metas as $meta) {
 
     $name = $meta[0];
     $field_type = $meta[1];
+    if ('_ppcart_show_in_shop' === $name) {
+        continue;
+    }
     $defaultFields = apply_filters(
         'ppcart_default_fields_ids',
         [ ppcart_meta_key('default_fields') ]

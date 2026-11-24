@@ -184,6 +184,8 @@ class PPCart_Dependency_Loader
         /*
         * Gutenberg checkout block
         */
+        require_once $base_path . 'includes/block-styles/functions-block-styles.php';
+        require_once $base_path . 'includes/shopping-cart/loader.php';
         require_once $base_path . 'includes/integrations/gutenberg/index.php';
 
         do_action('ppcart_load_pro_modules', $cart);

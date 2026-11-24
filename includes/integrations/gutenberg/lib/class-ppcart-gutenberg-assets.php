@@ -55,6 +55,10 @@ class PPCart_Gutenberg_Assets
 
     public function register()
     {
+        $asset = require $this->base_dir . '/build/edit.asset.php';
+        wp_register_script('ppcart-shop-editor', plugins_url('build/edit.js', $this->base_file), $asset['dependencies'], $asset['version'], true);
+        wp_register_style('ppcart-shopping-cart', PPCART_BASE_URL . 'public/css/ppcart-shopping-cart.css', [], PPCART_VERSION);
+        wp_set_script_translations('ppcart-shop-editor', 'publishpress-cart', PPCART_BASE_DIR . 'languages');
         $this->register_checkout_assets();
         $this->register_account_assets();
     }

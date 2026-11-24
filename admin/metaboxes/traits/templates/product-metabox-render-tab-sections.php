@@ -22,7 +22,7 @@ $default_sections = [
         'header' => [
             'title'       => __('Page header', 'publishpress-cart'),
             'description' => __('Customize the header on the default Cart product page. For the split layout, set a featured image on the product to change the background. Edit custom block templates in the Site Editor.', 'publishpress-cart'),
-            'fields'      => [ '_ppcart_hide_title', '_ppcart_header_color', '_ppcart_header_image' ],
+            'fields'      => [ '_ppcart_hide_title', '_ppcart_show_in_shop', '_ppcart_shop_general_submitted', '_ppcart_header_color', '_ppcart_header_image' ],
         ],
     ],
     // Payment plans come first: the price is the first thing to set on a product.

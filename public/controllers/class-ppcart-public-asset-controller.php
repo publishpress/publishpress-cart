@@ -119,7 +119,10 @@ class PPCart_Public_Asset_Controller
                 'ppcart_account_subscription_detail',
                 'ppcart_form',
                 'ppcart_receipt',
-                'ppcart_store',
+                'ppcart_shop',
+                'ppcart_mini_cart',
+                'ppcart_cart',
+                'ppcart_cart_checkout',
                 'ppcart_order_downloads',
             ];
             foreach ($shortcodes as $shortcode) {
@@ -131,6 +134,9 @@ class PPCart_Public_Asset_Controller
             if (function_exists('has_block')) {
                 $blocks = [
                     'publishpress-cart/checkout-form',
+                    'publishpress-cart/shop',
+                    'publishpress-cart/mini-cart',
+                    'publishpress-cart/cart',
                     'publishpress-cart/account-page-builder',
                     'publishpress-cart/account-tab',
                     'publishpress-cart/account-navigation',

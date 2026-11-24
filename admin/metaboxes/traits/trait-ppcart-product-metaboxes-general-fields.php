@@ -41,6 +41,17 @@ trait PPCart_Product_Metaboxes_General_Fields_Trait
                 'class_size'  => '',
             ],
             [
+                'id' => '_ppcart_show_in_shop',
+                'label' => __('Show in Shop Page', 'publishpress-cart'),
+                'description' => __('List this product on the Shop page.', 'publishpress-cart'),
+                'type' => 'checkbox',
+            ],
+            [
+                'id' => '_ppcart_shop_general_submitted',
+                'type' => 'html',
+                'value' => '<input type="hidden" name="_ppcart_shop_general_submitted" value="1">',
+            ],
+            [
                 'class'       => 'ppcart-color-field',
                 'description' => '',
                 'id'            => '_ppcart_header_color',

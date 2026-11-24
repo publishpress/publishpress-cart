@@ -1,7 +1,7 @@
 {
   "name": "publishpress-cart",
   "version": "1.3.0",
-  "description": "PublishPress Cart — WordPress ecommerce plugin",
+  "description": "PublishPress Cart \u2014 WordPress ecommerce plugin",
   "main": "index.js",
   "directories": {
     "doc": "docs",
@@ -85,8 +85,8 @@
     "test:e2e:headed": "PW_HEADED=1 playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright test && playwright show-report",
-    "build:gutenberg": "wp-scripts build includes/integrations/gutenberg/blocks/checkout-form/order-form.js includes/integrations/gutenberg/blocks/account-page-builder/account-blocks.js includes/integrations/gutenberg/blocks/account-page-builder/account-page-view.js --output-path=includes/integrations/gutenberg/build",
-    "start:gutenberg": "wp-scripts start includes/integrations/gutenberg/blocks/checkout-form/order-form.js includes/integrations/gutenberg/blocks/account-page-builder/account-blocks.js includes/integrations/gutenberg/blocks/account-page-builder/account-page-view.js --output-path=includes/integrations/gutenberg/build",
+    "build:gutenberg": "wp-scripts build includes/integrations/gutenberg/blocks/checkout-form/order-form.js includes/integrations/gutenberg/blocks/account-page-builder/account-blocks.js includes/integrations/gutenberg/blocks/account-page-builder/account-page-view.js includes/integrations/gutenberg/blocks/shop/edit.js --output-path=includes/integrations/gutenberg/build",
+    "start:gutenberg": "wp-scripts start includes/integrations/gutenberg/blocks/checkout-form/order-form.js includes/integrations/gutenberg/blocks/account-page-builder/account-blocks.js includes/integrations/gutenberg/blocks/account-page-builder/account-page-view.js includes/integrations/gutenberg/blocks/shop/edit.js --output-path=includes/integrations/gutenberg/build",
     "test:e2e:gutenberg": "playwright test --config=includes/integrations/gutenberg/playwright.config.js",
     "test:e2e:checkout-block": "bash tests/legacy/e2e/checkout-block/run.sh"
   },

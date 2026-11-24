@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-23",
+    "generated_at": "2026-11-24",
     "source": "static PHP token audit of publishpress-cart",
     "policy": {
         "default_new_hook_prefix": "ppcart_",
@@ -1826,16 +1826,6 @@
             "notes": "Canonical hook prefix."
         },
         {
-            "name": "ppcart_after_product_list",
-            "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
-            "file": "public/templates/archive/item-wrapper-end.php",
-            "recommended_hook": "ppcart_after_product_list",
-            "notes": "Canonical hook prefix."
-        },
-        {
             "name": "ppcart_after_product_setup",
             "type": "action",
             "operation": "do_action",
@@ -1913,6 +1903,16 @@
             "status": "canonical",
             "file": "includes/functions/users-and-notifications.php",
             "recommended_hook": "ppcart_after_user_is_created",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_after_validate_meta",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/loader.php",
+            "recommended_hook": "ppcart_after_validate_meta",
             "notes": "Canonical hook prefix."
         },
         {
@@ -2143,16 +2143,6 @@
             "status": "canonical",
             "file": "public/templates/functions/payment-address.php",
             "recommended_hook": "ppcart_before_payment_info",
-            "notes": "Canonical hook prefix."
-        },
-        {
-            "name": "ppcart_before_product_list",
-            "type": "action",
-            "operation": "do_action",
-            "classification": "public",
-            "status": "canonical",
-            "file": "public/templates/archive/item-wrapper-start.php",
-            "recommended_hook": "ppcart_before_product_list",
             "notes": "Canonical hook prefix."
         },
         {
@@ -5656,16 +5646,6 @@
             "notes": "Canonical hook prefix."
         },
         {
-            "name": "ppcart_product_archive_args",
-            "type": "filter",
-            "operation": "apply_filters",
-            "classification": "public",
-            "status": "canonical",
-            "file": "public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php",
-            "recommended_hook": "ppcart_product_archive_args",
-            "notes": "Canonical hook prefix."
-        },
-        {
             "name": "ppcart_product_duplicate_excluded_meta_keys",
             "type": "filter",
             "operation": "apply_filters",
@@ -6443,6 +6423,46 @@
             "status": "canonical",
             "file": "includes/functions/product-and-order-setup.php",
             "recommended_hook": "ppcart_setup_product_upsell_path",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_shop_query_args",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/class-ppcart-shop.php",
+            "recommended_hook": "ppcart_shop_query_args",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_shopping_cart_item_max_quantity",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/class-ppcart-shopping-cart-catalog.php",
+            "recommended_hook": "ppcart_shopping_cart_item_max_quantity",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_shopping_cart_plan_is_eligible",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/class-ppcart-shopping-cart-catalog.php",
+            "recommended_hook": "ppcart_shopping_cart_plan_is_eligible",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_shopping_cart_product_is_eligible",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/class-ppcart-shopping-cart-catalog.php",
+            "recommended_hook": "ppcart_shopping_cart_product_is_eligible",
             "notes": "Canonical hook prefix."
         },
         {

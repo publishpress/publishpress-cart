@@ -260,4 +260,6 @@ When you connect Stripe with the optional Connect Stripe button and PublishPress
 
 == Changelog ==
 
+* Removed: `[ppcart_store]` shortcode. Use the Shop block or `[ppcart_shop]`.
+
 The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-cart/blob/master/CHANGELOG.md).

@@ -96,6 +96,7 @@ class PPCart_Gutenberg_Bootstrap
 
     private function register_blocks()
     {
+        register_block_type_from_metadata($this->base_dir . '/blocks/shop');
         $checkout_metadata = $this->get_metadata('checkout-form');
 
         if (function_exists('register_block_type_from_metadata')) {

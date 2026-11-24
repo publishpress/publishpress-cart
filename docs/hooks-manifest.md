@@ -1,6 +1,6 @@
 # PublishPress Cart Hook Manifest
 
-Generated on 2026-11-23 from a static PHP token audit of `publishpress-cart`.
+Generated on 2026-11-24 from a static PHP token audit of `publishpress-cart`.
 
 ## Prefix Policy
 
@@ -190,7 +190,6 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_after_order_load_from_post` | Filter | `apply_filters` | Public | canonical | `public/paypal/traits/trait-ppcart-paypal-requests.php` | ppcart_after_order_load_from_post |
 | `ppcart_after_order_paid` | Action | `do_action` | Public | canonical | `public/class-ppcart-public.php` | ppcart_after_order_paid |
 | `ppcart_after_payment_info` | Action | `do_action` | Public | canonical | `public/templates/functions/payment-address.php` | ppcart_after_payment_info |
-| `ppcart_after_product_list` | Action | `do_action` | Public | canonical | `public/templates/archive/item-wrapper-end.php` | ppcart_after_product_list |
 | `ppcart_after_product_setup` | Action | `do_action` | Public | canonical | `public/templates/functions/checkout-core.php` | ppcart_after_product_setup |
 | `ppcart_after_setup_atts_from_post` | Action | `do_action` | Public | canonical | `models/order/traits/templates/order-checkout-input-load-from-post.php` | ppcart_after_setup_atts_from_post |
 | `ppcart_after_step_1_button` | Action | `do_action` | Public | canonical | `public/templates/functions/summary-and-scripts.php` | ppcart_after_step_1_button |
@@ -199,6 +198,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_after_update_stock` | Action | `add_action` | Public | canonical | `includes/functions/integrations-and-stock.php` | ppcart_after_update_stock |
 | `ppcart_after_update_stock` | Action | `do_action` | Public | canonical | `includes/functions/prices-and-marketing.php` | ppcart_after_update_stock |
 | `ppcart_after_user_is_created` | Action | `do_action` | Public | canonical | `includes/functions/users-and-notifications.php` | ppcart_after_user_is_created |
+| `ppcart_after_validate_meta` | Action | `add_action` | Public | canonical | `includes/shopping-cart/loader.php` | ppcart_after_validate_meta |
 | `ppcart_after_validate_meta` | Action | `do_action` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-save-validate-meta.php` | ppcart_after_validate_meta |
 | `ppcart_allow_auto_login` | Filter | `apply_filters` | Public | canonical | `includes/functions/auto-login.php` | ppcart_allow_auto_login |
 | `ppcart_allow_privileged_customer_role` | Filter | `apply_filters` | Public | canonical | `includes/functions/users-and-notifications.php` | ppcart_allow_privileged_customer_role |
@@ -222,7 +222,6 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_before_payment_info` | Action | `add_action` | Public | canonical | `public/templates/checkout-shortcode.php` | ppcart_before_payment_info |
 | `ppcart_before_payment_info` | Action | `add_action` | Public | canonical | `public/templates/checkout1.php` | ppcart_before_payment_info |
 | `ppcart_before_payment_info` | Action | `do_action` | Public | canonical | `public/templates/functions/payment-address.php` | ppcart_before_payment_info |
-| `ppcart_before_product_list` | Action | `do_action` | Public | canonical | `public/templates/archive/item-wrapper-start.php` | ppcart_before_product_list |
 | `ppcart_before_show_download` | Action | `do_action` | Public | canonical | `includes/files/download.php` | ppcart_before_show_download |
 | `ppcart_before_validate_meta` | Action | `do_action` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-save-validate-meta.php` | ppcart_before_validate_meta |
 | `ppcart_bulk_sync_order_limit` | Filter | `apply_filters` | Public | canonical | `admin/controllers/templates/order-list-bulk-action-handler.php` | ppcart_bulk_sync_order_limit |
@@ -573,7 +572,6 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_process_stripe_products` | Filter | `apply_filters` | Public | canonical | `admin/metaboxes/traits/templates/product-metabox-save-validate-meta.php` | ppcart_process_stripe_products |
 | `ppcart_process_stripe_products` | Filter | `apply_filters` | Public | canonical | `includes/mcp/class-ppcart-mcp-plans.php` | ppcart_process_stripe_products |
 | `ppcart_product` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_product |
-| `ppcart_product_archive_args` | Filter | `apply_filters` | Public | canonical | `public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php` | ppcart_product_archive_args |
 | `ppcart_product_duplicate_excluded_meta_keys` | Filter | `apply_filters` | Public | canonical | `includes/class-ppcart-product-duplicator.php` | ppcart_product_duplicate_excluded_meta_keys |
 | `ppcart_product_duplicate_meta_key` | Filter | `apply_filters` | Public | canonical | `includes/class-ppcart-product-duplicator.php` | ppcart_product_duplicate_meta_key |
 | `ppcart_product_field_groups` | Filter | `add_filter` | Public | canonical | `includes/files/class-ppcart-files.php` | ppcart_product_field_groups |
@@ -652,6 +650,10 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_setup_product_from_meta` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_setup_product_from_meta |
 | `ppcart_setup_product_post_type` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_setup_product_post_type |
 | `ppcart_setup_product_upsell_path` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_setup_product_upsell_path |
+| `ppcart_shop_query_args` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shop.php` | ppcart_shop_query_args |
+| `ppcart_shopping_cart_item_max_quantity` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-catalog.php` | ppcart_shopping_cart_item_max_quantity |
+| `ppcart_shopping_cart_plan_is_eligible` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-catalog.php` | ppcart_shopping_cart_plan_is_eligible |
+| `ppcart_shopping_cart_product_is_eligible` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-catalog.php` | ppcart_shopping_cart_product_is_eligible |
 | `ppcart_should_send_product_notification` | Filter | `apply_filters` | Public | canonical | `includes/functions/users-and-notifications.php` | ppcart_should_send_product_notification |
 | `ppcart_show_admin_branding` | Filter | `apply_filters` | Public | canonical | `admin/class-ppcart-welcome.php` | ppcart_show_admin_branding |
 | `ppcart_show_admin_branding` | Filter | `apply_filters` | Public | canonical | `admin/partials/settings-page/tabs/topbar.php` | ppcart_show_admin_branding |

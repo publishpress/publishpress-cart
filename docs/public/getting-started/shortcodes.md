@@ -89,20 +89,13 @@ Displays the price or name of one payment plan.
 
 Shows the product name or remaining inventory on the checkout page.
 
-## Product store
+## Shop
 
-```text
-[ppcart_store]
+```
+[ppcart_shop]
 ```
 
-Displays a product archive.
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `button_text` | Purchased | Label on the purchase button |
-| `purchased_text` | Already Purchased | Label when already owned |
-| `posts_per_page` | 12 | Products per page |
-| `cols` | 3 | Columns (`3` or `4`) |
+Lists products with Show in Shop Page enabled. The Shop block uses the same renderer.
 
 ## Order downloads
 

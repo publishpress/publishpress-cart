@@ -34,30 +34,6 @@ trait PPCart_Public_Page_Shortcodes_Trait
         }
     }
 
-    public function store_shortcode($attr)
-    {
-        do_action('ppcart_enqueue_frontend_assets');
-
-        // Parse shortcode attributes
-        $defaults = [ 'button_text' => __('Purchase', 'publishpress-cart'), 'purchased_text' => __('Already Purchased', 'publishpress-cart'), 'posts_per_page' => 12, 'cols' => 3];
-        $attr = shortcode_atts($defaults, $attr);
-        $paged = get_query_var('paged', 1);
-
-        $args = [
-            'posts_per_page'    => intval($attr['posts_per_page']),
-            'paged'             => $paged,
-            'post_type'         => array_merge(ppcart_query_post_types('product'), ppcart_query_pro_post_types('collection')),
-        ];
-
-        $args = apply_filters('ppcart_product_archive_args', $args);
-
-        $the_query = new WP_Query($args);
-        if ($the_query->have_posts()) {
-            $attr['query'] = $the_query;
-            return ppcart_kses_frontend_html(ppcart_get_template('shortcodes/archive', '', $attr));
-        }
-    }
-
     public function product_payment_plans($prod_id)
     {
         $ret = [];
