@@ -83,6 +83,7 @@ class PPCart_Order_Items
             }
 
             PPCart_Activator::setup_tax_table();
+            PPCart_Shopping_Cart_Store::install();
             $this->setup_items_table();
             PPCart_Files::setup_download_table_for_site();
         } finally {
@@ -101,6 +102,13 @@ class PPCart_Order_Items
 
         if (! isset($wpdb) || ! is_object($wpdb)) {
             return;
+        }
+
+        $cart_table = PPCart_Shopping_Cart_Store::table();
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Git deploys skip the WordPress upgrader.
+        $cart_found = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->esc_like($cart_table)));
+        if ($cart_found !== $cart_table) {
+            PPCart_Shopping_Cart_Store::install();
         }
 
         $table = ppcart_live_table('order_items');
