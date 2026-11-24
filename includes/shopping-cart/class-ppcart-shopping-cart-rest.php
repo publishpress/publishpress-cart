@@ -19,6 +19,8 @@ final class PPCart_Shopping_Cart_Rest
         'ppcart_cart_plan_not_eligible' => 422,
         'ppcart_cart_quantity_invalid'  => 422,
         'ppcart_cart_empty'             => 422,
+        'ppcart_cart_purchase_limit'    => 422,
+        'ppcart_cart_out_of_stock'      => 422,
     ];
 
     public function __construct(

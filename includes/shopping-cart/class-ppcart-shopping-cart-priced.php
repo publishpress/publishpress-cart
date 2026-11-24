@@ -112,6 +112,20 @@ final readonly class PPCart_Shopping_Cart_Priced
         if ($this->changed || $seen_revision !== $this->revision) {
             return new WP_Error('ppcart_cart_changed', __('Your cart changed. Review it, then try again.', 'publishpress-cart'));
         }
+        $quantities = [];
+        foreach ($this->lines as $line) {
+            $limit = ppcart_check_product_purchase_limit($line->product_id, $customer);
+            if (is_wp_error($limit)) {
+                return new WP_Error('ppcart_cart_purchase_limit', $limit->get_error_message(), ['key' => $line->key]);
+            }
+            $quantities[$line->product_id] = ($quantities[$line->product_id] ?? 0) + $line->quantity;
+        }
+        foreach ($this->lines as $line) {
+            if (! ppcart_check_product_stock($line->product_id, $quantities[$line->product_id])) {
+                /* translators: %s: product name. */
+                return new WP_Error('ppcart_cart_out_of_stock', sprintf(__('%s does not have enough stock for your cart.', 'publishpress-cart'), $line->product_name), ['key' => $line->key]);
+            }
+        }
         return true;
     }
 }

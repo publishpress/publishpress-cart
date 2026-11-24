@@ -29,6 +29,38 @@ function ppcart_shopping_cart_set_meta(string $key, mixed $value): PPCart_Shoppi
     return (new PPCart_Shopping_Cart_Store())->update(static fn (PPCart_Shopping_Cart $cart): true|WP_Error => $cart->set_meta($key, $value));
 }
 
+/**
+ * Query the cart orders that hold a product as a main item.
+ *
+ * @param array    $query_args get_posts() arguments. A meta_query is combined with the cart order clause.
+ * @param string[] $plan_ids   Limit the match to these plans of the product.
+ * @return WP_Post[]|int[]
+ */
+function ppcart_get_shopping_cart_orders_with_item(array $query_args, int $product_id, array $plan_ids = []): array
+{
+    global $wpdb;
+
+    $sql = 'SELECT order_id FROM %i WHERE product_id = %d AND item_type = %s';
+    $values = [ppcart_live_table('order_items'), $product_id, 'main'];
+    if ($plan_ids) {
+        $sql .= ' AND price_id IN (' . implode(',', array_fill(0, count($plan_ids), '%s')) . ')';
+        $values = [...$values, ...array_values($plan_ids)];
+    }
+    // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- The SQL holds only placeholders, one per value.
+    $items = $wpdb->prepare($sql, $values);
+    $where = static fn (string $clauses): string => $clauses . " AND {$wpdb->posts}.ID IN ({$items})";
+
+    $cart_order = ['key' => ppcart_meta_key('checkout_type'), 'value' => 'cart'];
+    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- A cart order is identified by its checkout type.
+    $query_args['meta_query'] = isset($query_args['meta_query']) ? ['relation' => 'AND', $cart_order, $query_args['meta_query']] : [$cart_order];
+    add_filter('posts_where', $where);
+    try {
+        return get_posts(['suppress_filters' => false] + $query_args);
+    } finally {
+        remove_filter('posts_where', $where);
+    }
+}
+
 function ppcart_shopping_cart_assets(): void
 {
     wp_enqueue_style('ppcart-shopping-cart', PPCART_BASE_URL . 'public/css/ppcart-shopping-cart.css', [], PPCART_VERSION);

@@ -314,8 +314,7 @@ function ppcart_is_cart_closed($prod_id = false)
         return true;
     }
 
-    // Check if managing stock levels
-    if (isset($ppcart_product->manage_stock) && ($ppcart_product->limit < 1)) {
+    if (! ppcart_check_product_stock($ppcart_product)) {
         return true;
     }
 

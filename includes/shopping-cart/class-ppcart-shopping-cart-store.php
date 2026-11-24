@@ -91,7 +91,7 @@ final class PPCart_Shopping_Cart_Store
             $cart = $this->read();
             $ready = new WP_Error('ppcart_cart_changed', __('Your cart changed. Review it, then try again.', 'publishpress-cart'));
         }
-        $ready->add_data(['cart' => $cart]);
+        $ready->add_data(['cart' => $cart] + (array) $ready->get_error_data());
         return $ready;
     }
 
