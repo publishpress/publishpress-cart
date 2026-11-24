@@ -76,6 +76,9 @@ function updateCard(form, cart) {
     button.dataset.ppcartInCart = String(inCart);
     button.classList.toggle('ppcart-shopping-cart-in-cart', inCart);
     button.textContent = inCart ? config.inCart : config.add;
+    const price = form.closest('.ppcart-shop-card')?.querySelector('[data-ppcart-shop-price]');
+    const selected = plan.selectedOptions?.[0]?.dataset.ppcartPrice;
+    if (price && selected) price.textContent = selected;
 }
 
 export function applyShoppingCartResponse(response, root = document) {

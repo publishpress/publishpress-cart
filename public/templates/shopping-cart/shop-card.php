@@ -22,17 +22,17 @@ $attributes = $attr['attributes'];
             <p class="ppcart-shop-excerpt"><?php echo esc_html($card['excerpt']); ?></p>
         <?php endif; ?>
         <?php if ($attributes['showPrice']) : ?>
-            <div class="ppcart-shop-price"><?php echo esc_html($card['price_label']); ?></div>
+            <div class="ppcart-shop-price" data-ppcart-shop-price><?php echo esc_html($card['price_label']); ?></div>
         <?php endif; ?>
         <?php if ('add' === $card['action']) : ?>
             <form method="post" class="ppcart-shopping-cart-add">
                 <input type="hidden" name="ppcart_add_to_cart" value="<?php echo esc_attr($card['form']['product_id']); ?>">
                 <input type="hidden" name="ppcart_shopping_cart_nonce" value="<?php echo esc_attr($card['form']['nonce']); ?>">
                 <?php if (count($card['plans']) > 1) : ?>
-                    <label for="ppcart-shop-plan-<?php echo esc_attr($card['product_id']); ?>"><?php esc_html_e('Payment plan', 'publishpress-cart'); ?></label>
+                    <label for="ppcart-shop-plan-<?php echo esc_attr($card['product_id']); ?>"><?php esc_html_e('Plan', 'publishpress-cart'); ?></label>
                     <select id="ppcart-shop-plan-<?php echo esc_attr($card['product_id']); ?>" name="plan_id">
                         <?php foreach ($card['plans'] as $plan) : ?>
-                            <option data-ppcart-in-cart="<?php echo $plan['in_cart'] ? 'true' : 'false'; ?>" value="<?php echo esc_attr($plan['plan_id']); ?>" <?php selected($card['selected'], $plan['plan_id']); ?>><?php echo esc_html($plan['label']); ?></option>
+                            <option data-ppcart-in-cart="<?php echo $plan['in_cart'] ? 'true' : 'false'; ?>" data-ppcart-price="<?php echo esc_attr($plan['price_label']); ?>" value="<?php echo esc_attr($plan['plan_id']); ?>" <?php selected($card['selected'], $plan['plan_id']); ?>><?php echo esc_html($plan['name']); ?></option>
                         <?php endforeach; ?>
                     </select>
                 <?php else : ?>

@@ -171,6 +171,30 @@ class ShopTest extends WPTestCase
     }
 
     /** @test-id IT-435 */
+    public function test_IT_435_card_price_follows_the_plan_add_to_cart_adds(): void
+    {
+        $catalog = new \PPCart_Shopping_Cart_Catalog();
+        $twoPlans = $this->product('Two Plans', [array_merge($this->plan('personal', '39'), ['option_name' => 'Personal']), array_merge($this->plan('team', '59'), ['option_name' => 'Team'])]);
+        $card = $catalog->shop_card($twoPlans);
+        $this->assertSame(['Personal', 'Team'], array_column($card['plans'], 'name'));
+        $this->assertStringContainsString('39.00', $card['plans'][0]['price_label']);
+        $this->assertStringContainsString('59.00', $card['plans'][1]['price_label']);
+        $this->assertSame($card['plans'][0]['price_label'], $card['price_label']);
+        $html = ppcart_render_shop();
+        $this->assertStringContainsString('data-ppcart-price="' . esc_attr($card['plans'][1]['price_label']) . '"', $html);
+        $this->assertStringContainsString('>Team</option>', $html);
+
+        $mixed = $this->product('Mixed', [$this->plan('monthly', '19', 'recurring'), $this->plan('once', '49')]);
+        $card = $catalog->shop_card($mixed);
+        $this->assertSame('add', $card['action']);
+        $this->assertStringContainsString('49.00', $card['price_label']);
+        $this->assertStringNotContainsString('From', $card['price_label']);
+
+        $monthly = $this->product('Monthly', [$this->plan('monthly', '19', 'recurring'), $this->plan('yearly', '190', 'recurring')]);
+        $this->assertStringStartsWith('From ', $catalog->shop_card($monthly)['price_label']);
+    }
+
+    /** @test-id IT-435 */
     public function test_IT_435_pagination_styles_render_numbers_prev_next_load_more_or_everything(): void
     {
         foreach (['A', 'B', 'C'] as $title) {

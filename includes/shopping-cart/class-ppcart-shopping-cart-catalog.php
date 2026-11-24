@@ -61,10 +61,13 @@ final class PPCart_Shopping_Cart_Catalog
         $eligible = $this->product_is_eligible($product_id);
         foreach ($all_plans as $plan) {
             if ($eligible && $this->plan_is_eligible($plan, $product_id)) {
+                $plan_price = $this->price_label($plan);
                 $plans[] = [
-                    'plan_id' => (string) $plan->option_id,
-                    'label'   => trim($plan->name . ', ' . $this->price_label($plan), ', '),
-                    'in_cart' => $cart && $cart->has_line($product_id . ':' . $plan->option_id),
+                    'plan_id'     => (string) $plan->option_id,
+                    'label'       => trim($plan->name . ', ' . $plan_price, ', '),
+                    'name'        => trim((string) $plan->name) ?: $plan_price,
+                    'price_label' => $plan_price,
+                    'in_cart'     => $cart && $cart->has_line($product_id . ':' . $plan->option_id),
                 ];
             }
         }
@@ -78,6 +81,9 @@ final class PPCart_Shopping_Cart_Catalog
         if (count($price_labels) > 1) {
             /* translators: %s: lowest plan price. */
             $price_label = sprintf(__('From %s', 'publishpress-cart'), $price_label);
+        }
+        if ('add' === $action) {
+            $price_label = $plans[0]['price_label'];
         }
         $purchased = false;
         if (is_user_logged_in()) {

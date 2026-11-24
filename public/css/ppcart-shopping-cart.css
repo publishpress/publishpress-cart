@@ -10,8 +10,9 @@
 .ppcart-shop-excerpt { margin: 0; color: #707070; font-size: 14px; }
 .ppcart-shop-price { margin-top: auto; font-weight: 600; font-size: 18px; }
 .ppcart-shopping-cart-add { display: grid; gap: 8px; margin: 0; }
-.ppcart-shopping-cart-add label { font-size: 13px; font-weight: 600; }
-.ppcart-shopping-cart-add select { width: 100%; min-width: 0; min-height: var(--ppcart-field-height, 44px); padding: var(--ppcart-field-padding, 10px 12px); border: 1px solid #929292; border-radius: var(--ppcart-radius, 4px); background: #fff; color: inherit; font: inherit; font-size: 14px; }
+.ppcart-shopping-cart-add label { margin-bottom: -2px; font-size: 13px; font-weight: 600; }
+.ppcart-shopping-cart .ppcart-shopping-cart-add select { appearance: none; -webkit-appearance: none; display: block; width: 100%; min-width: 0; height: auto; min-height: var(--ppcart-field-height, 44px); margin: 0; padding: var(--ppcart-field-padding, 10px 12px); padding-right: 40px; border: 1px solid #929292; border-radius: var(--ppcart-radius, 4px); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23232323' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center; color: #232323; font: inherit; font-size: 15px; font-weight: 500; line-height: 1.3; cursor: pointer; }
+.ppcart-shopping-cart .ppcart-shopping-cart-add select:hover { border-color: #232323; }
 .ppcart-shopping-cart .ppcart-shopping-cart-button { display: flex; justify-content: center; align-items: center; width: 100%; min-height: 44px; padding: var(--ppcart-button-padding, 12px 18px); border: 1px solid var(--ppcart-accent, #000); border-radius: var(--ppcart-radius, 4px); background: var(--ppcart-accent, #000); color: #fff; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.3; text-decoration: none; cursor: pointer; }
 .ppcart-shopping-cart .ppcart-shopping-cart-button:hover { background: var(--ppcart-accent-hover, #000); color: #fff; }
 .ppcart-shopping-cart .ppcart-shopping-cart-button-secondary { background: transparent; color: #232323; border-color: #666; font-weight: 600; }
