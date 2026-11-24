@@ -74,13 +74,13 @@ final class PPCart_Shopping_Cart_Settings
         if ('page' === $type) {
             $page = $this->option('_ppcart_cart_confirmation_page');
             $url = $page ? (string) get_permalink($page) : $url;
-        } elseif ('url' === $type) {
-            $url = $this->option('_ppcart_cart_redirect') ?: $url;
         }
+        $redirect = 'url' === $type ? $this->option('_ppcart_cart_redirect') : '';
         return [
             'type' => $type,
             'message' => wp_kses_post(ppcart_personalize($this->option('_ppcart_cart_confirmation_message'), $order->get_data())),
-            'url' => $url ? PPCart_Order::confirmation_url($url, $order->id) : '',
+            // Like Buy now, a merchant redirect URL never carries the order access token.
+            'url' => $redirect ?: ($url ? PPCart_Order::confirmation_url($url, $order->id) : ''),
         ];
     }
 
@@ -110,52 +110,32 @@ final class PPCart_Shopping_Cart_Settings
 
     public function create_missing_pages(): array|WP_Error
     {
-        $lock_key = '_ppcart_shopping_cart_page_creation';
-        $lock = (string) (time() + 60) . ':' . wp_generate_uuid4();
-        $previous = get_option($lock_key, '');
-        if ($previous && (int) $previous < time()) {
-            $this->release_page_lock($previous);
-        }
-        if (! add_option($lock_key, $lock, '', false)) {
-            return new WP_Error('ppcart_shopping_cart_pages_busy', __('Page creation is already running. Try again shortly.', 'publishpress-cart'));
-        }
-        $result = ['created' => [], 'reused' => [], 'skipped' => []];
-        try {
-            foreach ($this->definitions() as $fields) {
-                foreach ($fields as $field) {
-                    $settings = $field['settings'];
-                    if (! isset($settings['create_page'])) {
-                        continue;
-                    }
-                    $page = $settings['create_page'];
-                    $option = $settings['id'];
-                    $role = $page['role'];
-                    if (get_option($option, '')) {
-                        $result['skipped'][$role] = absint(get_option($option));
-                        continue;
-                    }
-                    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- This marker recovers a page created before an interrupted settings write.
-                    $existing = get_posts(['post_type' => 'page', 'post_status' => 'any', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_key' => '_ppcart_shopping_cart_page', 'meta_value' => $role, 'orderby' => 'ID', 'order' => 'ASC']);
-                    $id = $existing[0] ?? 0;
-                    $bucket = $id ? 'reused' : 'created';
-                    if (! $id) {
-                        $id = wp_insert_post([
-                            'post_type' => 'page',
-                            'post_status' => 'publish',
-                            'post_title' => $page['title'],
-                            'post_content' => serialize_block(['blockName' => $page['block'], 'attrs' => $page['attributes'], 'innerBlocks' => [], 'innerHTML' => '', 'innerContent' => []]),
-                            'meta_input' => ['_ppcart_shopping_cart_page' => $role],
-                        ], true);
-                        if (is_wp_error($id)) {
-                            return $id;
-                        }
-                    }
-                    update_option($option, $id);
-                    $result[$bucket][$role] = (int) $id;
+        $result = ['created' => [], 'skipped' => []];
+        foreach ($this->definitions() as $fields) {
+            foreach ($fields as $field) {
+                $settings = $field['settings'];
+                if (! isset($settings['create_page'])) {
+                    continue;
                 }
+                $page = $settings['create_page'];
+                $role = $page['role'];
+                $current = $this->option($settings['id']);
+                if ($current) {
+                    $result['skipped'][$role] = $current;
+                    continue;
+                }
+                $id = wp_insert_post([
+                    'post_type' => 'page',
+                    'post_status' => 'publish',
+                    'post_title' => $page['title'],
+                    'post_content' => serialize_block(['blockName' => $page['block'], 'attrs' => $page['attributes'], 'innerBlocks' => [], 'innerHTML' => '', 'innerContent' => []]),
+                ], true);
+                if (is_wp_error($id)) {
+                    return $id;
+                }
+                update_option($settings['id'], $id);
+                $result['created'][$role] = (int) $id;
             }
-        } finally {
-            $this->release_page_lock($lock);
         }
         return $result;
     }
@@ -170,13 +150,5 @@ final class PPCart_Shopping_Cart_Settings
             }
         }
         return null;
-    }
-
-    private function release_page_lock(string $lock): void
-    {
-        $db = $GLOBALS['wpdb'];
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Compare the lock token so a stale owner cannot release another request's lock.
-        $db->query($db->prepare("DELETE FROM {$db->options} WHERE option_name = %s AND option_value = %s", '_ppcart_shopping_cart_page_creation', $lock));
-        wp_cache_delete('_ppcart_shopping_cart_page_creation', 'options');
     }
 }

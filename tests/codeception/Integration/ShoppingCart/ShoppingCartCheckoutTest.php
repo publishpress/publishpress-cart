@@ -134,7 +134,7 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
 
         $this->assertCount(1, $this->stripe->created);
         [$args, $options] = $this->stripe->created[0];
-        $this->assertSame([8800, 'USD', ['card'], 'Order #' . $order->id . ' (2 items)'], [$args['amount'], $args['currency'], $args['payment_method_types'], $args['description']]);
+        $this->assertSame([8800, 'USD', ['card', 'link'], 'Order #' . $order->id . ' (2 items)'], [$args['amount'], $args['currency'], $args['payment_method_types'], $args['description']]);
         $this->assertSame(['ppcart_checkout_type' => 'cart', 'ppcart_order_id' => $order->id, 'ppcart_item_count' => 2, 'origin' => get_site_url()], $args['metadata']);
         $this->assertArrayNotHasKey('ppcart_product_id', $args['metadata']);
         $this->assertSame(['destination' => 'acct_cartqa'], $args['transfer_data']);

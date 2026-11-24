@@ -91,9 +91,10 @@ trait PPCart_Paypal_Requests_Trait
             $settings = new PPCart_Shopping_Cart_Settings();
             $ppcart_order->cancel_url = $settings->urls()['checkout'];
             $confirmation = $settings->confirmation($ppcart_order);
-            $return_url = 'message' === $confirmation['type'] && $ppcart_order->page_url
-                ? PPCart_Order::confirmation_url($ppcart_order->page_url, $order_id)
-                : $confirmation['url'];
+            // PayPal returns to this site, which verifies the payment and then sends the buyer on, as Buy now does.
+            $return_url = 'page' === $confirmation['type']
+                ? $confirmation['url']
+                : PPCart_Order::confirmation_url($ppcart_order->page_url ?: $ppcart_order->cancel_url, $order_id);
             $ppcart_order->return_url = add_query_arg(
                 ['ppcart-pp' => 1] + PPCart_Order::access_arg($order_id),
                 remove_query_arg('token', $return_url)

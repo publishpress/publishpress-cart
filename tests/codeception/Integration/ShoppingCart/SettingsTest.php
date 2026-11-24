@@ -114,7 +114,7 @@ class SettingsTest extends WPTestCase
     }
 
     /** @test-id IT-436 */
-    public function test_IT_436_page_creation_retries_recover_markers_and_preserve_merchant_pages(): void
+    public function test_IT_436_page_creation_fills_only_missing_pages_and_preserves_merchant_pages(): void
     {
         $settings = $this->settings();
         $first = $settings->create_missing_pages();
@@ -127,28 +127,15 @@ class SettingsTest extends WPTestCase
         $this->assertSame(['pid' => 'cart', 'template' => 'cart-checkout-split'], parse_blocks(get_post_field('post_content', $checkout))[0]['attrs']);
         $again = $settings->create_missing_pages();
         $this->assertSame([], $again['created']);
-        $this->assertCount(3, $again['skipped']);
-        delete_option('_ppcart_cart_page_id');
-        wp_update_post(['ID' => $cart, 'post_content' => 'Merchant content']);
-        $recovered = $settings->create_missing_pages();
-        $this->assertSame(['cart' => $cart], $recovered['reused']);
-        $this->assertSame([], $recovered['created']);
-        $this->assertSame('Merchant content', get_post_field('post_content', $cart));
-        $this->assertSame($cart, (int) get_option('_ppcart_cart_page_id'));
+        $this->assertSame(['shop' => $shop, 'cart' => $cart, 'checkout' => $checkout], $again['skipped']);
+        wp_trash_post($cart);
+        $replaced = $settings->create_missing_pages();
+        $this->assertSame(['cart'], array_keys($replaced['created']));
+        $this->assertNotSame($cart, $replaced['created']['cart']);
         $merchant = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish', 'post_content' => 'My shop']);
         update_option('_ppcart_shop_page_id', $merchant);
         $this->assertSame($merchant, $settings->create_missing_pages()['skipped']['shop']);
         $this->assertSame('My shop', get_post_field('post_content', $merchant));
-    }
-
-    /** @test-id IT-436 */
-    public function test_IT_436_creation_lock_rejects_overlaps_and_recovers_after_expiry(): void
-    {
-        add_option('_ppcart_shopping_cart_page_creation', (time() + 60) . ':busy', '', false);
-        $this->assertSame('ppcart_shopping_cart_pages_busy', $this->settings()->create_missing_pages()->get_error_code());
-        update_option('_ppcart_shopping_cart_page_creation', (time() - 1) . ':stale');
-        $this->assertCount(3, $this->settings()->create_missing_pages()['created']);
-        $this->assertFalse(get_option('_ppcart_shopping_cart_page_creation'));
     }
 
     /** @test-id IT-436 */
@@ -202,7 +189,7 @@ class SettingsTest extends WPTestCase
         update_option('_ppcart_cart_confirmation_page', $thanks);
         $this->assertStringStartsWith(get_permalink($thanks), $this->settings()->confirmation($order)['url']);
         update_option('_ppcart_cart_confirmation', 'url');
-        update_option('_ppcart_cart_redirect', 'https://example.org/receipt');
-        $this->assertStringStartsWith('https://example.org/receipt?', $this->settings()->confirmation($order)['url']);
+        update_option('_ppcart_cart_redirect', 'https://example.org/receipt?from=cart');
+        $this->assertSame('https://example.org/receipt?from=cart', $this->settings()->confirmation($order)['url']);
     }
 }

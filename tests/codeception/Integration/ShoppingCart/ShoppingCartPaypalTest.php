@@ -265,7 +265,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $order = new \PPCart_Order($checkout['order_id']);
         parse_str(wp_parse_url($checkout['url'], PHP_URL_QUERY), $vars);
         $this->assertSame(['redirect', $order->item_name, '58', get_permalink($this->checkoutPage)], [$checkout['status'], $vars['item_name'], $vars['amount'], $vars['cancel_return']]);
-        $this->assertStringStartsWith('https://example.org/cart-thanks?', $vars['return']);
+        $this->assertStringStartsWith(get_permalink($this->checkoutPage), $vars['return']);
+        $this->assertStringNotContainsString('example.org', $vars['return']);
         $this->assertArrayNotHasKey('item_number', $vars);
         $this->assertFalse(\PPCart_Paypal_Sync::is_onpage_order($order->id));
         $this->assertSame('ppcart_cart_payment_incomplete', $this->confirm($checkout)->get_error_code());

@@ -56,7 +56,7 @@ final class PPCart_Shopping_Cart_Stripe
             'currency'             => $ppcart_currency,
             /* translators: 1: order ID, 2: number of items in the order. */
             'description'          => sprintf(_n('Order #%1$d (%2$d item)', 'Order #%1$d (%2$d items)', $items, 'publishpress-cart'), $order->id, $items),
-            'payment_method_types' => ['card'],
+            'payment_method_types' => ['card', 'link'],
             'metadata'             => [
                 'ppcart_checkout_type' => 'cart',
                 'ppcart_order_id'      => $order->id,

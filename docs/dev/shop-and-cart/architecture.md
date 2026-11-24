@@ -414,7 +414,7 @@ Phase 1 check: an integration test proves that an unchecked box stores `no` and 
 | `admin/settings/class-ppcart-admin-shopping-cart-pages.php` | N | `admin-post` action with capability and nonce checks. Calls `create_missing_pages()` |
 | `includes/bootstrap/class-ppcart-admin-hook-registrar.php` | C | Wire the action |
 
-`create_missing_pages()` fills only empty page settings. It finds a page that an earlier crashed request made by a creation marker in post meta, so a second click reuses it. The Checkout page holds the checkout block with `pid = 'cart'` and `template = 'cart-checkout-split'`.
+`create_missing_pages()` fills only the page settings that do not point to a published page. A second click creates nothing new. The Checkout page holds the checkout block with `pid = 'cart'` and `template = 'cart-checkout-split'`.
 
 ### Phase 2. Shopping cart core
 

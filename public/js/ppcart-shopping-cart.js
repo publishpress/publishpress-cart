@@ -238,8 +238,8 @@ function stripePaymentAdapter(form) {
     let elements = null;
     const mount = () => {
         if (elements || amount() < 1) return;
-        elements = stripe.elements({ mode: 'payment', amount: amount(), currency: form.dataset.ppcartCurrency, allowedPaymentMethodTypes: ['card'] });
-        elements.create('payment').mount(target);
+        elements = stripe.elements({ mode: 'payment', amount: amount(), currency: form.dataset.ppcartCurrency, paymentMethodTypes: ['card', 'link'] });
+        elements.create('payment', { fields: { billingDetails: { name: 'never', email: 'never' } } }).mount(target);
     };
     mount();
     return {
