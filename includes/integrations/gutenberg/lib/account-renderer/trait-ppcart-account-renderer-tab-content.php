@@ -132,7 +132,7 @@ trait PPCart_Account_Renderer_Tab_Content
                 $preview_file = dirname(__DIR__, 2) . '/blocks/account-downloads/preview.php';
                 $output       = file_exists($preview_file) ? require $preview_file : '';
             } else {
-                $output = $this->render_downloads_content();
+                $output = $this->wrap_downloads_output($this->render_downloads_content(), $attributes);
             }
         } else {
             return render_block($inner_block);

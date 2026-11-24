@@ -193,37 +193,13 @@ export const accountNavigationAllowedBlocks = [
 	'publishpress-cart/account-tab',
 ];
 
-export const accountNavigationTemplate = [
-	[
+export const accountNavigationTemplate = accountTabDefinitions.map(
+	( { tabId, label, template } ) => [
 		'publishpress-cart/account-tab',
-		{ tabId: 'tab-orders', label: __( 'Orders', 'publishpress-cart' ) },
-		[ [ 'publishpress-cart/account-orders', {} ] ],
-	],
-	[
-		'publishpress-cart/account-tab',
-		{
-			tabId: 'tab-subscriptions',
-			label: __( 'Subscriptions', 'publishpress-cart' ),
-		},
-		[ [ 'publishpress-cart/account-subscriptions', {} ] ],
-	],
-	[
-		'publishpress-cart/account-tab',
-		{
-			tabId: 'tab-plans',
-			label: __( 'Installment Plans', 'publishpress-cart' ),
-		},
-		[ [ 'publishpress-cart/account-payment-plans', {} ] ],
-	],
-	[
-		'publishpress-cart/account-tab',
-		{
-			tabId: 'tab-profile',
-			label: __( 'My Profile', 'publishpress-cart' ),
-		},
-		[ [ 'publishpress-cart/account-profile', {} ] ],
-	],
-];
+		{ tabId, label },
+		template,
+	]
+);
 
 export const accountPageBuilderTemplate = [
 	[ 'publishpress-cart/account-login', {} ],

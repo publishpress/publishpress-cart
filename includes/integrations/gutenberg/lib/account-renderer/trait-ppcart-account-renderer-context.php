@@ -277,7 +277,11 @@ trait PPCart_Account_Renderer_Context
             }
 
             if (! empty($inner_block['innerBlocks']) && is_array($inner_block['innerBlocks'])) {
-                $panel_tabs = array_merge($panel_tabs, $this->get_layout_panel_tabs($inner_block['innerBlocks']));
+                $children = $inner_block['innerBlocks'];
+                if ('publishpress-cart/account-navigation' === $inner_block['blockName']) {
+                    $children = $this->with_missing_downloads_tab($children, $inner_block['attrs'] ?? []);
+                }
+                $panel_tabs = array_merge($panel_tabs, $this->get_layout_panel_tabs($children));
             }
         }
 
