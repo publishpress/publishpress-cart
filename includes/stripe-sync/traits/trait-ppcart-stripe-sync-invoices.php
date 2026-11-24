@@ -113,9 +113,10 @@ trait PPCart_Stripe_Sync_Invoices_Trait
      * @param int                 $amount   Invoice amount paid, in Stripe's smallest unit.
      * @param string              $currency Invoice currency.
      * @param int                 $paid_at  Invoice payment time (Unix).
+     * @param string              $invoice_id Stripe invoice ID. Orders linked to another invoice are skipped.
      * @return int Order ID, or 0.
      */
-    private static function find_unlinked_order_for_invoice($sub, $amount, $currency, $paid_at)
+    private static function find_unlinked_order_for_invoice($sub, $amount, $currency, $paid_at, $invoice_id = '')
     {
         $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-invoices-find-unlinked-order-for-invoice.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;

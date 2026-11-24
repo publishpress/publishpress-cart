@@ -81,19 +81,47 @@ if (! $invoice_date) {
     $invoice_date = self::path($invoice, [ 'status_transitions', 'finalized_at' ], self::get($invoice, 'created', time()));
 }
 
-// Orders migrated from old StudioCart versions have no charge ID. Match the
+// An invoice paid with no charge, for example a $0 invoice covered by a
+// coupon or the customer's credit balance, has no payment ID. Find its order
+// by the Stripe invoice ID that the sync stores on each order.
+$invoice_id = (string) self::get($invoice, 'id', '');
+if (! $existing && ! $charge_id && ! $payment_intent && $invoice_id) {
+    $invoice_order_ids = get_posts(
+        [
+            'post_type'      => ppcart_query_post_types('order'),
+            'post_status'    => 'any',
+            'posts_per_page' => 1,
+            'fields'         => 'ids',
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- One order by its Stripe invoice ID, during a manual or webhook sync.
+            'meta_query'     => [
+                [
+                    'key'   => ppcart_meta_key('stripe_invoice_id'),
+                    'value' => $invoice_id,
+                ],
+            ],
+        ]
+    );
+    if ($invoice_order_ids) {
+        $existing = new PPCart_Order((int) $invoice_order_ids[0]);
+    }
+}
+
+// Orders migrated from old StudioCart versions, and orders that an earlier
+// sync created for an invoice with no charge, have no payment ID. Match the
 // invoice to such an order of this subscription by amount and payment date,
 // so Sync with Stripe doesn't create a second order for the same payment.
-if (! $existing && ($charge_id || $payment_intent)) {
-    $legacy_order_id = self::find_unlinked_order_for_invoice($sub, self::get($invoice, 'amount_paid', 0), $currency, $invoice_date);
+if (! $existing) {
+    $legacy_order_id = self::find_unlinked_order_for_invoice($sub, self::get($invoice, 'amount_paid', 0), $currency, $invoice_date, $invoice_id);
     if ($legacy_order_id) {
         $existing = new PPCart_Order($legacy_order_id);
-        PPCart_Stripe_Sync_Context::run(
-            function () use ($legacy_order_id, $charge_id, $payment_intent) {
-                ppcart_update_post_meta($legacy_order_id, 'transaction_id', $charge_id ? $charge_id : $payment_intent);
-            }
-        );
-        $existing->transaction_id = $charge_id ? $charge_id : $payment_intent;
+        if ($charge_id || $payment_intent) {
+            PPCart_Stripe_Sync_Context::run(
+                function () use ($legacy_order_id, $charge_id, $payment_intent) {
+                    ppcart_update_post_meta($legacy_order_id, 'transaction_id', $charge_id ? $charge_id : $payment_intent);
+                }
+            );
+            $existing->transaction_id = $charge_id ? $charge_id : $payment_intent;
+        }
     }
 }
 
@@ -124,7 +152,7 @@ if (
 }
 
 return PPCart_Stripe_Sync_Context::run(
-    function () use ($existing, $sub, $invoice, $charge_id, $payment_intent, $payment_intent_status, $order_status, $invoice_date, $event, $event_type, $currency, $refunded_charge) {
+    function () use ($existing, $sub, $invoice, $invoice_id, $charge_id, $payment_intent, $payment_intent_status, $order_status, $invoice_date, $event, $event_type, $currency, $refunded_charge) {
         $order = $existing;
 
         if (! $order) {
@@ -138,6 +166,8 @@ return PPCart_Stripe_Sync_Context::run(
                 && (
                     'refunded' === $order->status
                     || 'refunded' === $order->payment_status
+                    // A first order already synced from another invoice is a different payment.
+                    || ($invoice_id && '' !== (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true) && $invoice_id !== (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true))
                     || (((! $order->transaction_id || strpos($order->transaction_id, 'ch_') !== 0) && $sub->order_count() == 1) === false)
                 )
             ) {
@@ -225,6 +255,9 @@ return PPCart_Stripe_Sync_Context::run(
             ppcart_update_post_meta($order->id, 'refund_amount', ppcart_format_stripe_number(absint(self::get($refunded_charge, 'amount_refunded', 0)), $currency));
         }
         $order->set_date_from_timestamp($invoice_date);
+        if ($invoice_id && $order->id && $invoice_id !== (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true)) {
+            ppcart_update_post_meta($order->id, 'stripe_invoice_id', $invoice_id);
+        }
 
         self::mark_resource_event($order->id, $event);
         do_action('ppcart_stripe_invoice_response', $order->get_data());
