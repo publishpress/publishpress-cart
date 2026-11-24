@@ -6,6 +6,29 @@
     var retryMax = parseInt(settings.retryMax, 10) || 8;
     var sdk = null;
 
+    window.ppcartPayShoppingCartWithPaypal = function(createPayment) {
+        if (!sdk) {
+            return Promise.reject(new Error(i18n.retry));
+        }
+        return new Promise(function(resolve, reject) {
+            var created = createPayment();
+            var session = sdk.createPayPalOneTimePaymentSession({
+                onApprove: resolve,
+                onCancel: function() { reject(new Error(i18n.cancelled)); },
+                onError: function() { reject(new Error(i18n.error)); }
+            });
+            try {
+                var started = session.start({ presentationMode: 'auto' }, created.then(function(response) {
+                    return response.paypal;
+                }));
+                if (started && typeof started.then === 'function') started.then(null, reject);
+            } catch (error) {
+                reject(error);
+            }
+            created.then(null, reject);
+        });
+    };
+
     function parseResponse(response) {
         if (response && typeof response === 'object') {
             return response;

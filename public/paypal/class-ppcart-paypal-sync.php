@@ -196,6 +196,14 @@ class PPCart_Paypal_Sync
 
             if (self::ok($capture)) {
                 $paypal_order = $capture['body'];
+                if (ppcart_order_is_shopping_cart($order)) {
+                    // Capture responses can omit purchase-unit fields. Read the full order before matching its capture.
+                    $res = $client->request('GET', $path);
+                    if (! self::ok($res)) {
+                        return self::RESULT_UNAVAILABLE;
+                    }
+                    $paypal_order = $res['body'];
+                }
             } elseif (422 === $capture['code'] && self::has_issue($capture, 'ORDER_ALREADY_CAPTURED')) {
                 $res = $client->request('GET', $path);
                 if (! self::ok($res)) {
@@ -220,6 +228,18 @@ class PPCart_Paypal_Sync
         $capture = $paypal_order['purchase_units'][0]['payments']['captures'][0] ?? null;
         if (! is_array($capture) || empty($capture['id'])) {
             return self::RESULT_PENDING;
+        }
+
+        if (
+            ppcart_order_is_shopping_cart($order) && (
+                ! $this->onetime_matches($paypal_order, $order)
+                || count($paypal_order['purchase_units']) !== 1
+                || count($paypal_order['purchase_units'][0]['payments']['captures']) !== 1
+                || strtoupper((string) ($capture['amount']['currency_code'] ?? '')) !== self::record_currency($order)
+                || PPCart_Paypal_Billing_Shape::money($capture['amount']['value'] ?? -1) !== PPCart_Paypal_Billing_Shape::money($order->amount)
+            )
+        ) {
+            return self::RESULT_FAILED;
         }
 
         $capture_id = sanitize_text_field((string) $capture['id']);
@@ -254,7 +274,8 @@ class PPCart_Paypal_Sync
     {
         $unit = $paypal_order['purchase_units'][0] ?? [];
 
-        return ($unit['custom_id'] ?? '') === 'ppcart:' . $order->id
+        return (! ppcart_order_is_shopping_cart($order) || ($paypal_order['id'] ?? '') === (string) ppcart_get_post_meta($order->id, 'paypal_order_id'))
+            && ($unit['custom_id'] ?? '') === 'ppcart:' . $order->id
             && strtoupper((string) ($unit['amount']['currency_code'] ?? '')) === self::record_currency($order)
             && PPCart_Paypal_Billing_Shape::money($unit['amount']['value'] ?? -1) === PPCart_Paypal_Billing_Shape::money($order->amount);
     }

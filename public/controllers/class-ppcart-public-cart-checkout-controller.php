@@ -15,6 +15,7 @@ final class PPCart_Public_Cart_Checkout_Controller
         private PPCart_Shopping_Cart_View $view = new PPCart_Shopping_Cart_View(),
         private PPCart_Shopping_Cart_Stripe $stripe = new PPCart_Shopping_Cart_Stripe(),
         private PPCart_Shopping_Cart_Rest $rest = new PPCart_Shopping_Cart_Rest(),
+        private PPCart_Paypal $paypal = new PPCart_Paypal('', '', false),
     ) {
     }
 
@@ -75,7 +76,7 @@ final class PPCart_Public_Cart_Checkout_Controller
         return rest_ensure_response($payment + $this->result($order, $request));
     }
 
-    /** The browser calls this after Stripe confirmed the payment. Stripe, not the browser, says whether it succeeded. */
+    /** The gateway confirms payment through a server read. Browser status fields are ignored. */
     public function confirm(WP_REST_Request $request): WP_REST_Response|WP_Error
     {
         $order_id = absint($request['order_id']);
@@ -83,7 +84,17 @@ final class PPCart_Public_Cart_Checkout_Controller
         if (! $order || ! $order->id || ! ppcart_order_is_shopping_cart($order)) {
             return $this->refuse(new WP_Error('ppcart_cart_order_missing', __('This order was not found.', 'publishpress-cart')), $request);
         }
-        $settled = $this->stripe->settle($order);
+        if ('paypal' === $order->pay_method) {
+            if (PPCart_Paypal_Sync::is_onpage_order($order_id)) {
+                (new PPCart_Paypal_Sync())->sync_order($order_id);
+            }
+            $order = new PPCart_Order($order_id);
+            $settled = in_array($order->status, ['paid', 'completed'], true)
+                ? true
+                : new WP_Error('ppcart_cart_payment_incomplete', __('The payment is not complete.', 'publishpress-cart'));
+        } else {
+            $settled = $this->stripe->settle($order);
+        }
         if (is_wp_error($settled)) {
             return $this->refuse($settled, $request);
         }
@@ -98,6 +109,9 @@ final class PPCart_Public_Cart_Checkout_Controller
         }
         ppcart_shopping_cart_nocache();
         ppcart_shopping_cart_assets();
+        if (! $preview && PPCart_Paypal_Onpage::is_active()) {
+            do_action('ppcart_enqueue_frontend_assets');
+        }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only. The order access token in the request is the proof.
         $order_id = isset($_GET['ppcart-order']) ? absint(wp_unslash($_GET['ppcart-order'])) : 0;
@@ -121,6 +135,7 @@ final class PPCart_Public_Cart_Checkout_Controller
             'methods' => $this->payment_methods(),
             'button'  => $this->settings->button_text(),
             'page_id' => get_queried_object_id(),
+            'paypal_onpage' => PPCart_Paypal_Onpage::is_active(),
             'stripe'  => $stripe ? [
                 'key'      => $GLOBALS['ppcart_stripe']['pk'],
                 'locale'   => ppcart_stripe_locale(),
@@ -136,6 +151,9 @@ final class PPCart_Public_Cart_Checkout_Controller
         if (PPCart_Shopping_Cart_Stripe::available()) {
             $methods['stripe'] = __('Credit Card', 'publishpress-cart');
         }
+        if (PPCart_Paypal_Onpage::is_active() || $this->paypal->paypal_configured()) {
+            $methods['paypal'] = __('PayPal', 'publishpress-cart');
+        }
         if ('1' == get_option('_ppcart_cashondelivery_enable')) {
             $methods['cod'] = __('Cash on Delivery', 'publishpress-cart');
         }
@@ -145,7 +163,7 @@ final class PPCart_Public_Cart_Checkout_Controller
     /**
      * Store the order and start its payment. The amount is the total of the stored order.
      *
-     * @return array{status:string,payment?:array{client_secret:string,amount:int,currency:string}}|WP_Error
+     * @return array|WP_Error Gateway instructions for the browser, or a payment error.
      */
     private function pay(PPCart_Order $order, string $method): array|WP_Error
     {
@@ -158,6 +176,9 @@ final class PPCart_Public_Cart_Checkout_Controller
         if ('cod' === $method) {
             $order->store();
             return ['status' => 'pending'];
+        }
+        if ('paypal' === $method) {
+            return $this->paypal->shopping_cart_checkout($order);
         }
         if ('stripe' !== $method) {
             return $this->no_payment_method();

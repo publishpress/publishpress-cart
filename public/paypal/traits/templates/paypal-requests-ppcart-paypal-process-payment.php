@@ -41,6 +41,35 @@ if ($query_ppcart_pp && $query_ppcart_order) {
     $paypalUrl = ($enableSandbox != 'disable') ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
     $order_id = $query_ppcart_order;
 
+    $shopping_cart_order = new PPCart_Order($order_id);
+    if (ppcart_order_is_shopping_cart($shopping_cart_order)) {
+        if (! PPCart_Order::token_matches($order_id, $query_ppcart_access)) {
+            return;
+        }
+        if (PPCart_Paypal_Sync::is_onpage_order($order_id)) {
+            (new PPCart_Paypal_Sync())->sync_order($order_id);
+        } elseif ($query_tx) {
+            $shopping_cart_live = 'live' === $shopping_cart_order->gateway_mode;
+            $shopping_cart_pdt = ppcart_get_sensitive_option($shopping_cart_live ? '_ppcart_paypal_pdt_token' : '_ppcart_paypal_sandbox_pdt_token');
+            if ($shopping_cart_pdt) {
+                $this->run_pdt_check($shopping_cart_order->get_data(), [
+                    'paypalPDT' => $shopping_cart_pdt,
+                    'tx' => $query_tx,
+                    'paypalUrl' => $shopping_cart_live ? 'https://www.paypal.com/cgi-bin/webscr' : 'https://www.sandbox.paypal.com/cgi-bin/webscr',
+                ]);
+            }
+        }
+        $confirmation = (new PPCart_Shopping_Cart_Settings())->confirmation(new PPCart_Order($order_id));
+        if ('message' === $confirmation['type'] && $shopping_cart_order->page_url) {
+            $confirmation['url'] = PPCart_Order::confirmation_url($shopping_cart_order->page_url, $order_id);
+        }
+        if ($confirmation['url']) {
+            ppcart_redirect($confirmation['url']);
+            exit;
+        }
+        return;
+    }
+
     if (! is_object($ppcart_product) || ! isset($ppcart_product->ID) || (int) $ppcart_product->ID !== (int) $query_ppcart_pid) {
         $ppcart_product_id = $query_ppcart_pid;
         $ppcart_product = ppcart_setup_product($ppcart_product_id);

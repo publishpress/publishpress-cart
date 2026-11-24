@@ -31,7 +31,7 @@ $data = [
 
     // Set the details about the product being purchased, including the amount
     // and currency so that these aren't overridden by the form data.
-    'item_name'     => $order->product_name,
+    'item_name'     => ppcart_order_is_shopping_cart($order) ? $order->item_name : $order->product_name,
     'currency_code' => strtoupper($ppcart_currency),
 
     // Add any custom fields for the query string.
@@ -42,6 +42,10 @@ $data = [
     'notify_url'    => stripslashes(get_site_url() . '/ppcart-webhook/paypal'),
     'return'        => stripslashes($order->return_url),
 ];
+
+if (ppcart_order_is_shopping_cart($order)) {
+    unset($data['item_number']);
+}
 
 if (!empty($sub)) {
     $sub_amount = $sub->sub_amount;

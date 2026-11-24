@@ -344,6 +344,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_enqueue_frontend_assets` | Action | `add_action` | Public | canonical | `public/controllers/class-ppcart-public-asset-controller.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `add_action` | Public | canonical | `public/paypal/class-ppcart-paypal-onpage.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `includes/integrations/layout/class-ppcart-layout-embeds.php` | ppcart_enqueue_frontend_assets |
+| `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `public/controllers/class-ppcart-public-cart-checkout-controller.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `public/controllers/traits/templates/account-shortcodes-my-account-page-shortcode.php` | ppcart_enqueue_frontend_assets |
 | `ppcart_enqueue_frontend_assets` | Action | `do_action` | Public | canonical | `public/controllers/traits/trait-ppcart-public-account-shortcodes.php` | ppcart_enqueue_frontend_assets |
@@ -523,6 +524,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_payment_methods` | Filter | `apply_filters` | Public | canonical | `includes/integrations/gutenberg/lib/checkout-renderer/trait-ppcart-checkout-renderer-request.php` | ppcart_payment_methods |
 | `ppcart_payment_methods` | Filter | `apply_filters` | Public | canonical | `public/templates/functions/payment-address.php` | ppcart_payment_methods |
 | `ppcart_paypal_after_checkout_complete` | Filter | `apply_filters` | Public | canonical | `public/paypal/traits/templates/paypal-requests-ppcart-paypal-process-payment.php` | ppcart_paypal_after_checkout_complete |
+| `ppcart_paypal_checkout_url` | Filter | `apply_filters` | Public | canonical | `public/class-ppcart-paypal.php` | ppcart_paypal_checkout_url |
 | `ppcart_paypal_checkout_url` | Filter | `apply_filters` | Public | canonical | `public/paypal/traits/templates/paypal-requests-ppcart-paypal-request.php` | ppcart_paypal_checkout_url |
 | `ppcart_paypal_class` | Filter | `apply_filters` | Public | canonical | `includes/bootstrap/class-ppcart-dependency-loader.php` | ppcart_paypal_class |
 | `ppcart_paypal_custom_payment_vars` | Filter | `apply_filters` | Public | canonical | `public/paypal/traits/templates/paypal-requests-ppcart-build-paypal-url.php` | ppcart_paypal_custom_payment_vars |

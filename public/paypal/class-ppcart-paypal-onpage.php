@@ -187,6 +187,27 @@ class PPCart_Paypal_Onpage
         ]);
     }
 
+    public static function shopping_cart_checkout(PPCart_Order $order): array|WP_Error
+    {
+        $request_id = wp_generate_uuid4();
+        PPCart_Paypal_Sync::mark_onpage($order->id);
+        ppcart_update_post_meta($order->id, 'paypal_checked', 0);
+        ppcart_update_post_meta($order->id, 'paypal_request_id', $request_id);
+        ppcart_update_post_meta($order->id, 'paypal_return_url', esc_url_raw((string) $order->return_url));
+        $paypal_order_id = self::create_order(
+            PPCart_Paypal_Rest_Client::for_gateway_mode($order->gateway_mode),
+            $order,
+            PPCart_Paypal_Sync::record_currency($order),
+            $request_id,
+            $order->cancel_url
+        );
+        if ('' === $paypal_order_id) {
+            return new WP_Error('ppcart_cart_payment_failed', __('PayPal could not start this payment. Please try again.', 'publishpress-cart'));
+        }
+        ppcart_update_post_meta($order->id, 'paypal_order_id', $paypal_order_id);
+        return ['status' => 'requires_approval', 'paypal' => ['orderId' => $paypal_order_id]];
+    }
+
     /**
      * Create the pending Cart record and the PayPal order or subscription.
      *
@@ -251,7 +272,7 @@ class PPCart_Paypal_Onpage
             $this->respond($reply);
         }
 
-        $paypal_order_id = $this->create_order($client, $order, $currency, $request_id, $page_url);
+        $paypal_order_id = self::create_order($client, $order, $currency, $request_id, $page_url);
         if ('' === $paypal_order_id) {
             $this->respond([ 'error' => __('PayPal could not start this payment. Please try again.', 'publishpress-cart') ]);
         }
@@ -308,7 +329,7 @@ class PPCart_Paypal_Onpage
         $this->respond([ 'retry' => true ]);
     }
 
-    private function create_order(PPCart_Paypal_Rest_Client $client, PPCart_Order $order, $currency, $request_id, $page_url)
+    private static function create_order(PPCart_Paypal_Rest_Client $client, PPCart_Order $order, $currency, $request_id, $page_url)
     {
         $unit = [
             'custom_id' => 'ppcart:' . $order->id,
@@ -317,7 +338,7 @@ class PPCart_Paypal_Onpage
                 'value'         => PPCart_Paypal_Billing_Shape::money($order->amount),
             ],
         ];
-        $description = trim((string) $order->product_name);
+        $description = trim((string) (ppcart_order_is_shopping_cart($order) ? $order->item_name : $order->product_name));
         if ('' !== $description) {
             $unit['description'] = mb_substr($description, 0, 127);
         }
@@ -330,8 +351,8 @@ class PPCart_Paypal_Onpage
                     'experience_context' => [
                         'shipping_preference' => 'NO_SHIPPING',
                         'user_action'         => 'PAY_NOW',
-                        'return_url'          => $page_url,
-                        'cancel_url'          => $page_url,
+                        'return_url'          => ppcart_order_is_shopping_cart($order) ? $order->return_url : $page_url,
+                        'cancel_url'          => ppcart_order_is_shopping_cart($order) ? $order->cancel_url : $page_url,
                     ],
                 ],
             ],

@@ -279,7 +279,7 @@ export function mountShoppingCartCheckout(form, paymentAdapter = stripePaymentAd
         if (paymentBox) paymentBox.hidden = free();
         form.querySelectorAll('[data-ppcart-pay-method]').forEach(node => { node.hidden = node.dataset.ppcartPayMethod !== method(); });
     };
-    const leave = result => window.location.assign(result.confirmation.url || window.location.href);
+    const leave = result => window.location.assign(result.url || result.confirmation.url || window.location.href);
 
     showMethod();
     form.addEventListener('change', event => { if (event.target.name === 'pay-method') showMethod(); });
@@ -300,16 +300,26 @@ export function mountShoppingCartCheckout(form, paymentAdapter = stripePaymentAd
             if (card) await paymentAdapter.validate();
             const data = Object.fromEntries(new FormData(form));
             const sent = JSON.stringify(data);
-            // A declined card pays the same order again. A changed form or cart places a new order.
-            if (!placed || placed.sent !== sent) {
-                const result = await requestShoppingCart('POST', '/checkout', data);
-                channel?.postMessage('changed');
-                if (result.status !== 'requires_payment') return leave(result);
-                applyShoppingCartResponse(result.cart);
-                placed = { result, sent: JSON.stringify(Object.fromEntries(new FormData(form))) };
+            const place = async () => {
+                // A declined payment pays the same order again. A changed form or cart places a new order.
+                if (!placed || placed.sent !== sent) {
+                    const result = await requestShoppingCart('POST', '/checkout', data);
+                    channel?.postMessage('changed');
+                    applyShoppingCartResponse(result.cart);
+                    placed = { result, sent: JSON.stringify(Object.fromEntries(new FormData(form))) };
+                }
+                return placed.result;
+            };
+            const paypal = !free() && method() === 'paypal' && form.hasAttribute('data-ppcart-paypal-onpage');
+            if (paypal) {
+                if (typeof window.ppcartPayShoppingCartWithPaypal !== 'function') throw new Error(config.error);
+                await window.ppcartPayShoppingCartWithPaypal(place);
+            } else {
+                await place();
             }
             const { result } = placed;
-            await paymentAdapter.pay(result.payment, { name: `${data.first_name || ''} ${data.last_name || ''}`.trim(), email: data.email }, result.confirmation.url || window.location.href);
+            if (!['requires_payment', 'requires_approval'].includes(result.status)) return leave(result);
+            if (card) await paymentAdapter.pay(result.payment, { name: `${data.first_name || ''} ${data.last_name || ''}`.trim(), email: data.email }, result.confirmation.url || window.location.href);
             const paid = await requestShoppingCart('POST', '/checkout/confirm', { order_id: result.order_id, token: result.token });
             channel?.postMessage('changed');
             leave(paid);
@@ -329,7 +339,7 @@ async function settlePendingOrder(node) {
         await requestShoppingCart('POST', '/checkout/confirm', { order_id: Number(node.dataset.ppcartPendingOrder), token: node.dataset.ppcartPendingToken });
         window.location.reload();
     } catch (error) {
-        // The page keeps its waiting notice. The Stripe webhook can still complete the order.
+        // The page keeps its waiting notice. The gateway webhook can still complete the order.
     }
 }
 

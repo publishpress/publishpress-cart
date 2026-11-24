@@ -3371,6 +3371,16 @@
             "operation": "do_action",
             "classification": "public",
             "status": "canonical",
+            "file": "public/controllers/class-ppcart-public-cart-checkout-controller.php",
+            "recommended_hook": "ppcart_enqueue_frontend_assets",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_enqueue_frontend_assets",
+            "type": "action",
+            "operation": "do_action",
+            "classification": "public",
+            "status": "canonical",
             "file": "public/controllers/page/traits/trait-ppcart-public-page-shortcodes.php",
             "recommended_hook": "ppcart_enqueue_frontend_assets",
             "notes": "Canonical hook prefix."
@@ -5153,6 +5163,16 @@
             "status": "canonical",
             "file": "public/paypal/traits/templates/paypal-requests-ppcart-paypal-process-payment.php",
             "recommended_hook": "ppcart_paypal_after_checkout_complete",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_paypal_checkout_url",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "public/class-ppcart-paypal.php",
+            "recommended_hook": "ppcart_paypal_checkout_url",
             "notes": "Canonical hook prefix."
         },
         {

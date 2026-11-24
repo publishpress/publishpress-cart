@@ -40,6 +40,9 @@ $ppcart_method = array_key_first($attr['methods']);
                 class="ppcart-shopping-cart-checkout-form"
                 method="post"
                 data-ppcart-checkout-form
+                <?php if ($attr['paypal_onpage']) : ?>
+                    data-ppcart-paypal-onpage
+                <?php endif; ?>
                 <?php if ($attr['stripe']) : ?>
                     data-ppcart-stripe-key="<?php echo esc_attr($attr['stripe']['key']); ?>"
                     data-ppcart-stripe-locale="<?php echo esc_attr($attr['stripe']['locale']); ?>"
@@ -100,6 +103,9 @@ $ppcart_method = array_key_first($attr['methods']);
                     <?php endif; ?>
                     <?php if (isset($attr['methods']['cod'])) : ?>
                         <p class="ppcart-shopping-cart-method-details" data-ppcart-pay-method="cod"<?php echo 'cod' === $ppcart_method ? '' : ' hidden'; ?>><?php esc_html_e('You pay when you receive your order.', 'publishpress-cart'); ?></p>
+                    <?php endif; ?>
+                    <?php if (isset($attr['methods']['paypal'])) : ?>
+                        <p class="ppcart-shopping-cart-method-details" data-ppcart-pay-method="paypal"<?php echo 'paypal' === $ppcart_method ? '' : ' hidden'; ?>><?php esc_html_e('Pay securely with PayPal.', 'publishpress-cart'); ?></p>
                     <?php endif; ?>
                 </div>
 
