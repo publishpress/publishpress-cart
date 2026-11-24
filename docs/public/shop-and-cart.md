@@ -92,6 +92,11 @@ group.
 The cart keeps one of each product and plan. To buy one product with two plans,
 the visitor adds each plan.
 
+To remove the **Subscribe** cards from the Shop, turn off **Include
+subscription products** in the **Cart Shop** block settings. A product that has
+a subscription plan and a one-time plan stays in the Shop, because its one-time
+plan can go in the cart.
+
 ## Set the cart checkout options
 
 Go to **Cart → Settings → Shop & Cart**.

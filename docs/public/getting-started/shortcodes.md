@@ -114,6 +114,7 @@ the pages, read [Set up the Shop and the Cart](../shop-and-cart.md).
 | `showexcerpt` | `true` | `false` hides the product excerpt |
 | `showprice` | `true` | `false` hides the price |
 | `includecollections` | `true` | `false` hides Pro collections |
+| `includesubscriptions` | `true` | `false` hides products that have no one-time or free plan |
 
 ```text
 [ppcart_shop perpage="8" columns="4" orderby="price" categories="12,15"]

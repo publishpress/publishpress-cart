@@ -47,6 +47,10 @@
       "type": "boolean",
       "default": true
     },
+    "includeSubscriptions": {
+      "type": "boolean",
+      "default": true
+    },
     "styleSettings": {
       "type": "object",
       "default": {}

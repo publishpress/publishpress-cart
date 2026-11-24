@@ -145,6 +145,32 @@ class ShopTest extends WPTestCase
     }
 
     /** @test-id IT-435 */
+    public function test_IT_435_hiding_subscriptions_keeps_mixed_products_and_paginates_what_remains(): void
+    {
+        $oneTime = $this->product('One Time', [$this->plan('one', '29')]);
+        $mixed = $this->product('Mixed', [$this->plan('one', '49'), $this->plan('monthly', '19', 'recurring')]);
+        $this->product('Monthly Only', [$this->plan('monthly', '19', 'recurring')]);
+        $shop = new \PPCart_Shop();
+
+        $all = $shop->query($shop->normalize_attributes(['perPage' => 10]));
+        $this->assertCount(3, $all->posts);
+        $this->assertStringContainsString('Monthly Only', ppcart_render_shop());
+
+        $query = $shop->query($shop->normalize_attributes(['perPage' => 1, 'orderBy' => 'title', 'includeSubscriptions' => false]));
+        $this->assertSame([$mixed], wp_list_pluck($query->posts, 'ID'));
+        $this->assertSame(2, $query->max_num_pages);
+        set_query_var('paged', 2);
+        $query = $shop->query($shop->normalize_attributes(['perPage' => 1, 'orderBy' => 'title', 'includeSubscriptions' => false]));
+        $this->assertSame([$oneTime], wp_list_pluck($query->posts, 'ID'));
+        set_query_var('paged', 0);
+
+        $html = do_shortcode('[ppcart_shop includesubscriptions="false"]');
+        $this->assertStringContainsString('One Time', $html);
+        $this->assertStringContainsString('Mixed', $html);
+        $this->assertStringNotContainsString('Monthly Only', $html);
+    }
+
+    /** @test-id IT-435 */
     public function test_IT_435_shared_styles_keep_base_and_preset_values(): void
     {
         $this->assertSame([], ppcart_block_style_tokens([]));

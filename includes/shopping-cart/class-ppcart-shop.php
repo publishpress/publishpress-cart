@@ -15,7 +15,7 @@ final class PPCart_Shop
             'orderBy' => in_array($attributes['orderby'] ?? '', ['date', 'title', 'price', 'menu_order'], true) ? $attributes['orderby'] : 'date',
             'styleSettings' => is_array($attributes['stylesettings'] ?? null) ? $attributes['stylesettings'] : [],
         ];
-        foreach (['showImage', 'showExcerpt', 'showPrice', 'includeCollections'] as $key) {
+        foreach (['showImage', 'showExcerpt', 'showPrice', 'includeCollections', 'includeSubscriptions'] as $key) {
             $normalized[$key] = filter_var($attributes[strtolower($key)] ?? true, FILTER_VALIDATE_BOOLEAN);
         }
         foreach (['categories', 'tags'] as $key) {
@@ -37,9 +37,13 @@ final class PPCart_Shop
             'orderby'        => $attributes['orderBy'],
             'order'          => in_array($attributes['orderBy'], ['title', 'price', 'menu_order'], true) ? 'ASC' : 'DESC',
         ];
-        if ('price' === $attributes['orderBy']) {
-            // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- Current plan prices are serialized and filterable; sort the complete offers before applying pagination.
+        $sort_by_price = 'price' === $attributes['orderBy'];
+        $hide_subscriptions = ! $attributes['includeSubscriptions'];
+        if ($sort_by_price || $hide_subscriptions) {
+            // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- Plan prices and types are serialized and filterable; sort and filter the complete offers before applying pagination.
             $args['posts_per_page'] = -1;
+        }
+        if ($sort_by_price) {
             $args['orderby'] = 'ID';
         }
         foreach (['categories' => 'product_cat', 'tags' => 'product_tag'] as $key => $taxonomy) {
@@ -57,13 +61,18 @@ final class PPCart_Shop
             ['key' => '_ppcart_show_in_shop', 'value' => 'no', 'compare' => '!='],
         ]];
         $query = new WP_Query($args);
-        if ('price' === $attributes['orderBy']) {
+        if ($sort_by_price || $hide_subscriptions) {
             $catalog = new PPCart_Shopping_Cart_Catalog();
-            $prices = [];
-            foreach ($query->posts as $product) {
-                $prices[$product->ID] = $catalog->starting_price($product->ID);
+            if ($hide_subscriptions) {
+                $query->posts = array_values(array_filter($query->posts, static fn ($product) => ! $catalog->sells_by_subscription_only($product->ID)));
             }
-            usort($query->posts, static fn ($a, $b) => ($prices[$a->ID] <=> $prices[$b->ID]) ?: ($a->ID <=> $b->ID));
+            if ($sort_by_price) {
+                $prices = [];
+                foreach ($query->posts as $product) {
+                    $prices[$product->ID] = $catalog->starting_price($product->ID);
+                }
+                usort($query->posts, static fn ($a, $b) => ($prices[$a->ID] <=> $prices[$b->ID]) ?: ($a->ID <=> $b->ID));
+            }
             $query->found_posts = count($query->posts);
             $query->max_num_pages = (int) ceil($query->found_posts / $attributes['perPage']);
             $query->posts = array_slice($query->posts, ($args['paged'] - 1) * $attributes['perPage'], $attributes['perPage']);

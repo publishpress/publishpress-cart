@@ -16,6 +16,14 @@ final class PPCart_Shopping_Cart_Catalog
         return (bool) apply_filters('ppcart_shopping_cart_product_is_eligible', $eligible, $product_id);
     }
 
+    public function sells_by_subscription_only(int $product_id): bool
+    {
+        $plans = $this->plans($product_id);
+        return in_array(get_post_type($product_id), ppcart_query_post_types('product'), true)
+            && [] !== $plans
+            && [] === array_filter($plans, fn ($plan) => $this->plan_is_eligible($plan, $product_id));
+    }
+
     public function plan_is_eligible(object $plan, int $product_id): bool
     {
         return (bool) apply_filters('ppcart_shopping_cart_plan_is_eligible', in_array($plan->type, ['one-time', 'free'], true), $plan, $product_id);
