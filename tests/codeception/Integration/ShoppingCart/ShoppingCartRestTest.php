@@ -38,6 +38,20 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
     }
 
     /** @test-id IT-439 */
+    public function test_IT_439_url_encoded_line_keys_are_decoded_once_before_patch_and_remove(): void
+    {
+        $id = $this->product('Writer Toolkit', [$this->plan('standard:personal/team%20', '39')]);
+        $this->assertNotWPError($this->add($id, 'standard:personal/team%20'));
+        $path = '/cart/items/' . rawurlencode($id . ':standard:personal/team%20');
+        $patched = $this->request('PATCH', $path, ['quantity' => 1]);
+        $this->assertSame(200, $patched->get_status());
+        $this->assertSame($id . ':standard:personal/team%20', $patched->get_data()['items'][0]['key']);
+        $removed = $this->request('DELETE', $path);
+        $this->assertSame(200, $removed->get_status());
+        $this->assertSame(0, $removed->get_data()['count']);
+    }
+
+    /** @test-id IT-439 */
     public function test_IT_439_reading_an_empty_cart_returns_the_shape_and_a_nonce_without_a_row(): void
     {
         $response = $this->request('GET', '/cart', [], false);

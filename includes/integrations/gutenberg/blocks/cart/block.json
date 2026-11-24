@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "publishpress-cart/cart",
+  "title": "Cart Shopping Cart",
+  "category": "widgets",
+  "icon": "cart",
+  "description": "Display the shopping cart and order summary.",
+  "textdomain": "publishpress-cart",
+  "render": "file:./render.php",
+  "editorScript": "ppcart-cart-editor",
+  "style": "ppcart-shopping-cart",
+  "attributes": {
+    "styleSettings": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false
+  }
+}

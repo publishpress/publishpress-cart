@@ -11,13 +11,12 @@ $item = $attr['item'];
         <img class="ppcart-shopping-cart-thumbnail" src="<?php echo esc_url($item['image']['url']); ?>" alt="<?php echo esc_attr($item['image']['alt']); ?>" width="60" height="60">
     <?php else : ?>
         <span class="ppcart-shopping-cart-thumbnail ppcart-shopping-cart-placeholder" aria-hidden="true"></span>
-    
     <?php endif; ?>
     <div class="ppcart-shopping-cart-item-name">
         <a href="<?php echo esc_url($item['permalink']); ?>"><?php echo esc_html($item['product_name']); ?></a>
         <span><?php echo esc_html($item['plan_name']); ?></span>
         <?php if ($item['quantity'] > 1) : ?>
-<span><?php echo esc_html(sprintf(__('Quantity: %d', 'publishpress-cart'), $item['quantity'])); ?></span>
+            <span><?php echo esc_html(sprintf(__('Quantity: %d', 'publishpress-cart'), $item['quantity'])); ?></span>
         <?php endif; ?>
     </div>
     <div class="ppcart-shopping-cart-item-actions">

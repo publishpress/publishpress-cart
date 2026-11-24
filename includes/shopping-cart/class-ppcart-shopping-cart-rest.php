@@ -32,7 +32,8 @@ final class PPCart_Shopping_Cart_Rest
         $key = [
             'type'              => 'string',
             'required'          => true,
-            'validate_callback' => static fn ($value): bool => is_string($value) && 1 === preg_match('/^[1-9][0-9]*:.+$/s', $value),
+            'validate_callback' => static fn ($value): bool => is_string($value) && 1 === preg_match('/^[1-9][0-9]*:.+$/s', rawurldecode($value)),
+            'sanitize_callback' => static fn (string $value): string => rawurldecode($value),
         ];
         register_rest_route(self::REST_NAMESPACE, '/cart', [
             'methods'             => WP_REST_Server::READABLE,

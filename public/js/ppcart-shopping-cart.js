@@ -13,8 +13,15 @@ function overlay() {
 }
 
 function announce(message) {
+    const panel = overlay();
+    const result = panel?.querySelector('[data-ppcart-shopping-cart-result]');
+    if (result && !panel.hidden) {
+        result.textContent = message;
+        result.hidden = false;
+    }
     const region = document.querySelector('[data-ppcart-shopping-cart-announcement]');
     if (region) {
+        region.classList.toggle('ppcart-shopping-cart-floating-result', !panel || panel.hidden);
         region.textContent = '';
         window.setTimeout(() => { region.textContent = message; }, 20);
     }
@@ -155,7 +162,6 @@ async function submit(form) {
             : await requestShoppingCart('DELETE', `/items/${encodeURIComponent(form.elements.ppcart_remove_from_cart.value)}`);
         applyShoppingCartResponse(response);
         channel?.postMessage('changed');
-        announce(adding ? config.added : config.removed);
         if (adding) {
             if (response.after_add === 'mini_cart') showDrawer(button);
             else window.location.assign(response.after_add === 'checkout' ? response.links.checkout : response.links.cart);
@@ -164,6 +170,7 @@ async function submit(form) {
         } else {
             document.querySelector('[data-ppcart-cart] a, [data-ppcart-cart] button')?.focus();
         }
+        announce(adding ? config.added : config.removed);
     } catch (error) {
         if (error.cart) applyShoppingCartResponse(error.cart);
         if (error.code === 'ppcart_cart_already_in_cart') {
@@ -215,7 +222,7 @@ channel?.addEventListener('message', event => {
     if (event.data !== 'changed') return;
     currentCart = null;
     readCount(document);
-    if (!overlay()?.hidden || document.querySelector('[data-ppcart-cart]')) {
+    if ((overlay() && !overlay().hidden) || document.querySelector('[data-ppcart-cart]')) {
         requestShoppingCart('GET').then(response => applyShoppingCartResponse(response)).catch(error => announce(error.message));
     }
 });

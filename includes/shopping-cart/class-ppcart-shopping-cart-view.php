@@ -18,7 +18,7 @@ final class PPCart_Shopping_Cart_View
         $response = $this->data($cart) + ['nonce' => wp_create_nonce('wp_rest')];
         $requested = $request->get_param('fragments');
         foreach (is_string($requested) ? explode(',', $requested) : [] as $fragment) {
-            if ('drawer' === $fragment) {
+            if (in_array($fragment, ['drawer', 'cart'], true)) {
                 $response['fragments'][$fragment] = $this->render($fragment, $cart);
             }
         }

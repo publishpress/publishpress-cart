@@ -81,3 +81,10 @@ function ppcart_shopping_cart_nocache(): void
         nocache_headers();
     }
 }
+
+function ppcart_render_shopping_cart($attributes = []): string
+{
+    ppcart_shopping_cart_nocache();
+    ppcart_shopping_cart_assets();
+    return (new PPCart_Shopping_Cart_View())->render('cart', ppcart_get_shopping_cart(), (array) $attributes);
+}

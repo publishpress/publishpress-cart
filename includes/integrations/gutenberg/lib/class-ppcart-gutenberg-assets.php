@@ -55,7 +55,7 @@ class PPCart_Gutenberg_Assets
 
     public function register()
     {
-        foreach (['shop', 'mini-cart'] as $slug) {
+        foreach (['shop', 'mini-cart', 'cart'] as $slug) {
             $asset = require $this->base_dir . '/build/' . $slug . '-editor.asset.php';
             wp_register_script('ppcart-' . $slug . '-editor', plugins_url('build/' . $slug . '-editor.js', $this->base_file), $asset['dependencies'], $asset['version'], true);
             wp_set_script_translations('ppcart-' . $slug . '-editor', 'publishpress-cart', PPCART_BASE_DIR . 'languages');

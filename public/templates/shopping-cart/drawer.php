@@ -9,6 +9,7 @@ if (! defined('ABSPATH')) {
         <h2 class="ppcart-shopping-cart-title"><?php esc_html_e('Your cart', 'publishpress-cart'); ?> (<span data-ppcart-cart-count><?php echo esc_html($attr['cart']['count']); ?></span>)</h2>
         <button class="ppcart-shopping-cart-close" type="button" data-ppcart-close-drawer aria-label="<?php esc_attr_e('Close cart', 'publishpress-cart'); ?>">×</button>
     </header>
+    <p class="ppcart-shopping-cart-result" data-ppcart-shopping-cart-result aria-hidden="true" hidden></p>
     <div class="ppcart-shopping-cart-drawer-body">
         <?php echo ppcart_get_template('shopping-cart/notices', '', $attr); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output. ?>
         <?php if ($attr['cart']['count']) : ?>
