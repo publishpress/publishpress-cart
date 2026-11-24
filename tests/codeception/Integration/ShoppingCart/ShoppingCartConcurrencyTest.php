@@ -230,6 +230,68 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
     }
 
     /** @test-id IT-438 */
+    public function test_IT_438_a_guest_line_added_during_the_login_merge_survives(): void
+    {
+        $userOnly = $this->product('User only');
+        $guestOnly = $this->product('Guest only');
+        $late = $this->product('Added during the merge');
+        $user = self::factory()->user->create_and_get();
+        $this->insertRow([$this->line($userOnly, '2026-11-01T10:00:00.000000Z')], $user->ID, str_repeat('u', 32));
+        $this->insertRow([$this->line($guestOnly, '2026-11-20T09:00:00.000000Z')], 0, str_repeat('g', 32));
+        $_COOKIE['ppcart_cart'] = str_repeat('g', 32);
+
+        $guestAdd = null;
+        add_filter('ppcart_shopping_cart_item_max_quantity', $interleave = function (int $max) use (&$guestAdd, &$interleave, $late): int {
+            remove_filter('ppcart_shopping_cart_item_max_quantity', $interleave);
+            $guestAdd = $this->add($late);
+            return $max;
+        });
+        do_action('wp_login', $user->user_login, $user);
+
+        $this->assertSame([$guestOnly . ':personal', $late . ':personal'], $this->keys($guestAdd));
+        $this->assertSame(2, $guestAdd->revision);
+        $this->assertSame([$userOnly, $guestOnly, $late], array_column(json_decode($this->rowByKey(str_repeat('u', 32))->items, true), 'product_id'));
+        $this->assertNull($this->rowByKey(str_repeat('g', 32)));
+        $this->assertSame(1, $this->rowCount());
+        $this->assertSame(str_repeat('u', 32), $_COOKIE['ppcart_cart']);
+    }
+
+    /** @test-id IT-438 */
+    public function test_IT_438_a_login_merge_that_misses_three_times_keeps_the_guest_row_for_the_next_request(): void
+    {
+        $userOnly = $this->product('User only');
+        $guestOnly = $this->product('Guest only');
+        $user = self::factory()->user->create_and_get();
+        $this->insertRow([$this->line($userOnly, '2026-11-01T10:00:00.000000Z')], $user->ID, str_repeat('u', 32));
+        $this->insertRow([$this->line($guestOnly, '2026-11-20T09:00:00.000000Z')], 0, str_repeat('g', 32));
+        $_COOKIE['ppcart_cart'] = str_repeat('g', 32);
+
+        $writing = false;
+        $writes = 0;
+        add_filter('ppcart_shopping_cart_item_max_quantity', $interleave = function (int $max) use (&$writing, &$writes): int {
+            if (! $writing) {
+                $writing = true;
+                ppcart_shopping_cart_set_meta('guest_write', ++$writes);
+                $writing = false;
+            }
+            return $max;
+        });
+        do_action('wp_login', $user->user_login, $user);
+        remove_filter('ppcart_shopping_cart_item_max_quantity', $interleave);
+
+        $guestRow = $this->rowByKey(str_repeat('g', 32));
+        $this->assertNotNull($guestRow);
+        $this->assertSame($writes, json_decode($guestRow->meta, true)['guest_write']);
+        $this->assertSame(str_repeat('g', 32), $_COOKIE['ppcart_cart']);
+        $this->assertSame(2, $this->rowCount());
+
+        $this->store()->merge_guest_into_user(str_repeat('g', 32), $user->ID);
+        $this->assertSame([$userOnly, $guestOnly], array_column(json_decode($this->rowByKey(str_repeat('u', 32))->items, true), 'product_id'));
+        $this->assertNull($this->rowByKey(str_repeat('g', 32)));
+        $this->assertSame(str_repeat('u', 32), $_COOKIE['ppcart_cart']);
+    }
+
+    /** @test-id IT-438 */
     public function test_IT_438_a_user_without_a_cart_takes_over_the_guest_row_at_login(): void
     {
         $id = $this->product('Guest item');

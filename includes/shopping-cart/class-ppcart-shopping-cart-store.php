@@ -201,21 +201,33 @@ final class PPCart_Shopping_Cart_Store
         return $this->absorb($user, $guest);
     }
 
+    /**
+     * Merges the source row into the target row and deletes the source row. The
+     * delete takes only the revision that was merged, so a write that lands on
+     * the source in between is merged in the next try. Null means the source row
+     * still holds lines that are not in the target.
+     */
     private function absorb(object $target, object $source): ?object
     {
         global $wpdb;
 
-        $other = ['lines' => self::decode($source->items), 'meta' => self::decode($source->meta)];
-        $merged = $this->transact(
-            fn (): ?object => $this->row_by_id((int) $target->id),
-            static fn (PPCart_Shopping_Cart $cart): true => $cart->merge($other)
-        );
-        if (is_wp_error($merged) || $merged->cart_id !== (int) $target->id) {
-            return null;
+        for ($try = 0; $try < self::MAX_TRIES; $try++) {
+            $other = ['lines' => self::decode($source->items), 'meta' => self::decode($source->meta)];
+            $merged = $this->transact(
+                fn (): ?object => $this->row_by_id((int) $target->id),
+                static fn (PPCart_Shopping_Cart $cart): true => $cart->merge($other)
+            );
+            if (is_wp_error($merged) || $merged->cart_id !== (int) $target->id) {
+                return null;
+            }
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Plugin-owned table.
+            $deleted = $wpdb->query($wpdb->prepare('DELETE FROM %i WHERE id = %d AND revision = %d', self::table(), $source->id, $source->revision));
+            $source = $deleted ? null : $this->row_by_id((int) $source->id);
+            if (! $source) {
+                return $this->row_by_id((int) $target->id);
+            }
         }
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Plugin-owned table.
-        $wpdb->delete(self::table(), ['id' => (int) $source->id], ['%d']);
-        return $this->row_by_id((int) $target->id);
+        return null;
     }
 
     private function hydrate(?object $row): PPCart_Shopping_Cart
