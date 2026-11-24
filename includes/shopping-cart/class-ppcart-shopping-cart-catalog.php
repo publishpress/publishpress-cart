@@ -33,7 +33,7 @@ final class PPCart_Shopping_Cart_Catalog
         return [
             'product_id'   => $product_id,
             'plan_id'      => $plan_id,
-            'unit_price'   => 'free' === $plan->type ? 0.0 : (float) $plan->price,
+            'unit_price'   => (float) $plan->initial_payment,
             'product_name' => $this->title($product_id),
             'plan_name'    => (string) $plan->name,
             'image_id'     => (int) get_post_thumbnail_id($product_id),

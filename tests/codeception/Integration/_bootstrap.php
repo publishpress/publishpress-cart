@@ -28,6 +28,10 @@ if (! class_exists('Tests\Support\Integration\CheckoutBlockTestCase')) {
     require_once dirname(__DIR__) . '/Support/Integration/CheckoutBlockTestCase.php';
 }
 
+if (! class_exists('Tests\Support\Integration\ShoppingCartTestCase')) {
+    require_once dirname(__DIR__) . '/Support/Integration/ShoppingCartTestCase.php';
+}
+
 if (! defined('PPCART_PLUGIN_ROOT')) {
     define('PPCART_PLUGIN_ROOT', dirname(__DIR__, 3) . '/');
 }

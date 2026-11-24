@@ -49,7 +49,15 @@ class PPCart_Upgrade
         // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.flush_rewrite_rules_flush_rewrite_rules -- Required once during plugin upgrade to refresh routes.
         flush_rewrite_rules();
         self::setup_tax_table();
+        self::setup_shopping_cart_table();
         self::add_cap();
+    }
+
+    public static function setup_shopping_cart_table()
+    {
+        // The upgrader runs this file from the request that loaded the old version, so the class may not be loaded yet.
+        require_once __DIR__ . '/shopping-cart/class-ppcart-shopping-cart-store.php';
+        PPCart_Shopping_Cart_Store::install();
     }
 
     public static function setup_tax_table()

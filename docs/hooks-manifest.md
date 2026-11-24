@@ -655,9 +655,12 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `ppcart_setup_product_upsell_path` | Filter | `apply_filters` | Public | canonical | `includes/functions/product-and-order-setup.php` | ppcart_setup_product_upsell_path |
 | `ppcart_shop_query_args` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shop.php` | ppcart_shop_query_args |
 | `ppcart_shopping_cart_checkout_fields` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-settings.php` | ppcart_shopping_cart_checkout_fields |
+| `ppcart_shopping_cart_cleanup` | Action | `add_action` | Public | canonical | `includes/shopping-cart/loader.php` | ppcart_shopping_cart_cleanup |
 | `ppcart_shopping_cart_item_max_quantity` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-catalog.php` | ppcart_shopping_cart_item_max_quantity |
+| `ppcart_shopping_cart_max_items` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart.php` | ppcart_shopping_cart_max_items |
 | `ppcart_shopping_cart_plan_is_eligible` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-catalog.php` | ppcart_shopping_cart_plan_is_eligible |
 | `ppcart_shopping_cart_product_is_eligible` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-catalog.php` | ppcart_shopping_cart_product_is_eligible |
+| `ppcart_shopping_cart_totals` | Filter | `apply_filters` | Public | canonical | `includes/shopping-cart/class-ppcart-shopping-cart-priced.php` | ppcart_shopping_cart_totals |
 | `ppcart_should_send_product_notification` | Filter | `apply_filters` | Public | canonical | `includes/functions/users-and-notifications.php` | ppcart_should_send_product_notification |
 | `ppcart_show_admin_branding` | Filter | `apply_filters` | Public | canonical | `admin/class-ppcart-welcome.php` | ppcart_show_admin_branding |
 | `ppcart_show_admin_branding` | Filter | `apply_filters` | Public | canonical | `admin/partials/settings-page/tabs/topbar.php` | ppcart_show_admin_branding |
@@ -883,6 +886,7 @@ The default prefix for new public extension hooks is `ppcart_`. StudioCart-era h
 | `wp_insert_post_data` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | wp_insert_post_data |
 | `wp_insert_post_data` | Filter | `add_filter` | Internal | unclassified | `includes/class-ppcart-post-status-sync.php` | wp_insert_post_data |
 | `wp_insert_post_data` | Filter | `add_filter` | Internal | unclassified | `includes/mcp/class-ppcart-mcp-sync-guard.php` | wp_insert_post_data |
+| `wp_login` | Action | `add_action` | External | wordpress_core | `includes/shopping-cart/loader.php` |  |
 | `wp_logout` | Action | `add_action` | Internal | unclassified | `public/controllers/class-ppcart-public-account-controller.php` | wp_logout |
 | `wp_mail` | Filter | `add_filter` | Internal | unclassified | `includes/email/ppcart-template-functions/options-and-hooks.php` | wp_mail |
 | `wp_privacy_personal_data_erasers` | Action | `add_action` | Internal | unclassified | `includes/bootstrap/templates/admin-hook-registrar-register.php` | wp_privacy_personal_data_erasers |

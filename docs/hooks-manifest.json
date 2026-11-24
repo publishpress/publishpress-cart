@@ -6476,6 +6476,16 @@
             "notes": "Canonical hook prefix."
         },
         {
+            "name": "ppcart_shopping_cart_cleanup",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/loader.php",
+            "recommended_hook": "ppcart_shopping_cart_cleanup",
+            "notes": "Canonical hook prefix."
+        },
+        {
             "name": "ppcart_shopping_cart_item_max_quantity",
             "type": "filter",
             "operation": "apply_filters",
@@ -6483,6 +6493,16 @@
             "status": "canonical",
             "file": "includes/shopping-cart/class-ppcart-shopping-cart-catalog.php",
             "recommended_hook": "ppcart_shopping_cart_item_max_quantity",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_shopping_cart_max_items",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/class-ppcart-shopping-cart.php",
+            "recommended_hook": "ppcart_shopping_cart_max_items",
             "notes": "Canonical hook prefix."
         },
         {
@@ -6503,6 +6523,16 @@
             "status": "canonical",
             "file": "includes/shopping-cart/class-ppcart-shopping-cart-catalog.php",
             "recommended_hook": "ppcart_shopping_cart_product_is_eligible",
+            "notes": "Canonical hook prefix."
+        },
+        {
+            "name": "ppcart_shopping_cart_totals",
+            "type": "filter",
+            "operation": "apply_filters",
+            "classification": "public",
+            "status": "canonical",
+            "file": "includes/shopping-cart/class-ppcart-shopping-cart-priced.php",
+            "recommended_hook": "ppcart_shopping_cart_totals",
             "notes": "Canonical hook prefix."
         },
         {
@@ -8754,6 +8784,16 @@
             "file": "includes/mcp/class-ppcart-mcp-sync-guard.php",
             "recommended_hook": "wp_insert_post_data",
             "notes": "Review before documenting as public API."
+        },
+        {
+            "name": "wp_login",
+            "type": "action",
+            "operation": "add_action",
+            "classification": "external",
+            "status": "wordpress_core",
+            "file": "includes/shopping-cart/loader.php",
+            "recommended_hook": null,
+            "notes": "WordPress core hook."
         },
         {
             "name": "wp_logout",
