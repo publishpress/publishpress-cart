@@ -22,6 +22,11 @@ trait PPCart_Admin_Settings_Fields_Trait
         $__ppcart_template_result = include __DIR__ . '/templates/settings-fields-register-fields.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
     }
+    public function field_shopping_cart_pages($args)
+    {
+        PPCart_Admin_Shopping_Cart_Pages::render_control();
+    }
+
     /**
      * Return the native sanitizer for a settings field, including email and secret handling.
      *
@@ -31,6 +36,9 @@ trait PPCart_Admin_Settings_Fields_Trait
      */
     public function get_field_sanitizer(array $field)
     {
+        if ('shop_cart' === ($field['tab'] ?? '')) {
+            return static fn ($value) => (new PPCart_Shopping_Cart_Settings())->sanitize_field($field, $value);
+        }
         $sanitize_callbacks = [
             'checkbox' => [$this, 'sanitize_checkbox'],
             'editor'   => 'wp_kses_post',

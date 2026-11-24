@@ -12,6 +12,9 @@ trait PPCart_Admin_Settings_Sections_Trait
     public function register_sections()
     {
         include __DIR__ . '/templates/settings-sections-register.php';
+        foreach ((new PPCart_Shopping_Cart_Settings())->definitions() as $section => $fields) {
+            add_settings_section($this->plugin_name . '-' . $section, reset($fields)['section_title'], [$this, 'section_settings'], $this->plugin_name . '-shop_cart');
+        }
     }
 
     /**

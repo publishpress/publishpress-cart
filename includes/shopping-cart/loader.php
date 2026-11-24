@@ -5,6 +5,7 @@ if (! defined('ABSPATH')) {
 }
 
 require_once __DIR__ . '/functions-shopping-cart.php';
+require_once __DIR__ . '/class-ppcart-shopping-cart-settings.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-catalog.php';
 require_once __DIR__ . '/class-ppcart-shop.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-product-settings.php';

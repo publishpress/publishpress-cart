@@ -61,7 +61,7 @@ final class PPCart_Shopping_Cart_Catalog
             }
         }
         $action = [] !== $plans ? 'add' : 'subscribe';
-        if (! in_array(get_post_type($product_id), ppcart_query_post_types('product'), true) || '1' !== (string) get_option('_ppcart_shopping_cart_enable', '1') || [] === $all_plans || ppcart_is_cart_closed($product_id)) {
+        if (! in_array(get_post_type($product_id), ppcart_query_post_types('product'), true) || ! (new PPCart_Shopping_Cart_Settings())->enabled() || [] === $all_plans || ppcart_is_cart_closed($product_id)) {
             $action = 'view';
         }
         $price_labels = array_map(fn ($plan) => $this->price_label($plan), $all_plans);

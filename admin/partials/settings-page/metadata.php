@@ -3,6 +3,11 @@
 defined('ABSPATH') || exit;
 
 $tab_meta = [
+    'shop_cart' => [
+        'icon' => 'shop',
+        'group' => 'shop',
+        'description' => __('Turn the shopping cart on, choose its pages and set up the cart checkout form.', 'publishpress-cart'),
+    ],
     'general'         => [
         'icon'        => 'shop',
         'group'       => 'shop',
