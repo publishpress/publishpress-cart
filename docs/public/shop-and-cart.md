@@ -74,6 +74,11 @@ The block and its shortcode show the same output. The shortcode options are in
 All four blocks use the same **Design** settings as the checkout block: style
 preset, accent color, surface, density, and corners.
 
+The **Cart Shop**, **Cart Shopping Cart**, and **Cart Checkout** blocks can use
+**Wide width** or **Full width** from the block toolbar. Without one of these,
+your theme keeps the block at its content width, even inside a full-width
+group.
+
 ## Know what the Shop card button does
 
 | Product | Button on the Shop card |

@@ -33,7 +33,9 @@ class ShoppingCartPageTest extends ShoppingCartTestCase
         $this->assertStringContainsString('data-ppcart-total="total"', $html);
         $this->assertStringContainsString('Continue shopping', $html);
         $this->assertSame($html, do_shortcode('[ppcart_cart]'));
-        $this->assertSame($html, render_block(['blockName' => 'publishpress-cart/cart', 'attrs' => [], 'innerBlocks' => [], 'innerHTML' => '', 'innerContent' => []]));
+        $block = render_block(['blockName' => 'publishpress-cart/cart', 'attrs' => ['align' => 'full'], 'innerBlocks' => [], 'innerHTML' => '', 'innerContent' => []]);
+        $this->assertMatchesRegularExpression('/^<div class="[^"]*\balignfull\b[^"]*">/', $block);
+        $this->assertSame($html, preg_replace('/^<div [^>]*>|<\/div>$/', '', $block));
         $request = new \WP_REST_Request('GET', '/ppcart/v1/cart');
         $request->set_param('fragments', 'drawer,cart');
         $response = (new \PPCart_Shopping_Cart_View())->response(ppcart_get_shopping_cart(), $request);
