@@ -4285,8 +4285,16 @@ html:has(.ppcart-settings-page .ppcart-settings__savebar.is-visible) {
     margin: 0 0 6px;
 }
 
-.ppcart-stripe-import__list li.is-error {
+.ppcart-stripe-import__list li.is-error,
+.ppcart-stripe-import__result p.is-error {
     color: var(--ppcart-danger, #b32d2e);
+}
+
+.ppcart-settings__card-subtitle {
+    margin: 24px 0 4px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
 }
 
 .ppcart-settings__card.ppcart-settings__shortcode {

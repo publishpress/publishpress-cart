@@ -111,7 +111,7 @@ trait PPCart_Admin_Settings_Sections_Trait
 
         add_settings_section(
             $this->plugin_name . '-maintenance-stripe-import',
-            esc_html__('Import Subscriptions from Stripe', 'publishpress-cart'),
+            esc_html__('Import from Stripe', 'publishpress-cart'),
             [ $this, 'section_settings' ],
             $this->plugin_name . '-maintenance'
         );

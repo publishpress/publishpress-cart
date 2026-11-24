@@ -220,6 +220,7 @@ if (is_admin()) {
 
     require_once __DIR__ . '/admin/class-ppcart-admin-stripe-import.php';
     add_action('wp_ajax_' . PPCart_Admin_Stripe_Import::AJAX_ACTION, ['PPCart_Admin_Stripe_Import', 'ajax_import']);
+    add_action('wp_ajax_' . PPCart_Admin_Stripe_Import::CHARGE_AJAX_ACTION, ['PPCart_Admin_Stripe_Import', 'ajax_import_charge']);
 }
 
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');
