@@ -133,7 +133,7 @@ final class PPCart_Shopping_Cart_Catalog
 
     private function price_label(object $plan): string
     {
-        if ('free' === $plan->type) {
+        if ('free' === $plan->type || ('one-time' === $plan->type && (float) $plan->initial_payment <= 0)) {
             return __('Free', 'publishpress-cart');
         }
         $price = wp_strip_all_tags(ppcart_format_price($plan->price));

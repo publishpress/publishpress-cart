@@ -190,6 +190,11 @@ class ShopTest extends WPTestCase
         $this->assertStringContainsString('49.00', $card['price_label']);
         $this->assertStringNotContainsString('From', $card['price_label']);
 
+        $noPrice = $this->product('No Price', [$this->plan('once', '')]);
+        $this->assertSame('Free', $catalog->shop_card($noPrice)['price_label']);
+        $zero = $this->product('Zero', [$this->plan('once', '0')]);
+        $this->assertSame('Free', $catalog->shop_card($zero)['price_label']);
+
         $monthly = $this->product('Monthly', [$this->plan('monthly', '19', 'recurring'), $this->plan('yearly', '190', 'recurring')]);
         $this->assertStringStartsWith('From ', $catalog->shop_card($monthly)['price_label']);
     }

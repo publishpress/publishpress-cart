@@ -30,7 +30,7 @@ $attributes = $attr['attributes'];
                 <input type="hidden" name="ppcart_shopping_cart_nonce" value="<?php echo esc_attr($card['form']['nonce']); ?>">
                 <?php if (count($card['plans']) > 1) : ?>
                     <label for="ppcart-shop-plan-<?php echo esc_attr($card['product_id']); ?>"><?php esc_html_e('Plan', 'publishpress-cart'); ?></label>
-                    <select id="ppcart-shop-plan-<?php echo esc_attr($card['product_id']); ?>" name="plan_id">
+                    <select id="ppcart-shop-plan-<?php echo esc_attr($card['product_id']); ?>" name="plan_id" autocomplete="off">
                         <?php foreach ($card['plans'] as $plan) : ?>
                             <option data-ppcart-in-cart="<?php echo $plan['in_cart'] ? 'true' : 'false'; ?>" data-ppcart-price="<?php echo esc_attr($plan['price_label']); ?>" value="<?php echo esc_attr($plan['plan_id']); ?>" <?php selected($card['selected'], $plan['plan_id']); ?>><?php echo esc_html($plan['name']); ?></option>
                         <?php endforeach; ?>
