@@ -71,7 +71,7 @@ class ShopTest extends WPTestCase
         $html = ppcart_render_shop();
         $this->assertStringContainsString('name="plan_id"', $html);
         $this->assertStringContainsString('value="standard:personal"', $html);
-        $this->assertStringContainsString('type="button" disabled', $html);
+        $this->assertStringContainsString('type="submit"', $html);
         $subscription = $this->product('Subscription', [$this->plan('monthly', '19', 'recurring')]);
         $this->assertSame('subscribe', $catalog->shop_card($subscription)['action']);
         $this->assertStringContainsString('/ month', $catalog->shop_card($subscription)['price_label']);

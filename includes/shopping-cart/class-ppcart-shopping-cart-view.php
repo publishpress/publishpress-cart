@@ -15,7 +15,14 @@ final class PPCart_Shopping_Cart_View
 
     public function response(PPCart_Shopping_Cart_Priced $cart, WP_REST_Request $request): array
     {
-        return $this->data($cart) + ['nonce' => wp_create_nonce('wp_rest')];
+        $response = $this->data($cart) + ['nonce' => wp_create_nonce('wp_rest')];
+        $requested = $request->get_param('fragments');
+        foreach (is_string($requested) ? explode(',', $requested) : [] as $fragment) {
+            if ('drawer' === $fragment) {
+                $response['fragments'][$fragment] = $this->render($fragment, $cart);
+            }
+        }
+        return $response;
     }
 
     public function data(PPCart_Shopping_Cart_Priced $cart): array
@@ -35,6 +42,15 @@ final class PPCart_Shopping_Cart_View
             'after_add' => $this->settings->after_add(),
             'links'     => $this->settings->urls(),
         ];
+    }
+
+    public function render(string $template, PPCart_Shopping_Cart_Priced $cart, array $attributes = []): string
+    {
+        return ppcart_get_template('shopping-cart/' . $template, '', [
+            'cart' => $this->data($cart),
+            'priced_cart' => $cart,
+            'style' => ppcart_shopping_cart_style($attributes),
+        ]);
     }
 
     private function item(PPCart_Shopping_Cart_Priced_Line $line): array

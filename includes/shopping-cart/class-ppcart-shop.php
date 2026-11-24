@@ -77,9 +77,11 @@ final class PPCart_Shop
         $attributes = $this->normalize_attributes($attributes);
         $query = $this->query($attributes);
         $catalog = new PPCart_Shopping_Cart_Catalog();
+        // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE -- Browsing without a cart must stay cacheable and create no row.
+        $cart = isset($_COOKIE[PPCart_Shopping_Cart_Store::COOKIE]) || is_user_logged_in() ? ppcart_get_shopping_cart() : null;
         $cards = [];
         foreach ($query->posts as $product) {
-            $cards[] = $catalog->shop_card($product->ID);
+            $cards[] = $catalog->shop_card($product->ID, $cart);
         }
         $tokens = ppcart_block_style_tokens($attributes['styleSettings']);
         $tokens['--ppcart-shop-columns'] = (string) $attributes['columns'];
