@@ -217,7 +217,7 @@ Shortcode: `[ppcart_cart]`
 
 - The product picker gets a third option: *Dynamic product* / *Specific product* / **Cart**. Store it as `pid = 'cart'`. This keeps the attribute shape. Pro reads `pid`, so the value `cart` must not reach code that expects a numeric ID. Resolve it before `resolve_product_id()`.
 - The block title "Cart Checkout" already fits. Do not rename it.
-- Layout: the same presets as today. The Split layout template (`cart-checkout-split`) becomes the default for the Checkout page that **Create missing pages** creates.
+- Layout: one fixed layout, the form beside the order summary. The style presets and the accent color apply; form skins (product templates) do not. The Checkout page that **Create missing pages** creates holds the block with `pid = 'cart'` only.
 - The left column holds: contact fields (first name, last name, email), the optional phone and address fields, the payment method, the terms checkbox and the Pay button.
 - The right column is the order summary with an **Edit cart** link.
 - Product-level hooks do not run in this mode: order bumps, upsells, custom fields and the product's `template`. That is the reason Pro features attached to those hooks do not leak into cart checkout.

@@ -124,7 +124,7 @@ class SettingsTest extends WPTestCase
         $checkout = $first['created']['checkout'];
         $this->assertSame('publishpress-cart/shop', parse_blocks(get_post_field('post_content', $shop))[0]['blockName']);
         $this->assertSame('publishpress-cart/cart', parse_blocks(get_post_field('post_content', $cart))[0]['blockName']);
-        $this->assertSame(['pid' => 'cart', 'template' => 'cart-checkout-split'], parse_blocks(get_post_field('post_content', $checkout))[0]['attrs']);
+        $this->assertSame(['pid' => 'cart'], parse_blocks(get_post_field('post_content', $checkout))[0]['attrs']);
         $again = $settings->create_missing_pages();
         $this->assertSame([], $again['created']);
         $this->assertSame(['shop' => $shop, 'cart' => $cart, 'checkout' => $checkout], $again['skipped']);

@@ -16,7 +16,7 @@ $sections = [
         'fields' => [
             'shop-page' => ['select', __('Shop page', 'publishpress-cart'), '_ppcart_shop_page_id', 0, ['page_select' => true, 'create_page' => ['role' => 'shop', 'title' => __('Shop', 'publishpress-cart'), 'block' => 'publishpress-cart/shop', 'attributes' => []]]],
             'cart-page' => ['select', __('Cart page', 'publishpress-cart'), '_ppcart_cart_page_id', 0, ['page_select' => true, 'create_page' => ['role' => 'cart', 'title' => __('Cart', 'publishpress-cart'), 'block' => 'publishpress-cart/cart', 'attributes' => []]]],
-            'checkout-page' => ['select', __('Cart checkout page', 'publishpress-cart'), '_ppcart_cart_checkout_page_id', 0, ['page_select' => true, 'create_page' => ['role' => 'checkout', 'title' => __('Checkout', 'publishpress-cart'), 'block' => 'publishpress-cart/checkout-form', 'attributes' => ['pid' => 'cart', 'template' => 'cart-checkout-split']]]],
+            'checkout-page' => ['select', __('Cart checkout page', 'publishpress-cart'), '_ppcart_cart_checkout_page_id', 0, ['page_select' => true, 'create_page' => ['role' => 'checkout', 'title' => __('Checkout', 'publishpress-cart'), 'block' => 'publishpress-cart/checkout-form', 'attributes' => ['pid' => 'cart']]]],
             'create-pages' => ['shopping_cart_pages', __('Create missing pages', 'publishpress-cart'), '_ppcart_shopping_cart_create_pages', '', ['skip_register' => true]],
         ],
     ],

@@ -285,7 +285,7 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $GLOBALS['post'] = $productPage;
         setup_postdata($productPage);
 
-        $block = do_blocks('<!-- wp:publishpress-cart/checkout-form {"pid":"cart","template":"cart-checkout-split","styleSettings":{"accentColor":"#225588"}} /-->');
+        $block = do_blocks('<!-- wp:publishpress-cart/checkout-form {"pid":"cart","styleSettings":{"accentColor":"#225588"}} /-->');
         wp_reset_postdata();
         $this->assertStringContainsString('data-ppcart-checkout-form', $block);
         $this->assertStringContainsString('name="ppcart_cart_revision" value="' . $cart->revision . '"', $block);
