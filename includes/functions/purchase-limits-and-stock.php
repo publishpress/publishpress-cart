@@ -50,28 +50,54 @@ function ppcart_get_customer_product_orders(int $product_id, array $customer, $l
 }
 
 /**
- * The purchase limit of one product.
+ * The purchase limit of one product. A Buy now order is one purchase. A cart
+ * order is one purchase for each line of the product.
  *
  * @param int                                $product_id Product ID.
  * @param array{user_id?:int,email?:string} $customer   The buyer. A missing user_id means the current user.
  * @param object|null                        $product    The product, when the caller already loaded it.
+ * @param int                                $wanted     Purchases the buyer wants now: the lines of the product in a cart.
  */
-function ppcart_check_product_purchase_limit(int $product_id, array $customer, ?object $product = null): true|WP_Error
+function ppcart_check_product_purchase_limit(int $product_id, array $customer, ?object $product = null, int $wanted = 1): true|WP_Error
 {
+    global $wpdb;
+
     $product ??= ppcart_setup_product($product_id);
     if (! isset($product->customer_purchase_limit)) {
         return true;
     }
     $customer['user_id'] ??= get_current_user_id();
-    $limit = $product->customer_limit ?? 1;
-    $orders = ppcart_get_customer_product_orders($product_id, $customer, $limit);
-    if (! empty($orders) && count($orders) >= $limit) {
+    $limit = max(1, (int) ($product->customer_limit ?? 1));
+    $bought = 0;
+    foreach (ppcart_get_customer_product_orders($product_id, $customer, $limit) ?: [] as $order) {
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Plugin-owned table.
+        $lines = (int) $wpdb->get_var($wpdb->prepare('SELECT COUNT(*) FROM %i WHERE order_id = %d AND product_id = %d AND item_type = %s', ppcart_live_table('order_items'), $order->ID, $product_id, 'main'));
+        $bought += max(1, $lines);
+    }
+    if ($bought + $wanted <= $limit) {
+        return true;
+    }
+    if ($bought >= $limit) {
         return new WP_Error(
             'ppcart_purchase_limit_reached',
             $product->customer_limit_message ?? __('Sorry, you have already purchased this product!', 'publishpress-cart')
         );
     }
-    return true;
+    $left = $limit - $bought;
+    return new WP_Error(
+        'ppcart_purchase_limit_reached',
+        sprintf(
+            /* translators: 1: product name, 2: number of times the customer can still buy the product. */
+            _n(
+                'You can buy %1$s %2$d more time. Remove the other plans of this product from your cart.',
+                'You can buy %1$s %2$d more times. Remove the other plans of this product from your cart.',
+                $left,
+                'publishpress-cart'
+            ),
+            get_the_title($product_id),
+            $left
+        )
+    );
 }
 
 /**

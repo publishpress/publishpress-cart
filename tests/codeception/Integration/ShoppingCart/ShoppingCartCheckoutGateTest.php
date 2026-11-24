@@ -26,9 +26,9 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $item->store();
     }
 
-    private function limited(string $title): int
+    private function limited(string $title, array $plans = []): int
     {
-        $id = $this->product($title);
+        $id = $this->product($title, $plans);
         update_post_meta($id, '_ppcart_customer_purchase_limit', '1');
         update_post_meta($id, '_ppcart_customer_limit', '1');
         update_post_meta($id, '_ppcart_customer_limit_message', 'Only one copy each.');
@@ -80,6 +80,47 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $this->assertTrue(ppcart_check_product_purchase_limit($limited, $customer));
         $this->paidOrder('buyer@example.org', ['product_id' => $limited]);
         $this->assertWPError(ppcart_check_product_purchase_limit($limited, $customer));
+    }
+
+    /** @test-id IT-442 */
+    public function test_IT_442_two_plans_of_one_product_in_a_cart_count_together_toward_the_limit(): void
+    {
+        $limited = $this->limited('Limited Guide', [$this->plan('personal', '29'), $this->plan('team', '59')]);
+        $customer = ['email' => 'buyer@example.org'];
+        $this->add($limited, 'personal');
+        $seen = $this->add($limited, 'team')->revision;
+
+        $refused = $this->store()->claim_checkout($seen, $customer);
+        $this->assertWPError($refused);
+        $this->assertSame('ppcart_cart_purchase_limit', $refused->get_error_code());
+        $this->assertSame('You can buy Limited Guide 1 more time. Remove the other plans of this product from your cart.', $refused->get_error_message());
+        $this->assertSame($limited . ':team', $refused->get_error_data()['key']);
+        $this->assertSame($seen, $this->store()->read()->revision);
+
+        update_post_meta($limited, '_ppcart_customer_limit', '2');
+        $this->paidOrder('buyer@example.org', ['product_id' => $limited]);
+        $this->assertSame($limited . ':team', $this->store()->claim_checkout($seen, $customer)->get_error_data()['key']);
+
+        update_post_meta($limited, '_ppcart_customer_limit', '3');
+        $this->assertSame($seen + 1, $this->store()->claim_checkout($seen, $customer)->revision);
+    }
+
+    /** @test-id IT-442 */
+    public function test_IT_442_each_line_of_a_paid_cart_order_is_one_purchase(): void
+    {
+        $limited = $this->limited('Limited Guide', [$this->plan('personal', '29'), $this->plan('team', '59')]);
+        update_post_meta($limited, '_ppcart_customer_limit', '2');
+        $customer = ['email' => 'buyer@example.org'];
+        $cartOrder = $this->paidOrder('buyer@example.org', ['checkout_type' => 'cart']);
+        $this->item($cartOrder, $limited, 'main', 'personal');
+        $this->item($cartOrder, $limited, 'main', 'team');
+
+        $refused = ppcart_check_product_purchase_limit($limited, $customer);
+        $this->assertWPError($refused);
+        $this->assertSame('Only one copy each.', $refused->get_error_message());
+
+        update_post_meta($limited, '_ppcart_customer_limit', '3');
+        $this->assertTrue(ppcart_check_product_purchase_limit($limited, $customer));
     }
 
     /** @test-id IT-442 */

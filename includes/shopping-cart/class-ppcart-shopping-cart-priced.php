@@ -111,9 +111,11 @@ final readonly class PPCart_Shopping_Cart_Priced
         if ($this->changed || $seen_revision !== $this->revision) {
             return new WP_Error('ppcart_cart_changed', __('Your cart changed. Review it, then try again.', 'publishpress-cart'));
         }
+        $purchases = [];
         $quantities = [];
         foreach ($this->lines as $line) {
-            $limit = ppcart_check_product_purchase_limit($line->product_id, $customer);
+            $purchases[$line->product_id] = ($purchases[$line->product_id] ?? 0) + 1;
+            $limit = ppcart_check_product_purchase_limit($line->product_id, $customer, null, $purchases[$line->product_id]);
             if (is_wp_error($limit)) {
                 return new WP_Error('ppcart_cart_purchase_limit', $limit->get_error_message(), ['key' => $line->key]);
             }

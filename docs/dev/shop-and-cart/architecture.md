@@ -226,7 +226,7 @@ final readonly class PPCart_Shopping_Cart_Priced {
 1. The cart is empty. Code `ppcart_cart_empty`.
 2. `$this->changed` is true, so this request repaired the cart. Code `ppcart_cart_changed`.
 3. `$seen_revision !== $this->revision`, so the cart changed after the form rendered. Code `ppcart_cart_changed`.
-4. A purchase limit fails for a line, through `ppcart_check_product_purchase_limit()`. The spec code for that limit.
+4. A purchase limit fails for a line, through `ppcart_check_product_purchase_limit()`. The check counts the line together with the earlier lines of the same product in this cart and with the stored purchases, so the refused line is the first one over the limit. The spec code for that limit.
 5. Stock fails. The check sums the quantities of all lines of one product before it compares with that product's stock, through `ppcart_check_product_stock()`.
 
 Notices that are stored in `_notices` from an earlier repair do not block payment. They are for display.
@@ -636,7 +636,7 @@ Public status hooks (`ppcart_order_pending`, `ppcart_order_complete`, `ppcart_or
 | Refund restock | `includes/functions/payment-actions-and-refunds.php:565` | Loop items with quantities |
 | Reports | `admin/reports/…` (3 files) | Counts once per order. Product revenue from item totals |
 | Customer bought product | `page-customer-customer-bought-product.php` | Match item `product_id` (and plan when asked) on the same item. Distinct parent orders |
-| Purchase limit | `checkout-validation-check-purchase-limit.php`, `ready_to_pay()` | One rule, `ppcart_check_product_purchase_limit( int $product_id, array $customer )`, called by both paths |
+| Purchase limit | `checkout-validation-check-purchase-limit.php`, `ready_to_pay()` | One rule, `ppcart_check_product_purchase_limit( int $product_id, array $customer, ?object $product = null, int $wanted = 1 )`, called by both paths. A Buy now order is one purchase. Each line of a cart order is one purchase. `ready_to_pay()` passes the number of lines of the product as `$wanted` |
 | Confirmation and redirect | `order-save-save-order-to-db.php`, `checkout-payment-ppcart-process-payment.php`, `checkout-core.php` | Cart settings. No upsell flow |
 | Legacy items fallback | `includes/functions/order-items-and-details.php:15` | Empty list. A cart order without items is corrupt data |
 | Product and bump after-primary dispatch | `includes/functions/integrations-and-stock.php:142` | Free passes `$order_type = 'cart'`. Pro's `run_bump_integrations` returns at its own guard `$order_type != 'main'` (`publishpress-cart-pro/includes/order-behavior/traits/templates/ppcart-pro-order-bump-trait-run-bump-integrations.php:3`). Free removes no Pro callback |
