@@ -484,6 +484,31 @@ Pro funnel step URLs that hit `?ppcart-order=&step=` must append
 After the first `ppcart_checkout_complete` fire, listen for
 `ppcart_checkout_step_viewed` instead of expecting completion to re-fire.
 
+### Shopping cart (Free #1309)
+
+Free ships the Shop, the shopping cart, and cart checkout. The cart sells
+one-time and free plans only, with quantity 1, no coupons, and no tax. Pro adds
+its features later through these Free hooks. Do not patch Free cart code.
+
+| Pro follow-up | Free hook | Note |
+|---------------|-----------|------|
+| Coupons | `ppcart_shopping_cart_order_loaded` filter `(PPCart_Order $order, PPCart_Shopping_Cart_Priced $cart)`, `ppcart_shopping_cart_after_totals` action, `ppcart_shopping_cart_totals` filter | Pro coupons are stored per product (`_ppcart_coupons`). Decide which coupons are valid for a cart, then reuse `apply_cart_coupon` to spread the discount over the items |
+| Tax | `ppcart_shopping_cart_checkout_fields` filter, `ppcart_shopping_cart_totals` filter | Check the tax of each item. Pro does not tax an item when `_ppcart_product_taxable` is missing, but `ppcart_setup_product()` treats a missing value as taxable |
+| Quantity | `ppcart_shopping_cart_item_max_quantity` filter `(int $max, int $product_id, string $plan_id)` | Return more than 1 when `_ppcart_qty_field` is on |
+| Collections | `ppcart_shopping_cart_product_is_eligible` filter `(bool $eligible, int $product_id)` | The Shop lists collections with a **View** button until this filter lets them in |
+
+To detect a cart order, call `ppcart_order_is_shopping_cart( $order )`. An
+empty `product_id` does not mean a cart order.
+
+**Dependency on Pro's bump guard.** For a cart order, Free fires
+`ppcart_order_after_primary_integration_action` with `$order_type = 'cart'`
+(`includes/functions/integrations-and-stock.php:144`). Pro's bump handler
+returns early because of its guard `$order_type != 'main'`
+(`publishpress-cart-pro/includes/order-behavior/traits/templates/ppcart-pro-order-bump-trait-run-bump-integrations.php:3`).
+Free removes no Pro callback. If Pro changes that guard, cart orders run
+order-bump integrations. Keep the guard, or add a check for
+`ppcart_order_is_shopping_cart()`.
+
 ### Mailchimp API (no SDK)
 
 Free no longer returns `\MailchimpMarketing\ApiClient` from

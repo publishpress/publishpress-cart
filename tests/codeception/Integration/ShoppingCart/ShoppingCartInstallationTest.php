@@ -6,8 +6,8 @@ namespace Tests\Integration\ShoppingCart;
 
 class ShoppingCartInstallationTest extends \Tests\NoTransactionWPTestCase
 {
-    /** @test-id IT-437 */
-    public function test_IT_437_a_normal_request_recreates_a_missing_cart_table_before_the_next_write(): void
+    /** @test-id IT-451 */
+    public function test_IT_451_a_normal_request_recreates_a_missing_cart_table_before_the_next_write(): void
     {
         global $wpdb;
         wp_set_current_user(0);

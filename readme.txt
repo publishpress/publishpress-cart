@@ -260,6 +260,7 @@ When you connect Stripe with the optional Connect Stripe button and PublishPress
 
 == Changelog ==
 
+* Added: Shop, shopping cart, and cart checkout. Visitors add several one-time products to a cart and pay with one Stripe or PayPal checkout. Use the Shop, Mini Cart, Cart, and Cart Checkout blocks, or the `[ppcart_shop]`, `[ppcart_mini_cart]`, `[ppcart_cart]`, and `[ppcart_cart_checkout]` shortcodes.
 * Removed: `[ppcart_store]` shortcode. Use the Shop block or `[ppcart_shop]`.
 
 The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-cart/blob/master/CHANGELOG.md).

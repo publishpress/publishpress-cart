@@ -255,6 +255,15 @@ modules:
     features: [developer-hooks]
     notes: Public action and filter hooks third-party code listens on.
 
+  - id: shopping-cart
+    name: Shop and shopping cart
+    suites: [integration]
+    test_range: IT-435–IT-451
+    features: [shopping-cart]
+    notes: >-
+      Shop catalog and visibility, cart storage and REST, Mini Cart and Cart
+      blocks, Shop & Cart settings, and cart checkout with Stripe and PayPal.
+
   - id: prefix-standardization
     name: Prefix standardization
     suites: [integration]
@@ -382,6 +391,19 @@ features:
     status: active
     description: Per-product shipping rates, domestic/international pricing, and order-bump shipping rules.
     edition: pro
+  shopping-cart:
+    name: Shop and shopping cart
+    status: active
+    description: A Shop page that lists products, a cart that holds several one-time products, and one checkout that pays for all of them.
+    edition: both
+    source_areas:
+      - includes/shopping-cart/
+      - public/controllers/class-ppcart-public-shopping-cart-controller.php
+      - public/controllers/class-ppcart-public-cart-checkout-controller.php
+      - public/templates/shopping-cart/
+      - includes/integrations/gutenberg/blocks/shop/
+      - includes/integrations/gutenberg/blocks/mini-cart/
+      - includes/integrations/gutenberg/blocks/cart/
   store-settings:
     name: Store settings
     status: active

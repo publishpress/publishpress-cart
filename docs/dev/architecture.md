@@ -51,6 +51,7 @@ There is **no** first-party `api/` REST directory.
 | `includes/email/` | Transactional email templates |
 | `includes/order-items/` | Order line items and details renderer |
 | `includes/integrations/gutenberg/` | Checkout and account blocks |
+| `includes/shopping-cart/` | Shop catalog, shopping cart storage and REST (`ppcart/v1/cart`), Shop & Cart settings, cart Stripe payment. Design: [shop-and-cart/architecture.md](shop-and-cart/architecture.md) |
 | `public/class-ppcart-public.php` | Storefront coordinator (hooks, order-status integrations) |
 | `public/controllers/` | Checkout, account, assets, payment, orders, hosted checkout |
 | `public/class-ppcart-paypal.php` + `public/paypal/` | PayPal checkout. Redirect flow (Payments Standard, IPN, PDT) in the traits. On-page flow (JavaScript SDK popup + REST) in `class-ppcart-paypal-onpage.php`, `class-ppcart-paypal-sync.php`, `class-ppcart-paypal-refund-sync.php`, `class-ppcart-paypal-rest-client.php`, `class-ppcart-paypal-billing-shape.php`, `class-ppcart-paypal-plans.php`, `class-ppcart-paypal-record-lock.php`, `class-ppcart-paypal-webhook.php` |
@@ -92,6 +93,8 @@ during merchant CPT slug migration.
 | `PPCart_Public_Account_Controller` | My-account shortcodes, login/password |
 | `PPCart_Public_Page_Controller` | Product templates, redirects, hosted-checkout return |
 | `PPCart_Public_Hosted_Checkout_Controller` | Stripe hosted checkout |
+| `PPCart_Public_Shopping_Cart_Controller` | Shop, Mini Cart, and Cart shortcodes, the cart drawer, and no-JS cart actions |
+| `PPCart_Public_Cart_Checkout_Controller` | Cart checkout: the checkout block with source Cart, `[ppcart_cart_checkout]`, and its REST routes |
 | `PPCart_Public_Subscription_Checkout_Controller` | Subscription checkout helpers |
 | `PPCart_Paypal` | PayPal checkout (redirect flow); `paypal_build_checkout_order()` and `paypal_store_checkout_order()` are shared with the on-page flow |
 | `PPCart_Paypal_Onpage` | On-page PayPal checkout: the `_ppcart_paypal_checkout_experience` switch, the SDK script, the create and approve AJAX handlers, the hourly reconcile job |
@@ -119,6 +122,20 @@ during merchant CPT slug migration.
 New checkout code must not add `global $`. Prefer passing `$ppcart_public` or options as parameters. Existing globals (`$ppcart_public`, `$ppcart_stripe`, `$ppcart_currency`, `$ppcart_currency_symbol`, `$ppcart_debug_logger`) may remain until touched.
 
 ---
+
+## Cart orders
+
+A cart checkout makes one order with one line item for each product. The order
+has `checkout_type = 'cart'` and an empty `product_id`. Test for a cart order
+with `ppcart_order_is_shopping_cart( $order )` only. An empty `product_id` does
+not mean a cart order.
+
+Order status hooks fire once for the parent order. Code that does work for each
+product (integrations, stock, per-product notifications) loops
+`ppcart_shopping_cart_order_contexts( $order_data )`, one context for each main
+item. A context is never stored and never passed to an order status hook. The
+full consumer list is in [shop-and-cart/architecture.md](shop-and-cart/architecture.md)
+section 4.
 
 ## Webhooks
 
