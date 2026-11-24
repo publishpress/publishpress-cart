@@ -203,6 +203,12 @@ if ($ppcart_product->upsell_path && ! empty($ppcart_product->form_action)) {
 if (isset($ppcart_product->redirect_url) && !$ppcart_product->upsell_path) {
     $redirect = esc_url_raw(ppcart_personalize($ppcart_product->redirect_url, $order_info, 'urlencode'));
     $data['redirect'] = $redirect;
+
+    // The browser goes straight to the redirect URL, so the checkout completion request that
+    // normally logs the buyer in never runs. Log in here instead; the same safety checks apply.
+    if ($order_post_id) {
+        ppcart_maybe_auto_login_order_buyer($order_post_id, $ppcart_product);
+    }
 }
 
 wp_send_json($data);
