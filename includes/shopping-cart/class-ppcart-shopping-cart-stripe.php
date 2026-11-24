@@ -6,9 +6,6 @@ if (! defined('ABSPATH')) {
 
 require_once dirname(__DIR__, 2) . '/public/controllers/payment/traits/trait-ppcart-public-payment-connect.php';
 
-/**
- * The Stripe payment of a cart order: one PaymentIntent for the stored order total.
- */
 final class PPCart_Shopping_Cart_Stripe
 {
     use PPCart_Public_Payment_Connect_Trait;
@@ -38,8 +35,6 @@ final class PPCart_Shopping_Cart_Stripe
     }
 
     /**
-     * Create the PaymentIntent of a stored cart order and record it on the order.
-     *
      * @return array{id:string,client_secret:string}|WP_Error
      */
     public function create_intent(PPCart_Order $order): array|WP_Error
@@ -74,7 +69,6 @@ final class PPCart_Shopping_Cart_Stripe
         }
 
         try {
-            // The key gives one intent for one order, also when the request runs twice.
             $intent = $this->client()->paymentIntents->create($args, ['idempotency_key' => 'ppcart-cart-order-' . $order->id]);
         } catch (Exception $e) {
             return new WP_Error('ppcart_cart_payment_failed', sanitize_text_field($e->getMessage()));
@@ -85,9 +79,6 @@ final class PPCart_Shopping_Cart_Stripe
     }
 
     /**
-     * Read the PaymentIntent of the order from Stripe. When Stripe says it succeeded, store the order as paid.
-     * The browser never tells this method that a payment succeeded.
-     *
      * @return true|WP_Error True when the order is paid.
      */
     public function settle(PPCart_Order $order): true|WP_Error

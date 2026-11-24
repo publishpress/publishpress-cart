@@ -153,8 +153,6 @@ trait PPCart_Checkout_Renderer_Request
     }
 
     /**
-     * The checkout block with source Cart. No product, plan, or coupon attribute applies to it.
-     *
      * @param array $attributes Block attributes.
      * @param bool  $is_preview True in the block editor.
      * @return string

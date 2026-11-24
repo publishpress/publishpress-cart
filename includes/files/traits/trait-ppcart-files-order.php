@@ -17,7 +17,6 @@ trait PPCart_Files_Order_Trait
             : [$order_data['product_id']];
         if (is_countable($downloads)) {
             foreach ($downloads as $download) {
-                // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict -- The stored product ID is a numeric string.
                 if (in_array($download->product_id, $product_ids)) {
                     // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Marks existing downloads as revoked for refunded item.
                     $wpdb->update(self::live_table(), $args, [ 'download_id' => $download->download_id ], [ '%s', '%s' ], [ '%d' ]);

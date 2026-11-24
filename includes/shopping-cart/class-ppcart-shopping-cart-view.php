@@ -4,9 +4,6 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-/**
- * The one projection of a priced cart. REST responses and cart templates read this shape.
- */
 final class PPCart_Shopping_Cart_View
 {
     public function __construct(private PPCart_Shopping_Cart_Settings $settings = new PPCart_Shopping_Cart_Settings())

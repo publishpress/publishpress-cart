@@ -4,16 +4,8 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Empties a cart of the lines an order paid for.
- */
 final class PPCart_Shopping_Cart_Completion
 {
-    /**
-     * Runs after the status hook of an order. A paid cart order, or a cash on
-     * delivery cart order that waits for payment, takes its lines out of the cart.
-     * A line the buyer added after the checkout stays.
-     */
     public static function remove_paid_lines(string $action, string $status, array $order_info, string $order_type): void
     {
         if ('cart' !== $order_type) {

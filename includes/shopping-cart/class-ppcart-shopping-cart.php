@@ -118,8 +118,6 @@ final class PPCart_Shopping_Cart
     }
 
     /**
-     * Take the lines of another cart of the same visitor. A line this cart already has wins.
-     *
      * @param array{lines:list<array>,meta:array<string,mixed>} $other export() of the other cart.
      */
     public function merge(array $other): true
@@ -140,8 +138,6 @@ final class PPCart_Shopping_Cart
     }
 
     /**
-     * Remove the lines one order paid for. A line added again after that order has a new added_at and stays.
-     *
      * @param list<array{key:string,added_at:string}> $paid
      */
     public function remove_paid_lines(array $paid): true
@@ -192,7 +188,7 @@ final class PPCart_Shopping_Cart
         );
     }
 
-    /** @return array{lines:list<array>,meta:array<string,mixed>} The stored shape. Only the Store reads it. */
+    /** @return array{lines:list<array>,meta:array<string,mixed>} */
     public function export(): array
     {
         return ['lines' => array_values($this->lines), 'meta' => $this->meta];

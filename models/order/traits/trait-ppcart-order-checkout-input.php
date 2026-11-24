@@ -51,7 +51,7 @@ trait PPCart_Order_Checkout_Input
     }
 
     /**
-     * Compute the order totals from its items. Buy now and cart checkout share this tail.
+     * Compute the order totals from its items.
      *
      * @param object|null $product The checkout product. Null for a cart order.
      */
@@ -88,8 +88,8 @@ trait PPCart_Order_Checkout_Input
 
         $this->first_name        = sanitize_text_field($posted['first_name'] ?? '');
         $this->last_name         = sanitize_text_field($posted['last_name'] ?? '');
-        $this->firstname         = $this->first_name; // backwards compatibility
-        $this->lastname          = $this->last_name; // backwards compatibility
+        $this->firstname         = $this->first_name;
+        $this->lastname          = $this->last_name;
         $this->customer_name     = $this->first_name . ' ' . $this->last_name;
         $this->customer_id       = sanitize_text_field($posted['customerId'] ?? '');
         $this->phone             = sanitize_text_field($posted['phone'] ?? '');

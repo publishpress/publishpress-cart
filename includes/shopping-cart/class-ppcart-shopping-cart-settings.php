@@ -79,7 +79,6 @@ final class PPCart_Shopping_Cart_Settings
         return [
             'type' => $type,
             'message' => wp_kses_post(ppcart_personalize($this->option('_ppcart_cart_confirmation_message'), $order->get_data())),
-            // Like Buy now, a merchant redirect URL never carries the order access token.
             'url' => $redirect ?: ($url ? PPCart_Order::confirmation_url($url, $order->id) : ''),
         ];
     }

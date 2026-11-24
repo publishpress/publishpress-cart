@@ -301,7 +301,6 @@ export function mountShoppingCartCheckout(form, paymentAdapter = stripePaymentAd
             const data = Object.fromEntries(new FormData(form));
             const sent = JSON.stringify(data);
             const place = async () => {
-                // A declined payment pays the same order again. A changed form or cart places a new order.
                 if (!placed || placed.sent !== sent) {
                     const result = await requestShoppingCart('POST', '/checkout', data);
                     channel?.postMessage('changed');
@@ -339,7 +338,6 @@ async function settlePendingOrder(node) {
         await requestShoppingCart('POST', '/checkout/confirm', { order_id: Number(node.dataset.ppcartPendingOrder), token: node.dataset.ppcartPendingToken });
         window.location.reload();
     } catch (error) {
-        // The page keeps its waiting notice. The gateway webhook can still complete the order.
     }
 }
 

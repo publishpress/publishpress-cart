@@ -31,7 +31,6 @@ $temp_token     = isset($post_data['ppcart_temp_order_token']) && is_string($pos
 $response = $this->sanitize_order_status_response();
 
 $response_order_id = isset($response['order_id']) ? absint($response['order_id']) : 0;
-// A cart order is settled by the cart checkout, which reads the payment from Stripe.
 if ($response_order_id && ppcart_order_is_shopping_cart(new PPCart_Order($response_order_id))) {
     wp_send_json_error([ 'error' => __('Invalid Request', 'publishpress-cart') ]);
 }

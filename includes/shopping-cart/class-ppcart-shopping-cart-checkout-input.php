@@ -4,11 +4,6 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-/**
- * The cart checkout form after parsing. It holds the customer fields the Cart
- * settings declare, the cart revision the buyer saw, and the pay method.
- * It never holds a product, an item, or an amount.
- */
 final readonly class PPCart_Shopping_Cart_Checkout_Input
 {
     /** @param array<string,string> $customer */
@@ -63,7 +58,7 @@ final readonly class PPCart_Shopping_Cart_Checkout_Input
         return $this->seen_revision;
     }
 
-    /** @return array<string,string> Keys that PPCart_Order reads from a checkout form. */
+    /** @return array<string,string> */
     public function customer(): array
     {
         return $this->customer;

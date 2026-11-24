@@ -12,7 +12,6 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
 
     private int $course;
 
-    /** @var array<string,list<mixed>> */
     private array $seen = [];
 
     protected function setUp(): void
@@ -36,13 +35,11 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         }
         add_action('ppcart_order_after_primary_integration_action', function ($action, $status, $info, $type, $event, $order): void {
             $this->seen['primary'][] = [$action, $type];
-            // The same guard and replay as the Pro bump callback.
             if ('main' !== $type) {
                 return;
             }
             foreach ($order->get_items() ?: [] as $item) {
                 if ($info['product_id'] != $item->product_id) {
-                    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
                     do_action($action, $status, ['product_id' => $item->product_id, 'order_type' => 'bump'] + $info, 'bump');
                 }
             }
@@ -94,7 +91,6 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         ppcart_store_stripe_owned_record($order);
     }
 
-    /** @return list<array{0:int,1:string}> */
     private function downloads(int $orderId): array
     {
         global $wpdb;

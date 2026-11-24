@@ -154,7 +154,6 @@ function ppcart_personalize($str, $order_info, $filter = false, $include_order_d
         $replacements['product_list'] = esc_html($replacements['product_name']);
         $replacements['product_inline_list'] = esc_html($replacements['product_name']);
 
-        // The data of a cart order lists every item. The context of one item lists that item.
         if (ppcart_order_is_shopping_cart($order_info) && ! isset($order_info['shopping_cart_item_id'])) {
             $cart_products = [];
             $cart_plans = [];

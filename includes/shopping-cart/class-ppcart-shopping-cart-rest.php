@@ -110,7 +110,6 @@ final class PPCart_Shopping_Cart_Rest
         return new WP_Error('rest_cookie_invalid_nonce', __('Your session expired. Please try again.', 'publishpress-cart'), ['status' => 403]);
     }
 
-    /** Give a cart error its HTTP status and the current cart, so the client redraws without a second request. */
     public function error_response(WP_Error $error, WP_REST_Request $request): WP_Error
     {
         $data = (array) $error->get_error_data();

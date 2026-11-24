@@ -91,7 +91,6 @@ trait PPCart_Paypal_Requests_Trait
             $settings = new PPCart_Shopping_Cart_Settings();
             $ppcart_order->cancel_url = $settings->urls()['checkout'];
             $confirmation = $settings->confirmation($ppcart_order);
-            // PayPal returns to this site, which verifies the payment and then sends the buyer on, as Buy now does.
             $return_url = 'page' === $confirmation['type']
                 ? $confirmation['url']
                 : PPCart_Order::confirmation_url($ppcart_order->page_url ?: $ppcart_order->cancel_url, $order_id);

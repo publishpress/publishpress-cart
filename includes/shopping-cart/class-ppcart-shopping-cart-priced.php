@@ -43,7 +43,6 @@ final readonly class PPCart_Shopping_Cart_Priced
         return number_format($amount, self::decimals(), '.', '');
     }
 
-    /** The Store stamps the row identity after its write. Prices stay those of validate(). */
     public function committed_as(int $cart_id, int $revision): self
     {
         return new self($cart_id, $revision, $this->lines, $this->notices, $this->meta, $this->changed, $this->currency);

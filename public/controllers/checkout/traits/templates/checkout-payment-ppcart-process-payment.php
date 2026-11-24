@@ -56,7 +56,6 @@ if (! ppcart_checkout_completion_allowed($order_id, $completion_context, [])) {
 
 $order_info = (array) ppcart_setup_order($order_id);
 
-// A cart order has no product page step and no upsell. Cart checkout shows its own confirmation.
 if (ppcart_order_is_shopping_cart($order_info)) {
     return;
 }

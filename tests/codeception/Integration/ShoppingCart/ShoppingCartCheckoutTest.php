@@ -18,7 +18,6 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
 
     private int $completed = 0;
 
-    /** @var array<string,mixed> */
     private array $globals = [];
 
     protected function setUp(): void
@@ -35,7 +34,6 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         update_option('_ppcart_stripe_connect_account_id_test', 'acct_cartqa');
 
         $this->stripe = new class {
-            /** @var list<array{0:array,1:array}> */
             public array $created = [];
             public string $status = 'requires_payment_method';
             public ?string $error = null;
@@ -96,7 +94,6 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         return $this->add($this->course, 'team');
     }
 
-    /** @return \WP_REST_Response|\WP_Error */
     private function checkout(array $body)
     {
         $request = new \WP_REST_Request('POST', '/ppcart/v1/cart/checkout');
@@ -105,7 +102,6 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         return $this->controller()->checkout($request);
     }
 
-    /** @return \WP_REST_Response|\WP_Error */
     private function confirm(int $orderId, string $token)
     {
         $request = new \WP_REST_Request('POST', '/ppcart/v1/cart/checkout/confirm');

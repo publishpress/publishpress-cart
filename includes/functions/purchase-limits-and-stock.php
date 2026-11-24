@@ -50,7 +50,7 @@ function ppcart_get_customer_product_orders(int $product_id, array $customer, $l
 }
 
 /**
- * The purchase limit of one product. Buy now and cart checkout share this rule.
+ * The purchase limit of one product.
  *
  * @param int                                $product_id Product ID.
  * @param array{user_id?:int,email?:string} $customer   The buyer. A missing user_id means the current user.

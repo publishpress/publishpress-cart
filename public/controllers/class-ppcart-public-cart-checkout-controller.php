@@ -4,9 +4,6 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Cart checkout: the form, the order built from the claimed cart, the payment, and the confirmation.
- */
 final class PPCart_Public_Cart_Checkout_Controller
 {
     public function __construct(
@@ -76,7 +73,6 @@ final class PPCart_Public_Cart_Checkout_Controller
         return rest_ensure_response($payment + $this->result($order, $request));
     }
 
-    /** The gateway confirms payment through a server read. Browser status fields are ignored. */
     public function confirm(WP_REST_Request $request): WP_REST_Response|WP_Error
     {
         $order_id = absint($request['order_id']);
@@ -101,7 +97,6 @@ final class PPCart_Public_Cart_Checkout_Controller
         return rest_ensure_response(['status' => 'paid'] + $this->result($order, $request));
     }
 
-    /** The checkout block with source Cart and [ppcart_cart_checkout] print this. */
     public function render(array $attributes = [], bool $preview = false): string
     {
         if (! $this->settings->enabled()) {
@@ -144,7 +139,7 @@ final class PPCart_Public_Cart_Checkout_Controller
         ]);
     }
 
-    /** @return array<string,string> Pay methods a buyer can choose, with their labels. A free order needs none. */
+    /** @return array<string,string> */
     public function payment_methods(): array
     {
         $methods = [];
@@ -161,8 +156,6 @@ final class PPCart_Public_Cart_Checkout_Controller
     }
 
     /**
-     * Store the order and start its payment. The amount is the total of the stored order.
-     *
      * @return array|WP_Error Gateway instructions for the browser, or a payment error.
      */
     private function pay(PPCart_Order $order, string $method): array|WP_Error
@@ -201,7 +194,6 @@ final class PPCart_Public_Cart_Checkout_Controller
         ];
     }
 
-    /** What the browser needs after the order exists: where to go, and the cart as it is now. */
     private function result(PPCart_Order $order, WP_REST_Request $request): array
     {
         $confirmation = $this->settings->confirmation($order);

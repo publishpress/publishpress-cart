@@ -201,7 +201,6 @@ final class PPCart_Shopping_Cart_Store
         return $this->absorb($user, $guest);
     }
 
-    /** Merge $source into $target, then delete $source. The source row stays when the merge did not commit. */
     private function absorb(object $target, object $source): ?object
     {
         global $wpdb;
@@ -280,7 +279,7 @@ final class PPCart_Shopping_Cart_Store
         return $wpdb->get_row($wpdb->prepare('SELECT * FROM %i WHERE cart_key = %s AND user_id = 0 AND expires_at >= %s', self::table(), $cart_key, gmdate('Y-m-d H:i:s')));
     }
 
-    /** @return list<object> Oldest first. */
+    /** @return list<object> */
     private function user_rows(int $user_id): array
     {
         global $wpdb;
@@ -309,7 +308,6 @@ final class PPCart_Shopping_Cart_Store
         return 1 === preg_match('/^[A-Za-z0-9]{32}$/', $cart_key) ? $cart_key : '';
     }
 
-    /** A cart with lines keeps both cookies. A cart without lines, or no cart, removes them. */
     private function send_cookies(string $cart_key, int $count): void
     {
         $keep = $count > 0 && '' !== $cart_key;

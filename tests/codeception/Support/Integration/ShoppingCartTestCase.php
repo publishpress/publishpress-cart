@@ -41,7 +41,6 @@ abstract class ShoppingCartTestCase extends WPTestCase
         return new \PPCart_Shopping_Cart_Store();
     }
 
-    /** @return \PPCart_Shopping_Cart_Priced|\WP_Error */
     protected function add(int $productId, string $planId = 'personal')
     {
         return $this->store()->update(static fn (\PPCart_Shopping_Cart $cart) => $cart->add_item($productId, $planId), true);
@@ -59,7 +58,6 @@ abstract class ShoppingCartTestCase extends WPTestCase
         return (int) $wpdb->get_var($wpdb->prepare('SELECT COUNT(*) FROM %i', \PPCart_Shopping_Cart_Store::table()));
     }
 
-    /** @return list<string> */
     protected function keys(\PPCart_Shopping_Cart_Priced $cart): array
     {
         return array_map(static fn (\PPCart_Shopping_Cart_Priced_Line $line): string => $line->key, $cart->lines);

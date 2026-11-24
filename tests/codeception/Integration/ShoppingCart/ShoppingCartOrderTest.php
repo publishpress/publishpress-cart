@@ -26,7 +26,6 @@ class ShoppingCartOrderTest extends ShoppingCartTestCase
         parent::tearDown();
     }
 
-    /** @return array{0:int,1:int,2:\PPCart_Shopping_Cart_Priced} */
     private function twoLineCart(): array
     {
         $toolkit = $this->product('Writer Toolkit');
