@@ -89,7 +89,13 @@ export function applyShoppingCartResponse(response, root = document) {
     const panel = overlay();
     if (panel && response.fragments?.drawer) {
         const hadFocus = panel.contains(document.activeElement);
-        panel.innerHTML = response.fragments.drawer;
+        const template = document.createElement('template');
+        template.innerHTML = response.fragments.drawer;
+        const next = template.content.querySelector('[data-ppcart-drawer]');
+        const current = panel.querySelector('[data-ppcart-drawer]');
+        // A new drawer element would replay the slide-in animation, so refresh only its contents.
+        if (current && next) current.replaceChildren(...next.childNodes);
+        else panel.replaceChildren(template.content);
         if (!panel.hidden && hadFocus) panel.querySelector('[data-ppcart-close-drawer]')?.focus();
     }
     if (response.fragments?.checkout) {
