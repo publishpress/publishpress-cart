@@ -4,6 +4,8 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+const PPCART_CHECKOUT_TYPE_CART = 'cart';
+
 function ppcart_product_shows_in_shop(int $product_id): bool
 {
     return 'no' !== get_post_meta($product_id, '_ppcart_show_in_shop', true);
@@ -37,7 +39,7 @@ function ppcart_shopping_cart_set_meta(string $key, mixed $value): PPCart_Shoppi
  */
 function ppcart_order_is_shopping_cart(array|object $order): bool
 {
-    return 'cart' === (is_array($order) ? ($order['checkout_type'] ?? null) : ($order->checkout_type ?? null));
+    return PPCART_CHECKOUT_TYPE_CART === (is_array($order) ? ($order['checkout_type'] ?? null) : ($order->checkout_type ?? null));
 }
 
 /**
@@ -86,7 +88,7 @@ function ppcart_shopping_cart_order_contexts(array $order_data): array
             'product_name'          => $item->product_name,
             'item_name'             => $item->price_name,
             'order_type'            => 'main',
-            'checkout_type'         => 'cart',
+            'checkout_type'         => PPCART_CHECKOUT_TYPE_CART,
             'shopping_cart_item_id' => (int) $item->id,
         ]);
     }
@@ -133,7 +135,7 @@ function ppcart_get_shopping_cart_orders_with_item(array $query_args, int $produ
     $items = $wpdb->prepare($sql, $values);
     $where = static fn (string $clauses): string => $clauses . " AND {$wpdb->posts}.ID IN ({$items})";
 
-    $cart_order = ['key' => ppcart_meta_key('checkout_type'), 'value' => 'cart'];
+    $cart_order = ['key' => ppcart_meta_key('checkout_type'), 'value' => PPCART_CHECKOUT_TYPE_CART];
     // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- A cart order is identified by its checkout type.
     $query_args['meta_query'] = isset($query_args['meta_query']) ? ['relation' => 'AND', $cart_order, $query_args['meta_query']] : [$cart_order];
     add_filter('posts_where', $where);

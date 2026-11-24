@@ -139,7 +139,7 @@ function ppcart_trigger_integrations($status, $order_info)
             // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound -- Every possible value is a canonical ppcart_* hook selected above.
             do_action($action, $status, $order_info, $order_type);
 
-            $primary_order_type = ppcart_order_is_shopping_cart($order_info) ? 'cart' : $order_type;
+            $primary_order_type = ppcart_order_is_shopping_cart($order_info) ? PPCART_CHECKOUT_TYPE_CART : $order_type;
             do_action('ppcart_order_after_primary_integration_action', $action, $status, $order_info, $primary_order_type, $event_type, $order, $renewal_types);
         }
     }

@@ -300,7 +300,7 @@ Order attributes:
 
 `checkout_type`, `shopping_cart_id`, and `shopping_cart_lines` join the constructor defaults with the default `null`. So they are in `attrs` and `get_data()` returns them. A Buy now order keeps `null`, writes no new meta, and reads as a product order.
 
-**Rule.** Code identifies a cart order only with `ppcart_order_is_shopping_cart( $order_or_data )`, which checks `checkout_type === 'cart'`. Code never treats an empty `product_id` as a cart order.
+**Rule.** Code identifies a cart order only with `ppcart_order_is_shopping_cart( $order_or_data )`, which checks `checkout_type === PPCART_CHECKOUT_TYPE_CART`. That constant holds `'cart'` and lives in `includes/shopping-cart/functions-shopping-cart.php`. Every read or write of the checkout type uses it: the order attribute, the Stripe metadata `ppcart_checkout_type`, and the `$order_type` of the after-primary action. The block source `pid` and the synthetic plan `option_id` are other values that also read `'cart'`, and they keep their own literal. Code never treats an empty `product_id` as a cart order.
 
 **Plan rehydration.** `ppcart_setup_order()` overwrites `plan` at `includes/functions/product-and-order-setup.php:315` and `:364` with `ppcart_plan( $option_id, … )`. For `option_id = 'cart'` that returns no plan. Both sites call one helper, `ppcart_shopping_cart_order_plan( array $arr ): ?object`, that returns the synthetic plan when `checkout_type === 'cart'`. `PPCart_Order` itself reads `plan` from meta (`models/templates/ppcart-order-initialize.php:27-39`) and needs no change for it.
 

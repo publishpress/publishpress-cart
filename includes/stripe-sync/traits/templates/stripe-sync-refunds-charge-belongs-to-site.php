@@ -18,7 +18,7 @@ if (self::metadata($charge, 'ppcart_product_id') || self::get($charge, 'invoice'
     return true;
 }
 
-if ('cart' === self::metadata($charge, 'ppcart_checkout_type')) {
+if (PPCART_CHECKOUT_TYPE_CART === self::metadata($charge, 'ppcart_checkout_type')) {
     return (bool) self::find_order_for_charge($charge);
 }
 

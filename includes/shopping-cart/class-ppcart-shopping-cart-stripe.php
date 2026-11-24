@@ -53,7 +53,7 @@ final class PPCart_Shopping_Cart_Stripe
             'description'          => sprintf(_n('Order #%1$d (%2$d item)', 'Order #%1$d (%2$d items)', $items, 'publishpress-cart'), $order->id, $items),
             'payment_method_types' => ['card', 'link'],
             'metadata'             => [
-                'ppcart_checkout_type' => 'cart',
+                'ppcart_checkout_type' => PPCART_CHECKOUT_TYPE_CART,
                 'ppcart_order_id'      => $order->id,
                 'ppcart_item_count'    => $items,
                 'origin'               => get_site_url(),

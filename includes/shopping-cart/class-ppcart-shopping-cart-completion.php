@@ -8,7 +8,7 @@ final class PPCart_Shopping_Cart_Completion
 {
     public static function remove_paid_lines(string $action, string $status, array $order_info, string $order_type): void
     {
-        if ('cart' !== $order_type) {
+        if (PPCART_CHECKOUT_TYPE_CART !== $order_type) {
             return;
         }
         $cash_on_delivery = 'ppcart_order_pending' === $action && 'cod' === ($order_info['pay_method'] ?? '');

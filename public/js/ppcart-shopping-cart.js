@@ -338,6 +338,8 @@ async function settlePendingOrder(node) {
         await requestShoppingCart('POST', '/checkout/confirm', { order_id: Number(node.dataset.ppcartPendingOrder), token: node.dataset.ppcartPendingToken });
         window.location.reload();
     } catch (error) {
+        // The buyer needs no message: a webhook still settles the order.
+        console.error(error);
     }
 }
 

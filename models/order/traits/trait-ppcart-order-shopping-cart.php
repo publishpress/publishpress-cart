@@ -15,7 +15,7 @@ trait PPCart_Order_Shopping_Cart
     public function load_from_shopping_cart(PPCart_Shopping_Cart_Priced $cart, array $customer): void
     {
         $this->items = [];
-        $this->checkout_type = 'cart';
+        $this->checkout_type = PPCART_CHECKOUT_TYPE_CART;
         $this->product_id = 0;
         $this->option_id = 'cart';
         $this->plan_id = 'cart';
@@ -28,7 +28,7 @@ trait PPCart_Order_Shopping_Cart
         }
         $this->product_name = $name;
         $this->item_name = $name;
-        $this->plan = ppcart_shopping_cart_order_plan(['checkout_type' => 'cart', 'item_name' => $name, 'amount' => $cart->subtotal()]);
+        $this->plan = ppcart_shopping_cart_order_plan(['checkout_type' => PPCART_CHECKOUT_TYPE_CART, 'item_name' => $name, 'amount' => $cart->subtotal()]);
         $this->shopping_cart_id = $cart->cart_id;
         $this->shopping_cart_lines = $cart->paid_lines();
 
