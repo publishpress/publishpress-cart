@@ -14,6 +14,10 @@ if (! defined('ABSPATH')) {
  */
 function ppcart_get_items_from_legacy_order($order, $qty_col = true)
 {
+    if (ppcart_order_is_shopping_cart($order)) {
+        return [];
+    }
+
     $items = [];
     $order_plan = $order->plan ?? null;
     $subscription_id = $order->subscription_id ?? 0;

@@ -51,6 +51,9 @@ $this->initialize(
     'quantity'          => 1,
     'shipping_amount'   => 0.00,
     'shipping_tax'      => 0.00,
+    'checkout_type'     => null,
+    'shopping_cart_id'  => null,
+    'shopping_cart_lines' => null,
       ],
     // shared child order keys
     [

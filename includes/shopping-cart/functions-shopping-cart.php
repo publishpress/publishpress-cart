@@ -30,6 +30,70 @@ function ppcart_shopping_cart_set_meta(string $key, mixed $value): PPCart_Shoppi
 }
 
 /**
+ * Whether an order came from cart checkout. This is the only test for it:
+ * an empty product_id never means a cart order.
+ *
+ * @param array|object $order Order data, a PPCart_Order, or a ppcart_setup_order() result.
+ */
+function ppcart_order_is_shopping_cart(array|object $order): bool
+{
+    return 'cart' === (is_array($order) ? ($order['checkout_type'] ?? null) : ($order->checkout_type ?? null));
+}
+
+/**
+ * The plan of a cart order. A cart order has no product plan, so code that reads
+ * the order plan gets this one-time plan for the whole order.
+ *
+ * @param array $order_data Order data with checkout_type, item_name and amount.
+ */
+function ppcart_shopping_cart_order_plan(array $order_data): ?object
+{
+    if (! ppcart_order_is_shopping_cart($order_data)) {
+        return null;
+    }
+    $total = (float) ($order_data['amount'] ?? 0);
+    return (object) [
+        'type'            => 'one-time',
+        'option_id'       => 'cart',
+        'name'            => (string) ($order_data['item_name'] ?? ''),
+        'stripe_id'       => '',
+        'price'           => $total,
+        'initial_payment' => $total,
+    ];
+}
+
+/**
+ * One context for each main item of a cart order: the order data with the
+ * product fields of that item. A context is input for per-product work only.
+ * It is never stored as an order and never passed to an order status hook.
+ *
+ * @param array $order_data Data of the cart order.
+ * @return list<array>
+ */
+function ppcart_shopping_cart_order_contexts(array $order_data): array
+{
+    $contexts = [];
+    foreach (PPCart_Order_Item::get_order_items($order_data['ID'] ?? 0) ?: [] as $item) {
+        if ('main' !== $item->item_type) {
+            continue;
+        }
+        $contexts[] = array_merge($order_data, [
+            'product_id'            => (int) $item->product_id,
+            'option_id'             => $item->price_id,
+            'plan_id'               => $item->price_id,
+            'amount'                => (float) $item->total_amount,
+            'quantity'              => (int) $item->quantity,
+            'product_name'          => $item->product_name,
+            'item_name'             => $item->price_name,
+            'order_type'            => 'main',
+            'checkout_type'         => 'cart',
+            'shopping_cart_item_id' => (int) $item->id,
+        ]);
+    }
+    return $contexts;
+}
+
+/**
  * Query the cart orders that hold a product as a main item.
  *
  * @param array    $query_args get_posts() arguments. A meta_query is combined with the cart order clause.

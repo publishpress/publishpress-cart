@@ -312,7 +312,7 @@ function ppcart_setup_order($id, $array = false)
 
     // add Cart plan to order info
     $option_id = $arr['option_id'] ?? $arr['plan_id'] ?? '';
-    $arr['plan'] = ppcart_plan($option_id, isset($arr['on_sale']), $arr['product_id']);
+    $arr['plan'] = ppcart_shopping_cart_order_plan($arr) ?? ppcart_plan($option_id, isset($arr['on_sale']), $arr['product_id']);
     if (ppcart_is_subscription_post_type(get_post_type($arr['ID'])) && $arr['plan'] && $arr['plan']->type == 'recurring') {
         if ((!isset($arr['sub_end_date']) && $arr['sub_installments'] > 1) || (isset($arr['sub_end_date']) && $arr['sub_end_date'] == '1970-01-01')) {
             if ($arr['sub_installments'] > 1) {
@@ -361,7 +361,7 @@ function ppcart_setup_order($id, $array = false)
     }
 
     // add Cart plan to order info
-    $arr['plan'] = ppcart_plan($option_id, isset($arr['on_sale']), $arr['product_id']);
+    $arr['plan'] = ppcart_shopping_cart_order_plan($arr) ?? ppcart_plan($option_id, isset($arr['on_sale']), $arr['product_id']);
 
     if (ppcart_is_subscription_post_type(get_post_type($arr['ID'])) && $arr['plan'] && $arr['plan']->type == 'recurring') {
         if (isset($arr['sub_end_date']) && $arr['sub_end_date'] == '1970-01-01') {
