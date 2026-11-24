@@ -14,6 +14,7 @@ require_once __DIR__ . '/class-ppcart-shopping-cart.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-store.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-view.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-rest.php';
+require_once __DIR__ . '/class-ppcart-shopping-cart-completion.php';
 require_once __DIR__ . '/class-ppcart-shop.php';
 require_once __DIR__ . '/class-ppcart-shopping-cart-product-settings.php';
 
@@ -26,3 +27,4 @@ add_filter('rest_authentication_errors', [$ppcart_shopping_cart_rest, 'authentic
 add_filter('rest_post_dispatch', [$ppcart_shopping_cart_rest, 'send_no_store'], 10, 3);
 add_action('wp_login', [new PPCart_Shopping_Cart_Store(), 'merge_on_login'], 10, 2);
 add_action('ppcart_shopping_cart_cleanup', [PPCart_Shopping_Cart_Store::class, 'delete_expired']);
+add_action('ppcart_order_after_primary_integration_action', [PPCart_Shopping_Cart_Completion::class, 'remove_paid_lines'], 10, 4);

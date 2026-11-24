@@ -94,6 +94,25 @@ function ppcart_shopping_cart_order_contexts(array $order_data): array
 }
 
 /**
+ * Revenue of a cart order for each product it holds. Empty for a Buy now order.
+ *
+ * @return array<int,float>
+ */
+function ppcart_shopping_cart_order_revenue(PPCart_Order $order): array
+{
+    $revenue = [];
+    if (! ppcart_order_is_shopping_cart($order)) {
+        return $revenue;
+    }
+    foreach ($order->get_items() ?: [] as $item) {
+        if ('main' === $item->item_type) {
+            $revenue[(int) $item->product_id] = ($revenue[(int) $item->product_id] ?? 0) + (float) $item->total_amount;
+        }
+    }
+    return $revenue;
+}
+
+/**
  * Query the cart orders that hold a product as a main item.
  *
  * @param array    $query_args get_posts() arguments. A meta_query is combined with the cart order clause.
