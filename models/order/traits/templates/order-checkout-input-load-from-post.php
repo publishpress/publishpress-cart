@@ -35,21 +35,7 @@ if ($this->coupon) {
     do_action('ppcart_order_after_apply_cart_coupon', $this, $posted);
 }
 
-do_action('ppcart_order_pre_calculate_tax', $this);
-
-$this->calculate_pre_tax_amount_from_items();
-$this->calculate_tax_amount_from_items();
-$this->calculate_total_amount_from_items();
-
-$this->invoice_subtotal = $this->pre_tax_amount;
-
-$this->amount = apply_filters('ppcart_charge_amount', $this->amount, $ppcart_product);
-$this->non_formatted_amount = $this->amount;
-$this->amount = $this->amount;
-$this->invoice_total = $this->amount;
-
-// setup order_summary_items for checkout form
-$this->calculate_final_amounts();
+$this->finalize_amounts($ppcart_product);
 
 // end order setup
 do_action('ppcart_after_load_from_post', $this, $posted);
