@@ -23,6 +23,11 @@
       "type": "string",
       "default": "date"
     },
+    "pagination": {
+      "type": "string",
+      "enum": ["numbers", "prev_next", "load_more", "none"],
+      "default": "numbers"
+    },
     "categories": {
       "type": "array",
       "default": []

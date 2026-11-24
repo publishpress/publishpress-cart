@@ -93,6 +93,16 @@ group.
 The cart keeps one of each product and plan. To buy one product with two plans,
 the visitor adds each plan.
 
+The **Pagination** setting of the **Cart Shop** block sets how visitors see
+more products:
+
+| Pagination | What the visitor sees |
+|------------|-----------------------|
+| **Page numbers** | Numbered page buttons with **Previous** and **Next** |
+| **Previous and next** | **Previous** and **Next** buttons and the page number |
+| **Load more button** | A **Load more products** button that adds the next products below the grid |
+| **Show all products** | All products on one page, with no pagination |
+
 To remove the **Subscribe** cards from the Shop, turn off **Include
 subscription products** in the **Cart Shop** block settings. A product that has
 a subscription plan and a one-time plan stays in the Shop, because its one-time

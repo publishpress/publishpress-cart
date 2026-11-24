@@ -108,6 +108,7 @@ the pages, read [Set up the Shop and the Cart](../shop-and-cart.md).
 | `perpage` | `12` | Products on each page, from 1 to 100 |
 | `columns` | `3` | Columns, from 1 to 4 |
 | `orderby` | `date` | `date`, `title`, `price`, or `menu_order` |
+| `pagination` | `numbers` | `numbers` (page numbers), `prev_next` (Previous and Next links), `load_more` (a **Load more products** button), or `none` (all products on one page) |
 | `categories` | All | Product category IDs, separated by commas |
 | `tags` | All | Product tag IDs, separated by commas |
 | `showimage` | `true` | `false` hides the product image |

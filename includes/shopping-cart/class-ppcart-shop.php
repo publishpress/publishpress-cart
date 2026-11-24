@@ -6,6 +6,8 @@ if (! defined('ABSPATH')) {
 
 final class PPCart_Shop
 {
+    public const PAGINATION = ['numbers', 'prev_next', 'load_more', 'none'];
+
     public function normalize_attributes(array $attributes): array
     {
         $attributes = array_change_key_case($attributes, CASE_LOWER);
@@ -13,6 +15,7 @@ final class PPCart_Shop
             'perPage' => min(100, max(1, absint($attributes['perpage'] ?? 12))),
             'columns' => min(4, max(1, absint($attributes['columns'] ?? 3))),
             'orderBy' => in_array($attributes['orderby'] ?? '', ['date', 'title', 'price', 'menu_order'], true) ? $attributes['orderby'] : 'date',
+            'pagination' => in_array($attributes['pagination'] ?? '', self::PAGINATION, true) ? $attributes['pagination'] : 'numbers',
             'styleSettings' => is_array($attributes['stylesettings'] ?? null) ? $attributes['stylesettings'] : [],
         ];
         foreach (['showImage', 'showExcerpt', 'showPrice', 'includeCollections', 'includeSubscriptions'] as $key) {
@@ -39,7 +42,11 @@ final class PPCart_Shop
         ];
         $sort_by_price = 'price' === $attributes['orderBy'];
         $hide_subscriptions = ! $attributes['includeSubscriptions'];
-        if ($sort_by_price || $hide_subscriptions) {
+        $show_all = 'none' === $attributes['pagination'];
+        if ($show_all) {
+            $args['paged'] = 1;
+        }
+        if ($sort_by_price || $hide_subscriptions || $show_all) {
             // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- Plan prices and types are serialized and filterable; sort and filter the complete offers before applying pagination.
             $args['posts_per_page'] = -1;
         }
@@ -61,7 +68,7 @@ final class PPCart_Shop
             ['key' => '_ppcart_show_in_shop', 'value' => 'no', 'compare' => '!='],
         ]];
         $query = new WP_Query($args);
-        if ($sort_by_price || $hide_subscriptions) {
+        if ($sort_by_price || $hide_subscriptions || $show_all) {
             $catalog = new PPCart_Shopping_Cart_Catalog();
             if ($hide_subscriptions) {
                 $query->posts = array_values(array_filter($query->posts, static fn ($product) => ! $catalog->sells_by_subscription_only($product->ID)));
@@ -74,8 +81,10 @@ final class PPCart_Shop
                 usort($query->posts, static fn ($a, $b) => ($prices[$a->ID] <=> $prices[$b->ID]) ?: ($a->ID <=> $b->ID));
             }
             $query->found_posts = count($query->posts);
-            $query->max_num_pages = (int) ceil($query->found_posts / $attributes['perPage']);
-            $query->posts = array_slice($query->posts, ($args['paged'] - 1) * $attributes['perPage'], $attributes['perPage']);
+            $query->max_num_pages = $show_all ? 1 : (int) ceil($query->found_posts / $attributes['perPage']);
+            if (! $show_all) {
+                $query->posts = array_slice($query->posts, ($args['paged'] - 1) * $attributes['perPage'], $attributes['perPage']);
+            }
             $query->post_count = count($query->posts);
         }
         return $query;
@@ -98,18 +107,33 @@ final class PPCart_Shop
         foreach ($tokens as $key => $value) {
             $style .= $key . ':' . $value . ';';
         }
-        $previous_query = $GLOBALS['wp_query'];
-        // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Core pagination reads the active query; restore it immediately after rendering.
-        $GLOBALS['wp_query'] = $query;
-        ob_start();
-        try {
-            the_posts_pagination(['mid_size' => 1]);
-            $pagination = ob_get_contents();
-        } finally {
-            ob_end_clean();
-            // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Restore the caller's query after core pagination.
-            $GLOBALS['wp_query'] = $previous_query;
-        }
+        $pagination = $this->pagination($attributes['pagination'], (int) $query->get('paged') ?: 1, (int) $query->max_num_pages);
         return ppcart_get_template('shopping-cart/shop', '', compact('attributes', 'cards', 'style', 'pagination'));
+    }
+
+    private function pagination(string $style, int $current, int $total): array
+    {
+        if ($total < 2 || 'none' === $style) {
+            return ['style' => 'none'];
+        }
+        $current = min(max(1, $current), $total);
+        $pages = [
+            'style'    => $style,
+            'current'  => $current,
+            'total'    => $total,
+            'previous' => $current > 1 ? get_pagenum_link($current - 1) : '',
+            'next'     => $current < $total ? get_pagenum_link($current + 1) : '',
+            'links'    => [],
+        ];
+        if ('numbers' === $style) {
+            $pages['links'] = (array) paginate_links([
+                'type'      => 'array',
+                'current'   => $current,
+                'total'     => $total,
+                'mid_size'  => 1,
+                'prev_next' => false,
+            ]);
+        }
+        return $pages;
     }
 }

@@ -171,6 +171,45 @@ class ShopTest extends WPTestCase
     }
 
     /** @test-id IT-435 */
+    public function test_IT_435_pagination_styles_render_numbers_prev_next_load_more_or_everything(): void
+    {
+        foreach (['A', 'B', 'C'] as $title) {
+            $this->product($title);
+        }
+        $cards = static fn (string $html): int => substr_count($html, 'class="ppcart-shop-card"');
+
+        $html = ppcart_render_shop(['perPage' => 1]);
+        $this->assertSame(1, $cards($html));
+        $this->assertStringContainsString('ppcart-shop-pagination', $html);
+        $this->assertStringContainsString('page-numbers current', $html);
+        $this->assertStringContainsString('rel="next"', $html);
+        $this->assertStringNotContainsString('rel="prev"', $html);
+
+        $html = ppcart_render_shop(['perPage' => 1, 'pagination' => 'prev_next']);
+        $this->assertStringContainsString('Page 1 of 3', $html);
+        $this->assertStringContainsString('rel="next"', $html);
+        $this->assertStringNotContainsString('page-numbers current', $html);
+
+        $html = ppcart_render_shop(['perPage' => 1, 'pagination' => 'load_more']);
+        $this->assertStringContainsString('data-ppcart-load-more', $html);
+        $this->assertStringNotContainsString('ppcart-shop-pagination', $html);
+        set_query_var('paged', 3);
+        $this->assertStringNotContainsString('data-ppcart-load-more', ppcart_render_shop(['perPage' => 1, 'pagination' => 'load_more']));
+        $html = ppcart_render_shop(['perPage' => 1, 'pagination' => 'prev_next']);
+        $this->assertStringContainsString('Page 3 of 3', $html);
+        $this->assertStringContainsString('rel="prev"', $html);
+        $this->assertStringNotContainsString('rel="next"', $html);
+
+        $html = ppcart_render_shop(['perPage' => 1, 'pagination' => 'none']);
+        set_query_var('paged', 0);
+        $this->assertSame(3, $cards($html));
+        $this->assertStringNotContainsString('ppcart-shop-pagination', $html);
+        $this->assertStringNotContainsString('data-ppcart-load-more', $html);
+        $this->assertSame(3, $cards(do_shortcode('[ppcart_shop perpage="1" pagination="none"]')));
+        $this->assertSame(1, $cards(ppcart_render_shop(['perPage' => 1, 'pagination' => 'unknown'])));
+    }
+
+    /** @test-id IT-435 */
     public function test_IT_435_shop_style_ignores_saved_surface_density_and_corners(): void
     {
         $this->product('Styled');

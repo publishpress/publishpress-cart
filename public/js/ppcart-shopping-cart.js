@@ -202,6 +202,32 @@ async function submit(form) {
     }
 }
 
+async function loadMoreProducts(link) {
+    if (link.getAttribute('aria-busy') === 'true') return;
+    const shop = link.closest('.ppcart-shop');
+    const grid = shop?.querySelector('.ppcart-shop-grid');
+    if (!grid) return;
+    const index = Array.from(document.querySelectorAll('.ppcart-shop')).indexOf(shop);
+    link.setAttribute('aria-busy', 'true');
+    try {
+        const response = await fetch(link.href, { credentials: 'same-origin' });
+        if (!response.ok) throw new Error(config.error);
+        const next = new DOMParser().parseFromString(await response.text(), 'text/html').querySelectorAll('.ppcart-shop')[index];
+        const cards = Array.from(next?.querySelectorAll('.ppcart-shop-grid > .ppcart-shop-card') || []).map(card => document.importNode(card, true));
+        if (!cards.length) throw new Error(config.error);
+        grid.append(...cards);
+        cards.forEach(card => card.querySelectorAll('.ppcart-shopping-cart-add').forEach(form => updateCard(form, currentCart)));
+        const more = next.querySelector('.ppcart-shop-load-more');
+        const current = link.closest('.ppcart-shop-load-more');
+        if (more) current.replaceWith(document.importNode(more, true));
+        else current.remove();
+        cards[0].querySelector('h3 a')?.focus();
+    } catch (error) {
+        console.error(error);
+        window.location.assign(link.href);
+    }
+}
+
 export function mountShoppingCart(root = document) {
     if (mounted.has(root)) return;
     mounted.add(root);
@@ -220,6 +246,8 @@ export function mountShoppingCart(root = document) {
     root.addEventListener('click', event => {
         const trigger = event.target.closest('[data-ppcart-open-drawer]');
         if (trigger) { event.preventDefault(); void setShoppingCartDrawerOpen(true, trigger); }
+        const more = event.target.closest('[data-ppcart-load-more]');
+        if (more) { event.preventDefault(); void loadMoreProducts(more); }
         if (event.target.closest('[data-ppcart-close-drawer]') || event.target === overlay()) void setShoppingCartDrawerOpen(false);
     });
     root.addEventListener('keydown', event => {
