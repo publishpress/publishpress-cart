@@ -51,7 +51,7 @@ There is **no** first-party `api/` REST directory.
 | `includes/email/` | Transactional email templates |
 | `includes/order-items/` | Order line items and details renderer |
 | `includes/integrations/gutenberg/` | Checkout and account blocks |
-| `includes/shopping-cart/` | Shop catalog, shopping cart storage and REST (`ppcart/v1/cart`), Shop & Cart settings, cart Stripe payment. Design: [shop-and-cart/architecture.md](shop-and-cart/architecture.md) |
+| `includes/shopping-cart/` | Shop catalog, shopping cart storage and REST (`ppcart/v1/cart`), Shop & Cart settings, cart Stripe payment. |
 | `public/class-ppcart-public.php` | Storefront coordinator (hooks, order-status integrations) |
 | `public/controllers/` | Checkout, account, assets, payment, orders, hosted checkout |
 | `public/class-ppcart-paypal.php` + `public/paypal/` | PayPal checkout. Redirect flow (Payments Standard, IPN, PDT) in the traits. On-page flow (JavaScript SDK popup + REST) in `class-ppcart-paypal-onpage.php`, `class-ppcart-paypal-sync.php`, `class-ppcart-paypal-refund-sync.php`, `class-ppcart-paypal-rest-client.php`, `class-ppcart-paypal-billing-shape.php`, `class-ppcart-paypal-plans.php`, `class-ppcart-paypal-record-lock.php`, `class-ppcart-paypal-webhook.php` |
@@ -133,9 +133,7 @@ not mean a cart order.
 Order status hooks fire once for the parent order. Code that does work for each
 product (integrations, stock, per-product notifications) loops
 `ppcart_shopping_cart_order_contexts( $order_data )`, one context for each main
-item. A context is never stored and never passed to an order status hook. The
-full consumer list is in [shop-and-cart/architecture.md](shop-and-cart/architecture.md)
-section 4.
+item. A context is never stored and never passed to an order status hook.
 
 ## Webhooks
 
