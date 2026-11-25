@@ -43,7 +43,7 @@ $shortcodes = [
         'tag' => 'ppcart_cart_checkout',
         'title' => __('Cart checkout', 'publishpress-cart'),
         'example' => '[ppcart_cart_checkout]',
-        'description' => __('Put this on the Cart checkout page. It shows the checkout form that pays for the whole cart.', 'publishpress-cart'),
+        'description' => __('Put this on the Checkout page. It shows the checkout form that pays for the whole cart.', 'publishpress-cart'),
     ],
     [
         'group' => 'checkout',
