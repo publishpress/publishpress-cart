@@ -210,6 +210,28 @@ class ShoppingCartTest extends ShoppingCartTestCase
     }
 
     /** @test-id IT-445 */
+    public function test_IT_445_stock_caps_a_raised_quantity_limit(): void
+    {
+        $id = $this->product('Writer Toolkit');
+        $key = $id . ':personal';
+        $this->add($id);
+        $catalog = new \PPCart_Shopping_Cart_Catalog();
+        update_post_meta($id, '_ppcart_manage_stock', '1');
+        update_post_meta($id, '_ppcart_limit', '4');
+        $this->assertSame(1, $catalog->max_quantity($id, 'personal'));
+
+        add_filter('ppcart_shopping_cart_item_max_quantity', static fn (): int => 99);
+        $this->assertSame(4, $catalog->max_quantity($id, 'personal'));
+        $this->assertSame('ppcart_cart_quantity_invalid', $this->store()->update(static fn (\PPCart_Shopping_Cart $cart) => $cart->set_quantity($key, 5))->get_error_code());
+        $this->assertSame(4, $this->store()->update(static fn (\PPCart_Shopping_Cart $cart) => $cart->set_quantity($key, 4))->lines[0]->quantity);
+
+        update_post_meta($id, '_ppcart_limit', '0');
+        $this->assertSame(1, $catalog->max_quantity($id, 'personal'));
+        delete_post_meta($id, '_ppcart_manage_stock');
+        $this->assertSame(99, $catalog->max_quantity($id, 'personal'));
+    }
+
+    /** @test-id IT-445 */
     public function test_IT_445_extension_meta_is_stored_and_reserved_keys_are_refused(): void
     {
         $this->assertTrue(ppcart_shopping_cart_set_meta('pro_coupon_code', 'SAVE10')->is_empty());

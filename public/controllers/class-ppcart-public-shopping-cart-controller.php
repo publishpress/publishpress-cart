@@ -23,7 +23,7 @@ final class PPCart_Public_Shopping_Cart_Controller
         }
         $method = isset($_SERVER['REQUEST_METHOD']) ? sanitize_key(wp_unslash($_SERVER['REQUEST_METHOD'])) : '';
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- handle_post validates the operation's nonce before any mutation.
-        if ('post' !== $method || (! isset($_POST['ppcart_add_to_cart']) && ! isset($_POST['ppcart_remove_from_cart']))) {
+        if ('post' !== $method || (! isset($_POST['ppcart_add_to_cart']) && ! isset($_POST['ppcart_remove_from_cart']) && ! isset($_POST['ppcart_cart_quantity_key']))) {
             return;
         }
         ppcart_shopping_cart_nocache();
@@ -39,7 +39,8 @@ final class PPCart_Public_Shopping_Cart_Controller
     public function handle_post(array $post): string|WP_Error
     {
         $adding = isset($post['ppcart_add_to_cart']);
-        $action = $adding ? 'ppcart_add_to_cart' : 'ppcart_remove_from_cart';
+        $quantity = ! $adding && isset($post['ppcart_cart_quantity_key']);
+        $action = $adding ? 'ppcart_add_to_cart' : ($quantity ? 'ppcart_update_cart_quantity' : 'ppcart_remove_from_cart');
         if (! is_string($post['ppcart_shopping_cart_nonce'] ?? null) || ! wp_verify_nonce($post['ppcart_shopping_cart_nonce'], $action)) {
             return new WP_Error('ppcart_cart_invalid_nonce', __('Your session expired. Reload the page and try again.', 'publishpress-cart'));
         }
@@ -51,6 +52,13 @@ final class PPCart_Public_Shopping_Cart_Controller
             $product_id = absint($post['ppcart_add_to_cart']);
             $plan_id = sanitize_text_field($post['plan_id']);
             $cart = $store->update(static fn (PPCart_Shopping_Cart $cart) => $cart->add_item($product_id, $plan_id), true);
+        } elseif ($quantity) {
+            if (! is_string($post['ppcart_cart_quantity_key']) || ! is_scalar($post['ppcart_cart_quantity'] ?? null)) {
+                return new WP_Error('ppcart_cart_invalid_input', __('Choose an item and a quantity.', 'publishpress-cart'));
+            }
+            $key = sanitize_text_field($post['ppcart_cart_quantity_key']);
+            $wanted = (int) $post['ppcart_cart_quantity'];
+            $cart = $store->update(static fn (PPCart_Shopping_Cart $cart) => $cart->set_quantity($key, $wanted));
         } else {
             if (! is_string($post['ppcart_remove_from_cart'] ?? null)) {
                 return new WP_Error('ppcart_cart_invalid_input', __('Choose an item to remove.', 'publishpress-cart'));

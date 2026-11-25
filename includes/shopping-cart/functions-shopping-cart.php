@@ -157,6 +157,7 @@ function ppcart_shopping_cart_assets(): void
         'inCart' => __('✓ In cart', 'publishpress-cart'),
         'added' => __('Added to your cart.', 'publishpress-cart'),
         'removed' => __('Removed from your cart.', 'publishpress-cart'),
+        'quantity' => __('Quantity updated.', 'publishpress-cart'),
         'already' => __('Already in your cart.', 'publishpress-cart'),
         'error' => __('The cart could not be updated. Please try again.', 'publishpress-cart'),
     ]);

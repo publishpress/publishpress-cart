@@ -205,6 +205,28 @@ async function submit(form) {
     }
 }
 
+async function changeQuantity(form, button) {
+    if (!button || button.disabled || form.getAttribute('aria-busy') === 'true') return;
+    const key = form.elements.ppcart_cart_quantity_key.value;
+    const step = button.dataset.ppcartQuantityStep;
+    const scope = form.closest('[data-ppcart-shopping-cart-overlay]') ? overlay() : document.querySelector('[data-ppcart-cart]');
+    form.setAttribute('aria-busy', 'true');
+    try {
+        const response = await requestShoppingCart('PATCH', `/items/${encodeURIComponent(key)}`, { quantity: Number(button.value) });
+        applyShoppingCartResponse(response);
+        channel?.postMessage('changed');
+        announce(config.quantity);
+    } catch (error) {
+        if (error.cart) applyShoppingCartResponse(error.cart);
+        announce(error.message || config.error);
+    } finally {
+        form.removeAttribute('aria-busy');
+    }
+    const control = Array.from(scope?.querySelectorAll('.ppcart-shopping-cart-quantity') || []).find(node => node.elements.ppcart_cart_quantity_key.value === key);
+    const buttons = Array.from(control?.querySelectorAll('button') || []);
+    (buttons.find(node => node.dataset.ppcartQuantityStep === step && !node.disabled) || buttons.find(node => !node.disabled))?.focus();
+}
+
 async function loadMoreProducts(link) {
     if (link.getAttribute('aria-busy') === 'true') return;
     const shop = link.closest('.ppcart-shop');
@@ -237,6 +259,12 @@ export function mountShoppingCart(root = document) {
     readCount(root);
     root.querySelectorAll('.ppcart-shopping-cart-add').forEach(form => updateCard(form, currentCart));
     root.addEventListener('submit', event => {
+        const quantity = event.target.closest('.ppcart-shopping-cart-quantity');
+        if (quantity) {
+            event.preventDefault();
+            void changeQuantity(quantity, event.submitter);
+            return;
+        }
         const form = event.target.closest('.ppcart-shopping-cart-add, .ppcart-shopping-cart-remove');
         if (!form) return;
         event.preventDefault();

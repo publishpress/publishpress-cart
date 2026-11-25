@@ -14,6 +14,7 @@ class ShoppingCartPresentationTest extends ShoppingCartTestCase
             delete_option($option);
         }
         remove_all_actions('ppcart_shopping_cart_after_totals');
+        remove_all_filters('ppcart_shopping_cart_item_max_quantity');
         parent::tearDown();
     }
 
@@ -55,6 +56,49 @@ class ShoppingCartPresentationTest extends ShoppingCartTestCase
         $this->assertSame('false', $options->item(1)->getAttribute('data-ppcart-in-cart'));
         $this->assertStringContainsString('✓ In cart', $html);
         $this->assertStringContainsString('standard:personal', $html);
+    }
+
+    /** @test-id IT-448 */
+    public function test_IT_448_a_line_shows_a_quantity_control_only_when_its_limit_is_above_one(): void
+    {
+        $cartPage = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
+        update_option('_ppcart_cart_page_id', $cartPage);
+        $id = $this->product('Writer Toolkit', [$this->plan('personal', '25')]);
+        $key = $id . ':personal';
+        $this->add($id);
+        $this->assertStringNotContainsString('ppcart-shopping-cart-quantity', ppcart_render_shopping_cart());
+
+        add_filter('ppcart_shopping_cart_item_max_quantity', static fn (): int => 3);
+        $control = function (): array {
+            $document = new \DOMDocument();
+            @$document->loadHTML('<?xml encoding="utf-8" ?>' . ppcart_render_shopping_cart());
+            $xpath = new \DOMXPath($document);
+            $buttons = $xpath->query('//form[contains(@class,"ppcart-shopping-cart-quantity")]//button');
+            return [
+                $xpath->query('//form[contains(@class,"ppcart-shopping-cart-quantity")]//output')->item(0)->textContent,
+                $buttons->item(0)->getAttribute('value'),
+                $buttons->item(0)->hasAttribute('disabled'),
+                $buttons->item(1)->getAttribute('value'),
+                $buttons->item(1)->hasAttribute('disabled'),
+            ];
+        };
+        $this->assertSame(['1', '0', true, '2', false], $control());
+
+        $controller = new \PPCart_Public_Shopping_Cart_Controller();
+        $post = ['ppcart_cart_quantity_key' => $key, 'ppcart_cart_quantity' => '3'];
+        $this->assertSame('ppcart_cart_invalid_nonce', $controller->handle_post($post)->get_error_code());
+        $post['ppcart_shopping_cart_nonce'] = wp_create_nonce('ppcart_update_cart_quantity');
+        $this->assertSame(get_permalink($cartPage), $controller->handle_post($post));
+        $this->assertSame(['3', '2', false, '4', true], $control());
+        $this->assertSame(75.0, ppcart_get_shopping_cart()->subtotal());
+        $this->assertStringContainsString('each', ppcart_render_shopping_cart());
+        $post['ppcart_cart_quantity'] = '4';
+        $this->assertSame('ppcart_cart_quantity_invalid', $controller->handle_post($post)->get_error_code());
+        $this->assertSame(3, ppcart_get_shopping_cart()->lines[0]->quantity);
+
+        $request = new \WP_REST_Request('GET', '/ppcart/v1/cart');
+        $request->set_param('fragments', 'drawer');
+        $this->assertStringContainsString('ppcart-shopping-cart-quantity', (new \PPCart_Shopping_Cart_View())->response(ppcart_get_shopping_cart(), $request)['fragments']['drawer']);
     }
 
     /** @test-id IT-448 */
