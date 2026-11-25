@@ -30,6 +30,23 @@ trait PPCart_Stripe_Sync_Import_Trait
     }
 
     /**
+     * Import one Stripe payment as a paid order of an existing subscription.
+     *
+     * For payments with no invoice, such as a charge made by hand in the
+     * Stripe Dashboard. Sync with Stripe imports only invoices, so it never
+     * finds them. Integrations don't run, and nothing changes in Stripe.
+     *
+     * @param string $payment_id      Stripe charge (ch_...) or PaymentIntent (pi_...) ID.
+     * @param int    $subscription_id Local subscription ID.
+     * @return PPCart_Order|WP_Error
+     */
+    public static function import_charge($payment_id, $subscription_id)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-import-import-charge.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
      * Find the local product that sells a Stripe price.
      *
      * A price ID matches only when a payment plan of the product stores

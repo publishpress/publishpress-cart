@@ -1606,6 +1606,70 @@
     }
 
     /* -------------------------------------------------------------------------
+     * Maintenance — import one Stripe payment as a subscription order
+     * ---------------------------------------------------------------------*/
+    function bindMaintenanceStripeChargeImport() {
+        var $box = $page.find('[data-ppcart-stripe-charge-import]');
+        if (!$box.length) {
+            return;
+        }
+
+        var $paymentId = $box.find('[data-ppcart-stripe-charge-import-id]');
+        var $subscription = $box.find('[data-ppcart-stripe-charge-import-subscription]');
+        var $button = $box.find('[data-ppcart-stripe-charge-import-run]');
+        var $result = $box.find('[data-ppcart-stripe-charge-import-result]');
+
+        function show(success, message, url, label) {
+            var $p = $('<p>').addClass(success ? 'is-success' : 'is-error');
+            if (url) {
+                $p.append($('<a>').attr('href', url).text(label), ' ');
+            }
+            $p.append(document.createTextNode(message || ''));
+            $result.removeAttr('hidden').empty().append($p);
+        }
+
+        $button.on('click', function (event) {
+            event.preventDefault();
+            if ($button.prop('disabled')) {
+                return;
+            }
+
+            var paymentId = $.trim($paymentId.val() || '');
+            var subscriptionId = $.trim($subscription.val() || '');
+            if (!paymentId || !subscriptionId) {
+                show(false, $button.attr('data-empty-text'));
+                (paymentId ? $subscription : $paymentId).trigger('focus');
+                return;
+            }
+
+            $button.prop('disabled', true).attr('aria-busy', 'true');
+            show(true, $button.attr('data-running-text'));
+
+            $.post(
+                window.ajaxurl || '/wp-admin/admin-ajax.php',
+                {
+                    action: 'ppcart_import_stripe_charge',
+                    nonce: $button.attr('data-nonce'),
+                    payment_id: paymentId,
+                    subscription_id: subscriptionId
+                }
+            ).done(function (response) {
+                var data = (response && response.data) || {};
+                if (response && response.success) {
+                    show(true, data.message, data.url, data.label);
+                    $paymentId.val('');
+                    return;
+                }
+                show(false, data.message || $button.attr('data-failed-text'), data.url, data.label);
+            }).fail(function () {
+                show(false, $button.attr('data-failed-text'));
+            }).always(function () {
+                $button.prop('disabled', false).removeAttr('aria-busy');
+            });
+        });
+    }
+
+    /* -------------------------------------------------------------------------
      * Row labels for selectize controls. The Settings API row label points at
      * the original <select>, which selectize hides; name the visible
      * "{id}-selectized" input by that label instead (WCAG 1.3.1, 4.1.2).
@@ -1668,6 +1732,7 @@
         bindPaymentMethods();
         bindMaintenanceSecrets();
         bindMaintenanceStripeImport();
+        bindMaintenanceStripeChargeImport();
         labelSelectizedControls();
         // Selectize may still be building its inputs; label again once loaded.
         $(window).on('load', labelSelectizedControls);
