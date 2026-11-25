@@ -41,8 +41,8 @@ class ShoppingCartOrderTest extends ShoppingCartTestCase
         return $order;
     }
 
-    /** @test-id IT-443 */
-    public function test_IT_443_order_takes_items_amounts_and_customer_from_the_priced_cart(): void
+    /** @test-id IT-451 */
+    public function test_IT_451_order_takes_items_amounts_and_customer_from_the_priced_cart(): void
     {
         [$toolkit, $course, $cart] = $this->twoLineCart();
         $order = $this->order($cart);
@@ -74,8 +74,8 @@ class ShoppingCartOrderTest extends ShoppingCartTestCase
         $this->assertSame('Writer Toolkit', $single->product_name);
     }
 
-    /** @test-id IT-443 */
-    public function test_IT_443_stored_order_reloads_as_a_cart_order_with_its_items_and_plan(): void
+    /** @test-id IT-451 */
+    public function test_IT_451_stored_order_reloads_as_a_cart_order_with_its_items_and_plan(): void
     {
         [$toolkit, $course, $cart] = $this->twoLineCart();
         $id = $this->order($cart)->store();
@@ -107,8 +107,8 @@ class ShoppingCartOrderTest extends ShoppingCartTestCase
         $this->assertNull(ppcart_shopping_cart_order_plan((array) ppcart_setup_order($buyNow, true)));
     }
 
-    /** @test-id IT-443 */
-    public function test_IT_443_each_main_item_gives_one_context_with_the_parent_order_id(): void
+    /** @test-id IT-451 */
+    public function test_IT_451_each_main_item_gives_one_context_with_the_parent_order_id(): void
     {
         $free = $this->product('Free Sample', [$this->plan('gift', '0', 'free')]);
         [$toolkit, $course] = $this->twoLineCart();
@@ -128,8 +128,8 @@ class ShoppingCartOrderTest extends ShoppingCartTestCase
         $this->assertSame([], ppcart_shopping_cart_order_contexts(['ID' => 0]));
     }
 
-    /** @test-id IT-443 */
-    public function test_IT_443_extension_filter_edits_items_before_the_totals_are_computed(): void
+    /** @test-id IT-451 */
+    public function test_IT_451_extension_filter_edits_items_before_the_totals_are_computed(): void
     {
         [, , $cart] = $this->twoLineCart();
         $chargedFor = 'unset';
@@ -152,8 +152,8 @@ class ShoppingCartOrderTest extends ShoppingCartTestCase
         $this->assertSame(88.0, (float) $this->order($cart)->amount);
     }
 
-    /** @test-id IT-443 */
-    public function test_IT_443_cart_order_without_item_rows_shows_no_item_for_product_zero(): void
+    /** @test-id IT-451 */
+    public function test_IT_451_cart_order_without_item_rows_shows_no_item_for_product_zero(): void
     {
         [, , $cart] = $this->twoLineCart();
         $order = $this->order($cart);

@@ -100,8 +100,8 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         );
     }
 
-    /** @test-id IT-444 */
-    public function test_IT_444_paid_cart_order_runs_every_item_once_and_sends_one_email(): void
+    /** @test-id IT-452 */
+    public function test_IT_452_paid_cart_order_runs_every_item_once_and_sends_one_email(): void
     {
         update_post_meta($this->toolkit, '_ppcart_disable_purchase_email', '1');
         $late = $this->product('Late Addition');
@@ -134,8 +134,8 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         $this->assertSame('4', get_post_meta($this->course, '_ppcart_limit', true));
     }
 
-    /** @test-id IT-444 */
-    public function test_IT_444_cash_on_delivery_order_runs_pending_work_for_every_item_and_empties_the_cart(): void
+    /** @test-id IT-452 */
+    public function test_IT_452_cash_on_delivery_order_runs_pending_work_for_every_item_and_empties_the_cart(): void
     {
         $id = $this->checkout('cod');
         $this->assertSame([['ppcart_order_pending', 'pending', 'cart', 0, 'main']], $this->seen['status']);
@@ -149,8 +149,8 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         $this->assertTrue($this->store()->read()->is_empty());
     }
 
-    /** @test-id IT-444 */
-    public function test_IT_444_refund_revokes_every_item_download_and_restocks_every_item(): void
+    /** @test-id IT-452 */
+    public function test_IT_452_refund_revokes_every_item_download_and_restocks_every_item(): void
     {
         $id = $this->checkout('cod');
         $this->setStatus($id, 'paid');
@@ -167,8 +167,8 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         $this->assertSame('5', get_post_meta($this->course, '_ppcart_limit', true));
     }
 
-    /** @test-id IT-444 */
-    public function test_IT_444_buy_now_order_still_replays_for_an_item_of_another_product(): void
+    /** @test-id IT-452 */
+    public function test_IT_452_buy_now_order_still_replays_for_an_item_of_another_product(): void
     {
         $order = new \PPCart_Order();
         foreach (['product_id' => $this->toolkit, 'product_name' => 'Writer Toolkit', 'option_id' => 'personal', 'plan_id' => 'personal', 'email' => 'buyer@example.org', 'pay_method' => 'cod', 'status' => 'paid', 'amount' => 88.0] as $key => $value) {
@@ -189,8 +189,8 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         $this->assertSame('4', get_post_meta($this->course, '_ppcart_limit', true));
     }
 
-    /** @test-id IT-444 */
-    public function test_IT_444_item_context_tags_list_one_item_and_reports_split_revenue_by_product(): void
+    /** @test-id IT-452 */
+    public function test_IT_452_item_context_tags_list_one_item_and_reports_split_revenue_by_product(): void
     {
         $this->add($this->course, 'solo');
         $id = $this->checkout('cod');
@@ -204,8 +204,8 @@ class ShoppingCartCompletionTest extends ShoppingCartTestCase
         $this->assertSame([], ppcart_shopping_cart_order_revenue(new \PPCart_Order($buyNow)));
     }
 
-    /** @test-id IT-444 */
-    public function test_IT_444_customer_bought_product_finds_an_item_of_a_paid_cart_order(): void
+    /** @test-id IT-452 */
+    public function test_IT_452_customer_bought_product_finds_an_item_of_a_paid_cart_order(): void
     {
         $bought = fn (string $attributes) => do_shortcode('[ppcart_customer_bought_product email="buyer@example.org" ' . $attributes . ']');
         $id = $this->checkout('stripe');

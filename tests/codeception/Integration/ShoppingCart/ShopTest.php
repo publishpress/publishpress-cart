@@ -30,8 +30,8 @@ class ShopTest extends WPTestCase
         return ['option_id' => $id, 'option_name' => $id, 'price' => $price, 'product_type' => $type, 'stripe_plan_id' => '', 'sale_stripe_plan_id' => '', 'interval' => 'month', 'frequency' => '1', 'installments' => '-1'];
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_unchecked_visibility_stays_off_and_buy_now_still_renders(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_unchecked_visibility_stays_off_and_buy_now_still_renders(): void
     {
         wp_set_current_user(self::factory()->user->create(['role' => 'administrator']));
         add_filter('ppcart_process_stripe_products', '__return_false');
@@ -56,8 +56,8 @@ class ShopTest extends WPTestCase
         $this->assertSame('yes', get_post_meta($id, '_ppcart_show_in_shop', true));
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_cards_offer_only_eligible_plans_and_keep_text_plan_ids(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_cards_offer_only_eligible_plans_and_keep_text_plan_ids(): void
     {
         $id = $this->product('Two plans', [$this->plan('standard:personal', '39'), $this->plan('team', '59'), $this->plan('monthly', '19', 'recurring')]);
         $catalog = new \PPCart_Shopping_Cart_Catalog();
@@ -80,8 +80,8 @@ class ShopTest extends WPTestCase
         delete_option('_ppcart_shopping_cart_enable');
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_hard_visibility_and_status_limits_survive_query_filter(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_hard_visibility_and_status_limits_survive_query_filter(): void
     {
         $visible = $this->product('Visible');
         $hidden = $this->product('Hidden');
@@ -108,8 +108,8 @@ class ShopTest extends WPTestCase
         $this->assertStringContainsString('Visible', do_shortcode('[ppcart_shop]'));
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_eligibility_enforces_stock_sales_window_aliases_and_free_prices(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_eligibility_enforces_stock_sales_window_aliases_and_free_prices(): void
     {
         $id = $this->product('Eligible');
         $catalog = new \PPCart_Shopping_Cart_Catalog();
@@ -129,8 +129,8 @@ class ShopTest extends WPTestCase
         $this->assertSame('ppcart_cart_plan_not_eligible', $catalog->resolve_line($id, 'guide')->get_error_code());
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_price_order_uses_current_offer_and_paginates(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_price_order_uses_current_offer_and_paginates(): void
     {
         $high = $this->product('High', [$this->plan('one', '59')]);
         $low = $this->product('Low', [$this->plan('one', '9')]);
@@ -144,8 +144,8 @@ class ShopTest extends WPTestCase
         set_query_var('paged', 0);
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_hiding_subscriptions_keeps_mixed_products_and_paginates_what_remains(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_hiding_subscriptions_keeps_mixed_products_and_paginates_what_remains(): void
     {
         $oneTime = $this->product('One Time', [$this->plan('one', '29')]);
         $mixed = $this->product('Mixed', [$this->plan('one', '49'), $this->plan('monthly', '19', 'recurring')]);
@@ -170,8 +170,8 @@ class ShopTest extends WPTestCase
         $this->assertStringNotContainsString('Monthly Only', $html);
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_card_price_follows_the_plan_add_to_cart_adds(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_card_price_follows_the_plan_add_to_cart_adds(): void
     {
         $catalog = new \PPCart_Shopping_Cart_Catalog();
         $twoPlans = $this->product('Two Plans', [array_merge($this->plan('personal', '39'), ['option_name' => 'Personal']), array_merge($this->plan('team', '59'), ['option_name' => 'Team'])]);
@@ -199,8 +199,8 @@ class ShopTest extends WPTestCase
         $this->assertStringStartsWith('From ', $catalog->shop_card($monthly)['price_label']);
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_pagination_styles_render_numbers_prev_next_load_more_or_everything(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_pagination_styles_render_numbers_prev_next_load_more_or_everything(): void
     {
         foreach (['A', 'B', 'C'] as $title) {
             $this->product($title);
@@ -238,8 +238,8 @@ class ShopTest extends WPTestCase
         $this->assertSame(1, $cards(ppcart_render_shop(['perPage' => 1, 'pagination' => 'unknown'])));
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_shop_style_ignores_saved_surface_density_and_corners(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_shop_style_ignores_saved_surface_density_and_corners(): void
     {
         $this->product('Styled');
         $html = ppcart_render_shop(['styleSettings' => ['surfaceStyle' => 'boxed', 'density' => 'spacious', 'cornerRadius' => 'rounded']]);
@@ -251,8 +251,8 @@ class ShopTest extends WPTestCase
         $this->assertStringContainsString('--ppcart-radius', ppcart_render_shop(['styleSettings' => ['preset' => 'compact']]));
     }
 
-    /** @test-id IT-435 */
-    public function test_IT_435_shared_styles_keep_base_and_preset_values(): void
+    /** @test-id IT-443 */
+    public function test_IT_443_shared_styles_keep_base_and_preset_values(): void
     {
         $this->assertSame([], ppcart_block_style_tokens([]));
         $this->assertSame([], ppcart_block_style_tokens(['accentColor' => 'url(evil)', 'density' => 'invalid']));

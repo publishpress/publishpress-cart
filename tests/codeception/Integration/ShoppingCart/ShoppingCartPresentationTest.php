@@ -17,8 +17,8 @@ class ShoppingCartPresentationTest extends ShoppingCartTestCase
         parent::tearDown();
     }
 
-    /** @test-id IT-440 */
-    public function test_IT_440_the_mini_cart_is_a_cacheable_shell_and_disabled_cart_renders_nothing(): void
+    /** @test-id IT-448 */
+    public function test_IT_448_the_mini_cart_is_a_cacheable_shell_and_disabled_cart_renders_nothing(): void
     {
         $_COOKIE['ppcart_cart_count'] = '9000';
         $shell = ppcart_render_mini_cart();
@@ -38,8 +38,8 @@ class ShoppingCartPresentationTest extends ShoppingCartTestCase
         unset($_COOKIE['ppcart_cart_count']);
     }
 
-    /** @test-id IT-440 */
-    public function test_IT_440_shop_forms_are_live_and_each_plan_has_its_own_in_cart_state(): void
+    /** @test-id IT-448 */
+    public function test_IT_448_shop_forms_are_live_and_each_plan_has_its_own_in_cart_state(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('standard:personal', '39'), $this->plan('team', '59')]);
         $before = ppcart_render_shop();
@@ -57,8 +57,8 @@ class ShoppingCartPresentationTest extends ShoppingCartTestCase
         $this->assertStringContainsString('standard:personal', $html);
     }
 
-    /** @test-id IT-440 */
-    public function test_IT_440_post_fallback_checks_nonces_uses_server_prices_and_redirects_per_setting(): void
+    /** @test-id IT-448 */
+    public function test_IT_448_post_fallback_checks_nonces_uses_server_prices_and_redirects_per_setting(): void
     {
         $cartPage = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
         $checkoutPage = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
@@ -86,8 +86,8 @@ class ShoppingCartPresentationTest extends ShoppingCartTestCase
         $this->assertTrue(ppcart_get_shopping_cart()->is_empty());
     }
 
-    /** @test-id IT-440 */
-    public function test_IT_440_drawer_fragments_share_prices_notices_remove_forms_and_the_extension_slot(): void
+    /** @test-id IT-448 */
+    public function test_IT_448_drawer_fragments_share_prices_notices_remove_forms_and_the_extension_slot(): void
     {
         $id = $this->product('Writer <Toolkit>', [$this->plan('standard:personal', '39')]);
         update_post_meta($id, '_ppcart_product_name', 'Writer <Toolkit>');

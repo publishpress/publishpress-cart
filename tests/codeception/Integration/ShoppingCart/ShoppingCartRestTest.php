@@ -37,8 +37,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         return apply_filters('rest_post_dispatch', rest_ensure_response($server->dispatch($request)), $server, $request);
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_url_encoded_line_keys_are_decoded_once_before_patch_and_remove(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_url_encoded_line_keys_are_decoded_once_before_patch_and_remove(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('standard:personal/team%20', '39')]);
         $this->assertNotWPError($this->add($id, 'standard:personal/team%20'));
@@ -51,8 +51,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         $this->assertSame(0, $removed->get_data()['count']);
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_reading_an_empty_cart_returns_the_shape_and_a_nonce_without_a_row(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_reading_an_empty_cart_returns_the_shape_and_a_nonce_without_a_row(): void
     {
         $response = $this->request('GET', '/cart', [], false);
         $data = $response->get_data();
@@ -69,8 +69,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         $this->assertArrayNotHasKey('ppcart_cart', $_COOKIE);
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_adding_returns_server_prices_as_decimal_strings_and_hides_storage_fields(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_adding_returns_server_prices_as_decimal_strings_and_hides_storage_fields(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('standard:personal', '39')]);
         $attachment = self::factory()->attachment->create(['file' => 'toolkit.jpg', 'post_mime_type' => 'image/jpeg']);
@@ -105,8 +105,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         $this->assertSame('private, no-store', $response->get_headers()['Cache-Control']);
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_changes_need_a_rest_nonce_and_reading_does_not(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_changes_need_a_rest_nonce_and_reading_does_not(): void
     {
         $id = $this->product('Writer Toolkit');
         $missing = $this->request('POST', '/cart/items', ['product_id' => $id, 'plan_id' => 'personal'], false);
@@ -125,8 +125,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         $this->assertSame(1, $this->request('GET', '/cart', [], false)->get_data()['count']);
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_cart_errors_carry_their_status_and_the_current_cart(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_cart_errors_carry_their_status_and_the_current_cart(): void
     {
         $id = $this->product('Mixed', [$this->plan('personal', '29'), $this->plan('monthly', '19', 'recurring')]);
         $hidden = $this->product('Hidden');
@@ -160,8 +160,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         $this->assertSame([403, 'ppcart_cart_disabled'], $error($this->request('POST', '/cart/items', ['product_id' => $hidden, 'plan_id' => 'personal'])));
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_removing_a_line_succeeds_also_when_the_line_is_missing(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_removing_a_line_succeeds_also_when_the_line_is_missing(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('standard:personal', '39')]);
         $this->request('POST', '/cart/items', ['product_id' => $id, 'plan_id' => 'standard:personal']);
@@ -173,8 +173,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         $this->assertSame([200, 0], [$again->get_status(), $again->get_data()['count']]);
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_the_totals_filter_and_stored_notices_reach_the_response(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_the_totals_filter_and_stored_notices_reach_the_response(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('personal', '19')]);
         $this->request('POST', '/cart/items', ['product_id' => $id, 'plan_id' => 'personal']);
@@ -197,8 +197,8 @@ class ShoppingCartRestTest extends ShoppingCartTestCase
         $this->assertSame(2, $data['revision']);
     }
 
-    /** @test-id IT-439 */
-    public function test_IT_439_a_signed_in_visitor_reads_and_changes_only_the_own_cart(): void
+    /** @test-id IT-447 */
+    public function test_IT_447_a_signed_in_visitor_reads_and_changes_only_the_own_cart(): void
     {
         $id = $this->product('Writer Toolkit');
         $owner = self::factory()->user->create();

@@ -35,8 +35,8 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         return $id;
     }
 
-    /** @test-id IT-442 */
-    public function test_IT_442_a_line_the_customer_already_bought_is_refused_before_the_claim(): void
+    /** @test-id IT-450 */
+    public function test_IT_450_a_line_the_customer_already_bought_is_refused_before_the_claim(): void
     {
         $limited = $this->limited('Limited Guide');
         $open = $this->product('Open Guide');
@@ -55,8 +55,8 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $this->assertSame($seen + 1, $accepted->revision);
     }
 
-    /** @test-id IT-442 */
-    public function test_IT_442_a_cart_order_item_counts_toward_the_limit_and_a_bump_item_does_not(): void
+    /** @test-id IT-450 */
+    public function test_IT_450_a_cart_order_item_counts_toward_the_limit_and_a_bump_item_does_not(): void
     {
         $limited = $this->limited('Limited Guide');
         $other = $this->product('Other Guide');
@@ -82,8 +82,8 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $this->assertWPError(ppcart_check_product_purchase_limit($limited, $customer));
     }
 
-    /** @test-id IT-442 */
-    public function test_IT_442_two_plans_of_one_product_in_a_cart_count_together_toward_the_limit(): void
+    /** @test-id IT-450 */
+    public function test_IT_450_two_plans_of_one_product_in_a_cart_count_together_toward_the_limit(): void
     {
         $limited = $this->limited('Limited Guide', [$this->plan('personal', '29'), $this->plan('team', '59')]);
         $customer = ['email' => 'buyer@example.org'];
@@ -105,8 +105,8 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $this->assertSame($seen + 1, $this->store()->claim_checkout($seen, $customer)->revision);
     }
 
-    /** @test-id IT-442 */
-    public function test_IT_442_each_line_of_a_paid_cart_order_is_one_purchase(): void
+    /** @test-id IT-450 */
+    public function test_IT_450_each_line_of_a_paid_cart_order_is_one_purchase(): void
     {
         $limited = $this->limited('Limited Guide', [$this->plan('personal', '29'), $this->plan('team', '59')]);
         update_post_meta($limited, '_ppcart_customer_limit', '2');
@@ -123,8 +123,8 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $this->assertTrue(ppcart_check_product_purchase_limit($limited, $customer));
     }
 
-    /** @test-id IT-442 */
-    public function test_IT_442_a_signed_in_customer_is_matched_by_account_with_another_email(): void
+    /** @test-id IT-450 */
+    public function test_IT_450_a_signed_in_customer_is_matched_by_account_with_another_email(): void
     {
         $limited = $this->limited('Limited Guide');
         $user = self::factory()->user->create(['user_email' => 'member@example.org']);
@@ -136,8 +136,8 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $this->assertSame('ppcart_cart_purchase_limit', $this->store()->claim_checkout($seen, ['email' => 'second@example.org'])->get_error_code());
     }
 
-    /** @test-id IT-442 */
-    public function test_IT_442_stock_is_summed_over_the_lines_of_one_product(): void
+    /** @test-id IT-450 */
+    public function test_IT_450_stock_is_summed_over_the_lines_of_one_product(): void
     {
         $id = $this->product('Workshop Seat', [$this->plan('standard', '39'), $this->plan('team', '59')]);
         update_post_meta($id, '_ppcart_manage_stock', '1');
@@ -155,8 +155,8 @@ class ShoppingCartCheckoutGateTest extends ShoppingCartTestCase
         $this->assertSame($seen + 1, $this->store()->claim_checkout($seen, ['email' => 'buyer@example.org'])->revision);
     }
 
-    /** @test-id IT-442 */
-    public function test_IT_442_the_sales_window_keeps_its_stock_rule(): void
+    /** @test-id IT-450 */
+    public function test_IT_450_the_sales_window_keeps_its_stock_rule(): void
     {
         $id = $this->product('Workshop Seat');
         $this->assertTrue(ppcart_check_product_stock($id, 50));

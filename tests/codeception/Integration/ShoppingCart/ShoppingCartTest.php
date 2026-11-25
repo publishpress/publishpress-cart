@@ -17,8 +17,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         parent::tearDown();
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_table_is_installed_by_the_upgrade_routine_with_a_revision_column(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_table_is_installed_by_the_upgrade_routine_with_a_revision_column(): void
     {
         global $wpdb;
         require_once PPCART_PLUGIN_ROOT . 'includes/class-ppcart-upgrade.php';
@@ -36,8 +36,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertFalse(wp_next_scheduled('ppcart_shopping_cart_cleanup'));
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_browsing_creates_no_row_and_the_first_add_creates_the_cart(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_browsing_creates_no_row_and_the_first_add_creates_the_cart(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('standard:personal', '39'), $this->plan('team', '59')]);
         $this->assertSame(0, ppcart_get_shopping_cart()->count());
@@ -62,8 +62,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertGreaterThan(gmdate('Y-m-d H:i:s', time() + 6 * DAY_IN_SECONDS), $row->expires_at);
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_duplicate_keys_are_refused_and_two_plans_of_one_product_are_two_lines(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_duplicate_keys_are_refused_and_two_plans_of_one_product_are_two_lines(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('standard:personal', '39'), $this->plan('team', '59')]);
         $first = $this->add($id, 'standard:personal');
@@ -85,8 +85,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertSame($removed->revision, $again->revision);
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_ineligible_offers_are_refused_and_create_no_cart(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_ineligible_offers_are_refused_and_create_no_cart(): void
     {
         $hidden = $this->product('Hidden');
         update_post_meta($hidden, '_ppcart_show_in_shop', 'no');
@@ -111,8 +111,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertSame('ppcart_cart_already_in_cart', $this->add($mixed)->get_error_code());
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_the_cart_charges_the_initial_payment_that_buy_now_charges(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_the_cart_charges_the_initial_payment_that_buy_now_charges(): void
     {
         $id = $this->product('Filtered price', [$this->plan('personal', '39'), $this->plan('gift', '15', 'free')]);
         add_filter('ppcart_plan_data', static function (array $plan): array {
@@ -128,8 +128,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertSame(0.0, $this->add($id, 'gift')->lines[1]->unit_price);
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_a_price_change_is_stored_as_one_notice_and_the_new_price_is_charged(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_a_price_change_is_stored_as_one_notice_and_the_new_price_is_charged(): void
     {
         $id = $this->product('Writer Toolkit', [$this->plan('personal', '19')]);
         $added = $this->add($id);
@@ -156,8 +156,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertSame([], $emptied->notices);
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_a_line_that_stops_being_eligible_is_removed_with_a_notice(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_a_line_that_stops_being_eligible_is_removed_with_a_notice(): void
     {
         $kept = $this->product('Kept');
         $gone = $this->product('Gone');
@@ -185,8 +185,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertSame('[]', $this->rowByKey($cartKey)->items);
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_quantity_is_one_unless_a_filter_raises_the_limit(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_quantity_is_one_unless_a_filter_raises_the_limit(): void
     {
         $id = $this->product('Writer Toolkit');
         $key = $id . ':personal';
@@ -209,8 +209,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertSame(1, $lowered->lines[0]->quantity);
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_extension_meta_is_stored_and_reserved_keys_are_refused(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_extension_meta_is_stored_and_reserved_keys_are_refused(): void
     {
         $this->assertTrue(ppcart_shopping_cart_set_meta('pro_coupon_code', 'SAVE10')->is_empty());
         $this->assertSame(0, $this->rowCount());
@@ -222,8 +222,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertNull(ppcart_shopping_cart_set_meta('pro_coupon_code', null)->meta('pro_coupon_code'));
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_an_expired_cart_is_not_read_and_the_cleanup_deletes_it(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_an_expired_cart_is_not_read_and_the_cleanup_deletes_it(): void
     {
         global $wpdb;
         $this->add($this->product('Writer Toolkit'));
@@ -243,8 +243,8 @@ class ShoppingCartTest extends ShoppingCartTestCase
         $this->assertSame(10, has_action('ppcart_shopping_cart_cleanup', [\PPCart_Shopping_Cart_Store::class, 'delete_expired']));
     }
 
-    /** @test-id IT-437 */
-    public function test_IT_437_a_cart_key_never_opens_the_cart_of_another_owner(): void
+    /** @test-id IT-445 */
+    public function test_IT_445_a_cart_key_never_opens_the_cart_of_another_owner(): void
     {
         $owner = self::factory()->user->create();
         $other = self::factory()->user->create();

@@ -258,7 +258,7 @@ modules:
   - id: shopping-cart
     name: Shop and shopping cart
     suites: [integration]
-    test_range: IT-435–IT-451
+    test_range: IT-443–IT-459
     features: [shopping-cart]
     notes: >-
       Shop catalog and visibility, cart storage and REST, Mini Cart and Cart

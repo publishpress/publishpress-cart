@@ -138,8 +138,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $this->assertSame($this->products, array_map('intval', $downloads));
     }
 
-    /** @test-id IT-448 */
-    public function test_IT_448_paypal_creates_one_purchase_unit_for_the_stored_order_and_uses_cart_urls(): void
+    /** @test-id IT-456 */
+    public function test_IT_456_paypal_creates_one_purchase_unit_for_the_stored_order_and_uses_cart_urls(): void
     {
         $checkout = $this->checkout();
         $order = new \PPCart_Order($checkout['order_id']);
@@ -158,8 +158,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $this->assertSame($checkout['paypal']['orderId'], ppcart_get_post_meta($order->id, 'paypal_order_id'));
     }
 
-    /** @test-id IT-448 */
-    public function test_IT_448_forged_browser_status_and_wrong_order_currency_total_or_capture_never_pay(): void
+    /** @test-id IT-456 */
+    public function test_IT_456_forged_browser_status_and_wrong_order_currency_total_or_capture_never_pay(): void
     {
         $checkout = $this->checkout();
         $id = $checkout['paypal']['orderId'];
@@ -186,8 +186,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $this->assertPaidOnce($checkout['order_id']);
     }
 
-    /** @test-id IT-449 */
-    public function test_IT_449_webhook_reconcile_and_refund_sync_handle_a_cart_order_without_product_meta(): void
+    /** @test-id IT-457 */
+    public function test_IT_457_webhook_reconcile_and_refund_sync_handle_a_cart_order_without_product_meta(): void
     {
         $checkout = $this->checkout();
         $id = $checkout['paypal']['orderId'];
@@ -211,8 +211,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $this->assertCount(1, $this->mail);
     }
 
-    /** @test-id IT-449 */
-    public function test_IT_449_webhook_reads_the_paid_capture_before_completing_the_cart_order(): void
+    /** @test-id IT-457 */
+    public function test_IT_457_webhook_reads_the_paid_capture_before_completing_the_cart_order(): void
     {
         $checkout = $this->checkout();
         $id = $checkout['paypal']['orderId'];
@@ -222,8 +222,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $this->assertPaidOnce($checkout['order_id']);
     }
 
-    /** @test-id IT-448 */
-    public function test_IT_448_onpage_approval_accepts_a_cart_order_token_and_ignores_browser_status(): void
+    /** @test-id IT-456 */
+    public function test_IT_456_onpage_approval_accepts_a_cart_order_token_and_ignores_browser_status(): void
     {
         $checkout = $this->checkout();
         $approve = function (string $token) use ($checkout): array {
@@ -255,8 +255,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $this->assertPaidOnce($checkout['order_id']);
     }
 
-    /** @test-id IT-450 */
-    public function test_IT_450_standard_uses_order_name_cart_urls_and_verifies_the_pdt_payment(): void
+    /** @test-id IT-458 */
+    public function test_IT_458_standard_uses_order_name_cart_urls_and_verifies_the_pdt_payment(): void
     {
         update_option(\PPCart_Paypal_Onpage::OPTION_EXPERIENCE, 'redirect');
         update_option('_ppcart_cart_confirmation', 'url');
@@ -286,8 +286,8 @@ class ShoppingCartPaypalTest extends ShoppingCartTestCase
         $this->assertPaidOnce($order->id);
     }
 
-    /** @test-id IT-450 */
-    public function test_IT_450_buy_now_paypal_keeps_its_product_and_return_urls(): void
+    /** @test-id IT-458 */
+    public function test_IT_458_buy_now_paypal_keeps_its_product_and_return_urls(): void
     {
         $product = $this->products[0];
         $GLOBALS['ppcart_product'] = (object) ['thanks_url' => 'https://example.org/product-thanks', 'confirmation' => 'redirect'];

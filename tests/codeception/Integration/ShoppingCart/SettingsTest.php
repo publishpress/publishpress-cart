@@ -27,8 +27,8 @@ class SettingsTest extends WPTestCase
         (new \PPCart_Admin_Settings('ppcart', 'PublishPress Cart', '1.0'))->register_fields();
     }
 
-    /** @test-id IT-436 */
-    public function test_IT_436_defaults_and_native_settings_save_every_cart_field(): void
+    /** @test-id IT-444 */
+    public function test_IT_444_defaults_and_native_settings_save_every_cart_field(): void
     {
         $settings = $this->settings();
         $this->assertTrue($settings->enabled());
@@ -66,8 +66,8 @@ class SettingsTest extends WPTestCase
         $this->assertFalse(get_option('_ppcart_shopping_cart_create_pages'));
     }
 
-    /** @test-id IT-436 */
-    public function test_IT_436_native_sanitizers_reject_invalid_enum_page_and_lifetime_values(): void
+    /** @test-id IT-444 */
+    public function test_IT_444_native_sanitizers_reject_invalid_enum_page_and_lifetime_values(): void
     {
         $this->registerFields();
         update_option('_ppcart_after_add_to_cart', 'external');
@@ -86,8 +86,8 @@ class SettingsTest extends WPTestCase
         $this->assertStringNotContainsString('<script>', get_option('_ppcart_cart_confirmation_message'));
     }
 
-    /** @test-id IT-436 */
-    public function test_IT_436_checkout_field_list_controls_optional_fields_and_extension_fields(): void
+    /** @test-id IT-444 */
+    public function test_IT_444_checkout_field_list_controls_optional_fields_and_extension_fields(): void
     {
         $this->assertSame(['first_name', 'last_name', 'email'], array_keys($this->settings()->checkout_fields()));
         update_option('_ppcart_cart_checkout_phone', 1);
@@ -113,8 +113,8 @@ class SettingsTest extends WPTestCase
         }
     }
 
-    /** @test-id IT-436 */
-    public function test_IT_436_page_creation_fills_only_missing_pages_and_preserves_merchant_pages(): void
+    /** @test-id IT-444 */
+    public function test_IT_444_page_creation_fills_only_missing_pages_and_preserves_merchant_pages(): void
     {
         $settings = $this->settings();
         $first = $settings->create_missing_pages();
@@ -138,8 +138,8 @@ class SettingsTest extends WPTestCase
         $this->assertSame('My shop', get_post_field('post_content', $merchant));
     }
 
-    /** @test-id IT-436 */
-    public function test_IT_436_page_action_requires_post_capability_and_nonce(): void
+    /** @test-id IT-444 */
+    public function test_IT_444_page_action_requires_post_capability_and_nonce(): void
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? null;
         $die = static fn () => static function ($message) {
@@ -170,8 +170,8 @@ class SettingsTest extends WPTestCase
         }
     }
 
-    /** @test-id IT-436 */
-    public function test_IT_436_confirmation_uses_cart_settings_and_signed_order_links(): void
+    /** @test-id IT-444 */
+    public function test_IT_444_confirmation_uses_cart_settings_and_signed_order_links(): void
     {
         $checkout = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
         $thanks = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);

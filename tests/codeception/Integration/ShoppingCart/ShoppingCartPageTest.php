@@ -17,8 +17,8 @@ class ShoppingCartPageTest extends ShoppingCartTestCase
         parent::tearDown();
     }
 
-    /** @test-id IT-441 */
-    public function test_IT_441_cart_block_shortcode_and_fragment_render_the_same_lines_and_server_totals(): void
+    /** @test-id IT-449 */
+    public function test_IT_449_cart_block_shortcode_and_fragment_render_the_same_lines_and_server_totals(): void
     {
         $one = $this->product('Writer Toolkit', [$this->plan('standard:personal', '39')]);
         $two = $this->product('Video Course', [$this->plan('full', '149')]);
@@ -44,8 +44,8 @@ class ShoppingCartPageTest extends ShoppingCartTestCase
         $this->assertTrue(DONOTCACHEPAGE);
     }
 
-    /** @test-id IT-441 */
-    public function test_IT_441_cart_notices_survive_a_second_render_and_removing_the_last_line_shows_the_empty_state(): void
+    /** @test-id IT-449 */
+    public function test_IT_449_cart_notices_survive_a_second_render_and_removing_the_last_line_shows_the_empty_state(): void
     {
         $shop = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
         update_option('_ppcart_shop_page_id', $shop);
@@ -77,8 +77,8 @@ class ShoppingCartPageTest extends ShoppingCartTestCase
         $this->assertArrayNotHasKey('ppcart_cart', $_COOKIE);
     }
 
-    /** @test-id IT-441 */
-    public function test_IT_441_rendering_removes_an_ineligible_line_and_shows_its_notice(): void
+    /** @test-id IT-449 */
+    public function test_IT_449_rendering_removes_an_ineligible_line_and_shows_its_notice(): void
     {
         $id = $this->product('Writer Toolkit');
         $this->add($id);
@@ -90,8 +90,8 @@ class ShoppingCartPageTest extends ShoppingCartTestCase
         $this->assertStringNotContainsString('ppcart-shopping-cart-remove', $html);
     }
 
-    /** @test-id IT-441 */
-    public function test_IT_441_style_tokens_and_extension_total_rows_reach_the_cart(): void
+    /** @test-id IT-449 */
+    public function test_IT_449_style_tokens_and_extension_total_rows_reach_the_cart(): void
     {
         $this->add($this->product('Writer Toolkit'));
         add_filter('ppcart_shopping_cart_totals', static function (array $totals): array {

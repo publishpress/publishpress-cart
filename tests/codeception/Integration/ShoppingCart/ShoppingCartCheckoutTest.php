@@ -114,8 +114,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         return count(get_posts(['post_type' => ppcart_live_post_type('order'), 'post_status' => 'any', 'fields' => 'ids', 'posts_per_page' => 50]));
     }
 
-    /** @test-id IT-445 */
-    public function test_IT_445_stripe_checkout_stores_one_order_and_one_payment_intent_for_the_order_total(): void
+    /** @test-id IT-453 */
+    public function test_IT_453_stripe_checkout_stores_one_order_and_one_payment_intent_for_the_order_total(): void
     {
         $cart = $this->cart();
         $page = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
@@ -148,8 +148,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame(0, $this->completed);
     }
 
-    /** @test-id IT-445 */
-    public function test_IT_445_order_is_paid_only_when_stripe_reports_the_payment_of_that_order(): void
+    /** @test-id IT-453 */
+    public function test_IT_453_order_is_paid_only_when_stripe_reports_the_payment_of_that_order(): void
     {
         $data = $this->checkout(self::BUYER + ['ppcart_cart_revision' => $this->cart()->revision])->get_data();
         $orderId = $data['order_id'];
@@ -176,8 +176,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame('ppcart_cart_order_missing', $this->confirm($buyNow, \PPCart_Order::ensure_invoice_access_token($buyNow))->get_error_code());
     }
 
-    /** @test-id IT-445 */
-    public function test_IT_445_a_cart_that_changed_after_the_form_loaded_is_refused_before_any_order_or_payment(): void
+    /** @test-id IT-453 */
+    public function test_IT_453_a_cart_that_changed_after_the_form_loaded_is_refused_before_any_order_or_payment(): void
     {
         $seen = $this->cart()->revision;
         update_post_meta($this->toolkit, '_ppcart_pay_options', [$this->plan('personal', '35')]);
@@ -202,8 +202,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame([1, 1], [$this->orderCount(), count($this->stripe->created)]);
     }
 
-    /** @test-id IT-445 */
-    public function test_IT_445_invalid_input_limits_and_gateway_errors_never_charge(): void
+    /** @test-id IT-453 */
+    public function test_IT_453_invalid_input_limits_and_gateway_errors_never_charge(): void
     {
         update_option('_ppcart_cart_checkout_terms', 1);
         update_option('_ppcart_cart_checkout_terms_url', 'https://example.org/terms');
@@ -234,8 +234,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertNull($order->transaction_id);
     }
 
-    /** @test-id IT-445 */
-    public function test_IT_445_free_cart_and_cash_on_delivery_need_no_gateway(): void
+    /** @test-id IT-453 */
+    public function test_IT_453_free_cart_and_cash_on_delivery_need_no_gateway(): void
     {
         $sample = $this->product('Free Sample', [$this->plan('gift', '0', 'free')]);
         $free = $this->checkout(['pay-method' => ''] + self::BUYER + ['ppcart_cart_revision' => $this->add($sample, 'gift')->revision])->get_data();
@@ -254,8 +254,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame([], $this->stripe->created);
     }
 
-    /** @test-id IT-445 */
-    public function test_IT_445_routes_need_a_nonce_and_an_enabled_cart(): void
+    /** @test-id IT-453 */
+    public function test_IT_453_routes_need_a_nonce_and_an_enabled_cart(): void
     {
         $dispatch = static function (bool $nonce): \WP_REST_Response {
             $request = new \WP_REST_Request('POST', '/ppcart/v1/cart/checkout');
@@ -275,8 +275,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame(400, rest_get_server()->dispatch($confirm)->get_status());
     }
 
-    /** @test-id IT-446 */
-    public function test_IT_446_checkout_block_with_source_cart_and_the_shortcode_render_the_cart_form(): void
+    /** @test-id IT-454 */
+    public function test_IT_454_checkout_block_with_source_cart_and_the_shortcode_render_the_cart_form(): void
     {
         update_option('_ppcart_cart_checkout_phone', 1);
         update_option('_ppcart_cart_page_id', self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']));
@@ -309,8 +309,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertStringNotContainsString('data-ppcart-checkout-form', do_shortcode('[ppcart_cart_checkout]'));
     }
 
-    /** @test-id IT-446 */
-    public function test_IT_446_confirmation_shows_the_cart_settings_message_and_every_item_to_the_buyer_only(): void
+    /** @test-id IT-454 */
+    public function test_IT_454_confirmation_shows_the_cart_settings_message_and_every_item_to_the_buyer_only(): void
     {
         update_option('_ppcart_cart_confirmation_message', 'Thanks {customer_firstname}, your files are ready.');
         $data = $this->checkout(self::BUYER + ['ppcart_cart_revision' => $this->cart()->revision])->get_data();
@@ -334,8 +334,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         }
     }
 
-    /** @test-id IT-446 */
-    public function test_IT_446_a_payment_that_left_the_page_returns_to_the_checkout_page_before_the_confirmation(): void
+    /** @test-id IT-454 */
+    public function test_IT_454_a_payment_that_left_the_page_returns_to_the_checkout_page_before_the_confirmation(): void
     {
         update_option('_ppcart_cart_confirmation', 'url');
         update_option('_ppcart_cart_redirect', 'https://merchant.example/thanks');
@@ -367,8 +367,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame(1, $this->completed);
     }
 
-    /** @test-id IT-446 */
-    public function test_IT_446_editor_preview_of_source_cart_needs_the_product_capability(): void
+    /** @test-id IT-454 */
+    public function test_IT_454_editor_preview_of_source_cart_needs_the_product_capability(): void
     {
         $preview = static function (): \WP_REST_Response {
             $request = new \WP_REST_Request('GET', '/publishpress-cart/v1/checkout-block/preview');
@@ -388,8 +388,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertMatchesRegularExpression('/<button type="submit"[^>]*disabled/', $data['html']);
     }
 
-    /** @test-id IT-447 */
-    public function test_IT_447_stripe_charge_settles_a_cart_order_only_through_the_payment_the_order_stored(): void
+    /** @test-id IT-455 */
+    public function test_IT_455_stripe_charge_settles_a_cart_order_only_through_the_payment_the_order_stored(): void
     {
         $data = $this->checkout(self::BUYER + ['ppcart_cart_revision' => $this->cart()->revision])->get_data();
         $orderId = $data['order_id'];
@@ -409,8 +409,8 @@ class ShoppingCartCheckoutTest extends ShoppingCartTestCase
         $this->assertSame(1, $this->completed);
     }
 
-    /** @test-id IT-447 */
-    public function test_IT_447_buy_now_endpoints_do_not_settle_or_reveal_a_cart_order(): void
+    /** @test-id IT-455 */
+    public function test_IT_455_buy_now_endpoints_do_not_settle_or_reveal_a_cart_order(): void
     {
         $data = $this->checkout(self::BUYER + ['ppcart_cart_revision' => $this->cart()->revision])->get_data();
         $orderId = $data['order_id'];

@@ -35,8 +35,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         return ['product_id' => $productId, 'plan_id' => 'personal', 'quantity' => 1, 'seen_price' => '29.00', 'added_at' => $addedAt];
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_two_writers_interleaved_on_one_row_keep_both_lines(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_two_writers_interleaved_on_one_row_keep_both_lines(): void
     {
         $seed = $this->product('Seed');
         $first = $this->product('Tab one');
@@ -67,8 +67,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame(1, $this->rowCount());
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_two_writers_adding_one_key_leave_one_line(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_two_writers_adding_one_key_leave_one_line(): void
     {
         $seed = $this->product('Seed');
         $shared = $this->product('Shared');
@@ -88,8 +88,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame(2, $this->store()->read()->revision);
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_a_remove_that_races_an_add_commits_in_write_order(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_a_remove_that_races_an_add_commits_in_write_order(): void
     {
         $seed = $this->product('Seed');
         $added = $this->product('Added');
@@ -107,8 +107,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame([$added . ':personal'], $this->keys($cart));
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_three_revision_misses_return_a_conflict_with_the_stored_cart(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_three_revision_misses_return_a_conflict_with_the_stored_cart(): void
     {
         $seed = $this->product('Seed');
         $wanted = $this->product('Wanted');
@@ -129,8 +129,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame(4, $stored->revision);
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_checkout_claims_one_submit_for_each_revision_the_buyer_saw(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_checkout_claims_one_submit_for_each_revision_the_buyer_saw(): void
     {
         $this->assertSame('ppcart_cart_empty', $this->store()->claim_checkout(0, [])->get_error_code());
 
@@ -170,8 +170,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertCount(1, $accepted->notices);
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_two_submits_that_pass_the_gate_together_claim_the_cart_once(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_two_submits_that_pass_the_gate_together_claim_the_cart_once(): void
     {
         $this->add($this->product('First'));
         $seen = $this->add($this->product('Second'))->revision;
@@ -191,8 +191,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame($seen + 1, $this->store()->read()->revision);
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_login_merge_keeps_the_user_line_appends_guest_lines_and_deletes_the_guest_row(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_login_merge_keeps_the_user_line_appends_guest_lines_and_deletes_the_guest_row(): void
     {
         $shared = $this->product('Shared');
         $guestOnly = $this->product('Guest only');
@@ -229,8 +229,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame([$shared . ':personal', $userOnly . ':personal', $guestOnly . ':personal'], $this->keys($read));
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_a_guest_line_added_during_the_login_merge_survives(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_a_guest_line_added_during_the_login_merge_survives(): void
     {
         $userOnly = $this->product('User only');
         $guestOnly = $this->product('Guest only');
@@ -256,8 +256,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame(str_repeat('u', 32), $_COOKIE['ppcart_cart']);
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_a_login_merge_that_misses_three_times_keeps_the_guest_row_for_the_next_request(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_a_login_merge_that_misses_three_times_keeps_the_guest_row_for_the_next_request(): void
     {
         $userOnly = $this->product('User only');
         $guestOnly = $this->product('Guest only');
@@ -291,8 +291,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame(str_repeat('u', 32), $_COOKIE['ppcart_cart']);
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_a_user_without_a_cart_takes_over_the_guest_row_at_login(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_a_user_without_a_cart_takes_over_the_guest_row_at_login(): void
     {
         $id = $this->product('Guest item');
         $guest = $this->add($id);
@@ -310,8 +310,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertTrue($this->store()->read()->is_empty());
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_a_signed_in_request_with_a_guest_cookie_merges_without_the_login_hook(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_a_signed_in_request_with_a_guest_cookie_merges_without_the_login_hook(): void
     {
         $guestItem = $this->product('Guest item');
         $userItem = $this->product('User item');
@@ -328,8 +328,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame(str_repeat('u', 32), $_COOKIE['ppcart_cart']);
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_two_rows_of_one_user_merge_into_the_oldest(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_two_rows_of_one_user_merge_into_the_oldest(): void
     {
         $older = $this->product('Older');
         $newer = $this->product('Newer');
@@ -347,8 +347,8 @@ class ShoppingCartConcurrencyTest extends ShoppingCartTestCase
         $this->assertSame(1, $this->rowCount());
     }
 
-    /** @test-id IT-438 */
-    public function test_IT_438_paid_lines_leave_the_cart_and_a_line_added_later_stays(): void
+    /** @test-id IT-446 */
+    public function test_IT_446_paid_lines_leave_the_cart_and_a_line_added_later_stays(): void
     {
         $paidOnly = $this->product('Paid only');
         $readded = $this->product('Added again');
