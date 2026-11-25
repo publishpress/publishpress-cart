@@ -51,7 +51,11 @@ final class PPCart_Shopping_Cart_Catalog
 
     public function max_quantity(int $product_id, string $plan_id): int
     {
-        return max(1, (int) apply_filters('ppcart_shopping_cart_item_max_quantity', 1, $product_id, $plan_id));
+        $max = max(1, (int) apply_filters('ppcart_shopping_cart_item_max_quantity', 1, $product_id, $plan_id));
+        if ($max > 1 && '1' === (string) ppcart_get_post_meta($product_id, 'manage_stock', true)) {
+            $max = min($max, max(1, (int) ppcart_get_post_meta($product_id, 'limit', true)));
+        }
+        return $max;
     }
 
     public function shop_card(int $product_id, ?PPCart_Shopping_Cart_Priced $cart = null): array
