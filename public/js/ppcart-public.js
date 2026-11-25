@@ -731,6 +731,10 @@
                                     $label.text(labelText);
                                 }
 
+                                if (typeof item.description === 'string' && item.description !== '') {
+                                    $label.append($('<small>').text(item.description));
+                                }
+
                                 $row.append($label);
                                 $row.append($('<span class="price">').text(item.subtotal));
                                 container.append($row);
