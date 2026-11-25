@@ -76,6 +76,94 @@ class ZeroAmountInvoiceSyncTest extends StripeSyncTestCase
         $this->assertSame('in_zero_earlier', ppcart_get_post_meta($earlierOrderId, 'stripe_invoice_id', true));
     }
 
+    public function test_IT_441_a_charged_invoice_after_a_zero_amount_invoice_gets_its_own_order(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_zero_then_paid', 'product_id' => 123, 'product_name' => 'Membership'));
+        $paidAt = strtotime('2024-09-18 10:00:00 UTC');
+        $firstOrderId = $this->createStripeOrder(
+            array(
+                'subscription_id' => $subscriptionId,
+                'transaction_id' => '',
+                'amount' => '0.00',
+            )
+        );
+        wp_update_post(array('ID' => $firstOrderId, 'post_date_gmt' => gmdate('Y-m-d H:i:s', $paidAt), 'post_date' => gmdate('Y-m-d H:i:s', $paidAt)));
+        ppcart_update_post_meta($subscriptionId, 'first_order', $firstOrderId);
+
+        $this->syncZeroInvoice('in_trial', 'sub_zero_then_paid', $subscriptionId, $paidAt);
+        $this->assertSame('in_trial', ppcart_get_post_meta($firstOrderId, 'stripe_invoice_id', true));
+
+        $renewalAt = $paidAt + MONTH_IN_SECONDS;
+        PPCart_Stripe_Sync::sync_invoice_resource(
+            (object) array(
+                'id' => 'in_first_charge',
+                'subscription' => 'sub_zero_then_paid',
+                'charge' => 'ch_first_charge',
+                'amount_paid' => 3900,
+                'currency' => 'usd',
+                'status' => 'paid',
+                'status_transitions' => (object) array('paid_at' => $renewalAt, 'finalized_at' => $renewalAt),
+                'lines' => (object) array(
+                    'data' => array(
+                        (object) array(
+                            'subscription_item' => 'si_first_charge',
+                            'metadata' => (object) array('ppcart_product_id' => 123),
+                            'period' => (object) array('end' => $renewalAt + MONTH_IN_SECONDS),
+                        ),
+                    ),
+                ),
+            ),
+            new PPCart_Subscription($subscriptionId),
+            'invoice.paid'
+        );
+
+        $orders = $this->ordersOf($subscriptionId);
+        foreach ($orders as $orderId) {
+            $this->createdPostIds[] = $orderId;
+        }
+        $this->assertCount(2, $orders, 'The charged invoice is its own order, not the $0 trial order.');
+        $this->assertSame('', (string) ppcart_get_post_meta($firstOrderId, 'transaction_id', true));
+        $this->assertSame('in_trial', ppcart_get_post_meta($firstOrderId, 'stripe_invoice_id', true));
+    }
+
+    public function test_IT_442_an_unpaid_invoice_with_no_payment_id_leaves_a_paid_zero_amount_order_alone(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_zero_uncollectible', 'product_id' => 123, 'product_name' => 'Membership'));
+        $paidAt = strtotime('2024-09-18 10:00:00 UTC');
+        $zeroOrderId = $this->createStripeOrder(array('subscription_id' => $subscriptionId, 'transaction_id' => '', 'amount' => '0.00'));
+        wp_update_post(array('ID' => $zeroOrderId, 'post_date_gmt' => gmdate('Y-m-d H:i:s', $paidAt), 'post_date' => gmdate('Y-m-d H:i:s', $paidAt)));
+        ppcart_update_post_meta($subscriptionId, 'first_order', $zeroOrderId);
+
+        PPCart_Stripe_Sync::sync_invoice_resource(
+            (object) array(
+                'id' => 'in_uncollectible',
+                'subscription' => 'sub_zero_uncollectible',
+                'amount_paid' => 0,
+                'amount_due' => 3900,
+                'currency' => 'usd',
+                'status' => 'uncollectible',
+                'status_transitions' => (object) array('finalized_at' => $paidAt + HOUR_IN_SECONDS),
+                'lines' => (object) array(
+                    'data' => array(
+                        (object) array(
+                            'subscription_item' => 'si_uncollectible',
+                            'metadata' => (object) array('ppcart_product_id' => 123),
+                            'period' => (object) array('end' => $paidAt + MONTH_IN_SECONDS),
+                        ),
+                    ),
+                ),
+            ),
+            new PPCart_Subscription($subscriptionId),
+            'invoice.marked_uncollectible'
+        );
+
+        foreach ($this->ordersOf($subscriptionId) as $orderId) {
+            $this->createdPostIds[] = $orderId;
+        }
+        $this->assertSame('paid', ppcart_get_post_meta($zeroOrderId, 'status', true));
+        $this->assertSame('', (string) ppcart_get_post_meta($zeroOrderId, 'stripe_invoice_id', true));
+    }
+
     private function syncZeroInvoice(string $invoiceId, string $stripeSubscriptionId, int $subscriptionId, int $paidAt): void
     {
         PPCart_Stripe_Sync::sync_invoice_resource(

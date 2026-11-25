@@ -110,7 +110,9 @@ if (! $existing && ! $charge_id && ! $payment_intent && $invoice_id) {
 // sync created for an invoice with no charge, have no payment ID. Match the
 // invoice to such an order of this subscription by amount and payment date,
 // so Sync with Stripe doesn't create a second order for the same payment.
-if (! $existing) {
+// An invoice with no payment ID is only matched when it was paid, so an
+// unpaid invoice can't turn a paid $0 order into a failed one.
+if (! $existing && ($charge_id || $payment_intent || 'paid' === $order_status['post_status'])) {
     $legacy_order_id = self::find_unlinked_order_for_invoice($sub, self::get($invoice, 'amount_paid', 0), $currency, $invoice_date, $invoice_id);
     if ($legacy_order_id) {
         $existing = new PPCart_Order($legacy_order_id);
@@ -157,6 +159,7 @@ return PPCart_Stripe_Sync_Context::run(
 
         if (! $order) {
             $order = $sub->first_order();
+            $first_order_invoice_id = ($order && ! empty($order->id)) ? (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true) : '';
             if (! $order || empty($order->id)) {
                 // A subscription with no order yet, for example one imported
                 // from Stripe, gets a new order built from its own details.
@@ -166,8 +169,10 @@ return PPCart_Stripe_Sync_Context::run(
                 && (
                     'refunded' === $order->status
                     || 'refunded' === $order->payment_status
+                    // An unpaid invoice never takes over a first order that is already paid.
+                    || ('paid' !== $order_status['post_status'] && in_array($order->status, [ 'paid', 'completed' ], true))
                     // A first order already synced from another invoice is a different payment.
-                    || ($invoice_id && '' !== (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true) && $invoice_id !== (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true))
+                    || ($invoice_id && '' !== $first_order_invoice_id && $invoice_id !== $first_order_invoice_id)
                     || (((! $order->transaction_id || strpos($order->transaction_id, 'ch_') !== 0) && $sub->order_count() == 1) === false)
                 )
             ) {
