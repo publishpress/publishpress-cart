@@ -31,7 +31,7 @@ class PPCart_Dashboard_Widget
 
     public function enqueue_styles($hook_suffix)
     {
-        if ('index.php' !== $hook_suffix) {
+        if ('index.php' !== $hook_suffix || ! ppcart_user_can('manager_option')) {
             return;
         }
 
@@ -40,6 +40,10 @@ class PPCart_Dashboard_Widget
 
     public function register()
     {
+        if (! ppcart_user_can('manager_option')) {
+            return;
+        }
+
         wp_add_dashboard_widget(
             'ppcart_dashboard_widget',
             /* translators: %s: plugin title. */
@@ -50,6 +54,10 @@ class PPCart_Dashboard_Widget
 
     public function render()
     {
+        if (! ppcart_user_can('manager_option')) {
+            return;
+        }
+
         $this->renderer->render($this->data->get_summary());
     }
 }

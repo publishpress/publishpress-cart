@@ -35,6 +35,12 @@ foreach ($order_ids as $order_id) {
         continue;
     }
 
+    // An order already linked to another Stripe invoice is a different payment.
+    $linked_invoice_id = (string) ppcart_get_post_meta($order_id, 'stripe_invoice_id', true);
+    if ('' !== $linked_invoice_id && $linked_invoice_id !== (string) $invoice_id) {
+        continue;
+    }
+
     $order_status = (string) ppcart_get_post_meta($order_id, 'status', true);
     if (! in_array($order_status, [ 'paid', 'completed', 'refunded' ], true)) {
         continue;
