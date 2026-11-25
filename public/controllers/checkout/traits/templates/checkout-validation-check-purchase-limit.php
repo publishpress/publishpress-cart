@@ -45,15 +45,13 @@ if (!$ppcart_product || (int) $ppcart_product->ID !== $product_id_in) {
     $product_id = $ppcart_product->ID;
 }
 
-if (!isset($ppcart_product->customer_purchase_limit)) {
-    return;
-}
-
-$limit = $ppcart_product->customer_limit ?? 1;
-$order_posts = PPCart_Order::get_current_user_orders($limit, $product_id);
-if (!empty($order_posts) && count($order_posts) >= $limit) {
+$purchase_limit = ppcart_check_product_purchase_limit(
+    (int) $product_id,
+    [ 'email' => (string) filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ],
+    is_object($ppcart_product) ? $ppcart_product : null
+);
+if (is_wp_error($purchase_limit)) {
     $ppcart_debug_logger->log_debug('Error: current user ID: ' . get_current_user_id() . ' has already purchased product ID: ' . $product_id, 4);
 
-    $message = $ppcart_product->customer_limit_message ?? __('Sorry, you have already purchased this product!', 'publishpress-cart');
-    wp_send_json_error([ 'error' => $message ]);
+    wp_send_json_error([ 'error' => $purchase_limit->get_error_message() ]);
 }

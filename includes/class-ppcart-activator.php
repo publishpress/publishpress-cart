@@ -59,6 +59,8 @@ class PPCart_Activator
         }
 
         self::setup_tax_table();
+        require_once __DIR__ . '/shopping-cart/class-ppcart-shopping-cart-store.php';
+        PPCart_Shopping_Cart_Store::install();
         self::add_cap();
 
         do_action('ppcart_activate');

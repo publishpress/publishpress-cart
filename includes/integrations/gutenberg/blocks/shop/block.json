@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "publishpress-cart/shop",
+  "title": "Cart Shop",
+  "category": "widgets",
+  "icon": "store",
+  "description": "Display products in a shop grid.",
+  "textdomain": "publishpress-cart",
+  "render": "file:./render.php",
+  "editorScript": "ppcart-shop-editor",
+  "style": "ppcart-shopping-cart",
+  "attributes": {
+    "perPage": {
+      "type": "number",
+      "default": 12
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "date"
+    },
+    "pagination": {
+      "type": "string",
+      "enum": ["numbers", "prev_next", "load_more", "none"],
+      "default": "numbers"
+    },
+    "categories": {
+      "type": "array",
+      "default": []
+    },
+    "tags": {
+      "type": "array",
+      "default": []
+    },
+    "showImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "showExcerpt": {
+      "type": "boolean",
+      "default": true
+    },
+    "showPrice": {
+      "type": "boolean",
+      "default": true
+    },
+    "includeCollections": {
+      "type": "boolean",
+      "default": true
+    },
+    "includeSubscriptions": {
+      "type": "boolean",
+      "default": true
+    },
+    "styleSettings": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "align": ["wide", "full"],
+    "html": false
+  }
+}

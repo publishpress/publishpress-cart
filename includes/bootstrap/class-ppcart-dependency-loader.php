@@ -125,6 +125,8 @@ class PPCart_Dependency_Loader
         require_once $base_path . 'public/controllers/class-ppcart-public-order-controller.php';
         require_once $base_path . 'public/controllers/class-ppcart-public-checkout-controller.php';
         require_once $base_path . 'public/controllers/class-ppcart-public-page-controller.php';
+        require_once $base_path . 'public/controllers/class-ppcart-public-shopping-cart-controller.php';
+        require_once $base_path . 'public/controllers/class-ppcart-public-cart-checkout-controller.php';
         require_once $base_path . 'public/class-ppcart-public.php';
         $ppcart_public = new PPCart_Public($cart->get_plugin_name(), $cart->get_version(), $cart->get_prefix());
 
@@ -184,6 +186,8 @@ class PPCart_Dependency_Loader
         /*
         * Gutenberg checkout block
         */
+        require_once $base_path . 'includes/block-styles/functions-block-styles.php';
+        require_once $base_path . 'includes/shopping-cart/loader.php';
         require_once $base_path . 'includes/integrations/gutenberg/index.php';
 
         do_action('ppcart_load_pro_modules', $cart);

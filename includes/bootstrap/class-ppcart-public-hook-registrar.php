@@ -20,6 +20,14 @@ class PPCart_Public_Hook_Registrar
     {
         global $ppcart_public;
 
+        $shopping_cart = new PPCart_Public_Shopping_Cart_Controller();
+        $this->loader->add_action('template_redirect', $shopping_cart, 'template_redirect', 1);
+        $this->loader->add_action('wp_footer', $shopping_cart, 'footer');
+        $this->loader->add_filter('script_loader_tag', $shopping_cart, 'script_tag', 10, 2);
+        $cart_checkout = new PPCart_Public_Cart_Checkout_Controller();
+        $this->loader->add_action('rest_api_init', $cart_checkout, 'register_routes');
+        $this->loader->add_action('template_redirect', $cart_checkout, 'template_redirect', 1);
+
         $plugin_public = $ppcart_public;
         $plugin_public_assets = new PPCart_Public_Asset_Controller($this->cart->get_plugin_name(), $this->cart->get_version(), $this->cart->get_prefix());
         $plugin_public_subscriptions = PPCart_Public_Subscription_Checkout_Controller::instance();

@@ -33,6 +33,8 @@ const productPostTypes = Array.isArray( config.productPostTypes ) && config.prod
 const blockTitle = __( 'Cart Checkout', 'publishpress-cart' );
 const siteTitle = config.siteTitle || __( 'Site title', 'publishpress-cart' );
 
+const cartSource = 'cart';
+
 function normalizeProductId( value ) {
 	const productId = Number.parseInt( value, 10 );
 
@@ -246,6 +248,7 @@ function getProductOptions( products, isLoading ) {
 
 	return [
 		{ label: __( 'Dynamic product', 'publishpress-cart' ), value: '' },
+		{ label: __( 'Cart', 'publishpress-cart' ), value: cartSource },
 		...products.map( ( product ) => ( {
 			label: product.title,
 			value: String( product.id ),
@@ -898,12 +901,13 @@ function Edit( props ) {
 			type: type || '',
 		};
 	}, [] );
+	const isCartSource = attributes.pid === cartSource;
 	const selectedProductId = normalizeProductId( attributes.pid );
 	const currentProductId =
-		! selectedProductId && productPostTypes.includes( currentPost.type ) && currentPost.id
+		! isCartSource && ! selectedProductId && productPostTypes.includes( currentPost.type ) && currentPost.id
 			? normalizeProductId( currentPost.id )
 			: '';
-	const previewProductId = selectedProductId || currentProductId;
+	const previewProductId = isCartSource ? cartSource : selectedProductId || currentProductId;
 
 	useEffect( () => {
 		let isMounted = true;
@@ -1041,12 +1045,21 @@ function Edit( props ) {
 							value={ attributes.pid || '' }
 							options={ getProductOptions( products, isLoadingProducts ) }
 							onChange={ ( value ) =>
-								setAttributes( { pid: value, plan: '' } )
+								setAttributes(
+									value === cartSource
+										? { pid: value, plan: '', coupon: '' }
+										: { pid: value, plan: '' }
+								)
+							}
+							help={
+								isCartSource
+									? __( 'This form pays for the shopping cart. Shop & Cart settings control its fields.', 'publishpress-cart' )
+									: undefined
 							}
 							__nextHasNoMarginBottom
 						/>
 					</PanelRow>
-					{ planOptions.length > 1 && (
+					{ ! isCartSource && planOptions.length > 1 && (
 						<PanelRow>
 							<SelectControl
 								label={ __( 'Payment plan', 'publishpress-cart' ) }
@@ -1057,53 +1070,63 @@ function Edit( props ) {
 							/>
 						</PanelRow>
 					) }
-					<PanelRow className="ppcart-checkout-toggle-row">
-						<ToggleControl
-							label={ __( 'Hide Labels', 'publishpress-cart' ) }
-							checked={ !! attributes.hide_labels }
-							onChange={ ( value ) => setAttributes( { hide_labels: value } ) }
-							__nextHasNoMarginBottom
-						/>
-					</PanelRow>
-					{ config.isPro === '1' && (
-						<TextControl
-							label={ __( 'Coupon Code', 'publishpress-cart' ) }
-							help={ __( 'With PublishPress Cart Pro, a valid code entered here is automatically applied at checkout.', 'publishpress-cart' ) }
-							value={ attributes.coupon || '' }
-							onChange={ ( value ) => setAttributes( { coupon: value } ) }
-							__nextHasNoMarginBottom
-						/>
+					{ ! isCartSource && (
+						<>
+							<PanelRow className="ppcart-checkout-toggle-row">
+								<ToggleControl
+									label={ __( 'Hide Labels', 'publishpress-cart' ) }
+									checked={ !! attributes.hide_labels }
+									onChange={ ( value ) => setAttributes( { hide_labels: value } ) }
+									__nextHasNoMarginBottom
+								/>
+							</PanelRow>
+							{ config.isPro === '1' && (
+								<TextControl
+									label={ __( 'Coupon Code', 'publishpress-cart' ) }
+									help={ __( 'With PublishPress Cart Pro, a valid code entered here is automatically applied at checkout.', 'publishpress-cart' ) }
+									value={ attributes.coupon || '' }
+									onChange={ ( value ) => setAttributes( { coupon: value } ) }
+									__nextHasNoMarginBottom
+								/>
+							) }
+						</>
 					) }
 					</PanelBody>
 
-				<PanelBody title={ __( 'Content Arrangement', 'publishpress-cart' ) } initialOpen={ false }>
-					<ContentArrangementControl
-						value={ attributes.contentOrder || [] }
-						template={ effectiveTemplate }
-						availability={ sectionAvailability }
-						onChange={ ( value ) => setAttributes( { contentOrder: value } ) }
-					/>
-				</PanelBody>
+				{ ! isCartSource && (
+					<>
+						<PanelBody title={ __( 'Content Arrangement', 'publishpress-cart' ) } initialOpen={ false }>
+							<ContentArrangementControl
+								value={ attributes.contentOrder || [] }
+								template={ effectiveTemplate }
+								availability={ sectionAvailability }
+								onChange={ ( value ) => setAttributes( { contentOrder: value } ) }
+							/>
+						</PanelBody>
 
-				<PanelBody title={ __( 'Text', 'publishpress-cart' ) } initialOpen={ false }>
-					<TextSettingsControl
-						value={ textSettings }
-						template={ effectiveTemplate }
-						onChange={ updateTextSetting }
-						onReset={ () => setAttributes( { textSettings: {} } ) }
-					/>
-				</PanelBody>
+						<PanelBody title={ __( 'Text', 'publishpress-cart' ) } initialOpen={ false }>
+							<TextSettingsControl
+								value={ textSettings }
+								template={ effectiveTemplate }
+								onChange={ updateTextSetting }
+								onReset={ () => setAttributes( { textSettings: {} } ) }
+							/>
+						</PanelBody>
+					</>
+				) }
 			</InspectorControls>
 
 			<InspectorControls group="styles">
 				<PanelBody title={ __( 'Design', 'publishpress-cart' ) } initialOpen>
-					<SelectControl
-						label={ __( 'Form skin', 'publishpress-cart' ) }
-						value={ attributes.template || '' }
-						options={ templateOptions }
-						onChange={ ( value ) => setAttributes( { template: value } ) }
-						__nextHasNoMarginBottom
-					/>
+					{ ! isCartSource && (
+						<SelectControl
+							label={ __( 'Form skin', 'publishpress-cart' ) }
+							value={ attributes.template || '' }
+							options={ templateOptions }
+							onChange={ ( value ) => setAttributes( { template: value } ) }
+							__nextHasNoMarginBottom
+						/>
+					) }
 					<SelectControl
 						label={ __( 'Style preset', 'publishpress-cart' ) }
 						value={ styleSettings.preset || '' }
@@ -1116,36 +1139,40 @@ function Edit( props ) {
 						value={ styleSettings.accentColor }
 						onChange={ ( value ) => updateStyle( 'accentColor', value ) }
 					/>
-					<SegmentedControl
-						label={ __( 'Surface', 'publishpress-cart' ) }
-						value={ styleSettings.surfaceStyle }
-						options={ [
-							{ label: __( 'Default', 'publishpress-cart' ), value: '' },
-							{ label: __( 'Card', 'publishpress-cart' ), value: 'card' },
-							{ label: __( 'Boxed', 'publishpress-cart' ), value: 'boxed' },
-						] }
-						onChange={ ( value ) => updateStyle( 'surfaceStyle', value ) }
-					/>
-					<SegmentedControl
-						label={ __( 'Density', 'publishpress-cart' ) }
-						value={ styleSettings.density }
-						options={ [
-							{ label: __( 'Default', 'publishpress-cart' ), value: '' },
-							{ label: __( 'Compact', 'publishpress-cart' ), value: 'compact' },
-							{ label: __( 'Spacious', 'publishpress-cart' ), value: 'spacious' },
-						] }
-						onChange={ ( value ) => updateStyle( 'density', value ) }
-					/>
-					<SegmentedControl
-						label={ __( 'Corners', 'publishpress-cart' ) }
-						value={ styleSettings.cornerRadius }
-						options={ [
-							{ label: __( 'Default', 'publishpress-cart' ), value: '' },
-							{ label: __( 'Square', 'publishpress-cart' ), value: 'square' },
-							{ label: __( 'Rounded', 'publishpress-cart' ), value: 'rounded' },
-						] }
-						onChange={ ( value ) => updateStyle( 'cornerRadius', value ) }
-					/>
+					{ ! isCartSource && (
+						<>
+							<SegmentedControl
+								label={ __( 'Surface', 'publishpress-cart' ) }
+								value={ styleSettings.surfaceStyle }
+								options={ [
+									{ label: __( 'Default', 'publishpress-cart' ), value: '' },
+									{ label: __( 'Card', 'publishpress-cart' ), value: 'card' },
+									{ label: __( 'Boxed', 'publishpress-cart' ), value: 'boxed' },
+								] }
+								onChange={ ( value ) => updateStyle( 'surfaceStyle', value ) }
+							/>
+							<SegmentedControl
+								label={ __( 'Density', 'publishpress-cart' ) }
+								value={ styleSettings.density }
+								options={ [
+									{ label: __( 'Default', 'publishpress-cart' ), value: '' },
+									{ label: __( 'Compact', 'publishpress-cart' ), value: 'compact' },
+									{ label: __( 'Spacious', 'publishpress-cart' ), value: 'spacious' },
+								] }
+								onChange={ ( value ) => updateStyle( 'density', value ) }
+							/>
+							<SegmentedControl
+								label={ __( 'Corners', 'publishpress-cart' ) }
+								value={ styleSettings.cornerRadius }
+								options={ [
+									{ label: __( 'Default', 'publishpress-cart' ), value: '' },
+									{ label: __( 'Square', 'publishpress-cart' ), value: 'square' },
+									{ label: __( 'Rounded', 'publishpress-cart' ), value: 'rounded' },
+								] }
+								onChange={ ( value ) => updateStyle( 'cornerRadius', value ) }
+							/>
+						</>
+					) }
 					<Button
 						variant="secondary"
 						onClick={ () => resetStyleSettings( designStyleKeys ) }

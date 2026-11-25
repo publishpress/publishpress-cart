@@ -1,7 +1,7 @@
 ---
 edition: both
 nav_order: 4
-features: [checkout-display, secure-downloads, payment-plans, coupons]
+features: [checkout-display, secure-downloads, payment-plans, coupons, shopping-cart]
 ---
 
 # Available shortcodes
@@ -89,20 +89,48 @@ Displays the price or name of one payment plan.
 
 Shows the product name or remaining inventory on the checkout page.
 
-## Product store
+## Shop and cart
 
-```text
-[ppcart_store]
-```
+These shortcodes show the same output as the Shop and Cart blocks.
 
-Displays a product archive.
+| Shortcode | Displays |
+|-----------|----------|
+| `[ppcart_shop]` | Products with **Show in Shop Page** turned on, with an **Add to cart** button on each card. |
+| `[ppcart_mini_cart]` | A cart icon with the item count. A click opens the cart drawer. Shows nothing when **Enable shopping cart** is off. |
+| `[ppcart_cart]` | The items in the cart and the order summary. |
+| `[ppcart_cart_checkout]` | The checkout form that pays for the cart. After payment, it shows the confirmation and the receipt. |
+
+`[ppcart_shop]` accepts these parameters:
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `button_text` | Purchased | Label on the purchase button |
-| `purchased_text` | Already Purchased | Label when already owned |
-| `posts_per_page` | 12 | Products per page |
-| `cols` | 3 | Columns (`3` or `4`) |
+| `perpage` | `12` | Products on each page, from 1 to 100 |
+| `columns` | `3` | Columns, from 1 to 4 |
+| `orderby` | `date` | `date`, `title`, `price`, or `menu_order` |
+| `pagination` | `numbers` | `numbers` (page numbers), `prev_next` (Previous and Next links), `load_more` (a **Load more products** button), or `none` (all products on one page) |
+| `categories` | All | Product category IDs, separated by commas |
+| `tags` | All | Product tag IDs, separated by commas |
+| `showimage` | `true` | `false` hides the product image |
+| `showexcerpt` | `true` | `false` hides the product excerpt |
+| `showprice` | `true` | `false` hides the price |
+| `includecollections` | `true` | `false` hides Pro collections |
+| `includesubscriptions` | `true` | `false` hides products that have no one-time or free plan |
+
+```text
+[ppcart_shop perpage="8" columns="4" orderby="price" categories="12,15"]
+```
+
+`[ppcart_mini_cart]` accepts these parameters:
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `showcount` | `true` | `false` hides the item count |
+| `showtotal` | `false` | `true` shows the cart total next to the icon |
+| `opensdrawer` | `true` | `false` makes the icon a link to the Cart page |
+
+`[ppcart_cart]` and `[ppcart_cart_checkout]` take no parameters.
+
+The `[ppcart_store]` shortcode was removed. Use `[ppcart_shop]` or the Shop block.
 
 ## Order downloads
 

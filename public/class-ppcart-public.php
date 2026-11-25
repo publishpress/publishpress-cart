@@ -102,6 +102,15 @@ class PPCart_Public
 
     public function do_order_integration_functions($status, $order_data, $order_type = 'main')
     {
+        if (ppcart_order_is_shopping_cart($order_data)) {
+            foreach (ppcart_shopping_cart_order_contexts($order_data) as $context) {
+                ppcart_do_integrations($context['product_id'], $context, $status);
+                if ($status == 'pending' && $context['pay_method'] == 'cod') {
+                    ppcart_do_notifications($context);
+                }
+            }
+            return;
+        }
 
         ppcart_do_integrations($order_data['product_id'], $order_data, $status);
 
@@ -115,7 +124,7 @@ class PPCart_Public
         do_action('ppcart_after_order_paid', $status, $order_data, $event_type);
 
         $type = ($status == 'paid') ? 'purchase' : $status;
-        if (!ppcart_get_post_meta($order_data['product_id'], 'disable_' . $type . '_email', true)) {
+        if (ppcart_order_is_shopping_cart($order_data) || !ppcart_get_post_meta($order_data['product_id'], 'disable_' . $type . '_email', true)) {
             ppcart_notification_send($status, $order_data);
         }
     }
@@ -127,6 +136,15 @@ class PPCart_Public
      */
     public function do_order_complete_functions($status, $order_data, $order_type = 'main')
     {
+        if (ppcart_order_is_shopping_cart($order_data)) {
+            foreach (ppcart_shopping_cart_order_contexts($order_data) as $context) {
+                ppcart_do_integrations($context['product_id'], $context);
+                ppcart_maybe_update_stock($context['product_id'], 'decrease', $context['quantity']);
+                ppcart_do_notifications($context);
+            }
+            return;
+        }
+
         ppcart_do_integrations($order_data['product_id'], $order_data);
         ppcart_maybe_update_stock($order_data['product_id']);
         ppcart_do_notifications($order_data);

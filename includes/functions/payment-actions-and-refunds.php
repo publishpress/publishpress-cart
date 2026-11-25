@@ -562,7 +562,13 @@ function ppcart_order_refund($data)
     ppcart_log_entry($postID, $log_entry);
 
     if ($data['restock'] == 'YES') {
-        ppcart_maybe_update_stock($prodID, 'increase');
+        if (ppcart_order_is_shopping_cart($order)) {
+            foreach (ppcart_shopping_cart_order_contexts($order->get_data()) as $context) {
+                ppcart_maybe_update_stock($context['product_id'], 'increase', $context['quantity']);
+            }
+        } else {
+            ppcart_maybe_update_stock($prodID, 'increase');
+        }
         ppcart_update_post_meta($postID, 'refund_restock', 'YES');
     }
 

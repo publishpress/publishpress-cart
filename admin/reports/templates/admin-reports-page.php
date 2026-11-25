@@ -179,7 +179,10 @@ if ($queryrfunded->have_posts()) {
         $queryrfunded->the_post();
         $postid = get_the_ID();
         $pid = ppcart_get_post_meta(get_the_ID(), 'product_id', true);
-        $refunds_array[$pid][] = get_the_title($pid);
+        $refund_cart_products = array_keys(ppcart_shopping_cart_order_revenue(new PPCart_Order($postid)));
+        foreach ($refund_cart_products ?: [$pid] as $refund_pid) {
+            $refunds_array[$refund_pid][] = get_the_title($refund_pid);
+        }
 
         $refund_data = $this->get_refund_data($postid);
         $refunds_time_array[] = $refund_data['count'];
@@ -344,6 +347,22 @@ if ($query->have_posts()) {
                     $bumps['total']++;
                 }
             }
+        } elseif ($cart_revenue = ppcart_shopping_cart_order_revenue($cart_order)) {
+            $method = $cart_order->pay_method ? $cart_order->pay_method : 'stripe';
+            foreach ($cart_revenue as $item_pid => $item_revenue) {
+                $products[$item_pid] = ($products[$item_pid] ?? 0) + 1;
+                $product_revenue[$item_pid] = ($product_revenue[$item_pid] ?? 0) + $item_revenue;
+                $main[$item_pid] = ($main[$item_pid] ?? 0) + 1;
+                $main['gateways'][$item_pid][$method] = ($main['gateways'][$item_pid][$method] ?? 0) + 1;
+            }
+
+            $orderEmail = $cart_order->email;
+            if ($orderEmail && !in_array($orderEmail, $customers)) {
+                $customers[] = $orderEmail;
+            }
+            $gateways[$method] = ($gateways[$method] ?? 0) + 1;
+            $main['total']++;
+            $carttotal[get_the_ID()] = ($carttotal[get_the_ID()] ?? 0) + $amount;
         }
     }
 }

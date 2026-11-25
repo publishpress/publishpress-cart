@@ -148,6 +148,11 @@ if ($ppcart_order->id && ppcart_get_post_meta($ppcart_order->id, 'paypal_onpage'
     exit();
 }
 
+if (ppcart_order_is_shopping_cart($ppcart_order) && (! $paypal_ipn_verified || ! PPCart_Paypal::shopping_cart_standard_matches($ppcart_order, $request_data))) {
+    http_response_code(200);
+    exit();
+}
+
 global $ppcart_debug_logger;
 $ppcart_debug_logger->log_debug('Processing paypal ipn response:' . wp_json_encode($request_data));
 

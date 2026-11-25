@@ -382,6 +382,19 @@ features:
     status: active
     description: Per-product shipping rates, domestic/international pricing, and order-bump shipping rules.
     edition: pro
+  shopping-cart:
+    name: Shop and shopping cart
+    status: active
+    description: A Shop page that lists products, a cart that holds several one-time products, and one checkout that pays for all of them.
+    edition: both
+    source_areas:
+      - includes/shopping-cart/
+      - public/controllers/class-ppcart-public-shopping-cart-controller.php
+      - public/controllers/class-ppcart-public-cart-checkout-controller.php
+      - public/templates/shopping-cart/
+      - includes/integrations/gutenberg/blocks/shop/
+      - includes/integrations/gutenberg/blocks/mini-cart/
+      - includes/integrations/gutenberg/blocks/cart/
   store-settings:
     name: Store settings
     status: active

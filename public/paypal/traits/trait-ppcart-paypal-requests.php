@@ -25,14 +25,20 @@ trait PPCart_Paypal_Requests_Trait
     }
 
     /**
-     * Build the pending order (and subscription) for a PayPal checkout from the posted form.
+     * Build a pending PayPal order from the posted form, or accept a prebuilt shopping cart order.
      *
-     * Writes nothing. Sets the global $ppcart_product as checkout code expects.
+     * Writes nothing. Only Buy now sets the global $ppcart_product and loads the posted product form.
      *
+     * @param PPCart_Order|null $shopping_cart_order Order built by cart checkout, or null for Buy now.
      * @return array{0: PPCart_Order, 1: PPCart_Subscription|null, 2: int}
      */
-    public function paypal_build_checkout_order()
+    public function paypal_build_checkout_order(?PPCart_Order $shopping_cart_order = null)
     {
+        if ($shopping_cart_order && ppcart_order_is_shopping_cart($shopping_cart_order)) {
+            $shopping_cart_order->gateway_mode = $this->sandbox_enabled() ? 'test' : 'live';
+            return [$shopping_cart_order, null, 0];
+        }
+
         global $ppcart_product;
 
         $ppcart_product_id = (int) ppcart_filter_input(INPUT_POST, 'ppcart_product_id', FILTER_VALIDATE_INT);
@@ -81,6 +87,20 @@ trait PPCart_Paypal_Requests_Trait
 
         $order_id = $ppcart_order->store();
         ppcart_remember_auto_login_request($order_id);
+        if (ppcart_order_is_shopping_cart($ppcart_order)) {
+            $settings = new PPCart_Shopping_Cart_Settings();
+            $ppcart_order->cancel_url = $settings->urls()['checkout'];
+            $confirmation = $settings->confirmation($ppcart_order);
+            $return_url = 'page' === $confirmation['type']
+                ? $confirmation['url']
+                : PPCart_Order::confirmation_url($ppcart_order->page_url ?: $ppcart_order->cancel_url, $order_id);
+            $ppcart_order->return_url = add_query_arg(
+                ['ppcart-pp' => 1] + PPCart_Order::access_arg($order_id),
+                remove_query_arg('token', $return_url)
+            );
+            return (int) $order_id;
+        }
+
         $ppcart_order->cancel_url = esc_url_raw((string) $cancel_url);
         if (! empty($ppcart_product->upsell_path) && $ppcart_product->confirmation != 'redirect') {
             $return_url = $ppcart_product->form_action;

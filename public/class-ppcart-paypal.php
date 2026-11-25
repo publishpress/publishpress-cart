@@ -68,14 +68,15 @@ class PPCart_Paypal extends PPCart_Public
      * @since 1.0.0
      * @param string    $plugin_name       The name of the plugin.
      * @param string    $version    The version of this plugin.
+     * @param bool      $register_hooks Register storefront hooks. Cart checkout uses the shared helpers without registering a second handler.
      */
-    public function __construct($plugin_name, $version)
+    public function __construct($plugin_name, $version, $register_hooks = true)
     {
         $this->plugin_name = $plugin_name;
         $this->version = $version;
 
         $paypal_enabled = $this->paypal_configured();
-        if (empty($paypal_enabled)) {
+        if (empty($paypal_enabled) || ! $register_hooks) {
             return;
         }
 
@@ -90,5 +91,36 @@ class PPCart_Paypal extends PPCart_Public
 
         add_action('wp_ajax_ppcart_paypal_request', [$this, 'paypal_request']);
         add_action('wp_ajax_nopriv_ppcart_paypal_request', [$this, 'paypal_request']);
+    }
+
+    public function shopping_cart_checkout(PPCart_Order $order): array|WP_Error
+    {
+        [$order, $sub, $product_id] = $this->paypal_build_checkout_order($order);
+        $this->paypal_store_checkout_order($order, $sub, $product_id, '');
+        if (PPCart_Paypal_Onpage::is_active()) {
+            return PPCart_Paypal_Onpage::shopping_cart_checkout($order);
+        }
+        return [
+            'status' => 'redirect',
+            'url' => apply_filters('ppcart_paypal_checkout_url', $this->build_paypal_url($order, ''), $order, ''),
+        ];
+    }
+
+    public static function shopping_cart_standard_matches(PPCart_Order $order, array $payment): bool
+    {
+        $custom = json_decode(urldecode((string) ($payment['custom'] ?? '')), true);
+        $business = 'live' === $order->gateway_mode ? get_option('_ppcart_paypal_email') : get_option('_ppcart_paypal_sandbox_email');
+        $amount_matches = PPCart_Paypal_Billing_Shape::money($payment['mc_gross'] ?? -1) === PPCart_Paypal_Billing_Shape::money($order->amount);
+        if ('Refunded' === ($payment['payment_status'] ?? '') && ! empty($order->transaction_id)) {
+            $amount_matches = ($payment['parent_txn_id'] ?? '') === $order->transaction_id
+                && (float) ($payment['mc_gross'] ?? 0) < 0
+                && abs((float) $payment['mc_gross']) <= (float) $order->amount;
+        }
+        return $order->id && 'paypal' === $order->pay_method
+            && ! PPCart_Paypal_Sync::is_onpage_order($order->id)
+            && (string) ($custom['order_id'] ?? '') === (string) $order->id
+            && strtoupper((string) ($payment['mc_currency'] ?? '')) === PPCart_Paypal_Sync::record_currency($order)
+            && $amount_matches
+            && strtolower(urldecode((string) ($payment['receiver_email'] ?? $payment['business'] ?? ''))) === strtolower((string) $business);
     }
 }

@@ -29,6 +29,16 @@ trait PPCart_Admin_Settings_Core_Options_Trait
             $currencies[$code] = $name . ' (' . $symbols[$code] . ')';
         }
         $options = require __DIR__ . '/options/core-settings.php';
+        $shopping_cart_options = (new PPCart_Shopping_Cart_Settings())->definitions();
+        foreach ($shopping_cart_options as &$fields) {
+            foreach ($fields as &$field) {
+                if (! empty($field['settings']['page_select'])) {
+                    $field['settings']['selections'] = self::get_pages();
+                }
+            }
+            unset($field);
+        }
+        unset($fields);
 
         $payment_options = $this->get_payment_fields($mcp_context);
         $integration_options = $this->get_integration_fields();
@@ -42,6 +52,7 @@ trait PPCart_Admin_Settings_Core_Options_Trait
 
         $options = array_merge(
             is_array($options) ? $options : [],
+            $shopping_cart_options,
             is_array($payment_options) ? $payment_options : [],
             is_array($integration_options) ? $integration_options : [],
             is_array($tax_options) ? $tax_options : [],

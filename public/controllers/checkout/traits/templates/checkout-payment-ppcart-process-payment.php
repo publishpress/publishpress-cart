@@ -54,8 +54,13 @@ if (! ppcart_checkout_completion_allowed($order_id, $completion_context, [])) {
     return;
 }
 
-$ppcart_product = ppcart_setup_product($ppcart_product_id);
 $order_info = (array) ppcart_setup_order($order_id);
+
+if (ppcart_order_is_shopping_cart($order_info)) {
+    return;
+}
+
+$ppcart_product = ppcart_setup_product($ppcart_product_id);
 
 // Log in a buyer whose account this order just created, when auto-login is on.
 ppcart_remember_auto_login_request($order_id);

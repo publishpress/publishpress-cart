@@ -38,6 +38,14 @@ if (! ppcart_verify_nonce($nonce, $nonce_action)) {
 if ($ppcart_order_post) {
     $order_info = (array) ppcart_setup_order($ppcart_order_post);
 
+    if (ppcart_order_is_shopping_cart($order_info)) {
+        $ppcart_cart_order = new PPCart_Order($ppcart_order_post);
+        wp_send_json([
+            'order_id'   => $ppcart_order_post,
+            'formAction' => (new PPCart_Shopping_Cart_Settings())->confirmation($ppcart_cart_order)['url'],
+        ]);
+    }
+
     $order_info = apply_filters('ppcart_before_order_save', $order_info, $subscription, $this);
 
     $order_post_id = apply_filters('ppcart_order_save_override', null, $order_info, $subscription, $this->get_stripe_save_helper());

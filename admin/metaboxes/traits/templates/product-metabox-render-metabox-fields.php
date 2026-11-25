@@ -52,7 +52,9 @@ foreach ($fields as $atts) {
             do_action_deprecated('ppcart_defualt_fields_html', [$atts, $this->meta, $this->plugin_name, plugin_dir_path(__FILE__)], '1.1.0', 'ppcart_default_fields_html');
         } else {
             if ($atts['type'] == 'checkbox') {
-                $atts['value'] = isset($this->meta[$atts['id']][0]);
+                $atts['value'] = '_ppcart_show_in_shop' === $atts['id']
+                    ? 'no' !== ($this->meta['_ppcart_show_in_shop'][0] ?? '')
+                    : isset($this->meta[$atts['id']][0]);
             } elseif (isset($this->meta[$atts['id']][0])) {
                 $atts['value'] = $this->meta[$atts['id']][0];
             }

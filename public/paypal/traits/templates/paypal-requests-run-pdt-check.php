@@ -44,6 +44,10 @@ foreach ($response_array as $data) {
     }
 }
 
+if (ppcart_order_is_shopping_cart($cart_order) && ! PPCart_Paypal::shopping_cart_standard_matches($cart_order, $final_data)) {
+    return false;
+}
+
 $subscription_id = false;
 
 // Read PublishPress Cart order/subscription IDs from custom meta.
@@ -67,6 +71,10 @@ if (isset($final_data['custom'])) {
 
     if (!$cart_order || $cart_order->id != $order_id) {
         $cart_order = new PPCart_Order($order_id);
+    }
+
+    if (ppcart_order_is_shopping_cart($cart_order) && ! PPCart_Paypal::shopping_cart_standard_matches($cart_order, $final_data)) {
+        return false;
     }
 
     $cart_order->transaction_id = $final_data['txn_id'];

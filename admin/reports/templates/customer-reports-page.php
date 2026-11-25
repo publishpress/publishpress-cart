@@ -171,6 +171,9 @@ if ($lifetime_order_results->have_posts()) {
         if ($product_id) {
             $product_ids[$product_id] = true;
         }
+        foreach (array_keys(ppcart_shopping_cart_order_revenue(new PPCart_Order($lifetime_order_id))) as $cart_product_id) {
+            $product_ids[$cart_product_id] = true;
+        }
 
         if ('paid' !== $order_status) {
             continue;
@@ -269,7 +272,7 @@ if ($order_results->have_posts()) {
             'id'               => $order_post_id,
             'date'             => get_the_time('M j, Y', $order_post_id),
             'edit_url'         => ppcart_get_edit_post_url($order_post_id),
-            'product_title'    => $product_id ? get_the_title($product_id) : __('Order', 'publishpress-cart'),
+            'product_title'    => $product_id ? get_the_title($product_id) : (ppcart_order_is_shopping_cart($order_data) ? (string) $order_data->product_name : __('Order', 'publishpress-cart')),
             'type_label'       => $order_type_label,
             'type_class'       => $order_type_class,
             'status'           => $order_status,

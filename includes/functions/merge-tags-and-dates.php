@@ -154,6 +154,22 @@ function ppcart_personalize($str, $order_info, $filter = false, $include_order_d
         $replacements['product_list'] = esc_html($replacements['product_name']);
         $replacements['product_inline_list'] = esc_html($replacements['product_name']);
 
+        if (ppcart_order_is_shopping_cart($order_info) && ! isset($order_info['shopping_cart_item_id'])) {
+            $cart_products = [];
+            $cart_plans = [];
+            foreach (ppcart_shopping_cart_order_contexts($order_info) as $context) {
+                $cart_products[] = $context['product_name'];
+                /* translators: 1: product name, 2: plan name. */
+                $cart_plans[] = '' !== (string) $context['item_name'] ? sprintf(_x('%1$s - %2$s', 'product and plan', 'publishpress-cart'), $context['product_name'], $context['item_name']) : $context['product_name'];
+            }
+            if ($cart_products) {
+                $replacements['order_list'] = implode('<br>', array_map('esc_html', $cart_plans));
+                $replacements['order_inline_list'] = esc_html(implode(', ', $cart_plans));
+                $replacements['product_list'] = implode('<br>', array_map('esc_html', $cart_products));
+                $replacements['product_inline_list'] = esc_html(implode(', ', $cart_products));
+            }
+        }
+
         $replacements['order_id'] = $order_info['ID'];
         $replacements['order_date'] = $order_info['date'] ?? '';
         $replacements['product_amount'] = ppcart_format_price($order_info['amount']);
@@ -314,8 +330,7 @@ function ppcart_is_cart_closed($prod_id = false)
         return true;
     }
 
-    // Check if managing stock levels
-    if (isset($ppcart_product->manage_stock) && ($ppcart_product->limit < 1)) {
+    if (! ppcart_check_product_stock($ppcart_product)) {
         return true;
     }
 

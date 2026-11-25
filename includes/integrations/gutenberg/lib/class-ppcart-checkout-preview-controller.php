@@ -45,8 +45,9 @@ class PPCart_Checkout_Preview_Controller
                 'permission_callback' => [ $this->renderer, 'can_preview_checkout_product' ],
                 'args'                => [
                     'pid'            => [
-                        'type'              => 'integer',
-                        'sanitize_callback' => 'absint',
+                        'type'              => [ 'integer', 'string' ],
+                        'validate_callback' => static fn ($value) => 'cart' === $value || '' === $value || is_numeric($value),
+                        'sanitize_callback' => static fn ($value) => 'cart' === $value ? 'cart' : absint($value),
                     ],
                     'template'       => [
                         'type'              => 'string',

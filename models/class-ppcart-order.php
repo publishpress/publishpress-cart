@@ -10,6 +10,7 @@ require_once __DIR__ . '/order/traits/trait-ppcart-order-checkout-input.php';
 require_once __DIR__ . '/order/traits/trait-ppcart-order-amounts.php';
 require_once __DIR__ . '/order/traits/trait-ppcart-order-invoices.php';
 require_once __DIR__ . '/order/traits/trait-ppcart-order-lookups.php';
+require_once __DIR__ . '/order/traits/trait-ppcart-order-shopping-cart.php';
 
 class PPCart_Order extends stdClass
 {
@@ -19,6 +20,7 @@ class PPCart_Order extends stdClass
     use PPCart_Order_Amounts;
     use PPCart_Order_Invoices;
     use PPCart_Order_Lookups;
+    use PPCart_Order_Shopping_Cart;
 
     protected $attrs;
     protected $customer_attrs;

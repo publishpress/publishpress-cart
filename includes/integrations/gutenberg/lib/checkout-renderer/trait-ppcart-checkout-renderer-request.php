@@ -13,6 +13,10 @@ trait PPCart_Checkout_Renderer_Request
 
     public function can_preview_checkout_product(WP_REST_Request $request)
     {
+        if ('cart' === $request->get_param('pid')) {
+            return $this->can_edit_checkout_products();
+        }
+
         $product_id = absint($request->get_param('pid'));
 
         if (! $product_id) {
@@ -66,6 +70,19 @@ trait PPCart_Checkout_Renderer_Request
 
     public function get_preview(WP_REST_Request $request)
     {
+        if ('cart' === $request->get_param('pid')) {
+            return rest_ensure_response(
+                [
+                    'title'       => __('Cart', 'publishpress-cart'),
+                    'pluginTitle' => apply_filters('ppcart_plugin_title', 'PublishPress Cart'),
+                    'template'    => '',
+                    'plan'        => '',
+                    'coupon'      => '',
+                    'html'        => $this->render_preview_html($request),
+                ]
+            );
+        }
+
         $product_id = absint($request->get_param('pid'));
 
         if ($product_id && ! $this->can_access_product($product_id)) {
@@ -97,6 +114,10 @@ trait PPCart_Checkout_Renderer_Request
     public function render($attributes, $content = '')
     {
         $attributes = wp_parse_args($attributes, $this->get_default_attributes());
+        if ('cart' === $attributes['pid']) {
+            return $this->render_shopping_cart_checkout($attributes);
+        }
+
         $block_id   = $this->get_block_id($attributes);
         $shortcode  = $this->build_shortcode($attributes);
 
@@ -129,6 +150,26 @@ trait PPCart_Checkout_Renderer_Request
         $checkout_output = ppcart_kses_frontend_html($checkout_output);
 
         return sprintf('<div %1$s>%2$s%3$s</div>', $wrapper_attributes, $styles, $checkout_output);
+    }
+
+    /**
+     * @param array $attributes Block attributes.
+     * @param bool  $is_preview True in the block editor.
+     * @return string
+     */
+    private function render_shopping_cart_checkout($attributes, $is_preview = false)
+    {
+        $output = (new PPCart_Public_Cart_Checkout_Controller())->render($attributes, $is_preview);
+        if ('' === $output || $is_preview || ! function_exists('get_block_wrapper_attributes')) {
+            return $output;
+        }
+
+        $wrapper = [ 'class' => 'publishpress-cart-shopping-cart-checkout' ];
+        if (! empty($attributes['anchor'])) {
+            $wrapper['id'] = trim(sanitize_text_field($attributes['anchor']));
+        }
+
+        return sprintf('<div %1$s>%2$s</div>', get_block_wrapper_attributes($wrapper), $output);
     }
 
     private function build_shortcode($attributes, $is_preview = false)
@@ -212,6 +253,13 @@ trait PPCart_Checkout_Renderer_Request
 
     private function render_preview_html(WP_REST_Request $request)
     {
+        if ('cart' === $request->get_param('pid')) {
+            return $this->render_shopping_cart_checkout(
+                [ 'styleSettings' => $this->decode_style_settings($request->get_param('style_settings')) ],
+                true
+            );
+        }
+
         $attributes = [
             'pid'         => (string) absint($request->get_param('pid')),
             'hide_labels' => rest_sanitize_boolean($request->get_param('hide_labels')),

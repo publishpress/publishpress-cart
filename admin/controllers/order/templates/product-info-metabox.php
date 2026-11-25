@@ -292,6 +292,12 @@ if (isset($order_data->user_account) && $user_id = $order_data->user_account) {
                             </span>
                         </dd>
                     </div>
+                    <?php if (ppcart_order_is_shopping_cart($order_data)) : ?>
+                        <div>
+                            <dt><?php esc_html_e('Checkout', 'publishpress-cart'); ?></dt>
+                            <dd><?php esc_html_e('Cart order', 'publishpress-cart'); ?></dd>
+                        </div>
+                    <?php endif; ?>
                     <?php if (isset($order_data->consent)) : ?>
                         <div>
                             <dt><?php esc_html_e('Opted-in', 'publishpress-cart'); ?></dt>

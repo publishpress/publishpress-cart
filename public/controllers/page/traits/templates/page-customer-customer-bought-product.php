@@ -83,6 +83,7 @@ if ($atts['ip_address']) {
 }
 
 $args['meta_query'][] = $user_args;
+$customer_orders_query = $args;
 
 // set product
 if ($atts['product_id']) {
@@ -117,6 +118,14 @@ if ($atts['plan_id']) {
 }
 
 $order_posts = get_posts($args);
+
+if (empty($order_posts) && $atts['product_id'] && ! $atts['has_subscription']) {
+    $order_posts = ppcart_get_shopping_cart_orders_with_item(
+        $customer_orders_query,
+        intval($atts['product_id']),
+        $atts['plan_id'] ? array_map('sanitize_text_field', (array) $atts['plan_id']) : []
+    );
+}
 
 if (!empty($order_posts)) {
     return $order_posts[0]->ID;

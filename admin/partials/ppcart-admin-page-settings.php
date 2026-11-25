@@ -146,6 +146,7 @@ $default_setting_tabs = [
     'pages'           => __('Pages', 'publishpress-cart'),
     'branding'        => __('Branding', 'publishpress-cart'),
     'payment_methods' => __('Payment Methods', 'publishpress-cart'),
+    'shop_cart'       => __('Shop & Cart', 'publishpress-cart'),
     'invoice'         => __('Invoices', 'publishpress-cart'),
     'downloads'       => __('Downloads', 'publishpress-cart'),
     'emails'          => __('Email', 'publishpress-cart'),

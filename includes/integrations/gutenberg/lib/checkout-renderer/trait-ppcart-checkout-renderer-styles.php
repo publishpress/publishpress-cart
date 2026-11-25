@@ -11,7 +11,7 @@ trait PPCart_Checkout_Renderer_Styles
         $css = $this->build_base_styles($block_id);
 
         if (is_array($settings) && ! empty($settings)) {
-            $settings = $this->normalize_style_settings($settings);
+            $settings = ppcart_block_style_normalize_settings($settings);
             $css     .= $this->build_design_styles($block_id, $settings);
         }
 
@@ -165,38 +165,6 @@ trait PPCart_Checkout_Renderer_Styles
         return $normalized;
     }
 
-    private function normalize_style_settings($settings)
-    {
-        $allowed_tokens = [
-            'preset'       => [ 'minimal', 'carded', 'compact', 'contrast' ],
-            'surfaceStyle' => [ 'card', 'boxed' ],
-            'density'      => [ 'compact', 'spacious' ],
-            'cornerRadius' => [ 'square', 'rounded' ],
-        ];
-        $normalized = [];
-
-        foreach ($settings as $key => $value) {
-            if ('accentColor' === $key) {
-                $value = $this->normalize_hex_color($value);
-
-                if ('' !== $value) {
-                    $normalized[ $key ] = $value;
-                }
-
-                continue;
-            }
-
-            if (isset($allowed_tokens[ $key ])) {
-                $value = sanitize_key($value);
-
-                if (in_array($value, $allowed_tokens[ $key ], true)) {
-                    $normalized[ $key ] = $value;
-                }
-            }
-        }
-
-        return $normalized;
-    }
 
     private function normalize_text_settings($settings)
     {
@@ -254,15 +222,16 @@ trait PPCart_Checkout_Renderer_Styles
             return '';
         }
 
+        $tokens = ppcart_block_style_tokens($settings);
         $raw_settings   = $settings;
         $preset         = $settings['preset'] ?? '';
-        $settings       = array_merge($this->get_style_preset_defaults($preset), $settings);
-        $accent         = ! empty($settings['accentColor']) ? $settings['accentColor'] : '#2271b1';
-        $accent_hover   = $this->mix_hex_color($accent, '#000000', 0.12, '#135e96');
-        $accent_soft    = $this->mix_hex_color($accent, '#ffffff', 0.88, '#eef6fc');
-        $radius         = $this->get_style_radius($settings['cornerRadius'] ?? '');
+        $settings       = array_merge(ppcart_block_style_get_style_preset_defaults($preset), $settings);
+        $accent         = $tokens['--ppcart-accent'] ?? '#2271b1';
+        $accent_hover   = $tokens['--ppcart-accent-hover'] ?? '#135e96';
+        $accent_soft    = $tokens['--ppcart-accent-soft'] ?? '#eef6fc';
+        $radius         = $tokens['--ppcart-radius'] ?? '4px';
         $density        = $settings['density'] ?? '';
-        $density_values = $this->get_density_values($density);
+        $density_values = ppcart_block_style_get_density_values($density);
         $css            = '';
 
         $field_selector        = '.ppcart input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]), .ppcart .StripeElement, .ppcart select.ppcart-form-control, .ppcart .selectize-control.single .selectize-input, .ppcart textarea';
@@ -335,7 +304,7 @@ trait PPCart_Checkout_Renderer_Styles
             $field_selector,
             [
                 'border-radius' => $radius,
-                'height'        => $this->get_field_height($density),
+                'height'        => ppcart_block_style_get_field_height($density),
                 'padding'       => $density_values['field_padding'],
             ]
         );
@@ -360,7 +329,7 @@ trait PPCart_Checkout_Renderer_Styles
             $button_selector,
             [
                 'border-radius' => $radius,
-                'padding'       => $this->get_button_padding($density),
+                'padding'       => ppcart_block_style_get_button_padding($density),
             ]
         );
 

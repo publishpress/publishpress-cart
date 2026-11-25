@@ -55,6 +55,12 @@ class PPCart_Gutenberg_Assets
 
     public function register()
     {
+        foreach (['shop', 'mini-cart', 'cart'] as $slug) {
+            $asset = require $this->base_dir . '/build/' . $slug . '-editor.asset.php';
+            wp_register_script('ppcart-' . $slug . '-editor', plugins_url('build/' . $slug . '-editor.js', $this->base_file), $asset['dependencies'], $asset['version'], true);
+            wp_set_script_translations('ppcart-' . $slug . '-editor', 'publishpress-cart', PPCART_BASE_DIR . 'languages');
+        }
+        wp_register_style('ppcart-shopping-cart', PPCART_BASE_URL . 'public/css/ppcart-shopping-cart.css', [], PPCART_VERSION);
         $this->register_checkout_assets();
         $this->register_account_assets();
     }
@@ -109,7 +115,7 @@ class PPCart_Gutenberg_Assets
         wp_register_style(
             self::CHECKOUT_EDITOR_STYLE_HANDLE,
             plugins_url('css/checkout-editor.css', $this->base_file),
-            [ self::CHECKOUT_STYLE_HANDLE, self::CHECKOUT_PUBLIC_STYLE_HANDLE, self::SELECTIZE_STYLE_HANDLE ],
+            [ self::CHECKOUT_STYLE_HANDLE, self::CHECKOUT_PUBLIC_STYLE_HANDLE, self::SELECTIZE_STYLE_HANDLE, 'ppcart-shopping-cart' ],
             PPCART_VERSION
         );
 
