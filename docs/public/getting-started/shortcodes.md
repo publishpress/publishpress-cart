@@ -91,8 +91,7 @@ Shows the product name or remaining inventory on the checkout page.
 
 ## Shop and cart
 
-These shortcodes show the same output as the Shop and Cart blocks. To set up
-the pages, read [Set up the Shop and the Cart](../shop-and-cart.md).
+These shortcodes show the same output as the Shop and Cart blocks.
 
 | Shortcode | Displays |
 |-----------|----------|

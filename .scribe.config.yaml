@@ -255,15 +255,6 @@ modules:
     features: [developer-hooks]
     notes: Public action and filter hooks third-party code listens on.
 
-  - id: shopping-cart
-    name: Shop and shopping cart
-    suites: [integration]
-    test_range: IT-443–IT-459
-    features: [shopping-cart]
-    notes: >-
-      Shop catalog and visibility, cart storage and REST, Mini Cart and Cart
-      blocks, Shop & Cart settings, and cart checkout with Stripe and PayPal.
-
   - id: prefix-standardization
     name: Prefix standardization
     suites: [integration]

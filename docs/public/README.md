@@ -16,10 +16,6 @@ User-facing guides for site owners and store administrators.
 - [Managing orders](getting-started/managing-orders.md) — order statuses, manual orders, and refunds
 - [Available shortcodes](getting-started/shortcodes.md) — embed forms, receipts, and product details (or use the Gutenberg Checkout block)
 
-## Shop and cart
-
-- [Set up the Shop and the Cart](shop-and-cart.md) — list products, let visitors add several to a cart, and pay with one checkout
-
 ## Products
 
 - [Embed an order form anywhere](products/embed-order-form.md) — place a checkout form on any page
