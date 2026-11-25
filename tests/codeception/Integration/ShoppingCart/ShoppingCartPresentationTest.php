@@ -59,6 +59,23 @@ class ShoppingCartPresentationTest extends ShoppingCartTestCase
     }
 
     /** @test-id IT-448 */
+    public function test_IT_448_the_cart_block_sets_the_text_of_the_continue_shopping_link_or_hides_it(): void
+    {
+        $shop = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);
+        update_option('_ppcart_shop_page_id', $shop);
+        $this->add($this->product('Writer Toolkit', [$this->plan('personal', '25')]));
+        $link = static function (array $attrs): array {
+            $document = new \DOMDocument();
+            @$document->loadHTML('<?xml encoding="utf-8" ?>' . render_block(['blockName' => 'publishpress-cart/cart', 'attrs' => $attrs, 'innerBlocks' => [], 'innerHTML' => '', 'innerContent' => []]));
+            $node = (new \DOMXPath($document))->query('//a[@data-ppcart-continue]')->item(0);
+            return $node ? [$node->textContent, $node->getAttribute('href')] : [];
+        };
+        $this->assertSame(['← Continue shopping', get_permalink($shop)], $link([]));
+        $this->assertSame(['Back to the store', get_permalink($shop)], $link(['continueShoppingText' => ' Back to the store ']));
+        $this->assertSame([], $link(['showContinueShopping' => false, 'continueShoppingText' => 'Back to the store']));
+    }
+
+    /** @test-id IT-448 */
     public function test_IT_448_a_line_shows_a_quantity_control_only_when_its_limit_is_above_one(): void
     {
         $cartPage = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish']);

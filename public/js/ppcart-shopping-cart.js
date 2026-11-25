@@ -115,6 +115,14 @@ export function applyShoppingCartResponse(response, root = document) {
             template.innerHTML = response.fragments.cart;
             const replacement = template.content.firstElementChild;
             replacement.setAttribute('style', node.getAttribute('style') || '');
+            // The server renders the fragment without the block settings, so keep this block's link text.
+            const continueText = node.dataset.ppcartContinueText;
+            if (continueText !== undefined) {
+                replacement.dataset.ppcartContinueText = continueText;
+                const link = replacement.querySelector('[data-ppcart-continue]');
+                if (link && continueText) link.textContent = continueText;
+                else link?.remove();
+            }
             node.replaceWith(replacement);
         });
     }
