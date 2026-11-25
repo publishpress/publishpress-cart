@@ -107,6 +107,34 @@ final class PPCart_Shopping_Cart_Settings
         };
     }
 
+    /**
+     * @return array<string,array{role:string,title:string,block:string,attributes:array}> Page settings, keyed by option name.
+     */
+    public function page_options(): array
+    {
+        $pages = [];
+        foreach ($this->definitions() as $fields) {
+            foreach ($fields as $field) {
+                if (isset($field['settings']['create_page'])) {
+                    $pages[$field['settings']['id']] = $field['settings']['create_page'];
+                }
+            }
+        }
+        return $pages;
+    }
+
+    /** Put the block of a page setting into the selected page when that page has no content. */
+    public function fill_empty_page(string $option, int $page_id): bool
+    {
+        $page = $this->page_options()[$option] ?? null;
+        $post = $page_id ? get_post($page_id) : null;
+        if (! $page || ! $post instanceof WP_Post || 'page' !== $post->post_type || 'trash' === $post->post_status || '' !== trim($post->post_content)) {
+            return false;
+        }
+        $updated = wp_update_post(['ID' => $post->ID, 'post_content' => $this->page_block($page)], true);
+        return ! is_wp_error($updated) && $updated;
+    }
+
     public function create_missing_pages(): array|WP_Error
     {
         $result = ['created' => [], 'skipped' => []];
@@ -127,7 +155,7 @@ final class PPCart_Shopping_Cart_Settings
                     'post_type' => 'page',
                     'post_status' => 'publish',
                     'post_title' => $page['title'],
-                    'post_content' => serialize_block(['blockName' => $page['block'], 'attrs' => $page['attributes'], 'innerBlocks' => [], 'innerHTML' => '', 'innerContent' => []]),
+                    'post_content' => $this->page_block($page),
                 ], true);
                 if (is_wp_error($id)) {
                     return $id;
@@ -137,6 +165,11 @@ final class PPCart_Shopping_Cart_Settings
             }
         }
         return $result;
+    }
+
+    private function page_block(array $page): string
+    {
+        return serialize_block(['blockName' => $page['block'], 'attrs' => $page['attributes'], 'innerBlocks' => [], 'innerHTML' => '', 'innerContent' => []]);
     }
 
     private function option(string $id): mixed

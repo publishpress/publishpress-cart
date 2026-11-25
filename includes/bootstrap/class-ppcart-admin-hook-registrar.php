@@ -23,6 +23,7 @@ class PPCart_Admin_Hook_Registrar
         $this->loader->add_action('admin_post_ppcart_shopping_cart_create_pages', $shopping_cart_pages, 'create_missing_pages');
         $this->loader->add_action('ppcart_settings_admin_notices', $shopping_cart_pages, 'render_notice');
         $this->loader->add_action('admin_footer', $shopping_cart_pages, 'render_form');
+        $this->loader->add_action('admin_init', $shopping_cart_pages, 'register_page_fill');
         include __DIR__ . '/templates/admin-hook-registrar-register.php';
     }
 }

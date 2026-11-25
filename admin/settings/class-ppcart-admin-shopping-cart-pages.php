@@ -26,6 +26,28 @@ final class PPCart_Admin_Shopping_Cart_Pages
         exit;
     }
 
+    public function register_page_fill(): void
+    {
+        foreach (array_keys($this->settings->page_options()) as $option) {
+            add_filter('pre_update_option_' . $option, fn ($value) => $this->fill_page($option, $value));
+        }
+    }
+
+    private function fill_page(string $option, mixed $value): mixed
+    {
+        $page_id = absint($value);
+        if (! $page_id || ! current_user_can('edit_post', $page_id) || ! $this->settings->fill_empty_page($option, $page_id)) {
+            return $value;
+        }
+        $message = sprintf(
+            /* translators: %s: page title. */
+            __('The page "%s" was empty, so its Shop & Cart block was added.', 'publishpress-cart'),
+            get_the_title($page_id)
+        );
+        set_transient('ppcart_shopping_cart_pages_notice_' . get_current_user_id(), ['message' => $message, 'error' => false], MINUTE_IN_SECONDS);
+        return $value;
+    }
+
     public static function render_control(): void
     {
         echo '<button type="submit" class="button" form="ppcart-shopping-cart-pages-form">' . esc_html__('Create missing pages', 'publishpress-cart') . '</button>';
