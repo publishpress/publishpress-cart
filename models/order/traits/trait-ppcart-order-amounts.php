@@ -13,13 +13,19 @@ trait PPCart_Order_Amounts
 
         foreach ($this->items as $item) {
             if ($item['item_type'] != 'bundled') {
-                $this->order_summary_items[] = [
+                $summary_item = [
                     'name'          => apply_filters('ppcart_order_summary_item_name', $item['product_name'], $item),
                     'total_amount'  => (float) $item['subtotal'],
                     'subtotal'      => (float) $item['subtotal'],
                     'type'          => $item['item_type'],
                     'quantity'      => $item['quantity'],
                 ];
+
+                if (isset($item['summary_description']) && '' !== $item['summary_description']) {
+                    $summary_item['description'] = $item['summary_description'];
+                }
+
+                $this->order_summary_items[] = $summary_item;
             }
         }
 

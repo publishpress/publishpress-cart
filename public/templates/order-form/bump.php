@@ -11,17 +11,29 @@ if (! defined('ABSPATH')) {
  */
 
 global $ppcart_product;
+
+$background_color = sanitize_hex_color($args['background_color'] ?? '');
+$image_url = esc_url_raw($args['image'] ?? '');
+$show_top_image = $image_url && 'top' === ($args['image_pos'] ?? '');
+$row_class = $args['atts'] ?? '';
+$image_style = '';
+
+if ($image_url && ! $show_top_image) {
+    $row_class = 'has-thumb';
+    $css_url = str_replace([ '"', "'", '(', ')' ], [ '%22', '%27', '%28', '%29' ], $image_url);
+    $image_style = safecss_filter_attr('background-image: url(' . $css_url . ')');
+}
 ?>
 
-<div id="ppcart-orderbump-<?php echo esc_attr($args['key']); ?>" class="ppcart-section orderbump">
+<div id="ppcart-orderbump-<?php echo esc_attr($args['key']); ?>" class="ppcart-section orderbump"<?php if ($background_color) : ?> style="background-color: <?php echo esc_attr($background_color); ?>; border: 0"<?php endif; ?>>
 
-    <h3 class="title"><?php echo esc_html($args['headline']); ?></h3>
+    <h3 class="title"<?php if ($background_color) : ?> style="background: transparent"<?php endif; ?>><?php echo esc_html($args['headline']); ?></h3>
 
-    <?php if ($args['image'] && $args['image_pos'] == 'top') : ?>
-        <div class="ppcart-bump-image"><img src="<?php echo esc_url($args['image']); ?>" alt=""></div>
+    <?php if ($show_top_image) : ?>
+        <div class="ppcart-bump-image"><img src="<?php echo esc_url($image_url); ?>" alt=""></div>
     <?php endif; ?>
 
-    <div class="ppcart-row <?php echo esc_attr($args['atts']); ?>">
+    <div class="ppcart-row <?php echo esc_attr($row_class); ?>"<?php if ($image_style) : ?> style="<?php echo esc_attr($image_style); ?>"<?php endif; ?>>
         <?php if (isset($ppcart_product->show_splitin)) : ?>
             <div class="ppcart-col-sm-12 ob-cta">
                 <input
