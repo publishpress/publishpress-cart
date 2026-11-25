@@ -136,6 +136,10 @@ class SettingsTest extends WPTestCase
         update_option('_ppcart_shop_page_id', $merchant);
         $this->assertSame($merchant, $settings->create_missing_pages()['skipped']['shop']);
         $this->assertSame('My shop', get_post_field('post_content', $merchant));
+        $empty = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish', 'post_content' => '']);
+        update_option('_ppcart_shop_page_id', $empty);
+        $this->assertSame($empty, $settings->create_missing_pages()['filled']['shop']);
+        $this->assertSame('publishpress-cart/shop', parse_blocks(get_post_field('post_content', $empty))[0]['blockName']);
     }
 
     /** @test-id IT-444 */

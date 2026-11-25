@@ -137,7 +137,7 @@ final class PPCart_Shopping_Cart_Settings
 
     public function create_missing_pages(): array|WP_Error
     {
-        $result = ['created' => [], 'skipped' => []];
+        $result = ['created' => [], 'filled' => [], 'skipped' => []];
         foreach ($this->definitions() as $fields) {
             foreach ($fields as $field) {
                 $settings = $field['settings'];
@@ -148,7 +148,7 @@ final class PPCart_Shopping_Cart_Settings
                 $role = $page['role'];
                 $current = $this->option($settings['id']);
                 if ($current) {
-                    $result['skipped'][$role] = $current;
+                    $result[$this->fill_empty_page($settings['id'], (int) $current) ? 'filled' : 'skipped'][$role] = $current;
                     continue;
                 }
                 $id = wp_insert_post([
