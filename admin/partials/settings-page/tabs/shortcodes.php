@@ -19,10 +19,31 @@ $shortcodes = [
     ],
     [
         'group' => 'store',
-        'tag' => 'ppcart_store',
-        'title' => __('Store', 'publishpress-cart'),
-        'example' => '[ppcart_store]',
-        'description' => __('Display the storefront.', 'publishpress-cart'),
+        'tag' => 'ppcart_shop',
+        'title' => __('Shop', 'publishpress-cart'),
+        'example' => '[ppcart_shop]',
+        'description' => __('Put this on the Shop page. It lists the products that have Show in Shop Page turned on.', 'publishpress-cart'),
+    ],
+    [
+        'group' => 'store',
+        'tag' => 'ppcart_mini_cart',
+        'title' => __('Mini cart', 'publishpress-cart'),
+        'example' => '[ppcart_mini_cart]',
+        'description' => __('Put this in the site header. It shows a cart icon with the item count and opens the cart drawer.', 'publishpress-cart'),
+    ],
+    [
+        'group' => 'store',
+        'tag' => 'ppcart_cart',
+        'title' => __('Cart', 'publishpress-cart'),
+        'example' => '[ppcart_cart]',
+        'description' => __('Put this on the Cart page. It shows the items in the cart and the order summary.', 'publishpress-cart'),
+    ],
+    [
+        'group' => 'store',
+        'tag' => 'ppcart_cart_checkout',
+        'title' => __('Cart checkout', 'publishpress-cart'),
+        'example' => '[ppcart_cart_checkout]',
+        'description' => __('Put this on the Checkout page. It shows the checkout form that pays for the whole cart.', 'publishpress-cart'),
     ],
     [
         'group' => 'checkout',
@@ -133,7 +154,7 @@ $shortcodes = [
 
 $shortcode_groups = [
     'checkout' => __('Checkout and receipts', 'publishpress-cart'),
-    'store' => __('Storefront', 'publishpress-cart'),
+    'store' => __('Shop and cart', 'publishpress-cart'),
     'account' => __('Customer account', 'publishpress-cart'),
     'affiliates' => __('Affiliates', 'publishpress-cart'),
     'additional' => __('Additional shortcodes', 'publishpress-cart'),

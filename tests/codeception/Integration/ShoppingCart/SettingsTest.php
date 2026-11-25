@@ -136,6 +136,49 @@ class SettingsTest extends WPTestCase
         update_option('_ppcart_shop_page_id', $merchant);
         $this->assertSame($merchant, $settings->create_missing_pages()['skipped']['shop']);
         $this->assertSame('My shop', get_post_field('post_content', $merchant));
+        $empty = self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish', 'post_content' => '']);
+        update_option('_ppcart_shop_page_id', $empty);
+        $this->assertSame($empty, $settings->create_missing_pages()['filled']['shop']);
+        $this->assertSame('publishpress-cart/shop', parse_blocks(get_post_field('post_content', $empty))[0]['blockName']);
+    }
+
+    /** @test-id IT-444 */
+    public function test_IT_444_saving_an_empty_page_adds_its_block_and_leaves_pages_with_content(): void
+    {
+        $page = fn (string $content): int => self::factory()->post->create(['post_type' => 'page', 'post_status' => 'publish', 'post_content' => $content]);
+        $blocks = static fn (int $id): array => array_values(array_filter(array_map(static fn (array $block) => $block['blockName'] ? [$block['blockName'], $block['attrs']] : null, parse_blocks(get_post_field('post_content', $id)))));
+        $options = array_keys($this->settings()->page_options());
+        wp_set_current_user(self::factory()->user->create(['role' => 'administrator']));
+        (new \PPCart_Admin_Shopping_Cart_Pages($this->settings()))->register_page_fill();
+        try {
+            $cart = $page('');
+            update_option('_ppcart_cart_page_id', $cart);
+            $this->assertSame([['publishpress-cart/cart', []]], $blocks($cart));
+            $this->assertSame($cart, (int) get_option('_ppcart_cart_page_id'));
+            $this->assertStringContainsString('was empty', get_transient('ppcart_shopping_cart_pages_notice_' . get_current_user_id())['message']);
+
+            wp_update_post(['ID' => $cart, 'post_content' => '']);
+            update_option('_ppcart_cart_page_id', $cart);
+            $this->assertSame([['publishpress-cart/cart', []]], $blocks($cart));
+
+            $checkout = $page('');
+            update_option('_ppcart_cart_checkout_page_id', $checkout);
+            $this->assertSame([['publishpress-cart/checkout-form', ['pid' => 'cart']]], $blocks($checkout));
+
+            $merchant = $page('<!-- wp:paragraph --><p>Our shop</p><!-- /wp:paragraph -->');
+            update_option('_ppcart_shop_page_id', $merchant);
+            $this->assertSame('<!-- wp:paragraph --><p>Our shop</p><!-- /wp:paragraph -->', get_post_field('post_content', $merchant));
+
+            wp_set_current_user(self::factory()->user->create(['role' => 'subscriber']));
+            $other = $page('');
+            update_option('_ppcart_shop_page_id', $other);
+            $this->assertSame('', get_post_field('post_content', $other));
+        } finally {
+            foreach ($options as $option) {
+                remove_all_filters('pre_update_option_' . $option);
+                delete_option($option);
+            }
+        }
     }
 
     /** @test-id IT-444 */
