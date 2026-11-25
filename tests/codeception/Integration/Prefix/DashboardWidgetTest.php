@@ -72,11 +72,27 @@ class DashboardWidgetTest extends WPTestCase
         parent::tearDown();
     }
 
+    public function test_dashboard_does_not_register_the_widget_for_authors(): void
+    {
+        $author = self::factory()->user->create(['role' => 'author']);
+        wp_set_current_user($author);
+
+        $widget = (new ReflectionClass(PPCart_Dashboard_Widget::class))->newInstanceWithoutConstructor();
+        $widget->register();
+
+        $core = $GLOBALS['wp_meta_boxes']['dashboard']['normal']['core'] ?? [];
+        $this->assertArrayNotHasKey('ppcart_dashboard_widget', $core);
+    }
+
     /**
      * @test-id IT-315
      */
     public function test_IT_315_dashboard_registers_canonical_widget_id_without_leftover(): void
     {
+        $manager = self::factory()->user->create_and_get(['role' => 'subscriber']);
+        $manager->add_cap(ppcart_live_cap('manager_option'));
+        wp_set_current_user($manager->ID);
+
         $widget = (new ReflectionClass(PPCart_Dashboard_Widget::class))->newInstanceWithoutConstructor();
         $widget->register();
 
