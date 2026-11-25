@@ -60,6 +60,14 @@ if (! $charge || 'succeeded' !== (string) self::get($charge, 'status', '')) {
     return new WP_Error('ppcart_import_charge_status', __('Only a successful payment can be imported.', 'publishpress-cart'));
 }
 
+// A payment that paid an invoice belongs to that invoice's subscription.
+// Sync with Stripe imports it, so it can't be added here by hand.
+$charge_invoice = self::get($charge, 'invoice', '');
+$charge_invoice = is_string($charge_invoice) ? $charge_invoice : (string) self::get($charge_invoice, 'id', '');
+if ('' !== $charge_invoice) {
+    return new WP_Error('ppcart_import_charge_invoice', __('This payment paid a Stripe invoice. Use Sync with Stripe on its subscription instead.', 'publishpress-cart'));
+}
+
 $charge_id = (string) self::get($charge, 'id', '');
 $intent_id = self::get($charge, 'payment_intent', '');
 $intent_id = is_string($intent_id) ? $intent_id : (string) self::get($intent_id, 'id', '');
@@ -77,6 +85,21 @@ if ('' === $charge_customer || (string) $sub->customer_id !== $charge_customer) 
         /* translators: %d: local subscription ID */
         sprintf(__('This payment belongs to a different Stripe customer than subscription #%d.', 'publishpress-cart'), (int) $sub->id)
     );
+}
+
+// Saving an order onto a subscription whose only order isn't paid yet
+// replaces that order (PPCart_Order::check_first_order()). Refuse instead of
+// overwriting it.
+if (1 === (int) $sub->order_count()) {
+    $only_order = $sub->first_order();
+    if ($only_order && ! empty($only_order->id) && ! in_array($only_order->status, [ 'paid', 'refunded' ], true)) {
+        return new WP_Error(
+            'ppcart_import_charge_first_order',
+            /* translators: %d: order ID */
+            sprintf(__('This subscription\'s only order, #%d, isn\'t paid. Fix that order first, then import the payment.', 'publishpress-cart'), (int) $only_order->id),
+            [ 'order_id' => (int) $only_order->id ]
+        );
+    }
 }
 
 $currency = strtoupper((string) self::get($charge, 'currency', $sub->currency ? $sub->currency : 'usd'));

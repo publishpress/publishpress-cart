@@ -169,4 +169,25 @@ class ImportStripeChargeTest extends StripeSyncTestCase
         $this->assertWPError($failed);
         $this->assertSame('ppcart_import_charge_status', $failed->get_error_code());
     }
+
+    public function test_IT_440_importing_refuses_an_invoice_payment_and_a_subscription_whose_only_order_is_unpaid(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(array('customer_id' => 'cus_charge_owner', 'product_id' => 77));
+        $unpaidOrderId = $this->createStripeOrder(array('subscription_id' => $subscriptionId, 'status' => 'pending-payment', 'payment_status' => 'pending-payment'));
+        ppcart_update_post_meta($subscriptionId, 'first_order', $unpaidOrderId);
+        $stripe = (new ImportStripeChargeFakeStripe())
+            ->addCharge(array('id' => 'ch_invoice_paid', 'customer' => 'cus_charge_owner', 'invoice' => 'in_renewal'))
+            ->addCharge(array('id' => 'ch_manual_2', 'customer' => 'cus_charge_owner'));
+        ApiRequestor::setHttpClient($stripe);
+
+        $invoicePayment = PPCart_Stripe_Sync::import_charge('ch_invoice_paid', $subscriptionId);
+        $this->assertWPError($invoicePayment);
+        $this->assertSame('ppcart_import_charge_invoice', $invoicePayment->get_error_code());
+
+        $unpaidFirst = PPCart_Stripe_Sync::import_charge('ch_manual_2', $subscriptionId);
+        $this->assertWPError($unpaidFirst);
+        $this->assertSame('ppcart_import_charge_first_order', $unpaidFirst->get_error_code());
+        $this->assertSame('pending-payment', ppcart_get_post_meta($unpaidOrderId, 'status', true));
+        $this->assertFalse(PPCart_Order::get_by_trans_id('ch_manual_2'));
+    }
 }
