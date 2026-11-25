@@ -5,6 +5,7 @@ let drawerTrigger = null;
 let oldOverflow = '';
 let background = [];
 let drawerGeneration = 0;
+let pendingCart = null;
 const mounted = new WeakSet();
 const channel = typeof BroadcastChannel === 'function' ? new BroadcastChannel('ppcart-shopping-cart') : null;
 
@@ -128,6 +129,17 @@ export function applyShoppingCartResponse(response, root = document) {
     }
 }
 
+// One request at a time: a hover starts the load, and the click that follows reuses it.
+function loadShoppingCart() {
+    pendingCart ||= requestShoppingCart('GET').finally(() => { pendingCart = null; });
+    return pendingCart;
+}
+
+function prefetchShoppingCart(event) {
+    if (currentCart || pendingCart || !event.target.closest?.('[data-ppcart-open-drawer]')) return;
+    loadShoppingCart().then(response => applyShoppingCartResponse(response)).catch(() => {});
+}
+
 function showDrawer(trigger) {
     const panel = overlay();
     if (!panel) return;
@@ -161,7 +173,7 @@ export async function setShoppingCartDrawerOpen(open, trigger = null) {
     showDrawer(trigger);
     panel.querySelector('[data-ppcart-drawer]')?.setAttribute('aria-busy', 'true');
     try {
-        const response = await requestShoppingCart('GET');
+        const response = await loadShoppingCart();
         if (generation === drawerGeneration && !panel.hidden) applyShoppingCartResponse(response);
     } catch (error) {
         announce(error.message || config.error);
@@ -173,7 +185,7 @@ export async function setShoppingCartDrawerOpen(open, trigger = null) {
 function readCount(root) {
     const cookie = document.cookie.split('; ').find(value => value.startsWith('ppcart_cart_count='));
     const count = cookie ? Number(cookie.slice('ppcart_cart_count='.length)) : 0;
-    root.querySelectorAll('.ppcart-mini-cart [data-ppcart-cart-count]').forEach(node => { node.textContent = Number.isInteger(count) && count > 0 ? count : 0; });
+    root.querySelectorAll('.ppcart-mini-cart [data-ppcart-cart-count], [data-ppcart-shopping-cart-overlay] [data-ppcart-cart-count]').forEach(node => { node.textContent = Number.isInteger(count) && count > 0 ? count : 0; });
 }
 
 async function submit(form) {
@@ -278,6 +290,8 @@ export function mountShoppingCart(root = document) {
         event.preventDefault();
         if (!form.querySelector('button[type="submit"]').disabled) void submit(form);
     });
+    root.addEventListener('pointerover', prefetchShoppingCart);
+    root.addEventListener('focusin', prefetchShoppingCart);
     root.addEventListener('change', event => {
         const form = event.target.closest('.ppcart-shopping-cart-add');
         if (form) updateCard(form, currentCart);

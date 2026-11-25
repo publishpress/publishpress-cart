@@ -79,8 +79,9 @@ final class PPCart_Public_Shopping_Cart_Controller
             return;
         }
         echo '<div class="ppcart-shopping-cart ppcart-shopping-cart-overlay" data-ppcart-shopping-cart-overlay hidden>';
+        // The page may be cached, so the drawer shows a loading state until the script loads the cart.
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The View renders escaped templates.
-        echo (new PPCart_Shopping_Cart_View())->render('drawer', PPCart_Shopping_Cart_Priced::empty());
+        echo (new PPCart_Shopping_Cart_View())->render('drawer', PPCart_Shopping_Cart_Priced::empty(), [], ['loading' => true]);
         echo '</div><div class="ppcart-shopping-cart-sr" data-ppcart-shopping-cart-announcement role="status" aria-live="polite" aria-atomic="true"></div>';
     }
 
