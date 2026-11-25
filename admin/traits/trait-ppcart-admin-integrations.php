@@ -39,6 +39,45 @@ trait PPCart_Admin_Integrations_Trait
         return null;
     }
 
+    /**
+     * Cache read-only ActiveCampaign catalogue requests per credential set.
+     *
+     * @param string $endpoint API path and query string.
+     * @param bool   $renew    Bypass the cache for an explicit refresh.
+     * @return array
+     */
+    private function activecampaign_cached_get($endpoint, $renew = false)
+    {
+        $activecampaign = $this->activecampaign_authentication();
+        if (! $activecampaign) {
+            return [];
+        }
+
+        $cache_key = 'ppcart_ac_' . md5($activecampaign['url'] . "\0" . $activecampaign['key'] . "\0" . $endpoint);
+        if (! $renew) {
+            $cached = get_transient($cache_key);
+            if (is_array($cached)) {
+                return $cached;
+            }
+        }
+
+        $response = wp_safe_remote_get($activecampaign['url'] . $endpoint, [
+            'headers' => ['Api-Token' => $activecampaign['key']],
+            'timeout' => 3,
+        ]);
+        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
+            return [];
+        }
+
+        $body = json_decode(wp_remote_retrieve_body($response), true);
+        if (! is_array($body)) {
+            return [];
+        }
+
+        set_transient($cache_key, $body, 15 * MINUTE_IN_SECONDS);
+        return $body;
+    }
+
     public function get_mailchimp_lists($renew = false)
     {
         if (!$renew && $lists = get_option('ppcart_mailchimp_lists')) {
@@ -81,23 +120,12 @@ trait PPCart_Admin_Integrations_Trait
     public function get_activecampaign_tags($renew = false)
     {
         $tags = [];
-        $activecampaign = $this->activecampaign_authentication();
-        if ($activecampaign) {
-            $response = wp_safe_remote_get($activecampaign['url'] . '/api/3/tags?limit=100', [
-                'headers' => [
-                    'Api-Token' => $activecampaign['key'],
-                ],
-                'timeout' => 3,
-            ]);
-            if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-                $body = json_decode(wp_remote_retrieve_body($response), true);
-                if (!empty($body['tags'])) {
-                    foreach ($body['tags'] as $value) {
-                        $name = $value['tag'];
-                        if (!empty($name)) {
-                            $tags[$name] = $name;
-                        }
-                    }
+        $body = $this->activecampaign_cached_get('/api/3/tags?limit=100', $renew);
+        if (! empty($body['tags'])) {
+            foreach ($body['tags'] as $value) {
+                $name = $value['tag'];
+                if (! empty($name)) {
+                    $tags[$name] = $name;
                 }
             }
         }
