@@ -8,6 +8,13 @@
 .ppcart-shop-card h3 { margin: 0; color: var(--ppcart-shop-title-color, inherit); font-size: 18px; font-weight: 600; line-height: 1.3; }
 .ppcart-shop-card h3 a { color: inherit; text-decoration: none; }
 .ppcart-shop-excerpt { margin: 0; color: var(--ppcart-shop-text-color, #707070); font-size: 14px; }
+.ppcart-shop .ppcart-shop-description > * { margin: 0 0 8px; }
+.ppcart-shop .ppcart-shop-description > :last-child { margin-bottom: 0; }
+.ppcart-shop .ppcart-shop-description ul, .ppcart-shop .ppcart-shop-description ol { padding-left: 1.25em; }
+.ppcart-shop .ppcart-shop-description li { margin: 0 0 2px; }
+.ppcart-shop .ppcart-shop-description img { max-width: 100%; height: auto; }
+/* Themes such as Kadence reset the margin after a heading; the price must still sit at the bottom of the card. */
+.ppcart-shop .ppcart-shop-price { margin-top: auto; }
 .ppcart-shop-price { margin-top: auto; color: var(--ppcart-shop-price-color, inherit); font-weight: 600; font-size: 18px; }
 .ppcart-shopping-cart-add { display: grid; gap: 8px; margin: 0; }
 .ppcart-shopping-cart-add label { margin-bottom: -2px; font-size: 13px; font-weight: 600; }

@@ -22,6 +22,7 @@ final class PPCart_Shop
             'columns' => min(4, max(1, absint($attributes['columns'] ?? 3))),
             'orderBy' => in_array($attributes['orderby'] ?? '', ['date', 'title', 'price', 'menu_order'], true) ? $attributes['orderby'] : 'date',
             'pagination' => in_array($attributes['pagination'] ?? '', self::PAGINATION, true) ? $attributes['pagination'] : 'numbers',
+            'descriptionSource' => 'full' === ($attributes['descriptionsource'] ?? '') ? 'full' : 'excerpt',
             'styleSettings' => is_array($attributes['stylesettings'] ?? null) ? $attributes['stylesettings'] : [],
         ];
         $normalized['cardDesign'] = $this->card_design($attributes['carddesign'] ?? []);
@@ -106,7 +107,11 @@ final class PPCart_Shop
         $cart = isset($_COOKIE[PPCart_Shopping_Cart_Store::COOKIE]) || is_user_logged_in() ? ppcart_get_shopping_cart() : null;
         $cards = [];
         foreach ($query->posts as $product) {
-            $cards[] = $catalog->shop_card($product->ID, $cart);
+            $card = $catalog->shop_card($product->ID, $cart);
+            if ($attributes['showExcerpt'] && 'full' === $attributes['descriptionSource']) {
+                $card['description'] = $this->description($product);
+            }
+            $cards[] = $card;
         }
         $tokens = ppcart_shopping_cart_style_tokens($attributes['styleSettings']);
         $tokens['--ppcart-shop-columns'] = (string) $attributes['columns'];
@@ -117,6 +122,17 @@ final class PPCart_Shop
         }
         $pagination = $this->pagination($attributes['pagination'], (int) $query->get('paged') ?: 1, (int) $query->max_num_pages);
         return ppcart_get_template('shopping-cart/shop', '', compact('attributes', 'cards', 'style', 'pagination'));
+    }
+
+    /**
+     * The product description with its formatting. Shortcodes and dynamic blocks are left out,
+     * so a checkout form or a Shop inside a description does not render in the card.
+     */
+    private function description(WP_Post $product): string
+    {
+        $content = strip_shortcodes($product->post_content);
+        $content = has_blocks($content) ? excerpt_remove_blocks($content) : wpautop($content);
+        return trim(wp_kses_post($content));
     }
 
     /** Keep only the card design values the Shop knows, in a safe form. */

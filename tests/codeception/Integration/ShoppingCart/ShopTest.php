@@ -279,6 +279,34 @@ class ShopTest extends WPTestCase
     }
 
     /** @test-id IT-443 */
+    public function test_IT_443_cards_show_a_plain_excerpt_or_the_full_formatted_description(): void
+    {
+        $classic = $this->product('Classic Cookies');
+        wp_update_post(['ID' => $classic, 'post_content' => "Holiday flavors:\n<ul><li>Sugar</li><li>Ginger</li></ul>\n[ppcart_shop]"]);
+        $blocks = $this->product('Block Cookies');
+        wp_update_post(['ID' => $blocks, 'post_content' => "<!-- wp:list --><ul><li>Oat</li></ul><!-- /wp:list -->\n<!-- wp:publishpress-cart/shop /-->"]);
+        $card = static function (string $html, int $id): string {
+            $document = new \DOMDocument();
+            @$document->loadHTML('<?xml encoding="utf-8" ?>' . $html);
+            $node = (new \DOMXPath($document))->query('//li[@data-ppcart-product="' . $id . '"]//*[contains(@class,"ppcart-shop-excerpt")]')->item(0);
+            return $node ? $document->saveHTML($node) : '';
+        };
+        $excerpt = $card(ppcart_render_shop(), $classic);
+        $this->assertStringStartsWith('<p class="ppcart-shop-excerpt">', $excerpt);
+        $this->assertStringNotContainsString('<li>', $excerpt);
+
+        $full = ppcart_render_shop(['descriptionSource' => 'full']);
+        $this->assertMatchesRegularExpression('#<ul>\s*<li>Sugar</li>\s*<li>Ginger</li>\s*</ul>#', $card($full, $classic));
+        $this->assertStringNotContainsString('[ppcart_shop]', $card($full, $classic));
+        $this->assertStringContainsString('<li>Oat</li>', $card($full, $blocks));
+        $this->assertSame(1, substr_count($full, 'class="ppcart-shop-grid"'), 'A Shop block in a description must not render a second Shop.');
+        $this->assertSame('', $card(ppcart_render_shop(['descriptionSource' => 'full', 'showExcerpt' => false]), $classic));
+        $short = $this->product('Excerpt Only');
+        wp_update_post(['ID' => $short, 'post_content' => '', 'post_excerpt' => 'Only a short summary.']);
+        $this->assertStringContainsString('Only a short summary.', $card($full = ppcart_render_shop(['descriptionSource' => 'full']), $short), 'A product with no description falls back to its excerpt.');
+    }
+
+    /** @test-id IT-443 */
     public function test_IT_443_shared_styles_keep_base_and_preset_values(): void
     {
         $this->assertSame([], ppcart_block_style_tokens([]));

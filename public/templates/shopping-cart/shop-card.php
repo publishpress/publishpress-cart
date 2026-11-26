@@ -28,7 +28,9 @@ $attributes = $attr['attributes'];
         <?php else : ?>
             <h3><?php echo esc_html($card['title']); ?></h3>
         <?php endif; ?>
-        <?php if ($attributes['showExcerpt'] && $card['excerpt']) : ?>
+        <?php if (! empty($card['description'])) : ?>
+            <div class="ppcart-shop-excerpt ppcart-shop-description"><?php echo wp_kses_post($card['description']); ?></div>
+        <?php elseif ($attributes['showExcerpt'] && $card['excerpt']) : ?>
             <p class="ppcart-shop-excerpt"><?php echo esc_html($card['excerpt']); ?></p>
         <?php endif; ?>
         <?php if ($attributes['showPrice']) : ?>
