@@ -500,7 +500,7 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         $this->assertSame(0, $this->integrationRuns);
     }
 
-    public function test_IT_485_syncing_a_refunded_cash_order_with_a_partial_stripe_refund_sets_it_paid_without_integrations(): void
+    public function test_IT_485_syncing_a_refunded_cash_order_with_a_partial_stripe_refund_keeps_it_refunded(): void
     {
         $orderId = $this->createRefundedOrder('pi_partial_cash', array());
         $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_partial_cash'));
@@ -511,15 +511,17 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         ApiRequestor::setHttpClient($stripe);
 
         for ($run = 0; $run < 2; $run++) {
-            PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($orderId));
+            $this->assertSame('Order synced. The refund needs a check: see the order log.', PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($orderId)));
             $this->syncInvoice($subscriptionId, 'sub_partial_cash', 'ch_partial_renewal', 'pi_partial_renewal', 3900);
         }
 
+        $note = 'Stripe shows a partial refund of 10.00; the order stays refunded. Check the refunds in Stripe.';
         foreach (array($orderId => 're_partial_cash', $renewalId => 're_partial_renewal') as $id => $refundId) {
-            $this->assertSame('paid', ppcart_get_post_meta($id, 'status', true), $refundId);
+            $this->assertSame('refunded', ppcart_get_post_meta($id, 'status', true), $refundId);
             $this->assertSame(array($refundId), array_keys(ppcart_get_post_meta($id, 'refund_log', true)), $refundId);
             $this->assertSame('10.00', ppcart_get_post_meta($id, 'refund_amount', true), $refundId);
             $this->assertSame('stripe', ppcart_get_post_meta($id, 'pay_method', true), $refundId);
+            $this->assertSame(1, count(array_keys(array_values((array) ppcart_order_log($id)), $note, true)), $refundId);
         }
         $this->assertSame(0, $this->integrationRuns);
     }

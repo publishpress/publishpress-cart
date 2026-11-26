@@ -89,6 +89,17 @@ return PPCart_Stripe_Sync_Context::run(
         if ($amount_refunded > 0 && $amount_refunded >= $amount) {
             $cart_order->payment_status = 'refunded';
             $cart_order->status = 'refunded';
+        } elseif ('refunded' === $cart_order->status && $migrated) {
+            // A migrated order may have been refunded in full outside Stripe,
+            // so a partial Stripe refund never sets it back to paid.
+            self::flag_refund_for_check(
+                $cart_order->id,
+                sprintf(
+                    /* translators: %s: refunded amount */
+                    __('Stripe shows a partial refund of %s; the order stays refunded. Check the refunds in Stripe.', 'publishpress-cart'),
+                    $refund_total
+                )
+            );
         } elseif ('refunded' === $cart_order->status) {
             $cart_order->payment_status = 'paid';
             $cart_order->status = 'paid';

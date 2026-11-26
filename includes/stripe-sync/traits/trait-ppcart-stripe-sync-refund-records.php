@@ -253,6 +253,21 @@ trait PPCart_Stripe_Sync_Refund_Records_Trait
     }
 
     /**
+     * Note on the order that its refund needs a person to check.
+     *
+     * Order-level sync then says so.
+     *
+     * @param int    $order_id Local order ID.
+     * @param string $note     Log entry.
+     * @return void
+     */
+    private static function flag_refund_for_check($order_id, $note)
+    {
+        self::$refund_needs_check = true;
+        self::add_order_log_note($order_id, $note);
+    }
+
+    /**
      * Add an order log entry unless the log already has it, so repeated
      * syncs don't fill the log.
      *
