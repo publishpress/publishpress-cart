@@ -15,7 +15,8 @@ if (! $stripe_id) {
 }
 
 if (! $stripe) {
-    $stripe_mode = $order->gateway_mode ?? $order->stripe_mode ?? 'test';
+    // An order migrated with no mode uses the store's current Stripe mode.
+    $stripe_mode = ppcart_normalize_stripe_mode(! empty($order->gateway_mode) ? $order->gateway_mode : ($order->stripe_mode ?? ''));
     $stripe = PPCart_Stripe_Sync::get_client_for_mode($stripe_mode);
 }
 

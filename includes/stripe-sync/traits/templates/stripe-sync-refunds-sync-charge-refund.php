@@ -76,6 +76,7 @@ return PPCart_Stripe_Sync_Context::run(
         }
 
         $cart_order->store();
+        self::mark_order_as_stripe_payment($cart_order, $charge);
         self::mark_resource_event($cart_order->id, $event);
         self::record_webhook_log(
             $event,

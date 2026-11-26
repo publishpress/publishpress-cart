@@ -19,12 +19,15 @@ trait PPCart_Stripe_Sync_Refunds_Trait
     /**
      * Get the Stripe charge or payment intent ID that a manual order sync can load.
      *
+     * Orders migrated with the payment method "cod" or none qualify too, so
+     * sync can correct them to Stripe.
+     *
      * @param object|null $order Order object or order data.
      * @return string The `ch_` or `pi_` ID, or an empty string when the order can't be synced.
      */
     public static function get_order_sync_payment_id($order)
     {
-        if (! $order || ! isset($order->pay_method) || 'stripe' !== $order->pay_method) {
+        if (! $order || ! self::can_be_stripe_order($order)) {
             return '';
         }
 
@@ -111,6 +114,62 @@ trait PPCart_Stripe_Sync_Refunds_Trait
     {
         $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-refunds-normalize-refund-log.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
+     * Check whether an order's payment method allows it to be a Stripe order.
+     *
+     * Orders migrated from StudioCart can store a Stripe payment with the
+     * payment method "cod" (Cash) or none. Orders of another gateway, such as
+     * PayPal, are never Stripe orders.
+     *
+     * @param object $order Order object or order data.
+     * @return bool
+     */
+    private static function can_be_stripe_order($order)
+    {
+        $pay_method = isset($order->pay_method) && is_scalar($order->pay_method) ? (string) $order->pay_method : '';
+
+        return in_array($pay_method, [ 'stripe', 'cod', '' ], true);
+    }
+
+    /**
+     * Set the payment method and mode of an order that sync linked to a Stripe payment.
+     *
+     * Writes only the two meta fields, so no integrations or emails run.
+     * Orders without a Stripe charge or PaymentIntent ID are left alone.
+     *
+     * @param PPCart_Order|false $order    Local order.
+     * @param object|array|null  $resource Stripe charge or invoice that paid the order. Its livemode sets the mode.
+     * @return void
+     */
+    private static function mark_order_as_stripe_payment($order, $resource = null)
+    {
+        if (! $order || empty($order->id) || ! self::can_be_stripe_order($order)) {
+            return;
+        }
+
+        $transaction_id = (string) ppcart_get_post_meta($order->id, 'transaction_id', true);
+        if (0 !== strpos($transaction_id, 'ch_') && 0 !== strpos($transaction_id, 'pi_')) {
+            return;
+        }
+
+        if ('stripe' !== $order->pay_method) {
+            ppcart_update_post_meta($order->id, 'pay_method', 'stripe');
+            $order->pay_method = 'stripe';
+            ppcart_log_entry($order->id, __('Payment method set to Stripe by Stripe sync.', 'publishpress-cart'));
+        }
+
+        $livemode = $resource ? self::get($resource, 'livemode', null) : null;
+        if (null === $livemode) {
+            return;
+        }
+
+        $mode = $livemode ? 'live' : 'test';
+        if ($mode !== (string) $order->gateway_mode) {
+            ppcart_update_post_meta($order->id, 'gateway_mode', $mode);
+            $order->gateway_mode = $mode;
+        }
     }
 
     /**
