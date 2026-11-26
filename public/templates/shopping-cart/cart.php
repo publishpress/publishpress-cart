@@ -3,8 +3,10 @@
 if (! defined('ABSPATH')) {
     exit;
 }
+
+$ppcart_continue = $attr['continue_text'] ?? ppcart_shopping_cart_continue_text();
 ?>
-<div class="ppcart-shopping-cart ppcart-shopping-cart-cart" data-ppcart-cart style="<?php echo esc_attr($attr['style']); ?>">
+<div class="ppcart-shopping-cart ppcart-shopping-cart-cart" data-ppcart-cart data-ppcart-continue-text="<?php echo esc_attr($ppcart_continue); ?>" style="<?php echo esc_attr($attr['style']); ?>">
     <?php echo ppcart_get_template('shopping-cart/notices', '', $attr); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output. ?>
     <?php if ($attr['cart']['count']) : ?>
         <div class="ppcart-shopping-cart-columns">
@@ -14,7 +16,9 @@ if (! defined('ABSPATH')) {
                         <?php echo ppcart_get_template('shopping-cart/cart-item', '', ['item' => $item] + $attr); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output. ?>
                     <?php endforeach; ?>
                 </ul>
-                <a class="ppcart-shopping-cart-link" href="<?php echo esc_url($attr['cart']['links']['shop']); ?>"><?php esc_html_e('← Continue shopping', 'publishpress-cart'); ?></a>
+                <?php if ('' !== $ppcart_continue) : ?>
+                    <a class="ppcart-shopping-cart-link" href="<?php echo esc_url($attr['cart']['links']['shop']); ?>" data-ppcart-continue><?php echo esc_html($ppcart_continue); ?></a>
+                <?php endif; ?>
             </div>
             <?php echo ppcart_get_template('shopping-cart/summary', '', $attr); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output. ?>
         </div>

@@ -12,7 +12,14 @@ if (! defined('ABSPATH')) {
     <p class="ppcart-shopping-cart-result" data-ppcart-shopping-cart-result aria-hidden="true" hidden></p>
     <div class="ppcart-shopping-cart-drawer-body">
         <?php echo ppcart_get_template('shopping-cart/notices', '', $attr); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output. ?>
-        <?php if ($attr['cart']['count']) : ?>
+        <?php if (! empty($attr['loading'])) : ?>
+            <div class="ppcart-shopping-cart-loading" aria-hidden="true">
+                <?php for ($ppcart_row = 0; $ppcart_row < 3; $ppcart_row++) : ?>
+                    <div class="ppcart-shopping-cart-loading-row"><span></span><span></span><span></span></div>
+                <?php endfor; ?>
+            </div>
+            <p class="ppcart-shopping-cart-sr"><?php esc_html_e('Loading your cart.', 'publishpress-cart'); ?></p>
+        <?php elseif ($attr['cart']['count']) : ?>
             <ul class="ppcart-shopping-cart-items">
                 <?php foreach ($attr['cart']['items'] as $item) : ?>
                     <?php echo ppcart_get_template('shopping-cart/cart-item', '', ['item' => $item] + $attr); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The template escapes its output. ?>

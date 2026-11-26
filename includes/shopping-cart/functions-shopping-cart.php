@@ -230,7 +230,18 @@ function ppcart_render_shopping_cart($attributes = []): string
 {
     ppcart_shopping_cart_nocache();
     ppcart_shopping_cart_assets();
-    return (new PPCart_Shopping_Cart_View())->render('cart', ppcart_get_shopping_cart(), (array) $attributes);
+    $attributes = (array) $attributes;
+    return (new PPCart_Shopping_Cart_View())->render('cart', ppcart_get_shopping_cart(), $attributes, ['continue_text' => ppcart_shopping_cart_continue_text($attributes)]);
+}
+
+/** The text of the Continue shopping link on the Cart page, or '' when the block hides the link. */
+function ppcart_shopping_cart_continue_text(array $attributes = []): string
+{
+    if (false === ($attributes['showContinueShopping'] ?? true)) {
+        return '';
+    }
+    $text = trim(sanitize_text_field((string) ($attributes['continueShoppingText'] ?? '')));
+    return '' !== $text ? $text : __('← Continue shopping', 'publishpress-cart');
 }
 
 /** The cart checkout form, or the confirmation of a cart order the visitor may view. */
