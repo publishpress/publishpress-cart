@@ -28,6 +28,21 @@ if (! $force && ! self::charge_belongs_to_site($charge)) {
     return false;
 }
 
+// A failed or pending charge never marks an order paid.
+$charge_status = (string) self::get($charge, 'status', 'succeeded');
+if ('succeeded' !== $charge_status || false === self::get($charge, 'paid', true)) {
+    self::record_webhook_log(
+        $event,
+        'skipped',
+        'Charge has not succeeded.',
+        [
+            'charge_id' => self::get($charge, 'id', ''),
+            'status'    => $charge_status,
+        ]
+    );
+    return false;
+}
+
 if (self::get($charge, 'refunded', false) || absint(self::get($charge, 'amount_refunded', 0)) > 0) {
     return self::sync_charge_refund($charge, $stripe, $event, true);
 }
@@ -48,16 +63,22 @@ if (! $cart_order || ! $cart_order->id) {
 
 return PPCart_Stripe_Sync_Context::run(
     function () use ($cart_order, $charge, $event) {
+        // A completed order is already paid. An order not yet stored as a
+        // Stripe order, for example one migrated as Cash, keeps its status on
+        // its first sync and runs no integrations.
+        $first_stripe_sync = 'stripe' !== $cart_order->pay_method;
         $values = [
             'transaction_id' => self::get($charge, 'id', $cart_order->transaction_id),
-            'payment_status' => 'paid',
-            'status'         => 'paid',
         ];
+        if (! $first_stripe_sync && 'completed' !== $cart_order->status) {
+            $values['payment_status'] = 'paid';
+            $values['status'] = 'paid';
+        }
         if (! self::order_matches_values($cart_order, $values)) {
-            $cart_order->transaction_id = $values['transaction_id'];
-            $cart_order->payment_status = $values['payment_status'];
-            $cart_order->status = $values['status'];
-            $cart_order->store();
+            foreach ($values as $field => $value) {
+                $cart_order->$field = $value;
+            }
+            $cart_order->store(! $first_stripe_sync);
         }
         self::mark_order_as_stripe_payment($cart_order, $charge);
         self::mark_resource_event($cart_order->id, $event);

@@ -14,6 +14,7 @@ require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-s
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-invoices.php';
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-hosted-checkout.php';
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-refunds.php';
+require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-refund-records.php';
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-reconciliation.php';
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-owned-fields.php';
 require_once dirname(__FILE__) . '/stripe-sync/traits/trait-ppcart-stripe-sync-utilities.php';
@@ -33,6 +34,7 @@ class PPCart_Stripe_Sync
     use PPCart_Stripe_Sync_Invoices_Trait;
     use PPCart_Stripe_Sync_Hosted_Checkout_Trait;
     use PPCart_Stripe_Sync_Refunds_Trait;
+    use PPCart_Stripe_Sync_Refund_Records_Trait;
     use PPCart_Stripe_Sync_Reconciliation_Trait;
     use PPCart_Stripe_Sync_Owned_Fields_Trait;
     use PPCart_Stripe_Sync_Utilities_Trait;
