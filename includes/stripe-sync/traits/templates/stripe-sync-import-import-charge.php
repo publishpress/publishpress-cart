@@ -68,9 +68,10 @@ if (1 === (int) $sub->order_count()) {
 }
 
 $currency = strtoupper((string) self::get($charge, 'currency', $sub->currency ? $sub->currency : 'usd'));
-$amount = ppcart_format_stripe_number(absint(self::get($charge, 'amount', 0)), $currency);
-$amount_refunded = absint(self::get($charge, 'amount_refunded', 0));
-$fully_refunded = $amount_refunded > 0 && $amount_refunded >= absint(self::get($charge, 'amount', 0));
+$charge_amounts = self::import_charge_amounts($charge);
+$amount = ppcart_format_stripe_number($charge_amounts['cents'], $currency);
+$amount_refunded = $charge_amounts['refunded_cents'];
+$fully_refunded = $charge_amounts['fully_refunded'];
 
 $no_integrations = '__return_false';
 add_filter('ppcart_trigger_order_integrations', $no_integrations, 99);

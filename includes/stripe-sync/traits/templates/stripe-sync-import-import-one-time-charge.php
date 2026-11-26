@@ -10,6 +10,18 @@ if (! $product_id || ! ppcart_is_product_post_type(get_post_type($product_id))) 
     return new WP_Error('ppcart_import_charge_product', __('This isn\'t a Cart product. Choose another product.', 'publishpress-cart'));
 }
 
+// The one-time payment plans a checkout of this product can store.
+$one_time_options = [];
+$options = ppcart_get_post_meta($product_id, 'pay_options', true);
+foreach (is_array($options) ? $options : [] as $option) {
+    if (is_array($option) && ! empty($option['option_id']) && in_array($option['product_type'] ?? '', [ '', 'one-time', 'pwyw' ], true)) {
+        $one_time_options[] = $option;
+    }
+}
+if (! $one_time_options) {
+    return new WP_Error('ppcart_import_charge_plan', __('This product has no one-time payment plan. Add one, or choose another product.', 'publishpress-cart'));
+}
+
 $exists = self::find_imported_charge_order([ $payment_id ]);
 if ($exists) {
     return $exists;
@@ -65,32 +77,29 @@ if (! $address || '' === trim((string) self::get($address, 'line1', '') . self::
 }
 
 $currency = strtoupper((string) self::get($charge, 'currency', 'usd'));
-$amount = ppcart_format_stripe_number(absint(self::get($charge, 'amount', 0)), $currency);
-$amount_refunded = absint(self::get($charge, 'amount_refunded', 0));
-$fully_refunded = $amount_refunded > 0 && $amount_refunded >= absint(self::get($charge, 'amount', 0));
+$charge_amounts = self::import_charge_amounts($charge);
+// Checkout stores plain numbers (floats), so the import does too.
+$amount = self::stripe_amount_to_number($charge_amounts['cents'], $currency);
+$amount_refunded = $charge_amounts['refunded_cents'];
+$fully_refunded = $charge_amounts['fully_refunded'];
 
 // Use the product's one-time plan with this price, or else its first
 // one-time plan, as a checkout would store it.
 $plan = null;
 $on_sale = 0;
-$options = ppcart_get_post_meta($product_id, 'pay_options', true);
-foreach (is_array($options) ? $options : [] as $option) {
-    if (! is_array($option) || empty($option['option_id']) || ! in_array($option['product_type'] ?? '', [ '', 'one-time', 'pwyw' ], true)) {
-        continue;
-    }
-
+foreach ($one_time_options as $option) {
     foreach ([ 'sale_' => 1, '' => 0 ] as $prefix => $sale) {
-        if (isset($option[ $prefix . 'price' ]) && is_numeric($option[ $prefix . 'price' ]) && abs((float) $option[ $prefix . 'price' ] - (float) $amount) < 0.005) {
+        $price = $option[ $prefix . 'price' ] ?? '';
+        if (is_numeric($price) && abs((float) $price - $amount) < 0.005) {
             $plan = ppcart_plan($option['option_id'], $sale, $product_id);
             $on_sale = $sale;
             break 2;
         }
     }
-
-    if (! $plan) {
-        $plan = ppcart_plan($option['option_id'], '', $product_id);
-        $on_sale = 0;
-    }
+}
+if (! is_object($plan)) {
+    $plan = ppcart_plan($one_time_options[0]['option_id'], '', $product_id);
+    $on_sale = 0;
 }
 $plan = is_object($plan) ? $plan : null;
 

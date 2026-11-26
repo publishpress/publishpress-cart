@@ -80,6 +80,52 @@ trait PPCart_Stripe_Sync_Import_Trait
     }
 
     /**
+     * Work out the amounts of a Stripe charge to import.
+     *
+     * Uses the captured amount when Stripe gives it and the charge isn't
+     * fully refunded. A fully refunded charge keeps its full amount.
+     *
+     * @param object $charge Stripe charge.
+     * @return array{cents: int, refunded_cents: int, fully_refunded: bool}
+     */
+    private static function import_charge_amounts($charge)
+    {
+        $amount = absint(self::get($charge, 'amount', 0));
+        $captured = self::get($charge, 'amount_captured', null);
+        $base = null !== $captured ? absint($captured) : $amount;
+        $refunded = absint(self::get($charge, 'amount_refunded', 0));
+        $fully_refunded = $refunded > 0 && $refunded >= $base;
+
+        return [
+            'cents'          => $fully_refunded ? $amount : $base,
+            'refunded_cents' => $refunded,
+            'fully_refunded' => $fully_refunded,
+        ];
+    }
+
+    /**
+     * Turn a Stripe amount in the currency's smallest unit into a plain
+     * number, as checkout stores it. Zero-decimal currencies, such as JPY,
+     * aren't divided.
+     *
+     * ppcart_format_stripe_number() isn't used here, because it applies the
+     * store's thousand separator ("1,000.00"), which isn't a number.
+     *
+     * @param int    $cents    Amount in the smallest unit.
+     * @param string $currency Currency code.
+     * @return float
+     */
+    private static function stripe_amount_to_number($cents, $currency)
+    {
+        $cents = absint($cents);
+        if (in_array(strtoupper((string) $currency), array_map('strtoupper', (array) ppcart_get_zero_decimal_currencies()), true)) {
+            return (float) $cents;
+        }
+
+        return round($cents / 100, 2);
+    }
+
+    /**
      * Refuse a payment that is already an order.
      *
      * @param array $ids Stripe charge and PaymentIntent IDs.
