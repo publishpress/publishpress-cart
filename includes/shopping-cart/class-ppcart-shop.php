@@ -149,7 +149,7 @@ final class PPCart_Shop
             }
         }
         foreach (array_keys(self::CARD_COLORS) as $key) {
-            $color = ppcart_block_style_normalize_hex_color($design[$key] ?? '');
+            $color = ppcart_shopping_cart_css_color($design[$key] ?? '');
             if ('' !== $color) {
                 $clean[$key] = $color;
             }

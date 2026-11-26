@@ -276,6 +276,12 @@ class ShopTest extends WPTestCase
         }
         $this->assertStringNotContainsString('--ppcart-shop-title-color', $html);
         $this->assertStringNotContainsString('--ppcart-shop-image-ratio', ppcart_render_shop(['cardDesign' => ['imageRatio' => 'huge']]));
+
+        $theme = ppcart_render_shop(['cardDesign' => ['titleColor' => 'var(--global-palette3)', 'priceColor' => 'var(--x);color:red'], 'styleSettings' => ['accentColor' => 'var(--global-palette1)']]);
+        $this->assertStringContainsString('--ppcart-shop-title-color:var(--global-palette3);', $theme);
+        $this->assertStringNotContainsString('--ppcart-shop-price-color', $theme);
+        $this->assertStringContainsString('--ppcart-accent:var(--global-palette1);', $theme);
+        $this->assertStringContainsString('--ppcart-accent-hover:color-mix(in srgb, var(--global-palette1) 88%, #000);', $theme);
     }
 
     /** @test-id IT-443 */
