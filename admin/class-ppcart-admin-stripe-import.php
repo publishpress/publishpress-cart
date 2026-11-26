@@ -37,6 +37,7 @@ class PPCart_Admin_Stripe_Import
                 'order'          => 'ASC',
             ]
         );
+        $published_products = array_filter($products, static fn ($product) => 'publish' === $product->post_status);
         ?>
         <p class="ppcart-settings__card-desc"><?php esc_html_e('Add Stripe subscriptions that are missing from Cart. Each one becomes a Cart subscription, and its paid invoices become orders. Integrations don\'t run, and nothing changes in Stripe.', 'publishpress-cart'); ?></p>
         <div class="ppcart-stripe-import" data-ppcart-stripe-import>
@@ -84,7 +85,7 @@ class PPCart_Admin_Stripe_Import
             </table>
         </div>
         <h3 class="ppcart-settings__card-subtitle"><?php esc_html_e('Import a payment', 'publishpress-cart'); ?></h3>
-        <p class="ppcart-settings__card-desc"><?php esc_html_e('Add a Stripe payment that has no invoice, such as a charge made in the Stripe Dashboard, to an existing subscription. It becomes a paid order of that subscription. Integrations don\'t run, and nothing changes in Stripe.', 'publishpress-cart'); ?></p>
+        <p class="ppcart-settings__card-desc"><?php esc_html_e('Add a Stripe payment that has no invoice, such as a charge made in the Stripe Dashboard. Enter a subscription ID to add it as a paid order of that subscription. Or choose a product to add it as a one-time order. Integrations don\'t run, and nothing changes in Stripe.', 'publishpress-cart'); ?></p>
         <div class="ppcart-stripe-import" data-ppcart-stripe-charge-import>
             <table class="form-table" role="presentation">
                 <tr>
@@ -97,7 +98,19 @@ class PPCart_Admin_Stripe_Import
                     <th scope="row"><label for="ppcart-stripe-import-charge-subscription"><?php esc_html_e('Subscription ID', 'publishpress-cart'); ?></label></th>
                     <td>
                         <input type="number" min="1" step="1" id="ppcart-stripe-import-charge-subscription" class="small-text" aria-describedby="ppcart-stripe-import-charge-subscription-desc" data-ppcart-stripe-charge-import-subscription data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-subscription')); ?>" />
-                        <p class="description" id="ppcart-stripe-import-charge-subscription-desc"><?php esc_html_e('The Cart subscription number, for example 1234. The payment must belong to the same Stripe customer.', 'publishpress-cart'); ?></p>
+                        <p class="description" id="ppcart-stripe-import-charge-subscription-desc"><?php esc_html_e('Optional. The Cart subscription number, for example 1234. The payment must belong to the same Stripe customer.', 'publishpress-cart'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="ppcart-stripe-import-charge-product"><?php esc_html_e('Product', 'publishpress-cart'); ?></label></th>
+                    <td>
+                        <select id="ppcart-stripe-import-charge-product" aria-describedby="ppcart-stripe-import-charge-product-desc" data-ppcart-stripe-charge-import-product data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-product')); ?>">
+                            <option value="0"><?php esc_html_e('No product', 'publishpress-cart'); ?></option>
+                            <?php foreach ($published_products as $product) : ?>
+                                <option value="<?php echo (int) $product->ID; ?>"><?php echo esc_html(get_the_title($product) . ' (#' . $product->ID . ')'); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <p class="description" id="ppcart-stripe-import-charge-product-desc"><?php esc_html_e('For a payment with no subscription. The payment becomes a one-time order for this product. Leave the subscription ID empty.', 'publishpress-cart'); ?></p>
                     </td>
                 </tr>
                 <tr>
@@ -108,7 +121,9 @@ class PPCart_Admin_Stripe_Import
                             class="button button-secondary"
                             data-ppcart-stripe-charge-import-run
                             data-nonce="<?php echo esc_attr(wp_create_nonce(self::CHARGE_AJAX_ACTION)); ?>"
-                            data-empty-text="<?php esc_attr_e('Enter a Stripe payment ID and a subscription ID.', 'publishpress-cart'); ?>"
+                            data-empty-text="<?php esc_attr_e('Enter a Stripe payment ID.', 'publishpress-cart'); ?>"
+                            data-no-target-text="<?php esc_attr_e('Enter a subscription ID or choose a product.', 'publishpress-cart'); ?>"
+                            data-both-targets-text="<?php esc_attr_e('Enter a subscription ID or choose a product, not both.', 'publishpress-cart'); ?>"
                             data-running-text="<?php esc_attr_e('Importing the payment.', 'publishpress-cart'); ?>"
                             data-failed-text="<?php esc_attr_e('The import failed. Try again.', 'publishpress-cart'); ?>"
                             data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import')); ?>"
@@ -122,7 +137,8 @@ class PPCart_Admin_Stripe_Import
     }
 
     /**
-     * AJAX: import one Stripe payment as an order of a subscription.
+     * AJAX: import one Stripe payment as an order of a subscription, or as
+     * a one-time order of a product.
      *
      * @return void
      */
@@ -136,11 +152,13 @@ class PPCart_Admin_Stripe_Import
 
         $payment_id = isset($_POST['payment_id']) ? sanitize_text_field(wp_unslash($_POST['payment_id'])) : '';
         $subscription_id = isset($_POST['subscription_id']) ? absint(ltrim(sanitize_text_field(wp_unslash($_POST['subscription_id'])), '#')) : 0;
-        if ('' === trim($payment_id) || ! $subscription_id) {
-            wp_send_json_error([ 'message' => __('Enter a Stripe payment ID and a subscription ID.', 'publishpress-cart') ]);
+        $product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
+        if ('' === trim($payment_id)) {
+            wp_send_json_error([ 'message' => __('Enter a Stripe payment ID.', 'publishpress-cart') ]);
         }
 
-        $result = PPCart_Stripe_Sync::import_charge($payment_id, $subscription_id);
+        // import_charge() refuses both or neither of a subscription and a product.
+        $result = PPCart_Stripe_Sync::import_charge($payment_id, $subscription_id, $product_id);
         if (is_wp_error($result)) {
             $data = $result->get_error_data();
             $order_id = is_array($data) && ! empty($data['order_id']) ? (int) $data['order_id'] : 0;
@@ -157,8 +175,10 @@ class PPCart_Admin_Stripe_Import
             [
                 'url'     => (string) get_edit_post_link($result->id, 'raw'),
                 'label'   => '#' . (int) $result->id,
-                /* translators: %d: subscription ID */
-                'message' => sprintf(__('Imported as an order of subscription #%d.', 'publishpress-cart'), (int) $subscription_id),
+                'message' => $subscription_id
+                    /* translators: %d: subscription ID */
+                    ? sprintf(__('Imported as an order of subscription #%d.', 'publishpress-cart'), (int) $subscription_id)
+                    : __('Imported as a one-time order.', 'publishpress-cart'),
             ]
         );
     }

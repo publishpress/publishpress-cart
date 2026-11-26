@@ -1616,6 +1616,7 @@
 
         var $paymentId = $box.find('[data-ppcart-stripe-charge-import-id]');
         var $subscription = $box.find('[data-ppcart-stripe-charge-import-subscription]');
+        var $product = $box.find('[data-ppcart-stripe-charge-import-product]');
         var $button = $box.find('[data-ppcart-stripe-charge-import-run]');
         var $result = $box.find('[data-ppcart-stripe-charge-import-result]');
 
@@ -1636,9 +1637,15 @@
 
             var paymentId = $.trim($paymentId.val() || '');
             var subscriptionId = $.trim($subscription.val() || '');
-            if (!paymentId || !subscriptionId) {
+            var productId = $product.val() && $product.val() !== '0' ? $product.val() : '';
+            if (!paymentId) {
                 show(false, $button.attr('data-empty-text'));
-                (paymentId ? $subscription : $paymentId).trigger('focus');
+                $paymentId.trigger('focus');
+                return;
+            }
+            if (!subscriptionId === !productId) {
+                show(false, $button.attr(subscriptionId ? 'data-both-targets-text' : 'data-no-target-text'));
+                $subscription.trigger('focus');
                 return;
             }
 
@@ -1651,7 +1658,8 @@
                     action: 'ppcart_import_stripe_charge',
                     nonce: $button.attr('data-nonce'),
                     payment_id: paymentId,
-                    subscription_id: subscriptionId
+                    subscription_id: subscriptionId,
+                    product_id: productId
                 }
             ).done(function (response) {
                 var data = (response && response.data) || {};

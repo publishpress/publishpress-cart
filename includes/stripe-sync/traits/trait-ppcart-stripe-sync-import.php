@@ -30,20 +30,76 @@ trait PPCart_Stripe_Sync_Import_Trait
     }
 
     /**
-     * Import one Stripe payment as a paid order of an existing subscription.
+     * Import one Stripe payment as a paid order.
      *
      * For payments with no invoice, such as a charge made by hand in the
-     * Stripe Dashboard. Sync with Stripe imports only invoices, so it never
-     * finds them. Integrations don't run, and nothing changes in Stripe.
+     * Stripe Dashboard or a one-time purchase made before the store moved to
+     * Cart. Sync with Stripe imports only invoices, so it never finds them.
+     * Give a subscription to add the order to it, or a product to import a
+     * one-time order. Give exactly one of them. Integrations don't run, and
+     * nothing changes in Stripe.
      *
      * @param string $payment_id      Stripe charge (ch_...) or PaymentIntent (pi_...) ID.
-     * @param int    $subscription_id Local subscription ID.
+     * @param int    $subscription_id Local subscription ID, or 0.
+     * @param int    $product_id      Local product ID for a one-time order, or 0.
      * @return PPCart_Order|WP_Error
      */
-    public static function import_charge($payment_id, $subscription_id)
+    public static function import_charge($payment_id, $subscription_id, $product_id = 0)
     {
         $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-import-import-charge.php';
         return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
+     * Import one Stripe payment as a one-time order of a product.
+     *
+     * @param string $payment_id Stripe charge (ch_...) or PaymentIntent (pi_...) ID, already checked.
+     * @param int    $product_id Local product ID.
+     * @return PPCart_Order|WP_Error
+     */
+    private static function import_one_time_charge($payment_id, $product_id)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-import-import-one-time-charge.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
+     * Get a Stripe charge that can be imported as an order.
+     *
+     * Only reads from Stripe. Refuses a payment that didn't succeed, paid an
+     * invoice, or is already an order.
+     *
+     * @param string $payment_id Stripe charge (ch_...) or PaymentIntent (pi_...) ID.
+     * @param string $mode       Stripe mode (test or live).
+     * @return object|WP_Error The charge.
+     */
+    private static function retrieve_import_charge($payment_id, $mode)
+    {
+        $__ppcart_template_result = include __DIR__ . '/templates/stripe-sync-import-retrieve-import-charge.php';
+        return 1 === $__ppcart_template_result ? null : $__ppcart_template_result;
+    }
+
+    /**
+     * Refuse a payment that is already an order.
+     *
+     * @param array $ids Stripe charge and PaymentIntent IDs.
+     * @return WP_Error|false An error that names the order, or false.
+     */
+    private static function find_imported_charge_order($ids)
+    {
+        foreach (array_filter($ids) as $id) {
+            $order = PPCart_Order::get_by_trans_id($id);
+            if ($order && $order->id) {
+                return new WP_Error(
+                    'ppcart_import_charge_exists',
+                    /* translators: %d: order ID */
+                    sprintf(__('This payment is already order #%d.', 'publishpress-cart'), (int) $order->id),
+                    [ 'order_id' => (int) $order->id ]
+                );
+            }
+        }
+
+        return false;
     }
 
     /**
