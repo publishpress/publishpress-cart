@@ -307,6 +307,38 @@ class RenewalRepairTest extends StripeSyncTestCase
         $this->assertFalse(has_filter('ppcart_trigger_order_integrations', array(PPCart_Stripe_Sync::class, 'filter_repair_order_integrations')));
     }
 
+    public function test_background_sync_imports_a_paid_retry_after_a_failed_order_in_the_same_period(): void
+    {
+        $subscriptionId = $this->createSubscriptionWithInitialOrder(gmdate('Y-m-d H:i:s', (int) strtotime('-7 months')));
+        $fake = $this->useFakeStripe($subscriptionId, 6);
+
+        // The first attempt of the current period failed; Stripe's retry then succeeded.
+        $failedOrderId = $this->createStripeOrder(
+            array(
+                'subscription_id' => $subscriptionId,
+                'status' => 'failed',
+                'payment_status' => 'failed',
+                'transaction_id' => 'ch_failed_attempt',
+            )
+        );
+        $failedAtGmt = gmdate('Y-m-d H:i:s', $fake->periodStart + HOUR_IN_SECONDS);
+        wp_update_post(
+            array(
+                'ID' => $failedOrderId,
+                'post_date_gmt' => $failedAtGmt,
+                'post_date' => get_date_from_gmt($failedAtGmt),
+            )
+        );
+
+        PPCart_Stripe_Sync::reconcile_stale_subscriptions();
+
+        $this->assertSame(1, $fake->listCalls());
+        $this->assertSame(
+            $fake->periodStart,
+            (int) ppcart_get_post_meta($subscriptionId, 'stripe_renewal_repair_period', true)
+        );
+    }
+
     public function test_background_sync_skips_subscriptions_with_current_orders(): void
     {
         $subscriptionId = $this->createSubscriptionWithInitialOrder(gmdate('Y-m-d H:i:s', time() - 2 * DAY_IN_SECONDS));

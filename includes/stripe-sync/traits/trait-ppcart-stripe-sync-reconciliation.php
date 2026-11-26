@@ -113,8 +113,10 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
      * A renewal is missing when the newest local order is older than the start
      * of the subscription's current Stripe billing period. This happens when a
      * webhook never reached the site, for example on sites migrated from
-     * StudioCart. Each subscription is repaired at most once per billing period,
-     * so an invoice the site refuses is not fetched again every hour.
+     * StudioCart. A period counts as covered only by a paid order, so a failed
+     * attempt does not hide a later successful retry. A period is marked done
+     * once its renewal order exists. An import that records nothing is tried
+     * again on the subscription's next daily reconciliation, not every hour.
      *
      * @param PPCart_Subscription|false $sub Local subscription, just synced from Stripe.
      * @return bool Whether a repair ran.
@@ -147,23 +149,9 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
                 return false;
             }
 
-            $last_order = get_posts(
-                [
-                    'post_type'      => ppcart_query_post_types('order'),
-                    'post_status'    => 'any',
-                    'posts_per_page' => 1,
-                    'orderby'        => 'date',
-                    'order'          => 'DESC',
-                    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Newest order linked to this subscription.
-                    'meta_query'     => [
-                        [
-                            'key'   => ppcart_meta_key('subscription_id'),
-                            'value' => $sub->id,
-                        ],
-                    ],
-                ]
-            );
-            $last_order_time = $last_order ? (int) get_post_time('U', true, $last_order[0]) : 0;
+            // Only a paid order covers the period. A failed attempt in the same
+            // period must not hide the payment Stripe collected on a later retry.
+            $last_order_time = self::latest_paid_order_time($sub->id);
 
             // Orders can be dated a little before the period starts; a missing
             // renewal leaves a gap of at least one billing period.
@@ -171,7 +159,6 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
                 return false;
             }
 
-            ppcart_update_post_meta($sub->id, 'stripe_renewal_repair_period', $period_start);
             // These payments are old. Record the orders, but do not send renewal
             // emails or run integrations for them again.
             add_filter('ppcart_trigger_order_integrations', [ __CLASS__, 'filter_repair_order_integrations' ], 999, 2);
@@ -180,6 +167,15 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
             } finally {
                 remove_filter('ppcart_trigger_order_integrations', [ __CLASS__, 'filter_repair_order_integrations' ], 999);
             }
+
+            // Mark the period done only once its renewal is recorded, so a
+            // failed import is tried again on the next daily reconciliation.
+            $repaired_time = self::latest_paid_order_time($sub->id);
+            if (! $repaired_time || $repaired_time < $period_start - DAY_IN_SECONDS) {
+                return false;
+            }
+
+            ppcart_update_post_meta($sub->id, 'stripe_renewal_repair_period', $period_start);
             ppcart_log_entry($sub->id, __('Missing renewal orders imported from Stripe by the background sync', 'publishpress-cart'));
 
             return true;
@@ -188,6 +184,40 @@ trait PPCart_Stripe_Sync_Reconciliation_Trait
 
             return false;
         }
+    }
+
+    /**
+     * Time of the newest paid, refunded or completed order of a subscription.
+     *
+     * @param int $subscription_id Local subscription ID.
+     * @return int Unix timestamp, or 0 when there is none.
+     */
+    private static function latest_paid_order_time($subscription_id)
+    {
+        $orders = get_posts(
+            [
+                'post_type'      => ppcart_query_post_types('order'),
+                'post_status'    => 'any',
+                'posts_per_page' => 1,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Newest paid order linked to this subscription.
+                'meta_query'     => [
+                    'relation' => 'AND',
+                    [
+                        'key'   => ppcart_meta_key('subscription_id'),
+                        'value' => $subscription_id,
+                    ],
+                    [
+                        'key'     => ppcart_meta_key('status'),
+                        'value'   => [ 'paid', 'refunded', 'completed' ],
+                        'compare' => 'IN',
+                    ],
+                ],
+            ]
+        );
+
+        return $orders ? (int) get_post_time('U', true, $orders[0]) : 0;
     }
 
     /**
