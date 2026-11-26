@@ -8,6 +8,12 @@ final class PPCart_Shop
 {
     public const PAGINATION = ['numbers', 'prev_next', 'load_more', 'none'];
 
+    /** Image shapes of the Shop card, as CSS aspect ratios. */
+    public const IMAGE_RATIOS = ['landscape' => '16/10', 'wide' => '16/9', 'standard' => '4/3', 'square' => '1/1', 'portrait' => '3/4', 'original' => 'auto'];
+
+    /** Card design colors and the CSS variables they set. */
+    private const CARD_COLORS = ['cardBackground' => '--ppcart-shop-card-bg', 'titleColor' => '--ppcart-shop-title-color', 'textColor' => '--ppcart-shop-text-color', 'priceColor' => '--ppcart-shop-price-color'];
+
     public function normalize_attributes(array $attributes): array
     {
         $attributes = array_change_key_case($attributes, CASE_LOWER);
@@ -18,7 +24,8 @@ final class PPCart_Shop
             'pagination' => in_array($attributes['pagination'] ?? '', self::PAGINATION, true) ? $attributes['pagination'] : 'numbers',
             'styleSettings' => is_array($attributes['stylesettings'] ?? null) ? $attributes['stylesettings'] : [],
         ];
-        foreach (['showImage', 'showExcerpt', 'showPrice', 'includeCollections', 'includeSubscriptions'] as $key) {
+        $normalized['cardDesign'] = $this->card_design($attributes['carddesign'] ?? []);
+        foreach (['showImage', 'showExcerpt', 'showPrice', 'includeCollections', 'includeSubscriptions', 'linkToProduct'] as $key) {
             $normalized[$key] = filter_var($attributes[strtolower($key)] ?? true, FILTER_VALIDATE_BOOLEAN);
         }
         foreach (['categories', 'tags'] as $key) {
@@ -103,12 +110,55 @@ final class PPCart_Shop
         }
         $tokens = ppcart_shopping_cart_style_tokens($attributes['styleSettings']);
         $tokens['--ppcart-shop-columns'] = (string) $attributes['columns'];
+        $tokens += $this->card_design_tokens($attributes['cardDesign']);
         $style = '';
         foreach ($tokens as $key => $value) {
             $style .= $key . ':' . $value . ';';
         }
         $pagination = $this->pagination($attributes['pagination'], (int) $query->get('paged') ?: 1, (int) $query->max_num_pages);
         return ppcart_get_template('shopping-cart/shop', '', compact('attributes', 'cards', 'style', 'pagination'));
+    }
+
+    /** Keep only the card design values the Shop knows, in a safe form. */
+    private function card_design(mixed $design): array
+    {
+        $design = is_array($design) ? $design : [];
+        $clean = [];
+        if (isset(self::IMAGE_RATIOS[$design['imageRatio'] ?? ''])) {
+            $clean['imageRatio'] = $design['imageRatio'];
+        }
+        foreach (['cardPadding', 'cardGap'] as $key) {
+            if (isset($design[$key]) && is_numeric($design[$key])) {
+                $clean[$key] = min(64, max(0, (int) $design[$key]));
+            }
+        }
+        foreach (array_keys(self::CARD_COLORS) as $key) {
+            $color = ppcart_block_style_normalize_hex_color($design[$key] ?? '');
+            if ('' !== $color) {
+                $clean[$key] = $color;
+            }
+        }
+        return $clean;
+    }
+
+    private function card_design_tokens(array $design): array
+    {
+        $tokens = [];
+        if (isset($design['imageRatio'])) {
+            $tokens['--ppcart-shop-image-ratio'] = self::IMAGE_RATIOS[$design['imageRatio']];
+        }
+        if (isset($design['cardPadding'])) {
+            $tokens['--ppcart-shop-card-padding'] = $design['cardPadding'] . 'px';
+        }
+        if (isset($design['cardGap'])) {
+            $tokens['--ppcart-shop-gap'] = $design['cardGap'] . 'px';
+        }
+        foreach (self::CARD_COLORS as $key => $token) {
+            if (isset($design[$key])) {
+                $tokens[$token] = $design[$key];
+            }
+        }
+        return $tokens;
     }
 
     private function pagination(string $style, int $current, int $total): array

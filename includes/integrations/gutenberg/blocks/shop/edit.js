@@ -1,5 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { InspectorControls, PanelColorSettings, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, SelectControl, TextControl, ToggleControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { useEffect, useRef } from '@wordpress/element';
@@ -25,6 +25,14 @@ registerBlockType( metadata.name, {
     title: __( 'Cart Shop', 'publishpress-cart' ),
     edit( { attributes, setAttributes } ) {
         const preview = useRef();
+        const design = attributes.cardDesign || {};
+        const setDesign = ( key, value ) => {
+            const next = { ...design, [ key ]: value };
+            if ( value === undefined || value === '' ) {
+                delete next[ key ];
+            }
+            setAttributes( { cardDesign: next } );
+        };
         useEffect( () => {
             const node = preview.current;
             node.addEventListener( 'change', syncPreviewPrice );
@@ -42,8 +50,14 @@ registerBlockType( metadata.name, {
                     <RangeControl label={ __( 'Columns', 'publishpress-cart' ) } value={ attributes.columns } onChange={ ( columns ) => setAttributes( { columns } ) } min={ 1 } max={ 4 } />
                     <SelectControl label={ __( 'Order by', 'publishpress-cart' ) } value={ attributes.orderBy } onChange={ ( orderBy ) => setAttributes( { orderBy } ) } options={ [ [ 'date', __( 'Date', 'publishpress-cart' ) ], [ 'title', __( 'Title', 'publishpress-cart' ) ], [ 'price', __( 'Price', 'publishpress-cart' ) ], [ 'menu_order', __( 'Menu order', 'publishpress-cart' ) ] ].map( ( [ value, label ] ) => ( { value, label } ) ) } />
                     { [ [ 'categories', __( 'Category IDs', 'publishpress-cart' ) ], [ 'tags', __( 'Tag IDs', 'publishpress-cart' ) ] ].map( ( [ key, label ] ) => <TextControl key={ key } label={ label } help={ __( 'Separate term IDs with commas.', 'publishpress-cart' ) } value={ attributes[ key ].join( ', ' ) } onChange={ ( value ) => setAttributes( { [ key ]: value.split( ',' ).map( Number ).filter( ( id ) => Number.isInteger( id ) && id > 0 ) } ) } /> ) }
-                    { [ [ 'showImage', __( 'Show image', 'publishpress-cart' ) ], [ 'showExcerpt', __( 'Show excerpt', 'publishpress-cart' ) ], [ 'showPrice', __( 'Show price', 'publishpress-cart' ) ], [ 'includeCollections', __( 'Include collections', 'publishpress-cart' ) ], [ 'includeSubscriptions', __( 'Include subscription products', 'publishpress-cart' ) ] ].map( ( [ key, label ] ) => <ToggleControl key={ key } label={ label } checked={ attributes[ key ] } onChange={ ( value ) => setAttributes( { [ key ]: value } ) } /> ) }
+                    { [ [ 'showImage', __( 'Show image', 'publishpress-cart' ) ], [ 'showExcerpt', __( 'Show excerpt', 'publishpress-cart' ) ], [ 'showPrice', __( 'Show price', 'publishpress-cart' ) ], [ 'includeCollections', __( 'Include collections', 'publishpress-cart' ) ], [ 'includeSubscriptions', __( 'Include subscription products', 'publishpress-cart' ) ], [ 'linkToProduct', __( 'Link to product page', 'publishpress-cart' ) ] ].map( ( [ key, label ] ) => <ToggleControl key={ key } label={ label } checked={ attributes[ key ] } onChange={ ( value ) => setAttributes( { [ key ]: value } ) } /> ) }
                 </PanelBody>
+                <PanelBody title={ __( 'Card design', 'publishpress-cart' ) } initialOpen={ false }>
+                    <SelectControl label={ __( 'Image shape', 'publishpress-cart' ) } value={ design.imageRatio || 'landscape' } onChange={ ( value ) => setDesign( 'imageRatio', 'landscape' === value ? undefined : value ) } options={ [ [ 'landscape', __( 'Landscape (16:10)', 'publishpress-cart' ) ], [ 'wide', __( 'Wide (16:9)', 'publishpress-cart' ) ], [ 'standard', __( 'Standard (4:3)', 'publishpress-cart' ) ], [ 'square', __( 'Square (1:1)', 'publishpress-cart' ) ], [ 'portrait', __( 'Portrait (3:4)', 'publishpress-cart' ) ], [ 'original', __( 'Original (no crop)', 'publishpress-cart' ) ] ].map( ( [ value, label ] ) => ( { value, label } ) ) } />
+                    <RangeControl label={ __( 'Card padding (px)', 'publishpress-cart' ) } value={ design.cardPadding } onChange={ ( value ) => setDesign( 'cardPadding', value ) } min={ 0 } max={ 64 } initialPosition={ 24 } allowReset />
+                    <RangeControl label={ __( 'Space between cards (px)', 'publishpress-cart' ) } value={ design.cardGap } onChange={ ( value ) => setDesign( 'cardGap', value ) } min={ 0 } max={ 64 } initialPosition={ 20 } allowReset />
+                </PanelBody>
+                <PanelColorSettings title={ __( 'Card colors', 'publishpress-cart' ) } initialOpen={ false } colorSettings={ [ [ 'cardBackground', __( 'Card background', 'publishpress-cart' ) ], [ 'titleColor', __( 'Title', 'publishpress-cart' ) ], [ 'textColor', __( 'Description', 'publishpress-cart' ) ], [ 'priceColor', __( 'Price', 'publishpress-cart' ) ] ].map( ( [ key, label ] ) => ( { label, value: design[ key ], onChange: ( value ) => setDesign( key, value ) } ) ) } />
                 <ShoppingCartStyleControls settings={ attributes.styleSettings } onChange={ ( styleSettings ) => setAttributes( { styleSettings } ) } />
             </InspectorControls>
             <ServerSideRender block={ metadata.name } attributes={ attributes } />

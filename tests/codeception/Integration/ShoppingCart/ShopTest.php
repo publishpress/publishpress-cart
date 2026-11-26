@@ -252,6 +252,33 @@ class ShopTest extends WPTestCase
     }
 
     /** @test-id IT-443 */
+    public function test_IT_443_cards_can_drop_product_links_and_take_card_design_values(): void
+    {
+        $id = $this->product('Plain Card');
+        set_post_thumbnail($id, self::factory()->attachment->create_upload_object(PPCART_BASE_DIR . 'admin/assets/extensions/square-150x150.png', $id));
+        $links = static function (array $attributes) use ($id): array {
+            $document = new \DOMDocument();
+            @$document->loadHTML('<?xml encoding="utf-8" ?>' . ppcart_render_shop($attributes));
+            $xpath = new \DOMXPath($document);
+            return [
+                $xpath->query('//a[@href="' . get_permalink($id) . '"]')->length,
+                $xpath->query('//*[contains(@class,"ppcart-shop-card-image")]')->length,
+                trim($xpath->query('//li[@data-ppcart-product="' . $id . '"]//h3')->item(0)->textContent),
+            ];
+        };
+        $this->assertSame([2, 1, 'Plain Card'], $links([]));
+        $this->assertSame([0, 1, 'Plain Card'], $links(['linkToProduct' => false]));
+        $this->assertSame([0, 1, 'Plain Card'], $links(['linktoproduct' => 'no']));
+
+        $html = ppcart_render_shop(['cardDesign' => ['imageRatio' => 'square', 'cardPadding' => 12, 'cardGap' => 99, 'cardBackground' => '#FFF8EE', 'titleColor' => 'red;}body{x', 'priceColor' => '#b00']]);
+        foreach (['--ppcart-shop-image-ratio:1/1;', '--ppcart-shop-card-padding:12px;', '--ppcart-shop-gap:64px;', '--ppcart-shop-card-bg:#fff8ee;', '--ppcart-shop-price-color:#bb0000;'] as $token) {
+            $this->assertStringContainsString($token, $html);
+        }
+        $this->assertStringNotContainsString('--ppcart-shop-title-color', $html);
+        $this->assertStringNotContainsString('--ppcart-shop-image-ratio', ppcart_render_shop(['cardDesign' => ['imageRatio' => 'huge']]));
+    }
+
+    /** @test-id IT-443 */
     public function test_IT_443_shared_styles_keep_base_and_preset_values(): void
     {
         $this->assertSame([], ppcart_block_style_tokens([]));

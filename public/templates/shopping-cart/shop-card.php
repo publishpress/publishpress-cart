@@ -9,15 +9,25 @@ $attributes = $attr['attributes'];
 ?>
 <li class="ppcart-shop-card" data-ppcart-product="<?php echo esc_attr($card['product_id']); ?>">
     <?php if ($attributes['showImage'] && $card['image_id']) : ?>
-        <a class="ppcart-shop-card-image" href="<?php echo esc_url($card['permalink']); ?>">
-            <?php echo wp_get_attachment_image($card['image_id'], 'medium_large'); ?>
-        </a>
+        <?php if ($attributes['linkToProduct']) : ?>
+            <a class="ppcart-shop-card-image" href="<?php echo esc_url($card['permalink']); ?>">
+                <?php echo wp_get_attachment_image($card['image_id'], 'medium_large'); ?>
+            </a>
+        <?php else : ?>
+            <div class="ppcart-shop-card-image">
+                <?php echo wp_get_attachment_image($card['image_id'], 'medium_large'); ?>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
     <div class="ppcart-shop-card-body">
         <?php if ($card['purchased']) : ?>
             <span class="ppcart-shop-purchased"><?php esc_html_e('Purchased', 'publishpress-cart'); ?></span>
         <?php endif; ?>
-        <h3><a href="<?php echo esc_url($card['permalink']); ?>"><?php echo esc_html($card['title']); ?></a></h3>
+        <?php if ($attributes['linkToProduct']) : ?>
+            <h3><a href="<?php echo esc_url($card['permalink']); ?>"><?php echo esc_html($card['title']); ?></a></h3>
+        <?php else : ?>
+            <h3><?php echo esc_html($card['title']); ?></h3>
+        <?php endif; ?>
         <?php if ($attributes['showExcerpt'] && $card['excerpt']) : ?>
             <p class="ppcart-shop-excerpt"><?php echo esc_html($card['excerpt']); ?></p>
         <?php endif; ?>
