@@ -165,7 +165,28 @@ function ppcart_shopping_cart_assets(): void
 
 function ppcart_shopping_cart_style_tokens(array $settings): array
 {
-    return ppcart_block_style_tokens(array_intersect_key($settings, array_flip(['preset', 'accentColor'])));
+    $settings = array_intersect_key($settings, array_flip(['preset', 'accentColor']));
+    $accent = ppcart_shopping_cart_css_color($settings['accentColor'] ?? '');
+    if (! str_starts_with($accent, 'var(')) {
+        return ppcart_block_style_tokens($settings);
+    }
+    // A theme palette color is a CSS variable, so the browser mixes the hover and soft shades.
+    unset($settings['accentColor']);
+    return array_merge(ppcart_block_style_tokens($settings), [
+        '--ppcart-accent'       => $accent,
+        '--ppcart-accent-hover' => 'color-mix(in srgb, ' . $accent . ' 88%, #000)',
+        '--ppcart-accent-soft'  => 'color-mix(in srgb, ' . $accent . ' 12%, #fff)',
+    ]);
+}
+
+/** A hex color, or a theme palette variable such as var(--global-palette1). Anything else is ''. */
+function ppcart_shopping_cart_css_color(mixed $color): string
+{
+    $color = trim((string) (is_scalar($color) ? $color : ''));
+    if (preg_match('/^var\(--[A-Za-z0-9_-]+\)$/', $color)) {
+        return $color;
+    }
+    return ppcart_block_style_normalize_hex_color($color);
 }
 
 function ppcart_shopping_cart_style(array $attributes): string

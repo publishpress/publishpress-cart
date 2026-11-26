@@ -44,6 +44,11 @@
       "type": "boolean",
       "default": true
     },
+    "descriptionSource": {
+      "type": "string",
+      "enum": ["excerpt", "full"],
+      "default": "excerpt"
+    },
     "showPrice": {
       "type": "boolean",
       "default": true
@@ -55,6 +60,14 @@
     "includeSubscriptions": {
       "type": "boolean",
       "default": true
+    },
+    "linkToProduct": {
+      "type": "boolean",
+      "default": true
+    },
+    "cardDesign": {
+      "type": "object",
+      "default": {}
     },
     "styleSettings": {
       "type": "object",
