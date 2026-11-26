@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Integration\StripeSync;
 
+use PPCart_Activator;
+use PPCart_Admin_Stripe_Import;
 use PPCart_Order;
 use PPCart_Stripe_Sync;
 use PublishPress\Stripe\ApiRequestor;
@@ -23,6 +25,9 @@ class ImportStripeChargeFakeStripe implements ClientInterface
 
     /** @var bool */
     public $failInvoicePayments = false;
+
+    /** @var array<int, string> */
+    public $requests = array();
 
     /**
      * @param array<string, mixed> $charge
@@ -65,6 +70,8 @@ class ImportStripeChargeFakeStripe implements ClientInterface
 
     public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'v1', $maxNetworkRetries = null)
     {
+        $this->requests[] = strtoupper((string) $method) . ' ' . (string) parse_url($absUrl, PHP_URL_PATH);
+
         if ('get' !== strtolower((string) $method)) {
             return $this->error('The import must not write to Stripe: ' . $method . ' ' . $absUrl, 500);
         }
@@ -253,5 +260,102 @@ class ImportStripeChargeTest extends StripeSyncTestCase
         $this->createdPostIds[] = (int) $order->id;
         $this->assertEquals(30, (float) ppcart_get_post_meta($order->id, 'amount', true));
         $this->assertSame('paid', ppcart_get_post_meta($order->id, 'payment_status', true));
+    }
+
+    public function test_IT_1089_the_ajax_import_accepts_a_subscription_number_with_a_hash_and_spaces(): void
+    {
+        $subscriptionId = $this->createStripeSubscriptionWithOrder(array('customer_id' => 'cus_charge_owner', 'product_id' => 77));
+        ApiRequestor::setHttpClient((new ImportStripeChargeFakeStripe())->addCharge(array('id' => 'ch_hash_number', 'customer' => 'cus_charge_owner')));
+        $this->actAsCartManager();
+
+        $response = $this->requestChargeImport(array('payment_id' => 'ch_hash_number', 'subscription_id' => ' # ' . $subscriptionId . ' ', 'product_id' => '0'));
+
+        $this->assertTrue($response['success'], (string) ($response['data']['message'] ?? ''));
+        $order = PPCart_Order::get_by_trans_id('ch_hash_number');
+        $this->assertInstanceOf(PPCart_Order::class, $order);
+        $this->createdPostIds[] = (int) $order->id;
+        $this->assertSame(sprintf('Imported as an order of subscription #%d.', $subscriptionId), $response['data']['message']);
+        $this->assertEquals($subscriptionId, ppcart_get_post_meta($order->id, 'subscription_id', true));
+        $this->assertSame($subscriptionId, PPCart_Admin_Stripe_Import::parse_subscription_number('#' . $subscriptionId));
+    }
+
+    public function test_IT_1090_the_ajax_import_refuses_a_subscription_number_that_is_not_a_number(): void
+    {
+        $stripe = new ImportStripeChargeFakeStripe();
+        ApiRequestor::setHttpClient($stripe);
+        $this->actAsCartManager();
+
+        foreach (array('abc', '#', '12a', '0') as $input) {
+            $response = $this->requestChargeImport(array('payment_id' => 'ch_bad_number', 'subscription_id' => $input, 'product_id' => '0'));
+
+            $this->assertFalse($response['success'], $input);
+            $this->assertSame('Enter the Cart subscription number, for example 1234.', $response['data']['message'], $input);
+        }
+        $this->assertSame(array(), $stripe->requests, 'A refused import must not call Stripe.');
+    }
+
+    public function test_IT_1091_the_subscription_id_field_takes_text_with_a_numeric_keyboard(): void
+    {
+        ob_start();
+        PPCart_Admin_Stripe_Import::render_maintenance_card();
+        $html = (string) ob_get_clean();
+
+        $this->assertSame(1, preg_match('/<input[^>]*id="ppcart-stripe-import-charge-subscription"[^>]*>/', $html, $match));
+        $this->assertStringContainsString('type="text"', $match[0]);
+        $this->assertStringContainsString('inputmode="numeric"', $match[0]);
+        $this->assertStringContainsString('class="regular-text"', $match[0]);
+        $this->assertStringNotContainsString('min=', $match[0]);
+    }
+
+    private function actAsCartManager(): void
+    {
+        if (! class_exists('PPCart_Activator', false)) {
+            require_once PPCART_PLUGIN_ROOT . 'includes/class-ppcart-activator.php';
+        }
+        PPCart_Activator::add_cap();
+        if (! class_exists('PPCart_Admin_Stripe_Import', false)) {
+            require_once PPCART_PLUGIN_ROOT . 'admin/class-ppcart-admin-stripe-import.php';
+        }
+        wp_set_current_user($this->factory()->user->create(array('role' => ppcart_live_role('cart_manager'))));
+    }
+
+    /**
+     * @param array<string, string> $fields
+     * @return array<string, mixed>
+     */
+    private function requestChargeImport(array $fields): array
+    {
+        $_POST = array_merge(array('nonce' => wp_create_nonce(PPCart_Admin_Stripe_Import::CHARGE_AJAX_ACTION)), $fields);
+        $_REQUEST = $_POST;
+
+        add_filter('wp_doing_ajax', '__return_true');
+        add_filter('wp_die_ajax_handler', array($this, 'getAjaxDieHandler'));
+
+        ob_start();
+        try {
+            PPCart_Admin_Stripe_Import::ajax_import_charge();
+        } catch (\RuntimeException $exception) {
+            $this->assertSame('wp_die', $exception->getMessage());
+        } finally {
+            remove_filter('wp_doing_ajax', '__return_true');
+            remove_filter('wp_die_ajax_handler', array($this, 'getAjaxDieHandler'));
+            $_POST = array();
+            $_REQUEST = array();
+        }
+
+        $response = json_decode(trim((string) ob_get_clean()), true);
+        $this->assertIsArray($response);
+
+        return $response;
+    }
+
+    /**
+     * @return callable
+     */
+    public function getAjaxDieHandler(): callable
+    {
+        return static function ($message = '', $title = '', $args = array()): void {
+            throw new \RuntimeException('wp_die');
+        };
     }
 }

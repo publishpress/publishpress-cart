@@ -1636,11 +1636,17 @@
             }
 
             var paymentId = $.trim($paymentId.val() || '');
-            var subscriptionId = $.trim($subscription.val() || '');
+            // Accept a Cart subscription number as merchants write it: "#4762" or " 4762 ".
+            var subscriptionId = String($subscription.val() || '').replace(/\s+/g, '').replace(/^#+/, '');
             var productId = $product.val() && $product.val() !== '0' ? $product.val() : '';
             if (!paymentId) {
                 show(false, $button.attr('data-empty-text'));
                 $paymentId.trigger('focus');
+                return;
+            }
+            if (subscriptionId && (!/^[0-9]+$/.test(subscriptionId) || !parseInt(subscriptionId, 10))) {
+                show(false, $button.attr('data-invalid-subscription-text'));
+                $subscription.trigger('focus');
                 return;
             }
             if (!subscriptionId === !productId) {
