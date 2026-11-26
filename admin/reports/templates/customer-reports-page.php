@@ -152,9 +152,8 @@ $lifetime_order_results = new WP_Query(
 );
 
 if ($lifetime_order_results->have_posts()) {
-    while ($lifetime_order_results->have_posts()) {
-        $lifetime_order_results->the_post();
-        $lifetime_order_id = get_the_ID();
+    foreach ($lifetime_order_results->posts as $loop_post) {
+        $lifetime_order_id = $loop_post->ID;
         $order_status = PPCart_Status_Labels::edit_select_value(PPCart_Status_Labels::logical_from_post($lifetime_order_id));
 
         if ('' === $first_order_date) {
@@ -195,7 +194,6 @@ if ($lifetime_order_results->have_posts()) {
         $lifetime_value += max(0, $total_amount);
     }
 }
-wp_reset_postdata();
 
 if ($latest_order_id) {
     $latest_order = new PPCart_Order($latest_order_id);
@@ -221,9 +219,8 @@ $order_results = new WP_Query(
 );
 
 if ($order_results->have_posts()) {
-    while ($order_results->have_posts()) {
-        $order_results->the_post();
-        $order_post_id = get_the_ID();
+    foreach ($order_results->posts as $loop_post) {
+        $order_post_id = $loop_post->ID;
         $cart_order = new PPCart_Order($order_post_id);
         $order_data = (object) $cart_order->get_data();
         $order_status = PPCart_Status_Labels::edit_select_value(PPCart_Status_Labels::logical_from_post($order_post_id));
@@ -297,7 +294,6 @@ if ($order_results->have_posts()) {
         }
     }
 }
-wp_reset_postdata();
 
 $subscription_rows = [];
 $subscription_items = [];
@@ -323,9 +319,8 @@ $subscription_results = new WP_Query(
 );
 
 if ($subscription_results->have_posts()) {
-    while ($subscription_results->have_posts()) {
-        $subscription_results->the_post();
-        $subscription_post_id = get_the_ID();
+    foreach ($subscription_results->posts as $loop_post) {
+        $subscription_post_id = $loop_post->ID;
         $subscription_status = PPCart_Status_Labels::edit_select_value(PPCart_Status_Labels::logical_from_post($subscription_post_id));
 
         if ('pending' === $subscription_status) {
@@ -340,7 +335,6 @@ if ($subscription_results->have_posts()) {
         ];
     }
 }
-wp_reset_postdata();
 
 $subscription_order_totals = ppcart_get_report_subscription_order_totals($subscription_ids);
 

@@ -48,13 +48,10 @@ class PPCart_Dashboard_Plan_Data
         $total_revenue = 0;
 
         if ($installment_plans->have_posts()) {
-            while ($installment_plans->have_posts()) {
-                $installment_plans->the_post();
-                $total_revenue += $this->get_plan_expected_revenue(get_the_ID());
+            foreach ($installment_plans->posts as $loop_post) {
+                $total_revenue += $this->get_plan_expected_revenue($loop_post->ID);
             }
         }
-
-        wp_reset_postdata();
 
         return ppcart_format_price($total_revenue - $collected);
     }

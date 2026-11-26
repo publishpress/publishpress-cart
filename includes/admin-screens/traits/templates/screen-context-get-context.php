@@ -13,10 +13,13 @@ if (function_exists('get_current_screen')) {
 }
 
 $has_screen = is_object($screen);
+// The post being edited comes from the request, not the global $post, which
+// a loop elsewhere can leave on another post.
+$edited_post_type = self::edited_post_type();
 $context    = [
     'hook_suffix'       => $normalized_hook_suffix,
     'page'              => self::query_key('page'),
-    'post_type'         => self::query_key('post_type') ?: self::edited_post_type(),
+    'post_type'         => self::query_key('post_type') ?: $edited_post_type,
     'taxonomy'          => self::query_key('taxonomy'),
     'route_params'      => self::route_params(),
     'has_screen'        => $has_screen,
@@ -25,7 +28,7 @@ $context    = [
     'screen_post_type'  => $has_screen && isset($screen->post_type) ? self::normalize_key($screen->post_type) : '',
     'screen_taxonomy'   => $has_screen && isset($screen->taxonomy) ? self::normalize_key($screen->taxonomy) : '',
     'admin_page_parent' => $has_screen && function_exists('get_admin_page_parent') ? self::normalize_key(get_admin_page_parent()) : '',
-    'current_post_type' => $has_screen && function_exists('get_post_type') ? self::normalize_key(get_post_type()) : '',
+    'current_post_type' => $has_screen ? ($edited_post_type ?: (isset($screen->post_type) ? self::normalize_key($screen->post_type) : '')) : '',
 ];
 
 return $context;

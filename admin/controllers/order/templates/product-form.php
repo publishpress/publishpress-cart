@@ -512,16 +512,15 @@ if ($show_related) {  ?>
 
                     // The Loop
                     if ($the_query->have_posts()) {
-                        while ($the_query->have_posts()) {
-                            $the_query->the_post();
-                            $child_order = new PPCart_Order(get_the_ID());
+                        foreach ($the_query->posts as $loop_post) {
+                            $child_order = new PPCart_Order($loop_post->ID);
                             ?>
                             <tr>
                                 <td>
-                                    <a href="<?php echo esc_url(get_edit_post_link(get_the_ID())); ?>" class="ppcart-order-item-name">#<?php echo esc_html(get_the_ID()); ?></a>
+                                    <a href="<?php echo esc_url(get_edit_post_link($loop_post->ID)); ?>" class="ppcart-order-item-name">#<?php echo esc_html($loop_post->ID); ?></a>
                                 </td>
                                 <td><?php echo esc_html($initial_order ? 'Initial Order' : 'Renewal Order'); ?></td>
-                                <td><?php echo esc_html(get_the_date('F d, Y h:i a', get_the_ID())); ?></td>
+                                <td><?php echo esc_html(get_the_date('F d, Y h:i a', $loop_post->ID)); ?></td>
                                 <td class="name">
                                     <span class="ppcart-status <?php echo esc_attr($child_order->status); ?>"><?php echo esc_html($child_order->get_status()); ?></span>
                                 </td>
@@ -537,8 +536,6 @@ if ($show_related) {  ?>
                                     $initial_order = false;
                         }
                     }
-                    /* Restore original Post Data */
-                    wp_reset_postdata();
                 }
 
 

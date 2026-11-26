@@ -30,15 +30,12 @@ $the_query = new WP_Query($args);
 
 // The Loop
 if ($the_query->have_posts()) {
-    while ($the_query->have_posts()) {
-        $the_query->the_post();
-        $options[get_the_ID()] = get_the_title() . ' (ID: ' . get_the_ID() . ')';
+    foreach ($the_query->posts as $loop_post) {
+        $options[$loop_post->ID] = get_the_title($loop_post) . ' (ID: ' . $loop_post->ID . ')';
     }
 } else {
     $options = ['' => __('-- none found --', 'publishpress-cart')];
 }
-/* Restore original Post Data */
-wp_reset_postdata();
 
 add_filter('the_title', [ $ppcart_public, 'public_product_name' ]);
 return $options;

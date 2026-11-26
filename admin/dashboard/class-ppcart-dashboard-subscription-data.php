@@ -90,13 +90,10 @@ class PPCart_Dashboard_Subscription_Data
         $total_mrr = 0;
 
         if ($subscriptions_query->have_posts()) {
-            while ($subscriptions_query->have_posts()) {
-                $subscriptions_query->the_post();
-                $total_mrr += $this->get_monthly_revenue(get_the_ID());
+            foreach ($subscriptions_query->posts as $loop_post) {
+                $total_mrr += $this->get_monthly_revenue($loop_post->ID);
             }
         }
-
-        wp_reset_postdata();
 
         return ppcart_format_price($total_mrr);
     }

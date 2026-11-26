@@ -63,8 +63,6 @@ foreach ($refund_query->posts as $order_id) {
     $refunded   += $refund_data['amount'];
 }
 
-wp_reset_postdata();
-
 $customer_count = count($customers);
 $net_revenue    = max(0, $gross_revenue - $refunded);
 

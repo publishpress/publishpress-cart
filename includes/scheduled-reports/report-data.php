@@ -111,16 +111,13 @@ function ppcart_schedule_report_subscription_summary($start_date, $end_date)
     $query = new WP_Query(ppcart_schedule_report_subscription_args());
 
     if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            $subscription = new PPCart_Subscription(get_the_ID());
+        foreach ($query->posts as $loop_post) {
+            $subscription = new PPCart_Subscription($loop_post->ID);
 
             ppcart_schedule_report_collect_renewal($summary, $subscription, $start, $end);
             ppcart_schedule_report_collect_cancellation($summary, $subscription, $start, $end);
         }
     }
-
-    wp_reset_postdata();
 
     return $summary;
 }
@@ -180,21 +177,18 @@ function ppcart_schedule_report_refund_summary($args)
     $query   = new WP_Query($args);
 
     if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            $refund_log = ppcart_get_post_meta(get_the_ID(), 'refund_log', true);
+        foreach ($query->posts as $loop_post) {
+            $refund_log = ppcart_get_post_meta($loop_post->ID, 'refund_log', true);
 
             if (! is_array($refund_log)) {
                 continue;
             }
 
             $refund_amount = array_sum(array_map('floatval', array_column($refund_log, 'amount')));
-            $amounts[]     = $refund_amount ? $refund_amount : ppcart_get_post_meta(get_the_ID(), 'amount', true);
+            $amounts[]     = $refund_amount ? $refund_amount : ppcart_get_post_meta($loop_post->ID, 'amount', true);
             $counts[]      = count($refund_log);
         }
     }
-
-    wp_reset_postdata();
 
     return [
         'amount' => array_sum($amounts),
@@ -215,9 +209,8 @@ function ppcart_schedule_report_order_summary($order_args, $subscription_args)
 
     $subscription_query = new WP_Query(array_merge($order_args, $subscription_args));
     if ($subscription_query->have_posts()) {
-        while ($subscription_query->have_posts()) {
-            $subscription_query->the_post();
-            $order = new PPCart_Subscription(get_the_ID());
+        foreach ($subscription_query->posts as $loop_post) {
+            $order = new PPCart_Subscription($loop_post->ID);
 
             if ('pending-payment' === $order->status) {
                 $summary['all_subscription']--;
@@ -228,13 +221,11 @@ function ppcart_schedule_report_order_summary($order_args, $subscription_args)
             }
         }
     }
-    wp_reset_postdata();
 
     $order_query = new WP_Query($order_args);
     if ($order_query->have_posts()) {
-        while ($order_query->have_posts()) {
-            $order_query->the_post();
-            $order = new PPCart_Order(get_the_ID());
+        foreach ($order_query->posts as $loop_post) {
+            $order = new PPCart_Order($loop_post->ID);
 
             if ('completed' === $order->status || 'paid' === $order->status) {
                 $summary['completed_orders']++;
@@ -249,7 +240,6 @@ function ppcart_schedule_report_order_summary($order_args, $subscription_args)
             $summary['carttotal']['total'] += $order->amount;
         }
     }
-    wp_reset_postdata();
 
     return $summary;
 }

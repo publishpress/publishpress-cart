@@ -175,10 +175,9 @@ $refunds_array = [];
 $refunded_amount_array = [];
 $refunds_time_array = [];
 if ($queryrfunded->have_posts()) {
-    while ($queryrfunded->have_posts()) {
-        $queryrfunded->the_post();
-        $postid = get_the_ID();
-        $pid = ppcart_get_post_meta(get_the_ID(), 'product_id', true);
+    foreach ($queryrfunded->posts as $loop_post) {
+        $postid = $loop_post->ID;
+        $pid = ppcart_get_post_meta($loop_post->ID, 'product_id', true);
         $refund_cart_products = array_keys(ppcart_shopping_cart_order_revenue(new PPCart_Order($postid)));
         foreach ($refund_cart_products ?: [$pid] as $refund_pid) {
             $refunds_array[$refund_pid][] = get_the_title($refund_pid);
@@ -194,22 +193,21 @@ $refunded_time = array_sum($refunds_time_array);
 
 $query = new WP_Query($args);
 if ($query->have_posts()) {
-    while ($query->have_posts()) {
-        $query->the_post();
-        $cart_order = new PPCart_Order(get_the_ID());
+    foreach ($query->posts as $loop_post) {
+        $cart_order = new PPCart_Order($loop_post->ID);
 
-        if (ppcart_get_post_meta(get_the_ID(), 'renewal_order', true)) {
+        if (ppcart_get_post_meta($loop_post->ID, 'renewal_order', true)) {
             $renewal_orders++;
         } else {
             $new_orders++;
         }
 
         $amount = (float) $cart_order->amount;
-        $post_datetime = function_exists('get_post_datetime') ? get_post_datetime(get_the_ID()) : false;
-        $order_timestamp = $post_datetime instanceof DateTimeInterface ? $post_datetime->getTimestamp() : $this->get_report_timestamp(get_the_date('Y-m-d H:i:s'));
+        $post_datetime = function_exists('get_post_datetime') ? get_post_datetime($loop_post->ID) : false;
+        $order_timestamp = $post_datetime instanceof DateTimeInterface ? $post_datetime->getTimestamp() : $this->get_report_timestamp(get_the_date('Y-m-d H:i:s', $loop_post));
         $carttotal['total'] += (is_numeric($amount)) ? $amount : 0;
         $revenue_events[] = [
-            'date'      => get_the_date('Y-m-d'),
+            'date'      => get_the_date('Y-m-d', $loop_post),
             'timestamp' => $order_timestamp,
             'amount'    => $amount,
         ];
@@ -311,10 +309,10 @@ if ($query->have_posts()) {
                 }
                 $main['gateways'][$pid][$method]++;
 
-                if (!isset($carttotal[get_the_ID()])) {
-                    $carttotal[get_the_ID()] = 0;
+                if (!isset($carttotal[$loop_post->ID])) {
+                    $carttotal[$loop_post->ID] = 0;
                 }
-                $carttotal[get_the_ID()] += $amount;
+                $carttotal[$loop_post->ID] += $amount;
             }
 
             if (isset($cart_order->bump_id) && ($ob = $cart_order->bump_id) && is_int($ob)) { // backwards compatibility
@@ -362,11 +360,10 @@ if ($query->have_posts()) {
             }
             $gateways[$method] = ($gateways[$method] ?? 0) + 1;
             $main['total']++;
-            $carttotal[get_the_ID()] = ($carttotal[get_the_ID()] ?? 0) + $amount;
+            $carttotal[$loop_post->ID] = ($carttotal[$loop_post->ID] ?? 0) + $amount;
         }
     }
 }
-wp_reset_postdata();
 
 $gatewayLabels = [
     'paypal' => 'PayPal',

@@ -66,9 +66,8 @@ trait PPCart_Admin_Privacy_Trait
         }
 
         if ($results->have_posts()) {
-            while ($results->have_posts()) {
-                $results->the_post();
-                $id = get_the_ID();
+            foreach ($results->posts as $loop_post) {
+                $id = $loop_post->ID;
 
                 $fields = [
                     ppcart_meta_key('firstname') => 'first name',
@@ -97,7 +96,6 @@ trait PPCart_Admin_Privacy_Trait
                     }
                 }
             }
-            wp_reset_postdata();
         }
 
         // Returns an array of exported items for this pass, but also a boolean whether this exporter is finished.
@@ -144,9 +142,8 @@ trait PPCart_Admin_Privacy_Trait
         }
 
         if ($results->have_posts()) {
-            while ($results->have_posts()) {
-                $results->the_post();
-                $id = get_the_ID();
+            foreach ($results->posts as $loop_post) {
+                $id = $loop_post->ID;
 
                 $fields = [
                     ppcart_meta_key('firstname') => 'First Name',
@@ -162,7 +159,7 @@ trait PPCart_Admin_Privacy_Trait
                     ppcart_meta_key('ip_address') => 'IP Address',
                 ];
                 $data = [
-                    ['name' => 'Order ID', 'value' => get_the_ID()],
+                    ['name' => 'Order ID', 'value' => $loop_post->ID],
                 ];
                 foreach ($fields as $k => $v) {
                     if ($val = ppcart_get_post_meta($id, $k, true)) {
@@ -176,11 +173,10 @@ trait PPCart_Admin_Privacy_Trait
                 $export_items[] = [
                     'group_id' => 'ppcart-orders',
                     'group_label' => 'PublishPress Cart Orders',
-                    'item_id' => 'order-' . get_the_ID(),
+                    'item_id' => 'order-' . $loop_post->ID,
                     'data' => $data,
                 ];
             }
-            wp_reset_postdata();
         }
 
         // Tell core if we have more orders to work on still
