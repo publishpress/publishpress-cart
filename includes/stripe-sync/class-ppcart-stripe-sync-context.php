@@ -21,6 +21,13 @@ class PPCart_Stripe_Sync_Context
     private static $depth = 0;
 
     /**
+     * Nesting depth for syncs a merchant started to reconcile past records.
+     *
+     * @var int
+     */
+    private static $manual_depth = 0;
+
+    /**
      * Run a callback while Stripe-owned field writes are allowed.
      *
      * @param callable $callback Callback to run.
@@ -35,6 +42,37 @@ class PPCart_Stripe_Sync_Context
         } finally {
             self::$depth--;
         }
+    }
+
+    /**
+     * Run a sync that a merchant started to reconcile past records, such as
+     * Sync with Stripe on an order or a subscription.
+     *
+     * Orders migrated from Cash run no integrations in this context. Stripe
+     * webhooks and Cart's own actions run outside it.
+     *
+     * @param callable $callback Callback to run.
+     * @return mixed Callback return value.
+     */
+    public static function run_manual($callback)
+    {
+        self::$manual_depth++;
+
+        try {
+            return call_user_func($callback);
+        } finally {
+            self::$manual_depth--;
+        }
+    }
+
+    /**
+     * Check whether code is running inside a sync a merchant started.
+     *
+     * @return bool
+     */
+    public static function is_manual()
+    {
+        return self::$manual_depth > 0;
     }
 
     /**

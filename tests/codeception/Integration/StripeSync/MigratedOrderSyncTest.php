@@ -628,12 +628,116 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         $this->assertNotContains('Order synced from Stripe by admin. The refund needs a check.', array_values((array) ppcart_order_log($okId)));
     }
 
-    private function syncInvoice(int $subscriptionId, string $stripeSubscriptionId, string $chargeId, string $paymentIntentId, int $amountPaid): void
+    public function test_IT_494_a_renewal_created_by_a_webhook_for_a_cash_subscription_is_not_flagged(): void
+    {
+        $subscriptionId = $this->createStripeSubscriptionWithOrder(array('subscription_id' => 'sub_cash_webhooks', 'pay_method' => 'cod'));
+        $stripe = (new MigratedOrderSyncFakeStripe())->addCharge(array('id' => 'ch_cash_webhook_renewal', 'payment_intent' => 'pi_cash_webhook_renewal'));
+        ApiRequestor::setHttpClient($stripe);
+
+        // invoice.payment_failed creates the renewal, then invoice.payment_succeeded recovers it.
+        $this->syncInvoice($subscriptionId, 'sub_cash_webhooks', 'ch_cash_webhook_renewal', 'pi_cash_webhook_renewal', 2000, 'invoice.payment_failed');
+        $renewal = PPCart_Order::get_by_trans_id('ch_cash_webhook_renewal');
+        $this->assertInstanceOf(PPCart_Order::class, $renewal);
+        $this->createdPostIds[] = (int) $renewal->id;
+        $this->assertSame('failed', ppcart_get_post_meta($renewal->id, 'status', true));
+        $this->assertSame('', (string) ppcart_get_post_meta($renewal->id, 'migrated_stripe_sync', true));
+
+        $this->integrationRuns = 0;
+        $this->syncInvoice($subscriptionId, 'sub_cash_webhooks', 'ch_cash_webhook_renewal', 'pi_cash_webhook_renewal', 2000, 'invoice.payment_succeeded');
+
+        $this->assertSame('paid', ppcart_get_post_meta($renewal->id, 'status', true));
+        $this->assertSame('stripe', ppcart_get_post_meta($renewal->id, 'pay_method', true));
+        $this->assertSame('', (string) ppcart_get_post_meta($renewal->id, 'migrated_stripe_sync', true));
+        $this->assertSame(1, $this->integrationRuns, 'The recovered renewal runs its integrations, as on development.');
+    }
+
+    public function test_IT_495_a_flagged_order_runs_refund_integrations_from_a_webhook_but_not_from_a_manual_sync(): void
+    {
+        $refunds = array('re_flagged' => 3900);
+        $webhookId = $this->createStripeOrder(array('transaction_id' => 'ch_flagged_webhook', 'amount' => 39, 'migrated_stripe_sync' => '1700000000'));
+        $manualId = $this->createStripeOrder(array('transaction_id' => 'ch_flagged_manual', 'amount' => 39, 'migrated_stripe_sync' => '1700000000'));
+        $stripe = (new MigratedOrderSyncFakeStripe())
+            ->addCharge($this->chargeWithRefunds('ch_flagged_webhook', 'pi_flagged_webhook', $refunds))
+            ->addCharge($this->chargeWithRefunds('ch_flagged_manual', 'pi_flagged_manual', array('re_flagged_manual' => 3900)));
+        ApiRequestor::setHttpClient($stripe);
+
+        // The charge.refunded webhook.
+        PPCart_Stripe_Sync::sync_charge_refund((object) array('id' => 'ch_flagged_webhook'), ppcart_stripe_client('sk_test_migrated_order_sync'), null, true);
+        $this->assertSame('refunded', ppcart_get_post_meta($webhookId, 'status', true));
+        $this->assertSame(1, $this->integrationRuns, 'A real new refund still runs its refund integrations.');
+
+        // Sync with Stripe on the order screen.
+        $this->integrationRuns = 0;
+        PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($manualId));
+        $this->assertSame('refunded', ppcart_get_post_meta($manualId, 'status', true));
+        $this->assertSame(0, $this->integrationRuns);
+    }
+
+    public function test_IT_496_a_refunded_cash_order_whose_charge_has_no_refund_stays_refunded(): void
+    {
+        $orderId = $this->createRefundedOrder('pi_no_refund', array());
+        $stripe = (new MigratedOrderSyncFakeStripe())->addCharge(array('id' => 'ch_no_refund', 'payment_intent' => 'pi_no_refund'));
+        ApiRequestor::setHttpClient($stripe);
+
+        for ($run = 0; $run < 2; $run++) {
+            $this->assertSame('Order synced. The refund needs a check: see the order log.', PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($orderId)));
+        }
+
+        $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'status', true));
+        $this->assertSame('ch_no_refund', ppcart_get_post_meta($orderId, 'transaction_id', true));
+        $this->assertSame('stripe', ppcart_get_post_meta($orderId, 'pay_method', true));
+        $note = 'Stripe shows no refund for this payment; the order stays refunded. Check the refunds in Stripe.';
+        $this->assertSame(1, count(array_keys(array_values((array) ppcart_order_log($orderId)), $note, true)));
+        $this->assertSame(0, $this->integrationRuns);
+    }
+
+    public function test_IT_497_subscription_sync_with_stripe_runs_as_a_merchant_sync(): void
+    {
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_manual_context'));
+        $seen = array();
+        ApiRequestor::setHttpClient(
+            new class ($seen) implements ClientInterface {
+                /** @var array<int, bool> */
+                public $seen;
+
+                public function __construct(array &$seen)
+                {
+                    $this->seen = &$seen;
+                }
+
+                public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'v1', $maxNetworkRetries = null)
+                {
+                    $this->seen[] = \PPCart_Stripe_Sync_Context::is_manual();
+
+                    return array(wp_json_encode(array('error' => array('message' => 'No such subscription'))), 404, array());
+                }
+            }
+        );
+
+        $controller = (new ReflectionClass(\PPCart_Admin_Subscription_Controller::class))->newInstanceWithoutConstructor();
+        try {
+            $controller->sync_stripe_subscription((object) array('id' => $subscriptionId));
+        } catch (\Exception $e) {
+            // The fake Stripe has no subscription. Only the context matters.
+        }
+        $this->assertNotEmpty($seen);
+        $this->assertSame(array(true), array_values(array_unique($seen)));
+        $this->assertFalse(\PPCart_Stripe_Sync_Context::is_manual());
+    }
+
+    /**
+     * Sync one invoice as subscription Sync with Stripe does: in the context
+     * of a sync the merchant started.
+     */
+    private function syncInvoice(int $subscriptionId, string $stripeSubscriptionId, string $chargeId, string $paymentIntentId, int $amountPaid, string $eventType = 'manual_sync'): void
     {
         $invoice = $this->invoice('in_' . $chargeId, $stripeSubscriptionId, $chargeId, time());
         $invoice->payment_intent = $paymentIntentId;
         $invoice->amount_paid = $amountPaid;
-        PPCart_Stripe_Sync::sync_invoice_resource($invoice, new PPCart_Subscription($subscriptionId), 'manual_sync', null, 'USD', '', ppcart_stripe_client('sk_test_migrated_order_sync'));
+        $sync = function () use ($invoice, $subscriptionId, $eventType) {
+            return PPCart_Stripe_Sync::sync_invoice_resource($invoice, new PPCart_Subscription($subscriptionId), $eventType, null, 'USD', '', ppcart_stripe_client('sk_test_migrated_order_sync'));
+        };
+        'manual_sync' === $eventType ? \PPCart_Stripe_Sync_Context::run_manual($sync) : $sync();
     }
 
     public function test_IT_486_a_failed_stripe_charge_never_marks_an_order_paid(): void

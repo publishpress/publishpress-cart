@@ -14,7 +14,12 @@ trait PPCart_Admin_Subscription_Sync_Trait
         }
 
         try {
-            PPCart_Stripe_Sync::sync_subscription_by_local($sub);
+            // A merchant starts this sync to reconcile past records.
+            PPCart_Stripe_Sync_Context::run_manual(
+                function () use ($sub) {
+                    return PPCart_Stripe_Sync::sync_subscription_by_local($sub);
+                }
+            );
             return __('Subscription and invoices synced successfully.', 'publishpress-cart');
         } catch (\Exception $e) {
             // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Preserve failure details for manual sync troubleshooting.

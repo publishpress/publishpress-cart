@@ -83,9 +83,10 @@ return PPCart_Stripe_Sync_Context::run(
         $cart_order->transaction_id = self::get($charge, 'id', $cart_order->transaction_id);
         $cart_order->refund_log = $refund_log;
 
-        // An order migrated as Cash gets Stripe's status but never runs its
-        // integrations.
+        // An order migrated as Cash gets Stripe's status, and runs no
+        // integrations when the merchant syncs it.
         $migrated = self::is_migrated_stripe_order($cart_order);
+        $quiet = self::is_quiet_stripe_sync($cart_order);
         if ($amount_refunded > 0 && $amount_refunded >= $amount) {
             $cart_order->payment_status = 'refunded';
             $cart_order->status = 'refunded';
@@ -105,7 +106,7 @@ return PPCart_Stripe_Sync_Context::run(
             $cart_order->status = 'paid';
         }
 
-        $cart_order->store(! $migrated);
+        $cart_order->store(! $quiet);
         self::mark_order_as_stripe_payment($cart_order, $charge);
         self::mark_resource_event($cart_order->id, $event);
         self::record_webhook_log(

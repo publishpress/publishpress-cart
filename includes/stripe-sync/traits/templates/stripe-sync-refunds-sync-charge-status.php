@@ -64,12 +64,20 @@ if (! $cart_order || ! $cart_order->id) {
 return PPCart_Stripe_Sync_Context::run(
     function () use ($cart_order, $charge, $event) {
         // A completed order is already paid. An order migrated as Cash gets
-        // Stripe's status but never runs its integrations.
+        // Stripe's status, and runs no integrations when the merchant syncs
+        // it. A refunded migrated order may have been refunded outside
+        // Stripe, so it stays refunded.
         $migrated = self::is_migrated_stripe_order($cart_order);
         $values = [
             'transaction_id' => self::get($charge, 'id', $cart_order->transaction_id),
         ];
-        if ('completed' !== $cart_order->status) {
+        $keep_refunded = $migrated && 'refunded' === $cart_order->status;
+        if ($keep_refunded) {
+            self::flag_refund_for_check(
+                $cart_order->id,
+                __('Stripe shows no refund for this payment; the order stays refunded. Check the refunds in Stripe.', 'publishpress-cart')
+            );
+        } elseif ('completed' !== $cart_order->status) {
             $values['payment_status'] = 'paid';
             $values['status'] = 'paid';
         }
@@ -77,7 +85,7 @@ return PPCart_Stripe_Sync_Context::run(
             foreach ($values as $field => $value) {
                 $cart_order->$field = $value;
             }
-            $cart_order->store(! $migrated);
+            $cart_order->store(! self::is_quiet_stripe_sync($cart_order));
         }
         self::mark_order_as_stripe_payment($cart_order, $charge);
         self::mark_resource_event($cart_order->id, $event);

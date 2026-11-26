@@ -15,7 +15,12 @@ trait PPCart_Stripe_Sync_Refunds_Trait
     {
         self::$refund_needs_check = false;
 
-        return include __DIR__ . '/templates/stripe-sync-refunds-sync-order-by-local.php';
+        // A merchant starts this sync to reconcile a past order.
+        return PPCart_Stripe_Sync_Context::run_manual(
+            function () use ($order, $stripe) {
+                return include __DIR__ . '/templates/stripe-sync-refunds-sync-order-by-local.php';
+            }
+        );
     }
 
     /**
@@ -151,6 +156,19 @@ trait PPCart_Stripe_Sync_Refunds_Trait
     }
 
     /**
+     * Check whether storing an order must skip its integrations: a migrated
+     * order in a sync the merchant started to reconcile past records.
+     * Webhooks and Cart's own actions run integrations as usual.
+     *
+     * @param PPCart_Order $order Local order.
+     * @return bool
+     */
+    private static function is_quiet_stripe_sync($order)
+    {
+        return PPCart_Stripe_Sync_Context::is_manual() && self::is_migrated_stripe_order($order);
+    }
+
+    /**
      * Set the payment method and mode of an order that sync linked to a Stripe payment.
      *
      * Writes only the two meta fields, so no integrations or emails run.
@@ -158,9 +176,10 @@ trait PPCart_Stripe_Sync_Refunds_Trait
      *
      * @param PPCart_Order|false $order    Local order.
      * @param object|array|null  $resource Stripe charge or invoice that paid the order. Its livemode sets the mode.
+     * @param bool               $migrated Whether the order existed before this sync. Only then is it flagged as migrated.
      * @return void
      */
-    private static function mark_order_as_stripe_payment($order, $resource = null)
+    private static function mark_order_as_stripe_payment($order, $resource = null, $migrated = true)
     {
         if (! $order || empty($order->id) || ! self::can_be_stripe_order($order)) {
             return;
@@ -173,9 +192,12 @@ trait PPCart_Stripe_Sync_Refunds_Trait
 
         if ('stripe' !== $order->pay_method) {
             ppcart_update_post_meta($order->id, 'pay_method', 'stripe');
-            // Remember that sync turned this order into a Stripe order, so
-            // later syncs never run its integrations either.
-            ppcart_update_post_meta($order->id, 'migrated_stripe_sync', time());
+            // Remember that sync turned this past order into a Stripe order.
+            // An order this sync created, for example a renewal that copied a
+            // Cash subscription's payment method, is not a past order.
+            if ($migrated) {
+                ppcart_update_post_meta($order->id, 'migrated_stripe_sync', time());
+            }
             $order->pay_method = 'stripe';
             ppcart_log_entry($order->id, __('Payment method set to Stripe by Stripe sync.', 'publishpress-cart'));
         }

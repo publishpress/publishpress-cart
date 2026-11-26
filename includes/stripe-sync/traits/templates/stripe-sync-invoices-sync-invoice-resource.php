@@ -233,13 +233,13 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
             'status'         => $order_status['post_status'],
         ];
         // A completed order is already paid. An order migrated as Cash gets
-        // Stripe's status but never runs its integrations.
-        $migrated = $existing && self::is_migrated_stripe_order($existing);
+        // Stripe's status, and runs no integrations when the merchant syncs it.
+        $quiet = $existing && self::is_quiet_stripe_sync($existing);
         if ($existing && 'completed' === $order->status && 'paid' === $values['status']) {
             $values['payment_status'] = $order->payment_status;
             $values['status'] = $order->status;
         }
-        $trigger_integrations = ! $migrated;
+        $trigger_integrations = ! $quiet;
         $refund_log = $refunded_charge && $order->id ? self::refund_log_for_charge($order->id, $refunded_charge, $currency) : null;
         if ($refunded_charge && false === $refund_log) {
             // Manual refunds that don't match Stripe need a person to check.
@@ -256,7 +256,7 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
                 // An imported payment that was refunded long ago must not
                 // grant or remove access now. A paid order that turns
                 // refunded still runs its refund integrations.
-                $trigger_integrations = $existing && ! $migrated;
+                $trigger_integrations = $existing && ! $quiet;
             }
         }
 
@@ -306,8 +306,8 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
 // paid by this invoice's charge is a Stripe order in the invoice's mode.
 if ($synced_order && ($charge_id || $payment_intent)) {
     PPCart_Stripe_Sync_Context::run(
-        function () use ($synced_order, $invoice) {
-            self::mark_order_as_stripe_payment($synced_order, $invoice);
+        function () use ($synced_order, $invoice, $existing) {
+            self::mark_order_as_stripe_payment($synced_order, $invoice, (bool) $existing);
         }
     );
 }
