@@ -22,12 +22,29 @@ try {
         ],
     ];
 
-    $configuration = $stripe->billingPortal->configurations->all(['is_default' => true]);
+    // Cart keeps its own portal configuration instead of editing the account's
+    // default one. On an account linked with "Connect with Stripe", Stripe refuses
+    // changes to the default configuration or to one another application created.
+    $config_option = ppcart_stripe_portal_configuration_option();
+    $config_id = (string) get_option($config_option, '');
+    $updated = false;
 
-    if (!empty($configuration->data)) {
-        $stripe->billingPortal->configurations->update($configuration->data[0]['id'], ['features' => $features]);
-    } else {
-        $stripe->billingPortal->configurations->create(['features' => $features]);
+    if ('' !== $config_id) {
+        try {
+            $stripe->billingPortal->configurations->update($config_id, ['active' => 'true', 'features' => $features]);
+            $updated = true;
+        } catch (\PublishPress\Stripe\Exception\InvalidRequestException $e) {
+            // The saved configuration belongs to another Stripe account or was removed.
+            delete_option($config_option);
+        }
+    }
+
+    if (! $updated && $enabled_flag) {
+        $configuration = $stripe->billingPortal->configurations->create([
+            'features' => $features,
+            'metadata' => ['ppcart' => '1'],
+        ]);
+        update_option($config_option, $configuration->id, false);
     }
 } catch (\Exception $e) {
     update_option('_ppcart_stripe_customer_portal_enable', '0');

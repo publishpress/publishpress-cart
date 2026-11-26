@@ -54,10 +54,24 @@ if (is_user_logged_in()) {
             try {
                 $stripe = ppcart_stripe_client($apikey);
 
-                $sessionId = $stripe->billingPortal->sessions->create([
+                $session_params = [
                     'customer' => $customerId,
                     'return_url' => $this->my_account_url,
-                ]);
+                ];
+                $portal_config_id = (string) get_option(ppcart_stripe_portal_configuration_option(), '');
+
+                try {
+                    // Use Cart's own portal configuration when it has one; otherwise Stripe uses the account default.
+                    $sessionId = $stripe->billingPortal->sessions->create(
+                        '' !== $portal_config_id ? $session_params + ['configuration' => $portal_config_id] : $session_params
+                    );
+                } catch (\PublishPress\Stripe\Exception\InvalidRequestException $e) {
+                    if ('' === $portal_config_id) {
+                        throw $e;
+                    }
+                    // The saved configuration belongs to another Stripe account or was removed.
+                    $sessionId = $stripe->billingPortal->sessions->create($session_params);
+                }
 
                 if ($sessionId && $sessionId->url) {
                     // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- Stripe returns an external billing portal URL that wp_safe_redirect() would block.

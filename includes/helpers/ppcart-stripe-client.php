@@ -19,3 +19,16 @@ function ppcart_stripe_client($secret)
 
     return new PPCart_Stripe_Client($secret);
 }
+
+/**
+ * Option that stores the id of Cart's own Stripe Customer Portal
+ * configuration for the current Stripe mode (test or live).
+ *
+ * @return string
+ */
+function ppcart_stripe_portal_configuration_option()
+{
+    $mode = 'live' === get_option('_ppcart_stripe_api') ? 'live' : 'test';
+
+    return "_ppcart_stripe_{$mode}_portal_configuration_id";
+}
