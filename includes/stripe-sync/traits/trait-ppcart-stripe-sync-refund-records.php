@@ -37,6 +37,9 @@ trait PPCart_Stripe_Sync_Refund_Records_Trait
 
         $current = ppcart_get_post_meta($order_id, 'refund_log', true);
         $current = self::normalize_refund_log(is_array($current) ? $current : []);
+        // A refund logged while pending that Stripe now reports as failed or
+        // canceled returned no money.
+        $current = array_diff_key($current, array_flip(self::returned_refund_ids($charge)));
 
         $stripe_refunds = self::refund_entries_from_charge($charge, $currency);
         $stripe_entries = wp_list_pluck($stripe_refunds, 'entry');
@@ -48,7 +51,7 @@ trait PPCart_Stripe_Sync_Refund_Records_Trait
             }
         );
         if (! $new_refunds || ! $manual_entries) {
-            return $current + $stripe_entries;
+            return self::drop_recorded_manual_refunds($order_id, $current + $stripe_entries, $stripe_refunds, $charge, $currency);
         }
 
         $manual_minor = self::log_total_minor($manual_entries, $currency);
@@ -81,6 +84,66 @@ trait PPCart_Stripe_Sync_Refund_Records_Trait
         self::add_order_log_note($order_id, sprintf($note, ppcart_format_stripe_number($manual_minor, $currency), $stripe_ids));
 
         return array_diff_key($current, $manual_entries) + $stripe_entries;
+    }
+
+    /**
+     * Drop manual refund entries that Stripe refunds in the log already record.
+     *
+     * An order can keep a manual entry next to the Stripe refunds for the same
+     * money, for example after an earlier sync. When the Stripe entries add
+     * up to the charge's refunded total, the manual entries are counted twice.
+     *
+     * @param int          $order_id       Local order ID.
+     * @param array        $log            Refund log.
+     * @param array        $stripe_refunds Refund entries from the charge, by refund ID.
+     * @param object|array $charge         Stripe charge resource.
+     * @param string       $currency       Stripe currency code.
+     * @return array
+     */
+    private static function drop_recorded_manual_refunds($order_id, $log, $stripe_refunds, $charge, $currency)
+    {
+        $manual_entries = array_filter(
+            $log,
+            static function ($entry) {
+                return isset($entry['refundID']) && 'manual' === $entry['refundID'];
+            }
+        );
+        $logged_refunds = array_intersect_key($stripe_refunds, $log);
+        $amount_refunded = absint(self::get($charge, 'amount_refunded', 0));
+        if (! $manual_entries || ! $logged_refunds || $amount_refunded !== (int) array_sum(wp_list_pluck($logged_refunds, 'minor'))) {
+            return $log;
+        }
+
+        self::add_order_log_note(
+            $order_id,
+            sprintf(
+                /* translators: 1: manual refund total, 2: Stripe refund IDs */
+                __('Manual refund of %1$s removed, because Stripe refund %2$s already records it.', 'publishpress-cart'),
+                ppcart_format_stripe_number(self::log_total_minor($manual_entries, $currency), $currency),
+                implode(', ', array_keys($logged_refunds))
+            )
+        );
+
+        return array_diff_key($log, $manual_entries);
+    }
+
+    /**
+     * IDs of the refunds on a Stripe charge that failed or were canceled.
+     *
+     * @param object|array $charge Stripe charge resource with refunds expanded.
+     * @return array<int, string>
+     */
+    private static function returned_refund_ids($charge)
+    {
+        $ids = [];
+        $refunds = self::path($charge, [ 'refunds', 'data' ], []);
+        foreach (is_array($refunds) ? $refunds : [] as $refund) {
+            if (in_array((string) self::get($refund, 'status', ''), [ 'failed', 'canceled' ], true)) {
+                $ids[] = (string) self::get($refund, 'id', '');
+            }
+        }
+
+        return array_filter($ids);
     }
 
     /**

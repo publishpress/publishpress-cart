@@ -63,14 +63,13 @@ if (! $cart_order || ! $cart_order->id) {
 
 return PPCart_Stripe_Sync_Context::run(
     function () use ($cart_order, $charge, $event) {
-        // A completed order is already paid. An order not yet stored as a
-        // Stripe order, for example one migrated as Cash, keeps its status on
-        // its first sync and runs no integrations.
-        $first_stripe_sync = 'stripe' !== $cart_order->pay_method;
+        // A completed order is already paid. An order migrated as Cash gets
+        // Stripe's status but never runs its integrations.
+        $migrated = self::is_migrated_stripe_order($cart_order);
         $values = [
             'transaction_id' => self::get($charge, 'id', $cart_order->transaction_id),
         ];
-        if (! $first_stripe_sync && 'completed' !== $cart_order->status) {
+        if ('completed' !== $cart_order->status) {
             $values['payment_status'] = 'paid';
             $values['status'] = 'paid';
         }
@@ -78,7 +77,7 @@ return PPCart_Stripe_Sync_Context::run(
             foreach ($values as $field => $value) {
                 $cart_order->$field = $value;
             }
-            $cart_order->store(! $first_stripe_sync);
+            $cart_order->store(! $migrated);
         }
         self::mark_order_as_stripe_payment($cart_order, $charge);
         self::mark_resource_event($cart_order->id, $event);

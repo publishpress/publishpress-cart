@@ -75,10 +75,7 @@ return PPCart_Stripe_Sync_Context::run(
             );
             return $cart_order;
         }
-        // The refund amount matches the refund log. A charge whose refunds
-        // Stripe didn't list falls back to its refunded total.
-        $log_minor = self::log_total_minor($refund_log, $currency);
-        $refund_total = ppcart_format_stripe_number($log_minor ? $log_minor : $amount_refunded, $currency);
+        $refund_total = ppcart_format_stripe_number($amount_refunded, $currency);
 
         ppcart_update_post_meta($cart_order->id, 'refund_log', $refund_log);
         ppcart_update_post_meta($cart_order->id, 'refund_amount', $refund_total);
@@ -86,19 +83,18 @@ return PPCart_Stripe_Sync_Context::run(
         $cart_order->transaction_id = self::get($charge, 'id', $cart_order->transaction_id);
         $cart_order->refund_log = $refund_log;
 
-        // An order not yet stored as a Stripe order, for example one migrated
-        // as Cash, keeps its status on its first sync unless Stripe fully
-        // refunded it, and runs no integrations.
-        $first_stripe_sync = 'stripe' !== $cart_order->pay_method;
+        // An order migrated as Cash gets Stripe's status but never runs its
+        // integrations.
+        $migrated = self::is_migrated_stripe_order($cart_order);
         if ($amount_refunded > 0 && $amount_refunded >= $amount) {
             $cart_order->payment_status = 'refunded';
             $cart_order->status = 'refunded';
-        } elseif ('refunded' === $cart_order->status && ! $first_stripe_sync) {
+        } elseif ('refunded' === $cart_order->status) {
             $cart_order->payment_status = 'paid';
             $cart_order->status = 'paid';
         }
 
-        $cart_order->store(! $first_stripe_sync);
+        $cart_order->store(! $migrated);
         self::mark_order_as_stripe_payment($cart_order, $charge);
         self::mark_resource_event($cart_order->id, $event);
         self::record_webhook_log(

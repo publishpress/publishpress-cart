@@ -60,7 +60,12 @@ if ('ppcart_sync_stripe' === $doaction) {
 
             try {
                 PPCart_Stripe_Sync::sync_order_by_local($ppcart_order);
-                ppcart_log_entry($object_id, __('Order synced from Stripe by admin', 'publishpress-cart'));
+                ppcart_log_entry(
+                    $object_id,
+                    PPCart_Stripe_Sync::refund_needs_check()
+                        ? __('Order synced from Stripe by admin. The refund needs a check.', 'publishpress-cart')
+                        : __('Order synced from Stripe by admin', 'publishpress-cart')
+                );
                 $synced++;
             } catch (Exception $e) {
                 /* translators: %s: error message. */

@@ -216,7 +216,7 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
                         ppcart_update_post_meta($order->id, 'refund_log', $refund_log);
                         $order->refund_log = $refund_log;
                     }
-                    $refund_amount = ppcart_format_stripe_number(self::log_total_minor($refund_log, $currency), $currency);
+                    $refund_amount = ppcart_format_stripe_number(absint(self::get($refunded_charge, 'amount_refunded', 0)), $currency);
                     if ((string) $refund_amount !== (string) ppcart_get_post_meta($order->id, 'refund_amount', true)) {
                         ppcart_update_post_meta($order->id, 'refund_amount', $refund_amount);
                     }
@@ -232,16 +232,14 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
             'payment_status' => $order_status['payment_status'],
             'status'         => $order_status['post_status'],
         ];
-        // A completed order is already paid. An order not yet stored as a
-        // Stripe order, for example one migrated as Cash, keeps its status on
-        // its first sync unless Stripe fully refunded it, and runs no
-        // integrations.
-        $first_stripe_sync = $existing && 'stripe' !== $existing->pay_method;
-        if ($existing && ($first_stripe_sync || ('completed' === $order->status && 'paid' === $values['status']))) {
+        // A completed order is already paid. An order migrated as Cash gets
+        // Stripe's status but never runs its integrations.
+        $migrated = $existing && self::is_migrated_stripe_order($existing);
+        if ($existing && 'completed' === $order->status && 'paid' === $values['status']) {
             $values['payment_status'] = $order->payment_status;
             $values['status'] = $order->status;
         }
-        $trigger_integrations = ! $first_stripe_sync;
+        $trigger_integrations = ! $migrated;
         $refund_log = $refunded_charge && $order->id ? self::refund_log_for_charge($order->id, $refunded_charge, $currency) : null;
         if ($refunded_charge && false === $refund_log) {
             // Manual refunds that don't match Stripe need a person to check.
@@ -258,7 +256,7 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
                 // An imported payment that was refunded long ago must not
                 // grant or remove access now. A paid order that turns
                 // refunded still runs its refund integrations.
-                $trigger_integrations = $existing && ! $first_stripe_sync;
+                $trigger_integrations = $existing && ! $migrated;
             }
         }
 
@@ -289,9 +287,8 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
             }
         }
         if ($refunded_charge && $order->id) {
-            $log_minor = self::log_total_minor((array) $order->refund_log, $currency);
             ppcart_update_post_meta($order->id, 'refund_log', $order->refund_log);
-            ppcart_update_post_meta($order->id, 'refund_amount', ppcart_format_stripe_number($log_minor ? $log_minor : absint(self::get($refunded_charge, 'amount_refunded', 0)), $currency));
+            ppcart_update_post_meta($order->id, 'refund_amount', ppcart_format_stripe_number(absint(self::get($refunded_charge, 'amount_refunded', 0)), $currency));
         }
         $order->set_date_from_timestamp($invoice_date);
         if ($invoice_id && $order->id && $invoice_id !== (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true)) {

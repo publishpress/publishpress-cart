@@ -475,34 +475,163 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         $this->assertSame(array(), preg_grep('/^(?!GET )/', $stripe->requests), 'Sync must only read from Stripe.');
     }
 
-    public function test_IT_484_the_first_sync_of_a_completed_cash_order_keeps_its_status(): void
+    public function test_IT_484_syncing_a_completed_cash_order_keeps_it_completed(): void
     {
         $orderId = $this->createStripeOrder(array('pay_method' => 'cod', 'transaction_id' => 'ch_completed_cash', 'status' => 'completed', 'payment_status' => 'paid'));
-        $stripe = (new MigratedOrderSyncFakeStripe())->addCharge(array('id' => 'ch_completed_cash'));
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_completed_cash'));
+        $renewalId = $this->createStripeOrder(
+            array('pay_method' => 'cod', 'transaction_id' => 'ch_completed_renewal', 'status' => 'completed', 'payment_status' => 'paid', 'amount' => 20, 'subscription_id' => $subscriptionId)
+        );
+        $stripe = (new MigratedOrderSyncFakeStripe())
+            ->addCharge(array('id' => 'ch_completed_cash'))
+            ->addCharge(array('id' => 'ch_completed_renewal'));
         ApiRequestor::setHttpClient($stripe);
 
         for ($run = 0; $run < 2; $run++) {
             $this->assertSame('Order synced successfully.', PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($orderId)));
+            $this->syncInvoice($subscriptionId, 'sub_completed_cash', 'ch_completed_renewal', '', 2000);
         }
 
-        $this->assertSame('completed', ppcart_get_post_meta($orderId, 'status', true));
-        $this->assertSame('stripe', ppcart_get_post_meta($orderId, 'pay_method', true));
+        foreach (array($orderId, $renewalId) as $id) {
+            $this->assertSame('completed', ppcart_get_post_meta($id, 'status', true));
+            $this->assertSame('stripe', ppcart_get_post_meta($id, 'pay_method', true));
+            $this->assertNotEmpty(ppcart_get_post_meta($id, 'migrated_stripe_sync', true));
+        }
         $this->assertSame(0, $this->integrationRuns);
     }
 
-    public function test_IT_485_the_first_sync_of_a_refunded_cash_order_with_a_partial_stripe_refund_keeps_it_refunded(): void
+    public function test_IT_485_syncing_a_refunded_cash_order_with_a_partial_stripe_refund_sets_it_paid_without_integrations(): void
     {
         $orderId = $this->createRefundedOrder('pi_partial_cash', array());
-        $stripe = (new MigratedOrderSyncFakeStripe())->addCharge($this->chargeWithRefunds('ch_partial_cash', 'pi_partial_cash', array('re_partial_cash' => 1000)));
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_partial_cash'));
+        $renewalId = $this->createRefundedOrder('pi_partial_renewal', array(), $subscriptionId);
+        $stripe = (new MigratedOrderSyncFakeStripe())
+            ->addCharge($this->chargeWithRefunds('ch_partial_cash', 'pi_partial_cash', array('re_partial_cash' => 1000)))
+            ->addCharge($this->chargeWithRefunds('ch_partial_renewal', 'pi_partial_renewal', array('re_partial_renewal' => 1000)));
         ApiRequestor::setHttpClient($stripe);
 
-        PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($orderId));
+        for ($run = 0; $run < 2; $run++) {
+            PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($orderId));
+            $this->syncInvoice($subscriptionId, 'sub_partial_cash', 'ch_partial_renewal', 'pi_partial_renewal', 3900);
+        }
 
-        $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'status', true));
-        $this->assertSame(array('re_partial_cash'), array_keys(ppcart_get_post_meta($orderId, 'refund_log', true)));
-        $this->assertSame('10.00', ppcart_get_post_meta($orderId, 'refund_amount', true));
-        $this->assertSame('stripe', ppcart_get_post_meta($orderId, 'pay_method', true));
+        foreach (array($orderId => 're_partial_cash', $renewalId => 're_partial_renewal') as $id => $refundId) {
+            $this->assertSame('paid', ppcart_get_post_meta($id, 'status', true), $refundId);
+            $this->assertSame(array($refundId), array_keys(ppcart_get_post_meta($id, 'refund_log', true)), $refundId);
+            $this->assertSame('10.00', ppcart_get_post_meta($id, 'refund_amount', true), $refundId);
+            $this->assertSame('stripe', ppcart_get_post_meta($id, 'pay_method', true), $refundId);
+        }
         $this->assertSame(0, $this->integrationRuns);
+    }
+
+    public function test_IT_491_syncing_a_pending_cash_order_whose_charge_succeeded_sets_it_paid_without_integrations(): void
+    {
+        $orderId = $this->createStripeOrder(array('pay_method' => 'cod', 'transaction_id' => 'pi_pending_cash', 'status' => 'pending-payment', 'payment_status' => 'pending-payment'));
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_pending_cash'));
+        $renewalId = $this->createStripeOrder(
+            array('pay_method' => '', 'transaction_id' => 'pi_pending_renewal', 'status' => 'pending-payment', 'payment_status' => 'pending-payment', 'amount' => 20, 'subscription_id' => $subscriptionId)
+        );
+        $stripe = (new MigratedOrderSyncFakeStripe())
+            ->addCharge(array('id' => 'ch_pending_cash', 'payment_intent' => 'pi_pending_cash'))
+            ->addCharge(array('id' => 'ch_pending_renewal', 'payment_intent' => 'pi_pending_renewal'));
+        ApiRequestor::setHttpClient($stripe);
+
+        for ($run = 0; $run < 2; $run++) {
+            PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($orderId));
+            $this->syncInvoice($subscriptionId, 'sub_pending_cash', 'ch_pending_renewal', 'pi_pending_renewal', 2000);
+        }
+
+        foreach (array($orderId => 'ch_pending_cash', $renewalId => 'ch_pending_renewal') as $id => $chargeId) {
+            $this->assertSame('paid', ppcart_get_post_meta($id, 'status', true), $chargeId);
+            $this->assertSame($chargeId, ppcart_get_post_meta($id, 'transaction_id', true), $chargeId);
+            $this->assertSame('stripe', ppcart_get_post_meta($id, 'pay_method', true), $chargeId);
+        }
+        $this->assertSame(0, $this->integrationRuns);
+        $this->assertSame(0, $this->mailsSent);
+    }
+
+    public function test_IT_492_the_refund_amount_is_the_stripe_refunded_total(): void
+    {
+        $stripe = new MigratedOrderSyncFakeStripe();
+        ApiRequestor::setHttpClient($stripe);
+        $client = ppcart_stripe_client('sk_test_migrated_order_sync');
+
+        // Stripe lists only some refunds of a fully refunded charge.
+        $truncatedId = $this->createStripeOrder(array('transaction_id' => 'ch_truncated', 'amount' => 39));
+        $truncated = $this->chargeWithRefunds('ch_truncated', 'pi_truncated', array('re_listed' => 1000));
+        $truncated['amount_refunded'] = 3900;
+        $truncated['refunded'] = true;
+        $truncated['refunds']['has_more'] = true;
+        $stripe->addCharge($truncated);
+
+        // A refund logged while pending later failed.
+        $failedLog = array(
+            're_pending' => array('refundID' => 're_pending', 'date' => '2024-06-01 12:00', 'amount' => '10.00'),
+        );
+        $failedId = $this->createStripeOrder(array('transaction_id' => 'ch_failed_refund', 'amount' => 39, 'refund_log' => $failedLog, 'refund_amount' => '10.00'));
+        $failed = $this->chargeWithRefunds('ch_failed_refund', 'pi_failed_refund', array('re_pending' => 1000, 're_ok' => 500));
+        $failed['refunds']['data'][0]['status'] = 'failed';
+        $failed['amount_refunded'] = 500;
+        $stripe->addCharge($failed);
+
+        // An old manual entry next to the recorded Stripe refund for the same money.
+        $doubleLog = array(
+            'manual' => array('refundID' => 'manual', 'date' => '2026-11-19 23:21', 'amount' => '39.00'),
+            're_recorded' => array('refundID' => 're_recorded', 'date' => '2024-06-01 12:00', 'amount' => '39.00'),
+        );
+        $doubleId = $this->createStripeOrder(array('transaction_id' => 'ch_double', 'amount' => 39, 'status' => 'refunded', 'payment_status' => 'refunded', 'refund_log' => $doubleLog, 'refund_amount' => '39.00'));
+        $stripe->addCharge($this->chargeWithRefunds('ch_double', 'pi_double', array('re_recorded' => 3900)));
+
+        foreach (array('ch_truncated', 'ch_failed_refund', 'ch_double') as $chargeId) {
+            PPCart_Stripe_Sync::sync_charge_refund((object) array('id' => $chargeId), $client, null, true);
+        }
+
+        $this->assertSame('39.00', ppcart_get_post_meta($truncatedId, 'refund_amount', true));
+        $this->assertSame('refunded', ppcart_get_post_meta($truncatedId, 'status', true));
+        $this->assertEquals(39, \PPCart_Order_Refunds::get_refund_total($truncatedId));
+
+        $this->assertSame(array('re_ok'), array_keys(ppcart_get_post_meta($failedId, 'refund_log', true)));
+        $this->assertSame('5.00', ppcart_get_post_meta($failedId, 'refund_amount', true));
+        $this->assertEquals(5, \PPCart_Order_Refunds::get_refund_total($failedId));
+
+        $this->assertSame(array('re_recorded'), array_keys(ppcart_get_post_meta($doubleId, 'refund_log', true)));
+        $this->assertSame('39.00', ppcart_get_post_meta($doubleId, 'refund_amount', true));
+        $this->assertEquals(39, \PPCart_Order_Refunds::get_refund_total($doubleId));
+        $this->assertContains('Manual refund of 39.00 removed, because Stripe refund re_recorded already records it.', array_values((array) ppcart_order_log($doubleId)));
+        $this->assertSame(array(), preg_grep('/^(?!GET )/', $stripe->requests), 'Sync must only read from Stripe.');
+    }
+
+    public function test_IT_493_the_bulk_sync_logs_when_a_refund_needs_a_check(): void
+    {
+        if (! class_exists('PPCart_Activator', false)) {
+            require_once PPCART_PLUGIN_ROOT . 'includes/class-ppcart-activator.php';
+        }
+        \PPCart_Activator::add_cap();
+        wp_set_current_user($this->factory()->user->create(array('role' => ppcart_live_role('cart_manager'))));
+        $manualLog = array('manual' => array('refundID' => 'manual', 'date' => '2026-11-19 23:21', 'amount' => '20.00'));
+        $checkId = $this->createRefundedOrder('pi_bulk_check', $manualLog);
+        $okId = $this->createStripeOrder(array('transaction_id' => 'ch_bulk_ok'));
+        ApiRequestor::setHttpClient(
+            (new MigratedOrderSyncFakeStripe())
+                ->addCharge($this->chargeWithRefunds('ch_bulk_check', 'pi_bulk_check', array('re_bulk_check' => 1000)))
+                ->addCharge(array('id' => 'ch_bulk_ok'))
+        );
+
+        $list = (new \ReflectionClass(\PPCart_Admin_Order_List_Controller::class))->newInstanceWithoutConstructor();
+        $redirect = $list->bulk_action_handler('https://example.test/wp-admin/edit.php', 'ppcart_sync_stripe', array($checkId, $okId));
+
+        $this->assertStringContainsString('bulk_ppcart_sync_stripe=2', $redirect);
+        $this->assertContains('Order synced from Stripe by admin. The refund needs a check.', array_values((array) ppcart_order_log($checkId)));
+        $this->assertContains('Order synced from Stripe by admin', array_values((array) ppcart_order_log($okId)));
+        $this->assertNotContains('Order synced from Stripe by admin. The refund needs a check.', array_values((array) ppcart_order_log($okId)));
+    }
+
+    private function syncInvoice(int $subscriptionId, string $stripeSubscriptionId, string $chargeId, string $paymentIntentId, int $amountPaid): void
+    {
+        $invoice = $this->invoice('in_' . $chargeId, $stripeSubscriptionId, $chargeId, time());
+        $invoice->payment_intent = $paymentIntentId;
+        $invoice->amount_paid = $amountPaid;
+        PPCart_Stripe_Sync::sync_invoice_resource($invoice, new PPCart_Subscription($subscriptionId), 'manual_sync', null, 'USD', '', ppcart_stripe_client('sk_test_migrated_order_sync'));
     }
 
     public function test_IT_486_a_failed_stripe_charge_never_marks_an_order_paid(): void

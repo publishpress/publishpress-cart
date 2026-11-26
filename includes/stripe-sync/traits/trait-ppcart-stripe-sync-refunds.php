@@ -136,6 +136,21 @@ trait PPCart_Stripe_Sync_Refunds_Trait
     }
 
     /**
+     * Check whether an order was stored as Cash or with no payment method
+     * before Stripe sync linked it, now or in an earlier sync.
+     *
+     * Sync applies Stripe's status to these orders but never runs their
+     * integrations, because the customer was served long ago.
+     *
+     * @param PPCart_Order $order Local order.
+     * @return bool
+     */
+    private static function is_migrated_stripe_order($order)
+    {
+        return 'stripe' !== $order->pay_method || '' !== (string) ppcart_get_post_meta($order->id, 'migrated_stripe_sync', true);
+    }
+
+    /**
      * Set the payment method and mode of an order that sync linked to a Stripe payment.
      *
      * Writes only the two meta fields, so no integrations or emails run.
@@ -158,6 +173,9 @@ trait PPCart_Stripe_Sync_Refunds_Trait
 
         if ('stripe' !== $order->pay_method) {
             ppcart_update_post_meta($order->id, 'pay_method', 'stripe');
+            // Remember that sync turned this order into a Stripe order, so
+            // later syncs never run its integrations either.
+            ppcart_update_post_meta($order->id, 'migrated_stripe_sync', time());
             $order->pay_method = 'stripe';
             ppcart_log_entry($order->id, __('Payment method set to Stripe by Stripe sync.', 'publishpress-cart'));
         }
