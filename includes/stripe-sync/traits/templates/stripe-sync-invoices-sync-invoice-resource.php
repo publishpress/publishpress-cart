@@ -210,8 +210,8 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
             if ($refunded_charge && $order->id) {
                 $current_log = ppcart_get_post_meta($order->id, 'refund_log', true);
                 $current_log = self::normalize_refund_log(is_array($current_log) ? $current_log : []);
-                $refund_log = $current_log + self::build_refund_log_from_charge($refunded_charge, $currency);
-                if (count($refund_log) > count($current_log)) {
+                $refund_log = self::refund_log_for_charge($order->id, $refunded_charge, $currency);
+                if (false !== $refund_log && $refund_log !== $current_log) {
                     ppcart_update_post_meta($order->id, 'refund_log', $refund_log);
                     ppcart_update_post_meta($order->id, 'refund_amount', ppcart_format_stripe_number(absint(self::get($refunded_charge, 'amount_refunded', 0)), $currency));
                     $order->refund_log = $refund_log;
@@ -228,8 +228,14 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
             'status'         => $order_status['post_status'],
         ];
         $trigger_integrations = true;
+        $refund_log = $refunded_charge && $order->id ? self::refund_log_for_charge($order->id, $refunded_charge, $currency) : null;
+        if ($refunded_charge && false === $refund_log) {
+            // Manual refunds that don't match Stripe need a person to check.
+            self::mark_resource_event($order->id, $event);
+            return $order;
+        }
         if ($refunded_charge) {
-            $order->refund_log = self::build_refund_log_from_charge($refunded_charge, $currency);
+            $order->refund_log = null !== $refund_log ? $refund_log : self::build_refund_log_from_charge($refunded_charge, $currency);
 
             if (absint(self::get($refunded_charge, 'amount_refunded', 0)) >= absint(self::get($refunded_charge, 'amount', 0))) {
                 $values['payment_status'] = 'refunded';

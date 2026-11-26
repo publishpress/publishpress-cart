@@ -59,7 +59,23 @@ return PPCart_Stripe_Sync_Context::run(
         $amount_refunded = absint(self::get($charge, 'amount_refunded', 0));
         $currency = strtoupper((string) self::get($charge, 'currency', $cart_order->currency));
         $refund_total = ppcart_format_stripe_number($amount_refunded, $currency);
-        $refund_log = self::build_refund_log_from_charge($charge, $currency);
+        $refund_log = self::refund_log_for_charge($cart_order->id, $charge, $currency);
+        if (false === $refund_log) {
+            // Manual refunds that don't match Stripe need a person to check.
+            // Only the payment method is corrected.
+            self::mark_order_as_stripe_payment($cart_order, $charge);
+            self::mark_resource_event($cart_order->id, $event);
+            self::record_webhook_log(
+                $event,
+                'skipped',
+                'Manual refunds on the local order do not match the Stripe refunds.',
+                [
+                    'order_id'  => $cart_order->id,
+                    'charge_id' => self::get($charge, 'id', ''),
+                ]
+            );
+            return $cart_order;
+        }
 
         ppcart_update_post_meta($cart_order->id, 'refund_log', $refund_log);
         ppcart_update_post_meta($cart_order->id, 'refund_amount', $refund_total);

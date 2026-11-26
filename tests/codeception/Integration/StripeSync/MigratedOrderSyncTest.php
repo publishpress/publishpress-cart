@@ -143,7 +143,7 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         parent::tearDown();
     }
 
-    public function test_IT_1084_subscription_sync_links_a_migrated_cash_order_and_sets_it_to_stripe(): void
+    public function test_IT_471_subscription_sync_links_a_migrated_cash_order_and_sets_it_to_stripe(): void
     {
         $paidAt = time();
         $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_migrated_cash'));
@@ -180,7 +180,7 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         $this->assertSame(array(), preg_grep('/^(?!GET )/', $stripe->requests), 'Sync must only read from Stripe.');
     }
 
-    public function test_IT_1085_sync_corrects_a_cash_order_that_already_has_a_stripe_charge(): void
+    public function test_IT_472_sync_corrects_a_cash_order_that_already_has_a_stripe_charge(): void
     {
         // Order-level Sync with Stripe on a one-time order.
         $oneTimeId = $this->createStripeOrder(array('pay_method' => 'cod', 'gateway_mode' => '', 'transaction_id' => 'ch_cash_one_time'));
@@ -237,7 +237,7 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         $this->assertSame(array(), preg_grep('/^(?!GET )/', $stripe->requests), 'Sync must only read from Stripe.');
     }
 
-    public function test_IT_1086_order_sync_fills_in_the_missing_refund_record_of_a_refunded_one_time_order(): void
+    public function test_IT_473_order_sync_fills_in_the_missing_refund_record_of_a_refunded_one_time_order(): void
     {
         foreach (array('stripe', 'cod') as $payMethod) {
             $paymentIntentId = 'pi_refunded_' . $payMethod;
@@ -292,7 +292,7 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         $this->assertSame(0, $this->mailsSent);
     }
 
-    public function test_IT_1087_subscription_sync_fills_in_the_missing_refund_record_of_a_refunded_renewal(): void
+    public function test_IT_474_subscription_sync_fills_in_the_missing_refund_record_of_a_refunded_renewal(): void
     {
         $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_refunded_renewal'));
         $missingId = $this->createStripeOrder(
@@ -361,6 +361,121 @@ class MigratedOrderSyncTest extends StripeSyncTestCase
         $this->assertSame(0, $this->integrationRuns);
         $this->assertSame(0, $this->mailsSent);
         $this->assertSame(array(), preg_grep('/^(?!GET )/', $stripe->requests), 'Sync must only read from Stripe.');
+    }
+
+    public function test_IT_479_sync_replaces_a_matching_manual_refund_with_the_stripe_refund(): void
+    {
+        $manualLog = array('manual' => array('refundID' => 'manual', 'date' => '2026-11-19 23:21', 'amount' => '39.00'));
+        // A one-time order, synced from the order screen.
+        $oneTimeId = $this->createRefundedOrder('pi_manual_one_time', $manualLog);
+        // A subscription order, synced from the subscription.
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_manual_renewal'));
+        $renewalId = $this->createRefundedOrder('pi_manual_renewal', $manualLog, $subscriptionId);
+        $stripe = (new MigratedOrderSyncFakeStripe())
+            ->addCharge($this->fullyRefundedCharge('ch_manual_one_time', 'pi_manual_one_time', 're_manual_one_time'))
+            ->addCharge($this->fullyRefundedCharge('ch_manual_renewal', 'pi_manual_renewal', 're_manual_renewal'));
+        ApiRequestor::setHttpClient($stripe);
+
+        for ($run = 0; $run < 2; $run++) {
+            PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($oneTimeId));
+            $invoice = $this->invoice('in_manual_renewal', 'sub_manual_renewal', 'ch_manual_renewal', time());
+            $invoice->amount_paid = 3900;
+            $invoice->payment_intent = 'pi_manual_renewal';
+            PPCart_Stripe_Sync::sync_invoice_resource($invoice, new PPCart_Subscription($subscriptionId), 'manual_sync', null, 'USD', '', ppcart_stripe_client('sk_test_migrated_order_sync'));
+        }
+
+        foreach (array($oneTimeId => 're_manual_one_time', $renewalId => 're_manual_renewal') as $orderId => $refundId) {
+            $this->assertSame(
+                array($refundId => array('refundID' => $refundId, 'date' => '2024-06-01 12:00', 'amount' => '39.00')),
+                ppcart_get_post_meta($orderId, 'refund_log', true),
+                $refundId
+            );
+            $this->assertEquals(39, (float) ppcart_get_post_meta($orderId, 'refund_amount', true), $refundId);
+            $this->assertEquals(39, \PPCart_Order_Refunds::get_refund_total($orderId), $refundId);
+            $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'status', true), $refundId);
+            $notes = array_values((array) ppcart_order_log($orderId));
+            $this->assertSame(1, count(array_keys($notes, 'Manual refund of 39.00 matched to Stripe refund ' . $refundId . '.', true)), $refundId);
+        }
+
+        $this->assertSame(0, $this->integrationRuns);
+        $this->assertSame(0, $this->mailsSent);
+        $this->assertSame(array(), preg_grep('/^(?!GET )/', $stripe->requests), 'Sync must only read from Stripe.');
+    }
+
+    public function test_IT_480_sync_leaves_a_manual_refund_that_does_not_match_stripe_alone(): void
+    {
+        $manualLog = array('manual' => array('refundID' => 'manual', 'date' => '2026-11-19 23:21', 'amount' => '20.00'));
+        $oneTimeId = $this->createRefundedOrder('pi_manual_mismatch', $manualLog);
+        $subscriptionId = $this->createStripeSubscription(array('subscription_id' => 'sub_manual_mismatch'));
+        $renewalId = $this->createRefundedOrder('pi_manual_mismatch_renewal', $manualLog, $subscriptionId);
+        $stripe = (new MigratedOrderSyncFakeStripe())
+            ->addCharge($this->fullyRefundedCharge('ch_manual_mismatch', 'pi_manual_mismatch', 're_manual_mismatch'))
+            ->addCharge($this->fullyRefundedCharge('ch_manual_mismatch_renewal', 'pi_manual_mismatch_renewal', 're_manual_mismatch_renewal'));
+        ApiRequestor::setHttpClient($stripe);
+
+        for ($run = 0; $run < 2; $run++) {
+            PPCart_Stripe_Sync::sync_order_by_local(new PPCart_Order($oneTimeId));
+            $invoice = $this->invoice('in_manual_mismatch', 'sub_manual_mismatch', 'ch_manual_mismatch_renewal', time());
+            $invoice->amount_paid = 3900;
+            $invoice->payment_intent = 'pi_manual_mismatch_renewal';
+            PPCart_Stripe_Sync::sync_invoice_resource($invoice, new PPCart_Subscription($subscriptionId), 'manual_sync', null, 'USD', '', ppcart_stripe_client('sk_test_migrated_order_sync'));
+        }
+
+        foreach (array($oneTimeId => 're_manual_mismatch', $renewalId => 're_manual_mismatch_renewal') as $orderId => $refundId) {
+            $this->assertSame($manualLog, ppcart_get_post_meta($orderId, 'refund_log', true), $refundId);
+            $this->assertSame('20.00', ppcart_get_post_meta($orderId, 'refund_amount', true), $refundId);
+            $this->assertSame('refunded', ppcart_get_post_meta($orderId, 'status', true), $refundId);
+            $this->assertSame('stripe', ppcart_get_post_meta($orderId, 'pay_method', true), $refundId);
+            $notes = array_values((array) ppcart_order_log($orderId));
+            $note = 'Stripe refund ' . $refundId . ' (39.00) was not recorded because the manual refund total (20.00) is different. Check the refunds in Stripe and update this order.';
+            $this->assertSame(1, count(array_keys($notes, $note, true)), $refundId);
+        }
+
+        $this->assertSame(0, $this->integrationRuns);
+        $this->assertSame(0, $this->mailsSent);
+        $this->assertSame(array(), preg_grep('/^(?!GET )/', $stripe->requests), 'Sync must only read from Stripe.');
+    }
+
+    /**
+     * @param array<string, array<string, string>> $refundLog
+     */
+    private function createRefundedOrder(string $paymentIntentId, array $refundLog, int $subscriptionId = 0): int
+    {
+        $meta = array(
+            'pay_method' => 'cod',
+            'transaction_id' => $paymentIntentId,
+            'status' => 'refunded',
+            'payment_status' => 'refunded',
+            'amount' => 39,
+            'refund_log' => $refundLog,
+            'refund_amount' => $refundLog['manual']['amount'],
+        );
+        if ($subscriptionId) {
+            $meta['subscription_id'] = $subscriptionId;
+        }
+
+        return $this->createStripeOrder($meta);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function fullyRefundedCharge(string $chargeId, string $paymentIntentId, string $refundId): array
+    {
+        return array(
+            'id' => $chargeId,
+            'payment_intent' => $paymentIntentId,
+            'amount' => 3900,
+            'amount_refunded' => 3900,
+            'refunded' => true,
+            'refunds' => array(
+                'object' => 'list',
+                'has_more' => false,
+                'data' => array(
+                    array('object' => 'refund', 'id' => $refundId, 'amount' => 3900, 'created' => 1717243200, 'charge' => $chargeId),
+                ),
+            ),
+        );
     }
 
     private function invoice(string $invoiceId, string $stripeSubscriptionId, string $chargeId, int $paidAt): object

@@ -86,9 +86,9 @@ class ProductTaxonomySubmenuTest extends WPTestCase
     }
 
     /**
-     * @test-id IT-1088
+     * @test-id IT-475
      */
-    public function test_IT_1088_categories_and_tags_submenus_list_products_and_stay_highlighted(): void
+    public function test_IT_475_categories_and_tags_submenus_list_products_and_stay_highlighted(): void
     {
         $settings = $this->settings();
         $settings->setup_plugin_options_menu();
@@ -121,7 +121,7 @@ class ProductTaxonomySubmenuTest extends WPTestCase
             $this->assertSame(PPCart_Admin_Screens::menu_slug(), $settings->taxonomy_menu_highlight("edit.php?post_type={$product_type}"), $label);
 
             // The term count links to the products with that term.
-            $term = self::factory()->term->create_and_get([ 'taxonomy' => $taxonomy, 'slug' => 'it-1088-' . strtolower($label) ]);
+            $term = self::factory()->term->create_and_get([ 'taxonomy' => $taxonomy, 'slug' => 'it-475-' . strtolower($label) ]);
             $product_id = self::factory()->post->create([ 'post_type' => $product_type ]);
             wp_set_object_terms($product_id, [ $term->term_id ], $taxonomy);
             $term = get_term($term->term_id, $taxonomy);

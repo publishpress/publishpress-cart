@@ -262,7 +262,7 @@ class ImportStripeChargeTest extends StripeSyncTestCase
         $this->assertSame('paid', ppcart_get_post_meta($order->id, 'payment_status', true));
     }
 
-    public function test_IT_1089_the_ajax_import_accepts_a_subscription_number_with_a_hash_and_spaces(): void
+    public function test_IT_476_the_ajax_import_accepts_a_subscription_number_with_a_hash_and_spaces(): void
     {
         $subscriptionId = $this->createStripeSubscriptionWithOrder(array('customer_id' => 'cus_charge_owner', 'product_id' => 77));
         ApiRequestor::setHttpClient((new ImportStripeChargeFakeStripe())->addCharge(array('id' => 'ch_hash_number', 'customer' => 'cus_charge_owner')));
@@ -279,7 +279,7 @@ class ImportStripeChargeTest extends StripeSyncTestCase
         $this->assertSame($subscriptionId, PPCart_Admin_Stripe_Import::parse_subscription_number('#' . $subscriptionId));
     }
 
-    public function test_IT_1090_the_ajax_import_refuses_a_subscription_number_that_is_not_a_number(): void
+    public function test_IT_477_the_ajax_import_refuses_a_subscription_number_that_is_not_a_number(): void
     {
         $stripe = new ImportStripeChargeFakeStripe();
         ApiRequestor::setHttpClient($stripe);
@@ -294,7 +294,7 @@ class ImportStripeChargeTest extends StripeSyncTestCase
         $this->assertSame(array(), $stripe->requests, 'A refused import must not call Stripe.');
     }
 
-    public function test_IT_1091_the_subscription_id_field_takes_text_with_a_numeric_keyboard(): void
+    public function test_IT_478_the_subscription_id_field_takes_text_with_a_numeric_keyboard(): void
     {
         ob_start();
         PPCart_Admin_Stripe_Import::render_maintenance_card();
