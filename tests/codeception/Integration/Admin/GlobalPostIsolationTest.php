@@ -80,7 +80,7 @@ class GlobalPostIsolationTest extends WPTestCase
     /**
      * @test-id IT-482
      */
-    public function test_IT_482_screen_context_uses_the_edited_post_not_the_global_post(): void
+    public function test_IT_482_screen_context_uses_the_screen_post_type_not_the_global_post_or_a_post_id(): void
     {
         $eventId = self::factory()->post->create([ 'post_type' => 'it_event', 'post_status' => 'publish' ]);
         $productId = self::factory()->post->create([ 'post_type' => ppcart_live_post_type('product'), 'post_status' => 'publish' ]);
@@ -92,11 +92,89 @@ class GlobalPostIsolationTest extends WPTestCase
         $this->assertFalse(PPCart_Admin_Screens::is_post_type_screen($productType, 'post.php'));
         $this->assertFalse(PPCart_Admin_Screens::is_plugin_screen('post.php'));
 
+        // The Pages list with a Cart product ID in its URL.
+        $_GET = [ 'post_type' => 'page', 'post' => (string) $productId ];
+        $GLOBALS['pagenow'] = 'edit.php';
+        $GLOBALS['hook_suffix'] = 'edit.php';
+        $GLOBALS['typenow'] = 'page';
+        set_current_screen('edit-page');
+        $this->assertFalse(PPCart_Admin_Screens::is_post_type_screen($productType, 'edit.php'));
+        $this->assertFalse(PPCart_Admin_Screens::is_plugin_screen('edit.php'));
+
         // A Cart product's edit screen, with the global $post left on another post.
         $this->openEditScreen($productId, $productType);
         $GLOBALS['post'] = get_post($eventId);
         $this->assertTrue(PPCart_Admin_Screens::is_post_type_screen($productType, 'post.php'));
         $this->assertTrue(PPCart_Admin_Screens::is_plugin_screen('post.php'));
+    }
+
+    /**
+     * @test-id IT-489
+     */
+    public function test_IT_489_scheduled_report_data_counts_orders_and_refunds_and_keeps_the_global_post(): void
+    {
+        $orderType = ppcart_live_post_type('order');
+        foreach ([ [ 'paid', 25 ], [ 'completed', 15 ], [ 'pending-payment', 40 ] ] as $order) {
+            $orderId = self::factory()->post->create([ 'post_type' => $orderType, 'post_status' => 'publish' ]);
+            ppcart_update_post_meta($orderId, 'status', $order[0]);
+            ppcart_update_post_meta($orderId, 'payment_status', $order[0]);
+            ppcart_update_post_meta($orderId, 'amount', $order[1]);
+        }
+        $refundedId = self::factory()->post->create([ 'post_type' => $orderType, 'post_status' => 'refunded' ]);
+        ppcart_update_post_meta($refundedId, 'status', 'refunded');
+        ppcart_update_post_meta($refundedId, 'payment_status', 'refunded');
+        ppcart_update_post_meta($refundedId, 'amount', 30);
+        ppcart_update_post_meta($refundedId, 'refund_log', [ 're_1' => [ 'refundID' => 're_1', 'date' => '2026-11-27 10:00', 'amount' => '12.5' ] ]);
+
+        $page = self::factory()->post->create_and_get([ 'post_type' => 'page' ]);
+        $GLOBALS['post'] = $page;
+
+        if (! function_exists('ppcart_schedule_report_data')) {
+            require_once PPCART_PLUGIN_ROOT . 'includes/scheduled-reports/report-data.php';
+        }
+        $data = ppcart_schedule_report_data();
+
+        $this->assertSame(2, $data['completed_orders']);
+        $this->assertSame(1, $data['pending_payment']);
+        $this->assertEquals(110, $data['carttotal']['total']);
+        $this->assertEquals(12.5, $data['refunded_amount']);
+        $this->assertSame(1, $data['refunded_time']);
+        $this->assertSame($page, $GLOBALS['post']);
+    }
+
+    /**
+     * @test-id IT-490
+     */
+    public function test_IT_490_the_privacy_exporter_exports_each_order_and_keeps_the_global_post(): void
+    {
+        $orderIds = [];
+        foreach ([ 'Ada', 'Grace' ] as $firstName) {
+            $orderId = self::factory()->post->create([ 'post_type' => ppcart_live_post_type('order'), 'post_status' => 'publish' ]);
+            ppcart_update_post_meta($orderId, 'email', 'export@example.test');
+            ppcart_update_post_meta($orderId, 'firstname', $firstName);
+            $orderIds[ $orderId ] = $firstName;
+        }
+        $otherId = self::factory()->post->create([ 'post_type' => ppcart_live_post_type('order'), 'post_status' => 'publish' ]);
+        ppcart_update_post_meta($otherId, 'email', 'someone-else@example.test');
+
+        $page = self::factory()->post->create_and_get([ 'post_type' => 'page' ]);
+        $GLOBALS['post'] = $page;
+
+        $admin = (new \ReflectionClass(\PPCart_Admin::class))->newInstanceWithoutConstructor();
+        $result = $admin->user_data_exporter('export@example.test');
+
+        $this->assertTrue($result['done']);
+        $exported = [];
+        foreach ($result['data'] as $item) {
+            $values = array_column($item['data'], 'value', 'name');
+            $exported[ (int) $values['Order ID'] ] = $values['First Name'];
+            $this->assertSame('order-' . $values['Order ID'], $item['item_id']);
+            $this->assertSame('export@example.test', $values['Email']);
+        }
+        ksort($exported);
+        ksort($orderIds);
+        $this->assertSame($orderIds, $exported);
+        $this->assertSame($page, $GLOBALS['post']);
     }
 
     /**

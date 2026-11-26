@@ -187,6 +187,42 @@ class AdminScreensTest extends Unit
         $this->assertFalse(PPCart_Admin_Screens::is_post_type_screen('sc_product'));
     }
 
+    public function test_UT_378_a_post_id_or_global_post_of_a_cart_record_does_not_hijack_another_screen(): void
+    {
+        // A Cart product ID in the URL of the Pages list, and the global $post
+        // left on a Cart product: both resolve to the Cart product type.
+        $this->resetAdminScreenContext(
+            array('post_type' => 'page', 'post' => '123'),
+            array(),
+            (object) array(
+                'id' => 'edit-page',
+                'base' => 'edit',
+                'post_type' => 'page',
+            ),
+            '',
+            'ppcart_product'
+        );
+
+        $this->assertFalse(PPCart_Admin_Screens::is_plugin_screen());
+        $this->assertFalse(PPCart_Admin_Screens::is_post_type_screen('ppcart_product'));
+
+        // Another plugin's edit screen, with the global $post left on a Cart product.
+        $this->resetAdminScreenContext(
+            array('post' => '456', 'action' => 'edit'),
+            array(),
+            (object) array(
+                'id' => 'tribe_events',
+                'base' => 'post',
+                'post_type' => 'tribe_events',
+            ),
+            '',
+            'ppcart_product'
+        );
+
+        $this->assertFalse(PPCart_Admin_Screens::is_plugin_screen());
+        $this->assertFalse(PPCart_Admin_Screens::is_post_type_screen('ppcart_product'));
+    }
+
     public function test_UT_014_single_product_editor_is_a_plugin_screen(): void
     {
         $this->resetAdminScreenContext(
