@@ -10,7 +10,19 @@ if (0 !== strpos($payment_id, 'ch_') && 0 !== strpos($payment_id, 'pi_')) {
     return new WP_Error('ppcart_import_charge_invalid_id', __('Enter a Stripe payment ID that starts with ch_ or pi_.', 'publishpress-cart'));
 }
 
-$sub = new PPCart_Subscription(absint($subscription_id));
+$subscription_id = absint($subscription_id);
+$product_id = absint($product_id);
+if ($subscription_id && $product_id) {
+    return new WP_Error('ppcart_import_charge_target', __('Enter a subscription ID or choose a product, not both.', 'publishpress-cart'));
+}
+if (! $subscription_id && ! $product_id) {
+    return new WP_Error('ppcart_import_charge_target', __('Enter a subscription ID or choose a product.', 'publishpress-cart'));
+}
+if ($product_id) {
+    return self::import_one_time_charge($payment_id, $product_id);
+}
+
+$sub = new PPCart_Subscription($subscription_id);
 if (! $sub->id) {
     return new WP_Error('ppcart_import_charge_subscription', __('Enter the ID of a Cart subscription.', 'publishpress-cart'));
 }
@@ -18,64 +30,17 @@ if ('stripe' !== $sub->pay_method) {
     return new WP_Error('ppcart_import_charge_subscription', __('This subscription isn\'t paid with Stripe.', 'publishpress-cart'));
 }
 
-$already_imported = function ($ids) {
-    foreach (array_filter($ids) as $id) {
-        $order = PPCart_Order::get_by_trans_id($id);
-        if ($order && $order->id) {
-            return new WP_Error(
-                'ppcart_import_charge_exists',
-                /* translators: %d: order ID */
-                sprintf(__('This payment is already order #%d.', 'publishpress-cart'), (int) $order->id),
-                [ 'order_id' => (int) $order->id ]
-            );
-        }
-    }
-
-    return false;
-};
-
-$exists = $already_imported([ $payment_id ]);
+$exists = self::find_imported_charge_order([ $payment_id ]);
 if ($exists) {
     return $exists;
 }
 
-try {
-    $stripe = self::get_client_for_mode(ppcart_normalize_stripe_mode($sub->gateway_mode));
-    if (0 === strpos($payment_id, 'pi_')) {
-        $intent = $stripe->paymentIntents->retrieve($payment_id, [ 'expand' => [ 'latest_charge' ] ]);
-        $charge = self::get($intent, 'latest_charge', null);
-        if (is_string($charge) && '' !== $charge) {
-            $charge = $stripe->charges->retrieve($charge, [ 'expand' => [ 'refunds' ] ]);
-        } elseif ($charge) {
-            $charge = $stripe->charges->retrieve((string) self::get($charge, 'id', ''), [ 'expand' => [ 'refunds' ] ]);
-        }
-    } else {
-        $charge = $stripe->charges->retrieve($payment_id, [ 'expand' => [ 'refunds' ] ]);
-    }
-} catch (Throwable $e) {
-    return new WP_Error('ppcart_import_charge_stripe', $e->getMessage());
-}
-
-if (! $charge || 'succeeded' !== (string) self::get($charge, 'status', '')) {
-    return new WP_Error('ppcart_import_charge_status', __('Only a successful payment can be imported.', 'publishpress-cart'));
-}
-
-// A payment that paid an invoice belongs to that invoice's subscription.
-// Sync with Stripe imports it, so it can't be added here by hand.
-$charge_invoice = self::get($charge, 'invoice', '');
-$charge_invoice = is_string($charge_invoice) ? $charge_invoice : (string) self::get($charge_invoice, 'id', '');
-if ('' !== $charge_invoice) {
-    return new WP_Error('ppcart_import_charge_invoice', __('This payment paid a Stripe invoice. Use Sync with Stripe on its subscription instead.', 'publishpress-cart'));
+$charge = self::retrieve_import_charge($payment_id, ppcart_normalize_stripe_mode($sub->gateway_mode));
+if (is_wp_error($charge)) {
+    return $charge;
 }
 
 $charge_id = (string) self::get($charge, 'id', '');
-$intent_id = self::get($charge, 'payment_intent', '');
-$intent_id = is_string($intent_id) ? $intent_id : (string) self::get($intent_id, 'id', '');
-
-$exists = $already_imported([ $charge_id, $intent_id ]);
-if ($exists) {
-    return $exists;
-}
 
 $charge_customer = self::get($charge, 'customer', '');
 $charge_customer = is_string($charge_customer) ? $charge_customer : (string) self::get($charge_customer, 'id', '');
@@ -103,9 +68,10 @@ if (1 === (int) $sub->order_count()) {
 }
 
 $currency = strtoupper((string) self::get($charge, 'currency', $sub->currency ? $sub->currency : 'usd'));
-$amount = ppcart_format_stripe_number(absint(self::get($charge, 'amount', 0)), $currency);
-$amount_refunded = absint(self::get($charge, 'amount_refunded', 0));
-$fully_refunded = $amount_refunded > 0 && $amount_refunded >= absint(self::get($charge, 'amount', 0));
+$charge_amounts = self::import_charge_amounts($charge);
+$amount = ppcart_format_stripe_number($charge_amounts['cents'], $currency);
+$amount_refunded = $charge_amounts['refunded_cents'];
+$fully_refunded = $charge_amounts['fully_refunded'];
 
 $no_integrations = '__return_false';
 add_filter('ppcart_trigger_order_integrations', $no_integrations, 99);

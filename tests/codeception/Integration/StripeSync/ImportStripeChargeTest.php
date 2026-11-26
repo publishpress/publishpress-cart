@@ -18,6 +18,12 @@ class ImportStripeChargeFakeStripe implements ClientInterface
     /** @var array<string, array<string, mixed>> */
     private $charges = array();
 
+    /** @var array<string, string> Invoice ID by the PaymentIntent that paid it. */
+    private $invoicePayments = array();
+
+    /** @var bool */
+    public $failInvoicePayments = false;
+
     /**
      * @param array<string, mixed> $charge
      */
@@ -27,18 +33,32 @@ class ImportStripeChargeFakeStripe implements ClientInterface
             array(
                 'object' => 'charge',
                 'status' => 'succeeded',
+                'captured' => true,
                 'currency' => 'usd',
                 'amount' => 3900,
                 'amount_refunded' => 0,
                 'created' => 1706832000,
                 'livemode' => false,
-                'invoice' => null,
                 'payment_intent' => null,
                 'metadata' => array(),
                 'refunds' => array('object' => 'list', 'data' => array(), 'has_more' => false),
             ),
             $charge
         );
+        if (! array_key_exists('amount_captured', $charge)) {
+            $this->charges[$charge['id']]['amount_captured'] = $this->charges[$charge['id']]['amount'];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Record that a PaymentIntent paid an invoice. Charges don't carry the
+     * invoice ID, as on the Stripe API version the SDK pins.
+     */
+    public function addInvoicePayment(string $paymentIntentId, string $invoiceId): self
+    {
+        $this->invoicePayments[$paymentIntentId] = $invoiceId;
 
         return $this;
     }
@@ -50,6 +70,26 @@ class ImportStripeChargeFakeStripe implements ClientInterface
         }
 
         $path = (string) parse_url($absUrl, PHP_URL_PATH);
+
+        if ('/v1/invoice_payments' === $path) {
+            if ($this->failInvoicePayments) {
+                return $this->error('Invoice payments are unavailable', 500);
+            }
+            $query = array();
+            parse_str((string) parse_url($absUrl, PHP_URL_QUERY), $query);
+            $params = array_merge($query, is_array($params) ? $params : array());
+            $intentId = isset($params['payment']['payment_intent']) ? (string) $params['payment']['payment_intent'] : '';
+            $data = array();
+            if ('' !== $intentId && isset($this->invoicePayments[$intentId])) {
+                $data[] = array(
+                    'object' => 'invoice_payment',
+                    'id' => 'inpay_' . $intentId,
+                    'invoice' => $this->invoicePayments[$intentId],
+                    'payment' => array('type' => 'payment_intent', 'payment_intent' => $intentId),
+                );
+            }
+            return array(wp_json_encode(array('object' => 'list', 'url' => '/v1/invoice_payments', 'has_more' => false, 'data' => $data)), 200, array());
+        }
 
         if (0 === strpos($path, '/v1/charges/')) {
             $id = substr($path, strlen('/v1/charges/'));
@@ -176,18 +216,42 @@ class ImportStripeChargeTest extends StripeSyncTestCase
         $unpaidOrderId = $this->createStripeOrder(array('subscription_id' => $subscriptionId, 'status' => 'pending-payment', 'payment_status' => 'pending-payment'));
         ppcart_update_post_meta($subscriptionId, 'first_order', $unpaidOrderId);
         $stripe = (new ImportStripeChargeFakeStripe())
-            ->addCharge(array('id' => 'ch_invoice_paid', 'customer' => 'cus_charge_owner', 'invoice' => 'in_renewal'))
+            // Like the Stripe API version the SDK pins, the charge has no
+            // invoice field. Only invoice_payments links it to the invoice.
+            ->addCharge(array('id' => 'ch_invoice_paid', 'customer' => 'cus_charge_owner', 'payment_intent' => 'pi_invoice_paid'))
+            ->addInvoicePayment('pi_invoice_paid', 'in_renewal')
             ->addCharge(array('id' => 'ch_manual_2', 'customer' => 'cus_charge_owner'));
         ApiRequestor::setHttpClient($stripe);
 
         $invoicePayment = PPCart_Stripe_Sync::import_charge('ch_invoice_paid', $subscriptionId);
         $this->assertWPError($invoicePayment);
         $this->assertSame('ppcart_import_charge_invoice', $invoicePayment->get_error_code());
+        $this->assertFalse(PPCart_Order::get_by_trans_id('ch_invoice_paid'));
 
         $unpaidFirst = PPCart_Stripe_Sync::import_charge('ch_manual_2', $subscriptionId);
         $this->assertWPError($unpaidFirst);
         $this->assertSame('ppcart_import_charge_first_order', $unpaidFirst->get_error_code());
         $this->assertSame('pending-payment', ppcart_get_post_meta($unpaidOrderId, 'status', true));
         $this->assertFalse(PPCart_Order::get_by_trans_id('ch_manual_2'));
+    }
+
+    public function test_IT_466_importing_refuses_an_uncaptured_payment_and_uses_the_captured_amount(): void
+    {
+        $subscriptionId = $this->createStripeSubscriptionWithOrder(array('customer_id' => 'cus_charge_owner', 'product_id' => 77));
+        $stripe = (new ImportStripeChargeFakeStripe())
+            ->addCharge(array('id' => 'ch_uncaptured', 'customer' => 'cus_charge_owner', 'captured' => false, 'amount_captured' => 0))
+            ->addCharge(array('id' => 'ch_partly_captured', 'customer' => 'cus_charge_owner', 'amount' => 5000, 'amount_captured' => 3000));
+        ApiRequestor::setHttpClient($stripe);
+
+        $uncaptured = PPCart_Stripe_Sync::import_charge('ch_uncaptured', $subscriptionId);
+        $this->assertWPError($uncaptured);
+        $this->assertSame('ppcart_import_charge_uncaptured', $uncaptured->get_error_code());
+        $this->assertFalse(PPCart_Order::get_by_trans_id('ch_uncaptured'));
+
+        $order = PPCart_Stripe_Sync::import_charge('ch_partly_captured', $subscriptionId);
+        $this->assertInstanceOf(PPCart_Order::class, $order);
+        $this->createdPostIds[] = (int) $order->id;
+        $this->assertEquals(30, (float) ppcart_get_post_meta($order->id, 'amount', true));
+        $this->assertSame('paid', ppcart_get_post_meta($order->id, 'payment_status', true));
     }
 }
