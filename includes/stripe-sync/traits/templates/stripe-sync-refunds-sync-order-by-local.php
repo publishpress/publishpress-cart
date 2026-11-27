@@ -51,6 +51,11 @@ if (! $synced) {
     throw new Exception(esc_html__('Stripe charge could not be matched to this local order.', 'publishpress-cart'));
 }
 
+// Fees are extra data. The order sync stays a success when Stripe has none yet.
+if (class_exists('PPCart_Stripe_Fees')) {
+    PPCart_Stripe_Fees::fetch((int) $synced->id, $stripe);
+}
+
 if (PPCart_Stripe_Sync::refund_needs_check()) {
     return __('Order synced. The refund needs a check: see the order log.', 'publishpress-cart');
 }

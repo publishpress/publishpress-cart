@@ -737,6 +737,12 @@ body.post-type-ppcart_product .wp-list-table .column-shortcode code{
   overflow-wrap: anywhere;
 }
 
+.ppcart-customer-metric small {
+  color: var(--pp-co-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .ppcart-customer-metric .ppcart-Price-currencySymbol,
 .ppcart-customer-order-card__amount .ppcart-Price-currencySymbol,
 .ppcart-customer-subscriptions .ppcart-Price-currencySymbol,

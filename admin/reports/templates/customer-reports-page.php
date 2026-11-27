@@ -218,6 +218,7 @@ $order_results = new WP_Query(
     ]
 );
 
+$stripe_fee_order_ids = [];
 if ($order_results->have_posts()) {
     foreach ($order_results->posts as $loop_post) {
         $order_post_id = $loop_post->ID;
@@ -230,6 +231,9 @@ if ($order_results->have_posts()) {
         }
 
         $order_count++;
+        if (in_array($order_status, [ 'paid', 'refunded' ], true)) {
+            $stripe_fee_order_ids[] = $order_post_id;
+        }
         $product_id = isset($order_data->product_id) ? absint($order_data->product_id) : 0;
 
         $gross_amount = (float) $order_data->amount;
@@ -390,6 +394,9 @@ if ('' === trim($customer_name)) {
 }
 
 $net_amount = max(0, $gross_paid_amount - $refunded_amount);
+$stripe_fees = PPCart_Stripe_Fees::summarize($stripe_fee_order_ids);
+$show_stripe_fees = $stripe_fees['fee'] > 0 || $stripe_fees['platform_fee'] > 0 || $stripe_fees['missing'] > 0;
+$net_after_fees = $net_amount - $stripe_fees['fee'] - $stripe_fees['platform_fee'];
 $average_order_amount = $paid_order_count > 0 ? $net_amount / $paid_order_count : 0;
 usort(
     $next_payment_dates,

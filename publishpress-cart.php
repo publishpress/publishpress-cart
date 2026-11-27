@@ -221,6 +221,9 @@ if (is_admin()) {
     require_once __DIR__ . '/admin/class-ppcart-admin-stripe-import.php';
     add_action('wp_ajax_' . PPCart_Admin_Stripe_Import::AJAX_ACTION, ['PPCart_Admin_Stripe_Import', 'ajax_import']);
     add_action('wp_ajax_' . PPCart_Admin_Stripe_Import::CHARGE_AJAX_ACTION, ['PPCart_Admin_Stripe_Import', 'ajax_import_charge']);
+
+    require_once __DIR__ . '/admin/class-ppcart-admin-stripe-fees.php';
+    add_action('wp_ajax_' . PPCart_Admin_Stripe_Fees::AJAX_ACTION, ['PPCart_Admin_Stripe_Fees', 'ajax_fetch']);
 }
 
 register_activation_hook(PPCART_BASE_FILE, 'ppcart_activate');
@@ -318,6 +321,8 @@ PPCart_Secrets::init();
 require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-order-refunds.php';
 require_once plugin_dir_path(__FILE__) . 'includes/logging/class-ppcart-stripe-webhook-logger.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-ppcart-stripe-sync.php';
+require_once plugin_dir_path(__FILE__) . 'includes/stripe/class-ppcart-stripe-fees.php';
+PPCart_Stripe_Fees::register();
 require_once plugin_dir_path(__FILE__) . 'includes/email/ppcart-email-template-functions.php';
 /**
  * Include helper functions

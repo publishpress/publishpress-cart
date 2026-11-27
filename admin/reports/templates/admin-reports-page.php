@@ -373,6 +373,10 @@ $gatewayLabels = [
 ];
 $orders_count = (int) $query->found_posts;
 $net_sales = max(0, $carttotal['total'] - $refunded_amount);
+// Refunded orders count too: Stripe keeps the fee on most refunds.
+$stripe_fees = PPCart_Stripe_Fees::summarize(array_merge(wp_list_pluck($query->posts, 'ID'), wp_list_pluck($queryrfunded->posts, 'ID')));
+$show_stripe_fees = $stripe_fees['fee'] > 0 || $stripe_fees['platform_fee'] > 0 || $stripe_fees['missing'] > 0;
+$net_after_fees = $net_sales - $stripe_fees['fee'] - $stripe_fees['platform_fee'];
 $avg_amt = ($orders_count > 0) ? $carttotal['total'] / $orders_count : 0;
 $period_customer_value = count($customers) ? $net_sales / count($customers) : 0;
 $lifetime_value = $this->get_customer_lifetime_value(ppcart_get_report_identity_query_args($report_filters));
@@ -406,6 +410,24 @@ $churn_context = ! empty($report_period['is_all_time'])
         ),
         'is-primary'
     );
+if ($show_stripe_fees) {
+    $this->render_metric_card(
+        __('Stripe Fees', 'publishpress-cart'),
+        ppcart_format_price($stripe_fees['fee']),
+        $stripe_fees['platform_fee'] > 0
+            ? sprintf(
+                /* translators: %s: Stripe Connect platform fee total. */
+                __('Plus %s platform fees', 'publishpress-cart'),
+                wp_strip_all_tags(ppcart_format_price($stripe_fees['platform_fee']))
+            )
+            : __('Processing fees on Stripe payments', 'publishpress-cart')
+    );
+    $this->render_metric_card(
+        __('Net After Fees', 'publishpress-cart'),
+        ppcart_format_price($net_after_fees),
+        __('Net revenue minus all Stripe fees', 'publishpress-cart')
+    );
+}
 $this->render_metric_card(
     __('Customer Lifetime Value', 'publishpress-cart'),
     ppcart_format_price($lifetime_value['value']),
@@ -454,6 +476,22 @@ $this->render_metric_card(
 );
 ?>
                 </section>
+                <?php if ($stripe_fees['missing'] > 0) : ?>
+                    <div class="notice notice-warning inline ppcart-reports-fees-notice">
+                        <p>
+                            <?php
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %s: number of orders. */
+                                    _n('%s Stripe order in this period has no fee data yet, so the fee totals are incomplete.', '%s Stripe orders in this period have no fee data yet, so the fee totals are incomplete.', $stripe_fees['missing'], 'publishpress-cart'),
+                                    number_format_i18n($stripe_fees['missing'])
+                                )
+                            );
+                            ?>
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=' . PPCart_Admin_Screens::PAGE_SETTINGS . '#maintenance')); ?>"><?php esc_html_e('Fetch Stripe fees', 'publishpress-cart'); ?></a>
+                        </p>
+                    </div>
+                <?php endif; ?>
 
                 <section class="ppcart-reports-insights">
                     <article class="ppcart-report-panel ppcart-report-panel--wide">

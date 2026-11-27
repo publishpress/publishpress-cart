@@ -59,6 +59,17 @@ trait PPCart_Admin_Settings_Integration_Options_Trait
                     'tab'      => 'maintenance',
                 ],
             ],
+            'maintenance-stripe-fees' => [
+                'maintenance-stripe-fees-form' => [
+                    'type'     => 'maintenance_stripe_fees',
+                    'label'    => '',
+                    'settings' => [
+                        'id'              => 'ppcart_maintenance_stripe_fees',
+                        'skip_register'   => true,
+                    ],
+                    'tab'      => 'maintenance',
+                ],
+            ],
         ];
     }
 

@@ -62,6 +62,19 @@ trait PPCart_Admin_Settings_Input_Fields_Trait
         }
     }
 
+    /**
+     * Renders the Maintenance form to fetch Stripe fees for existing orders.
+     *
+     * @param array $args Field arguments.
+     * @return void
+     */
+    public function field_maintenance_stripe_fees($args)
+    {
+        if (class_exists('PPCart_Admin_Stripe_Fees')) {
+            PPCart_Admin_Stripe_Fees::render_maintenance_card();
+        }
+    }
+
     private static function get_pages()
     {
         $pages = get_pages();
