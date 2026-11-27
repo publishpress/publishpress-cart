@@ -4290,11 +4290,24 @@ html:has(.ppcart-settings-page .ppcart-settings__savebar.is-visible) {
     color: var(--ppcart-danger, #b32d2e);
 }
 
-.ppcart-settings__card-subtitle {
-    margin: 24px 0 4px;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.25;
+/* WordPress core sets the vertical margin of these labels with !important. */
+.ppcart-stripe-import__choice {
+    display: grid;
+    justify-items: start;
+}
+
+.ppcart-settings__panel .ppcart-stripe-import__choice label {
+    align-items: center;
+    display: inline-flex;
+    gap: 8px;
+}
+
+.ppcart-stripe-import__choice input[type="radio"] {
+    margin: 0;
+}
+
+.ppcart-settings__panel .form-table tr[hidden] {
+    display: none;
 }
 
 .ppcart-settings__card.ppcart-settings__shortcode {

@@ -297,7 +297,7 @@ class ImportStripeChargeTest extends StripeSyncTestCase
     public function test_IT_478_the_subscription_id_field_takes_text_with_a_numeric_keyboard(): void
     {
         ob_start();
-        PPCart_Admin_Stripe_Import::render_maintenance_card();
+        PPCart_Admin_Stripe_Import::render_payment_card();
         $html = (string) ob_get_clean();
 
         $this->assertSame(1, preg_match('/<input[^>]*id="ppcart-stripe-import-charge-subscription"[^>]*>/', $html, $match));

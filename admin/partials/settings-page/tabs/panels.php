@@ -123,6 +123,22 @@ foreach ($setting_tabs as $tab_slug => $tab_label) :
                                         continue;
             }
 
+            if ('maintenance' === $tab_slug && $plugin_name . '-maintenance-stripe-payment-import' === $section['id']) {
+                ?>
+                                        <div class="ppcart-settings__card ppcart-settings__card--plain ppcart-settings__maintenance-stripe-payment-import" data-section-id="<?php echo esc_attr($section['id']); ?>">
+                                            <?php if (! empty($section['title'])) : ?>
+                                                <h2 class="ppcart-settings__card-title"><?php echo esc_html($section['title']); ?></h2>
+                                            <?php endif; ?>
+                                            <?php
+                        if (class_exists('PPCart_Admin_Stripe_Import')) {
+                            PPCart_Admin_Stripe_Import::render_payment_card();
+                        }
+                ?>
+                                        </div>
+                                    <?php
+                                        continue;
+            }
+
             if ('maintenance' === $tab_slug && $plugin_name . '-maintenance-stripe-fees' === $section['id']) {
                 ?>
                                         <div class="ppcart-settings__card ppcart-settings__card--plain ppcart-settings__maintenance-stripe-fees" data-section-id="<?php echo esc_attr($section['id']); ?>">

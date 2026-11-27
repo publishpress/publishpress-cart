@@ -63,6 +63,19 @@ trait PPCart_Admin_Settings_Input_Fields_Trait
     }
 
     /**
+     * Renders the Maintenance form to import one Stripe payment.
+     *
+     * @param array $args Field arguments.
+     * @return void
+     */
+    public function field_maintenance_stripe_payment_import($args)
+    {
+        if (class_exists('PPCart_Admin_Stripe_Import')) {
+            PPCart_Admin_Stripe_Import::render_payment_card();
+        }
+    }
+
+    /**
      * Renders the Maintenance form to fetch Stripe fees for existing orders.
      *
      * @param array $args Field arguments.
