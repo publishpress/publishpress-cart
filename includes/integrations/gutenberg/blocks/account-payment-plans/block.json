@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-payment-plans",
 	"version": "1.0.0",
 	"title": "PP Cart Account Installment Plans",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "schedule",
 	"description": "Display the customer installment plans account section.",
 	"textdomain": "publishpress-cart",

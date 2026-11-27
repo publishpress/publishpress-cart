@@ -1191,7 +1191,7 @@ function Edit( props ) {
 const settings = {
 	title: blockTitle,
 	description: __( 'Display a checkout form.', 'publishpress-cart' ),
-	category: 'widgets',
+	category: 'publishpress-cart',
 	icon: brandIcon( 'cart' ),
 	attributes: {
 		pid: {

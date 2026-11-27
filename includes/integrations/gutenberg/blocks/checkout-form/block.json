@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/checkout-form",
 	"version": "1.0.0",
 	"title": "PP Cart Checkout",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "cart",
 	"description": "Display a checkout form.",
 	"textdomain": "publishpress-cart",

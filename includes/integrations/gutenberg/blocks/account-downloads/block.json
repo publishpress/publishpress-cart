@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-downloads",
 	"version": "1.0.0",
 	"title": "PP Cart Account Downloads",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "download",
 	"description": "Display the customer downloads account section when downloads are available.",
 	"textdomain": "publishpress-cart",

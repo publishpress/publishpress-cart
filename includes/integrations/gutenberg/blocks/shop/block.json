@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "publishpress-cart/shop",
   "title": "PP Cart Shop",
-  "category": "widgets",
+  "category": "publishpress-cart",
   "icon": "store",
   "description": "Display products in a shop grid.",
   "textdomain": "publishpress-cart",

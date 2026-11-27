@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-tab",
 	"version": "1.0.0",
 	"title": "PP Cart Account Tab",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"parent": [ "publishpress-cart/account-navigation" ],
 	"icon": "index-card",
 	"description": "Holds the content for one tab in PP Cart Account Navigation.",

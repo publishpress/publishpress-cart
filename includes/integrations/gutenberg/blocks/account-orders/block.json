@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-orders",
 	"version": "1.0.0",
 	"title": "PP Cart Account Orders",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "list-view",
 	"description": "Display the customer order history account section.",
 	"textdomain": "publishpress-cart",

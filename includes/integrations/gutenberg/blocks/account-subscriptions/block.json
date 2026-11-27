@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-subscriptions",
 	"version": "1.0.0",
 	"title": "PP Cart Account Subscriptions",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "update",
 	"description": "Display the customer subscriptions account section.",
 	"textdomain": "publishpress-cart",

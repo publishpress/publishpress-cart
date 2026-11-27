@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-navigation",
 	"version": "1.0.0",
 	"title": "PP Cart Account Navigation",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "menu",
 	"description": "Display customer account navigation tabs and sortable account sections.",
 	"textdomain": "publishpress-cart",

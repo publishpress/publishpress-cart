@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-profile",
 	"version": "1.0.0",
 	"title": "PP Cart Account Profile",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "admin-users",
 	"description": "Display the customer profile account section.",
 	"textdomain": "publishpress-cart",

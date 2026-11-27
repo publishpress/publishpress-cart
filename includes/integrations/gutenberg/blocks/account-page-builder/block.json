@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-page-builder",
 	"version": "1.0.0",
 	"title": "PP Cart Account Page Builder",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "screenoptions",
 	"description": "Build a customer account page from sortable account component blocks.",
 	"textdomain": "publishpress-cart",

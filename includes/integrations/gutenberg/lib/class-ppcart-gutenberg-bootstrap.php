@@ -14,6 +14,8 @@ require_once __DIR__ . '/class-ppcart-account-detail-controller.php';
 
 class PPCart_Gutenberg_Bootstrap
 {
+    public const BLOCK_CATEGORY = 'publishpress-cart';
+
     /**
      * Current bootstrap instance.
      *
@@ -65,6 +67,7 @@ class PPCart_Gutenberg_Bootstrap
         $account_detail_controller   = new PPCart_Account_Detail_Controller($this->account_renderer);
 
         add_action('init', [ $this, 'register' ]);
+        add_filter('block_categories_all', [ $this, 'add_block_category' ]);
         add_action('enqueue_block_editor_assets', [ $this->assets, 'localize_editor_assets' ]);
         add_action('rest_api_init', [ $checkout_preview_controller, 'register_routes' ]);
         add_action('rest_api_init', [ $account_detail_controller, 'register_routes' ]);
@@ -87,6 +90,21 @@ class PPCart_Gutenberg_Bootstrap
 
         $this->assets->register();
         $this->register_blocks();
+    }
+
+    public function add_block_category($categories)
+    {
+        if (in_array(self::BLOCK_CATEGORY, wp_list_pluck($categories, 'slug'), true)) {
+            return $categories;
+        }
+
+        $categories[] = [
+            'slug'  => self::BLOCK_CATEGORY,
+            'title' => apply_filters('ppcart_plugin_title', 'PublishPress Cart'),
+            'icon'  => null,
+        ];
+
+        return $categories;
     }
 
     public function get_account_renderer()

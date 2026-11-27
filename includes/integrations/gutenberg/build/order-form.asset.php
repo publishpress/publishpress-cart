@@ -3,4 +3,4 @@ if (! defined('ABSPATH')) {
     die('You are not allowed to call this page directly.');
 }
 
-return array('dependencies' => array('react-jsx-runtime', 'wp-api-fetch', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-data', 'wp-element', 'wp-i18n'), 'version' => '16fc57b4056d895bfec9');
+return array('dependencies' => array('react-jsx-runtime', 'wp-api-fetch', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-data', 'wp-element', 'wp-i18n'), 'version' => '8308e18b01c619fe88dd');

@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "publishpress-cart/mini-cart",
   "title": "PP Cart Mini Cart",
-  "category": "widgets",
+  "category": "publishpress-cart",
   "icon": "cart",
   "description": "Display a cart icon and open the shopping cart drawer.",
   "textdomain": "publishpress-cart",

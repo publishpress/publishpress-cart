@@ -4,7 +4,7 @@
 	"name": "publishpress-cart/account-login",
 	"version": "1.0.0",
 	"title": "PP Cart Account Login",
-	"category": "widgets",
+	"category": "publishpress-cart",
 	"icon": "lock",
 	"description": "Display the customer account login and password reset form.",
 	"textdomain": "publishpress-cart",
