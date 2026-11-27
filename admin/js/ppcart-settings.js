@@ -1689,10 +1689,26 @@
         }
 
         var $paymentId = $box.find('[data-ppcart-stripe-charge-import-id]');
+        var $mode = $box.find('[data-ppcart-stripe-charge-import-mode]');
         var $subscription = $box.find('[data-ppcart-stripe-charge-import-subscription]');
         var $product = $box.find('[data-ppcart-stripe-charge-import-product]');
         var $button = $box.find('[data-ppcart-stripe-charge-import-run]');
         var $result = $box.find('[data-ppcart-stripe-charge-import-result]');
+
+        function mode() {
+            return $mode.filter(':checked').val() || 'subscription';
+        }
+
+        // Show only the field for the chosen kind of order.
+        function syncMode() {
+            var current = mode();
+            $box.find('[data-ppcart-stripe-charge-import-target]').each(function () {
+                this.hidden = $(this).attr('data-ppcart-stripe-charge-import-target') !== current;
+            });
+        }
+
+        $mode.on('change', syncMode);
+        syncMode();
 
         function show(success, message, url, label) {
             var $p = $('<p>').addClass(success ? 'is-success' : 'is-error');
@@ -1710,23 +1726,28 @@
             }
 
             var paymentId = $.trim($paymentId.val() || '');
-            // Accept a Cart subscription number as merchants write it: "#4762" or " 4762 ".
-            var subscriptionId = String($subscription.val() || '').replace(/\s+/g, '').replace(/^#+/, '');
-            var productId = $product.val() && $product.val() !== '0' ? $product.val() : '';
+            var subscriptionId = '';
+            var productId = '';
             if (!paymentId) {
                 show(false, $button.attr('data-empty-text'));
                 $paymentId.trigger('focus');
                 return;
             }
-            if (subscriptionId && (!/^[0-9]+$/.test(subscriptionId) || !parseInt(subscriptionId, 10))) {
-                show(false, $button.attr('data-invalid-subscription-text'));
-                $subscription.trigger('focus');
-                return;
-            }
-            if (!subscriptionId === !productId) {
-                show(false, $button.attr(subscriptionId ? 'data-both-targets-text' : 'data-no-target-text'));
-                $subscription.trigger('focus');
-                return;
+            if ('product' === mode()) {
+                productId = $product.val() && $product.val() !== '0' ? $product.val() : '';
+                if (!productId) {
+                    show(false, $button.attr('data-no-product-text'));
+                    $product.trigger('focus');
+                    return;
+                }
+            } else {
+                // Accept a Cart subscription number as merchants write it: "#4762" or " 4762 ".
+                subscriptionId = String($subscription.val() || '').replace(/\s+/g, '').replace(/^#+/, '');
+                if (!/^[0-9]+$/.test(subscriptionId) || !parseInt(subscriptionId, 10)) {
+                    show(false, $button.attr('data-invalid-subscription-text'));
+                    $subscription.trigger('focus');
+                    return;
+                }
             }
 
             $button.prop('disabled', true).attr('aria-busy', 'true');

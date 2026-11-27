@@ -3,10 +3,12 @@
 defined('ABSPATH') || exit;
 
 /**
- * Cart > Settings > Maintenance > Import from Stripe.
+ * Cart > Settings > Maintenance: the "Import Stripe subscriptions" and
+ * "Import a Stripe payment" cards.
  *
  * Creates Cart subscriptions for Stripe subscriptions that have no Cart
- * record, then imports their paid invoices as orders.
+ * record, then imports their paid invoices as orders. Also imports one
+ * Stripe payment as an order.
  */
 class PPCart_Admin_Stripe_Import
 {
@@ -20,26 +22,15 @@ class PPCart_Admin_Stripe_Import
     private const MAX_IDS = 20;
 
     /**
-     * Show the import form in the Settings > Maintenance tab.
+     * Show the subscription import card in the Settings > Maintenance tab.
      *
      * The settings page is one form, so these controls have no name and
      * don't save with it. The Import button sends them with AJAX.
      */
     public static function render_maintenance_card()
     {
-        $products = get_posts(
-            [
-                'post_type'      => ppcart_query_post_types('product'),
-                'post_status'    => [ 'publish', 'private', 'draft' ],
-                // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- The product list for the import form; stores rarely have this many products.
-                'posts_per_page' => 500,
-                'orderby'        => 'title',
-                'order'          => 'ASC',
-            ]
-        );
-        $published_products = array_filter($products, static fn ($product) => 'publish' === $product->post_status);
         ?>
-        <p class="ppcart-settings__card-desc"><?php esc_html_e('Add Stripe subscriptions that are missing from Cart. Each one becomes a Cart subscription, and its paid invoices become orders. Integrations don\'t run, and nothing changes in Stripe.', 'publishpress-cart'); ?></p>
+        <p class="ppcart-settings__card-desc"><?php esc_html_e('Add Stripe subscriptions that are missing from Cart. Each one becomes a Cart subscription, and its paid invoices become orders. Nothing changes in Stripe, and integrations don\'t run.', 'publishpress-cart'); ?></p>
         <div class="ppcart-stripe-import" data-ppcart-stripe-import>
             <table class="form-table" role="presentation">
                 <tr>
@@ -59,7 +50,7 @@ class PPCart_Admin_Stripe_Import
                     <td>
                         <select id="ppcart-stripe-import-product" aria-describedby="ppcart-stripe-import-product-desc" data-ppcart-stripe-import-product data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-import-product')); ?>">
                             <option value="0"><?php esc_html_e('Find it from the Stripe price', 'publishpress-cart'); ?></option>
-                            <?php foreach ($products as $product) : ?>
+                            <?php foreach (self::get_products() as $product) : ?>
                                 <option value="<?php echo (int) $product->ID; ?>"><?php echo esc_html(get_the_title($product) . ' (#' . $product->ID . ')'); ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -67,7 +58,7 @@ class PPCart_Admin_Stripe_Import
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e('Import', 'publishpress-cart'); ?></th>
+                    <th scope="row"><?php esc_html_e('Import subscriptions', 'publishpress-cart'); ?></th>
                     <td>
                         <button
                             type="button"
@@ -78,14 +69,26 @@ class PPCart_Admin_Stripe_Import
                             data-running-text="<?php esc_attr_e('Importing. This can take a minute for subscriptions with many payments.', 'publishpress-cart'); ?>"
                             data-failed-text="<?php esc_attr_e('The import failed. Try again with fewer subscriptions.', 'publishpress-cart'); ?>"
                             data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-import')); ?>"
-                        ><?php esc_html_e('Import from Stripe', 'publishpress-cart'); ?></button>
+                        ><?php esc_html_e('Import subscriptions', 'publishpress-cart'); ?></button>
                         <div class="ppcart-stripe-import__result" data-ppcart-stripe-import-result aria-live="polite" hidden></div>
                     </td>
                 </tr>
             </table>
         </div>
-        <h3 class="ppcart-settings__card-subtitle"><?php esc_html_e('Import a payment', 'publishpress-cart'); ?></h3>
-        <p class="ppcart-settings__card-desc"><?php esc_html_e('Add a Stripe payment that has no invoice, such as a charge made in the Stripe Dashboard. Enter a subscription ID to add it as a paid order of that subscription. Or choose a product to add it as a one-time order. Integrations don\'t run, and nothing changes in Stripe.', 'publishpress-cart'); ?></p>
+        <?php
+    }
+
+    /**
+     * Show the payment import card in the Settings > Maintenance tab.
+     *
+     * A payment becomes either an order of a Cart subscription or a one-time
+     * order of a product. Only the field for the chosen one shows.
+     */
+    public static function render_payment_card()
+    {
+        $products = array_filter(self::get_products(), static fn ($product) => 'publish' === $product->post_status);
+        ?>
+        <p class="ppcart-settings__card-desc"><?php esc_html_e('Add a Stripe payment that has no invoice, such as a charge made in the Stripe Dashboard. Nothing changes in Stripe, and integrations don\'t run.', 'publishpress-cart'); ?></p>
         <div class="ppcart-stripe-import" data-ppcart-stripe-charge-import>
             <table class="form-table" role="presentation">
                 <tr>
@@ -95,26 +98,41 @@ class PPCart_Admin_Stripe_Import
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><label for="ppcart-stripe-import-charge-subscription"><?php esc_html_e('Subscription ID', 'publishpress-cart'); ?></label></th>
+                    <th scope="row"><?php esc_html_e('Add it as', 'publishpress-cart'); ?></th>
                     <td>
-                        <input type="text" inputmode="numeric" autocomplete="off" id="ppcart-stripe-import-charge-subscription" class="regular-text" placeholder="1234" aria-describedby="ppcart-stripe-import-charge-subscription-desc" data-ppcart-stripe-charge-import-subscription data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-subscription')); ?>" />
-                        <p class="description" id="ppcart-stripe-import-charge-subscription-desc"><?php esc_html_e('Optional. The Cart subscription number, for example 1234. The payment must belong to the same Stripe customer.', 'publishpress-cart'); ?></p>
+                        <fieldset class="ppcart-stripe-import__choice">
+                            <legend class="screen-reader-text"><?php esc_html_e('Add it as', 'publishpress-cart'); ?></legend>
+                            <label>
+                                <input type="radio" name="ppcart_stripe_charge_import_mode" value="subscription" checked data-ppcart-stripe-charge-import-mode data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-mode-subscription')); ?>" />
+                                <?php esc_html_e('An order of a Cart subscription', 'publishpress-cart'); ?>
+                            </label>
+                            <label>
+                                <input type="radio" name="ppcart_stripe_charge_import_mode" value="product" data-ppcart-stripe-charge-import-mode data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-mode-product')); ?>" />
+                                <?php esc_html_e('A one-time order of a product', 'publishpress-cart'); ?>
+                            </label>
+                        </fieldset>
                     </td>
                 </tr>
-                <tr>
+                <tr data-ppcart-stripe-charge-import-target="subscription">
+                    <th scope="row"><label for="ppcart-stripe-import-charge-subscription"><?php esc_html_e('Subscription number', 'publishpress-cart'); ?></label></th>
+                    <td>
+                        <input type="text" inputmode="numeric" autocomplete="off" id="ppcart-stripe-import-charge-subscription" class="regular-text" placeholder="1234" aria-describedby="ppcart-stripe-import-charge-subscription-desc" data-ppcart-stripe-charge-import-subscription data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-subscription')); ?>" />
+                        <p class="description" id="ppcart-stripe-import-charge-subscription-desc"><?php esc_html_e('The payment must belong to the subscription\'s Stripe customer.', 'publishpress-cart'); ?></p>
+                    </td>
+                </tr>
+                <tr data-ppcart-stripe-charge-import-target="product" hidden>
                     <th scope="row"><label for="ppcart-stripe-import-charge-product"><?php esc_html_e('Product', 'publishpress-cart'); ?></label></th>
                     <td>
-                        <select id="ppcart-stripe-import-charge-product" aria-describedby="ppcart-stripe-import-charge-product-desc" data-ppcart-stripe-charge-import-product data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-product')); ?>">
-                            <option value="0"><?php esc_html_e('No product', 'publishpress-cart'); ?></option>
-                            <?php foreach ($published_products as $product) : ?>
+                        <select id="ppcart-stripe-import-charge-product" data-ppcart-stripe-charge-import-product data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-product')); ?>">
+                            <option value="0"><?php esc_html_e('Choose a product', 'publishpress-cart'); ?></option>
+                            <?php foreach ($products as $product) : ?>
                                 <option value="<?php echo (int) $product->ID; ?>"><?php echo esc_html(get_the_title($product) . ' (#' . $product->ID . ')'); ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="description" id="ppcart-stripe-import-charge-product-desc"><?php esc_html_e('For a payment with no subscription. The payment becomes a one-time order for this product. Leave the subscription ID empty.', 'publishpress-cart'); ?></p>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e('Import', 'publishpress-cart'); ?></th>
+                    <th scope="row"><?php esc_html_e('Import payment', 'publishpress-cart'); ?></th>
                     <td>
                         <button
                             type="button"
@@ -122,8 +140,7 @@ class PPCart_Admin_Stripe_Import
                             data-ppcart-stripe-charge-import-run
                             data-nonce="<?php echo esc_attr(wp_create_nonce(self::CHARGE_AJAX_ACTION)); ?>"
                             data-empty-text="<?php esc_attr_e('Enter a Stripe payment ID.', 'publishpress-cart'); ?>"
-                            data-no-target-text="<?php esc_attr_e('Enter a subscription ID or choose a product.', 'publishpress-cart'); ?>"
-                            data-both-targets-text="<?php esc_attr_e('Enter a subscription ID or choose a product, not both.', 'publishpress-cart'); ?>"
+                            data-no-product-text="<?php esc_attr_e('Choose a product.', 'publishpress-cart'); ?>"
                             data-invalid-subscription-text="<?php esc_attr_e('Enter the Cart subscription number, for example 1234.', 'publishpress-cart'); ?>"
                             data-running-text="<?php esc_attr_e('Importing the payment.', 'publishpress-cart'); ?>"
                             data-failed-text="<?php esc_attr_e('The import failed. Try again.', 'publishpress-cart'); ?>"
@@ -135,6 +152,25 @@ class PPCart_Admin_Stripe_Import
             </table>
         </div>
         <?php
+    }
+
+    /**
+     * Products for the import forms.
+     *
+     * @return WP_Post[]
+     */
+    private static function get_products()
+    {
+        return get_posts(
+            [
+                'post_type'      => ppcart_query_post_types('product'),
+                'post_status'    => [ 'publish', 'private', 'draft' ],
+                // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- The product list for the import form; stores rarely have this many products.
+                'posts_per_page' => 500,
+                'orderby'        => 'title',
+                'order'          => 'ASC',
+            ]
+        );
     }
 
     /**

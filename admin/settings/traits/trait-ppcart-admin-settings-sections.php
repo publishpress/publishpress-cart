@@ -114,7 +114,14 @@ trait PPCart_Admin_Settings_Sections_Trait
 
         add_settings_section(
             $this->plugin_name . '-maintenance-stripe-import',
-            esc_html__('Import from Stripe', 'publishpress-cart'),
+            esc_html__('Import Stripe subscriptions', 'publishpress-cart'),
+            [ $this, 'section_settings' ],
+            $this->plugin_name . '-maintenance'
+        );
+
+        add_settings_section(
+            $this->plugin_name . '-maintenance-stripe-payment-import',
+            esc_html__('Import a Stripe payment', 'publishpress-cart'),
             [ $this, 'section_settings' ],
             $this->plugin_name . '-maintenance'
         );

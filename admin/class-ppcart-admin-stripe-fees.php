@@ -35,17 +35,6 @@ class PPCart_Admin_Stripe_Fees
                 <tr>
                     <th scope="row"><?php esc_html_e('Fetch fees', 'publishpress-cart'); ?></th>
                     <td>
-                        <p data-ppcart-stripe-fees-pending>
-                            <?php
-                            echo esc_html(
-                                sprintf(
-                                    /* translators: %s: number of orders. */
-                                    _n('%s Stripe order has no fee data.', '%s Stripe orders have no fee data.', $pending, 'publishpress-cart'),
-                                    number_format_i18n($pending)
-                                )
-                            );
-                            ?>
-                        </p>
                         <button
                             type="button"
                             class="button button-secondary"
@@ -57,6 +46,17 @@ class PPCart_Admin_Stripe_Fees
                             data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-fees')); ?>"
                             <?php disabled(0, $pending); ?>
                         ><?php esc_html_e('Fetch Stripe fees', 'publishpress-cart'); ?></button>
+                        <p class="description" data-ppcart-stripe-fees-pending>
+                            <?php
+                            echo esc_html(
+                                sprintf(
+                                    /* translators: %s: number of orders. */
+                                    _n('%s Stripe order has no fee data.', '%s Stripe orders have no fee data.', $pending, 'publishpress-cart'),
+                                    number_format_i18n($pending)
+                                )
+                            );
+                            ?>
+                        </p>
                         <div class="ppcart-stripe-import__result" data-ppcart-stripe-fees-result aria-live="polite" hidden></div>
                     </td>
                 </tr>
