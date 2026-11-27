@@ -186,7 +186,11 @@ trait PPCart_Stripe_Sync_Refunds_Trait
         }
 
         $transaction_id = (string) ppcart_get_post_meta($order->id, 'transaction_id', true);
-        if (0 !== strpos($transaction_id, 'ch_') && 0 !== strpos($transaction_id, 'pi_')) {
+        if (
+            0 !== strpos($transaction_id, 'ch_')
+            && 0 !== strpos($transaction_id, 'pi_')
+            && ! self::is_order_paid_by_invoice_without_charge($order, $resource)
+        ) {
             return;
         }
 
@@ -212,6 +216,36 @@ trait PPCart_Stripe_Sync_Refunds_Trait
             ppcart_update_post_meta($order->id, 'gateway_mode', $mode);
             $order->gateway_mode = $mode;
         }
+    }
+
+    /**
+     * Check whether a paid Stripe invoice with no charge paid this order.
+     *
+     * A $0 invoice, for example one covered by a coupon or the customer's
+     * credit balance, has no charge or PaymentIntent. Its order is still a
+     * Stripe order when sync linked it to that invoice.
+     *
+     * @param PPCart_Order      $order    Local order.
+     * @param object|array|null $resource Stripe resource that paid the order.
+     * @return bool
+     */
+    private static function is_order_paid_by_invoice_without_charge($order, $resource)
+    {
+        if (! $resource || 'paid' !== self::get($resource, 'status', '')) {
+            return false;
+        }
+
+        $invoice_id = (string) self::get($resource, 'id', '');
+        if (0 !== strpos($invoice_id, 'in_')) {
+            return false;
+        }
+
+        $payment_ids = self::invoice_payment_ids($resource);
+        if ($payment_ids['charge'] || $payment_ids['payment_intent']) {
+            return false;
+        }
+
+        return $invoice_id === (string) ppcart_get_post_meta($order->id, 'stripe_invoice_id', true);
     }
 
     /**

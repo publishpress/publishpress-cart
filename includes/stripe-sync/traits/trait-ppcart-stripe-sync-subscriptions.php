@@ -145,6 +145,39 @@ trait PPCart_Stripe_Sync_Subscriptions_Trait
     }
 
     /**
+     * Get the cancel date to store for a subscription that Stripe canceled.
+     *
+     * Stripe's canceled_at is the day the cancellation was requested, the same
+     * day Cart stores for its own cancel actions. A stored date within a day of
+     * it is kept, because Cart and Stripe can count the day in different time
+     * zones. Any other date, such as the day a canceled subscription was
+     * migrated, is replaced with Stripe's date.
+     *
+     * @param string|int $cancel_date Cancel date stored on the local subscription.
+     * @param int        $canceled_at Stripe canceled_at timestamp, or 0.
+     * @return string The date to store, in Y-m-d.
+     */
+    private static function canceled_subscription_cancel_date($cancel_date, $canceled_at)
+    {
+        $canceled_at = absint($canceled_at);
+        if (! $canceled_at) {
+            return empty($cancel_date) ? gmdate('Y-m-d') : (string) $cancel_date;
+        }
+
+        $stripe_date = gmdate('Y-m-d', $canceled_at);
+        if (empty($cancel_date)) {
+            return $stripe_date;
+        }
+
+        $stored = is_numeric($cancel_date) ? (int) $cancel_date : strtotime((string) $cancel_date . ' UTC');
+        if (false !== $stored && abs($stored - strtotime($stripe_date . ' UTC')) <= DAY_IN_SECONDS) {
+            return (string) $cancel_date;
+        }
+
+        return $stripe_date;
+    }
+
+    /**
      * Check whether a subscription belongs to this site.
      *
      * @param object|array $subscription Stripe subscription resource.
