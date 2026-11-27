@@ -46,7 +46,7 @@ if (class_exists('WP_Block_Templates_Registry') && WP_Block_Templates_Registry::
 register_block_template(
     $split_template_name,
     [
-        'title'       => __('Cart Checkout: Split layout', 'publishpress-cart'),
+        'title'       => __('PP Cart Checkout: Split layout', 'publishpress-cart'),
         'description' => __('Displays the product and checkout side by side. Set a featured image on the product to customize the background.', 'publishpress-cart'),
         'content'     => self::get_template_content(),
         'post_types'  => $post_types,

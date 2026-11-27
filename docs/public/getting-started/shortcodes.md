@@ -39,7 +39,7 @@ Displays an order form.
 | `[ppcart_account_login]` | Customer login form. |
 | `[ppcart_account_downloads]` | Customer downloads. |
 
-In Elementor, search the widget panel for **Cart Checkout** or **Cart Account** to find the corresponding widgets.
+In Elementor, search the widget panel for **PP Cart Checkout** or **PP Cart Account** to find the corresponding widgets.
 
 ## Receipt
 

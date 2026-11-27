@@ -23,6 +23,7 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { brandIcon } from '../_shared/block-icon';
 
 const config = window.publishpressCartCheckoutBlock || {};
 const blockName = config.blockName || 'publishpress-cart/checkout-form';
@@ -30,7 +31,7 @@ const restBase = config.restBase || '/publishpress-cart/v1';
 const productPostTypes = Array.isArray( config.productPostTypes ) && config.productPostTypes.length
 	? config.productPostTypes.map( ( postType ) => String( postType ) )
 	: [ 'ppcart_product' ];
-const blockTitle = __( 'Cart Checkout', 'publishpress-cart' );
+const blockTitle = __( 'PP Cart Checkout', 'publishpress-cart' );
 const siteTitle = config.siteTitle || __( 'Site title', 'publishpress-cart' );
 
 const cartSource = 'cart';
@@ -1190,8 +1191,8 @@ function Edit( props ) {
 const settings = {
 	title: blockTitle,
 	description: __( 'Display a checkout form.', 'publishpress-cart' ),
-	category: 'widgets',
-	icon: 'cart',
+	category: 'publishpress-cart',
+	icon: brandIcon( 'cart' ),
 	attributes: {
 		pid: {
 			type: 'string',

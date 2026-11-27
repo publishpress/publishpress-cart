@@ -4,11 +4,13 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 import ShoppingCartStyleControls from '../shopping-cart-style-controls';
+import { brandIcon } from '../_shared/block-icon';
 import metadata from './block.json';
 
 registerBlockType( metadata.name, {
     ...metadata,
-    title: __( 'Cart Mini Cart', 'publishpress-cart' ),
+    icon: brandIcon( metadata.icon ),
+    title: __( 'PP Cart Mini Cart', 'publishpress-cart' ),
     edit( { attributes, setAttributes } ) {
         return <div { ...useBlockProps() }>
             <InspectorControls>

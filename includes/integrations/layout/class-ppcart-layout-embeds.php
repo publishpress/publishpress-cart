@@ -15,16 +15,16 @@ class PPCart_Layout_Embeds
     public static function definitions()
     {
         return [
-            'checkout-form' => __('Cart Checkout', 'publishpress-cart'),
-            'account-page-builder' => __('Cart Account Page', 'publishpress-cart'),
-            'account-navigation' => __('Cart Account Navigation', 'publishpress-cart'),
-            'account-tab' => __('Cart Account Tab', 'publishpress-cart'),
-            'account-orders' => __('Cart Account Orders', 'publishpress-cart'),
-            'account-subscriptions' => __('Cart Account Subscriptions', 'publishpress-cart'),
-            'account-payment-plans' => __('Cart Account Payment Plans', 'publishpress-cart'),
-            'account-profile' => __('Cart Account Profile', 'publishpress-cart'),
-            'account-login' => __('Cart Account Login', 'publishpress-cart'),
-            'account-downloads' => __('Cart Account Downloads', 'publishpress-cart'),
+            'checkout-form' => __('PP Cart Checkout', 'publishpress-cart'),
+            'account-page-builder' => __('PP Cart Account Page', 'publishpress-cart'),
+            'account-navigation' => __('PP Cart Account Navigation', 'publishpress-cart'),
+            'account-tab' => __('PP Cart Account Tab', 'publishpress-cart'),
+            'account-orders' => __('PP Cart Account Orders', 'publishpress-cart'),
+            'account-subscriptions' => __('PP Cart Account Subscriptions', 'publishpress-cart'),
+            'account-payment-plans' => __('PP Cart Account Payment Plans', 'publishpress-cart'),
+            'account-profile' => __('PP Cart Account Profile', 'publishpress-cart'),
+            'account-login' => __('PP Cart Account Login', 'publishpress-cart'),
+            'account-downloads' => __('PP Cart Account Downloads', 'publishpress-cart'),
         ];
     }
 
