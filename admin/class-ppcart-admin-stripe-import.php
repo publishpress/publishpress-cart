@@ -97,7 +97,7 @@ class PPCart_Admin_Stripe_Import
                 <tr>
                     <th scope="row"><label for="ppcart-stripe-import-charge-subscription"><?php esc_html_e('Subscription ID', 'publishpress-cart'); ?></label></th>
                     <td>
-                        <input type="number" min="1" step="1" id="ppcart-stripe-import-charge-subscription" class="small-text" aria-describedby="ppcart-stripe-import-charge-subscription-desc" data-ppcart-stripe-charge-import-subscription data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-subscription')); ?>" />
+                        <input type="text" inputmode="numeric" autocomplete="off" id="ppcart-stripe-import-charge-subscription" class="regular-text" placeholder="1234" aria-describedby="ppcart-stripe-import-charge-subscription-desc" data-ppcart-stripe-charge-import-subscription data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import-subscription')); ?>" />
                         <p class="description" id="ppcart-stripe-import-charge-subscription-desc"><?php esc_html_e('Optional. The Cart subscription number, for example 1234. The payment must belong to the same Stripe customer.', 'publishpress-cart'); ?></p>
                     </td>
                 </tr>
@@ -124,6 +124,7 @@ class PPCart_Admin_Stripe_Import
                             data-empty-text="<?php esc_attr_e('Enter a Stripe payment ID.', 'publishpress-cart'); ?>"
                             data-no-target-text="<?php esc_attr_e('Enter a subscription ID or choose a product.', 'publishpress-cart'); ?>"
                             data-both-targets-text="<?php esc_attr_e('Enter a subscription ID or choose a product, not both.', 'publishpress-cart'); ?>"
+                            data-invalid-subscription-text="<?php esc_attr_e('Enter the Cart subscription number, for example 1234.', 'publishpress-cart'); ?>"
                             data-running-text="<?php esc_attr_e('Importing the payment.', 'publishpress-cart'); ?>"
                             data-failed-text="<?php esc_attr_e('The import failed. Try again.', 'publishpress-cart'); ?>"
                             data-testid="<?php echo esc_attr(ppcart_testid('ppcart-admin-maintenance-stripe-charge-import')); ?>"
@@ -151,10 +152,14 @@ class PPCart_Admin_Stripe_Import
         }
 
         $payment_id = isset($_POST['payment_id']) ? sanitize_text_field(wp_unslash($_POST['payment_id'])) : '';
-        $subscription_id = isset($_POST['subscription_id']) ? absint(ltrim(sanitize_text_field(wp_unslash($_POST['subscription_id'])), '#')) : 0;
+        $subscription_input = isset($_POST['subscription_id']) ? sanitize_text_field(wp_unslash($_POST['subscription_id'])) : '';
+        $subscription_id = self::parse_subscription_number($subscription_input);
         $product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
         if ('' === trim($payment_id)) {
             wp_send_json_error([ 'message' => __('Enter a Stripe payment ID.', 'publishpress-cart') ]);
+        }
+        if ('' !== trim($subscription_input) && ! $subscription_id) {
+            wp_send_json_error([ 'message' => __('Enter the Cart subscription number, for example 1234.', 'publishpress-cart') ]);
         }
 
         // import_charge() refuses both or neither of a subscription and a product.
@@ -181,6 +186,23 @@ class PPCart_Admin_Stripe_Import
                     : __('Imported as a one-time order.', 'publishpress-cart'),
             ]
         );
+    }
+
+    /**
+     * Read a Cart subscription number as a merchant types it.
+     *
+     * Accepts spaces and a leading "#", so "#4762" and " 4762 " both give
+     * 4762. Anything else that isn't a whole number gives 0.
+     *
+     * @param string $value Subscription number as entered.
+     * @return int Subscription ID, or 0.
+     */
+    public static function parse_subscription_number($value)
+    {
+        $value = preg_replace('/\s+/u', '', (string) $value);
+        $value = ltrim((string) $value, '#');
+
+        return ctype_digit($value) ? absint($value) : 0;
     }
 
     /**

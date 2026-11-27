@@ -156,7 +156,7 @@ trait PPCart_Admin_Settings_Screen_Trait
             __('Categories', 'publishpress-cart'),
             __('Categories', 'publishpress-cart'),
             $manager_option,
-            'edit-tags.php?taxonomy=' . $product_cat
+            self::product_taxonomy_submenu_slug($product_cat)
         );
 
         add_submenu_page(
@@ -164,7 +164,7 @@ trait PPCart_Admin_Settings_Screen_Trait
             __('Tags', 'publishpress-cart'),
             __('Tags', 'publishpress-cart'),
             $manager_option,
-            'edit-tags.php?taxonomy=' . $product_tag
+            self::product_taxonomy_submenu_slug($product_tag)
         );
 
         add_submenu_page(
@@ -182,6 +182,24 @@ trait PPCart_Admin_Settings_Screen_Trait
             PPCart_Admin_Screens::PAGE_SETTINGS,
             [ $this, 'page_options' ]
         );
+    }
+
+    /**
+     * Submenu slug for a product taxonomy screen.
+     *
+     * The slug names the product post type, so the term list links each
+     * count to the products with that term, not to posts. It matches the
+     * submenu file that WordPress sets on that screen, so the item stays
+     * highlighted.
+     *
+     * @param string $taxonomy Taxonomy name.
+     * @return string
+     */
+    public static function product_taxonomy_submenu_slug($taxonomy)
+    {
+        $product_type = function_exists('ppcart_live_post_type') ? ppcart_live_post_type('product') : PPCart_Admin_Screens::POST_TYPE_PRODUCT;
+
+        return 'edit-tags.php?taxonomy=' . $taxonomy . '&amp;post_type=' . $product_type;
     }
 
     /**
@@ -209,8 +227,8 @@ trait PPCart_Admin_Settings_Screen_Trait
             ['ppcart-pro-preview-global-coupons', 'edit.php?post_type=ppcart_global_coupon'],
             ['ppcart-pro-preview-collections', 'edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_COLLECTION],
             ['ppcart-pro-preview-upgrade-paths', 'edit.php?post_type=' . PPCart_Admin_Screens::POST_TYPE_UPGRADE_PATH],
-            ['edit-tags.php?taxonomy=' . $product_cat],
-            ['edit-tags.php?taxonomy=' . $product_tag],
+            [self::product_taxonomy_submenu_slug($product_cat)],
+            [self::product_taxonomy_submenu_slug($product_tag)],
             [PPCart_Admin_Screens::PAGE_SETTINGS],
             [PPCart_Admin_Screens::PAGE_REPORTS],
             [PPCart_Admin_Screens::PAGE_CONTACTS],

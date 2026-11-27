@@ -58,8 +58,24 @@ return PPCart_Stripe_Sync_Context::run(
         $amount = absint(self::get($charge, 'amount', 0));
         $amount_refunded = absint(self::get($charge, 'amount_refunded', 0));
         $currency = strtoupper((string) self::get($charge, 'currency', $cart_order->currency));
+        $refund_log = self::refund_log_for_charge($cart_order->id, $charge, $currency);
+        if (false === $refund_log) {
+            // Manual refunds that don't match a partial Stripe refund need a
+            // person to check. Only the payment method is corrected.
+            self::mark_order_as_stripe_payment($cart_order, $charge);
+            self::mark_resource_event($cart_order->id, $event);
+            self::record_webhook_log(
+                $event,
+                'skipped',
+                'Manual refunds on the local order do not match the Stripe refunds.',
+                [
+                    'order_id'  => $cart_order->id,
+                    'charge_id' => self::get($charge, 'id', ''),
+                ]
+            );
+            return $cart_order;
+        }
         $refund_total = ppcart_format_stripe_number($amount_refunded, $currency);
-        $refund_log = self::build_refund_log_from_charge($charge, $currency);
 
         ppcart_update_post_meta($cart_order->id, 'refund_log', $refund_log);
         ppcart_update_post_meta($cart_order->id, 'refund_amount', $refund_total);
@@ -67,15 +83,31 @@ return PPCart_Stripe_Sync_Context::run(
         $cart_order->transaction_id = self::get($charge, 'id', $cart_order->transaction_id);
         $cart_order->refund_log = $refund_log;
 
+        // An order migrated as Cash gets Stripe's status, and runs no
+        // integrations when the merchant syncs it.
+        $migrated = self::is_migrated_stripe_order($cart_order);
+        $quiet = self::is_quiet_stripe_sync($cart_order);
         if ($amount_refunded > 0 && $amount_refunded >= $amount) {
             $cart_order->payment_status = 'refunded';
             $cart_order->status = 'refunded';
+        } elseif ('refunded' === $cart_order->status && $migrated) {
+            // A migrated order may have been refunded in full outside Stripe,
+            // so a partial Stripe refund never sets it back to paid.
+            self::flag_refund_for_check(
+                $cart_order->id,
+                sprintf(
+                    /* translators: %s: refunded amount */
+                    __('Stripe shows a partial refund of %s; the order stays refunded. Check the refunds in Stripe.', 'publishpress-cart'),
+                    $refund_total
+                )
+            );
         } elseif ('refunded' === $cart_order->status) {
             $cart_order->payment_status = 'paid';
             $cart_order->status = 'paid';
         }
 
-        $cart_order->store();
+        $cart_order->store(! $quiet);
+        self::mark_order_as_stripe_payment($cart_order, $charge);
         self::mark_resource_event($cart_order->id, $event);
         self::record_webhook_log(
             $event,

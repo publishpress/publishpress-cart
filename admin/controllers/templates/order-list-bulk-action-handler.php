@@ -60,7 +60,12 @@ if ('ppcart_sync_stripe' === $doaction) {
 
             try {
                 PPCart_Stripe_Sync::sync_order_by_local($ppcart_order);
-                ppcart_log_entry($object_id, __('Order synced from Stripe by admin', 'publishpress-cart'));
+                ppcart_log_entry(
+                    $object_id,
+                    PPCart_Stripe_Sync::refund_needs_check()
+                        ? __('Order synced from Stripe by admin. The refund needs a check.', 'publishpress-cart')
+                        : __('Order synced from Stripe by admin', 'publishpress-cart')
+                );
                 $synced++;
             } catch (Exception $e) {
                 /* translators: %s: error message. */
@@ -72,7 +77,12 @@ if ('ppcart_sync_stripe' === $doaction) {
         }
 
         try {
-            PPCart_Stripe_Sync::sync_subscription_by_local(new PPCart_Subscription($object_id));
+            // A merchant starts this sync to reconcile past records.
+            PPCart_Stripe_Sync_Context::run_manual(
+                function () use ($object_id) {
+                    return PPCart_Stripe_Sync::sync_subscription_by_local(new PPCart_Subscription($object_id));
+                }
+            );
             ppcart_log_entry($object_id, __('Subscription synced from Stripe by admin', 'publishpress-cart'));
             $synced++;
         } catch (Exception $e) {

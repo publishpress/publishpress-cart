@@ -153,7 +153,7 @@ if (
     return self::sync_charge_refund($refunded_charge, $charge_client, $event, true);
 }
 
-return PPCart_Stripe_Sync_Context::run(
+$synced_order = PPCart_Stripe_Sync_Context::run(
     function () use ($existing, $sub, $invoice, $invoice_id, $charge_id, $payment_intent, $payment_intent_status, $order_status, $invoice_date, $event, $event_type, $currency, $refunded_charge) {
         $order = $existing;
 
@@ -204,6 +204,24 @@ return PPCart_Stripe_Sync_Context::run(
         // proves a refund was undone. Leave refunded orders to the charge and
         // refund sync, or they flip back to paid and re-run integrations.
         if ($existing && ('refunded' === $order->status || 'refunded' === $order->payment_status)) {
+            // A refunded order can miss its refund record, for example one
+            // migrated from StudioCart. Add the Stripe refunds that its log
+            // doesn't have yet. Only meta is written, so no integrations run.
+            if ($refunded_charge && $order->id) {
+                $current_log = ppcart_get_post_meta($order->id, 'refund_log', true);
+                $current_log = self::normalize_refund_log(is_array($current_log) ? $current_log : []);
+                $refund_log = self::refund_log_for_charge($order->id, $refunded_charge, $currency);
+                if (false !== $refund_log) {
+                    if ($refund_log !== $current_log) {
+                        ppcart_update_post_meta($order->id, 'refund_log', $refund_log);
+                        $order->refund_log = $refund_log;
+                    }
+                    $refund_amount = ppcart_format_stripe_number(absint(self::get($refunded_charge, 'amount_refunded', 0)), $currency);
+                    if ((string) $refund_amount !== (string) ppcart_get_post_meta($order->id, 'refund_amount', true)) {
+                        ppcart_update_post_meta($order->id, 'refund_amount', $refund_amount);
+                    }
+                }
+            }
             self::mark_resource_event($order->id, $event);
             return $order;
         }
@@ -214,9 +232,22 @@ return PPCart_Stripe_Sync_Context::run(
             'payment_status' => $order_status['payment_status'],
             'status'         => $order_status['post_status'],
         ];
-        $trigger_integrations = true;
+        // A completed order is already paid. An order migrated as Cash gets
+        // Stripe's status, and runs no integrations when the merchant syncs it.
+        $quiet = $existing && self::is_quiet_stripe_sync($existing);
+        if ($existing && 'completed' === $order->status && 'paid' === $values['status']) {
+            $values['payment_status'] = $order->payment_status;
+            $values['status'] = $order->status;
+        }
+        $trigger_integrations = ! $quiet;
+        $refund_log = $refunded_charge && $order->id ? self::refund_log_for_charge($order->id, $refunded_charge, $currency) : null;
+        if ($refunded_charge && false === $refund_log) {
+            // Manual refunds that don't match Stripe need a person to check.
+            self::mark_resource_event($order->id, $event);
+            return $order;
+        }
         if ($refunded_charge) {
-            $order->refund_log = self::build_refund_log_from_charge($refunded_charge, $currency);
+            $order->refund_log = null !== $refund_log ? $refund_log : self::build_refund_log_from_charge($refunded_charge, $currency);
 
             if (absint(self::get($refunded_charge, 'amount_refunded', 0)) >= absint(self::get($refunded_charge, 'amount', 0))) {
                 $values['payment_status'] = 'refunded';
@@ -225,7 +256,7 @@ return PPCart_Stripe_Sync_Context::run(
                 // An imported payment that was refunded long ago must not
                 // grant or remove access now. A paid order that turns
                 // refunded still runs its refund integrations.
-                $trigger_integrations = (bool) $existing;
+                $trigger_integrations = $existing && ! $quiet;
             }
         }
 
@@ -270,3 +301,15 @@ return PPCart_Stripe_Sync_Context::run(
         return $order;
     }
 );
+
+// Orders migrated from StudioCart can show a Stripe payment as Cash. An order
+// paid by this invoice's charge is a Stripe order in the invoice's mode.
+if ($synced_order && ($charge_id || $payment_intent)) {
+    PPCart_Stripe_Sync_Context::run(
+        function () use ($synced_order, $invoice, $existing) {
+            self::mark_order_as_stripe_payment($synced_order, $invoice, (bool) $existing);
+        }
+    );
+}
+
+return $synced_order;
