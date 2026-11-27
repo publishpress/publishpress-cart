@@ -1,5 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
+import { brandIcon } from '../_shared/block-icon';
 import { AccountBlockPreview } from '../_shared/preview';
 import accountPageBuilderBlock from './block';
 import accountNavigationBlock from '../account-navigation/block';
@@ -47,6 +48,7 @@ blocks.forEach( ( block ) => {
 
 	registerBlockType( name, {
 		...settings,
+		icon: brandIcon( settings.icon ),
 		edit:
 			edit ||
 			( ( props ) => (

@@ -4,6 +4,7 @@ import { PanelBody, RangeControl, SelectControl, TextControl, ToggleControl, __e
 import ServerSideRender from '@wordpress/server-side-render';
 import { useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { brandIcon } from '../_shared/block-icon';
 import metadata from './block.json';
 
 function syncPreviewPrice( event ) {
@@ -21,6 +22,7 @@ function blockPreviewSubmit( event ) {
 
 registerBlockType( metadata.name, {
     ...metadata,
+    icon: brandIcon( metadata.icon ),
     title: __( 'PP Cart Shop', 'publishpress-cart' ),
     edit( { attributes, setAttributes, clientId } ) {
         const preview = useRef();

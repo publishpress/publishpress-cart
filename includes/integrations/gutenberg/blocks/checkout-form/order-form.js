@@ -23,6 +23,7 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { brandIcon } from '../_shared/block-icon';
 
 const config = window.publishpressCartCheckoutBlock || {};
 const blockName = config.blockName || 'publishpress-cart/checkout-form';
@@ -1191,7 +1192,7 @@ const settings = {
 	title: blockTitle,
 	description: __( 'Display a checkout form.', 'publishpress-cart' ),
 	category: 'widgets',
-	icon: 'cart',
+	icon: brandIcon( 'cart' ),
 	attributes: {
 		pid: {
 			type: 'string',
