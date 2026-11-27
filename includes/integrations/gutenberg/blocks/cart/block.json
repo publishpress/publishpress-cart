@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "publishpress-cart/cart",
-  "title": "Cart Shopping Cart",
+  "title": "PP Cart Shopping Cart",
   "category": "widgets",
   "icon": "cart",
   "description": "Display the shopping cart and order summary.",

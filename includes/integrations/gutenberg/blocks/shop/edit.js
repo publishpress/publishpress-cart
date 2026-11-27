@@ -21,7 +21,7 @@ function blockPreviewSubmit( event ) {
 
 registerBlockType( metadata.name, {
     ...metadata,
-    title: __( 'Cart Shop', 'publishpress-cart' ),
+    title: __( 'PP Cart Shop', 'publishpress-cart' ),
     edit( { attributes, setAttributes, clientId } ) {
         const preview = useRef();
         const colorSettings = useMultipleOriginColorsAndGradients();

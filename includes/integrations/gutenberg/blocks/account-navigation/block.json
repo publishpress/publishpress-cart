@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "publishpress-cart/account-navigation",
 	"version": "1.0.0",
-	"title": "Cart Account Navigation",
+	"title": "PP Cart Account Navigation",
 	"category": "widgets",
 	"icon": "menu",
 	"description": "Display customer account navigation tabs and sortable account sections.",

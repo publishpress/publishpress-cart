@@ -8,7 +8,7 @@ import metadata from './block.json';
 
 registerBlockType( metadata.name, {
     ...metadata,
-    title: __( 'Cart Shopping Cart', 'publishpress-cart' ),
+    title: __( 'PP Cart Shopping Cart', 'publishpress-cart' ),
     edit( { attributes, setAttributes } ) {
         return <div { ...useBlockProps() }>
             <InspectorControls>
