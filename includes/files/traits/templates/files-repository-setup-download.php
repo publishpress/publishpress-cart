@@ -25,9 +25,6 @@ $download->expires = (!isset($download->download_expires) || !$download->downloa
 if (is_countable($files)) {
     foreach ($files as $file) {
         if ($file['file_id'] == $download->file_id) {
-            if (isset($file['file_hide']) && !$show_hidden) {
-                break;
-            }
             $download->file_redirect = $file['file_redirect'] ?? false;
             $download->name = $file['file_name'];
             $download->path = $file['file_url'];

@@ -271,23 +271,22 @@ class RemainingFeaturesTest extends McpTestCase
         }
     }
 
-    public function test_pro_download_visibility_and_expiry_match_native_consumption(): void
+    public function test_pro_download_expiry_matches_native_consumption(): void
     {
         if (! ppcart_is_pro()) {
-            $this->markTestSkipped('Pro download visibility requires Pro.');
+            $this->markTestSkipped('Pro download expiry requires Pro.');
         }
         $id = self::factory()->post->create(['post_type' => ppcart_live_post_type('product')]);
-        ppcart_update_post_meta($id, 'files', [['file_id' => 'visible', 'file_name' => 'Visible', 'file_url' => 'https://example.org/private.pdf', 'file_hide' => 1]]);
+        ppcart_update_post_meta($id, 'files', [['file_id' => 'visible', 'file_name' => 'Visible', 'file_url' => 'https://example.org/private.pdf']]);
         $read = $this->execute('get-product-files', ['id' => $id]);
         $saved = $this->execute('set-product-files', ['id' => $id, 'revision' => $read['revision'],
-            'rows' => [(object) ['file_id' => 'visible', 'file_hide' => false, 'file_expire' => '3 days']]]);
+            'rows' => [(object) ['file_id' => 'visible', 'file_expire' => '3 days']]]);
         $this->assertNotWPError($saved);
         $native = ppcart_get_post_meta($id, 'files', true);
-        $this->assertArrayNotHasKey('file_hide', $native[0]);
         $this->assertSame('3 days', $native[0]['file_expire']);
         $download = (object) ['product_id' => $id, 'file_id' => 'visible', 'order_id' => 1, 'download_id' => 1,
             'order_key' => 'synthetic-private-key', 'downloads_remaining' => 'unlimited'];
-        $this->assertIsObject(\PPCart_Files::get_active_handler()->setup_download($download, false));
+        $this->assertIsObject(\PPCart_Files::get_active_handler()->setup_download($download));
     }
 
 }

@@ -620,7 +620,7 @@ jQuery(document).ready(function($){
         $(this).val(val);
     });
 
-    $('.default_field_disabled, .file_hide').each(function(){
+    $('.default_field_disabled').each(function(){
         if($(this).is(':checked')) {
             $(this).closest('.ppcart-repeater').addClass('disabled');
         } else {
@@ -628,7 +628,7 @@ jQuery(document).ready(function($){
         }
     });
 
-    $('.default_field_disabled, .file_hide').change(function(){
+    $('.default_field_disabled').change(function(){
         if($(this).is(':checked')) {
             $(this).closest('.ppcart-repeater').addClass('disabled');
         } else {
