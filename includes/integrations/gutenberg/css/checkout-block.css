@@ -1,3 +1,30 @@
 .publishpress-cart-checkout-form {
 	min-height: 1px;
 }
+
+.publishpress-cart-checkout-form .ppcart .address-info .selectize-control.single .selectize-input {
+	display: flex;
+	align-items: center;
+	padding-inline-end: 34px;
+	background: #fff;
+}
+
+.publishpress-cart-checkout-form .ppcart .address-info .selectize-control.single .selectize-input > input {
+	height: auto;
+	font: inherit;
+}
+
+.publishpress-cart-checkout-form .ppcart .address-info .selectize-control.single .selectize-input.focus {
+	border-color: #0ca2aa;
+}
+
+.publishpress-cart-checkout-form .ppcart .address-info select.ppcart-form-control.invalid,
+.publishpress-cart-checkout-form .ppcart .address-info .selectize-control.single .selectize-input.invalid {
+	border-color: #e12c07;
+}
+
+.publishpress-cart-checkout-form .ppcart .address-info .selectize-dropdown .option.active,
+.publishpress-cart-checkout-form .ppcart .address-info .selectize-dropdown .option.selected {
+	color: #1d2327;
+	background-color: #eef6fc;
+}
