@@ -234,7 +234,7 @@ trait PPCart_Checkout_Renderer_Styles
         $density_values = ppcart_block_style_get_density_values($density);
         $css            = '';
 
-        $field_selector        = '.ppcart input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]), .ppcart .StripeElement, .ppcart select.ppcart-form-control, .ppcart .selectize-control.single .selectize-input, .ppcart textarea';
+        $field_selector        = '.ppcart input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not(.selectize-input > input), .ppcart .StripeElement, .ppcart select.ppcart-form-control, .ppcart .selectize-control.single .selectize-input, .ppcart textarea';
         $button_selector       = '.ppcart-shortcode input[type="submit"], .ppcart-shortcode button, .ppcart-shortcode .ppcart-btn-block';
         $button_hover_selector = '.ppcart-shortcode input[type="submit"]:hover, .ppcart-shortcode button:hover, .ppcart-shortcode .ppcart-btn-block:hover';
 
