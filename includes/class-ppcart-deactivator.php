@@ -35,6 +35,7 @@ class PPCart_Deactivator
      */
     public static function deactivate()
     {
+        wp_unschedule_hook('ppcart_stripe_fees_fetch');
         wp_clear_scheduled_hook('ppcart_daily_events', ['reminder']);
         wp_clear_scheduled_hook('ppcart_daily_events', ['trial_ending']);
         wp_clear_scheduled_hook('ppcart_cleanup_preloaded_intents');

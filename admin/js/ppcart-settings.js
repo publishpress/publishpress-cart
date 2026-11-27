@@ -1606,6 +1606,80 @@
     }
 
     /* -------------------------------------------------------------------------
+     * Maintenance — fetch Stripe fees for existing orders, one batch at a time
+     * ---------------------------------------------------------------------*/
+    function bindMaintenanceStripeFees() {
+        var $box = $page.find('[data-ppcart-stripe-fees]');
+        if (!$box.length) {
+            return;
+        }
+
+        var $button = $box.find('[data-ppcart-stripe-fees-run]');
+        var $result = $box.find('[data-ppcart-stripe-fees-result]');
+        var done = 0;
+        var errors = [];
+
+        function format(text) {
+            return String(text || '').replace('%1$s', done).replace('%2$s', errors.length);
+        }
+
+        function show(text) {
+            var $list = $('<ul class="ppcart-stripe-import__list">');
+            $.each(errors, function (index, row) {
+                var $item = $('<li class="is-error">');
+                if (row.url) {
+                    $item.append($('<a>').attr('href', row.url).text(row.label), ' ');
+                }
+                $item.append(document.createTextNode(row.message || ''));
+                $list.append($item);
+            });
+            $result.removeAttr('hidden').empty().append($('<p>').text(text), errors.length ? $list : null);
+        }
+
+        function runBatch() {
+            $.post(
+                window.ajaxurl || '/wp-admin/admin-ajax.php',
+                {
+                    action: 'ppcart_fetch_stripe_fees',
+                    nonce: $button.attr('data-nonce'),
+                    failed: errors.length
+                }
+            ).done(function (response) {
+                var data = (response && response.data) || {};
+                if (!response || !response.success) {
+                    show(data.message || $button.attr('data-failed-text'));
+                    $button.prop('disabled', false).removeAttr('aria-busy');
+                    return;
+                }
+                done += parseInt(data.done, 10) || 0;
+                errors = errors.concat(data.errors || []);
+                if (data.finished) {
+                    show(format($button.attr('data-done-text')));
+                    $button.removeAttr('aria-busy');
+                    return;
+                }
+                show(format($button.attr('data-running-text')));
+                runBatch();
+            }).fail(function () {
+                show($button.attr('data-failed-text'));
+                $button.prop('disabled', false).removeAttr('aria-busy');
+            });
+        }
+
+        $button.on('click', function (event) {
+            event.preventDefault();
+            if ($button.prop('disabled')) {
+                return;
+            }
+            done = 0;
+            errors = [];
+            $button.prop('disabled', true).attr('aria-busy', 'true');
+            show(format($button.attr('data-running-text')));
+            runBatch();
+        });
+    }
+
+    /* -------------------------------------------------------------------------
      * Maintenance — import one Stripe payment as a subscription order
      * ---------------------------------------------------------------------*/
     function bindMaintenanceStripeChargeImport() {
@@ -1746,6 +1820,7 @@
         bindPaymentMethods();
         bindMaintenanceSecrets();
         bindMaintenanceStripeImport();
+        bindMaintenanceStripeFees();
         bindMaintenanceStripeChargeImport();
         labelSelectizedControls();
         // Selectize may still be building its inputs; label again once loaded.

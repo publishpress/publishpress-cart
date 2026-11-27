@@ -89,6 +89,29 @@ if ('' !== $customer_notices) :
             <span><?php esc_html_e('Net Revenue', 'publishpress-cart'); ?></span>
             <strong><?php echo wp_kses_post(ppcart_format_price($net_amount)); ?></strong>
         </div>
+        <?php if ($show_stripe_fees) : ?>
+            <div class="ppcart-customer-metric">
+                <span><?php esc_html_e('Stripe Fees', 'publishpress-cart'); ?></span>
+                <strong><?php echo wp_kses_post(ppcart_format_price($stripe_fees['fee'] + $stripe_fees['platform_fee'])); ?></strong>
+                <?php if ($stripe_fees['missing'] > 0) : ?>
+                    <small>
+                        <?php
+                        echo esc_html(
+                            sprintf(
+                                /* translators: %s: number of orders. */
+                                _n('%s order not fetched yet', '%s orders not fetched yet', $stripe_fees['missing'], 'publishpress-cart'),
+                                number_format_i18n($stripe_fees['missing'])
+                            )
+                        );
+                        ?>
+                    </small>
+                <?php endif; ?>
+            </div>
+            <div class="ppcart-customer-metric">
+                <span><?php esc_html_e('Net After Fees', 'publishpress-cart'); ?></span>
+                <strong><?php echo wp_kses_post(ppcart_format_price($net_after_fees)); ?></strong>
+            </div>
+        <?php endif; ?>
         <div class="ppcart-customer-metric">
             <span><?php esc_html_e('LTV', 'publishpress-cart'); ?></span>
             <strong><?php echo wp_kses_post(ppcart_format_price($lifetime_value)); ?></strong>
