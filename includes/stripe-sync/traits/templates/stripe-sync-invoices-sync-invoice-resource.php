@@ -303,8 +303,9 @@ $synced_order = PPCart_Stripe_Sync_Context::run(
 );
 
 // Orders migrated from StudioCart can show a Stripe payment as Cash. An order
-// paid by this invoice's charge is a Stripe order in the invoice's mode.
-if ($synced_order && ($charge_id || $payment_intent)) {
+// paid by this invoice's charge is a Stripe order in the invoice's mode. So is
+// an order paid by a $0 invoice with no charge.
+if ($synced_order && ($charge_id || $payment_intent || 'paid' === $order_status['post_status'])) {
     PPCart_Stripe_Sync_Context::run(
         function () use ($synced_order, $invoice, $existing) {
             self::mark_order_as_stripe_payment($synced_order, $invoice, (bool) $existing);

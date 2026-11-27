@@ -36,9 +36,13 @@ return PPCart_Stripe_Sync_Context::run(
         $local_sub->sub_next_bill_date = $mapped['sub_next_bill_date'];
         $local_sub->cancel_at = $mapped['cancel_at'];
 
-        if ('canceled' === $local_sub->status && empty($local_sub->cancel_date)) {
-            $canceled_at = self::get($stripe_sub, 'canceled_at', 0);
-            $local_sub->cancel_date = $canceled_at ? gmdate('Y-m-d', (int) $canceled_at) : gmdate('Y-m-d');
+        if ('canceled' === $local_sub->status) {
+            // Stripe's date wins over a date stamped later, for example on the
+            // day a canceled subscription was migrated to Cart.
+            $local_sub->cancel_date = self::canceled_subscription_cancel_date(
+                $local_sub->cancel_date,
+                self::get($stripe_sub, 'canceled_at', 0)
+            );
         } elseif ('canceled' !== $mapped['status']) {
             // A cancellation scheduled in Stripe is a pending cancellation in Cart, the same
             // as Cart's own cancel-at-period-end action. cancel_date is the day it was requested.

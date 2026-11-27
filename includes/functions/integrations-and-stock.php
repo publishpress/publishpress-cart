@@ -471,7 +471,12 @@ function ppcart_webhook_order_body($order, $type = '', $price_in_cents = false)
         } else {
             // subscriptions
             $body['sub_amount']      = (float) $order['sub_amount'];
-            $body['subscription_id']          = $order['subscription_id'];
+            // A subscription migrated from StudioCart can keep StudioCart's own
+            // ID in subscription_id. Send the Stripe ID (sub_...) when it has one.
+            $body['subscription_id']          = PPCart_Subscription::pick_stripe_subscription_id(
+                $order['subscription_id'] ?? '',
+                ppcart_get_post_meta($order['id'], 'stripe_subscription_id', true)
+            );
             $body['status']                   = $order['status'];
             $body['amount']                   = $order['sub_amount'];
             if ($order['sub_installments'] > 1) {
@@ -487,7 +492,7 @@ function ppcart_webhook_order_body($order, $type = '', $price_in_cents = false)
                 $body['next_bill_date_time'] = ppcart_maybe_format_date($order['sub_next_bill_date'], 'Y-m-d H:i:s');
             }
 
-            if ($order['sub_end_date']) {
+            if (! empty($order['sub_end_date'])) {
                 $body["end_date"] = ppcart_maybe_format_date($order['sub_end_date'], 'Y-m-d');
                 $body["end_date_time"] = ppcart_maybe_format_date($order['sub_end_date'], 'Y-m-d H:i:s');
             }
