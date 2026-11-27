@@ -19,9 +19,13 @@ if (! defined('ABSPATH')) {
  */
 class PPCart_Stripe_Checkout_Customer
 {
-    const REF_TRANSIENT_PREFIX = 'ppcart_checkout_ref_';
+    const REF_OPTION_PREFIX = 'ppcart_checkout_ref_';
 
     const REF_TTL = 86400;
+
+    const REF_CLEANUP_HOOK = 'ppcart_checkout_ref_cleanup';
+
+    const REF_CLEANUP_BATCH = 500;
 
     const USER_META_PREFIX = '_ppcart_stripe_customer_';
 
@@ -159,17 +163,23 @@ class PPCart_Stripe_Checkout_Customer
             $ref = strtolower(wp_generate_password(64, false, false));
         }
 
-        set_transient(
-            self::ref_transient_key($ref),
+        // An option, not a transient: some sites drop transients.
+        update_option(
+            self::ref_option_key($ref),
             [
                 'customer_id' => $customer_id,
                 'intent_id'   => is_string($intent_id) ? $intent_id : '',
                 'mode'        => (string) $mode,
                 'user_id'     => (int) get_current_user_id(),
                 'is_new'      => (bool) $is_new,
+                'expires'     => time() + self::REF_TTL,
             ],
-            self::REF_TTL
+            false
         );
+
+        if (! wp_next_scheduled(self::REF_CLEANUP_HOOK)) {
+            wp_schedule_event(time() + self::REF_TTL, 'daily', self::REF_CLEANUP_HOOK);
+        }
 
         return $ref;
     }
@@ -188,8 +198,12 @@ class PPCart_Stripe_Checkout_Customer
             return null;
         }
 
-        $data = get_transient(self::ref_transient_key($ref));
+        $data = get_option(self::ref_option_key($ref));
         if (! is_array($data) || ! isset($data['customer_id']) || ! self::is_customer_id($data['customer_id'])) {
+            return null;
+        }
+
+        if ((int) ($data['expires'] ?? 0) < time()) {
             return null;
         }
 
@@ -365,12 +379,54 @@ class PPCart_Stripe_Checkout_Customer
     }
 
     /**
+     * Delete expired checkout references. All references live for the same time,
+     * so the oldest rows expire first and the scan stops at the first live one.
+     *
+     * @return int Number of deleted references.
+     */
+    public static function delete_expired_refs()
+    {
+        global $wpdb;
+
+        $deleted = 0;
+        $now     = time();
+        $like    = $wpdb->esc_like(self::REF_OPTION_PREFIX) . '%';
+
+        do {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Batch scan of plugin-owned options.
+            $rows = $wpdb->get_results(
+                $wpdb->prepare(
+                    'SELECT option_name, option_value FROM %i WHERE option_name LIKE %s ORDER BY option_id ASC LIMIT %d',
+                    $wpdb->options,
+                    $like,
+                    self::REF_CLEANUP_BATCH
+                )
+            );
+
+            $batch_deleted = 0;
+            foreach ((array) $rows as $row) {
+                $data = maybe_unserialize($row->option_value);
+                if (is_array($data) && (int) ($data['expires'] ?? 0) >= $now) {
+                    return $deleted + $batch_deleted;
+                }
+
+                if (delete_option($row->option_name)) {
+                    $batch_deleted++;
+                }
+            }
+            $deleted += $batch_deleted;
+        } while (self::REF_CLEANUP_BATCH === $batch_deleted);
+
+        return $deleted;
+    }
+
+    /**
      * @param string $ref Reference.
      * @return string
      */
-    private static function ref_transient_key($ref)
+    private static function ref_option_key($ref)
     {
-        return self::REF_TRANSIENT_PREFIX . hash('sha256', $ref);
+        return self::REF_OPTION_PREFIX . hash('sha256', $ref);
     }
 
     /**

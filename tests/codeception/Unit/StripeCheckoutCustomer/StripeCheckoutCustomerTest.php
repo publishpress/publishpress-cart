@@ -31,7 +31,7 @@ class StripeCheckoutCustomerTest extends Unit
     private $postMeta = [];
 
     /** @var array<string, mixed> */
-    private $transients = [];
+    private $options = [];
 
     protected function _before(): void
     {
@@ -39,7 +39,7 @@ class StripeCheckoutCustomerTest extends Unit
         $this->currentUserId = 0;
         $this->userMeta      = [];
         $this->postMeta      = [];
-        $this->transients    = [];
+        $this->options       = [];
 
         if (! class_exists('WP_Error', false)) {
             class_alias(\Tests\Support\WPError::class, 'WP_Error');
@@ -65,11 +65,11 @@ class StripeCheckoutCustomerTest extends Unit
             $this->postMeta[ (int) $post_id ][ $key ] = $value;
             return true;
         });
-        WordPressStubContext::set('get_transient', function ($key) {
-            return $this->transients[ $key ] ?? false;
+        WordPressStubContext::set('get_option', function ($key, $default = false) {
+            return $this->options[ $key ] ?? $default;
         });
-        WordPressStubContext::set('set_transient', function ($key, $value) {
-            $this->transients[ $key ] = $value;
+        WordPressStubContext::set('update_option', function ($key, $value) {
+            $this->options[ $key ] = $value;
             return true;
         });
 
@@ -158,6 +158,20 @@ class StripeCheckoutCustomerTest extends Unit
         $this->assertNull(PPCart_Stripe_Checkout_Customer::read_ref($ref, 'test'), 'Another WordPress user cannot use the reference.');
 
         $this->assertSame('', PPCart_Stripe_Checkout_Customer::create_ref('not-a-customer', '', 'test', true));
+    }
+
+    /**
+     * @test-id UT-366
+     */
+    public function test_UT_366_expired_checkout_ref_is_refused(): void
+    {
+        $ref = PPCart_Stripe_Checkout_Customer::create_ref('cus_guest', 'seti_1', 'test', true);
+        $this->assertSame('cus_guest', PPCart_Stripe_Checkout_Customer::read_ref($ref, 'test')['customer_id'] ?? null);
+
+        foreach ($this->options as $key => $value) {
+            $this->options[ $key ]['expires'] = time() - 1;
+        }
+        $this->assertNull(PPCart_Stripe_Checkout_Customer::read_ref($ref, 'test'), 'An expired reference is refused.');
     }
 
     /**

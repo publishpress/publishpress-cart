@@ -160,6 +160,7 @@ class PPCart_Dependency_Loader
         */
         require_once $base_path . 'includes/class-ppcart-stripe.php';
         require_once $base_path . 'includes/stripe/class-ppcart-stripe-checkout-customer.php';
+        add_action(PPCart_Stripe_Checkout_Customer::REF_CLEANUP_HOOK, [PPCart_Stripe_Checkout_Customer::class, 'delete_expired_refs']);
 
         /**
          * The class responsible for admin ajax
