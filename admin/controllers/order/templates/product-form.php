@@ -366,7 +366,7 @@ if (in_array(PPCart_Status_Labels::logical_from_post($post->ID), ['paid', 'refun
     $refund_decimal_number = ('0' === $refund_decimal_number || ! empty($refund_decimal_number)) ? intval($refund_decimal_number) : 2;
     $refund_decimal_separator = ! empty(get_option('_ppcart_decimal_separator')) ? get_option('_ppcart_decimal_separator') : '.';
     $refund_thousand_separator = ! empty(get_option('_ppcart_thousand_separator')) ? get_option('_ppcart_thousand_separator') : '';
-    $restock_disabled = 'YES' === ppcart_get_post_meta(get_the_ID(), 'refund_restock', true);
+    $restock_disabled = 'YES' === ppcart_get_post_meta($post->ID, 'refund_restock', true);
     ?>
     <input type="hidden" name="ppcart_payment_intent" id="stripe_ppcart_payment_intent" value="<?php echo esc_attr($ppcart_payment_intent); ?>">
     <input type="hidden" id="ppcart_payment_method" name="ppcart_payment_method" value="<?php echo esc_attr($ppcart_payment_method); ?>">
@@ -496,7 +496,7 @@ if ($show_related) {  ?>
                         'orderby' => 'date',
                         'order'   => 'ASC',
                         // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Required to exclude the currently viewed order.
-                        'post__not_in' => (array) get_the_ID(),
+                        'post__not_in' => (array) $post->ID,
                         // phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.posts_per_page_posts_per_page -- This admin/report selector intentionally loads all matching records for aggregate calculations or option lists.
                         'posts_per_page' => -1,
                         // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required to load related orders by subscription meta.
@@ -512,16 +512,15 @@ if ($show_related) {  ?>
 
                     // The Loop
                     if ($the_query->have_posts()) {
-                        while ($the_query->have_posts()) {
-                            $the_query->the_post();
-                            $child_order = new PPCart_Order(get_the_ID());
+                        foreach ($the_query->posts as $loop_post) {
+                            $child_order = new PPCart_Order($loop_post->ID);
                             ?>
                             <tr>
                                 <td>
-                                    <a href="<?php echo esc_url(get_edit_post_link(get_the_ID())); ?>" class="ppcart-order-item-name">#<?php echo esc_html(get_the_ID()); ?></a>
+                                    <a href="<?php echo esc_url(get_edit_post_link($loop_post->ID)); ?>" class="ppcart-order-item-name">#<?php echo esc_html($loop_post->ID); ?></a>
                                 </td>
                                 <td><?php echo esc_html($initial_order ? 'Initial Order' : 'Renewal Order'); ?></td>
-                                <td><?php echo esc_html(get_the_date('F d, Y h:i a', get_the_ID())); ?></td>
+                                <td><?php echo esc_html(get_the_date('F d, Y h:i a', $loop_post->ID)); ?></td>
                                 <td class="name">
                                     <span class="ppcart-status <?php echo esc_attr($child_order->status); ?>"><?php echo esc_html($child_order->get_status()); ?></span>
                                 </td>
@@ -537,8 +536,6 @@ if ($show_related) {  ?>
                                     $initial_order = false;
                         }
                     }
-                    /* Restore original Post Data */
-                    wp_reset_postdata();
                 }
 
 

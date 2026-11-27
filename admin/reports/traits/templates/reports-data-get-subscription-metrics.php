@@ -79,8 +79,6 @@ foreach ($query->posts as $subscription_id) {
     }
 }
 
-wp_reset_postdata();
-
 $churn_base = ! empty($period['is_all_time']) ? $metrics['active'] + $metrics['canceled'] : $metrics['active_at_start'];
 
 if ($churn_base > 0) {

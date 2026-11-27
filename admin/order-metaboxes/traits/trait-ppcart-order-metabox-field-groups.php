@@ -115,7 +115,6 @@ trait PPCart_Order_Metabox_Field_Groups_Trait
             foreach ($myProducts as $product) {
                 $options[$product->ID] = get_the_title($product->ID);
             }
-            wp_reset_postdata();
         endif;
         return $options;
     }

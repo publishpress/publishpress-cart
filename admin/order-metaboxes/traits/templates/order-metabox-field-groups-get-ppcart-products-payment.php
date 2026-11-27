@@ -38,6 +38,5 @@ if ($myProducts) {
             }
         }
     }
-    wp_reset_postdata();
 }
 return $options;

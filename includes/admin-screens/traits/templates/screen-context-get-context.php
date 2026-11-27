@@ -25,7 +25,10 @@ $context    = [
     'screen_post_type'  => $has_screen && isset($screen->post_type) ? self::normalize_key($screen->post_type) : '',
     'screen_taxonomy'   => $has_screen && isset($screen->taxonomy) ? self::normalize_key($screen->taxonomy) : '',
     'admin_page_parent' => $has_screen && function_exists('get_admin_page_parent') ? self::normalize_key(get_admin_page_parent()) : '',
-    'current_post_type' => $has_screen && function_exists('get_post_type') ? self::normalize_key(get_post_type()) : '',
+    // The screen's post type, which WordPress takes from the edited post on
+    // post.php. Not the global $post, which a loop elsewhere can leave on
+    // another post, and not a stray post ID in the URL of another screen.
+    'current_post_type' => $has_screen && isset($screen->post_type) ? self::normalize_key($screen->post_type) : '',
 ];
 
 return $context;
